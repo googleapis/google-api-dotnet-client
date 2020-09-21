@@ -397,19 +397,19 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
     {
         /// <summary>Required. The format of the audio byte stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioEncoding")]
-        public virtual string AudioEncoding { get; set; } 
+        public virtual string AudioEncoding { get; set; }
 
         /// <summary>Optional. Input only. An identifier which selects 'audio effects' profiles that are applied on
         /// (post synthesized) text to speech. Effects are applied on top of each other in the order they are given. See
         /// [audio profiles](https://cloud.google.com/text-to-speech/docs/audio-profiles) for current supported profile
         /// ids.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectsProfileId")]
-        public virtual System.Collections.Generic.IList<string> EffectsProfileId { get; set; } 
+        public virtual System.Collections.Generic.IList<string> EffectsProfileId { get; set; }
 
         /// <summary>Optional. Input only. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones
         /// from the original pitch. -20 means decrease 20 semitones from the original pitch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pitch")]
-        public virtual System.Nullable<double> Pitch { get; set; } 
+        public virtual System.Nullable<double> Pitch { get; set; }
 
         /// <summary>Optional. The synthesis sample rate (in hertz) for this audio. When this is specified in
         /// SynthesizeSpeechRequest, if this is different from the voice's natural sample rate, then the synthesizer
@@ -417,13 +417,13 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         /// quality), unless the specified sample rate is not supported for the encoding chosen, in which case it will
         /// fail the request and return google.rpc.Code.INVALID_ARGUMENT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleRateHertz")]
-        public virtual System.Nullable<int> SampleRateHertz { get; set; } 
+        public virtual System.Nullable<int> SampleRateHertz { get; set; }
 
         /// <summary>Optional. Input only. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed
         /// supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to
         /// the native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speakingRate")]
-        public virtual System.Nullable<double> SpeakingRate { get; set; } 
+        public virtual System.Nullable<double> SpeakingRate { get; set; }
 
         /// <summary>Optional. Input only. Volume gain (in dB) of the normal native volume supported by the specific
         /// voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native
@@ -432,7 +432,7 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         /// signal amplitude. Strongly recommend not to exceed +10 (dB) as there's usually no effective increase in
         /// loudness for any value greater than that.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeGainDb")]
-        public virtual System.Nullable<double> VolumeGainDb { get; set; } 
+        public virtual System.Nullable<double> VolumeGainDb { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -443,7 +443,7 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
     {
         /// <summary>The list of voices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voices")]
-        public virtual System.Collections.Generic.IList<Voice> Voices { get; set; } 
+        public virtual System.Collections.Generic.IList<Voice> Voices { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -457,11 +457,11 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         /// RPC will fail and return google.rpc.Code.INVALID_ARGUMENT. For more information, see
         /// [SSML](https://cloud.google.com/text-to-speech/docs/ssml).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ssml")]
-        public virtual string Ssml { get; set; } 
+        public virtual string Ssml { get; set; }
 
         /// <summary>The raw text to be synthesized.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -472,19 +472,19 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
     {
         /// <summary>Required. The configuration of the synthesized audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioConfig")]
-        public virtual AudioConfig AudioConfig { get; set; } 
+        public virtual AudioConfig AudioConfig { get; set; }
 
         /// <summary>Whether and what timepoints are returned in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableTimePointing")]
-        public virtual System.Collections.Generic.IList<string> EnableTimePointing { get; set; } 
+        public virtual System.Collections.Generic.IList<string> EnableTimePointing { get; set; }
 
         /// <summary>Required. The Synthesizer requires either plain text or SSML as input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("input")]
-        public virtual SynthesisInput Input { get; set; } 
+        public virtual SynthesisInput Input { get; set; }
 
         /// <summary>Required. The desired voice of the synthesized audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voice")]
-        public virtual VoiceSelectionParams Voice { get; set; } 
+        public virtual VoiceSelectionParams Voice { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -495,19 +495,19 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
     {
         /// <summary>The audio metadata of `audio_content`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioConfig")]
-        public virtual AudioConfig AudioConfig { get; set; } 
+        public virtual AudioConfig AudioConfig { get; set; }
 
         /// <summary>The audio data bytes encoded as specified in the request, including the header for encodings that
         /// are wrapped in containers (e.g. MP3, OGG_OPUS). For LINEAR16 audio, we include the WAV header. Note: as with
         /// all bytes fields, protobuffers use a pure binary representation, whereas JSON representations use
         /// base64.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioContent")]
-        public virtual string AudioContent { get; set; } 
+        public virtual string AudioContent { get; set; }
 
         /// <summary>A link between a position in the original request input and a corresponding time in the output
         /// audio. It's only supported via of SSML input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timepoints")]
-        public virtual System.Collections.Generic.IList<Timepoint> Timepoints { get; set; } 
+        public virtual System.Collections.Generic.IList<Timepoint> Timepoints { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -519,11 +519,11 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
     {
         /// <summary>Timepoint name as received from the client within tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("markName")]
-        public virtual string MarkName { get; set; } 
+        public virtual string MarkName { get; set; }
 
         /// <summary>Time offset in seconds from the start of the synthesized audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeconds")]
-        public virtual System.Nullable<double> TimeSeconds { get; set; } 
+        public virtual System.Nullable<double> TimeSeconds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -535,19 +535,19 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         /// <summary>The languages that this voice supports, expressed as [BCP-47](https://www.rfc-
         /// editor.org/rfc/bcp/bcp47.txt) language tags (e.g. "en-US", "es-419", "cmn-tw").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCodes")]
-        public virtual System.Collections.Generic.IList<string> LanguageCodes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> LanguageCodes { get; set; }
 
         /// <summary>The name of this voice. Each distinct voice has a unique name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The natural sample rate (in hertz) for this voice.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("naturalSampleRateHertz")]
-        public virtual System.Nullable<int> NaturalSampleRateHertz { get; set; } 
+        public virtual System.Nullable<int> NaturalSampleRateHertz { get; set; }
 
         /// <summary>The gender of this voice.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ssmlGender")]
-        public virtual string SsmlGender { get; set; } 
+        public virtual string SsmlGender { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -565,19 +565,19 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         /// available), or even a different language, e.g. using "nb" (Norwegian Bokmal) instead of "no"
         /// (Norwegian)".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>The name of the voice. If not set, the service will choose a voice based on the other parameters
         /// such as language_code and gender.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The preferred gender of the voice. If not set, the service will choose a voice based on the other
         /// parameters such as language_code and name. Note that this is only a preference, not requirement; if a voice
         /// of the appropriate gender is not available, the synthesizer should substitute a voice with a different
         /// gender rather than failing the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ssmlGender")]
-        public virtual string SsmlGender { get; set; } 
+        public virtual string SsmlGender { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

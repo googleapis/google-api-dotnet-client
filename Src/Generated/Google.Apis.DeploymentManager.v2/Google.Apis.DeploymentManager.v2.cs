@@ -2073,15 +2073,15 @@ namespace Google.Apis.DeploymentManager.v2.Data
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
-        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
-        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
 
         /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
         /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2099,14 +2099,14 @@ namespace Google.Apis.DeploymentManager.v2.Data
         /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
         /// format of [Binding.members][].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
-        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreChildExemptions")]
-        public virtual System.Nullable<bool> IgnoreChildExemptions { get; set; } 
+        public virtual System.Nullable<bool> IgnoreChildExemptions { get; set; }
 
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
-        public virtual string LogType { get; set; } 
+        public virtual string LogType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2117,7 +2117,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
     {
         /// <summary>The type of the permission that was checked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionType")]
-        public virtual string PermissionType { get; set; } 
+        public virtual string PermissionType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2136,7 +2136,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
         /// To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values:
@@ -2172,12 +2172,12 @@ namespace Google.Apis.DeploymentManager.v2.Data
         /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
         /// `google.com` or `example.com`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2188,24 +2188,24 @@ namespace Google.Apis.DeploymentManager.v2.Data
     {
         /// <summary>Trusted attributes supplied by the IAM system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iam")]
-        public virtual string Iam { get; set; } 
+        public virtual string Iam { get; set; }
 
         /// <summary>An operator to apply the subject with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("op")]
-        public virtual string Op { get; set; } 
+        public virtual string Op { get; set; }
 
         /// <summary>Trusted attributes discharged by the service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("svc")]
-        public virtual string Svc { get; set; } 
+        public virtual string Svc { get; set; }
 
         /// <summary>Trusted attributes supplied by any service that owns resources and uses the IAM system for access
         /// control.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sys")]
-        public virtual string Sys { get; set; } 
+        public virtual string Sys { get; set; }
 
         /// <summary>The objects of the condition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2215,7 +2215,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
     {
         /// <summary>The contents of the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual string Content { get; set; } 
+        public virtual string Content { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2225,7 +2225,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
     {
         /// <summary>An optional user-provided description of the deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Provides a fingerprint to use in requests to modify a deployment, such as `update()`, `stop()`, and
         /// `cancelPreview()` requests. A fingerprint is a randomly generated value that must be provided with
@@ -2235,26 +2235,26 @@ namespace Google.Apis.DeploymentManager.v2.Data
         /// The fingerprint is initially generated by Deployment Manager and changes after every request to modify data.
         /// To get the latest fingerprint value, perform a `get()` request to a deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
-        public virtual string Fingerprint { get; set; } 
+        public virtual string Fingerprint { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<ulong> Id { get; set; } 
+        public virtual System.Nullable<ulong> Id { get; set; }
 
         /// <summary>Output only. Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
-        public virtual string InsertTime { get; set; } 
+        public virtual string InsertTime { get; set; }
 
         /// <summary>Map of labels; provided by the client when the resource is created or updated. Specifically: Label
         /// keys must be between 1 and 63 characters long and must conform to the following regular expression:
         /// `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the
         /// regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IList<DeploymentLabelEntry> Labels { get; set; } 
+        public virtual System.Collections.Generic.IList<DeploymentLabelEntry> Labels { get; set; }
 
         /// <summary>Output only. URL of the manifest representing the last manifest that was successfully deployed. If
         /// no manifest has been successfully deployed, this field will be absent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manifest")]
-        public virtual string Manifest { get; set; } 
+        public virtual string Manifest { get; set; }
 
         /// <summary>Name of the resource; provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
@@ -2262,30 +2262,30 @@ namespace Google.Apis.DeploymentManager.v2.Data
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The Operation that most recently ran, or is currently running, on this
         /// deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
-        public virtual Operation Operation { get; set; } 
+        public virtual Operation Operation { get; set; }
 
         /// <summary>Output only. Server defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>[Input Only] The parameters that define your deployment, including the deployment configuration and
         /// relevant templates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual TargetConfiguration Target { get; set; } 
+        public virtual TargetConfiguration Target { get; set; }
 
         /// <summary>Output only. If Deployment Manager is currently updating or previewing an update to this
         /// deployment, the updated configuration appears here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("update")]
-        public virtual DeploymentUpdate Update { get; set; } 
+        public virtual DeploymentUpdate Update { get; set; }
 
         /// <summary>Output only. Update timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTime { get; set; } 
+        public virtual string UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2294,10 +2294,10 @@ namespace Google.Apis.DeploymentManager.v2.Data
     public class DeploymentLabelEntry : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2308,19 +2308,19 @@ namespace Google.Apis.DeploymentManager.v2.Data
         /// <summary>Output only. An optional user-provided description of the deployment after the current update has
         /// been applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Output only. Map of labels; provided by the client when the resource is created or updated.
         /// Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular
         /// expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must
         /// conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IList<DeploymentUpdateLabelEntry> Labels { get; set; } 
+        public virtual System.Collections.Generic.IList<DeploymentUpdateLabelEntry> Labels { get; set; }
 
         /// <summary>Output only. URL of the manifest representing the update configuration of this
         /// deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manifest")]
-        public virtual string Manifest { get; set; } 
+        public virtual string Manifest { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2329,10 +2329,10 @@ namespace Google.Apis.DeploymentManager.v2.Data
     public class DeploymentUpdateLabelEntry : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2348,7 +2348,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
         /// The fingerprint is initially generated by Deployment Manager and changes after every request to modify a
         /// deployment. To get the latest fingerprint value, perform a `get()` request on the deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
-        public virtual string Fingerprint { get; set; } 
+        public virtual string Fingerprint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2360,11 +2360,11 @@ namespace Google.Apis.DeploymentManager.v2.Data
     {
         /// <summary>Output only. The deployments contained in this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployments")]
-        public virtual System.Collections.Generic.IList<Deployment> Deployments { get; set; } 
+        public virtual System.Collections.Generic.IList<Deployment> Deployments { get; set; }
 
         /// <summary>Output only. A token used to continue a truncated list request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2380,7 +2380,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
         /// The fingerprint is initially generated by Deployment Manager and changes after every request to modify a
         /// deployment. To get the latest fingerprint value, perform a `get()` request on the deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
-        public virtual string Fingerprint { get; set; } 
+        public virtual string Fingerprint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2416,21 +2416,21 @@ namespace Google.Apis.DeploymentManager.v2.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2441,18 +2441,18 @@ namespace Google.Apis.DeploymentManager.v2.Data
         /// <summary>Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify
         /// bindings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
         /// <summary>Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify the
         /// etag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to
         /// a few 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might
         /// reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; } 
+        public virtual Policy Policy { get; set; }
 
     }    
 
@@ -2460,11 +2460,11 @@ namespace Google.Apis.DeploymentManager.v2.Data
     {
         /// <summary>The contents of the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual string Content { get; set; } 
+        public virtual string Content { get; set; }
 
         /// <summary>The name of the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2475,15 +2475,15 @@ namespace Google.Apis.DeploymentManager.v2.Data
     {
         /// <summary>Cloud audit options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudAudit")]
-        public virtual LogConfigCloudAuditOptions CloudAudit { get; set; } 
+        public virtual LogConfigCloudAuditOptions CloudAudit { get; set; }
 
         /// <summary>Counter options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("counter")]
-        public virtual LogConfigCounterOptions Counter { get; set; } 
+        public virtual LogConfigCounterOptions Counter { get; set; }
 
         /// <summary>Data access options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataAccess")]
-        public virtual LogConfigDataAccessOptions DataAccess { get; set; } 
+        public virtual LogConfigDataAccessOptions DataAccess { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2494,11 +2494,11 @@ namespace Google.Apis.DeploymentManager.v2.Data
     {
         /// <summary>Information used by the Cloud Audit Logging pipeline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizationLoggingOptions")]
-        public virtual AuthorizationLoggingOptions AuthorizationLoggingOptions { get; set; } 
+        public virtual AuthorizationLoggingOptions AuthorizationLoggingOptions { get; set; }
 
         /// <summary>The log_name to populate in the Cloud Audit Record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logName")]
-        public virtual string LogName { get; set; } 
+        public virtual string LogName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2522,15 +2522,15 @@ namespace Google.Apis.DeploymentManager.v2.Data
     {
         /// <summary>Custom fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customFields")]
-        public virtual System.Collections.Generic.IList<LogConfigCounterOptionsCustomField> CustomFields { get; set; } 
+        public virtual System.Collections.Generic.IList<LogConfigCounterOptionsCustomField> CustomFields { get; set; }
 
         /// <summary>The field value to attribute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual string Field { get; set; } 
+        public virtual string Field { get; set; }
 
         /// <summary>The metric to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metric")]
-        public virtual string Metric { get; set; } 
+        public virtual string Metric { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2542,12 +2542,12 @@ namespace Google.Apis.DeploymentManager.v2.Data
     {
         /// <summary>Name is the field name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Value is the field value. It is important that in contrast to the CounterOptions.field, the value
         /// here is a constant that is not derived from the IAMContext.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2557,7 +2557,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
     public class LogConfigDataAccessOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("logMode")]
-        public virtual string LogMode { get; set; } 
+        public virtual string LogMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2567,37 +2567,37 @@ namespace Google.Apis.DeploymentManager.v2.Data
     {
         /// <summary>Output only. The YAML configuration for this manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual ConfigFile Config { get; set; } 
+        public virtual ConfigFile Config { get; set; }
 
         /// <summary>Output only. The fully-expanded configuration file, including any templates and
         /// references.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expandedConfig")]
-        public virtual string ExpandedConfig { get; set; } 
+        public virtual string ExpandedConfig { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<ulong> Id { get; set; } 
+        public virtual System.Nullable<ulong> Id { get; set; }
 
         /// <summary>Output only. The imported files for this manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imports")]
-        public virtual System.Collections.Generic.IList<ImportFile> Imports { get; set; } 
+        public virtual System.Collections.Generic.IList<ImportFile> Imports { get; set; }
 
         /// <summary>Output only. Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
-        public virtual string InsertTime { get; set; } 
+        public virtual string InsertTime { get; set; }
 
         /// <summary>Output only. The YAML layout for this manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layout")]
-        public virtual string Layout { get; set; } 
+        public virtual string Layout { get; set; }
 
         /// <summary>Output only.
         ///
         /// The name of the manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. Self link for the manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2609,11 +2609,11 @@ namespace Google.Apis.DeploymentManager.v2.Data
     {
         /// <summary>Output only. Manifests contained in this list response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manifests")]
-        public virtual System.Collections.Generic.IList<Manifest> Manifests { get; set; } 
+        public virtual System.Collections.Generic.IList<Manifest> Manifests { get; set; }
 
         /// <summary>Output only. A token used to continue a truncated list request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2642,111 +2642,111 @@ namespace Google.Apis.DeploymentManager.v2.Data
         /// <summary>[Output Only] The value of `requestId` if you provided it in the request. Not present
         /// otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientOperationId")]
-        public virtual string ClientOperationId { get; set; } 
+        public virtual string ClientOperationId { get; set; }
 
         /// <summary>[Deprecated] This field is deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
-        public virtual string CreationTimestamp { get; set; } 
+        public virtual string CreationTimestamp { get; set; }
 
         /// <summary>[Output Only] A textual description of the operation, which is set when the operation is
         /// created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>[Output Only] The time that this operation was completed. This value is in RFC3339 text
         /// format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTime { get; set; } 
+        public virtual string EndTime { get; set; }
 
         /// <summary>[Output Only] If errors are generated during processing of the operation, this field will be
         /// populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual ErrorData Error { get; set; } 
+        public virtual ErrorData Error { get; set; }
 
         /// <summary>[Output Only] If the operation fails, this field contains the HTTP error message that was returned,
         /// such as `NOT FOUND`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpErrorMessage")]
-        public virtual string HttpErrorMessage { get; set; } 
+        public virtual string HttpErrorMessage { get; set; }
 
         /// <summary>[Output Only] If the operation fails, this field contains the HTTP error status code that was
         /// returned. For example, a `404` means the resource was not found.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpErrorStatusCode")]
-        public virtual System.Nullable<int> HttpErrorStatusCode { get; set; } 
+        public virtual System.Nullable<int> HttpErrorStatusCode { get; set; }
 
         /// <summary>[Output Only] The unique identifier for the operation. This identifier is defined by the
         /// server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<ulong> Id { get; set; } 
+        public virtual System.Nullable<ulong> Id { get; set; }
 
         /// <summary>[Output Only] The time that this operation was requested. This value is in RFC3339 text
         /// format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
-        public virtual string InsertTime { get; set; } 
+        public virtual string InsertTime { get; set; }
 
         /// <summary>[Output Only] Type of the resource. Always `compute#operation` for Operation resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>[Output Only] Name of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>[Output Only] The type of operation, such as `insert`, `update`, or `delete`, and so on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
-        public virtual string OperationType { get; set; } 
+        public virtual string OperationType { get; set; }
 
         /// <summary>[Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement
         /// that this be linear or support any granularity of operations. This should not be used to guess when the
         /// operation will be complete. This number should monotonically increase as the operation progresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
-        public virtual System.Nullable<int> Progress { get; set; } 
+        public virtual System.Nullable<int> Progress { get; set; }
 
         /// <summary>[Output Only] The URL of the region where the operation resides. Only applicable when performing
         /// regional operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
-        public virtual string Region { get; set; } 
+        public virtual string Region { get; set; }
 
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>[Output Only] The time that this operation was started by the server. This value is in RFC3339 text
         /// format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTime { get; set; } 
+        public virtual string StartTime { get; set; }
 
         /// <summary>[Output Only] The status of the operation, which can be one of the following: `PENDING`, `RUNNING`,
         /// or `DONE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>[Output Only] An optional textual description of the current status of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
-        public virtual string StatusMessage { get; set; } 
+        public virtual string StatusMessage { get; set; }
 
         /// <summary>[Output Only] The unique target ID, which identifies a specific incarnation of the target
         /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
-        public virtual System.Nullable<ulong> TargetId { get; set; } 
+        public virtual System.Nullable<ulong> TargetId { get; set; }
 
         /// <summary>[Output Only] The URL of the resource that the operation modifies. For operations related to
         /// creating a snapshot, this points to the persistent disk that the snapshot was created from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetLink")]
-        public virtual string TargetLink { get; set; } 
+        public virtual string TargetLink { get; set; }
 
         /// <summary>[Output Only] User who requested the operation, for example: `user@example.com`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
-        public virtual string User { get; set; } 
+        public virtual string User { get; set; }
 
         /// <summary>[Output Only] If warning messages are generated during processing of the operation, this field will
         /// be populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
-        public virtual System.Collections.Generic.IList<WarningsData> Warnings { get; set; } 
+        public virtual System.Collections.Generic.IList<WarningsData> Warnings { get; set; }
 
         /// <summary>[Output Only] The URL of the zone where the operation resides. Only applicable when performing per-
         /// zone operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2758,7 +2758,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
         {
             /// <summary>[Output Only] The array of errors encountered while processing this operation.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-            public virtual System.Collections.Generic.IList<ErrorsData> Errors { get; set; } 
+            public virtual System.Collections.Generic.IList<ErrorsData> Errors { get; set; }
 
             
 
@@ -2766,16 +2766,16 @@ namespace Google.Apis.DeploymentManager.v2.Data
             {
                 /// <summary>[Output Only] The error type identifier for this error.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("code")]
-                public virtual string Code { get; set; } 
+                public virtual string Code { get; set; }
 
                 /// <summary>[Output Only] Indicates the field in the request that caused the error. This property is
                 /// optional.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("location")]
-                public virtual string Location { get; set; } 
+                public virtual string Location { get; set; }
 
                 /// <summary>[Output Only] An optional, human-readable error message.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("message")]
-                public virtual string Message { get; set; } 
+                public virtual string Message { get; set; }
 
             }
         }    
@@ -2785,16 +2785,16 @@ namespace Google.Apis.DeploymentManager.v2.Data
             /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
             /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("code")]
-            public virtual string Code { get; set; } 
+            public virtual string Code { get; set; }
 
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; }
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
-            public virtual string Message { get; set; } 
+            public virtual string Message { get; set; }
 
             
 
@@ -2807,11 +2807,11 @@ namespace Google.Apis.DeploymentManager.v2.Data
                 /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
                 /// forwarding).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]
-                public virtual string Key { get; set; } 
+                public virtual string Key { get; set; }
 
                 /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("value")]
-                public virtual string Value { get; set; } 
+                public virtual string Value { get; set; }
 
             }
         }
@@ -2823,11 +2823,11 @@ namespace Google.Apis.DeploymentManager.v2.Data
     {
         /// <summary>Output only. A token used to continue a truncated list request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Output only. Operations contained in this list response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2868,12 +2868,12 @@ namespace Google.Apis.DeploymentManager.v2.Data
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
-        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; }
 
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -2885,10 +2885,10 @@ namespace Google.Apis.DeploymentManager.v2.Data
         /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
         /// `1` policy, and all of the conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("iamOwned")]
-        public virtual System.Nullable<bool> IamOwned { get; set; } 
+        public virtual System.Nullable<bool> IamOwned { get; set; }
 
         /// <summary>If more than one rule is specified, the rules are applied in the following manner: - All matching
         /// LOG rules are always applied. - If any DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will
@@ -2896,7 +2896,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
         /// matches, permission is granted. Logging will be applied if one or more matching rule requires logging. -
         /// Otherwise, if no rule applies, permission is denied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
-        public virtual System.Collections.Generic.IList<Rule> Rules { get; set; } 
+        public virtual System.Collections.Generic.IList<Rule> Rules { get; set; }
 
         /// <summary>Specifies the format of the policy.
         ///
@@ -2919,7 +2919,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
         /// To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -2927,55 +2927,55 @@ namespace Google.Apis.DeploymentManager.v2.Data
     {
         /// <summary>The Access Control Policy set on this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessControl")]
-        public virtual ResourceAccessControl AccessControl { get; set; } 
+        public virtual ResourceAccessControl AccessControl { get; set; }
 
         /// <summary>Output only. The evaluated properties of the resource with references expanded. Returned as
         /// serialized YAML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalProperties")]
-        public virtual string FinalProperties { get; set; } 
+        public virtual string FinalProperties { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<ulong> Id { get; set; } 
+        public virtual System.Nullable<ulong> Id { get; set; }
 
         /// <summary>Output only. Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
-        public virtual string InsertTime { get; set; } 
+        public virtual string InsertTime { get; set; }
 
         /// <summary>Output only. URL of the manifest representing the current configuration of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manifest")]
-        public virtual string Manifest { get; set; } 
+        public virtual string Manifest { get; set; }
 
         /// <summary>Output only. The name of the resource as it appears in the YAML config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The current properties of the resource before any references have been filled in.
         /// Returned as serialized YAML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual string Properties { get; set; } 
+        public virtual string Properties { get; set; }
 
         /// <summary>Output only. The type of the resource, for example `compute.v1.instance`, or
         /// `cloudfunctions.v1beta1.function`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>Output only. If Deployment Manager is currently updating or previewing an update to this resource,
         /// the updated configuration appears here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("update")]
-        public virtual ResourceUpdate Update { get; set; } 
+        public virtual ResourceUpdate Update { get; set; }
 
         /// <summary>Output only. Update timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTime { get; set; } 
+        public virtual string UpdateTime { get; set; }
 
         /// <summary>Output only. The URL of the actual resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>Output only. If warning messages are generated during processing of this resource, this field will
         /// be populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
-        public virtual System.Collections.Generic.IList<WarningsData> Warnings { get; set; } 
+        public virtual System.Collections.Generic.IList<WarningsData> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2986,16 +2986,16 @@ namespace Google.Apis.DeploymentManager.v2.Data
             /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
             /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("code")]
-            public virtual string Code { get; set; } 
+            public virtual string Code { get; set; }
 
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; }
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
-            public virtual string Message { get; set; } 
+            public virtual string Message { get; set; }
 
             
 
@@ -3008,11 +3008,11 @@ namespace Google.Apis.DeploymentManager.v2.Data
                 /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
                 /// forwarding).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]
-                public virtual string Key { get; set; } 
+                public virtual string Key { get; set; }
 
                 /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("value")]
-                public virtual string Value { get; set; } 
+                public virtual string Value { get; set; }
 
             }
         }
@@ -3023,7 +3023,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
     {
         /// <summary>The GCP IAM Policy to set on the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpIamPolicy")]
-        public virtual string GcpIamPolicy { get; set; } 
+        public virtual string GcpIamPolicy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3033,39 +3033,39 @@ namespace Google.Apis.DeploymentManager.v2.Data
     {
         /// <summary>The Access Control Policy to set on this resource after updating the resource itself.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessControl")]
-        public virtual ResourceAccessControl AccessControl { get; set; } 
+        public virtual ResourceAccessControl AccessControl { get; set; }
 
         /// <summary>Output only. If errors are generated during update of the resource, this field will be
         /// populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual ErrorData Error { get; set; } 
+        public virtual ErrorData Error { get; set; }
 
         /// <summary>Output only. The expanded properties of the resource with reference values expanded. Returned as
         /// serialized YAML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalProperties")]
-        public virtual string FinalProperties { get; set; } 
+        public virtual string FinalProperties { get; set; }
 
         /// <summary>Output only. The intent of the resource: `PREVIEW`, `UPDATE`, or `CANCEL`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intent")]
-        public virtual string Intent { get; set; } 
+        public virtual string Intent { get; set; }
 
         /// <summary>Output only. URL of the manifest representing the update configuration of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manifest")]
-        public virtual string Manifest { get; set; } 
+        public virtual string Manifest { get; set; }
 
         /// <summary>Output only. The set of updated properties for this resource, before references are expanded.
         /// Returned as serialized YAML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual string Properties { get; set; } 
+        public virtual string Properties { get; set; }
 
         /// <summary>Output only. The state of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Output only. If warning messages are generated during processing of this resource, this field will
         /// be populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
-        public virtual System.Collections.Generic.IList<WarningsData> Warnings { get; set; } 
+        public virtual System.Collections.Generic.IList<WarningsData> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3077,7 +3077,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
         {
             /// <summary>[Output Only] The array of errors encountered while processing this operation.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-            public virtual System.Collections.Generic.IList<ErrorsData> Errors { get; set; } 
+            public virtual System.Collections.Generic.IList<ErrorsData> Errors { get; set; }
 
             
 
@@ -3085,16 +3085,16 @@ namespace Google.Apis.DeploymentManager.v2.Data
             {
                 /// <summary>[Output Only] The error type identifier for this error.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("code")]
-                public virtual string Code { get; set; } 
+                public virtual string Code { get; set; }
 
                 /// <summary>[Output Only] Indicates the field in the request that caused the error. This property is
                 /// optional.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("location")]
-                public virtual string Location { get; set; } 
+                public virtual string Location { get; set; }
 
                 /// <summary>[Output Only] An optional, human-readable error message.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("message")]
-                public virtual string Message { get; set; } 
+                public virtual string Message { get; set; }
 
             }
         }    
@@ -3104,16 +3104,16 @@ namespace Google.Apis.DeploymentManager.v2.Data
             /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
             /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("code")]
-            public virtual string Code { get; set; } 
+            public virtual string Code { get; set; }
 
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
             /// "scope", "value": "zones/us-east1-d" }</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
-            public virtual System.Collections.Generic.IList<DataData> Data { get; set; } 
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; }
 
             /// <summary>[Output Only] A human-readable description of the warning code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
-            public virtual string Message { get; set; } 
+            public virtual string Message { get; set; }
 
             
 
@@ -3126,11 +3126,11 @@ namespace Google.Apis.DeploymentManager.v2.Data
                 /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
                 /// forwarding).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]
-                public virtual string Key { get; set; } 
+                public virtual string Key { get; set; }
 
                 /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("value")]
-                public virtual string Value { get; set; } 
+                public virtual string Value { get; set; }
 
             }
         }
@@ -3142,11 +3142,11 @@ namespace Google.Apis.DeploymentManager.v2.Data
     {
         /// <summary>A token used to continue a truncated list request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Resources contained in this list response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<Resource> Resources { get; set; } 
+        public virtual System.Collections.Generic.IList<Resource> Resources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3157,35 +3157,35 @@ namespace Google.Apis.DeploymentManager.v2.Data
     {
         /// <summary>Required</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual string Action { get; set; } 
+        public virtual string Action { get; set; }
 
         /// <summary>Additional restrictions that must be met. All conditions must pass for the rule to match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
-        public virtual System.Collections.Generic.IList<Condition> Conditions { get; set; } 
+        public virtual System.Collections.Generic.IList<Condition> Conditions { get; set; }
 
         /// <summary>Human-readable description of the rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is
         /// in at least one of these entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ins")]
-        public virtual System.Collections.Generic.IList<string> Ins { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Ins { get; set; }
 
         /// <summary>The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG
         /// action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logConfigs")]
-        public virtual System.Collections.Generic.IList<LogConfig> LogConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<LogConfig> LogConfigs { get; set; }
 
         /// <summary>If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR
         /// is in none of the entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notIns")]
-        public virtual System.Collections.Generic.IList<string> NotIns { get; set; } 
+        public virtual System.Collections.Generic.IList<string> NotIns { get; set; }
 
         /// <summary>A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value of '*' matches all
         /// permissions, and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3195,12 +3195,12 @@ namespace Google.Apis.DeploymentManager.v2.Data
     {
         /// <summary>The configuration to use for this deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual ConfigFile Config { get; set; } 
+        public virtual ConfigFile Config { get; set; }
 
         /// <summary>Specifies any files to import for this configuration. This can be used to import templates or other
         /// files. For example, you might import a text file in order to use the file in a template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imports")]
-        public virtual System.Collections.Generic.IList<ImportFile> Imports { get; set; } 
+        public virtual System.Collections.Generic.IList<ImportFile> Imports { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3211,7 +3211,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
         /// <summary>The set of permissions to check for the 'resource'. Permissions with wildcards (such as '*' or
         /// 'storage.*') are not allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3221,7 +3221,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
     {
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3231,23 +3231,23 @@ namespace Google.Apis.DeploymentManager.v2.Data
     public class Type : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<ulong> Id { get; set; } 
+        public virtual System.Nullable<ulong> Id { get; set; }
 
         /// <summary>Output only. Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
-        public virtual string InsertTime { get; set; } 
+        public virtual string InsertTime { get; set; }
 
         /// <summary>Name of the type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The Operation that most recently ran, or is currently running, on this type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
-        public virtual Operation Operation { get; set; } 
+        public virtual Operation Operation { get; set; }
 
         /// <summary>Output only. Server defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3258,11 +3258,11 @@ namespace Google.Apis.DeploymentManager.v2.Data
     {
         /// <summary>A token used to continue a truncated list request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Output only. A list of resource types supported by Deployment Manager.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("types")]
-        public virtual System.Collections.Generic.IList<Type> Types { get; set; } 
+        public virtual System.Collections.Generic.IList<Type> Types { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

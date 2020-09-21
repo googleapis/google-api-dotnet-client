@@ -620,7 +620,7 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
         /// Default notifications are sent to those with Billing Account Administrator and Billing Account User IAM
         /// roles for the target account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableDefaultIamRecipients")]
-        public virtual System.Nullable<bool> DisableDefaultIamRecipients { get; set; } 
+        public virtual System.Nullable<bool> DisableDefaultIamRecipients { get; set; }
 
         /// <summary>Optional. Targets to send notifications to when a threshold is exceeded. This is in addition to
         /// default recipients who have billing account IAM roles. The value is the full REST resource name of a
@@ -628,7 +628,7 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
         /// maximum of 5 channels are allowed. See https://cloud.google.com/billing/docs/how-to/budgets-notification-
         /// recipients for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoringNotificationChannels")]
-        public virtual System.Collections.Generic.IList<string> MonitoringNotificationChannels { get; set; } 
+        public virtual System.Collections.Generic.IList<string> MonitoringNotificationChannels { get; set; }
 
         /// <summary>Optional. The name of the Pub/Sub topic where budget related messages will be published, in the
         /// form `projects/{project_id}/topics/{topic_id}`. Updates are sent at regular intervals to the topic. The
@@ -638,13 +638,13 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
         /// PERMISSION_DENIED. See https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications for
         /// more details on Pub/Sub roles and permissions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
-        public virtual string PubsubTopic { get; set; } 
+        public virtual string PubsubTopic { get; set; }
 
         /// <summary>Optional. The schema version of the notification sent to `pubsub_topic`. Only "1.0" is accepted. It
         /// represents the JSON schema as defined in https://cloud.google.com/billing/docs/how-to/budgets-programmatic-
         /// notifications#notification_format</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaVersion")]
-        public virtual string SchemaVersion { get; set; } 
+        public virtual string SchemaVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -658,35 +658,35 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
     {
         /// <summary>Optional. Rules to apply to notifications sent based on budget spend and thresholds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allUpdatesRule")]
-        public virtual GoogleCloudBillingBudgetsV1beta1AllUpdatesRule AllUpdatesRule { get; set; } 
+        public virtual GoogleCloudBillingBudgetsV1beta1AllUpdatesRule AllUpdatesRule { get; set; }
 
         /// <summary>Required. Budgeted amount.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
-        public virtual GoogleCloudBillingBudgetsV1beta1BudgetAmount Amount { get; set; } 
+        public virtual GoogleCloudBillingBudgetsV1beta1BudgetAmount Amount { get; set; }
 
         /// <summary>Optional. Filters that define which resources are used to compute the actual spend against the
         /// budget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("budgetFilter")]
-        public virtual GoogleCloudBillingBudgetsV1beta1Filter BudgetFilter { get; set; } 
+        public virtual GoogleCloudBillingBudgetsV1beta1Filter BudgetFilter { get; set; }
 
         /// <summary>User data for display name in UI. Validation: <= 60 chars.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty
         /// etag will cause an update to overwrite other changes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Output only. Resource name of the budget. The resource name implies the scope of a budget. Values
         /// are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds
         /// the specified percentages of the budget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thresholdRules")]
-        public virtual System.Collections.Generic.IList<GoogleCloudBillingBudgetsV1beta1ThresholdRule> ThresholdRules { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudBillingBudgetsV1beta1ThresholdRule> ThresholdRules { get; set; }
 
     }    
 
@@ -695,12 +695,12 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
     {
         /// <summary>Use the last period's actual spend as the budget for the present period.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastPeriodAmount")]
-        public virtual GoogleCloudBillingBudgetsV1beta1LastPeriodAmount LastPeriodAmount { get; set; } 
+        public virtual GoogleCloudBillingBudgetsV1beta1LastPeriodAmount LastPeriodAmount { get; set; }
 
         /// <summary>A specified amount to use as the budget. `currency_code` is optional. If specified, it must match
         /// the currency of the billing account. The `currency_code` is provided on output.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("specifiedAmount")]
-        public virtual GoogleTypeMoney SpecifiedAmount { get; set; } 
+        public virtual GoogleTypeMoney SpecifiedAmount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -711,7 +711,7 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
     {
         /// <summary>Required. Budget to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("budget")]
-        public virtual GoogleCloudBillingBudgetsV1beta1Budget Budget { get; set; } 
+        public virtual GoogleCloudBillingBudgetsV1beta1Budget Budget { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -722,34 +722,34 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
     {
         /// <summary>Optional. If not set, default behavior is `INCLUDE_ALL_CREDITS`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creditTypesTreatment")]
-        public virtual string CreditTypesTreatment { get; set; } 
+        public virtual string CreditTypesTreatment { get; set; }
 
         /// <summary>Optional. A single label and value pair specifying that usage from only this set of labeled
         /// resources should be included in the budget. Currently, multiple entries or multiple values per entry are not
         /// allowed. If omitted, the report will include all labeled and unlabeled usage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,System.Collections.Generic.IList<object>> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<object>> Labels { get; set; }
 
         /// <summary>Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this
         /// set of projects should be included in the budget. If omitted, the report will include all usage for the
         /// billing account, regardless of which project the usage occurred on. Only zero or one project can be
         /// specified currently.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projects")]
-        public virtual System.Collections.Generic.IList<string> Projects { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Projects { get; set; }
 
         /// <summary>Optional. A set of services of the form `services/{service_id}`, specifying that usage from only
         /// this set of services should be included in the budget. If omitted, the report will include usage for all the
         /// services. The service names are available through the Catalog API: https://cloud.google.com/billing/v1/how-
         /// tos/catalog-api.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
-        public virtual System.Collections.Generic.IList<string> Services { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Services { get; set; }
 
         /// <summary>Optional. A set of subaccounts of the form `billingAccounts/{account_id}`, specifying that usage
         /// from only this set of subaccounts should be included in the budget. If a subaccount is set to the name of
         /// the parent account, usage from the parent account will be included. If omitted, the report will include
         /// usage from the parent account and all subaccounts, if they exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subaccounts")]
-        public virtual System.Collections.Generic.IList<string> Subaccounts { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Subaccounts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -769,12 +769,12 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
     {
         /// <summary>List of the budgets owned by the requested billing account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("budgets")]
-        public virtual System.Collections.Generic.IList<GoogleCloudBillingBudgetsV1beta1Budget> Budgets { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudBillingBudgetsV1beta1Budget> Budgets { get; set; }
 
         /// <summary>If not empty, indicates that there may be more budgets that match the request; this value should be
         /// passed in a new `ListBudgetsRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -789,12 +789,12 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
         /// <summary>Optional. The type of basis used to determine if spend has passed the threshold. Behavior defaults
         /// to CURRENT_SPEND if not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spendBasis")]
-        public virtual string SpendBasis { get; set; } 
+        public virtual string SpendBasis { get; set; }
 
         /// <summary>Required. Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 =
         /// 50%. Validation: non-negative number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thresholdPercent")]
-        public virtual System.Nullable<double> ThresholdPercent { get; set; } 
+        public virtual System.Nullable<double> ThresholdPercent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -806,14 +806,14 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
         /// <summary>Required. The updated budget object. The budget to update is specified by the budget name in the
         /// budget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("budget")]
-        public virtual GoogleCloudBillingBudgetsV1beta1Budget Budget { get; set; } 
+        public virtual GoogleCloudBillingBudgetsV1beta1Budget Budget { get; set; }
 
         /// <summary>Optional. Indicates which fields in the provided budget to update. Read-only fields (such as
         /// `name`) cannot be changed. If this is not provided, then only fields with non-default values from the
         /// request are updated. See https://developers.google.com/protocol-buffers/docs/proto3#default for more details
         /// about default values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -834,19 +834,19 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
     {
         /// <summary>The 3-letter currency code defined in ISO 4217.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
-        public virtual string CurrencyCode { get; set; } 
+        public virtual string CurrencyCode { get; set; }
 
         /// <summary>Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999
         /// inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be
         /// positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is
         /// represented as `units`=-1 and `nanos`=-750,000,000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
-        public virtual System.Nullable<int> Nanos { get; set; } 
+        public virtual System.Nullable<int> Nanos { get; set; }
 
         /// <summary>The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US
         /// dollar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("units")]
-        public virtual System.Nullable<long> Units { get; set; } 
+        public virtual System.Nullable<long> Units { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -763,26 +763,26 @@ namespace Google.Apis.CivicInfo.v2.Data
     {
         /// <summary>The election administration body for this area.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("electionAdministrationBody")]
-        public virtual AdministrativeBody ElectionAdministrationBody { get; set; } 
+        public virtual AdministrativeBody ElectionAdministrationBody { get; set; }
 
         /// <summary>An ID for this object. IDs may change in future requests and should not be cached. Access to this
         /// field requires special access that can be requested from the Request more link on the Quotas page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The city or county that provides election information for this voter. This object can have the same
         /// elements as state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("local_jurisdiction")]
-        public virtual AdministrationRegion LocalJurisdiction { get; set; } 
+        public virtual AdministrationRegion LocalJurisdiction { get; set; }
 
         /// <summary>The name of the jurisdiction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>A list of sources for this area. If multiple sources are listed the data has been aggregated from
         /// those sources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
-        public virtual System.Collections.Generic.IList<Source> Sources { get; set; } 
+        public virtual System.Collections.Generic.IList<Source> Sources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -793,65 +793,65 @@ namespace Google.Apis.CivicInfo.v2.Data
     {
         /// <summary>A URL provided by this administrative body for information on absentee voting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("absenteeVotingInfoUrl")]
-        public virtual string AbsenteeVotingInfoUrl { get; set; } 
+        public virtual string AbsenteeVotingInfoUrl { get; set; }
 
         /// <summary>A URL provided by this administrative body to give contest information to the voter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ballotInfoUrl")]
-        public virtual string BallotInfoUrl { get; set; } 
+        public virtual string BallotInfoUrl { get; set; }
 
         /// <summary>The mailing address of this administrative body.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("correspondenceAddress")]
-        public virtual SimpleAddressType CorrespondenceAddress { get; set; } 
+        public virtual SimpleAddressType CorrespondenceAddress { get; set; }
 
         /// <summary>A URL provided by this administrative body for looking up general election information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("electionInfoUrl")]
-        public virtual string ElectionInfoUrl { get; set; } 
+        public virtual string ElectionInfoUrl { get; set; }
 
         /// <summary>A last minute or emergency notification text provided by this administrative body.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("electionNoticeText")]
-        public virtual string ElectionNoticeText { get; set; } 
+        public virtual string ElectionNoticeText { get; set; }
 
         /// <summary>A URL provided by this administrative body for additional information related to the last minute or
         /// emergency notification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("electionNoticeUrl")]
-        public virtual string ElectionNoticeUrl { get; set; } 
+        public virtual string ElectionNoticeUrl { get; set; }
 
         /// <summary>The election officials for this election administrative body.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("electionOfficials")]
-        public virtual System.Collections.Generic.IList<ElectionOfficial> ElectionOfficials { get; set; } 
+        public virtual System.Collections.Generic.IList<ElectionOfficial> ElectionOfficials { get; set; }
 
         /// <summary>A URL provided by this administrative body for confirming that the voter is registered to
         /// vote.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("electionRegistrationConfirmationUrl")]
-        public virtual string ElectionRegistrationConfirmationUrl { get; set; } 
+        public virtual string ElectionRegistrationConfirmationUrl { get; set; }
 
         /// <summary>A URL provided by this administrative body for looking up how to register to vote.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("electionRegistrationUrl")]
-        public virtual string ElectionRegistrationUrl { get; set; } 
+        public virtual string ElectionRegistrationUrl { get; set; }
 
         /// <summary>A URL provided by this administrative body describing election rules to the voter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("electionRulesUrl")]
-        public virtual string ElectionRulesUrl { get; set; } 
+        public virtual string ElectionRulesUrl { get; set; }
 
         /// <summary>A description of the hours of operation for this administrative body.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hoursOfOperation")]
-        public virtual string HoursOfOperation { get; set; } 
+        public virtual string HoursOfOperation { get; set; }
 
         /// <summary>The name of this election administrative body.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The physical address of this administrative body.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("physicalAddress")]
-        public virtual SimpleAddressType PhysicalAddress { get; set; } 
+        public virtual SimpleAddressType PhysicalAddress { get; set; }
 
         /// <summary>A description of the services this administrative body may provide.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voter_services")]
-        public virtual System.Collections.Generic.IList<string> VoterServices { get; set; } 
+        public virtual System.Collections.Generic.IList<string> VoterServices { get; set; }
 
         /// <summary>A URL provided by this administrative body for looking up where to vote.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("votingLocationFinderUrl")]
-        public virtual string VotingLocationFinderUrl { get; set; } 
+        public virtual string VotingLocationFinderUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -862,37 +862,37 @@ namespace Google.Apis.CivicInfo.v2.Data
     {
         /// <summary>The URL for the candidate's campaign web site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("candidateUrl")]
-        public virtual string CandidateUrl { get; set; } 
+        public virtual string CandidateUrl { get; set; }
 
         /// <summary>A list of known (social) media channels for this candidate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channels")]
-        public virtual System.Collections.Generic.IList<Channel> Channels { get; set; } 
+        public virtual System.Collections.Generic.IList<Channel> Channels { get; set; }
 
         /// <summary>The email address for the candidate's campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
+        public virtual string Email { get; set; }
 
         /// <summary>The candidate's name. If this is a joint ticket it will indicate the name of the candidate at the
         /// top of a ticket followed by a / and that name of candidate at the bottom of the ticket. e.g. "Mitt Romney /
         /// Paul Ryan"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The order the candidate appears on the ballot for this contest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderOnBallot")]
-        public virtual System.Nullable<long> OrderOnBallot { get; set; } 
+        public virtual System.Nullable<long> OrderOnBallot { get; set; }
 
         /// <summary>The full name of the party the candidate is a member of.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("party")]
-        public virtual string Party { get; set; } 
+        public virtual string Party { get; set; }
 
         /// <summary>The voice phone number for the candidate's campaign office.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phone")]
-        public virtual string Phone { get; set; } 
+        public virtual string Phone { get; set; }
 
         /// <summary>A URL for a photo of the candidate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photoUrl")]
-        public virtual string PhotoUrl { get; set; } 
+        public virtual string PhotoUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -903,12 +903,12 @@ namespace Google.Apis.CivicInfo.v2.Data
     {
         /// <summary>The unique public identifier for the candidate's channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The type of channel. The following is a list of types of channels, but is not exhaustive. More
         /// channel types may be added at a later time. One of: GooglePlus, YouTube, Facebook, Twitter</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -919,126 +919,126 @@ namespace Google.Apis.CivicInfo.v2.Data
     {
         /// <summary>A number specifying the position of this contest on the voter's ballot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ballotPlacement")]
-        public virtual System.Nullable<long> BallotPlacement { get; set; } 
+        public virtual System.Nullable<long> BallotPlacement { get; set; }
 
         /// <summary>The official title on the ballot for this contest, only where available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ballotTitle")]
-        public virtual string BallotTitle { get; set; } 
+        public virtual string BallotTitle { get; set; }
 
         /// <summary>The candidate choices for this contest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("candidates")]
-        public virtual System.Collections.Generic.IList<Candidate> Candidates { get; set; } 
+        public virtual System.Collections.Generic.IList<Candidate> Candidates { get; set; }
 
         /// <summary>Information about the electoral district that this contest is in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("district")]
-        public virtual ElectoralDistrict District { get; set; } 
+        public virtual ElectoralDistrict District { get; set; }
 
         /// <summary>A description of any additional eligibility requirements for voting in this contest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("electorateSpecifications")]
-        public virtual string ElectorateSpecifications { get; set; } 
+        public virtual string ElectorateSpecifications { get; set; }
 
         /// <summary>An ID for this object. IDs may change in future requests and should not be cached. Access to this
         /// field requires special access that can be requested from the Request more link on the Quotas page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The levels of government of the office for this contest. There may be more than one in cases where
         /// a jurisdiction effectively acts at two different levels of government; for example, the mayor of the
         /// District of Columbia acts at "locality" level, but also effectively at both "administrative-area-2" and
         /// "administrative-area-1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("level")]
-        public virtual System.Collections.Generic.IList<string> Level { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Level { get; set; }
 
         /// <summary>The number of candidates that will be elected to office in this contest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numberElected")]
-        public virtual System.Nullable<long> NumberElected { get; set; } 
+        public virtual System.Nullable<long> NumberElected { get; set; }
 
         /// <summary>The number of candidates that a voter may vote for in this contest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numberVotingFor")]
-        public virtual System.Nullable<long> NumberVotingFor { get; set; } 
+        public virtual System.Nullable<long> NumberVotingFor { get; set; }
 
         /// <summary>The name of the office for this contest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("office")]
-        public virtual string Office { get; set; } 
+        public virtual string Office { get; set; }
 
         /// <summary>If this is a partisan election, the name of the party/parties it is for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryParties")]
-        public virtual System.Collections.Generic.IList<string> PrimaryParties { get; set; } 
+        public virtual System.Collections.Generic.IList<string> PrimaryParties { get; set; }
 
         /// <summary>[DEPRECATED] If this is a partisan election, the name of the party it is for. This field as
         /// deprecated in favor of the array "primaryParties", as contests may contain more than one party.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryParty")]
-        public virtual string PrimaryParty { get; set; } 
+        public virtual string PrimaryParty { get; set; }
 
         /// <summary>The set of ballot responses for the referendum. A ballot response represents a line on the ballot.
         /// Common examples might include "yes" or "no" for referenda. This field is only populated for contests of type
         /// 'Referendum'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referendumBallotResponses")]
-        public virtual System.Collections.Generic.IList<string> ReferendumBallotResponses { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ReferendumBallotResponses { get; set; }
 
         /// <summary>Specifies a short summary of the referendum that is typically on the ballot below the title but
         /// above the text. This field is only populated for contests of type 'Referendum'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referendumBrief")]
-        public virtual string ReferendumBrief { get; set; } 
+        public virtual string ReferendumBrief { get; set; }
 
         /// <summary>A statement in opposition to the referendum. It does not necessarily appear on the ballot. This
         /// field is only populated for contests of type 'Referendum'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referendumConStatement")]
-        public virtual string ReferendumConStatement { get; set; } 
+        public virtual string ReferendumConStatement { get; set; }
 
         /// <summary>Specifies what effect abstaining (not voting) on the proposition will have (i.e. whether abstaining
         /// is considered a vote against it). This field is only populated for contests of type 'Referendum'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referendumEffectOfAbstain")]
-        public virtual string ReferendumEffectOfAbstain { get; set; } 
+        public virtual string ReferendumEffectOfAbstain { get; set; }
 
         /// <summary>The threshold of votes that the referendum needs in order to pass, e.g. "two-thirds". This field is
         /// only populated for contests of type 'Referendum'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referendumPassageThreshold")]
-        public virtual string ReferendumPassageThreshold { get; set; } 
+        public virtual string ReferendumPassageThreshold { get; set; }
 
         /// <summary>A statement in favor of the referendum. It does not necessarily appear on the ballot. This field is
         /// only populated for contests of type 'Referendum'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referendumProStatement")]
-        public virtual string ReferendumProStatement { get; set; } 
+        public virtual string ReferendumProStatement { get; set; }
 
         /// <summary>A brief description of the referendum. This field is only populated for contests of type
         /// 'Referendum'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referendumSubtitle")]
-        public virtual string ReferendumSubtitle { get; set; } 
+        public virtual string ReferendumSubtitle { get; set; }
 
         /// <summary>The full text of the referendum. This field is only populated for contests of type
         /// 'Referendum'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referendumText")]
-        public virtual string ReferendumText { get; set; } 
+        public virtual string ReferendumText { get; set; }
 
         /// <summary>The title of the referendum (e.g. 'Proposition 42'). This field is only populated for contests of
         /// type 'Referendum'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referendumTitle")]
-        public virtual string ReferendumTitle { get; set; } 
+        public virtual string ReferendumTitle { get; set; }
 
         /// <summary>A link to the referendum. This field is only populated for contests of type 'Referendum'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referendumUrl")]
-        public virtual string ReferendumUrl { get; set; } 
+        public virtual string ReferendumUrl { get; set; }
 
         /// <summary>The roles which this office fulfills.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roles")]
-        public virtual System.Collections.Generic.IList<string> Roles { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Roles { get; set; }
 
         /// <summary>A list of sources for this contest. If multiple sources are listed, the data has been aggregated
         /// from those sources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
-        public virtual System.Collections.Generic.IList<Source> Sources { get; set; } 
+        public virtual System.Collections.Generic.IList<Source> Sources { get; set; }
 
         /// <summary>"Yes" or "No" depending on whether this a contest being held outside the normal election
         /// cycle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("special")]
-        public virtual string Special { get; set; } 
+        public virtual string Special { get; set; }
 
         /// <summary>The type of contest. Usually this will be 'General', 'Primary', or 'Run-off' for contests with
         /// candidates. For referenda this will be 'Referendum'. For Retention contests this will typically be
         /// 'Retention'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1050,10 +1050,10 @@ namespace Google.Apis.CivicInfo.v2.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "civicinfo#divisionSearchResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
-        public virtual System.Collections.Generic.IList<DivisionSearchResult> Results { get; set; } 
+        public virtual System.Collections.Generic.IList<DivisionSearchResult> Results { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1067,15 +1067,15 @@ namespace Google.Apis.CivicInfo.v2.Data
         /// division/country:us/state:wy will include an alias of ocd-division/country:us/state:wy/cd:1, since Wyoming
         /// has only one Congressional district.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aliases")]
-        public virtual System.Collections.Generic.IList<string> Aliases { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Aliases { get; set; }
 
         /// <summary>The name of the division.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The unique Open Civic Data identifier for this division</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ocdId")]
-        public virtual string OcdId { get; set; } 
+        public virtual string OcdId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1086,22 +1086,22 @@ namespace Google.Apis.CivicInfo.v2.Data
     {
         /// <summary>Day of the election in YYYY-MM-DD format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("electionDay")]
-        public virtual string ElectionDay { get; set; } 
+        public virtual string ElectionDay { get; set; }
 
         /// <summary>The unique ID of this election.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>A displayable name for the election.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The political division of the election. Represented as an OCD Division ID. Voters within these
         /// political jurisdictions are covered by this election. This is typically a state such as ocd-
         /// division/country:us/state:ca or for the midterms or general election the entire US (i.e. ocd-
         /// division/country:us).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ocdDivisionId")]
-        public virtual string OcdDivisionId { get; set; } 
+        public virtual string OcdDivisionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1112,23 +1112,23 @@ namespace Google.Apis.CivicInfo.v2.Data
     {
         /// <summary>The email address of the election official.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
-        public virtual string EmailAddress { get; set; } 
+        public virtual string EmailAddress { get; set; }
 
         /// <summary>The fax number of the election official.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("faxNumber")]
-        public virtual string FaxNumber { get; set; } 
+        public virtual string FaxNumber { get; set; }
 
         /// <summary>The full name of the election official.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The office phone number of the election official.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("officePhoneNumber")]
-        public virtual string OfficePhoneNumber { get; set; } 
+        public virtual string OfficePhoneNumber { get; set; }
 
         /// <summary>The title of the election official.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1139,12 +1139,12 @@ namespace Google.Apis.CivicInfo.v2.Data
     {
         /// <summary>A list of available elections</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("elections")]
-        public virtual System.Collections.Generic.IList<Election> Elections { get; set; } 
+        public virtual System.Collections.Generic.IList<Election> Elections { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "civicinfo#electionsQueryResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1156,17 +1156,17 @@ namespace Google.Apis.CivicInfo.v2.Data
         /// <summary>An identifier for this district, relative to its scope. For example, the 34th State Senate district
         /// would have id "34" and a scope of stateUpper.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The name of the district.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The geographic scope of this district. If unspecified the district's geography is not known. One
         /// of: national, statewide, congressional, stateUpper, stateLower, countywide, judicial, schoolBoard, cityWide,
         /// township, countyCouncil, cityCouncil, ward, special</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
-        public virtual string Scope { get; set; } 
+        public virtual string Scope { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1182,16 +1182,16 @@ namespace Google.Apis.CivicInfo.v2.Data
         /// identifiers will be returned in this list.\n\nFor example, if this division's OCD ID is ocd-
         /// division/country:us/district:dc, this will contain ocd-division/country:us/state:dc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alsoKnownAs")]
-        public virtual System.Collections.Generic.IList<string> AlsoKnownAs { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AlsoKnownAs { get; set; }
 
         /// <summary>The name of the division.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>List of indices in the offices array, one for each office elected from this division. Will only be
         /// present if includeOffices was true (or absent) in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("officeIndices")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> OfficeIndices { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> OfficeIndices { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1202,33 +1202,33 @@ namespace Google.Apis.CivicInfo.v2.Data
     {
         /// <summary>The OCD ID of the division with which this office is associated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("divisionId")]
-        public virtual string DivisionId { get; set; } 
+        public virtual string DivisionId { get; set; }
 
         /// <summary>The levels of government of which this office is part. There may be more than one in cases where a
         /// jurisdiction effectively acts at two different levels of government; for example, the mayor of the District
         /// of Columbia acts at "locality" level, but also effectively at both "administrative-area-2" and
         /// "administrative-area-1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("levels")]
-        public virtual System.Collections.Generic.IList<string> Levels { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Levels { get; set; }
 
         /// <summary>The human-readable name of the office.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>List of indices in the officials array of people who presently hold this office.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("officialIndices")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> OfficialIndices { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> OfficialIndices { get; set; }
 
         /// <summary>The roles which this office fulfills. Roles are not meant to be exhaustive, or to exactly specify
         /// the entire set of responsibilities of a given office, but are meant to be rough categories that are useful
         /// for general selection from or sorting of a list of offices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roles")]
-        public virtual System.Collections.Generic.IList<string> Roles { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Roles { get; set; }
 
         /// <summary>A list of sources for this office. If multiple sources are listed, the data has been aggregated
         /// from those sources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
-        public virtual System.Collections.Generic.IList<Source> Sources { get; set; } 
+        public virtual System.Collections.Generic.IList<Source> Sources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1239,35 +1239,35 @@ namespace Google.Apis.CivicInfo.v2.Data
     {
         /// <summary>Addresses at which to contact the official.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
-        public virtual System.Collections.Generic.IList<SimpleAddressType> Address { get; set; } 
+        public virtual System.Collections.Generic.IList<SimpleAddressType> Address { get; set; }
 
         /// <summary>A list of known (social) media channels for this official.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channels")]
-        public virtual System.Collections.Generic.IList<Channel> Channels { get; set; } 
+        public virtual System.Collections.Generic.IList<Channel> Channels { get; set; }
 
         /// <summary>The direct email addresses for the official.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emails")]
-        public virtual System.Collections.Generic.IList<string> Emails { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Emails { get; set; }
 
         /// <summary>The official's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The full name of the party the official belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("party")]
-        public virtual string Party { get; set; } 
+        public virtual string Party { get; set; }
 
         /// <summary>The official's public contact phone numbers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phones")]
-        public virtual System.Collections.Generic.IList<string> Phones { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Phones { get; set; }
 
         /// <summary>A URL for a photo of the official.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photoUrl")]
-        public virtual string PhotoUrl { get; set; } 
+        public virtual string PhotoUrl { get; set; }
 
         /// <summary>The official's public website URLs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urls")]
-        public virtual System.Collections.Generic.IList<string> Urls { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Urls { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1279,55 +1279,55 @@ namespace Google.Apis.CivicInfo.v2.Data
     {
         /// <summary>The address of the location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
-        public virtual SimpleAddressType Address { get; set; } 
+        public virtual SimpleAddressType Address { get; set; }
 
         /// <summary>The last date that this early vote site or drop off location may be used. This field is not
         /// populated for polling locations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
-        public virtual string EndDate { get; set; } 
+        public virtual string EndDate { get; set; }
 
         /// <summary>An ID for this object. IDs may change in future requests and should not be cached. Access to this
         /// field requires special access that can be requested from the Request more link on the Quotas page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Latitude of the location, in degrees north of the equator. Note this field may not be available for
         /// some locations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latitude")]
-        public virtual System.Nullable<double> Latitude { get; set; } 
+        public virtual System.Nullable<double> Latitude { get; set; }
 
         /// <summary>Longitude of the location, in degrees east of the Prime Meridian. Note this field may not be
         /// available for some locations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
-        public virtual System.Nullable<double> Longitude { get; set; } 
+        public virtual System.Nullable<double> Longitude { get; set; }
 
         /// <summary>The name of the early vote site or drop off location. This field is not populated for polling
         /// locations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Notes about this location (e.g. accessibility ramp or entrance to use).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
-        public virtual string Notes { get; set; } 
+        public virtual string Notes { get; set; }
 
         /// <summary>A description of when this location is open.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pollingHours")]
-        public virtual string PollingHours { get; set; } 
+        public virtual string PollingHours { get; set; }
 
         /// <summary>A list of sources for this location. If multiple sources are listed the data has been aggregated
         /// from those sources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
-        public virtual System.Collections.Generic.IList<Source> Sources { get; set; } 
+        public virtual System.Collections.Generic.IList<Source> Sources { get; set; }
 
         /// <summary>The first date that this early vote site or drop off location may be used. This field is not
         /// populated for polling locations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
-        public virtual string StartDate { get; set; } 
+        public virtual string StartDate { get; set; }
 
         /// <summary>The services provided by this early vote site or drop off location. This field is not populated for
         /// polling locations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voterServices")]
-        public virtual string VoterServices { get; set; } 
+        public virtual string VoterServices { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1338,17 +1338,17 @@ namespace Google.Apis.CivicInfo.v2.Data
         /// <summary>A map of political geographic divisions that contain the requested address, keyed by the unique
         /// Open Civic Data identifier for this division.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("divisions")]
-        public virtual System.Collections.Generic.IDictionary<string,GeographicDivision> Divisions { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, GeographicDivision> Divisions { get; set; }
 
         /// <summary>Elected offices referenced by the divisions listed above. Will only be present if includeOffices
         /// was true in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offices")]
-        public virtual System.Collections.Generic.IList<Office> Offices { get; set; } 
+        public virtual System.Collections.Generic.IList<Office> Offices { get; set; }
 
         /// <summary>Officials holding the offices listed above. Will only be present if includeOffices was true in the
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("officials")]
-        public virtual System.Collections.Generic.IList<Official> Officials { get; set; } 
+        public virtual System.Collections.Generic.IList<Official> Officials { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1360,26 +1360,26 @@ namespace Google.Apis.CivicInfo.v2.Data
         /// <summary>A map of political geographic divisions that contain the requested address, keyed by the unique
         /// Open Civic Data identifier for this division.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("divisions")]
-        public virtual System.Collections.Generic.IDictionary<string,GeographicDivision> Divisions { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, GeographicDivision> Divisions { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "civicinfo#representativeInfoResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The normalized version of the requested address</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("normalizedInput")]
-        public virtual SimpleAddressType NormalizedInput { get; set; } 
+        public virtual SimpleAddressType NormalizedInput { get; set; }
 
         /// <summary>Elected offices referenced by the divisions listed above. Will only be present if includeOffices
         /// was true in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offices")]
-        public virtual System.Collections.Generic.IList<Office> Offices { get; set; } 
+        public virtual System.Collections.Generic.IList<Office> Offices { get; set; }
 
         /// <summary>Officials holding the offices listed above. Will only be present if includeOffices was true in the
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("officials")]
-        public virtual System.Collections.Generic.IList<Official> Officials { get; set; } 
+        public virtual System.Collections.Generic.IList<Official> Officials { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1390,31 +1390,31 @@ namespace Google.Apis.CivicInfo.v2.Data
     {
         /// <summary>The city or town for the address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("city")]
-        public virtual string City { get; set; } 
+        public virtual string City { get; set; }
 
         /// <summary>The street name and number of this address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("line1")]
-        public virtual string Line1 { get; set; } 
+        public virtual string Line1 { get; set; }
 
         /// <summary>The second line the address, if needed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("line2")]
-        public virtual string Line2 { get; set; } 
+        public virtual string Line2 { get; set; }
 
         /// <summary>The third line of the address, if needed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("line3")]
-        public virtual string Line3 { get; set; } 
+        public virtual string Line3 { get; set; }
 
         /// <summary>The name of the location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationName")]
-        public virtual string LocationName { get; set; } 
+        public virtual string LocationName { get; set; }
 
         /// <summary>The US two letter state abbreviation of the address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The US Postal Zip Code of the address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zip")]
-        public virtual string Zip { get; set; } 
+        public virtual string Zip { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1425,11 +1425,11 @@ namespace Google.Apis.CivicInfo.v2.Data
     {
         /// <summary>The name of the data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Whether this data comes from an official government source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("official")]
-        public virtual System.Nullable<bool> Official { get; set; } 
+        public virtual System.Nullable<bool> Official { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1440,36 +1440,36 @@ namespace Google.Apis.CivicInfo.v2.Data
     {
         /// <summary>Contests that will appear on the voter's ballot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contests")]
-        public virtual System.Collections.Generic.IList<Contest> Contests { get; set; } 
+        public virtual System.Collections.Generic.IList<Contest> Contests { get; set; }
 
         /// <summary>Locations where a voter is eligible to drop off a completed ballot. The voter must have received
         /// and completed a ballot prior to arriving at the location. The location may not have ballots available on the
         /// premises. These locations could be open on or before election day as indicated in the pollingHours
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dropOffLocations")]
-        public virtual System.Collections.Generic.IList<PollingLocation> DropOffLocations { get; set; } 
+        public virtual System.Collections.Generic.IList<PollingLocation> DropOffLocations { get; set; }
 
         /// <summary>Locations where the voter is eligible to vote early, prior to election day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("earlyVoteSites")]
-        public virtual System.Collections.Generic.IList<PollingLocation> EarlyVoteSites { get; set; } 
+        public virtual System.Collections.Generic.IList<PollingLocation> EarlyVoteSites { get; set; }
 
         /// <summary>The election that was queried.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("election")]
-        public virtual Election Election { get; set; } 
+        public virtual Election Election { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "civicinfo#voterInfoResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Specifies whether voters in the precinct vote only by mailing their ballots (with the possible
         /// option of dropping off their ballots as well).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mailOnly")]
-        public virtual System.Nullable<bool> MailOnly { get; set; } 
+        public virtual System.Nullable<bool> MailOnly { get; set; }
 
         /// <summary>The normalized version of the requested address</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("normalizedInput")]
-        public virtual SimpleAddressType NormalizedInput { get; set; } 
+        public virtual SimpleAddressType NormalizedInput { get; set; }
 
         /// <summary>When there are multiple elections for a voter address, the otherElections field is populated in the
         /// API response and there are two possibilities: 1. If the earliest election is not the intended election,
@@ -1479,19 +1479,19 @@ namespace Google.Apis.CivicInfo.v2.Data
         /// displaying these elections to the user to disambiguate. A second API request using the electionId field
         /// should be made for the election that is relevant to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("otherElections")]
-        public virtual System.Collections.Generic.IList<Election> OtherElections { get; set; } 
+        public virtual System.Collections.Generic.IList<Election> OtherElections { get; set; }
 
         /// <summary>Locations where the voter is eligible to vote on election day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pollingLocations")]
-        public virtual System.Collections.Generic.IList<PollingLocation> PollingLocations { get; set; } 
+        public virtual System.Collections.Generic.IList<PollingLocation> PollingLocations { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("precinctId")]
-        public virtual string PrecinctId { get; set; } 
+        public virtual string PrecinctId { get; set; }
 
         /// <summary>Local Election Information for the state that the voter votes in. For the US, there will only be
         /// one element in this array.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual System.Collections.Generic.IList<AdministrationRegion> State { get; set; } 
+        public virtual System.Collections.Generic.IList<AdministrationRegion> State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

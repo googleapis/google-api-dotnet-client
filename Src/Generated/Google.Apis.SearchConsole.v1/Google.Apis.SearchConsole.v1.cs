@@ -920,19 +920,19 @@ namespace Google.Apis.SearchConsole.v1.Data
     public class ApiDataRow : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("clicks")]
-        public virtual System.Nullable<double> Clicks { get; set; } 
+        public virtual System.Nullable<double> Clicks { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("ctr")]
-        public virtual System.Nullable<double> Ctr { get; set; } 
+        public virtual System.Nullable<double> Ctr { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("impressions")]
-        public virtual System.Nullable<double> Impressions { get; set; } 
+        public virtual System.Nullable<double> Impressions { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("keys")]
-        public virtual System.Collections.Generic.IList<string> Keys { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Keys { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("position")]
-        public virtual System.Nullable<double> Position { get; set; } 
+        public virtual System.Nullable<double> Position { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -945,13 +945,13 @@ namespace Google.Apis.SearchConsole.v1.Data
     public class ApiDimensionFilter : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
-        public virtual string Dimension { get; set; } 
+        public virtual string Dimension { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("operator")]
-        public virtual string Operator__ { get; set; } 
+        public virtual string Operator__ { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -963,10 +963,10 @@ namespace Google.Apis.SearchConsole.v1.Data
     public class ApiDimensionFilterGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("filters")]
-        public virtual System.Collections.Generic.IList<ApiDimensionFilter> Filters { get; set; } 
+        public virtual System.Collections.Generic.IList<ApiDimensionFilter> Filters { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("groupType")]
-        public virtual string GroupType { get; set; } 
+        public virtual string GroupType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -977,7 +977,7 @@ namespace Google.Apis.SearchConsole.v1.Data
     {
         /// <summary>URL of the blocked resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -989,11 +989,11 @@ namespace Google.Apis.SearchConsole.v1.Data
         /// <summary>Image data in format determined by the mime type. Currently, the format will always be "image/png",
         /// but this might change in the future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual string Data { get; set; } 
+        public virtual string Data { get; set; }
 
         /// <summary>The mime-type of the image data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; } 
+        public virtual string MimeType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1004,7 +1004,7 @@ namespace Google.Apis.SearchConsole.v1.Data
     {
         /// <summary>Rule violated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rule")]
-        public virtual string Rule { get; set; } 
+        public virtual string Rule { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1015,7 +1015,7 @@ namespace Google.Apis.SearchConsole.v1.Data
     {
         /// <summary>Describes a blocked resource issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blockedResource")]
-        public virtual BlockedResource BlockedResource { get; set; } 
+        public virtual BlockedResource BlockedResource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1026,11 +1026,11 @@ namespace Google.Apis.SearchConsole.v1.Data
     {
         /// <summary>Whether or not screenshot is requested. Default is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestScreenshot")]
-        public virtual System.Nullable<bool> RequestScreenshot { get; set; } 
+        public virtual System.Nullable<bool> RequestScreenshot { get; set; }
 
         /// <summary>URL for inspection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1041,23 +1041,23 @@ namespace Google.Apis.SearchConsole.v1.Data
     {
         /// <summary>Test verdict, whether the page is mobile friendly or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileFriendliness")]
-        public virtual string MobileFriendliness { get; set; } 
+        public virtual string MobileFriendliness { get; set; }
 
         /// <summary>List of mobile-usability issues.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileFriendlyIssues")]
-        public virtual System.Collections.Generic.IList<MobileFriendlyIssue> MobileFriendlyIssues { get; set; } 
+        public virtual System.Collections.Generic.IList<MobileFriendlyIssue> MobileFriendlyIssues { get; set; }
 
         /// <summary>Information about embedded resources issues.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceIssues")]
-        public virtual System.Collections.Generic.IList<ResourceIssue> ResourceIssues { get; set; } 
+        public virtual System.Collections.Generic.IList<ResourceIssue> ResourceIssues { get; set; }
 
         /// <summary>Screenshot of the requested URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenshot")]
-        public virtual Image Screenshot { get; set; } 
+        public virtual Image Screenshot { get; set; }
 
         /// <summary>Final state of the test, can be either complete or an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testStatus")]
-        public virtual TestStatus TestStatus { get; set; } 
+        public virtual TestStatus TestStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1074,43 +1074,43 @@ namespace Google.Apis.SearchConsole.v1.Data
         /// you request an invalid type, you will get an error. The API will never change your aggregation type if the
         /// requested type is invalid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregationType")]
-        public virtual string AggregationType { get; set; } 
+        public virtual string AggregationType { get; set; }
 
         /// <summary>[Optional] Zero or more filters to apply to the dimension grouping values; for example, 'query
         /// contains \"buy\"' to see only data where the query string contains the substring \"buy\" (not case-
         /// sensitive). You can filter by a dimension without grouping by it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilterGroups")]
-        public virtual System.Collections.Generic.IList<ApiDimensionFilterGroup> DimensionFilterGroups { get; set; } 
+        public virtual System.Collections.Generic.IList<ApiDimensionFilterGroup> DimensionFilterGroups { get; set; }
 
         /// <summary>[Optional] Zero or more dimensions to group results by. Dimensions are the group-by values in the
         /// Search Analytics page. Dimensions are combined to create a unique row key for each row. Results are grouped
         /// in the order that you supply these dimensions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
-        public virtual System.Collections.Generic.IList<string> Dimensions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Dimensions { get; set; }
 
         /// <summary>[Required] End date of the requested date range, in YYYY-MM-DD format, in PST (UTC - 8:00). Must be
         /// greater than or equal to the start date. This value is included in the range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
-        public virtual string EndDate { get; set; } 
+        public virtual string EndDate { get; set; }
 
         /// <summary>[Optional; Default is 1000] The maximum number of rows to return. Must be a number from 1 to 25,000
         /// (inclusive).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowLimit")]
-        public virtual System.Nullable<int> RowLimit { get; set; } 
+        public virtual System.Nullable<int> RowLimit { get; set; }
 
         /// <summary>[Optional; Default is \"web\"] The search type to filter for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchType")]
-        public virtual string SearchType { get; set; } 
+        public virtual string SearchType { get; set; }
 
         /// <summary> [Required] Start date of the requested date range, in YYYY-MM-DD format, in PST time (UTC - 8:00).
         /// Must be less than or equal to the end date. This value is included in the range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
-        public virtual string StartDate { get; set; } 
+        public virtual string StartDate { get; set; }
 
         /// <summary>[Optional; Default is 0] Zero-based index of the first row in the response. Must be a non-negative
         /// number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startRow")]
-        public virtual System.Nullable<int> StartRow { get; set; } 
+        public virtual System.Nullable<int> StartRow { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1122,11 +1122,11 @@ namespace Google.Apis.SearchConsole.v1.Data
     {
         /// <summary>How the results were aggregated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseAggregationType")]
-        public virtual string ResponseAggregationType { get; set; } 
+        public virtual string ResponseAggregationType { get; set; }
 
         /// <summary>A list of rows grouped by the key values in the order given in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-        public virtual System.Collections.Generic.IList<ApiDataRow> Rows { get; set; } 
+        public virtual System.Collections.Generic.IList<ApiDataRow> Rows { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1138,7 +1138,7 @@ namespace Google.Apis.SearchConsole.v1.Data
         /// <summary>Contains detailed information about a specific URL submitted as a
         /// [sitemap](https://support.google.com/webmasters/answer/156184).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sitemap")]
-        public virtual System.Collections.Generic.IList<WmxSitemap> Sitemap { get; set; } 
+        public virtual System.Collections.Generic.IList<WmxSitemap> Sitemap { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1150,7 +1150,7 @@ namespace Google.Apis.SearchConsole.v1.Data
         /// <summary>Contains permission level information about a Search Console site. For more information, see
         /// [Permissions in Search Console](https://support.google.com/webmasters/answer/2451999).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteEntry")]
-        public virtual System.Collections.Generic.IList<WmxSite> SiteEntry { get; set; } 
+        public virtual System.Collections.Generic.IList<WmxSite> SiteEntry { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1161,11 +1161,11 @@ namespace Google.Apis.SearchConsole.v1.Data
     {
         /// <summary>Error details if applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual string Details { get; set; } 
+        public virtual string Details { get; set; }
 
         /// <summary>Status of the test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1177,11 +1177,11 @@ namespace Google.Apis.SearchConsole.v1.Data
     {
         /// <summary>The user's permission level for the site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionLevel")]
-        public virtual string PermissionLevel { get; set; } 
+        public virtual string PermissionLevel { get; set; }
 
         /// <summary>The URL of the site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteUrl")]
-        public virtual string SiteUrl { get; set; } 
+        public virtual string SiteUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1193,43 +1193,43 @@ namespace Google.Apis.SearchConsole.v1.Data
     {
         /// <summary>The various content types in the sitemap.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contents")]
-        public virtual System.Collections.Generic.IList<WmxSitemapContent> Contents { get; set; } 
+        public virtual System.Collections.Generic.IList<WmxSitemapContent> Contents { get; set; }
 
         /// <summary>Number of errors in the sitemap. These are issues with the sitemap itself that need to be fixed
         /// before it can be processed correctly.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual System.Nullable<long> Errors { get; set; } 
+        public virtual System.Nullable<long> Errors { get; set; }
 
         /// <summary>If true, the sitemap has not been processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isPending")]
-        public virtual System.Nullable<bool> IsPending { get; set; } 
+        public virtual System.Nullable<bool> IsPending { get; set; }
 
         /// <summary>If true, the sitemap is a collection of sitemaps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isSitemapsIndex")]
-        public virtual System.Nullable<bool> IsSitemapsIndex { get; set; } 
+        public virtual System.Nullable<bool> IsSitemapsIndex { get; set; }
 
         /// <summary>Date & time in which this sitemap was last downloaded. Date format is in RFC 3339 format (yyyy-mm-
         /// dd).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastDownloaded")]
-        public virtual object LastDownloaded { get; set; } 
+        public virtual object LastDownloaded { get; set; }
 
         /// <summary>Date & time in which this sitemap was submitted. Date format is in RFC 3339 format (yyyy-mm-
         /// dd).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastSubmitted")]
-        public virtual object LastSubmitted { get; set; } 
+        public virtual object LastSubmitted { get; set; }
 
         /// <summary>The url of the sitemap.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; } 
+        public virtual string Path { get; set; }
 
         /// <summary>The type of the sitemap. For example: `rssFeed`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>Number of warnings for the sitemap. These are generally non-critical issues with URLs in the
         /// sitemaps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
-        public virtual System.Nullable<long> Warnings { get; set; } 
+        public virtual System.Nullable<long> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1240,15 +1240,15 @@ namespace Google.Apis.SearchConsole.v1.Data
     {
         /// <summary>The number of URLs from the sitemap that were indexed (of the content type).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexed")]
-        public virtual System.Nullable<long> Indexed { get; set; } 
+        public virtual System.Nullable<long> Indexed { get; set; }
 
         /// <summary>The number of URLs in the sitemap (of the content type).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("submitted")]
-        public virtual System.Nullable<long> Submitted { get; set; } 
+        public virtual System.Nullable<long> Submitted { get; set; }
 
         /// <summary>The specific type of content in this sitemap. For example: `web`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

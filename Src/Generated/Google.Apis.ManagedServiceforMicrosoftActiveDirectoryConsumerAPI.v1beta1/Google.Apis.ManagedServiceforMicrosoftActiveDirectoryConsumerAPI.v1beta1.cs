@@ -1626,7 +1626,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
     {
         /// <summary>Required. The domain trust resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trust")]
-        public virtual Trust Trust { get; set; } 
+        public virtual Trust Trust { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1641,7 +1641,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
@@ -1663,12 +1663,12 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1686,7 +1686,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
     {
         /// <summary>Required. The domain trust resource to removed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trust")]
-        public virtual Trust Trust { get; set; } 
+        public virtual Trust Trust { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1698,66 +1698,66 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// <summary>Optional. The name of delegated administrator account used to perform Active Directory operations.
         /// If not specified, `setupadmin` will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("admin")]
-        public virtual string Admin { get; set; } 
+        public virtual string Admin { get; set; }
 
         /// <summary>Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is
         /// audit logs disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogsEnabled")]
-        public virtual System.Nullable<bool> AuditLogsEnabled { get; set; } 
+        public virtual System.Nullable<bool> AuditLogsEnabled { get; set; }
 
         /// <summary>Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-
         /// firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The
         /// domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between
         /// networks, domain creation will fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedNetworks")]
-        public virtual System.Collections.Generic.IList<string> AuthorizedNetworks { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AuthorizedNetworks { get; set; }
 
         /// <summary>Output only. The time the instance was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. The fully-qualified domain name of the exposed domain used by clients to connect to
         /// the service. Similar to what would be chosen for an Active Directory set up on an internal
         /// network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fqdn")]
-        public virtual string Fqdn { get; set; } 
+        public virtual string Fqdn { get; set; }
 
         /// <summary>Optional. Resource labels that can contain user-provided metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service
         /// supports up to 4 locations at once. Each location will use a /26 block.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<string> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Locations { get; set; }
 
         /// <summary>Output only. The unique name of the domain using the form:
         /// `projects/{project_id}/locations/global/domains/{domain_name}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks
         /// must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in
         /// [Domain].[authorized_networks].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservedIpRange")]
-        public virtual string ReservedIpRange { get; set; } 
+        public virtual string ReservedIpRange { get; set; }
 
         /// <summary>Output only. The current state of this domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Output only. Additional information about the current status of this domain, if
         /// available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
-        public virtual string StatusMessage { get; set; } 
+        public virtual string StatusMessage { get; set; }
 
         /// <summary>Output only. The current trusts associated with the domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trusts")]
-        public virtual System.Collections.Generic.IList<Trust> Trusts { get; set; } 
+        public virtual System.Collections.Generic.IList<Trust> Trusts { get; set; }
 
         /// <summary>Output only. The last update time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1789,21 +1789,21 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1814,29 +1814,29 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
     {
         /// <summary>Output only. API version used to start the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
+        public virtual string ApiVersion { get; set; }
 
         /// <summary>Output only. The time the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. The time the operation finished running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Output only. Identifies whether the user has requested cancellation of the operation. Operations
         /// that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1,
         /// corresponding to `Code.CANCELLED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
-        public virtual System.Nullable<bool> RequestedCancellation { get; set; } 
+        public virtual System.Nullable<bool> RequestedCancellation { get; set; }
 
         /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; } 
+        public virtual string Target { get; set; }
 
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
-        public virtual string Verb { get; set; } 
+        public virtual string Verb { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1847,29 +1847,29 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
     {
         /// <summary>Output only. API version used to start the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
+        public virtual string ApiVersion { get; set; }
 
         /// <summary>Output only. The time the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. The time the operation finished running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Output only. Identifies whether the user has requested cancellation of the operation. Operations
         /// that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1,
         /// corresponding to `Code.CANCELLED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
-        public virtual System.Nullable<bool> RequestedCancellation { get; set; } 
+        public virtual System.Nullable<bool> RequestedCancellation { get; set; }
 
         /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; } 
+        public virtual string Target { get; set; }
 
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
-        public virtual string Verb { get; set; } 
+        public virtual string Verb { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1880,29 +1880,29 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
     {
         /// <summary>Output only. API version used to start the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
+        public virtual string ApiVersion { get; set; }
 
         /// <summary>Output only. The time the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. The time the operation finished running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Output only. Identifies whether the user has requested cancellation of the operation. Operations
         /// that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1,
         /// corresponding to `Code.CANCELLED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
-        public virtual System.Nullable<bool> RequestedCancellation { get; set; } 
+        public virtual System.Nullable<bool> RequestedCancellation { get; set; }
 
         /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; } 
+        public virtual string Target { get; set; }
 
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
-        public virtual string Verb { get; set; } 
+        public virtual string Verb { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1915,75 +1915,75 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// consumer_defined_name is used for notification/UI purposes for consumer to recognize their
         /// instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerDefinedName")]
-        public virtual string ConsumerDefinedName { get; set; } 
+        public virtual string ConsumerDefinedName { get; set; }
 
         /// <summary>Output only. Timestamp when the resource was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Optional. Resource labels to represent user provided metadata. Each label is a key-value pair,
         /// where both the key and the value are arbitrary strings provided by the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The MaintenancePolicies that have been attached to the instance. The key must be of the type name
         /// of the oneof policy name defined in MaintenancePolicy, and the referenced policy must define the same policy
         /// type. For complete details of MaintenancePolicy, please refer to go/cloud-saas-mw-ug.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicyNames")]
-        public virtual System.Collections.Generic.IDictionary<string,string> MaintenancePolicyNames { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> MaintenancePolicyNames { get; set; }
 
         /// <summary>The MaintenanceSchedule contains the scheduling information of published maintenance
         /// schedule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedules")]
-        public virtual System.Collections.Generic.IDictionary<string,GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule> MaintenanceSchedules { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule> MaintenanceSchedules { get; set; }
 
         /// <summary>Optional. The MaintenanceSettings associated with instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSettings")]
-        public virtual GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings MaintenanceSettings { get; set; } 
+        public virtual GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings MaintenanceSettings { get; set; }
 
         /// <summary>Unique name of the resource. It uses the form:
         /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. Custom string attributes used primarily to expose producer-specific information in
         /// monitoring dashboards. See go/get-instance-metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producerMetadata")]
-        public virtual System.Collections.Generic.IDictionary<string,string> ProducerMetadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> ProducerMetadata { get; set; }
 
         /// <summary>Output only. The list of data plane resources provisioned for this instance, e.g. compute VMs. See
         /// go/get-instance-metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisionedResources")]
-        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource> ProvisionedResources { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource> ProvisionedResources { get; set; }
 
         /// <summary>Link to the SLM instance template. Only populated when updating SLM instances via SSA's Actuation
         /// service adaptor. Service producers with custom control plane (e.g. Cloud SQL) doesn't need to populate this
         /// field. Instead they should use software_versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slmInstanceTemplate")]
-        public virtual string SlmInstanceTemplate { get; set; } 
+        public virtual string SlmInstanceTemplate { get; set; }
 
         /// <summary>Output only. SLO metadata for instance classification in the Standardized dataplane SLO platform.
         /// See go/cloud-ssa-standard-slo for feature description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sloMetadata")]
-        public virtual GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata SloMetadata { get; set; } 
+        public virtual GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata SloMetadata { get; set; }
 
         /// <summary>Software versions that are used to deploy this instance. This can be mutated by rollout
         /// services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("softwareVersions")]
-        public virtual System.Collections.Generic.IDictionary<string,string> SoftwareVersions { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> SoftwareVersions { get; set; }
 
         /// <summary>Output only. Current lifecycle state of the resource (e.g. if it's being created or ready to
         /// use).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Output only. ID of the associated GCP tenant project. See go/get-instance-metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tenantProjectId")]
-        public virtual string TenantProjectId { get; set; } 
+        public virtual string TenantProjectId { get; set; }
 
         /// <summary>Output only. Timestamp when the resource was last modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1996,20 +1996,20 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// <summary>Can this scheduled update be rescheduled? By default, it's true and API needs to do explicitly
         /// check whether it's set, if it's set as false explicitly, it's false</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canReschedule")]
-        public virtual System.Nullable<bool> CanReschedule { get; set; } 
+        public virtual System.Nullable<bool> CanReschedule { get; set; }
 
         /// <summary>The scheduled end time for the maintenance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>The rollout management policy this maintenance schedule is associated with. When doing reschedule
         /// update request, the reschedule should be against this given policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rolloutManagementPolicy")]
-        public virtual string RolloutManagementPolicy { get; set; } 
+        public virtual string RolloutManagementPolicy { get; set; }
 
         /// <summary>The scheduled start time for the maintenance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2023,7 +2023,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// maintenance on the instance. Rollout service will include the instance in reported rollout progress as not
         /// attempted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclude")]
-        public virtual System.Nullable<bool> Exclude { get; set; } 
+        public virtual System.Nullable<bool> Exclude { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2038,15 +2038,15 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// by adding entry here. For semantic see SloMetadata.exclusions. If both instance and node level exclusions
         /// are present for time period, the node level's reason will be reported by Eligibility Exporter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion> Exclusions { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion> Exclusions { get; set; }
 
         /// <summary>The location of the node, if different from instance location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>The id of the node. This should be equal to SaasInstanceNode.node_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeId")]
-        public virtual string NodeId { get; set; } 
+        public virtual string NodeId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2060,11 +2060,11 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// documentation (https://cloud.google.com/compute/docs/reference/rest/v1/), prefixed with 'compute-', for
         /// example: 'compute-instance', 'compute-disk', 'compute-autoscaler'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
-        public virtual string ResourceType { get; set; } 
+        public virtual string ResourceType { get; set; }
 
         /// <summary>URL identifying the resource, e.g. "https://www.googleapis.com/compute/v1/projects/...)".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUrl")]
-        public virtual string ResourceUrl { get; set; } 
+        public virtual string ResourceUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2077,12 +2077,12 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
     {
         /// <summary>Whether an instance is eligible or ineligible.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eligible")]
-        public virtual System.Nullable<bool> Eligible { get; set; } 
+        public virtual System.Nullable<bool> Eligible { get; set; }
 
         /// <summary>User-defined reason for the current value of instance eligibility. Usually, this can be directly
         /// mapped to the internal state. An empty reason is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2097,22 +2097,22 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// committed at least 10 minutes before the original exclusion expiration - otherwise it is possible that there
         /// will be "gaps" in the exclusion application in the exported timeseries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual object Duration { get; set; } 
+        public virtual object Duration { get; set; }
 
         /// <summary>Human-readable reason for the exclusion. This should be a static string (e.g. "Disruptive update in
         /// progress") and should not contain dynamically generated data (e.g. instance name). Can be left
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>Name of an SLI that this exclusion applies to. Can be left empty, signaling that the instance
         /// should be excluded from all SLIs defined in the service SLO configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sliName")]
-        public virtual string SliName { get; set; } 
+        public virtual string SliName { get; set; }
 
         /// <summary>Start time of the exclusion. No alignment (e.g. to a full minute) needed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2123,7 +2123,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
     {
         /// <summary>Optional. User-defined instance eligibility.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eligibility")]
-        public virtual GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility Eligibility { get; set; } 
+        public virtual GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility Eligibility { get; set; }
 
         /// <summary>List of SLO exclusion windows. When multiple entries in the list match (matching the exclusion
         /// time-window against current time point) the exclusion reason used in the first matching entry will be
@@ -2134,18 +2134,18 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// instance SLO exclusion, use of custom instance eligibility is recommended. See 'eligibility' field
         /// below.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion> Exclusions { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion> Exclusions { get; set; }
 
         /// <summary>Optional. List of nodes. Some producers need to use per-node metadata to calculate SLO. This field
         /// allows such producers to publish per-node SLO meta data, which will be consumed by SSA Eligibility Exporter
         /// and published in the form of per node metric to Monarch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
-        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata> Nodes { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata> Nodes { get; set; }
 
         /// <summary>Name of the SLO tier the Instance belongs to. This name will be expected to match the tiers
         /// specified in the service SLO configuration. Field is mandatory and must not be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
-        public virtual string Tier { get; set; } 
+        public virtual string Tier { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2156,16 +2156,16 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
     {
         /// <summary>A list of Managed Identities Service domains in the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domains")]
-        public virtual System.Collections.Generic.IList<Domain> Domains { get; set; } 
+        public virtual System.Collections.Generic.IList<Domain> Domains { get; set; }
 
         /// <summary>A token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2176,11 +2176,11 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
     {
         /// <summary>A list of locations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; }
 
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2191,11 +2191,11 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
     {
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2206,25 +2206,25 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-
         /// east1"}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>Resource name for the location, which may vary between implementations. For example: `"projects
         /// /example-project/locations/us-east1"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2236,23 +2236,23 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -2260,7 +2260,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2271,33 +2271,33 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
     {
         /// <summary>[Output only] API version used to start the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
+        public virtual string ApiVersion { get; set; }
 
         /// <summary>[Output only] Identifies whether the user has requested cancellation of the operation. Operations
         /// that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1,
         /// corresponding to `Code.CANCELLED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
-        public virtual System.Nullable<bool> CancelRequested { get; set; } 
+        public virtual System.Nullable<bool> CancelRequested { get; set; }
 
         /// <summary>[Output only] The time the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>[Output only] The time the operation finished running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>[Output only] Human-readable status of the operation, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
-        public virtual string StatusDetail { get; set; } 
+        public virtual string StatusDetail { get; set; }
 
         /// <summary>[Output only] Server-defined resource path for the target of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; } 
+        public virtual string Target { get; set; }
 
         /// <summary>[Output only] Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
-        public virtual string Verb { get; set; } 
+        public virtual string Verb { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2328,7 +2328,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -2339,7 +2339,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
         /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
         /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
@@ -2353,7 +2353,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -2363,12 +2363,12 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// <summary>Required. The target DNS server IP addresses to resolve the remote domain involved in the
         /// trust.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetDnsIpAddresses")]
-        public virtual System.Collections.Generic.IList<string> TargetDnsIpAddresses { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TargetDnsIpAddresses { get; set; }
 
         /// <summary>Required. The fully-qualified target domain name which will be in trust with current
         /// domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetDomainName")]
-        public virtual string TargetDomainName { get; set; } 
+        public virtual string TargetDomainName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2386,7 +2386,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
     {
         /// <summary>A random password. See admin for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
-        public virtual string Password { get; set; } 
+        public virtual string Password { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2399,7 +2399,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; } 
+        public virtual Policy Policy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2414,17 +2414,17 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2437,7 +2437,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// 'storage.*') are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2448,7 +2448,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
     {
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2460,50 +2460,50 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
     {
         /// <summary>Output only. The time the instance was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. The last heartbeat time when the trust was known to be connected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastTrustHeartbeatTime")]
-        public virtual object LastTrustHeartbeatTime { get; set; } 
+        public virtual object LastTrustHeartbeatTime { get; set; }
 
         /// <summary>The trust authentication type, which decides whether the trusted side has forest/domain wide access
         /// or selective access to an approved set of resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectiveAuthentication")]
-        public virtual System.Nullable<bool> SelectiveAuthentication { get; set; } 
+        public virtual System.Nullable<bool> SelectiveAuthentication { get; set; }
 
         /// <summary>Output only. The current state of the trust.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Output only. Additional information about the current state of the trust, if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateDescription")]
-        public virtual string StateDescription { get; set; } 
+        public virtual string StateDescription { get; set; }
 
         /// <summary>The target DNS server IP addresses which can resolve the remote domain involved in the
         /// trust.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetDnsIpAddresses")]
-        public virtual System.Collections.Generic.IList<string> TargetDnsIpAddresses { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TargetDnsIpAddresses { get; set; }
 
         /// <summary>The fully qualified target domain name which will be in trust with the current domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetDomainName")]
-        public virtual string TargetDomainName { get; set; } 
+        public virtual string TargetDomainName { get; set; }
 
         /// <summary>The trust direction, which decides if the current domain is trusted, trusting, or both.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trustDirection")]
-        public virtual string TrustDirection { get; set; } 
+        public virtual string TrustDirection { get; set; }
 
         /// <summary>Input only. The trust secret used for the handshake with the target domain. It will not be
         /// stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trustHandshakeSecret")]
-        public virtual string TrustHandshakeSecret { get; set; } 
+        public virtual string TrustHandshakeSecret { get; set; }
 
         /// <summary>The type of trust represented by the trust resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trustType")]
-        public virtual string TrustType { get; set; } 
+        public virtual string TrustType { get; set; }
 
         /// <summary>Output only. The last update time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2514,7 +2514,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
     {
         /// <summary>Required. The domain trust to validate trust state for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trust")]
-        public virtual Trust Trust { get; set; } 
+        public virtual Trust Trust { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

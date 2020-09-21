@@ -328,21 +328,21 @@ namespace Google.Apis.PolicyTroubleshooter.v1.Data
         /// full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-
         /// resource-names.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
-        public virtual string FullResourceName { get; set; } 
+        public virtual string FullResourceName { get; set; }
 
         /// <summary>Required. The IAM permission to check for the specified member and resource. For a complete list of
         /// IAM permissions, see https://cloud.google.com/iam/help/permissions/reference. For a complete list of
         /// predefined IAM roles and the permissions in each role, see
         /// https://cloud.google.com/iam/help/roles/reference.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permission")]
-        public virtual string Permission { get; set; } 
+        public virtual string Permission { get; set; }
 
         /// <summary>Required. The member, or principal, whose access you want to check, in the form of the email
         /// address that represents that member. For example, `alice@example.com` or `my-service-account@my-
         /// project.iam.gserviceaccount.com`. The member must be a Google Account or a service account. Other types of
         /// members are not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principal")]
-        public virtual string Principal { get; set; } 
+        public virtual string Principal { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -357,12 +357,12 @@ namespace Google.Apis.PolicyTroubleshooter.v1.Data
         /// whether the member actually has the permission, use the `access` field in the
         /// TroubleshootIamPolicyResponse.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access")]
-        public virtual string Access { get; set; } 
+        public virtual string Access { get; set; }
 
         /// <summary>A condition expression that prevents access unless the expression evaluates to `true`. To learn
         /// about IAM Conditions, see http://cloud.google.com/iam/help/conditions/overview.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual GoogleTypeExpr Condition { get; set; } 
+        public virtual GoogleTypeExpr Condition { get; set; }
 
         /// <summary>Indicates whether each member in the binding includes the member specified in the request, either
         /// directly or indirectly. Each key identifies a member in the binding, and each value indicates whether the
@@ -373,26 +373,26 @@ namespace Google.Apis.PolicyTroubleshooter.v1.Data
         /// value is set to `MEMBERSHIP_NOT_INCLUDED`. For the second member in the binding, the key is `group:product-
         /// eng@example.com`, and the `membership` field in the value is set to `MEMBERSHIP_INCLUDED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberships")]
-        public virtual System.Collections.Generic.IDictionary<string,GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership> Memberships { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership> Memberships { get; set; }
 
         /// <summary>The relevance of this binding to the overall determination for the entire policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relevance")]
-        public virtual string Relevance { get; set; } 
+        public virtual string Relevance { get; set; }
 
         /// <summary>The role that this binding grants. For example, `roles/compute.serviceAgent`. For a complete list
         /// of predefined IAM roles, as well as the permissions in each role, see
         /// https://cloud.google.com/iam/help/roles/reference.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>Indicates whether the role granted by this binding contains the specified permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rolePermission")]
-        public virtual string RolePermission { get; set; } 
+        public virtual string RolePermission { get; set; }
 
         /// <summary>The relevance of the permission's existence, or nonexistence, in the role to the overall
         /// determination for the entire policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rolePermissionRelevance")]
-        public virtual string RolePermissionRelevance { get; set; } 
+        public virtual string RolePermissionRelevance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -403,11 +403,11 @@ namespace Google.Apis.PolicyTroubleshooter.v1.Data
     {
         /// <summary>Indicates whether the binding includes the member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membership")]
-        public virtual string Membership { get; set; } 
+        public virtual string Membership { get; set; }
 
         /// <summary>The relevance of the member's status to the overall determination for the binding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relevance")]
-        public virtual string Relevance { get; set; } 
+        public virtual string Relevance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -421,13 +421,13 @@ namespace Google.Apis.PolicyTroubleshooter.v1.Data
         /// resource. There might be another policy that overrides this policy. To determine whether the member actually
         /// has the permission, use the `access` field in the TroubleshootIamPolicyResponse.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access")]
-        public virtual string Access { get; set; } 
+        public virtual string Access { get; set; }
 
         /// <summary>Details about how each binding in the policy affects the member's ability, or inability, to use the
         /// permission for the resource. If the sender of the request does not have access to the policy, this field is
         /// omitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingExplanations")]
-        public virtual System.Collections.Generic.IList<GoogleCloudPolicytroubleshooterV1BindingExplanation> BindingExplanations { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudPolicytroubleshooterV1BindingExplanation> BindingExplanations { get; set; }
 
         /// <summary>The full resource name that identifies the resource. For example,
         /// `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`. If the sender of
@@ -435,17 +435,17 @@ namespace Google.Apis.PolicyTroubleshooter.v1.Data
         /// for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-
         /// names.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
-        public virtual string FullResourceName { get; set; } 
+        public virtual string FullResourceName { get; set; }
 
         /// <summary>The IAM policy attached to the resource. If the sender of the request does not have access to the
         /// policy, this field is empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual GoogleIamV1Policy Policy { get; set; } 
+        public virtual GoogleIamV1Policy Policy { get; set; }
 
         /// <summary>The relevance of this policy to the overall determination in the TroubleshootIamPolicyResponse. If
         /// the sender of the request does not have access to the policy, this field is omitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relevance")]
-        public virtual string Relevance { get; set; } 
+        public virtual string Relevance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -456,7 +456,7 @@ namespace Google.Apis.PolicyTroubleshooter.v1.Data
     {
         /// <summary>The information to use for checking whether a member has a permission for a resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessTuple")]
-        public virtual GoogleCloudPolicytroubleshooterV1AccessTuple AccessTuple { get; set; } 
+        public virtual GoogleCloudPolicytroubleshooterV1AccessTuple AccessTuple { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -468,7 +468,7 @@ namespace Google.Apis.PolicyTroubleshooter.v1.Data
         /// <summary>Indicates whether the member has the specified permission for the specified resource, based on
         /// evaluating all of the applicable IAM policies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access")]
-        public virtual string Access { get; set; } 
+        public virtual string Access { get; set; }
 
         /// <summary>List of IAM policies that were evaluated to check the member's permissions, with annotations to
         /// indicate how each policy contributed to the final result. The list of policies can include the policy for
@@ -476,7 +476,7 @@ namespace Google.Apis.PolicyTroubleshooter.v1.Data
         /// hierarchy, including the organization, the folder, and the project. To learn more about the resource
         /// hierarchy, see https://cloud.google.com/iam/help/resource-hierarchy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explainedPolicies")]
-        public virtual System.Collections.Generic.IList<GoogleCloudPolicytroubleshooterV1ExplainedPolicy> ExplainedPolicies { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudPolicytroubleshooterV1ExplainedPolicy> ExplainedPolicies { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -497,12 +497,12 @@ namespace Google.Apis.PolicyTroubleshooter.v1.Data
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
-        public virtual System.Collections.Generic.IList<GoogleIamV1AuditLogConfig> AuditLogConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleIamV1AuditLogConfig> AuditLogConfigs { get; set; }
 
         /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
         /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -517,11 +517,11 @@ namespace Google.Apis.PolicyTroubleshooter.v1.Data
         /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
         /// format of Binding.members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
-        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
 
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
-        public virtual string LogType { get; set; } 
+        public virtual string LogType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -536,7 +536,7 @@ namespace Google.Apis.PolicyTroubleshooter.v1.Data
         /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual GoogleTypeExpr Condition { get; set; } 
+        public virtual GoogleTypeExpr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
@@ -558,12 +558,12 @@ namespace Google.Apis.PolicyTroubleshooter.v1.Data
         /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -593,12 +593,12 @@ namespace Google.Apis.PolicyTroubleshooter.v1.Data
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
-        public virtual System.Collections.Generic.IList<GoogleIamV1AuditConfig> AuditConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleIamV1AuditConfig> AuditConfigs { get; set; }
 
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<GoogleIamV1Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleIamV1Binding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -609,7 +609,7 @@ namespace Google.Apis.PolicyTroubleshooter.v1.Data
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
         /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
         /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
@@ -623,7 +623,7 @@ namespace Google.Apis.PolicyTroubleshooter.v1.Data
         /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -643,21 +643,21 @@ namespace Google.Apis.PolicyTroubleshooter.v1.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

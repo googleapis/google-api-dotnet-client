@@ -1379,7 +1379,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
     {
         /// <summary>Resource id of the ancestor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual ResourceId ResourceId { get; set; } 
+        public virtual ResourceId ResourceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1400,12 +1400,12 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
-        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; }
 
         /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
         /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1420,11 +1420,11 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
         /// format of Binding.members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
-        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
 
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
-        public virtual string LogType { get; set; } 
+        public virtual string LogType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1436,7 +1436,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
         /// bindings-by-ID API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; } 
+        public virtual string BindingId { get; set; }
 
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
@@ -1444,7 +1444,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
@@ -1466,12 +1466,12 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1503,21 +1503,21 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1529,20 +1529,20 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         /// <summary>The resource name of the folder or organization we are either creating the folder under or moving
         /// the folder to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationParent")]
-        public virtual string DestinationParent { get; set; } 
+        public virtual string DestinationParent { get; set; }
 
         /// <summary>The display name of the folder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The type of this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
-        public virtual string OperationType { get; set; } 
+        public virtual string OperationType { get; set; }
 
         /// <summary>The resource name of the folder's parent. Only applicable when the operation_type is
         /// MOVE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceParent")]
-        public virtual string SourceParent { get; set; } 
+        public virtual string SourceParent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1553,7 +1553,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
     {
         /// <summary>The type of operation error experienced.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessageId")]
-        public virtual string ErrorMessageId { get; set; } 
+        public virtual string ErrorMessageId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1573,7 +1573,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         /// <summary>Ancestors are ordered from bottom to top of the resource hierarchy. The first ancestor is the
         /// project itself, followed by the project's parent, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ancestor")]
-        public virtual System.Collections.Generic.IList<Ancestor> Ancestor { get; set; } 
+        public virtual System.Collections.Generic.IList<Ancestor> Ancestor { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1584,7 +1584,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
     {
         /// <summary>OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
-        public virtual GetPolicyOptions Options { get; set; } 
+        public virtual GetPolicyOptions Options { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1599,7 +1599,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         /// unset. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
-        public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
+        public virtual System.Nullable<int> RequestedPolicyVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1613,11 +1613,11 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         /// fetch the next page of results. If this field is empty, it indicates that this response contains the last
         /// page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of Organizations that matched the list query, possibly paginated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organizations")]
-        public virtual System.Collections.Generic.IList<Organization> Organizations { get; set; } 
+        public virtual System.Collections.Generic.IList<Organization> Organizations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1634,11 +1634,11 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         /// there is no next page and the list returned is the last page in the result set. Pagination tokens have a
         /// limited lifetime.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of Projects that matched the list filter. This list can be paginated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projects")]
-        public virtual System.Collections.Generic.IList<Project> Projects { get; set; } 
+        public virtual System.Collections.Generic.IList<Project> Projects { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1650,32 +1650,32 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
     {
         /// <summary>Timestamp when the Organization was created. Assigned by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual object CreationTime { get; set; } 
+        public virtual object CreationTime { get; set; }
 
         /// <summary>A human-readable string that refers to the Organization in the GCP Console UI. This string is set
         /// by the server and cannot be changed. The string will be set to the primary domain (for example,
         /// "google.com") of the G Suite customer that owns the organization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The organization's current lifecycle state. Assigned by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
-        public virtual string LifecycleState { get; set; } 
+        public virtual string LifecycleState { get; set; }
 
         /// <summary>Output only. The resource name of the organization. This is the organization's relative path in the
         /// API. Its format is "organizations/[organization_id]". For example, "organizations/1234".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>An immutable id for the Organization that is assigned on creation. This should be omitted when
         /// creating a new Organization. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organizationId")]
-        public virtual string OrganizationId { get; set; } 
+        public virtual string OrganizationId { get; set; }
 
         /// <summary>The owner of this Organization. The owner should be specified on creation. Once set, it cannot be
         /// changed. This field is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("owner")]
-        public virtual OrganizationOwner Owner { get; set; } 
+        public virtual OrganizationOwner Owner { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1688,7 +1688,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
     {
         /// <summary>The G Suite customer id used in the Directory API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directoryCustomerId")]
-        public virtual string DirectoryCustomerId { get; set; } 
+        public virtual string DirectoryCustomerId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1718,12 +1718,12 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
-        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; }
 
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -1734,7 +1734,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
         /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
         /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
@@ -1748,7 +1748,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -1758,7 +1758,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
     {
         /// <summary>Creation time. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The labels associated with this Project. Label keys must be between 1 and 63 characters long and
         /// must conform to the following regular expression: a-z{0,62}. Label values must be between 0 and 63
@@ -1767,34 +1767,34 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         /// representation such as JSON that does not depend on specific characters being disallowed. Example:
         /// `"environment" : "dev"` Read-write.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The Project lifecycle state. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
-        public virtual string LifecycleState { get; set; } 
+        public virtual string LifecycleState { get; set; }
 
         /// <summary>The optional user-assigned display name of the Project. When present it must be between 4 to 30
         /// characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-
         /// quote, space, and exclamation point. Example: `My Project` Read-write.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>An optional reference to a parent Resource. Supported parent types include "organization" and
         /// "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the
         /// `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the
         /// parent. Read-write.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual ResourceId Parent { get; set; } 
+        public virtual ResourceId Parent { get; set; }
 
         /// <summary>The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or
         /// hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only
         /// after creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>The number uniquely identifying the project. Example: `415104041262` Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
-        public virtual System.Nullable<long> ProjectNumber { get; set; } 
+        public virtual System.Nullable<long> ProjectNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1806,16 +1806,16 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
     {
         /// <summary>Creation time of the project creation workflow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>True if the project can be retrieved using GetProject. No other operations on the project are
         /// guaranteed to work until the project creation is complete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gettable")]
-        public virtual System.Nullable<bool> Gettable { get; set; } 
+        public virtual System.Nullable<bool> Gettable { get; set; }
 
         /// <summary>True if the project creation process is complete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ready")]
-        public virtual System.Nullable<bool> Ready { get; set; } 
+        public virtual System.Nullable<bool> Ready { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1829,12 +1829,12 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         /// <summary>Required field for the type-specific id. This should correspond to the id used in the type-specific
         /// API's.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Required field representing the resource type this id is for. At present, the valid types are
         /// "project", "folder", and "organization".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1847,13 +1847,13 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; } 
+        public virtual Policy Policy { get; set; }
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
         /// will be modified. If no mask is provided, the following default mask is used: `paths: "bindings,
         /// etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1866,7 +1866,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         /// 'storage.*') are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1877,7 +1877,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
     {
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

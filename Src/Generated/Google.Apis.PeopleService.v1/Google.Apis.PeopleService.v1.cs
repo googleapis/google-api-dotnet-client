@@ -2201,55 +2201,55 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>The city of the address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("city")]
-        public virtual string City { get; set; } 
+        public virtual string City { get; set; }
 
         /// <summary>The country of the address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
-        public virtual string Country { get; set; } 
+        public virtual string Country { get; set; }
 
         /// <summary>The [ISO 3166-1 alpha-2](http://www.iso.org/iso/country_codes.htm) country code of the
         /// address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
-        public virtual string CountryCode { get; set; } 
+        public virtual string CountryCode { get; set; }
 
         /// <summary>The extended address of the address; for example, the apartment number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extendedAddress")]
-        public virtual string ExtendedAddress { get; set; } 
+        public virtual string ExtendedAddress { get; set; }
 
         /// <summary>Output only. The type of the address translated and formatted in the viewer's account locale or the
         /// `Accept-Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
-        public virtual string FormattedType { get; set; } 
+        public virtual string FormattedType { get; set; }
 
         /// <summary>The unstructured value of the address. If this is not set by the user it will be automatically
         /// constructed from structured values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedValue")]
-        public virtual string FormattedValue { get; set; } 
+        public virtual string FormattedValue { get; set; }
 
         /// <summary>Metadata about the address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The P.O. box of the address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("poBox")]
-        public virtual string PoBox { get; set; } 
+        public virtual string PoBox { get; set; }
 
         /// <summary>The postal code of the address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
-        public virtual string PostalCode { get; set; } 
+        public virtual string PostalCode { get; set; }
 
         /// <summary>The region of the address; for example, the state or province.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
-        public virtual string Region { get; set; } 
+        public virtual string Region { get; set; }
 
         /// <summary>The street address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streetAddress")]
-        public virtual string StreetAddress { get; set; } 
+        public virtual string StreetAddress { get; set; }
 
         /// <summary>The type of the address. The type can be custom or one of these predefined values: * `home` *
         /// `work` * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2260,11 +2260,11 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>The age range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageRange")]
-        public virtual string AgeRange { get; set; } 
+        public virtual string AgeRange { get; set; }
 
         /// <summary>Metadata about the age range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2275,7 +2275,7 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>The list of responses for each requested contact group resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responses")]
-        public virtual System.Collections.Generic.IList<ContactGroupResponse> Responses { get; set; } 
+        public virtual System.Collections.Generic.IList<ContactGroupResponse> Responses { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2286,15 +2286,15 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>The content type of the biography.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
-        public virtual string ContentType { get; set; } 
+        public virtual string ContentType { get; set; }
 
         /// <summary>Metadata about the biography.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The short biography.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2306,15 +2306,15 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>The date of the birthday.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
-        public virtual Date Date { get; set; } 
+        public virtual Date Date { get; set; }
 
         /// <summary>Metadata about the birthday.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>A free-form string representing the user's birthday.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2325,11 +2325,11 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>Metadata about the bragging rights.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The bragging rights; for example, `climbed mount everest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2341,20 +2341,20 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>Output only. The type of the calendar URL translated and formatted in the viewer's account locale
         /// or the `Accept-Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
-        public virtual string FormattedType { get; set; } 
+        public virtual string FormattedType { get; set; }
 
         /// <summary>Metadata about the calendar URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The type of the calendar URL. The type can be custom or one of these predefined values: * `home` *
         /// `freeBusy` * `work`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The calendar URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2365,15 +2365,15 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>The client specified key of the client data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>Metadata about the client data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The client specified value of the client data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2385,42 +2385,42 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the resource. Used for web cache
         /// validation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Output only. The name translated and formatted in the viewer's account locale or the `Accept-
         /// Language` HTTP header locale for system groups names. Group names set by the owner are the same as
         /// name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedName")]
-        public virtual string FormattedName { get; set; } 
+        public virtual string FormattedName { get; set; }
 
         /// <summary>Output only. The contact group type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupType")]
-        public virtual string GroupType { get; set; } 
+        public virtual string GroupType { get; set; }
 
         /// <summary>Output only. The total number of contacts in the group irrespective of max members in specified in
         /// the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberCount")]
-        public virtual System.Nullable<int> MemberCount { get; set; } 
+        public virtual System.Nullable<int> MemberCount { get; set; }
 
         /// <summary>Output only. The list of contact person resource names that are members of the contact group. The
         /// field is not populated for LIST requests and can only be updated through the
         /// [ModifyContactGroupMembers](/people/api/rest/v1/contactgroups/members/modify).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberResourceNames")]
-        public virtual System.Collections.Generic.IList<string> MemberResourceNames { get; set; } 
+        public virtual System.Collections.Generic.IList<string> MemberResourceNames { get; set; }
 
         /// <summary>Output only. Metadata about the contact group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual ContactGroupMetadata Metadata { get; set; } 
+        public virtual ContactGroupMetadata Metadata { get; set; }
 
         /// <summary>The contact group name set by the group owner or a system provided name for system
         /// groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The resource name for the contact group, assigned by the server. An ASCII string, in the form of
         /// `contactGroups/{contact_group_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
-        public virtual string ResourceName { get; set; } 
+        public virtual string ResourceName { get; set; }
 
     }    
 
@@ -2429,14 +2429,14 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>Output only. The contact group ID for the contact group membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactGroupId")]
-        public virtual string ContactGroupId { get; set; } 
+        public virtual string ContactGroupId { get; set; }
 
         /// <summary>The resource name for the contact group, assigned by the server. An ASCII string, in the form of
         /// `contactGroups/{contact_group_id}`. Only contact_group_resource_name can be used for modifying memberships.
         /// Any contact group membership can be removed, but only user group or "myContacts" or "starred" system groups
         /// memberships can be added. A contact must always have at least one contact group membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactGroupResourceName")]
-        public virtual string ContactGroupResourceName { get; set; } 
+        public virtual string ContactGroupResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2448,11 +2448,11 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>Output only. True if the contact group resource has been deleted. Populated only for
         /// [`ListContactGroups`](/people/api/rest/v1/contactgroups/list) requests that include a sync token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
-        public virtual System.Nullable<bool> Deleted { get; set; } 
+        public virtual System.Nullable<bool> Deleted { get; set; }
 
         /// <summary>Output only. The time the group was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2463,15 +2463,15 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>The contact group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactGroup")]
-        public virtual ContactGroup ContactGroup { get; set; } 
+        public virtual ContactGroup ContactGroup { get; set; }
 
         /// <summary>The original requested resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedResourceName")]
-        public virtual string RequestedResourceName { get; set; } 
+        public virtual string RequestedResourceName { get; set; }
 
         /// <summary>The status of the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual Status Status { get; set; } 
+        public virtual Status Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2483,7 +2483,7 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>Required. A field mask to restrict which fields are copied into the new contact. Valid values are:
         /// * emailAddresses * names * phoneNumbers</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("copyMask")]
-        public virtual object CopyMask { get; set; } 
+        public virtual object CopyMask { get; set; }
 
         /// <summary>Optional. A field mask to restrict which fields on the person are returned. Multiple fields can be
         /// specified by separating them with commas. Defaults to the copy mask with metadata and membership fields if
@@ -2492,12 +2492,12 @@ namespace Google.Apis.PeopleService.v1.Data
         /// * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers *
         /// photos * relations * sipAddresses * skills * urls * userDefined</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readMask")]
-        public virtual object ReadMask { get; set; } 
+        public virtual object ReadMask { get; set; }
 
         /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
         /// ReadSourceType.PROFILE if not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
-        public virtual System.Collections.Generic.IList<string> Sources { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Sources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2510,15 +2510,15 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>True if the cover photo is the default cover photo; false if the cover photo is a user-provided
         /// cover photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("default")]
-        public virtual System.Nullable<bool> Default__ { get; set; } 
+        public virtual System.Nullable<bool> Default__ { get; set; }
 
         /// <summary>Metadata about the cover photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The URL of the cover photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2529,7 +2529,7 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>Required. The contact group to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactGroup")]
-        public virtual ContactGroup ContactGroup { get; set; } 
+        public virtual ContactGroup ContactGroup { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2546,15 +2546,15 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by
         /// itself or a year and month where the day is not significant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
-        public virtual System.Nullable<int> Day { get; set; } 
+        public virtual System.Nullable<int> Day { get; set; }
 
         /// <summary>Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("month")]
-        public virtual System.Nullable<int> Month { get; set; } 
+        public virtual System.Nullable<int> Month { get; set; }
 
         /// <summary>Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("year")]
-        public virtual System.Nullable<int> Year { get; set; } 
+        public virtual System.Nullable<int> Year { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2566,7 +2566,7 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>The updated person, if person_fields is set in the DeleteContactPhotoRequest; otherwise this will
         /// be unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("person")]
-        public virtual Person Person { get; set; } 
+        public virtual Person Person { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2577,7 +2577,7 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>True if the person is in the viewer's G Suite domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inViewerDomain")]
-        public virtual System.Nullable<bool> InViewerDomain { get; set; } 
+        public virtual System.Nullable<bool> InViewerDomain { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2588,25 +2588,25 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>The display name of the email.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. The type of the email address translated and formatted in the viewer's account locale
         /// or the `Accept-Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
-        public virtual string FormattedType { get; set; } 
+        public virtual string FormattedType { get; set; }
 
         /// <summary>Metadata about the email address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The type of the email address. The type can be custom or one of these predefined values: * `home` *
         /// `work` * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The email address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2627,21 +2627,21 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>The date of the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
-        public virtual Date Date { get; set; } 
+        public virtual Date Date { get; set; }
 
         /// <summary>Output only. The type of the event translated and formatted in the viewer's account locale or the
         /// `Accept-Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
-        public virtual string FormattedType { get; set; } 
+        public virtual string FormattedType { get; set; }
 
         /// <summary>Metadata about the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The type of the event. The type can be custom or one of these predefined values: * `anniversary` *
         /// `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2653,20 +2653,20 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>Output only. The type of the event translated and formatted in the viewer's account locale or the
         /// `Accept-Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
-        public virtual string FormattedType { get; set; } 
+        public virtual string FormattedType { get; set; }
 
         /// <summary>Metadata about the external ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The type of the external ID. The type can be custom or one of these predefined values: * `account`
         /// * `customer` * `loginId` * `network` * `organization`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The value of the external ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2677,17 +2677,17 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>True if the field is the primary field; false if the field is a secondary field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primary")]
-        public virtual System.Nullable<bool> Primary { get; set; } 
+        public virtual System.Nullable<bool> Primary { get; set; }
 
         /// <summary>The source of the field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual Source Source { get; set; } 
+        public virtual Source Source { get; set; }
 
         /// <summary>Output only. True if the field is verified; false if the field is unverified. A verified field is
         /// typically a name, email address, phone number, or website that has been confirmed to be owned by the
         /// person.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verified")]
-        public virtual System.Nullable<bool> Verified { get; set; } 
+        public virtual System.Nullable<bool> Verified { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2698,11 +2698,11 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>Metadata about the file-as.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The file-as value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2714,21 +2714,21 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>The type of pronouns that should be used to address the person. The value can be custom or one of
         /// these predefined values: * `male` * `female` * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addressMeAs")]
-        public virtual string AddressMeAs { get; set; } 
+        public virtual string AddressMeAs { get; set; }
 
         /// <summary>Output only. The value of the gender translated and formatted in the viewer's account locale or the
         /// `Accept-Language` HTTP header locale. Unspecified or custom value are not localized.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedValue")]
-        public virtual string FormattedValue { get; set; } 
+        public virtual string FormattedValue { get; set; }
 
         /// <summary>Metadata about the gender.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The gender for the person. The gender can be custom or one of these predefined values: * `male` *
         /// `female` * `unspecified`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2739,7 +2739,7 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>The response for each requested resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responses")]
-        public virtual System.Collections.Generic.IList<PersonResponse> Responses { get; set; } 
+        public virtual System.Collections.Generic.IList<PersonResponse> Responses { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2751,30 +2751,30 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>Output only. The protocol of the IM client formatted in the viewer's account locale or the `Accept-
         /// Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedProtocol")]
-        public virtual string FormattedProtocol { get; set; } 
+        public virtual string FormattedProtocol { get; set; }
 
         /// <summary>Output only. The type of the IM client translated and formatted in the viewer's account locale or
         /// the `Accept-Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
-        public virtual string FormattedType { get; set; } 
+        public virtual string FormattedType { get; set; }
 
         /// <summary>Metadata about the IM client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The protocol of the IM client. The protocol can be custom or one of these predefined values: *
         /// `aim` * `msn` * `yahoo` * `skype` * `qq` * `googleTalk` * `icq` * `jabber` * `netMeeting`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
-        public virtual string Protocol { get; set; } 
+        public virtual string Protocol { get; set; }
 
         /// <summary>The type of the IM client. The type can be custom or one of these predefined values: * `home` *
         /// `work` * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The user name used in the IM client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2785,11 +2785,11 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>Metadata about the interest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The interest; for example, `stargazing`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2800,26 +2800,26 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>The list of people that the requestor is connected to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connections")]
-        public virtual System.Collections.Generic.IList<Person> Connections { get; set; } 
+        public virtual System.Collections.Generic.IList<Person> Connections { get; set; }
 
         /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
         /// there are no subsequent pages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A token, which can be sent as `sync_token` to retrieve changes since the last request. Request must
         /// set `request_sync_token` to return the sync token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextSyncToken")]
-        public virtual string NextSyncToken { get; set; } 
+        public virtual string NextSyncToken { get; set; }
 
         /// <summary>The total number of items in the list without pagination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalItems")]
-        public virtual System.Nullable<int> TotalItems { get; set; } 
+        public virtual System.Nullable<int> TotalItems { get; set; }
 
         /// <summary>**DEPRECATED** (Please use totalItems) The total number of people in the list without
         /// pagination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalPeople")]
-        public virtual System.Nullable<int> TotalPeople { get; set; } 
+        public virtual System.Nullable<int> TotalPeople { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2830,19 +2830,19 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>The list of contact groups. Members of the contact groups are not populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactGroups")]
-        public virtual System.Collections.Generic.IList<ContactGroup> ContactGroups { get; set; } 
+        public virtual System.Collections.Generic.IList<ContactGroup> ContactGroups { get; set; }
 
         /// <summary>The token that can be used to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The token that can be used to retrieve changes since the last request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextSyncToken")]
-        public virtual string NextSyncToken { get; set; } 
+        public virtual string NextSyncToken { get; set; }
 
         /// <summary>The total number of items in the list without pagination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalItems")]
-        public virtual System.Nullable<int> TotalItems { get; set; } 
+        public virtual System.Nullable<int> TotalItems { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2854,16 +2854,16 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
         /// there are no subsequent pages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A token, which can be sent as `sync_token` to retrieve changes since the last request. Request must
         /// set `request_sync_token` to return the sync token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextSyncToken")]
-        public virtual string NextSyncToken { get; set; } 
+        public virtual string NextSyncToken { get; set; }
 
         /// <summary>The list of people in the domain directory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("people")]
-        public virtual System.Collections.Generic.IList<Person> People { get; set; } 
+        public virtual System.Collections.Generic.IList<Person> People { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2875,17 +2875,17 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
         /// there are no subsequent pages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A token, which can be sent as `sync_token` to retrieve changes since the last request. Request must
         /// set `request_sync_token` to return the sync token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextSyncToken")]
-        public virtual string NextSyncToken { get; set; } 
+        public virtual string NextSyncToken { get; set; }
 
         /// <summary>The list of "Other contacts" returned as Person resources. "Other contacts" support a limited
         /// subset of fields. See ListOtherContactsRequest.request_mask for more detailed information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("otherContacts")]
-        public virtual System.Collections.Generic.IList<Person> OtherContacts { get; set; } 
+        public virtual System.Collections.Generic.IList<Person> OtherContacts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2896,12 +2896,12 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>Metadata about the locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The well-formed [IETF BCP 47](https://tools.ietf.org/html/bcp47) language tag representing the
         /// locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2912,36 +2912,36 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>The building identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildingId")]
-        public virtual string BuildingId { get; set; } 
+        public virtual string BuildingId { get; set; }
 
         /// <summary>Whether the location is the current location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("current")]
-        public virtual System.Nullable<bool> Current { get; set; } 
+        public virtual System.Nullable<bool> Current { get; set; }
 
         /// <summary>The individual desk location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deskCode")]
-        public virtual string DeskCode { get; set; } 
+        public virtual string DeskCode { get; set; }
 
         /// <summary>The floor name or number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floor")]
-        public virtual string Floor { get; set; } 
+        public virtual string Floor { get; set; }
 
         /// <summary>The floor section in `floor_name`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floorSection")]
-        public virtual string FloorSection { get; set; } 
+        public virtual string FloorSection { get; set; }
 
         /// <summary>Metadata about the location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The type of the location. The type can be custom or one of these predefined values: * `desk` *
         /// `grewUp`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The free-form value of the location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2952,15 +2952,15 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>The contact group membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactGroupMembership")]
-        public virtual ContactGroupMembership ContactGroupMembership { get; set; } 
+        public virtual ContactGroupMembership ContactGroupMembership { get; set; }
 
         /// <summary>Output only. The domain membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainMembership")]
-        public virtual DomainMembership DomainMembership { get; set; } 
+        public virtual DomainMembership DomainMembership { get; set; }
 
         /// <summary>Metadata about the membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2972,19 +2972,19 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>Output only. The type of the miscellaneous keyword translated and formatted in the viewer's account
         /// locale or the `Accept-Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
-        public virtual string FormattedType { get; set; } 
+        public virtual string FormattedType { get; set; }
 
         /// <summary>Metadata about the miscellaneous keyword.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The miscellaneous keyword type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The value of the miscellaneous keyword.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2997,12 +2997,12 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>Optional. The resource names of the contact people to add in the form of
         /// `people/{person_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceNamesToAdd")]
-        public virtual System.Collections.Generic.IList<string> ResourceNamesToAdd { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ResourceNamesToAdd { get; set; }
 
         /// <summary>Optional. The resource names of the contact people to remove in the form of
         /// `people/{person_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceNamesToRemove")]
-        public virtual System.Collections.Generic.IList<string> ResourceNamesToRemove { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ResourceNamesToRemove { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3013,11 +3013,11 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>The contact people resource names that cannot be removed from their last contact group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canNotRemoveLastContactGroupResourceNames")]
-        public virtual System.Collections.Generic.IList<string> CanNotRemoveLastContactGroupResourceNames { get; set; } 
+        public virtual System.Collections.Generic.IList<string> CanNotRemoveLastContactGroupResourceNames { get; set; }
 
         /// <summary>The contact people resource names that were not found.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notFoundResourceNames")]
-        public virtual System.Collections.Generic.IList<string> NotFoundResourceNames { get; set; } 
+        public virtual System.Collections.Generic.IList<string> NotFoundResourceNames { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3029,64 +3029,64 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>Output only. The display name formatted according to the locale specified by the viewer's account
         /// or the `Accept-Language` HTTP header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. The display name with the last name first formatted according to the locale specified
         /// by the viewer's account or the `Accept-Language` HTTP header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayNameLastFirst")]
-        public virtual string DisplayNameLastFirst { get; set; } 
+        public virtual string DisplayNameLastFirst { get; set; }
 
         /// <summary>The family name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("familyName")]
-        public virtual string FamilyName { get; set; } 
+        public virtual string FamilyName { get; set; }
 
         /// <summary>The given name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("givenName")]
-        public virtual string GivenName { get; set; } 
+        public virtual string GivenName { get; set; }
 
         /// <summary>The honorific prefixes, such as `Mrs.` or `Dr.`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("honorificPrefix")]
-        public virtual string HonorificPrefix { get; set; } 
+        public virtual string HonorificPrefix { get; set; }
 
         /// <summary>The honorific suffixes, such as `Jr.`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("honorificSuffix")]
-        public virtual string HonorificSuffix { get; set; } 
+        public virtual string HonorificSuffix { get; set; }
 
         /// <summary>Metadata about the name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The middle name(s).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("middleName")]
-        public virtual string MiddleName { get; set; } 
+        public virtual string MiddleName { get; set; }
 
         /// <summary>The family name spelled as it sounds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneticFamilyName")]
-        public virtual string PhoneticFamilyName { get; set; } 
+        public virtual string PhoneticFamilyName { get; set; }
 
         /// <summary>The full name spelled as it sounds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneticFullName")]
-        public virtual string PhoneticFullName { get; set; } 
+        public virtual string PhoneticFullName { get; set; }
 
         /// <summary>The given name spelled as it sounds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneticGivenName")]
-        public virtual string PhoneticGivenName { get; set; } 
+        public virtual string PhoneticGivenName { get; set; }
 
         /// <summary>The honorific prefixes spelled as they sound.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneticHonorificPrefix")]
-        public virtual string PhoneticHonorificPrefix { get; set; } 
+        public virtual string PhoneticHonorificPrefix { get; set; }
 
         /// <summary>The honorific suffixes spelled as they sound.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneticHonorificSuffix")]
-        public virtual string PhoneticHonorificSuffix { get; set; } 
+        public virtual string PhoneticHonorificSuffix { get; set; }
 
         /// <summary>The middle name(s) spelled as they sound.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneticMiddleName")]
-        public virtual string PhoneticMiddleName { get; set; } 
+        public virtual string PhoneticMiddleName { get; set; }
 
         /// <summary>The free form name value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unstructuredName")]
-        public virtual string UnstructuredName { get; set; } 
+        public virtual string UnstructuredName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3097,15 +3097,15 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>Metadata about the nickname.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The type of the nickname.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The nickname.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3116,11 +3116,11 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>Metadata about the occupation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The occupation; for example, `carpenter`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3132,62 +3132,62 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>True if the organization is the person's current organization; false if the organization is a past
         /// organization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("current")]
-        public virtual System.Nullable<bool> Current { get; set; } 
+        public virtual System.Nullable<bool> Current { get; set; }
 
         /// <summary>The person's department at the organization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("department")]
-        public virtual string Department { get; set; } 
+        public virtual string Department { get; set; }
 
         /// <summary>The domain name associated with the organization; for example, `google.com`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
-        public virtual string Domain { get; set; } 
+        public virtual string Domain { get; set; }
 
         /// <summary>The end date when the person left the organization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
-        public virtual Date EndDate { get; set; } 
+        public virtual Date EndDate { get; set; }
 
         /// <summary>Output only. The type of the organization translated and formatted in the viewer's account locale
         /// or the `Accept-Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
-        public virtual string FormattedType { get; set; } 
+        public virtual string FormattedType { get; set; }
 
         /// <summary>The person's job description at the organization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobDescription")]
-        public virtual string JobDescription { get; set; } 
+        public virtual string JobDescription { get; set; }
 
         /// <summary>The location of the organization office the person works at.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Metadata about the organization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The name of the organization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The phonetic name of the organization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneticName")]
-        public virtual string PhoneticName { get; set; } 
+        public virtual string PhoneticName { get; set; }
 
         /// <summary>The start date when the person joined the organization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
-        public virtual Date StartDate { get; set; } 
+        public virtual Date StartDate { get; set; }
 
         /// <summary>The symbol associated with the organization; for example, a stock ticker symbol, abbreviation, or
         /// acronym.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("symbol")]
-        public virtual string Symbol { get; set; } 
+        public virtual string Symbol { get; set; }
 
         /// <summary>The person's job title at the organization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The type of the organization. The type can be custom or one of these predefined values: * `work` *
         /// `school`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3200,159 +3200,159 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>The person's street addresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addresses")]
-        public virtual System.Collections.Generic.IList<Address> Addresses { get; set; } 
+        public virtual System.Collections.Generic.IList<Address> Addresses { get; set; }
 
         /// <summary>Output only. **DEPRECATED** (Please use `person.ageRanges` instead) The person's age
         /// range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageRange")]
-        public virtual string AgeRange { get; set; } 
+        public virtual string AgeRange { get; set; }
 
         /// <summary>Output only. The person's age ranges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageRanges")]
-        public virtual System.Collections.Generic.IList<AgeRangeType> AgeRanges { get; set; } 
+        public virtual System.Collections.Generic.IList<AgeRangeType> AgeRanges { get; set; }
 
         /// <summary>The person's biographies. This field is a singleton for contact sources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("biographies")]
-        public virtual System.Collections.Generic.IList<Biography> Biographies { get; set; } 
+        public virtual System.Collections.Generic.IList<Biography> Biographies { get; set; }
 
         /// <summary>The person's birthdays. This field is a singleton for contact sources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("birthdays")]
-        public virtual System.Collections.Generic.IList<Birthday> Birthdays { get; set; } 
+        public virtual System.Collections.Generic.IList<Birthday> Birthdays { get; set; }
 
         /// <summary>**DEPRECATED**: No data will be returned The person's bragging rights.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("braggingRights")]
-        public virtual System.Collections.Generic.IList<BraggingRights> BraggingRights { get; set; } 
+        public virtual System.Collections.Generic.IList<BraggingRights> BraggingRights { get; set; }
 
         /// <summary>The person's calendar URLs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("calendarUrls")]
-        public virtual System.Collections.Generic.IList<CalendarUrl> CalendarUrls { get; set; } 
+        public virtual System.Collections.Generic.IList<CalendarUrl> CalendarUrls { get; set; }
 
         /// <summary>The person's client data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientData")]
-        public virtual System.Collections.Generic.IList<ClientData> ClientData { get; set; } 
+        public virtual System.Collections.Generic.IList<ClientData> ClientData { get; set; }
 
         /// <summary>Output only. The person's cover photos.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coverPhotos")]
-        public virtual System.Collections.Generic.IList<CoverPhoto> CoverPhotos { get; set; } 
+        public virtual System.Collections.Generic.IList<CoverPhoto> CoverPhotos { get; set; }
 
         /// <summary>The person's email addresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddresses")]
-        public virtual System.Collections.Generic.IList<EmailAddress> EmailAddresses { get; set; } 
+        public virtual System.Collections.Generic.IList<EmailAddress> EmailAddresses { get; set; }
 
         /// <summary>The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the resource. Used for web cache
         /// validation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The person's events.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("events")]
-        public virtual System.Collections.Generic.IList<Event> Events { get; set; } 
+        public virtual System.Collections.Generic.IList<Event> Events { get; set; }
 
         /// <summary>The person's external IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalIds")]
-        public virtual System.Collections.Generic.IList<ExternalId> ExternalIds { get; set; } 
+        public virtual System.Collections.Generic.IList<ExternalId> ExternalIds { get; set; }
 
         /// <summary>The person's file-ases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileAses")]
-        public virtual System.Collections.Generic.IList<FileAs> FileAses { get; set; } 
+        public virtual System.Collections.Generic.IList<FileAs> FileAses { get; set; }
 
         /// <summary>The person's genders. This field is a singleton for contact sources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("genders")]
-        public virtual System.Collections.Generic.IList<Gender> Genders { get; set; } 
+        public virtual System.Collections.Generic.IList<Gender> Genders { get; set; }
 
         /// <summary>The person's instant messaging clients.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imClients")]
-        public virtual System.Collections.Generic.IList<ImClient> ImClients { get; set; } 
+        public virtual System.Collections.Generic.IList<ImClient> ImClients { get; set; }
 
         /// <summary>The person's interests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interests")]
-        public virtual System.Collections.Generic.IList<Interest> Interests { get; set; } 
+        public virtual System.Collections.Generic.IList<Interest> Interests { get; set; }
 
         /// <summary>The person's locale preferences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locales")]
-        public virtual System.Collections.Generic.IList<Locale> Locales { get; set; } 
+        public virtual System.Collections.Generic.IList<Locale> Locales { get; set; }
 
         /// <summary>The person's locations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; }
 
         /// <summary>The person's group memberships.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberships")]
-        public virtual System.Collections.Generic.IList<Membership> Memberships { get; set; } 
+        public virtual System.Collections.Generic.IList<Membership> Memberships { get; set; }
 
         /// <summary>Output only. Metadata about the person.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual PersonMetadata Metadata { get; set; } 
+        public virtual PersonMetadata Metadata { get; set; }
 
         /// <summary>The person's miscellaneous keywords.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("miscKeywords")]
-        public virtual System.Collections.Generic.IList<MiscKeyword> MiscKeywords { get; set; } 
+        public virtual System.Collections.Generic.IList<MiscKeyword> MiscKeywords { get; set; }
 
         /// <summary>The person's names. This field is a singleton for contact sources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("names")]
-        public virtual System.Collections.Generic.IList<Name> Names { get; set; } 
+        public virtual System.Collections.Generic.IList<Name> Names { get; set; }
 
         /// <summary>The person's nicknames.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nicknames")]
-        public virtual System.Collections.Generic.IList<Nickname> Nicknames { get; set; } 
+        public virtual System.Collections.Generic.IList<Nickname> Nicknames { get; set; }
 
         /// <summary>The person's occupations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("occupations")]
-        public virtual System.Collections.Generic.IList<Occupation> Occupations { get; set; } 
+        public virtual System.Collections.Generic.IList<Occupation> Occupations { get; set; }
 
         /// <summary>The person's past or current organizations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organizations")]
-        public virtual System.Collections.Generic.IList<Organization> Organizations { get; set; } 
+        public virtual System.Collections.Generic.IList<Organization> Organizations { get; set; }
 
         /// <summary>The person's phone numbers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumbers")]
-        public virtual System.Collections.Generic.IList<PhoneNumber> PhoneNumbers { get; set; } 
+        public virtual System.Collections.Generic.IList<PhoneNumber> PhoneNumbers { get; set; }
 
         /// <summary>Output only. The person's photos.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photos")]
-        public virtual System.Collections.Generic.IList<Photo> Photos { get; set; } 
+        public virtual System.Collections.Generic.IList<Photo> Photos { get; set; }
 
         /// <summary>The person's relations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relations")]
-        public virtual System.Collections.Generic.IList<Relation> Relations { get; set; } 
+        public virtual System.Collections.Generic.IList<Relation> Relations { get; set; }
 
         /// <summary>Output only. **DEPRECATED**: No data will be returned The person's relationship
         /// interests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relationshipInterests")]
-        public virtual System.Collections.Generic.IList<RelationshipInterest> RelationshipInterests { get; set; } 
+        public virtual System.Collections.Generic.IList<RelationshipInterest> RelationshipInterests { get; set; }
 
         /// <summary>Output only. **DEPRECATED**: No data will be returned The person's relationship statuses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relationshipStatuses")]
-        public virtual System.Collections.Generic.IList<RelationshipStatus> RelationshipStatuses { get; set; } 
+        public virtual System.Collections.Generic.IList<RelationshipStatus> RelationshipStatuses { get; set; }
 
         /// <summary>**DEPRECATED**: (Please use `person.locations` instead) The person's residences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("residences")]
-        public virtual System.Collections.Generic.IList<Residence> Residences { get; set; } 
+        public virtual System.Collections.Generic.IList<Residence> Residences { get; set; }
 
         /// <summary>The resource name for the person, assigned by the server. An ASCII string with a max length of 27
         /// characters, in the form of `people/{person_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
-        public virtual string ResourceName { get; set; } 
+        public virtual string ResourceName { get; set; }
 
         /// <summary>The person's SIP addresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sipAddresses")]
-        public virtual System.Collections.Generic.IList<SipAddress> SipAddresses { get; set; } 
+        public virtual System.Collections.Generic.IList<SipAddress> SipAddresses { get; set; }
 
         /// <summary>The person's skills.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skills")]
-        public virtual System.Collections.Generic.IList<Skill> Skills { get; set; } 
+        public virtual System.Collections.Generic.IList<Skill> Skills { get; set; }
 
         /// <summary>Output only. **DEPRECATED**: No data will be returned The person's taglines.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taglines")]
-        public virtual System.Collections.Generic.IList<Tagline> Taglines { get; set; } 
+        public virtual System.Collections.Generic.IList<Tagline> Taglines { get; set; }
 
         /// <summary>The person's associated URLs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urls")]
-        public virtual System.Collections.Generic.IList<Url> Urls { get; set; } 
+        public virtual System.Collections.Generic.IList<Url> Urls { get; set; }
 
         /// <summary>The person's user defined data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userDefined")]
-        public virtual System.Collections.Generic.IList<UserDefined> UserDefined { get; set; } 
+        public virtual System.Collections.Generic.IList<UserDefined> UserDefined { get; set; }
 
     }    
 
@@ -3363,27 +3363,27 @@ namespace Google.Apis.PeopleService.v1.Data
         /// [`connections.list`](/people/api/rest/v1/people.connections/list) requests that include a sync
         /// token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
-        public virtual System.Nullable<bool> Deleted { get; set; } 
+        public virtual System.Nullable<bool> Deleted { get; set; }
 
         /// <summary>Output only. Resource names of people linked to this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedPeopleResourceNames")]
-        public virtual System.Collections.Generic.IList<string> LinkedPeopleResourceNames { get; set; } 
+        public virtual System.Collections.Generic.IList<string> LinkedPeopleResourceNames { get; set; }
 
         /// <summary>Output only. **DEPRECATED** (Please use `person.metadata.sources.profileMetadata.objectType`
         /// instead) The type of the person object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectType")]
-        public virtual string ObjectType { get; set; } 
+        public virtual string ObjectType { get; set; }
 
         /// <summary>Output only. Any former resource names this person has had. Populated only for
         /// [`connections.list`](/people/api/rest/v1/people.connections/list) requests that include a sync token. The
         /// resource name may change when adding or removing fields that link a contact and profile such as a verified
         /// email, verified phone number, or profile URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousResourceNames")]
-        public virtual System.Collections.Generic.IList<string> PreviousResourceNames { get; set; } 
+        public virtual System.Collections.Generic.IList<string> PreviousResourceNames { get; set; }
 
         /// <summary>The sources of data for the person.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
-        public virtual System.Collections.Generic.IList<Source> Sources { get; set; } 
+        public virtual System.Collections.Generic.IList<Source> Sources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3395,21 +3395,21 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>**DEPRECATED** (Please use status instead) [HTTP 1.1 status code]
         /// (http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpStatusCode")]
-        public virtual System.Nullable<int> HttpStatusCode { get; set; } 
+        public virtual System.Nullable<int> HttpStatusCode { get; set; }
 
         /// <summary>The person.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("person")]
-        public virtual Person Person { get; set; } 
+        public virtual Person Person { get; set; }
 
         /// <summary>The original requested resource name. May be different than the resource name on the returned
         /// person. The resource name can change when adding or removing fields that link a contact and profile such as
         /// a verified email, verified phone number, or a profile URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedResourceName")]
-        public virtual string RequestedResourceName { get; set; } 
+        public virtual string RequestedResourceName { get; set; }
 
         /// <summary>The status of the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual Status Status { get; set; } 
+        public virtual Status Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3422,26 +3422,26 @@ namespace Google.Apis.PeopleService.v1.Data
         /// E.164](https://law.resource.org/pub/us/cfr/ibr/004/itu-t.E.164.1.2008.pdf) form of the phone
         /// number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalForm")]
-        public virtual string CanonicalForm { get; set; } 
+        public virtual string CanonicalForm { get; set; }
 
         /// <summary>Output only. The type of the phone number translated and formatted in the viewer's account locale
         /// or the `Accept-Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
-        public virtual string FormattedType { get; set; } 
+        public virtual string FormattedType { get; set; }
 
         /// <summary>Metadata about the phone number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The type of the phone number. The type can be custom or one of these predefined values: * `home` *
         /// `work` * `mobile` * `homeFax` * `workFax` * `otherFax` * `pager` * `workMobile` * `workPager` * `main` *
         /// `googleVoice` * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The phone number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3453,17 +3453,17 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>True if the photo is a default photo; false if the photo is a user-provided photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("default")]
-        public virtual System.Nullable<bool> Default__ { get; set; } 
+        public virtual System.Nullable<bool> Default__ { get; set; }
 
         /// <summary>Metadata about the photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The URL of the photo. You can change the desired size by appending a query parameter `sz={size}` at
         /// the end of the url, where {size} is the size in pixels. Example: https://lh3.googleusercontent.com/-T_wVWLlm
         /// g7w/AAAAAAAAAAI/AAAAAAAABa8/00gzXvDBYqw/s100/photo.jpg?sz=50</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3474,11 +3474,11 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>Output only. The profile object type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectType")]
-        public virtual string ObjectType { get; set; } 
+        public virtual string ObjectType { get; set; }
 
         /// <summary>Output only. The user types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userTypes")]
-        public virtual System.Collections.Generic.IList<string> UserTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> UserTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3490,21 +3490,21 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>Output only. The type of the relation translated and formatted in the viewer's account locale or
         /// the locale specified in the Accept-Language HTTP header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
-        public virtual string FormattedType { get; set; } 
+        public virtual string FormattedType { get; set; }
 
         /// <summary>Metadata about the relation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The name of the other person this relation refers to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("person")]
-        public virtual string Person { get; set; } 
+        public virtual string Person { get; set; }
 
         /// <summary>The person's relation to the other person. The type can be custom or one of these predefined
         /// values: * `spouse` * `child` * `mother` * `father` * `parent` * `brother` * `sister` * `friend` * `relative`
         /// * `domesticPartner` * `manager` * `assistant` * `referredBy` * `partner`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3516,16 +3516,16 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>Output only. The value of the relationship interest translated and formatted in the viewer's
         /// account locale or the locale specified in the Accept-Language HTTP header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedValue")]
-        public virtual string FormattedValue { get; set; } 
+        public virtual string FormattedValue { get; set; }
 
         /// <summary>Metadata about the relationship interest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The kind of relationship the person is looking for. The value can be custom or one of these
         /// predefined values: * `friend` * `date` * `relationship` * `networking`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3537,17 +3537,17 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>Output only. The value of the relationship status translated and formatted in the viewer's account
         /// locale or the `Accept-Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedValue")]
-        public virtual string FormattedValue { get; set; } 
+        public virtual string FormattedValue { get; set; }
 
         /// <summary>Metadata about the relationship status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The relationship status. The value can be custom or one of these predefined values: * `single` *
         /// `inARelationship` * `engaged` * `married` * `itsComplicated` * `openRelationship` * `widowed` *
         /// `inDomesticPartnership` * `inCivilUnion`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3559,15 +3559,15 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>True if the residence is the person's current residence; false if the residence is a past
         /// residence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("current")]
-        public virtual System.Nullable<bool> Current { get; set; } 
+        public virtual System.Nullable<bool> Current { get; set; }
 
         /// <summary>Metadata about the residence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The address of the residence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3580,15 +3580,15 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
         /// there are no subsequent pages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of people in the domain directory that match the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("people")]
-        public virtual System.Collections.Generic.IList<Person> People { get; set; } 
+        public virtual System.Collections.Generic.IList<Person> People { get; set; }
 
         /// <summary>The total number of items in the list without pagination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
-        public virtual System.Nullable<int> TotalSize { get; set; } 
+        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3601,21 +3601,21 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>Output only. The type of the SIP address translated and formatted in the viewer's account locale or
         /// the `Accept-Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
-        public virtual string FormattedType { get; set; } 
+        public virtual string FormattedType { get; set; }
 
         /// <summary>Metadata about the SIP address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The type of the SIP address. The type can be custom or or one of these predefined values: * `home`
         /// * `work` * `mobile` * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The SIP address in the [RFC 3261 19.1](https://tools.ietf.org/html/rfc3261#section-19.1) SIP URI
         /// format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3626,11 +3626,11 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>Metadata about the skill.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The skill; for example, `underwater basket weaving`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3642,25 +3642,25 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>**Only populated in `person.metadata.sources`.** The [HTTP entity
         /// tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the source. Used for web cache validation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The unique identifier within the source type generated by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Output only. **Only populated in `person.metadata.sources`.** Metadata about a source of type
         /// PROFILE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileMetadata")]
-        public virtual ProfileMetadata ProfileMetadata { get; set; } 
+        public virtual ProfileMetadata ProfileMetadata { get; set; }
 
         /// <summary>The source type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>Output only. **Only populated in `person.metadata.sources`.** Last update timestamp of this
         /// source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
     }    
 
@@ -3673,17 +3673,17 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3694,11 +3694,11 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>Metadata about the tagline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The tagline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3709,7 +3709,7 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>Required. The contact group to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactGroup")]
-        public virtual ContactGroup ContactGroup { get; set; } 
+        public virtual ContactGroup ContactGroup { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3726,16 +3726,16 @@ namespace Google.Apis.PeopleService.v1.Data
         /// * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers *
         /// photos * relations * sipAddresses * skills * urls * userDefined</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("personFields")]
-        public virtual object PersonFields { get; set; } 
+        public virtual object PersonFields { get; set; }
 
         /// <summary>Required. Raw photo bytes</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photoBytes")]
-        public virtual string PhotoBytes { get; set; } 
+        public virtual string PhotoBytes { get; set; }
 
         /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
         /// ReadSourceType.PROFILE if not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
-        public virtual System.Collections.Generic.IList<string> Sources { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Sources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3747,7 +3747,7 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>The updated person, if person_fields is set in the UpdateContactPhotoRequest; otherwise this will
         /// be unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("person")]
-        public virtual Person Person { get; set; } 
+        public virtual Person Person { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3759,21 +3759,21 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>Output only. The type of the URL translated and formatted in the viewer's account locale or the
         /// `Accept-Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
-        public virtual string FormattedType { get; set; } 
+        public virtual string FormattedType { get; set; }
 
         /// <summary>Metadata about the URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The type of the URL. The type can be custom or one of these predefined values: * `home` * `work` *
         /// `blog` * `profile` * `homePage` * `ftp` * `reservations` * `appInstallPage`: website for a Google+
         /// application. * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3784,15 +3784,15 @@ namespace Google.Apis.PeopleService.v1.Data
     {
         /// <summary>The end user specified key of the user defined data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>Metadata about the user defined data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual FieldMetadata Metadata { get; set; } 
+        public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The end user specified value of the user defined data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

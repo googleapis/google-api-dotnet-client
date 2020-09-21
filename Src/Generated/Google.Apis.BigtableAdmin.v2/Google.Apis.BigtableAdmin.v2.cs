@@ -3484,7 +3484,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>Long form description of the use case for this AppProfile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Strongly validated etag for optimistic concurrency control. Preserve the value returned from
         /// `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the
@@ -3492,20 +3492,20 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC
         /// 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Use a multi-cluster routing policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiClusterRoutingUseAny")]
-        public virtual MultiClusterRoutingUseAny MultiClusterRoutingUseAny { get; set; } 
+        public virtual MultiClusterRoutingUseAny MultiClusterRoutingUseAny { get; set; }
 
         /// <summary>The unique name of the app profile. Values are of the form
         /// `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Use a single-cluster routing policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("singleClusterRouting")]
-        public virtual SingleClusterRouting SingleClusterRouting { get; set; } 
+        public virtual SingleClusterRouting SingleClusterRouting { get; set; }
 
     }    
 
@@ -3524,12 +3524,12 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
-        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; }
 
         /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
         /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3544,11 +3544,11 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
         /// format of Binding.members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
-        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
 
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
-        public virtual string LogType { get; set; } 
+        public virtual string LogType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3560,13 +3560,13 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>Output only. `end_time` is the time that the backup was finished. The row data in the backup will
         /// be no newer than this timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Required. The expiration time of the backup, with microseconds granularity that must be at least 6
         /// hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud
         /// Bigtable will delete the backup and free the resources used by the backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; } 
+        public virtual object ExpireTime { get; set; }
 
         /// <summary>A globally unique identifier for the backup which cannot be changed. Values are of the form
         /// `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the
@@ -3574,27 +3574,27 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// prefix of the backup name of the form
         /// `projects/{project}/instances/{instance}/clusters/{cluster}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. Size of the backup in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
-        public virtual System.Nullable<long> SizeBytes { get; set; } 
+        public virtual System.Nullable<long> SizeBytes { get; set; }
 
         /// <summary>Required. Immutable. Name of the table from which this backup was created. This needs to be in the
         /// same instance as the backup. Values are of the form
         /// `projects/{project}/instances/{instance}/tables/{source_table}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceTable")]
-        public virtual string SourceTable { get; set; } 
+        public virtual string SourceTable { get; set; }
 
         /// <summary>Output only. `start_time` is the time that the backup was started (i.e. approximately the time the
         /// CreateBackup request is received). The row data in this backup will be no older than this
         /// timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>Output only. The current state of the backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3605,21 +3605,21 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>Output only. Name of the backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backup")]
-        public virtual string Backup { get; set; } 
+        public virtual string Backup { get; set; }
 
         /// <summary>Output only. This time that the backup was finished. Row data in the backup will be no newer than
         /// this timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Output only. Name of the table the backup was created from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceTable")]
-        public virtual string SourceTable { get; set; } 
+        public virtual string SourceTable { get; set; }
 
         /// <summary>Output only. The time that the backup was started. Row data in the backup will be no older than
         /// this timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3634,7 +3634,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
@@ -3656,12 +3656,12 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3672,7 +3672,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>Required. The token created using GenerateConsistencyToken for the Table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consistencyToken")]
-        public virtual string ConsistencyToken { get; set; } 
+        public virtual string ConsistencyToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3684,7 +3684,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>True only if the token is consistent. A token is consistent if replication has caught up with the
         /// restrictions specified in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consistent")]
-        public virtual System.Nullable<bool> Consistent { get; set; } 
+        public virtual System.Nullable<bool> Consistent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3697,27 +3697,27 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless
         /// explicitly overridden.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultStorageType")]
-        public virtual string DefaultStorageType { get; set; } 
+        public virtual string DefaultStorageType { get; set; }
 
         /// <summary>Immutable. The location where this cluster's nodes and storage reside. For best performance,
         /// clients should be located as close as possible to this cluster. Currently only zones are supported, so
         /// values should be of the form `projects/{project}/locations/{zone}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>The unique name of the cluster. Values are of the form
         /// `projects/{project}/instances/{instance}/clusters/a-z*`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and
         /// more consistent performance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serveNodes")]
-        public virtual System.Nullable<int> ServeNodes { get; set; } 
+        public virtual System.Nullable<int> ServeNodes { get; set; }
 
         /// <summary>Output only. The current state of the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3728,7 +3728,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>Output only. The state of replication for the table in this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicationState")]
-        public virtual string ReplicationState { get; set; } 
+        public virtual string ReplicationState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3741,7 +3741,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// collection executes opportunistically in the background, and so it's possible for reads to return a cell
         /// even if it matches the active GC expression for its family.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcRule")]
-        public virtual GcRule GcRule { get; set; } 
+        public virtual GcRule GcRule { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3752,19 +3752,19 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>If set, the time at which this operation finished or was cancelled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>The name of the backup being created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The name of the table the backup is created from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceTable")]
-        public virtual string SourceTable { get; set; } 
+        public virtual string SourceTable { get; set; }
 
         /// <summary>The time at which this operation started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3775,22 +3775,22 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>The time at which the operation failed or was completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finishTime")]
-        public virtual object FinishTime { get; set; } 
+        public virtual object FinishTime { get; set; }
 
         /// <summary>The request that prompted the initiation of this CreateCluster operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalRequest")]
-        public virtual CreateClusterRequest OriginalRequest { get; set; } 
+        public virtual CreateClusterRequest OriginalRequest { get; set; }
 
         /// <summary>The time at which the original request was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestTime")]
-        public virtual object RequestTime { get; set; } 
+        public virtual object RequestTime { get; set; }
 
         /// <summary>Keys: the full `name` of each table that existed in the instance when CreateCluster was first
         /// called, i.e. `projects//instances//tables/`. Any table added to the instance by a later API call will be
         /// created in the new cluster by that API call, not this one. Values: information on how much of a table's data
         /// has been copied to the newly-created cluster so far.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tables")]
-        public virtual System.Collections.Generic.IDictionary<string,TableProgress> Tables { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, TableProgress> Tables { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3801,17 +3801,17 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>Required. The cluster to be created. Fields marked `OutputOnly` must be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
-        public virtual Cluster Cluster { get; set; } 
+        public virtual Cluster Cluster { get; set; }
 
         /// <summary>Required. The ID to be used when referring to the new cluster within its instance, e.g., just
         /// `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
-        public virtual string ClusterId { get; set; } 
+        public virtual string ClusterId { get; set; }
 
         /// <summary>Required. The unique name of the instance in which to create the new cluster. Values are of the
         /// form `projects/{project}/instances/{instance}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; } 
+        public virtual string Parent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3822,15 +3822,15 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>The time at which the operation failed or was completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finishTime")]
-        public virtual object FinishTime { get; set; } 
+        public virtual object FinishTime { get; set; }
 
         /// <summary>The request that prompted the initiation of this CreateInstance operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalRequest")]
-        public virtual CreateInstanceRequest OriginalRequest { get; set; } 
+        public virtual CreateInstanceRequest OriginalRequest { get; set; }
 
         /// <summary>The time at which the original request was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestTime")]
-        public virtual object RequestTime { get; set; } 
+        public virtual object RequestTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3843,21 +3843,21 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked
         /// `OutputOnly` must be left blank. Currently, at most four clusters can be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusters")]
-        public virtual System.Collections.Generic.IDictionary<string,Cluster> Clusters { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, Cluster> Clusters { get; set; }
 
         /// <summary>Required. The instance to create. Fields marked `OutputOnly` must be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
-        public virtual Instance Instance { get; set; } 
+        public virtual Instance Instance { get; set; }
 
         /// <summary>Required. The ID to be used when referring to the new instance within its project, e.g., just
         /// `myinstance` rather than `projects/myproject/instances/myinstance`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
-        public virtual string InstanceId { get; set; } 
+        public virtual string InstanceId { get; set; }
 
         /// <summary>Required. The unique name of the project in which to create the new instance. Values are of the
         /// form `projects/{project}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; } 
+        public virtual string Parent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3874,16 +3874,16 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// "custom"}.` - Tablet 3 `[customer_1, customer_2) => {"customer_1"}.` - Tablet 4 `[customer_2, other) =>
         /// {"customer_2"}.` - Tablet 5 `[other, ) => {"other", "zz"}.`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialSplits")]
-        public virtual System.Collections.Generic.IList<Split> InitialSplits { get; set; } 
+        public virtual System.Collections.Generic.IList<Split> InitialSplits { get; set; }
 
         /// <summary>Required. The Table to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
-        public virtual Table Table { get; set; } 
+        public virtual Table Table { get; set; }
 
         /// <summary>Required. The name by which the new table should be referred to within the parent instance, e.g.,
         /// `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
-        public virtual string TableId { get; set; } 
+        public virtual string TableId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3894,11 +3894,11 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>Delete all rows in the table. Setting this to false is a no-op.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteAllDataFromTable")]
-        public virtual System.Nullable<bool> DeleteAllDataFromTable { get; set; } 
+        public virtual System.Nullable<bool> DeleteAllDataFromTable { get; set; }
 
         /// <summary>Delete all rows that start with this row key prefix. Prefix cannot be zero length.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowKeyPrefix")]
-        public virtual string RowKeyPrefix { get; set; } 
+        public virtual string RowKeyPrefix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3930,21 +3930,21 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3954,7 +3954,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     public class FailureTrace : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("frames")]
-        public virtual System.Collections.Generic.IList<Frame> Frames { get; set; } 
+        public virtual System.Collections.Generic.IList<Frame> Frames { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3963,13 +3963,13 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     public class Frame : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("targetName")]
-        public virtual string TargetName { get; set; } 
+        public virtual string TargetName { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("workflowGuid")]
-        public virtual string WorkflowGuid { get; set; } 
+        public virtual string WorkflowGuid { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("zoneId")]
-        public virtual string ZoneId { get; set; } 
+        public virtual string ZoneId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3980,20 +3980,20 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>Delete cells that would be deleted by every nested rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intersection")]
-        public virtual Intersection Intersection { get; set; } 
+        public virtual Intersection Intersection { get; set; }
 
         /// <summary>Delete cells in a column older than the given age. Values must be at least one millisecond, and
         /// will be truncated to microsecond granularity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxAge")]
-        public virtual object MaxAge { get; set; } 
+        public virtual object MaxAge { get; set; }
 
         /// <summary>Delete all cells in a column except the most recent N.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxNumVersions")]
-        public virtual System.Nullable<int> MaxNumVersions { get; set; } 
+        public virtual System.Nullable<int> MaxNumVersions { get; set; }
 
         /// <summary>Delete cells that would be deleted by any nested rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("union")]
-        public virtual Union Union { get; set; } 
+        public virtual Union Union { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4011,7 +4011,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>The generated consistency token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consistencyToken")]
-        public virtual string ConsistencyToken { get; set; } 
+        public virtual string ConsistencyToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4022,7 +4022,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
-        public virtual GetPolicyOptions Options { get; set; } 
+        public virtual GetPolicyOptions Options { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4037,7 +4037,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// unset. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
-        public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
+        public virtual System.Nullable<int> RequestedPolicyVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4050,7 +4050,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time,
         /// but should be kept globally unique to avoid confusion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Required. Labels are a flexible and lightweight mechanism for organizing cloud resources into
         /// groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter
@@ -4059,20 +4059,20 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be
         /// associated with a given resource. * Keys and values must both be under 128 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The unique name of the instance. Values are of the form
         /// `projects/{project}/instances/a-z+[a-z0-9]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The current state of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Required. The type of the instance. Defaults to `PRODUCTION`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4083,7 +4083,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>Only delete cells which would be deleted by every element of `rules`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
-        public virtual System.Collections.Generic.IList<GcRule> Rules { get; set; } 
+        public virtual System.Collections.Generic.IList<GcRule> Rules { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4094,18 +4094,18 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>The list of requested app profiles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appProfiles")]
-        public virtual System.Collections.Generic.IList<AppProfile> AppProfiles { get; set; } 
+        public virtual System.Collections.Generic.IList<AppProfile> AppProfiles { get; set; }
 
         /// <summary>Locations from which AppProfile information could not be retrieved, due to an outage or some other
         /// transient condition. AppProfiles from these locations may be missing from `app_profiles`. Values are of the
         /// form `projects//locations/`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failedLocations")]
-        public virtual System.Collections.Generic.IList<string> FailedLocations { get; set; } 
+        public virtual System.Collections.Generic.IList<string> FailedLocations { get; set; }
 
         /// <summary>Set if not all app profiles could be returned in a single response. Pass this value to `page_token`
         /// in another request to get the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4116,12 +4116,12 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>The list of matching backups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backups")]
-        public virtual System.Collections.Generic.IList<Backup> Backups { get; set; } 
+        public virtual System.Collections.Generic.IList<Backup> Backups { get; set; }
 
         /// <summary>`next_page_token` can be sent in a subsequent ListBackups call to fetch more of the matching
         /// backups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4132,17 +4132,17 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>The list of requested clusters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusters")]
-        public virtual System.Collections.Generic.IList<Cluster> Clusters { get; set; } 
+        public virtual System.Collections.Generic.IList<Cluster> Clusters { get; set; }
 
         /// <summary>Locations from which Cluster information could not be retrieved, due to an outage or some other
         /// transient condition. Clusters from these locations may be missing from `clusters`, or may only have partial
         /// information returned. Values are of the form `projects//locations/`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failedLocations")]
-        public virtual System.Collections.Generic.IList<string> FailedLocations { get; set; } 
+        public virtual System.Collections.Generic.IList<string> FailedLocations { get; set; }
 
         /// <summary>DEPRECATED: This field is unused and ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4156,15 +4156,15 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// `instances`, and Instances with at least one Cluster in a failed location may only have partial information
         /// returned. Values are of the form `projects//locations/`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failedLocations")]
-        public virtual System.Collections.Generic.IList<string> FailedLocations { get; set; } 
+        public virtual System.Collections.Generic.IList<string> FailedLocations { get; set; }
 
         /// <summary>The list of requested instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
-        public virtual System.Collections.Generic.IList<Instance> Instances { get; set; } 
+        public virtual System.Collections.Generic.IList<Instance> Instances { get; set; }
 
         /// <summary>DEPRECATED: This field is unused and ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4175,11 +4175,11 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>A list of locations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; }
 
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4190,11 +4190,11 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4206,11 +4206,11 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>Set if not all tables could be returned in a single response. Pass this value to `page_token` in
         /// another request to get the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The tables present in the requested instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tables")]
-        public virtual System.Collections.Generic.IList<Table> Tables { get; set; } 
+        public virtual System.Collections.Generic.IList<Table> Tables { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4221,25 +4221,25 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-
         /// east1"}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>Resource name for the location, which may vary between implementations. For example: `"projects
         /// /example-project/locations/us-east1"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4251,20 +4251,20 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>Create a new column family with the specified schema, or fail if one already exists with the given
         /// ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("create")]
-        public virtual ColumnFamily Create { get; set; } 
+        public virtual ColumnFamily Create { get; set; }
 
         /// <summary>Drop (delete) the column family with the given ID, or fail if no such family exists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("drop")]
-        public virtual System.Nullable<bool> Drop { get; set; } 
+        public virtual System.Nullable<bool> Drop { get; set; }
 
         /// <summary>The ID of the column family to be modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Update an existing column family to the specified schema, or fail if no column family exists with
         /// the given ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("update")]
-        public virtual ColumnFamily Update { get; set; } 
+        public virtual ColumnFamily Update { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4277,7 +4277,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// applied in order, meaning that earlier modifications can be masked by later ones (in the case of repeated
         /// updates to the same family, for example).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modifications")]
-        public virtual System.Collections.Generic.IList<Modification> Modifications { get; set; } 
+        public virtual System.Collections.Generic.IList<Modification> Modifications { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4299,23 +4299,23 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -4323,7 +4323,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4334,15 +4334,15 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>If set, the time at which this operation failed or was completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Percent completion of the operation. Values are between 0 and 100 inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
-        public virtual System.Nullable<int> ProgressPercent { get; set; } 
+        public virtual System.Nullable<int> ProgressPercent { get; set; }
 
         /// <summary>Time the request was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4355,11 +4355,11 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>Name of the restored table being optimized.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The progress of the post-restore optimizations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
-        public virtual OperationProgress Progress { get; set; } 
+        public virtual OperationProgress Progress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4370,11 +4370,11 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>Required. The Instance which will (partially) replace the current value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
-        public virtual Instance Instance { get; set; } 
+        public virtual Instance Instance { get; set; }
 
         /// <summary>Required. The subset of Instance fields which should be replaced. Must be explicitly set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4404,12 +4404,12 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
-        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; }
 
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -4420,7 +4420,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
         /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
         /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
@@ -4434,7 +4434,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -4443,11 +4443,11 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>Information about the backup used to restore the table. The backup may no longer exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupInfo")]
-        public virtual BackupInfo BackupInfo { get; set; } 
+        public virtual BackupInfo BackupInfo { get; set; }
 
         /// <summary>The type of the restore source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
-        public virtual string SourceType { get; set; } 
+        public virtual string SourceType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4457,11 +4457,11 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     public class RestoreTableMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("backupInfo")]
-        public virtual BackupInfo BackupInfo { get; set; } 
+        public virtual BackupInfo BackupInfo { get; set; }
 
         /// <summary>Name of the table being created and restored to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>If exists, the name of the long-running operation that will be used to track the post-restore
         /// optimization process to optimize the performance of the restored table. The metadata type of the long-
@@ -4470,15 +4470,15 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// completes successfully. This operation may not be created if the table is already optimized or the restore
         /// was not successful.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optimizeTableOperationName")]
-        public virtual string OptimizeTableOperationName { get; set; } 
+        public virtual string OptimizeTableOperationName { get; set; }
 
         /// <summary>The progress of the RestoreTable operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
-        public virtual OperationProgress Progress { get; set; } 
+        public virtual OperationProgress Progress { get; set; }
 
         /// <summary>The type of the restore source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
-        public virtual string SourceType { get; set; } 
+        public virtual string SourceType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4490,13 +4490,13 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>Name of the backup from which to restore. Values are of the form
         /// `projects//instances//clusters//backups/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backup")]
-        public virtual string Backup { get; set; } 
+        public virtual string Backup { get; set; }
 
         /// <summary>Required. The id of the table to create and restore to. This table must not already exist. The
         /// `table_id` appended to `parent` forms the full table name of the form
         /// `projects//instances//tables/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
-        public virtual string TableId { get; set; } 
+        public virtual string TableId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4509,13 +4509,13 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; } 
+        public virtual Policy Policy { get; set; }
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
         /// will be modified. If no mask is provided, the following default mask is used: `paths: "bindings,
         /// etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4528,11 +4528,11 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>Whether or not `CheckAndMutateRow` and `ReadModifyWriteRow` requests are allowed by this app
         /// profile. It is unsafe to send these requests to the same table/row/column in multiple clusters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowTransactionalWrites")]
-        public virtual System.Nullable<bool> AllowTransactionalWrites { get; set; } 
+        public virtual System.Nullable<bool> AllowTransactionalWrites { get; set; }
 
         /// <summary>The cluster to which read/write requests should be routed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
-        public virtual string ClusterId { get; set; } 
+        public virtual string ClusterId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4543,7 +4543,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>Row key to use as an initial tablet boundary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4558,17 +4558,17 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4582,29 +4582,29 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will
         /// be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `FULL`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterStates")]
-        public virtual System.Collections.Generic.IDictionary<string,ClusterState> ClusterStates { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, ClusterState> ClusterStates { get; set; }
 
         /// <summary>The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`,
         /// `FULL`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnFamilies")]
-        public virtual System.Collections.Generic.IDictionary<string,ColumnFamily> ColumnFamilies { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, ColumnFamily> ColumnFamilies { get; set; }
 
         /// <summary>Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps
         /// not matching the granularity will be rejected. If unspecified at creation time, the value will be set to
         /// `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("granularity")]
-        public virtual string Granularity { get; set; } 
+        public virtual string Granularity { get; set; }
 
         /// <summary>The unique name of the table. Values are of the form
         /// `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`,
         /// `REPLICATION_VIEW`, `FULL`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. If this table was restored from another data source (e.g. a backup), this field will
         /// be populated with information about the restore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restoreInfo")]
-        public virtual RestoreInfo RestoreInfo { get; set; } 
+        public virtual RestoreInfo RestoreInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4616,14 +4616,14 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>Estimate of the number of bytes copied so far for this table. This will eventually reach
         /// 'estimated_size_bytes' unless the table copy is CANCELLED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedCopiedBytes")]
-        public virtual System.Nullable<long> EstimatedCopiedBytes { get; set; } 
+        public virtual System.Nullable<long> EstimatedCopiedBytes { get; set; }
 
         /// <summary>Estimate of the size of the table to be copied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedSizeBytes")]
-        public virtual System.Nullable<long> EstimatedSizeBytes { get; set; } 
+        public virtual System.Nullable<long> EstimatedSizeBytes { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4636,7 +4636,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// 'storage.*') are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4647,7 +4647,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4658,7 +4658,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>Delete cells which would be deleted by any element of `rules`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
-        public virtual System.Collections.Generic.IList<GcRule> Rules { get; set; } 
+        public virtual System.Collections.Generic.IList<GcRule> Rules { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4676,15 +4676,15 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>The time at which the operation failed or was completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finishTime")]
-        public virtual object FinishTime { get; set; } 
+        public virtual object FinishTime { get; set; }
 
         /// <summary>The request that prompted the initiation of this UpdateCluster operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalRequest")]
-        public virtual Cluster OriginalRequest { get; set; } 
+        public virtual Cluster OriginalRequest { get; set; }
 
         /// <summary>The time at which the original request was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestTime")]
-        public virtual object RequestTime { get; set; } 
+        public virtual object RequestTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4695,15 +4695,15 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>The time at which the operation failed or was completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finishTime")]
-        public virtual object FinishTime { get; set; } 
+        public virtual object FinishTime { get; set; }
 
         /// <summary>The request that prompted the initiation of this UpdateInstance operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalRequest")]
-        public virtual PartialUpdateInstanceRequest OriginalRequest { get; set; } 
+        public virtual PartialUpdateInstanceRequest OriginalRequest { get; set; }
 
         /// <summary>The time at which the original request was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestTime")]
-        public virtual object RequestTime { get; set; } 
+        public virtual object RequestTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

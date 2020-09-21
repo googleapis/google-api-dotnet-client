@@ -630,24 +630,24 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
     {
         /// <summary>Etag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The application's ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies the resource as a DataTransfer Application Resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The application's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The list of all possible transfer parameters for this application. These parameters can be used to
         /// select the data of the user in this application to be transferred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferParams")]
-        public virtual System.Collections.Generic.IList<ApplicationTransferParam> TransferParams { get; set; } 
+        public virtual System.Collections.Generic.IList<ApplicationTransferParam> TransferParams { get; set; }
 
     }    
 
@@ -656,16 +656,16 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
     {
         /// <summary>The application's ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicationId")]
-        public virtual System.Nullable<long> ApplicationId { get; set; } 
+        public virtual System.Nullable<long> ApplicationId { get; set; }
 
         /// <summary>The transfer parameters for the application. These parameters are used to select the data which
         /// will get transferred in context of this application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicationTransferParams")]
-        public virtual System.Collections.Generic.IList<ApplicationTransferParam> ApplicationTransferParams { get; set; } 
+        public virtual System.Collections.Generic.IList<ApplicationTransferParam> ApplicationTransferParams { get; set; }
 
         /// <summary>Current status of transfer for this application. (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicationTransferStatus")]
-        public virtual string ApplicationTransferStatus { get; set; } 
+        public virtual string ApplicationTransferStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -676,11 +676,11 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
     {
         /// <summary>The type of the transfer parameter. eg: 'PRIVACY_LEVEL'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>The value of the corresponding transfer parameter. eg: 'PRIVATE' or 'SHARED'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual System.Collections.Generic.IList<string> Value { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -693,19 +693,19 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
     {
         /// <summary>List of applications that support data transfer and are also installed for the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applications")]
-        public virtual System.Collections.Generic.IList<Application> Applications { get; set; } 
+        public virtual System.Collections.Generic.IList<Application> Applications { get; set; }
 
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Identifies the resource as a collection of Applications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Continuation token which will be used to specify next page in list API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
     }    
 
@@ -718,31 +718,31 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
         /// applications associated with this transfer resource. Note that this list is also used to specify the
         /// applications for which data transfer has to be done at the time of the transfer resource creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicationDataTransfers")]
-        public virtual System.Collections.Generic.IList<ApplicationDataTransfer> ApplicationDataTransfers { get; set; } 
+        public virtual System.Collections.Generic.IList<ApplicationDataTransfer> ApplicationDataTransfers { get; set; }
 
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The transfer's ID (Read-only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies the resource as a DataTransfer request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>ID of the user to whom the data is being transferred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newOwnerUserId")]
-        public virtual string NewOwnerUserId { get; set; } 
+        public virtual string NewOwnerUserId { get; set; }
 
         /// <summary>ID of the user whose data is being transferred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oldOwnerUserId")]
-        public virtual string OldOwnerUserId { get; set; } 
+        public virtual string OldOwnerUserId { get; set; }
 
         /// <summary>Overall transfer status (Read-only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overallTransferStatusCode")]
-        public virtual string OverallTransferStatusCode { get; set; } 
+        public virtual string OverallTransferStatusCode { get; set; }
 
         /// <summary>The time at which the data transfer was requested (Read-only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestTime")]
@@ -765,19 +765,19 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
     {
         /// <summary>List of data transfer requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataTransfers")]
-        public virtual System.Collections.Generic.IList<DataTransfer> DataTransfers { get; set; } 
+        public virtual System.Collections.Generic.IList<DataTransfer> DataTransfers { get; set; }
 
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Identifies the resource as a collection of data transfer requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Continuation token which will be used to specify next page in list API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
     }
 }

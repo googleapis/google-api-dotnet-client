@@ -1410,7 +1410,7 @@ namespace Google.Apis.BigQueryReservation.v1alpha2.Data
         /// <summary>Resource name of the slot pool that is being created. E.g., projects/myproject/locations/us-
         /// central1/reservations/foo/slotPools/123</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slotPool")]
-        public virtual string SlotPool { get; set; } 
+        public virtual string SlotPool { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1432,11 +1432,11 @@ namespace Google.Apis.BigQueryReservation.v1alpha2.Data
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>List of reservation grants visible to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservationGrants")]
-        public virtual System.Collections.Generic.IList<ReservationGrant> ReservationGrants { get; set; } 
+        public virtual System.Collections.Generic.IList<ReservationGrant> ReservationGrants { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1448,11 +1448,11 @@ namespace Google.Apis.BigQueryReservation.v1alpha2.Data
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>List of reservations visible to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservations")]
-        public virtual System.Collections.Generic.IList<Reservation> Reservations { get; set; } 
+        public virtual System.Collections.Generic.IList<Reservation> Reservations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1464,11 +1464,11 @@ namespace Google.Apis.BigQueryReservation.v1alpha2.Data
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>List of slot pools visible to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slotPools")]
-        public virtual System.Collections.Generic.IList<SlotPool> SlotPools { get; set; } 
+        public virtual System.Collections.Generic.IList<SlotPool> SlotPools { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1480,23 +1480,23 @@ namespace Google.Apis.BigQueryReservation.v1alpha2.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -1504,7 +1504,7 @@ namespace Google.Apis.BigQueryReservation.v1alpha2.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1517,7 +1517,7 @@ namespace Google.Apis.BigQueryReservation.v1alpha2.Data
         /// Reservation names (e.g., "dev/team/product") exceeding a depth of six will fail with
         /// `google.rpc.Code.INVALID_ARGUMENT`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Maximum slots available to this reservation and its children. A slot is a unit of computational
         /// power in BigQuery, and serves as the unit of parallelism. In a scan of a multi-partitioned table, a single
@@ -1525,7 +1525,7 @@ namespace Google.Apis.BigQueryReservation.v1alpha2.Data
         /// slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot
         /// capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slotCapacity")]
-        public virtual System.Nullable<long> SlotCapacity { get; set; } 
+        public virtual System.Nullable<long> SlotCapacity { get; set; }
 
         /// <summary>If true, any query using this reservation will also be submitted to the parent reservation. This
         /// allows the query to share the additional slot capacity of the parent with other queries in the parent
@@ -1534,7 +1534,7 @@ namespace Google.Apis.BigQueryReservation.v1alpha2.Data
         /// the maximum slot capacity as specified above. If not specified, default value is true. Ignored for top-level
         /// reservation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useParentReservation")]
-        public virtual System.Nullable<bool> UseParentReservation { get; set; } 
+        public virtual System.Nullable<bool> UseParentReservation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1547,26 +1547,26 @@ namespace Google.Apis.BigQueryReservation.v1alpha2.Data
         /// <summary>The resource which will use the reservation. E.g. projects/myproject, folders/123,
         /// organizations/456.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("grantee")]
-        public virtual string Grantee { get; set; } 
+        public virtual string Grantee { get; set; }
 
         /// <summary>Which type of jobs will use the reservation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobType")]
-        public virtual string JobType { get; set; } 
+        public virtual string JobType { get; set; }
 
         /// <summary>Output only. Name of the resource. E.g.:
         /// projects/myproject/locations/eu/reservationGrants/123.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Resource name of the reservation. E.g.,
         /// projects/myproject/locations/eu/reservations/my_reservation. This reservation must be in the same location
         /// as the grant. This reservation should belong to the same parent project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservation")]
-        public virtual string Reservation { get; set; } 
+        public virtual string Reservation { get; set; }
 
         /// <summary>Output only. State of the ReservationGrant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1578,11 +1578,11 @@ namespace Google.Apis.BigQueryReservation.v1alpha2.Data
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>List of reservation grants visible to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservationGrants")]
-        public virtual System.Collections.Generic.IList<ReservationGrant> ReservationGrants { get; set; } 
+        public virtual System.Collections.Generic.IList<ReservationGrant> ReservationGrants { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1599,28 +1599,28 @@ namespace Google.Apis.BigQueryReservation.v1alpha2.Data
         /// commitment_end_time. It is applicable only for ACTIVE slot pools and is computed as a combination of the
         /// plan and the time when the slot pool became ACTIVE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commitmentEndTime")]
-        public virtual object CommitmentEndTime { get; set; } 
+        public virtual object CommitmentEndTime { get; set; }
 
         /// <summary>Output only. For FAILED slot pool, provides the reason of failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureStatus")]
-        public virtual Status FailureStatus { get; set; } 
+        public virtual Status FailureStatus { get; set; }
 
         /// <summary>Output only. The resource name of the slot pool, e.g., projects/myproject/locations/us-
         /// central1/reservations/myreservation/slotPools/123</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Slot pool commitment plan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plan")]
-        public virtual string Plan { get; set; } 
+        public virtual string Plan { get; set; }
 
         /// <summary>Number of slots in this pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slotCount")]
-        public virtual System.Nullable<long> SlotCount { get; set; } 
+        public virtual System.Nullable<long> SlotCount { get; set; }
 
         /// <summary>Output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1635,17 +1635,17 @@ namespace Google.Apis.BigQueryReservation.v1alpha2.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

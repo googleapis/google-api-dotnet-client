@@ -409,15 +409,15 @@ namespace Google.Apis.PlayableLocations.v3.Data
         /// represent a distinct type of game object in your game. For example, 1=monster location, 2=powerup
         /// location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gameObjectType")]
-        public virtual System.Nullable<int> GameObjectType { get; set; } 
+        public virtual System.Nullable<int> GameObjectType { get; set; }
 
         /// <summary>Required. The type of impression event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("impressionType")]
-        public virtual string ImpressionType { get; set; } 
+        public virtual string ImpressionType { get; set; }
 
         /// <summary>Required. The name of the playable location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationName")]
-        public virtual string LocationName { get; set; } 
+        public virtual string LocationName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -429,19 +429,19 @@ namespace Google.Apis.PlayableLocations.v3.Data
         /// <summary>Required. Information about the client device. For example, device model and operating
         /// system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientInfo")]
-        public virtual GoogleMapsUnityClientInfo ClientInfo { get; set; } 
+        public virtual GoogleMapsUnityClientInfo ClientInfo { get; set; }
 
         /// <summary>Required. Impression event details. The maximum number of impression reports that you can log at
         /// once is 50.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("impressions")]
-        public virtual System.Collections.Generic.IList<GoogleMapsPlayablelocationsV3Impression> Impressions { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleMapsPlayablelocationsV3Impression> Impressions { get; set; }
 
         /// <summary>Required. A string that uniquely identifies the log impressions request. This allows you to detect
         /// duplicate requests. We recommend that you use UUIDs for this value. The value must not exceed 50 characters.
         /// You should reuse the `request_id` only when retrying a request in case of failure. In this case, the request
         /// must be identical to the one that failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; } 
+        public virtual string RequestId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -460,19 +460,19 @@ namespace Google.Apis.PlayableLocations.v3.Data
         /// <summary>Required. Information about the client device (for example, device model and operating
         /// system).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientInfo")]
-        public virtual GoogleMapsUnityClientInfo ClientInfo { get; set; } 
+        public virtual GoogleMapsUnityClientInfo ClientInfo { get; set; }
 
         /// <summary>Required. Player reports. The maximum number of player reports that you can log at once is
         /// 50.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playerReports")]
-        public virtual System.Collections.Generic.IList<GoogleMapsPlayablelocationsV3PlayerReport> PlayerReports { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleMapsPlayablelocationsV3PlayerReport> PlayerReports { get; set; }
 
         /// <summary>Required. A string that uniquely identifies the log player reports request. This allows you to
         /// detect duplicate requests. We recommend that you use UUIDs for this value. The value must not exceed 50
         /// characters. You should reuse the `request_id` only when retrying a request in the case of a failure. In that
         /// case, the request must be identical to the one that failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; } 
+        public virtual string RequestId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -493,19 +493,19 @@ namespace Google.Apis.PlayableLocations.v3.Data
         /// `reason_details`. Examples are "en", "en-US" or "ja-Latn". For more information, see
         /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>Required. The name of the playable location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationName")]
-        public virtual string LocationName { get; set; } 
+        public virtual string LocationName { get; set; }
 
         /// <summary>Required. A free-form description detailing why the playable location is considered bad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasonDetails")]
-        public virtual string ReasonDetails { get; set; } 
+        public virtual string ReasonDetails { get; set; }
 
         /// <summary>Required. One or more reasons why this playable location is considered bad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasons")]
-        public virtual System.Collections.Generic.IList<string> Reasons { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Reasons { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -521,7 +521,7 @@ namespace Google.Apis.PlayableLocations.v3.Data
         /// [Go](https://github.com/golang/geo) *
         /// [Python](https://github.com/google/s2geometry/tree/master/src/python)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("s2CellId")]
-        public virtual System.Nullable<ulong> S2CellId { get; set; } 
+        public virtual System.Nullable<ulong> S2CellId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -535,11 +535,11 @@ namespace Google.Apis.PlayableLocations.v3.Data
         /// omitted unless you specify them here: * snapped_point * types Note: The more fields you include, the more
         /// expensive in terms of data and associated latency your query will be.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldsToReturn")]
-        public virtual object FieldsToReturn { get; set; } 
+        public virtual object FieldsToReturn { get; set; }
 
         /// <summary>Specifies filtering options, and specifies what will be included in the result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual GoogleMapsPlayablelocationsV3SampleFilter Filter { get; set; } 
+        public virtual GoogleMapsPlayablelocationsV3SampleFilter Filter { get; set; }
 
         /// <summary>Required. An arbitrary, developer-defined identifier of the type of game object that the playable
         /// location is used for. This field allows you to specify criteria per game object type when searching for
@@ -547,7 +547,7 @@ namespace Google.Apis.PlayableLocations.v3.Data
         /// represent a distinct type of game object. For example, 1=monster location, 2=powerup location. The response
         /// contains a map.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gameObjectType")]
-        public virtual System.Nullable<int> GameObjectType { get; set; } 
+        public virtual System.Nullable<int> GameObjectType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -559,17 +559,17 @@ namespace Google.Apis.PlayableLocations.v3.Data
         /// <summary>Restricts the set of playable locations to just the [types](/maps/documentation/gaming/tt/types)
         /// that you want.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedTypes")]
-        public virtual System.Collections.Generic.IList<string> IncludedTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> IncludedTypes { get; set; }
 
         /// <summary>Specifies the maximum number of playable locations to return. This value must not be greater than
         /// 1000. The default value is 100. Only the top-ranking playable locations are returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxLocationCount")]
-        public virtual System.Nullable<int> MaxLocationCount { get; set; } 
+        public virtual System.Nullable<int> MaxLocationCount { get; set; }
 
         /// <summary>A set of options that control the spacing between playable locations. By default the minimum
         /// distance between locations is 200m.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spacing")]
-        public virtual GoogleMapsPlayablelocationsV3SampleSpacingOptions Spacing { get; set; } 
+        public virtual GoogleMapsPlayablelocationsV3SampleSpacingOptions Spacing { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -582,30 +582,30 @@ namespace Google.Apis.PlayableLocations.v3.Data
         /// default, the set of playable locations returned from SamplePlayableLocations use center-point
         /// coordinates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("centerPoint")]
-        public virtual GoogleTypeLatLng CenterPoint { get; set; } 
+        public virtual GoogleTypeLatLng CenterPoint { get; set; }
 
         /// <summary>Required. The name of this playable location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>A [place ID] (https://developers.google.com/places/place-id)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placeId")]
-        public virtual string PlaceId { get; set; } 
+        public virtual string PlaceId { get; set; }
 
         /// <summary>A [plus code] (http://openlocationcode.com)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plusCode")]
-        public virtual string PlusCode { get; set; } 
+        public virtual string PlusCode { get; set; }
 
         /// <summary>The playable location's coordinates, snapped to the sidewalk of the nearest road, if a nearby road
         /// exists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snappedPoint")]
-        public virtual GoogleTypeLatLng SnappedPoint { get; set; } 
+        public virtual GoogleTypeLatLng SnappedPoint { get; set; }
 
         /// <summary>A collection of [Playable Location Types](/maps/documentation/gaming/tt/types) for this playable
         /// location. The first type in the collection is the primary type. Type information might not be available for
         /// all playable locations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("types")]
-        public virtual System.Collections.Generic.IList<string> Types { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Types { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -616,7 +616,7 @@ namespace Google.Apis.PlayableLocations.v3.Data
     {
         /// <summary>A list of playable locations for this game object type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<GoogleMapsPlayablelocationsV3SamplePlayableLocation> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleMapsPlayablelocationsV3SamplePlayableLocation> Locations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -636,12 +636,12 @@ namespace Google.Apis.PlayableLocations.v3.Data
     {
         /// <summary>Required. Specifies the area to search within for playable locations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("areaFilter")]
-        public virtual GoogleMapsPlayablelocationsV3SampleAreaFilter AreaFilter { get; set; } 
+        public virtual GoogleMapsPlayablelocationsV3SampleAreaFilter AreaFilter { get; set; }
 
         /// <summary>Required. Specifies one or more (up to 5) criteria for filtering the returned playable
         /// locations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("criteria")]
-        public virtual System.Collections.Generic.IList<GoogleMapsPlayablelocationsV3SampleCriterion> Criteria { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleMapsPlayablelocationsV3SampleCriterion> Criteria { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -652,7 +652,7 @@ namespace Google.Apis.PlayableLocations.v3.Data
     {
         /// <summary>Each PlayableLocation object corresponds to a game_object_type specified in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationsPerGameObjectType")]
-        public virtual System.Collections.Generic.IDictionary<string,GoogleMapsPlayablelocationsV3SamplePlayableLocationList> LocationsPerGameObjectType { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, GoogleMapsPlayablelocationsV3SamplePlayableLocationList> LocationsPerGameObjectType { get; set; }
 
         /// <summary>Required. Specifies the "time-to-live" for the set of playable locations. You can use this value to
         /// determine how long to cache the set of playable locations. After this length of time, your back-end game
@@ -660,7 +660,7 @@ namespace Google.Apis.PlayableLocations.v3.Data
         /// for example, they might have been removed, a park might have closed for the day, a business might have
         /// closed permanently).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
-        public virtual object Ttl { get; set; } 
+        public virtual object Ttl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -681,13 +681,13 @@ namespace Google.Apis.PlayableLocations.v3.Data
         /// X and Y. The distance diagram between those locations end up as: * From->To. * X->X: 400m * Y->X, Y->Y:
         /// unspecified. * Z->X, Z->Y, Z->Z: 200m.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minSpacingMeters")]
-        public virtual System.Nullable<double> MinSpacingMeters { get; set; } 
+        public virtual System.Nullable<double> MinSpacingMeters { get; set; }
 
         /// <summary>Specifies whether the minimum spacing constraint applies to the center-point or to the snapped
         /// point of playable locations. The default value is `CENTER_POINT`. If a snapped point is not available for a
         /// playable location, its center-point is used instead. Set this to the point type used in your game.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pointType")]
-        public virtual string PointType { get; set; } 
+        public virtual string PointType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -699,40 +699,40 @@ namespace Google.Apis.PlayableLocations.v3.Data
         /// <summary>API client name and version. For example, the SDK calling the API. The exact format is up to the
         /// client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiClient")]
-        public virtual string ApiClient { get; set; } 
+        public virtual string ApiClient { get; set; }
 
         /// <summary>Application ID, such as the package name on Android and the bundle identifier on iOS
         /// platforms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicationId")]
-        public virtual string ApplicationId { get; set; } 
+        public virtual string ApplicationId { get; set; }
 
         /// <summary>Application version number, such as "1.2.3". The exact format is application-dependent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicationVersion")]
-        public virtual string ApplicationVersion { get; set; } 
+        public virtual string ApplicationVersion { get; set; }
 
         /// <summary>Device model as reported by the device. The exact format is platform-dependent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceModel")]
-        public virtual string DeviceModel { get; set; } 
+        public virtual string DeviceModel { get; set; }
 
         /// <summary>Language code (in BCP-47 format) indicating the UI language of the client. Examples are "en", "en-
         /// US" or "ja-Latn". For more information, see
         /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>Operating system name and version as reported by the OS. For example, "Mac OS X 10.10.4". The exact
         /// format is platform-dependent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatingSystem")]
-        public virtual string OperatingSystem { get; set; } 
+        public virtual string OperatingSystem { get; set; }
 
         /// <summary>Build number/version of the operating system. e.g., the contents of android.os.Build.ID in Android,
         /// or the contents of sysctl "kern.osversion" in iOS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatingSystemBuild")]
-        public virtual string OperatingSystemBuild { get; set; } 
+        public virtual string OperatingSystemBuild { get; set; }
 
         /// <summary>Platform where the application is running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platform")]
-        public virtual string Platform { get; set; } 
+        public virtual string Platform { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -745,11 +745,11 @@ namespace Google.Apis.PlayableLocations.v3.Data
     {
         /// <summary>The latitude in degrees. It must be in the range [-90.0, +90.0].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latitude")]
-        public virtual System.Nullable<double> Latitude { get; set; } 
+        public virtual System.Nullable<double> Latitude { get; set; }
 
         /// <summary>The longitude in degrees. It must be in the range [-180.0, +180.0].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
-        public virtual System.Nullable<double> Longitude { get; set; } 
+        public virtual System.Nullable<double> Longitude { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1235,13 +1235,13 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// <summary>The number of intervals to aggregate over. Example: If aggregation_level is "DAILY" and
         /// aggregation_count is 14, aggregation will be over 14 days.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregationCount")]
-        public virtual System.Nullable<int> AggregationCount { get; set; } 
+        public virtual System.Nullable<int> AggregationCount { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("aggregationInterval")]
-        public virtual string AggregationInterval { get; set; } 
+        public virtual string AggregationInterval { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("aggregationLevel")]
-        public virtual string AggregationLevel { get; set; } 
+        public virtual string AggregationLevel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1262,12 +1262,12 @@ namespace Google.Apis.Cloudbilling.v1.Data
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
-        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; }
 
         /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
         /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1282,11 +1282,11 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
         /// format of Binding.members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
-        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
 
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
-        public virtual string LogType { get; set; } 
+        public virtual string LogType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1299,25 +1299,25 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// <summary>The display name given to the billing account, such as `My Billing Account`. This name is displayed
         /// in the Google Cloud Console.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>If this account is a [subaccount](https://cloud.google.com/billing/docs/concepts), then this will
         /// be the resource name of the master billing account that it is being resold through. Otherwise this will be
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterBillingAccount")]
-        public virtual string MasterBillingAccount { get; set; } 
+        public virtual string MasterBillingAccount { get; set; }
 
         /// <summary>Output only. The resource name of the billing account. The resource name has the form
         /// `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF` would be the
         /// resource name for billing account `012345-567890-ABCDEF`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. True if the billing account is open, and will therefore be charged for any usage on
         /// associated projects. False if the billing account is closed, and therefore projects associated with it will
         /// be unable to use paid services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("open")]
-        public virtual System.Nullable<bool> Open { get; set; } 
+        public virtual System.Nullable<bool> Open { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1332,7 +1332,7 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
@@ -1354,12 +1354,12 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1371,21 +1371,21 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// <summary>The type of product the SKU refers to. Example: "Compute", "Storage", "Network",
         /// "ApplicationServices" etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceFamily")]
-        public virtual string ResourceFamily { get; set; } 
+        public virtual string ResourceFamily { get; set; }
 
         /// <summary>A group classification for related SKUs. Example: "RAM", "GPU", "Prediction", "Ops", "GoogleEgress"
         /// etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceGroup")]
-        public virtual string ResourceGroup { get; set; } 
+        public virtual string ResourceGroup { get; set; }
 
         /// <summary>The display name of the service this SKU belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceDisplayName")]
-        public virtual string ServiceDisplayName { get; set; } 
+        public virtual string ServiceDisplayName { get; set; }
 
         /// <summary>Represents how the SKU is consumed. Example: "OnDemand", "Preemptible", "Commit1Mo", "Commit1Yr"
         /// etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usageType")]
-        public virtual string UsageType { get; set; } 
+        public virtual string UsageType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1407,21 +1407,21 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1433,11 +1433,11 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// <summary>The list of regions associated with a sku. Empty for Global skus, which are associated with all
         /// Google Cloud regions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regions")]
-        public virtual System.Collections.Generic.IList<string> Regions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Regions { get; set; }
 
         /// <summary>The type of Geo Taxonomy: GLOBAL, REGIONAL, or MULTI_REGIONAL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1448,13 +1448,13 @@ namespace Google.Apis.Cloudbilling.v1.Data
     {
         /// <summary>A list of billing accounts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingAccounts")]
-        public virtual System.Collections.Generic.IList<BillingAccount> BillingAccounts { get; set; } 
+        public virtual System.Collections.Generic.IList<BillingAccount> BillingAccounts { get; set; }
 
         /// <summary>A token to retrieve the next page of results. To retrieve the next page, call `ListBillingAccounts`
         /// again with the `page_token` field set to this value. This field is empty if there are no more results to
         /// retrieve.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1467,12 +1467,12 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// `ListProjectBillingInfo` again with the `page_token` field set to this value. This field is empty if there
         /// are no more results to retrieve.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of `ProjectBillingInfo` resources representing the projects associated with the billing
         /// account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectBillingInfo")]
-        public virtual System.Collections.Generic.IList<ProjectBillingInfo> ProjectBillingInfo { get; set; } 
+        public virtual System.Collections.Generic.IList<ProjectBillingInfo> ProjectBillingInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1485,11 +1485,11 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// with the `page_token` field set to this value. This field is empty if there are no more results to
         /// retrieve.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
-        public virtual System.Collections.Generic.IList<Service> Services { get; set; } 
+        public virtual System.Collections.Generic.IList<Service> Services { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1502,11 +1502,11 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// the `page_token` field set to this value. This field is empty if there are no more results to
         /// retrieve.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of public SKUs of the given service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skus")]
-        public virtual System.Collections.Generic.IList<Sku> Skus { get; set; } 
+        public virtual System.Collections.Generic.IList<Sku> Skus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1517,19 +1517,19 @@ namespace Google.Apis.Cloudbilling.v1.Data
     {
         /// <summary>The 3-letter currency code defined in ISO 4217.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
-        public virtual string CurrencyCode { get; set; } 
+        public virtual string CurrencyCode { get; set; }
 
         /// <summary>Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999
         /// inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be
         /// positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is
         /// represented as `units`=-1 and `nanos`=-750,000,000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
-        public virtual System.Nullable<int> Nanos { get; set; } 
+        public virtual System.Nullable<int> Nanos { get; set; }
 
         /// <summary>The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US
         /// dollar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("units")]
-        public virtual System.Nullable<long> Units { get; set; } 
+        public virtual System.Nullable<long> Units { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1559,12 +1559,12 @@ namespace Google.Apis.Cloudbilling.v1.Data
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
-        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; }
 
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -1575,7 +1575,7 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
         /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
         /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
@@ -1589,7 +1589,7 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -1601,17 +1601,17 @@ namespace Google.Apis.Cloudbilling.v1.Data
     {
         /// <summary>The base unit for the SKU which is the unit used in usage exports. Example: "By"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseUnit")]
-        public virtual string BaseUnit { get; set; } 
+        public virtual string BaseUnit { get; set; }
 
         /// <summary>Conversion factor for converting from price per usage_unit to price per base_unit, and
         /// start_usage_amount to start_usage_amount in base_unit. unit_price / base_unit_conversion_factor = price per
         /// base_unit. start_usage_amount * base_unit_conversion_factor = start_usage_amount in base_unit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseUnitConversionFactor")]
-        public virtual System.Nullable<double> BaseUnitConversionFactor { get; set; } 
+        public virtual System.Nullable<double> BaseUnitConversionFactor { get; set; }
 
         /// <summary>The base unit in human readable form. Example: "byte".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseUnitDescription")]
-        public virtual string BaseUnitDescription { get; set; } 
+        public virtual string BaseUnitDescription { get; set; }
 
         /// <summary>The recommended quantity of units for displaying pricing info. When displaying pricing info it is
         /// recommended to display: (unit_price * display_quantity) per display_quantity usage_unit. This field does not
@@ -1619,21 +1619,21 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// usage_unit is "GB" and the display_quantity is "1000" then the recommended way of displaying the pricing
         /// info is "0.10 USD per 1000 GB"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayQuantity")]
-        public virtual System.Nullable<double> DisplayQuantity { get; set; } 
+        public virtual System.Nullable<double> DisplayQuantity { get; set; }
 
         /// <summary>The list of tiered rates for this pricing. The total cost is computed by applying each of the
         /// tiered rates on usage. This repeated list is sorted by ascending order of start_usage_amount.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tieredRates")]
-        public virtual System.Collections.Generic.IList<TierRate> TieredRates { get; set; } 
+        public virtual System.Collections.Generic.IList<TierRate> TieredRates { get; set; }
 
         /// <summary>The short hand for unit of usage this pricing is specified in. Example: usage_unit of "GiBy" means
         /// that usage is specified in "Gibi Byte".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usageUnit")]
-        public virtual string UsageUnit { get; set; } 
+        public virtual string UsageUnit { get; set; }
 
         /// <summary>The unit of usage in human readable form. Example: "gibi byte".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usageUnitDescription")]
-        public virtual string UsageUnitDescription { get; set; } 
+        public virtual string UsageUnitDescription { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1645,29 +1645,29 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// <summary>Aggregation Info. This can be left unspecified if the pricing expression doesn't require
         /// aggregation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregationInfo")]
-        public virtual AggregationInfo AggregationInfo { get; set; } 
+        public virtual AggregationInfo AggregationInfo { get; set; }
 
         /// <summary>Conversion rate used for currency conversion, from USD to the currency specified in the request.
         /// This includes any surcharge collected for billing in non USD currency. If a currency is not specified in the
         /// request this defaults to 1.0. Example: USD * currency_conversion_rate = JPY</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyConversionRate")]
-        public virtual System.Nullable<double> CurrencyConversionRate { get; set; } 
+        public virtual System.Nullable<double> CurrencyConversionRate { get; set; }
 
         /// <summary>The timestamp from which this pricing was effective within the requested time range. This is
         /// guaranteed to be greater than or equal to the start_time field in the request and less than the end_time
         /// field in the request. If a time range was not specified in the request this field will be equivalent to a
         /// time within the last 12 hours, indicating the latest pricing info.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveTime")]
-        public virtual object EffectiveTime { get; set; } 
+        public virtual object EffectiveTime { get; set; }
 
         /// <summary>Expresses the pricing formula. See `PricingExpression` for an example.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pricingExpression")]
-        public virtual PricingExpression PricingExpression { get; set; } 
+        public virtual PricingExpression PricingExpression { get; set; }
 
         /// <summary>An optional human readable summary of the pricing information, has a maximum length of 256
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summary")]
-        public virtual string Summary { get; set; } 
+        public virtual string Summary { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1680,25 +1680,25 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// <summary>The resource name of the billing account associated with the project, if any. For example,
         /// `billingAccounts/012345-567890-ABCDEF`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingAccountName")]
-        public virtual string BillingAccountName { get; set; } 
+        public virtual string BillingAccountName { get; set; }
 
         /// <summary>True if the project is associated with an open billing account, to which usage on the project is
         /// charged. False if the project is associated with a closed billing account, or no billing account at all, and
         /// therefore cannot use paid services. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingEnabled")]
-        public virtual System.Nullable<bool> BillingEnabled { get; set; } 
+        public virtual System.Nullable<bool> BillingEnabled { get; set; }
 
         /// <summary>The resource name for the `ProjectBillingInfo`; has the form `projects/{project_id}/billingInfo`.
         /// For example, the resource name for the billing information for project `tokyo-rain-123` would be `projects
         /// /tokyo-rain-123/billingInfo`. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ID of the project that this `ProjectBillingInfo` represents, such as `tokyo-rain-123`. This is
         /// a convenience field so that you don't need to parse the `name` field to obtain a project ID. This field is
         /// read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1710,19 +1710,19 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// <summary>The business under which the service is offered. Ex. "businessEntities/GCP",
         /// "businessEntities/Maps"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("businessEntityName")]
-        public virtual string BusinessEntityName { get; set; } 
+        public virtual string BusinessEntityName { get; set; }
 
         /// <summary>A human readable display name for this service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The resource name for the service. Example: "services/DA34-426B-A397"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The identifier for the service. Example: "DA34-426B-A397"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceId")]
-        public virtual string ServiceId { get; set; } 
+        public virtual string ServiceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1735,13 +1735,13 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; } 
+        public virtual Policy Policy { get; set; }
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
         /// will be modified. If no mask is provided, the following default mask is used: `paths: "bindings,
         /// etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1752,37 +1752,37 @@ namespace Google.Apis.Cloudbilling.v1.Data
     {
         /// <summary>The category hierarchy of this SKU, purely for organizational purpose.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
-        public virtual Category Category { get; set; } 
+        public virtual Category Category { get; set; }
 
         /// <summary>A human readable description of the SKU, has a maximum length of 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The geographic taxonomy for this sku.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoTaxonomy")]
-        public virtual GeoTaxonomy GeoTaxonomy { get; set; } 
+        public virtual GeoTaxonomy GeoTaxonomy { get; set; }
 
         /// <summary>The resource name for the SKU. Example: "services/DA34-426B-A397/skus/AA95-CD31-42FE"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>A timeline of pricing info for this SKU in chronological order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pricingInfo")]
-        public virtual System.Collections.Generic.IList<PricingInfo> PricingInfo { get; set; } 
+        public virtual System.Collections.Generic.IList<PricingInfo> PricingInfo { get; set; }
 
         /// <summary>Identifies the service provider. This is 'Google' for first party services in Google Cloud
         /// Platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceProviderName")]
-        public virtual string ServiceProviderName { get; set; } 
+        public virtual string ServiceProviderName { get; set; }
 
         /// <summary>List of service regions this SKU is offered at. Example: "asia-east1" Service regions can be found
         /// at https://cloud.google.com/about/locations/</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceRegions")]
-        public virtual System.Collections.Generic.IList<string> ServiceRegions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ServiceRegions { get; set; }
 
         /// <summary>The identifier for the SKU. Example: "AA95-CD31-42FE"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skuId")]
-        public virtual string SkuId { get; set; } 
+        public virtual string SkuId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1795,7 +1795,7 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// 'storage.*') are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1806,7 +1806,7 @@ namespace Google.Apis.Cloudbilling.v1.Data
     {
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1818,12 +1818,12 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// <summary>Usage is priced at this rate only after this amount. Example: start_usage_amount of 10 indicates
         /// that the usage will be priced at the unit_price after the first 10 usage_units.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startUsageAmount")]
-        public virtual System.Nullable<double> StartUsageAmount { get; set; } 
+        public virtual System.Nullable<double> StartUsageAmount { get; set; }
 
         /// <summary>The price per unit of usage. Example: unit_price of amount $10 indicates that each unit will cost
         /// $10.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unitPrice")]
-        public virtual Money UnitPrice { get; set; } 
+        public virtual Money UnitPrice { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

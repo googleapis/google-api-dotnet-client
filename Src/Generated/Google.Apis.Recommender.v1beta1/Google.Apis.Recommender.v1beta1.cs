@@ -941,11 +941,11 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// savings and positive cost units indicate increase. See google.type.Money documentation for positive/negative
         /// units.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cost")]
-        public virtual GoogleTypeMoney Cost { get; set; } 
+        public virtual GoogleTypeMoney Cost { get; set; }
 
         /// <summary>Duration for which this cost applies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual object Duration { get; set; } 
+        public virtual object Duration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -956,11 +956,11 @@ namespace Google.Apis.Recommender.v1beta1.Data
     {
         /// <summary>Category that is being targeted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
-        public virtual string Category { get; set; } 
+        public virtual string Category { get; set; }
 
         /// <summary>Use with CategoryType.COST</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("costProjection")]
-        public virtual GoogleCloudRecommenderV1beta1CostProjection CostProjection { get; set; } 
+        public virtual GoogleCloudRecommenderV1beta1CostProjection CostProjection { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -972,49 +972,49 @@ namespace Google.Apis.Recommender.v1beta1.Data
     {
         /// <summary>Recommendations derived from this insight.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associatedRecommendations")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1InsightRecommendationReference> AssociatedRecommendations { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1InsightRecommendationReference> AssociatedRecommendations { get; set; }
 
         /// <summary>Category being targeted by the insight.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
-        public virtual string Category { get; set; } 
+        public virtual string Category { get; set; }
 
         /// <summary>A struct of custom fields to explain the insight. Example: "grantedPermissionsCount":
         /// "1000"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Content { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Content { get; set; }
 
         /// <summary>Free-form human readable summary in English. The maximum length is 500 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Fingerprint of the Insight. Provides optimistic locking when updating states.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Insight subtype. Insight content schema will be stable for a given subtype.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insightSubtype")]
-        public virtual string InsightSubtype { get; set; } 
+        public virtual string InsightSubtype { get; set; }
 
         /// <summary>Timestamp of the latest data used to generate the insight.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastRefreshTime")]
-        public virtual object LastRefreshTime { get; set; } 
+        public virtual object LastRefreshTime { get; set; }
 
         /// <summary>Name of the insight.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Observation period that led to the insight. The source data used to generate the insight ends at
         /// last_refresh_time and begins at (last_refresh_time - observation_period).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observationPeriod")]
-        public virtual object ObservationPeriod { get; set; } 
+        public virtual object ObservationPeriod { get; set; }
 
         /// <summary>Information state and metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateInfo")]
-        public virtual GoogleCloudRecommenderV1beta1InsightStateInfo StateInfo { get; set; } 
+        public virtual GoogleCloudRecommenderV1beta1InsightStateInfo StateInfo { get; set; }
 
         /// <summary>Fully qualified resource names that this insight is targeting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetResources")]
-        public virtual System.Collections.Generic.IList<string> TargetResources { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TargetResources { get; set; }
 
     }    
 
@@ -1024,7 +1024,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// <summary>Recommendation resource name, e.g. projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[REC
         /// OMMENDER_ID]/recommendations/[RECOMMENDATION_ID]</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommendation")]
-        public virtual string Recommendation { get; set; } 
+        public virtual string Recommendation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1035,11 +1035,11 @@ namespace Google.Apis.Recommender.v1beta1.Data
     {
         /// <summary>Insight state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>A map of metadata for the state, provided by user or automations systems.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateMetadata")]
-        public virtual System.Collections.Generic.IDictionary<string,string> StateMetadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> StateMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1050,12 +1050,12 @@ namespace Google.Apis.Recommender.v1beta1.Data
     {
         /// <summary>The set of insights for the `parent` resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insights")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1Insight> Insights { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1Insight> Insights { get; set; }
 
         /// <summary>A token that can be used to request the next page of results. This field is empty if there are no
         /// additional results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1067,11 +1067,11 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// <summary>A token that can be used to request the next page of results. This field is empty if there are no
         /// additional results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The set of recommendations for the `parent` resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommendations")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1Recommendation> Recommendations { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1Recommendation> Recommendations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1082,12 +1082,12 @@ namespace Google.Apis.Recommender.v1beta1.Data
     {
         /// <summary>Required. Fingerprint of the Insight. Provides optimistic locking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Optional. State properties user wish to include with this state. Full replace of the current
         /// state_metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateMetadata")]
-        public virtual System.Collections.Generic.IDictionary<string,string> StateMetadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> StateMetadata { get; set; }
 
     }    
 
@@ -1096,12 +1096,12 @@ namespace Google.Apis.Recommender.v1beta1.Data
     {
         /// <summary>Required. Fingerprint of the Recommendation. Provides optimistic locking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>State properties to include with this state. Overwrites any existing `state_metadata`. Keys must
         /// match the regex /^a-z0-9{0,62}$/. Values must match the regex /^[a-zA-Z0-9_./-]{0,255}$/.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateMetadata")]
-        public virtual System.Collections.Generic.IDictionary<string,string> StateMetadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> StateMetadata { get; set; }
 
     }    
 
@@ -1110,12 +1110,12 @@ namespace Google.Apis.Recommender.v1beta1.Data
     {
         /// <summary>Required. Fingerprint of the Recommendation. Provides optimistic locking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>State properties to include with this state. Overwrites any existing `state_metadata`. Keys must
         /// match the regex /^a-z0-9{0,62}$/. Values must match the regex /^[a-zA-Z0-9_./-]{0,255}$/.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateMetadata")]
-        public virtual System.Collections.Generic.IDictionary<string,string> StateMetadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> StateMetadata { get; set; }
 
     }    
 
@@ -1124,12 +1124,12 @@ namespace Google.Apis.Recommender.v1beta1.Data
     {
         /// <summary>Required. Fingerprint of the Recommendation. Provides optimistic locking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>State properties to include with this state. Overwrites any existing `state_metadata`. Keys must
         /// match the regex /^a-z0-9{0,62}$/. Values must match the regex /^[a-zA-Z0-9_./-]{0,255}$/.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateMetadata")]
-        public virtual System.Collections.Generic.IDictionary<string,string> StateMetadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> StateMetadata { get; set; }
 
     }    
 
@@ -1143,12 +1143,12 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// <summary>Type of this operation. Contains one of 'and', 'remove', 'replace', 'move', 'copy', 'test' and
         /// 'custom' operations. This field is case-insensitive and always populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual string Action { get; set; } 
+        public virtual string Action { get; set; }
 
         /// <summary>Path to the target field being operated on. If the operation is at the resource level, then path
         /// should be "/". This field is always populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; } 
+        public virtual string Path { get; set; }
 
         /// <summary>Set of filters to apply if `path` refers to array elements or nested array elements in order to
         /// narrow down to a single unique element that is being tested/modified. This is intended to be an exact match
@@ -1157,45 +1157,45 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// null } * Example: { "/bindings/role": "roles/admin" "/bindings/members" : ["x@google.com", "y@google.com"] }
         /// When both path_filters and path_value_matchers are set, an implicit AND must be performed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathFilters")]
-        public virtual System.Collections.Generic.IDictionary<string,object> PathFilters { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> PathFilters { get; set; }
 
         /// <summary>Similar to path_filters, this contains set of filters to apply if `path` field referes to array
         /// elements. This is meant to support value matching beyond exact match. To perform exact match, use
         /// path_filters. When both path_filters and path_value_matchers are set, an implicit AND must be
         /// performed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathValueMatchers")]
-        public virtual System.Collections.Generic.IDictionary<string,GoogleCloudRecommenderV1beta1ValueMatcher> PathValueMatchers { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRecommenderV1beta1ValueMatcher> PathValueMatchers { get; set; }
 
         /// <summary>Contains the fully qualified resource name. This field is always populated. ex:
         /// //cloudresourcemanager.googleapis.com/projects/foo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
-        public virtual string Resource { get; set; } 
+        public virtual string Resource { get; set; }
 
         /// <summary>Type of GCP resource being modified/tested. This field is always populated. Example:
         /// cloudresourcemanager.googleapis.com/Project, compute.googleapis.com/Instance</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
-        public virtual string ResourceType { get; set; } 
+        public virtual string ResourceType { get; set; }
 
         /// <summary>Can be set with action 'copy' or 'move' to indicate the source field within resource or
         /// source_resource, ignored if provided for other operation types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourcePath")]
-        public virtual string SourcePath { get; set; } 
+        public virtual string SourcePath { get; set; }
 
         /// <summary>Can be set with action 'copy' to copy resource configuration across different resources of the same
         /// type. Example: A resource clone can be done via action = 'copy', path = "/", from = "/", source_resource =
         /// and resource_name = . This field is empty for all other values of `action`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceResource")]
-        public virtual string SourceResource { get; set; } 
+        public virtual string SourceResource { get; set; }
 
         /// <summary>Value for the `path` field. Will be set for actions:'add'/'replace'. Maybe set for action: 'test'.
         /// Either this or `value_matcher` will be set for 'test' operation. An exact match must be performed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual object Value { get; set; } 
+        public virtual object Value { get; set; }
 
         /// <summary>Can be set for action 'test' for advanced matching for the value of 'path' field. Either this or
         /// `value` will be set for 'test' operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueMatcher")]
-        public virtual GoogleCloudRecommenderV1beta1ValueMatcher ValueMatcher { get; set; } 
+        public virtual GoogleCloudRecommenderV1beta1ValueMatcher ValueMatcher { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1207,7 +1207,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// <summary>List of operations across one or more resources that belong to this group. Loosely based on RFC6902
         /// and should be performed in the order they appear.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1Operation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1220,37 +1220,37 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// <summary>Optional set of additional impact that this recommendation may have when trying to optimize for the
         /// primary category. These may be positive or negative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalImpact")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1Impact> AdditionalImpact { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1Impact> AdditionalImpact { get; set; }
 
         /// <summary>Insights that led to this recommendation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associatedInsights")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1RecommendationInsightReference> AssociatedInsights { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1RecommendationInsightReference> AssociatedInsights { get; set; }
 
         /// <summary>Content of the recommendation describing recommended changes to resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual GoogleCloudRecommenderV1beta1RecommendationContent Content { get; set; } 
+        public virtual GoogleCloudRecommenderV1beta1RecommendationContent Content { get; set; }
 
         /// <summary>Free-form human readable summary in English. The maximum length is 500 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Fingerprint of the Recommendation. Provides optimistic locking when updating states.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Last time this recommendation was refreshed by the system that created it in the first
         /// place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastRefreshTime")]
-        public virtual object LastRefreshTime { get; set; } 
+        public virtual object LastRefreshTime { get; set; }
 
         /// <summary>Name of recommendation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The primary impact that this recommendation can have while trying to optimize for one
         /// category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryImpact")]
-        public virtual GoogleCloudRecommenderV1beta1Impact PrimaryImpact { get; set; } 
+        public virtual GoogleCloudRecommenderV1beta1Impact PrimaryImpact { get; set; }
 
         /// <summary>Contains an identifier for a subtype of recommendations produced for the same recommender. Subtype
         /// is a function of content and impact, meaning a new subtype might be added when significant changes to
@@ -1258,11 +1258,11 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// subtypes for a given Recommender. Examples: For recommender = "google.iam.policy.Recommender",
         /// recommender_subtype can be one of "REMOVE_ROLE"/"REPLACE_ROLE"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommenderSubtype")]
-        public virtual string RecommenderSubtype { get; set; } 
+        public virtual string RecommenderSubtype { get; set; }
 
         /// <summary>Information for state. Contains state and metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateInfo")]
-        public virtual GoogleCloudRecommenderV1beta1RecommendationStateInfo StateInfo { get; set; } 
+        public virtual GoogleCloudRecommenderV1beta1RecommendationStateInfo StateInfo { get; set; }
 
     }    
 
@@ -1272,7 +1272,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// <summary>Operations to one or more Google Cloud resources grouped in such a way that, all operations within
         /// one group are expected to be performed atomically and in an order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationGroups")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1OperationGroup> OperationGroups { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1OperationGroup> OperationGroups { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1284,7 +1284,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// <summary>Insight resource name, e.g. projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TY
         /// PE_ID]/insights/[INSIGHT_ID]</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insight")]
-        public virtual string Insight { get; set; } 
+        public virtual string Insight { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1295,11 +1295,11 @@ namespace Google.Apis.Recommender.v1beta1.Data
     {
         /// <summary>The state of the recommendation, Eg ACTIVE, SUCCEEDED, FAILED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>A map of metadata for the state, provided by user or automations systems.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateMetadata")]
-        public virtual System.Collections.Generic.IDictionary<string,string> StateMetadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> StateMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1311,7 +1311,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// <summary>To be used for full regex matching. The regular expression is using the Google RE2 syntax
         /// (https://github.com/google/re2/wiki/Syntax), so to be used with RE2::FullMatch</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchesPattern")]
-        public virtual string MatchesPattern { get; set; } 
+        public virtual string MatchesPattern { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1322,19 +1322,19 @@ namespace Google.Apis.Recommender.v1beta1.Data
     {
         /// <summary>The 3-letter currency code defined in ISO 4217.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
-        public virtual string CurrencyCode { get; set; } 
+        public virtual string CurrencyCode { get; set; }
 
         /// <summary>Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999
         /// inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be
         /// positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is
         /// represented as `units`=-1 and `nanos`=-750,000,000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
-        public virtual System.Nullable<int> Nanos { get; set; } 
+        public virtual System.Nullable<int> Nanos { get; set; }
 
         /// <summary>The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US
         /// dollar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("units")]
-        public virtual System.Nullable<long> Units { get; set; } 
+        public virtual System.Nullable<long> Units { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

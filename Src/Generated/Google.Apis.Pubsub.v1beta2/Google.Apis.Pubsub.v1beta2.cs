@@ -1614,7 +1614,7 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// <summary>The acknowledgment ID for the messages being acknowledged that was returned by the Pub/Sub system
         /// in the `Pull` response. Must not be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ackIds")]
-        public virtual System.Collections.Generic.IList<string> AckIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AckIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1626,7 +1626,7 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
         /// bindings-by-ID API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; } 
+        public virtual string BindingId { get; set; }
 
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
@@ -1634,7 +1634,7 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
@@ -1656,12 +1656,12 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1693,21 +1693,21 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1719,11 +1719,11 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// <summary>If not empty, indicates that there may be more subscriptions that match the request; this value
         /// should be passed in a new `ListSubscriptionsRequest` to get more subscriptions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The subscriptions that match the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptions")]
-        public virtual System.Collections.Generic.IList<Subscription> Subscriptions { get; set; } 
+        public virtual System.Collections.Generic.IList<Subscription> Subscriptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1735,11 +1735,11 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// <summary>If not empty, indicates that there may be more subscriptions that match the request; this value
         /// should be passed in a new `ListTopicSubscriptionsRequest` to get more subscriptions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The names of the subscriptions that match the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptions")]
-        public virtual System.Collections.Generic.IList<string> Subscriptions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Subscriptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1751,11 +1751,11 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// <summary>If not empty, indicates that there may be more topics that match the request; this value should be
         /// passed in a new `ListTopicsRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The resulting topics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topics")]
-        public virtual System.Collections.Generic.IList<Topic> Topics { get; set; } 
+        public virtual System.Collections.Generic.IList<Topic> Topics { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1769,15 +1769,15 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// `ModifyAckDeadline` call was made. Specifying zero may immediately make the message available for another
         /// pull request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ackDeadlineSeconds")]
-        public virtual System.Nullable<int> AckDeadlineSeconds { get; set; } 
+        public virtual System.Nullable<int> AckDeadlineSeconds { get; set; }
 
         /// <summary>The acknowledgment ID. Either this or ack_ids must be populated, but not both.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ackId")]
-        public virtual string AckId { get; set; } 
+        public virtual string AckId { get; set; }
 
         /// <summary>List of acknowledgment IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ackIds")]
-        public virtual System.Collections.Generic.IList<string> AckIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AckIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1790,7 +1790,7 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// system should stop pushing messages from the given subscription and allow messages to be pulled and
         /// acknowledged - effectively pausing the subscription if `Pull` is not called.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pushConfig")]
-        public virtual PushConfig PushConfig { get; set; } 
+        public virtual PushConfig PushConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1806,13 +1806,13 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be
         /// used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audience")]
-        public virtual string Audience { get; set; } 
+        public virtual string Audience { get; set; }
 
         /// <summary>[Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for
         /// generating the OIDC token. The caller (for CreateSubscription, UpdateSubscription, and ModifyPushConfig
         /// RPCs) must have the iam.serviceAccounts.actAs permission for the service account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
-        public virtual string ServiceAccountEmail { get; set; } 
+        public virtual string ServiceAccountEmail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1843,7 +1843,7 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -1854,7 +1854,7 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
         /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
         /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
@@ -1868,7 +1868,7 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -1877,7 +1877,7 @@ namespace Google.Apis.Pubsub.v1beta2.Data
     {
         /// <summary>The messages to publish.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
-        public virtual System.Collections.Generic.IList<PubsubMessage> Messages { get; set; } 
+        public virtual System.Collections.Generic.IList<PubsubMessage> Messages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1889,7 +1889,7 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// <summary>The server-assigned ID of each published message, in the same order as the messages in the request.
         /// IDs are guaranteed to be unique within the topic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageIds")]
-        public virtual System.Collections.Generic.IList<string> MessageIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> MessageIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1901,23 +1901,23 @@ namespace Google.Apis.Pubsub.v1beta2.Data
     {
         /// <summary>Optional attributes for this message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Attributes { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Attributes { get; set; }
 
         /// <summary>The message payload. For JSON requests, the value of this field must be
         /// [base64-encoded](https://tools.ietf.org/html/rfc4648).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual string Data { get; set; } 
+        public virtual string Data { get; set; }
 
         /// <summary>ID of this message, assigned by the server when the message is published. Guaranteed to be unique
         /// within the topic. This value may be read by a subscriber that receives a `PubsubMessage` via a `Pull` call
         /// or a push delivery. It must not be populated by the publisher in a `Publish` call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
-        public virtual string MessageId { get; set; } 
+        public virtual string MessageId { get; set; }
 
         /// <summary>The time at which the message was published, populated by the server when it receives the `Publish`
         /// call. It must not be populated by the publisher in a `Publish` call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishTime")]
-        public virtual object PublishTime { get; set; } 
+        public virtual object PublishTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1929,7 +1929,7 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// <summary>The maximum number of messages returned for this request. The Pub/Sub system may return fewer than
         /// the number specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxMessages")]
-        public virtual System.Nullable<int> MaxMessages { get; set; } 
+        public virtual System.Nullable<int> MaxMessages { get; set; }
 
         /// <summary>Optional. If this is specified as true the system will respond immediately even if it is not able
         /// to return a message in the `Pull` response. Otherwise the system is allowed to wait until at least one
@@ -1938,7 +1938,7 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// adversely impacts the performance of `Pull` operations. We recommend that users do not set this
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnImmediately")]
-        public virtual System.Nullable<bool> ReturnImmediately { get; set; } 
+        public virtual System.Nullable<bool> ReturnImmediately { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1951,7 +1951,7 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// available in the backlog. The Pub/Sub system may return fewer than the `maxMessages` requested even if there
         /// are more messages available in the backlog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("receivedMessages")]
-        public virtual System.Collections.Generic.IList<ReceivedMessage> ReceivedMessages { get; set; } 
+        public virtual System.Collections.Generic.IList<ReceivedMessage> ReceivedMessages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1971,17 +1971,17 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`:
         /// uses the push format defined in the v1 Pub/Sub API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Attributes { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Attributes { get; set; }
 
         /// <summary>If specified, Pub/Sub will generate and attach an OIDC JWT token as an `Authorization` header in
         /// the HTTP request for every pushed message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oidcToken")]
-        public virtual OidcToken OidcToken { get; set; } 
+        public virtual OidcToken OidcToken { get; set; }
 
         /// <summary>A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint
         /// might use "https://example.com/push".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pushEndpoint")]
-        public virtual string PushEndpoint { get; set; } 
+        public virtual string PushEndpoint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1992,11 +1992,11 @@ namespace Google.Apis.Pubsub.v1beta2.Data
     {
         /// <summary>This ID can be used to acknowledge the received message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ackId")]
-        public virtual string AckId { get; set; } 
+        public virtual string AckId { get; set; }
 
         /// <summary>The message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual PubsubMessage Message { get; set; } 
+        public virtual PubsubMessage Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2009,7 +2009,7 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; } 
+        public virtual Policy Policy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2028,7 +2028,7 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// acknowledges the message, the Pub/Sub system will eventually redeliver the message. If this parameter is 0,
         /// a default value of 10 seconds is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ackDeadlineSeconds")]
-        public virtual System.Nullable<int> AckDeadlineSeconds { get; set; } 
+        public virtual System.Nullable<int> AckDeadlineSeconds { get; set; }
 
         /// <summary>The name of the subscription. It must have the format
         /// `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain
@@ -2036,17 +2036,17 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start
         /// with `"goog"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>If push delivery is used with this subscription, this field is used to configure it. An empty
         /// `pushConfig` signifies that the subscriber will pull and ack messages using API methods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pushConfig")]
-        public virtual PushConfig PushConfig { get; set; } 
+        public virtual PushConfig PushConfig { get; set; }
 
         /// <summary>The name of the topic from which this subscription is receiving messages. The value of this field
         /// will be `_deleted-topic_` if the topic has been deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topic")]
-        public virtual string Topic { get; set; } 
+        public virtual string Topic { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2059,7 +2059,7 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// 'storage.*') are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2070,7 +2070,7 @@ namespace Google.Apis.Pubsub.v1beta2.Data
     {
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2084,7 +2084,7 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and
         /// 255 characters in length, and it must not start with `"goog"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

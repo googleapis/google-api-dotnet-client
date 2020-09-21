@@ -1580,27 +1580,27 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
         /// <summary>An array of block objects for this promotion. See [Google WebSearch Protocol
         /// reference](https://developers.google.com/custom-search/docs/xml_results) for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bodyLines")]
-        public virtual System.Collections.Generic.IList<BodyLinesData> BodyLines { get; set; } 
+        public virtual System.Collections.Generic.IList<BodyLinesData> BodyLines { get; set; }
 
         /// <summary>An abridged version of this search's result URL, e.g. www.example.com.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayLink")]
-        public virtual string DisplayLink { get; set; } 
+        public virtual string DisplayLink { get; set; }
 
         /// <summary>The title of the promotion, in HTML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("htmlTitle")]
-        public virtual string HtmlTitle { get; set; } 
+        public virtual string HtmlTitle { get; set; }
 
         /// <summary>Image belonging to a promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual ImageData Image { get; set; } 
+        public virtual ImageData Image { get; set; }
 
         /// <summary>The URL of the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
-        public virtual string Link { get; set; } 
+        public virtual string Link { get; set; }
 
         /// <summary>The title of the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1611,19 +1611,19 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
         {
             /// <summary>The block object's text in HTML, if it has text.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("htmlTitle")]
-            public virtual string HtmlTitle { get; set; } 
+            public virtual string HtmlTitle { get; set; }
 
             /// <summary>The anchor text of the block object's link, if it has a link.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("link")]
-            public virtual string Link { get; set; } 
+            public virtual string Link { get; set; }
 
             /// <summary>The block object's text, if it has text.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("title")]
-            public virtual string Title { get; set; } 
+            public virtual string Title { get; set; }
 
             /// <summary>The URL of the block object's link, if it has one.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("url")]
-            public virtual string Url { get; set; } 
+            public virtual string Url { get; set; }
 
         }    
 
@@ -1632,15 +1632,15 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
         {
             /// <summary>Image height in pixels.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("height")]
-            public virtual System.Nullable<int> Height { get; set; } 
+            public virtual System.Nullable<int> Height { get; set; }
 
             /// <summary>URL of the image for this promotion link.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("source")]
-            public virtual string Source { get; set; } 
+            public virtual string Source { get; set; }
 
             /// <summary>Image width in pixels.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("width")]
-            public virtual System.Nullable<int> Width { get; set; } 
+            public virtual System.Nullable<int> Width { get; set; }
 
         }
     }    
@@ -1650,66 +1650,66 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
     {
         /// <summary>Indicates the ID of Google's cached version of the search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheId")]
-        public virtual string CacheId { get; set; } 
+        public virtual string CacheId { get; set; }
 
         /// <summary>An abridged version of this search result’s URL, e.g. www.example.com.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayLink")]
-        public virtual string DisplayLink { get; set; } 
+        public virtual string DisplayLink { get; set; }
 
         /// <summary>The file format of the search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileFormat")]
-        public virtual string FileFormat { get; set; } 
+        public virtual string FileFormat { get; set; }
 
         /// <summary>The URL displayed after the snippet for each search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedUrl")]
-        public virtual string FormattedUrl { get; set; } 
+        public virtual string FormattedUrl { get; set; }
 
         /// <summary>The HTML-formatted URL displayed after the snippet for each search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("htmlFormattedUrl")]
-        public virtual string HtmlFormattedUrl { get; set; } 
+        public virtual string HtmlFormattedUrl { get; set; }
 
         /// <summary>The snippet of the search result, in HTML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("htmlSnippet")]
-        public virtual string HtmlSnippet { get; set; } 
+        public virtual string HtmlSnippet { get; set; }
 
         /// <summary>The title of the search result, in HTML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("htmlTitle")]
-        public virtual string HtmlTitle { get; set; } 
+        public virtual string HtmlTitle { get; set; }
 
         /// <summary>Image belonging to a custom search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual ImageData Image { get; set; } 
+        public virtual ImageData Image { get; set; }
 
         /// <summary>A unique identifier for the type of current object. For this API, it is
         /// `customsearch#result.`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Encapsulates all information about [refinement labels](https://developers.google.com/custom-
         /// search/docs/xml_results).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IList<LabelsData> Labels { get; set; } 
+        public virtual System.Collections.Generic.IList<LabelsData> Labels { get; set; }
 
         /// <summary>The full URL to which the search result is pointing, e.g. http://www.example.com/foo/bar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
-        public virtual string Link { get; set; } 
+        public virtual string Link { get; set; }
 
         /// <summary>The MIME type of the search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mime")]
-        public virtual string Mime { get; set; } 
+        public virtual string Mime { get; set; }
 
         /// <summary>Contains [PageMap](https://developers.google.com/custom-search/docs/structured_data#pagemaps)
         /// information for this search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pagemap")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Pagemap { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Pagemap { get; set; }
 
         /// <summary>The snippet of the search result, in plain text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual string Snippet { get; set; } 
+        public virtual string Snippet { get; set; }
 
         /// <summary>The title of the search result, in plain text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1720,31 +1720,31 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
         {
             /// <summary>The size of the image, in pixels.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("byteSize")]
-            public virtual System.Nullable<int> ByteSize { get; set; } 
+            public virtual System.Nullable<int> ByteSize { get; set; }
 
             /// <summary>A URL pointing to the webpage hosting the image.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("contextLink")]
-            public virtual string ContextLink { get; set; } 
+            public virtual string ContextLink { get; set; }
 
             /// <summary>The height of the image, in pixels.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("height")]
-            public virtual System.Nullable<int> Height { get; set; } 
+            public virtual System.Nullable<int> Height { get; set; }
 
             /// <summary>The height of the thumbnail image, in pixels.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("thumbnailHeight")]
-            public virtual System.Nullable<int> ThumbnailHeight { get; set; } 
+            public virtual System.Nullable<int> ThumbnailHeight { get; set; }
 
             /// <summary>A URL to the thumbnail image.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("thumbnailLink")]
-            public virtual string ThumbnailLink { get; set; } 
+            public virtual string ThumbnailLink { get; set; }
 
             /// <summary>The width of the thumbnail image, in pixels.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("thumbnailWidth")]
-            public virtual System.Nullable<int> ThumbnailWidth { get; set; } 
+            public virtual System.Nullable<int> ThumbnailWidth { get; set; }
 
             /// <summary>The width of the image, in pixels.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("width")]
-            public virtual System.Nullable<int> Width { get; set; } 
+            public virtual System.Nullable<int> Width { get; set; }
 
         }    
 
@@ -1754,16 +1754,16 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
             /// <summary>The display name of a refinement label. This is the name you should display in your user
             /// interface.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-            public virtual string DisplayName { get; set; } 
+            public virtual string DisplayName { get; set; }
 
             /// <summary>Refinement label and the associated refinement operation.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("label_with_op")]
-            public virtual string LabelWithOp { get; set; } 
+            public virtual string LabelWithOp { get; set; }
 
             /// <summary>The name of a refinement label, which you can use to refine searches. Don't display this in
             /// your user interface; instead, use displayName.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("name")]
-            public virtual string Name { get; set; } 
+            public virtual string Name { get; set; }
 
         }
     }    
@@ -1775,37 +1775,37 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
         /// search engine that was used for the query. * A set of [facet objects](https://developers.google.com/custom-
         /// search/docs/refinements#create) (refinements) you can use for refining a search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Context { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Context { get; set; }
 
         /// <summary>The current set of custom search results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Result> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Result> Items { get; set; }
 
         /// <summary>Unique identifier for the type of current object. For this API, it is
         /// customsearch#search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The set of [promotions](https://developers.google.com/custom-search/docs/promotions). Present only
         /// if the custom search engine's configuration files define any promotions for the given query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
-        public virtual System.Collections.Generic.IList<Promotion> Promotions { get; set; } 
+        public virtual System.Collections.Generic.IList<Promotion> Promotions { get; set; }
 
         /// <summary>Query metadata for the previous, current, and next pages of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queries")]
-        public virtual QueriesData Queries { get; set; } 
+        public virtual QueriesData Queries { get; set; }
 
         /// <summary>Metadata about a search operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchInformation")]
-        public virtual SearchInformationData SearchInformation { get; set; } 
+        public virtual SearchInformationData SearchInformation { get; set; }
 
         /// <summary>Spell correction information for a query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spelling")]
-        public virtual SpellingData Spelling { get; set; } 
+        public virtual SpellingData Spelling { get; set; }
 
         /// <summary>OpenSearch template and URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual UrlData Url { get; set; } 
+        public virtual UrlData Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1816,15 +1816,15 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
         {
             /// <summary>Metadata representing the next page of results, if applicable.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("nextPage")]
-            public virtual System.Collections.Generic.IList<NextPageData> NextPage { get; set; } 
+            public virtual System.Collections.Generic.IList<NextPageData> NextPage { get; set; }
 
             /// <summary>Metadata representing the previous page of results, if applicable.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("previousPage")]
-            public virtual System.Collections.Generic.IList<PreviousPageData> PreviousPage { get; set; } 
+            public virtual System.Collections.Generic.IList<PreviousPageData> PreviousPage { get; set; }
 
             /// <summary>Metadata representing the current request.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("request")]
-            public virtual System.Collections.Generic.IList<RequestData> Request { get; set; } 
+            public virtual System.Collections.Generic.IList<RequestData> Request { get; set; }
 
             
 
@@ -1833,7 +1833,7 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
             {
                 /// <summary>Number of search results returned in this set.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("count")]
-                public virtual System.Nullable<int> Count { get; set; } 
+                public virtual System.Nullable<int> Count { get; set; }
 
                 /// <summary>Restricts search results to documents originating in a particular country. You may use
                 /// [Boolean operators](https://developers.google.com/custom-search/docs/xml_results#booleanOperators)
@@ -1842,35 +1842,35 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
                 /// web server's IP address. See [Country (cr) Parameter Values](https://developers.google.com/custom-
                 /// search/docs/xml_results#countryCollections) for a list of valid values for this parameter.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("cr")]
-                public virtual string Cr { get; set; } 
+                public virtual string Cr { get; set; }
 
                 /// <summary>The identifier of an engine created using the Programmable Search Engine [Control
                 /// Panel](https://programmablesearchengine.google.com/). This is a custom property not defined in the
                 /// OpenSearch spec. This parameter is **required**.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("cx")]
-                public virtual string Cx { get; set; } 
+                public virtual string Cx { get; set; }
 
                 /// <summary>Restricts results to URLs based on date. Supported values include: * `d[number]`: requests
                 /// results from the specified number of past days. * `w[number]`: requests results from the specified
                 /// number of past weeks. * `m[number]`: requests results from the specified number of past months. *
                 /// `y[number]`: requests results from the specified number of past years.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("dateRestrict")]
-                public virtual string DateRestrict { get; set; } 
+                public virtual string DateRestrict { get; set; }
 
                 /// <summary>Enables or disables the [Simplified and Traditional Chinese
                 /// Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch) feature.
                 /// Supported values are: * `0`: enabled (default) * `1`: disabled</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("disableCnTwTranslation")]
-                public virtual string DisableCnTwTranslation { get; set; } 
+                public virtual string DisableCnTwTranslation { get; set; }
 
                 /// <summary>Identifies a phrase that all documents in the search results must contain.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("exactTerms")]
-                public virtual string ExactTerms { get; set; } 
+                public virtual string ExactTerms { get; set; }
 
                 /// <summary>Identifies a word or phrase that should not appear in any documents in the search
                 /// results.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("excludeTerms")]
-                public virtual string ExcludeTerms { get; set; } 
+                public virtual string ExcludeTerms { get; set; }
 
                 /// <summary>Restricts results to files of a specified extension. Filetypes supported by Google include:
                 /// * Adobe Portable Document Format (`pdf`) * Adobe PostScript (`ps`) * Lotus 1-2-3 (`wk1`, `wk2`,
@@ -1880,7 +1880,7 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
                 /// (`ans`, `txt`). Additional filetypes may be added in the future. An up-to-date list can always be
                 /// found in Google's [file type FAQ](https://support.google.com/webmasters/answer/35287).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
-                public virtual string FileType { get; set; } 
+                public virtual string FileType { get; set; }
 
                 /// <summary>Activates or deactivates the automatic filtering of Google search results. See [Automatic
                 /// Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering) for more
@@ -1888,7 +1888,7 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
                 /// Disabled * `1`: Enabled (default) **Note**: By default, Google applies filtering to all search
                 /// results to improve the quality of those results.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-                public virtual string Filter { get; set; } 
+                public virtual string Filter { get; set; }
 
                 /// <summary>Boosts search results whose country of origin matches the parameter value. See [Country
                 /// Codes](https://developers.google.com/custom-search/docs/xml_results#countryCodes) for a list of
@@ -1896,17 +1896,17 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
                 /// of results. This is particularly true for international customers and, even more specifically, for
                 /// customers in English-speaking countries other than the United States.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("gl")]
-                public virtual string Gl { get; set; } 
+                public virtual string Gl { get; set; }
 
                 /// <summary>Specifies the Google domain (for example, google.com, google.de, or google.fr) to which the
                 /// search should be limited.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("googleHost")]
-                public virtual string GoogleHost { get; set; } 
+                public virtual string GoogleHost { get; set; }
 
                 /// <summary>Specifies the ending value for a search range. Use `cse:lowRange` and `cse:highrange` to
                 /// append an inclusive search range of `lowRange...highRange` to the query.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("highRange")]
-                public virtual string HighRange { get; set; } 
+                public virtual string HighRange { get; set; }
 
                 /// <summary>Specifies the interface language (host language) of your user interface. Explicitly setting
                 /// this parameter improves the performance and the quality of your search results. See the [Interface
@@ -1916,121 +1916,121 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
                 /// Languages](https://developers.google.com/custom-
                 /// search/docs/xml_results_appendices#interfaceLanguages) for a list of supported languages.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("hl")]
-                public virtual string Hl { get; set; } 
+                public virtual string Hl { get; set; }
 
                 /// <summary>Appends the specified query terms to the query, as if they were combined with a logical
                 /// `AND` operator.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("hq")]
-                public virtual string Hq { get; set; } 
+                public virtual string Hq { get; set; }
 
                 /// <summary>Restricts results to images of a specified color type. Supported values are: * `mono`
                 /// (black and white) * `gray` (grayscale) * `color` (color)</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("imgColorType")]
-                public virtual string ImgColorType { get; set; } 
+                public virtual string ImgColorType { get; set; }
 
                 /// <summary>Restricts results to images with a specific dominant color. Supported values are: * `red` *
                 /// `orange` * `yellow` * `green` * `teal` * `blue` * `purple` * `pink` * `white` * `gray` * `black` *
                 /// `brown`</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("imgDominantColor")]
-                public virtual string ImgDominantColor { get; set; } 
+                public virtual string ImgDominantColor { get; set; }
 
                 /// <summary>Restricts results to images of a specified size. Supported values are: * `icon` (small) *
                 /// `small | medium | large | xlarge` (medium) * `xxlarge` (large) * `huge` (extra-large)</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("imgSize")]
-                public virtual string ImgSize { get; set; } 
+                public virtual string ImgSize { get; set; }
 
                 /// <summary>Restricts results to images of a specified type. Supported values are: * `clipart` (Clip
                 /// art) * `face` (Face) * `lineart` (Line drawing) * `photo` (Photo) * `animated` (Animated) * `stock`
                 /// (Stock)</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("imgType")]
-                public virtual string ImgType { get; set; } 
+                public virtual string ImgType { get; set; }
 
                 /// <summary>The character encoding supported for search requests.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("inputEncoding")]
-                public virtual string InputEncoding { get; set; } 
+                public virtual string InputEncoding { get; set; }
 
                 /// <summary>The language of the search results.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("language")]
-                public virtual string Language { get; set; } 
+                public virtual string Language { get; set; }
 
                 /// <summary>Specifies that all results should contain a link to a specific URL.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("linkSite")]
-                public virtual string LinkSite { get; set; } 
+                public virtual string LinkSite { get; set; }
 
                 /// <summary>Specifies the starting value for a search range. Use `cse:lowRange` and `cse:highrange` to
                 /// append an inclusive search range of `lowRange...highRange` to the query.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("lowRange")]
-                public virtual string LowRange { get; set; } 
+                public virtual string LowRange { get; set; }
 
                 /// <summary>Provides additional search terms to check for in a document, where each document in the
                 /// search results must contain at least one of the additional search terms. You can also use the
                 /// [Boolean OR](https://developers.google.com/custom-search/docs/xml_results#BooleanOrqt) query term
                 /// for this type of query.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("orTerms")]
-                public virtual string OrTerms { get; set; } 
+                public virtual string OrTerms { get; set; }
 
                 /// <summary>The character encoding supported for search results.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("outputEncoding")]
-                public virtual string OutputEncoding { get; set; } 
+                public virtual string OutputEncoding { get; set; }
 
                 /// <summary>Specifies that all search results should be pages that are related to the specified URL.
                 /// The parameter value should be a URL.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("relatedSite")]
-                public virtual string RelatedSite { get; set; } 
+                public virtual string RelatedSite { get; set; }
 
                 /// <summary>Filters based on licensing. Supported values include: * `cc_publicdomain` * `cc_attribute`
                 /// * `cc_sharealike` * `cc_noncommercial` * `cc_nonderived`</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("rights")]
-                public virtual string Rights { get; set; } 
+                public virtual string Rights { get; set; }
 
                 /// <summary>Specifies the [SafeSearch level](https://developers.google.com/custom-
                 /// search/docs/xml_results#safeSearchLevels) used for filtering out adult results. This is a custom
                 /// property not defined in the OpenSearch spec. Valid parameter values are: * `"off"`: Disable
                 /// SafeSearch * `"active"`: Enable SafeSearch</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("safe")]
-                public virtual string Safe { get; set; } 
+                public virtual string Safe { get; set; }
 
                 /// <summary>The search terms entered by the user.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("searchTerms")]
-                public virtual string SearchTerms { get; set; } 
+                public virtual string SearchTerms { get; set; }
 
                 /// <summary>Allowed values are `web` or `image`. If unspecified, results are limited to
                 /// webpages.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("searchType")]
-                public virtual string SearchType { get; set; } 
+                public virtual string SearchType { get; set; }
 
                 /// <summary>Restricts results to URLs from a specified site.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("siteSearch")]
-                public virtual string SiteSearch { get; set; } 
+                public virtual string SiteSearch { get; set; }
 
                 /// <summary>Specifies whether to include or exclude results from the site named in the `sitesearch`
                 /// parameter. Supported values are: * `i`: include content from site * `e`: exclude content from
                 /// site</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("siteSearchFilter")]
-                public virtual string SiteSearchFilter { get; set; } 
+                public virtual string SiteSearchFilter { get; set; }
 
                 /// <summary>Specifies that results should be sorted according to the specified expression. For example,
                 /// sort by date.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("sort")]
-                public virtual string Sort { get; set; } 
+                public virtual string Sort { get; set; }
 
                 /// <summary>The index of the current set of search results into the total set of results, where the
                 /// index of the first result is 1.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-                public virtual System.Nullable<int> StartIndex { get; set; } 
+                public virtual System.Nullable<int> StartIndex { get; set; }
 
                 /// <summary>The page number of this set of results, where the page length is set by the `count`
                 /// property.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("startPage")]
-                public virtual System.Nullable<int> StartPage { get; set; } 
+                public virtual System.Nullable<int> StartPage { get; set; }
 
                 /// <summary>A description of the query.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("title")]
-                public virtual string Title { get; set; } 
+                public virtual string Title { get; set; }
 
                 /// <summary>Estimated number of total search results. May not be accurate.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-                public virtual System.Nullable<long> TotalResults { get; set; } 
+                public virtual System.Nullable<long> TotalResults { get; set; }
 
             }    
 
@@ -2039,7 +2039,7 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
             {
                 /// <summary>Number of search results returned in this set.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("count")]
-                public virtual System.Nullable<int> Count { get; set; } 
+                public virtual System.Nullable<int> Count { get; set; }
 
                 /// <summary>Restricts search results to documents originating in a particular country. You may use
                 /// [Boolean operators](https://developers.google.com/custom-search/docs/xml_results#booleanOperators)
@@ -2048,35 +2048,35 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
                 /// web server's IP address. See [Country (cr) Parameter Values](https://developers.google.com/custom-
                 /// search/docs/xml_results#countryCollections) for a list of valid values for this parameter.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("cr")]
-                public virtual string Cr { get; set; } 
+                public virtual string Cr { get; set; }
 
                 /// <summary>The identifier of an engine created using the Programmable Search Engine [Control
                 /// Panel](https://programmablesearchengine.google.com/). This is a custom property not defined in the
                 /// OpenSearch spec. This parameter is **required**.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("cx")]
-                public virtual string Cx { get; set; } 
+                public virtual string Cx { get; set; }
 
                 /// <summary>Restricts results to URLs based on date. Supported values include: * `d[number]`: requests
                 /// results from the specified number of past days. * `w[number]`: requests results from the specified
                 /// number of past weeks. * `m[number]`: requests results from the specified number of past months. *
                 /// `y[number]`: requests results from the specified number of past years.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("dateRestrict")]
-                public virtual string DateRestrict { get; set; } 
+                public virtual string DateRestrict { get; set; }
 
                 /// <summary>Enables or disables the [Simplified and Traditional Chinese
                 /// Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch) feature.
                 /// Supported values are: * `0`: enabled (default) * `1`: disabled</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("disableCnTwTranslation")]
-                public virtual string DisableCnTwTranslation { get; set; } 
+                public virtual string DisableCnTwTranslation { get; set; }
 
                 /// <summary>Identifies a phrase that all documents in the search results must contain.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("exactTerms")]
-                public virtual string ExactTerms { get; set; } 
+                public virtual string ExactTerms { get; set; }
 
                 /// <summary>Identifies a word or phrase that should not appear in any documents in the search
                 /// results.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("excludeTerms")]
-                public virtual string ExcludeTerms { get; set; } 
+                public virtual string ExcludeTerms { get; set; }
 
                 /// <summary>Restricts results to files of a specified extension. Filetypes supported by Google include:
                 /// * Adobe Portable Document Format (`pdf`) * Adobe PostScript (`ps`) * Lotus 1-2-3 (`wk1`, `wk2`,
@@ -2086,7 +2086,7 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
                 /// (`ans`, `txt`). Additional filetypes may be added in the future. An up-to-date list can always be
                 /// found in Google's [file type FAQ](https://support.google.com/webmasters/answer/35287).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
-                public virtual string FileType { get; set; } 
+                public virtual string FileType { get; set; }
 
                 /// <summary>Activates or deactivates the automatic filtering of Google search results. See [Automatic
                 /// Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering) for more
@@ -2094,7 +2094,7 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
                 /// Disabled * `1`: Enabled (default) **Note**: By default, Google applies filtering to all search
                 /// results to improve the quality of those results.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-                public virtual string Filter { get; set; } 
+                public virtual string Filter { get; set; }
 
                 /// <summary>Boosts search results whose country of origin matches the parameter value. See [Country
                 /// Codes](https://developers.google.com/custom-search/docs/xml_results#countryCodes) for a list of
@@ -2102,17 +2102,17 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
                 /// of results. This is particularly true for international customers and, even more specifically, for
                 /// customers in English-speaking countries other than the United States.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("gl")]
-                public virtual string Gl { get; set; } 
+                public virtual string Gl { get; set; }
 
                 /// <summary>Specifies the Google domain (for example, google.com, google.de, or google.fr) to which the
                 /// search should be limited.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("googleHost")]
-                public virtual string GoogleHost { get; set; } 
+                public virtual string GoogleHost { get; set; }
 
                 /// <summary>Specifies the ending value for a search range. Use `cse:lowRange` and `cse:highrange` to
                 /// append an inclusive search range of `lowRange...highRange` to the query.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("highRange")]
-                public virtual string HighRange { get; set; } 
+                public virtual string HighRange { get; set; }
 
                 /// <summary>Specifies the interface language (host language) of your user interface. Explicitly setting
                 /// this parameter improves the performance and the quality of your search results. See the [Interface
@@ -2122,121 +2122,121 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
                 /// Languages](https://developers.google.com/custom-
                 /// search/docs/xml_results_appendices#interfaceLanguages) for a list of supported languages.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("hl")]
-                public virtual string Hl { get; set; } 
+                public virtual string Hl { get; set; }
 
                 /// <summary>Appends the specified query terms to the query, as if they were combined with a logical
                 /// `AND` operator.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("hq")]
-                public virtual string Hq { get; set; } 
+                public virtual string Hq { get; set; }
 
                 /// <summary>Restricts results to images of a specified color type. Supported values are: * `mono`
                 /// (black and white) * `gray` (grayscale) * `color` (color)</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("imgColorType")]
-                public virtual string ImgColorType { get; set; } 
+                public virtual string ImgColorType { get; set; }
 
                 /// <summary>Restricts results to images with a specific dominant color. Supported values are: * `red` *
                 /// `orange` * `yellow` * `green` * `teal` * `blue` * `purple` * `pink` * `white` * `gray` * `black` *
                 /// `brown`</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("imgDominantColor")]
-                public virtual string ImgDominantColor { get; set; } 
+                public virtual string ImgDominantColor { get; set; }
 
                 /// <summary>Restricts results to images of a specified size. Supported values are: * `icon` (small) *
                 /// `small | medium | large | xlarge` (medium) * `xxlarge` (large) * `huge` (extra-large)</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("imgSize")]
-                public virtual string ImgSize { get; set; } 
+                public virtual string ImgSize { get; set; }
 
                 /// <summary>Restricts results to images of a specified type. Supported values are: * `clipart` (Clip
                 /// art) * `face` (Face) * `lineart` (Line drawing) * `photo` (Photo) * `animated` (Animated) * `stock`
                 /// (Stock)</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("imgType")]
-                public virtual string ImgType { get; set; } 
+                public virtual string ImgType { get; set; }
 
                 /// <summary>The character encoding supported for search requests.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("inputEncoding")]
-                public virtual string InputEncoding { get; set; } 
+                public virtual string InputEncoding { get; set; }
 
                 /// <summary>The language of the search results.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("language")]
-                public virtual string Language { get; set; } 
+                public virtual string Language { get; set; }
 
                 /// <summary>Specifies that all results should contain a link to a specific URL.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("linkSite")]
-                public virtual string LinkSite { get; set; } 
+                public virtual string LinkSite { get; set; }
 
                 /// <summary>Specifies the starting value for a search range. Use `cse:lowRange` and `cse:highrange` to
                 /// append an inclusive search range of `lowRange...highRange` to the query.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("lowRange")]
-                public virtual string LowRange { get; set; } 
+                public virtual string LowRange { get; set; }
 
                 /// <summary>Provides additional search terms to check for in a document, where each document in the
                 /// search results must contain at least one of the additional search terms. You can also use the
                 /// [Boolean OR](https://developers.google.com/custom-search/docs/xml_results#BooleanOrqt) query term
                 /// for this type of query.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("orTerms")]
-                public virtual string OrTerms { get; set; } 
+                public virtual string OrTerms { get; set; }
 
                 /// <summary>The character encoding supported for search results.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("outputEncoding")]
-                public virtual string OutputEncoding { get; set; } 
+                public virtual string OutputEncoding { get; set; }
 
                 /// <summary>Specifies that all search results should be pages that are related to the specified URL.
                 /// The parameter value should be a URL.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("relatedSite")]
-                public virtual string RelatedSite { get; set; } 
+                public virtual string RelatedSite { get; set; }
 
                 /// <summary>Filters based on licensing. Supported values include: * `cc_publicdomain` * `cc_attribute`
                 /// * `cc_sharealike` * `cc_noncommercial` * `cc_nonderived`</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("rights")]
-                public virtual string Rights { get; set; } 
+                public virtual string Rights { get; set; }
 
                 /// <summary>Specifies the [SafeSearch level](https://developers.google.com/custom-
                 /// search/docs/xml_results#safeSearchLevels) used for filtering out adult results. This is a custom
                 /// property not defined in the OpenSearch spec. Valid parameter values are: * `"off"`: Disable
                 /// SafeSearch * `"active"`: Enable SafeSearch</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("safe")]
-                public virtual string Safe { get; set; } 
+                public virtual string Safe { get; set; }
 
                 /// <summary>The search terms entered by the user.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("searchTerms")]
-                public virtual string SearchTerms { get; set; } 
+                public virtual string SearchTerms { get; set; }
 
                 /// <summary>Allowed values are `web` or `image`. If unspecified, results are limited to
                 /// webpages.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("searchType")]
-                public virtual string SearchType { get; set; } 
+                public virtual string SearchType { get; set; }
 
                 /// <summary>Restricts results to URLs from a specified site.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("siteSearch")]
-                public virtual string SiteSearch { get; set; } 
+                public virtual string SiteSearch { get; set; }
 
                 /// <summary>Specifies whether to include or exclude results from the site named in the `sitesearch`
                 /// parameter. Supported values are: * `i`: include content from site * `e`: exclude content from
                 /// site</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("siteSearchFilter")]
-                public virtual string SiteSearchFilter { get; set; } 
+                public virtual string SiteSearchFilter { get; set; }
 
                 /// <summary>Specifies that results should be sorted according to the specified expression. For example,
                 /// sort by date.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("sort")]
-                public virtual string Sort { get; set; } 
+                public virtual string Sort { get; set; }
 
                 /// <summary>The index of the current set of search results into the total set of results, where the
                 /// index of the first result is 1.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-                public virtual System.Nullable<int> StartIndex { get; set; } 
+                public virtual System.Nullable<int> StartIndex { get; set; }
 
                 /// <summary>The page number of this set of results, where the page length is set by the `count`
                 /// property.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("startPage")]
-                public virtual System.Nullable<int> StartPage { get; set; } 
+                public virtual System.Nullable<int> StartPage { get; set; }
 
                 /// <summary>A description of the query.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("title")]
-                public virtual string Title { get; set; } 
+                public virtual string Title { get; set; }
 
                 /// <summary>Estimated number of total search results. May not be accurate.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-                public virtual System.Nullable<long> TotalResults { get; set; } 
+                public virtual System.Nullable<long> TotalResults { get; set; }
 
             }    
 
@@ -2245,7 +2245,7 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
             {
                 /// <summary>Number of search results returned in this set.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("count")]
-                public virtual System.Nullable<int> Count { get; set; } 
+                public virtual System.Nullable<int> Count { get; set; }
 
                 /// <summary>Restricts search results to documents originating in a particular country. You may use
                 /// [Boolean operators](https://developers.google.com/custom-search/docs/xml_results#booleanOperators)
@@ -2254,35 +2254,35 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
                 /// web server's IP address. See [Country (cr) Parameter Values](https://developers.google.com/custom-
                 /// search/docs/xml_results#countryCollections) for a list of valid values for this parameter.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("cr")]
-                public virtual string Cr { get; set; } 
+                public virtual string Cr { get; set; }
 
                 /// <summary>The identifier of an engine created using the Programmable Search Engine [Control
                 /// Panel](https://programmablesearchengine.google.com/). This is a custom property not defined in the
                 /// OpenSearch spec. This parameter is **required**.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("cx")]
-                public virtual string Cx { get; set; } 
+                public virtual string Cx { get; set; }
 
                 /// <summary>Restricts results to URLs based on date. Supported values include: * `d[number]`: requests
                 /// results from the specified number of past days. * `w[number]`: requests results from the specified
                 /// number of past weeks. * `m[number]`: requests results from the specified number of past months. *
                 /// `y[number]`: requests results from the specified number of past years.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("dateRestrict")]
-                public virtual string DateRestrict { get; set; } 
+                public virtual string DateRestrict { get; set; }
 
                 /// <summary>Enables or disables the [Simplified and Traditional Chinese
                 /// Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch) feature.
                 /// Supported values are: * `0`: enabled (default) * `1`: disabled</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("disableCnTwTranslation")]
-                public virtual string DisableCnTwTranslation { get; set; } 
+                public virtual string DisableCnTwTranslation { get; set; }
 
                 /// <summary>Identifies a phrase that all documents in the search results must contain.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("exactTerms")]
-                public virtual string ExactTerms { get; set; } 
+                public virtual string ExactTerms { get; set; }
 
                 /// <summary>Identifies a word or phrase that should not appear in any documents in the search
                 /// results.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("excludeTerms")]
-                public virtual string ExcludeTerms { get; set; } 
+                public virtual string ExcludeTerms { get; set; }
 
                 /// <summary>Restricts results to files of a specified extension. Filetypes supported by Google include:
                 /// * Adobe Portable Document Format (`pdf`) * Adobe PostScript (`ps`) * Lotus 1-2-3 (`wk1`, `wk2`,
@@ -2292,7 +2292,7 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
                 /// (`ans`, `txt`). Additional filetypes may be added in the future. An up-to-date list can always be
                 /// found in Google's [file type FAQ](https://support.google.com/webmasters/answer/35287).</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
-                public virtual string FileType { get; set; } 
+                public virtual string FileType { get; set; }
 
                 /// <summary>Activates or deactivates the automatic filtering of Google search results. See [Automatic
                 /// Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering) for more
@@ -2300,7 +2300,7 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
                 /// Disabled * `1`: Enabled (default) **Note**: By default, Google applies filtering to all search
                 /// results to improve the quality of those results.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-                public virtual string Filter { get; set; } 
+                public virtual string Filter { get; set; }
 
                 /// <summary>Boosts search results whose country of origin matches the parameter value. See [Country
                 /// Codes](https://developers.google.com/custom-search/docs/xml_results#countryCodes) for a list of
@@ -2308,17 +2308,17 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
                 /// of results. This is particularly true for international customers and, even more specifically, for
                 /// customers in English-speaking countries other than the United States.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("gl")]
-                public virtual string Gl { get; set; } 
+                public virtual string Gl { get; set; }
 
                 /// <summary>Specifies the Google domain (for example, google.com, google.de, or google.fr) to which the
                 /// search should be limited.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("googleHost")]
-                public virtual string GoogleHost { get; set; } 
+                public virtual string GoogleHost { get; set; }
 
                 /// <summary>Specifies the ending value for a search range. Use `cse:lowRange` and `cse:highrange` to
                 /// append an inclusive search range of `lowRange...highRange` to the query.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("highRange")]
-                public virtual string HighRange { get; set; } 
+                public virtual string HighRange { get; set; }
 
                 /// <summary>Specifies the interface language (host language) of your user interface. Explicitly setting
                 /// this parameter improves the performance and the quality of your search results. See the [Interface
@@ -2328,121 +2328,121 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
                 /// Languages](https://developers.google.com/custom-
                 /// search/docs/xml_results_appendices#interfaceLanguages) for a list of supported languages.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("hl")]
-                public virtual string Hl { get; set; } 
+                public virtual string Hl { get; set; }
 
                 /// <summary>Appends the specified query terms to the query, as if they were combined with a logical
                 /// `AND` operator.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("hq")]
-                public virtual string Hq { get; set; } 
+                public virtual string Hq { get; set; }
 
                 /// <summary>Restricts results to images of a specified color type. Supported values are: * `mono`
                 /// (black and white) * `gray` (grayscale) * `color` (color)</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("imgColorType")]
-                public virtual string ImgColorType { get; set; } 
+                public virtual string ImgColorType { get; set; }
 
                 /// <summary>Restricts results to images with a specific dominant color. Supported values are: * `red` *
                 /// `orange` * `yellow` * `green` * `teal` * `blue` * `purple` * `pink` * `white` * `gray` * `black` *
                 /// `brown`</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("imgDominantColor")]
-                public virtual string ImgDominantColor { get; set; } 
+                public virtual string ImgDominantColor { get; set; }
 
                 /// <summary>Restricts results to images of a specified size. Supported values are: * `icon` (small) *
                 /// `small | medium | large | xlarge` (medium) * `xxlarge` (large) * `huge` (extra-large)</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("imgSize")]
-                public virtual string ImgSize { get; set; } 
+                public virtual string ImgSize { get; set; }
 
                 /// <summary>Restricts results to images of a specified type. Supported values are: * `clipart` (Clip
                 /// art) * `face` (Face) * `lineart` (Line drawing) * `photo` (Photo) * `animated` (Animated) * `stock`
                 /// (Stock)</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("imgType")]
-                public virtual string ImgType { get; set; } 
+                public virtual string ImgType { get; set; }
 
                 /// <summary>The character encoding supported for search requests.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("inputEncoding")]
-                public virtual string InputEncoding { get; set; } 
+                public virtual string InputEncoding { get; set; }
 
                 /// <summary>The language of the search results.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("language")]
-                public virtual string Language { get; set; } 
+                public virtual string Language { get; set; }
 
                 /// <summary>Specifies that all results should contain a link to a specific URL.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("linkSite")]
-                public virtual string LinkSite { get; set; } 
+                public virtual string LinkSite { get; set; }
 
                 /// <summary>Specifies the starting value for a search range. Use `cse:lowRange` and `cse:highrange` to
                 /// append an inclusive search range of `lowRange...highRange` to the query.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("lowRange")]
-                public virtual string LowRange { get; set; } 
+                public virtual string LowRange { get; set; }
 
                 /// <summary>Provides additional search terms to check for in a document, where each document in the
                 /// search results must contain at least one of the additional search terms. You can also use the
                 /// [Boolean OR](https://developers.google.com/custom-search/docs/xml_results#BooleanOrqt) query term
                 /// for this type of query.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("orTerms")]
-                public virtual string OrTerms { get; set; } 
+                public virtual string OrTerms { get; set; }
 
                 /// <summary>The character encoding supported for search results.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("outputEncoding")]
-                public virtual string OutputEncoding { get; set; } 
+                public virtual string OutputEncoding { get; set; }
 
                 /// <summary>Specifies that all search results should be pages that are related to the specified URL.
                 /// The parameter value should be a URL.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("relatedSite")]
-                public virtual string RelatedSite { get; set; } 
+                public virtual string RelatedSite { get; set; }
 
                 /// <summary>Filters based on licensing. Supported values include: * `cc_publicdomain` * `cc_attribute`
                 /// * `cc_sharealike` * `cc_noncommercial` * `cc_nonderived`</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("rights")]
-                public virtual string Rights { get; set; } 
+                public virtual string Rights { get; set; }
 
                 /// <summary>Specifies the [SafeSearch level](https://developers.google.com/custom-
                 /// search/docs/xml_results#safeSearchLevels) used for filtering out adult results. This is a custom
                 /// property not defined in the OpenSearch spec. Valid parameter values are: * `"off"`: Disable
                 /// SafeSearch * `"active"`: Enable SafeSearch</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("safe")]
-                public virtual string Safe { get; set; } 
+                public virtual string Safe { get; set; }
 
                 /// <summary>The search terms entered by the user.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("searchTerms")]
-                public virtual string SearchTerms { get; set; } 
+                public virtual string SearchTerms { get; set; }
 
                 /// <summary>Allowed values are `web` or `image`. If unspecified, results are limited to
                 /// webpages.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("searchType")]
-                public virtual string SearchType { get; set; } 
+                public virtual string SearchType { get; set; }
 
                 /// <summary>Restricts results to URLs from a specified site.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("siteSearch")]
-                public virtual string SiteSearch { get; set; } 
+                public virtual string SiteSearch { get; set; }
 
                 /// <summary>Specifies whether to include or exclude results from the site named in the `sitesearch`
                 /// parameter. Supported values are: * `i`: include content from site * `e`: exclude content from
                 /// site</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("siteSearchFilter")]
-                public virtual string SiteSearchFilter { get; set; } 
+                public virtual string SiteSearchFilter { get; set; }
 
                 /// <summary>Specifies that results should be sorted according to the specified expression. For example,
                 /// sort by date.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("sort")]
-                public virtual string Sort { get; set; } 
+                public virtual string Sort { get; set; }
 
                 /// <summary>The index of the current set of search results into the total set of results, where the
                 /// index of the first result is 1.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-                public virtual System.Nullable<int> StartIndex { get; set; } 
+                public virtual System.Nullable<int> StartIndex { get; set; }
 
                 /// <summary>The page number of this set of results, where the page length is set by the `count`
                 /// property.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("startPage")]
-                public virtual System.Nullable<int> StartPage { get; set; } 
+                public virtual System.Nullable<int> StartPage { get; set; }
 
                 /// <summary>A description of the query.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("title")]
-                public virtual string Title { get; set; } 
+                public virtual string Title { get; set; }
 
                 /// <summary>Estimated number of total search results. May not be accurate.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-                public virtual System.Nullable<long> TotalResults { get; set; } 
+                public virtual System.Nullable<long> TotalResults { get; set; }
 
             }
         }    
@@ -2453,19 +2453,19 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
             /// <summary>The time taken for the server to return search results, formatted according to locale
             /// style.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("formattedSearchTime")]
-            public virtual string FormattedSearchTime { get; set; } 
+            public virtual string FormattedSearchTime { get; set; }
 
             /// <summary>The total number of search results, formatted according to locale style.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("formattedTotalResults")]
-            public virtual string FormattedTotalResults { get; set; } 
+            public virtual string FormattedTotalResults { get; set; }
 
             /// <summary>The time taken for the server to return search results.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("searchTime")]
-            public virtual System.Nullable<double> SearchTime { get; set; } 
+            public virtual System.Nullable<double> SearchTime { get; set; }
 
             /// <summary>The total number of search results returned by the query.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-            public virtual string TotalResults { get; set; } 
+            public virtual string TotalResults { get; set; }
 
         }    
 
@@ -2474,11 +2474,11 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
         {
             /// <summary>The corrected query.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("correctedQuery")]
-            public virtual string CorrectedQuery { get; set; } 
+            public virtual string CorrectedQuery { get; set; }
 
             /// <summary>The corrected query, formatted in HTML.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("htmlCorrectedQuery")]
-            public virtual string HtmlCorrectedQuery { get; set; } 
+            public virtual string HtmlCorrectedQuery { get; set; }
 
         }    
 
@@ -2489,11 +2489,11 @@ namespace Google.Apis.CustomSearchAPI.v1.Data
             /// template](http://www.opensearch.org/specifications/opensearch/1.1#opensearch_url_template_syntax) for
             /// this API.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("template")]
-            public virtual string Template { get; set; } 
+            public virtual string Template { get; set; }
 
             /// <summary>The MIME type of the OpenSearch URL template for the Custom Search JSON API.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual string Type { get; set; } 
+            public virtual string Type { get; set; }
 
         }
     }

@@ -2117,12 +2117,12 @@ namespace Google.Apis.CloudIot.v1.Data
         /// <summary>Required. The device to associate with the specified gateway. The value of `device_id` can be
         /// either the device numeric ID or the user-defined device identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
-        public virtual string DeviceId { get; set; } 
+        public virtual string DeviceId { get; set; }
 
         /// <summary>Required. The value of `gateway_id` can be either the device numeric ID or the user-defined device
         /// identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gatewayId")]
-        public virtual string GatewayId { get; set; } 
+        public virtual string GatewayId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2141,7 +2141,7 @@ namespace Google.Apis.CloudIot.v1.Data
         /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
         /// bindings-by-ID API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; } 
+        public virtual string BindingId { get; set; }
 
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
@@ -2149,7 +2149,7 @@ namespace Google.Apis.CloudIot.v1.Data
         /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
@@ -2171,12 +2171,12 @@ namespace Google.Apis.CloudIot.v1.Data
         /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2189,14 +2189,14 @@ namespace Google.Apis.CloudIot.v1.Data
         /// temporarily prevent the device from connecting if, for example, the sensor is generating bad data and needs
         /// maintenance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blocked")]
-        public virtual System.Nullable<bool> Blocked { get; set; } 
+        public virtual System.Nullable<bool> Blocked { get; set; }
 
         /// <summary>The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
         /// If not present on creation, the configuration will be initialized with an empty payload and version value of
         /// `1`. To update this field after creation, use the `DeviceManager.ModifyCloudToDeviceConfig`
         /// method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual DeviceConfig Config { get; set; } 
+        public virtual DeviceConfig Config { get; set; }
 
         /// <summary>The credentials used to authenticate this device. To allow credential rotation without
         /// interruption, multiple device credentials can be bound to this device. No more than 3 credentials can be
@@ -2204,59 +2204,59 @@ namespace Google.Apis.CloudIot.v1.Data
         /// the registry credentials. For details, see the description of the `DeviceRegistry.credentials`
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("credentials")]
-        public virtual System.Collections.Generic.IList<DeviceCredential> Credentials { get; set; } 
+        public virtual System.Collections.Generic.IList<DeviceCredential> Credentials { get; set; }
 
         /// <summary>Gateway-related configuration and state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gatewayConfig")]
-        public virtual GatewayConfig GatewayConfig { get; set; } 
+        public virtual GatewayConfig GatewayConfig { get; set; }
 
         /// <summary>The user-defined device identifier. The device ID must be unique within a device
         /// registry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>[Output only] The last time a cloud-to-device config version acknowledgment was received from the
         /// device. This field is only for configurations sent through MQTT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastConfigAckTime")]
-        public virtual object LastConfigAckTime { get; set; } 
+        public virtual object LastConfigAckTime { get; set; }
 
         /// <summary>[Output only] The last time a cloud-to-device config version was sent to the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastConfigSendTime")]
-        public virtual object LastConfigSendTime { get; set; } 
+        public virtual object LastConfigSendTime { get; set; }
 
         /// <summary>[Output only] The error message of the most recent error, such as a failure to publish to Cloud
         /// Pub/Sub. 'last_error_time' is the timestamp of this field. If no errors have occurred, this field has an
         /// empty message and the status code 0 == OK. Otherwise, this field is expected to have a status code other
         /// than OK.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastErrorStatus")]
-        public virtual Status LastErrorStatus { get; set; } 
+        public virtual Status LastErrorStatus { get; set; }
 
         /// <summary>[Output only] The time the most recent error occurred, such as a failure to publish to Cloud
         /// Pub/Sub. This field is the timestamp of 'last_error_status'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastErrorTime")]
-        public virtual object LastErrorTime { get; set; } 
+        public virtual object LastErrorTime { get; set; }
 
         /// <summary>[Output only] The last time a telemetry event was received. Timestamps are periodically collected
         /// and written to storage; they may be stale by a few minutes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastEventTime")]
-        public virtual object LastEventTime { get; set; } 
+        public virtual object LastEventTime { get; set; }
 
         /// <summary>[Output only] The last time an MQTT `PINGREQ` was received. This field applies only to devices
         /// connecting through MQTT. MQTT clients usually only send `PINGREQ` messages if the connection is idle, and no
         /// other messages have been sent. Timestamps are periodically collected and written to storage; they may be
         /// stale by a few minutes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastHeartbeatTime")]
-        public virtual object LastHeartbeatTime { get; set; } 
+        public virtual object LastHeartbeatTime { get; set; }
 
         /// <summary>[Output only] The last time a state event was received. Timestamps are periodically collected and
         /// written to storage; they may be stale by a few minutes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastStateTime")]
-        public virtual object LastStateTime { get; set; } 
+        public virtual object LastStateTime { get; set; }
 
         /// <summary>**Beta Feature** The logging verbosity for device activity. If unspecified,
         /// DeviceRegistry.log_level will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logLevel")]
-        public virtual string LogLevel { get; set; } 
+        public virtual string LogLevel { get; set; }
 
         /// <summary>The metadata key-value pairs assigned to the device. This metadata is not interpreted or indexed by
         /// Cloud IoT Core. It can be used to add contextual information for the device. Keys must conform to the
@@ -2264,24 +2264,24 @@ namespace Google.Apis.CloudIot.v1.Data
         /// must be less than or equal to 32 KB in size. The total size of all keys and values must be less than 256 KB,
         /// and the maximum number of key-value pairs is 500.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>The resource path name. For example, `projects/p1/locations/us-
         /// central1/registries/registry0/devices/dev0` or `projects/p1/locations/us-
         /// central1/registries/registry0/devices/{num_id}`. When `name` is populated as a response from the service, it
         /// always ends in the device numeric ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>[Output only] A server-defined unique numeric ID for the device. This is a more compact way to
         /// identify devices, and it is globally unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numId")]
-        public virtual System.Nullable<ulong> NumId { get; set; } 
+        public virtual System.Nullable<ulong> NumId { get; set; }
 
         /// <summary>[Output only] The state most recently received from the device. If no state has been reported, this
         /// field is not present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual DeviceState State { get; set; } 
+        public virtual DeviceState State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2292,12 +2292,12 @@ namespace Google.Apis.CloudIot.v1.Data
     {
         /// <summary>The device configuration data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binaryData")]
-        public virtual string BinaryData { get; set; } 
+        public virtual string BinaryData { get; set; }
 
         /// <summary>[Output only] The time at which this configuration version was updated in Cloud IoT Core. This
         /// timestamp is set by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudUpdateTime")]
-        public virtual object CloudUpdateTime { get; set; } 
+        public virtual object CloudUpdateTime { get; set; }
 
         /// <summary>[Output only] The time at which Cloud IoT Core received the acknowledgment from the device,
         /// indicating that the device has received this configuration version. If this field is not present, the device
@@ -2306,13 +2306,13 @@ namespace Google.Apis.CloudIot.v1.Data
         /// connection, only the latest version is sent to the device. Some versions may never be sent to the device,
         /// and therefore are never acknowledged. This timestamp is set by Cloud IoT Core.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceAckTime")]
-        public virtual object DeviceAckTime { get; set; } 
+        public virtual object DeviceAckTime { get; set; }
 
         /// <summary>[Output only] The version of this update. The version number is assigned by the server, and is
         /// always greater than 0 after device creation. The version must be 0 on the `CreateDevice` request if a
         /// `config` is specified; the response of `CreateDevice` will always have a value of 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<long> Version { get; set; } 
+        public virtual System.Nullable<long> Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2325,7 +2325,7 @@ namespace Google.Apis.CloudIot.v1.Data
         /// new client authentication requests after this timestamp; however, it will not be automatically
         /// deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
-        public virtual object ExpirationTime { get; set; } 
+        public virtual object ExpirationTime { get; set; }
 
         /// <summary>A public key used to verify the signature of JSON Web Tokens (JWTs). When adding a new device
         /// credential, either via device creation or via modifications, this public key credential may be required to
@@ -2335,7 +2335,7 @@ namespace Google.Apis.CloudIot.v1.Data
         /// However, if the registry does not contain a certificate, self-signed certificates and public keys will be
         /// accepted. New device credentials must be different from every registry-level certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicKey")]
-        public virtual PublicKeyCredential PublicKey { get; set; } 
+        public virtual PublicKeyCredential PublicKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2352,7 +2352,7 @@ namespace Google.Apis.CloudIot.v1.Data
         /// device has been successfully created in a registry, it should be able to connect even if its registry
         /// credentials are revoked, deleted, or modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("credentials")]
-        public virtual System.Collections.Generic.IList<RegistryCredential> Credentials { get; set; } 
+        public virtual System.Collections.Generic.IList<RegistryCredential> Credentials { get; set; }
 
         /// <summary>The configuration for notification of telemetry events received from the device. All telemetry
         /// events that were successfully published by the device and acknowledged by Cloud IoT Core are guaranteed to
@@ -2361,36 +2361,36 @@ namespace Google.Apis.CloudIot.v1.Data
         /// Pub/Sub topic for the device's registry, the connection closes automatically. If you try to do so using an
         /// HTTP connection, an error is returned. Up to 10 configurations may be provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventNotificationConfigs")]
-        public virtual System.Collections.Generic.IList<EventNotificationConfig> EventNotificationConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<EventNotificationConfig> EventNotificationConfigs { get; set; }
 
         /// <summary>The DeviceService (HTTP) configuration for this device registry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpConfig")]
-        public virtual HttpConfig HttpConfig { get; set; } 
+        public virtual HttpConfig HttpConfig { get; set; }
 
         /// <summary>The identifier of this device registry. For example, `myRegistry`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>**Beta Feature** The default logging verbosity for activity from devices in this registry. The
         /// verbosity level can be overridden by Device.log_level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logLevel")]
-        public virtual string LogLevel { get; set; } 
+        public virtual string LogLevel { get; set; }
 
         /// <summary>The MQTT configuration for this device registry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mqttConfig")]
-        public virtual MqttConfig MqttConfig { get; set; } 
+        public virtual MqttConfig MqttConfig { get; set; }
 
         /// <summary>The resource path name. For example, `projects/example-project/locations/us-central1/registries/my-
         /// registry`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The configuration for notification of new states received from the device. State updates are
         /// guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For
         /// example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be
         /// published but the state will still be stored in Cloud IoT Core.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateNotificationConfig")]
-        public virtual StateNotificationConfig StateNotificationConfig { get; set; } 
+        public virtual StateNotificationConfig StateNotificationConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2401,11 +2401,11 @@ namespace Google.Apis.CloudIot.v1.Data
     {
         /// <summary>The device state data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binaryData")]
-        public virtual string BinaryData { get; set; } 
+        public virtual string BinaryData { get; set; }
 
         /// <summary>[Output only] The time at which this state version was updated in Cloud IoT Core.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2426,13 +2426,13 @@ namespace Google.Apis.CloudIot.v1.Data
     {
         /// <summary>A Cloud Pub/Sub topic name. For example, `projects/myProject/topics/deviceEvents`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopicName")]
-        public virtual string PubsubTopicName { get; set; } 
+        public virtual string PubsubTopicName { get; set; }
 
         /// <summary>If the subfolder name matches this string exactly, this configuration will be used. The string must
         /// not include the leading '/' character. If empty, all strings are matched. This field is used only for
         /// telemetry events; subfolders are not supported for state changes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subfolderMatches")]
-        public virtual string SubfolderMatches { get; set; } 
+        public virtual string SubfolderMatches { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2454,21 +2454,21 @@ namespace Google.Apis.CloudIot.v1.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2479,20 +2479,20 @@ namespace Google.Apis.CloudIot.v1.Data
     {
         /// <summary>Indicates how to authorize and/or authenticate devices to access the gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gatewayAuthMethod")]
-        public virtual string GatewayAuthMethod { get; set; } 
+        public virtual string GatewayAuthMethod { get; set; }
 
         /// <summary>Indicates whether the device is a gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gatewayType")]
-        public virtual string GatewayType { get; set; } 
+        public virtual string GatewayType { get; set; }
 
         /// <summary>[Output only] The ID of the gateway the device accessed most recently.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastAccessedGatewayId")]
-        public virtual string LastAccessedGatewayId { get; set; } 
+        public virtual string LastAccessedGatewayId { get; set; }
 
         /// <summary>[Output only] The most recent time at which the device accessed the gateway specified in
         /// `last_accessed_gateway`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastAccessedGatewayTime")]
-        public virtual object LastAccessedGatewayTime { get; set; } 
+        public virtual object LastAccessedGatewayTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2503,7 +2503,7 @@ namespace Google.Apis.CloudIot.v1.Data
     {
         /// <summary>OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
-        public virtual GetPolicyOptions Options { get; set; } 
+        public virtual GetPolicyOptions Options { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2518,7 +2518,7 @@ namespace Google.Apis.CloudIot.v1.Data
         /// unset. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
-        public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
+        public virtual System.Nullable<int> RequestedPolicyVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2530,7 +2530,7 @@ namespace Google.Apis.CloudIot.v1.Data
         /// <summary>If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to
         /// DeviceService will fail for this registry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpEnabledState")]
-        public virtual string HttpEnabledState { get; set; } 
+        public virtual string HttpEnabledState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2542,7 +2542,7 @@ namespace Google.Apis.CloudIot.v1.Data
         /// <summary>The device configuration for the last few versions. Versions are listed in decreasing order,
         /// starting from the most recent one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceConfigs")]
-        public virtual System.Collections.Generic.IList<DeviceConfig> DeviceConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<DeviceConfig> DeviceConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2553,12 +2553,12 @@ namespace Google.Apis.CloudIot.v1.Data
     {
         /// <summary>The registries that matched the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceRegistries")]
-        public virtual System.Collections.Generic.IList<DeviceRegistry> DeviceRegistries { get; set; } 
+        public virtual System.Collections.Generic.IList<DeviceRegistry> DeviceRegistries { get; set; }
 
         /// <summary>If not empty, indicates that there may be more registries that match the request; this value should
         /// be passed in a new `ListDeviceRegistriesRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2570,7 +2570,7 @@ namespace Google.Apis.CloudIot.v1.Data
         /// <summary>The last few device states. States are listed in descending order of server update time, starting
         /// from the most recent one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceStates")]
-        public virtual System.Collections.Generic.IList<DeviceState> DeviceStates { get; set; } 
+        public virtual System.Collections.Generic.IList<DeviceState> DeviceStates { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2581,12 +2581,12 @@ namespace Google.Apis.CloudIot.v1.Data
     {
         /// <summary>The devices that match the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("devices")]
-        public virtual System.Collections.Generic.IList<Device> Devices { get; set; } 
+        public virtual System.Collections.Generic.IList<Device> Devices { get; set; }
 
         /// <summary>If not empty, indicates that there may be more devices that match the request; this value should be
         /// passed in a new `ListDevicesRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2597,14 +2597,14 @@ namespace Google.Apis.CloudIot.v1.Data
     {
         /// <summary>Required. The configuration data for the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binaryData")]
-        public virtual string BinaryData { get; set; } 
+        public virtual string BinaryData { get; set; }
 
         /// <summary>The version number to update. If this value is zero, it will not check the version number of the
         /// server and will always update the current version; otherwise, this update will fail if the version number
         /// found on the server does not match this version number. This is used to support multiple simultaneous
         /// updates without losing data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionToUpdate")]
-        public virtual System.Nullable<long> VersionToUpdate { get; set; } 
+        public virtual System.Nullable<long> VersionToUpdate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2616,7 +2616,7 @@ namespace Google.Apis.CloudIot.v1.Data
         /// <summary>If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this
         /// registry will fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mqttEnabledState")]
-        public virtual string MqttEnabledState { get; set; } 
+        public virtual string MqttEnabledState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2647,7 +2647,7 @@ namespace Google.Apis.CloudIot.v1.Data
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -2658,7 +2658,7 @@ namespace Google.Apis.CloudIot.v1.Data
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
         /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
         /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
@@ -2672,7 +2672,7 @@ namespace Google.Apis.CloudIot.v1.Data
         /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -2681,15 +2681,15 @@ namespace Google.Apis.CloudIot.v1.Data
     {
         /// <summary>The certificate data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificate")]
-        public virtual string Certificate { get; set; } 
+        public virtual string Certificate { get; set; }
 
         /// <summary>The certificate format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual string Format { get; set; } 
+        public virtual string Format { get; set; }
 
         /// <summary>[Output only] The certificate details. Used only for X.509 certificates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("x509Details")]
-        public virtual X509CertificateDetails X509Details { get; set; } 
+        public virtual X509CertificateDetails X509Details { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2700,11 +2700,11 @@ namespace Google.Apis.CloudIot.v1.Data
     {
         /// <summary>The format of the key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual string Format { get; set; } 
+        public virtual string Format { get; set; }
 
         /// <summary>The key data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2715,7 +2715,7 @@ namespace Google.Apis.CloudIot.v1.Data
     {
         /// <summary>A public key certificate used to verify the device credentials.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicKeyCertificate")]
-        public virtual PublicKeyCertificate PublicKeyCertificate { get; set; } 
+        public virtual PublicKeyCertificate PublicKeyCertificate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2726,14 +2726,14 @@ namespace Google.Apis.CloudIot.v1.Data
     {
         /// <summary>Required. The command data to send to the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binaryData")]
-        public virtual string BinaryData { get; set; } 
+        public virtual string BinaryData { get; set; }
 
         /// <summary>Optional subfolder for the command. If empty, the command will be delivered to the /devices
         /// /{device-id}/commands topic, otherwise it will be delivered to the /devices/{device-id}/commands/{subfolder}
         /// topic. Multi-level subfolders are allowed. This field must not have more than 256 characters, and must not
         /// contain any MQTT wildcards ("+" or "#") or null characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subfolder")]
-        public virtual string Subfolder { get; set; } 
+        public virtual string Subfolder { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2753,7 +2753,7 @@ namespace Google.Apis.CloudIot.v1.Data
         /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; } 
+        public virtual Policy Policy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2764,7 +2764,7 @@ namespace Google.Apis.CloudIot.v1.Data
     {
         /// <summary>A Cloud Pub/Sub topic name. For example, `projects/myProject/topics/deviceEvents`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopicName")]
-        public virtual string PubsubTopicName { get; set; } 
+        public virtual string PubsubTopicName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2779,17 +2779,17 @@ namespace Google.Apis.CloudIot.v1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2802,7 +2802,7 @@ namespace Google.Apis.CloudIot.v1.Data
         /// 'storage.*') are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2813,7 +2813,7 @@ namespace Google.Apis.CloudIot.v1.Data
     {
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2825,12 +2825,12 @@ namespace Google.Apis.CloudIot.v1.Data
         /// <summary>Required. The device to disassociate from the specified gateway. The value of `device_id` can be
         /// either the device numeric ID or the user-defined device identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
-        public virtual string DeviceId { get; set; } 
+        public virtual string DeviceId { get; set; }
 
         /// <summary>Required. The value of `gateway_id` can be either the device numeric ID or the user-defined device
         /// identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gatewayId")]
-        public virtual string GatewayId { get; set; } 
+        public virtual string GatewayId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2848,27 +2848,27 @@ namespace Google.Apis.CloudIot.v1.Data
     {
         /// <summary>The time the certificate becomes invalid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expiryTime")]
-        public virtual object ExpiryTime { get; set; } 
+        public virtual object ExpiryTime { get; set; }
 
         /// <summary>The entity that signed the certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issuer")]
-        public virtual string Issuer { get; set; } 
+        public virtual string Issuer { get; set; }
 
         /// <summary>The type of public key in the certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicKeyType")]
-        public virtual string PublicKeyType { get; set; } 
+        public virtual string PublicKeyType { get; set; }
 
         /// <summary>The algorithm used to sign the certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatureAlgorithm")]
-        public virtual string SignatureAlgorithm { get; set; } 
+        public virtual string SignatureAlgorithm { get; set; }
 
         /// <summary>The time the certificate becomes valid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The entity the certificate and public key belong to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subject")]
-        public virtual string Subject { get; set; } 
+        public virtual string Subject { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1959,7 +1959,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The banded range to add. The bandedRangeId field is optional; if one is not set, an id will be
         /// randomly generated. (It is an error to specify the ID of a range that already exists.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bandedRange")]
-        public virtual BandedRange BandedRange { get; set; } 
+        public virtual BandedRange BandedRange { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1970,7 +1970,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The banded range that was added.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bandedRange")]
-        public virtual BandedRange BandedRange { get; set; } 
+        public virtual BandedRange BandedRange { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1983,7 +1983,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// placed. The chartId field is optional; if one is not set, an id will be randomly generated. (It is an error
         /// to specify the ID of an embedded object that already exists.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chart")]
-        public virtual EmbeddedChart Chart { get; set; } 
+        public virtual EmbeddedChart Chart { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1994,7 +1994,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The newly added chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chart")]
-        public virtual EmbeddedChart Chart { get; set; } 
+        public virtual EmbeddedChart Chart { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2006,11 +2006,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The zero-based index where the rule should be inserted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
-        public virtual System.Nullable<int> Index { get; set; } 
+        public virtual System.Nullable<int> Index { get; set; }
 
         /// <summary>The rule to add.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rule")]
-        public virtual ConditionalFormatRule Rule { get; set; } 
+        public virtual ConditionalFormatRule Rule { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2023,7 +2023,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The data source to add.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
-        public virtual DataSource DataSource { get; set; } 
+        public virtual DataSource DataSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2034,11 +2034,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The data execution status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataExecutionStatus")]
-        public virtual DataExecutionStatus DataExecutionStatus { get; set; } 
+        public virtual DataExecutionStatus DataExecutionStatus { get; set; }
 
         /// <summary>The data source that was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
-        public virtual DataSource DataSource { get; set; } 
+        public virtual DataSource DataSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2057,7 +2057,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The range over which to create a group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual DimensionRange Range { get; set; } 
+        public virtual DimensionRange Range { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2068,7 +2068,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>All groups of a dimension after adding a group to that dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionGroups")]
-        public virtual System.Collections.Generic.IList<DimensionGroup> DimensionGroups { get; set; } 
+        public virtual System.Collections.Generic.IList<DimensionGroup> DimensionGroups { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2080,7 +2080,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The filter to add. The filterViewId field is optional; if one is not set, an id will be randomly
         /// generated. (It is an error to specify the ID of a filter that already exists.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual FilterView Filter { get; set; } 
+        public virtual FilterView Filter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2091,7 +2091,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The newly added filter view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual FilterView Filter { get; set; } 
+        public virtual FilterView Filter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2103,7 +2103,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The named range to add. The namedRangeId field is optional; if one is not set, an id will be
         /// randomly generated. (It is an error to specify the ID of a range that already exists.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedRange")]
-        public virtual NamedRange NamedRange { get; set; } 
+        public virtual NamedRange NamedRange { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2114,7 +2114,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The named range to add.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedRange")]
-        public virtual NamedRange NamedRange { get; set; } 
+        public virtual NamedRange NamedRange { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2126,7 +2126,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The protected range to be added. The protectedRangeId field is optional; if one is not set, an id
         /// will be randomly generated. (It is an error to specify the ID of a range that already exists.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protectedRange")]
-        public virtual ProtectedRange ProtectedRange { get; set; } 
+        public virtual ProtectedRange ProtectedRange { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2137,7 +2137,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The newly added protected range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protectedRange")]
-        public virtual ProtectedRange ProtectedRange { get; set; } 
+        public virtual ProtectedRange ProtectedRange { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2152,7 +2152,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// optional; if one is not set, an id will be randomly generated. (It is an error to specify the ID of a sheet
         /// that already exists.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual SheetProperties Properties { get; set; } 
+        public virtual SheetProperties Properties { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2163,7 +2163,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The properties of the newly added sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual SheetProperties Properties { get; set; } 
+        public virtual SheetProperties Properties { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2176,7 +2176,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// placed. The slicerId field is optional; if one is not set, an id will be randomly generated. (It is an error
         /// to specify the ID of a slicer that already exists.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slicer")]
-        public virtual Slicer Slicer { get; set; } 
+        public virtual Slicer Slicer { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2187,7 +2187,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The newly added slicer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slicer")]
-        public virtual Slicer Slicer { get; set; } 
+        public virtual Slicer Slicer { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2201,15 +2201,15 @@ namespace Google.Apis.Sheets.v4.Data
         /// the CellData; 'row.values.' should not be specified. A single `"*"` can be used as short-hand for listing
         /// every field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual object Fields { get; set; } 
+        public virtual object Fields { get; set; }
 
         /// <summary>The data to append.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-        public virtual System.Collections.Generic.IList<RowData> Rows { get; set; } 
+        public virtual System.Collections.Generic.IList<RowData> Rows { get; set; }
 
         /// <summary>The sheet ID to append the data to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
-        public virtual System.Nullable<int> SheetId { get; set; } 
+        public virtual System.Nullable<int> SheetId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2220,15 +2220,15 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>Whether rows or columns should be appended.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
-        public virtual string Dimension { get; set; } 
+        public virtual string Dimension { get; set; }
 
         /// <summary>The number of rows or columns to append.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("length")]
-        public virtual System.Nullable<int> Length { get; set; } 
+        public virtual System.Nullable<int> Length { get; set; }
 
         /// <summary>The sheet to append rows or columns to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
-        public virtual System.Nullable<int> SheetId { get; set; } 
+        public virtual System.Nullable<int> SheetId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2239,16 +2239,16 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The spreadsheet the updates were applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetId")]
-        public virtual string SpreadsheetId { get; set; } 
+        public virtual string SpreadsheetId { get; set; }
 
         /// <summary>The range (in A1 notation) of the table that values are being appended to (before the values were
         /// appended). Empty if no table was found.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableRange")]
-        public virtual string TableRange { get; set; } 
+        public virtual string TableRange { get; set; }
 
         /// <summary>Information about the updates that were applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updates")]
-        public virtual UpdateValuesResponse Updates { get; set; } 
+        public virtual UpdateValuesResponse Updates { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2260,17 +2260,17 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The range to autofill. This will examine the range and detect the location that has data and
         /// automatically fill that data in to the rest of the range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual GridRange Range { get; set; } 
+        public virtual GridRange Range { get; set; }
 
         /// <summary>The source and destination areas to autofill. This explicitly lists the source of the autofill and
         /// where to extend that data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceAndDestination")]
-        public virtual SourceAndDestination SourceAndDestination { get; set; } 
+        public virtual SourceAndDestination SourceAndDestination { get; set; }
 
         /// <summary>True if we should generate data with the "alternate" series. This differs based on the type and
         /// amount of source data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useAlternateSeries")]
-        public virtual System.Nullable<bool> UseAlternateSeries { get; set; } 
+        public virtual System.Nullable<bool> UseAlternateSeries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2282,11 +2282,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The dimensions on a data source sheet to automatically resize.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceSheetDimensions")]
-        public virtual DataSourceSheetDimensionRange DataSourceSheetDimensions { get; set; } 
+        public virtual DataSourceSheetDimensionRange DataSourceSheetDimensions { get; set; }
 
         /// <summary>The dimensions to automatically resize.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
-        public virtual DimensionRange Dimensions { get; set; } 
+        public virtual DimensionRange Dimensions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2297,22 +2297,22 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The id of the banded range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bandedRangeId")]
-        public virtual System.Nullable<int> BandedRangeId { get; set; } 
+        public virtual System.Nullable<int> BandedRangeId { get; set; }
 
         /// <summary>Properties for column bands. These properties are applied on a column- by-column basis throughout
         /// all the columns in the range. At least one of row_properties or column_properties must be
         /// specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnProperties")]
-        public virtual BandingProperties ColumnProperties { get; set; } 
+        public virtual BandingProperties ColumnProperties { get; set; }
 
         /// <summary>The range over which these properties are applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual GridRange Range { get; set; } 
+        public virtual GridRange Range { get; set; }
 
         /// <summary>Properties for row bands. These properties are applied on a row-by-row basis throughout all the
         /// rows in the range. At least one of row_properties or column_properties must be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowProperties")]
-        public virtual BandingProperties RowProperties { get; set; } 
+        public virtual BandingProperties RowProperties { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2329,47 +2329,47 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The first color that is alternating. (Required)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstBandColor")]
-        public virtual Color FirstBandColor { get; set; } 
+        public virtual Color FirstBandColor { get; set; }
 
         /// <summary>The first color that is alternating. (Required) If first_band_color is also set, this field takes
         /// precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstBandColorStyle")]
-        public virtual ColorStyle FirstBandColorStyle { get; set; } 
+        public virtual ColorStyle FirstBandColorStyle { get; set; }
 
         /// <summary>The color of the last row or column. If this field is not set, the last row or column is filled
         /// with either first_band_color or second_band_color, depending on the color of the previous row or
         /// column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("footerColor")]
-        public virtual Color FooterColor { get; set; } 
+        public virtual Color FooterColor { get; set; }
 
         /// <summary>The color of the last row or column. If this field is not set, the last row or column is filled
         /// with either first_band_color or second_band_color, depending on the color of the previous row or column. If
         /// footer_color is also set, this field takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("footerColorStyle")]
-        public virtual ColorStyle FooterColorStyle { get; set; } 
+        public virtual ColorStyle FooterColorStyle { get; set; }
 
         /// <summary>The color of the first row or column. If this field is set, the first row or column is filled with
         /// this color and the colors alternate between first_band_color and second_band_color starting from the second
         /// row or column. Otherwise, the first row or column is filled with first_band_color and the colors proceed to
         /// alternate as they normally would.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headerColor")]
-        public virtual Color HeaderColor { get; set; } 
+        public virtual Color HeaderColor { get; set; }
 
         /// <summary>The color of the first row or column. If this field is set, the first row or column is filled with
         /// this color and the colors alternate between first_band_color and second_band_color starting from the second
         /// row or column. Otherwise, the first row or column is filled with first_band_color and the colors proceed to
         /// alternate as they normally would. If header_color is also set, this field takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headerColorStyle")]
-        public virtual ColorStyle HeaderColorStyle { get; set; } 
+        public virtual ColorStyle HeaderColorStyle { get; set; }
 
         /// <summary>The second color that is alternating. (Required)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondBandColor")]
-        public virtual Color SecondBandColor { get; set; } 
+        public virtual Color SecondBandColor { get; set; }
 
         /// <summary>The second color that is alternating. (Required) If second_band_color is also set, this field takes
         /// precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondBandColorStyle")]
-        public virtual ColorStyle SecondBandColorStyle { get; set; } 
+        public virtual ColorStyle SecondBandColorStyle { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2380,40 +2380,40 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The comparison type of key value with baseline value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comparisonType")]
-        public virtual string ComparisonType { get; set; } 
+        public virtual string ComparisonType { get; set; }
 
         /// <summary>Description which is appended after the baseline value. This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Color to be used, in case baseline value represents a negative change for key value. This field is
         /// optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negativeColor")]
-        public virtual Color NegativeColor { get; set; } 
+        public virtual Color NegativeColor { get; set; }
 
         /// <summary>Color to be used, in case baseline value represents a negative change for key value. This field is
         /// optional. If negative_color is also set, this field takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negativeColorStyle")]
-        public virtual ColorStyle NegativeColorStyle { get; set; } 
+        public virtual ColorStyle NegativeColorStyle { get; set; }
 
         /// <summary>Specifies the horizontal text positioning of baseline value. This field is optional. If not
         /// specified, default positioning is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("position")]
-        public virtual TextPosition Position { get; set; } 
+        public virtual TextPosition Position { get; set; }
 
         /// <summary>Color to be used, in case baseline value represents a positive change for key value. This field is
         /// optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("positiveColor")]
-        public virtual Color PositiveColor { get; set; } 
+        public virtual Color PositiveColor { get; set; }
 
         /// <summary>Color to be used, in case baseline value represents a positive change for key value. This field is
         /// optional. If positive_color is also set, this field takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("positiveColorStyle")]
-        public virtual ColorStyle PositiveColorStyle { get; set; } 
+        public virtual ColorStyle PositiveColorStyle { get; set; }
 
         /// <summary>Text formatting options for baseline value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textFormat")]
-        public virtual TextFormat TextFormat { get; set; } 
+        public virtual TextFormat TextFormat { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2424,24 +2424,24 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The format of the title. Only valid if the axis is not associated with the domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual TextFormat Format { get; set; } 
+        public virtual TextFormat Format { get; set; }
 
         /// <summary>The position of this axis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("position")]
-        public virtual string Position { get; set; } 
+        public virtual string Position { get; set; }
 
         /// <summary>The title of this axis. If set, this overrides any title inferred from headers of the
         /// data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The axis title text position.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("titleTextPosition")]
-        public virtual TextPosition TitleTextPosition { get; set; } 
+        public virtual TextPosition TitleTextPosition { get; set; }
 
         /// <summary>The view window options for this axis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewWindowOptions")]
-        public virtual ChartAxisViewWindowOptions ViewWindowOptions { get; set; } 
+        public virtual ChartAxisViewWindowOptions ViewWindowOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2454,11 +2454,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The data of the domain. For example, if charting stock prices over time, this is the data
         /// representing the dates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
-        public virtual ChartData Domain { get; set; } 
+        public virtual ChartData Domain { get; set; }
 
         /// <summary>True to reverse the order of the domain values (horizontal axis).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reversed")]
-        public virtual System.Nullable<bool> Reversed { get; set; } 
+        public virtual System.Nullable<bool> Reversed { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2471,33 +2471,33 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The color for elements (such as bars, lines, and points) associated with this series. If empty, a
         /// default color is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
-        public virtual Color Color { get; set; } 
+        public virtual Color Color { get; set; }
 
         /// <summary>The color for elements (such as bars, lines, and points) associated with this series. If empty, a
         /// default color is used. If color is also set, this field takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colorStyle")]
-        public virtual ColorStyle ColorStyle { get; set; } 
+        public virtual ColorStyle ColorStyle { get; set; }
 
         /// <summary>The line style of this series. Valid only if the chartType is AREA, LINE, or SCATTER. COMBO charts
         /// are also supported if the series chart type is AREA or LINE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineStyle")]
-        public virtual LineStyle LineStyle { get; set; } 
+        public virtual LineStyle LineStyle { get; set; }
 
         /// <summary>The data being visualized in this chart series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("series")]
-        public virtual ChartData Series { get; set; } 
+        public virtual ChartData Series { get; set; }
 
         /// <summary>The minor axis that will specify the range of values for this series. For example, if charting
         /// stocks over time, the "Volume" series may want to be pinned to the right with the prices pinned to the left,
         /// because the scale of trading volume is different than the scale of prices. It is an error to specify an axis
         /// that isn't a valid minor axis for the chart's type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetAxis")]
-        public virtual string TargetAxis { get; set; } 
+        public virtual string TargetAxis { get; set; }
 
         /// <summary>The type of this series. Valid only if the chartType is COMBO. Different types will change the way
         /// the series is visualized. Only LINE, AREA, and COLUMN are supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2508,53 +2508,53 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The axis on the chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("axis")]
-        public virtual System.Collections.Generic.IList<BasicChartAxis> Axis { get; set; } 
+        public virtual System.Collections.Generic.IList<BasicChartAxis> Axis { get; set; }
 
         /// <summary>The type of the chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chartType")]
-        public virtual string ChartType { get; set; } 
+        public virtual string ChartType { get; set; }
 
         /// <summary>The behavior of tooltips and data highlighting when hovering on data and chart area.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compareMode")]
-        public virtual string CompareMode { get; set; } 
+        public virtual string CompareMode { get; set; }
 
         /// <summary>The domain of data this is charting. Only a single domain is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domains")]
-        public virtual System.Collections.Generic.IList<BasicChartDomain> Domains { get; set; } 
+        public virtual System.Collections.Generic.IList<BasicChartDomain> Domains { get; set; }
 
         /// <summary>The number of rows or columns in the data that are "headers". If not set, Google Sheets will guess
         /// how many rows are headers based on the data. (Note that BasicChartAxis.title may override the axis title
         /// inferred from the header values.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headerCount")]
-        public virtual System.Nullable<int> HeaderCount { get; set; } 
+        public virtual System.Nullable<int> HeaderCount { get; set; }
 
         /// <summary>If some values in a series are missing, gaps may appear in the chart (e.g, segments of lines in a
         /// line chart will be missing). To eliminate these gaps set this to true. Applies to Line, Area, and Combo
         /// charts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interpolateNulls")]
-        public virtual System.Nullable<bool> InterpolateNulls { get; set; } 
+        public virtual System.Nullable<bool> InterpolateNulls { get; set; }
 
         /// <summary>The position of the chart legend.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("legendPosition")]
-        public virtual string LegendPosition { get; set; } 
+        public virtual string LegendPosition { get; set; }
 
         /// <summary>Gets whether all lines should be rendered smooth or straight by default. Applies to Line
         /// charts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineSmoothing")]
-        public virtual System.Nullable<bool> LineSmoothing { get; set; } 
+        public virtual System.Nullable<bool> LineSmoothing { get; set; }
 
         /// <summary>The data this chart is visualizing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("series")]
-        public virtual System.Collections.Generic.IList<BasicChartSeries> Series { get; set; } 
+        public virtual System.Collections.Generic.IList<BasicChartSeries> Series { get; set; }
 
         /// <summary>The stacked type for charts that support vertical stacking. Applies to Area, Bar, Column, Combo,
         /// and Stepped Area charts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackedType")]
-        public virtual string StackedType { get; set; } 
+        public virtual string StackedType { get; set; }
 
         /// <summary>True to make the chart 3D. Applies to Bar and Column charts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threeDimensional")]
-        public virtual System.Nullable<bool> ThreeDimensional { get; set; } 
+        public virtual System.Nullable<bool> ThreeDimensional { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2566,21 +2566,21 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The criteria for showing/hiding values per column. The map's key is the column index, and the value
         /// is the criteria for that column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("criteria")]
-        public virtual System.Collections.Generic.IDictionary<string,FilterCriteria> Criteria { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, FilterCriteria> Criteria { get; set; }
 
         /// <summary>The filter criteria per column. Both criteria and filter_specs are populated in responses. If both
         /// fields are specified in an update request, this field takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterSpecs")]
-        public virtual System.Collections.Generic.IList<FilterSpec> FilterSpecs { get; set; } 
+        public virtual System.Collections.Generic.IList<FilterSpec> FilterSpecs { get; set; }
 
         /// <summary>The range the filter covers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual GridRange Range { get; set; } 
+        public virtual GridRange Range { get; set; }
 
         /// <summary>The sort order per column. Later specifications are used when values are equal in the earlier
         /// specifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sortSpecs")]
-        public virtual System.Collections.Generic.IList<SortSpec> SortSpecs { get; set; } 
+        public virtual System.Collections.Generic.IList<SortSpec> SortSpecs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2591,7 +2591,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The DataFilters used to determine which ranges to clear.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataFilters")]
-        public virtual System.Collections.Generic.IList<DataFilter> DataFilters { get; set; } 
+        public virtual System.Collections.Generic.IList<DataFilter> DataFilters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2604,11 +2604,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// ranger larger than the bounds of the sheet, this is the actual ranges that were cleared, bounded to the
         /// sheet's limits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clearedRanges")]
-        public virtual System.Collections.Generic.IList<string> ClearedRanges { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ClearedRanges { get; set; }
 
         /// <summary>The spreadsheet the updates were applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetId")]
-        public virtual string SpreadsheetId { get; set; } 
+        public virtual string SpreadsheetId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2619,7 +2619,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The ranges to clear, in A1 notation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ranges")]
-        public virtual System.Collections.Generic.IList<string> Ranges { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Ranges { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2632,11 +2632,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// ranger larger than the bounds of the sheet, this is the actual ranges that were cleared, bounded to the
         /// sheet's limits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clearedRanges")]
-        public virtual System.Collections.Generic.IList<string> ClearedRanges { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ClearedRanges { get; set; }
 
         /// <summary>The spreadsheet the updates were applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetId")]
-        public virtual string SpreadsheetId { get; set; } 
+        public virtual string SpreadsheetId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2649,24 +2649,24 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The data filters used to match the ranges of values to retrieve. Ranges that match any of the
         /// specified data filters are included in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataFilters")]
-        public virtual System.Collections.Generic.IList<DataFilter> DataFilters { get; set; } 
+        public virtual System.Collections.Generic.IList<DataFilter> DataFilters { get; set; }
 
         /// <summary>How dates, times, and durations should be represented in the output. This is ignored if
         /// value_render_option is FORMATTED_VALUE. The default dateTime render option is
         /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateTimeRenderOption")]
-        public virtual string DateTimeRenderOption { get; set; } 
+        public virtual string DateTimeRenderOption { get; set; }
 
         /// <summary>The major dimension that results should use. For example, if the spreadsheet data is:
         /// `A1=1,B1=2,A2=3,B2=4`, then a request that selects that range and sets `majorDimension=ROWS` returns
         /// `[[1,2],[3,4]]`, whereas a request that sets `majorDimension=COLUMNS` returns `[[1,3],[2,4]]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("majorDimension")]
-        public virtual string MajorDimension { get; set; } 
+        public virtual string MajorDimension { get; set; }
 
         /// <summary>How values should be represented in the output. The default render option is
         /// ValueRenderOption.FORMATTED_VALUE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueRenderOption")]
-        public virtual string ValueRenderOption { get; set; } 
+        public virtual string ValueRenderOption { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2678,11 +2678,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The ID of the spreadsheet the data was retrieved from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetId")]
-        public virtual string SpreadsheetId { get; set; } 
+        public virtual string SpreadsheetId { get; set; }
 
         /// <summary>The requested values with the list of data filters that matched them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueRanges")]
-        public virtual System.Collections.Generic.IList<MatchedValueRange> ValueRanges { get; set; } 
+        public virtual System.Collections.Generic.IList<MatchedValueRange> ValueRanges { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2693,12 +2693,12 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The ID of the spreadsheet the data was retrieved from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetId")]
-        public virtual string SpreadsheetId { get; set; } 
+        public virtual string SpreadsheetId { get; set; }
 
         /// <summary>The requested values. The order of the ValueRanges is the same as the order of the requested
         /// ranges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueRanges")]
-        public virtual System.Collections.Generic.IList<ValueRange> ValueRanges { get; set; } 
+        public virtual System.Collections.Generic.IList<ValueRange> ValueRanges { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2709,22 +2709,22 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>Determines if the update response should include the spreadsheet resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeSpreadsheetInResponse")]
-        public virtual System.Nullable<bool> IncludeSpreadsheetInResponse { get; set; } 
+        public virtual System.Nullable<bool> IncludeSpreadsheetInResponse { get; set; }
 
         /// <summary>A list of updates to apply to the spreadsheet. Requests will be applied in the order they are
         /// specified. If any request is not valid, no requests will be applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
-        public virtual System.Collections.Generic.IList<Request> Requests { get; set; } 
+        public virtual System.Collections.Generic.IList<Request> Requests { get; set; }
 
         /// <summary>True if grid data should be returned. Meaningful only if include_spreadsheet_in_response is 'true'.
         /// This parameter is ignored if a field mask was set in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseIncludeGridData")]
-        public virtual System.Nullable<bool> ResponseIncludeGridData { get; set; } 
+        public virtual System.Nullable<bool> ResponseIncludeGridData { get; set; }
 
         /// <summary>Limits the ranges included in the response spreadsheet. Meaningful only if
         /// include_spreadsheet_in_response is 'true'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseRanges")]
-        public virtual System.Collections.Generic.IList<string> ResponseRanges { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ResponseRanges { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2736,16 +2736,16 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The reply of the updates. This maps 1:1 with the updates, although replies to some requests may be
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replies")]
-        public virtual System.Collections.Generic.IList<Response> Replies { get; set; } 
+        public virtual System.Collections.Generic.IList<Response> Replies { get; set; }
 
         /// <summary>The spreadsheet the updates were applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetId")]
-        public virtual string SpreadsheetId { get; set; } 
+        public virtual string SpreadsheetId { get; set; }
 
         /// <summary>The spreadsheet after updates were applied. This is only set if
         /// [BatchUpdateSpreadsheetRequest.include_spreadsheet_in_response] is `true`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updatedSpreadsheet")]
-        public virtual Spreadsheet UpdatedSpreadsheet { get; set; } 
+        public virtual Spreadsheet UpdatedSpreadsheet { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2757,7 +2757,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The new values to apply to the spreadsheet. If more than one range is matched by the specified
         /// DataFilter the specified values are applied to all of those ranges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual System.Collections.Generic.IList<DataFilterValueRange> Data { get; set; } 
+        public virtual System.Collections.Generic.IList<DataFilterValueRange> Data { get; set; }
 
         /// <summary>Determines if the update response should include the values of the cells that were updated. By
         /// default, responses do not include the updated values. The `updatedData` field within each of the
@@ -2765,22 +2765,22 @@ namespace Google.Apis.Sheets.v4.Data
         /// range actually written, the response includes all values in the requested range (excluding trailing empty
         /// rows and columns).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeValuesInResponse")]
-        public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; } 
+        public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; }
 
         /// <summary>Determines how dates, times, and durations in the response should be rendered. This is ignored if
         /// response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
         /// DateTimeRenderOption.SERIAL_NUMBER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseDateTimeRenderOption")]
-        public virtual string ResponseDateTimeRenderOption { get; set; } 
+        public virtual string ResponseDateTimeRenderOption { get; set; }
 
         /// <summary>Determines how values in the response should be rendered. The default render option is
         /// ValueRenderOption.FORMATTED_VALUE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseValueRenderOption")]
-        public virtual string ResponseValueRenderOption { get; set; } 
+        public virtual string ResponseValueRenderOption { get; set; }
 
         /// <summary>How the input data should be interpreted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueInputOption")]
-        public virtual string ValueInputOption { get; set; } 
+        public virtual string ValueInputOption { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2791,27 +2791,27 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The response for each range updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responses")]
-        public virtual System.Collections.Generic.IList<UpdateValuesByDataFilterResponse> Responses { get; set; } 
+        public virtual System.Collections.Generic.IList<UpdateValuesByDataFilterResponse> Responses { get; set; }
 
         /// <summary>The spreadsheet the updates were applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetId")]
-        public virtual string SpreadsheetId { get; set; } 
+        public virtual string SpreadsheetId { get; set; }
 
         /// <summary>The total number of cells updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalUpdatedCells")]
-        public virtual System.Nullable<int> TotalUpdatedCells { get; set; } 
+        public virtual System.Nullable<int> TotalUpdatedCells { get; set; }
 
         /// <summary>The total number of columns where at least one cell in the column was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalUpdatedColumns")]
-        public virtual System.Nullable<int> TotalUpdatedColumns { get; set; } 
+        public virtual System.Nullable<int> TotalUpdatedColumns { get; set; }
 
         /// <summary>The total number of rows where at least one cell in the row was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalUpdatedRows")]
-        public virtual System.Nullable<int> TotalUpdatedRows { get; set; } 
+        public virtual System.Nullable<int> TotalUpdatedRows { get; set; }
 
         /// <summary>The total number of sheets where at least one cell in the sheet was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalUpdatedSheets")]
-        public virtual System.Nullable<int> TotalUpdatedSheets { get; set; } 
+        public virtual System.Nullable<int> TotalUpdatedSheets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2822,7 +2822,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The new values to apply to the spreadsheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual System.Collections.Generic.IList<ValueRange> Data { get; set; } 
+        public virtual System.Collections.Generic.IList<ValueRange> Data { get; set; }
 
         /// <summary>Determines if the update response should include the values of the cells that were updated. By
         /// default, responses do not include the updated values. The `updatedData` field within each of the
@@ -2830,22 +2830,22 @@ namespace Google.Apis.Sheets.v4.Data
         /// range actually written, the response includes all values in the requested range (excluding trailing empty
         /// rows and columns).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeValuesInResponse")]
-        public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; } 
+        public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; }
 
         /// <summary>Determines how dates, times, and durations in the response should be rendered. This is ignored if
         /// response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
         /// DateTimeRenderOption.SERIAL_NUMBER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseDateTimeRenderOption")]
-        public virtual string ResponseDateTimeRenderOption { get; set; } 
+        public virtual string ResponseDateTimeRenderOption { get; set; }
 
         /// <summary>Determines how values in the response should be rendered. The default render option is
         /// ValueRenderOption.FORMATTED_VALUE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseValueRenderOption")]
-        public virtual string ResponseValueRenderOption { get; set; } 
+        public virtual string ResponseValueRenderOption { get; set; }
 
         /// <summary>How the input data should be interpreted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueInputOption")]
-        public virtual string ValueInputOption { get; set; } 
+        public virtual string ValueInputOption { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2856,27 +2856,27 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>One UpdateValuesResponse per requested range, in the same order as the requests appeared.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responses")]
-        public virtual System.Collections.Generic.IList<UpdateValuesResponse> Responses { get; set; } 
+        public virtual System.Collections.Generic.IList<UpdateValuesResponse> Responses { get; set; }
 
         /// <summary>The spreadsheet the updates were applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetId")]
-        public virtual string SpreadsheetId { get; set; } 
+        public virtual string SpreadsheetId { get; set; }
 
         /// <summary>The total number of cells updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalUpdatedCells")]
-        public virtual System.Nullable<int> TotalUpdatedCells { get; set; } 
+        public virtual System.Nullable<int> TotalUpdatedCells { get; set; }
 
         /// <summary>The total number of columns where at least one cell in the column was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalUpdatedColumns")]
-        public virtual System.Nullable<int> TotalUpdatedColumns { get; set; } 
+        public virtual System.Nullable<int> TotalUpdatedColumns { get; set; }
 
         /// <summary>The total number of rows where at least one cell in the row was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalUpdatedRows")]
-        public virtual System.Nullable<int> TotalUpdatedRows { get; set; } 
+        public virtual System.Nullable<int> TotalUpdatedRows { get; set; }
 
         /// <summary>The total number of sheets where at least one cell in the sheet was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalUpdatedSheets")]
-        public virtual System.Nullable<int> TotalUpdatedSheets { get; set; } 
+        public virtual System.Nullable<int> TotalUpdatedSheets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2888,15 +2888,15 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The ID of a BigQuery enabled GCP project with a billing account attached. For any queries executed
         /// against the data source, the project is charged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>A BigQueryQuerySpec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("querySpec")]
-        public virtual BigQueryQuerySpec QuerySpec { get; set; } 
+        public virtual BigQueryQuerySpec QuerySpec { get; set; }
 
         /// <summary>A BigQueryTableSpec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableSpec")]
-        public virtual BigQueryTableSpec TableSpec { get; set; } 
+        public virtual BigQueryTableSpec TableSpec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2907,7 +2907,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The raw query string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rawQuery")]
-        public virtual string RawQuery { get; set; } 
+        public virtual string RawQuery { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2918,16 +2918,16 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The BigQuery dataset id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
-        public virtual string DatasetId { get; set; } 
+        public virtual string DatasetId { get; set; }
 
         /// <summary>The BigQuery table id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
-        public virtual string TableId { get; set; } 
+        public virtual string TableId { get; set; }
 
         /// <summary>The ID of a BigQuery project the table belongs to. If not specified, the project_id is
         /// assumed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableProjectId")]
-        public virtual string TableProjectId { get; set; } 
+        public virtual string TableProjectId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2939,13 +2939,13 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The type of condition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The values of the condition. The number of supported values depends on the condition type. Some
         /// support zero values, others one or two values, and ConditionType.ONE_OF_LIST supports an arbitrary number of
         /// values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<ConditionValue> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<ConditionValue> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2956,12 +2956,12 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The condition of the rule. If the condition evaluates to true, the format is applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual BooleanCondition Condition { get; set; } 
+        public virtual BooleanCondition Condition { get; set; }
 
         /// <summary>The format to apply. Conditional formatting can only apply a subset of formatting: bold, italic,
         /// strikethrough, foreground color & background color.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual CellFormat Format { get; set; } 
+        public virtual CellFormat Format { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2972,20 +2972,20 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The color of the border.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
-        public virtual Color Color { get; set; } 
+        public virtual Color Color { get; set; }
 
         /// <summary>The color of the border. If color is also set, this field takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colorStyle")]
-        public virtual ColorStyle ColorStyle { get; set; } 
+        public virtual ColorStyle ColorStyle { get; set; }
 
         /// <summary>The style of the border.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("style")]
-        public virtual string Style { get; set; } 
+        public virtual string Style { get; set; }
 
         /// <summary>The width of the border, in pixels. Deprecated; the width is determined by the "style"
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
-        public virtual System.Nullable<int> Width { get; set; } 
+        public virtual System.Nullable<int> Width { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2996,19 +2996,19 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The bottom border of the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bottom")]
-        public virtual Border Bottom { get; set; } 
+        public virtual Border Bottom { get; set; }
 
         /// <summary>The left border of the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("left")]
-        public virtual Border Left { get; set; } 
+        public virtual Border Left { get; set; }
 
         /// <summary>The right border of the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("right")]
-        public virtual Border Right { get; set; } 
+        public virtual Border Right { get; set; }
 
         /// <summary>The top border of the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("top")]
-        public virtual Border Top { get; set; } 
+        public virtual Border Top { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3019,59 +3019,59 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The bubble border color.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bubbleBorderColor")]
-        public virtual Color BubbleBorderColor { get; set; } 
+        public virtual Color BubbleBorderColor { get; set; }
 
         /// <summary>The bubble border color. If bubble_border_color is also set, this field takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bubbleBorderColorStyle")]
-        public virtual ColorStyle BubbleBorderColorStyle { get; set; } 
+        public virtual ColorStyle BubbleBorderColorStyle { get; set; }
 
         /// <summary>The data containing the bubble labels. These do not need to be unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bubbleLabels")]
-        public virtual ChartData BubbleLabels { get; set; } 
+        public virtual ChartData BubbleLabels { get; set; }
 
         /// <summary>The max radius size of the bubbles, in pixels. If specified, the field must be a positive
         /// value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bubbleMaxRadiusSize")]
-        public virtual System.Nullable<int> BubbleMaxRadiusSize { get; set; } 
+        public virtual System.Nullable<int> BubbleMaxRadiusSize { get; set; }
 
         /// <summary>The minimum radius size of the bubbles, in pixels. If specific, the field must be a positive
         /// value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bubbleMinRadiusSize")]
-        public virtual System.Nullable<int> BubbleMinRadiusSize { get; set; } 
+        public virtual System.Nullable<int> BubbleMinRadiusSize { get; set; }
 
         /// <summary>The opacity of the bubbles between 0 and 1.0. 0 is fully transparent and 1 is fully
         /// opaque.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bubbleOpacity")]
-        public virtual System.Nullable<float> BubbleOpacity { get; set; } 
+        public virtual System.Nullable<float> BubbleOpacity { get; set; }
 
         /// <summary>The data contianing the bubble sizes. Bubble sizes are used to draw the bubbles at different sizes
         /// relative to each other. If specified, group_ids must also be specified. This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bubbleSizes")]
-        public virtual ChartData BubbleSizes { get; set; } 
+        public virtual ChartData BubbleSizes { get; set; }
 
         /// <summary>The format of the text inside the bubbles. Underline and Strikethrough are not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bubbleTextStyle")]
-        public virtual TextFormat BubbleTextStyle { get; set; } 
+        public virtual TextFormat BubbleTextStyle { get; set; }
 
         /// <summary>The data containing the bubble x-values. These values locate the bubbles in the chart
         /// horizontally.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
-        public virtual ChartData Domain { get; set; } 
+        public virtual ChartData Domain { get; set; }
 
         /// <summary>The data containing the bubble group IDs. All bubbles with the same group ID are drawn in the same
         /// color. If bubble_sizes is specified then this field must also be specified but may contain blank values.
         /// This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupIds")]
-        public virtual ChartData GroupIds { get; set; } 
+        public virtual ChartData GroupIds { get; set; }
 
         /// <summary>Where the legend of the chart should be drawn.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("legendPosition")]
-        public virtual string LegendPosition { get; set; } 
+        public virtual string LegendPosition { get; set; }
 
         /// <summary>The data contianing the bubble y-values. These values locate the bubbles in the chart
         /// vertically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("series")]
-        public virtual ChartData Series { get; set; } 
+        public virtual ChartData Series { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3082,12 +3082,12 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The Candlestick chart data. Only one CandlestickData is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual System.Collections.Generic.IList<CandlestickData> Data { get; set; } 
+        public virtual System.Collections.Generic.IList<CandlestickData> Data { get; set; }
 
         /// <summary>The domain data (horizontal axis) for the candlestick chart. String data will be treated as
         /// discrete labels, other data will be treated as continuous values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
-        public virtual CandlestickDomain Domain { get; set; } 
+        public virtual CandlestickDomain Domain { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3101,23 +3101,23 @@ namespace Google.Apis.Sheets.v4.Data
         /// candle body. If greater than the open value the candle will be filled. Otherwise the candle will be
         /// hollow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("closeSeries")]
-        public virtual CandlestickSeries CloseSeries { get; set; } 
+        public virtual CandlestickSeries CloseSeries { get; set; }
 
         /// <summary>The range data (vertical axis) for the high/maximum value for each candle. This is the top of the
         /// candle's center line.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("highSeries")]
-        public virtual CandlestickSeries HighSeries { get; set; } 
+        public virtual CandlestickSeries HighSeries { get; set; }
 
         /// <summary>The range data (vertical axis) for the low/minimum value for each candle. This is the bottom of the
         /// candle's center line.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lowSeries")]
-        public virtual CandlestickSeries LowSeries { get; set; } 
+        public virtual CandlestickSeries LowSeries { get; set; }
 
         /// <summary>The range data (vertical axis) for the open/initial value for each candle. This is the bottom of
         /// the candle body. If less than the close value the candle will be filled. Otherwise the candle will be
         /// hollow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openSeries")]
-        public virtual CandlestickSeries OpenSeries { get; set; } 
+        public virtual CandlestickSeries OpenSeries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3128,11 +3128,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The data of the CandlestickDomain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual ChartData Data { get; set; } 
+        public virtual ChartData Data { get; set; }
 
         /// <summary>True to reverse the order of the domain values (horizontal axis).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reversed")]
-        public virtual System.Nullable<bool> Reversed { get; set; } 
+        public virtual System.Nullable<bool> Reversed { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3143,7 +3143,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The data of the CandlestickSeries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual ChartData Data { get; set; } 
+        public virtual ChartData Data { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3156,51 +3156,51 @@ namespace Google.Apis.Sheets.v4.Data
         /// user_entered_value is a formula referencing some [SheetType.DATA_SOURCE] sheet, e.g
         /// `=SUM(DataSheet!Column)`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceFormula")]
-        public virtual DataSourceFormula DataSourceFormula { get; set; } 
+        public virtual DataSourceFormula DataSourceFormula { get; set; }
 
         /// <summary>A data source table anchored at this cell. The size of data source table itself is computed
         /// dynamically based on its configuration. Only the first cell of the data source table contains the data
         /// source table definition. The other cells will contain the display values of the data source table result in
         /// their effective_value fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceTable")]
-        public virtual DataSourceTable DataSourceTable { get; set; } 
+        public virtual DataSourceTable DataSourceTable { get; set; }
 
         /// <summary>A data validation rule on the cell, if any. When writing, the new data validation rule will
         /// overwrite any prior rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataValidation")]
-        public virtual DataValidationRule DataValidation { get; set; } 
+        public virtual DataValidationRule DataValidation { get; set; }
 
         /// <summary>The effective format being used by the cell. This includes the results of applying any conditional
         /// formatting and, if the cell contains a formula, the computed number format. If the effective format is the
         /// default format, effective format will not be written. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveFormat")]
-        public virtual CellFormat EffectiveFormat { get; set; } 
+        public virtual CellFormat EffectiveFormat { get; set; }
 
         /// <summary>The effective value of the cell. For cells with formulas, this is the calculated value. For cells
         /// with literals, this is the same as the user_entered_value. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveValue")]
-        public virtual ExtendedValue EffectiveValue { get; set; } 
+        public virtual ExtendedValue EffectiveValue { get; set; }
 
         /// <summary>The formatted value of the cell. This is the value as it's shown to the user. This field is read-
         /// only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedValue")]
-        public virtual string FormattedValue { get; set; } 
+        public virtual string FormattedValue { get; set; }
 
         /// <summary>A hyperlink this cell points to, if any. This field is read-only. (To set it, use a `=HYPERLINK`
         /// formula in the userEnteredValue.formulaValue field.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hyperlink")]
-        public virtual string Hyperlink { get; set; } 
+        public virtual string Hyperlink { get; set; }
 
         /// <summary>Any note on the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("note")]
-        public virtual string Note { get; set; } 
+        public virtual string Note { get; set; }
 
         /// <summary>A pivot table anchored at this cell. The size of pivot table itself is computed dynamically based
         /// on its data, grouping, filters, values, etc. Only the top-left cell of the pivot table contains the pivot
         /// table definition. The other cells will contain the calculated values of the results of the pivot in their
         /// effective_value fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pivotTable")]
-        public virtual PivotTable PivotTable { get; set; } 
+        public virtual PivotTable PivotTable { get; set; }
 
         /// <summary>Runs of rich text applied to subsections of the cell. Runs are only valid on user entered strings,
         /// not formulas, bools, or numbers. Runs start at specific indexes in the text and continue until the next run.
@@ -3208,17 +3208,17 @@ namespace Google.Apis.Sheets.v4.Data
         /// run will continue the properties of the cell unless explicitly changed). When writing, the new runs will
         /// overwrite any prior runs. When writing a new user_entered_value, previous runs are erased.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textFormatRuns")]
-        public virtual System.Collections.Generic.IList<TextFormatRun> TextFormatRuns { get; set; } 
+        public virtual System.Collections.Generic.IList<TextFormatRun> TextFormatRuns { get; set; }
 
         /// <summary>The format the user entered for the cell. When writing, the new format will be merged with the
         /// existing format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEnteredFormat")]
-        public virtual CellFormat UserEnteredFormat { get; set; } 
+        public virtual CellFormat UserEnteredFormat { get; set; }
 
         /// <summary>The value the user entered in the cell. e.g, `1234`, `'Hello'`, or `=NOW()` Note: Dates, Times and
         /// DateTimes are represented as doubles in serial number format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEnteredValue")]
-        public virtual ExtendedValue UserEnteredValue { get; set; } 
+        public virtual ExtendedValue UserEnteredValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3229,52 +3229,52 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The background color of the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
-        public virtual Color BackgroundColor { get; set; } 
+        public virtual Color BackgroundColor { get; set; }
 
         /// <summary>The background color of the cell. If background_color is also set, this field takes
         /// precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColorStyle")]
-        public virtual ColorStyle BackgroundColorStyle { get; set; } 
+        public virtual ColorStyle BackgroundColorStyle { get; set; }
 
         /// <summary>The borders of the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("borders")]
-        public virtual Borders Borders { get; set; } 
+        public virtual Borders Borders { get; set; }
 
         /// <summary>The horizontal alignment of the value in the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("horizontalAlignment")]
-        public virtual string HorizontalAlignment { get; set; } 
+        public virtual string HorizontalAlignment { get; set; }
 
         /// <summary>How a hyperlink, if it exists, should be displayed in the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hyperlinkDisplayType")]
-        public virtual string HyperlinkDisplayType { get; set; } 
+        public virtual string HyperlinkDisplayType { get; set; }
 
         /// <summary>A format describing how number values should be represented to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numberFormat")]
-        public virtual NumberFormat NumberFormat { get; set; } 
+        public virtual NumberFormat NumberFormat { get; set; }
 
         /// <summary>The padding of the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("padding")]
-        public virtual Padding Padding { get; set; } 
+        public virtual Padding Padding { get; set; }
 
         /// <summary>The direction of the text in the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textDirection")]
-        public virtual string TextDirection { get; set; } 
+        public virtual string TextDirection { get; set; }
 
         /// <summary>The format of the text in the cell (unless overridden by a format run).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textFormat")]
-        public virtual TextFormat TextFormat { get; set; } 
+        public virtual TextFormat TextFormat { get; set; }
 
         /// <summary>The rotation applied to text in a cell</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textRotation")]
-        public virtual TextRotation TextRotation { get; set; } 
+        public virtual TextRotation TextRotation { get; set; }
 
         /// <summary>The vertical alignment of the value in the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verticalAlignment")]
-        public virtual string VerticalAlignment { get; set; } 
+        public virtual string VerticalAlignment { get; set; }
 
         /// <summary>The wrap strategy for the value in the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wrapStrategy")]
-        public virtual string WrapStrategy { get; set; } 
+        public virtual string WrapStrategy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3286,16 +3286,16 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The maximum numeric value to be shown in this view window. If unset, will automatically determine a
         /// maximum value that looks good for the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewWindowMax")]
-        public virtual System.Nullable<double> ViewWindowMax { get; set; } 
+        public virtual System.Nullable<double> ViewWindowMax { get; set; }
 
         /// <summary>The minimum numeric value to be shown in this view window. If unset, will automatically determine a
         /// minimum value that looks good for the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewWindowMin")]
-        public virtual System.Nullable<double> ViewWindowMin { get; set; } 
+        public virtual System.Nullable<double> ViewWindowMin { get; set; }
 
         /// <summary>The view window's mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewWindowMode")]
-        public virtual string ViewWindowMode { get; set; } 
+        public virtual string ViewWindowMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3306,11 +3306,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>Custom prefix to be prepended to the chart attribute. This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prefix")]
-        public virtual string Prefix { get; set; } 
+        public virtual string Prefix { get; set; }
 
         /// <summary>Custom suffix to be appended to the chart attribute. This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suffix")]
-        public virtual string Suffix { get; set; } 
+        public virtual string Suffix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3322,20 +3322,20 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The aggregation type for the series of a data source chart. Not supported for regular
         /// charts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregateType")]
-        public virtual string AggregateType { get; set; } 
+        public virtual string AggregateType { get; set; }
 
         /// <summary>The reference to the data source column that the data reads from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnReference")]
-        public virtual DataSourceColumnReference ColumnReference { get; set; } 
+        public virtual DataSourceColumnReference ColumnReference { get; set; }
 
         /// <summary>The rule to group the data by if the ChartData backs the domain of a data source chart. Not
         /// supported for regular charts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupRule")]
-        public virtual ChartGroupRule GroupRule { get; set; } 
+        public virtual ChartGroupRule GroupRule { get; set; }
 
         /// <summary>The source ranges of the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceRange")]
-        public virtual ChartSourceRange SourceRange { get; set; } 
+        public virtual ChartSourceRange SourceRange { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3347,7 +3347,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The type of date-time grouping to apply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3362,11 +3362,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>A ChartDateTimeRule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateTimeRule")]
-        public virtual ChartDateTimeRule DateTimeRule { get; set; } 
+        public virtual ChartDateTimeRule DateTimeRule { get; set; }
 
         /// <summary>A ChartHistogramRule</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("histogramRule")]
-        public virtual ChartHistogramRule HistogramRule { get; set; } 
+        public virtual ChartHistogramRule HistogramRule { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3377,17 +3377,17 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The size of the buckets that are created. Must be positive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intervalSize")]
-        public virtual System.Nullable<double> IntervalSize { get; set; } 
+        public virtual System.Nullable<double> IntervalSize { get; set; }
 
         /// <summary>The maximum value at which items are placed into buckets. Values greater than the maximum are
         /// grouped into a single bucket. If omitted, it is determined by the maximum item value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxValue")]
-        public virtual System.Nullable<double> MaxValue { get; set; } 
+        public virtual System.Nullable<double> MaxValue { get; set; }
 
         /// <summary>The minimum value at which items are placed into buckets. Values that are less than the minimum are
         /// grouped into a single bucket. If omitted, it is determined by the minimum item value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minValue")]
-        public virtual System.Nullable<double> MinValue { get; set; } 
+        public virtual System.Nullable<double> MinValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3403,7 +3403,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// configurations: domain sources: A1:A5 series1 sources: B1:B5 series2 sources: D6:D10 domain sources: A1:A5,
         /// C10:C12 series1 sources: B1:B5, D10:D12 series2 sources: C1:C5, E10:E12</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
-        public virtual System.Collections.Generic.IList<GridRange> Sources { get; set; } 
+        public virtual System.Collections.Generic.IList<GridRange> Sources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3414,105 +3414,105 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The alternative text that describes the chart. This is often used for accessibility.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("altText")]
-        public virtual string AltText { get; set; } 
+        public virtual string AltText { get; set; }
 
         /// <summary>The background color of the entire chart. Not applicable to Org charts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
-        public virtual Color BackgroundColor { get; set; } 
+        public virtual Color BackgroundColor { get; set; }
 
         /// <summary>The background color of the entire chart. Not applicable to Org charts. If background_color is also
         /// set, this field takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColorStyle")]
-        public virtual ColorStyle BackgroundColorStyle { get; set; } 
+        public virtual ColorStyle BackgroundColorStyle { get; set; }
 
         /// <summary>A basic chart specification, can be one of many kinds of charts. See BasicChartType for the list of
         /// all charts this supports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("basicChart")]
-        public virtual BasicChartSpec BasicChart { get; set; } 
+        public virtual BasicChartSpec BasicChart { get; set; }
 
         /// <summary>A bubble chart specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bubbleChart")]
-        public virtual BubbleChartSpec BubbleChart { get; set; } 
+        public virtual BubbleChartSpec BubbleChart { get; set; }
 
         /// <summary>A candlestick chart specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("candlestickChart")]
-        public virtual CandlestickChartSpec CandlestickChart { get; set; } 
+        public virtual CandlestickChartSpec CandlestickChart { get; set; }
 
         /// <summary>If present, the field contains data source chart specific properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceChartProperties")]
-        public virtual DataSourceChartProperties DataSourceChartProperties { get; set; } 
+        public virtual DataSourceChartProperties DataSourceChartProperties { get; set; }
 
         /// <summary>The filters applied to the source data of the chart. Only supported for data source
         /// charts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterSpecs")]
-        public virtual System.Collections.Generic.IList<FilterSpec> FilterSpecs { get; set; } 
+        public virtual System.Collections.Generic.IList<FilterSpec> FilterSpecs { get; set; }
 
         /// <summary>The name of the font to use by default for all chart text (e.g. title, axis labels, legend). If a
         /// font is specified for a specific part of the chart it will override this font name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fontName")]
-        public virtual string FontName { get; set; } 
+        public virtual string FontName { get; set; }
 
         /// <summary>Determines how the charts will use hidden rows or columns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hiddenDimensionStrategy")]
-        public virtual string HiddenDimensionStrategy { get; set; } 
+        public virtual string HiddenDimensionStrategy { get; set; }
 
         /// <summary>A histogram chart specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("histogramChart")]
-        public virtual HistogramChartSpec HistogramChart { get; set; } 
+        public virtual HistogramChartSpec HistogramChart { get; set; }
 
         /// <summary>True to make a chart fill the entire space in which it's rendered with minimum padding. False to
         /// use the default padding. (Not applicable to Geo and Org charts.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximized")]
-        public virtual System.Nullable<bool> Maximized { get; set; } 
+        public virtual System.Nullable<bool> Maximized { get; set; }
 
         /// <summary>An org chart specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgChart")]
-        public virtual OrgChartSpec OrgChart { get; set; } 
+        public virtual OrgChartSpec OrgChart { get; set; }
 
         /// <summary>A pie chart specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pieChart")]
-        public virtual PieChartSpec PieChart { get; set; } 
+        public virtual PieChartSpec PieChart { get; set; }
 
         /// <summary>A scorecard chart specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scorecardChart")]
-        public virtual ScorecardChartSpec ScorecardChart { get; set; } 
+        public virtual ScorecardChartSpec ScorecardChart { get; set; }
 
         /// <summary>The order to sort the chart data by. Only a single sort spec is supported. Only supported for data
         /// source charts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sortSpecs")]
-        public virtual System.Collections.Generic.IList<SortSpec> SortSpecs { get; set; } 
+        public virtual System.Collections.Generic.IList<SortSpec> SortSpecs { get; set; }
 
         /// <summary>The subtitle of the chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
-        public virtual string Subtitle { get; set; } 
+        public virtual string Subtitle { get; set; }
 
         /// <summary>The subtitle text format. Strikethrough and underline are not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtitleTextFormat")]
-        public virtual TextFormat SubtitleTextFormat { get; set; } 
+        public virtual TextFormat SubtitleTextFormat { get; set; }
 
         /// <summary>The subtitle text position. This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtitleTextPosition")]
-        public virtual TextPosition SubtitleTextPosition { get; set; } 
+        public virtual TextPosition SubtitleTextPosition { get; set; }
 
         /// <summary>The title of the chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The title text format. Strikethrough and underline are not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("titleTextFormat")]
-        public virtual TextFormat TitleTextFormat { get; set; } 
+        public virtual TextFormat TitleTextFormat { get; set; }
 
         /// <summary>The title text position. This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("titleTextPosition")]
-        public virtual TextPosition TitleTextPosition { get; set; } 
+        public virtual TextPosition TitleTextPosition { get; set; }
 
         /// <summary>A treemap chart specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("treemapChart")]
-        public virtual TreemapChartSpec TreemapChart { get; set; } 
+        public virtual TreemapChartSpec TreemapChart { get; set; }
 
         /// <summary>A waterfall chart specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waterfallChart")]
-        public virtual WaterfallChartSpec WaterfallChart { get; set; } 
+        public virtual WaterfallChartSpec WaterfallChart { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3523,7 +3523,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The sheet ID on which the basic filter should be cleared.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
-        public virtual System.Nullable<int> SheetId { get; set; } 
+        public virtual System.Nullable<int> SheetId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3543,11 +3543,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// larger than the bounds of the sheet, this will be the actual range that was cleared, bounded to the sheet's
         /// limits.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clearedRange")]
-        public virtual string ClearedRange { get; set; } 
+        public virtual string ClearedRange { get; set; }
 
         /// <summary>The spreadsheet the updates were applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetId")]
-        public virtual string SpreadsheetId { get; set; } 
+        public virtual string SpreadsheetId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3594,19 +3594,19 @@ namespace Google.Apis.Sheets.v4.Data
         /// distinguish between a default value and the value being unset. If omitted, this color object is to be
         /// rendered as a solid color (as if the alpha value had been explicitly given with a value of 1.0).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alpha")]
-        public virtual System.Nullable<float> Alpha { get; set; } 
+        public virtual System.Nullable<float> Alpha { get; set; }
 
         /// <summary>The amount of blue in the color as a value in the interval [0, 1].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blue")]
-        public virtual System.Nullable<float> Blue { get; set; } 
+        public virtual System.Nullable<float> Blue { get; set; }
 
         /// <summary>The amount of green in the color as a value in the interval [0, 1].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("green")]
-        public virtual System.Nullable<float> Green { get; set; } 
+        public virtual System.Nullable<float> Green { get; set; }
 
         /// <summary>The amount of red in the color as a value in the interval [0, 1].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("red")]
-        public virtual System.Nullable<float> Red { get; set; } 
+        public virtual System.Nullable<float> Red { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3617,11 +3617,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>RGB color.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rgbColor")]
-        public virtual Color RgbColor { get; set; } 
+        public virtual Color RgbColor { get; set; }
 
         /// <summary>Theme color.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("themeColor")]
-        public virtual string ThemeColor { get; set; } 
+        public virtual string ThemeColor { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3634,12 +3634,12 @@ namespace Google.Apis.Sheets.v4.Data
         /// DATE_ON_OR_BEFORE or DATE_ON_OR_AFTER. Relative dates are not supported in data validation. They are
         /// supported only in conditional formatting and conditional filters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relativeDate")]
-        public virtual string RelativeDate { get; set; } 
+        public virtual string RelativeDate { get; set; }
 
         /// <summary>A value the condition is based on. The value is parsed as if the user typed into a cell. Formulas
         /// are supported (and must begin with an `=` or a '+').</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEnteredValue")]
-        public virtual string UserEnteredValue { get; set; } 
+        public virtual string UserEnteredValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3650,16 +3650,16 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The formatting is either "on" or "off" according to the rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("booleanRule")]
-        public virtual BooleanRule BooleanRule { get; set; } 
+        public virtual BooleanRule BooleanRule { get; set; }
 
         /// <summary>The formatting will vary based on the gradients in the rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gradientRule")]
-        public virtual GradientRule GradientRule { get; set; } 
+        public virtual GradientRule GradientRule { get; set; }
 
         /// <summary>The ranges that are formatted if the condition is true. All the ranges must be on the same
         /// grid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ranges")]
-        public virtual System.Collections.Generic.IList<GridRange> Ranges { get; set; } 
+        public virtual System.Collections.Generic.IList<GridRange> Ranges { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3673,19 +3673,19 @@ namespace Google.Apis.Sheets.v4.Data
         /// source range, the entire source data will still be copied (beyond the end of the destination
         /// range).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
-        public virtual GridRange Destination { get; set; } 
+        public virtual GridRange Destination { get; set; }
 
         /// <summary>How that data should be oriented when pasting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pasteOrientation")]
-        public virtual string PasteOrientation { get; set; } 
+        public virtual string PasteOrientation { get; set; }
 
         /// <summary>What kind of data to paste.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pasteType")]
-        public virtual string PasteType { get; set; } 
+        public virtual string PasteType { get; set; }
 
         /// <summary>The source range to copy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual GridRange Source { get; set; } 
+        public virtual GridRange Source { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3696,7 +3696,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The ID of the spreadsheet to copy the sheet to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationSpreadsheetId")]
-        public virtual string DestinationSpreadsheetId { get; set; } 
+        public virtual string DestinationSpreadsheetId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3707,7 +3707,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The developer metadata to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerMetadata")]
-        public virtual DeveloperMetadata DeveloperMetadata { get; set; } 
+        public virtual DeveloperMetadata DeveloperMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3718,7 +3718,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The developer metadata that was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerMetadata")]
-        public virtual DeveloperMetadata DeveloperMetadata { get; set; } 
+        public virtual DeveloperMetadata DeveloperMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3729,16 +3729,16 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The top-left coordinate where the data should be pasted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
-        public virtual GridCoordinate Destination { get; set; } 
+        public virtual GridCoordinate Destination { get; set; }
 
         /// <summary>What kind of data to paste. All the source data will be cut, regardless of what is
         /// pasted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pasteType")]
-        public virtual string PasteType { get; set; } 
+        public virtual string PasteType { get; set; }
 
         /// <summary>The source data to cut.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual GridRange Source { get; set; } 
+        public virtual GridRange Source { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3749,19 +3749,19 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The error code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
-        public virtual string ErrorCode { get; set; } 
+        public virtual string ErrorCode { get; set; }
 
         /// <summary>The error message, which may be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
-        public virtual string ErrorMessage { get; set; } 
+        public virtual string ErrorMessage { get; set; }
 
         /// <summary>Gets the time the data last successfully refreshed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastRefreshTime")]
-        public virtual object LastRefreshTime { get; set; } 
+        public virtual object LastRefreshTime { get; set; }
 
         /// <summary>The state of the data execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3772,16 +3772,16 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>Selects data that matches the specified A1 range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("a1Range")]
-        public virtual string A1Range { get; set; } 
+        public virtual string A1Range { get; set; }
 
         /// <summary>Selects data associated with the developer metadata matching the criteria described by this
         /// DeveloperMetadataLookup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerMetadataLookup")]
-        public virtual DeveloperMetadataLookup DeveloperMetadataLookup { get; set; } 
+        public virtual DeveloperMetadataLookup DeveloperMetadataLookup { get; set; }
 
         /// <summary>Selects data that matches the range described by the GridRange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gridRange")]
-        public virtual GridRange GridRange { get; set; } 
+        public virtual GridRange GridRange { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3792,17 +3792,17 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The data filter describing the location of the values in the spreadsheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataFilter")]
-        public virtual DataFilter DataFilter { get; set; } 
+        public virtual DataFilter DataFilter { get; set; }
 
         /// <summary>The major dimension of the values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("majorDimension")]
-        public virtual string MajorDimension { get; set; } 
+        public virtual string MajorDimension { get; set; }
 
         /// <summary>The data to be written. If the provided values exceed any of the ranges matched by the data filter
         /// then the request fails. If the provided values are less than the matched ranges only the specified values
         /// are written, existing values in the matched ranges remain unaffected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IList<object>> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IList<object>> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3813,21 +3813,21 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>All calculated columns in the data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("calculatedColumns")]
-        public virtual System.Collections.Generic.IList<DataSourceColumn> CalculatedColumns { get; set; } 
+        public virtual System.Collections.Generic.IList<DataSourceColumn> CalculatedColumns { get; set; }
 
         /// <summary>The spreadsheet-scoped unique ID that identifies the data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
-        public virtual string DataSourceId { get; set; } 
+        public virtual string DataSourceId { get; set; }
 
         /// <summary>The ID of the Sheet connected with the data source. The field cannot be changed once set. When
         /// creating a data source, an associated SheetType.DATA_SOURCE sheet is also created, if the field is not
         /// specified, the ID of the created sheet will be randomly generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
-        public virtual System.Nullable<int> SheetId { get; set; } 
+        public virtual System.Nullable<int> SheetId { get; set; }
 
         /// <summary>The DataSourceSpec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
-        public virtual DataSourceSpec Spec { get; set; } 
+        public virtual DataSourceSpec Spec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3838,11 +3838,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>Output only. The data execution status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataExecutionStatus")]
-        public virtual DataExecutionStatus DataExecutionStatus { get; set; } 
+        public virtual DataExecutionStatus DataExecutionStatus { get; set; }
 
         /// <summary>ID of the data source that the chart is associated with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
-        public virtual string DataSourceId { get; set; } 
+        public virtual string DataSourceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3853,11 +3853,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The formula of the calculated column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formula")]
-        public virtual string Formula { get; set; } 
+        public virtual string Formula { get; set; }
 
         /// <summary>The column reference.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reference")]
-        public virtual DataSourceColumnReference Reference { get; set; } 
+        public virtual DataSourceColumnReference Reference { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3868,7 +3868,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The display name of the column. It should be unique within a data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3879,11 +3879,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>Output only. The data execution status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataExecutionStatus")]
-        public virtual DataExecutionStatus DataExecutionStatus { get; set; } 
+        public virtual DataExecutionStatus DataExecutionStatus { get; set; }
 
         /// <summary>The ID of the data source the formula is associated with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
-        public virtual string DataSourceId { get; set; } 
+        public virtual string DataSourceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3894,23 +3894,23 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>References to a DataSourceChart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chartId")]
-        public virtual System.Nullable<int> ChartId { get; set; } 
+        public virtual System.Nullable<int> ChartId { get; set; }
 
         /// <summary>References to a cell containing DataSourceFormula.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceFormulaCell")]
-        public virtual GridCoordinate DataSourceFormulaCell { get; set; } 
+        public virtual GridCoordinate DataSourceFormulaCell { get; set; }
 
         /// <summary>References to a data source PivotTable anchored at the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourcePivotTableAnchorCell")]
-        public virtual GridCoordinate DataSourcePivotTableAnchorCell { get; set; } 
+        public virtual GridCoordinate DataSourcePivotTableAnchorCell { get; set; }
 
         /// <summary>References to a DataSourceTable anchored at the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceTableAnchorCell")]
-        public virtual GridCoordinate DataSourceTableAnchorCell { get; set; } 
+        public virtual GridCoordinate DataSourceTableAnchorCell { get; set; }
 
         /// <summary>References to a SheetType.DATA_SOURCE sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
-        public virtual string SheetId { get; set; } 
+        public virtual string SheetId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3921,7 +3921,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The references.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("references")]
-        public virtual System.Collections.Generic.IList<DataSourceObjectReference> References { get; set; } 
+        public virtual System.Collections.Generic.IList<DataSourceObjectReference> References { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3934,15 +3934,15 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>Named parameter. Must be a legitimate identifier for the DataSource that supports it. For example,
         /// BigQuery identifier</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>ID of a NamedRange. Its size must be 1x1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedRangeId")]
-        public virtual string NamedRangeId { get; set; } 
+        public virtual string NamedRangeId { get; set; }
 
         /// <summary>A range that contains the value of the parameter. Its size must be 1x1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual GridRange Range { get; set; } 
+        public virtual GridRange Range { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3954,7 +3954,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The start time of a time interval in which a data source refresh is scheduled. Only `hours` part is
         /// used. The time interval size defaults to that in the Sheets editor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual TimeOfDay StartTime { get; set; } 
+        public virtual TimeOfDay StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3966,12 +3966,12 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>Days of the month to refresh. Only 1-28 are supported, mapping to the 1st to the 28th day. At lesat
         /// one day must be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("daysOfMonth")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> DaysOfMonth { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> DaysOfMonth { get; set; }
 
         /// <summary>The start time of a time interval in which a data source refresh is scheduled. Only `hours` part is
         /// used. The time interval size defaults to that in the Sheets editor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual TimeOfDay StartTime { get; set; } 
+        public virtual TimeOfDay StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3985,27 +3985,27 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>Daily refresh schedule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dailySchedule")]
-        public virtual DataSourceRefreshDailySchedule DailySchedule { get; set; } 
+        public virtual DataSourceRefreshDailySchedule DailySchedule { get; set; }
 
         /// <summary>True if the refresh schedule is enabled, or false otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>Monthly refresh schedule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monthlySchedule")]
-        public virtual DataSourceRefreshMonthlySchedule MonthlySchedule { get; set; } 
+        public virtual DataSourceRefreshMonthlySchedule MonthlySchedule { get; set; }
 
         /// <summary>Output only. The time interval of the next run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextRun")]
-        public virtual Interval NextRun { get; set; } 
+        public virtual Interval NextRun { get; set; }
 
         /// <summary>The scope of the refresh.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refreshScope")]
-        public virtual string RefreshScope { get; set; } 
+        public virtual string RefreshScope { get; set; }
 
         /// <summary>Weekly refresh schedule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weeklySchedule")]
-        public virtual DataSourceRefreshWeeklySchedule WeeklySchedule { get; set; } 
+        public virtual DataSourceRefreshWeeklySchedule WeeklySchedule { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4016,12 +4016,12 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>Days of the week to refresh. At least one day must be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("daysOfWeek")]
-        public virtual System.Collections.Generic.IList<string> DaysOfWeek { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DaysOfWeek { get; set; }
 
         /// <summary>The start time of a time interval in which a data source refresh is scheduled. Only `hours` part is
         /// used. The time interval size defaults to that in the Sheets editor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual TimeOfDay StartTime { get; set; } 
+        public virtual TimeOfDay StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4032,11 +4032,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The columns on the data source sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnReferences")]
-        public virtual System.Collections.Generic.IList<DataSourceColumnReference> ColumnReferences { get; set; } 
+        public virtual System.Collections.Generic.IList<DataSourceColumnReference> ColumnReferences { get; set; }
 
         /// <summary>The ID of the data source sheet the range is on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
-        public virtual System.Nullable<int> SheetId { get; set; } 
+        public virtual System.Nullable<int> SheetId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4047,15 +4047,15 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The columns displayed on the sheet, corresponding to the values in RowData.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
-        public virtual System.Collections.Generic.IList<DataSourceColumn> Columns { get; set; } 
+        public virtual System.Collections.Generic.IList<DataSourceColumn> Columns { get; set; }
 
         /// <summary>The data execution status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataExecutionStatus")]
-        public virtual DataExecutionStatus DataExecutionStatus { get; set; } 
+        public virtual DataExecutionStatus DataExecutionStatus { get; set; }
 
         /// <summary>ID of the DataSource the sheet connected with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
-        public virtual string DataSourceId { get; set; } 
+        public virtual string DataSourceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4066,11 +4066,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>A BigQueryDataSourceSpec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigQuery")]
-        public virtual BigQueryDataSourceSpec BigQuery { get; set; } 
+        public virtual BigQueryDataSourceSpec BigQuery { get; set; }
 
         /// <summary>The parameters of the data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IList<DataSourceParameter> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IList<DataSourceParameter> Parameters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4082,33 +4082,33 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The type to select columns for the data source table. Defaults to SELECTED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnSelectionType")]
-        public virtual string ColumnSelectionType { get; set; } 
+        public virtual string ColumnSelectionType { get; set; }
 
         /// <summary>Columns selected for the data source table. The column_selection_type must be SELECTED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
-        public virtual System.Collections.Generic.IList<DataSourceColumnReference> Columns { get; set; } 
+        public virtual System.Collections.Generic.IList<DataSourceColumnReference> Columns { get; set; }
 
         /// <summary>Output only. The data execution status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataExecutionStatus")]
-        public virtual DataExecutionStatus DataExecutionStatus { get; set; } 
+        public virtual DataExecutionStatus DataExecutionStatus { get; set; }
 
         /// <summary>The ID of the data source the data source table is associated with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
-        public virtual string DataSourceId { get; set; } 
+        public virtual string DataSourceId { get; set; }
 
         /// <summary>Filter specifications in the data source table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterSpecs")]
-        public virtual System.Collections.Generic.IList<FilterSpec> FilterSpecs { get; set; } 
+        public virtual System.Collections.Generic.IList<FilterSpec> FilterSpecs { get; set; }
 
         /// <summary>The limit of rows to return. If not set, a default limit is applied. Please refer to the Sheets
         /// editor for the default and max limit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowLimit")]
-        public virtual System.Nullable<int> RowLimit { get; set; } 
+        public virtual System.Nullable<int> RowLimit { get; set; }
 
         /// <summary>Sort specifications in the data source table. The result of the data source table is sorted based
         /// on the sort specifications in order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sortSpecs")]
-        public virtual System.Collections.Generic.IList<SortSpec> SortSpecs { get; set; } 
+        public virtual System.Collections.Generic.IList<SortSpec> SortSpecs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4119,20 +4119,20 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The condition that data in the cell must match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual BooleanCondition Condition { get; set; } 
+        public virtual BooleanCondition Condition { get; set; }
 
         /// <summary>A message to show the user when adding data to the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputMessage")]
-        public virtual string InputMessage { get; set; } 
+        public virtual string InputMessage { get; set; }
 
         /// <summary>True if the UI should be customized based on the kind of condition. If true, "List" conditions will
         /// show a dropdown.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("showCustomUi")]
-        public virtual System.Nullable<bool> ShowCustomUi { get; set; } 
+        public virtual System.Nullable<bool> ShowCustomUi { get; set; }
 
         /// <summary>True if invalid data should be rejected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("strict")]
-        public virtual System.Nullable<bool> Strict { get; set; } 
+        public virtual System.Nullable<bool> Strict { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4149,7 +4149,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The type of date-time grouping to apply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4160,7 +4160,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The ID of the banded range to delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bandedRangeId")]
-        public virtual System.Nullable<int> BandedRangeId { get; set; } 
+        public virtual System.Nullable<int> BandedRangeId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4172,11 +4172,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The zero-based index of the rule to be deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
-        public virtual System.Nullable<int> Index { get; set; } 
+        public virtual System.Nullable<int> Index { get; set; }
 
         /// <summary>The sheet the rule is being deleted from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
-        public virtual System.Nullable<int> SheetId { get; set; } 
+        public virtual System.Nullable<int> SheetId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4187,7 +4187,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The rule that was deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rule")]
-        public virtual ConditionalFormatRule Rule { get; set; } 
+        public virtual ConditionalFormatRule Rule { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4199,7 +4199,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The ID of the data source to delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
-        public virtual string DataSourceId { get; set; } 
+        public virtual string DataSourceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4211,7 +4211,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The data filter describing the criteria used to select which developer metadata entry to
         /// delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataFilter")]
-        public virtual DataFilter DataFilter { get; set; } 
+        public virtual DataFilter DataFilter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4222,7 +4222,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The metadata that was deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletedDeveloperMetadata")]
-        public virtual System.Collections.Generic.IList<DeveloperMetadata> DeletedDeveloperMetadata { get; set; } 
+        public virtual System.Collections.Generic.IList<DeveloperMetadata> DeletedDeveloperMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4235,7 +4235,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The range of the group to be deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual DimensionRange Range { get; set; } 
+        public virtual DimensionRange Range { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4246,7 +4246,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>All groups of a dimension after deleting a group from that dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionGroups")]
-        public virtual System.Collections.Generic.IList<DimensionGroup> DimensionGroups { get; set; } 
+        public virtual System.Collections.Generic.IList<DimensionGroup> DimensionGroups { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4257,7 +4257,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The dimensions to delete from the sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual DimensionRange Range { get; set; } 
+        public virtual DimensionRange Range { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4274,11 +4274,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The columns in the range to analyze for duplicate values. If no columns are selected then all
         /// columns are analyzed for duplicates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comparisonColumns")]
-        public virtual System.Collections.Generic.IList<DimensionRange> ComparisonColumns { get; set; } 
+        public virtual System.Collections.Generic.IList<DimensionRange> ComparisonColumns { get; set; }
 
         /// <summary>The range to remove duplicates rows from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual GridRange Range { get; set; } 
+        public virtual GridRange Range { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4289,7 +4289,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The number of duplicate rows removed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duplicatesRemovedCount")]
-        public virtual System.Nullable<int> DuplicatesRemovedCount { get; set; } 
+        public virtual System.Nullable<int> DuplicatesRemovedCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4300,7 +4300,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The ID of the embedded object to delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
-        public virtual System.Nullable<int> ObjectId { get; set; } 
+        public virtual System.Nullable<int> ObjectId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4311,7 +4311,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The ID of the filter to delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterId")]
-        public virtual System.Nullable<int> FilterId { get; set; } 
+        public virtual System.Nullable<int> FilterId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4322,7 +4322,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The ID of the named range to delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedRangeId")]
-        public virtual string NamedRangeId { get; set; } 
+        public virtual string NamedRangeId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4333,7 +4333,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The ID of the protected range to delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protectedRangeId")]
-        public virtual System.Nullable<int> ProtectedRangeId { get; set; } 
+        public virtual System.Nullable<int> ProtectedRangeId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4344,13 +4344,13 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The range of cells to delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual GridRange Range { get; set; } 
+        public virtual GridRange Range { get; set; }
 
         /// <summary>The dimension from which deleted cells will be replaced with. If ROWS, existing cells will be
         /// shifted upward to replace the deleted cells. If COLUMNS, existing cells will be shifted left to replace the
         /// deleted cells.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shiftDimension")]
-        public virtual string ShiftDimension { get; set; } 
+        public virtual string ShiftDimension { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4361,7 +4361,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The ID of the sheet to delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
-        public virtual System.Nullable<int> SheetId { get; set; } 
+        public virtual System.Nullable<int> SheetId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4377,25 +4377,25 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The location where the metadata is associated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual DeveloperMetadataLocation Location { get; set; } 
+        public virtual DeveloperMetadataLocation Location { get; set; }
 
         /// <summary>The spreadsheet-scoped unique ID that identifies the metadata. IDs may be specified when metadata
         /// is created, otherwise one will be randomly generated and assigned. Must be positive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataId")]
-        public virtual System.Nullable<int> MetadataId { get; set; } 
+        public virtual System.Nullable<int> MetadataId { get; set; }
 
         /// <summary>The metadata key. There may be multiple metadata in a spreadsheet with the same key. Developer
         /// metadata must always have a key specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataKey")]
-        public virtual string MetadataKey { get; set; } 
+        public virtual string MetadataKey { get; set; }
 
         /// <summary>Data associated with the metadata's key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataValue")]
-        public virtual string MetadataValue { get; set; } 
+        public virtual string MetadataValue { get; set; }
 
         /// <summary>The metadata visibility. Developer metadata must always have a visibility specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
-        public virtual string Visibility { get; set; } 
+        public virtual string Visibility { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4408,19 +4408,19 @@ namespace Google.Apis.Sheets.v4.Data
         /// DimensionRange must represent a single row or column; it cannot be unbounded or span multiple rows or
         /// columns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionRange")]
-        public virtual DimensionRange DimensionRange { get; set; } 
+        public virtual DimensionRange DimensionRange { get; set; }
 
         /// <summary>The type of location this object represents. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationType")]
-        public virtual string LocationType { get; set; } 
+        public virtual string LocationType { get; set; }
 
         /// <summary>The ID of the sheet when metadata is associated with an entire sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
-        public virtual System.Nullable<int> SheetId { get; set; } 
+        public virtual System.Nullable<int> SheetId { get; set; }
 
         /// <summary>True when metadata is associated with an entire spreadsheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spreadsheet")]
-        public virtual System.Nullable<bool> Spreadsheet { get; set; } 
+        public virtual System.Nullable<bool> Spreadsheet { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4440,7 +4440,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// this field assumes a default value of INTERSECTING. If this field is specified, a metadataLocation must also
         /// be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationMatchingStrategy")]
-        public virtual string LocationMatchingStrategy { get; set; } 
+        public virtual string LocationMatchingStrategy { get; set; }
 
         /// <summary>Limits the selected developer metadata to those entries which are associated with locations of the
         /// specified type. For example, when this field is specified as ROW this lookup only considers developer
@@ -4450,33 +4450,33 @@ namespace Google.Apis.Sheets.v4.Data
         /// other developer metadata location. This field also must be left unspecified when the
         /// locationMatchingStrategy is specified as EXACT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationType")]
-        public virtual string LocationType { get; set; } 
+        public virtual string LocationType { get; set; }
 
         /// <summary>Limits the selected developer metadata to that which has a matching
         /// DeveloperMetadata.metadata_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataId")]
-        public virtual System.Nullable<int> MetadataId { get; set; } 
+        public virtual System.Nullable<int> MetadataId { get; set; }
 
         /// <summary>Limits the selected developer metadata to that which has a matching
         /// DeveloperMetadata.metadata_key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataKey")]
-        public virtual string MetadataKey { get; set; } 
+        public virtual string MetadataKey { get; set; }
 
         /// <summary>Limits the selected developer metadata to those entries associated with the specified location.
         /// This field either matches exact locations or all intersecting locations according the specified
         /// locationMatchingStrategy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataLocation")]
-        public virtual DeveloperMetadataLocation MetadataLocation { get; set; } 
+        public virtual DeveloperMetadataLocation MetadataLocation { get; set; }
 
         /// <summary>Limits the selected developer metadata to that which has a matching
         /// DeveloperMetadata.metadata_value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataValue")]
-        public virtual string MetadataValue { get; set; } 
+        public virtual string MetadataValue { get; set; }
 
         /// <summary>Limits the selected developer metadata to that which has a matching DeveloperMetadata.visibility.
         /// If left unspecified, all developer metadata visibile to the requesting project is considered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
-        public virtual string Visibility { get; set; } 
+        public virtual string Visibility { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4492,16 +4492,16 @@ namespace Google.Apis.Sheets.v4.Data
         /// However, when this property is updated, all dimensions within it are set to hidden if this field is true, or
         /// set to visible if this field is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collapsed")]
-        public virtual System.Nullable<bool> Collapsed { get; set; } 
+        public virtual System.Nullable<bool> Collapsed { get; set; }
 
         /// <summary>The depth of the group, representing how many groups have a range that wholly contains the range of
         /// this group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("depth")]
-        public virtual System.Nullable<int> Depth { get; set; } 
+        public virtual System.Nullable<int> Depth { get; set; }
 
         /// <summary>The range over which this group exists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual DimensionRange Range { get; set; } 
+        public virtual DimensionRange Range { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4512,23 +4512,23 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>Output only. If set, this is a column in a data source sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceColumnReference")]
-        public virtual DataSourceColumnReference DataSourceColumnReference { get; set; } 
+        public virtual DataSourceColumnReference DataSourceColumnReference { get; set; }
 
         /// <summary>The developer metadata associated with a single row or column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerMetadata")]
-        public virtual System.Collections.Generic.IList<DeveloperMetadata> DeveloperMetadata { get; set; } 
+        public virtual System.Collections.Generic.IList<DeveloperMetadata> DeveloperMetadata { get; set; }
 
         /// <summary>True if this dimension is being filtered. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hiddenByFilter")]
-        public virtual System.Nullable<bool> HiddenByFilter { get; set; } 
+        public virtual System.Nullable<bool> HiddenByFilter { get; set; }
 
         /// <summary>True if this dimension is explicitly hidden.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hiddenByUser")]
-        public virtual System.Nullable<bool> HiddenByUser { get; set; } 
+        public virtual System.Nullable<bool> HiddenByUser { get; set; }
 
         /// <summary>The height (if a row) or width (if a column) of the dimension in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pixelSize")]
-        public virtual System.Nullable<int> PixelSize { get; set; } 
+        public virtual System.Nullable<int> PixelSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4541,19 +4541,19 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The dimension of the span.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
-        public virtual string Dimension { get; set; } 
+        public virtual string Dimension { get; set; }
 
         /// <summary>The end (exclusive) of the span, or not set if unbounded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
-        public virtual System.Nullable<int> EndIndex { get; set; } 
+        public virtual System.Nullable<int> EndIndex { get; set; }
 
         /// <summary>The sheet this span is on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
-        public virtual System.Nullable<int> SheetId { get; set; } 
+        public virtual System.Nullable<int> SheetId { get; set; }
 
         /// <summary>The start (inclusive) of the span, or not set if unbounded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; } 
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4564,7 +4564,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The ID of the filter being duplicated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterId")]
-        public virtual System.Nullable<int> FilterId { get; set; } 
+        public virtual System.Nullable<int> FilterId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4575,7 +4575,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The newly created filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual FilterView Filter { get; set; } 
+        public virtual FilterView Filter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4587,20 +4587,20 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The zero-based index where the new sheet should be inserted. The index of all sheets after this are
         /// incremented.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertSheetIndex")]
-        public virtual System.Nullable<int> InsertSheetIndex { get; set; } 
+        public virtual System.Nullable<int> InsertSheetIndex { get; set; }
 
         /// <summary>If set, the ID of the new sheet. If not set, an ID is chosen. If set, the ID must not conflict with
         /// any existing sheet ID. If set, it must be non-negative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newSheetId")]
-        public virtual System.Nullable<int> NewSheetId { get; set; } 
+        public virtual System.Nullable<int> NewSheetId { get; set; }
 
         /// <summary>The name of the new sheet. If empty, a new name is chosen for you.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newSheetName")]
-        public virtual string NewSheetName { get; set; } 
+        public virtual string NewSheetName { get; set; }
 
         /// <summary>The sheet to duplicate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceSheetId")]
-        public virtual System.Nullable<int> SourceSheetId { get; set; } 
+        public virtual System.Nullable<int> SourceSheetId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4611,7 +4611,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The properties of the duplicate sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual SheetProperties Properties { get; set; } 
+        public virtual SheetProperties Properties { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4623,15 +4623,15 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>True if anyone in the document's domain has edit access to the protected range. Domain protection
         /// is only supported on documents within a domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainUsersCanEdit")]
-        public virtual System.Nullable<bool> DomainUsersCanEdit { get; set; } 
+        public virtual System.Nullable<bool> DomainUsersCanEdit { get; set; }
 
         /// <summary>The email addresses of groups with edit access to the protected range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groups")]
-        public virtual System.Collections.Generic.IList<string> Groups { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Groups { get; set; }
 
         /// <summary>The email addresses of users with edit access to the protected range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("users")]
-        public virtual System.Collections.Generic.IList<string> Users { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Users { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4642,15 +4642,15 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The ID of the chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chartId")]
-        public virtual System.Nullable<int> ChartId { get; set; } 
+        public virtual System.Nullable<int> ChartId { get; set; }
 
         /// <summary>The position of the chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("position")]
-        public virtual EmbeddedObjectPosition Position { get; set; } 
+        public virtual EmbeddedObjectPosition Position { get; set; }
 
         /// <summary>The specification of the chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
-        public virtual ChartSpec Spec { get; set; } 
+        public virtual ChartSpec Spec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4662,16 +4662,16 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>If true, the embedded object is put on a new sheet whose ID is chosen for you. Used only when
         /// writing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newSheet")]
-        public virtual System.Nullable<bool> NewSheet { get; set; } 
+        public virtual System.Nullable<bool> NewSheet { get; set; }
 
         /// <summary>The position at which the object is overlaid on top of a grid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overlayPosition")]
-        public virtual OverlayPosition OverlayPosition { get; set; } 
+        public virtual OverlayPosition OverlayPosition { get; set; }
 
         /// <summary>The sheet this is on. Set only if the embedded object is on its own sheet. Must be non-
         /// negative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
-        public virtual System.Nullable<int> SheetId { get; set; } 
+        public virtual System.Nullable<int> SheetId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4682,11 +4682,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>A message with more information about the error (in the spreadsheet's locale).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The type of error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4697,25 +4697,25 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>Represents a boolean value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
-        public virtual System.Nullable<bool> BoolValue { get; set; } 
+        public virtual System.Nullable<bool> BoolValue { get; set; }
 
         /// <summary>Represents an error. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorValue")]
-        public virtual ErrorValue ErrorValue { get; set; } 
+        public virtual ErrorValue ErrorValue { get; set; }
 
         /// <summary>Represents a formula.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formulaValue")]
-        public virtual string FormulaValue { get; set; } 
+        public virtual string FormulaValue { get; set; }
 
         /// <summary>Represents a double value. Note: Dates, Times and DateTimes are represented as doubles in "serial
         /// number" format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numberValue")]
-        public virtual System.Nullable<double> NumberValue { get; set; } 
+        public virtual System.Nullable<double> NumberValue { get; set; }
 
         /// <summary>Represents a string value. Leading single quotes are not included. For example, if the user typed
         /// `'123` into the UI, this would be represented as a `stringValue` of `"123"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
-        public virtual string StringValue { get; set; } 
+        public virtual string StringValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4727,33 +4727,33 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>A condition that must be true for values to be shown. (This does not override hidden_values -- if a
         /// value is listed there, it will still be hidden.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual BooleanCondition Condition { get; set; } 
+        public virtual BooleanCondition Condition { get; set; }
 
         /// <summary>Values that should be hidden.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hiddenValues")]
-        public virtual System.Collections.Generic.IList<string> HiddenValues { get; set; } 
+        public virtual System.Collections.Generic.IList<string> HiddenValues { get; set; }
 
         /// <summary>The background fill color to filter by; only cells with this fill color are shown. Mutually
         /// exclusive with visible_foreground_color.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibleBackgroundColor")]
-        public virtual Color VisibleBackgroundColor { get; set; } 
+        public virtual Color VisibleBackgroundColor { get; set; }
 
         /// <summary>The background fill color to filter by; only cells with this fill color are shown. This field is
         /// mutually exclusive with visible_foreground_color, and must be set to an RGB-type color. If
         /// visible_background_color is also set, this field takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibleBackgroundColorStyle")]
-        public virtual ColorStyle VisibleBackgroundColorStyle { get; set; } 
+        public virtual ColorStyle VisibleBackgroundColorStyle { get; set; }
 
         /// <summary>The foreground color to filter by; only cells with this foreground color are shown. Mutually
         /// exclusive with visible_background_color.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibleForegroundColor")]
-        public virtual Color VisibleForegroundColor { get; set; } 
+        public virtual Color VisibleForegroundColor { get; set; }
 
         /// <summary>The foreground color to filter by; only cells with this foreground color are shown. This field is
         /// mutually exclusive with visible_background_color, and must be set to an RGB-type color. If
         /// visible_foreground_color is also set, this field takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibleForegroundColorStyle")]
-        public virtual ColorStyle VisibleForegroundColorStyle { get; set; } 
+        public virtual ColorStyle VisibleForegroundColorStyle { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4764,15 +4764,15 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The column index.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnIndex")]
-        public virtual System.Nullable<int> ColumnIndex { get; set; } 
+        public virtual System.Nullable<int> ColumnIndex { get; set; }
 
         /// <summary>Reference to a data source column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceColumnReference")]
-        public virtual DataSourceColumnReference DataSourceColumnReference { get; set; } 
+        public virtual DataSourceColumnReference DataSourceColumnReference { get; set; }
 
         /// <summary>The criteria for the column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterCriteria")]
-        public virtual FilterCriteria FilterCriteria { get; set; } 
+        public virtual FilterCriteria FilterCriteria { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4784,36 +4784,36 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The criteria for showing/hiding values per column. The map's key is the column index, and the value
         /// is the criteria for that column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("criteria")]
-        public virtual System.Collections.Generic.IDictionary<string,FilterCriteria> Criteria { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, FilterCriteria> Criteria { get; set; }
 
         /// <summary>The filter criteria for showing/hiding values per column. Both criteria and filter_specs are
         /// populated in responses. If both fields are specified in an update request, this field takes
         /// precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterSpecs")]
-        public virtual System.Collections.Generic.IList<FilterSpec> FilterSpecs { get; set; } 
+        public virtual System.Collections.Generic.IList<FilterSpec> FilterSpecs { get; set; }
 
         /// <summary>The ID of the filter view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterViewId")]
-        public virtual System.Nullable<int> FilterViewId { get; set; } 
+        public virtual System.Nullable<int> FilterViewId { get; set; }
 
         /// <summary>The named range this filter view is backed by, if any. When writing, only one of range or
         /// named_range_id may be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedRangeId")]
-        public virtual string NamedRangeId { get; set; } 
+        public virtual string NamedRangeId { get; set; }
 
         /// <summary>The range this filter view covers. When writing, only one of range or named_range_id may be
         /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual GridRange Range { get; set; } 
+        public virtual GridRange Range { get; set; }
 
         /// <summary>The sort order per column. Later specifications are used when values are equal in the earlier
         /// specifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sortSpecs")]
-        public virtual System.Collections.Generic.IList<SortSpec> SortSpecs { get; set; } 
+        public virtual System.Collections.Generic.IList<SortSpec> SortSpecs { get; set; }
 
         /// <summary>The name of the filter view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4824,31 +4824,31 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>True to find/replace over all sheets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allSheets")]
-        public virtual System.Nullable<bool> AllSheets { get; set; } 
+        public virtual System.Nullable<bool> AllSheets { get; set; }
 
         /// <summary>The value to search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("find")]
-        public virtual string Find { get; set; } 
+        public virtual string Find { get; set; }
 
         /// <summary>True if the search should include cells with formulas. False to skip cells with formulas.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeFormulas")]
-        public virtual System.Nullable<bool> IncludeFormulas { get; set; } 
+        public virtual System.Nullable<bool> IncludeFormulas { get; set; }
 
         /// <summary>True if the search is case sensitive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchCase")]
-        public virtual System.Nullable<bool> MatchCase { get; set; } 
+        public virtual System.Nullable<bool> MatchCase { get; set; }
 
         /// <summary>True if the find value should match the entire cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchEntireCell")]
-        public virtual System.Nullable<bool> MatchEntireCell { get; set; } 
+        public virtual System.Nullable<bool> MatchEntireCell { get; set; }
 
         /// <summary>The range to find/replace over.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual GridRange Range { get; set; } 
+        public virtual GridRange Range { get; set; }
 
         /// <summary>The value to use as the replacement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replacement")]
-        public virtual string Replacement { get; set; } 
+        public virtual string Replacement { get; set; }
 
         /// <summary>True if the find value is a regex. The regular expression and replacement should follow Java regex
         /// rules at https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html. The replacement string is
@@ -4856,11 +4856,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// another has `"Google Docs"`, then searching for `"o.* (.*)"` with a replacement of `"$1 Rocks"` would change
         /// the contents of the cells to `"GSheets Rocks"` and `"GDocs Rocks"` respectively.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchByRegex")]
-        public virtual System.Nullable<bool> SearchByRegex { get; set; } 
+        public virtual System.Nullable<bool> SearchByRegex { get; set; }
 
         /// <summary>The sheet to find/replace over.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
-        public virtual System.Nullable<int> SheetId { get; set; } 
+        public virtual System.Nullable<int> SheetId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4871,25 +4871,25 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The number of formula cells changed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formulasChanged")]
-        public virtual System.Nullable<int> FormulasChanged { get; set; } 
+        public virtual System.Nullable<int> FormulasChanged { get; set; }
 
         /// <summary>The number of occurrences (possibly multiple within a cell) changed. For example, if replacing
         /// `"e"` with `"o"` in `"Google Sheets"`, this would be `"3"` because `"Google Sheets"` -> `"Googlo
         /// Shoots"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("occurrencesChanged")]
-        public virtual System.Nullable<int> OccurrencesChanged { get; set; } 
+        public virtual System.Nullable<int> OccurrencesChanged { get; set; }
 
         /// <summary>The number of rows changed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowsChanged")]
-        public virtual System.Nullable<int> RowsChanged { get; set; } 
+        public virtual System.Nullable<int> RowsChanged { get; set; }
 
         /// <summary>The number of sheets changed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetsChanged")]
-        public virtual System.Nullable<int> SheetsChanged { get; set; } 
+        public virtual System.Nullable<int> SheetsChanged { get; set; }
 
         /// <summary>The number of non-formula cells changed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valuesChanged")]
-        public virtual System.Nullable<int> ValuesChanged { get; set; } 
+        public virtual System.Nullable<int> ValuesChanged { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4900,12 +4900,12 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The DataFilters used to select which ranges to retrieve from the spreadsheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataFilters")]
-        public virtual System.Collections.Generic.IList<DataFilter> DataFilters { get; set; } 
+        public virtual System.Collections.Generic.IList<DataFilter> DataFilters { get; set; }
 
         /// <summary>True if grid data should be returned. This parameter is ignored if a field mask was set in the
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeGridData")]
-        public virtual System.Nullable<bool> IncludeGridData { get; set; } 
+        public virtual System.Nullable<bool> IncludeGridData { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4917,15 +4917,15 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The final interpolation point.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxpoint")]
-        public virtual InterpolationPoint Maxpoint { get; set; } 
+        public virtual InterpolationPoint Maxpoint { get; set; }
 
         /// <summary>An optional midway interpolation point.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("midpoint")]
-        public virtual InterpolationPoint Midpoint { get; set; } 
+        public virtual InterpolationPoint Midpoint { get; set; }
 
         /// <summary>The starting interpolation point.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minpoint")]
-        public virtual InterpolationPoint Minpoint { get; set; } 
+        public virtual InterpolationPoint Minpoint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4936,15 +4936,15 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The column index of the coordinate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnIndex")]
-        public virtual System.Nullable<int> ColumnIndex { get; set; } 
+        public virtual System.Nullable<int> ColumnIndex { get; set; }
 
         /// <summary>The row index of the coordinate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowIndex")]
-        public virtual System.Nullable<int> RowIndex { get; set; } 
+        public virtual System.Nullable<int> RowIndex { get; set; }
 
         /// <summary>The sheet this coordinate is on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
-        public virtual System.Nullable<int> SheetId { get; set; } 
+        public virtual System.Nullable<int> SheetId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4956,24 +4956,24 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>Metadata about the requested columns in the grid, starting with the column in
         /// start_column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnMetadata")]
-        public virtual System.Collections.Generic.IList<DimensionProperties> ColumnMetadata { get; set; } 
+        public virtual System.Collections.Generic.IList<DimensionProperties> ColumnMetadata { get; set; }
 
         /// <summary>The data in the grid, one entry per row, starting with the row in startRow. The values in RowData
         /// will correspond to columns starting at start_column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowData")]
-        public virtual System.Collections.Generic.IList<RowData> RowData { get; set; } 
+        public virtual System.Collections.Generic.IList<RowData> RowData { get; set; }
 
         /// <summary>Metadata about the requested rows in the grid, starting with the row in start_row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowMetadata")]
-        public virtual System.Collections.Generic.IList<DimensionProperties> RowMetadata { get; set; } 
+        public virtual System.Collections.Generic.IList<DimensionProperties> RowMetadata { get; set; }
 
         /// <summary>The first column this GridData refers to, zero-based.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startColumn")]
-        public virtual System.Nullable<int> StartColumn { get; set; } 
+        public virtual System.Nullable<int> StartColumn { get; set; }
 
         /// <summary>The first row this GridData refers to, zero-based.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startRow")]
-        public virtual System.Nullable<int> StartRow { get; set; } 
+        public virtual System.Nullable<int> StartRow { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4984,31 +4984,31 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The number of columns in the grid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnCount")]
-        public virtual System.Nullable<int> ColumnCount { get; set; } 
+        public virtual System.Nullable<int> ColumnCount { get; set; }
 
         /// <summary>True if the column grouping control toggle is shown after the group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnGroupControlAfter")]
-        public virtual System.Nullable<bool> ColumnGroupControlAfter { get; set; } 
+        public virtual System.Nullable<bool> ColumnGroupControlAfter { get; set; }
 
         /// <summary>The number of columns that are frozen in the grid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frozenColumnCount")]
-        public virtual System.Nullable<int> FrozenColumnCount { get; set; } 
+        public virtual System.Nullable<int> FrozenColumnCount { get; set; }
 
         /// <summary>The number of rows that are frozen in the grid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frozenRowCount")]
-        public virtual System.Nullable<int> FrozenRowCount { get; set; } 
+        public virtual System.Nullable<int> FrozenRowCount { get; set; }
 
         /// <summary>True if the grid isn't showing gridlines in the UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hideGridlines")]
-        public virtual System.Nullable<bool> HideGridlines { get; set; } 
+        public virtual System.Nullable<bool> HideGridlines { get; set; }
 
         /// <summary>The number of rows in the grid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
-        public virtual System.Nullable<int> RowCount { get; set; } 
+        public virtual System.Nullable<int> RowCount { get; set; }
 
         /// <summary>True if the row grouping control toggle is shown after the group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowGroupControlAfter")]
-        public virtual System.Nullable<bool> RowGroupControlAfter { get; set; } 
+        public virtual System.Nullable<bool> RowGroupControlAfter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5027,23 +5027,23 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The end column (exclusive) of the range, or not set if unbounded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endColumnIndex")]
-        public virtual System.Nullable<int> EndColumnIndex { get; set; } 
+        public virtual System.Nullable<int> EndColumnIndex { get; set; }
 
         /// <summary>The end row (exclusive) of the range, or not set if unbounded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endRowIndex")]
-        public virtual System.Nullable<int> EndRowIndex { get; set; } 
+        public virtual System.Nullable<int> EndRowIndex { get; set; }
 
         /// <summary>The sheet this range is on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
-        public virtual System.Nullable<int> SheetId { get; set; } 
+        public virtual System.Nullable<int> SheetId { get; set; }
 
         /// <summary>The start column (inclusive) of the range, or not set if unbounded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startColumnIndex")]
-        public virtual System.Nullable<int> StartColumnIndex { get; set; } 
+        public virtual System.Nullable<int> StartColumnIndex { get; set; }
 
         /// <summary>The start row (inclusive) of the range, or not set if unbounded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startRowIndex")]
-        public virtual System.Nullable<int> StartRowIndex { get; set; } 
+        public virtual System.Nullable<int> StartRowIndex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5059,28 +5059,28 @@ namespace Google.Apis.Sheets.v4.Data
         /// automatically, but it may be overridden here. E.g., A bucket size of 1.5 results in buckets from 0 - 1.5,
         /// 1.5 - 3.0, etc. Cannot be negative. This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketSize")]
-        public virtual System.Nullable<double> BucketSize { get; set; } 
+        public virtual System.Nullable<double> BucketSize { get; set; }
 
         /// <summary>The position of the chart legend.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("legendPosition")]
-        public virtual string LegendPosition { get; set; } 
+        public virtual string LegendPosition { get; set; }
 
         /// <summary>The outlier percentile is used to ensure that outliers do not adversely affect the calculation of
         /// bucket sizes. For example, setting an outlier percentile of 0.05 indicates that the top and bottom 5% of
         /// values when calculating buckets. The values are still included in the chart, they will be added to the first
         /// or last buckets instead of their own buckets. Must be between 0.0 and 0.5.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outlierPercentile")]
-        public virtual System.Nullable<double> OutlierPercentile { get; set; } 
+        public virtual System.Nullable<double> OutlierPercentile { get; set; }
 
         /// <summary>The series for a histogram may be either a single series of values to be bucketed or multiple
         /// series, each of the same length, containing the name of the series followed by the values to be bucketed for
         /// that series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("series")]
-        public virtual System.Collections.Generic.IList<HistogramSeries> Series { get; set; } 
+        public virtual System.Collections.Generic.IList<HistogramSeries> Series { get; set; }
 
         /// <summary>Whether horizontal divider lines should be displayed between items in each column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("showItemDividers")]
-        public virtual System.Nullable<bool> ShowItemDividers { get; set; } 
+        public virtual System.Nullable<bool> ShowItemDividers { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5103,16 +5103,16 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The maximum value at which items are placed into buckets of constant size. Values above end are
         /// lumped into a single bucket. This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("end")]
-        public virtual System.Nullable<double> End { get; set; } 
+        public virtual System.Nullable<double> End { get; set; }
 
         /// <summary>The size of the buckets that are created. Must be positive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interval")]
-        public virtual System.Nullable<double> Interval { get; set; } 
+        public virtual System.Nullable<double> Interval { get; set; }
 
         /// <summary>The minimum value at which items are placed into buckets of constant size. Values below start are
         /// lumped into a single bucket. This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("start")]
-        public virtual System.Nullable<double> Start { get; set; } 
+        public virtual System.Nullable<double> Start { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5123,16 +5123,16 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The color of the column representing this series in each bucket. This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("barColor")]
-        public virtual Color BarColor { get; set; } 
+        public virtual Color BarColor { get; set; }
 
         /// <summary>The color of the column representing this series in each bucket. This field is optional. If
         /// bar_color is also set, this field takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("barColorStyle")]
-        public virtual ColorStyle BarColorStyle { get; set; } 
+        public virtual ColorStyle BarColorStyle { get; set; }
 
         /// <summary>The data for this histogram series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual ChartData Data { get; set; } 
+        public virtual ChartData Data { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5149,11 +5149,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// before the insertion point was red), whereas if `inheritFromBefore` is false, the two new rows will be green
         /// (because the row after the insertion point was green).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inheritFromBefore")]
-        public virtual System.Nullable<bool> InheritFromBefore { get; set; } 
+        public virtual System.Nullable<bool> InheritFromBefore { get; set; }
 
         /// <summary>The dimensions to insert. Both the start and end indexes must be bounded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual DimensionRange Range { get; set; } 
+        public virtual DimensionRange Range { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5164,12 +5164,12 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The range to insert new cells into.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual GridRange Range { get; set; } 
+        public virtual GridRange Range { get; set; }
 
         /// <summary>The dimension which will be shifted when inserting cells. If ROWS, existing cells will be shifted
         /// down. If COLUMNS, existing cells will be shifted right.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shiftDimension")]
-        public virtual string ShiftDimension { get; set; } 
+        public virtual string ShiftDimension { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5181,20 +5181,20 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The color this interpolation point should use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
-        public virtual Color Color { get; set; } 
+        public virtual Color Color { get; set; }
 
         /// <summary>The color this interpolation point should use. If color is also set, this field takes
         /// precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colorStyle")]
-        public virtual ColorStyle ColorStyle { get; set; } 
+        public virtual ColorStyle ColorStyle { get; set; }
 
         /// <summary>How the value should be interpreted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The value this interpolation point uses. May be a formula. Unused if type is MIN or MAX.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5208,12 +5208,12 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have
         /// to be before the end.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will
         /// have to be the same or after the start.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5225,12 +5225,12 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>When iterative calculation is enabled and successive results differ by less than this threshold
         /// value, the calculation rounds stop.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("convergenceThreshold")]
-        public virtual System.Nullable<double> ConvergenceThreshold { get; set; } 
+        public virtual System.Nullable<double> ConvergenceThreshold { get; set; }
 
         /// <summary>When iterative calculation is enabled, the maximum number of calculation rounds to
         /// perform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxIterations")]
-        public virtual System.Nullable<int> MaxIterations { get; set; } 
+        public virtual System.Nullable<int> MaxIterations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5242,11 +5242,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>Specifies the horizontal text positioning of key value. This field is optional. If not specified,
         /// default positioning is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("position")]
-        public virtual TextPosition Position { get; set; } 
+        public virtual TextPosition Position { get; set; }
 
         /// <summary>Text formatting options for key value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textFormat")]
-        public virtual TextFormat TextFormat { get; set; } 
+        public virtual TextFormat TextFormat { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5257,11 +5257,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The dash type of the line.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The thickness of the line, in px.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
-        public virtual System.Nullable<int> Width { get; set; } 
+        public virtual System.Nullable<int> Width { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5281,7 +5281,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The list of group names and the corresponding items from the source data that map to each group
         /// name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groups")]
-        public virtual System.Collections.Generic.IList<ManualRuleGroup> Groups { get; set; } 
+        public virtual System.Collections.Generic.IList<ManualRuleGroup> Groups { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5294,13 +5294,13 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The group name, which must be a string. Each group in a given ManualRule must have a unique group
         /// name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupName")]
-        public virtual ExtendedValue GroupName { get; set; } 
+        public virtual ExtendedValue GroupName { get; set; }
 
         /// <summary>The items in the source data that should be placed into this group. Each item may be a string,
         /// number, or boolean. Items may appear in at most one group within a given ManualRule. Items that do not
         /// appear in any group will appear on their own.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<ExtendedValue> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<ExtendedValue> Items { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5312,11 +5312,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>All filters matching the returned developer metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataFilters")]
-        public virtual System.Collections.Generic.IList<DataFilter> DataFilters { get; set; } 
+        public virtual System.Collections.Generic.IList<DataFilter> DataFilters { get; set; }
 
         /// <summary>The developer metadata matching the specified filters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerMetadata")]
-        public virtual DeveloperMetadata DeveloperMetadata { get; set; } 
+        public virtual DeveloperMetadata DeveloperMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5327,11 +5327,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The DataFilters from the request that matched the range of values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataFilters")]
-        public virtual System.Collections.Generic.IList<DataFilter> DataFilters { get; set; } 
+        public virtual System.Collections.Generic.IList<DataFilter> DataFilters { get; set; }
 
         /// <summary>The values matched by the DataFilter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueRange")]
-        public virtual ValueRange ValueRange { get; set; } 
+        public virtual ValueRange ValueRange { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5342,11 +5342,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>How the cells should be merged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mergeType")]
-        public virtual string MergeType { get; set; } 
+        public virtual string MergeType { get; set; }
 
         /// <summary>The range of cells to merge.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual GridRange Range { get; set; } 
+        public virtual GridRange Range { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5363,11 +5363,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// destination index would be `"4"` (the zero-based index of row 5). The end result would be `A1..A5` of `0, 3,
         /// 1, 2, 4`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationIndex")]
-        public virtual System.Nullable<int> DestinationIndex { get; set; } 
+        public virtual System.Nullable<int> DestinationIndex { get; set; }
 
         /// <summary>The source dimensions to move.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual DimensionRange Source { get; set; } 
+        public virtual DimensionRange Source { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5378,15 +5378,15 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The name of the named range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ID of the named range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedRangeId")]
-        public virtual string NamedRangeId { get; set; } 
+        public virtual string NamedRangeId { get; set; }
 
         /// <summary>The range this represents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual GridRange Range { get; set; } 
+        public virtual GridRange Range { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5399,11 +5399,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// be used if necessary for the given type. See the [Date and Number Formats guide](/sheets/api/guides/formats)
         /// for more information about the supported patterns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
-        public virtual string Pattern { get; set; } 
+        public virtual string Pattern { get; set; }
 
         /// <summary>The type of the number format. When writing, this field must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5419,38 +5419,38 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The data containing the labels for all the nodes in the chart. Labels must be unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual ChartData Labels { get; set; } 
+        public virtual ChartData Labels { get; set; }
 
         /// <summary>The color of the org chart nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeColor")]
-        public virtual Color NodeColor { get; set; } 
+        public virtual Color NodeColor { get; set; }
 
         /// <summary>The color of the org chart nodes. If node_color is also set, this field takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeColorStyle")]
-        public virtual ColorStyle NodeColorStyle { get; set; } 
+        public virtual ColorStyle NodeColorStyle { get; set; }
 
         /// <summary>The size of the org chart nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeSize")]
-        public virtual string NodeSize { get; set; } 
+        public virtual string NodeSize { get; set; }
 
         /// <summary>The data containing the label of the parent for the corresponding node. A blank value indicates
         /// that the node has no parent and is a top-level node. This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentLabels")]
-        public virtual ChartData ParentLabels { get; set; } 
+        public virtual ChartData ParentLabels { get; set; }
 
         /// <summary>The color of the selected org chart nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectedNodeColor")]
-        public virtual Color SelectedNodeColor { get; set; } 
+        public virtual Color SelectedNodeColor { get; set; }
 
         /// <summary>The color of the selected org chart nodes. If selected_node_color is also set, this field takes
         /// precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectedNodeColorStyle")]
-        public virtual ColorStyle SelectedNodeColorStyle { get; set; } 
+        public virtual ColorStyle SelectedNodeColorStyle { get; set; }
 
         /// <summary>The data containing the tooltip for the corresponding node. A blank value results in no tooltip
         /// being displayed for the node. This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tooltips")]
-        public virtual ChartData Tooltips { get; set; } 
+        public virtual ChartData Tooltips { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5461,23 +5461,23 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The cell the object is anchored to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("anchorCell")]
-        public virtual GridCoordinate AnchorCell { get; set; } 
+        public virtual GridCoordinate AnchorCell { get; set; }
 
         /// <summary>The height of the object, in pixels. Defaults to 371.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("heightPixels")]
-        public virtual System.Nullable<int> HeightPixels { get; set; } 
+        public virtual System.Nullable<int> HeightPixels { get; set; }
 
         /// <summary>The horizontal offset, in pixels, that the object is offset from the anchor cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offsetXPixels")]
-        public virtual System.Nullable<int> OffsetXPixels { get; set; } 
+        public virtual System.Nullable<int> OffsetXPixels { get; set; }
 
         /// <summary>The vertical offset, in pixels, that the object is offset from the anchor cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offsetYPixels")]
-        public virtual System.Nullable<int> OffsetYPixels { get; set; } 
+        public virtual System.Nullable<int> OffsetYPixels { get; set; }
 
         /// <summary>The width of the object, in pixels. Defaults to 600.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("widthPixels")]
-        public virtual System.Nullable<int> WidthPixels { get; set; } 
+        public virtual System.Nullable<int> WidthPixels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5489,19 +5489,19 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The bottom padding of the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bottom")]
-        public virtual System.Nullable<int> Bottom { get; set; } 
+        public virtual System.Nullable<int> Bottom { get; set; }
 
         /// <summary>The left padding of the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("left")]
-        public virtual System.Nullable<int> Left { get; set; } 
+        public virtual System.Nullable<int> Left { get; set; }
 
         /// <summary>The right padding of the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("right")]
-        public virtual System.Nullable<int> Right { get; set; } 
+        public virtual System.Nullable<int> Right { get; set; }
 
         /// <summary>The top padding of the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("top")]
-        public virtual System.Nullable<int> Top { get; set; } 
+        public virtual System.Nullable<int> Top { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5512,23 +5512,23 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The coordinate at which the data should start being inserted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coordinate")]
-        public virtual GridCoordinate Coordinate { get; set; } 
+        public virtual GridCoordinate Coordinate { get; set; }
 
         /// <summary>The data to insert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual string Data { get; set; } 
+        public virtual string Data { get; set; }
 
         /// <summary>The delimiter in the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delimiter")]
-        public virtual string Delimiter { get; set; } 
+        public virtual string Delimiter { get; set; }
 
         /// <summary>True if the data is HTML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("html")]
-        public virtual System.Nullable<bool> Html { get; set; } 
+        public virtual System.Nullable<bool> Html { get; set; }
 
         /// <summary>How the data should be pasted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5539,23 +5539,23 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The data that covers the domain of the pie chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
-        public virtual ChartData Domain { get; set; } 
+        public virtual ChartData Domain { get; set; }
 
         /// <summary>Where the legend of the pie chart should be drawn.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("legendPosition")]
-        public virtual string LegendPosition { get; set; } 
+        public virtual string LegendPosition { get; set; }
 
         /// <summary>The size of the hole in the pie chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pieHole")]
-        public virtual System.Nullable<double> PieHole { get; set; } 
+        public virtual System.Nullable<double> PieHole { get; set; }
 
         /// <summary>The data that covers the one and only series of the pie chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("series")]
-        public virtual ChartData Series { get; set; } 
+        public virtual ChartData Series { get; set; }
 
         /// <summary>True if the pie is three dimensional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threeDimensional")]
-        public virtual System.Nullable<bool> ThreeDimensional { get; set; } 
+        public virtual System.Nullable<bool> ThreeDimensional { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5566,7 +5566,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>Values that should be included. Values not listed here are excluded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibleValues")]
-        public virtual System.Collections.Generic.IList<string> VisibleValues { get; set; } 
+        public virtual System.Collections.Generic.IList<string> VisibleValues { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5577,15 +5577,15 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The column offset of the source range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnOffsetIndex")]
-        public virtual System.Nullable<int> ColumnOffsetIndex { get; set; } 
+        public virtual System.Nullable<int> ColumnOffsetIndex { get; set; }
 
         /// <summary>The reference to the data source column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceColumnReference")]
-        public virtual DataSourceColumnReference DataSourceColumnReference { get; set; } 
+        public virtual DataSourceColumnReference DataSourceColumnReference { get; set; }
 
         /// <summary>The criteria for the column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterCriteria")]
-        public virtual PivotFilterCriteria FilterCriteria { get; set; } 
+        public virtual PivotFilterCriteria FilterCriteria { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5596,15 +5596,15 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The reference to the data source column this grouping is based on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceColumnReference")]
-        public virtual DataSourceColumnReference DataSourceColumnReference { get; set; } 
+        public virtual DataSourceColumnReference DataSourceColumnReference { get; set; }
 
         /// <summary>The count limit on rows or columns to apply to this pivot group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupLimit")]
-        public virtual PivotGroupLimit GroupLimit { get; set; } 
+        public virtual PivotGroupLimit GroupLimit { get; set; }
 
         /// <summary>The group rule to apply to this row/column group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupRule")]
-        public virtual PivotGroupRule GroupRule { get; set; } 
+        public virtual PivotGroupRule GroupRule { get; set; }
 
         /// <summary>The labels to use for the row/column groups which can be customized. For example, in the following
         /// pivot table, the row label is `Region` (which could be renamed to `State`) and the column label is `Product`
@@ -5615,7 +5615,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// | Tennessee | 531 | 415 | +--------------+---------+-------+ | Grand Total | 1110 | 636 |
         /// +--------------+---------+-------+</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; } 
+        public virtual string Label { get; set; }
 
         /// <summary>True if the headings in this pivot group should be repeated. This is only valid for row groupings
         /// and is ignored by columns. By default, we minimize repitition of headings by not showing higher level
@@ -5624,30 +5624,30 @@ namespace Google.Apis.Sheets.v4.Data
         /// be repeated for "Feb" and "Mar". +--------------+ | Q1 | Jan | | | Feb | | | Mar | +--------+-----+ | Q1
         /// Total | +--------------+</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repeatHeadings")]
-        public virtual System.Nullable<bool> RepeatHeadings { get; set; } 
+        public virtual System.Nullable<bool> RepeatHeadings { get; set; }
 
         /// <summary>True if the pivot table should include the totals for this grouping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("showTotals")]
-        public virtual System.Nullable<bool> ShowTotals { get; set; } 
+        public virtual System.Nullable<bool> ShowTotals { get; set; }
 
         /// <summary>The order the values in this group should be sorted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sortOrder")]
-        public virtual string SortOrder { get; set; } 
+        public virtual string SortOrder { get; set; }
 
         /// <summary>The column offset of the source range that this grouping is based on. For example, if the source
         /// was `C10:E15`, a `sourceColumnOffset` of `0` means this group refers to column `C`, whereas the offset `1`
         /// would refer to column `D`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceColumnOffset")]
-        public virtual System.Nullable<int> SourceColumnOffset { get; set; } 
+        public virtual System.Nullable<int> SourceColumnOffset { get; set; }
 
         /// <summary>The bucket of the opposite pivot group to sort by. If not specified, sorting is alphabetical by
         /// this group's values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueBucket")]
-        public virtual PivotGroupSortValueBucket ValueBucket { get; set; } 
+        public virtual PivotGroupSortValueBucket ValueBucket { get; set; }
 
         /// <summary>Metadata about values in the grouping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueMetadata")]
-        public virtual System.Collections.Generic.IList<PivotGroupValueMetadata> ValueMetadata { get; set; } 
+        public virtual System.Collections.Generic.IList<PivotGroupValueMetadata> ValueMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5662,11 +5662,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// unique number. Otherwise, the order is determined by the index in the PivotTable.rows list and then the
         /// PivotTable.columns list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applyOrder")]
-        public virtual System.Nullable<int> ApplyOrder { get; set; } 
+        public virtual System.Nullable<int> ApplyOrder { get; set; }
 
         /// <summary>The count limit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countLimit")]
-        public virtual System.Nullable<int> CountLimit { get; set; } 
+        public virtual System.Nullable<int> CountLimit { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5680,15 +5680,15 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>A DateTimeRule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateTimeRule")]
-        public virtual DateTimeRule DateTimeRule { get; set; } 
+        public virtual DateTimeRule DateTimeRule { get; set; }
 
         /// <summary>A HistogramRule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("histogramRule")]
-        public virtual HistogramRule HistogramRule { get; set; } 
+        public virtual HistogramRule HistogramRule { get; set; }
 
         /// <summary>A ManualRule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manualRule")]
-        public virtual ManualRule ManualRule { get; set; } 
+        public virtual ManualRule ManualRule { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5704,12 +5704,12 @@ namespace Google.Apis.Sheets.v4.Data
         /// over the column groups. If a single value is listed, this would correspond to using the "Total" of that
         /// bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buckets")]
-        public virtual System.Collections.Generic.IList<ExtendedValue> Buckets { get; set; } 
+        public virtual System.Collections.Generic.IList<ExtendedValue> Buckets { get; set; }
 
         /// <summary>The offset in the PivotTable.values list which the values in this grouping should be sorted
         /// by.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valuesIndex")]
-        public virtual System.Nullable<int> ValuesIndex { get; set; } 
+        public virtual System.Nullable<int> ValuesIndex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5720,12 +5720,12 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>True if the data corresponding to the value is collapsed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collapsed")]
-        public virtual System.Nullable<bool> Collapsed { get; set; } 
+        public virtual System.Nullable<bool> Collapsed { get; set; }
 
         /// <summary>The calculated value the metadata corresponds to. (Note that formulaValue is not valid, because the
         /// values will be calculated.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual ExtendedValue Value { get; set; } 
+        public virtual ExtendedValue Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5736,44 +5736,44 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>Each column grouping in the pivot table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
-        public virtual System.Collections.Generic.IList<PivotGroup> Columns { get; set; } 
+        public virtual System.Collections.Generic.IList<PivotGroup> Columns { get; set; }
 
         /// <summary>An optional mapping of filters per source column offset. The filters are applied before aggregating
         /// data into the pivot table. The map's key is the column offset of the source range that you want to filter,
         /// and the value is the criteria for that column. For example, if the source was `C10:E15`, a key of `0` will
         /// have the filter for column `C`, whereas the key `1` is for column `D`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("criteria")]
-        public virtual System.Collections.Generic.IDictionary<string,PivotFilterCriteria> Criteria { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, PivotFilterCriteria> Criteria { get; set; }
 
         /// <summary>Output only. The data execution status for data source pivot tables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataExecutionStatus")]
-        public virtual DataExecutionStatus DataExecutionStatus { get; set; } 
+        public virtual DataExecutionStatus DataExecutionStatus { get; set; }
 
         /// <summary>The ID of the data source the pivot table is reading data from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
-        public virtual string DataSourceId { get; set; } 
+        public virtual string DataSourceId { get; set; }
 
         /// <summary>The filters applied to the source columns before aggregating data for the pivot table. Both
         /// criteria and filter_specs are populated in responses. If both fields are specified in an update request,
         /// this field takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterSpecs")]
-        public virtual System.Collections.Generic.IList<PivotFilterSpec> FilterSpecs { get; set; } 
+        public virtual System.Collections.Generic.IList<PivotFilterSpec> FilterSpecs { get; set; }
 
         /// <summary>Each row grouping in the pivot table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-        public virtual System.Collections.Generic.IList<PivotGroup> Rows { get; set; } 
+        public virtual System.Collections.Generic.IList<PivotGroup> Rows { get; set; }
 
         /// <summary>The range the pivot table is reading data from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual GridRange Source { get; set; } 
+        public virtual GridRange Source { get; set; }
 
         /// <summary>Whether values should be listed horizontally (as columns) or vertically (as rows).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueLayout")]
-        public virtual string ValueLayout { get; set; } 
+        public virtual string ValueLayout { get; set; }
 
         /// <summary>A list of values to include in the pivot table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<PivotValue> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<PivotValue> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5787,30 +5787,30 @@ namespace Google.Apis.Sheets.v4.Data
         /// pivot values are displayed as the percentage of the grand total. In the Sheets editor, this is referred to
         /// as "Show As" in the value section of a pivot table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("calculatedDisplayType")]
-        public virtual string CalculatedDisplayType { get; set; } 
+        public virtual string CalculatedDisplayType { get; set; }
 
         /// <summary>The reference to the data source column that this value reads from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceColumnReference")]
-        public virtual DataSourceColumnReference DataSourceColumnReference { get; set; } 
+        public virtual DataSourceColumnReference DataSourceColumnReference { get; set; }
 
         /// <summary>A custom formula to calculate the value. The formula must start with an `=` character.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formula")]
-        public virtual string Formula { get; set; } 
+        public virtual string Formula { get; set; }
 
         /// <summary>A name to use for the value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The column offset of the source range that this value reads from. For example, if the source was
         /// `C10:E15`, a `sourceColumnOffset` of `0` means this value refers to column `C`, whereas the offset `1` would
         /// refer to column `D`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceColumnOffset")]
-        public virtual System.Nullable<int> SourceColumnOffset { get; set; } 
+        public virtual System.Nullable<int> SourceColumnOffset { get; set; }
 
         /// <summary>A function to summarize the value. If formula is set, the only supported values are SUM and CUSTOM.
         /// If sourceColumnOffset is set, then `CUSTOM` is not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summarizeFunction")]
-        public virtual string SummarizeFunction { get; set; } 
+        public virtual string SummarizeFunction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5821,37 +5821,37 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The description of this protected range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The users and groups with edit access to the protected range. This field is only visible to users
         /// with edit access to the protected range and the document. Editors are not supported with warning_only
         /// protection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("editors")]
-        public virtual Editors Editors { get; set; } 
+        public virtual Editors Editors { get; set; }
 
         /// <summary>The named range this protected range is backed by, if any. When writing, only one of range or
         /// named_range_id may be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedRangeId")]
-        public virtual string NamedRangeId { get; set; } 
+        public virtual string NamedRangeId { get; set; }
 
         /// <summary>The ID of the protected range. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protectedRangeId")]
-        public virtual System.Nullable<int> ProtectedRangeId { get; set; } 
+        public virtual System.Nullable<int> ProtectedRangeId { get; set; }
 
         /// <summary>The range that is being protected. The range may be fully unbounded, in which case this is
         /// considered a protected sheet. When writing, only one of range or named_range_id may be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual GridRange Range { get; set; } 
+        public virtual GridRange Range { get; set; }
 
         /// <summary>True if the user who requested this protected range can edit the protected area. This field is
         /// read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestingUserCanEdit")]
-        public virtual System.Nullable<bool> RequestingUserCanEdit { get; set; } 
+        public virtual System.Nullable<bool> RequestingUserCanEdit { get; set; }
 
         /// <summary>The list of unprotected ranges within a protected sheet. Unprotected ranges are only supported on
         /// protected sheets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unprotectedRanges")]
-        public virtual System.Collections.Generic.IList<GridRange> UnprotectedRanges { get; set; } 
+        public virtual System.Collections.Generic.IList<GridRange> UnprotectedRanges { get; set; }
 
         /// <summary>True if this protected range will show a warning when editing. Warning-based protection means that
         /// every user can edit data in the protected range, except editing will prompt a warning asking the user to
@@ -5859,7 +5859,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// is changed from true to false and the `editors` field is not set (nor included in the field mask), then the
         /// editors will be set to all the editors in the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warningOnly")]
-        public virtual System.Nullable<bool> WarningOnly { get; set; } 
+        public virtual System.Nullable<bool> WarningOnly { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5870,7 +5870,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The range to randomize.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual GridRange Range { get; set; } 
+        public virtual GridRange Range { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5881,11 +5881,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The data execution status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataExecutionStatus")]
-        public virtual DataExecutionStatus DataExecutionStatus { get; set; } 
+        public virtual DataExecutionStatus DataExecutionStatus { get; set; }
 
         /// <summary>Reference to a data source object being refreshed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reference")]
-        public virtual DataSourceObjectReference Reference { get; set; } 
+        public virtual DataSourceObjectReference Reference { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5900,20 +5900,20 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>Reference to a DataSource. If specified, refreshes all associated data source objects for the data
         /// source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
-        public virtual string DataSourceId { get; set; } 
+        public virtual string DataSourceId { get; set; }
 
         /// <summary>Refreshes the data source objects regardless of the current state. If not set and a referenced data
         /// source object was in error state, the refresh will fail immediately.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("force")]
-        public virtual System.Nullable<bool> Force { get; set; } 
+        public virtual System.Nullable<bool> Force { get; set; }
 
         /// <summary>Refreshes all existing data source objects in the spreadsheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isAll")]
-        public virtual System.Nullable<bool> IsAll { get; set; } 
+        public virtual System.Nullable<bool> IsAll { get; set; }
 
         /// <summary>References to data source objects to refresh.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("references")]
-        public virtual DataSourceObjectReferences References { get; set; } 
+        public virtual DataSourceObjectReferences References { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5925,7 +5925,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>All the refresh status for the data source object references specified in the request. If is_all is
         /// specified, the field contains only those in failure status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statuses")]
-        public virtual System.Collections.Generic.IList<RefreshDataSourceObjectExecutionStatus> Statuses { get; set; } 
+        public virtual System.Collections.Generic.IList<RefreshDataSourceObjectExecutionStatus> Statuses { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5941,16 +5941,16 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The data to write.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cell")]
-        public virtual CellData Cell { get; set; } 
+        public virtual CellData Cell { get; set; }
 
         /// <summary>The fields that should be updated. At least one field must be specified. The root `cell` is implied
         /// and should not be specified. A single `"*"` can be used as short-hand for listing every field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual object Fields { get; set; } 
+        public virtual object Fields { get; set; }
 
         /// <summary>The range to repeat the cell in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual GridRange Range { get; set; } 
+        public virtual GridRange Range { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5961,260 +5961,260 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>Adds a new banded range</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addBanding")]
-        public virtual AddBandingRequest AddBanding { get; set; } 
+        public virtual AddBandingRequest AddBanding { get; set; }
 
         /// <summary>Adds a chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addChart")]
-        public virtual AddChartRequest AddChart { get; set; } 
+        public virtual AddChartRequest AddChart { get; set; }
 
         /// <summary>Adds a new conditional format rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addConditionalFormatRule")]
-        public virtual AddConditionalFormatRuleRequest AddConditionalFormatRule { get; set; } 
+        public virtual AddConditionalFormatRuleRequest AddConditionalFormatRule { get; set; }
 
         /// <summary>Adds a data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addDataSource")]
-        public virtual AddDataSourceRequest AddDataSource { get; set; } 
+        public virtual AddDataSourceRequest AddDataSource { get; set; }
 
         /// <summary>Creates a group over the specified range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addDimensionGroup")]
-        public virtual AddDimensionGroupRequest AddDimensionGroup { get; set; } 
+        public virtual AddDimensionGroupRequest AddDimensionGroup { get; set; }
 
         /// <summary>Adds a filter view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addFilterView")]
-        public virtual AddFilterViewRequest AddFilterView { get; set; } 
+        public virtual AddFilterViewRequest AddFilterView { get; set; }
 
         /// <summary>Adds a named range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addNamedRange")]
-        public virtual AddNamedRangeRequest AddNamedRange { get; set; } 
+        public virtual AddNamedRangeRequest AddNamedRange { get; set; }
 
         /// <summary>Adds a protected range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addProtectedRange")]
-        public virtual AddProtectedRangeRequest AddProtectedRange { get; set; } 
+        public virtual AddProtectedRangeRequest AddProtectedRange { get; set; }
 
         /// <summary>Adds a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addSheet")]
-        public virtual AddSheetRequest AddSheet { get; set; } 
+        public virtual AddSheetRequest AddSheet { get; set; }
 
         /// <summary>Adds a slicer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addSlicer")]
-        public virtual AddSlicerRequest AddSlicer { get; set; } 
+        public virtual AddSlicerRequest AddSlicer { get; set; }
 
         /// <summary>Appends cells after the last row with data in a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appendCells")]
-        public virtual AppendCellsRequest AppendCells { get; set; } 
+        public virtual AppendCellsRequest AppendCells { get; set; }
 
         /// <summary>Appends dimensions to the end of a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appendDimension")]
-        public virtual AppendDimensionRequest AppendDimension { get; set; } 
+        public virtual AppendDimensionRequest AppendDimension { get; set; }
 
         /// <summary>Automatically fills in more data based on existing data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoFill")]
-        public virtual AutoFillRequest AutoFill { get; set; } 
+        public virtual AutoFillRequest AutoFill { get; set; }
 
         /// <summary>Automatically resizes one or more dimensions based on the contents of the cells in that
         /// dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoResizeDimensions")]
-        public virtual AutoResizeDimensionsRequest AutoResizeDimensions { get; set; } 
+        public virtual AutoResizeDimensionsRequest AutoResizeDimensions { get; set; }
 
         /// <summary>Clears the basic filter on a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clearBasicFilter")]
-        public virtual ClearBasicFilterRequest ClearBasicFilter { get; set; } 
+        public virtual ClearBasicFilterRequest ClearBasicFilter { get; set; }
 
         /// <summary>Copies data from one area and pastes it to another.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("copyPaste")]
-        public virtual CopyPasteRequest CopyPaste { get; set; } 
+        public virtual CopyPasteRequest CopyPaste { get; set; }
 
         /// <summary>Creates new developer metadata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createDeveloperMetadata")]
-        public virtual CreateDeveloperMetadataRequest CreateDeveloperMetadata { get; set; } 
+        public virtual CreateDeveloperMetadataRequest CreateDeveloperMetadata { get; set; }
 
         /// <summary>Cuts data from one area and pastes it to another.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cutPaste")]
-        public virtual CutPasteRequest CutPaste { get; set; } 
+        public virtual CutPasteRequest CutPaste { get; set; }
 
         /// <summary>Removes a banded range</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteBanding")]
-        public virtual DeleteBandingRequest DeleteBanding { get; set; } 
+        public virtual DeleteBandingRequest DeleteBanding { get; set; }
 
         /// <summary>Deletes an existing conditional format rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteConditionalFormatRule")]
-        public virtual DeleteConditionalFormatRuleRequest DeleteConditionalFormatRule { get; set; } 
+        public virtual DeleteConditionalFormatRuleRequest DeleteConditionalFormatRule { get; set; }
 
         /// <summary>Deletes a data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteDataSource")]
-        public virtual DeleteDataSourceRequest DeleteDataSource { get; set; } 
+        public virtual DeleteDataSourceRequest DeleteDataSource { get; set; }
 
         /// <summary>Deletes developer metadata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteDeveloperMetadata")]
-        public virtual DeleteDeveloperMetadataRequest DeleteDeveloperMetadata { get; set; } 
+        public virtual DeleteDeveloperMetadataRequest DeleteDeveloperMetadata { get; set; }
 
         /// <summary>Deletes rows or columns in a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteDimension")]
-        public virtual DeleteDimensionRequest DeleteDimension { get; set; } 
+        public virtual DeleteDimensionRequest DeleteDimension { get; set; }
 
         /// <summary>Deletes a group over the specified range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteDimensionGroup")]
-        public virtual DeleteDimensionGroupRequest DeleteDimensionGroup { get; set; } 
+        public virtual DeleteDimensionGroupRequest DeleteDimensionGroup { get; set; }
 
         /// <summary>Removes rows containing duplicate values in specified columns of a cell range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteDuplicates")]
-        public virtual DeleteDuplicatesRequest DeleteDuplicates { get; set; } 
+        public virtual DeleteDuplicatesRequest DeleteDuplicates { get; set; }
 
         /// <summary>Deletes an embedded object (e.g, chart, image) in a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteEmbeddedObject")]
-        public virtual DeleteEmbeddedObjectRequest DeleteEmbeddedObject { get; set; } 
+        public virtual DeleteEmbeddedObjectRequest DeleteEmbeddedObject { get; set; }
 
         /// <summary>Deletes a filter view from a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteFilterView")]
-        public virtual DeleteFilterViewRequest DeleteFilterView { get; set; } 
+        public virtual DeleteFilterViewRequest DeleteFilterView { get; set; }
 
         /// <summary>Deletes a named range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteNamedRange")]
-        public virtual DeleteNamedRangeRequest DeleteNamedRange { get; set; } 
+        public virtual DeleteNamedRangeRequest DeleteNamedRange { get; set; }
 
         /// <summary>Deletes a protected range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteProtectedRange")]
-        public virtual DeleteProtectedRangeRequest DeleteProtectedRange { get; set; } 
+        public virtual DeleteProtectedRangeRequest DeleteProtectedRange { get; set; }
 
         /// <summary>Deletes a range of cells from a sheet, shifting the remaining cells.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteRange")]
-        public virtual DeleteRangeRequest DeleteRange { get; set; } 
+        public virtual DeleteRangeRequest DeleteRange { get; set; }
 
         /// <summary>Deletes a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteSheet")]
-        public virtual DeleteSheetRequest DeleteSheet { get; set; } 
+        public virtual DeleteSheetRequest DeleteSheet { get; set; }
 
         /// <summary>Duplicates a filter view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duplicateFilterView")]
-        public virtual DuplicateFilterViewRequest DuplicateFilterView { get; set; } 
+        public virtual DuplicateFilterViewRequest DuplicateFilterView { get; set; }
 
         /// <summary>Duplicates a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duplicateSheet")]
-        public virtual DuplicateSheetRequest DuplicateSheet { get; set; } 
+        public virtual DuplicateSheetRequest DuplicateSheet { get; set; }
 
         /// <summary>Finds and replaces occurrences of some text with other text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findReplace")]
-        public virtual FindReplaceRequest FindReplace { get; set; } 
+        public virtual FindReplaceRequest FindReplace { get; set; }
 
         /// <summary>Inserts new rows or columns in a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertDimension")]
-        public virtual InsertDimensionRequest InsertDimension { get; set; } 
+        public virtual InsertDimensionRequest InsertDimension { get; set; }
 
         /// <summary>Inserts new cells in a sheet, shifting the existing cells.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertRange")]
-        public virtual InsertRangeRequest InsertRange { get; set; } 
+        public virtual InsertRangeRequest InsertRange { get; set; }
 
         /// <summary>Merges cells together.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mergeCells")]
-        public virtual MergeCellsRequest MergeCells { get; set; } 
+        public virtual MergeCellsRequest MergeCells { get; set; }
 
         /// <summary>Moves rows or columns to another location in a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("moveDimension")]
-        public virtual MoveDimensionRequest MoveDimension { get; set; } 
+        public virtual MoveDimensionRequest MoveDimension { get; set; }
 
         /// <summary>Pastes data (HTML or delimited) into a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pasteData")]
-        public virtual PasteDataRequest PasteData { get; set; } 
+        public virtual PasteDataRequest PasteData { get; set; }
 
         /// <summary>Randomizes the order of the rows in a range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("randomizeRange")]
-        public virtual RandomizeRangeRequest RandomizeRange { get; set; } 
+        public virtual RandomizeRangeRequest RandomizeRange { get; set; }
 
         /// <summary>Refreshs one or multiple data sources and associated dbobjects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refreshDataSource")]
-        public virtual RefreshDataSourceRequest RefreshDataSource { get; set; } 
+        public virtual RefreshDataSourceRequest RefreshDataSource { get; set; }
 
         /// <summary>Repeats a single cell across a range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repeatCell")]
-        public virtual RepeatCellRequest RepeatCell { get; set; } 
+        public virtual RepeatCellRequest RepeatCell { get; set; }
 
         /// <summary>Sets the basic filter on a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setBasicFilter")]
-        public virtual SetBasicFilterRequest SetBasicFilter { get; set; } 
+        public virtual SetBasicFilterRequest SetBasicFilter { get; set; }
 
         /// <summary>Sets data validation for one or more cells.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setDataValidation")]
-        public virtual SetDataValidationRequest SetDataValidation { get; set; } 
+        public virtual SetDataValidationRequest SetDataValidation { get; set; }
 
         /// <summary>Sorts data in a range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sortRange")]
-        public virtual SortRangeRequest SortRange { get; set; } 
+        public virtual SortRangeRequest SortRange { get; set; }
 
         /// <summary>Converts a column of text into many columns of text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textToColumns")]
-        public virtual TextToColumnsRequest TextToColumns { get; set; } 
+        public virtual TextToColumnsRequest TextToColumns { get; set; }
 
         /// <summary>Trims cells of whitespace (such as spaces, tabs, or new lines).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trimWhitespace")]
-        public virtual TrimWhitespaceRequest TrimWhitespace { get; set; } 
+        public virtual TrimWhitespaceRequest TrimWhitespace { get; set; }
 
         /// <summary>Unmerges merged cells.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unmergeCells")]
-        public virtual UnmergeCellsRequest UnmergeCells { get; set; } 
+        public virtual UnmergeCellsRequest UnmergeCells { get; set; }
 
         /// <summary>Updates a banded range</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateBanding")]
-        public virtual UpdateBandingRequest UpdateBanding { get; set; } 
+        public virtual UpdateBandingRequest UpdateBanding { get; set; }
 
         /// <summary>Updates the borders in a range of cells.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateBorders")]
-        public virtual UpdateBordersRequest UpdateBorders { get; set; } 
+        public virtual UpdateBordersRequest UpdateBorders { get; set; }
 
         /// <summary>Updates many cells at once.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateCells")]
-        public virtual UpdateCellsRequest UpdateCells { get; set; } 
+        public virtual UpdateCellsRequest UpdateCells { get; set; }
 
         /// <summary>Updates a chart's specifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateChartSpec")]
-        public virtual UpdateChartSpecRequest UpdateChartSpec { get; set; } 
+        public virtual UpdateChartSpecRequest UpdateChartSpec { get; set; }
 
         /// <summary>Updates an existing conditional format rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateConditionalFormatRule")]
-        public virtual UpdateConditionalFormatRuleRequest UpdateConditionalFormatRule { get; set; } 
+        public virtual UpdateConditionalFormatRuleRequest UpdateConditionalFormatRule { get; set; }
 
         /// <summary>Updates a data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateDataSource")]
-        public virtual UpdateDataSourceRequest UpdateDataSource { get; set; } 
+        public virtual UpdateDataSourceRequest UpdateDataSource { get; set; }
 
         /// <summary>Updates an existing developer metadata entry</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateDeveloperMetadata")]
-        public virtual UpdateDeveloperMetadataRequest UpdateDeveloperMetadata { get; set; } 
+        public virtual UpdateDeveloperMetadataRequest UpdateDeveloperMetadata { get; set; }
 
         /// <summary>Updates the state of the specified group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateDimensionGroup")]
-        public virtual UpdateDimensionGroupRequest UpdateDimensionGroup { get; set; } 
+        public virtual UpdateDimensionGroupRequest UpdateDimensionGroup { get; set; }
 
         /// <summary>Updates dimensions' properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateDimensionProperties")]
-        public virtual UpdateDimensionPropertiesRequest UpdateDimensionProperties { get; set; } 
+        public virtual UpdateDimensionPropertiesRequest UpdateDimensionProperties { get; set; }
 
         /// <summary>Updates an embedded object's (e.g. chart, image) position.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateEmbeddedObjectPosition")]
-        public virtual UpdateEmbeddedObjectPositionRequest UpdateEmbeddedObjectPosition { get; set; } 
+        public virtual UpdateEmbeddedObjectPositionRequest UpdateEmbeddedObjectPosition { get; set; }
 
         /// <summary>Updates the properties of a filter view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateFilterView")]
-        public virtual UpdateFilterViewRequest UpdateFilterView { get; set; } 
+        public virtual UpdateFilterViewRequest UpdateFilterView { get; set; }
 
         /// <summary>Updates a named range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateNamedRange")]
-        public virtual UpdateNamedRangeRequest UpdateNamedRange { get; set; } 
+        public virtual UpdateNamedRangeRequest UpdateNamedRange { get; set; }
 
         /// <summary>Updates a protected range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateProtectedRange")]
-        public virtual UpdateProtectedRangeRequest UpdateProtectedRange { get; set; } 
+        public virtual UpdateProtectedRangeRequest UpdateProtectedRange { get; set; }
 
         /// <summary>Updates a sheet's properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateSheetProperties")]
-        public virtual UpdateSheetPropertiesRequest UpdateSheetProperties { get; set; } 
+        public virtual UpdateSheetPropertiesRequest UpdateSheetProperties { get; set; }
 
         /// <summary>Updates a slicer's specifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateSlicerSpec")]
-        public virtual UpdateSlicerSpecRequest UpdateSlicerSpec { get; set; } 
+        public virtual UpdateSlicerSpecRequest UpdateSlicerSpec { get; set; }
 
         /// <summary>Updates the spreadsheet's properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateSpreadsheetProperties")]
-        public virtual UpdateSpreadsheetPropertiesRequest UpdateSpreadsheetProperties { get; set; } 
+        public virtual UpdateSpreadsheetPropertiesRequest UpdateSpreadsheetProperties { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6225,95 +6225,95 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>A reply from adding a banded range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addBanding")]
-        public virtual AddBandingResponse AddBanding { get; set; } 
+        public virtual AddBandingResponse AddBanding { get; set; }
 
         /// <summary>A reply from adding a chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addChart")]
-        public virtual AddChartResponse AddChart { get; set; } 
+        public virtual AddChartResponse AddChart { get; set; }
 
         /// <summary>A reply from adding a data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addDataSource")]
-        public virtual AddDataSourceResponse AddDataSource { get; set; } 
+        public virtual AddDataSourceResponse AddDataSource { get; set; }
 
         /// <summary>A reply from adding a dimension group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addDimensionGroup")]
-        public virtual AddDimensionGroupResponse AddDimensionGroup { get; set; } 
+        public virtual AddDimensionGroupResponse AddDimensionGroup { get; set; }
 
         /// <summary>A reply from adding a filter view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addFilterView")]
-        public virtual AddFilterViewResponse AddFilterView { get; set; } 
+        public virtual AddFilterViewResponse AddFilterView { get; set; }
 
         /// <summary>A reply from adding a named range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addNamedRange")]
-        public virtual AddNamedRangeResponse AddNamedRange { get; set; } 
+        public virtual AddNamedRangeResponse AddNamedRange { get; set; }
 
         /// <summary>A reply from adding a protected range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addProtectedRange")]
-        public virtual AddProtectedRangeResponse AddProtectedRange { get; set; } 
+        public virtual AddProtectedRangeResponse AddProtectedRange { get; set; }
 
         /// <summary>A reply from adding a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addSheet")]
-        public virtual AddSheetResponse AddSheet { get; set; } 
+        public virtual AddSheetResponse AddSheet { get; set; }
 
         /// <summary>A reply from adding a slicer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addSlicer")]
-        public virtual AddSlicerResponse AddSlicer { get; set; } 
+        public virtual AddSlicerResponse AddSlicer { get; set; }
 
         /// <summary>A reply from creating a developer metadata entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createDeveloperMetadata")]
-        public virtual CreateDeveloperMetadataResponse CreateDeveloperMetadata { get; set; } 
+        public virtual CreateDeveloperMetadataResponse CreateDeveloperMetadata { get; set; }
 
         /// <summary>A reply from deleting a conditional format rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteConditionalFormatRule")]
-        public virtual DeleteConditionalFormatRuleResponse DeleteConditionalFormatRule { get; set; } 
+        public virtual DeleteConditionalFormatRuleResponse DeleteConditionalFormatRule { get; set; }
 
         /// <summary>A reply from deleting a developer metadata entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteDeveloperMetadata")]
-        public virtual DeleteDeveloperMetadataResponse DeleteDeveloperMetadata { get; set; } 
+        public virtual DeleteDeveloperMetadataResponse DeleteDeveloperMetadata { get; set; }
 
         /// <summary>A reply from deleting a dimension group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteDimensionGroup")]
-        public virtual DeleteDimensionGroupResponse DeleteDimensionGroup { get; set; } 
+        public virtual DeleteDimensionGroupResponse DeleteDimensionGroup { get; set; }
 
         /// <summary>A reply from removing rows containing duplicate values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteDuplicates")]
-        public virtual DeleteDuplicatesResponse DeleteDuplicates { get; set; } 
+        public virtual DeleteDuplicatesResponse DeleteDuplicates { get; set; }
 
         /// <summary>A reply from duplicating a filter view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duplicateFilterView")]
-        public virtual DuplicateFilterViewResponse DuplicateFilterView { get; set; } 
+        public virtual DuplicateFilterViewResponse DuplicateFilterView { get; set; }
 
         /// <summary>A reply from duplicating a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duplicateSheet")]
-        public virtual DuplicateSheetResponse DuplicateSheet { get; set; } 
+        public virtual DuplicateSheetResponse DuplicateSheet { get; set; }
 
         /// <summary>A reply from doing a find/replace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findReplace")]
-        public virtual FindReplaceResponse FindReplace { get; set; } 
+        public virtual FindReplaceResponse FindReplace { get; set; }
 
         /// <summary>A reply from refreshing data source objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refreshDataSource")]
-        public virtual RefreshDataSourceResponse RefreshDataSource { get; set; } 
+        public virtual RefreshDataSourceResponse RefreshDataSource { get; set; }
 
         /// <summary>A reply from trimming whitespace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trimWhitespace")]
-        public virtual TrimWhitespaceResponse TrimWhitespace { get; set; } 
+        public virtual TrimWhitespaceResponse TrimWhitespace { get; set; }
 
         /// <summary>A reply from updating a conditional format rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateConditionalFormatRule")]
-        public virtual UpdateConditionalFormatRuleResponse UpdateConditionalFormatRule { get; set; } 
+        public virtual UpdateConditionalFormatRuleResponse UpdateConditionalFormatRule { get; set; }
 
         /// <summary>A reply from updating a data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateDataSource")]
-        public virtual UpdateDataSourceResponse UpdateDataSource { get; set; } 
+        public virtual UpdateDataSourceResponse UpdateDataSource { get; set; }
 
         /// <summary>A reply from updating a developer metadata entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateDeveloperMetadata")]
-        public virtual UpdateDeveloperMetadataResponse UpdateDeveloperMetadata { get; set; } 
+        public virtual UpdateDeveloperMetadataResponse UpdateDeveloperMetadata { get; set; }
 
         /// <summary>A reply from updating an embedded object's position.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateEmbeddedObjectPosition")]
-        public virtual UpdateEmbeddedObjectPositionResponse UpdateEmbeddedObjectPosition { get; set; } 
+        public virtual UpdateEmbeddedObjectPositionResponse UpdateEmbeddedObjectPosition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6324,7 +6324,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The values in the row, one per column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<CellData> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<CellData> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6339,38 +6339,38 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The aggregation type for key and baseline chart data in scorecard chart. This field is
         /// optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregateType")]
-        public virtual string AggregateType { get; set; } 
+        public virtual string AggregateType { get; set; }
 
         /// <summary>The data for scorecard baseline value. This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baselineValueData")]
-        public virtual ChartData BaselineValueData { get; set; } 
+        public virtual ChartData BaselineValueData { get; set; }
 
         /// <summary>Formatting options for baseline value. This field is needed only if baseline_value_data is
         /// specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baselineValueFormat")]
-        public virtual BaselineValueFormat BaselineValueFormat { get; set; } 
+        public virtual BaselineValueFormat BaselineValueFormat { get; set; }
 
         /// <summary>Custom formatting options for numeric key/baseline values in scorecard chart. This field is used
         /// only when number_format_source is set to CUSTOM. This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customFormatOptions")]
-        public virtual ChartCustomNumberFormatOptions CustomFormatOptions { get; set; } 
+        public virtual ChartCustomNumberFormatOptions CustomFormatOptions { get; set; }
 
         /// <summary>The data for scorecard key value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyValueData")]
-        public virtual ChartData KeyValueData { get; set; } 
+        public virtual ChartData KeyValueData { get; set; }
 
         /// <summary>Formatting options for key value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyValueFormat")]
-        public virtual KeyValueFormat KeyValueFormat { get; set; } 
+        public virtual KeyValueFormat KeyValueFormat { get; set; }
 
         /// <summary>The number format source used in the scorecard chart. This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numberFormatSource")]
-        public virtual string NumberFormatSource { get; set; } 
+        public virtual string NumberFormatSource { get; set; }
 
         /// <summary>Value to scale scorecard key and baseline value. For example, a factor of 10 can be used to divide
         /// all values in the chart by 10. This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scaleFactor")]
-        public virtual System.Nullable<double> ScaleFactor { get; set; } 
+        public virtual System.Nullable<double> ScaleFactor { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6382,7 +6382,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The data filters describing the criteria used to determine which DeveloperMetadata entries to
         /// return. DeveloperMetadata matching any of the specified filters are included in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataFilters")]
-        public virtual System.Collections.Generic.IList<DataFilter> DataFilters { get; set; } 
+        public virtual System.Collections.Generic.IList<DataFilter> DataFilters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6393,7 +6393,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The metadata matching the criteria of the search request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchedDeveloperMetadata")]
-        public virtual System.Collections.Generic.IList<MatchedDeveloperMetadata> MatchedDeveloperMetadata { get; set; } 
+        public virtual System.Collections.Generic.IList<MatchedDeveloperMetadata> MatchedDeveloperMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6404,7 +6404,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The filter to set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual BasicFilter Filter { get; set; } 
+        public virtual BasicFilter Filter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6416,12 +6416,12 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The range the data validation rule should apply to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual GridRange Range { get; set; } 
+        public virtual GridRange Range { get; set; }
 
         /// <summary>The data validation rule to set on each cell in the range, or empty to clear the data validation in
         /// the range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rule")]
-        public virtual DataValidationRule Rule { get; set; } 
+        public virtual DataValidationRule Rule { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6432,24 +6432,24 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The banded (alternating colors) ranges on this sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bandedRanges")]
-        public virtual System.Collections.Generic.IList<BandedRange> BandedRanges { get; set; } 
+        public virtual System.Collections.Generic.IList<BandedRange> BandedRanges { get; set; }
 
         /// <summary>The filter on this sheet, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("basicFilter")]
-        public virtual BasicFilter BasicFilter { get; set; } 
+        public virtual BasicFilter BasicFilter { get; set; }
 
         /// <summary>The specifications of every chart on this sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("charts")]
-        public virtual System.Collections.Generic.IList<EmbeddedChart> Charts { get; set; } 
+        public virtual System.Collections.Generic.IList<EmbeddedChart> Charts { get; set; }
 
         /// <summary>All column groups on this sheet, ordered by increasing range start index, then by group
         /// depth.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnGroups")]
-        public virtual System.Collections.Generic.IList<DimensionGroup> ColumnGroups { get; set; } 
+        public virtual System.Collections.Generic.IList<DimensionGroup> ColumnGroups { get; set; }
 
         /// <summary>The conditional format rules in this sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditionalFormats")]
-        public virtual System.Collections.Generic.IList<ConditionalFormatRule> ConditionalFormats { get; set; } 
+        public virtual System.Collections.Generic.IList<ConditionalFormatRule> ConditionalFormats { get; set; }
 
         /// <summary>Data in the grid, if this is a grid sheet. The number of GridData objects returned is dependent on
         /// the number of ranges requested on this sheet. For example, if this is representing `Sheet1`, and the
@@ -6457,36 +6457,36 @@ namespace Google.Apis.Sheets.v4.Data
         /// have a startRow/startColumn of `0`, while the second one will have `startRow 14` (zero-based row 15), and
         /// `startColumn 3` (zero-based column D).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual System.Collections.Generic.IList<GridData> Data { get; set; } 
+        public virtual System.Collections.Generic.IList<GridData> Data { get; set; }
 
         /// <summary>The developer metadata associated with a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerMetadata")]
-        public virtual System.Collections.Generic.IList<DeveloperMetadata> DeveloperMetadata { get; set; } 
+        public virtual System.Collections.Generic.IList<DeveloperMetadata> DeveloperMetadata { get; set; }
 
         /// <summary>The filter views in this sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterViews")]
-        public virtual System.Collections.Generic.IList<FilterView> FilterViews { get; set; } 
+        public virtual System.Collections.Generic.IList<FilterView> FilterViews { get; set; }
 
         /// <summary>The ranges that are merged together.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merges")]
-        public virtual System.Collections.Generic.IList<GridRange> Merges { get; set; } 
+        public virtual System.Collections.Generic.IList<GridRange> Merges { get; set; }
 
         /// <summary>The properties of the sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual SheetProperties Properties { get; set; } 
+        public virtual SheetProperties Properties { get; set; }
 
         /// <summary>The protected ranges in this sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protectedRanges")]
-        public virtual System.Collections.Generic.IList<ProtectedRange> ProtectedRanges { get; set; } 
+        public virtual System.Collections.Generic.IList<ProtectedRange> ProtectedRanges { get; set; }
 
         /// <summary>All row groups on this sheet, ordered by increasing range start index, then by group
         /// depth.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowGroups")]
-        public virtual System.Collections.Generic.IList<DimensionGroup> RowGroups { get; set; } 
+        public virtual System.Collections.Generic.IList<DimensionGroup> RowGroups { get; set; }
 
         /// <summary>The slicers on this sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slicers")]
-        public virtual System.Collections.Generic.IList<Slicer> Slicers { get; set; } 
+        public virtual System.Collections.Generic.IList<Slicer> Slicers { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6498,17 +6498,17 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>Output only. If present, the field contains SheetType.DATA_SOURCE sheet specific
         /// properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceSheetProperties")]
-        public virtual DataSourceSheetProperties DataSourceSheetProperties { get; set; } 
+        public virtual DataSourceSheetProperties DataSourceSheetProperties { get; set; }
 
         /// <summary>Additional properties of the sheet if this sheet is a grid. (If the sheet is an object sheet,
         /// containing a chart or image, then this field will be absent.) When writing it is an error to set any grid
         /// properties on non-grid sheets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gridProperties")]
-        public virtual GridProperties GridProperties { get; set; } 
+        public virtual GridProperties GridProperties { get; set; }
 
         /// <summary>True if the sheet is hidden in the UI, false if it's visible.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hidden")]
-        public virtual System.Nullable<bool> Hidden { get; set; } 
+        public virtual System.Nullable<bool> Hidden { get; set; }
 
         /// <summary>The index of the sheet within the spreadsheet. When adding or updating sheet properties, if this
         /// field is excluded then the sheet is added or moved to the end of the sheet list. When updating sheet indices
@@ -6517,31 +6517,31 @@ namespace Google.Apis.Sheets.v4.Data
         /// update request is ignored if the requested index is identical to the sheets current index or if the
         /// requested new index is equal to the current sheet index + 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
-        public virtual System.Nullable<int> Index { get; set; } 
+        public virtual System.Nullable<int> Index { get; set; }
 
         /// <summary>True if the sheet is an RTL sheet instead of an LTR sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rightToLeft")]
-        public virtual System.Nullable<bool> RightToLeft { get; set; } 
+        public virtual System.Nullable<bool> RightToLeft { get; set; }
 
         /// <summary>The ID of the sheet. Must be non-negative. This field cannot be changed once set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
-        public virtual System.Nullable<int> SheetId { get; set; } 
+        public virtual System.Nullable<int> SheetId { get; set; }
 
         /// <summary>The type of sheet. Defaults to GRID. This field cannot be changed once set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetType")]
-        public virtual string SheetType { get; set; } 
+        public virtual string SheetType { get; set; }
 
         /// <summary>The color of the tab in the UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tabColor")]
-        public virtual Color TabColor { get; set; } 
+        public virtual Color TabColor { get; set; }
 
         /// <summary>The color of the tab in the UI. If tab_color is also set, this field takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tabColorStyle")]
-        public virtual ColorStyle TabColorStyle { get; set; } 
+        public virtual ColorStyle TabColorStyle { get; set; }
 
         /// <summary>The name of the sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6553,15 +6553,15 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The position of the slicer. Note that slicer can be positioned only on existing sheet. Also, width
         /// and height of slicer can be automatically adjusted to keep it within permitted limits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("position")]
-        public virtual EmbeddedObjectPosition Position { get; set; } 
+        public virtual EmbeddedObjectPosition Position { get; set; }
 
         /// <summary>The ID of the slicer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slicerId")]
-        public virtual System.Nullable<int> SlicerId { get; set; } 
+        public virtual System.Nullable<int> SlicerId { get; set; }
 
         /// <summary>The specification of the slicer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
-        public virtual SlicerSpec Spec { get; set; } 
+        public virtual SlicerSpec Spec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6572,40 +6572,40 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>True if the filter should apply to pivot tables. If not set, default to `True`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applyToPivotTables")]
-        public virtual System.Nullable<bool> ApplyToPivotTables { get; set; } 
+        public virtual System.Nullable<bool> ApplyToPivotTables { get; set; }
 
         /// <summary>The background color of the slicer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
-        public virtual Color BackgroundColor { get; set; } 
+        public virtual Color BackgroundColor { get; set; }
 
         /// <summary>The background color of the slicer. If background_color is also set, this field takes
         /// precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColorStyle")]
-        public virtual ColorStyle BackgroundColorStyle { get; set; } 
+        public virtual ColorStyle BackgroundColorStyle { get; set; }
 
         /// <summary>The column index in the data table on which the filter is applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnIndex")]
-        public virtual System.Nullable<int> ColumnIndex { get; set; } 
+        public virtual System.Nullable<int> ColumnIndex { get; set; }
 
         /// <summary>The data range of the slicer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataRange")]
-        public virtual GridRange DataRange { get; set; } 
+        public virtual GridRange DataRange { get; set; }
 
         /// <summary>The filtering criteria of the slicer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterCriteria")]
-        public virtual FilterCriteria FilterCriteria { get; set; } 
+        public virtual FilterCriteria FilterCriteria { get; set; }
 
         /// <summary>The horizontal alignment of title in the slicer. If unspecified, defaults to `LEFT`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("horizontalAlignment")]
-        public virtual string HorizontalAlignment { get; set; } 
+        public virtual string HorizontalAlignment { get; set; }
 
         /// <summary>The text format of title in the slicer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textFormat")]
-        public virtual TextFormat TextFormat { get; set; } 
+        public virtual TextFormat TextFormat { get; set; }
 
         /// <summary>The title of the slicer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6616,12 +6616,12 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The range to sort.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual GridRange Range { get; set; } 
+        public virtual GridRange Range { get; set; }
 
         /// <summary>The sort order per column. Later specifications are used when values are equal in the earlier
         /// specifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sortSpecs")]
-        public virtual System.Collections.Generic.IList<SortSpec> SortSpecs { get; set; } 
+        public virtual System.Collections.Generic.IList<SortSpec> SortSpecs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6633,36 +6633,36 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The background fill color to sort by; cells with this fill color are sorted to the top. Mutually
         /// exclusive with foreground_color.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
-        public virtual Color BackgroundColor { get; set; } 
+        public virtual Color BackgroundColor { get; set; }
 
         /// <summary>The background fill color to sort by; cells with this fill color are sorted to the top. Mutually
         /// exclusive with foreground_color, and must be an RGB-type color. If background_color is also set, this field
         /// takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColorStyle")]
-        public virtual ColorStyle BackgroundColorStyle { get; set; } 
+        public virtual ColorStyle BackgroundColorStyle { get; set; }
 
         /// <summary>Reference to a data source column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceColumnReference")]
-        public virtual DataSourceColumnReference DataSourceColumnReference { get; set; } 
+        public virtual DataSourceColumnReference DataSourceColumnReference { get; set; }
 
         /// <summary>The dimension the sort should be applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionIndex")]
-        public virtual System.Nullable<int> DimensionIndex { get; set; } 
+        public virtual System.Nullable<int> DimensionIndex { get; set; }
 
         /// <summary>The foreground color to sort by; cells with this foreground color are sorted to the top. Mutually
         /// exclusive with background_color.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("foregroundColor")]
-        public virtual Color ForegroundColor { get; set; } 
+        public virtual Color ForegroundColor { get; set; }
 
         /// <summary>The foreground color to sort by; cells with this foreground color are sorted to the top. Mutually
         /// exclusive with background_color, and must be an RGB-type color. If foreground_color is also set, this field
         /// takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("foregroundColorStyle")]
-        public virtual ColorStyle ForegroundColorStyle { get; set; } 
+        public virtual ColorStyle ForegroundColorStyle { get; set; }
 
         /// <summary>The order data should be sorted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sortOrder")]
-        public virtual string SortOrder { get; set; } 
+        public virtual string SortOrder { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6673,17 +6673,17 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The dimension that data should be filled into.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
-        public virtual string Dimension { get; set; } 
+        public virtual string Dimension { get; set; }
 
         /// <summary>The number of rows or columns that data should be filled into. Positive numbers expand beyond the
         /// last row or last column of the source. Negative numbers expand before the first row or first column of the
         /// source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fillLength")]
-        public virtual System.Nullable<int> FillLength { get; set; } 
+        public virtual System.Nullable<int> FillLength { get; set; }
 
         /// <summary>The location of the data to use as the source of the autofill.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual GridRange Source { get; set; } 
+        public virtual GridRange Source { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6694,35 +6694,35 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>Output only. A list of data source refresh schedules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceSchedules")]
-        public virtual System.Collections.Generic.IList<DataSourceRefreshSchedule> DataSourceSchedules { get; set; } 
+        public virtual System.Collections.Generic.IList<DataSourceRefreshSchedule> DataSourceSchedules { get; set; }
 
         /// <summary>A list of external data sources connected with the spreadsheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSources")]
-        public virtual System.Collections.Generic.IList<DataSource> DataSources { get; set; } 
+        public virtual System.Collections.Generic.IList<DataSource> DataSources { get; set; }
 
         /// <summary>The developer metadata associated with a spreadsheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerMetadata")]
-        public virtual System.Collections.Generic.IList<DeveloperMetadata> DeveloperMetadata { get; set; } 
+        public virtual System.Collections.Generic.IList<DeveloperMetadata> DeveloperMetadata { get; set; }
 
         /// <summary>The named ranges defined in a spreadsheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedRanges")]
-        public virtual System.Collections.Generic.IList<NamedRange> NamedRanges { get; set; } 
+        public virtual System.Collections.Generic.IList<NamedRange> NamedRanges { get; set; }
 
         /// <summary>Overall properties of a spreadsheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual SpreadsheetProperties Properties { get; set; } 
+        public virtual SpreadsheetProperties Properties { get; set; }
 
         /// <summary>The sheets that are part of a spreadsheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheets")]
-        public virtual System.Collections.Generic.IList<Sheet> Sheets { get; set; } 
+        public virtual System.Collections.Generic.IList<Sheet> Sheets { get; set; }
 
         /// <summary>The ID of the spreadsheet. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetId")]
-        public virtual string SpreadsheetId { get; set; } 
+        public virtual string SpreadsheetId { get; set; }
 
         /// <summary>The url of the spreadsheet. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetUrl")]
-        public virtual string SpreadsheetUrl { get; set; } 
+        public virtual string SpreadsheetUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6733,37 +6733,37 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The amount of time to wait before volatile functions are recalculated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoRecalc")]
-        public virtual string AutoRecalc { get; set; } 
+        public virtual string AutoRecalc { get; set; }
 
         /// <summary>The default format of all cells in the spreadsheet. CellData.effectiveFormat will not be set if the
         /// cell's format is equal to this default format. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultFormat")]
-        public virtual CellFormat DefaultFormat { get; set; } 
+        public virtual CellFormat DefaultFormat { get; set; }
 
         /// <summary>Determines whether and how circular references are resolved with iterative calculation. Absence of
         /// this field means that circular references result in calculation errors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iterativeCalculationSettings")]
-        public virtual IterativeCalculationSettings IterativeCalculationSettings { get; set; } 
+        public virtual IterativeCalculationSettings IterativeCalculationSettings { get; set; }
 
         /// <summary>The locale of the spreadsheet in one of the following formats: * an ISO 639-1 language code such as
         /// `en` * an ISO 639-2 language code such as `fil`, if no 639-1 code exists * a combination of the ISO language
         /// code and country code, such as `en_US` Note: when updating this field, not all locales/languages are
         /// supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
-        public virtual string Locale { get; set; } 
+        public virtual string Locale { get; set; }
 
         /// <summary>Theme applied to the spreadsheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetTheme")]
-        public virtual SpreadsheetTheme SpreadsheetTheme { get; set; } 
+        public virtual SpreadsheetTheme SpreadsheetTheme { get; set; }
 
         /// <summary>The time zone of the spreadsheet, in CLDR format such as `America/New_York`. If the time zone isn't
         /// recognized, this may be a custom time zone such as `GMT-07:00`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
-        public virtual string TimeZone { get; set; } 
+        public virtual string TimeZone { get; set; }
 
         /// <summary>The title of the spreadsheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6774,11 +6774,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>Name of the primary font family.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryFontFamily")]
-        public virtual string PrimaryFontFamily { get; set; } 
+        public virtual string PrimaryFontFamily { get; set; }
 
         /// <summary>The spreadsheet theme color pairs. To update you must provide all theme color pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("themeColors")]
-        public virtual System.Collections.Generic.IList<ThemeColorPair> ThemeColors { get; set; } 
+        public virtual System.Collections.Generic.IList<ThemeColorPair> ThemeColors { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6789,36 +6789,36 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>True if the text is bold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bold")]
-        public virtual System.Nullable<bool> Bold { get; set; } 
+        public virtual System.Nullable<bool> Bold { get; set; }
 
         /// <summary>The font family.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fontFamily")]
-        public virtual string FontFamily { get; set; } 
+        public virtual string FontFamily { get; set; }
 
         /// <summary>The size of the font.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fontSize")]
-        public virtual System.Nullable<int> FontSize { get; set; } 
+        public virtual System.Nullable<int> FontSize { get; set; }
 
         /// <summary>The foreground color of the text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("foregroundColor")]
-        public virtual Color ForegroundColor { get; set; } 
+        public virtual Color ForegroundColor { get; set; }
 
         /// <summary>The foreground color of the text. If foreground_color is also set, this field takes
         /// precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("foregroundColorStyle")]
-        public virtual ColorStyle ForegroundColorStyle { get; set; } 
+        public virtual ColorStyle ForegroundColorStyle { get; set; }
 
         /// <summary>True if the text is italicized.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("italic")]
-        public virtual System.Nullable<bool> Italic { get; set; } 
+        public virtual System.Nullable<bool> Italic { get; set; }
 
         /// <summary>True if the text has a strikethrough.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("strikethrough")]
-        public virtual System.Nullable<bool> Strikethrough { get; set; } 
+        public virtual System.Nullable<bool> Strikethrough { get; set; }
 
         /// <summary>True if the text is underlined.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("underline")]
-        public virtual System.Nullable<bool> Underline { get; set; } 
+        public virtual System.Nullable<bool> Underline { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6830,11 +6830,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The format of this run. Absent values inherit the cell's format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual TextFormat Format { get; set; } 
+        public virtual TextFormat Format { get; set; }
 
         /// <summary>The character index where this run starts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; } 
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6845,7 +6845,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>Horizontal alignment setting for the piece of text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("horizontalAlignment")]
-        public virtual string HorizontalAlignment { get; set; } 
+        public virtual string HorizontalAlignment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6859,12 +6859,12 @@ namespace Google.Apis.Sheets.v4.Data
         /// LTR text direction positive angles are in the counterclockwise direction, whereas for RTL they are in the
         /// clockwise direction</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("angle")]
-        public virtual System.Nullable<int> Angle { get; set; } 
+        public virtual System.Nullable<int> Angle { get; set; }
 
         /// <summary>If true, text reads top to bottom, but the orientation of individual characters is unchanged. For
         /// example: | V | | e | | r | | t | | i | | c | | a | | l |</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vertical")]
-        public virtual System.Nullable<bool> Vertical { get; set; } 
+        public virtual System.Nullable<bool> Vertical { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6875,15 +6875,15 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The delimiter to use. Used only if delimiterType is CUSTOM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delimiter")]
-        public virtual string Delimiter { get; set; } 
+        public virtual string Delimiter { get; set; }
 
         /// <summary>The delimiter type to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delimiterType")]
-        public virtual string DelimiterType { get; set; } 
+        public virtual string DelimiterType { get; set; }
 
         /// <summary>The source data range. This must span exactly one column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual GridRange Source { get; set; } 
+        public virtual GridRange Source { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6894,11 +6894,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The concrete color corresponding to the theme color type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
-        public virtual ColorStyle Color { get; set; } 
+        public virtual ColorStyle Color { get; set; }
 
         /// <summary>The type of the spreadsheet theme color.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colorType")]
-        public virtual string ColorType { get; set; } 
+        public virtual string ColorType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6912,20 +6912,20 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value
         /// "24:00:00" for scenarios like business closing time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hours")]
-        public virtual System.Nullable<int> Hours { get; set; } 
+        public virtual System.Nullable<int> Hours { get; set; }
 
         /// <summary>Minutes of hour of day. Must be from 0 to 59.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
-        public virtual System.Nullable<int> Minutes { get; set; } 
+        public virtual System.Nullable<int> Minutes { get; set; }
 
         /// <summary>Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
-        public virtual System.Nullable<int> Nanos { get; set; } 
+        public virtual System.Nullable<int> Nanos { get; set; }
 
         /// <summary>Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it
         /// allows leap-seconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
-        public virtual System.Nullable<int> Seconds { get; set; } 
+        public virtual System.Nullable<int> Seconds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6937,42 +6937,42 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The background color for cells with a color value greater than or equal to maxValue. Defaults to
         /// #109618 if not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxValueColor")]
-        public virtual Color MaxValueColor { get; set; } 
+        public virtual Color MaxValueColor { get; set; }
 
         /// <summary>The background color for cells with a color value greater than or equal to maxValue. Defaults to
         /// #109618 if not specified. If max_value_color is also set, this field takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxValueColorStyle")]
-        public virtual ColorStyle MaxValueColorStyle { get; set; } 
+        public virtual ColorStyle MaxValueColorStyle { get; set; }
 
         /// <summary>The background color for cells with a color value at the midpoint between minValue and maxValue.
         /// Defaults to #efe6dc if not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("midValueColor")]
-        public virtual Color MidValueColor { get; set; } 
+        public virtual Color MidValueColor { get; set; }
 
         /// <summary>The background color for cells with a color value at the midpoint between minValue and maxValue.
         /// Defaults to #efe6dc if not specified. If mid_value_color is also set, this field takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("midValueColorStyle")]
-        public virtual ColorStyle MidValueColorStyle { get; set; } 
+        public virtual ColorStyle MidValueColorStyle { get; set; }
 
         /// <summary>The background color for cells with a color value less than or equal to minValue. Defaults to
         /// #dc3912 if not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minValueColor")]
-        public virtual Color MinValueColor { get; set; } 
+        public virtual Color MinValueColor { get; set; }
 
         /// <summary>The background color for cells with a color value less than or equal to minValue. Defaults to
         /// #dc3912 if not specified. If min_value_color is also set, this field takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minValueColorStyle")]
-        public virtual ColorStyle MinValueColorStyle { get; set; } 
+        public virtual ColorStyle MinValueColorStyle { get; set; }
 
         /// <summary>The background color for cells that have no color data associated with them. Defaults to #000000 if
         /// not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noDataColor")]
-        public virtual Color NoDataColor { get; set; } 
+        public virtual Color NoDataColor { get; set; }
 
         /// <summary>The background color for cells that have no color data associated with them. Defaults to #000000 if
         /// not specified. If no_data_color is also set, this field takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noDataColorStyle")]
-        public virtual ColorStyle NoDataColorStyle { get; set; } 
+        public virtual ColorStyle NoDataColorStyle { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6986,7 +6986,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// numeric. color_scale will determine how the values in this data map to data cell background
         /// colors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colorData")]
-        public virtual ChartData ColorData { get; set; } 
+        public virtual ChartData ColorData { get; set; }
 
         /// <summary>The color scale for data cells in the treemap chart. Data cells are assigned colors based on their
         /// color values. These color values come from color_data, or from size_data if color_data is not specified.
@@ -6996,61 +6996,61 @@ namespace Google.Apis.Sheets.v4.Data
         /// between minValueColor and maxValueColor, the midpoint of the gradient being midValueColor. Cells with
         /// missing or non-numeric color values will have noDataColor as their background color.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colorScale")]
-        public virtual TreemapChartColorScale ColorScale { get; set; } 
+        public virtual TreemapChartColorScale ColorScale { get; set; }
 
         /// <summary>The background color for header cells.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headerColor")]
-        public virtual Color HeaderColor { get; set; } 
+        public virtual Color HeaderColor { get; set; }
 
         /// <summary>The background color for header cells. If header_color is also set, this field takes
         /// precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headerColorStyle")]
-        public virtual ColorStyle HeaderColorStyle { get; set; } 
+        public virtual ColorStyle HeaderColorStyle { get; set; }
 
         /// <summary>True to hide tooltips.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hideTooltips")]
-        public virtual System.Nullable<bool> HideTooltips { get; set; } 
+        public virtual System.Nullable<bool> HideTooltips { get; set; }
 
         /// <summary>The number of additional data levels beyond the labeled levels to be shown on the treemap chart.
         /// These levels are not interactive and are shown without their labels. Defaults to 0 if not
         /// specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hintedLevels")]
-        public virtual System.Nullable<int> HintedLevels { get; set; } 
+        public virtual System.Nullable<int> HintedLevels { get; set; }
 
         /// <summary>The data that contains the treemap cell labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual ChartData Labels { get; set; } 
+        public virtual ChartData Labels { get; set; }
 
         /// <summary>The number of data levels to show on the treemap chart. These levels are interactive and are shown
         /// with their labels. Defaults to 2 if not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("levels")]
-        public virtual System.Nullable<int> Levels { get; set; } 
+        public virtual System.Nullable<int> Levels { get; set; }
 
         /// <summary>The maximum possible data value. Cells with values greater than this will have the same color as
         /// cells with this value. If not specified, defaults to the actual maximum value from color_data, or the
         /// maximum value from size_data if color_data is not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxValue")]
-        public virtual System.Nullable<double> MaxValue { get; set; } 
+        public virtual System.Nullable<double> MaxValue { get; set; }
 
         /// <summary>The minimum possible data value. Cells with values less than this will have the same color as cells
         /// with this value. If not specified, defaults to the actual minimum value from color_data, or the minimum
         /// value from size_data if color_data is not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minValue")]
-        public virtual System.Nullable<double> MinValue { get; set; } 
+        public virtual System.Nullable<double> MinValue { get; set; }
 
         /// <summary>The data the contains the treemap cells' parent labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentLabels")]
-        public virtual ChartData ParentLabels { get; set; } 
+        public virtual ChartData ParentLabels { get; set; }
 
         /// <summary>The data that determines the size of each treemap data cell. This data is expected to be numeric.
         /// The cells corresponding to non-numeric or missing data will not be rendered. If color_data is not specified,
         /// this data is used to determine data cell background colors as well.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeData")]
-        public virtual ChartData SizeData { get; set; } 
+        public virtual ChartData SizeData { get; set; }
 
         /// <summary>The text format for all labels on the chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textFormat")]
-        public virtual TextFormat TextFormat { get; set; } 
+        public virtual TextFormat TextFormat { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7064,7 +7064,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The range whose cells to trim.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual GridRange Range { get; set; } 
+        public virtual GridRange Range { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7075,7 +7075,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The number of cells that were trimmed of whitespace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cellsChangedCount")]
-        public virtual System.Nullable<int> CellsChangedCount { get; set; } 
+        public virtual System.Nullable<int> CellsChangedCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7087,7 +7087,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The range within which all cells should be unmerged. If the range spans multiple merges, all will
         /// be unmerged. The range must not partially span any merge.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual GridRange Range { get; set; } 
+        public virtual GridRange Range { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7098,13 +7098,13 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The banded range to update with the new properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bandedRange")]
-        public virtual BandedRange BandedRange { get; set; } 
+        public virtual BandedRange BandedRange { get; set; }
 
         /// <summary>The fields that should be updated. At least one field must be specified. The root `bandedRange` is
         /// implied and should not be specified. A single `"*"` can be used as short-hand for listing every
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual object Fields { get; set; } 
+        public virtual object Fields { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7118,31 +7118,31 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The border to put at the bottom of the range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bottom")]
-        public virtual Border Bottom { get; set; } 
+        public virtual Border Bottom { get; set; }
 
         /// <summary>The horizontal border to put within the range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("innerHorizontal")]
-        public virtual Border InnerHorizontal { get; set; } 
+        public virtual Border InnerHorizontal { get; set; }
 
         /// <summary>The vertical border to put within the range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("innerVertical")]
-        public virtual Border InnerVertical { get; set; } 
+        public virtual Border InnerVertical { get; set; }
 
         /// <summary>The border to put at the left of the range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("left")]
-        public virtual Border Left { get; set; } 
+        public virtual Border Left { get; set; }
 
         /// <summary>The range whose borders should be updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual GridRange Range { get; set; } 
+        public virtual GridRange Range { get; set; }
 
         /// <summary>The border to put at the right of the range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("right")]
-        public virtual Border Right { get; set; } 
+        public virtual Border Right { get; set; }
 
         /// <summary>The border to put at the top of the range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("top")]
-        public virtual Border Top { get; set; } 
+        public virtual Border Top { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7155,21 +7155,21 @@ namespace Google.Apis.Sheets.v4.Data
         /// the CellData; 'row.values.' should not be specified. A single `"*"` can be used as short-hand for listing
         /// every field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual object Fields { get; set; } 
+        public virtual object Fields { get; set; }
 
         /// <summary>The range to write data to. If the data in rows does not cover the entire requested range, the
         /// fields matching those set in fields will be cleared.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual GridRange Range { get; set; } 
+        public virtual GridRange Range { get; set; }
 
         /// <summary>The data to write.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-        public virtual System.Collections.Generic.IList<RowData> Rows { get; set; } 
+        public virtual System.Collections.Generic.IList<RowData> Rows { get; set; }
 
         /// <summary>The coordinate to start writing data at. Any number of rows and columns (including a different
         /// number of columns per row) may be written.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("start")]
-        public virtual GridCoordinate Start { get; set; } 
+        public virtual GridCoordinate Start { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7181,11 +7181,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The ID of the chart to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chartId")]
-        public virtual System.Nullable<int> ChartId { get; set; } 
+        public virtual System.Nullable<int> ChartId { get; set; }
 
         /// <summary>The specification to apply to the chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
-        public virtual ChartSpec Spec { get; set; } 
+        public virtual ChartSpec Spec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7197,19 +7197,19 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The zero-based index of the rule that should be replaced or moved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
-        public virtual System.Nullable<int> Index { get; set; } 
+        public virtual System.Nullable<int> Index { get; set; }
 
         /// <summary>The zero-based new index the rule should end up at.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newIndex")]
-        public virtual System.Nullable<int> NewIndex { get; set; } 
+        public virtual System.Nullable<int> NewIndex { get; set; }
 
         /// <summary>The rule that should replace the rule at the given index.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rule")]
-        public virtual ConditionalFormatRule Rule { get; set; } 
+        public virtual ConditionalFormatRule Rule { get; set; }
 
         /// <summary>The sheet of the rule to move. Required if new_index is set, unused otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
-        public virtual System.Nullable<int> SheetId { get; set; } 
+        public virtual System.Nullable<int> SheetId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7220,21 +7220,21 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The index of the new rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newIndex")]
-        public virtual System.Nullable<int> NewIndex { get; set; } 
+        public virtual System.Nullable<int> NewIndex { get; set; }
 
         /// <summary>The new rule that replaced the old rule (if replacing), or the rule that was moved (if
         /// moved)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newRule")]
-        public virtual ConditionalFormatRule NewRule { get; set; } 
+        public virtual ConditionalFormatRule NewRule { get; set; }
 
         /// <summary>The old index of the rule. Not set if a rule was replaced (because it is the same as
         /// new_index).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oldIndex")]
-        public virtual System.Nullable<int> OldIndex { get; set; } 
+        public virtual System.Nullable<int> OldIndex { get; set; }
 
         /// <summary>The old (deleted) rule. Not set if a rule was moved (because it is the same as new_rule).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oldRule")]
-        public virtual ConditionalFormatRule OldRule { get; set; } 
+        public virtual ConditionalFormatRule OldRule { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7247,13 +7247,13 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The data source to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
-        public virtual DataSource DataSource { get; set; } 
+        public virtual DataSource DataSource { get; set; }
 
         /// <summary>The fields that should be updated. At least one field must be specified. The root 'dataSource' is
         /// implied and should not be specified. A single `"*"` can be used as short-hand for listing every
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual object Fields { get; set; } 
+        public virtual object Fields { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7264,11 +7264,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The data execution status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataExecutionStatus")]
-        public virtual DataExecutionStatus DataExecutionStatus { get; set; } 
+        public virtual DataExecutionStatus DataExecutionStatus { get; set; }
 
         /// <summary>The updated data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
-        public virtual DataSource DataSource { get; set; } 
+        public virtual DataSource DataSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7282,17 +7282,17 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The filters matching the developer metadata entries to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataFilters")]
-        public virtual System.Collections.Generic.IList<DataFilter> DataFilters { get; set; } 
+        public virtual System.Collections.Generic.IList<DataFilter> DataFilters { get; set; }
 
         /// <summary>The value that all metadata matched by the data filters will be updated to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerMetadata")]
-        public virtual DeveloperMetadata DeveloperMetadata { get; set; } 
+        public virtual DeveloperMetadata DeveloperMetadata { get; set; }
 
         /// <summary>The fields that should be updated. At least one field must be specified. The root
         /// `developerMetadata` is implied and should not be specified. A single `"*"` can be used as short-hand for
         /// listing every field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual object Fields { get; set; } 
+        public virtual object Fields { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7303,7 +7303,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The updated developer metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerMetadata")]
-        public virtual System.Collections.Generic.IList<DeveloperMetadata> DeveloperMetadata { get; set; } 
+        public virtual System.Collections.Generic.IList<DeveloperMetadata> DeveloperMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7315,13 +7315,13 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The group whose state should be updated. The range and depth of the group should specify a valid
         /// group on the sheet, and all other fields updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionGroup")]
-        public virtual DimensionGroup DimensionGroup { get; set; } 
+        public virtual DimensionGroup DimensionGroup { get; set; }
 
         /// <summary>The fields that should be updated. At least one field must be specified. The root `dimensionGroup`
         /// is implied and should not be specified. A single `"*"` can be used as short-hand for listing every
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual object Fields { get; set; } 
+        public virtual object Fields { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7332,21 +7332,21 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The columns on a data source sheet to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceSheetRange")]
-        public virtual DataSourceSheetDimensionRange DataSourceSheetRange { get; set; } 
+        public virtual DataSourceSheetDimensionRange DataSourceSheetRange { get; set; }
 
         /// <summary>The fields that should be updated. At least one field must be specified. The root `properties` is
         /// implied and should not be specified. A single `"*"` can be used as short-hand for listing every
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual object Fields { get; set; } 
+        public virtual object Fields { get; set; }
 
         /// <summary>Properties to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual DimensionProperties Properties { get; set; } 
+        public virtual DimensionProperties Properties { get; set; }
 
         /// <summary>The rows or columns to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual DimensionRange Range { get; set; } 
+        public virtual DimensionRange Range { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7360,17 +7360,17 @@ namespace Google.Apis.Sheets.v4.Data
         /// `newPosition.overlayPosition` is implied and should not be specified. A single `"*"` can be used as short-
         /// hand for listing every field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual object Fields { get; set; } 
+        public virtual object Fields { get; set; }
 
         /// <summary>An explicit position to move the embedded object to. If newPosition.sheetId is set, a new sheet
         /// with that ID will be created. If newPosition.newSheet is set to true, a new sheet will be created with an ID
         /// that will be chosen for you.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newPosition")]
-        public virtual EmbeddedObjectPosition NewPosition { get; set; } 
+        public virtual EmbeddedObjectPosition NewPosition { get; set; }
 
         /// <summary>The ID of the object to moved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
-        public virtual System.Nullable<int> ObjectId { get; set; } 
+        public virtual System.Nullable<int> ObjectId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7381,7 +7381,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The new position of the embedded object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("position")]
-        public virtual EmbeddedObjectPosition Position { get; set; } 
+        public virtual EmbeddedObjectPosition Position { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7394,11 +7394,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// implied and should not be specified. A single `"*"` can be used as short-hand for listing every
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual object Fields { get; set; } 
+        public virtual object Fields { get; set; }
 
         /// <summary>The new properties of the filter view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual FilterView Filter { get; set; } 
+        public virtual FilterView Filter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7411,11 +7411,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// implied and should not be specified. A single `"*"` can be used as short-hand for listing every
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual object Fields { get; set; } 
+        public virtual object Fields { get; set; }
 
         /// <summary>The named range to update with the new properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedRange")]
-        public virtual NamedRange NamedRange { get; set; } 
+        public virtual NamedRange NamedRange { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7428,11 +7428,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// is implied and should not be specified. A single `"*"` can be used as short-hand for listing every
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual object Fields { get; set; } 
+        public virtual object Fields { get; set; }
 
         /// <summary>The protected range to update with the new properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protectedRange")]
-        public virtual ProtectedRange ProtectedRange { get; set; } 
+        public virtual ProtectedRange ProtectedRange { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7445,11 +7445,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// implied and should not be specified. A single `"*"` can be used as short-hand for listing every
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual object Fields { get; set; } 
+        public virtual object Fields { get; set; }
 
         /// <summary>The properties to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual SheetProperties Properties { get; set; } 
+        public virtual SheetProperties Properties { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7463,15 +7463,15 @@ namespace Google.Apis.Sheets.v4.Data
         /// implied and should not be specified. A single "*"` can be used as short-hand for listing every
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual object Fields { get; set; } 
+        public virtual object Fields { get; set; }
 
         /// <summary>The id of the slicer to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slicerId")]
-        public virtual System.Nullable<int> SlicerId { get; set; } 
+        public virtual System.Nullable<int> SlicerId { get; set; }
 
         /// <summary>The specification to apply to the slicer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
-        public virtual SlicerSpec Spec { get; set; } 
+        public virtual SlicerSpec Spec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7484,11 +7484,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// implied and should not be specified. A single `"*"` can be used as short-hand for listing every
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual object Fields { get; set; } 
+        public virtual object Fields { get; set; }
 
         /// <summary>The properties to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual SpreadsheetProperties Properties { get; set; } 
+        public virtual SpreadsheetProperties Properties { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7499,28 +7499,28 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The data filter that selected the range that was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataFilter")]
-        public virtual DataFilter DataFilter { get; set; } 
+        public virtual DataFilter DataFilter { get; set; }
 
         /// <summary>The number of cells updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updatedCells")]
-        public virtual System.Nullable<int> UpdatedCells { get; set; } 
+        public virtual System.Nullable<int> UpdatedCells { get; set; }
 
         /// <summary>The number of columns where at least one cell in the column was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updatedColumns")]
-        public virtual System.Nullable<int> UpdatedColumns { get; set; } 
+        public virtual System.Nullable<int> UpdatedColumns { get; set; }
 
         /// <summary>The values of the cells in the range matched by the dataFilter after all updates were applied. This
         /// is only included if the request's `includeValuesInResponse` field was `true`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updatedData")]
-        public virtual ValueRange UpdatedData { get; set; } 
+        public virtual ValueRange UpdatedData { get; set; }
 
         /// <summary>The range (in A1 notation) that updates were applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updatedRange")]
-        public virtual string UpdatedRange { get; set; } 
+        public virtual string UpdatedRange { get; set; }
 
         /// <summary>The number of rows where at least one cell in the row was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updatedRows")]
-        public virtual System.Nullable<int> UpdatedRows { get; set; } 
+        public virtual System.Nullable<int> UpdatedRows { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7531,28 +7531,28 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The spreadsheet the updates were applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetId")]
-        public virtual string SpreadsheetId { get; set; } 
+        public virtual string SpreadsheetId { get; set; }
 
         /// <summary>The number of cells updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updatedCells")]
-        public virtual System.Nullable<int> UpdatedCells { get; set; } 
+        public virtual System.Nullable<int> UpdatedCells { get; set; }
 
         /// <summary>The number of columns where at least one cell in the column was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updatedColumns")]
-        public virtual System.Nullable<int> UpdatedColumns { get; set; } 
+        public virtual System.Nullable<int> UpdatedColumns { get; set; }
 
         /// <summary>The values of the cells after updates were applied. This is only included if the request's
         /// `includeValuesInResponse` field was `true`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updatedData")]
-        public virtual ValueRange UpdatedData { get; set; } 
+        public virtual ValueRange UpdatedData { get; set; }
 
         /// <summary>The range (in A1 notation) that updates were applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updatedRange")]
-        public virtual string UpdatedRange { get; set; } 
+        public virtual string UpdatedRange { get; set; }
 
         /// <summary>The number of rows where at least one cell in the row was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updatedRows")]
-        public virtual System.Nullable<int> UpdatedRows { get; set; } 
+        public virtual System.Nullable<int> UpdatedRows { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7568,13 +7568,13 @@ namespace Google.Apis.Sheets.v4.Data
         /// `range=A1:B2,majorDimension=COLUMNS` then `[[1,2],[3,4]]` will set `A1=1,B1=3,A2=2,B2=4`. When writing, if
         /// this field is not set, it defaults to ROWS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("majorDimension")]
-        public virtual string MajorDimension { get; set; } 
+        public virtual string MajorDimension { get; set; }
 
         /// <summary>The range the values cover, in A1 notation. For output, this range indicates the entire requested
         /// range, even though the values will exclude trailing rows and columns. When appending values, this field
         /// represents the range to search for a table, after which values will be appended.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual string Range { get; set; } 
+        public virtual string Range { get; set; }
 
         /// <summary>The data that was read or to be written. This is an array of arrays, the outer array representing
         /// all the data and each inner array representing a major dimension. Each item in the inner array corresponds
@@ -7582,7 +7582,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// types are: bool, string, and double. Null values will be skipped. To set a cell to an empty value, set the
         /// string value to an empty string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IList<object>> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IList<object>> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7593,15 +7593,15 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The color of the column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
-        public virtual Color Color { get; set; } 
+        public virtual Color Color { get; set; }
 
         /// <summary>The color of the column. If color is also set, this field takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colorStyle")]
-        public virtual ColorStyle ColorStyle { get; set; } 
+        public virtual ColorStyle ColorStyle { get; set; }
 
         /// <summary>The label of the column's legend.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; } 
+        public virtual string Label { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7613,11 +7613,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>True if the data point at subtotal_index is the subtotal. If false, the subtotal will be computed
         /// and appear after the data point.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataIsSubtotal")]
-        public virtual System.Nullable<bool> DataIsSubtotal { get; set; } 
+        public virtual System.Nullable<bool> DataIsSubtotal { get; set; }
 
         /// <summary>A label for the subtotal column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; } 
+        public virtual string Label { get; set; }
 
         /// <summary>The 0-based index of a data point within the series. If data_is_subtotal is true, the data point at
         /// this index is the subtotal. Otherwise, the subtotal appears after the data point with this index. A series
@@ -7625,7 +7625,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// points. For example, if a series has three data points, their indices will always be 0, 1, and 2, regardless
         /// of how many subtotals exist on the series or what data points they are associated with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtotalIndex")]
-        public virtual System.Nullable<int> SubtotalIndex { get; set; } 
+        public virtual System.Nullable<int> SubtotalIndex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7636,11 +7636,11 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The data of the WaterfallChartDomain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual ChartData Data { get; set; } 
+        public virtual ChartData Data { get; set; }
 
         /// <summary>True to reverse the order of the domain values (horizontal axis).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reversed")]
-        public virtual System.Nullable<bool> Reversed { get; set; } 
+        public virtual System.Nullable<bool> Reversed { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7652,29 +7652,29 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>Custom subtotal columns appearing in this series. The order in which subtotals are defined is not
         /// significant. Only one subtotal may be defined for each data point.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customSubtotals")]
-        public virtual System.Collections.Generic.IList<WaterfallChartCustomSubtotal> CustomSubtotals { get; set; } 
+        public virtual System.Collections.Generic.IList<WaterfallChartCustomSubtotal> CustomSubtotals { get; set; }
 
         /// <summary>The data being visualized in this series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual ChartData Data { get; set; } 
+        public virtual ChartData Data { get; set; }
 
         /// <summary>True to hide the subtotal column from the end of the series. By default, a subtotal column will
         /// appear at the end of each series. Setting this field to true will hide that subtotal column for this
         /// series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hideTrailingSubtotal")]
-        public virtual System.Nullable<bool> HideTrailingSubtotal { get; set; } 
+        public virtual System.Nullable<bool> HideTrailingSubtotal { get; set; }
 
         /// <summary>Styles for all columns in this series with negative values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negativeColumnsStyle")]
-        public virtual WaterfallChartColumnStyle NegativeColumnsStyle { get; set; } 
+        public virtual WaterfallChartColumnStyle NegativeColumnsStyle { get; set; }
 
         /// <summary>Styles for all columns in this series with positive values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("positiveColumnsStyle")]
-        public virtual WaterfallChartColumnStyle PositiveColumnsStyle { get; set; } 
+        public virtual WaterfallChartColumnStyle PositiveColumnsStyle { get; set; }
 
         /// <summary>Styles for all subtotal columns in this series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtotalColumnsStyle")]
-        public virtual WaterfallChartColumnStyle SubtotalColumnsStyle { get; set; } 
+        public virtual WaterfallChartColumnStyle SubtotalColumnsStyle { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7685,27 +7685,27 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The line style for the connector lines.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectorLineStyle")]
-        public virtual LineStyle ConnectorLineStyle { get; set; } 
+        public virtual LineStyle ConnectorLineStyle { get; set; }
 
         /// <summary>The domain data (horizontal axis) for the waterfall chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
-        public virtual WaterfallChartDomain Domain { get; set; } 
+        public virtual WaterfallChartDomain Domain { get; set; }
 
         /// <summary>True to interpret the first value as a total.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstValueIsTotal")]
-        public virtual System.Nullable<bool> FirstValueIsTotal { get; set; } 
+        public virtual System.Nullable<bool> FirstValueIsTotal { get; set; }
 
         /// <summary>True to hide connector lines between columns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hideConnectorLines")]
-        public virtual System.Nullable<bool> HideConnectorLines { get; set; } 
+        public virtual System.Nullable<bool> HideConnectorLines { get; set; }
 
         /// <summary>The data this waterfall chart is visualizing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("series")]
-        public virtual System.Collections.Generic.IList<WaterfallChartSeries> Series { get; set; } 
+        public virtual System.Collections.Generic.IList<WaterfallChartSeries> Series { get; set; }
 
         /// <summary>The stacked type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackedType")]
-        public virtual string StackedType { get; set; } 
+        public virtual string StackedType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -928,19 +928,19 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     {
         /// <summary>The names of the disks that were created for this pipeline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskNames")]
-        public virtual System.Collections.Generic.IList<string> DiskNames { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DiskNames { get; set; }
 
         /// <summary>The instance on which the operation is running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceName")]
-        public virtual string InstanceName { get; set; } 
+        public virtual string InstanceName { get; set; }
 
         /// <summary>The machine type of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
-        public virtual string MachineType { get; set; } 
+        public virtual string MachineType { get; set; }
 
         /// <summary>The availability zone in which the instance resides.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -952,7 +952,7 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     {
         /// <summary>The numeric ID of the action that started the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionId")]
-        public virtual System.Nullable<int> ActionId { get; set; } 
+        public virtual System.Nullable<int> ActionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -963,19 +963,19 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     {
         /// <summary>The numeric ID of the action that started this container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionId")]
-        public virtual System.Nullable<int> ActionId { get; set; } 
+        public virtual System.Nullable<int> ActionId { get; set; }
 
         /// <summary>The public IP address that can be used to connect to the container. This field is only populated
         /// when at least one port mapping is present. If the instance was created with a private address, this field
         /// will be empty even if port mappings exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
-        public virtual string IpAddress { get; set; } 
+        public virtual string IpAddress { get; set; }
 
         /// <summary>The container-to-host port mappings installed for this container. This set will contain any ports
         /// exposed using the `PUBLISH_EXPOSED_PORTS` flag as well as any specified in the `Action`
         /// definition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("portMappings")]
-        public virtual System.Collections.Generic.IDictionary<string,System.Nullable<int>> PortMappings { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<int>> PortMappings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -986,11 +986,11 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     {
         /// <summary>The numeric ID of the action that started this container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionId")]
-        public virtual System.Nullable<int> ActionId { get; set; } 
+        public virtual System.Nullable<int> ActionId { get; set; }
 
         /// <summary>The exit status of the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exitStatus")]
-        public virtual System.Nullable<int> ExitStatus { get; set; } 
+        public virtual System.Nullable<int> ExitStatus { get; set; }
 
         /// <summary>The tail end of any content written to standard error by the container. If the content emits large
         /// amounts of debugging noise or contains sensitive information, you can prevent the content from being printed
@@ -998,7 +998,7 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// is captured here. The entire stream is stored in the `/google/logs` directory mounted into each action, and
         /// can be copied off the machine as described elsewhere.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stderr")]
-        public virtual string Stderr { get; set; } 
+        public virtual string Stderr { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1009,28 +1009,28 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     public class ControllerConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("cmd")]
-        public virtual string Cmd { get; set; } 
+        public virtual string Cmd { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Disks { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Disks { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("gcsLogPath")]
-        public virtual string GcsLogPath { get; set; } 
+        public virtual string GcsLogPath { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSinks")]
-        public virtual System.Collections.Generic.IDictionary<string,RepeatedString> GcsSinks { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, RepeatedString> GcsSinks { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSources")]
-        public virtual System.Collections.Generic.IDictionary<string,RepeatedString> GcsSources { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, RepeatedString> GcsSources { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual string Image { get; set; } 
+        public virtual string Image { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
-        public virtual string MachineType { get; set; } 
+        public virtual string MachineType { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("vars")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Vars { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Vars { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1043,13 +1043,13 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// <summary>A textual description of the cause of the delay. The string can change without notice because it is
         /// often generated by another service (such as Compute Engine).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cause")]
-        public virtual string Cause { get; set; } 
+        public virtual string Cause { get; set; }
 
         /// <summary>If the delay was caused by a resource shortage, this field lists the Compute Engine metrics that
         /// are preventing this operation from running (for example, `CPUS` or `INSTANCES`). If the particular metric is
         /// not known, a single `UNKNOWN` metric will be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-        public virtual System.Collections.Generic.IList<string> Metrics { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1061,39 +1061,39 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// <summary>Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run,
         /// regardless of what this field is set to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoDelete")]
-        public virtual System.Nullable<bool> AutoDelete { get; set; } 
+        public virtual System.Nullable<bool> AutoDelete { get; set; }
 
         /// <summary>Required at create time and cannot be overridden at run time. Specifies the path in the docker
         /// container where files on this disk should be located. For example, if `mountPoint` is `/mnt/disk`, and the
         /// parameter has `localPath` `inputs/file.txt`, the docker container can access the data at
         /// `/mnt/disk/inputs/file.txt`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mountPoint")]
-        public virtual string MountPoint { get; set; } 
+        public virtual string MountPoint { get; set; }
 
         /// <summary>Required. The name of the disk that can be used in the pipeline parameters. Must be 1 - 63
         /// characters. The name "boot" is reserved for system use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Specifies how a sourced-base persistent disk will be mounted. See
         /// https://cloud.google.com/compute/docs/disks/persistent-disks#use_multi_instances for more details. Can only
         /// be set at create time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
-        public virtual System.Nullable<bool> ReadOnly__ { get; set; } 
+        public virtual System.Nullable<bool> ReadOnly__ { get; set; }
 
         /// <summary>The size of the disk. Defaults to 500 (GB). This field is not applicable for local SSD.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
-        public virtual System.Nullable<int> SizeGb { get; set; } 
+        public virtual System.Nullable<int> SizeGb { get; set; }
 
         /// <summary>The full or partial URL of the persistent disk to attach. See
         /// https://cloud.google.com/compute/docs/reference/latest/instances#resource and
         /// https://cloud.google.com/compute/docs/disks/persistent-disks#snapshots for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual string Source { get; set; } 
+        public virtual string Source { get; set; }
 
         /// <summary>Required. The type of the disk to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1107,12 +1107,12 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is
         /// 16384.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmd")]
-        public virtual string Cmd { get; set; } 
+        public virtual string Cmd { get; set; }
 
         /// <summary>Required. Image name from either Docker Hub or Google Container Registry. Users that run pipelines
         /// must have READ access to the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageName")]
-        public virtual string ImageName { get; set; } 
+        public virtual string ImageName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1134,15 +1134,15 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// <summary>A human-readable description of the event. Note that these strings can change at any time without
         /// notice. Any application logic must use the information in the `details` field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Machine-readable details about the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Details { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Details { get; set; }
 
         /// <summary>The time at which the event occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
-        public virtual object Timestamp { get; set; } 
+        public virtual object Timestamp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1154,11 +1154,11 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     {
         /// <summary>The human-readable description of the cause of the failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cause")]
-        public virtual string Cause { get; set; } 
+        public virtual string Cause { get; set; }
 
         /// <summary>The Google standard error code that best describes this failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual string Code { get; set; } 
+        public virtual string Code { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1169,11 +1169,11 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     {
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1186,11 +1186,11 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     {
         /// <summary>The token to use to get the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The matched pipelines.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pipelines")]
-        public virtual System.Collections.Generic.IList<Pipeline> Pipelines { get; set; } 
+        public virtual System.Collections.Generic.IList<Pipeline> Pipelines { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1203,12 +1203,12 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a
         /// mount point of `/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disk")]
-        public virtual string Disk { get; set; } 
+        public virtual string Disk { get; set; }
 
         /// <summary>Required. The path within the user's docker container where this input should be localized to and
         /// from, relative to the specified disk's mount point. For example: file.txt,</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; } 
+        public virtual string Path { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1223,7 +1223,7 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// used, and the user must ensure that logs are not overwritten. Stdout and stderr logs from the run are also
         /// generated and output as `-stdout.log` and `-stderr.log`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPath")]
-        public virtual string GcsPath { get; set; } 
+        public virtual string GcsPath { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1235,24 +1235,24 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>An OperationMetadata or Metadata object. This will always be returned with the Operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// For example: `operations/CJHU7Oi_ChDrveSpBRjfuL-qzoWAgEw`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>An Empty object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1263,16 +1263,16 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     {
         /// <summary>Required description of event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Optional time of when event finished. An event can have a start time and no finish time. If an
         /// event has a finish time, there must be a start time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Optional time of when event started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1284,42 +1284,42 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// <summary>This field is deprecated. Use `labels` instead. Optionally provided by the caller when submitting
         /// the request that creates the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
-        public virtual string ClientId { get; set; } 
+        public virtual string ClientId { get; set; }
 
         /// <summary>The time at which the job was submitted to the Genomics service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The time at which the job stopped running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Optional event messages that were generated during the job's execution. This also contains any
         /// warnings that were generated during import or export.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("events")]
-        public virtual System.Collections.Generic.IList<OperationEvent> Events { get; set; } 
+        public virtual System.Collections.Generic.IList<OperationEvent> Events { get; set; }
 
         /// <summary>Optionally provided by the caller when submitting the request that creates the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The Google Cloud Project in which the job is scoped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>The original request that started the operation. Note that this will be in current version of the
         /// API. If the operation was started with v1beta2 API and a GetOperation is performed on v1 API, a v1 request
         /// will be returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("request")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Request { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Request { get; set; }
 
         /// <summary>Runtime metadata on this Operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeMetadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> RuntimeMetadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> RuntimeMetadata { get; set; }
 
         /// <summary>The time at which the job began to run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1333,40 +1333,40 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     {
         /// <summary>User-specified description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Specifies the docker run information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("docker")]
-        public virtual DockerExecutor Docker { get; set; } 
+        public virtual DockerExecutor Docker { get; set; }
 
         /// <summary>Input parameters of the pipeline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputParameters")]
-        public virtual System.Collections.Generic.IList<PipelineParameter> InputParameters { get; set; } 
+        public virtual System.Collections.Generic.IList<PipelineParameter> InputParameters { get; set; }
 
         /// <summary>Required. A user specified pipeline name that does not have to be unique. This name can be used for
         /// filtering Pipelines in ListPipelines.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output parameters of the pipeline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputParameters")]
-        public virtual System.Collections.Generic.IList<PipelineParameter> OutputParameters { get; set; } 
+        public virtual System.Collections.Generic.IList<PipelineParameter> OutputParameters { get; set; }
 
         /// <summary>Unique pipeline id that is generated by the service when CreatePipeline is called. Cannot be
         /// specified in the Pipeline used in the CreatePipelineRequest, and will be populated in the response to
         /// CreatePipeline and all subsequent Get and List calls. Indicates that the service has registered this
         /// pipeline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pipelineId")]
-        public virtual string PipelineId { get; set; } 
+        public virtual string PipelineId { get; set; }
 
         /// <summary>Required. The project in which to create the pipeline. The caller must have WRITE access.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Required. Specifies resource requirements for the pipeline run. Required fields: * minimumCpuCores
         /// * minimumRamGb</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual PipelineResources Resources { get; set; } 
+        public virtual PipelineResources Resources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1400,22 +1400,22 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// <summary>The default value for this parameter. Can be overridden at runtime. If `localCopy` is present, then
         /// this must be a Google Cloud Storage path beginning with `gs://`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
-        public virtual string DefaultValue { get; set; } 
+        public virtual string DefaultValue { get; set; }
 
         /// <summary>Human-readable description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>If present, this parameter is marked for copying to and from the VM. `LocalCopy` indicates where on
         /// the VM the file should be. The value given to this parameter (either at runtime or using `defaultValue`)
         /// must be the remote path where the file should be.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localCopy")]
-        public virtual LocalCopy LocalCopy { get; set; } 
+        public virtual LocalCopy LocalCopy { get; set; }
 
         /// <summary>Required. Name of the parameter - the pipeline runner uses this string as the key to the input and
         /// output maps in RunPipeline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1428,30 +1428,30 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// you will download and install the following third-party software onto your managed Compute Engine instances:
         /// NVIDIA® Tesla® drivers and NVIDIA® CUDA toolkit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorCount")]
-        public virtual System.Nullable<long> AcceleratorCount { get; set; } 
+        public virtual System.Nullable<long> AcceleratorCount { get; set; }
 
         /// <summary>Optional. The Compute Engine defined accelerator type. By specifying this parameter, you will
         /// download and install the following third-party software onto your managed Compute Engine instances: NVIDIA®
         /// Tesla® drivers and NVIDIA® CUDA toolkit. Please see https://cloud.google.com/compute/docs/gpus/ for a list
         /// of available accelerator types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
-        public virtual string AcceleratorType { get; set; } 
+        public virtual string AcceleratorType { get; set; }
 
         /// <summary>The size of the boot disk. Defaults to 10 (GB).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootDiskSizeGb")]
-        public virtual System.Nullable<int> BootDiskSizeGb { get; set; } 
+        public virtual System.Nullable<int> BootDiskSizeGb { get; set; }
 
         /// <summary>Disks to attach.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
-        public virtual System.Collections.Generic.IList<Disk> Disks { get; set; } 
+        public virtual System.Collections.Generic.IList<Disk> Disks { get; set; }
 
         /// <summary>The minimum number of cores to use. Defaults to 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumCpuCores")]
-        public virtual System.Nullable<int> MinimumCpuCores { get; set; } 
+        public virtual System.Nullable<int> MinimumCpuCores { get; set; }
 
         /// <summary>The minimum amount of RAM to use. Defaults to 3.75 (GB)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumRamGb")]
-        public virtual System.Nullable<double> MinimumRamGb { get; set; } 
+        public virtual System.Nullable<double> MinimumRamGb { get; set; }
 
         /// <summary>Whether to assign an external IP to the instance. This is an experimental feature that may go away.
         /// Defaults to false. Corresponds to `--no_address` flag for [gcloud compute instances create]
@@ -1463,17 +1463,17 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// IPs](https://cloud.google.com/compute/docs/configure-private-google-
         /// access#configuring_access_to_google_services_from_internal_ips).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noAddress")]
-        public virtual System.Nullable<bool> NoAddress { get; set; } 
+        public virtual System.Nullable<bool> NoAddress { get; set; }
 
         /// <summary>Whether to use preemptible VMs. Defaults to `false`. In order to use this, must be true for both
         /// create time and run time. Cannot be true at run time if false at create time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preemptible")]
-        public virtual System.Nullable<bool> Preemptible { get; set; } 
+        public virtual System.Nullable<bool> Preemptible { get; set; }
 
         /// <summary>List of Google Compute Engine availability zones to which resource creation will restricted. If
         /// empty, any zone may be chosen.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zones")]
-        public virtual System.Collections.Generic.IList<string> Zones { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Zones { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1484,7 +1484,7 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     {
         /// <summary>The URI of the image that was pulled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
-        public virtual string ImageUri { get; set; } 
+        public virtual string ImageUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1495,7 +1495,7 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     {
         /// <summary>The URI of the image that was pulled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
-        public virtual string ImageUri { get; set; } 
+        public virtual string ImageUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1504,7 +1504,7 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     public class RepeatedString : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1516,19 +1516,19 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// <summary>This field is deprecated. Use `labels` instead. Client-specified pipeline operation
         /// identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
-        public virtual string ClientId { get; set; } 
+        public virtual string ClientId { get; set; }
 
         /// <summary>Pipeline input arguments; keys are defined in the pipeline documentation. All input parameters that
         /// do not have default values must be specified. If parameters with defaults are specified here, the defaults
         /// will be overridden.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputs")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Inputs { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Inputs { get; set; }
 
         /// <summary>How long to keep the VM up after a failure (for example docker command failed, copying input or
         /// output files failed, etc). While the VM is up, one can ssh into the VM to debug. Default is 0; maximum
         /// allowed value is 1 day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keepVmAliveOnFailureDuration")]
-        public virtual object KeepVmAliveOnFailureDuration { get; set; } 
+        public virtual object KeepVmAliveOnFailureDuration { get; set; }
 
         /// <summary>Labels to apply to this pipeline run. Labels will also be applied to compute resources (VM, disks)
         /// created by this pipeline run. When listing operations, operations can filtered by labels. Label keys may not
@@ -1538,31 +1538,31 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Required. Logging options. Used by the service to communicate results to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logging")]
-        public virtual LoggingOptions Logging { get; set; } 
+        public virtual LoggingOptions Logging { get; set; }
 
         /// <summary>Pipeline output arguments; keys are defined in the pipeline documentation. All output parameters of
         /// without default values must be specified. If parameters with defaults are specified here, the defaults will
         /// be overridden.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputs")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Outputs { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Outputs { get; set; }
 
         /// <summary>Required. The project in which to run the pipeline. The caller must have WRITER access to all
         /// Google Cloud services and resources (e.g. Google Compute Engine) will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Specifies resource requirements/overrides for the pipeline run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual PipelineResources Resources { get; set; } 
+        public virtual PipelineResources Resources { get; set; }
 
         /// <summary>The Google Cloud Service Account that will be used to access data and services. By default, the
         /// compute service account associated with `projectId` is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
-        public virtual ServiceAccount ServiceAccount { get; set; } 
+        public virtual ServiceAccount ServiceAccount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1576,15 +1576,15 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     {
         /// <summary>A new pipeline object to run once and then delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ephemeralPipeline")]
-        public virtual Pipeline EphemeralPipeline { get; set; } 
+        public virtual Pipeline EphemeralPipeline { get; set; }
 
         /// <summary>The arguments to use when running this pipeline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pipelineArgs")]
-        public virtual RunPipelineArgs PipelineArgs { get; set; } 
+        public virtual RunPipelineArgs PipelineArgs { get; set; }
 
         /// <summary>The already created pipeline to run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pipelineId")]
-        public virtual string PipelineId { get; set; } 
+        public virtual string PipelineId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1603,7 +1603,7 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     {
         /// <summary>Execution information specific to Google Compute Engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeEngine")]
-        public virtual ComputeEngine ComputeEngine { get; set; } 
+        public virtual ComputeEngine ComputeEngine { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1615,14 +1615,14 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// <summary>Email address of the service account. Defaults to `default`, which uses the compute service account
         /// associated with the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
+        public virtual string Email { get; set; }
 
         /// <summary>List of scopes to be enabled for this service account on the VM. The following scopes are
         /// automatically included: * https://www.googleapis.com/auth/compute *
         /// https://www.googleapis.com/auth/devstorage.full_control * https://www.googleapis.com/auth/genomics *
         /// https://www.googleapis.com/auth/logging.write * https://www.googleapis.com/auth/monitoring.write</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
-        public virtual System.Collections.Generic.IList<string> Scopes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1633,19 +1633,19 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     public class SetOperationStatusRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
-        public virtual string ErrorCode { get; set; } 
+        public virtual string ErrorCode { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
-        public virtual string ErrorMessage { get; set; } 
+        public virtual string ErrorMessage { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; } 
+        public virtual string OperationId { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("timestampEvents")]
-        public virtual System.Collections.Generic.IList<TimestampEvent> TimestampEvents { get; set; } 
+        public virtual System.Collections.Generic.IList<TimestampEvent> TimestampEvents { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("validationToken")]
-        public virtual System.Nullable<ulong> ValidationToken { get; set; } 
+        public virtual System.Nullable<ulong> ValidationToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1660,17 +1660,17 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1681,11 +1681,11 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     {
         /// <summary>String indicating the type of event</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The time this event occured.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
-        public virtual object Timestamp { get; set; } 
+        public virtual object Timestamp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1698,11 +1698,11 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     {
         /// <summary>The numeric ID of the action that started the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionId")]
-        public virtual System.Nullable<int> ActionId { get; set; } 
+        public virtual System.Nullable<int> ActionId { get; set; }
 
         /// <summary>The exit status of the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exitStatus")]
-        public virtual System.Nullable<int> ExitStatus { get; set; } 
+        public virtual System.Nullable<int> ExitStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1713,15 +1713,15 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     {
         /// <summary>The worker's instance name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
-        public virtual string Instance { get; set; } 
+        public virtual string Instance { get; set; }
 
         /// <summary>The machine type that was assigned for the worker.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
-        public virtual string MachineType { get; set; } 
+        public virtual string MachineType { get; set; }
 
         /// <summary>The zone the worker is running in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1733,11 +1733,11 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     {
         /// <summary>The worker's instance name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
-        public virtual string Instance { get; set; } 
+        public virtual string Instance { get; set; }
 
         /// <summary>The zone the worker was running in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

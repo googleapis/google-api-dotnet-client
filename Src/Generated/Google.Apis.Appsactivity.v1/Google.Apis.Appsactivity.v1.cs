@@ -355,11 +355,11 @@ namespace Google.Apis.Appsactivity.v1.Data
     {
         /// <summary>The fields common to all of the singleEvents that make up the Activity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("combinedEvent")]
-        public virtual Event CombinedEvent { get; set; } 
+        public virtual Event CombinedEvent { get; set; }
 
         /// <summary>A list of all the Events that make up the Activity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("singleEvents")]
-        public virtual System.Collections.Generic.IList<Event> SingleEvents { get; set; } 
+        public virtual System.Collections.Generic.IList<Event> SingleEvents { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -372,40 +372,40 @@ namespace Google.Apis.Appsactivity.v1.Data
         /// single event. For example, creating a document, renaming it, and sharing it may be part of a single file-
         /// creation event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalEventTypes")]
-        public virtual System.Collections.Generic.IList<string> AdditionalEventTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AdditionalEventTypes { get; set; }
 
         /// <summary>The time at which the event occurred formatted as Unix time in milliseconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTimeMillis")]
-        public virtual System.Nullable<ulong> EventTimeMillis { get; set; } 
+        public virtual System.Nullable<ulong> EventTimeMillis { get; set; }
 
         /// <summary>Whether this event is caused by a user being deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fromUserDeletion")]
-        public virtual System.Nullable<bool> FromUserDeletion { get; set; } 
+        public virtual System.Nullable<bool> FromUserDeletion { get; set; }
 
         /// <summary>Extra information for move type events, such as changes in an object's parents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("move")]
-        public virtual Move Move { get; set; } 
+        public virtual Move Move { get; set; }
 
         /// <summary>Extra information for permissionChange type events, such as the user or group the new permission
         /// applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionChanges")]
-        public virtual System.Collections.Generic.IList<PermissionChange> PermissionChanges { get; set; } 
+        public virtual System.Collections.Generic.IList<PermissionChange> PermissionChanges { get; set; }
 
         /// <summary>The main type of event that occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryEventType")]
-        public virtual string PrimaryEventType { get; set; } 
+        public virtual string PrimaryEventType { get; set; }
 
         /// <summary>Extra information for rename type events, such as the old and new names.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rename")]
-        public virtual Rename Rename { get; set; } 
+        public virtual Rename Rename { get; set; }
 
         /// <summary>Information specific to the Target object modified by the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual Target Target { get; set; } 
+        public virtual Target Target { get; set; }
 
         /// <summary>Represents the user responsible for the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
-        public virtual User User { get; set; } 
+        public virtual User User { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -417,11 +417,11 @@ namespace Google.Apis.Appsactivity.v1.Data
     {
         /// <summary>List of activities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activities")]
-        public virtual System.Collections.Generic.IList<Activity> Activities { get; set; } 
+        public virtual System.Collections.Generic.IList<Activity> Activities { get; set; }
 
         /// <summary>Token for the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -432,11 +432,11 @@ namespace Google.Apis.Appsactivity.v1.Data
     {
         /// <summary>The added parent(s).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addedParents")]
-        public virtual System.Collections.Generic.IList<Parent> AddedParents { get; set; } 
+        public virtual System.Collections.Generic.IList<Parent> AddedParents { get; set; }
 
         /// <summary>The removed parent(s).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removedParents")]
-        public virtual System.Collections.Generic.IList<Parent> RemovedParents { get; set; } 
+        public virtual System.Collections.Generic.IList<Parent> RemovedParents { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -448,15 +448,15 @@ namespace Google.Apis.Appsactivity.v1.Data
     {
         /// <summary>The parent's ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Whether this is the root folder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isRoot")]
-        public virtual System.Nullable<bool> IsRoot { get; set; } 
+        public virtual System.Nullable<bool> IsRoot { get; set; }
 
         /// <summary>The parent's title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -468,29 +468,29 @@ namespace Google.Apis.Appsactivity.v1.Data
     {
         /// <summary>The name of the user or group the permission applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ID for this permission. Corresponds to the Drive API's permission ID returned as part of the
         /// Drive Permissions resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionId")]
-        public virtual string PermissionId { get; set; } 
+        public virtual string PermissionId { get; set; }
 
         /// <summary>Indicates the Google Drive permissions role. The role determines a user's ability to read, write,
         /// or comment on the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>Indicates how widely permissions are granted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The user's information if the type is USER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
-        public virtual User User { get; set; } 
+        public virtual User User { get; set; }
 
         /// <summary>Whether the permission requires a link to the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("withLink")]
-        public virtual System.Nullable<bool> WithLink { get; set; } 
+        public virtual System.Nullable<bool> WithLink { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -502,11 +502,11 @@ namespace Google.Apis.Appsactivity.v1.Data
     {
         /// <summary>Lists all Permission objects added.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addedPermissions")]
-        public virtual System.Collections.Generic.IList<Permission> AddedPermissions { get; set; } 
+        public virtual System.Collections.Generic.IList<Permission> AddedPermissions { get; set; }
 
         /// <summary>Lists all Permission objects removed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removedPermissions")]
-        public virtual System.Collections.Generic.IList<Permission> RemovedPermissions { get; set; } 
+        public virtual System.Collections.Generic.IList<Permission> RemovedPermissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -517,7 +517,7 @@ namespace Google.Apis.Appsactivity.v1.Data
     {
         /// <summary>The URL of the photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -528,11 +528,11 @@ namespace Google.Apis.Appsactivity.v1.Data
     {
         /// <summary>The new title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newTitle")]
-        public virtual string NewTitle { get; set; } 
+        public virtual string NewTitle { get; set; }
 
         /// <summary>The old title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oldTitle")]
-        public virtual string OldTitle { get; set; } 
+        public virtual string OldTitle { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -543,15 +543,15 @@ namespace Google.Apis.Appsactivity.v1.Data
     {
         /// <summary>The ID of the target. For example, in Google Drive, this is the file or folder ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The MIME type of the target.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; } 
+        public virtual string MimeType { get; set; }
 
         /// <summary>The name of the target. For example, in Google Drive, this is the title of the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -563,24 +563,24 @@ namespace Google.Apis.Appsactivity.v1.Data
         /// <summary>A boolean which indicates whether the specified User was deleted. If true, name, photo and
         /// permission_id will be omitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDeleted")]
-        public virtual System.Nullable<bool> IsDeleted { get; set; } 
+        public virtual System.Nullable<bool> IsDeleted { get; set; }
 
         /// <summary>Whether the user is the authenticated user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isMe")]
-        public virtual System.Nullable<bool> IsMe { get; set; } 
+        public virtual System.Nullable<bool> IsMe { get; set; }
 
         /// <summary>The displayable name of the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The permission ID associated with this user. Equivalent to the Drive API's permission ID for this
         /// user, returned as part of the Drive Permissions resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionId")]
-        public virtual string PermissionId { get; set; } 
+        public virtual string PermissionId { get; set; }
 
         /// <summary>The profile photo of the user. Not present if the user has no profile photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photo")]
-        public virtual Photo Photo { get; set; } 
+        public virtual Photo Photo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

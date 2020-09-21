@@ -3293,7 +3293,7 @@ namespace Google.Apis.Iam.v1.Data
     {
         /// <summary>The permission_delta when when creating or updating a Role.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionDelta")]
-        public virtual PermissionDelta PermissionDelta { get; set; } 
+        public virtual PermissionDelta PermissionDelta { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3314,12 +3314,12 @@ namespace Google.Apis.Iam.v1.Data
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
-        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; }
 
         /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
         /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3331,7 +3331,7 @@ namespace Google.Apis.Iam.v1.Data
     {
         /// <summary>Policy delta between the original policy and the newly set policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyDelta")]
-        public virtual PolicyDelta PolicyDelta { get; set; } 
+        public virtual PolicyDelta PolicyDelta { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3346,11 +3346,11 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
         /// format of Binding.members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
-        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
 
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
-        public virtual string LogType { get; set; } 
+        public virtual string LogType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3362,7 +3362,7 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>Public name of the service. For example, the service name for Cloud IAM is
         /// 'iam.googleapis.com'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3374,7 +3374,7 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
         /// bindings-by-ID API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; } 
+        public virtual string BindingId { get; set; }
 
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
@@ -3382,7 +3382,7 @@ namespace Google.Apis.Iam.v1.Data
         /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
@@ -3404,12 +3404,12 @@ namespace Google.Apis.Iam.v1.Data
         /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3421,21 +3421,21 @@ namespace Google.Apis.Iam.v1.Data
     {
         /// <summary>The action that was performed on a Binding. Required</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual string Action { get; set; } 
+        public virtual string Action { get; set; }
 
         /// <summary>The condition that is associated with this binding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>A single identity requesting access for a Cloud Platform resource. Follows the same format of
         /// Binding.members. Required</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("member")]
-        public virtual string Member { get; set; } 
+        public virtual string Member { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         /// Required</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3446,12 +3446,12 @@ namespace Google.Apis.Iam.v1.Data
     {
         /// <summary>The Role resource to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual Role Role { get; set; } 
+        public virtual Role Role { get; set; }
 
         /// <summary>The role ID to use for this role. A role ID may contain alphanumeric characters, underscores (`_`),
         /// and periods (`.`). It must contain a minimum of 3 characters and a maximum of 64 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roleId")]
-        public virtual string RoleId { get; set; } 
+        public virtual string RoleId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3463,12 +3463,12 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However
         /// this may change in the future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyAlgorithm")]
-        public virtual string KeyAlgorithm { get; set; } 
+        public virtual string KeyAlgorithm { get; set; }
 
         /// <summary>The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is
         /// the Google Credentials File format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateKeyType")]
-        public virtual string PrivateKeyType { get; set; } 
+        public virtual string PrivateKeyType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3481,12 +3481,12 @@ namespace Google.Apis.Iam.v1.Data
         /// unique id. It is unique within a project, must be 6-30 characters long, and match the regular expression
         /// `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; } 
+        public virtual string AccountId { get; set; }
 
         /// <summary>The ServiceAccount resource to create. Currently, only the following values are user assignable:
         /// `display_name` and `description`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
-        public virtual ServiceAccount ServiceAccount { get; set; } 
+        public virtual ServiceAccount ServiceAccount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3532,21 +3532,21 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3557,7 +3557,7 @@ namespace Google.Apis.Iam.v1.Data
     {
         /// <summary>google.iam.v1.Binding.condition object to be linted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>The full resource name of the policy this lint request is about. The name follows the Google Cloud
         /// Platform (GCP) resource format. For example, a GCP project with ID `my-project` will be named
@@ -3565,7 +3565,7 @@ namespace Google.Apis.Iam.v1.Data
         /// policy instance from the Cloud IAM database. The candidate policy for lint has to be provided in the same
         /// request object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
-        public virtual string FullResourceName { get; set; } 
+        public virtual string FullResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3577,7 +3577,7 @@ namespace Google.Apis.Iam.v1.Data
     {
         /// <summary>List of lint results sorted by `severity` in descending order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lintResults")]
-        public virtual System.Collections.Generic.IList<LintResult> LintResults { get; set; } 
+        public virtual System.Collections.Generic.IList<LintResult> LintResults { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3588,31 +3588,31 @@ namespace Google.Apis.Iam.v1.Data
     {
         /// <summary>Human readable debug message associated with the issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugMessage")]
-        public virtual string DebugMessage { get; set; } 
+        public virtual string DebugMessage { get; set; }
 
         /// <summary>The name of the field for which this lint result is about. For nested messages `field_name`
         /// consists of names of the embedded fields separated by period character. The top-level qualifier is the input
         /// object to lint in the request. For example, the `field_name` value `condition.expression` identifies a lint
         /// result for the `expression` field of the provided condition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
-        public virtual string FieldName { get; set; } 
+        public virtual string FieldName { get; set; }
 
         /// <summary>The validation unit level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("level")]
-        public virtual string Level { get; set; } 
+        public virtual string Level { get; set; }
 
         /// <summary>0-based character position of problematic construct within the object identified by `field_name`.
         /// Currently, this is populated only for condition expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationOffset")]
-        public virtual System.Nullable<int> LocationOffset { get; set; } 
+        public virtual System.Nullable<int> LocationOffset { get; set; }
 
         /// <summary>The validation unit severity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
-        public virtual string Severity { get; set; } 
+        public virtual string Severity { get; set; }
 
         /// <summary>The validation unit name, for instance "lintValidationUnits/ConditionComplexityCheck".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validationUnitName")]
-        public virtual string ValidationUnitName { get; set; } 
+        public virtual string ValidationUnitName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3623,11 +3623,11 @@ namespace Google.Apis.Iam.v1.Data
     {
         /// <summary>To retrieve the next page of results, set `ListRolesRequest.page_token` to this value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The Roles defined on this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roles")]
-        public virtual System.Collections.Generic.IList<Role> Roles { get; set; } 
+        public virtual System.Collections.Generic.IList<Role> Roles { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3638,7 +3638,7 @@ namespace Google.Apis.Iam.v1.Data
     {
         /// <summary>The public keys for the service account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keys")]
-        public virtual System.Collections.Generic.IList<ServiceAccountKey> Keys { get; set; } 
+        public virtual System.Collections.Generic.IList<ServiceAccountKey> Keys { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3649,12 +3649,12 @@ namespace Google.Apis.Iam.v1.Data
     {
         /// <summary>The list of matching service accounts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accounts")]
-        public virtual System.Collections.Generic.IList<ServiceAccount> Accounts { get; set; } 
+        public virtual System.Collections.Generic.IList<ServiceAccount> Accounts { get; set; }
 
         /// <summary>To retrieve the next page of results, set ListServiceAccountsRequest.page_token to this
         /// value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3667,10 +3667,10 @@ namespace Google.Apis.Iam.v1.Data
     public class PatchServiceAccountRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
-        public virtual ServiceAccount ServiceAccount { get; set; } 
+        public virtual ServiceAccount ServiceAccount { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3681,36 +3681,36 @@ namespace Google.Apis.Iam.v1.Data
     {
         /// <summary>The service API associated with the permission is not enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiDisabled")]
-        public virtual System.Nullable<bool> ApiDisabled { get; set; } 
+        public virtual System.Nullable<bool> ApiDisabled { get; set; }
 
         /// <summary>The current custom role support level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customRolesSupportLevel")]
-        public virtual string CustomRolesSupportLevel { get; set; } 
+        public virtual string CustomRolesSupportLevel { get; set; }
 
         /// <summary>A brief description of what this Permission is used for. This permission can ONLY be used in
         /// predefined roles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The name of this Permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("onlyInPredefinedRoles")]
-        public virtual System.Nullable<bool> OnlyInPredefinedRoles { get; set; } 
+        public virtual System.Nullable<bool> OnlyInPredefinedRoles { get; set; }
 
         /// <summary>The preferred name for this permission. If present, then this permission is an alias of, and
         /// equivalent to, the listed primary_permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryPermission")]
-        public virtual string PrimaryPermission { get; set; } 
+        public virtual string PrimaryPermission { get; set; }
 
         /// <summary>The current launch stage of the permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stage")]
-        public virtual string Stage { get; set; } 
+        public virtual string Stage { get; set; }
 
         /// <summary>The title of this Permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3722,11 +3722,11 @@ namespace Google.Apis.Iam.v1.Data
     {
         /// <summary>Added permissions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addedPermissions")]
-        public virtual System.Collections.Generic.IList<string> AddedPermissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AddedPermissions { get; set; }
 
         /// <summary>Removed permissions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removedPermissions")]
-        public virtual System.Collections.Generic.IList<string> RemovedPermissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> RemovedPermissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3756,12 +3756,12 @@ namespace Google.Apis.Iam.v1.Data
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
-        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; }
 
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -3772,7 +3772,7 @@ namespace Google.Apis.Iam.v1.Data
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
         /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
         /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
@@ -3786,7 +3786,7 @@ namespace Google.Apis.Iam.v1.Data
         /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -3795,7 +3795,7 @@ namespace Google.Apis.Iam.v1.Data
     {
         /// <summary>The delta for Bindings between two policies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingDeltas")]
-        public virtual System.Collections.Generic.IList<BindingDelta> BindingDeltas { get; set; } 
+        public virtual System.Collections.Generic.IList<BindingDelta> BindingDeltas { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3808,7 +3808,7 @@ namespace Google.Apis.Iam.v1.Data
         /// Google Cloud Platform resource format. For example, a Cloud Platform project with id `my-project` will be
         /// named `//cloudresourcemanager.googleapis.com/projects/my-project`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
-        public virtual string FullResourceName { get; set; } 
+        public virtual string FullResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3819,7 +3819,7 @@ namespace Google.Apis.Iam.v1.Data
     {
         /// <summary>The auditable services for a resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
-        public virtual System.Collections.Generic.IList<AuditableService> Services { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditableService> Services { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3832,19 +3832,19 @@ namespace Google.Apis.Iam.v1.Data
         /// Google Cloud Platform resource format. For example, a Cloud Platform project with id `my-project` will be
         /// named `//cloudresourcemanager.googleapis.com/projects/my-project`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
-        public virtual string FullResourceName { get; set; } 
+        public virtual string FullResourceName { get; set; }
 
         /// <summary>Optional limit on the number of roles to include in the response. The default is 300, and the
         /// maximum is 1,000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
-        public virtual System.Nullable<int> PageSize { get; set; } 
+        public virtual System.Nullable<int> PageSize { get; set; }
 
         /// <summary>Optional pagination token returned in an earlier QueryGrantableRolesResponse.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
-        public virtual string PageToken { get; set; } 
+        public virtual string PageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("view")]
-        public virtual string View { get; set; } 
+        public virtual string View { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3856,11 +3856,11 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>To retrieve the next page of results, set `QueryGrantableRolesRequest.page_token` to this
         /// value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of matching roles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roles")]
-        public virtual System.Collections.Generic.IList<Role> Roles { get; set; } 
+        public virtual System.Collections.Generic.IList<Role> Roles { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3873,16 +3873,16 @@ namespace Google.Apis.Iam.v1.Data
         /// the Google Cloud Platform resource format. For example, a Cloud Platform project with id `my-project` will
         /// be named `//cloudresourcemanager.googleapis.com/projects/my-project`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
-        public virtual string FullResourceName { get; set; } 
+        public virtual string FullResourceName { get; set; }
 
         /// <summary>Optional limit on the number of permissions to include in the response. The default is 100, and the
         /// maximum is 1,000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
-        public virtual System.Nullable<int> PageSize { get; set; } 
+        public virtual System.Nullable<int> PageSize { get; set; }
 
         /// <summary>Optional pagination token returned in an earlier QueryTestablePermissionsRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
-        public virtual string PageToken { get; set; } 
+        public virtual string PageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3894,11 +3894,11 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>To retrieve the next page of results, set `QueryTestableRolesRequest.page_token` to this
         /// value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The Permissions testable on the requested resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<Permission> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<Permission> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3910,36 +3910,36 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>The current deleted state of the role. This field is read only. It will be ignored in calls to
         /// CreateRole and UpdateRole.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
-        public virtual System.Nullable<bool> Deleted { get; set; } 
+        public virtual System.Nullable<bool> Deleted { get; set; }
 
         /// <summary>Optional. A human-readable description for the role.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Used to perform a consistent read-modify-write.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The names of the permissions this role grants when bound in an IAM policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedPermissions")]
-        public virtual System.Collections.Generic.IList<string> IncludedPermissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> IncludedPermissions { get; set; }
 
         /// <summary>The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is
         /// used in output and other input such as UpdateRole, the role name is the complete path, e.g.,
         /// roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for
         /// custom roles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the
         /// `stage` field will not be included in the returned definition for the role.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stage")]
-        public virtual string Stage { get; set; } 
+        public virtual string Stage { get; set; }
 
         /// <summary>Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8
         /// bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
     }    
 
@@ -3953,24 +3953,24 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>Optional. A user-specified, human-readable description of the service account. The maximum length
         /// is 256 UTF-8 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Output only. Whether the service account is disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
-        public virtual System.Nullable<bool> Disabled { get; set; } 
+        public virtual System.Nullable<bool> Disabled { get; set; }
 
         /// <summary>Optional. A user-specified, human-readable name for the service account. The maximum length is 100
         /// UTF-8 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. The email address of the service account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
+        public virtual string Email { get; set; }
 
         /// <summary>Deprecated. Do not use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The resource name of the service account. Use one of the following formats: *
         /// `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` *
@@ -3981,22 +3981,22 @@ namespace Google.Apis.Iam.v1.Data
         /// account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP
         /// `403 Forbidden` error instead of a `404 Not Found` error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The OAuth 2.0 client ID for the service account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientId")]
-        public virtual string Oauth2ClientId { get; set; } 
+        public virtual string Oauth2ClientId { get; set; }
 
         /// <summary>Output only. The ID of the project that owns the service account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Output only. The unique, stable numeric ID for the service account. Each service account retains
         /// its unique ID even if you delete the service account. For example, if you delete a service account, then
         /// create a new service account with the same name, the new service account has a different unique ID than the
         /// deleted service account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uniqueId")]
-        public virtual string UniqueId { get; set; } 
+        public virtual string UniqueId { get; set; }
 
     }    
 
@@ -4012,47 +4012,47 @@ namespace Google.Apis.Iam.v1.Data
     {
         /// <summary>Specifies the algorithm (and possibly key size) for the key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyAlgorithm")]
-        public virtual string KeyAlgorithm { get; set; } 
+        public virtual string KeyAlgorithm { get; set; }
 
         /// <summary>The key origin.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyOrigin")]
-        public virtual string KeyOrigin { get; set; } 
+        public virtual string KeyOrigin { get; set; }
 
         /// <summary>The key type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyType")]
-        public virtual string KeyType { get; set; } 
+        public virtual string KeyType { get; set; }
 
         /// <summary>The resource name of the service account key in the following format
         /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The private key data. Only provided in `CreateServiceAccountKey` responses. Make sure to keep the
         /// private key data secure because it allows for the assertion of the service account identity. When base64
         /// decoded, the private key data can be used to authenticate with Google API client libraries and with gcloud
         /// auth activate-service-account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateKeyData")]
-        public virtual string PrivateKeyData { get; set; } 
+        public virtual string PrivateKeyData { get; set; }
 
         /// <summary>The output format for the private key. Only provided in `CreateServiceAccountKey` responses, not in
         /// `GetServiceAccountKey` or `ListServiceAccountKey` responses. Google never exposes system-managed private
         /// keys, and never retains user-managed private keys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateKeyType")]
-        public virtual string PrivateKeyType { get; set; } 
+        public virtual string PrivateKeyType { get; set; }
 
         /// <summary>The public key data. Only provided in `GetServiceAccountKey` responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicKeyData")]
-        public virtual string PublicKeyData { get; set; } 
+        public virtual string PublicKeyData { get; set; }
 
         /// <summary>The key can be used after this timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validAfterTime")]
-        public virtual object ValidAfterTime { get; set; } 
+        public virtual object ValidAfterTime { get; set; }
 
         /// <summary>The key can be used before this timestamp. For system-managed key pairs, this timestamp is the end
         /// time for the private key signing operation. The public key could still be used for verification for a few
         /// hours after this time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validBeforeTime")]
-        public virtual object ValidBeforeTime { get; set; } 
+        public virtual object ValidBeforeTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4065,13 +4065,13 @@ namespace Google.Apis.Iam.v1.Data
         /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; } 
+        public virtual Policy Policy { get; set; }
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
         /// will be modified. If no mask is provided, the following default mask is used: `paths: "bindings,
         /// etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4084,7 +4084,7 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>Required. Deprecated. [Migrate to Service Account Credentials
         /// API](https://cloud.google.com/iam/help/credentials/migrate-api). The bytes to sign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesToSign")]
-        public virtual string BytesToSign { get; set; } 
+        public virtual string BytesToSign { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4098,12 +4098,12 @@ namespace Google.Apis.Iam.v1.Data
         /// API](https://cloud.google.com/iam/help/credentials/migrate-api). The id of the key used to sign the
         /// blob.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyId")]
-        public virtual string KeyId { get; set; } 
+        public virtual string KeyId { get; set; }
 
         /// <summary>Deprecated. [Migrate to Service Account Credentials
         /// API](https://cloud.google.com/iam/help/credentials/migrate-api). The signed blob.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
-        public virtual string Signature { get; set; } 
+        public virtual string Signature { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4121,7 +4121,7 @@ namespace Google.Apis.Iam.v1.Data
         /// expiration time (`exp`) claim, this claim is added automatically, with a timestamp that is 1 hour in the
         /// future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual string Payload { get; set; } 
+        public virtual string Payload { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4135,12 +4135,12 @@ namespace Google.Apis.Iam.v1.Data
         /// API](https://cloud.google.com/iam/help/credentials/migrate-api). The id of the key used to sign the
         /// JWT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyId")]
-        public virtual string KeyId { get; set; } 
+        public virtual string KeyId { get; set; }
 
         /// <summary>Deprecated. [Migrate to Service Account Credentials
         /// API](https://cloud.google.com/iam/help/credentials/migrate-api). The signed JWT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signedJwt")]
-        public virtual string SignedJwt { get; set; } 
+        public virtual string SignedJwt { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4153,7 +4153,7 @@ namespace Google.Apis.Iam.v1.Data
         /// 'storage.*') are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4164,7 +4164,7 @@ namespace Google.Apis.Iam.v1.Data
     {
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4175,7 +4175,7 @@ namespace Google.Apis.Iam.v1.Data
     {
         /// <summary>Used to perform a consistent read-modify-write.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
     }    
 
@@ -4190,7 +4190,7 @@ namespace Google.Apis.Iam.v1.Data
     {
         /// <summary>Metadata for the restored service account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restoredAccount")]
-        public virtual ServiceAccount RestoredAccount { get; set; } 
+        public virtual ServiceAccount RestoredAccount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4203,7 +4203,7 @@ namespace Google.Apis.Iam.v1.Data
         /// create a service account key for given service account. Please note, the expected format for this field is
         /// X509_PEM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicKeyData")]
-        public virtual string PublicKeyData { get; set; } 
+        public virtual string PublicKeyData { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -658,7 +658,7 @@ namespace Google.Apis.Monitoring.v1.Data
         /// aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of the alignment_period is 2
         /// years, or 104 weeks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alignmentPeriod")]
-        public virtual object AlignmentPeriod { get; set; } 
+        public virtual object AlignmentPeriod { get; set; }
 
         /// <summary>The reduction operation to be used to combine time series into a single time series, where the
         /// value of each data point in the resulting series is a function of all the already aligned values in the
@@ -669,7 +669,7 @@ namespace Google.Apis.Monitoring.v1.Data
         /// then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be
         /// specified; otherwise, an error is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crossSeriesReducer")]
-        public virtual string CrossSeriesReducer { get; set; } 
+        public virtual string CrossSeriesReducer { get; set; }
 
         /// <summary>The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine
         /// how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset
@@ -680,7 +680,7 @@ namespace Google.Apis.Monitoring.v1.Data
         /// time series have the same resource type, then the time series are aggregated into a single output time
         /// series. If cross_series_reducer is not defined, this field is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupByFields")]
-        public virtual System.Collections.Generic.IList<string> GroupByFields { get; set; } 
+        public virtual System.Collections.Generic.IList<string> GroupByFields { get; set; }
 
         /// <summary>An Aligner describes how to bring the data points in a single time series into temporal alignment.
         /// Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically
@@ -691,7 +691,7 @@ namespace Google.Apis.Monitoring.v1.Data
         /// reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to
         /// ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("perSeriesAligner")]
-        public virtual string PerSeriesAligner { get; set; } 
+        public virtual string PerSeriesAligner { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -702,11 +702,11 @@ namespace Google.Apis.Monitoring.v1.Data
     {
         /// <summary>The label of the axis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; } 
+        public virtual string Label { get; set; }
 
         /// <summary>The axis scale. By default, a linear scale is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scale")]
-        public virtual string Scale { get; set; } 
+        public virtual string Scale { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -717,7 +717,7 @@ namespace Google.Apis.Monitoring.v1.Data
     {
         /// <summary>The chart mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
-        public virtual string Mode { get; set; } 
+        public virtual string Mode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -730,11 +730,11 @@ namespace Google.Apis.Monitoring.v1.Data
         /// screen (relative to peers). Greater the weight, greater the width of the column on the screen. If omitted, a
         /// value of 1 is used while rendering.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weight")]
-        public virtual System.Nullable<long> Weight { get; set; } 
+        public virtual System.Nullable<long> Weight { get; set; }
 
         /// <summary>The display widgets arranged vertically in this column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
-        public virtual System.Collections.Generic.IList<Widget> Widgets { get; set; } 
+        public virtual System.Collections.Generic.IList<Widget> Widgets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -746,7 +746,7 @@ namespace Google.Apis.Monitoring.v1.Data
     {
         /// <summary>The columns of content to display.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
-        public virtual System.Collections.Generic.IList<Column> Columns { get; set; } 
+        public virtual System.Collections.Generic.IList<Column> Columns { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -759,11 +759,11 @@ namespace Google.Apis.Monitoring.v1.Data
         /// <summary>The content is divided into equally spaced columns and the widgets are arranged
         /// vertically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnLayout")]
-        public virtual ColumnLayout ColumnLayout { get; set; } 
+        public virtual ColumnLayout ColumnLayout { get; set; }
 
         /// <summary>Required. The mutable, human-readable name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a
         /// policy from overwriting each other. An etag is returned in the response to GetDashboard, and users are
@@ -771,26 +771,26 @@ namespace Google.Apis.Monitoring.v1.Data
         /// the same version of the Dashboard configuration. The field should not be passed during dashboard
         /// creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Content is arranged with a basic layout that re-flows a simple list of informational elements like
         /// widgets or tiles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gridLayout")]
-        public virtual GridLayout GridLayout { get; set; } 
+        public virtual GridLayout GridLayout { get; set; }
 
         /// <summary>The content is arranged as a grid of tiles, with each content widget occupying one or more grid
         /// blocks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mosaicLayout")]
-        public virtual MosaicLayout MosaicLayout { get; set; } 
+        public virtual MosaicLayout MosaicLayout { get; set; }
 
         /// <summary>Immutable. The resource name of the dashboard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The content is divided into equally spaced rows and the widgets are arranged
         /// horizontally.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowLayout")]
-        public virtual RowLayout RowLayout { get; set; } 
+        public virtual RowLayout RowLayout { get; set; }
 
     }    
 
@@ -800,22 +800,22 @@ namespace Google.Apis.Monitoring.v1.Data
         /// <summary>A template string for naming TimeSeries in the resulting data set. This should be a string with
         /// interpolations of the form ${label_name}, which will resolve to the label's value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("legendTemplate")]
-        public virtual string LegendTemplate { get; set; } 
+        public virtual string LegendTemplate { get; set; }
 
         /// <summary>Optional. The lower bound on data point frequency for this data set, implemented by specifying the
         /// minimum alignment period to use in a time series query For example, if the data is published once every 10
         /// minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align
         /// data at one minute intervals.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minAlignmentPeriod")]
-        public virtual object MinAlignmentPeriod { get; set; } 
+        public virtual object MinAlignmentPeriod { get; set; }
 
         /// <summary>How this data should be plotted on the chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plotType")]
-        public virtual string PlotType { get; set; } 
+        public virtual string PlotType { get; set; }
 
         /// <summary>Required. Fields for querying time series data from the Stackdriver metrics API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesQuery")]
-        public virtual TimeSeriesQuery TimeSeriesQuery { get; set; } 
+        public virtual TimeSeriesQuery TimeSeriesQuery { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -833,7 +833,7 @@ namespace Google.Apis.Monitoring.v1.Data
     {
         /// <summary>Map from label to its value, for all labels dropped in any aggregation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Label { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Label { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -854,45 +854,45 @@ namespace Google.Apis.Monitoring.v1.Data
     {
         /// <summary>The field cardinality.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cardinality")]
-        public virtual string Cardinality { get; set; } 
+        public virtual string Cardinality { get; set; }
 
         /// <summary>The string value of the default value of this field. Proto2 syntax only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
-        public virtual string DefaultValue { get; set; } 
+        public virtual string DefaultValue { get; set; }
 
         /// <summary>The field JSON name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jsonName")]
-        public virtual string JsonName { get; set; } 
+        public virtual string JsonName { get; set; }
 
         /// <summary>The field type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The field name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The field number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("number")]
-        public virtual System.Nullable<int> Number { get; set; } 
+        public virtual System.Nullable<int> Number { get; set; }
 
         /// <summary>The index of the field type in Type.oneofs, for message or enumeration types. The first type has
         /// index 1; zero means the type is not in the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oneofIndex")]
-        public virtual System.Nullable<int> OneofIndex { get; set; } 
+        public virtual System.Nullable<int> OneofIndex { get; set; }
 
         /// <summary>The protocol buffer options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
-        public virtual System.Collections.Generic.IList<Option> Options { get; set; } 
+        public virtual System.Collections.Generic.IList<Option> Options { get; set; }
 
         /// <summary>Whether to use alternative packed wire representation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packed")]
-        public virtual System.Nullable<bool> Packed { get; set; } 
+        public virtual System.Nullable<bool> Packed { get; set; }
 
         /// <summary>The field type URL, without the scheme, for message or enumeration types. Example:
         /// "type.googleapis.com/google.protobuf.Timestamp".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("typeUrl")]
-        public virtual string TypeUrl { get; set; } 
+        public virtual string TypeUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -905,12 +905,12 @@ namespace Google.Apis.Monitoring.v1.Data
         /// <summary>The lower bound for this gauge chart. The value of the chart should always be greater than or equal
         /// to this.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lowerBound")]
-        public virtual System.Nullable<double> LowerBound { get; set; } 
+        public virtual System.Nullable<double> LowerBound { get; set; }
 
         /// <summary>The upper bound for this gauge chart. The value of the chart should always be less than or equal to
         /// this.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upperBound")]
-        public virtual System.Nullable<double> UpperBound { get; set; } 
+        public virtual System.Nullable<double> UpperBound { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -923,11 +923,11 @@ namespace Google.Apis.Monitoring.v1.Data
         /// <summary>The number of columns into which the view's width is divided. If omitted or set to zero, a system
         /// default will be used while rendering.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
-        public virtual System.Nullable<long> Columns { get; set; } 
+        public virtual System.Nullable<long> Columns { get; set; }
 
         /// <summary>The informational elements that are arranged into the columns row-first.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
-        public virtual System.Collections.Generic.IList<Widget> Widgets { get; set; } 
+        public virtual System.Collections.Generic.IList<Widget> Widgets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -938,12 +938,12 @@ namespace Google.Apis.Monitoring.v1.Data
     {
         /// <summary>The list of requested dashboards.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dashboards")]
-        public virtual System.Collections.Generic.IList<Dashboard> Dashboards { get; set; } 
+        public virtual System.Collections.Generic.IList<Dashboard> Dashboards { get; set; }
 
         /// <summary>If there are more results than have been returned, then this field is set to a non-empty value. To
         /// see the additional results, use that value as page_token in the next call to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -957,11 +957,11 @@ namespace Google.Apis.Monitoring.v1.Data
         /// <summary>The number of columns in the mosaic grid. The number of columns must be between 1 and 12,
         /// inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
-        public virtual System.Nullable<int> Columns { get; set; } 
+        public virtual System.Nullable<int> Columns { get; set; }
 
         /// <summary>The tiles to display.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tiles")]
-        public virtual System.Collections.Generic.IList<Tile> Tiles { get; set; } 
+        public virtual System.Collections.Generic.IList<Tile> Tiles { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -974,13 +974,13 @@ namespace Google.Apis.Monitoring.v1.Data
         /// short name. For example, "map_entry". For custom options, it should be the fully-qualified name. For
         /// example, "google.api.http".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper
         /// type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored
         /// as an int32 value using the google.protobuf.Int32Value type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Value { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -994,16 +994,16 @@ namespace Google.Apis.Monitoring.v1.Data
     {
         /// <summary>How to use the ranking to select time series that pass through the filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("direction")]
-        public virtual string Direction { get; set; } 
+        public virtual string Direction { get; set; }
 
         /// <summary>How many time series to allow to pass through the filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numTimeSeries")]
-        public virtual System.Nullable<int> NumTimeSeries { get; set; } 
+        public virtual System.Nullable<int> NumTimeSeries { get; set; }
 
         /// <summary>ranking_method is applied to each time series independently to produce the value which will be used
         /// to compare the time series to other time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankingMethod")]
-        public virtual string RankingMethod { get; set; } 
+        public virtual string RankingMethod { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1015,12 +1015,12 @@ namespace Google.Apis.Monitoring.v1.Data
         /// <summary>By default, the raw time series data is returned. Use this field to combine multiple time series
         /// for different views of the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregation")]
-        public virtual Aggregation Aggregation { get; set; } 
+        public virtual Aggregation Aggregation { get; set; }
 
         /// <summary>Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that
         /// identifies the metric types, resources, and projects to query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual string Filter { get; set; } 
+        public virtual string Filter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1033,11 +1033,11 @@ namespace Google.Apis.Monitoring.v1.Data
         /// (relative to peers). Greater the weight, greater the height of the row on the screen. If omitted, a value of
         /// 1 is used while rendering.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weight")]
-        public virtual System.Nullable<long> Weight { get; set; } 
+        public virtual System.Nullable<long> Weight { get; set; }
 
         /// <summary>The display widgets arranged horizontally in this row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
-        public virtual System.Collections.Generic.IList<Widget> Widgets { get; set; } 
+        public virtual System.Collections.Generic.IList<Widget> Widgets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1049,7 +1049,7 @@ namespace Google.Apis.Monitoring.v1.Data
     {
         /// <summary>The rows of content to display.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-        public virtual System.Collections.Generic.IList<Row> Rows { get; set; } 
+        public virtual System.Collections.Generic.IList<Row> Rows { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1061,11 +1061,11 @@ namespace Google.Apis.Monitoring.v1.Data
     {
         /// <summary>Will cause the scorecard to show a gauge chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gaugeView")]
-        public virtual GaugeView GaugeView { get; set; } 
+        public virtual GaugeView GaugeView { get; set; }
 
         /// <summary>Will cause the scorecard to show a spark chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkChartView")]
-        public virtual SparkChartView SparkChartView { get; set; } 
+        public virtual SparkChartView SparkChartView { get; set; }
 
         /// <summary>The thresholds used to determine the state of the scorecard given the time series' current value.
         /// For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold
@@ -1079,11 +1079,11 @@ namespace Google.Apis.Monitoring.v1.Data
         /// 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than
         /// or equal to 90 a DANGER state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thresholds")]
-        public virtual System.Collections.Generic.IList<Threshold> Thresholds { get; set; } 
+        public virtual System.Collections.Generic.IList<Threshold> Thresholds { get; set; }
 
         /// <summary>Required. Fields for querying time series data from the Stackdriver metrics API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesQuery")]
-        public virtual TimeSeriesQuery TimeSeriesQuery { get; set; } 
+        public virtual TimeSeriesQuery TimeSeriesQuery { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1096,7 +1096,7 @@ namespace Google.Apis.Monitoring.v1.Data
         /// <summary>The path-qualified name of the .proto file that contained the associated protobuf element. For
         /// example: "google/protobuf/source_context.proto".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
-        public virtual string FileName { get; set; } 
+        public virtual string FileName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1112,7 +1112,7 @@ namespace Google.Apis.Monitoring.v1.Data
         /// identifier for a span within a trace; it is a 16-character hexadecimal encoding of an 8-byte
         /// array.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spanName")]
-        public virtual string SpanName { get; set; } 
+        public virtual string SpanName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1128,11 +1128,11 @@ namespace Google.Apis.Monitoring.v1.Data
         /// it would not make sense to fetch and align data at one minute intervals. This field is optional and exists
         /// only as a hint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minAlignmentPeriod")]
-        public virtual object MinAlignmentPeriod { get; set; } 
+        public virtual object MinAlignmentPeriod { get; set; }
 
         /// <summary>Required. The type of sparkchart to show in this chartView.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkChartType")]
-        public virtual string SparkChartType { get; set; } 
+        public virtual string SparkChartType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1144,13 +1144,13 @@ namespace Google.Apis.Monitoring.v1.Data
     {
         /// <summary>How many time series to output.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numTimeSeries")]
-        public virtual System.Nullable<int> NumTimeSeries { get; set; } 
+        public virtual System.Nullable<int> NumTimeSeries { get; set; }
 
         /// <summary>rankingMethod is applied to a set of time series, and then the produced value for each individual
         /// time series is used to compare a given time series to others. These are methods that cannot be applied
         /// stream-by-stream, but rather require the full context of a request to evaluate time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankingMethod")]
-        public virtual string RankingMethod { get; set; } 
+        public virtual string RankingMethod { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1161,11 +1161,11 @@ namespace Google.Apis.Monitoring.v1.Data
     {
         /// <summary>The text content to be displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual string Content { get; set; } 
+        public virtual string Content { get; set; }
 
         /// <summary>How the text content is formatted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual string Format { get; set; } 
+        public virtual string Format { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1176,20 +1176,20 @@ namespace Google.Apis.Monitoring.v1.Data
     {
         /// <summary>The state color for this threshold. Color is not allowed in a XyChart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
-        public virtual string Color { get; set; } 
+        public virtual string Color { get; set; }
 
         /// <summary>The direction for the current threshold. Direction is not allowed in a XyChart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("direction")]
-        public virtual string Direction { get; set; } 
+        public virtual string Direction { get; set; }
 
         /// <summary>A label for the threshold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; } 
+        public virtual string Label { get; set; }
 
         /// <summary>The value of the threshold. The value should be defined in the native scale of the
         /// metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual System.Nullable<double> Value { get; set; } 
+        public virtual System.Nullable<double> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1200,25 +1200,25 @@ namespace Google.Apis.Monitoring.v1.Data
     {
         /// <summary>The height of the tile, measured in grid blocks. Tiles must have a minimum height of 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
-        public virtual System.Nullable<int> Height { get; set; } 
+        public virtual System.Nullable<int> Height { get; set; }
 
         /// <summary>The informational widget contained in the tile. For example an XyChart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("widget")]
-        public virtual Widget Widget { get; set; } 
+        public virtual Widget Widget { get; set; }
 
         /// <summary>The width of the tile, measured in grid blocks. Tiles must have a minimum width of 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
-        public virtual System.Nullable<int> Width { get; set; } 
+        public virtual System.Nullable<int> Width { get; set; }
 
         /// <summary>The zero-indexed position of the tile in grid blocks relative to the left edge of the grid. Tiles
         /// must be contained within the specified number of columns. x_pos cannot be negative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xPos")]
-        public virtual System.Nullable<int> XPos { get; set; } 
+        public virtual System.Nullable<int> XPos { get; set; }
 
         /// <summary>The zero-indexed position of the tile in grid blocks relative to the top edge of the grid. y_pos
         /// cannot be negative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yPos")]
-        public virtual System.Nullable<int> YPos { get; set; } 
+        public virtual System.Nullable<int> YPos { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1232,25 +1232,25 @@ namespace Google.Apis.Monitoring.v1.Data
         /// <summary>By default, the raw time series data is returned. Use this field to combine multiple time series
         /// for different views of the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregation")]
-        public virtual Aggregation Aggregation { get; set; } 
+        public virtual Aggregation Aggregation { get; set; }
 
         /// <summary>Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that
         /// identifies the metric types, resources, and projects to query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual string Filter { get; set; } 
+        public virtual string Filter { get; set; }
 
         /// <summary>Ranking based time series filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickTimeSeriesFilter")]
-        public virtual PickTimeSeriesFilter PickTimeSeriesFilter { get; set; } 
+        public virtual PickTimeSeriesFilter PickTimeSeriesFilter { get; set; }
 
         /// <summary>Apply a second aggregation after aggregation is applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryAggregation")]
-        public virtual Aggregation SecondaryAggregation { get; set; } 
+        public virtual Aggregation SecondaryAggregation { get; set; }
 
         /// <summary>Statistics based time series filter. Note: This field is deprecated and completely ignored by the
         /// API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statisticalTimeSeriesFilter")]
-        public virtual StatisticalTimeSeriesFilter StatisticalTimeSeriesFilter { get; set; } 
+        public virtual StatisticalTimeSeriesFilter StatisticalTimeSeriesFilter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1262,24 +1262,24 @@ namespace Google.Apis.Monitoring.v1.Data
     {
         /// <summary>The denominator of the ratio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("denominator")]
-        public virtual RatioPart Denominator { get; set; } 
+        public virtual RatioPart Denominator { get; set; }
 
         /// <summary>The numerator of the ratio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numerator")]
-        public virtual RatioPart Numerator { get; set; } 
+        public virtual RatioPart Numerator { get; set; }
 
         /// <summary>Ranking based time series filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickTimeSeriesFilter")]
-        public virtual PickTimeSeriesFilter PickTimeSeriesFilter { get; set; } 
+        public virtual PickTimeSeriesFilter PickTimeSeriesFilter { get; set; }
 
         /// <summary>Apply a second aggregation after the ratio is computed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryAggregation")]
-        public virtual Aggregation SecondaryAggregation { get; set; } 
+        public virtual Aggregation SecondaryAggregation { get; set; }
 
         /// <summary>Statistics based time series filter. Note: This field is deprecated and completely ignored by the
         /// API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statisticalTimeSeriesFilter")]
-        public virtual StatisticalTimeSeriesFilter StatisticalTimeSeriesFilter { get; set; } 
+        public virtual StatisticalTimeSeriesFilter StatisticalTimeSeriesFilter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1291,22 +1291,22 @@ namespace Google.Apis.Monitoring.v1.Data
     {
         /// <summary>Filter parameters to fetch time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesFilter")]
-        public virtual TimeSeriesFilter TimeSeriesFilter { get; set; } 
+        public virtual TimeSeriesFilter TimeSeriesFilter { get; set; }
 
         /// <summary>Parameters to fetch a ratio between two time series filters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesFilterRatio")]
-        public virtual TimeSeriesFilterRatio TimeSeriesFilterRatio { get; set; } 
+        public virtual TimeSeriesFilterRatio TimeSeriesFilterRatio { get; set; }
 
         /// <summary>A query used to fetch time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesQueryLanguage")]
-        public virtual string TimeSeriesQueryLanguage { get; set; } 
+        public virtual string TimeSeriesQueryLanguage { get; set; }
 
         /// <summary>The unit of data contained in fetched time series. If non-empty, this unit will override any unit
         /// that accompanies fetched data. The format is the same as the unit
         /// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in
         /// MetricDescriptor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unitOverride")]
-        public virtual string UnitOverride { get; set; } 
+        public virtual string UnitOverride { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1317,27 +1317,27 @@ namespace Google.Apis.Monitoring.v1.Data
     {
         /// <summary>The list of fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual System.Collections.Generic.IList<Field> Fields { get; set; } 
+        public virtual System.Collections.Generic.IList<Field> Fields { get; set; }
 
         /// <summary>The fully qualified message name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The list of types appearing in oneof definitions in this type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oneofs")]
-        public virtual System.Collections.Generic.IList<string> Oneofs { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Oneofs { get; set; }
 
         /// <summary>The protocol buffer options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
-        public virtual System.Collections.Generic.IList<Option> Options { get; set; } 
+        public virtual System.Collections.Generic.IList<Option> Options { get; set; }
 
         /// <summary>The source context.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceContext")]
-        public virtual SourceContext SourceContext { get; set; } 
+        public virtual SourceContext SourceContext { get; set; }
 
         /// <summary>The source syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syntax")]
-        public virtual string Syntax { get; set; } 
+        public virtual string Syntax { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1349,23 +1349,23 @@ namespace Google.Apis.Monitoring.v1.Data
     {
         /// <summary>A blank space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blank")]
-        public virtual Empty Blank { get; set; } 
+        public virtual Empty Blank { get; set; }
 
         /// <summary>A scorecard summarizing time series data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scorecard")]
-        public virtual Scorecard Scorecard { get; set; } 
+        public virtual Scorecard Scorecard { get; set; }
 
         /// <summary>A raw string or markdown displaying textual content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual Text Text { get; set; } 
+        public virtual Text Text { get; set; }
 
         /// <summary>Optional. The title of the widget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>A chart of time series data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xyChart")]
-        public virtual XyChart XyChart { get; set; } 
+        public virtual XyChart XyChart { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1376,29 +1376,29 @@ namespace Google.Apis.Monitoring.v1.Data
     {
         /// <summary>Display options for the chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chartOptions")]
-        public virtual ChartOptions ChartOptions { get; set; } 
+        public virtual ChartOptions ChartOptions { get; set; }
 
         /// <summary>Required. The data displayed in this chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSets")]
-        public virtual System.Collections.Generic.IList<DataSet> DataSets { get; set; } 
+        public virtual System.Collections.Generic.IList<DataSet> DataSets { get; set; }
 
         /// <summary>Threshold lines drawn horizontally across the chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thresholds")]
-        public virtual System.Collections.Generic.IList<Threshold> Thresholds { get; set; } 
+        public virtual System.Collections.Generic.IList<Threshold> Thresholds { get; set; }
 
         /// <summary>The duration used to display a comparison chart. A comparison chart simultaneously shows values
         /// from two similar-length time periods (e.g., week-over-week metrics). The duration must be positive, and it
         /// can only be applied to charts with data sets of LINE plot type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeshiftDuration")]
-        public virtual object TimeshiftDuration { get; set; } 
+        public virtual object TimeshiftDuration { get; set; }
 
         /// <summary>The properties applied to the X axis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xAxis")]
-        public virtual Axis XAxis { get; set; } 
+        public virtual Axis XAxis { get; set; }
 
         /// <summary>The properties applied to the Y axis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yAxis")]
-        public virtual Axis YAxis { get; set; } 
+        public virtual Axis YAxis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

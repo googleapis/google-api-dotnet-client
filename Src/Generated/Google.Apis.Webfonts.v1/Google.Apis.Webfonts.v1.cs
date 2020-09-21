@@ -336,36 +336,36 @@ namespace Google.Apis.Webfonts.v1.Data
     {
         /// <summary>The category of the font.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
-        public virtual string Category { get; set; } 
+        public virtual string Category { get; set; }
 
         /// <summary>The name of the font.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("family")]
-        public virtual string Family { get; set; } 
+        public virtual string Family { get; set; }
 
         /// <summary>The font files (with all supported scripts) for each one of the available variants, as a key :
         /// value map.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Files { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Files { get; set; }
 
         /// <summary>This kind represents a webfont object in the webfonts service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The date (format "yyyy-MM-dd") the font was modified for the last time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModified")]
-        public virtual string LastModified { get; set; } 
+        public virtual string LastModified { get; set; }
 
         /// <summary>The scripts supported by the font.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subsets")]
-        public virtual System.Collections.Generic.IList<string> Subsets { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Subsets { get; set; }
 
         /// <summary>The available variants for the font.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variants")]
-        public virtual System.Collections.Generic.IList<string> Variants { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Variants { get; set; }
 
         /// <summary>The font version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -376,11 +376,11 @@ namespace Google.Apis.Webfonts.v1.Data
     {
         /// <summary>The list of fonts currently served by the Google Fonts API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Webfont> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Webfont> Items { get; set; }
 
         /// <summary>This kind represents a list of webfont objects in the webfonts service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

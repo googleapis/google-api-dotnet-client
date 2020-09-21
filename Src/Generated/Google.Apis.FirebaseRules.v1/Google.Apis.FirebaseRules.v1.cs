@@ -1095,11 +1095,11 @@ namespace Google.Apis.FirebaseRules.v1.Data
     {
         /// <summary>Argument matches any value provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("anyValue")]
-        public virtual Empty AnyValue { get; set; } 
+        public virtual Empty AnyValue { get; set; }
 
         /// <summary>Argument exactly matches value provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exactValue")]
-        public virtual object ExactValue { get; set; } 
+        public virtual object ExactValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1121,15 +1121,15 @@ namespace Google.Apis.FirebaseRules.v1.Data
     {
         /// <summary>Subexpressions</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("children")]
-        public virtual System.Collections.Generic.IList<ExpressionReport> Children { get; set; } 
+        public virtual System.Collections.Generic.IList<ExpressionReport> Children { get; set; }
 
         /// <summary>Position of expression in original rules source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourcePosition")]
-        public virtual SourcePosition SourcePosition { get; set; } 
+        public virtual SourcePosition SourcePosition { get; set; }
 
         /// <summary>Values that this expression evaluated to when encountered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<ValueCount> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<ValueCount> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1140,15 +1140,15 @@ namespace Google.Apis.FirebaseRules.v1.Data
     {
         /// <summary>Textual Content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual string Content { get; set; } 
+        public virtual string Content { get; set; }
 
         /// <summary>Fingerprint (e.g. github sha) associated with the `File`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
-        public virtual string Fingerprint { get; set; } 
+        public virtual string Fingerprint { get; set; }
 
         /// <summary>File name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1159,11 +1159,11 @@ namespace Google.Apis.FirebaseRules.v1.Data
     {
         /// <summary>The arguments that were provided to the function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
-        public virtual System.Collections.Generic.IList<object> Args { get; set; } 
+        public virtual System.Collections.Generic.IList<object> Args { get; set; }
 
         /// <summary>Name of the function invoked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("function")]
-        public virtual string Function { get; set; } 
+        public virtual string Function { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1179,16 +1179,16 @@ namespace Google.Apis.FirebaseRules.v1.Data
         /// <summary>The list of `Arg` values to match. The order in which the arguments are provided is the order in
         /// which they must appear in the function invocation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
-        public virtual System.Collections.Generic.IList<Arg> Args { get; set; } 
+        public virtual System.Collections.Generic.IList<Arg> Args { get; set; }
 
         /// <summary>The name of the function. The function name must match one provided by a service
         /// declaration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("function")]
-        public virtual string Function { get; set; } 
+        public virtual string Function { get; set; }
 
         /// <summary>The mock result of the function call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
-        public virtual Result Result { get; set; } 
+        public virtual Result Result { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1199,28 +1199,28 @@ namespace Google.Apis.FirebaseRules.v1.Data
     {
         /// <summary>Executable view of the `Ruleset` referenced by the `Release`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executable")]
-        public virtual string Executable { get; set; } 
+        public virtual string Executable { get; set; }
 
         /// <summary>The Rules runtime version of the executable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executableVersion")]
-        public virtual string ExecutableVersion { get; set; } 
+        public virtual string ExecutableVersion { get; set; }
 
         /// <summary>`Language` used to generate the executable bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
-        public virtual string Language { get; set; } 
+        public virtual string Language { get; set; }
 
         /// <summary>`Ruleset` name associated with the `Release` executable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rulesetName")]
-        public virtual string RulesetName { get; set; } 
+        public virtual string RulesetName { get; set; }
 
         /// <summary>Optional, indicates the freshness of the result. The response is guaranteed to be the latest within
         /// an interval up to the sync_time (inclusive).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncTime")]
-        public virtual object SyncTime { get; set; } 
+        public virtual object SyncTime { get; set; }
 
         /// <summary>Timestamp for the most recent `Release.update_time`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1231,15 +1231,15 @@ namespace Google.Apis.FirebaseRules.v1.Data
     {
         /// <summary>Short error description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The severity of the issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
-        public virtual string Severity { get; set; } 
+        public virtual string Severity { get; set; }
 
         /// <summary>Position of the issue in the `Source`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourcePosition")]
-        public virtual SourcePosition SourcePosition { get; set; } 
+        public virtual SourcePosition SourcePosition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1251,11 +1251,11 @@ namespace Google.Apis.FirebaseRules.v1.Data
         /// <summary>The pagination token to retrieve the next page of results. If the value is empty, no further
         /// results remain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>List of `Release` instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releases")]
-        public virtual System.Collections.Generic.IList<Release> Releases { get; set; } 
+        public virtual System.Collections.Generic.IList<Release> Releases { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1267,11 +1267,11 @@ namespace Google.Apis.FirebaseRules.v1.Data
         /// <summary>The pagination token to retrieve the next page of results. If the value is empty, no further
         /// results remain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>List of `Ruleset` instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rulesets")]
-        public virtual System.Collections.Generic.IList<Ruleset> Rulesets { get; set; } 
+        public virtual System.Collections.Generic.IList<Ruleset> Rulesets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1283,7 +1283,7 @@ namespace Google.Apis.FirebaseRules.v1.Data
         /// <summary>Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of
         /// these.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
-        public virtual System.Collections.Generic.IList<string> Services { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Services { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1295,7 +1295,7 @@ namespace Google.Apis.FirebaseRules.v1.Data
     {
         /// <summary>Time the release was created. Output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Resource name for the `Release`. `Release` names may be structured `app1/prod/v2` or flat
         /// `app1_prod_v2` which affords developers a great deal of flexibility in mapping the name to the style that
@@ -1309,16 +1309,16 @@ namespace Google.Apis.FirebaseRules.v1.Data
         /// release name list filter, but in many ways the structured paths provide a clearer picture of the
         /// relationship between `Release` instances. Format: `projects/{project_id}/releases/{release_id}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be
         /// created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rulesetName")]
-        public virtual string RulesetName { get; set; } 
+        public virtual string RulesetName { get; set; }
 
         /// <summary>Time the release was updated. Output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1329,12 +1329,12 @@ namespace Google.Apis.FirebaseRules.v1.Data
     {
         /// <summary>The result is undefined, meaning the result could not be computed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("undefined")]
-        public virtual Empty Undefined { get; set; } 
+        public virtual Empty Undefined { get; set; }
 
         /// <summary>The result is an actual value. The type of the value must match that of the type declared by the
         /// service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual object Value { get; set; } 
+        public virtual object Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1346,20 +1346,20 @@ namespace Google.Apis.FirebaseRules.v1.Data
     {
         /// <summary>Time the `Ruleset` was created. Output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The metadata for this ruleset. Output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual Metadata Metadata { get; set; } 
+        public virtual Metadata Metadata { get; set; }
 
         /// <summary>Name of the `Ruleset`. The ruleset_id is auto generated by the service. Format:
         /// `projects/{project_id}/rulesets/{ruleset_id}` Output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>`Source` for the `Ruleset`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual Source Source { get; set; } 
+        public virtual Source Source { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1370,7 +1370,7 @@ namespace Google.Apis.FirebaseRules.v1.Data
     {
         /// <summary>`File` set constituting the `Source` bundle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
-        public virtual System.Collections.Generic.IList<File> Files { get; set; } 
+        public virtual System.Collections.Generic.IList<File> Files { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1382,23 +1382,23 @@ namespace Google.Apis.FirebaseRules.v1.Data
     {
         /// <summary>First column on the source line associated with the source fragment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("column")]
-        public virtual System.Nullable<int> Column { get; set; } 
+        public virtual System.Nullable<int> Column { get; set; }
 
         /// <summary>Start position relative to the beginning of the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentOffset")]
-        public virtual System.Nullable<int> CurrentOffset { get; set; } 
+        public virtual System.Nullable<int> CurrentOffset { get; set; }
 
         /// <summary>End position relative to the beginning of the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endOffset")]
-        public virtual System.Nullable<int> EndOffset { get; set; } 
+        public virtual System.Nullable<int> EndOffset { get; set; }
 
         /// <summary>Name of the `File`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
-        public virtual string FileName { get; set; } 
+        public virtual string FileName { get; set; }
 
         /// <summary>Line number of the source fragment. 1-based.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("line")]
-        public virtual System.Nullable<int> Line { get; set; } 
+        public virtual System.Nullable<int> Line { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1413,20 +1413,20 @@ namespace Google.Apis.FirebaseRules.v1.Data
     {
         /// <summary>Test expectation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expectation")]
-        public virtual string Expectation { get; set; } 
+        public virtual string Expectation { get; set; }
 
         /// <summary>Specifies what should be included in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expressionReportLevel")]
-        public virtual string ExpressionReportLevel { get; set; } 
+        public virtual string ExpressionReportLevel { get; set; }
 
         /// <summary>Optional function mocks for service-defined functions. If not set, any service defined function is
         /// expected to return an error, which may or may not influence the test outcome.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionMocks")]
-        public virtual System.Collections.Generic.IList<FunctionMock> FunctionMocks { get; set; } 
+        public virtual System.Collections.Generic.IList<FunctionMock> FunctionMocks { get; set; }
 
         /// <summary>Specifies whether paths (such as request.path) are encoded and how.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathEncoding")]
-        public virtual string PathEncoding { get; set; } 
+        public virtual string PathEncoding { get; set; }
 
         /// <summary>Request context. The exact format of the request context is service-dependent. See the appropriate
         /// service documentation for information about the supported fields and types on the request. Minimally, all
@@ -1435,12 +1435,12 @@ namespace Google.Apis.FirebaseRules.v1.Data
         /// | `google.protobuf.Timestamp` If the request value is not well-formed for the service, the request will be
         /// rejected as an invalid argument.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("request")]
-        public virtual object Request { get; set; } 
+        public virtual object Request { get; set; }
 
         /// <summary>Optional resource value as it appears in persistent storage before the request is fulfilled. The
         /// resource type depends on the `request.path` value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
-        public virtual object Resource { get; set; } 
+        public virtual object Resource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1454,37 +1454,37 @@ namespace Google.Apis.FirebaseRules.v1.Data
         /// be related to too many or too few invocations of function mocks or to runtime errors that occur during
         /// evaluation. For example: ```Unable to read variable [name: "resource"]```</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugMessages")]
-        public virtual System.Collections.Generic.IList<string> DebugMessages { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DebugMessages { get; set; }
 
         /// <summary>Position in the `Source` or `Ruleset` where the principle runtime error occurs. Evaluation of an
         /// expression may result in an error. Rules are deny by default, so a `DENY` expectation when an error is
         /// generated is valid. When there is a `DENY` with an error, the `SourcePosition` is returned. E.g.
         /// `error_position { line: 19 column: 37 }`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorPosition")]
-        public virtual SourcePosition ErrorPosition { get; set; } 
+        public virtual SourcePosition ErrorPosition { get; set; }
 
         /// <summary>The mapping from expression in the ruleset AST to the values they were evaluated to. Partially-
         /// nested to mirror AST structure. Note that this field is actually tracking expressions and not permission
         /// statements in contrast to the "visited_expressions" field above. Literal expressions are omitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expressionReports")]
-        public virtual System.Collections.Generic.IList<ExpressionReport> ExpressionReports { get; set; } 
+        public virtual System.Collections.Generic.IList<ExpressionReport> ExpressionReports { get; set; }
 
         /// <summary>The set of function calls made to service-defined methods. Function calls are included in the order
         /// in which they are encountered during evaluation, are provided for both mocked and unmocked functions, and
         /// included on the response regardless of the test `state`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionCalls")]
-        public virtual System.Collections.Generic.IList<FunctionCall> FunctionCalls { get; set; } 
+        public virtual System.Collections.Generic.IList<FunctionCall> FunctionCalls { get; set; }
 
         /// <summary>State of the test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The set of visited permission expressions for a given test. This returns the positions and
         /// evaluation results of all visited permission expressions which were relevant to the test case, e.g. ```
         /// match /path { allow read if: } ``` For a detailed report of the intermediate evaluation states, see the
         /// `expression_reports` field</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitedExpressions")]
-        public virtual System.Collections.Generic.IList<VisitedExpression> VisitedExpressions { get; set; } 
+        public virtual System.Collections.Generic.IList<VisitedExpression> VisitedExpressions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1496,11 +1496,11 @@ namespace Google.Apis.FirebaseRules.v1.Data
         /// <summary>Optional `Source` to be checked for correctness. This field must not be set when the resource name
         /// refers to a `Ruleset`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual Source Source { get; set; } 
+        public virtual Source Source { get; set; }
 
         /// <summary>Inline `TestSuite` to run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testSuite")]
-        public virtual TestSuite TestSuite { get; set; } 
+        public virtual TestSuite TestSuite { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1512,12 +1512,12 @@ namespace Google.Apis.FirebaseRules.v1.Data
         /// <summary>Syntactic and semantic `Source` issues of varying severity. Issues of `ERROR` severity will prevent
         /// tests from executing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issues")]
-        public virtual System.Collections.Generic.IList<Issue> Issues { get; set; } 
+        public virtual System.Collections.Generic.IList<Issue> Issues { get; set; }
 
         /// <summary>The set of test results given the test cases in the `TestSuite`. The results will appear in the
         /// same order as the test cases appear in the `TestSuite`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testResults")]
-        public virtual System.Collections.Generic.IList<TestResult> TestResults { get; set; } 
+        public virtual System.Collections.Generic.IList<TestResult> TestResults { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1530,7 +1530,7 @@ namespace Google.Apis.FirebaseRules.v1.Data
     {
         /// <summary>Collection of test cases associated with the `TestSuite`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testCases")]
-        public virtual System.Collections.Generic.IList<TestCase> TestCases { get; set; } 
+        public virtual System.Collections.Generic.IList<TestCase> TestCases { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1541,11 +1541,11 @@ namespace Google.Apis.FirebaseRules.v1.Data
     {
         /// <summary>`Release` to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("release")]
-        public virtual Release Release { get; set; } 
+        public virtual Release Release { get; set; }
 
         /// <summary>Specifies which fields to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1556,11 +1556,11 @@ namespace Google.Apis.FirebaseRules.v1.Data
     {
         /// <summary>The amount of times that expression returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
-        public virtual System.Nullable<int> Count { get; set; } 
+        public virtual System.Nullable<int> Count { get; set; }
 
         /// <summary>The return value of the expression</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual object Value { get; set; } 
+        public virtual object Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1571,11 +1571,11 @@ namespace Google.Apis.FirebaseRules.v1.Data
     {
         /// <summary>Position in the `Source` or `Ruleset` where an expression was visited.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourcePosition")]
-        public virtual SourcePosition SourcePosition { get; set; } 
+        public virtual SourcePosition SourcePosition { get; set; }
 
         /// <summary>The evaluated value for the visited expression, e.g. true/false</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual object Value { get; set; } 
+        public virtual object Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -829,7 +829,7 @@ namespace Google.Apis.SemanticTile.v1.Data
         /// <summary>True if the polygon is not entirely internal to the feature that it belongs to: that is, some of
         /// the edges are bordering another feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasExternalEdges")]
-        public virtual System.Nullable<bool> HasExternalEdges { get; set; } 
+        public virtual System.Nullable<bool> HasExternalEdges { get; set; }
 
         /// <summary>When has_external_edges is true, the polygon has some edges that border another feature. This field
         /// indicates the internal edges that do not border another feature. Each value is an index into the vertices
@@ -840,7 +840,7 @@ namespace Google.Apis.SemanticTile.v1.Data
         /// near the external edges of a body of water. If has_external_edges is false, all edges are internal and this
         /// field will be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalEdges")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> InternalEdges { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> InternalEdges { get; set; }
 
         /// <summary>Identifies the boundary loops of the polygon. Only set for INDEXED_TRIANGLE polygons. Each value is
         /// an index into the vertices array indicating the beginning of a loop. For instance, values of [2, 5] would
@@ -849,20 +849,20 @@ namespace Google.Apis.SemanticTile.v1.Data
         /// still internal to the feature. For example, a feature split across multiple tiles will have an internal
         /// polygon boundary edge along the edge of the tile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loopBreaks")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> LoopBreaks { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> LoopBreaks { get; set; }
 
         /// <summary>When the polygon encoding is of type INDEXED_TRIANGLES, this contains the indices of the triangle
         /// vertices in the vertex_offsets field. There are 3 vertex indices per triangle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triangleIndices")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> TriangleIndices { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> TriangleIndices { get; set; }
 
         /// <summary>The polygon encoding type used for this area.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The vertices present in the polygon defining the area.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vertexOffsets")]
-        public virtual Vertex2DList VertexOffsets { get; set; } 
+        public virtual Vertex2DList VertexOffsets { get; set; }
 
         /// <summary>The z-ordering of this area. Areas with a lower z-order should be rendered beneath areas with a
         /// higher z-order. This z-ordering does not imply anything about the altitude of the line relative to the
@@ -870,7 +870,7 @@ namespace Google.Apis.SemanticTile.v1.Data
         /// used to compare areas, and cannot be compared with the z_order field in the Line message. The z-order may be
         /// negative or zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zOrder")]
-        public virtual System.Nullable<int> ZOrder { get; set; } 
+        public virtual System.Nullable<int> ZOrder { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -884,17 +884,17 @@ namespace Google.Apis.SemanticTile.v1.Data
     {
         /// <summary>The area representing the footprint of the extruded area.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("area")]
-        public virtual Area Area { get; set; } 
+        public virtual Area Area { get; set; }
 
         /// <summary>The z-value in local tile coordinates where the extruded area ends.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxZ")]
-        public virtual System.Nullable<int> MaxZ { get; set; } 
+        public virtual System.Nullable<int> MaxZ { get; set; }
 
         /// <summary>The z-value in local tile coordinates where the extruded area begins. This is non-zero for extruded
         /// areas that begin off the ground. For example, a building with a skybridge may have an extruded area
         /// component with a non-zero min_z.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minZ")]
-        public virtual System.Nullable<int> MinZ { get; set; } 
+        public virtual System.Nullable<int> MinZ { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -905,27 +905,27 @@ namespace Google.Apis.SemanticTile.v1.Data
     {
         /// <summary>The localized name of this feature. Currently only returned for roads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The geometry of this feature, representing the space that it occupies in the world.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geometry")]
-        public virtual Geometry Geometry { get; set; } 
+        public virtual Geometry Geometry { get; set; }
 
         /// <summary>Place ID of this feature, suitable for use in Places API details requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placeId")]
-        public virtual string PlaceId { get; set; } 
+        public virtual string PlaceId { get; set; }
 
         /// <summary>Relations to other features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relations")]
-        public virtual System.Collections.Generic.IList<Relation> Relations { get; set; } 
+        public virtual System.Collections.Generic.IList<Relation> Relations { get; set; }
 
         /// <summary>Metadata for features with the SEGMENT FeatureType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentInfo")]
-        public virtual SegmentInfo SegmentInfo { get; set; } 
+        public virtual SegmentInfo SegmentInfo { get; set; }
 
         /// <summary>The type of this feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -936,25 +936,25 @@ namespace Google.Apis.SemanticTile.v1.Data
     {
         /// <summary>The global tile coordinates that uniquely identify this tile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coordinates")]
-        public virtual TileCoordinates Coordinates { get; set; } 
+        public virtual TileCoordinates Coordinates { get; set; }
 
         /// <summary>Features present on this map tile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
-        public virtual System.Collections.Generic.IList<Feature> Features { get; set; } 
+        public virtual System.Collections.Generic.IList<Feature> Features { get; set; }
 
         /// <summary>Resource name of the tile. The tile resource name is prefixed by its collection ID `tiles/`
         /// followed by the resource ID, which encodes the tile's global x and y coordinates and zoom level as `@,,z`.
         /// For example, `tiles/@1,2,3z`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Data providers for the data contained in this tile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("providers")]
-        public virtual System.Collections.Generic.IList<ProviderInfo> Providers { get; set; } 
+        public virtual System.Collections.Generic.IList<ProviderInfo> Providers { get; set; }
 
         /// <summary>Tile response status code to support tile caching.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>An opaque value, usually less than 30 characters, that contains version info about this tile and
         /// the data that was used to generate it. The client should store this value in its tile cache and pass it back
@@ -962,7 +962,7 @@ namespace Google.Apis.SemanticTile.v1.Data
         /// detect when the new tile would be the same as the one the client already has in its cache. Also see
         /// STATUS_OK_DATA_UNCHANGED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
-        public virtual string VersionId { get; set; } 
+        public virtual string VersionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -982,13 +982,13 @@ namespace Google.Apis.SemanticTile.v1.Data
         /// <summary>A multiplier applied to the altitude fields below to extract the actual altitudes in meters from
         /// the elevation grid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("altitudeMultiplier")]
-        public virtual System.Nullable<float> AltitudeMultiplier { get; set; } 
+        public virtual System.Nullable<float> AltitudeMultiplier { get; set; }
 
         /// <summary>Rows of points containing altitude data making up the elevation grid. Each row is the same length.
         /// Rows are ordered from north to south. E.g: rows[0] is the north-most row, and rows[n] is the south-most
         /// row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-        public virtual System.Collections.Generic.IList<Row> Rows { get; set; } 
+        public virtual System.Collections.Generic.IList<Row> Rows { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1003,19 +1003,19 @@ namespace Google.Apis.SemanticTile.v1.Data
     {
         /// <summary>The areas present in this geometry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("areas")]
-        public virtual System.Collections.Generic.IList<Area> Areas { get; set; } 
+        public virtual System.Collections.Generic.IList<Area> Areas { get; set; }
 
         /// <summary>The extruded areas present in this geometry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extrudedAreas")]
-        public virtual System.Collections.Generic.IList<ExtrudedArea> ExtrudedAreas { get; set; } 
+        public virtual System.Collections.Generic.IList<ExtrudedArea> ExtrudedAreas { get; set; }
 
         /// <summary>The lines present in this geometry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lines")]
-        public virtual System.Collections.Generic.IList<Line> Lines { get; set; } 
+        public virtual System.Collections.Generic.IList<Line> Lines { get; set; }
 
         /// <summary>The modeled volumes present in this geometry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modeledVolumes")]
-        public virtual System.Collections.Generic.IList<ModeledVolume> ModeledVolumes { get; set; } 
+        public virtual System.Collections.Generic.IList<ModeledVolume> ModeledVolumes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1026,7 +1026,7 @@ namespace Google.Apis.SemanticTile.v1.Data
     {
         /// <summary>The vertices present in the polyline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vertexOffsets")]
-        public virtual Vertex2DList VertexOffsets { get; set; } 
+        public virtual Vertex2DList VertexOffsets { get; set; }
 
         /// <summary>The z-order of the line. Lines with a lower z-order should be rendered beneath lines with a higher
         /// z-order. This z-ordering does not imply anything about the altitude of the area relative to the ground, but
@@ -1035,7 +1035,7 @@ namespace Google.Apis.SemanticTile.v1.Data
         /// compare lines, and cannot be compared with the z_order field in the Area message. The z-order may be
         /// negative or zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zOrder")]
-        public virtual System.Nullable<int> ZOrder { get; set; } 
+        public virtual System.Nullable<int> ZOrder { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1046,11 +1046,11 @@ namespace Google.Apis.SemanticTile.v1.Data
     {
         /// <summary>The triangle strips present in this mesh.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("strips")]
-        public virtual System.Collections.Generic.IList<TriangleStrip> Strips { get; set; } 
+        public virtual System.Collections.Generic.IList<TriangleStrip> Strips { get; set; }
 
         /// <summary>The vertices present in the mesh defining the modeled volume.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vertexOffsets")]
-        public virtual Vertex3DList VertexOffsets { get; set; } 
+        public virtual Vertex3DList VertexOffsets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1062,7 +1062,7 @@ namespace Google.Apis.SemanticTile.v1.Data
     {
         /// <summary>Attribution string for this provider. This string is not localized.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1074,11 +1074,11 @@ namespace Google.Apis.SemanticTile.v1.Data
     {
         /// <summary>Zero-based index to look up the related feature from the list of features in the tile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relatedFeatureIndex")]
-        public virtual System.Nullable<int> RelatedFeatureIndex { get; set; } 
+        public virtual System.Nullable<int> RelatedFeatureIndex { get; set; }
 
         /// <summary>Relation type between the origin feature to the related feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relationType")]
-        public virtual string RelationType { get; set; } 
+        public virtual string RelationType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1090,7 +1090,7 @@ namespace Google.Apis.SemanticTile.v1.Data
         /// <summary>Road has signage discouraging or prohibiting use by the general public. E.g., roads with signs that
         /// say "Private", or "No trespassing."</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isPrivate")]
-        public virtual System.Nullable<bool> IsPrivate { get; set; } 
+        public virtual System.Nullable<bool> IsPrivate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1105,7 +1105,7 @@ namespace Google.Apis.SemanticTile.v1.Data
         /// above sea level) can be reconstructed with: a[0] = altitude_diffs[0] * altitude_multiplier when n > 0, a[n]
         /// = a[n-1] + altitude_diffs[n-1] * altitude_multiplier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("altitudeDiffs")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> AltitudeDiffs { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> AltitudeDiffs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1125,12 +1125,12 @@ namespace Google.Apis.SemanticTile.v1.Data
         /// <summary>A multiplier applied to the elements in the encoded data to extract the actual altitudes in
         /// meters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("altitudeMultiplier")]
-        public virtual System.Nullable<float> AltitudeMultiplier { get; set; } 
+        public virtual System.Nullable<float> AltitudeMultiplier { get; set; }
 
         /// <summary>The number of columns included in the encoded elevation data (i.e. the horizontal resolution of the
         /// grid).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnCount")]
-        public virtual System.Nullable<int> ColumnCount { get; set; } 
+        public virtual System.Nullable<int> ColumnCount { get; set; }
 
         /// <summary>A stream of elements each representing a point on the tile running across each row from left to
         /// right, top to bottom. There will be precisely horizontal_resolution * vertical_resolution elements in the
@@ -1147,12 +1147,12 @@ namespace Google.Apis.SemanticTile.v1.Data
         /// Least significant 3 bits of absolute error |
         /// ------------------------------------------------------------------------|</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encodedData")]
-        public virtual string EncodedData { get; set; } 
+        public virtual string EncodedData { get; set; }
 
         /// <summary>The number of rows included in the encoded elevation data (i.e. the vertical resolution of the
         /// grid).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
-        public virtual System.Nullable<int> RowCount { get; set; } 
+        public virtual System.Nullable<int> RowCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1163,7 +1163,7 @@ namespace Google.Apis.SemanticTile.v1.Data
     {
         /// <summary>Metadata for features with the ROAD FeatureType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roadInfo")]
-        public virtual RoadInfo RoadInfo { get; set; } 
+        public virtual RoadInfo RoadInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1174,21 +1174,21 @@ namespace Google.Apis.SemanticTile.v1.Data
     {
         /// <summary>The global tile coordinates that uniquely identify this tile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coordinates")]
-        public virtual TileCoordinates Coordinates { get; set; } 
+        public virtual TileCoordinates Coordinates { get; set; }
 
         /// <summary>Terrain elevation data encoded as a FirstDerivativeElevationGrid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstDerivative")]
-        public virtual FirstDerivativeElevationGrid FirstDerivative { get; set; } 
+        public virtual FirstDerivativeElevationGrid FirstDerivative { get; set; }
 
         /// <summary>Resource name of the tile. The tile resource name is prefixed by its collection ID `terrain/`
         /// followed by the resource ID, which encodes the tile's global x and y coordinates and zoom level as `@,,z`.
         /// For example, `terrain/@1,2,3z`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Terrain elevation data encoded as a SecondDerivativeElevationGrid. .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondDerivative")]
-        public virtual SecondDerivativeElevationGrid SecondDerivative { get; set; } 
+        public virtual SecondDerivativeElevationGrid SecondDerivative { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1208,15 +1208,15 @@ namespace Google.Apis.SemanticTile.v1.Data
     {
         /// <summary>Required. The x coordinate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("x")]
-        public virtual System.Nullable<int> X { get; set; } 
+        public virtual System.Nullable<int> X { get; set; }
 
         /// <summary>Required. The y coordinate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("y")]
-        public virtual System.Nullable<int> Y { get; set; } 
+        public virtual System.Nullable<int> Y { get; set; }
 
         /// <summary>Required. The Google Maps API zoom level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zoom")]
-        public virtual System.Nullable<int> Zoom { get; set; } 
+        public virtual System.Nullable<int> Zoom { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1230,7 +1230,7 @@ namespace Google.Apis.SemanticTile.v1.Data
     {
         /// <summary>Index into the vertex_offset array representing the next vertex in the triangle strip.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vertexIndices")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> VertexIndices { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> VertexIndices { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1243,11 +1243,11 @@ namespace Google.Apis.SemanticTile.v1.Data
     {
         /// <summary>List of x-offsets in local tile coordinates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xOffsets")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> XOffsets { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> XOffsets { get; set; }
 
         /// <summary>List of y-offsets in local tile coordinates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yOffsets")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> YOffsets { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> YOffsets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1259,15 +1259,15 @@ namespace Google.Apis.SemanticTile.v1.Data
     {
         /// <summary>List of x-offsets in local tile coordinates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xOffsets")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> XOffsets { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> XOffsets { get; set; }
 
         /// <summary>List of y-offsets in local tile coordinates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yOffsets")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> YOffsets { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> YOffsets { get; set; }
 
         /// <summary>List of z-offsets in local tile coordinates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zOffsets")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> ZOffsets { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> ZOffsets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

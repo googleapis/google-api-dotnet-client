@@ -932,18 +932,18 @@ namespace Google.Apis.SystemsManagement.v1.Data
     {
         /// <summary>List of packages to exclude from update. These packages will be excluded</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludes")]
-        public virtual System.Collections.Generic.IList<string> Excludes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Excludes { get; set; }
 
         /// <summary>An exclusive list of packages to be updated. These are the only packages that will be updated. If
         /// these packages are not installed, they will be ignored. This field cannot be specified with any other patch
         /// configuration fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusivePackages")]
-        public virtual System.Collections.Generic.IList<string> ExclusivePackages { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExclusivePackages { get; set; }
 
         /// <summary>By changing the type to DIST, the patching is performed using `apt-get dist-upgrade`
         /// instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -971,11 +971,11 @@ namespace Google.Apis.SystemsManagement.v1.Data
     {
         /// <summary>The ExecStepConfig for all Linux VMs targeted by the PatchJob.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linuxExecStepConfig")]
-        public virtual ExecStepConfig LinuxExecStepConfig { get; set; } 
+        public virtual ExecStepConfig LinuxExecStepConfig { get; set; }
 
         /// <summary>The ExecStepConfig for all Windows VMs targeted by the PatchJob.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowsExecStepConfig")]
-        public virtual ExecStepConfig WindowsExecStepConfig { get; set; } 
+        public virtual ExecStepConfig WindowsExecStepConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -987,21 +987,21 @@ namespace Google.Apis.SystemsManagement.v1.Data
         /// <summary>Defaults to [0]. A list of possible return values that the execution can return to indicate a
         /// success.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedSuccessCodes")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> AllowedSuccessCodes { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> AllowedSuccessCodes { get; set; }
 
         /// <summary>A Cloud Storage object containing the executable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsObject")]
-        public virtual GcsObject GcsObject { get; set; } 
+        public virtual GcsObject GcsObject { get; set; }
 
         /// <summary>The script interpreter to use to run the script. If no interpreter is specified the script will be
         /// executed directly, which will likely only succeed for scripts with [shebang lines]
         /// (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interpreter")]
-        public virtual string Interpreter { get; set; } 
+        public virtual string Interpreter { get; set; }
 
         /// <summary>An absolute path to the executable on the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localPath")]
-        public virtual string LocalPath { get; set; } 
+        public virtual string LocalPath { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1012,33 +1012,33 @@ namespace Google.Apis.SystemsManagement.v1.Data
     {
         /// <summary>Description of the patch job. Length of the description is limited to 1024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Display name for this patch job. This does not have to be unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>If this patch is a dry-run only, instances are contacted but will do nothing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dryRun")]
-        public virtual System.Nullable<bool> DryRun { get; set; } 
+        public virtual System.Nullable<bool> DryRun { get; set; }
 
         /// <summary>Duration of the patch job. After the duration ends, the patch job times out.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual object Duration { get; set; } 
+        public virtual object Duration { get; set; }
 
         /// <summary>Required. Instances to patch, either explicitly or filtered by some criteria such as zone or
         /// labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceFilter")]
-        public virtual PatchInstanceFilter InstanceFilter { get; set; } 
+        public virtual PatchInstanceFilter InstanceFilter { get; set; }
 
         /// <summary>Patch configuration being applied. If omitted, instances are patched using the default
         /// configurations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("patchConfig")]
-        public virtual PatchConfig PatchConfig { get; set; } 
+        public virtual PatchConfig PatchConfig { get; set; }
 
         /// <summary>Rollout strategy of the patch job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rollout")]
-        public virtual PatchRollout Rollout { get; set; } 
+        public virtual PatchRollout Rollout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1050,12 +1050,12 @@ namespace Google.Apis.SystemsManagement.v1.Data
     {
         /// <summary>Specifies a fixed value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixed")]
-        public virtual System.Nullable<int> Fixed__ { get; set; } 
+        public virtual System.Nullable<int> Fixed__ { get; set; }
 
         /// <summary>Specifies the relative value defined as a percentage, which will be multiplied by a reference
         /// value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percent")]
-        public virtual System.Nullable<int> Percent { get; set; } 
+        public virtual System.Nullable<int> Percent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1066,16 +1066,16 @@ namespace Google.Apis.SystemsManagement.v1.Data
     {
         /// <summary>Required. Bucket of the Cloud Storage object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
-        public virtual string Bucket { get; set; } 
+        public virtual string Bucket { get; set; }
 
         /// <summary>Required. Generation number of the Cloud Storage object. This is used to ensure that the ExecStep
         /// specified by this PatchJob does not change.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generationNumber")]
-        public virtual System.Nullable<long> GenerationNumber { get; set; } 
+        public virtual System.Nullable<long> GenerationNumber { get; set; }
 
         /// <summary>Required. Name of the Cloud Storage object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("object")]
-        public virtual string Object__ { get; set; } 
+        public virtual string Object__ { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1093,11 +1093,11 @@ namespace Google.Apis.SystemsManagement.v1.Data
     {
         /// <summary>A pagination token that can be used to get the next page of patch deployments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of patch deployments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("patchDeployments")]
-        public virtual System.Collections.Generic.IList<PatchDeployment> PatchDeployments { get; set; } 
+        public virtual System.Collections.Generic.IList<PatchDeployment> PatchDeployments { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1108,11 +1108,11 @@ namespace Google.Apis.SystemsManagement.v1.Data
     {
         /// <summary>A pagination token that can be used to get the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of instance status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("patchJobInstanceDetails")]
-        public virtual System.Collections.Generic.IList<PatchJobInstanceDetails> PatchJobInstanceDetails { get; set; } 
+        public virtual System.Collections.Generic.IList<PatchJobInstanceDetails> PatchJobInstanceDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1123,11 +1123,11 @@ namespace Google.Apis.SystemsManagement.v1.Data
     {
         /// <summary>A pagination token that can be used to get the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of patch jobs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("patchJobs")]
-        public virtual System.Collections.Generic.IList<PatchJob> PatchJobs { get; set; } 
+        public virtual System.Collections.Generic.IList<PatchJob> PatchJobs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1141,11 +1141,11 @@ namespace Google.Apis.SystemsManagement.v1.Data
         /// of the month. Months without the target day will be skipped. For example, a schedule to run "every month on
         /// the 31st" will not run in February, April, June, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monthDay")]
-        public virtual System.Nullable<int> MonthDay { get; set; } 
+        public virtual System.Nullable<int> MonthDay { get; set; }
 
         /// <summary>Required. Week day in a month.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weekDayOfMonth")]
-        public virtual WeekDayOfMonth WeekDayOfMonth { get; set; } 
+        public virtual WeekDayOfMonth WeekDayOfMonth { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1157,7 +1157,7 @@ namespace Google.Apis.SystemsManagement.v1.Data
     {
         /// <summary>Required. The desired patch job execution time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executeTime")]
-        public virtual object ExecuteTime { get; set; } 
+        public virtual object ExecuteTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1169,35 +1169,35 @@ namespace Google.Apis.SystemsManagement.v1.Data
     {
         /// <summary>Apt update settings. Use this setting to override the default `apt` patch rules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apt")]
-        public virtual AptSettings Apt { get; set; } 
+        public virtual AptSettings Apt { get; set; }
 
         /// <summary>Goo update settings. Use this setting to override the default `goo` patch rules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("goo")]
-        public virtual GooSettings Goo { get; set; } 
+        public virtual GooSettings Goo { get; set; }
 
         /// <summary>The `ExecStep` to run after the patch update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postStep")]
-        public virtual ExecStep PostStep { get; set; } 
+        public virtual ExecStep PostStep { get; set; }
 
         /// <summary>The `ExecStep` to run before the patch update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preStep")]
-        public virtual ExecStep PreStep { get; set; } 
+        public virtual ExecStep PreStep { get; set; }
 
         /// <summary>Post-patch reboot settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rebootConfig")]
-        public virtual string RebootConfig { get; set; } 
+        public virtual string RebootConfig { get; set; }
 
         /// <summary>Windows update settings. Use this override the default windows patch rules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowsUpdate")]
-        public virtual WindowsUpdateSettings WindowsUpdate { get; set; } 
+        public virtual WindowsUpdateSettings WindowsUpdate { get; set; }
 
         /// <summary>Yum update settings. Use this setting to override the default `yum` patch rules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yum")]
-        public virtual YumSettings Yum { get; set; } 
+        public virtual YumSettings Yum { get; set; }
 
         /// <summary>Zypper update settings. Use this setting to override the default `zypper` patch rules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zypper")]
-        public virtual ZypperSettings Zypper { get; set; } 
+        public virtual ZypperSettings Zypper { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1212,52 +1212,52 @@ namespace Google.Apis.SystemsManagement.v1.Data
         /// <summary>Output only. Time the patch deployment was created. Timestamp is in
         /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Optional. Description of the patch deployment. Length of the description is limited to 1024
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Optional. Duration of the patch. After the duration ends, the patch times out.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual object Duration { get; set; } 
+        public virtual object Duration { get; set; }
 
         /// <summary>Required. VM instances to patch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceFilter")]
-        public virtual PatchInstanceFilter InstanceFilter { get; set; } 
+        public virtual PatchInstanceFilter InstanceFilter { get; set; }
 
         /// <summary>Output only. The last time a patch job was started by this deployment. Timestamp is in
         /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastExecuteTime")]
-        public virtual object LastExecuteTime { get; set; } 
+        public virtual object LastExecuteTime { get; set; }
 
         /// <summary>Unique name for the patch deployment resource in a project. The patch deployment name is in the
         /// form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create
         /// a new patch deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. Schedule a one-time execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oneTimeSchedule")]
-        public virtual OneTimeSchedule OneTimeSchedule { get; set; } 
+        public virtual OneTimeSchedule OneTimeSchedule { get; set; }
 
         /// <summary>Optional. Patch configuration that is applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("patchConfig")]
-        public virtual PatchConfig PatchConfig { get; set; } 
+        public virtual PatchConfig PatchConfig { get; set; }
 
         /// <summary>Required. Schedule recurring executions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurringSchedule")]
-        public virtual RecurringSchedule RecurringSchedule { get; set; } 
+        public virtual RecurringSchedule RecurringSchedule { get; set; }
 
         /// <summary>Optional. Rollout strategy of the patch job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rollout")]
-        public virtual PatchRollout Rollout { get; set; } 
+        public virtual PatchRollout Rollout { get; set; }
 
         /// <summary>Output only. Time the patch deployment was last updated. Timestamp is in
         /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1270,29 +1270,29 @@ namespace Google.Apis.SystemsManagement.v1.Data
     {
         /// <summary>Target all VM instances in the project. If true, no other criteria is permitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("all")]
-        public virtual System.Nullable<bool> All { get; set; } 
+        public virtual System.Nullable<bool> All { get; set; }
 
         /// <summary>Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups
         /// of VM instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupLabels")]
-        public virtual System.Collections.Generic.IList<PatchInstanceFilterGroupLabel> GroupLabels { get; set; } 
+        public virtual System.Collections.Generic.IList<PatchInstanceFilterGroupLabel> GroupLabels { get; set; }
 
         /// <summary>Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to
         /// group VMs when targeting configs, for example prefix="prod-".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceNamePrefixes")]
-        public virtual System.Collections.Generic.IList<string> InstanceNamePrefixes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> InstanceNamePrefixes { get; set; }
 
         /// <summary>Targets any of the VM instances specified. Instances are specified by their URI in the form
         /// `zones/[ZONE]/instances/[INSTANCE_NAME]`, `projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or
         /// `https://www.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`</summar
         /// y>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
-        public virtual System.Collections.Generic.IList<string> Instances { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Instances { get; set; }
 
         /// <summary>Targets VM instances in ANY of these zones. Leave empty to target VM instances in any
         /// zone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zones")]
-        public virtual System.Collections.Generic.IList<string> Zones { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Zones { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1308,7 +1308,7 @@ namespace Google.Apis.SystemsManagement.v1.Data
         /// <summary>Compute Engine instance labels that must be present for a VM instance to be targeted by this
         /// filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1322,65 +1322,65 @@ namespace Google.Apis.SystemsManagement.v1.Data
     {
         /// <summary>Time this patch job was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Description of the patch job. Length of the description is limited to 1024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Display name for this patch job. This is not a unique identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>If this patch job is a dry run, the agent reports that it has finished without running any updates
         /// on the VM instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dryRun")]
-        public virtual System.Nullable<bool> DryRun { get; set; } 
+        public virtual System.Nullable<bool> DryRun { get; set; }
 
         /// <summary>Duration of the patch job. After the duration ends, the patch job times out.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual object Duration { get; set; } 
+        public virtual object Duration { get; set; }
 
         /// <summary>If this patch job failed, this message provides information about the failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
-        public virtual string ErrorMessage { get; set; } 
+        public virtual string ErrorMessage { get; set; }
 
         /// <summary>Summary of instance details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceDetailsSummary")]
-        public virtual PatchJobInstanceDetailsSummary InstanceDetailsSummary { get; set; } 
+        public virtual PatchJobInstanceDetailsSummary InstanceDetailsSummary { get; set; }
 
         /// <summary>Instances to patch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceFilter")]
-        public virtual PatchInstanceFilter InstanceFilter { get; set; } 
+        public virtual PatchInstanceFilter InstanceFilter { get; set; }
 
         /// <summary>Unique identifier for this patch job in the form `projects/patchJobs`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Patch configuration being applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("patchConfig")]
-        public virtual PatchConfig PatchConfig { get; set; } 
+        public virtual PatchConfig PatchConfig { get; set; }
 
         /// <summary>Output only. Name of the patch deployment that created this patch job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("patchDeployment")]
-        public virtual string PatchDeployment { get; set; } 
+        public virtual string PatchDeployment { get; set; }
 
         /// <summary>Reflects the overall progress of the patch job in the range of 0.0 being no progress to 100.0 being
         /// complete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percentComplete")]
-        public virtual System.Nullable<double> PercentComplete { get; set; } 
+        public virtual System.Nullable<double> PercentComplete { get; set; }
 
         /// <summary>Rollout strategy being applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rollout")]
-        public virtual PatchRollout Rollout { get; set; } 
+        public virtual PatchRollout Rollout { get; set; }
 
         /// <summary>The current state of the PatchJob.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Last time this patch job was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1393,23 +1393,23 @@ namespace Google.Apis.SystemsManagement.v1.Data
     {
         /// <summary>The number of times the agent that the agent attempts to apply the patch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attemptCount")]
-        public virtual System.Nullable<long> AttemptCount { get; set; } 
+        public virtual System.Nullable<long> AttemptCount { get; set; }
 
         /// <summary>If the patch fails, this field provides the reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureReason")]
-        public virtual string FailureReason { get; set; } 
+        public virtual string FailureReason { get; set; }
 
         /// <summary>The unique identifier for the instance. This identifier is defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceSystemId")]
-        public virtual string InstanceSystemId { get; set; } 
+        public virtual string InstanceSystemId { get; set; }
 
         /// <summary>The instance name in the form `projects/zones/instances`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Current state of instance patch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1422,64 +1422,64 @@ namespace Google.Apis.SystemsManagement.v1.Data
     {
         /// <summary>Number of instances that have acked and will start shortly.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ackedInstanceCount")]
-        public virtual System.Nullable<long> AckedInstanceCount { get; set; } 
+        public virtual System.Nullable<long> AckedInstanceCount { get; set; }
 
         /// <summary>Number of instances that are applying patches.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applyingPatchesInstanceCount")]
-        public virtual System.Nullable<long> ApplyingPatchesInstanceCount { get; set; } 
+        public virtual System.Nullable<long> ApplyingPatchesInstanceCount { get; set; }
 
         /// <summary>Number of instances that are downloading patches.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadingPatchesInstanceCount")]
-        public virtual System.Nullable<long> DownloadingPatchesInstanceCount { get; set; } 
+        public virtual System.Nullable<long> DownloadingPatchesInstanceCount { get; set; }
 
         /// <summary>Number of instances that failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failedInstanceCount")]
-        public virtual System.Nullable<long> FailedInstanceCount { get; set; } 
+        public virtual System.Nullable<long> FailedInstanceCount { get; set; }
 
         /// <summary>Number of instances that are inactive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inactiveInstanceCount")]
-        public virtual System.Nullable<long> InactiveInstanceCount { get; set; } 
+        public virtual System.Nullable<long> InactiveInstanceCount { get; set; }
 
         /// <summary>Number of instances that do not appear to be running the agent. Check to ensure that the agent is
         /// installed, running, and able to communicate with the service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noAgentDetectedInstanceCount")]
-        public virtual System.Nullable<long> NoAgentDetectedInstanceCount { get; set; } 
+        public virtual System.Nullable<long> NoAgentDetectedInstanceCount { get; set; }
 
         /// <summary>Number of instances notified about patch job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notifiedInstanceCount")]
-        public virtual System.Nullable<long> NotifiedInstanceCount { get; set; } 
+        public virtual System.Nullable<long> NotifiedInstanceCount { get; set; }
 
         /// <summary>Number of instances pending patch job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pendingInstanceCount")]
-        public virtual System.Nullable<long> PendingInstanceCount { get; set; } 
+        public virtual System.Nullable<long> PendingInstanceCount { get; set; }
 
         /// <summary>Number of instances that are running the post-patch step.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postPatchStepInstanceCount")]
-        public virtual System.Nullable<long> PostPatchStepInstanceCount { get; set; } 
+        public virtual System.Nullable<long> PostPatchStepInstanceCount { get; set; }
 
         /// <summary>Number of instances that are running the pre-patch step.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prePatchStepInstanceCount")]
-        public virtual System.Nullable<long> PrePatchStepInstanceCount { get; set; } 
+        public virtual System.Nullable<long> PrePatchStepInstanceCount { get; set; }
 
         /// <summary>Number of instances rebooting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rebootingInstanceCount")]
-        public virtual System.Nullable<long> RebootingInstanceCount { get; set; } 
+        public virtual System.Nullable<long> RebootingInstanceCount { get; set; }
 
         /// <summary>Number of instances that have started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startedInstanceCount")]
-        public virtual System.Nullable<long> StartedInstanceCount { get; set; } 
+        public virtual System.Nullable<long> StartedInstanceCount { get; set; }
 
         /// <summary>Number of instances that have completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("succeededInstanceCount")]
-        public virtual System.Nullable<long> SucceededInstanceCount { get; set; } 
+        public virtual System.Nullable<long> SucceededInstanceCount { get; set; }
 
         /// <summary>Number of instances that require reboot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("succeededRebootRequiredInstanceCount")]
-        public virtual System.Nullable<long> SucceededRebootRequiredInstanceCount { get; set; } 
+        public virtual System.Nullable<long> SucceededRebootRequiredInstanceCount { get; set; }
 
         /// <summary>Number of instances that exceeded the time out while applying the patch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timedOutInstanceCount")]
-        public virtual System.Nullable<long> TimedOutInstanceCount { get; set; } 
+        public virtual System.Nullable<long> TimedOutInstanceCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1503,11 +1503,11 @@ namespace Google.Apis.SystemsManagement.v1.Data
         /// patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch
         /// job stops.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disruptionBudget")]
-        public virtual FixedOrPercent DisruptionBudget { get; set; } 
+        public virtual FixedOrPercent DisruptionBudget { get; set; }
 
         /// <summary>Mode of the patch rollout.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
-        public virtual string Mode { get; set; } 
+        public virtual string Mode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1519,41 +1519,41 @@ namespace Google.Apis.SystemsManagement.v1.Data
         /// <summary>Optional. The end time at which a recurring patch deployment schedule is no longer
         /// active.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Required. The frequency unit of this recurring schedule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frequency")]
-        public virtual string Frequency { get; set; } 
+        public virtual string Frequency { get; set; }
 
         /// <summary>Output only. The time the last patch job ran successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastExecuteTime")]
-        public virtual object LastExecuteTime { get; set; } 
+        public virtual object LastExecuteTime { get; set; }
 
         /// <summary>Required. Schedule with monthly executions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monthly")]
-        public virtual MonthlySchedule Monthly { get; set; } 
+        public virtual MonthlySchedule Monthly { get; set; }
 
         /// <summary>Output only. The time the next patch job is scheduled to run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextExecuteTime")]
-        public virtual object NextExecuteTime { get; set; } 
+        public virtual object NextExecuteTime { get; set; }
 
         /// <summary>Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the
         /// patch deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>Required. Time of the day to run a recurring deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeOfDay")]
-        public virtual TimeOfDay TimeOfDay { get; set; } 
+        public virtual TimeOfDay TimeOfDay { get; set; }
 
         /// <summary>Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving
         /// time are determined by the chosen time zone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
-        public virtual TimeZone TimeZone { get; set; } 
+        public virtual TimeZone TimeZone { get; set; }
 
         /// <summary>Required. Schedule with weekly executions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weekly")]
-        public virtual WeeklySchedule Weekly { get; set; } 
+        public virtual WeeklySchedule Weekly { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1567,20 +1567,20 @@ namespace Google.Apis.SystemsManagement.v1.Data
         /// <summary>Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value
         /// "24:00:00" for scenarios like business closing time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hours")]
-        public virtual System.Nullable<int> Hours { get; set; } 
+        public virtual System.Nullable<int> Hours { get; set; }
 
         /// <summary>Minutes of hour of day. Must be from 0 to 59.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
-        public virtual System.Nullable<int> Minutes { get; set; } 
+        public virtual System.Nullable<int> Minutes { get; set; }
 
         /// <summary>Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
-        public virtual System.Nullable<int> Nanos { get; set; } 
+        public virtual System.Nullable<int> Nanos { get; set; }
 
         /// <summary>Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it
         /// allows leap-seconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
-        public virtual System.Nullable<int> Seconds { get; set; } 
+        public virtual System.Nullable<int> Seconds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1591,11 +1591,11 @@ namespace Google.Apis.SystemsManagement.v1.Data
     {
         /// <summary>IANA Time Zone Database time zone, e.g. "America/New_York".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Optional. IANA Time Zone Database version number, e.g. "2019a".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1606,12 +1606,12 @@ namespace Google.Apis.SystemsManagement.v1.Data
     {
         /// <summary>Required. A day of the week.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dayOfWeek")]
-        public virtual string DayOfWeek { get; set; } 
+        public virtual string DayOfWeek { get; set; }
 
         /// <summary>Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the
         /// last week of the month.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weekOrdinal")]
-        public virtual System.Nullable<int> WeekOrdinal { get; set; } 
+        public virtual System.Nullable<int> WeekOrdinal { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1622,7 +1622,7 @@ namespace Google.Apis.SystemsManagement.v1.Data
     {
         /// <summary>Required. Day of the week.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dayOfWeek")]
-        public virtual string DayOfWeek { get; set; } 
+        public virtual string DayOfWeek { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1634,16 +1634,16 @@ namespace Google.Apis.SystemsManagement.v1.Data
         /// <summary>Only apply updates of these windows update classifications. If empty, all updates are
         /// applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("classifications")]
-        public virtual System.Collections.Generic.IList<string> Classifications { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Classifications { get; set; }
 
         /// <summary>List of KBs to exclude from update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludes")]
-        public virtual System.Collections.Generic.IList<string> Excludes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Excludes { get; set; }
 
         /// <summary>An exclusive list of kbs to be updated. These are the only patches that will be updated. This field
         /// must not be used with other patch configurations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusivePatches")]
-        public virtual System.Collections.Generic.IList<string> ExclusivePatches { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExclusivePatches { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1656,21 +1656,21 @@ namespace Google.Apis.SystemsManagement.v1.Data
         /// <summary>List of packages to exclude from update. These packages are excluded by using the yum `--exclude`
         /// flag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludes")]
-        public virtual System.Collections.Generic.IList<string> Excludes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Excludes { get; set; }
 
         /// <summary>An exclusive list of packages to be updated. These are the only packages that will be updated. If
         /// these packages are not installed, they will be ignored. This field must not be specified with any other
         /// patch configuration fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusivePackages")]
-        public virtual System.Collections.Generic.IList<string> ExclusivePackages { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExclusivePackages { get; set; }
 
         /// <summary>Will cause patch to run `yum update-minimal` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimal")]
-        public virtual System.Nullable<bool> Minimal { get; set; } 
+        public virtual System.Nullable<bool> Minimal { get; set; }
 
         /// <summary>Adds the `--security` flag to `yum update`. Not supported on all platforms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("security")]
-        public virtual System.Nullable<bool> Security { get; set; } 
+        public virtual System.Nullable<bool> Security { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1683,30 +1683,30 @@ namespace Google.Apis.SystemsManagement.v1.Data
         /// <summary>Install only patches with these categories. Common categories include security, recommended, and
         /// feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]
-        public virtual System.Collections.Generic.IList<string> Categories { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Categories { get; set; }
 
         /// <summary>List of patches to exclude from update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludes")]
-        public virtual System.Collections.Generic.IList<string> Excludes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Excludes { get; set; }
 
         /// <summary>An exclusive list of patches to be updated. These are the only patches that will be installed using
         /// 'zypper patch patch:' command. This field must not be used with any other patch configuration
         /// fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusivePatches")]
-        public virtual System.Collections.Generic.IList<string> ExclusivePatches { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExclusivePatches { get; set; }
 
         /// <summary>Install only patches with these severities. Common severities include critical, important,
         /// moderate, and low.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severities")]
-        public virtual System.Collections.Generic.IList<string> Severities { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Severities { get; set; }
 
         /// <summary>Adds the `--with-optional` flag to `zypper patch`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("withOptional")]
-        public virtual System.Nullable<bool> WithOptional { get; set; } 
+        public virtual System.Nullable<bool> WithOptional { get; set; }
 
         /// <summary>Adds the `--with-update` flag, to `zypper patch`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("withUpdate")]
-        public virtual System.Nullable<bool> WithUpdate { get; set; } 
+        public virtual System.Nullable<bool> WithUpdate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1297,70 +1297,70 @@ namespace Google.Apis.Tasks.v1.Data
         /// <summary>Completion date of the task (as a RFC 3339 timestamp). This field is omitted if the task has not
         /// been completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completed")]
-        public virtual string Completed { get; set; } 
+        public virtual string Completed { get; set; }
 
         /// <summary>Flag indicating whether the task has been deleted. The default is False.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
-        public virtual System.Nullable<bool> Deleted { get; set; } 
+        public virtual System.Nullable<bool> Deleted { get; set; }
 
         /// <summary>Due date of the task (as a RFC 3339 timestamp). Optional. The due date only records date
         /// information; the time portion of the timestamp is discarded when setting the due date. It isn't possible to
         /// read or write the time that a task is due via the API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("due")]
-        public virtual string Due { get; set; } 
+        public virtual string Due { get; set; }
 
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Flag indicating whether the task is hidden. This is the case if the task had been marked completed
         /// when the task list was last cleared. The default is False. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hidden")]
-        public virtual System.Nullable<bool> Hidden { get; set; } 
+        public virtual System.Nullable<bool> Hidden { get; set; }
 
         /// <summary>Task identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Type of the resource. This is always "tasks#task".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Collection of links. This collection is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("links")]
-        public virtual System.Collections.Generic.IList<LinksData> Links { get; set; } 
+        public virtual System.Collections.Generic.IList<LinksData> Links { get; set; }
 
         /// <summary>Notes describing the task. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
-        public virtual string Notes { get; set; } 
+        public virtual string Notes { get; set; }
 
         /// <summary>Parent task identifier. This field is omitted if it is a top-level task. This field is read-only.
         /// Use the "move" method to move the task under a different parent or to the top level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; } 
+        public virtual string Parent { get; set; }
 
         /// <summary>String indicating the position of the task among its sibling tasks under the same parent task or at
         /// the top level. If this string is greater than another task's corresponding position string according to
         /// lexicographical ordering, the task is positioned after the other task under the same parent task (or at the
         /// top level). This field is read-only. Use the "move" method to move the task to another position.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("position")]
-        public virtual string Position { get; set; } 
+        public virtual string Position { get; set; }
 
         /// <summary>URL pointing to this task. Used to retrieve, update, or delete this task.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>Status of the task. This is either "needsAction" or "completed".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>Title of the task.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>Last modification time of the task (as a RFC 3339 timestamp).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
-        public virtual string Updated { get; set; } 
+        public virtual string Updated { get; set; }
 
         
 
@@ -1368,15 +1368,15 @@ namespace Google.Apis.Tasks.v1.Data
         {
             /// <summary>The description. In HTML speak: Everything between  and .</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("description")]
-            public virtual string Description { get; set; } 
+            public virtual string Description { get; set; }
 
             /// <summary>The URL.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("link")]
-            public virtual string Link { get; set; } 
+            public virtual string Link { get; set; }
 
             /// <summary>Type of the link, e.g. "email".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual string Type { get; set; } 
+            public virtual string Type { get; set; }
 
         }
     }    
@@ -1385,27 +1385,27 @@ namespace Google.Apis.Tasks.v1.Data
     {
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Task list identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Type of the resource. This is always "tasks#taskList".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>URL pointing to this task list. Used to retrieve, update, or delete this task list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>Title of the task list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>Last modification time of the task list (as a RFC 3339 timestamp).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
-        public virtual string Updated { get; set; } 
+        public virtual string Updated { get; set; }
 
     }    
 
@@ -1413,19 +1413,19 @@ namespace Google.Apis.Tasks.v1.Data
     {
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Collection of task lists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<TaskList> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<TaskList> Items { get; set; }
 
         /// <summary>Type of the resource. This is always "tasks#taskLists".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Token that can be used to request the next page of this result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
     }    
 
@@ -1433,19 +1433,19 @@ namespace Google.Apis.Tasks.v1.Data
     {
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Collection of tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Task> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Task> Items { get; set; }
 
         /// <summary>Type of the resource. This is always "tasks#tasks".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Token used to access the next page of this result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
     }
 }

@@ -3408,7 +3408,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The stack trace of the ANR crash. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackTrace")]
-        public virtual StackTrace StackTrace { get; set; } 
+        public virtual StackTrace StackTrace { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3419,19 +3419,19 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The name of the app. Optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The package name of the app. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
-        public virtual string PackageName { get; set; } 
+        public virtual string PackageName { get; set; }
 
         /// <summary>The internal version code of the app. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
-        public virtual string VersionCode { get; set; } 
+        public virtual string VersionCode { get; set; }
 
         /// <summary>The version name of the app. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionName")]
-        public virtual string VersionName { get; set; } 
+        public virtual string VersionName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3443,21 +3443,21 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The java package for the test to be executed. Required</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testPackageId")]
-        public virtual string TestPackageId { get; set; } 
+        public virtual string TestPackageId { get; set; }
 
         /// <summary>The InstrumentationTestRunner class. Required</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testRunnerClass")]
-        public virtual string TestRunnerClass { get; set; } 
+        public virtual string TestRunnerClass { get; set; }
 
         /// <summary>Each target must be fully qualified with the package name or class name, in one of these formats: -
         /// "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name" If
         /// empty, all targets in the module will be run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTargets")]
-        public virtual System.Collections.Generic.IList<string> TestTargets { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TestTargets { get; set; }
 
         /// <summary>The flag indicates whether Android Test Orchestrator will be used to run test or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useOrchestrator")]
-        public virtual System.Nullable<bool> UseOrchestrator { get; set; } 
+        public virtual System.Nullable<bool> UseOrchestrator { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3469,23 +3469,23 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The initial activity that should be used to start the app. Optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appInitialActivity")]
-        public virtual string AppInitialActivity { get; set; } 
+        public virtual string AppInitialActivity { get; set; }
 
         /// <summary>The java package for the bootstrap. Optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootstrapPackageId")]
-        public virtual string BootstrapPackageId { get; set; } 
+        public virtual string BootstrapPackageId { get; set; }
 
         /// <summary>The runner class for the bootstrap. Optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootstrapRunnerClass")]
-        public virtual string BootstrapRunnerClass { get; set; } 
+        public virtual string BootstrapRunnerClass { get; set; }
 
         /// <summary>The max depth of the traversal stack Robo can explore. Optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDepth")]
-        public virtual System.Nullable<int> MaxDepth { get; set; } 
+        public virtual System.Nullable<int> MaxDepth { get; set; }
 
         /// <summary>The max number of steps/actions Robo can execute. Default is no limit (0). Optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxSteps")]
-        public virtual System.Nullable<int> MaxSteps { get; set; } 
+        public virtual System.Nullable<int> MaxSteps { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3496,23 +3496,23 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>Information about the application under test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidAppInfo")]
-        public virtual AndroidAppInfo AndroidAppInfo { get; set; } 
+        public virtual AndroidAppInfo AndroidAppInfo { get; set; }
 
         /// <summary>An Android instrumentation test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidInstrumentationTest")]
-        public virtual AndroidInstrumentationTest AndroidInstrumentationTest { get; set; } 
+        public virtual AndroidInstrumentationTest AndroidInstrumentationTest { get; set; }
 
         /// <summary>An Android robo test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidRoboTest")]
-        public virtual AndroidRoboTest AndroidRoboTest { get; set; } 
+        public virtual AndroidRoboTest AndroidRoboTest { get; set; }
 
         /// <summary>An Android test loop.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidTestLoop")]
-        public virtual AndroidTestLoop AndroidTestLoop { get; set; } 
+        public virtual AndroidTestLoop AndroidTestLoop { get; set; }
 
         /// <summary>Max time a test is allowed to run before it is automatically cancelled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTimeout")]
-        public virtual Duration TestTimeout { get; set; } 
+        public virtual Duration TestTimeout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3559,11 +3559,11 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// beginning with type.googleapis.com. Schemes other than `http`, `https` (or the empty scheme) might be used
         /// with implementation specific semantics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("typeUrl")]
-        public virtual string TypeUrl { get; set; } 
+        public virtual string TypeUrl { get; set; }
 
         /// <summary>Must be a valid serialized protocol buffer of the above specified type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3575,12 +3575,12 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// only stored if the app includes a call to Activity.reportFullyDrawn(). See
         /// https://developer.android.com/topic/performance/launch-time.html#time-full</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullyDrawnTime")]
-        public virtual Duration FullyDrawnTime { get; set; } 
+        public virtual Duration FullyDrawnTime { get; set; }
 
         /// <summary>The time from app start to the first displayed activity being drawn, as reported in Logcat. See
         /// https://developer.android.com/topic/performance/launch-time.html#time-initial</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialDisplayTime")]
-        public virtual Duration InitialDisplayTime { get; set; } 
+        public virtual Duration InitialDisplayTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3597,13 +3597,13 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     public class BasicPerfSampleSeries : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("perfMetricType")]
-        public virtual string PerfMetricType { get; set; } 
+        public virtual string PerfMetricType { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("perfUnit")]
-        public virtual string PerfUnit { get; set; } 
+        public virtual string PerfUnit { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("sampleSeriesLabel")]
-        public virtual string SampleSeriesLabel { get; set; } 
+        public virtual string SampleSeriesLabel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3615,7 +3615,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The set of PerfSamples to create should not include existing timestamps</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("perfSamples")]
-        public virtual System.Collections.Generic.IList<PerfSample> PerfSamples { get; set; } 
+        public virtual System.Collections.Generic.IList<PerfSample> PerfSamples { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3624,7 +3624,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     public class BatchCreatePerfSamplesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("perfSamples")]
-        public virtual System.Collections.Generic.IList<PerfSample> PerfSamples { get; set; } 
+        public virtual System.Collections.Generic.IList<PerfSample> PerfSamples { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3636,7 +3636,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The screen id of the element</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenId")]
-        public virtual string ScreenId { get; set; } 
+        public virtual string ScreenId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3646,15 +3646,15 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>description of the device processor ie '1.8 GHz hexa core 64-bit ARMv8-A'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuProcessor")]
-        public virtual string CpuProcessor { get; set; } 
+        public virtual string CpuProcessor { get; set; }
 
         /// <summary>the CPU clock speed in GHz</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuSpeedInGhz")]
-        public virtual System.Nullable<float> CpuSpeedInGhz { get; set; } 
+        public virtual System.Nullable<float> CpuSpeedInGhz { get; set; }
 
         /// <summary>the number of CPU cores</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numberOfCores")]
-        public virtual System.Nullable<int> NumberOfCores { get; set; } 
+        public virtual System.Nullable<int> NumberOfCores { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3665,7 +3665,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The name of the package that caused the dialog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crashPackage")]
-        public virtual string CrashPackage { get; set; } 
+        public virtual string CrashPackage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3682,13 +3682,13 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// one second or more, a non-zero value for the `nanos` field must be of the same sign as the `seconds` field.
         /// Must be from -999,999,999 to +999,999,999 inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
-        public virtual System.Nullable<int> Nanos { get; set; } 
+        public virtual System.Nullable<int> Nanos { get; set; }
 
         /// <summary>Signed seconds of the span of time. Must be from -315,576,000,000 to +315,576,000,000 inclusive.
         /// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000
         /// years</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
-        public virtual System.Nullable<long> Seconds { get; set; } 
+        public virtual System.Nullable<long> Seconds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3699,11 +3699,11 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>Number of encountered distinct login screens.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distinctScreens")]
-        public virtual System.Nullable<int> DistinctScreens { get; set; } 
+        public virtual System.Nullable<int> DistinctScreens { get; set; }
 
         /// <summary>Subset of login screens.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenIds")]
-        public virtual System.Collections.Generic.IList<string> ScreenIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ScreenIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3714,11 +3714,11 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>Number of encountered distinct screens with non Android UI widgets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distinctScreens")]
-        public virtual System.Nullable<int> DistinctScreens { get; set; } 
+        public virtual System.Nullable<int> DistinctScreens { get; set; }
 
         /// <summary>Subset of screens which contain non Android UI widgets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenIds")]
-        public virtual System.Collections.Generic.IList<string> ScreenIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ScreenIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3733,51 +3733,51 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>Output only. The time when the Environment status was set to complete. This value will be set
         /// automatically when state transitions to COMPLETE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completionTime")]
-        public virtual Timestamp CompletionTime { get; set; } 
+        public virtual Timestamp CompletionTime { get; set; }
 
         /// <summary>Output only. The time when the Environment was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual Timestamp CreationTime { get; set; } 
+        public virtual Timestamp CreationTime { get; set; }
 
         /// <summary>Dimension values describing the environment. Dimension values always consist of "Model", "Version",
         /// "Locale", and "Orientation". - In response: always set - In create request: always set - In update request:
         /// never set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionValue")]
-        public virtual System.Collections.Generic.IList<EnvironmentDimensionValueEntry> DimensionValue { get; set; } 
+        public virtual System.Collections.Generic.IList<EnvironmentDimensionValueEntry> DimensionValue { get; set; }
 
         /// <summary>A short human-readable name to display in the UI. Maximum of 100 characters. For example: Nexus 5,
         /// API 27.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. An Environment id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environmentId")]
-        public virtual string EnvironmentId { get; set; } 
+        public virtual string EnvironmentId { get; set; }
 
         /// <summary>Merged result of the environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environmentResult")]
-        public virtual MergedResult EnvironmentResult { get; set; } 
+        public virtual MergedResult EnvironmentResult { get; set; }
 
         /// <summary>Output only. An Execution id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
-        public virtual string ExecutionId { get; set; } 
+        public virtual string ExecutionId { get; set; }
 
         /// <summary>Output only. A History id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("historyId")]
-        public virtual string HistoryId { get; set; } 
+        public virtual string HistoryId { get; set; }
 
         /// <summary>Output only. A Project id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>The location where output files are stored in the user bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultsStorage")]
-        public virtual ResultsStorage ResultsStorage { get; set; } 
+        public virtual ResultsStorage ResultsStorage { get; set; }
 
         /// <summary>Output only. Summaries of shards. Only one shard will present unless sharding feature is enabled in
         /// TestExecutionService.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shardSummaries")]
-        public virtual System.Collections.Generic.IList<ShardSummary> ShardSummaries { get; set; } 
+        public virtual System.Collections.Generic.IList<ShardSummary> ShardSummaries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3786,10 +3786,10 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     public class EnvironmentDimensionValueEntry : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3805,12 +3805,12 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// when state transitions to COMPLETE. - In response: set if the execution state is COMPLETE. - In
         /// create/update request: never set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completionTime")]
-        public virtual Timestamp CompletionTime { get; set; } 
+        public virtual Timestamp CompletionTime { get; set; }
 
         /// <summary>The time when the Execution was created. This value will be set automatically when CreateExecution
         /// is called. - In response: always set - In create/update request: never set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual Timestamp CreationTime { get; set; } 
+        public virtual Timestamp CreationTime { get; set; }
 
         /// <summary>The dimensions along which different steps in this execution may vary. This must remain fixed over
         /// the life of the execution. Returns INVALID_ARGUMENT if this field is set in an update request. Returns
@@ -3818,22 +3818,22 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// the size of the list is over 100. - In response: present if set by create - In create request: optional - In
         /// update request: never set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionDefinitions")]
-        public virtual System.Collections.Generic.IList<MatrixDimensionDefinition> DimensionDefinitions { get; set; } 
+        public virtual System.Collections.Generic.IList<MatrixDimensionDefinition> DimensionDefinitions { get; set; }
 
         /// <summary>A unique identifier within a History for this Execution. Returns INVALID_ARGUMENT if this field is
         /// set or overwritten by the caller. - In response always set - In create/update request: never set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
-        public virtual string ExecutionId { get; set; } 
+        public virtual string ExecutionId { get; set; }
 
         /// <summary>Classify the result, for example into SUCCESS or FAILURE - In response: present if set by
         /// create/update request - In create/update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outcome")]
-        public virtual Outcome Outcome { get; set; } 
+        public virtual Outcome Outcome { get; set; }
 
         /// <summary>Lightweight information about execution request. - In response: present if set by create - In
         /// create: optional - In update: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("specification")]
-        public virtual Specification Specification { get; set; } 
+        public virtual Specification Specification { get; set; }
 
         /// <summary>The initial state is IN_PROGRESS. The only legal state transitions is from IN_PROGRESS to COMPLETE.
         /// A PRECONDITION_FAILED will be returned if an invalid transition is requested. The state can only be set to
@@ -3842,12 +3842,12 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// outcome of the step is not set, the outcome will be set to INCONCLUSIVE. - In response always set - In
         /// create/update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>TestExecution Matrix ID that the TestExecutionService uses. - In response: present if set by create
         /// - In create: optional - In update: never set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testExecutionMatrixId")]
-        public virtual string TestExecutionMatrixId { get; set; } 
+        public virtual string TestExecutionMatrixId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3865,33 +3865,33 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>If the failure was severe because the system (app) under test crashed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crashed")]
-        public virtual System.Nullable<bool> Crashed { get; set; } 
+        public virtual System.Nullable<bool> Crashed { get; set; }
 
         /// <summary>If the device ran out of memory during a test, causing the test to crash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceOutOfMemory")]
-        public virtual System.Nullable<bool> DeviceOutOfMemory { get; set; } 
+        public virtual System.Nullable<bool> DeviceOutOfMemory { get; set; }
 
         /// <summary>If the Roboscript failed to complete successfully, e.g., because a Roboscript action or assertion
         /// failed or a Roboscript action could not be matched during the entire crawl.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failedRoboscript")]
-        public virtual System.Nullable<bool> FailedRoboscript { get; set; } 
+        public virtual System.Nullable<bool> FailedRoboscript { get; set; }
 
         /// <summary>If an app is not installed and thus no test can be run with the app. This might be caused by trying
         /// to run a test on an unsupported platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notInstalled")]
-        public virtual System.Nullable<bool> NotInstalled { get; set; } 
+        public virtual System.Nullable<bool> NotInstalled { get; set; }
 
         /// <summary>If a native process (including any other than the app) crashed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("otherNativeCrash")]
-        public virtual System.Nullable<bool> OtherNativeCrash { get; set; } 
+        public virtual System.Nullable<bool> OtherNativeCrash { get; set; }
 
         /// <summary>If the test overran some time limit, and that is why it failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timedOut")]
-        public virtual System.Nullable<bool> TimedOut { get; set; } 
+        public virtual System.Nullable<bool> TimedOut { get; set; }
 
         /// <summary>If the robo was unable to crawl the app; perhaps because the app did not start.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unableToCrawl")]
-        public virtual System.Nullable<bool> UnableToCrawl { get; set; } 
+        public virtual System.Nullable<bool> UnableToCrawl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3902,7 +3902,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The stack trace of the fatal exception. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackTrace")]
-        public virtual StackTrace StackTrace { get; set; } 
+        public virtual StackTrace StackTrace { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3917,7 +3917,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// be returned if the URI format is not supported. - In response: always set - In create/update request: always
         /// set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileUri")]
-        public virtual string FileUri { get; set; } 
+        public virtual string FileUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3931,51 +3931,51 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>Histogram of frame render times. There should be 154 buckets ranging from [5ms, 6ms) to [4950ms,
         /// infinity)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buckets")]
-        public virtual System.Collections.Generic.IList<GraphicsStatsBucket> Buckets { get; set; } 
+        public virtual System.Collections.Generic.IList<GraphicsStatsBucket> Buckets { get; set; }
 
         /// <summary>Total "high input latency" events.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("highInputLatencyCount")]
-        public virtual System.Nullable<long> HighInputLatencyCount { get; set; } 
+        public virtual System.Nullable<long> HighInputLatencyCount { get; set; }
 
         /// <summary>Total frames with slow render time. Should be <= total_frames.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jankyFrames")]
-        public virtual System.Nullable<long> JankyFrames { get; set; } 
+        public virtual System.Nullable<long> JankyFrames { get; set; }
 
         /// <summary>Total "missed vsync" events.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("missedVsyncCount")]
-        public virtual System.Nullable<long> MissedVsyncCount { get; set; } 
+        public virtual System.Nullable<long> MissedVsyncCount { get; set; }
 
         /// <summary>50th percentile frame render time in milliseconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("p50Millis")]
-        public virtual System.Nullable<long> P50Millis { get; set; } 
+        public virtual System.Nullable<long> P50Millis { get; set; }
 
         /// <summary>90th percentile frame render time in milliseconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("p90Millis")]
-        public virtual System.Nullable<long> P90Millis { get; set; } 
+        public virtual System.Nullable<long> P90Millis { get; set; }
 
         /// <summary>95th percentile frame render time in milliseconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("p95Millis")]
-        public virtual System.Nullable<long> P95Millis { get; set; } 
+        public virtual System.Nullable<long> P95Millis { get; set; }
 
         /// <summary>99th percentile frame render time in milliseconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("p99Millis")]
-        public virtual System.Nullable<long> P99Millis { get; set; } 
+        public virtual System.Nullable<long> P99Millis { get; set; }
 
         /// <summary>Total "slow bitmap upload" events.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slowBitmapUploadCount")]
-        public virtual System.Nullable<long> SlowBitmapUploadCount { get; set; } 
+        public virtual System.Nullable<long> SlowBitmapUploadCount { get; set; }
 
         /// <summary>Total "slow draw" events.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slowDrawCount")]
-        public virtual System.Nullable<long> SlowDrawCount { get; set; } 
+        public virtual System.Nullable<long> SlowDrawCount { get; set; }
 
         /// <summary>Total "slow UI thread" events.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slowUiThreadCount")]
-        public virtual System.Nullable<long> SlowUiThreadCount { get; set; } 
+        public virtual System.Nullable<long> SlowUiThreadCount { get; set; }
 
         /// <summary>Total frames rendered by package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalFrames")]
-        public virtual System.Nullable<long> TotalFrames { get; set; } 
+        public virtual System.Nullable<long> TotalFrames { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3985,11 +3985,11 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>Number of frames in the bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frameCount")]
-        public virtual System.Nullable<long> FrameCount { get; set; } 
+        public virtual System.Nullable<long> FrameCount { get; set; }
 
         /// <summary>Lower bound of render time in milliseconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renderMillis")]
-        public virtual System.Nullable<long> RenderMillis { get; set; } 
+        public virtual System.Nullable<long> RenderMillis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4004,22 +4004,22 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>A short human-readable (plain text) name to display in the UI. Maximum of 100 characters. - In
         /// response: present if set during create. - In create request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is
         /// set or overwritten by the caller. - In response always set - In create request: never set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("historyId")]
-        public virtual string HistoryId { get; set; } 
+        public virtual string HistoryId { get; set; }
 
         /// <summary>A name to uniquely identify a history within a project. Maximum of 200 characters. - In response
         /// always set - In create request: always set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The platform of the test history. - In response: always set. Returns the platform of the last
         /// execution if unknown.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testPlatform")]
-        public virtual string TestPlatform { get; set; } 
+        public virtual string TestPlatform { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4030,20 +4030,20 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>An error explaining why the thumbnail could not be rendered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>A reference to the full-size, original image. This is the same as the tool_outputs entry for the
         /// image under its Step. Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceImage")]
-        public virtual ToolOutputReference SourceImage { get; set; } 
+        public virtual ToolOutputReference SourceImage { get; set; }
 
         /// <summary>The step to which the image is attached. Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stepId")]
-        public virtual string StepId { get; set; } 
+        public virtual string StepId { get; set; }
 
         /// <summary>The thumbnail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnail")]
-        public virtual Thumbnail Thumbnail { get; set; } 
+        public virtual Thumbnail Thumbnail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4055,11 +4055,11 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>The total number of in-app purchases flows explored: how many times the robo tries to buy a
         /// SKU.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inAppPurchasesFlowsExplored")]
-        public virtual System.Nullable<int> InAppPurchasesFlowsExplored { get; set; } 
+        public virtual System.Nullable<int> InAppPurchasesFlowsExplored { get; set; }
 
         /// <summary>The total number of in-app purchases flows started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inAppPurchasesFlowsStarted")]
-        public virtual System.Nullable<int> InAppPurchasesFlowsStarted { get; set; } 
+        public virtual System.Nullable<int> InAppPurchasesFlowsStarted { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4071,17 +4071,17 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>If the end user aborted the test execution before a pass or fail could be determined. For example,
         /// the user pressed ctrl-c which sent a kill signal to the test runner while the test was running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("abortedByUser")]
-        public virtual System.Nullable<bool> AbortedByUser { get; set; } 
+        public virtual System.Nullable<bool> AbortedByUser { get; set; }
 
         /// <summary>If results are being provided to the user in certain cases of infrastructure failures</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasErrorLogs")]
-        public virtual System.Nullable<bool> HasErrorLogs { get; set; } 
+        public virtual System.Nullable<bool> HasErrorLogs { get; set; }
 
         /// <summary>If the test runner could not determine success or failure because the test depends on a component
         /// other than the system under test which failed. For example, a mobile test requires provisioning a device
         /// where the test executes, and that provisioning can fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infrastructureFailure")]
-        public virtual System.Nullable<bool> InfrastructureFailure { get; set; } 
+        public virtual System.Nullable<bool> InfrastructureFailure { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4094,17 +4094,17 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The
         /// primary step is 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multistepNumber")]
-        public virtual System.Nullable<int> MultistepNumber { get; set; } 
+        public virtual System.Nullable<int> MultistepNumber { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("outcomeSummary")]
-        public virtual string OutcomeSummary { get; set; } 
+        public virtual string OutcomeSummary { get; set; }
 
         /// <summary>How long it took for this step to run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runDuration")]
-        public virtual Duration RunDuration { get; set; } 
+        public virtual Duration RunDuration { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("stepId")]
-        public virtual string StepId { get; set; } 
+        public virtual string StepId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4122,7 +4122,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The stack trace, if one is available. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackTrace")]
-        public virtual StackTrace StackTrace { get; set; } 
+        public virtual StackTrace StackTrace { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4133,7 +4133,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The name of the app. Required</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4151,23 +4151,23 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>Information about the application under test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosAppInfo")]
-        public virtual IosAppInfo IosAppInfo { get; set; } 
+        public virtual IosAppInfo IosAppInfo { get; set; }
 
         /// <summary>An iOS Robo test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosRoboTest")]
-        public virtual IosRoboTest IosRoboTest { get; set; } 
+        public virtual IosRoboTest IosRoboTest { get; set; }
 
         /// <summary>An iOS test loop.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosTestLoop")]
-        public virtual IosTestLoop IosTestLoop { get; set; } 
+        public virtual IosTestLoop IosTestLoop { get; set; }
 
         /// <summary>An iOS XCTest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosXcTest")]
-        public virtual IosXcTest IosXcTest { get; set; } 
+        public virtual IosXcTest IosXcTest { get; set; }
 
         /// <summary>Max time a test is allowed to run before it is automatically cancelled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTimeout")]
-        public virtual Duration TestTimeout { get; set; } 
+        public virtual Duration TestTimeout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4178,7 +4178,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>Bundle ID of the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bundleId")]
-        public virtual string BundleId { get; set; } 
+        public virtual string BundleId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4189,11 +4189,11 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>Bundle ID of the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bundleId")]
-        public virtual string BundleId { get; set; } 
+        public virtual string BundleId { get; set; }
 
         /// <summary>Xcode version that the test was run with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xcodeVersion")]
-        public virtual string XcodeVersion { get; set; } 
+        public virtual string XcodeVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4211,24 +4211,24 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>Environments. Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environments")]
-        public virtual System.Collections.Generic.IList<Environment> Environments { get; set; } 
+        public virtual System.Collections.Generic.IList<Environment> Environments { get; set; }
 
         /// <summary>A Execution id Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
-        public virtual string ExecutionId { get; set; } 
+        public virtual string ExecutionId { get; set; }
 
         /// <summary>A History id. Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("historyId")]
-        public virtual string HistoryId { get; set; } 
+        public virtual string HistoryId { get; set; }
 
         /// <summary>A continuation token to resume the query at the next item. Will only be set if there are more
         /// Environments to fetch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A Project id. Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4238,12 +4238,12 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>Executions. Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executions")]
-        public virtual System.Collections.Generic.IList<Execution> Executions { get; set; } 
+        public virtual System.Collections.Generic.IList<Execution> Executions { get; set; }
 
         /// <summary>A continuation token to resume the query at the next item. Will only be set if there are more
         /// Executions to fetch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4254,14 +4254,14 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>Histories.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("histories")]
-        public virtual System.Collections.Generic.IList<History> Histories { get; set; } 
+        public virtual System.Collections.Generic.IList<History> Histories { get; set; }
 
         /// <summary>A continuation token to resume the query at the next item. Will only be set if there are more
         /// histories to fetch. Tokens are valid for up to one hour from the time of the first list request. For
         /// instance, if you make a list request at 1PM and use the token from this first request 10 minutes later, the
         /// token from this second response will only be valid for 50 minutes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4271,7 +4271,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The resulting PerfSampleSeries sorted by id</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("perfSampleSeries")]
-        public virtual System.Collections.Generic.IList<PerfSampleSeries> PerfSampleSeries { get; set; } 
+        public virtual System.Collections.Generic.IList<PerfSampleSeries> PerfSampleSeries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4283,10 +4283,10 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// page size, 500, if unspecified). It indicates the last sample timestamp to be used as page_token in
         /// subsequent request</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("perfSamples")]
-        public virtual System.Collections.Generic.IList<PerfSample> PerfSamples { get; set; } 
+        public virtual System.Collections.Generic.IList<PerfSample> PerfSamples { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4296,7 +4296,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The set of clusters associated with an execution Always set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusters")]
-        public virtual System.Collections.Generic.IList<ScreenshotCluster> Clusters { get; set; } 
+        public virtual System.Collections.Generic.IList<ScreenshotCluster> Clusters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4310,13 +4310,13 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// by their SuggestionPriority (ERRORs first). The categories should be ordered by their highest priority
         /// cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusters")]
-        public virtual System.Collections.Generic.IList<SuggestionClusterProto> Clusters { get; set; } 
+        public virtual System.Collections.Generic.IList<SuggestionClusterProto> Clusters { get; set; }
 
         /// <summary>A full resource name of the step. For example, projects/my-
         /// project/histories/bh.1234567890abcdef/executions/ 1234567890123456789/steps/bs.1234567890abcdef Always
         /// presents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4328,7 +4328,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>A continuation token to resume the query at the next item. If set, indicates that there are more
         /// thumbnails to read, by calling list again with this value in the page_token field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of image data. Images are returned in a deterministic order; they are ordered by these
         /// factors, in order of importance: * First, by their associated test case. Images without a test case are
@@ -4336,7 +4336,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// are greater than images with one. * Third, by the order in which they were added to the step (by calls to
         /// CreateStep or UpdateStep).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnails")]
-        public virtual System.Collections.Generic.IList<Image> Thumbnails { get; set; } 
+        public virtual System.Collections.Generic.IList<Image> Thumbnails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4348,11 +4348,11 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>A continuation token to resume the query at the next item. If set, indicates that there are more
         /// steps to read, by calling list again with this value in the page_token field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Steps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
-        public virtual System.Collections.Generic.IList<Step> Steps { get; set; } 
+        public virtual System.Collections.Generic.IList<Step> Steps { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4362,11 +4362,11 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     public class ListTestCasesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>List of test cases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testCases")]
-        public virtual System.Collections.Generic.IList<TestCase> TestCases { get; set; } 
+        public virtual System.Collections.Generic.IList<TestCase> TestCases { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4383,11 +4383,11 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>Maximum memory that can be allocated to the process in KiB</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryCapInKibibyte")]
-        public virtual System.Nullable<long> MemoryCapInKibibyte { get; set; } 
+        public virtual System.Nullable<long> MemoryCapInKibibyte { get; set; }
 
         /// <summary>Total memory available on the device in KiB</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryTotalInKibibyte")]
-        public virtual System.Nullable<long> MemoryTotalInKibibyte { get; set; } 
+        public virtual System.Nullable<long> MemoryTotalInKibibyte { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4401,11 +4401,11 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>Outcome of the resource</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outcome")]
-        public virtual Outcome Outcome { get; set; } 
+        public virtual Outcome Outcome { get; set; }
 
         /// <summary>State of the resource</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The combined and rolled-up result of each test suite that was run as part of this environment.
         /// Combining: When the test cases from a suite are run in different steps (sharding), the results are added
@@ -4414,7 +4414,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// are combined (e.g., if testcase1.run1 fails, testcase1.run2 passes, and both testcase2.run1 and
         /// testcase2.run2 fail then the overview flaky_count = 1 and failure_count = 1).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testSuiteOverviews")]
-        public virtual System.Collections.Generic.IList<TestSuiteOverview> TestSuiteOverviews { get; set; } 
+        public virtual System.Collections.Generic.IList<TestSuiteOverview> TestSuiteOverviews { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4426,15 +4426,15 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The
         /// primary step is 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multistepNumber")]
-        public virtual System.Nullable<int> MultistepNumber { get; set; } 
+        public virtual System.Nullable<int> MultistepNumber { get; set; }
 
         /// <summary>Present if it is a primary (original) step.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryStep")]
-        public virtual PrimaryStep PrimaryStep { get; set; } 
+        public virtual PrimaryStep PrimaryStep { get; set; }
 
         /// <summary>Step Id of the primary (original) step, which might be this step.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryStepId")]
-        public virtual string PrimaryStepId { get; set; } 
+        public virtual string PrimaryStepId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4445,7 +4445,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The stack trace of the native crash. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackTrace")]
-        public virtual StackTrace StackTrace { get; set; } 
+        public virtual StackTrace StackTrace { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4457,23 +4457,23 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The signature of the Non-SDK API</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiSignature")]
-        public virtual string ApiSignature { get; set; } 
+        public virtual string ApiSignature { get; set; }
 
         /// <summary>Example stack traces of this API being called.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exampleStackTraces")]
-        public virtual System.Collections.Generic.IList<string> ExampleStackTraces { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExampleStackTraces { get; set; }
 
         /// <summary>Optional debugging insights for non-SDK API violations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insights")]
-        public virtual System.Collections.Generic.IList<NonSdkApiInsight> Insights { get; set; } 
+        public virtual System.Collections.Generic.IList<NonSdkApiInsight> Insights { get; set; }
 
         /// <summary>The total number of times this API was observed to have been called.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invocationCount")]
-        public virtual System.Nullable<int> InvocationCount { get; set; } 
+        public virtual System.Nullable<int> InvocationCount { get; set; }
 
         /// <summary>Which list this API appears on</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("list")]
-        public virtual string List { get; set; } 
+        public virtual string List { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4485,22 +4485,22 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>Optional sample stack traces, for which this insight applies (there should be at least
         /// one).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exampleTraceMessages")]
-        public virtual System.Collections.Generic.IList<string> ExampleTraceMessages { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExampleTraceMessages { get; set; }
 
         /// <summary>A unique ID, to be used for determining the effectiveness of this particular insight in the context
         /// of a matcher. (required)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matcherId")]
-        public virtual string MatcherId { get; set; } 
+        public virtual string MatcherId { get; set; }
 
         /// <summary>An insight indicating that the hidden API usage originates from a Google-provided
         /// library.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pendingGoogleUpdateInsight")]
-        public virtual PendingGoogleUpdateInsight PendingGoogleUpdateInsight { get; set; } 
+        public virtual PendingGoogleUpdateInsight PendingGoogleUpdateInsight { get; set; }
 
         /// <summary>An insight indicating that the hidden API usage originates from the use of a library that needs to
         /// be upgraded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeInsight")]
-        public virtual UpgradeInsight UpgradeInsight { get; set; } 
+        public virtual UpgradeInsight UpgradeInsight { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4511,11 +4511,11 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>Signatures of a subset of those hidden API's.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiSignatures")]
-        public virtual System.Collections.Generic.IList<string> ApiSignatures { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ApiSignatures { get; set; }
 
         /// <summary>Total number of unique hidden API's accessed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uniqueApis")]
-        public virtual System.Nullable<int> UniqueApis { get; set; } 
+        public virtual System.Nullable<int> UniqueApis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4526,19 +4526,19 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>Examples of the detected API usages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exampleApis")]
-        public virtual System.Collections.Generic.IList<NonSdkApi> ExampleApis { get; set; } 
+        public virtual System.Collections.Generic.IList<NonSdkApi> ExampleApis { get; set; }
 
         /// <summary>Minimum API level required for the application to run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minSdkVersion")]
-        public virtual System.Nullable<int> MinSdkVersion { get; set; } 
+        public virtual System.Nullable<int> MinSdkVersion { get; set; }
 
         /// <summary>Specifies the API Level on which the application is designed to run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetSdkVersion")]
-        public virtual System.Nullable<int> TargetSdkVersion { get; set; } 
+        public virtual System.Nullable<int> TargetSdkVersion { get; set; }
 
         /// <summary>Total number of unique Non-SDK API's accessed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uniqueApis")]
-        public virtual System.Nullable<int> UniqueApis { get; set; } 
+        public virtual System.Nullable<int> UniqueApis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4550,26 +4550,26 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>More information about a FAILURE outcome. Returns INVALID_ARGUMENT if this field is set but the
         /// summary is not FAILURE. Optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureDetail")]
-        public virtual FailureDetail FailureDetail { get; set; } 
+        public virtual FailureDetail FailureDetail { get; set; }
 
         /// <summary>More information about an INCONCLUSIVE outcome. Returns INVALID_ARGUMENT if this field is set but
         /// the summary is not INCONCLUSIVE. Optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inconclusiveDetail")]
-        public virtual InconclusiveDetail InconclusiveDetail { get; set; } 
+        public virtual InconclusiveDetail InconclusiveDetail { get; set; }
 
         /// <summary>More information about a SKIPPED outcome. Returns INVALID_ARGUMENT if this field is set but the
         /// summary is not SKIPPED. Optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skippedDetail")]
-        public virtual SkippedDetail SkippedDetail { get; set; } 
+        public virtual SkippedDetail SkippedDetail { get; set; }
 
         /// <summary>More information about a SUCCESS outcome. Returns INVALID_ARGUMENT if this field is set but the
         /// summary is not SUCCESS. Optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successDetail")]
-        public virtual SuccessDetail SuccessDetail { get; set; } 
+        public virtual SuccessDetail SuccessDetail { get; set; }
 
         /// <summary>The simplest way to interpret a result. Required</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summary")]
-        public virtual string Summary { get; set; } 
+        public virtual string Summary { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4581,11 +4581,11 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>Resource names of the overlapping screen elements</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
-        public virtual System.Collections.Generic.IList<string> ResourceName { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ResourceName { get; set; }
 
         /// <summary>The screen id of the elements</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenId")]
-        public virtual string ScreenId { get; set; } 
+        public virtual string ScreenId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4597,7 +4597,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The name of the Google-provided library with the non-SDK API dependency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nameOfGoogleLibrary")]
-        public virtual string NameOfGoogleLibrary { get; set; } 
+        public virtual string NameOfGoogleLibrary { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4608,11 +4608,11 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>CPU related environment info</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuInfo")]
-        public virtual CPUInfo CpuInfo { get; set; } 
+        public virtual CPUInfo CpuInfo { get; set; }
 
         /// <summary>Memory related environment info</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryInfo")]
-        public virtual MemoryInfo MemoryInfo { get; set; } 
+        public virtual MemoryInfo MemoryInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4622,36 +4622,36 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     public class PerfMetricsSummary : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("appStartTime")]
-        public virtual AppStartTime AppStartTime { get; set; } 
+        public virtual AppStartTime AppStartTime { get; set; }
 
         /// <summary>A tool results execution ID. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
-        public virtual string ExecutionId { get; set; } 
+        public virtual string ExecutionId { get; set; }
 
         /// <summary>Graphics statistics for the entire run. Statistics are reset at the beginning of the run and
         /// collected at the end of the run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("graphicsStats")]
-        public virtual GraphicsStats GraphicsStats { get; set; } 
+        public virtual GraphicsStats GraphicsStats { get; set; }
 
         /// <summary>A tool results history ID. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("historyId")]
-        public virtual string HistoryId { get; set; } 
+        public virtual string HistoryId { get; set; }
 
         /// <summary>Describes the environment in which the performance metrics were collected</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("perfEnvironment")]
-        public virtual PerfEnvironment PerfEnvironment { get; set; } 
+        public virtual PerfEnvironment PerfEnvironment { get; set; }
 
         /// <summary>Set of resource collected</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("perfMetrics")]
-        public virtual System.Collections.Generic.IList<string> PerfMetrics { get; set; } 
+        public virtual System.Collections.Generic.IList<string> PerfMetrics { get; set; }
 
         /// <summary>The cloud project @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>A tool results step ID. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stepId")]
-        public virtual string StepId { get; set; } 
+        public virtual string StepId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4662,11 +4662,11 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>Timestamp of collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleTime")]
-        public virtual Timestamp SampleTime { get; set; } 
+        public virtual Timestamp SampleTime { get; set; }
 
         /// <summary>Value observed</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual System.Nullable<double> Value { get; set; } 
+        public virtual System.Nullable<double> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4677,27 +4677,27 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>Basic series represented by a line chart</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("basicPerfSampleSeries")]
-        public virtual BasicPerfSampleSeries BasicPerfSampleSeries { get; set; } 
+        public virtual BasicPerfSampleSeries BasicPerfSampleSeries { get; set; }
 
         /// <summary>A tool results execution ID. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
-        public virtual string ExecutionId { get; set; } 
+        public virtual string ExecutionId { get; set; }
 
         /// <summary>A tool results history ID. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("historyId")]
-        public virtual string HistoryId { get; set; } 
+        public virtual string HistoryId { get; set; }
 
         /// <summary>The cloud project @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>A sample series id @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleSeriesId")]
-        public virtual string SampleSeriesId { get; set; } 
+        public virtual string SampleSeriesId { get; set; }
 
         /// <summary>A tool results step ID. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stepId")]
-        public virtual string StepId { get; set; } 
+        public virtual string StepId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4715,7 +4715,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The total number of monkey actions performed during the crawl.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalActions")]
-        public virtual System.Nullable<int> TotalActions { get; set; } 
+        public virtual System.Nullable<int> TotalActions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4727,12 +4727,12 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>Step Id and outcome of each individual step.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("individualOutcome")]
-        public virtual System.Collections.Generic.IList<IndividualOutcome> IndividualOutcome { get; set; } 
+        public virtual System.Collections.Generic.IList<IndividualOutcome> IndividualOutcome { get; set; }
 
         /// <summary>Rollup test status of multiple steps that were run with the same configuration as a
         /// group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rollUp")]
-        public virtual string RollUp { get; set; } 
+        public virtual string RollUp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4744,12 +4744,12 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>The name of the Google Cloud Storage bucket to which results are written. By default, this is
         /// unset. In update request: optional In response: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultBucket")]
-        public virtual string DefaultBucket { get; set; } 
+        public virtual string DefaultBucket { get; set; }
 
         /// <summary>The name of the project's settings. Always of the form: projects/{project-id}/settings In update
         /// request: never set In response: always set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4761,7 +4761,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>URI of the Xunit XML files to publish. The maximum size of the file this reference is pointing to
         /// is 50MB. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xunitXmlFiles")]
-        public virtual System.Collections.Generic.IList<FileReference> XunitXmlFiles { get; set; } 
+        public virtual System.Collections.Generic.IList<FileReference> XunitXmlFiles { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4772,19 +4772,19 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The height, in pixels. Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("heightPx")]
-        public virtual System.Nullable<int> HeightPx { get; set; } 
+        public virtual System.Nullable<int> HeightPx { get; set; }
 
         /// <summary>The left side of the rectangle, in pixels. Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leftPx")]
-        public virtual System.Nullable<int> LeftPx { get; set; } 
+        public virtual System.Nullable<int> LeftPx { get; set; }
 
         /// <summary>The top of the rectangle, in pixels. Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topPx")]
-        public virtual System.Nullable<int> TopPx { get; set; } 
+        public virtual System.Nullable<int> TopPx { get; set; }
 
         /// <summary>The width, in pixels. Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("widthPx")]
-        public virtual System.Nullable<int> WidthPx { get; set; } 
+        public virtual System.Nullable<int> WidthPx { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4795,11 +4795,11 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The root directory for test results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultsStoragePath")]
-        public virtual FileReference ResultsStoragePath { get; set; } 
+        public virtual FileReference ResultsStoragePath { get; set; }
 
         /// <summary>The path to the Xunit XML file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xunitXmlFile")]
-        public virtual FileReference XunitXmlFile { get; set; } 
+        public virtual FileReference XunitXmlFile { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4810,11 +4810,11 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The number of Robo script actions executed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successfulActions")]
-        public virtual System.Nullable<int> SuccessfulActions { get; set; } 
+        public virtual System.Nullable<int> SuccessfulActions { get; set; }
 
         /// <summary>The total number of actions in the Robo script.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalActions")]
-        public virtual System.Nullable<int> TotalActions { get; set; } 
+        public virtual System.Nullable<int> TotalActions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4830,7 +4830,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>IMPORTANT: Never set or read this field, even from tests, it is private. See documentation at the
         /// top of .proto file for programming language packages with which to create or read this message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateDoNotAccessOrElseSafeHtmlWrappedValue")]
-        public virtual string PrivateDoNotAccessOrElseSafeHtmlWrappedValue { get; set; } 
+        public virtual string PrivateDoNotAccessOrElseSafeHtmlWrappedValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4840,19 +4840,19 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>File reference of the png file. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileReference")]
-        public virtual string FileReference { get; set; } 
+        public virtual string FileReference { get; set; }
 
         /// <summary>Locale of the device that the screenshot was taken on. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
-        public virtual string Locale { get; set; } 
+        public virtual string Locale { get; set; }
 
         /// <summary>Model of the device that the screenshot was taken on. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
-        public virtual string Model { get; set; } 
+        public virtual string Model { get; set; }
 
         /// <summary>OS version of the device that the screenshot was taken on. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4862,21 +4862,21 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>A string that describes the activity of every screen in the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activity")]
-        public virtual string Activity { get; set; } 
+        public virtual string Activity { get; set; }
 
         /// <summary>A unique identifier for the cluster. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
-        public virtual string ClusterId { get; set; } 
+        public virtual string ClusterId { get; set; }
 
         /// <summary>A singular screen that represents the cluster as a whole. This screen will act as the "cover" of
         /// the entire cluster. When users look at the clusters, only the key screen from each cluster will be shown.
         /// Which screen is the key screen is determined by the ClusteringAlgorithm</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyScreen")]
-        public virtual Screen KeyScreen { get; set; } 
+        public virtual Screen KeyScreen { get; set; }
 
         /// <summary>Full list of screens.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screens")]
-        public virtual System.Collections.Generic.IList<Screen> Screens { get; set; } 
+        public virtual System.Collections.Generic.IList<Screen> Screens { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4889,11 +4889,11 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// TestExecutionService, more than one run (Step) can present. And the runs will be sorted by
         /// multistep_number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runs")]
-        public virtual System.Collections.Generic.IList<StepSummary> Runs { get; set; } 
+        public virtual System.Collections.Generic.IList<StepSummary> Runs { get; set; }
 
         /// <summary>Merged result of the shard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shardResult")]
-        public virtual MergedResult ShardResult { get; set; } 
+        public virtual MergedResult ShardResult { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4904,15 +4904,15 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>If the App doesn't support the specific API level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("incompatibleAppVersion")]
-        public virtual System.Nullable<bool> IncompatibleAppVersion { get; set; } 
+        public virtual System.Nullable<bool> IncompatibleAppVersion { get; set; }
 
         /// <summary>If the App doesn't run on the specific architecture, for example, x86.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("incompatibleArchitecture")]
-        public virtual System.Nullable<bool> IncompatibleArchitecture { get; set; } 
+        public virtual System.Nullable<bool> IncompatibleArchitecture { get; set; }
 
         /// <summary>If the requested OS version doesn't run on the specific device model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("incompatibleDevice")]
-        public virtual System.Nullable<bool> IncompatibleDevice { get; set; } 
+        public virtual System.Nullable<bool> IncompatibleDevice { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4923,11 +4923,11 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>An Android mobile test execution specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidTest")]
-        public virtual AndroidTest AndroidTest { get; set; } 
+        public virtual AndroidTest AndroidTest { get; set; }
 
         /// <summary>An iOS mobile test execution specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosTest")]
-        public virtual IosTest IosTest { get; set; } 
+        public virtual IosTest IosTest { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4938,7 +4938,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The stack trace message. Required</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exception")]
-        public virtual string Exception { get; set; } 
+        public virtual string Exception { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4948,10 +4948,10 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     public class StartActivityNotFound : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual string Action { get; set; } 
+        public virtual string Action { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4966,17 +4966,17 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4997,17 +4997,17 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// transitions to COMPLETE. - In response: set if the execution state is COMPLETE. - In create/update request:
         /// never set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completionTime")]
-        public virtual Timestamp CompletionTime { get; set; } 
+        public virtual Timestamp CompletionTime { get; set; }
 
         /// <summary>The time when the step was created. - In response: always set - In create/update request: never
         /// set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual Timestamp CreationTime { get; set; } 
+        public virtual Timestamp CreationTime { get; set; }
 
         /// <summary>A description of this tool For example: mvn clean package -D skipTests=true - In response: present
         /// if set by create/update request - In create/update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>How much the device resource is used to perform the test. This is the device usage used for billing
         /// purpose, which is different from the run_duration, for example, infrastructure failure won't be charged for
@@ -5015,7 +5015,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// already has this field set. - In response: present if previously set. - In create request: optional - In
         /// update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceUsageDuration")]
-        public virtual Duration DeviceUsageDuration { get; set; } 
+        public virtual Duration DeviceUsageDuration { get; set; }
 
         /// <summary>If the execution containing this step has any dimension_definition set, then this field allows the
         /// child to specify the values of the dimensions. The keys must exactly match the dimension_definition of the
@@ -5031,12 +5031,12 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// there is a dimension_definition in the execution which is not specified as one of the keys. - In response:
         /// present if set by create - In create request: optional - In update request: never set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionValue")]
-        public virtual System.Collections.Generic.IList<StepDimensionValueEntry> DimensionValue { get; set; } 
+        public virtual System.Collections.Generic.IList<StepDimensionValueEntry> DimensionValue { get; set; }
 
         /// <summary>Whether any of the outputs of this step are images whose thumbnails can be fetched with
         /// ListThumbnails. - In response: always set - In create/update request: never set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasImages")]
-        public virtual System.Nullable<bool> HasImages { get; set; } 
+        public virtual System.Nullable<bool> HasImages { get; set; }
 
         /// <summary>Arbitrary user-supplied key/value pairs that are associated with the step. Users are responsible
         /// for managing the key namespace such that keys don't accidentally collide. An INVALID_ARGUMENT will be
@@ -5045,14 +5045,14 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// key/value pair will be added to the map, and any new value for an existing key will update that key's
         /// value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IList<StepLabelsEntry> Labels { get; set; } 
+        public virtual System.Collections.Generic.IList<StepLabelsEntry> Labels { get; set; }
 
         /// <summary>Details when multiple steps are run with the same configuration as a group. These details can be
         /// used identify which group this step is part of. It also identifies the groups 'primary step' which indexes
         /// all the group members. - In response: present if previously set. - In create request: optional, set iff this
         /// step was performed more than once. - In update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiStep")]
-        public virtual MultiStep MultiStep { get; set; } 
+        public virtual MultiStep MultiStep { get; set; }
 
         /// <summary>A short human-readable name to display in the UI. Maximum of 100 characters. For example: Clean
         /// build A PRECONDITION_FAILED will be returned upon creating a new step if it shares its name and
@@ -5061,12 +5061,12 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// platforms, the two steps should have the same name. - In response: always set - In create request: always
         /// set - In update request: never set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Classification of the result, for example into SUCCESS or FAILURE - In response: present if set by
         /// create/update request - In create/update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outcome")]
-        public virtual Outcome Outcome { get; set; } 
+        public virtual Outcome Outcome { get; set; }
 
         /// <summary>How long it took for this step to run. If unset, this is set to the difference between
         /// creation_time and completion_time when the step is set to the COMPLETE state. In some cases, it is
@@ -5076,7 +5076,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// on a step which already has this field set. - In response: present if previously set; always present on
         /// COMPLETE step - In create request: optional - In update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runDuration")]
-        public virtual Duration RunDuration { get; set; } 
+        public virtual Duration RunDuration { get; set; }
 
         /// <summary>The initial state is IN_PROGRESS. The only legal state transitions are * IN_PROGRESS -> COMPLETE A
         /// PRECONDITION_FAILED will be returned if an invalid transition is requested. It is valid to create Step with
@@ -5084,20 +5084,20 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// if the state is set to COMPLETE multiple times. - In response: always set - In create/update request:
         /// optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>A unique identifier within a Execution for this Step. Returns INVALID_ARGUMENT if this field is set
         /// or overwritten by the caller. - In response: always set - In create/update request: never set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stepId")]
-        public virtual string StepId { get; set; } 
+        public virtual string StepId { get; set; }
 
         /// <summary>An execution of a test runner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testExecutionStep")]
-        public virtual TestExecutionStep TestExecutionStep { get; set; } 
+        public virtual TestExecutionStep TestExecutionStep { get; set; }
 
         /// <summary>An execution of a tool (used for steps we don't explicitly support).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolExecutionStep")]
-        public virtual ToolExecutionStep ToolExecutionStep { get; set; } 
+        public virtual ToolExecutionStep ToolExecutionStep { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5106,10 +5106,10 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     public class StepDimensionValueEntry : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5118,10 +5118,10 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     public class StepLabelsEntry : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5139,7 +5139,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>If a native process other than the app crashed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("otherNativeCrash")]
-        public virtual System.Nullable<bool> OtherNativeCrash { get; set; } 
+        public virtual System.Nullable<bool> OtherNativeCrash { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5152,13 +5152,13 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>Category in which these types of suggestions should appear. Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
-        public virtual string Category { get; set; } 
+        public virtual string Category { get; set; }
 
         /// <summary>A sequence of suggestions. All of the suggestions within a cluster must have the same
         /// SuggestionPriority and belong to the same SuggestionCategory. Suggestions with the same screenshot URL
         /// should be adjacent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestions")]
-        public virtual System.Collections.Generic.IList<SuggestionProto> Suggestions { get; set; } 
+        public virtual System.Collections.Generic.IList<SuggestionProto> Suggestions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5168,50 +5168,50 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>Reference to a help center article concerning this type of suggestion. Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("helpUrl")]
-        public virtual string HelpUrl { get; set; } 
+        public virtual string HelpUrl { get; set; }
 
         /// <summary>Message, in the user's language, explaining the suggestion, which may contain markup. Always
         /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longMessage")]
-        public virtual SafeHtmlProto LongMessage { get; set; } 
+        public virtual SafeHtmlProto LongMessage { get; set; }
 
         /// <summary>Relative importance of a suggestion. Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
-        public virtual string Priority { get; set; } 
+        public virtual string Priority { get; set; }
 
         /// <summary>A somewhat human readable identifier of the source view, if it does not have a resource_name. This
         /// is a path within the accessibility hierarchy, an element with resource name; similar to an XPath.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pseudoResourceId")]
-        public virtual string PseudoResourceId { get; set; } 
+        public virtual string PseudoResourceId { get; set; }
 
         /// <summary>Region within the screenshot that is relevant to this suggestion. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
-        public virtual RegionProto Region { get; set; } 
+        public virtual RegionProto Region { get; set; }
 
         /// <summary>Reference to a view element, identified by its resource name, if it has one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
-        public virtual string ResourceName { get; set; } 
+        public virtual string ResourceName { get; set; }
 
         /// <summary>ID of the screen for the suggestion. It is used for getting the corresponding screenshot path. For
         /// example, screen_id "1" corresponds to "1.png" file in GCS. Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenId")]
-        public virtual string ScreenId { get; set; } 
+        public virtual string ScreenId { get; set; }
 
         /// <summary>Relative importance of a suggestion as compared with other suggestions that have the same priority
         /// and category. This is a meaningless value that can be used to order suggestions that are in the same
         /// category and have the same priority. The larger values have higher priority (i.e., are more important).
         /// Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryPriority")]
-        public virtual System.Nullable<double> SecondaryPriority { get; set; } 
+        public virtual System.Nullable<double> SecondaryPriority { get; set; }
 
         /// <summary>Concise message, in the user's language, representing the suggestion, which may contain markup.
         /// Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortMessage")]
-        public virtual SafeHtmlProto ShortMessage { get; set; } 
+        public virtual SafeHtmlProto ShortMessage { get; set; }
 
         /// <summary>General title for the suggestion, in the user's language, without markup. Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5221,41 +5221,41 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The elapsed run time of the test case. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("elapsedTime")]
-        public virtual Duration ElapsedTime { get; set; } 
+        public virtual Duration ElapsedTime { get; set; }
 
         /// <summary>The end time of the test case.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual Timestamp EndTime { get; set; } 
+        public virtual Timestamp EndTime { get; set; }
 
         /// <summary>Why the test case was skipped. Present only for skipped test case</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skippedMessage")]
-        public virtual string SkippedMessage { get; set; } 
+        public virtual string SkippedMessage { get; set; }
 
         /// <summary>The stack trace details if the test case failed or encountered an error. The maximum size of the
         /// stack traces is 100KiB, beyond which the stack track will be truncated. Zero if the test case
         /// passed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackTraces")]
-        public virtual System.Collections.Generic.IList<StackTrace> StackTraces { get; set; } 
+        public virtual System.Collections.Generic.IList<StackTrace> StackTraces { get; set; }
 
         /// <summary>The start time of the test case.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual Timestamp StartTime { get; set; } 
+        public virtual Timestamp StartTime { get; set; }
 
         /// <summary>The status of the test case. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>A unique identifier within a Step for this Test Case.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testCaseId")]
-        public virtual string TestCaseId { get; set; } 
+        public virtual string TestCaseId { get; set; }
 
         /// <summary>Test case reference, e.g. name, class name and test suite name. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testCaseReference")]
-        public virtual TestCaseReference TestCaseReference { get; set; } 
+        public virtual TestCaseReference TestCaseReference { get; set; }
 
         /// <summary>References to opaque files of any format output by the tool execution. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolOutputs")]
-        public virtual System.Collections.Generic.IList<ToolOutputReference> ToolOutputs { get; set; } 
+        public virtual System.Collections.Generic.IList<ToolOutputReference> ToolOutputs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5267,15 +5267,15 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The name of the class.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("className")]
-        public virtual string ClassName { get; set; } 
+        public virtual string ClassName { get; set; }
 
         /// <summary>The name of the test case. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The name of the test suite to which this test case belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testSuiteName")]
-        public virtual string TestSuiteName { get; set; } 
+        public virtual string TestSuiteName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5290,7 +5290,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// the test, the error message and the stack trace content can be recorded here to assist debugging. - In
         /// response: present if set by create or update - In create/update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testIssues")]
-        public virtual System.Collections.Generic.IList<TestIssue> TestIssues { get; set; } 
+        public virtual System.Collections.Generic.IList<TestIssue> TestIssues { get; set; }
 
         /// <summary>List of test suite overview contents. This could be parsed from xUnit XML log by server, or
         /// uploaded directly by user. This references should only be called when test suites are fully parsed or
@@ -5298,17 +5298,17 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// In create request: optional - In update request: never (use publishXunitXmlFiles custom method
         /// instead)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testSuiteOverviews")]
-        public virtual System.Collections.Generic.IList<TestSuiteOverview> TestSuiteOverviews { get; set; } 
+        public virtual System.Collections.Generic.IList<TestSuiteOverview> TestSuiteOverviews { get; set; }
 
         /// <summary>The timing break down of the test execution. - In response: present if set by create or update - In
         /// create/update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTiming")]
-        public virtual TestTiming TestTiming { get; set; } 
+        public virtual TestTiming TestTiming { get; set; }
 
         /// <summary>Represents the execution of the test runner. The exit code of this tool will be used to determine
         /// if the test passed. - In response: always set - In create/update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolExecution")]
-        public virtual ToolExecution ToolExecution { get; set; } 
+        public virtual ToolExecution ToolExecution { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5319,28 +5319,28 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>Category of issue. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
-        public virtual string Category { get; set; } 
+        public virtual string Category { get; set; }
 
         /// <summary>A brief human-readable message describing the issue. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
-        public virtual string ErrorMessage { get; set; } 
+        public virtual string ErrorMessage { get; set; }
 
         /// <summary>Severity of issue. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
-        public virtual string Severity { get; set; } 
+        public virtual string Severity { get; set; }
 
         /// <summary>Deprecated in favor of stack trace fields inside specific warnings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackTrace")]
-        public virtual StackTrace StackTrace { get; set; } 
+        public virtual StackTrace StackTrace { get; set; }
 
         /// <summary>Type of issue. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>Warning message with additional details of the issue. Should always be a message from
         /// com.google.devtools.toolresults.v1.warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual Any Warning { get; set; } 
+        public virtual Any Warning { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5353,42 +5353,42 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>Elapsed time of test suite.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("elapsedTime")]
-        public virtual Duration ElapsedTime { get; set; } 
+        public virtual Duration ElapsedTime { get; set; }
 
         /// <summary>Number of test cases in error, typically set by the service by parsing the xml_source. - In
         /// create/response: always set - In update request: never</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorCount")]
-        public virtual System.Nullable<int> ErrorCount { get; set; } 
+        public virtual System.Nullable<int> ErrorCount { get; set; }
 
         /// <summary>Number of failed test cases, typically set by the service by parsing the xml_source. May also be
         /// set by the user. - In create/response: always set - In update request: never</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
-        public virtual System.Nullable<int> FailureCount { get; set; } 
+        public virtual System.Nullable<int> FailureCount { get; set; }
 
         /// <summary>Number of flaky test cases, set by the service by rolling up flaky test attempts. Present only for
         /// rollup test suite overview at environment level. A step cannot have flaky test cases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flakyCount")]
-        public virtual System.Nullable<int> FlakyCount { get; set; } 
+        public virtual System.Nullable<int> FlakyCount { get; set; }
 
         /// <summary>The name of the test suite. - In create/response: always set - In update request: never</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Number of test cases not run, typically set by the service by parsing the xml_source. - In
         /// create/response: always set - In update request: never</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skippedCount")]
-        public virtual System.Nullable<int> SkippedCount { get; set; } 
+        public virtual System.Nullable<int> SkippedCount { get; set; }
 
         /// <summary>Number of test cases, typically set by the service by parsing the xml_source. - In create/response:
         /// always set - In update request: never</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalCount")]
-        public virtual System.Nullable<int> TotalCount { get; set; } 
+        public virtual System.Nullable<int> TotalCount { get; set; }
 
         /// <summary>If this test suite was parsed from XML, this is the URI where the original XML file is stored.
         /// Note: Multiple test suites can share the same xml_source Returns INVALID_ARGUMENT if the uri format is not
         /// supported. - In create/response: optional - In update request: never</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xmlSource")]
-        public virtual FileReference XmlSource { get; set; } 
+        public virtual FileReference XmlSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5400,7 +5400,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>How long it took to run the test process. - In response: present if previously set. - In
         /// create/update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testProcessDuration")]
-        public virtual Duration TestProcessDuration { get; set; } 
+        public virtual Duration TestProcessDuration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5411,21 +5411,21 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The thumbnail's content type, i.e. "image/png". Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
-        public virtual string ContentType { get; set; } 
+        public virtual string ContentType { get; set; }
 
         /// <summary>The thumbnail file itself. That is, the bytes here are precisely the bytes that make up the
         /// thumbnail file; they can be served as an image as-is (with the appropriate content type.) Always
         /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual string Data { get; set; } 
+        public virtual string Data { get; set; }
 
         /// <summary>The height of the thumbnail, in pixels. Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("heightPx")]
-        public virtual System.Nullable<int> HeightPx { get; set; } 
+        public virtual System.Nullable<int> HeightPx { get; set; }
 
         /// <summary>The width of the thumbnail, in pixels. Always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("widthPx")]
-        public virtual System.Nullable<int> WidthPx { get; set; } 
+        public virtual System.Nullable<int> WidthPx { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5444,12 +5444,12 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999
         /// inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
-        public virtual System.Nullable<int> Nanos { get; set; } 
+        public virtual System.Nullable<int> Nanos { get; set; }
 
         /// <summary>Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from
         /// 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
-        public virtual System.Nullable<long> Seconds { get; set; } 
+        public virtual System.Nullable<long> Seconds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5463,13 +5463,13 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// In response: present if set by create request - In create request: optional - In update request: never
         /// set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commandLineArguments")]
-        public virtual System.Collections.Generic.IList<string> CommandLineArguments { get; set; } 
+        public virtual System.Collections.Generic.IList<string> CommandLineArguments { get; set; }
 
         /// <summary>Tool execution exit code. This field will be set once the tool has exited. - In response: present
         /// if set by create/update request - In create request: optional - In update request: optional, a
         /// FAILED_PRECONDITION error will be returned if an exit_code is already set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exitCode")]
-        public virtual ToolExitCode ExitCode { get; set; } 
+        public virtual ToolExitCode ExitCode { get; set; }
 
         /// <summary>References to any plain text logs output the tool execution. This field can be set before the tool
         /// has exited in order to be able to have access to a live view of the logs while the tool is running. The
@@ -5477,14 +5477,14 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// - In create request: optional - In update request: optional, any value provided will be appended to the
         /// existing list</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolLogs")]
-        public virtual System.Collections.Generic.IList<FileReference> ToolLogs { get; set; } 
+        public virtual System.Collections.Generic.IList<FileReference> ToolLogs { get; set; }
 
         /// <summary>References to opaque files of any format output by the tool execution. The maximum allowed number
         /// of tool outputs per step is 1000. - In response: present if set by create/update request - In create
         /// request: optional - In update request: optional, any value provided will be appended to the existing
         /// list</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolOutputs")]
-        public virtual System.Collections.Generic.IList<ToolOutputReference> ToolOutputs { get; set; } 
+        public virtual System.Collections.Generic.IList<ToolOutputReference> ToolOutputs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5497,7 +5497,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>A Tool execution. - In response: present if set by create/update request - In create/update
         /// request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolExecution")]
-        public virtual ToolExecution ToolExecution { get; set; } 
+        public virtual ToolExecution ToolExecution { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5509,7 +5509,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>Tool execution exit code. A value of 0 means that the execution was successful. - In response:
         /// always set - In create/update request: always set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("number")]
-        public virtual System.Nullable<int> Number { get; set; } 
+        public virtual System.Nullable<int> Number { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5521,17 +5521,17 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>The creation time of the file. - In response: present if set by create/update request - In
         /// create/update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual Timestamp CreationTime { get; set; } 
+        public virtual Timestamp CreationTime { get; set; }
 
         /// <summary>A FileReference to an output file. - In response: always set - In create/update request: always
         /// set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("output")]
-        public virtual FileReference Output { get; set; } 
+        public virtual FileReference Output { get; set; }
 
         /// <summary>The test case to which this output file belongs. - In response: present if set by create/update
         /// request - In create/update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testCase")]
-        public virtual TestCaseReference TestCase { get; set; } 
+        public virtual TestCaseReference TestCase { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5542,15 +5542,15 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The depth of the screen element</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("depth")]
-        public virtual System.Nullable<int> Depth { get; set; } 
+        public virtual System.Nullable<int> Depth { get; set; }
 
         /// <summary>The screen id of the element</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenId")]
-        public virtual string ScreenId { get; set; } 
+        public virtual string ScreenId { get; set; }
 
         /// <summary>The screen state id of the element</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenStateId")]
-        public virtual string ScreenStateId { get; set; } 
+        public virtual string ScreenStateId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5568,7 +5568,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The name of the resource that was unused.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
-        public virtual string ResourceName { get; set; } 
+        public virtual string ResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5580,12 +5580,12 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The name of the package to be upgraded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
-        public virtual string PackageName { get; set; } 
+        public virtual string PackageName { get; set; }
 
         /// <summary>The suggested version to upgrade to. Optional: In case we are not sure which version solves this
         /// problem</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeToVersion")]
-        public virtual string UpgradeToVersion { get; set; } 
+        public virtual string UpgradeToVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5596,7 +5596,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The name of the resource that was used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
-        public virtual string ResourceName { get; set; } 
+        public virtual string ResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5608,7 +5608,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     {
         /// <summary>The name of the resource that was ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
-        public virtual string ResourceName { get; set; } 
+        public virtual string ResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

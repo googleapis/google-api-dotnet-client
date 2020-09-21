@@ -572,7 +572,7 @@ namespace Google.Apis.HomeGraphService.v1.Data
     {
         /// <summary>Third-party device ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -583,11 +583,11 @@ namespace Google.Apis.HomeGraphService.v1.Data
     {
         /// <summary>Project ID for your smart home Action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
-        public virtual string AgentId { get; set; } 
+        public virtual string AgentId { get; set; }
 
         /// <summary>Unique third-party device ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
-        public virtual string DeviceId { get; set; } 
+        public virtual string DeviceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -598,61 +598,61 @@ namespace Google.Apis.HomeGraphService.v1.Data
     {
         /// <summary>Attributes for the traits supported by the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Attributes { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Attributes { get; set; }
 
         /// <summary>Custom device attributes stored in Home Graph and provided to your smart home Action in each
         /// [QUERY](https://developers.google.com/assistant/smarthome/reference/intent/query) and
         /// [EXECUTE](https://developers.google.com/assistant/smarthome/reference/intent/execute) intent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customData")]
-        public virtual System.Collections.Generic.IDictionary<string,object> CustomData { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> CustomData { get; set; }
 
         /// <summary>Device manufacturer, model, hardware version, and software version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceInfo")]
-        public virtual DeviceInfo DeviceInfo { get; set; } 
+        public virtual DeviceInfo DeviceInfo { get; set; }
 
         /// <summary>Third-party device ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Names given to this device by your smart home Action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual DeviceNames Name { get; set; } 
+        public virtual DeviceNames Name { get; set; }
 
         /// <summary>Indicates whether your smart home Action will report notifications to Google for this device via
         /// ReportStateAndNotification. If your smart home Action enables users to control device notifications, you
         /// should update this field and call RequestSyncDevices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationSupportedByAgent")]
-        public virtual System.Nullable<bool> NotificationSupportedByAgent { get; set; } 
+        public virtual System.Nullable<bool> NotificationSupportedByAgent { get; set; }
 
         /// <summary>Alternate IDs associated with this device. This is used to identify cloud synced devices enabled
         /// for [local fulfillment](https://developers.google.com/assistant/smarthome/concepts/local).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("otherDeviceIds")]
-        public virtual System.Collections.Generic.IList<AgentOtherDeviceId> OtherDeviceIds { get; set; } 
+        public virtual System.Collections.Generic.IList<AgentOtherDeviceId> OtherDeviceIds { get; set; }
 
         /// <summary>Suggested name for the room where this device is installed. Google attempts to use this value
         /// during user setup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roomHint")]
-        public virtual string RoomHint { get; set; } 
+        public virtual string RoomHint { get; set; }
 
         /// <summary>Suggested name for the structure where this device is installed. Google attempts to use this value
         /// during user setup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structureHint")]
-        public virtual string StructureHint { get; set; } 
+        public virtual string StructureHint { get; set; }
 
         /// <summary>Traits supported by the device. See [device
         /// traits](https://developers.google.com/assistant/smarthome/traits).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traits")]
-        public virtual System.Collections.Generic.IList<string> Traits { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Traits { get; set; }
 
         /// <summary>Hardware type of the device. See [device
         /// types](https://developers.google.com/assistant/smarthome/guides).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>Indicates whether your smart home Action will report state of this device to Google via
         /// ReportStateAndNotification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("willReportState")]
-        public virtual System.Nullable<bool> WillReportState { get; set; } 
+        public virtual System.Nullable<bool> WillReportState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -663,19 +663,19 @@ namespace Google.Apis.HomeGraphService.v1.Data
     {
         /// <summary>Device hardware version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hwVersion")]
-        public virtual string HwVersion { get; set; } 
+        public virtual string HwVersion { get; set; }
 
         /// <summary>Device manufacturer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manufacturer")]
-        public virtual string Manufacturer { get; set; } 
+        public virtual string Manufacturer { get; set; }
 
         /// <summary>Device model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
-        public virtual string Model { get; set; } 
+        public virtual string Model { get; set; }
 
         /// <summary>Device software version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("swVersion")]
-        public virtual string SwVersion { get; set; } 
+        public virtual string SwVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -687,15 +687,15 @@ namespace Google.Apis.HomeGraphService.v1.Data
         /// <summary>List of names provided by the manufacturer rather than the user, such as serial numbers, SKUs,
         /// etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultNames")]
-        public virtual System.Collections.Generic.IList<string> DefaultNames { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DefaultNames { get; set; }
 
         /// <summary>Primary name of the device, generally provided by the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Additional names provided by the user for the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nicknames")]
-        public virtual System.Collections.Generic.IList<string> Nicknames { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Nicknames { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -716,15 +716,15 @@ namespace Google.Apis.HomeGraphService.v1.Data
     {
         /// <summary>Required. Third-party user ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUserId")]
-        public virtual string AgentUserId { get; set; } 
+        public virtual string AgentUserId { get; set; }
 
         /// <summary>Required. Inputs containing third-party device IDs for which to get the device states.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputs")]
-        public virtual System.Collections.Generic.IList<QueryRequestInput> Inputs { get; set; } 
+        public virtual System.Collections.Generic.IList<QueryRequestInput> Inputs { get; set; }
 
         /// <summary>Request ID used for debugging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; } 
+        public virtual string RequestId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -735,7 +735,7 @@ namespace Google.Apis.HomeGraphService.v1.Data
     {
         /// <summary>Payload containing third-party device IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual QueryRequestPayload Payload { get; set; } 
+        public virtual QueryRequestPayload Payload { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -746,7 +746,7 @@ namespace Google.Apis.HomeGraphService.v1.Data
     {
         /// <summary>Third-party device IDs for which to get the device states.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("devices")]
-        public virtual System.Collections.Generic.IList<AgentDeviceId> Devices { get; set; } 
+        public virtual System.Collections.Generic.IList<AgentDeviceId> Devices { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -762,11 +762,11 @@ namespace Google.Apis.HomeGraphService.v1.Data
     {
         /// <summary>Device states for the devices given in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual QueryResponsePayload Payload { get; set; } 
+        public virtual QueryResponsePayload Payload { get; set; }
 
         /// <summary>Request ID used for debugging. Copied from the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; } 
+        public virtual string RequestId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -777,7 +777,7 @@ namespace Google.Apis.HomeGraphService.v1.Data
     {
         /// <summary>States of the devices. Map of third-party device ID to struct of device states.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("devices")]
-        public virtual System.Collections.Generic.IDictionary<string,System.Collections.Generic.IDictionary<string,object>> Devices { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IDictionary<string, object>> Devices { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -789,12 +789,12 @@ namespace Google.Apis.HomeGraphService.v1.Data
         /// <summary>Notifications metadata for devices. See the **Device NOTIFICATIONS** section of the individual
         /// trait [reference guides](https://developers.google.com/assistant/smarthome/traits).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notifications")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Notifications { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Notifications { get; set; }
 
         /// <summary>States of devices to update. See the **Device STATES** section of the individual trait [reference
         /// guides](https://developers.google.com/assistant/smarthome/traits).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("states")]
-        public virtual System.Collections.Generic.IDictionary<string,object> States { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> States { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -810,25 +810,25 @@ namespace Google.Apis.HomeGraphService.v1.Data
     {
         /// <summary>Required. Third-party user ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUserId")]
-        public virtual string AgentUserId { get; set; } 
+        public virtual string AgentUserId { get; set; }
 
         /// <summary>Unique identifier per event (for example, a doorbell press).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         /// <summary>Token to maintain state in the follow up notification response. Deprecated. See the [notifications
         /// guide](https://developers.google.com/assistant/smarthome/develop/notifications) for details on implementing
         /// follow up notifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("followUpToken")]
-        public virtual string FollowUpToken { get; set; } 
+        public virtual string FollowUpToken { get; set; }
 
         /// <summary>Required. State of devices to update and notification metadata for devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual StateAndNotificationPayload Payload { get; set; } 
+        public virtual StateAndNotificationPayload Payload { get; set; }
 
         /// <summary>Request ID used for debugging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; } 
+        public virtual string RequestId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -841,7 +841,7 @@ namespace Google.Apis.HomeGraphService.v1.Data
     {
         /// <summary>Request ID copied from ReportStateAndNotificationRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; } 
+        public virtual string RequestId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -853,13 +853,13 @@ namespace Google.Apis.HomeGraphService.v1.Data
     {
         /// <summary>Required. Third-party user ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUserId")]
-        public virtual string AgentUserId { get; set; } 
+        public virtual string AgentUserId { get; set; }
 
         /// <summary>Optional. If set, the request will be added to a queue and a response will be returned immediately.
         /// This enables concurrent requests for the given `agent_user_id`, but the caller will not receive any error
         /// responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("async")]
-        public virtual System.Nullable<bool> Async__ { get; set; } 
+        public virtual System.Nullable<bool> Async__ { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -879,7 +879,7 @@ namespace Google.Apis.HomeGraphService.v1.Data
     {
         /// <summary>The devices for updating state and sending notifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("devices")]
-        public virtual ReportStateAndNotificationDevice Devices { get; set; } 
+        public virtual ReportStateAndNotificationDevice Devices { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -890,11 +890,11 @@ namespace Google.Apis.HomeGraphService.v1.Data
     {
         /// <summary>Required. Third-party user ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUserId")]
-        public virtual string AgentUserId { get; set; } 
+        public virtual string AgentUserId { get; set; }
 
         /// <summary>Request ID used for debugging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; } 
+        public virtual string RequestId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -912,11 +912,11 @@ namespace Google.Apis.HomeGraphService.v1.Data
     {
         /// <summary>Devices associated with the third-party user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual SyncResponsePayload Payload { get; set; } 
+        public virtual SyncResponsePayload Payload { get; set; }
 
         /// <summary>Request ID used for debugging. Copied from the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; } 
+        public virtual string RequestId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -927,11 +927,11 @@ namespace Google.Apis.HomeGraphService.v1.Data
     {
         /// <summary>Third-party user ID</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUserId")]
-        public virtual string AgentUserId { get; set; } 
+        public virtual string AgentUserId { get; set; }
 
         /// <summary>Devices associated with the third-party user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("devices")]
-        public virtual System.Collections.Generic.IList<Device> Devices { get; set; } 
+        public virtual System.Collections.Generic.IList<Device> Devices { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

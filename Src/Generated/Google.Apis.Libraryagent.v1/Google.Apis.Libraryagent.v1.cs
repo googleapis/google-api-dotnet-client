@@ -645,20 +645,20 @@ namespace Google.Apis.Libraryagent.v1.Data
     {
         /// <summary>The name of the book author.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("author")]
-        public virtual string Author { get; set; } 
+        public virtual string Author { get; set; }
 
         /// <summary>The resource name of the book. Book names have the form `shelves/{shelf_id}/books/{book_id}`. The
         /// name is ignored when creating a book.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Value indicating whether the book has been read.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("read")]
-        public virtual System.Nullable<bool> Read { get; set; } 
+        public virtual System.Nullable<bool> Read { get; set; }
 
         /// <summary>The title of the book.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -669,12 +669,12 @@ namespace Google.Apis.Libraryagent.v1.Data
     {
         /// <summary>The list of books.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("books")]
-        public virtual System.Collections.Generic.IList<GoogleExampleLibraryagentV1Book> Books { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleExampleLibraryagentV1Book> Books { get; set; }
 
         /// <summary>A token to retrieve next page of results. Pass this value in the ListBooksRequest.page_token field
         /// in the subsequent call to `ListBooks` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -686,11 +686,11 @@ namespace Google.Apis.Libraryagent.v1.Data
         /// <summary>A token to retrieve next page of results. Pass this value in the ListShelvesRequest.page_token
         /// field in the subsequent call to `ListShelves` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of shelves.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shelves")]
-        public virtual System.Collections.Generic.IList<GoogleExampleLibraryagentV1Shelf> Shelves { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleExampleLibraryagentV1Shelf> Shelves { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -702,11 +702,11 @@ namespace Google.Apis.Libraryagent.v1.Data
         /// <summary>Output only. The resource name of the shelf. Shelf names have the form `shelves/{shelf_id}`. The
         /// name is ignored when creating a shelf.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The theme of the shelf</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("theme")]
-        public virtual string Theme { get; set; } 
+        public virtual string Theme { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

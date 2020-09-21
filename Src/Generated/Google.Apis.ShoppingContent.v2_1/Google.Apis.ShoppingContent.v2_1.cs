@@ -8430,60 +8430,60 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// either in the Ads interface or through the AdWords API. To delete an active link, or to cancel a link
         /// request, remove it from the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adsLinks")]
-        public virtual System.Collections.Generic.IList<AccountAdsLink> AdsLinks { get; set; } 
+        public virtual System.Collections.Generic.IList<AccountAdsLink> AdsLinks { get; set; }
 
         /// <summary>Indicates whether the merchant sells adult content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adultContent")]
-        public virtual System.Nullable<bool> AdultContent { get; set; } 
+        public virtual System.Nullable<bool> AdultContent { get; set; }
 
         /// <summary>The business information of the account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("businessInformation")]
-        public virtual AccountBusinessInformation BusinessInformation { get; set; } 
+        public virtual AccountBusinessInformation BusinessInformation { get; set; }
 
         /// <summary>ID of CSS the account belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cssId")]
-        public virtual System.Nullable<ulong> CssId { get; set; } 
+        public virtual System.Nullable<ulong> CssId { get; set; }
 
         /// <summary>The GMB account which is linked or in the process of being linked with the Merchant Center
         /// account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleMyBusinessLink")]
-        public virtual AccountGoogleMyBusinessLink GoogleMyBusinessLink { get; set; } 
+        public virtual AccountGoogleMyBusinessLink GoogleMyBusinessLink { get; set; }
 
         /// <summary>Required for update. Merchant Center account ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<ulong> Id { get; set; } 
+        public virtual System.Nullable<ulong> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "`content#account`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>List of label IDs that are assigned to the account by CSS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<ulong>> LabelIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<ulong>> LabelIds { get; set; }
 
         /// <summary>Required. Display name for the account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Client-specific, locally-unique, internal ID for the child account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sellerId")]
-        public virtual string SellerId { get; set; } 
+        public virtual string SellerId { get; set; }
 
         /// <summary>Users with access to the account. Every account (except for subaccounts) must have at least one
         /// admin user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("users")]
-        public virtual System.Collections.Generic.IList<AccountUser> Users { get; set; } 
+        public virtual System.Collections.Generic.IList<AccountUser> Users { get; set; }
 
         /// <summary>The merchant's website.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("websiteUrl")]
-        public virtual string WebsiteUrl { get; set; } 
+        public virtual string WebsiteUrl { get; set; }
 
         /// <summary>List of linked YouTube channels that are active or pending approval. To create a new link request,
         /// add a new link with status `active` to the list. It will remain in a `pending` state until approved or
         /// rejected in the YT Creator Studio interface. To delete an active link, or to cancel a link request, remove
         /// it from the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("youtubeChannelLinks")]
-        public virtual System.Collections.Generic.IList<AccountYouTubeChannelLink> YoutubeChannelLinks { get; set; } 
+        public virtual System.Collections.Generic.IList<AccountYouTubeChannelLink> YoutubeChannelLinks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8494,25 +8494,25 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>CLDR country code (e.g. "US"). This value cannot be set for a sub-account of an MCA. All MCA sub-
         /// accounts inherit the country of their parent MCA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
-        public virtual string Country { get; set; } 
+        public virtual string Country { get; set; }
 
         /// <summary>City, town or commune. May also include dependent localities or sublocalities (e.g. neighborhoods
         /// or suburbs).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locality")]
-        public virtual string Locality { get; set; } 
+        public virtual string Locality { get; set; }
 
         /// <summary>Postal code or ZIP (e.g. "94043").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
-        public virtual string PostalCode { get; set; } 
+        public virtual string PostalCode { get; set; }
 
         /// <summary>Top-level administrative subdivision of the country. For example, a state like California ("CA") or
         /// a province like Quebec ("QC").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
-        public virtual string Region { get; set; } 
+        public virtual string Region { get; set; }
 
         /// <summary>Street-level part of the address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streetAddress")]
-        public virtual string StreetAddress { get; set; } 
+        public virtual string StreetAddress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8522,7 +8522,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Customer ID of the Ads account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adsId")]
-        public virtual System.Nullable<ulong> AdsId { get; set; } 
+        public virtual System.Nullable<ulong> AdsId { get; set; }
 
         /// <summary>Status of the link between this Merchant Center account and the Ads account. Upon retrieval, it
         /// represents the actual status of the link and can be either `active` if it was approved in Google Ads or
@@ -8534,7 +8534,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`active`" - "`pending`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8544,15 +8544,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The address of the business.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
-        public virtual AccountAddress Address { get; set; } 
+        public virtual AccountAddress Address { get; set; }
 
         /// <summary>The customer service information of the business.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerService")]
-        public virtual AccountCustomerService CustomerService { get; set; } 
+        public virtual AccountCustomerService CustomerService { get; set; }
 
         /// <summary>The phone number of the business.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
-        public virtual string PhoneNumber { get; set; } 
+        public virtual string PhoneNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8562,15 +8562,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Customer service email.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
+        public virtual string Email { get; set; }
 
         /// <summary>Customer service phone number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
-        public virtual string PhoneNumber { get; set; } 
+        public virtual string PhoneNumber { get; set; }
 
         /// <summary>Customer service URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8581,18 +8581,18 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The ID of the GMB account. If this is provided, then `gmbEmail` is ignored. The value of this field
         /// should match the `accountId` used by the GMB API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gmbAccountId")]
-        public virtual string GmbAccountId { get; set; } 
+        public virtual string GmbAccountId { get; set; }
 
         /// <summary>The GMB email address of which a specific account within a GMB account. A sample account within a
         /// GMB account could be a business account with set of locations, managed under the GMB account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gmbEmail")]
-        public virtual string GmbEmail { get; set; } 
+        public virtual string GmbEmail { get; set; }
 
         /// <summary>Status of the link between this Merchant Center account and the GMB account.
         ///
         /// Acceptable values are: - "`active`" - "`pending`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8603,11 +8603,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The aggregator ID, set for aggregators and subaccounts (in that case, it represents the aggregator
         /// of the subaccount).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregatorId")]
-        public virtual System.Nullable<ulong> AggregatorId { get; set; } 
+        public virtual System.Nullable<ulong> AggregatorId { get; set; }
 
         /// <summary>The merchant account ID, set for individual accounts and subaccounts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
-        public virtual System.Nullable<ulong> MerchantId { get; set; } 
+        public virtual System.Nullable<ulong> MerchantId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8619,25 +8619,25 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the account for which the status is reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual string AccountId { get; set; } 
+        public virtual string AccountId { get; set; }
 
         /// <summary>A list of account level issues.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountLevelIssues")]
-        public virtual System.Collections.Generic.IList<AccountStatusAccountLevelIssue> AccountLevelIssues { get; set; } 
+        public virtual System.Collections.Generic.IList<AccountStatusAccountLevelIssue> AccountLevelIssues { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "`content#accountStatus`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>List of product-related data by channel, destination, and country. Data in this field may be
         /// delayed by up to 30 minutes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("products")]
-        public virtual System.Collections.Generic.IList<AccountStatusProducts> Products { get; set; } 
+        public virtual System.Collections.Generic.IList<AccountStatusProducts> Products { get; set; }
 
         /// <summary>Whether the account's website is claimed or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("websiteClaimed")]
-        public virtual System.Nullable<bool> WebsiteClaimed { get; set; } 
+        public virtual System.Nullable<bool> WebsiteClaimed { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8647,33 +8647,33 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Country for which this issue is reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
-        public virtual string Country { get; set; } 
+        public virtual string Country { get; set; }
 
         /// <summary>The destination the issue applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
-        public virtual string Destination { get; set; } 
+        public virtual string Destination { get; set; }
 
         /// <summary>Additional details about the issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detail")]
-        public virtual string Detail { get; set; } 
+        public virtual string Detail { get; set; }
 
         /// <summary>The URL of a web page to help resolving this issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentation")]
-        public virtual string Documentation { get; set; } 
+        public virtual string Documentation { get; set; }
 
         /// <summary>Issue identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Severity of the issue.
         ///
         /// Acceptable values are: - "`critical`" - "`error`" - "`suggestion`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
-        public virtual string Severity { get; set; } 
+        public virtual string Severity { get; set; }
 
         /// <summary>Short description of the issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8683,35 +8683,35 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The attribute's name, if the issue is caused by a single attribute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeName")]
-        public virtual string AttributeName { get; set; } 
+        public virtual string AttributeName { get; set; }
 
         /// <summary>The error code of the issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual string Code { get; set; } 
+        public virtual string Code { get; set; }
 
         /// <summary>A short issue description in English.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>A detailed issue description in English.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detail")]
-        public virtual string Detail { get; set; } 
+        public virtual string Detail { get; set; }
 
         /// <summary>The URL of a web page to help with resolving this issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentation")]
-        public virtual string Documentation { get; set; } 
+        public virtual string Documentation { get; set; }
 
         /// <summary>Number of items with this issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numItems")]
-        public virtual System.Nullable<long> NumItems { get; set; } 
+        public virtual System.Nullable<long> NumItems { get; set; }
 
         /// <summary>Whether the issue can be resolved by the merchant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolution")]
-        public virtual string Resolution { get; set; } 
+        public virtual string Resolution { get; set; }
 
         /// <summary>How this issue affects serving of the offer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servability")]
-        public virtual string Servability { get; set; } 
+        public virtual string Servability { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8723,23 +8723,23 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`local`" - "`online`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channel")]
-        public virtual string Channel { get; set; } 
+        public virtual string Channel { get; set; }
 
         /// <summary>The country the data applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
-        public virtual string Country { get; set; } 
+        public virtual string Country { get; set; }
 
         /// <summary>The destination the data applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
-        public virtual string Destination { get; set; } 
+        public virtual string Destination { get; set; }
 
         /// <summary>List of item-level issues.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemLevelIssues")]
-        public virtual System.Collections.Generic.IList<AccountStatusItemLevelIssue> ItemLevelIssues { get; set; } 
+        public virtual System.Collections.Generic.IList<AccountStatusItemLevelIssue> ItemLevelIssues { get; set; }
 
         /// <summary>Aggregated product statistics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statistics")]
-        public virtual AccountStatusStatistics Statistics { get; set; } 
+        public virtual AccountStatusStatistics Statistics { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8749,19 +8749,19 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Number of active offers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("active")]
-        public virtual System.Nullable<long> Active { get; set; } 
+        public virtual System.Nullable<long> Active { get; set; }
 
         /// <summary>Number of disapproved offers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disapproved")]
-        public virtual System.Nullable<long> Disapproved { get; set; } 
+        public virtual System.Nullable<long> Disapproved { get; set; }
 
         /// <summary>Number of expiring offers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expiring")]
-        public virtual System.Nullable<long> Expiring { get; set; } 
+        public virtual System.Nullable<long> Expiring { get; set; }
 
         /// <summary>Number of pending offers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pending")]
-        public virtual System.Nullable<long> Pending { get; set; } 
+        public virtual System.Nullable<long> Pending { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8772,16 +8772,16 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Required. The ID of the account to which these account tax settings belong.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<ulong> AccountId { get; set; } 
+        public virtual System.Nullable<ulong> AccountId { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "content#accountTax".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Tax rules. Updating the tax rules will enable US taxes (not reversible). Defining no rules is
         /// equivalent to not charging tax at all.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
-        public virtual System.Collections.Generic.IList<AccountTaxTaxRule> Rules { get; set; } 
+        public virtual System.Collections.Generic.IList<AccountTaxTaxRule> Rules { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8792,25 +8792,25 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Country code in which tax is applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
-        public virtual string Country { get; set; } 
+        public virtual string Country { get; set; }
 
         /// <summary>Required. State (or province) is which the tax is applicable, described by its location ID (also
         /// called criteria ID).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual System.Nullable<ulong> LocationId { get; set; } 
+        public virtual System.Nullable<ulong> LocationId { get; set; }
 
         /// <summary>Explicit tax rate in percent, represented as a floating point number without the percentage
         /// character. Must not be negative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ratePercent")]
-        public virtual string RatePercent { get; set; } 
+        public virtual string RatePercent { get; set; }
 
         /// <summary>If true, shipping charges are also taxed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingTaxed")]
-        public virtual System.Nullable<bool> ShippingTaxed { get; set; } 
+        public virtual System.Nullable<bool> ShippingTaxed { get; set; }
 
         /// <summary>Whether the tax rate is taken from a global tax table or specified explicitly.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useGlobalRate")]
-        public virtual System.Nullable<bool> UseGlobalRate { get; set; } 
+        public virtual System.Nullable<bool> UseGlobalRate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8820,23 +8820,23 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Whether user is an admin.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("admin")]
-        public virtual System.Nullable<bool> Admin { get; set; } 
+        public virtual System.Nullable<bool> Admin { get; set; }
 
         /// <summary>User's email address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
-        public virtual string EmailAddress { get; set; } 
+        public virtual string EmailAddress { get; set; }
 
         /// <summary>Whether user is an order manager.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderManager")]
-        public virtual System.Nullable<bool> OrderManager { get; set; } 
+        public virtual System.Nullable<bool> OrderManager { get; set; }
 
         /// <summary>Whether user can access payment statements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paymentsAnalyst")]
-        public virtual System.Nullable<bool> PaymentsAnalyst { get; set; } 
+        public virtual System.Nullable<bool> PaymentsAnalyst { get; set; }
 
         /// <summary>Whether user can manage payment settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paymentsManager")]
-        public virtual System.Nullable<bool> PaymentsManager { get; set; } 
+        public virtual System.Nullable<bool> PaymentsManager { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8846,7 +8846,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Channel ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
-        public virtual string ChannelId { get; set; } 
+        public virtual string ChannelId { get; set; }
 
         /// <summary>Status of the link between this Merchant Center account and the YouTube channel. Upon retrieval, it
         /// represents the actual status of the link and can be either `active` if it was approved in YT Creator Studio
@@ -8856,7 +8856,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// `inactive` is equivalent to not submitting the link at all and will delete the link if it was active or
         /// cancel the link request if it was pending.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8868,12 +8868,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// the merchant ID is defined - For an aggregator: only the aggregator ID is defined - For a subaccount of an
         /// MCA: both the merchant ID and the aggregator ID are defined.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountIdentifiers")]
-        public virtual System.Collections.Generic.IList<AccountIdentifier> AccountIdentifiers { get; set; } 
+        public virtual System.Collections.Generic.IList<AccountIdentifier> AccountIdentifiers { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#accountsAuthInfoResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8884,7 +8884,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#accountsClaimWebsiteResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8894,7 +8894,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The request entries to be processed in the batch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<AccountsCustomBatchRequestEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<AccountsCustomBatchRequestEntry> Entries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8905,48 +8905,48 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The account to create or update. Only defined if the method is `insert` or `update`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("account")]
-        public virtual Account Account { get; set; } 
+        public virtual Account Account { get; set; }
 
         /// <summary>The ID of the targeted account. Only defined if the method is not `insert`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<ulong> AccountId { get; set; } 
+        public virtual System.Nullable<ulong> AccountId { get; set; }
 
         /// <summary>An entry ID, unique within the batch request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>Whether the account should be deleted if the account has offers. Only applicable if the method is
         /// `delete`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("force")]
-        public virtual System.Nullable<bool> Force { get; set; } 
+        public virtual System.Nullable<bool> Force { get; set; }
 
         /// <summary>Label IDs for the 'updatelabels' request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<ulong>> LabelIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<ulong>> LabelIds { get; set; }
 
         /// <summary>Details about the `link` request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkRequest")]
-        public virtual AccountsCustomBatchRequestEntryLinkRequest LinkRequest { get; set; } 
+        public virtual AccountsCustomBatchRequestEntryLinkRequest LinkRequest { get; set; }
 
         /// <summary>The ID of the managing account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
-        public virtual System.Nullable<ulong> MerchantId { get; set; } 
+        public virtual System.Nullable<ulong> MerchantId { get; set; }
 
         /// <summary>The method of the batch entry.
         ///
         /// Acceptable values are: - "`claimWebsite`" - "`delete`" - "`get`" - "`insert`" - "`link`" -
         /// "`update`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
+        public virtual string Method { get; set; }
 
         /// <summary>Only applicable if the method is `claimwebsite`. Indicates whether or not to take the claim from
         /// another account in case there is a conflict.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overwrite")]
-        public virtual System.Nullable<bool> Overwrite { get; set; } 
+        public virtual System.Nullable<bool> Overwrite { get; set; }
 
         /// <summary>Controls which fields are visible. Only applicable if the method is 'get'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("view")]
-        public virtual string View { get; set; } 
+        public virtual string View { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8958,21 +8958,21 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`approve`" - "`remove`" - "`request`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual string Action { get; set; } 
+        public virtual string Action { get; set; }
 
         /// <summary>Type of the link between the two accounts.
         ///
         /// Acceptable values are: - "`channelPartner`" - "`eCommercePlatform`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkType")]
-        public virtual string LinkType { get; set; } 
+        public virtual string LinkType { get; set; }
 
         /// <summary>The ID of the linked account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedAccountId")]
-        public virtual string LinkedAccountId { get; set; } 
+        public virtual string LinkedAccountId { get; set; }
 
         /// <summary>List of provided services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
-        public virtual System.Collections.Generic.IList<string> Services { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Services { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8982,12 +8982,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The result of the execution of the batch requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<AccountsCustomBatchResponseEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<AccountsCustomBatchResponseEntry> Entries { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#accountsCustomBatchResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8999,20 +8999,20 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The retrieved, created, or updated account. Not defined if the method was `delete`, `claimwebsite`
         /// or `link`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("account")]
-        public virtual Account Account { get; set; } 
+        public virtual Account Account { get; set; }
 
         /// <summary>The ID of the request entry this entry responds to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>A list of errors defined if and only if the request failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual Errors Errors { get; set; } 
+        public virtual Errors Errors { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "`content#accountsCustomBatchResponseEntry`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9024,21 +9024,21 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`approve`" - "`remove`" - "`request`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual string Action { get; set; } 
+        public virtual string Action { get; set; }
 
         /// <summary>Type of the link between the two accounts.
         ///
         /// Acceptable values are: - "`channelPartner`" - "`eCommercePlatform`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkType")]
-        public virtual string LinkType { get; set; } 
+        public virtual string LinkType { get; set; }
 
         /// <summary>The ID of the linked account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedAccountId")]
-        public virtual string LinkedAccountId { get; set; } 
+        public virtual string LinkedAccountId { get; set; }
 
         /// <summary>List of provided services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
-        public virtual System.Collections.Generic.IList<string> Services { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Services { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9049,7 +9049,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#accountsLinkResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9060,15 +9060,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#accountsListLinksResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The list of available links.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("links")]
-        public virtual System.Collections.Generic.IList<LinkedAccount> Links { get; set; } 
+        public virtual System.Collections.Generic.IList<LinkedAccount> Links { get; set; }
 
         /// <summary>The token for the retrieval of the next page of links.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9079,14 +9079,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#accountsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token for the retrieval of the next page of accounts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<Account> Resources { get; set; } 
+        public virtual System.Collections.Generic.IList<Account> Resources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9096,7 +9096,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The IDs of labels that should be assigned to the account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<ulong>> LabelIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<ulong>> LabelIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9107,7 +9107,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#accountsUpdateLabelsResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9117,7 +9117,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The request entries to be processed in the batch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<AccountstatusesCustomBatchRequestEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<AccountstatusesCustomBatchRequestEntry> Entries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9128,26 +9128,26 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the (sub-)account whose status to get.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<ulong> AccountId { get; set; } 
+        public virtual System.Nullable<ulong> AccountId { get; set; }
 
         /// <summary>An entry ID, unique within the batch request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>If set, only issues for the specified destinations are returned, otherwise only issues for the
         /// Shopping destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
-        public virtual System.Collections.Generic.IList<string> Destinations { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Destinations { get; set; }
 
         /// <summary>The ID of the managing account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
-        public virtual System.Nullable<ulong> MerchantId { get; set; } 
+        public virtual System.Nullable<ulong> MerchantId { get; set; }
 
         /// <summary>The method of the batch entry.
         ///
         /// Acceptable values are: - "`get`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
+        public virtual string Method { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9157,12 +9157,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The result of the execution of the batch requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<AccountstatusesCustomBatchResponseEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<AccountstatusesCustomBatchResponseEntry> Entries { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#accountstatusesCustomBatchResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9173,15 +9173,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The requested account status. Defined if and only if the request was successful.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountStatus")]
-        public virtual AccountStatus AccountStatus { get; set; } 
+        public virtual AccountStatus AccountStatus { get; set; }
 
         /// <summary>The ID of the request entry this entry responds to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>A list of errors defined if and only if the request failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual Errors Errors { get; set; } 
+        public virtual Errors Errors { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9192,14 +9192,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#accountstatusesListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token for the retrieval of the next page of account statuses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<AccountStatus> Resources { get; set; } 
+        public virtual System.Collections.Generic.IList<AccountStatus> Resources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9209,7 +9209,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The request entries to be processed in the batch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<AccounttaxCustomBatchRequestEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<AccounttaxCustomBatchRequestEntry> Entries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9220,25 +9220,25 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the account for which to get/update account tax settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<ulong> AccountId { get; set; } 
+        public virtual System.Nullable<ulong> AccountId { get; set; }
 
         /// <summary>The account tax settings to update. Only defined if the method is `update`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountTax")]
-        public virtual AccountTax AccountTax { get; set; } 
+        public virtual AccountTax AccountTax { get; set; }
 
         /// <summary>An entry ID, unique within the batch request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>The ID of the managing account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
-        public virtual System.Nullable<ulong> MerchantId { get; set; } 
+        public virtual System.Nullable<ulong> MerchantId { get; set; }
 
         /// <summary>The method of the batch entry.
         ///
         /// Acceptable values are: - "`get`" - "`update`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
+        public virtual string Method { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9248,12 +9248,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The result of the execution of the batch requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<AccounttaxCustomBatchResponseEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<AccounttaxCustomBatchResponseEntry> Entries { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#accounttaxCustomBatchResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9264,20 +9264,20 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The retrieved or updated account tax settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountTax")]
-        public virtual AccountTax AccountTax { get; set; } 
+        public virtual AccountTax AccountTax { get; set; }
 
         /// <summary>The ID of the request entry this entry responds to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>A list of errors defined if and only if the request failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual Errors Errors { get; set; } 
+        public virtual Errors Errors { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "`content#accounttaxCustomBatchResponseEntry`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9288,14 +9288,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#accounttaxListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token for the retrieval of the next page of account tax settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<AccountTax> Resources { get; set; } 
+        public virtual System.Collections.Generic.IList<AccountTax> Resources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9305,11 +9305,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>[required] The pre-tax or post-tax price depending on the location of the order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceAmount")]
-        public virtual Price PriceAmount { get; set; } 
+        public virtual Price PriceAmount { get; set; }
 
         /// <summary>[required] Tax value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxAmount")]
-        public virtual Price TaxAmount { get; set; } 
+        public virtual Price TaxAmount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9319,7 +9319,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Regular business days. May not be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("businessDays")]
-        public virtual System.Collections.Generic.IList<string> BusinessDays { get; set; } 
+        public virtual System.Collections.Generic.IList<string> BusinessDays { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9330,31 +9330,31 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Carrier service, such as `"UPS"` or `"Fedex"`. The list of supported carriers can be retrieved via
         /// the `getSupportedCarriers` method. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierName")]
-        public virtual string CarrierName { get; set; } 
+        public virtual string CarrierName { get; set; }
 
         /// <summary>Carrier service, such as `"ground"` or `"2 days"`. The list of supported services for a carrier can
         /// be retrieved via the `getSupportedCarriers` method. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierService")]
-        public virtual string CarrierService { get; set; } 
+        public virtual string CarrierService { get; set; }
 
         /// <summary>Additive shipping rate modifier. Can be negative. For example `{ "value": "1", "currency" : "USD"
         /// }` adds $1 to the rate, `{ "value": "-3", "currency" : "USD" }` removes $3 from the rate.
         /// Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flatAdjustment")]
-        public virtual Price FlatAdjustment { get; set; } 
+        public virtual Price FlatAdjustment { get; set; }
 
         /// <summary>Name of the carrier rate. Must be unique per rate group. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Shipping origin for this carrier rate. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originPostalCode")]
-        public virtual string OriginPostalCode { get; set; } 
+        public virtual string OriginPostalCode { get; set; }
 
         /// <summary>Multiplicative shipping rate modifier as a number in decimal notation. Can be negative. For example
         /// `"5.4"` increases the rate by 5.4%, `"-3"` decreases the rate by 3%. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percentageAdjustment")]
-        public virtual string PercentageAdjustment { get; set; } 
+        public virtual string PercentageAdjustment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9364,16 +9364,16 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The CLDR country code of the carrier (e.g., "US"). Always present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
-        public virtual string Country { get; set; } 
+        public virtual string Country { get; set; }
 
         /// <summary>The name of the carrier (e.g., `"UPS"`). Always present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>A list of supported services (e.g., `"ground"`) for that carrier. Contains at least one
         /// service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
-        public virtual System.Collections.Generic.IList<string> Services { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Services { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9384,15 +9384,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Subattributes within this attribute group. Exactly one of value or groupValues must be
         /// provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupValues")]
-        public virtual System.Collections.Generic.IList<CustomAttribute> GroupValues { get; set; } 
+        public virtual System.Collections.Generic.IList<CustomAttribute> GroupValues { get; set; }
 
         /// <summary>The name of the attribute. Underscores will be replaced by spaces upon insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The value of the attribute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9402,7 +9402,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Description of the reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Code of the return reason.
         ///
@@ -9411,7 +9411,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "`noLongerNeeded`" - "`notSpecified`" - "`orderedWrongItem`" - "`other`" - "`qualityNotExpected`" -
         /// "`receivedTooLate`" - "`undeliverable`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasonCode")]
-        public virtual string ReasonCode { get; set; } 
+        public virtual string ReasonCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9422,17 +9422,17 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Hour of the cutoff time until which an order has to be placed to be processed in the same day.
         /// Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hour")]
-        public virtual System.Nullable<long> Hour { get; set; } 
+        public virtual System.Nullable<long> Hour { get; set; }
 
         /// <summary>Minute of the cutoff time until which an order has to be placed to be processed in the same day.
         /// Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minute")]
-        public virtual System.Nullable<long> Minute { get; set; } 
+        public virtual System.Nullable<long> Minute { get; set; }
 
         /// <summary>Timezone identifier for the cutoff time. A list of identifiers can be found in  the AdWords API
         /// documentation. E.g. "Europe/Zurich". Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timezone")]
-        public virtual string Timezone { get; set; } 
+        public virtual string Timezone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9443,42 +9443,42 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The two-letter ISO 639-1 language in which the attributes are defined in the data feed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeLanguage")]
-        public virtual string AttributeLanguage { get; set; } 
+        public virtual string AttributeLanguage { get; set; }
 
         /// <summary>Required. The type of data feed. For product inventory feeds, only feeds for local stores, not
         /// online stores, are supported.
         ///
         /// Acceptable values are: - "`local products`" - "`product inventory`" - "`products`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
-        public virtual string ContentType { get; set; } 
+        public virtual string ContentType { get; set; }
 
         /// <summary>Fetch schedule for the feed file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fetchSchedule")]
-        public virtual DatafeedFetchSchedule FetchSchedule { get; set; } 
+        public virtual DatafeedFetchSchedule FetchSchedule { get; set; }
 
         /// <summary>Required. The filename of the feed. All feeds must have a unique file name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
-        public virtual string FileName { get; set; } 
+        public virtual string FileName { get; set; }
 
         /// <summary>Format of the feed file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual DatafeedFormat Format { get; set; } 
+        public virtual DatafeedFormat Format { get; set; }
 
         /// <summary>Required for update. The ID of the data feed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "`content#datafeed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Required for insert. A descriptive name of the data feed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The targets this feed should apply to (country, language, destinations).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targets")]
-        public virtual System.Collections.Generic.IList<DatafeedTarget> Targets { get; set; } 
+        public virtual System.Collections.Generic.IList<DatafeedTarget> Targets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9491,44 +9491,44 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The day of the month the feed file should be fetched (1-31).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dayOfMonth")]
-        public virtual System.Nullable<long> DayOfMonth { get; set; } 
+        public virtual System.Nullable<long> DayOfMonth { get; set; }
 
         /// <summary>The URL where the feed file can be fetched. Google Merchant Center will support automatic scheduled
         /// uploads using the HTTP, HTTPS, FTP, or SFTP protocols, so the value will need to be a valid link using one
         /// of those four protocols.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fetchUrl")]
-        public virtual string FetchUrl { get; set; } 
+        public virtual string FetchUrl { get; set; }
 
         /// <summary>The hour of the day the feed file should be fetched (0-23).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hour")]
-        public virtual System.Nullable<long> Hour { get; set; } 
+        public virtual System.Nullable<long> Hour { get; set; }
 
         /// <summary>The minute of the hour the feed file should be fetched (0-59). Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minuteOfHour")]
-        public virtual System.Nullable<long> MinuteOfHour { get; set; } 
+        public virtual System.Nullable<long> MinuteOfHour { get; set; }
 
         /// <summary>An optional password for fetch_url.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
-        public virtual string Password { get; set; } 
+        public virtual string Password { get; set; }
 
         /// <summary>Whether the scheduled fetch is paused or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paused")]
-        public virtual System.Nullable<bool> Paused { get; set; } 
+        public virtual System.Nullable<bool> Paused { get; set; }
 
         /// <summary>Time zone used for schedule. UTC by default. E.g., "America/Los_Angeles".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
-        public virtual string TimeZone { get; set; } 
+        public virtual string TimeZone { get; set; }
 
         /// <summary>An optional user name for fetch_url.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
+        public virtual string Username { get; set; }
 
         /// <summary>The day of the week the feed file should be fetched.
         ///
         /// Acceptable values are: - "`monday`" - "`tuesday`" - "`wednesday`" - "`thursday`" - "`friday`" - "`saturday`"
         /// - "`sunday`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weekday")]
-        public virtual string Weekday { get; set; } 
+        public virtual string Weekday { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9541,20 +9541,20 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`pipe`" - "`tab`" - "`tilde`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnDelimiter")]
-        public virtual string ColumnDelimiter { get; set; } 
+        public virtual string ColumnDelimiter { get; set; }
 
         /// <summary>Character encoding scheme of the data feed. If not specified, the encoding will be auto-detected.
         ///
         /// Acceptable values are: - "`latin-1`" - "`utf-16be`" - "`utf-16le`" - "`utf-8`" - "`windows-1252`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileEncoding")]
-        public virtual string FileEncoding { get; set; } 
+        public virtual string FileEncoding { get; set; }
 
         /// <summary>Specifies how double quotes are interpreted. If not specified, the mode will be auto-detected.
         /// Ignored for non-DSV data feeds.
         ///
         /// Acceptable values are: - "`normal character`" - "`value quoting`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotingMode")]
-        public virtual string QuotingMode { get; set; } 
+        public virtual string QuotingMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9566,36 +9566,36 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The country for which the status is reported, represented as a  CLDR territory code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
-        public virtual string Country { get; set; } 
+        public virtual string Country { get; set; }
 
         /// <summary>The ID of the feed for which the status is reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datafeedId")]
-        public virtual System.Nullable<ulong> DatafeedId { get; set; } 
+        public virtual System.Nullable<ulong> DatafeedId { get; set; }
 
         /// <summary>The list of errors occurring in the feed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual System.Collections.Generic.IList<DatafeedStatusError> Errors { get; set; } 
+        public virtual System.Collections.Generic.IList<DatafeedStatusError> Errors { get; set; }
 
         /// <summary>The number of items in the feed that were processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsTotal")]
-        public virtual System.Nullable<ulong> ItemsTotal { get; set; } 
+        public virtual System.Nullable<ulong> ItemsTotal { get; set; }
 
         /// <summary>The number of items in the feed that were valid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsValid")]
-        public virtual System.Nullable<ulong> ItemsValid { get; set; } 
+        public virtual System.Nullable<ulong> ItemsValid { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "`content#datafeedStatus`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The two-letter ISO 639-1 language for which the status is reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
-        public virtual string Language { get; set; } 
+        public virtual string Language { get; set; }
 
         /// <summary>The last date at which the feed was uploaded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUploadDate")]
-        public virtual string LastUploadDate { get; set; } 
+        public virtual string LastUploadDate { get; set; }
 
         /// <summary>The processing status of the feed.
         ///
@@ -9604,11 +9604,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// feed that has never been uploaded will have this processing status. - "`success`": The feed was processed
         /// successfully, though some items might have had errors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processingStatus")]
-        public virtual string ProcessingStatus { get; set; } 
+        public virtual string ProcessingStatus { get; set; }
 
         /// <summary>The list of errors occurring in the feed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
-        public virtual System.Collections.Generic.IList<DatafeedStatusError> Warnings { get; set; } 
+        public virtual System.Collections.Generic.IList<DatafeedStatusError> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9619,19 +9619,19 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The code of the error, e.g., "validation/invalid_value".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual string Code { get; set; } 
+        public virtual string Code { get; set; }
 
         /// <summary>The number of occurrences of the error in the feed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
-        public virtual System.Nullable<ulong> Count { get; set; } 
+        public virtual System.Nullable<ulong> Count { get; set; }
 
         /// <summary>A list of example occurrences of the error, grouped by product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("examples")]
-        public virtual System.Collections.Generic.IList<DatafeedStatusExample> Examples { get; set; } 
+        public virtual System.Collections.Generic.IList<DatafeedStatusExample> Examples { get; set; }
 
         /// <summary>The error message, e.g., "Invalid price".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9642,15 +9642,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the example item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
-        public virtual string ItemId { get; set; } 
+        public virtual string ItemId { get; set; }
 
         /// <summary>Line number in the data feed where the example is found.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineNumber")]
-        public virtual System.Nullable<ulong> LineNumber { get; set; } 
+        public virtual System.Nullable<ulong> LineNumber { get; set; }
 
         /// <summary>The problematic value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9661,12 +9661,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The country where the items in the feed will be included in the search index, represented as a
         /// CLDR territory code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
-        public virtual string Country { get; set; } 
+        public virtual string Country { get; set; }
 
         /// <summary>The list of destinations to exclude for this target (corresponds to unchecked check boxes in
         /// Merchant Center).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedDestinations")]
-        public virtual System.Collections.Generic.IList<string> ExcludedDestinations { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExcludedDestinations { get; set; }
 
         /// <summary>The list of destinations to include for this target (corresponds to checked check boxes in Merchant
         /// Center). Default destinations are always included unless provided in `excludedDestinations`.
@@ -9674,12 +9674,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// List of supported destinations (if available to the account): - DisplayAds - Shopping - ShoppingActions -
         /// SurfacesAcrossGoogle</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedDestinations")]
-        public virtual System.Collections.Generic.IList<string> IncludedDestinations { get; set; } 
+        public virtual System.Collections.Generic.IList<string> IncludedDestinations { get; set; }
 
         /// <summary>The two-letter ISO 639-1 language of the items in the feed. Must be a valid language for
         /// `targets[].country`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
-        public virtual string Language { get; set; } 
+        public virtual string Language { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9689,7 +9689,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The request entries to be processed in the batch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<DatafeedsCustomBatchRequestEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<DatafeedsCustomBatchRequestEntry> Entries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9700,25 +9700,25 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>An entry ID, unique within the batch request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>The data feed to insert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datafeed")]
-        public virtual Datafeed Datafeed { get; set; } 
+        public virtual Datafeed Datafeed { get; set; }
 
         /// <summary>The ID of the data feed to get, delete or fetch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datafeedId")]
-        public virtual System.Nullable<ulong> DatafeedId { get; set; } 
+        public virtual System.Nullable<ulong> DatafeedId { get; set; }
 
         /// <summary>The ID of the managing account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
-        public virtual System.Nullable<ulong> MerchantId { get; set; } 
+        public virtual System.Nullable<ulong> MerchantId { get; set; }
 
         /// <summary>The method of the batch entry.
         ///
         /// Acceptable values are: - "`delete`" - "`fetchNow`" - "`get`" - "`insert`" - "`update`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
+        public virtual string Method { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9728,12 +9728,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The result of the execution of the batch requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<DatafeedsCustomBatchResponseEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<DatafeedsCustomBatchResponseEntry> Entries { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#datafeedsCustomBatchResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9744,15 +9744,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the request entry this entry responds to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>The requested data feed. Defined if and only if the request was successful.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datafeed")]
-        public virtual Datafeed Datafeed { get; set; } 
+        public virtual Datafeed Datafeed { get; set; }
 
         /// <summary>A list of errors defined if and only if the request failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual Errors Errors { get; set; } 
+        public virtual Errors Errors { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9763,7 +9763,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#datafeedsFetchNowResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9774,14 +9774,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#datafeedsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token for the retrieval of the next page of datafeeds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<Datafeed> Resources { get; set; } 
+        public virtual System.Collections.Generic.IList<Datafeed> Resources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9791,7 +9791,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The request entries to be processed in the batch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<DatafeedstatusesCustomBatchRequestEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<DatafeedstatusesCustomBatchRequestEntry> Entries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9802,31 +9802,31 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>An entry ID, unique within the batch request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>The country for which to get the datafeed status. If this parameter is provided then language must
         /// also be provided. Note that for multi-target datafeeds this parameter is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
-        public virtual string Country { get; set; } 
+        public virtual string Country { get; set; }
 
         /// <summary>The ID of the data feed to get.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datafeedId")]
-        public virtual System.Nullable<ulong> DatafeedId { get; set; } 
+        public virtual System.Nullable<ulong> DatafeedId { get; set; }
 
         /// <summary>The language for which to get the datafeed status. If this parameter is provided then country must
         /// also be provided. Note that for multi-target datafeeds this parameter is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
-        public virtual string Language { get; set; } 
+        public virtual string Language { get; set; }
 
         /// <summary>The ID of the managing account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
-        public virtual System.Nullable<ulong> MerchantId { get; set; } 
+        public virtual System.Nullable<ulong> MerchantId { get; set; }
 
         /// <summary>The method of the batch entry.
         ///
         /// Acceptable values are: - "`get`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
+        public virtual string Method { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9836,12 +9836,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The result of the execution of the batch requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<DatafeedstatusesCustomBatchResponseEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<DatafeedstatusesCustomBatchResponseEntry> Entries { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#datafeedstatusesCustomBatchResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9852,15 +9852,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the request entry this entry responds to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>The requested data feed status. Defined if and only if the request was successful.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datafeedStatus")]
-        public virtual DatafeedStatus DatafeedStatus { get; set; } 
+        public virtual DatafeedStatus DatafeedStatus { get; set; }
 
         /// <summary>A list of errors defined if and only if the request failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual Errors Errors { get; set; } 
+        public virtual Errors Errors { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9871,14 +9871,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#datafeedstatusesListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token for the retrieval of the next page of datafeed statuses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<DatafeedStatus> Resources { get; set; } 
+        public virtual System.Collections.Generic.IList<DatafeedStatus> Resources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9889,47 +9889,47 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Business days cutoff time definition. If not configured the cutoff time will be defaulted to 8AM
         /// PST.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cutoffTime")]
-        public virtual CutoffTime CutoffTime { get; set; } 
+        public virtual CutoffTime CutoffTime { get; set; }
 
         /// <summary>The business days during which orders can be handled. If not provided, Monday to Friday business
         /// days will be assumed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("handlingBusinessDayConfig")]
-        public virtual BusinessDayConfig HandlingBusinessDayConfig { get; set; } 
+        public virtual BusinessDayConfig HandlingBusinessDayConfig { get; set; }
 
         /// <summary>Holiday cutoff definitions. If configured, they specify order cutoff times for holiday-specific
         /// shipping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("holidayCutoffs")]
-        public virtual System.Collections.Generic.IList<HolidayCutoff> HolidayCutoffs { get; set; } 
+        public virtual System.Collections.Generic.IList<HolidayCutoff> HolidayCutoffs { get; set; }
 
         /// <summary>Maximum number of business days spent before an order is shipped. 0 means same day shipped, 1 means
         /// next day shipped. Must be greater than or equal to `minHandlingTimeInDays`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxHandlingTimeInDays")]
-        public virtual System.Nullable<long> MaxHandlingTimeInDays { get; set; } 
+        public virtual System.Nullable<long> MaxHandlingTimeInDays { get; set; }
 
         /// <summary>Maximum number of business days that is spent in transit. 0 means same day delivery, 1 means next
         /// day delivery. Must be greater than or equal to `minTransitTimeInDays`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTransitTimeInDays")]
-        public virtual System.Nullable<long> MaxTransitTimeInDays { get; set; } 
+        public virtual System.Nullable<long> MaxTransitTimeInDays { get; set; }
 
         /// <summary>Minimum number of business days spent before an order is shipped. 0 means same day shipped, 1 means
         /// next day shipped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minHandlingTimeInDays")]
-        public virtual System.Nullable<long> MinHandlingTimeInDays { get; set; } 
+        public virtual System.Nullable<long> MinHandlingTimeInDays { get; set; }
 
         /// <summary>Minimum number of business days that is spent in transit. 0 means same day delivery, 1 means next
         /// day delivery. Either `{min,max}TransitTimeInDays` or `transitTimeTable` must be set, but not both.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minTransitTimeInDays")]
-        public virtual System.Nullable<long> MinTransitTimeInDays { get; set; } 
+        public virtual System.Nullable<long> MinTransitTimeInDays { get; set; }
 
         /// <summary>The business days during which orders can be in-transit. If not provided, Monday to Friday business
         /// days will be assumed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitBusinessDayConfig")]
-        public virtual BusinessDayConfig TransitBusinessDayConfig { get; set; } 
+        public virtual BusinessDayConfig TransitBusinessDayConfig { get; set; }
 
         /// <summary>Transit time table, number of business days spent in transit based on row and column dimensions.
         /// Either `{min,max}TransitTimeInDays` or `transitTimeTable` can be set, but not both.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitTimeTable")]
-        public virtual TransitTable TransitTimeTable { get; set; } 
+        public virtual TransitTable TransitTimeTable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9940,15 +9940,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The domain of the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
-        public virtual string Domain { get; set; } 
+        public virtual string Domain { get; set; }
 
         /// <summary>A description of the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The error code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9959,15 +9959,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The HTTP status of the first error in `errors`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<long> Code { get; set; } 
+        public virtual System.Nullable<long> Code { get; set; }
 
         /// <summary>A list of errors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual System.Collections.Generic.IList<Error> ErrorsValue { get; set; } 
+        public virtual System.Collections.Generic.IList<Error> ErrorsValue { get; set; }
 
         /// <summary>The message of the first error in `errors`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9977,11 +9977,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the Merchant Center account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<ulong> AccountId { get; set; } 
+        public virtual System.Nullable<ulong> AccountId { get; set; }
 
         /// <summary>A list of GMB accounts which are available to the merchant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gmbAccounts")]
-        public virtual System.Collections.Generic.IList<GmbAccountsGmbAccount> GmbAccountsValue { get; set; } 
+        public virtual System.Collections.Generic.IList<GmbAccountsGmbAccount> GmbAccountsValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9991,19 +9991,19 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The email which identifies the GMB account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
+        public virtual string Email { get; set; }
 
         /// <summary>Number of listings under this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listingCount")]
-        public virtual System.Nullable<ulong> ListingCount { get; set; } 
+        public virtual System.Nullable<ulong> ListingCount { get; set; }
 
         /// <summary>The name of the GMB account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The type of the GMB account (User or Business).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10016,33 +10016,33 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>A list of location ID sets. Must be non-empty. Can only be set if all other fields are not
         /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<LocationIdSet> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<LocationIdSet> Locations { get; set; }
 
         /// <summary>A list of inclusive number of items upper bounds. The last value can be `"infinity"`. For example
         /// `["10", "50", "infinity"]` represents the headers "<= 10 items", " 50 items". Must be non-empty. Can only be
         /// set if all other fields are not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numberOfItems")]
-        public virtual System.Collections.Generic.IList<string> NumberOfItems { get; set; } 
+        public virtual System.Collections.Generic.IList<string> NumberOfItems { get; set; }
 
         /// <summary>A list of postal group names. The last value can be `"all other locations"`. Example: `["zone 1",
         /// "zone 2", "all other locations"]`. The referred postal code groups must match the delivery country of the
         /// service. Must be non-empty. Can only be set if all other fields are not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCodeGroupNames")]
-        public virtual System.Collections.Generic.IList<string> PostalCodeGroupNames { get; set; } 
+        public virtual System.Collections.Generic.IList<string> PostalCodeGroupNames { get; set; }
 
         /// <summary>A list of inclusive order price upper bounds. The last price's value can be `"infinity"`. For
         /// example `[{"value": "10", "currency": "USD"}, {"value": "500", "currency": "USD"}, {"value": "infinity",
         /// "currency": "USD"}]` represents the headers "<= $10", " $500". All prices within a service must have the
         /// same currency. Must be non-empty. Can only be set if all other fields are not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prices")]
-        public virtual System.Collections.Generic.IList<Price> Prices { get; set; } 
+        public virtual System.Collections.Generic.IList<Price> Prices { get; set; }
 
         /// <summary>A list of inclusive order weight upper bounds. The last weight's value can be `"infinity"`. For
         /// example `[{"value": "10", "unit": "kg"}, {"value": "50", "unit": "kg"}, {"value": "infinity", "unit":
         /// "kg"}]` represents the headers "<= 10kg", " 50kg". All weights within a service must have the same unit.
         /// Must be non-empty. Can only be set if all other fields are not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weights")]
-        public virtual System.Collections.Generic.IList<Weight> Weights { get; set; } 
+        public virtual System.Collections.Generic.IList<Weight> Weights { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10053,26 +10053,26 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Date of the order deadline, in ISO 8601 format. E.g. "2016-11-29" for 29th November 2016.
         /// Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deadlineDate")]
-        public virtual string DeadlineDate { get; set; } 
+        public virtual string DeadlineDate { get; set; }
 
         /// <summary>Hour of the day on the deadline date until which the order has to be placed to qualify for the
         /// delivery guarantee. Possible values are: 0 (midnight), 1, ..., 12 (noon), 13, ..., 23. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deadlineHour")]
-        public virtual System.Nullable<long> DeadlineHour { get; set; } 
+        public virtual System.Nullable<long> DeadlineHour { get; set; }
 
         /// <summary>Timezone identifier for the deadline hour. A list of identifiers can be found in  the AdWords API
         /// documentation. E.g. "Europe/Zurich". Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deadlineTimezone")]
-        public virtual string DeadlineTimezone { get; set; } 
+        public virtual string DeadlineTimezone { get; set; }
 
         /// <summary>Unique identifier for the holiday. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("holidayId")]
-        public virtual string HolidayId { get; set; } 
+        public virtual string HolidayId { get; set; }
 
         /// <summary>Date on which the deadline will become visible to consumers in ISO 8601 format. E.g. "2016-10-31"
         /// for 31st October 2016. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibleFromDate")]
-        public virtual string VisibleFromDate { get; set; } 
+        public virtual string VisibleFromDate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10084,35 +10084,35 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// holiday cutoff can only be configured in a shipping settings service with matching delivery country. Always
         /// present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
-        public virtual string CountryCode { get; set; } 
+        public virtual string CountryCode { get; set; }
 
         /// <summary>Date of the holiday, in ISO 8601 format. E.g. "2016-12-25" for Christmas 2016. Always
         /// present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
-        public virtual string Date { get; set; } 
+        public virtual string Date { get; set; }
 
         /// <summary>Date on which the order has to arrive at the customer's, in ISO 8601 format. E.g. "2016-12-24" for
         /// 24th December 2016. Always present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryGuaranteeDate")]
-        public virtual string DeliveryGuaranteeDate { get; set; } 
+        public virtual string DeliveryGuaranteeDate { get; set; }
 
         /// <summary>Hour of the day in the delivery location's timezone on the guaranteed delivery date by which the
         /// order has to arrive at the customer's. Possible values are: 0 (midnight), 1, ..., 12 (noon), 13, ..., 23.
         /// Always present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryGuaranteeHour")]
-        public virtual System.Nullable<ulong> DeliveryGuaranteeHour { get; set; } 
+        public virtual System.Nullable<ulong> DeliveryGuaranteeHour { get; set; }
 
         /// <summary>Unique identifier for the holiday to be used when configuring holiday cutoffs. Always
         /// present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The holiday type. Always present.
         ///
         /// Acceptable values are: - "`Christmas`" - "`Easter`" - "`Father's Day`" - "`Halloween`" - "`Independence Day
         /// (USA)`" - "`Mother's Day`" - "`Thanksgiving`" - "`Valentine's Day`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10122,11 +10122,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The amount the buyer has to pay per month.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
-        public virtual Price Amount { get; set; } 
+        public virtual Price Amount { get; set; }
 
         /// <summary>The number of installments the buyer has to pay.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("months")]
-        public virtual System.Nullable<long> Months { get; set; } 
+        public virtual System.Nullable<long> Months { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10136,11 +10136,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Summary of the total amounts of the additional charges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalChargeSummaries")]
-        public virtual System.Collections.Generic.IList<InvoiceSummaryAdditionalChargeSummary> AdditionalChargeSummaries { get; set; } 
+        public virtual System.Collections.Generic.IList<InvoiceSummaryAdditionalChargeSummary> AdditionalChargeSummaries { get; set; }
 
         /// <summary>[required] Total price for the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productTotal")]
-        public virtual Amount ProductTotal { get; set; } 
+        public virtual Amount ProductTotal { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10150,13 +10150,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>[required] Total additional charge for this type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalAmount")]
-        public virtual Amount TotalAmount { get; set; } 
+        public virtual Amount TotalAmount { get; set; }
 
         /// <summary>[required] Type of the additional charge.
         ///
         /// Acceptable values are: - "`shipping`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10168,11 +10168,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`active`" - "`inactive`" - "`pending`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The URL for the About page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10182,31 +10182,31 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The settings for the About page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("about")]
-        public virtual LiaAboutPageSettings About { get; set; } 
+        public virtual LiaAboutPageSettings About { get; set; }
 
         /// <summary>Required. CLDR country code (e.g. "US").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
-        public virtual string Country { get; set; } 
+        public virtual string Country { get; set; }
 
         /// <summary>The status of the "Merchant hosted local storefront" feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostedLocalStorefrontActive")]
-        public virtual System.Nullable<bool> HostedLocalStorefrontActive { get; set; } 
+        public virtual System.Nullable<bool> HostedLocalStorefrontActive { get; set; }
 
         /// <summary>LIA inventory verification settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventory")]
-        public virtual LiaInventorySettings Inventory { get; set; } 
+        public virtual LiaInventorySettings Inventory { get; set; }
 
         /// <summary>LIA "On Display To Order" settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onDisplayToOrder")]
-        public virtual LiaOnDisplayToOrderSettings OnDisplayToOrder { get; set; } 
+        public virtual LiaOnDisplayToOrderSettings OnDisplayToOrder { get; set; }
 
         /// <summary>The POS data provider linked with this country.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("posDataProvider")]
-        public virtual LiaPosDataProvider PosDataProvider { get; set; } 
+        public virtual LiaPosDataProvider PosDataProvider { get; set; }
 
         /// <summary>The status of the "Store pickup" feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storePickupActive")]
-        public virtual System.Nullable<bool> StorePickupActive { get; set; } 
+        public virtual System.Nullable<bool> StorePickupActive { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10216,23 +10216,23 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The email of the contact for the inventory verification process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventoryVerificationContactEmail")]
-        public virtual string InventoryVerificationContactEmail { get; set; } 
+        public virtual string InventoryVerificationContactEmail { get; set; }
 
         /// <summary>The name of the contact for the inventory verification process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventoryVerificationContactName")]
-        public virtual string InventoryVerificationContactName { get; set; } 
+        public virtual string InventoryVerificationContactName { get; set; }
 
         /// <summary>The status of the verification contact.
         ///
         /// Acceptable values are: - "`active`" - "`inactive`" - "`pending`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventoryVerificationContactStatus")]
-        public virtual string InventoryVerificationContactStatus { get; set; } 
+        public virtual string InventoryVerificationContactStatus { get; set; }
 
         /// <summary>The status of the inventory verification process.
         ///
         /// Acceptable values are: - "`active`" - "`inactive`" - "`pending`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10242,13 +10242,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Shipping cost and policy URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingCostPolicyUrl")]
-        public virtual string ShippingCostPolicyUrl { get; set; } 
+        public virtual string ShippingCostPolicyUrl { get; set; }
 
         /// <summary>The status of the ?On display to order? feature.
         ///
         /// Acceptable values are: - "`active`" - "`inactive`" - "`pending`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10258,11 +10258,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the POS data provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("posDataProviderId")]
-        public virtual System.Nullable<ulong> PosDataProviderId { get; set; } 
+        public virtual System.Nullable<ulong> PosDataProviderId { get; set; }
 
         /// <summary>The account ID by which this merchant is known to the POS data provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("posExternalAccountId")]
-        public virtual string PosExternalAccountId { get; set; } 
+        public virtual string PosExternalAccountId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10275,15 +10275,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The ID of the account to which these LIA settings belong. Ignored upon update, always present in
         /// get request responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<ulong> AccountId { get; set; } 
+        public virtual System.Nullable<ulong> AccountId { get; set; }
 
         /// <summary>The LIA settings for each country.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countrySettings")]
-        public virtual System.Collections.Generic.IList<LiaCountrySettings> CountrySettings { get; set; } 
+        public virtual System.Collections.Generic.IList<LiaCountrySettings> CountrySettings { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "`content#liaSettings`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10293,7 +10293,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The request entries to be processed in the batch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<LiasettingsCustomBatchRequestEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<LiasettingsCustomBatchRequestEntry> Entries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10303,50 +10303,50 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the account for which to get/update account LIA settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<ulong> AccountId { get; set; } 
+        public virtual System.Nullable<ulong> AccountId { get; set; }
 
         /// <summary>An entry ID, unique within the batch request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>Inventory validation contact email. Required only for SetInventoryValidationContact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactEmail")]
-        public virtual string ContactEmail { get; set; } 
+        public virtual string ContactEmail { get; set; }
 
         /// <summary>Inventory validation contact name. Required only for SetInventoryValidationContact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactName")]
-        public virtual string ContactName { get; set; } 
+        public virtual string ContactName { get; set; }
 
         /// <summary>The country code. Required only for RequestInventoryVerification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
-        public virtual string Country { get; set; } 
+        public virtual string Country { get; set; }
 
         /// <summary>The GMB account. Required only for RequestGmbAccess.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gmbEmail")]
-        public virtual string GmbEmail { get; set; } 
+        public virtual string GmbEmail { get; set; }
 
         /// <summary>The account Lia settings to update. Only defined if the method is `update`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("liaSettings")]
-        public virtual LiaSettings LiaSettings { get; set; } 
+        public virtual LiaSettings LiaSettings { get; set; }
 
         /// <summary>The ID of the managing account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
-        public virtual System.Nullable<ulong> MerchantId { get; set; } 
+        public virtual System.Nullable<ulong> MerchantId { get; set; }
 
         /// <summary>The method of the batch entry.
         ///
         /// Acceptable values are: - "`get`" - "`getAccessibleGmbAccounts`" - "`requestGmbAccess`" -
         /// "`requestInventoryVerification`" - "`setInventoryVerificationContact`" - "`update`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
+        public virtual string Method { get; set; }
 
         /// <summary>The ID of POS data provider. Required only for SetPosProvider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("posDataProviderId")]
-        public virtual System.Nullable<ulong> PosDataProviderId { get; set; } 
+        public virtual System.Nullable<ulong> PosDataProviderId { get; set; }
 
         /// <summary>The account ID by which this merchant is known to the POS provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("posExternalAccountId")]
-        public virtual string PosExternalAccountId { get; set; } 
+        public virtual string PosExternalAccountId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10356,12 +10356,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The result of the execution of the batch requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<LiasettingsCustomBatchResponseEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<LiasettingsCustomBatchResponseEntry> Entries { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#liasettingsCustomBatchResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10371,28 +10371,28 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the request entry to which this entry responds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>A list of errors defined if, and only if, the request failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual Errors Errors { get; set; } 
+        public virtual Errors Errors { get; set; }
 
         /// <summary>The the list of accessible GMB accounts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gmbAccounts")]
-        public virtual GmbAccounts GmbAccounts { get; set; } 
+        public virtual GmbAccounts GmbAccounts { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "`content#liasettingsCustomBatchResponseEntry`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The retrieved or updated Lia settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("liaSettings")]
-        public virtual LiaSettings LiaSettings { get; set; } 
+        public virtual LiaSettings LiaSettings { get; set; }
 
         /// <summary>The list of POS data providers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("posDataProviders")]
-        public virtual System.Collections.Generic.IList<PosDataProviders> PosDataProviders { get; set; } 
+        public virtual System.Collections.Generic.IList<PosDataProviders> PosDataProviders { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10402,16 +10402,16 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the Merchant Center account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<ulong> AccountId { get; set; } 
+        public virtual System.Nullable<ulong> AccountId { get; set; }
 
         /// <summary>A list of GMB accounts which are available to the merchant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gmbAccounts")]
-        public virtual System.Collections.Generic.IList<GmbAccountsGmbAccount> GmbAccounts { get; set; } 
+        public virtual System.Collections.Generic.IList<GmbAccountsGmbAccount> GmbAccounts { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#liasettingsGetAccessibleGmbAccountsResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10422,11 +10422,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#liasettingsListPosDataProvidersResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The list of POS data providers for each eligible country</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("posDataProviders")]
-        public virtual System.Collections.Generic.IList<PosDataProviders> PosDataProviders { get; set; } 
+        public virtual System.Collections.Generic.IList<PosDataProviders> PosDataProviders { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10437,14 +10437,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#liasettingsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token for the retrieval of the next page of LIA settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<LiaSettings> Resources { get; set; } 
+        public virtual System.Collections.Generic.IList<LiaSettings> Resources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10455,7 +10455,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#liasettingsRequestGmbAccessResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10466,7 +10466,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#liasettingsRequestInventoryVerificationResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10477,7 +10477,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#liasettingsSetInventoryVerificationContactResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10488,7 +10488,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#liasettingsSetPosDataProviderResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10501,13 +10501,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// Acceptable values are: - "`shoppingActionsOrderManagement`" - "`shoppingActionsProductManagement`" -
         /// "`shoppingAdsProductManagement`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
+        public virtual string Service { get; set; }
 
         /// <summary>Status of the link
         ///
         /// Acceptable values are: - "`active`" - "`inactive`" - "`pending`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10517,11 +10517,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the linked account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedAccountId")]
-        public virtual string LinkedAccountId { get; set; } 
+        public virtual string LinkedAccountId { get; set; }
 
         /// <summary>List of provided services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
-        public virtual System.Collections.Generic.IList<LinkService> Services { get; set; } 
+        public virtual System.Collections.Generic.IList<LinkService> Services { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10533,47 +10533,47 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Availability of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availability")]
-        public virtual string Availability { get; set; } 
+        public virtual string Availability { get; set; }
 
         /// <summary>In-store product location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instoreProductLocation")]
-        public virtual string InstoreProductLocation { get; set; } 
+        public virtual string InstoreProductLocation { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "`content#localInventory`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Supported pickup method for this offer. Unless the value is "not supported", this field must be
         /// submitted together with `pickupSla`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickupMethod")]
-        public virtual string PickupMethod { get; set; } 
+        public virtual string PickupMethod { get; set; }
 
         /// <summary>Expected date that an order will be ready for pickup relative to the order date. Must be submitted
         /// together with `pickupMethod`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickupSla")]
-        public virtual string PickupSla { get; set; } 
+        public virtual string PickupSla { get; set; }
 
         /// <summary>Price of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
-        public virtual Price Price { get; set; } 
+        public virtual Price Price { get; set; }
 
         /// <summary>Quantity of the product. Must be nonnegative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
-        public virtual System.Nullable<long> Quantity { get; set; } 
+        public virtual System.Nullable<long> Quantity { get; set; }
 
         /// <summary>Sale price of the product. Mandatory if `sale_price_effective_date` is defined.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salePrice")]
-        public virtual Price SalePrice { get; set; } 
+        public virtual Price SalePrice { get; set; }
 
         /// <summary>A date range represented by a pair of ISO 8601 dates separated by a space, comma, or slash. Both
         /// dates may be specified as 'null' if undecided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salePriceEffectiveDate")]
-        public virtual string SalePriceEffectiveDate { get; set; } 
+        public virtual string SalePriceEffectiveDate { get; set; }
 
         /// <summary>Required. Store code of this local inventory resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
-        public virtual string StoreCode { get; set; } 
+        public virtual string StoreCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10583,7 +10583,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The request entries to be processed in the batch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<LocalinventoryCustomBatchRequestEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<LocalinventoryCustomBatchRequestEntry> Entries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10594,25 +10594,25 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>An entry ID, unique within the batch request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>Local inventory of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localInventory")]
-        public virtual LocalInventory LocalInventory { get; set; } 
+        public virtual LocalInventory LocalInventory { get; set; }
 
         /// <summary>The ID of the managing account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
-        public virtual System.Nullable<ulong> MerchantId { get; set; } 
+        public virtual System.Nullable<ulong> MerchantId { get; set; }
 
         /// <summary>Method of the batch request entry.
         ///
         /// Acceptable values are: - "`insert`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
+        public virtual string Method { get; set; }
 
         /// <summary>The ID of the product for which to update local inventory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10622,12 +10622,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The result of the execution of the batch requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<LocalinventoryCustomBatchResponseEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<LocalinventoryCustomBatchResponseEntry> Entries { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#localinventoryCustomBatchResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10638,16 +10638,16 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the request entry this entry responds to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>A list of errors defined if and only if the request failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual Errors Errors { get; set; } 
+        public virtual Errors Errors { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "`content#localinventoryCustomBatchResponseEntry`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10658,7 +10658,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>A non-empty list of location IDs. They must all be of the same location type (e.g.,
         /// state).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationIds")]
-        public virtual System.Collections.Generic.IList<string> LocationIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> LocationIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10669,16 +10669,16 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Name of loyalty points program. It is recommended to limit the name to 12 full-width characters or
         /// 24 Roman characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The retailer's loyalty points in absolute value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pointsValue")]
-        public virtual System.Nullable<long> PointsValue { get; set; } 
+        public virtual System.Nullable<long> PointsValue { get; set; }
 
         /// <summary>The ratio of a point when converted to currency. Google assumes currency based on Merchant Center
         /// settings. If ratio is left out, it defaults to 1.0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ratio")]
-        public virtual System.Nullable<double> Ratio { get; set; } 
+        public virtual System.Nullable<double> Ratio { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10690,31 +10690,31 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The date of creation of the return, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationDate")]
-        public virtual string CreationDate { get; set; } 
+        public virtual string CreationDate { get; set; }
 
         /// <summary>Merchant defined order ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantOrderId")]
-        public virtual string MerchantOrderId { get; set; } 
+        public virtual string MerchantOrderId { get; set; }
 
         /// <summary>Google order ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
-        public virtual string OrderId { get; set; } 
+        public virtual string OrderId { get; set; }
 
         /// <summary>Order return ID generated by Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderReturnId")]
-        public virtual string OrderReturnId { get; set; } 
+        public virtual string OrderReturnId { get; set; }
 
         /// <summary>Items of the return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnItems")]
-        public virtual System.Collections.Generic.IList<MerchantOrderReturnItem> ReturnItems { get; set; } 
+        public virtual System.Collections.Generic.IList<MerchantOrderReturnItem> ReturnItems { get; set; }
 
         /// <summary>Information about shipping costs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnPricingInfo")]
-        public virtual ReturnPricingInfo ReturnPricingInfo { get; set; } 
+        public virtual ReturnPricingInfo ReturnPricingInfo { get; set; }
 
         /// <summary>Shipments of the return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnShipments")]
-        public virtual System.Collections.Generic.IList<ReturnShipment> ReturnShipments { get; set; } 
+        public virtual System.Collections.Generic.IList<ReturnShipment> ReturnShipments { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10724,52 +10724,52 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The reason that the customer chooses to return an item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerReturnReason")]
-        public virtual CustomerReturnReason CustomerReturnReason { get; set; } 
+        public virtual CustomerReturnReason CustomerReturnReason { get; set; }
 
         /// <summary>Product level item ID. If the returned items are of the same product, they will have the same
         /// ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
-        public virtual string ItemId { get; set; } 
+        public virtual string ItemId { get; set; }
 
         /// <summary>The reason that the merchant chose to reject an item return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantRejectionReason")]
-        public virtual MerchantRejectionReason MerchantRejectionReason { get; set; } 
+        public virtual MerchantRejectionReason MerchantRejectionReason { get; set; }
 
         /// <summary>The reason that merchant chooses to accept a return item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantReturnReason")]
-        public virtual RefundReason MerchantReturnReason { get; set; } 
+        public virtual RefundReason MerchantReturnReason { get; set; }
 
         /// <summary>Product data from the time of the order placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
-        public virtual OrderLineItemProduct Product { get; set; } 
+        public virtual OrderLineItemProduct Product { get; set; }
 
         /// <summary>Maximum amount that can be refunded for this return item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refundableAmount")]
-        public virtual MonetaryAmount RefundableAmount { get; set; } 
+        public virtual MonetaryAmount RefundableAmount { get; set; }
 
         /// <summary>Unit level ID for the return item. Different units of the same product will have different
         /// IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnItemId")]
-        public virtual string ReturnItemId { get; set; } 
+        public virtual string ReturnItemId { get; set; }
 
         /// <summary>IDs of the return shipments that this return item belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnShipmentIds")]
-        public virtual System.Collections.Generic.IList<string> ReturnShipmentIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ReturnShipmentIds { get; set; }
 
         /// <summary>ID of the original shipment group. Provided for shipments with invoice support.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentGroupId")]
-        public virtual string ShipmentGroupId { get; set; } 
+        public virtual string ShipmentGroupId { get; set; }
 
         /// <summary>ID of the shipment unit assigned by the merchant. Provided for shipments with invoice
         /// support.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentUnitId")]
-        public virtual string ShipmentUnitId { get; set; } 
+        public virtual string ShipmentUnitId { get; set; }
 
         /// <summary>State of the item.
         ///
         /// Acceptable values are: - "`canceled`" - "`new`" - "`received`" - "`refunded`" - "`rejected`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10779,11 +10779,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Description of the reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Code of the rejection reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasonCode")]
-        public virtual string ReasonCode { get; set; } 
+        public virtual string ReasonCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10792,7 +10792,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class MinimumOrderValueTable : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("storeCodeSetWithMovs")]
-        public virtual System.Collections.Generic.IList<MinimumOrderValueTableStoreCodeSetWithMov> StoreCodeSetWithMovs { get; set; } 
+        public virtual System.Collections.Generic.IList<MinimumOrderValueTableStoreCodeSetWithMov> StoreCodeSetWithMovs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10805,11 +10805,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>A list of unique store codes or empty for the catch all.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCodes")]
-        public virtual System.Collections.Generic.IList<string> StoreCodes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> StoreCodes { get; set; }
 
         /// <summary>The minimum order value for the given stores.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual Price Value { get; set; } 
+        public virtual Price Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10821,12 +10821,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// price attribute excludes tax, this field corresponds to the pre-tax value. - For coutries (e.g. France)
         /// where price attribute includes tax, this field corresponds to the post-tax value .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceAmount")]
-        public virtual Price PriceAmount { get; set; } 
+        public virtual Price PriceAmount { get; set; }
 
         /// <summary>Tax value, present only for countries where price attribute excludes tax (e.g. US). No tax is
         /// referenced as 0 value with the corresponding `currency`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxAmount")]
-        public virtual Price TaxAmount { get; set; } 
+        public virtual Price TaxAmount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10838,67 +10838,67 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Whether the order was acknowledged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acknowledged")]
-        public virtual System.Nullable<bool> Acknowledged { get; set; } 
+        public virtual System.Nullable<bool> Acknowledged { get; set; }
 
         /// <summary>List of key-value pairs that are attached to a given order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
-        public virtual System.Collections.Generic.IList<OrderOrderAnnotation> Annotations { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderOrderAnnotation> Annotations { get; set; }
 
         /// <summary>The billing address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingAddress")]
-        public virtual OrderAddress BillingAddress { get; set; } 
+        public virtual OrderAddress BillingAddress { get; set; }
 
         /// <summary>The details of the customer who placed the order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
-        public virtual OrderCustomer Customer { get; set; } 
+        public virtual OrderCustomer Customer { get; set; }
 
         /// <summary>Delivery details for shipments of type `delivery`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryDetails")]
-        public virtual OrderDeliveryDetails DeliveryDetails { get; set; } 
+        public virtual OrderDeliveryDetails DeliveryDetails { get; set; }
 
         /// <summary>The REST ID of the order. Globally unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "`content#order`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Line items that are ordered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
-        public virtual System.Collections.Generic.IList<OrderLineItem> LineItems { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderLineItem> LineItems { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
-        public virtual System.Nullable<ulong> MerchantId { get; set; } 
+        public virtual System.Nullable<ulong> MerchantId { get; set; }
 
         /// <summary>Merchant-provided ID of the order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantOrderId")]
-        public virtual string MerchantOrderId { get; set; } 
+        public virtual string MerchantOrderId { get; set; }
 
         /// <summary>The net amount for the order (price part). For example, if an order was originally for $100 and a
         /// refund was issued for $20, the net amount will be $80.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("netPriceAmount")]
-        public virtual Price NetPriceAmount { get; set; } 
+        public virtual Price NetPriceAmount { get; set; }
 
         /// <summary>The net amount for the order (tax part). Note that in certain cases due to taxable base adjustment
         /// `netTaxAmount` might not match to a sum of tax field across all lineItems and refunds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("netTaxAmount")]
-        public virtual Price NetTaxAmount { get; set; } 
+        public virtual Price NetTaxAmount { get; set; }
 
         /// <summary>The status of the payment.
         ///
         /// Acceptable values are: - "`paymentCaptured`" - "`paymentRejected`" - "`paymentSecured`" -
         /// "`pendingAuthorization`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paymentStatus")]
-        public virtual string PaymentStatus { get; set; } 
+        public virtual string PaymentStatus { get; set; }
 
         /// <summary>Pickup details for shipments of type `pickup`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickupDetails")]
-        public virtual OrderPickupDetails PickupDetails { get; set; } 
+        public virtual OrderPickupDetails PickupDetails { get; set; }
 
         /// <summary>The date when the order was placed, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placedDate")]
-        public virtual string PlacedDate { get; set; } 
+        public virtual string PlacedDate { get; set; }
 
         /// <summary>Promotions associated with the order.
         ///
@@ -10920,36 +10920,36 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// More details about the program are here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
-        public virtual System.Collections.Generic.IList<OrderPromotion> Promotions { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderPromotion> Promotions { get; set; }
 
         /// <summary>Refunds for the order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refunds")]
-        public virtual System.Collections.Generic.IList<OrderRefund> Refunds { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderRefund> Refunds { get; set; }
 
         /// <summary>Shipments of the order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipments")]
-        public virtual System.Collections.Generic.IList<OrderShipment> Shipments { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderShipment> Shipments { get; set; }
 
         /// <summary>The total cost of shipping for all items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingCost")]
-        public virtual Price ShippingCost { get; set; } 
+        public virtual Price ShippingCost { get; set; }
 
         /// <summary>The tax for the total shipping cost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingCostTax")]
-        public virtual Price ShippingCostTax { get; set; } 
+        public virtual Price ShippingCostTax { get; set; }
 
         /// <summary>The status of the order.
         ///
         /// Acceptable values are: - "`canceled`" - "`delivered`" - "`inProgress`" - "`partiallyDelivered`" -
         /// "`partiallyReturned`" - "`partiallyShipped`" - "`pendingShipment`" - "`returned`" - "`shipped`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The party responsible for collecting and remitting taxes.
         ///
         /// Acceptable values are: - "`marketplaceFacilitator`" - "`merchant`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxCollector")]
-        public virtual string TaxCollector { get; set; } 
+        public virtual string TaxCollector { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10959,38 +10959,38 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>CLDR country code (e.g. "US").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
-        public virtual string Country { get; set; } 
+        public virtual string Country { get; set; }
 
         /// <summary>Strings representing the lines of the printed label for mailing the order, for example: John Smith
         /// 1600 Amphitheatre Parkway Mountain View, CA, 94043 United States</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullAddress")]
-        public virtual System.Collections.Generic.IList<string> FullAddress { get; set; } 
+        public virtual System.Collections.Generic.IList<string> FullAddress { get; set; }
 
         /// <summary>Whether the address is a post office box.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isPostOfficeBox")]
-        public virtual System.Nullable<bool> IsPostOfficeBox { get; set; } 
+        public virtual System.Nullable<bool> IsPostOfficeBox { get; set; }
 
         /// <summary>City, town or commune. May also include dependent localities or sublocalities (e.g. neighborhoods
         /// or suburbs).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locality")]
-        public virtual string Locality { get; set; } 
+        public virtual string Locality { get; set; }
 
         /// <summary>Postal Code or ZIP (e.g. "94043").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
-        public virtual string PostalCode { get; set; } 
+        public virtual string PostalCode { get; set; }
 
         /// <summary>Name of the recipient.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recipientName")]
-        public virtual string RecipientName { get; set; } 
+        public virtual string RecipientName { get; set; }
 
         /// <summary>Top-level administrative subdivision of the country. For example, a state like California ("CA") or
         /// a province like Quebec ("QC").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
-        public virtual string Region { get; set; } 
+        public virtual string Region { get; set; }
 
         /// <summary>Street-level part of the address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streetAddress")]
-        public virtual System.Collections.Generic.IList<string> StreetAddress { get; set; } 
+        public virtual System.Collections.Generic.IList<string> StreetAddress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11003,15 +11003,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// Acceptable values are: - "`customer`" - "`googleBot`" - "`googleCustomerService`" - "`googlePayments`" -
         /// "`googleSabre`" - "`merchant`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actor")]
-        public virtual string Actor { get; set; } 
+        public virtual string Actor { get; set; }
 
         /// <summary>Date on which the cancellation has been created, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationDate")]
-        public virtual string CreationDate { get; set; } 
+        public virtual string CreationDate { get; set; }
 
         /// <summary>The quantity that was canceled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
-        public virtual System.Nullable<long> Quantity { get; set; } 
+        public virtual System.Nullable<long> Quantity { get; set; }
 
         /// <summary>The reason for the cancellation. Orders that are canceled with a noInventory reason will lead to
         /// the removal of the product from Shopping Actions until you make an update to that product. This will not
@@ -11026,11 +11026,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// - "`paymentAbuse`" - "`paymentDeclined`" - "`priceError`" - "`returnRefundAbuse`" - "`shippingPriceError`" -
         /// "`taxError`" - "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The explanation of the reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasonText")]
-        public virtual string ReasonText { get; set; } 
+        public virtual string ReasonText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11040,23 +11040,23 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Full name of the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullName")]
-        public virtual string FullName { get; set; } 
+        public virtual string FullName { get; set; }
 
         /// <summary>Email address for the merchant to send value-added tax or invoice documentation of the order. Only
         /// the last document sent is made available to the customer. For more information, see  About automated VAT
         /// invoicing for Shopping Actions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invoiceReceivingEmail")]
-        public virtual string InvoiceReceivingEmail { get; set; } 
+        public virtual string InvoiceReceivingEmail { get; set; }
 
         /// <summary>Loyalty program information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loyaltyInfo")]
-        public virtual OrderCustomerLoyaltyInfo LoyaltyInfo { get; set; } 
+        public virtual OrderCustomerLoyaltyInfo LoyaltyInfo { get; set; }
 
         /// <summary>Customer's marketing preferences. Contains the marketing opt-in information that is current at the
         /// time that the merchant call. User preference selections can change from one order to the next so preferences
         /// must be checked with every order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marketingRightsInfo")]
-        public virtual OrderCustomerMarketingRightsInfo MarketingRightsInfo { get; set; } 
+        public virtual OrderCustomerMarketingRightsInfo MarketingRightsInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11066,11 +11066,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The loyalty card/membership number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loyaltyNumber")]
-        public virtual string LoyaltyNumber { get; set; } 
+        public virtual string LoyaltyNumber { get; set; }
 
         /// <summary>Name of card/membership holder, this field will be populated when</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11085,18 +11085,18 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`denied`" - "`granted`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explicitMarketingPreference")]
-        public virtual string ExplicitMarketingPreference { get; set; } 
+        public virtual string ExplicitMarketingPreference { get; set; }
 
         /// <summary>Timestamp when last time marketing preference was updated. Could be empty, if user wasn't offered a
         /// selection yet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdatedTimestamp")]
-        public virtual string LastUpdatedTimestamp { get; set; } 
+        public virtual string LastUpdatedTimestamp { get; set; }
 
         /// <summary>Email address that can be used for marketing purposes. The field may be empty even if
         /// `explicitMarketingPreference` is 'granted'. This happens when retrieving an old order from the customer who
         /// deleted their account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marketingEmailAddress")]
-        public virtual string MarketingEmailAddress { get; set; } 
+        public virtual string MarketingEmailAddress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11106,11 +11106,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The delivery address</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
-        public virtual OrderAddress Address { get; set; } 
+        public virtual OrderAddress Address { get; set; }
 
         /// <summary>The phone number of the person receiving the delivery.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
-        public virtual string PhoneNumber { get; set; } 
+        public virtual string PhoneNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11120,79 +11120,79 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Price and tax adjustments applied on the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adjustments")]
-        public virtual System.Collections.Generic.IList<OrderLineItemAdjustment> Adjustments { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderLineItemAdjustment> Adjustments { get; set; }
 
         /// <summary>Annotations that are attached to the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
-        public virtual System.Collections.Generic.IList<OrderMerchantProvidedAnnotation> Annotations { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderMerchantProvidedAnnotation> Annotations { get; set; }
 
         /// <summary>Cancellations of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancellations")]
-        public virtual System.Collections.Generic.IList<OrderCancellation> Cancellations { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderCancellation> Cancellations { get; set; }
 
         /// <summary>The ID of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Total price for the line item. For example, if two items for $10 are purchased, the total price
         /// will be $20.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
-        public virtual Price Price { get; set; } 
+        public virtual Price Price { get; set; }
 
         /// <summary>Product data as seen by customer from the time of the order placement. Note that certain attributes
         /// values (e.g. title or gtin) might be reformatted and no longer match values submitted via product
         /// feed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
-        public virtual OrderLineItemProduct Product { get; set; } 
+        public virtual OrderLineItemProduct Product { get; set; }
 
         /// <summary>Number of items canceled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantityCanceled")]
-        public virtual System.Nullable<long> QuantityCanceled { get; set; } 
+        public virtual System.Nullable<long> QuantityCanceled { get; set; }
 
         /// <summary>Number of items delivered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantityDelivered")]
-        public virtual System.Nullable<long> QuantityDelivered { get; set; } 
+        public virtual System.Nullable<long> QuantityDelivered { get; set; }
 
         /// <summary>Number of items ordered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantityOrdered")]
-        public virtual System.Nullable<long> QuantityOrdered { get; set; } 
+        public virtual System.Nullable<long> QuantityOrdered { get; set; }
 
         /// <summary>Number of items pending.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantityPending")]
-        public virtual System.Nullable<long> QuantityPending { get; set; } 
+        public virtual System.Nullable<long> QuantityPending { get; set; }
 
         /// <summary>Number of items ready for pickup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantityReadyForPickup")]
-        public virtual System.Nullable<long> QuantityReadyForPickup { get; set; } 
+        public virtual System.Nullable<long> QuantityReadyForPickup { get; set; }
 
         /// <summary>Number of items returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantityReturned")]
-        public virtual System.Nullable<long> QuantityReturned { get; set; } 
+        public virtual System.Nullable<long> QuantityReturned { get; set; }
 
         /// <summary>Number of items shipped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantityShipped")]
-        public virtual System.Nullable<long> QuantityShipped { get; set; } 
+        public virtual System.Nullable<long> QuantityShipped { get; set; }
 
         /// <summary>Number of items undeliverable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantityUndeliverable")]
-        public virtual System.Nullable<long> QuantityUndeliverable { get; set; } 
+        public virtual System.Nullable<long> QuantityUndeliverable { get; set; }
 
         /// <summary>Details of the return policy for the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnInfo")]
-        public virtual OrderLineItemReturnInfo ReturnInfo { get; set; } 
+        public virtual OrderLineItemReturnInfo ReturnInfo { get; set; }
 
         /// <summary>Returns of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returns")]
-        public virtual System.Collections.Generic.IList<OrderReturn> Returns { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderReturn> Returns { get; set; }
 
         /// <summary>Details of the requested shipping for the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingDetails")]
-        public virtual OrderLineItemShippingDetails ShippingDetails { get; set; } 
+        public virtual OrderLineItemShippingDetails ShippingDetails { get; set; }
 
         /// <summary>Total tax amount for the line item. For example, if two items are purchased, and each have a cost
         /// tax of $2, the total tax amount will be $4.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tax")]
-        public virtual Price Tax { get; set; } 
+        public virtual Price Tax { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11202,17 +11202,17 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Adjustment for total price of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceAdjustment")]
-        public virtual Price PriceAdjustment { get; set; } 
+        public virtual Price PriceAdjustment { get; set; }
 
         /// <summary>Adjustment for total tax of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxAdjustment")]
-        public virtual Price TaxAdjustment { get; set; } 
+        public virtual Price TaxAdjustment { get; set; }
 
         /// <summary>Type of this adjustment.
         ///
         /// Acceptable values are: - "`promotion`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11222,66 +11222,66 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Brand of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brand")]
-        public virtual string Brand { get; set; } 
+        public virtual string Brand { get; set; }
 
         /// <summary>Condition or state of the item.
         ///
         /// Acceptable values are: - "`new`" - "`refurbished`" - "`used`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual string Condition { get; set; } 
+        public virtual string Condition { get; set; }
 
         /// <summary>The two-letter ISO 639-1 language code for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
-        public virtual string ContentLanguage { get; set; } 
+        public virtual string ContentLanguage { get; set; }
 
         /// <summary>Associated fees at order creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fees")]
-        public virtual System.Collections.Generic.IList<OrderLineItemProductFee> Fees { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderLineItemProductFee> Fees { get; set; }
 
         /// <summary>Global Trade Item Number (GTIN) of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
-        public virtual string Gtin { get; set; } 
+        public virtual string Gtin { get; set; }
 
         /// <summary>The REST ID of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>URL of an image of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageLink")]
-        public virtual string ImageLink { get; set; } 
+        public virtual string ImageLink { get; set; }
 
         /// <summary>Shared identifier for all variants of the same product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemGroupId")]
-        public virtual string ItemGroupId { get; set; } 
+        public virtual string ItemGroupId { get; set; }
 
         /// <summary>Manufacturer Part Number (MPN) of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mpn")]
-        public virtual string Mpn { get; set; } 
+        public virtual string Mpn { get; set; }
 
         /// <summary>An identifier of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
-        public virtual string OfferId { get; set; } 
+        public virtual string OfferId { get; set; }
 
         /// <summary>Price of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
-        public virtual Price Price { get; set; } 
+        public virtual Price Price { get; set; }
 
         /// <summary>URL to the cached image shown to the user when order was placed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shownImage")]
-        public virtual string ShownImage { get; set; } 
+        public virtual string ShownImage { get; set; }
 
         /// <summary>The CLDR territory code of the target country of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
-        public virtual string TargetCountry { get; set; } 
+        public virtual string TargetCountry { get; set; }
 
         /// <summary>The title of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>Variant attributes for the item. These are dimensions of the product, such as color, gender,
         /// material, pattern, and size. You can find a comprehensive list of variant attributes here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variantAttributes")]
-        public virtual System.Collections.Generic.IList<OrderLineItemProductVariantAttribute> VariantAttributes { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderLineItemProductVariantAttribute> VariantAttributes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11291,11 +11291,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Amount of the fee.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
-        public virtual Price Amount { get; set; } 
+        public virtual Price Amount { get; set; }
 
         /// <summary>Name of the fee.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11305,11 +11305,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The dimension of the variant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
-        public virtual string Dimension { get; set; } 
+        public virtual string Dimension { get; set; }
 
         /// <summary>The value for the dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11319,15 +11319,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Required. How many days later the item can be returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("daysToReturn")]
-        public virtual System.Nullable<int> DaysToReturn { get; set; } 
+        public virtual System.Nullable<int> DaysToReturn { get; set; }
 
         /// <summary>Required. Whether the item is returnable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isReturnable")]
-        public virtual System.Nullable<bool> IsReturnable { get; set; } 
+        public virtual System.Nullable<bool> IsReturnable { get; set; }
 
         /// <summary>Required. URL of the item return policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyUrl")]
-        public virtual string PolicyUrl { get; set; } 
+        public virtual string PolicyUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11337,27 +11337,27 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Required. The delivery by date, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliverByDate")]
-        public virtual string DeliverByDate { get; set; } 
+        public virtual string DeliverByDate { get; set; }
 
         /// <summary>Required. Details of the shipping method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual OrderLineItemShippingDetailsMethod Method { get; set; } 
+        public virtual OrderLineItemShippingDetailsMethod Method { get; set; }
 
         /// <summary>The promised time in minutes in which the order will be ready for pickup. This only applies to buy-
         /// online-pickup-in-store same-day order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickupPromiseInMinutes")]
-        public virtual System.Nullable<long> PickupPromiseInMinutes { get; set; } 
+        public virtual System.Nullable<long> PickupPromiseInMinutes { get; set; }
 
         /// <summary>Required. The ship by date, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipByDate")]
-        public virtual string ShipByDate { get; set; } 
+        public virtual string ShipByDate { get; set; }
 
         /// <summary>Type of shipment. Indicates whether `deliveryDetails` or `pickupDetails` is applicable for this
         /// shipment.
         ///
         /// Acceptable values are: - "`delivery`" - "`pickup`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11368,19 +11368,19 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The carrier for the shipping. Optional. See `shipments[].carrier` for a list of acceptable
         /// values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
-        public virtual string Carrier { get; set; } 
+        public virtual string Carrier { get; set; }
 
         /// <summary>Required. Maximum transit time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDaysInTransit")]
-        public virtual System.Nullable<long> MaxDaysInTransit { get; set; } 
+        public virtual System.Nullable<long> MaxDaysInTransit { get; set; }
 
         /// <summary>Required. The name of the shipping method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("methodName")]
-        public virtual string MethodName { get; set; } 
+        public virtual string MethodName { get; set; }
 
         /// <summary>Required. Minimum transit time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minDaysInTransit")]
-        public virtual System.Nullable<long> MinDaysInTransit { get; set; } 
+        public virtual System.Nullable<long> MinDaysInTransit { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11390,12 +11390,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Key for additional merchant provided (as key-value pairs) annotation about the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>Value for additional merchant provided (as key-value pairs) annotation about the line
         /// item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11405,11 +11405,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Key for additional google provided (as key-value pairs) annotation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>Value for additional google provided (as key-value pairs) annotation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11420,22 +11420,22 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Address of the pickup location where the shipment should be sent. Note that `recipientName` in the
         /// address is the name of the business at the pickup location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
-        public virtual OrderAddress Address { get; set; } 
+        public virtual OrderAddress Address { get; set; }
 
         /// <summary>Collectors authorized to pick up shipment from the pickup location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectors")]
-        public virtual System.Collections.Generic.IList<OrderPickupDetailsCollector> Collectors { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderPickupDetailsCollector> Collectors { get; set; }
 
         /// <summary>ID of the pickup location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>The pickup type of this order.
         ///
         /// Acceptable values are: - "`merchantStore`" - "`merchantStoreCurbside`" - "`merchantStoreLocker`" -
         /// "`thirdPartyPickupPoint`" - "`thirdPartyLocker`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickupType")]
-        public virtual string PickupType { get; set; } 
+        public virtual string PickupType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11445,11 +11445,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Name of the person picking up the shipment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Phone number of the person picking up the shipment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
-        public virtual string PhoneNumber { get; set; } 
+        public virtual string PhoneNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11461,43 +11461,43 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// items and quantity. This field will also be empty for shipping promotions because shipping is not tied to
         /// any specific item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicableItems")]
-        public virtual System.Collections.Generic.IList<OrderPromotionItem> ApplicableItems { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderPromotionItem> ApplicableItems { get; set; }
 
         /// <summary>Items that this promotion have been applied to. Do not provide for `orders.createtestorder`. This
         /// field will be empty for shipping promotions because shipping is not tied to any specific item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appliedItems")]
-        public virtual System.Collections.Generic.IList<OrderPromotionItem> AppliedItems { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderPromotionItem> AppliedItems { get; set; }
 
         /// <summary>Promotion end time in ISO 8601 format. Date, time, and offset required, e.g.,
         /// "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTime { get; set; } 
+        public virtual string EndTime { get; set; }
 
         /// <summary>Required. The party funding the promotion. Only `merchant` is supported for
         /// `orders.createtestorder`.
         ///
         /// Acceptable values are: - "`google`" - "`merchant`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("funder")]
-        public virtual string Funder { get; set; } 
+        public virtual string Funder { get; set; }
 
         /// <summary>Required. This field is used to identify promotions within merchants' own systems.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantPromotionId")]
-        public virtual string MerchantPromotionId { get; set; } 
+        public virtual string MerchantPromotionId { get; set; }
 
         /// <summary>Estimated discount applied to price. Amount is pre-tax or post-tax depending on location of
         /// order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceValue")]
-        public virtual Price PriceValue { get; set; } 
+        public virtual Price PriceValue { get; set; }
 
         /// <summary>A short title of the promotion to be shown on the checkout page. Do not provide for
         /// `orders.createtestorder`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortTitle")]
-        public virtual string ShortTitle { get; set; } 
+        public virtual string ShortTitle { get; set; }
 
         /// <summary>Promotion start time in ISO 8601 format. Date, time, and offset required, e.g.,
         /// "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTime { get; set; } 
+        public virtual string StartTime { get; set; }
 
         /// <summary>Required. The category of the promotion. Only `moneyOff` is supported for `orders.createtestorder`.
         ///
@@ -11506,22 +11506,22 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "`freeShippingOvernight`" - "`freeShippingStandard`" - "`freeShippingTwoDay`" - "`moneyOff`" -
         /// "`percentOff`" - "`rewardPoints`" - "`salePrice`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtype")]
-        public virtual string Subtype { get; set; } 
+        public virtual string Subtype { get; set; }
 
         /// <summary>Estimated discount applied to tax (if allowed by law). Do not provide for
         /// `orders.createtestorder`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxValue")]
-        public virtual Price TaxValue { get; set; } 
+        public virtual Price TaxValue { get; set; }
 
         /// <summary>Required. The title of the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>Required. The scope of the promotion. Only `product` is supported for `orders.createtestorder`.
         ///
         /// Acceptable values are: - "`product`" - "`shipping`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11531,19 +11531,19 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The line item ID of a product. Do not provide for `orders.createtestorder`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
-        public virtual string LineItemId { get; set; } 
+        public virtual string LineItemId { get; set; }
 
         /// <summary>Required. Offer ID of a product. Only for `orders.createtestorder`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
-        public virtual string OfferId { get; set; } 
+        public virtual string OfferId { get; set; }
 
         /// <summary>`orders.createtestorder`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>The quantity of the associated product. Do not provide for `orders.createtestorder`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
-        public virtual System.Nullable<int> Quantity { get; set; } 
+        public virtual System.Nullable<int> Quantity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11556,15 +11556,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// Acceptable values are: - "`customer`" - "`googleBot`" - "`googleCustomerService`" - "`googlePayments`" -
         /// "`googleSabre`" - "`merchant`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actor")]
-        public virtual string Actor { get; set; } 
+        public virtual string Actor { get; set; }
 
         /// <summary>The amount that is refunded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
-        public virtual Price Amount { get; set; } 
+        public virtual Price Amount { get; set; }
 
         /// <summary>Date on which the item has been created, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationDate")]
-        public virtual string CreationDate { get; set; } 
+        public virtual string CreationDate { get; set; }
 
         /// <summary>The reason for the refund.
         ///
@@ -11581,11 +11581,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "`shippingCostAdjustment`" - "`shippingPriceError`" - "`taxAdjustment`" - "`taxError`" -
         /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The explanation of the reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasonText")]
-        public virtual string ReasonText { get; set; } 
+        public virtual string ReasonText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11597,23 +11597,23 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The disbursement amount.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disbursementAmount")]
-        public virtual Price DisbursementAmount { get; set; } 
+        public virtual Price DisbursementAmount { get; set; }
 
         /// <summary>The disbursement date, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disbursementCreationDate")]
-        public virtual string DisbursementCreationDate { get; set; } 
+        public virtual string DisbursementCreationDate { get; set; }
 
         /// <summary>The date the disbursement was initiated, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disbursementDate")]
-        public virtual string DisbursementDate { get; set; } 
+        public virtual string DisbursementDate { get; set; }
 
         /// <summary>The ID of the disbursement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disbursementId")]
-        public virtual string DisbursementId { get; set; } 
+        public virtual string DisbursementId { get; set; }
 
         /// <summary>The ID of the managing account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
-        public virtual System.Nullable<ulong> MerchantId { get; set; } 
+        public virtual System.Nullable<ulong> MerchantId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11623,39 +11623,39 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The disbursement amount.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disbursementAmount")]
-        public virtual Price DisbursementAmount { get; set; } 
+        public virtual Price DisbursementAmount { get; set; }
 
         /// <summary>The date the disbursement was created, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disbursementCreationDate")]
-        public virtual string DisbursementCreationDate { get; set; } 
+        public virtual string DisbursementCreationDate { get; set; }
 
         /// <summary>The date the disbursement was initiated, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disbursementDate")]
-        public virtual string DisbursementDate { get; set; } 
+        public virtual string DisbursementDate { get; set; }
 
         /// <summary>The ID of the disbursement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disbursementId")]
-        public virtual string DisbursementId { get; set; } 
+        public virtual string DisbursementId { get; set; }
 
         /// <summary>The ID of the managing account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
-        public virtual System.Nullable<ulong> MerchantId { get; set; } 
+        public virtual System.Nullable<ulong> MerchantId { get; set; }
 
         /// <summary>Merchant-provided ID of the order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantOrderId")]
-        public virtual string MerchantOrderId { get; set; } 
+        public virtual string MerchantOrderId { get; set; }
 
         /// <summary>The ID of the order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
-        public virtual string OrderId { get; set; } 
+        public virtual string OrderId { get; set; }
 
         /// <summary>Total amount for the items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productAmount")]
-        public virtual ProductAmount ProductAmount { get; set; } 
+        public virtual ProductAmount ProductAmount { get; set; }
 
         /// <summary>The date of the transaction, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionDate")]
-        public virtual string TransactionDate { get; set; } 
+        public virtual string TransactionDate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11668,15 +11668,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// Acceptable values are: - "`customer`" - "`googleBot`" - "`googleCustomerService`" - "`googlePayments`" -
         /// "`googleSabre`" - "`merchant`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actor")]
-        public virtual string Actor { get; set; } 
+        public virtual string Actor { get; set; }
 
         /// <summary>Date on which the item has been created, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationDate")]
-        public virtual string CreationDate { get; set; } 
+        public virtual string CreationDate { get; set; }
 
         /// <summary>Quantity that is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
-        public virtual System.Nullable<long> Quantity { get; set; } 
+        public virtual System.Nullable<long> Quantity { get; set; }
 
         /// <summary>The reason for the return.
         ///
@@ -11685,11 +11685,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "`productArrivedDamaged`" - "`productNotAsDescribed`" - "`qualityNotAsExpected`" -
         /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The explanation of the reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasonText")]
-        public virtual string ReasonText { get; set; } 
+        public virtual string ReasonText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11719,42 +11719,42 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// Post Group) - "`colis prive`" (Colis Privé) - "`boxtal`" (Boxtal) - "`geodis`" (GEODIS) - "`tnt`" (TNT) -
         /// "`db schenker`" (DB Schenker) - "`aramex`" (Aramex)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
-        public virtual string Carrier { get; set; } 
+        public virtual string Carrier { get; set; }
 
         /// <summary>Date on which the shipment has been created, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationDate")]
-        public virtual string CreationDate { get; set; } 
+        public virtual string CreationDate { get; set; }
 
         /// <summary>Date on which the shipment has been delivered, in ISO 8601 format. Present only if `status` is
         /// `delivered`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryDate")]
-        public virtual string DeliveryDate { get; set; } 
+        public virtual string DeliveryDate { get; set; }
 
         /// <summary>The ID of the shipment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The line items that are shipped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
-        public virtual System.Collections.Generic.IList<OrderShipmentLineItemShipment> LineItems { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderShipmentLineItemShipment> LineItems { get; set; }
 
         /// <summary>Delivery details of the shipment if scheduling is needed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledDeliveryDetails")]
-        public virtual OrderShipmentScheduledDeliveryDetails ScheduledDeliveryDetails { get; set; } 
+        public virtual OrderShipmentScheduledDeliveryDetails ScheduledDeliveryDetails { get; set; }
 
         /// <summary>The shipment group ID of the shipment. This is set in shiplineitems request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentGroupId")]
-        public virtual string ShipmentGroupId { get; set; } 
+        public virtual string ShipmentGroupId { get; set; }
 
         /// <summary>The status of the shipment.
         ///
         /// Acceptable values are: - "`delivered`" - "`readyForPickup`" - "`shipped`" - "`undeliverable`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The tracking ID for the shipment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingId")]
-        public virtual string TrackingId { get; set; } 
+        public virtual string TrackingId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11765,16 +11765,16 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The ID of the line item that is shipped. This value is assigned by Google when an order is created.
         /// Either lineItemId or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
-        public virtual string LineItemId { get; set; } 
+        public virtual string LineItemId { get; set; }
 
         /// <summary>The ID of the product to ship. This is the REST ID used in the products service. Either lineItemId
         /// or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>The quantity that is shipped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
-        public virtual System.Nullable<long> Quantity { get; set; } 
+        public virtual System.Nullable<long> Quantity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11785,11 +11785,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The phone number of the carrier fulfilling the delivery. The phone number is formatted as the
         /// international notation in ITU-T Recommendation E.123 (e.g., "+41 44 668 1800").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierPhoneNumber")]
-        public virtual string CarrierPhoneNumber { get; set; } 
+        public virtual string CarrierPhoneNumber { get; set; }
 
         /// <summary>The date a shipment is scheduled for delivery, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledDate")]
-        public virtual string ScheduledDate { get; set; } 
+        public virtual string ScheduledDate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11799,24 +11799,24 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>[required] The ID of the invoice.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invoiceId")]
-        public virtual string InvoiceId { get; set; } 
+        public virtual string InvoiceId { get; set; }
 
         /// <summary>[required] Invoice summary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invoiceSummary")]
-        public virtual InvoiceSummary InvoiceSummary { get; set; } 
+        public virtual InvoiceSummary InvoiceSummary { get; set; }
 
         /// <summary>[required] Invoice details per line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemInvoices")]
-        public virtual System.Collections.Generic.IList<ShipmentInvoiceLineItemInvoice> LineItemInvoices { get; set; } 
+        public virtual System.Collections.Generic.IList<ShipmentInvoiceLineItemInvoice> LineItemInvoices { get; set; }
 
         /// <summary>[required] The ID of the operation, unique across all operations for a given order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; } 
+        public virtual string OperationId { get; set; }
 
         /// <summary>[required] ID of the shipment group. It is assigned by the merchant in the `shipLineItems` method
         /// and is used to group multiple line items that have the same kind of shipping charges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentGroupId")]
-        public virtual string ShipmentGroupId { get; set; } 
+        public virtual string ShipmentGroupId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11828,12 +11828,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
-        public virtual string ExecutionStatus { get; set; } 
+        public virtual string ExecutionStatus { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#orderinvoicesCreateChargeInvoiceResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11843,25 +11843,25 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>[required] The ID of the invoice.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invoiceId")]
-        public virtual string InvoiceId { get; set; } 
+        public virtual string InvoiceId { get; set; }
 
         /// <summary>[required] The ID of the operation, unique across all operations for a given order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; } 
+        public virtual string OperationId { get; set; }
 
         /// <summary>Option to create a refund-only invoice. Exactly one of `refundOnlyOption` or `returnOption` must be
         /// provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refundOnlyOption")]
-        public virtual OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption RefundOnlyOption { get; set; } 
+        public virtual OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption RefundOnlyOption { get; set; }
 
         /// <summary>Option to create an invoice for a refund and mark all items within the invoice as returned. Exactly
         /// one of `refundOnlyOption` or `returnOption` must be provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnOption")]
-        public virtual OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption ReturnOption { get; set; } 
+        public virtual OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption ReturnOption { get; set; }
 
         /// <summary>Invoice details for different shipment groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentInvoices")]
-        public virtual System.Collections.Generic.IList<ShipmentInvoice> ShipmentInvoices { get; set; } 
+        public virtual System.Collections.Generic.IList<ShipmentInvoice> ShipmentInvoices { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11873,12 +11873,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
-        public virtual string ExecutionStatus { get; set; } 
+        public virtual string ExecutionStatus { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#orderinvoicesCreateRefundInvoiceResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11888,7 +11888,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Optional description of the refund reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>[required] Reason for the refund.
         ///
@@ -11905,7 +11905,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "`shippingCostAdjustment`" - "`shippingPriceError`" - "`taxAdjustment`" - "`taxError`" -
         /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11915,7 +11915,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Optional description of the return reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>[required] Reason for the return.
         ///
@@ -11924,7 +11924,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "`productArrivedDamaged`" - "`productNotAsDescribed`" - "`qualityNotAsExpected`" -
         /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11934,16 +11934,16 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The list of disbursements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disbursements")]
-        public virtual System.Collections.Generic.IList<OrderReportDisbursement> Disbursements { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderReportDisbursement> Disbursements { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#orderreportsListDisbursementsResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token for the retrieval of the next page of disbursements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11954,15 +11954,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#orderreportsListTransactionsResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token for the retrieval of the next page of transactions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of transactions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactions")]
-        public virtual System.Collections.Generic.IList<OrderReportTransaction> Transactions { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderReportTransaction> Transactions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11973,7 +11973,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>[required] The ID of the operation, unique across all operations for a given order
         /// return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; } 
+        public virtual string OperationId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11985,12 +11985,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
-        public virtual string ExecutionStatus { get; set; } 
+        public virtual string ExecutionStatus { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#orderreturnsAcknowledgeResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12001,14 +12001,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#orderreturnsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token for the retrieval of the next page of returns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<MerchantOrderReturn> Resources { get; set; } 
+        public virtual System.Collections.Generic.IList<MerchantOrderReturn> Resources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12018,12 +12018,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The pre-tax or post-tax amount to be refunded, depending on the location of the order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceAmount")]
-        public virtual Price PriceAmount { get; set; } 
+        public virtual Price PriceAmount { get; set; }
 
         /// <summary>Tax amount to be refunded. Note: This has different meaning depending on the location of the
         /// order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxAmount")]
-        public virtual Price TaxAmount { get; set; } 
+        public virtual Price TaxAmount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12033,20 +12033,20 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Option to charge the customer return shipping cost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullChargeReturnShippingCost")]
-        public virtual System.Nullable<bool> FullChargeReturnShippingCost { get; set; } 
+        public virtual System.Nullable<bool> FullChargeReturnShippingCost { get; set; }
 
         /// <summary>[required] The ID of the operation, unique across all operations for a given order
         /// return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; } 
+        public virtual string OperationId { get; set; }
 
         /// <summary>Refunds for original shipping fee.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refundShippingFee")]
-        public virtual OrderreturnsRefundOperation RefundShippingFee { get; set; } 
+        public virtual OrderreturnsRefundOperation RefundShippingFee { get; set; }
 
         /// <summary>The list of items to return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnItems")]
-        public virtual System.Collections.Generic.IList<OrderreturnsReturnItem> ReturnItems { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderreturnsReturnItem> ReturnItems { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12058,12 +12058,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
-        public virtual string ExecutionStatus { get; set; } 
+        public virtual string ExecutionStatus { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#orderreturnsProcessResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12075,24 +12075,24 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// choose this refund option to indicate the full remaining amount of corresponding object to be refunded to
         /// the customer via FOP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullRefund")]
-        public virtual System.Nullable<bool> FullRefund { get; set; } 
+        public virtual System.Nullable<bool> FullRefund { get; set; }
 
         /// <summary>If this is set, the item will be partially refunded. Merchant can choose this refund option to
         /// specify the customized amount that to be refunded to the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partialRefund")]
-        public virtual OrderreturnsPartialRefund PartialRefund { get; set; } 
+        public virtual OrderreturnsPartialRefund PartialRefund { get; set; }
 
         /// <summary>The payment way of issuing refund. Default value is ORIGINAL_FOP if not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paymentType")]
-        public virtual string PaymentType { get; set; } 
+        public virtual string PaymentType { get; set; }
 
         /// <summary>The explanation of the reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasonText")]
-        public virtual string ReasonText { get; set; } 
+        public virtual string ReasonText { get; set; }
 
         /// <summary>Code of the refund reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnRefundReason")]
-        public virtual string ReturnRefundReason { get; set; } 
+        public virtual string ReturnRefundReason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12102,11 +12102,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The reason for the return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The explanation of the reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasonText")]
-        public virtual string ReasonText { get; set; } 
+        public virtual string ReasonText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12116,16 +12116,16 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Refunds the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refund")]
-        public virtual OrderreturnsRefundOperation Refund { get; set; } 
+        public virtual OrderreturnsRefundOperation Refund { get; set; }
 
         /// <summary>Rejects the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reject")]
-        public virtual OrderreturnsRejectOperation Reject { get; set; } 
+        public virtual OrderreturnsRejectOperation Reject { get; set; }
 
         /// <summary>Unit level ID for the return item. Different units of the same product will have different
         /// IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnItemId")]
-        public virtual string ReturnItemId { get; set; } 
+        public virtual string ReturnItemId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12135,7 +12135,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the operation. Unique across all operations for a given order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; } 
+        public virtual string OperationId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12147,12 +12147,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
-        public virtual string ExecutionStatus { get; set; } 
+        public virtual string ExecutionStatus { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#ordersAcknowledgeResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12163,7 +12163,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#ordersAdvanceTestOrderResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12173,20 +12173,20 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the line item to cancel. Either lineItemId or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
-        public virtual string LineItemId { get; set; } 
+        public virtual string LineItemId { get; set; }
 
         /// <summary>The ID of the operation. Unique across all operations for a given order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; } 
+        public virtual string OperationId { get; set; }
 
         /// <summary>The ID of the product to cancel. This is the REST ID used in the products service. Either
         /// lineItemId or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>The quantity to cancel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
-        public virtual System.Nullable<long> Quantity { get; set; } 
+        public virtual System.Nullable<long> Quantity { get; set; }
 
         /// <summary>The reason for the cancellation.
         ///
@@ -12194,11 +12194,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "`noInventory`" - "`other`" - "`priceError`" - "`shippingPriceError`" - "`taxError`" -
         /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The explanation of the reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasonText")]
-        public virtual string ReasonText { get; set; } 
+        public virtual string ReasonText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12210,12 +12210,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
-        public virtual string ExecutionStatus { get; set; } 
+        public virtual string ExecutionStatus { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#ordersCancelLineItemResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12225,7 +12225,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the operation. Unique across all operations for a given order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; } 
+        public virtual string OperationId { get; set; }
 
         /// <summary>The reason for the cancellation.
         ///
@@ -12233,11 +12233,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "`noInventory`" - "`other`" - "`priceError`" - "`shippingPriceError`" - "`taxError`" -
         /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The explanation of the reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasonText")]
-        public virtual string ReasonText { get; set; } 
+        public virtual string ReasonText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12249,12 +12249,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
-        public virtual string ExecutionStatus { get; set; } 
+        public virtual string ExecutionStatus { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#ordersCancelResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12266,7 +12266,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`changedMind`" - "`orderedWrongItem`" - "`other`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12277,7 +12277,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#ordersCancelTestOrderByCustomerResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12290,7 +12290,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`US`" - "`FR`"  Defaults to `US`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
-        public virtual string Country { get; set; } 
+        public virtual string Country { get; set; }
 
         /// <summary>The test order template to use. Specify as an alternative to `testOrder` as a shortcut for
         /// retrieving a template and then creating an order using that template.
@@ -12298,11 +12298,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// Acceptable values are: - "`template1`" - "`template1a`" - "`template1b`" - "`template2`" -
         /// "`template3`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templateName")]
-        public virtual string TemplateName { get; set; } 
+        public virtual string TemplateName { get; set; }
 
         /// <summary>The test order to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testOrder")]
-        public virtual TestOrder TestOrder { get; set; } 
+        public virtual TestOrder TestOrder { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12313,11 +12313,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#ordersCreateTestOrderResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ID of the newly created test order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
-        public virtual string OrderId { get; set; } 
+        public virtual string OrderId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12327,7 +12327,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Returned items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<OrdersCustomBatchRequestEntryCreateTestReturnReturnItem> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<OrdersCustomBatchRequestEntryCreateTestReturnReturnItem> Items { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12338,11 +12338,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#ordersCreateTestReturnResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ID of the newly created test order return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnId")]
-        public virtual string ReturnId { get; set; } 
+        public virtual string ReturnId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12352,11 +12352,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the line item to return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
-        public virtual string LineItemId { get; set; } 
+        public virtual string LineItemId { get; set; }
 
         /// <summary>Quantity that is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
-        public virtual System.Nullable<long> Quantity { get; set; } 
+        public virtual System.Nullable<long> Quantity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12368,25 +12368,25 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// quantity to 2 and amount to 10$) In case of multiple refunds, this should be the amount you currently want
         /// to refund to the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
-        public virtual MonetaryAmount Amount { get; set; } 
+        public virtual MonetaryAmount Amount { get; set; }
 
         /// <summary>If true, the full item will be refunded. If this is true, amount should not be provided and will be
         /// ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullRefund")]
-        public virtual System.Nullable<bool> FullRefund { get; set; } 
+        public virtual System.Nullable<bool> FullRefund { get; set; }
 
         /// <summary>The ID of the line item. Either lineItemId or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
-        public virtual string LineItemId { get; set; } 
+        public virtual string LineItemId { get; set; }
 
         /// <summary>The ID of the product. This is the REST ID used in the products service. Either lineItemId or
         /// productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>The number of products that are refunded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
-        public virtual System.Nullable<int> Quantity { get; set; } 
+        public virtual System.Nullable<int> Quantity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12397,12 +12397,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The amount that is refunded. If this is not the first refund for the shipment, this should be the
         /// newly refunded amount.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
-        public virtual Price Amount { get; set; } 
+        public virtual Price Amount { get; set; }
 
         /// <summary>If set to true, all shipping costs for the order will be refunded. If this is true, amount should
         /// not be provided and will be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullRefund")]
-        public virtual System.Nullable<bool> FullRefund { get; set; } 
+        public virtual System.Nullable<bool> FullRefund { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12413,16 +12413,16 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The carrier handling the shipment. See `shipments[].carrier` in the  Orders resource representation
         /// for a list of acceptable values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
-        public virtual string Carrier { get; set; } 
+        public virtual string Carrier { get; set; }
 
         /// <summary>Required. The ID of the shipment. This is assigned by the merchant and is unique to each
         /// shipment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentId")]
-        public virtual string ShipmentId { get; set; } 
+        public virtual string ShipmentId { get; set; }
 
         /// <summary>The tracking ID for the shipment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingId")]
-        public virtual string TrackingId { get; set; } 
+        public virtual string TrackingId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12433,11 +12433,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#ordersGetByMerchantOrderIdResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The requested order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("order")]
-        public virtual Order Order { get; set; } 
+        public virtual Order Order { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12448,11 +12448,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#ordersGetTestOrderTemplateResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The requested test order template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("template")]
-        public virtual TestOrder Template { get; set; } 
+        public virtual TestOrder Template { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12462,25 +12462,25 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the line item to return. Either lineItemId or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
-        public virtual string LineItemId { get; set; } 
+        public virtual string LineItemId { get; set; }
 
         /// <summary>The ID of the operation. Unique across all operations for a given order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; } 
+        public virtual string OperationId { get; set; }
 
         /// <summary>The amount to be refunded. This may be pre-tax or post-tax depending on the location of the order.
         /// Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceAmount")]
-        public virtual Price PriceAmount { get; set; } 
+        public virtual Price PriceAmount { get; set; }
 
         /// <summary>The ID of the product to return. This is the REST ID used in the products service. Either
         /// lineItemId or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>The quantity to return and refund.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
-        public virtual System.Nullable<long> Quantity { get; set; } 
+        public virtual System.Nullable<long> Quantity { get; set; }
 
         /// <summary>The reason for the return.
         ///
@@ -12489,15 +12489,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "`productArrivedDamaged`" - "`productNotAsDescribed`" - "`qualityNotAsExpected`" -
         /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The explanation of the reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasonText")]
-        public virtual string ReasonText { get; set; } 
+        public virtual string ReasonText { get; set; }
 
         /// <summary>The amount of tax to be refunded. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxAmount")]
-        public virtual Price TaxAmount { get; set; } 
+        public virtual Price TaxAmount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12509,12 +12509,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
-        public virtual string ExecutionStatus { get; set; } 
+        public virtual string ExecutionStatus { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#ordersInStoreRefundLineItemResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12525,14 +12525,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#ordersListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token for the retrieval of the next page of orders.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<Order> Resources { get; set; } 
+        public virtual System.Collections.Generic.IList<Order> Resources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12542,11 +12542,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The items that are refunded. Either Item or Shipping must be provided in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<OrdersCustomBatchRequestEntryRefundItemItem> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<OrdersCustomBatchRequestEntryRefundItemItem> Items { get; set; }
 
         /// <summary>The ID of the operation. Unique across all operations for a given order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; } 
+        public virtual string OperationId { get; set; }
 
         /// <summary>The reason for the refund.
         ///
@@ -12555,16 +12555,16 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "`productNotAsDescribed`" - "`undeliverableShippingAddress`" - "`wrongProductShipped`" -
         /// "`lateShipmentCredit`" - "`deliveredLateByCarrier`" - "`productArrivedDamaged`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The explanation of the reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasonText")]
-        public virtual string ReasonText { get; set; } 
+        public virtual string ReasonText { get; set; }
 
         /// <summary>The refund on shipping. Optional, but either Item or Shipping must be provided in the
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipping")]
-        public virtual OrdersCustomBatchRequestEntryRefundItemShipping Shipping { get; set; } 
+        public virtual OrdersCustomBatchRequestEntryRefundItemShipping Shipping { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12576,12 +12576,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
-        public virtual string ExecutionStatus { get; set; } 
+        public virtual string ExecutionStatus { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#ordersRefundItemResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12592,26 +12592,26 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The amount that is refunded. If this is not the first refund for the order, this should be the
         /// newly refunded amount.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
-        public virtual MonetaryAmount Amount { get; set; } 
+        public virtual MonetaryAmount Amount { get; set; }
 
         /// <summary>If true, the full order will be refunded, including shipping. If this is true, amount should not be
         /// provided and will be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullRefund")]
-        public virtual System.Nullable<bool> FullRefund { get; set; } 
+        public virtual System.Nullable<bool> FullRefund { get; set; }
 
         /// <summary>The ID of the operation. Unique across all operations for a given order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; } 
+        public virtual string OperationId { get; set; }
 
         /// <summary>The reason for the refund.
         ///
         /// Acceptable values are: - "`courtesyAdjustment`" - "`other`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The explanation of the reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasonText")]
-        public virtual string ReasonText { get; set; } 
+        public virtual string ReasonText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12623,12 +12623,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
-        public virtual string ExecutionStatus { get; set; } 
+        public virtual string ExecutionStatus { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#ordersRefundOrderResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12638,31 +12638,31 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the line item to return. Either lineItemId or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
-        public virtual string LineItemId { get; set; } 
+        public virtual string LineItemId { get; set; }
 
         /// <summary>The ID of the operation. Unique across all operations for a given order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; } 
+        public virtual string OperationId { get; set; }
 
         /// <summary>The ID of the product to return. This is the REST ID used in the products service. Either
         /// lineItemId or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>The quantity to return and refund.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
-        public virtual System.Nullable<long> Quantity { get; set; } 
+        public virtual System.Nullable<long> Quantity { get; set; }
 
         /// <summary>The reason for the return.
         ///
         /// Acceptable values are: - "`damagedOrUsed`" - "`missingComponent`" - "`notEligible`" - "`other`" -
         /// "`outOfReturnWindow`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The explanation of the reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasonText")]
-        public virtual string ReasonText { get; set; } 
+        public virtual string ReasonText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12674,12 +12674,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
-        public virtual string ExecutionStatus { get; set; } 
+        public virtual string ExecutionStatus { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#ordersRejectReturnLineItemResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12689,25 +12689,25 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the line item to return. Either lineItemId or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
-        public virtual string LineItemId { get; set; } 
+        public virtual string LineItemId { get; set; }
 
         /// <summary>The ID of the operation. Unique across all operations for a given order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; } 
+        public virtual string OperationId { get; set; }
 
         /// <summary>The amount to be refunded. This may be pre-tax or post-tax depending on the location of the order.
         /// If omitted, refundless return is assumed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceAmount")]
-        public virtual Price PriceAmount { get; set; } 
+        public virtual Price PriceAmount { get; set; }
 
         /// <summary>The ID of the product to return. This is the REST ID used in the products service. Either
         /// lineItemId or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>The quantity to return and refund.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
-        public virtual System.Nullable<long> Quantity { get; set; } 
+        public virtual System.Nullable<long> Quantity { get; set; }
 
         /// <summary>The reason for the return.
         ///
@@ -12716,16 +12716,16 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "`productArrivedDamaged`" - "`productNotAsDescribed`" - "`qualityNotAsExpected`" -
         /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The explanation of the reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasonText")]
-        public virtual string ReasonText { get; set; } 
+        public virtual string ReasonText { get; set; }
 
         /// <summary>The amount of tax to be refunded. Optional, but if filled, then priceAmount must be set. Calculated
         /// automatically if not provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxAmount")]
-        public virtual Price TaxAmount { get; set; } 
+        public virtual Price TaxAmount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12737,12 +12737,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
-        public virtual string ExecutionStatus { get; set; } 
+        public virtual string ExecutionStatus { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#ordersReturnRefundLineItemResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12751,20 +12751,20 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class OrdersSetLineItemMetadataRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
-        public virtual System.Collections.Generic.IList<OrderMerchantProvidedAnnotation> Annotations { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderMerchantProvidedAnnotation> Annotations { get; set; }
 
         /// <summary>The ID of the line item to set metadata. Either lineItemId or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
-        public virtual string LineItemId { get; set; } 
+        public virtual string LineItemId { get; set; }
 
         /// <summary>The ID of the operation. Unique across all operations for a given order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; } 
+        public virtual string OperationId { get; set; }
 
         /// <summary>The ID of the product to set metadata. This is the REST ID used in the products service. Either
         /// lineItemId or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12776,12 +12776,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
-        public virtual string ExecutionStatus { get; set; } 
+        public virtual string ExecutionStatus { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#ordersSetLineItemMetadataResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12791,20 +12791,20 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Line items to ship.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
-        public virtual System.Collections.Generic.IList<OrderShipmentLineItemShipment> LineItems { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderShipmentLineItemShipment> LineItems { get; set; }
 
         /// <summary>The ID of the operation. Unique across all operations for a given order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; } 
+        public virtual string OperationId { get; set; }
 
         /// <summary>ID of the shipment group. Required for orders that use the orderinvoices service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentGroupId")]
-        public virtual string ShipmentGroupId { get; set; } 
+        public virtual string ShipmentGroupId { get; set; }
 
         /// <summary>Shipment information. This field is repeated because a single line item can be shipped in several
         /// packages (and have several tracking IDs).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentInfos")]
-        public virtual System.Collections.Generic.IList<OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo> ShipmentInfos { get; set; } 
+        public virtual System.Collections.Generic.IList<OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo> ShipmentInfos { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12816,12 +12816,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
-        public virtual string ExecutionStatus { get; set; } 
+        public virtual string ExecutionStatus { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#ordersShipLineItemsResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12833,26 +12833,26 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Provided date should be within 1 year timeframe and can not be a date in the past.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliverByDate")]
-        public virtual string DeliverByDate { get; set; } 
+        public virtual string DeliverByDate { get; set; }
 
         /// <summary>The ID of the line item to set metadata. Either lineItemId or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
-        public virtual string LineItemId { get; set; } 
+        public virtual string LineItemId { get; set; }
 
         /// <summary>The ID of the operation. Unique across all operations for a given order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; } 
+        public virtual string OperationId { get; set; }
 
         /// <summary>The ID of the product to set metadata. This is the REST ID used in the products service. Either
         /// lineItemId or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>Updated ship by date, in ISO 8601 format. If not specified only deliver by date is updated.
         ///
         /// Provided date should be within 1 year timeframe and can not be a date in the past.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipByDate")]
-        public virtual string ShipByDate { get; set; } 
+        public virtual string ShipByDate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12864,12 +12864,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
-        public virtual string ExecutionStatus { get; set; } 
+        public virtual string ExecutionStatus { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#ordersUpdateLineItemShippingDetailsResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12879,11 +12879,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The merchant order id to be assigned to the order. Must be unique per merchant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantOrderId")]
-        public virtual string MerchantOrderId { get; set; } 
+        public virtual string MerchantOrderId { get; set; }
 
         /// <summary>The ID of the operation. Unique across all operations for a given order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; } 
+        public virtual string OperationId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12895,12 +12895,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
-        public virtual string ExecutionStatus { get; set; } 
+        public virtual string ExecutionStatus { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#ordersUpdateMerchantOrderIdResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12911,45 +12911,45 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The carrier handling the shipment. Not updated if missing. See `shipments[].carrier` in the  Orders
         /// resource representation for a list of acceptable values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
-        public virtual string Carrier { get; set; } 
+        public virtual string Carrier { get; set; }
 
         /// <summary>Date on which the shipment has been delivered, in ISO 8601 format. Optional and can be provided
         /// only if `status` is `delivered`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryDate")]
-        public virtual string DeliveryDate { get; set; } 
+        public virtual string DeliveryDate { get; set; }
 
         /// <summary>Date after which the pickup will expire, in ISO 8601 format. Required only when order is buy-
         /// online-pickup-in-store(BOPIS) and `status` is `ready for pickup`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastPickupDate")]
-        public virtual string LastPickupDate { get; set; } 
+        public virtual string LastPickupDate { get; set; }
 
         /// <summary>The ID of the operation. Unique across all operations for a given order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; } 
+        public virtual string OperationId { get; set; }
 
         /// <summary>Date on which the shipment has been ready for pickup, in ISO 8601 format. Optional and can be
         /// provided only if `status` is `ready for pickup`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readyPickupDate")]
-        public virtual string ReadyPickupDate { get; set; } 
+        public virtual string ReadyPickupDate { get; set; }
 
         /// <summary>The ID of the shipment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentId")]
-        public virtual string ShipmentId { get; set; } 
+        public virtual string ShipmentId { get; set; }
 
         /// <summary>New status for the shipment. Not updated if missing.
         ///
         /// Acceptable values are: - "`delivered`" - "`undeliverable`" - "`readyForPickup`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The tracking ID for the shipment. Not updated if missing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingId")]
-        public virtual string TrackingId { get; set; } 
+        public virtual string TrackingId { get; set; }
 
         /// <summary>Date on which the shipment has been undeliverable, in ISO 8601 format. Optional and can be provided
         /// only if `status` is `undeliverable`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("undeliveredDate")]
-        public virtual string UndeliveredDate { get; set; } 
+        public virtual string UndeliveredDate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12961,12 +12961,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
-        public virtual string ExecutionStatus { get; set; } 
+        public virtual string ExecutionStatus { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#ordersUpdateShipmentResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12976,11 +12976,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The name of the pickup carrier (e.g., `"UPS"`). Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierName")]
-        public virtual string CarrierName { get; set; } 
+        public virtual string CarrierName { get; set; }
 
         /// <summary>The name of the pickup service (e.g., `"Access point"`). Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
-        public virtual string ServiceName { get; set; } 
+        public virtual string ServiceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12990,15 +12990,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The name of the carrier (e.g., `"UPS"`). Always present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierName")]
-        public virtual string CarrierName { get; set; } 
+        public virtual string CarrierName { get; set; }
 
         /// <summary>The CLDR country code of the carrier (e.g., "US"). Always present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
-        public virtual string Country { get; set; } 
+        public virtual string Country { get; set; }
 
         /// <summary>The name of the pickup service (e.g., `"Access point"`). Always present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
-        public virtual string ServiceName { get; set; } 
+        public virtual string ServiceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13008,7 +13008,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The request entries to be processed in the batch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<PosCustomBatchRequestEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<PosCustomBatchRequestEntry> Entries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13018,37 +13018,37 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>An entry ID, unique within the batch request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>The inventory to submit. Set this only if the method is `inventory`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventory")]
-        public virtual PosInventory Inventory { get; set; } 
+        public virtual PosInventory Inventory { get; set; }
 
         /// <summary>The ID of the POS data provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
-        public virtual System.Nullable<ulong> MerchantId { get; set; } 
+        public virtual System.Nullable<ulong> MerchantId { get; set; }
 
         /// <summary>The method of the batch entry.
         ///
         /// Acceptable values are: - "`delete`" - "`get`" - "`insert`" - "`inventory`" - "`sale`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
+        public virtual string Method { get; set; }
 
         /// <summary>The sale information to submit. Set this only if the method is `sale`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sale")]
-        public virtual PosSale Sale { get; set; } 
+        public virtual PosSale Sale { get; set; }
 
         /// <summary>The store information to submit. Set this only if the method is `insert`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("store")]
-        public virtual PosStore Store { get; set; } 
+        public virtual PosStore Store { get; set; }
 
         /// <summary>The store code. Set this only if the method is `delete` or `get`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
-        public virtual string StoreCode { get; set; } 
+        public virtual string StoreCode { get; set; }
 
         /// <summary>The ID of the account for which to get/submit data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetMerchantId")]
-        public virtual System.Nullable<ulong> TargetMerchantId { get; set; } 
+        public virtual System.Nullable<ulong> TargetMerchantId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13058,12 +13058,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The result of the execution of the batch requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<PosCustomBatchResponseEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<PosCustomBatchResponseEntry> Entries { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#posCustomBatchResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13073,28 +13073,28 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the request entry to which this entry responds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>A list of errors defined if, and only if, the request failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual Errors Errors { get; set; } 
+        public virtual Errors Errors { get; set; }
 
         /// <summary>The updated inventory information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventory")]
-        public virtual PosInventory Inventory { get; set; } 
+        public virtual PosInventory Inventory { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "`content#posCustomBatchResponseEntry`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The updated sale information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sale")]
-        public virtual PosSale Sale { get; set; } 
+        public virtual PosSale Sale { get; set; }
 
         /// <summary>The retrieved or updated store information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("store")]
-        public virtual PosStore Store { get; set; } 
+        public virtual PosStore Store { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13104,11 +13104,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Country code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
-        public virtual string Country { get; set; } 
+        public virtual string Country { get; set; }
 
         /// <summary>A list of POS data providers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("posDataProviders")]
-        public virtual System.Collections.Generic.IList<PosDataProvidersPosDataProvider> PosDataProvidersValue { get; set; } 
+        public virtual System.Collections.Generic.IList<PosDataProvidersPosDataProvider> PosDataProvidersValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13118,15 +13118,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The display name of Pos data Provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The full name of this POS data Provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullName")]
-        public virtual string FullName { get; set; } 
+        public virtual string FullName { get; set; }
 
         /// <summary>The ID of the account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("providerId")]
-        public virtual System.Nullable<ulong> ProviderId { get; set; } 
+        public virtual System.Nullable<ulong> ProviderId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13137,41 +13137,41 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Required. The two-letter ISO 639-1 language code for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
-        public virtual string ContentLanguage { get; set; } 
+        public virtual string ContentLanguage { get; set; }
 
         /// <summary>Global Trade Item Number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
-        public virtual string Gtin { get; set; } 
+        public virtual string Gtin { get; set; }
 
         /// <summary>Required. A unique identifier for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
-        public virtual string ItemId { get; set; } 
+        public virtual string ItemId { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "`content#posInventory`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Required. The current price of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
-        public virtual Price Price { get; set; } 
+        public virtual Price Price { get; set; }
 
         /// <summary>Required. The available quantity of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
-        public virtual System.Nullable<long> Quantity { get; set; } 
+        public virtual System.Nullable<long> Quantity { get; set; }
 
         /// <summary>Required. The identifier of the merchant's store. Either a `storeCode` inserted via the API or the
         /// code of the store in Google My Business.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
-        public virtual string StoreCode { get; set; } 
+        public virtual string StoreCode { get; set; }
 
         /// <summary>Required. The CLDR territory code for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
-        public virtual string TargetCountry { get; set; } 
+        public virtual string TargetCountry { get; set; }
 
         /// <summary>Required. The inventory timestamp, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
-        public virtual string Timestamp { get; set; } 
+        public virtual string Timestamp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13181,36 +13181,36 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Required. The two-letter ISO 639-1 language code for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
-        public virtual string ContentLanguage { get; set; } 
+        public virtual string ContentLanguage { get; set; }
 
         /// <summary>Global Trade Item Number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
-        public virtual string Gtin { get; set; } 
+        public virtual string Gtin { get; set; }
 
         /// <summary>Required. A unique identifier for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
-        public virtual string ItemId { get; set; } 
+        public virtual string ItemId { get; set; }
 
         /// <summary>Required. The current price of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
-        public virtual Price Price { get; set; } 
+        public virtual Price Price { get; set; }
 
         /// <summary>Required. The available quantity of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
-        public virtual System.Nullable<long> Quantity { get; set; } 
+        public virtual System.Nullable<long> Quantity { get; set; }
 
         /// <summary>Required. The identifier of the merchant's store. Either a `storeCode` inserted via the API or the
         /// code of the store in Google My Business.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
-        public virtual string StoreCode { get; set; } 
+        public virtual string StoreCode { get; set; }
 
         /// <summary>Required. The CLDR territory code for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
-        public virtual string TargetCountry { get; set; } 
+        public virtual string TargetCountry { get; set; }
 
         /// <summary>Required. The inventory timestamp, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
-        public virtual string Timestamp { get; set; } 
+        public virtual string Timestamp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13220,41 +13220,41 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Required. The two-letter ISO 639-1 language code for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
-        public virtual string ContentLanguage { get; set; } 
+        public virtual string ContentLanguage { get; set; }
 
         /// <summary>Global Trade Item Number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
-        public virtual string Gtin { get; set; } 
+        public virtual string Gtin { get; set; }
 
         /// <summary>Required. A unique identifier for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
-        public virtual string ItemId { get; set; } 
+        public virtual string ItemId { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#posInventoryResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Required. The current price of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
-        public virtual Price Price { get; set; } 
+        public virtual Price Price { get; set; }
 
         /// <summary>Required. The available quantity of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
-        public virtual System.Nullable<long> Quantity { get; set; } 
+        public virtual System.Nullable<long> Quantity { get; set; }
 
         /// <summary>Required. The identifier of the merchant's store. Either a `storeCode` inserted via the API or the
         /// code of the store in Google My Business.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
-        public virtual string StoreCode { get; set; } 
+        public virtual string StoreCode { get; set; }
 
         /// <summary>Required. The CLDR territory code for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
-        public virtual string TargetCountry { get; set; } 
+        public virtual string TargetCountry { get; set; }
 
         /// <summary>Required. The inventory timestamp, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
-        public virtual string Timestamp { get; set; } 
+        public virtual string Timestamp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13265,10 +13265,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#posListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<PosStore> Resources { get; set; } 
+        public virtual System.Collections.Generic.IList<PosStore> Resources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13279,44 +13279,44 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Required. The two-letter ISO 639-1 language code for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
-        public virtual string ContentLanguage { get; set; } 
+        public virtual string ContentLanguage { get; set; }
 
         /// <summary>Global Trade Item Number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
-        public virtual string Gtin { get; set; } 
+        public virtual string Gtin { get; set; }
 
         /// <summary>Required. A unique identifier for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
-        public virtual string ItemId { get; set; } 
+        public virtual string ItemId { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "`content#posSale`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Required. The price of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
-        public virtual Price Price { get; set; } 
+        public virtual Price Price { get; set; }
 
         /// <summary>Required. The relative change of the available quantity. Negative for items returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
-        public virtual System.Nullable<long> Quantity { get; set; } 
+        public virtual System.Nullable<long> Quantity { get; set; }
 
         /// <summary>A unique ID to group items from the same sale event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("saleId")]
-        public virtual string SaleId { get; set; } 
+        public virtual string SaleId { get; set; }
 
         /// <summary>Required. The identifier of the merchant's store. Either a `storeCode` inserted via the API or the
         /// code of the store in Google My Business.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
-        public virtual string StoreCode { get; set; } 
+        public virtual string StoreCode { get; set; }
 
         /// <summary>Required. The CLDR territory code for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
-        public virtual string TargetCountry { get; set; } 
+        public virtual string TargetCountry { get; set; }
 
         /// <summary>Required. The inventory timestamp, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
-        public virtual string Timestamp { get; set; } 
+        public virtual string Timestamp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13326,40 +13326,40 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Required. The two-letter ISO 639-1 language code for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
-        public virtual string ContentLanguage { get; set; } 
+        public virtual string ContentLanguage { get; set; }
 
         /// <summary>Global Trade Item Number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
-        public virtual string Gtin { get; set; } 
+        public virtual string Gtin { get; set; }
 
         /// <summary>Required. A unique identifier for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
-        public virtual string ItemId { get; set; } 
+        public virtual string ItemId { get; set; }
 
         /// <summary>Required. The price of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
-        public virtual Price Price { get; set; } 
+        public virtual Price Price { get; set; }
 
         /// <summary>Required. The relative change of the available quantity. Negative for items returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
-        public virtual System.Nullable<long> Quantity { get; set; } 
+        public virtual System.Nullable<long> Quantity { get; set; }
 
         /// <summary>A unique ID to group items from the same sale event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("saleId")]
-        public virtual string SaleId { get; set; } 
+        public virtual string SaleId { get; set; }
 
         /// <summary>Required. The identifier of the merchant's store. Either a `storeCode` inserted via the API or the
         /// code of the store in Google My Business.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
-        public virtual string StoreCode { get; set; } 
+        public virtual string StoreCode { get; set; }
 
         /// <summary>Required. The CLDR territory code for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
-        public virtual string TargetCountry { get; set; } 
+        public virtual string TargetCountry { get; set; }
 
         /// <summary>Required. The inventory timestamp, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
-        public virtual string Timestamp { get; set; } 
+        public virtual string Timestamp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13369,45 +13369,45 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Required. The two-letter ISO 639-1 language code for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
-        public virtual string ContentLanguage { get; set; } 
+        public virtual string ContentLanguage { get; set; }
 
         /// <summary>Global Trade Item Number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
-        public virtual string Gtin { get; set; } 
+        public virtual string Gtin { get; set; }
 
         /// <summary>Required. A unique identifier for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
-        public virtual string ItemId { get; set; } 
+        public virtual string ItemId { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#posSaleResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Required. The price of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
-        public virtual Price Price { get; set; } 
+        public virtual Price Price { get; set; }
 
         /// <summary>Required. The relative change of the available quantity. Negative for items returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
-        public virtual System.Nullable<long> Quantity { get; set; } 
+        public virtual System.Nullable<long> Quantity { get; set; }
 
         /// <summary>A unique ID to group items from the same sale event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("saleId")]
-        public virtual string SaleId { get; set; } 
+        public virtual string SaleId { get; set; }
 
         /// <summary>Required. The identifier of the merchant's store. Either a `storeCode` inserted via the API or the
         /// code of the store in Google My Business.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
-        public virtual string StoreCode { get; set; } 
+        public virtual string StoreCode { get; set; }
 
         /// <summary>Required. The CLDR territory code for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
-        public virtual string TargetCountry { get; set; } 
+        public virtual string TargetCountry { get; set; }
 
         /// <summary>Required. The inventory timestamp, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
-        public virtual string Timestamp { get; set; } 
+        public virtual string Timestamp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13418,15 +13418,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "`content#posStore`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Required. The street address of the store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeAddress")]
-        public virtual string StoreAddress { get; set; } 
+        public virtual string StoreAddress { get; set; }
 
         /// <summary>Required. A store identifier that is unique for the given merchant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
-        public virtual string StoreCode { get; set; } 
+        public virtual string StoreCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13436,15 +13436,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The CLDR territory code of the country the postal code group applies to. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
-        public virtual string Country { get; set; } 
+        public virtual string Country { get; set; }
 
         /// <summary>The name of the postal code group, referred to in headers. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>A range of postal codes. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCodeRanges")]
-        public virtual System.Collections.Generic.IList<PostalCodeRange> PostalCodeRanges { get; set; } 
+        public virtual System.Collections.Generic.IList<PostalCodeRange> PostalCodeRanges { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13455,7 +13455,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>A postal code or a pattern of the form `prefix*` denoting the inclusive lower bound of the range
         /// defining the area. Examples values: `"94108"`, `"9410*"`, `"9*"`. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCodeRangeBegin")]
-        public virtual string PostalCodeRangeBegin { get; set; } 
+        public virtual string PostalCodeRangeBegin { get; set; }
 
         /// <summary>A postal code or a pattern of the form `prefix*` denoting the inclusive upper bound of the range
         /// defining the area. It must have the same length as `postalCodeRangeBegin`: if `postalCodeRangeBegin` is a
@@ -13463,7 +13463,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// `postalCodeRangeEnd` must be a pattern with the same prefix length. Optional: if not set, then the area is
         /// defined as being all the postal codes matching `postalCodeRangeBegin`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCodeRangeEnd")]
-        public virtual string PostalCodeRangeEnd { get; set; } 
+        public virtual string PostalCodeRangeEnd { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13473,11 +13473,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The currency of the price.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currency")]
-        public virtual string Currency { get; set; } 
+        public virtual string Currency { get; set; }
 
         /// <summary>The price represented as a number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13495,349 +13495,349 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Additional URLs of images of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalImageLinks")]
-        public virtual System.Collections.Generic.IList<string> AdditionalImageLinks { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AdditionalImageLinks { get; set; }
 
         /// <summary>Used to group items in an arbitrary way. Only for CPA%, discouraged otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adsGrouping")]
-        public virtual string AdsGrouping { get; set; } 
+        public virtual string AdsGrouping { get; set; }
 
         /// <summary>Similar to ads_grouping, but only works on CPC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adsLabels")]
-        public virtual System.Collections.Generic.IList<string> AdsLabels { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AdsLabels { get; set; }
 
         /// <summary>Allows advertisers to override the item URL when the product is shown within the context of Product
         /// Ads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adsRedirect")]
-        public virtual string AdsRedirect { get; set; } 
+        public virtual string AdsRedirect { get; set; }
 
         /// <summary>Set to true if the item is targeted towards adults.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adult")]
-        public virtual System.Nullable<bool> Adult { get; set; } 
+        public virtual System.Nullable<bool> Adult { get; set; }
 
         /// <summary>Target age group of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageGroup")]
-        public virtual string AgeGroup { get; set; } 
+        public virtual string AgeGroup { get; set; }
 
         /// <summary>Availability status of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availability")]
-        public virtual string Availability { get; set; } 
+        public virtual string Availability { get; set; }
 
         /// <summary>The day a pre-ordered product becomes available for delivery, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availabilityDate")]
-        public virtual string AvailabilityDate { get; set; } 
+        public virtual string AvailabilityDate { get; set; }
 
         /// <summary>Brand of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brand")]
-        public virtual string Brand { get; set; } 
+        public virtual string Brand { get; set; }
 
         /// <summary>URL for the canonical version of your item's landing page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalLink")]
-        public virtual string CanonicalLink { get; set; } 
+        public virtual string CanonicalLink { get; set; }
 
         /// <summary>Required. The item's channel (online or local).
         ///
         /// Acceptable values are: - "`local`" - "`online`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channel")]
-        public virtual string Channel { get; set; } 
+        public virtual string Channel { get; set; }
 
         /// <summary>Color of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
-        public virtual string Color { get; set; } 
+        public virtual string Color { get; set; }
 
         /// <summary>Condition or state of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual string Condition { get; set; } 
+        public virtual string Condition { get; set; }
 
         /// <summary>Required. The two-letter ISO 639-1 language code for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
-        public virtual string ContentLanguage { get; set; } 
+        public virtual string ContentLanguage { get; set; }
 
         /// <summary>Cost of goods sold. Used for gross profit reporting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("costOfGoodsSold")]
-        public virtual Price CostOfGoodsSold { get; set; } 
+        public virtual Price CostOfGoodsSold { get; set; }
 
         /// <summary>A list of custom (merchant-provided) attributes. It can also be used for submitting any attribute
         /// of the feed specification in its generic form (e.g., `{ "name": "size type", "value": "regular" }`). This is
         /// useful for submitting attributes not explicitly exposed by the API, such as additional attributes used for
         /// Shopping Actions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customAttributes")]
-        public virtual System.Collections.Generic.IList<CustomAttribute> CustomAttributes { get; set; } 
+        public virtual System.Collections.Generic.IList<CustomAttribute> CustomAttributes { get; set; }
 
         /// <summary>Custom label 0 for custom grouping of items in a Shopping campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customLabel0")]
-        public virtual string CustomLabel0 { get; set; } 
+        public virtual string CustomLabel0 { get; set; }
 
         /// <summary>Custom label 1 for custom grouping of items in a Shopping campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customLabel1")]
-        public virtual string CustomLabel1 { get; set; } 
+        public virtual string CustomLabel1 { get; set; }
 
         /// <summary>Custom label 2 for custom grouping of items in a Shopping campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customLabel2")]
-        public virtual string CustomLabel2 { get; set; } 
+        public virtual string CustomLabel2 { get; set; }
 
         /// <summary>Custom label 3 for custom grouping of items in a Shopping campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customLabel3")]
-        public virtual string CustomLabel3 { get; set; } 
+        public virtual string CustomLabel3 { get; set; }
 
         /// <summary>Custom label 4 for custom grouping of items in a Shopping campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customLabel4")]
-        public virtual string CustomLabel4 { get; set; } 
+        public virtual string CustomLabel4 { get; set; }
 
         /// <summary>Description of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>An identifier for an item for dynamic remarketing campaigns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayAdsId")]
-        public virtual string DisplayAdsId { get; set; } 
+        public virtual string DisplayAdsId { get; set; }
 
         /// <summary>URL directly to your item's landing page for dynamic remarketing campaigns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayAdsLink")]
-        public virtual string DisplayAdsLink { get; set; } 
+        public virtual string DisplayAdsLink { get; set; }
 
         /// <summary>Advertiser-specified recommendations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayAdsSimilarIds")]
-        public virtual System.Collections.Generic.IList<string> DisplayAdsSimilarIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DisplayAdsSimilarIds { get; set; }
 
         /// <summary>Title of an item for dynamic remarketing campaigns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayAdsTitle")]
-        public virtual string DisplayAdsTitle { get; set; } 
+        public virtual string DisplayAdsTitle { get; set; }
 
         /// <summary>Offer margin for dynamic remarketing campaigns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayAdsValue")]
-        public virtual System.Nullable<double> DisplayAdsValue { get; set; } 
+        public virtual System.Nullable<double> DisplayAdsValue { get; set; }
 
         /// <summary>The energy efficiency class as defined in EU directive 2010/30/EU.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("energyEfficiencyClass")]
-        public virtual string EnergyEfficiencyClass { get; set; } 
+        public virtual string EnergyEfficiencyClass { get; set; }
 
         /// <summary>The list of destinations to exclude for this target (corresponds to unchecked check boxes in
         /// Merchant Center).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedDestinations")]
-        public virtual System.Collections.Generic.IList<string> ExcludedDestinations { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExcludedDestinations { get; set; }
 
         /// <summary>Date on which the item should expire, as specified upon insertion, in ISO 8601 format. The actual
         /// expiration date in Google Shopping is exposed in `productstatuses` as `googleExpirationDate` and might be
         /// earlier if `expirationDate` is too far in the future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationDate")]
-        public virtual string ExpirationDate { get; set; } 
+        public virtual string ExpirationDate { get; set; }
 
         /// <summary>Target gender of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gender")]
-        public virtual string Gender { get; set; } 
+        public virtual string Gender { get; set; }
 
         /// <summary>Google's category of the item (see Google product taxonomy).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleProductCategory")]
-        public virtual string GoogleProductCategory { get; set; } 
+        public virtual string GoogleProductCategory { get; set; }
 
         /// <summary>Global Trade Item Number (GTIN) of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
-        public virtual string Gtin { get; set; } 
+        public virtual string Gtin { get; set; }
 
         /// <summary>The REST ID of the product. Content API methods that operate on products take this as their
         /// `productId` parameter. The REST ID for a product is of the form channel:contentLanguage:targetCountry:
         /// offerId.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>False when the item does not have unique product identifiers appropriate to its category, such as
         /// GTIN, MPN, and brand. Required according to the Unique Product Identifier Rules for all target countries
         /// except for Canada.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identifierExists")]
-        public virtual System.Nullable<bool> IdentifierExists { get; set; } 
+        public virtual System.Nullable<bool> IdentifierExists { get; set; }
 
         /// <summary>URL of an image of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageLink")]
-        public virtual string ImageLink { get; set; } 
+        public virtual string ImageLink { get; set; }
 
         /// <summary>The list of destinations to include for this target (corresponds to checked check boxes in Merchant
         /// Center). Default destinations are always included unless provided in `excludedDestinations`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedDestinations")]
-        public virtual System.Collections.Generic.IList<string> IncludedDestinations { get; set; } 
+        public virtual System.Collections.Generic.IList<string> IncludedDestinations { get; set; }
 
         /// <summary>Number and amount of installments to pay for an item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installment")]
-        public virtual Installment Installment { get; set; } 
+        public virtual Installment Installment { get; set; }
 
         /// <summary>Whether the item is a merchant-defined bundle. A bundle is a custom grouping of different products
         /// sold by a merchant for a single price.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isBundle")]
-        public virtual System.Nullable<bool> IsBundle { get; set; } 
+        public virtual System.Nullable<bool> IsBundle { get; set; }
 
         /// <summary>Shared identifier for all variants of the same product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemGroupId")]
-        public virtual string ItemGroupId { get; set; } 
+        public virtual string ItemGroupId { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "`content#product`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>URL directly linking to your item's page on your website.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
-        public virtual string Link { get; set; } 
+        public virtual string Link { get; set; }
 
         /// <summary>Loyalty points that users receive after purchasing the item. Japan only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loyaltyPoints")]
-        public virtual LoyaltyPoints LoyaltyPoints { get; set; } 
+        public virtual LoyaltyPoints LoyaltyPoints { get; set; }
 
         /// <summary>The material of which the item is made.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("material")]
-        public virtual string Material { get; set; } 
+        public virtual string Material { get; set; }
 
         /// <summary>The energy efficiency class as defined in EU directive 2010/30/EU.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxEnergyEfficiencyClass")]
-        public virtual string MaxEnergyEfficiencyClass { get; set; } 
+        public virtual string MaxEnergyEfficiencyClass { get; set; }
 
         /// <summary>Maximal product handling time (in business days).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxHandlingTime")]
-        public virtual System.Nullable<long> MaxHandlingTime { get; set; } 
+        public virtual System.Nullable<long> MaxHandlingTime { get; set; }
 
         /// <summary>The energy efficiency class as defined in EU directive 2010/30/EU.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minEnergyEfficiencyClass")]
-        public virtual string MinEnergyEfficiencyClass { get; set; } 
+        public virtual string MinEnergyEfficiencyClass { get; set; }
 
         /// <summary>Minimal product handling time (in business days).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minHandlingTime")]
-        public virtual System.Nullable<long> MinHandlingTime { get; set; } 
+        public virtual System.Nullable<long> MinHandlingTime { get; set; }
 
         /// <summary>URL for the mobile-optimized version of your item's landing page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileLink")]
-        public virtual string MobileLink { get; set; } 
+        public virtual string MobileLink { get; set; }
 
         /// <summary>Manufacturer Part Number (MPN) of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mpn")]
-        public virtual string Mpn { get; set; } 
+        public virtual string Mpn { get; set; }
 
         /// <summary>The number of identical products in a merchant-defined multipack.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multipack")]
-        public virtual System.Nullable<long> Multipack { get; set; } 
+        public virtual System.Nullable<long> Multipack { get; set; }
 
         /// <summary>Required. A unique identifier for the item. Leading and trailing whitespaces are stripped and
         /// multiple whitespaces are replaced by a single whitespace upon submission. Only valid unicode characters are
         /// accepted. See the products feed specification for details. Note: Content API methods that operate on
         /// products take the REST ID of the product, not this identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
-        public virtual string OfferId { get; set; } 
+        public virtual string OfferId { get; set; }
 
         /// <summary>The item's pattern (e.g. polka dots).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
-        public virtual string Pattern { get; set; } 
+        public virtual string Pattern { get; set; }
 
         /// <summary>Price of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
-        public virtual Price Price { get; set; } 
+        public virtual Price Price { get; set; }
 
         /// <summary>Technical specification or additional product details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productDetails")]
-        public virtual System.Collections.Generic.IList<ProductProductDetail> ProductDetails { get; set; } 
+        public virtual System.Collections.Generic.IList<ProductProductDetail> ProductDetails { get; set; }
 
         /// <summary>Bullet points describing the most relevant highlights of a product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productHighlights")]
-        public virtual System.Collections.Generic.IList<string> ProductHighlights { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ProductHighlights { get; set; }
 
         /// <summary>Categories of the item (formatted as in products data specification).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productTypes")]
-        public virtual System.Collections.Generic.IList<string> ProductTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ProductTypes { get; set; }
 
         /// <summary>The unique ID of a promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionIds")]
-        public virtual System.Collections.Generic.IList<string> PromotionIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> PromotionIds { get; set; }
 
         /// <summary>Advertised sale price of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salePrice")]
-        public virtual Price SalePrice { get; set; } 
+        public virtual Price SalePrice { get; set; }
 
         /// <summary>Date range during which the item is on sale (see products data specification).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salePriceEffectiveDate")]
-        public virtual string SalePriceEffectiveDate { get; set; } 
+        public virtual string SalePriceEffectiveDate { get; set; }
 
         /// <summary>The quantity of the product that is available for selling on Google. Supported only for online
         /// products.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sellOnGoogleQuantity")]
-        public virtual System.Nullable<long> SellOnGoogleQuantity { get; set; } 
+        public virtual System.Nullable<long> SellOnGoogleQuantity { get; set; }
 
         /// <summary>Shipping rules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipping")]
-        public virtual System.Collections.Generic.IList<ProductShipping> Shipping { get; set; } 
+        public virtual System.Collections.Generic.IList<ProductShipping> Shipping { get; set; }
 
         /// <summary>Height of the item for shipping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingHeight")]
-        public virtual ProductShippingDimension ShippingHeight { get; set; } 
+        public virtual ProductShippingDimension ShippingHeight { get; set; }
 
         /// <summary>The shipping label of the product, used to group product in account-level shipping rules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingLabel")]
-        public virtual string ShippingLabel { get; set; } 
+        public virtual string ShippingLabel { get; set; }
 
         /// <summary>Length of the item for shipping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingLength")]
-        public virtual ProductShippingDimension ShippingLength { get; set; } 
+        public virtual ProductShippingDimension ShippingLength { get; set; }
 
         /// <summary>Weight of the item for shipping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingWeight")]
-        public virtual ProductShippingWeight ShippingWeight { get; set; } 
+        public virtual ProductShippingWeight ShippingWeight { get; set; }
 
         /// <summary>Width of the item for shipping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingWidth")]
-        public virtual ProductShippingDimension ShippingWidth { get; set; } 
+        public virtual ProductShippingDimension ShippingWidth { get; set; }
 
         /// <summary>List of country codes (ISO 3166-1 alpha-2) to exclude the offer from Shopping Ads destination.
         /// Countries from this list are removed from countries configured in MC feed settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shoppingAdsExcludedCountries")]
-        public virtual System.Collections.Generic.IList<string> ShoppingAdsExcludedCountries { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ShoppingAdsExcludedCountries { get; set; }
 
         /// <summary>System in which the size is specified. Recommended for apparel items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeSystem")]
-        public virtual string SizeSystem { get; set; } 
+        public virtual string SizeSystem { get; set; }
 
         /// <summary>The cut of the item. Recommended for apparel items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeType")]
-        public virtual string SizeType { get; set; } 
+        public virtual string SizeType { get; set; }
 
         /// <summary>Size of the item. Only one value is allowed. For variants with different sizes, insert a separate
         /// product for each size with the same `itemGroupId` value (see size definition).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizes")]
-        public virtual System.Collections.Generic.IList<string> Sizes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Sizes { get; set; }
 
         /// <summary>The source of the offer, i.e., how the offer was created.
         ///
         /// Acceptable values are: - "`api`" - "`crawl`" - "`feed`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual string Source { get; set; } 
+        public virtual string Source { get; set; }
 
         /// <summary>Number of periods (months or years) and amount of payment per period for an item with an associated
         /// subscription contract.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptionCost")]
-        public virtual ProductSubscriptionCost SubscriptionCost { get; set; } 
+        public virtual ProductSubscriptionCost SubscriptionCost { get; set; }
 
         /// <summary>Required. The CLDR territory code for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
-        public virtual string TargetCountry { get; set; } 
+        public virtual string TargetCountry { get; set; }
 
         /// <summary>The tax category of the product, used to configure detailed tax nexus in account-level tax
         /// settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxCategory")]
-        public virtual string TaxCategory { get; set; } 
+        public virtual string TaxCategory { get; set; }
 
         /// <summary>Tax information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxes")]
-        public virtual System.Collections.Generic.IList<ProductTax> Taxes { get; set; } 
+        public virtual System.Collections.Generic.IList<ProductTax> Taxes { get; set; }
 
         /// <summary>Title of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The transit time label of the product, used to group product in account-level transit time
         /// tables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitTimeLabel")]
-        public virtual string TransitTimeLabel { get; set; } 
+        public virtual string TransitTimeLabel { get; set; }
 
         /// <summary>The preference of the denominator of the unit price.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unitPricingBaseMeasure")]
-        public virtual ProductUnitPricingBaseMeasure UnitPricingBaseMeasure { get; set; } 
+        public virtual ProductUnitPricingBaseMeasure UnitPricingBaseMeasure { get; set; }
 
         /// <summary>The measure and dimension of an item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unitPricingMeasure")]
-        public virtual ProductUnitPricingMeasure UnitPricingMeasure { get; set; } 
+        public virtual ProductUnitPricingMeasure UnitPricingMeasure { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13847,15 +13847,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The pre-tax or post-tax price depending on the location of the order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceAmount")]
-        public virtual Price PriceAmount { get; set; } 
+        public virtual Price PriceAmount { get; set; }
 
         /// <summary>Remitted tax value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remittedTaxAmount")]
-        public virtual Price RemittedTaxAmount { get; set; } 
+        public virtual Price RemittedTaxAmount { get; set; }
 
         /// <summary>Tax value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxAmount")]
-        public virtual Price TaxAmount { get; set; } 
+        public virtual Price TaxAmount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13865,15 +13865,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The name of the product detail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeName")]
-        public virtual string AttributeName { get; set; } 
+        public virtual string AttributeName { get; set; }
 
         /// <summary>The value of the product detail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeValue")]
-        public virtual string AttributeValue { get; set; } 
+        public virtual string AttributeValue { get; set; }
 
         /// <summary>The section header used to group a set of product details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sectionName")]
-        public virtual string SectionName { get; set; } 
+        public virtual string SectionName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13883,34 +13883,34 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The CLDR territory code of the country to which an item will ship.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
-        public virtual string Country { get; set; } 
+        public virtual string Country { get; set; }
 
         /// <summary>The location where the shipping is applicable, represented by a location group name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationGroupName")]
-        public virtual string LocationGroupName { get; set; } 
+        public virtual string LocationGroupName { get; set; }
 
         /// <summary>The numeric ID of a location that the shipping rate applies to as defined in the AdWords
         /// API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual System.Nullable<long> LocationId { get; set; } 
+        public virtual System.Nullable<long> LocationId { get; set; }
 
         /// <summary>The postal code range that the shipping rate applies to, represented by a postal code, a postal
         /// code prefix followed by a * wildcard, a range between two postal codes or two postal code prefixes of equal
         /// length.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
-        public virtual string PostalCode { get; set; } 
+        public virtual string PostalCode { get; set; }
 
         /// <summary>Fixed shipping price, represented as a number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
-        public virtual Price Price { get; set; } 
+        public virtual Price Price { get; set; }
 
         /// <summary>The geographic region to which a shipping rate applies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
-        public virtual string Region { get; set; } 
+        public virtual string Region { get; set; }
 
         /// <summary>A free-form description of the service class or delivery speed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13920,11 +13920,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The unit of value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
-        public virtual string Unit { get; set; } 
+        public virtual string Unit { get; set; }
 
         /// <summary>The dimension of the product used to calculate the shipping cost of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual System.Nullable<double> Value { get; set; } 
+        public virtual System.Nullable<double> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13934,11 +13934,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The unit of value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
-        public virtual string Unit { get; set; } 
+        public virtual string Unit { get; set; }
 
         /// <summary>The weight of the product used to calculate the shipping cost of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual System.Nullable<double> Value { get; set; } 
+        public virtual System.Nullable<double> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13949,40 +13949,40 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Date on which the item has been created, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationDate")]
-        public virtual string CreationDate { get; set; } 
+        public virtual string CreationDate { get; set; }
 
         /// <summary>The intended destinations for the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationStatuses")]
-        public virtual System.Collections.Generic.IList<ProductStatusDestinationStatus> DestinationStatuses { get; set; } 
+        public virtual System.Collections.Generic.IList<ProductStatusDestinationStatus> DestinationStatuses { get; set; }
 
         /// <summary>Date on which the item expires in Google Shopping, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleExpirationDate")]
-        public virtual string GoogleExpirationDate { get; set; } 
+        public virtual string GoogleExpirationDate { get; set; }
 
         /// <summary>A list of all issues associated with the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemLevelIssues")]
-        public virtual System.Collections.Generic.IList<ProductStatusItemLevelIssue> ItemLevelIssues { get; set; } 
+        public virtual System.Collections.Generic.IList<ProductStatusItemLevelIssue> ItemLevelIssues { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "`content#productStatus`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Date on which the item has been last updated, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateDate")]
-        public virtual string LastUpdateDate { get; set; } 
+        public virtual string LastUpdateDate { get; set; }
 
         /// <summary>The link to the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
-        public virtual string Link { get; set; } 
+        public virtual string Link { get; set; }
 
         /// <summary>The ID of the product for which status is reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>The title of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13992,23 +13992,23 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>List of country codes (ISO 3166-1 alpha-2) where the offer is approved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approvedCountries")]
-        public virtual System.Collections.Generic.IList<string> ApprovedCountries { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ApprovedCountries { get; set; }
 
         /// <summary>The name of the destination</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
-        public virtual string Destination { get; set; } 
+        public virtual string Destination { get; set; }
 
         /// <summary>List of country codes (ISO 3166-1 alpha-2) where the offer is disapproved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disapprovedCountries")]
-        public virtual System.Collections.Generic.IList<string> DisapprovedCountries { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DisapprovedCountries { get; set; }
 
         /// <summary>List of country codes (ISO 3166-1 alpha-2) where the offer is pending approval.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pendingCountries")]
-        public virtual System.Collections.Generic.IList<string> PendingCountries { get; set; } 
+        public virtual System.Collections.Generic.IList<string> PendingCountries { get; set; }
 
         /// <summary>Destination approval status in `targetCountry` of the offer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14018,39 +14018,39 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>List of country codes (ISO 3166-1 alpha-2) where issue applies to the offer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicableCountries")]
-        public virtual System.Collections.Generic.IList<string> ApplicableCountries { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ApplicableCountries { get; set; }
 
         /// <summary>The attribute's name, if the issue is caused by a single attribute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeName")]
-        public virtual string AttributeName { get; set; } 
+        public virtual string AttributeName { get; set; }
 
         /// <summary>The error code of the issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual string Code { get; set; } 
+        public virtual string Code { get; set; }
 
         /// <summary>A short issue description in English.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The destination the issue applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
-        public virtual string Destination { get; set; } 
+        public virtual string Destination { get; set; }
 
         /// <summary>A detailed issue description in English.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detail")]
-        public virtual string Detail { get; set; } 
+        public virtual string Detail { get; set; }
 
         /// <summary>The URL of a web page to help with resolving this issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentation")]
-        public virtual string Documentation { get; set; } 
+        public virtual string Documentation { get; set; }
 
         /// <summary>Whether the issue can be resolved by the merchant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolution")]
-        public virtual string Resolution { get; set; } 
+        public virtual string Resolution { get; set; }
 
         /// <summary>How this issue affects serving of the offer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servability")]
-        public virtual string Servability { get; set; } 
+        public virtual string Servability { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14060,15 +14060,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The amount the buyer has to pay per subscription period.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
-        public virtual Price Amount { get; set; } 
+        public virtual Price Amount { get; set; }
 
         /// <summary>The type of subscription period.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("period")]
-        public virtual string Period { get; set; } 
+        public virtual string Period { get; set; }
 
         /// <summary>The number of subscription periods the buyer has to pay.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("periodLength")]
-        public virtual System.Nullable<long> PeriodLength { get; set; } 
+        public virtual System.Nullable<long> PeriodLength { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14078,29 +14078,29 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The country within which the item is taxed, specified as a CLDR territory code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
-        public virtual string Country { get; set; } 
+        public virtual string Country { get; set; }
 
         /// <summary>The numeric ID of a location that the tax rate applies to as defined in the AdWords API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual System.Nullable<long> LocationId { get; set; } 
+        public virtual System.Nullable<long> LocationId { get; set; }
 
         /// <summary>The postal code range that the tax rate applies to, represented by a ZIP code, a ZIP code prefix
         /// using * wildcard, a range between two ZIP codes or two ZIP code prefixes of equal length. Examples: 94114,
         /// 94*, 94002-95460, 94*-95*.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
-        public virtual string PostalCode { get; set; } 
+        public virtual string PostalCode { get; set; }
 
         /// <summary>The percentage of tax rate that applies to the item price.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rate")]
-        public virtual System.Nullable<double> Rate { get; set; } 
+        public virtual System.Nullable<double> Rate { get; set; }
 
         /// <summary>The geographic region to which the tax rate applies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
-        public virtual string Region { get; set; } 
+        public virtual string Region { get; set; }
 
         /// <summary>Set to true if tax is charged on shipping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxShip")]
-        public virtual System.Nullable<bool> TaxShip { get; set; } 
+        public virtual System.Nullable<bool> TaxShip { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14110,11 +14110,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The unit of the denominator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
-        public virtual string Unit { get; set; } 
+        public virtual string Unit { get; set; }
 
         /// <summary>The denominator of the unit price.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual System.Nullable<long> Value { get; set; } 
+        public virtual System.Nullable<long> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14124,11 +14124,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The unit of the measure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
-        public virtual string Unit { get; set; } 
+        public virtual string Unit { get; set; }
 
         /// <summary>The measure of an item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual System.Nullable<double> Value { get; set; } 
+        public virtual System.Nullable<double> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14138,7 +14138,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The request entries to be processed in the batch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<ProductsCustomBatchRequestEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<ProductsCustomBatchRequestEntry> Entries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14149,29 +14149,29 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>An entry ID, unique within the batch request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>The Content API feed id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feedId")]
-        public virtual System.Nullable<ulong> FeedId { get; set; } 
+        public virtual System.Nullable<ulong> FeedId { get; set; }
 
         /// <summary>The ID of the managing account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
-        public virtual System.Nullable<ulong> MerchantId { get; set; } 
+        public virtual System.Nullable<ulong> MerchantId { get; set; }
 
         /// <summary>The method of the batch entry.
         ///
         /// Acceptable values are: - "`delete`" - "`get`" - "`insert`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
+        public virtual string Method { get; set; }
 
         /// <summary>The product to insert. Only required if the method is `insert`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
-        public virtual Product Product { get; set; } 
+        public virtual Product Product { get; set; }
 
         /// <summary>The ID of the product to get or delete. Only defined if the method is `get` or `delete`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14181,12 +14181,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The result of the execution of the batch requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<ProductsCustomBatchResponseEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<ProductsCustomBatchResponseEntry> Entries { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#productsCustomBatchResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14197,21 +14197,21 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the request entry this entry responds to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>A list of errors defined if and only if the request failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual Errors Errors { get; set; } 
+        public virtual Errors Errors { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "`content#productsCustomBatchResponseEntry`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The inserted product. Only defined if the method is `insert` and if the request was
         /// successful.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
-        public virtual Product Product { get; set; } 
+        public virtual Product Product { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14222,14 +14222,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#productsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token for the retrieval of the next page of products.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<Product> Resources { get; set; } 
+        public virtual System.Collections.Generic.IList<Product> Resources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14239,7 +14239,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The request entries to be processed in the batch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<ProductstatusesCustomBatchRequestEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<ProductstatusesCustomBatchRequestEntry> Entries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14250,29 +14250,29 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>An entry ID, unique within the batch request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>If set, only issues for the specified destinations are returned, otherwise only issues for the
         /// Shopping destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
-        public virtual System.Collections.Generic.IList<string> Destinations { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Destinations { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("includeAttributes")]
-        public virtual System.Nullable<bool> IncludeAttributes { get; set; } 
+        public virtual System.Nullable<bool> IncludeAttributes { get; set; }
 
         /// <summary>The ID of the managing account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
-        public virtual System.Nullable<ulong> MerchantId { get; set; } 
+        public virtual System.Nullable<ulong> MerchantId { get; set; }
 
         /// <summary>The method of the batch entry.
         ///
         /// Acceptable values are: - "`get`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
+        public virtual string Method { get; set; }
 
         /// <summary>The ID of the product whose status to get.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14282,12 +14282,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The result of the execution of the batch requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<ProductstatusesCustomBatchResponseEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<ProductstatusesCustomBatchResponseEntry> Entries { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#productstatusesCustomBatchResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14298,20 +14298,20 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the request entry this entry responds to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>A list of errors, if the request failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual Errors Errors { get; set; } 
+        public virtual Errors Errors { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "`content#productstatusesCustomBatchResponseEntry`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The requested product status. Only defined if the request was successful.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productStatus")]
-        public virtual ProductStatus ProductStatus { get; set; } 
+        public virtual ProductStatus ProductStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14322,14 +14322,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#productstatusesListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token for the retrieval of the next page of products statuses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<ProductStatus> Resources { get; set; } 
+        public virtual System.Collections.Generic.IList<ProductStatus> Resources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14341,18 +14341,18 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Cloud pub/sub topic to which notifications are sent (read-only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudTopicName")]
-        public virtual string CloudTopicName { get; set; } 
+        public virtual string CloudTopicName { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "`content#pubsubNotificationSettings`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>List of event types.
         ///
         /// Acceptable values are: - "`orderPendingShipment`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("registeredEvents")]
-        public virtual System.Collections.Generic.IList<string> RegisteredEvents { get; set; } 
+        public virtual System.Collections.Generic.IList<string> RegisteredEvents { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14364,29 +14364,29 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// disjunction: only one of the labels has to match for the rate group to apply. May only be empty for the last
         /// rate group of a service. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicableShippingLabels")]
-        public virtual System.Collections.Generic.IList<string> ApplicableShippingLabels { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ApplicableShippingLabels { get; set; }
 
         /// <summary>A list of carrier rates that can be referred to by `mainTable` or `singleValue`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierRates")]
-        public virtual System.Collections.Generic.IList<CarrierRate> CarrierRates { get; set; } 
+        public virtual System.Collections.Generic.IList<CarrierRate> CarrierRates { get; set; }
 
         /// <summary>A table defining the rate group, when `singleValue` is not expressive enough. Can only be set if
         /// `singleValue` is not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mainTable")]
-        public virtual Table MainTable { get; set; } 
+        public virtual Table MainTable { get; set; }
 
         /// <summary>Name of the rate group. Optional. If set has to be unique within shipping service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The value of the rate group (e.g. flat rate $10). Can only be set if `mainTable` and `subtables`
         /// are not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("singleValue")]
-        public virtual Value SingleValue { get; set; } 
+        public virtual Value SingleValue { get; set; }
 
         /// <summary>A list of subtables referred to by `mainTable`. Can only be set if `mainTable` is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtables")]
-        public virtual System.Collections.Generic.IList<Table> Subtables { get; set; } 
+        public virtual System.Collections.Generic.IList<Table> Subtables { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14396,7 +14396,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Description of the reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Code of the refund reason.
         ///
@@ -14413,7 +14413,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "`shippingCostAdjustment`" - "`shippingPriceError`" - "`taxAdjustment`" - "`taxError`" -
         /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasonCode")]
-        public virtual string ReasonCode { get; set; } 
+        public virtual string ReasonCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14425,34 +14425,34 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The availability of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availability")]
-        public virtual string Availability { get; set; } 
+        public virtual string Availability { get; set; }
 
         /// <summary>A list of custom (merchant-provided) attributes. It can also be used for submitting any attribute
         /// of the feed specification in its generic form.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customAttributes")]
-        public virtual System.Collections.Generic.IList<CustomAttribute> CustomAttributes { get; set; } 
+        public virtual System.Collections.Generic.IList<CustomAttribute> CustomAttributes { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#regionalInventory".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The price of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
-        public virtual Price Price { get; set; } 
+        public virtual Price Price { get; set; }
 
         /// <summary>The ID uniquely identifying each region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionId")]
-        public virtual string RegionId { get; set; } 
+        public virtual string RegionId { get; set; }
 
         /// <summary>The sale price of the product. Mandatory if `sale_price_effective_date` is defined.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salePrice")]
-        public virtual Price SalePrice { get; set; } 
+        public virtual Price SalePrice { get; set; }
 
         /// <summary>A date range represented by a pair of ISO 8601 dates separated by a space, comma, or slash. Both
         /// dates might be specified as 'null' if undecided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salePriceEffectiveDate")]
-        public virtual string SalePriceEffectiveDate { get; set; } 
+        public virtual string SalePriceEffectiveDate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14462,7 +14462,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The request entries to be processed in the batch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<RegionalinventoryCustomBatchRequestEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<RegionalinventoryCustomBatchRequestEntry> Entries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14473,25 +14473,25 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>An entry ID, unique within the batch request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>The ID of the managing account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
-        public virtual System.Nullable<ulong> MerchantId { get; set; } 
+        public virtual System.Nullable<ulong> MerchantId { get; set; }
 
         /// <summary>Method of the batch request entry.
         ///
         /// Acceptable values are: - "`insert`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
+        public virtual string Method { get; set; }
 
         /// <summary>The ID of the product for which to update price and availability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>Price and availability of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionalInventory")]
-        public virtual RegionalInventory RegionalInventory { get; set; } 
+        public virtual RegionalInventory RegionalInventory { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14501,12 +14501,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The result of the execution of the batch requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<RegionalinventoryCustomBatchResponseEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<RegionalinventoryCustomBatchResponseEntry> Entries { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#regionalinventoryCustomBatchResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14517,20 +14517,20 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the request entry this entry responds to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>A list of errors defined if and only if the request failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual Errors Errors { get; set; } 
+        public virtual Errors Errors { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#regionalinventoryCustomBatchResponseEntry".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Price and availability of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionalInventory")]
-        public virtual RegionalInventory RegionalInventory { get; set; } 
+        public virtual RegionalInventory RegionalInventory { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14541,29 +14541,29 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Required. The address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
-        public virtual ReturnAddressAddress Address { get; set; } 
+        public virtual ReturnAddressAddress Address { get; set; }
 
         /// <summary>Required. The country of sale where the return address is applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
-        public virtual string Country { get; set; } 
+        public virtual string Country { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "`content#returnAddress`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Required. The user-defined label of the return address. For the default address, use the label
         /// "default".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; } 
+        public virtual string Label { get; set; }
 
         /// <summary>Required. The merchant's contact phone number regarding the return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
-        public virtual string PhoneNumber { get; set; } 
+        public virtual string PhoneNumber { get; set; }
 
         /// <summary>Return address ID generated by Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnAddressId")]
-        public virtual string ReturnAddressId { get; set; } 
+        public virtual string ReturnAddressId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14573,30 +14573,30 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>CLDR country code (e.g. "US").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
-        public virtual string Country { get; set; } 
+        public virtual string Country { get; set; }
 
         /// <summary>City, town or commune. May also include dependent localities or sublocalities (e.g. neighborhoods
         /// or suburbs).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locality")]
-        public virtual string Locality { get; set; } 
+        public virtual string Locality { get; set; }
 
         /// <summary>Postal code or ZIP (e.g. "94043").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
-        public virtual string PostalCode { get; set; } 
+        public virtual string PostalCode { get; set; }
 
         /// <summary>Name of the recipient to address returns to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recipientName")]
-        public virtual string RecipientName { get; set; } 
+        public virtual string RecipientName { get; set; }
 
         /// <summary>Top-level administrative subdivision of the country. For example, a state like California ("CA") or
         /// a province like Quebec ("QC").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
-        public virtual string Region { get; set; } 
+        public virtual string Region { get; set; }
 
         /// <summary>Street-level part of the address. May be up to two lines, each line specified as an array
         /// element.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streetAddress")]
-        public virtual System.Collections.Generic.IList<string> StreetAddress { get; set; } 
+        public virtual System.Collections.Generic.IList<string> StreetAddress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14607,37 +14607,37 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Required. The country of sale where the return policy is applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
-        public virtual string Country { get; set; } 
+        public virtual string Country { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "`content#returnPolicy`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Required. The user-defined label of the return policy. For the default policy, use the label
         /// "default".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; } 
+        public virtual string Label { get; set; }
 
         /// <summary>Required. The name of the policy as shown in Merchant Center.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Return reasons that will incur return fees.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonFreeReturnReasons")]
-        public virtual System.Collections.Generic.IList<string> NonFreeReturnReasons { get; set; } 
+        public virtual System.Collections.Generic.IList<string> NonFreeReturnReasons { get; set; }
 
         /// <summary>Required. The policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual ReturnPolicyPolicy Policy { get; set; } 
+        public virtual ReturnPolicyPolicy Policy { get; set; }
 
         /// <summary>Return policy ID generated by Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnPolicyId")]
-        public virtual string ReturnPolicyId { get; set; } 
+        public virtual string ReturnPolicyId { get; set; }
 
         /// <summary>An optional list of seasonal overrides.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seasonalOverrides")]
-        public virtual System.Collections.Generic.IList<ReturnPolicySeasonalOverride> SeasonalOverrides { get; set; } 
+        public virtual System.Collections.Generic.IList<ReturnPolicySeasonalOverride> SeasonalOverrides { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14648,7 +14648,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Required. Last day for returning the items. In ISO 8601 format. When specifying the return window
         /// like this, set the policy type to "lastReturnDate". Use this for seasonal overrides only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastReturnDate")]
-        public virtual string LastReturnDate { get; set; } 
+        public virtual string LastReturnDate { get; set; }
 
         /// <summary>The number of days items can be returned after delivery, where one day is defined to be 24 hours
         /// after the delivery timestamp. When specifying the return window like this, set the policy type to
@@ -14657,7 +14657,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// 30 days is required for returns. Exceptions may be made for electronics. A policy of less than 30 days can
         /// only be applied to those items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numberOfDays")]
-        public virtual System.Nullable<long> NumberOfDays { get; set; } 
+        public virtual System.Nullable<long> NumberOfDays { get; set; }
 
         /// <summary>Policy type. Use "lastReturnDate" for seasonal overrides only. Note that for most items a minimum
         /// of 30 days is required for returns. Exceptions may be made for electronics or non-returnable items such as
@@ -14666,7 +14666,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// Acceptable values are: - "`lastReturnDate`" - "`lifetimeReturns`" - "`noReturns`" -
         /// "`numberOfDaysAfterDelivery`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14676,19 +14676,19 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Required. Last day on which the override applies. In ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
-        public virtual string EndDate { get; set; } 
+        public virtual string EndDate { get; set; }
 
         /// <summary>Required. The name of the seasonal override as shown in Merchant Center.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. The policy which is in effect during that time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual ReturnPolicyPolicy Policy { get; set; } 
+        public virtual ReturnPolicyPolicy Policy { get; set; }
 
         /// <summary>Required. First day on which the override applies. In ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
-        public virtual string StartDate { get; set; } 
+        public virtual string StartDate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14699,26 +14699,26 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Default option for whether merchant should charge the customer for return shipping costs, based on
         /// customer selected return reason and merchant's return policy for the items being returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chargeReturnShippingFee")]
-        public virtual System.Nullable<bool> ChargeReturnShippingFee { get; set; } 
+        public virtual System.Nullable<bool> ChargeReturnShippingFee { get; set; }
 
         /// <summary>Maximum return shipping costs that may be charged to the customer depending on merchant's
         /// assessment of the return reason and the merchant's return policy for the items being returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxReturnShippingFee")]
-        public virtual MonetaryAmount MaxReturnShippingFee { get; set; } 
+        public virtual MonetaryAmount MaxReturnShippingFee { get; set; }
 
         /// <summary>Total amount that can be refunded for the items in this return. It represents the total amount
         /// received by the merchant for the items, after applying merchant coupons.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refundableItemsTotalAmount")]
-        public virtual MonetaryAmount RefundableItemsTotalAmount { get; set; } 
+        public virtual MonetaryAmount RefundableItemsTotalAmount { get; set; }
 
         /// <summary>Maximum amount that can be refunded for the original shipping fee.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refundableShippingAmount")]
-        public virtual MonetaryAmount RefundableShippingAmount { get; set; } 
+        public virtual MonetaryAmount RefundableShippingAmount { get; set; }
 
         /// <summary>Total amount already refunded by the merchant. It includes all types of refunds (items, shipping,
         /// etc.) Not provided if no refund has been applied yet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalRefundedAmount")]
-        public virtual MonetaryAmount TotalRefundedAmount { get; set; } 
+        public virtual MonetaryAmount TotalRefundedAmount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14728,36 +14728,36 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The date of creation of the shipment, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationDate")]
-        public virtual string CreationDate { get; set; } 
+        public virtual string CreationDate { get; set; }
 
         /// <summary>The date of delivery of the shipment, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryDate")]
-        public virtual string DeliveryDate { get; set; } 
+        public virtual string DeliveryDate { get; set; }
 
         /// <summary>Type of the return method.
         ///
         /// Acceptable values are: - "`byMail`" - "`contactCustomerSupport`" - "`returnless`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnMethodType")]
-        public virtual string ReturnMethodType { get; set; } 
+        public virtual string ReturnMethodType { get; set; }
 
         /// <summary>Shipment ID generated by Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentId")]
-        public virtual string ShipmentId { get; set; } 
+        public virtual string ShipmentId { get; set; }
 
         /// <summary>Tracking information of the shipment. One return shipment might be handled by several shipping
         /// carriers sequentially.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentTrackingInfos")]
-        public virtual System.Collections.Generic.IList<ShipmentTrackingInfo> ShipmentTrackingInfos { get; set; } 
+        public virtual System.Collections.Generic.IList<ShipmentTrackingInfo> ShipmentTrackingInfos { get; set; }
 
         /// <summary>The date of shipping of the shipment, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingDate")]
-        public virtual string ShippingDate { get; set; } 
+        public virtual string ShippingDate { get; set; }
 
         /// <summary>State of the shipment.
         ///
         /// Acceptable values are: - "`completed`" - "`new`" - "`shipped`" - "`undeliverable`" - "`pending`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14767,7 +14767,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The request entries to be processed in the batch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<ReturnaddressCustomBatchRequestEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<ReturnaddressCustomBatchRequestEntry> Entries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14777,25 +14777,25 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>An entry ID, unique within the batch request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>The Merchant Center account ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
-        public virtual System.Nullable<ulong> MerchantId { get; set; } 
+        public virtual System.Nullable<ulong> MerchantId { get; set; }
 
         /// <summary>Method of the batch request entry.
         ///
         /// Acceptable values are: - "`delete`" - "`get`" - "`insert`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
+        public virtual string Method { get; set; }
 
         /// <summary>The return address to submit. Set this only if the method is `insert`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnAddress")]
-        public virtual ReturnAddress ReturnAddress { get; set; } 
+        public virtual ReturnAddress ReturnAddress { get; set; }
 
         /// <summary>The return address ID. Set this only if the method is `delete` or `get`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnAddressId")]
-        public virtual string ReturnAddressId { get; set; } 
+        public virtual string ReturnAddressId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14805,12 +14805,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The result of the execution of the batch requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<ReturnaddressCustomBatchResponseEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<ReturnaddressCustomBatchResponseEntry> Entries { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#returnaddressCustomBatchResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14820,20 +14820,20 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the request entry to which this entry responds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>A list of errors defined if, and only if, the request failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual Errors Errors { get; set; } 
+        public virtual Errors Errors { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "`content#returnaddressCustomBatchResponseEntry`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The retrieved return address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnAddress")]
-        public virtual ReturnAddress ReturnAddress { get; set; } 
+        public virtual ReturnAddress ReturnAddress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14844,14 +14844,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#returnaddressListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token for the retrieval of the next page of addresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<ReturnAddress> Resources { get; set; } 
+        public virtual System.Collections.Generic.IList<ReturnAddress> Resources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14861,7 +14861,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The request entries to be processed in the batch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<ReturnpolicyCustomBatchRequestEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<ReturnpolicyCustomBatchRequestEntry> Entries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14871,25 +14871,25 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>An entry ID, unique within the batch request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>The Merchant Center account ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
-        public virtual System.Nullable<ulong> MerchantId { get; set; } 
+        public virtual System.Nullable<ulong> MerchantId { get; set; }
 
         /// <summary>Method of the batch request entry.
         ///
         /// Acceptable values are: - "`delete`" - "`get`" - "`insert`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
+        public virtual string Method { get; set; }
 
         /// <summary>The return policy to submit. Set this only if the method is `insert`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnPolicy")]
-        public virtual ReturnPolicy ReturnPolicy { get; set; } 
+        public virtual ReturnPolicy ReturnPolicy { get; set; }
 
         /// <summary>The return policy ID. Set this only if the method is `delete` or `get`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnPolicyId")]
-        public virtual string ReturnPolicyId { get; set; } 
+        public virtual string ReturnPolicyId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14899,12 +14899,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The result of the execution of the batch requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<ReturnpolicyCustomBatchResponseEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<ReturnpolicyCustomBatchResponseEntry> Entries { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#returnpolicyCustomBatchResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14914,20 +14914,20 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the request entry to which this entry responds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>A list of errors defined if, and only if, the request failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual Errors Errors { get; set; } 
+        public virtual Errors Errors { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "`content#returnpolicyCustomBatchResponseEntry`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The retrieved return policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnPolicy")]
-        public virtual ReturnPolicy ReturnPolicy { get; set; } 
+        public virtual ReturnPolicy ReturnPolicy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14938,10 +14938,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#returnpolicyListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<ReturnPolicy> Resources { get; set; } 
+        public virtual System.Collections.Generic.IList<ReturnPolicy> Resources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14952,7 +14952,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The list of cells that constitute the row. Must have the same length as `columnHeaders` for two-
         /// dimensional tables, a length of 1 for one-dimensional tables. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cells")]
-        public virtual System.Collections.Generic.IList<Value> Cells { get; set; } 
+        public virtual System.Collections.Generic.IList<Value> Cells { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14962,60 +14962,60 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>A boolean exposing the active status of the shipping service. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("active")]
-        public virtual System.Nullable<bool> Active { get; set; } 
+        public virtual System.Nullable<bool> Active { get; set; }
 
         /// <summary>The CLDR code of the currency to which this service applies. Must match that of the prices in rate
         /// groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currency")]
-        public virtual string Currency { get; set; } 
+        public virtual string Currency { get; set; }
 
         /// <summary>The CLDR territory code of the country to which the service applies. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryCountry")]
-        public virtual string DeliveryCountry { get; set; } 
+        public virtual string DeliveryCountry { get; set; }
 
         /// <summary>Time spent in various aspects from order to the delivery of the product. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryTime")]
-        public virtual DeliveryTime DeliveryTime { get; set; } 
+        public virtual DeliveryTime DeliveryTime { get; set; }
 
         /// <summary>Eligibility for this service.
         ///
         /// Acceptable values are: - "`All scenarios`" - "`All scenarios except Shopping Actions`" - "`Shopping
         /// Actions`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eligibility")]
-        public virtual string Eligibility { get; set; } 
+        public virtual string Eligibility { get; set; }
 
         /// <summary>Minimum order value for this service. If set, indicates that customers will have to spend at least
         /// this amount. All prices within a service must have the same currency. Cannot be set together with
         /// minimum_order_value_table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumOrderValue")]
-        public virtual Price MinimumOrderValue { get; set; } 
+        public virtual Price MinimumOrderValue { get; set; }
 
         /// <summary>Table of per store minimum order values for the pickup fulfillment type. Cannot be set together
         /// with minimum_order_value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumOrderValueTable")]
-        public virtual MinimumOrderValueTable MinimumOrderValueTable { get; set; } 
+        public virtual MinimumOrderValueTable MinimumOrderValueTable { get; set; }
 
         /// <summary>Free-form name of the service. Must be unique within target account. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The carrier-service pair delivering items to collection points. The list of supported pickup
         /// services can be retrieved via the `getSupportedPickupServices` method. Required if and only if the service
         /// delivery type is `pickup`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickupService")]
-        public virtual PickupCarrierService PickupService { get; set; } 
+        public virtual PickupCarrierService PickupService { get; set; }
 
         /// <summary>Shipping rate group definitions. Only the last one is allowed to have an empty
         /// `applicableShippingLabels`, which means "everything else". The other `applicableShippingLabels` must not
         /// overlap.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rateGroups")]
-        public virtual System.Collections.Generic.IList<RateGroup> RateGroups { get; set; } 
+        public virtual System.Collections.Generic.IList<RateGroup> RateGroups { get; set; }
 
         /// <summary>Type of locations this service ships orders to.
         ///
         /// Acceptable values are: - "`delivery`" - "`pickup`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentType")]
-        public virtual string ShipmentType { get; set; } 
+        public virtual string ShipmentType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15027,38 +15027,38 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The end date on which all transactions are included in the report, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
-        public virtual string EndDate { get; set; } 
+        public virtual string EndDate { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "`content#settlementReport`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The residual amount from the previous invoice. This is set only if the previous invoices are not
         /// paid because of negative balance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousBalance")]
-        public virtual Price PreviousBalance { get; set; } 
+        public virtual Price PreviousBalance { get; set; }
 
         /// <summary>The ID of the settlement report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("settlementId")]
-        public virtual string SettlementId { get; set; } 
+        public virtual string SettlementId { get; set; }
 
         /// <summary>The start date on which all transactions are included in the report, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
-        public virtual string StartDate { get; set; } 
+        public virtual string StartDate { get; set; }
 
         /// <summary>The money due to the merchant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferAmount")]
-        public virtual Price TransferAmount { get; set; } 
+        public virtual Price TransferAmount { get; set; }
 
         /// <summary>Date on which transfer for this payment was initiated by Google, in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferDate")]
-        public virtual string TransferDate { get; set; } 
+        public virtual string TransferDate { get; set; }
 
         /// <summary>The list of bank identifiers used for the transfer. e.g. Trace ID for Federal Automated Clearing
         /// House (ACH). This may also be known as the Wire ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferIds")]
-        public virtual System.Collections.Generic.IList<string> TransferIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TransferIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15070,20 +15070,20 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The amount for the transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
-        public virtual SettlementTransactionAmount Amount { get; set; } 
+        public virtual SettlementTransactionAmount Amount { get; set; }
 
         /// <summary>Identifiers of the transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identifiers")]
-        public virtual SettlementTransactionIdentifiers Identifiers { get; set; } 
+        public virtual SettlementTransactionIdentifiers Identifiers { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "`content#settlementTransaction`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Details of the transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
-        public virtual SettlementTransactionTransaction Transaction { get; set; } 
+        public virtual SettlementTransactionTransaction Transaction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15092,7 +15092,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class SettlementTransactionAmount : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("commission")]
-        public virtual SettlementTransactionAmountCommission Commission { get; set; } 
+        public virtual SettlementTransactionAmountCommission Commission { get; set; }
 
         /// <summary>The description of the event.
         ///
@@ -15108,18 +15108,18 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "`wrongChargeInStore`" - "`wrongItem`" - "`returns`" - "`undeliverable`" - "`refundFromMerchant`" -
         /// "`returnLabelShippingFee`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The amount that contributes to the line item price.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionAmount")]
-        public virtual Price TransactionAmount { get; set; } 
+        public virtual Price TransactionAmount { get; set; }
 
         /// <summary>The type of the amount.
         ///
         /// Acceptable values are: - "`itemPrice`" - "`orderPrice`" - "`refund`" - "`earlyRefund`" - "`courtesyRefund`"
         /// - "`returnRefund`" - "`returnLabelShippingFeeAmount`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15141,11 +15141,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "`officeSupplies`" - "`softwareAndVideoGames`" - "`vehiclePartsAndAccessories`" - "`vehicleTiresAndWheels`"
         /// - "`vehicles`" - "`everythingElse`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
-        public virtual string Category { get; set; } 
+        public virtual string Category { get; set; }
 
         /// <summary>Rate of the commission in percentage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rate")]
-        public virtual string Rate { get; set; } 
+        public virtual string Rate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15155,27 +15155,27 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The identifier of the adjustments, if it is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adjustmentId")]
-        public virtual string AdjustmentId { get; set; } 
+        public virtual string AdjustmentId { get; set; }
 
         /// <summary>The merchant provided order ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantOrderId")]
-        public virtual string MerchantOrderId { get; set; } 
+        public virtual string MerchantOrderId { get; set; }
 
         /// <summary>The identifier of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderItemId")]
-        public virtual string OrderItemId { get; set; } 
+        public virtual string OrderItemId { get; set; }
 
         /// <summary>The unique ID of the settlement transaction entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("settlementEntryId")]
-        public virtual string SettlementEntryId { get; set; } 
+        public virtual string SettlementEntryId { get; set; }
 
         /// <summary>The shipment ids for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentIds")]
-        public virtual System.Collections.Generic.IList<string> ShipmentIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ShipmentIds { get; set; }
 
         /// <summary>The Google transaction ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionId")]
-        public virtual string TransactionId { get; set; } 
+        public virtual string TransactionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15185,7 +15185,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The time on which the event occurred in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postDate")]
-        public virtual string PostDate { get; set; } 
+        public virtual string PostDate { get; set; }
 
         /// <summary>The type of the transaction that occurred.
         ///
@@ -15193,7 +15193,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "`issueRelatedRefundAndReplacement`" - "`returnLabelShippingFeeTransaction`" -
         /// "`reversalIssueRelatedRefundAndReplacement`" - "`reversalReturnLabelShippingFeeTransaction`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15204,14 +15204,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#settlementreportsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token for the retrieval of the next page of returns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<SettlementReport> Resources { get; set; } 
+        public virtual System.Collections.Generic.IList<SettlementReport> Resources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15222,14 +15222,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#settlementtransactionsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token for the retrieval of the next page of returns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<SettlementTransaction> Resources { get; set; } 
+        public virtual System.Collections.Generic.IList<SettlementTransaction> Resources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15239,16 +15239,16 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>[required] Invoice summary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invoiceSummary")]
-        public virtual InvoiceSummary InvoiceSummary { get; set; } 
+        public virtual InvoiceSummary InvoiceSummary { get; set; }
 
         /// <summary>[required] Invoice details per line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemInvoices")]
-        public virtual System.Collections.Generic.IList<ShipmentInvoiceLineItemInvoice> LineItemInvoices { get; set; } 
+        public virtual System.Collections.Generic.IList<ShipmentInvoiceLineItemInvoice> LineItemInvoices { get; set; }
 
         /// <summary>[required] ID of the shipment group. It is assigned by the merchant in the `shipLineItems` method
         /// and is used to group multiple line items that have the same kind of shipping charges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentGroupId")]
-        public virtual string ShipmentGroupId { get; set; } 
+        public virtual string ShipmentGroupId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15258,22 +15258,22 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>ID of the line item. Either lineItemId or productId must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
-        public virtual string LineItemId { get; set; } 
+        public virtual string LineItemId { get; set; }
 
         /// <summary>ID of the product. This is the REST ID used in the products service. Either lineItemId or productId
         /// must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>[required] The shipment unit ID is assigned by the merchant and defines individual quantities
         /// within a line item. The same ID can be assigned to units that are the same while units that differ must be
         /// assigned a different ID (for example: free or promotional units).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentUnitIds")]
-        public virtual System.Collections.Generic.IList<string> ShipmentUnitIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ShipmentUnitIds { get; set; }
 
         /// <summary>[required] Invoice details for a single unit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unitInvoice")]
-        public virtual UnitInvoice UnitInvoice { get; set; } 
+        public virtual UnitInvoice UnitInvoice { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15289,11 +15289,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "`lasership`" - "`manual`" - "`mpx`" - "`onTrac`" - "`other`" - "`tnt`" - "`uds`" - "`ups`" -
         /// "`usps`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
-        public virtual string Carrier { get; set; } 
+        public virtual string Carrier { get; set; }
 
         /// <summary>The tracking number for the package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingNumber")]
-        public virtual string TrackingNumber { get; set; } 
+        public virtual string TrackingNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15306,15 +15306,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The ID of the account to which these account shipping settings belong. Ignored upon update, always
         /// present in get request responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<ulong> AccountId { get; set; } 
+        public virtual System.Nullable<ulong> AccountId { get; set; }
 
         /// <summary>A list of postal code groups that can be referred to in `services`. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCodeGroups")]
-        public virtual System.Collections.Generic.IList<PostalCodeGroup> PostalCodeGroups { get; set; } 
+        public virtual System.Collections.Generic.IList<PostalCodeGroup> PostalCodeGroups { get; set; }
 
         /// <summary>The target account's list of services. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
-        public virtual System.Collections.Generic.IList<Service> Services { get; set; } 
+        public virtual System.Collections.Generic.IList<Service> Services { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15324,7 +15324,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The request entries to be processed in the batch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<ShippingsettingsCustomBatchRequestEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<ShippingsettingsCustomBatchRequestEntry> Entries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15335,25 +15335,25 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the account for which to get/update account shipping settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<ulong> AccountId { get; set; } 
+        public virtual System.Nullable<ulong> AccountId { get; set; }
 
         /// <summary>An entry ID, unique within the batch request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>The ID of the managing account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
-        public virtual System.Nullable<ulong> MerchantId { get; set; } 
+        public virtual System.Nullable<ulong> MerchantId { get; set; }
 
         /// <summary>The method of the batch entry.
         ///
         /// Acceptable values are: - "`get`" - "`update`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
+        public virtual string Method { get; set; }
 
         /// <summary>The account shipping settings to update. Only defined if the method is `update`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingSettings")]
-        public virtual ShippingSettings ShippingSettings { get; set; } 
+        public virtual ShippingSettings ShippingSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15363,12 +15363,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The result of the execution of the batch requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<ShippingsettingsCustomBatchResponseEntry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<ShippingsettingsCustomBatchResponseEntry> Entries { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#shippingsettingsCustomBatchResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15379,20 +15379,20 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The ID of the request entry to which this entry responds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
+        public virtual System.Nullable<long> BatchId { get; set; }
 
         /// <summary>A list of errors defined if, and only if, the request failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual Errors Errors { get; set; } 
+        public virtual Errors Errors { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "`content#shippingsettingsCustomBatchResponseEntry`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The retrieved or updated account shipping settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingSettings")]
-        public virtual ShippingSettings ShippingSettings { get; set; } 
+        public virtual ShippingSettings ShippingSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15402,12 +15402,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>A list of supported carriers. May be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carriers")]
-        public virtual System.Collections.Generic.IList<CarriersCarrier> Carriers { get; set; } 
+        public virtual System.Collections.Generic.IList<CarriersCarrier> Carriers { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#shippingsettingsGetSupportedCarriersResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15417,12 +15417,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>A list of holidays applicable for delivery guarantees. May be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("holidays")]
-        public virtual System.Collections.Generic.IList<HolidaysHoliday> Holidays { get; set; } 
+        public virtual System.Collections.Generic.IList<HolidaysHoliday> Holidays { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#shippingsettingsGetSupportedHolidaysResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15433,11 +15433,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#shippingsettingsGetSupportedPickupServicesResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>A list of supported pickup services. May be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickupServices")]
-        public virtual System.Collections.Generic.IList<PickupServicesPickupService> PickupServices { get; set; } 
+        public virtual System.Collections.Generic.IList<PickupServicesPickupService> PickupServices { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15448,14 +15448,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#shippingsettingsListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token for the retrieval of the next page of shipping settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<ShippingSettings> Resources { get; set; } 
+        public virtual System.Collections.Generic.IList<ShippingSettings> Resources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15466,20 +15466,20 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Headers of the table's columns. Optional: if not set then the table has only one
         /// dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnHeaders")]
-        public virtual Headers ColumnHeaders { get; set; } 
+        public virtual Headers ColumnHeaders { get; set; }
 
         /// <summary>Name of the table. Required for subtables, ignored for the main table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Headers of the table's rows. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowHeaders")]
-        public virtual Headers RowHeaders { get; set; } 
+        public virtual Headers RowHeaders { get; set; }
 
         /// <summary>The list of rows that constitute the table. Must have the same length as `rowHeaders`.
         /// Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-        public virtual System.Collections.Generic.IList<Row> Rows { get; set; } 
+        public virtual System.Collections.Generic.IList<Row> Rows { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15489,70 +15489,70 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Overrides the predefined delivery details if provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryDetails")]
-        public virtual TestOrderDeliveryDetails DeliveryDetails { get; set; } 
+        public virtual TestOrderDeliveryDetails DeliveryDetails { get; set; }
 
         /// <summary>Whether the orderinvoices service should support this order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableOrderinvoices")]
-        public virtual System.Nullable<bool> EnableOrderinvoices { get; set; } 
+        public virtual System.Nullable<bool> EnableOrderinvoices { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "`content#testOrder`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Required. Line items that are ordered. At least one line item must be provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
-        public virtual System.Collections.Generic.IList<TestOrderLineItem> LineItems { get; set; } 
+        public virtual System.Collections.Generic.IList<TestOrderLineItem> LineItems { get; set; }
 
         /// <summary>Restricted. Do not use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationMode")]
-        public virtual string NotificationMode { get; set; } 
+        public virtual string NotificationMode { get; set; }
 
         /// <summary>Overrides the predefined pickup details if provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickupDetails")]
-        public virtual TestOrderPickupDetails PickupDetails { get; set; } 
+        public virtual TestOrderPickupDetails PickupDetails { get; set; }
 
         /// <summary>Required. The billing address.
         ///
         /// Acceptable values are: - "`dwight`" - "`jim`" - "`pam`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predefinedBillingAddress")]
-        public virtual string PredefinedBillingAddress { get; set; } 
+        public virtual string PredefinedBillingAddress { get; set; }
 
         /// <summary>Required. Identifier of one of the predefined delivery addresses for the delivery.
         ///
         /// Acceptable values are: - "`dwight`" - "`jim`" - "`pam`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predefinedDeliveryAddress")]
-        public virtual string PredefinedDeliveryAddress { get; set; } 
+        public virtual string PredefinedDeliveryAddress { get; set; }
 
         /// <summary>Required. Email address of the customer.
         ///
         /// Acceptable values are: - "`pog.dwight.schrute@gmail.com`" - "`pog.jim.halpert@gmail.com`" -
         /// "`penpog.pam.beesly@gmail.comding`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predefinedEmail")]
-        public virtual string PredefinedEmail { get; set; } 
+        public virtual string PredefinedEmail { get; set; }
 
         /// <summary>Identifier of one of the predefined pickup details. Required for orders containing line items with
         /// shipping type `pickup`.
         ///
         /// Acceptable values are: - "`dwight`" - "`jim`" - "`pam`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predefinedPickupDetails")]
-        public virtual string PredefinedPickupDetails { get; set; } 
+        public virtual string PredefinedPickupDetails { get; set; }
 
         /// <summary>Promotions associated with the order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
-        public virtual System.Collections.Generic.IList<OrderPromotion> Promotions { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderPromotion> Promotions { get; set; }
 
         /// <summary>Required. The price of shipping for all items. Shipping tax is automatically calculated for orders
         /// where marketplace facilitator tax laws are applicable. Otherwise, tax settings from Merchant Center are
         /// applied. Note that shipping is not taxed in certain states.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingCost")]
-        public virtual Price ShippingCost { get; set; } 
+        public virtual Price ShippingCost { get; set; }
 
         /// <summary>Required. The requested shipping option.
         ///
         /// Acceptable values are: - "`economy`" - "`expedited`" - "`oneDay`" - "`sameDay`" - "`standard`" -
         /// "`twoDay`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingOption")]
-        public virtual string ShippingOption { get; set; } 
+        public virtual string ShippingOption { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15562,38 +15562,38 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>CLDR country code (e.g. "US").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
-        public virtual string Country { get; set; } 
+        public virtual string Country { get; set; }
 
         /// <summary>Strings representing the lines of the printed label for mailing the order, for example: John Smith
         /// 1600 Amphitheatre Parkway Mountain View, CA, 94043 United States</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullAddress")]
-        public virtual System.Collections.Generic.IList<string> FullAddress { get; set; } 
+        public virtual System.Collections.Generic.IList<string> FullAddress { get; set; }
 
         /// <summary>Whether the address is a post office box.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isPostOfficeBox")]
-        public virtual System.Nullable<bool> IsPostOfficeBox { get; set; } 
+        public virtual System.Nullable<bool> IsPostOfficeBox { get; set; }
 
         /// <summary>City, town or commune. May also include dependent localities or sublocalities (e.g. neighborhoods
         /// or suburbs).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locality")]
-        public virtual string Locality { get; set; } 
+        public virtual string Locality { get; set; }
 
         /// <summary>Postal Code or ZIP (e.g. "94043").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
-        public virtual string PostalCode { get; set; } 
+        public virtual string PostalCode { get; set; }
 
         /// <summary>Name of the recipient.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recipientName")]
-        public virtual string RecipientName { get; set; } 
+        public virtual string RecipientName { get; set; }
 
         /// <summary>Top-level administrative subdivision of the country. For example, a state like California ("CA") or
         /// a province like Quebec ("QC").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
-        public virtual string Region { get; set; } 
+        public virtual string Region { get; set; }
 
         /// <summary>Street-level part of the address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streetAddress")]
-        public virtual System.Collections.Generic.IList<string> StreetAddress { get; set; } 
+        public virtual System.Collections.Generic.IList<string> StreetAddress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15603,11 +15603,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>The delivery address</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
-        public virtual TestOrderAddress Address { get; set; } 
+        public virtual TestOrderAddress Address { get; set; }
 
         /// <summary>The phone number of the person receiving the delivery.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
-        public virtual string PhoneNumber { get; set; } 
+        public virtual string PhoneNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15617,19 +15617,19 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Required. Product data from the time of the order placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
-        public virtual TestOrderLineItemProduct Product { get; set; } 
+        public virtual TestOrderLineItemProduct Product { get; set; }
 
         /// <summary>Required. Number of items ordered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantityOrdered")]
-        public virtual System.Nullable<long> QuantityOrdered { get; set; } 
+        public virtual System.Nullable<long> QuantityOrdered { get; set; }
 
         /// <summary>Required. Details of the return policy for the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnInfo")]
-        public virtual OrderLineItemReturnInfo ReturnInfo { get; set; } 
+        public virtual OrderLineItemReturnInfo ReturnInfo { get; set; }
 
         /// <summary>Required. Details of the requested shipping for the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingDetails")]
-        public virtual OrderLineItemShippingDetails ShippingDetails { get; set; } 
+        public virtual OrderLineItemShippingDetails ShippingDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15639,60 +15639,60 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Required. Brand of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brand")]
-        public virtual string Brand { get; set; } 
+        public virtual string Brand { get; set; }
 
         /// <summary>Required. Condition or state of the item.
         ///
         /// Acceptable values are: - "`new`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual string Condition { get; set; } 
+        public virtual string Condition { get; set; }
 
         /// <summary>Required. The two-letter ISO 639-1 language code for the item.
         ///
         /// Acceptable values are: - "`en`" - "`fr`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
-        public virtual string ContentLanguage { get; set; } 
+        public virtual string ContentLanguage { get; set; }
 
         /// <summary>Fees for the item. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fees")]
-        public virtual System.Collections.Generic.IList<OrderLineItemProductFee> Fees { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderLineItemProductFee> Fees { get; set; }
 
         /// <summary>Global Trade Item Number (GTIN) of the item. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
-        public virtual string Gtin { get; set; } 
+        public virtual string Gtin { get; set; }
 
         /// <summary>Required. URL of an image of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageLink")]
-        public virtual string ImageLink { get; set; } 
+        public virtual string ImageLink { get; set; }
 
         /// <summary>Shared identifier for all variants of the same product. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemGroupId")]
-        public virtual string ItemGroupId { get; set; } 
+        public virtual string ItemGroupId { get; set; }
 
         /// <summary>Manufacturer Part Number (MPN) of the item. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mpn")]
-        public virtual string Mpn { get; set; } 
+        public virtual string Mpn { get; set; }
 
         /// <summary>Required. An identifier of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
-        public virtual string OfferId { get; set; } 
+        public virtual string OfferId { get; set; }
 
         /// <summary>Required. The price for the product. Tax is automatically calculated for orders where marketplace
         /// facilitator tax laws are applicable. Otherwise, tax settings from Merchant Center are applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
-        public virtual Price Price { get; set; } 
+        public virtual Price Price { get; set; }
 
         /// <summary>Required. The CLDR territory code of the target country of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
-        public virtual string TargetCountry { get; set; } 
+        public virtual string TargetCountry { get; set; }
 
         /// <summary>Required. The title of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>Variant attributes for the item. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variantAttributes")]
-        public virtual System.Collections.Generic.IList<OrderLineItemProductVariantAttribute> VariantAttributes { get; set; } 
+        public virtual System.Collections.Generic.IList<OrderLineItemProductVariantAttribute> VariantAttributes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15702,21 +15702,21 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Required. Code of the location defined by provider or merchant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationCode")]
-        public virtual string LocationCode { get; set; } 
+        public virtual string LocationCode { get; set; }
 
         /// <summary>Required. Pickup location address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickupLocationAddress")]
-        public virtual TestOrderAddress PickupLocationAddress { get; set; } 
+        public virtual TestOrderAddress PickupLocationAddress { get; set; }
 
         /// <summary>Pickup location type.
         ///
         /// Acceptable values are: - "`locker`" - "`store`" - "`curbside`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickupLocationType")]
-        public virtual string PickupLocationType { get; set; } 
+        public virtual string PickupLocationType { get; set; }
 
         /// <summary>Required. all pickup persons set by users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickupPersons")]
-        public virtual System.Collections.Generic.IList<TestOrderPickupDetailsPickupPerson> PickupPersons { get; set; } 
+        public virtual System.Collections.Generic.IList<TestOrderPickupDetailsPickupPerson> PickupPersons { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15726,11 +15726,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Required. Full name of the pickup person.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. The phone number of the person picking up the items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
-        public virtual string PhoneNumber { get; set; } 
+        public virtual string PhoneNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15742,15 +15742,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "zone 2", "all other locations"]`. The referred postal code groups must match the delivery country of the
         /// service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCodeGroupNames")]
-        public virtual System.Collections.Generic.IList<string> PostalCodeGroupNames { get; set; } 
+        public virtual System.Collections.Generic.IList<string> PostalCodeGroupNames { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-        public virtual System.Collections.Generic.IList<TransitTableTransitTimeRow> Rows { get; set; } 
+        public virtual System.Collections.Generic.IList<TransitTableTransitTimeRow> Rows { get; set; }
 
         /// <summary>A list of transit time labels. The last value can be `"all other labels"`. Example: `["food",
         /// "electronics", "all other labels"]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitTimeLabels")]
-        public virtual System.Collections.Generic.IList<string> TransitTimeLabels { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TransitTimeLabels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15759,7 +15759,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class TransitTableTransitTimeRow : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<TransitTableTransitTimeRowTransitTimeValue> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<TransitTableTransitTimeRowTransitTimeValue> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15769,12 +15769,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Must be greater than or equal to `minTransitTimeInDays`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTransitTimeInDays")]
-        public virtual System.Nullable<long> MaxTransitTimeInDays { get; set; } 
+        public virtual System.Nullable<long> MaxTransitTimeInDays { get; set; }
 
         /// <summary>Transit time range (min-max) in business days. 0 means same day delivery, 1 means next day
         /// delivery.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minTransitTimeInDays")]
-        public virtual System.Nullable<long> MinTransitTimeInDays { get; set; } 
+        public virtual System.Nullable<long> MinTransitTimeInDays { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15784,15 +15784,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>Additional charges for a unit, e.g. shipping costs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalCharges")]
-        public virtual System.Collections.Generic.IList<UnitInvoiceAdditionalCharge> AdditionalCharges { get; set; } 
+        public virtual System.Collections.Generic.IList<UnitInvoiceAdditionalCharge> AdditionalCharges { get; set; }
 
         /// <summary>[required] Pre-tax or post-tax price of the unit depending on the locality of the order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unitPrice")]
-        public virtual Price UnitPrice { get; set; } 
+        public virtual Price UnitPrice { get; set; }
 
         /// <summary>Tax amounts to apply to the unit price.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unitPriceTaxes")]
-        public virtual System.Collections.Generic.IList<UnitInvoiceTaxLine> UnitPriceTaxes { get; set; } 
+        public virtual System.Collections.Generic.IList<UnitInvoiceTaxLine> UnitPriceTaxes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15802,13 +15802,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>[required] Amount of the additional charge.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalChargeAmount")]
-        public virtual Amount AdditionalChargeAmount { get; set; } 
+        public virtual Amount AdditionalChargeAmount { get; set; }
 
         /// <summary>[required] Type of the additional charge.
         ///
         /// Acceptable values are: - "`shipping`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15818,18 +15818,18 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>[required] Tax amount for the tax type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxAmount")]
-        public virtual Price TaxAmount { get; set; } 
+        public virtual Price TaxAmount { get; set; }
 
         /// <summary>Optional name of the tax type. This should only be provided if `taxType` is
         /// `otherFeeTax`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxName")]
-        public virtual string TaxName { get; set; } 
+        public virtual string TaxName { get; set; }
 
         /// <summary>[required] Type of the tax.
         ///
         /// Acceptable values are: - "`otherFee`" - "`otherFeeTax`" - "`sales`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxType")]
-        public virtual string TaxType { get; set; } 
+        public virtual string TaxType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15842,26 +15842,26 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The name of a carrier rate referring to a carrier rate defined in the same rate group. Can only be
         /// set if all other fields are not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierRateName")]
-        public virtual string CarrierRateName { get; set; } 
+        public virtual string CarrierRateName { get; set; }
 
         /// <summary>A flat rate. Can only be set if all other fields are not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flatRate")]
-        public virtual Price FlatRate { get; set; } 
+        public virtual Price FlatRate { get; set; }
 
         /// <summary>If true, then the product can't ship. Must be true when set, can only be set if all other fields
         /// are not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noShipping")]
-        public virtual System.Nullable<bool> NoShipping { get; set; } 
+        public virtual System.Nullable<bool> NoShipping { get; set; }
 
         /// <summary>A percentage of the price represented as a number in decimal notation (e.g., `"5.4"`). Can only be
         /// set if all other fields are not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pricePercentage")]
-        public virtual string PricePercentage { get; set; } 
+        public virtual string PricePercentage { get; set; }
 
         /// <summary>The name of a subtable. Can only be set in table cells (i.e., not for single values), and only if
         /// all other fields are not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtableName")]
-        public virtual string SubtableName { get; set; } 
+        public virtual string SubtableName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15873,11 +15873,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         ///
         /// Acceptable values are: - "`kg`" - "`lb`"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
-        public virtual string Unit { get; set; } 
+        public virtual string Unit { get; set; }
 
         /// <summary>Required. The weight represented as a number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

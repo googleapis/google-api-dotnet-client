@@ -1409,7 +1409,7 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>Required. A list of keys with incomplete key paths for which to allocate IDs. No key may be
         /// reserved/read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keys")]
-        public virtual System.Collections.Generic.IList<Key> Keys { get; set; } 
+        public virtual System.Collections.Generic.IList<Key> Keys { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1421,7 +1421,7 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>The keys specified in the request (in the same order), each with its key path completed with a
         /// newly allocated ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keys")]
-        public virtual System.Collections.Generic.IList<Key> Keys { get; set; } 
+        public virtual System.Collections.Generic.IList<Key> Keys { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1433,7 +1433,7 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>Values in the array. The order of values in an array is preserved as long as all values have
         /// identical settings for 'exclude_from_indexes'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<Value> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<Value> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1444,7 +1444,7 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>Options for a new transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionOptions")]
-        public virtual TransactionOptions TransactionOptions { get; set; } 
+        public virtual TransactionOptions TransactionOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1455,7 +1455,7 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>The transaction identifier (always present).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
-        public virtual string Transaction { get; set; } 
+        public virtual string Transaction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1466,7 +1466,7 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>The type of commit to perform. Defaults to `TRANSACTIONAL`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
-        public virtual string Mode { get; set; } 
+        public virtual string Mode { get; set; }
 
         /// <summary>The mutations to perform. When mode is `TRANSACTIONAL`, mutations affecting a single entity are
         /// applied in order. The following sequences of mutations affecting a single entity are not permitted in a
@@ -1474,12 +1474,12 @@ namespace Google.Apis.Datastore.v1.Data
         /// by `insert` - `delete` followed by `update` When mode is `NON_TRANSACTIONAL`, no two mutations may affect a
         /// single entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mutations")]
-        public virtual System.Collections.Generic.IList<Mutation> Mutations { get; set; } 
+        public virtual System.Collections.Generic.IList<Mutation> Mutations { get; set; }
 
         /// <summary>The identifier of the transaction associated with the commit. A transaction identifier is returned
         /// by a call to Datastore.BeginTransaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
-        public virtual string Transaction { get; set; } 
+        public virtual string Transaction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1490,12 +1490,12 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>The number of index entries updated during the commit, or zero if none were updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexUpdates")]
-        public virtual System.Nullable<int> IndexUpdates { get; set; } 
+        public virtual System.Nullable<int> IndexUpdates { get; set; }
 
         /// <summary>The result of performing the mutations. The i-th mutation result corresponds to the i-th mutation
         /// in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mutationResults")]
-        public virtual System.Collections.Generic.IList<MutationResult> MutationResults { get; set; } 
+        public virtual System.Collections.Generic.IList<MutationResult> MutationResults { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1506,11 +1506,11 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>The list of filters to combine. Must contain at least one filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filters")]
-        public virtual System.Collections.Generic.IList<Filter> Filters { get; set; } 
+        public virtual System.Collections.Generic.IList<Filter> Filters { get; set; }
 
         /// <summary>The operator for combining multiple filters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("op")]
-        public virtual string Op { get; set; } 
+        public virtual string Op { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1534,13 +1534,13 @@ namespace Google.Apis.Datastore.v1.Data
         /// `Value.entity_value` may have no key). An entity's kind is its key path's last element's kind, or null if it
         /// has no key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual Key Key { get; set; } 
+        public virtual Key Key { get; set; }
 
         /// <summary>The entity's properties. The map's keys are property names. A property name matching regex `__.*__`
         /// is reserved. A reserved property name is forbidden in certain documented contexts. The name must not contain
         /// more than 500 characters. The name cannot be `""`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual System.Collections.Generic.IDictionary<string,Value> Properties { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, Value> Properties { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1552,18 +1552,18 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>A cursor that points to the position after the result entity. Set only when the `EntityResult` is
         /// part of a `QueryResultBatch` message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cursor")]
-        public virtual string Cursor { get; set; } 
+        public virtual string Cursor { get; set; }
 
         /// <summary>The resulting entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entity")]
-        public virtual Entity Entity { get; set; } 
+        public virtual Entity Entity { get; set; }
 
         /// <summary>The version of the entity, a strictly positive number that monotonically increases with changes to
         /// the entity. This field is set for `FULL` entity results. For missing entities in `LookupResponse`, this is
         /// the version of the snapshot that was used to look up the entity, and it is always set except for eventually
         /// consistent reads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<long> Version { get; set; } 
+        public virtual System.Nullable<long> Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1574,11 +1574,11 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>A composite filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compositeFilter")]
-        public virtual CompositeFilter CompositeFilter { get; set; } 
+        public virtual CompositeFilter CompositeFilter { get; set; }
 
         /// <summary>A filter on a property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyFilter")]
-        public virtual PropertyFilter PropertyFilter { get; set; } 
+        public virtual PropertyFilter PropertyFilter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1589,24 +1589,24 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>The time the operation ended, either successfully or otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>The client-assigned labels which were provided when the operation was created. May also include
         /// additional labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The type of the operation. Can be used as a filter in ListOperationsRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
-        public virtual string OperationType { get; set; } 
+        public virtual string OperationType { get; set; }
 
         /// <summary>The time that work began on the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The current state of the Operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1622,14 +1622,14 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>If empty, then this represents all kinds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kinds")]
-        public virtual System.Collections.Generic.IList<string> Kinds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Kinds { get; set; }
 
         /// <summary>An empty list represents all namespaces. This is the preferred usage for projects that don't use
         /// namespaces. An empty string element represents the default namespace. This should be used if the project has
         /// data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be
         /// unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceIds")]
-        public virtual System.Collections.Generic.IList<string> NamespaceIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> NamespaceIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1640,25 +1640,25 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>Metadata common to all Datastore Admin operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("common")]
-        public virtual GoogleDatastoreAdminV1CommonMetadata Common { get; set; } 
+        public virtual GoogleDatastoreAdminV1CommonMetadata Common { get; set; }
 
         /// <summary>Description of which entities are being exported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityFilter")]
-        public virtual GoogleDatastoreAdminV1EntityFilter EntityFilter { get; set; } 
+        public virtual GoogleDatastoreAdminV1EntityFilter EntityFilter { get; set; }
 
         /// <summary>Location for the export metadata and data files. This will be the same value as the
         /// google.datastore.admin.v1.ExportEntitiesRequest.output_url_prefix field. The final output location is
         /// provided in google.datastore.admin.v1.ExportEntitiesResponse.output_url.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputUrlPrefix")]
-        public virtual string OutputUrlPrefix { get; set; } 
+        public virtual string OutputUrlPrefix { get; set; }
 
         /// <summary>An estimate of the number of bytes processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressBytes")]
-        public virtual GoogleDatastoreAdminV1Progress ProgressBytes { get; set; } 
+        public virtual GoogleDatastoreAdminV1Progress ProgressBytes { get; set; }
 
         /// <summary>An estimate of the number of entities processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressEntities")]
-        public virtual GoogleDatastoreAdminV1Progress ProgressEntities { get; set; } 
+        public virtual GoogleDatastoreAdminV1Progress ProgressEntities { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1669,11 +1669,11 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>Description of what data from the project is included in the export.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityFilter")]
-        public virtual GoogleDatastoreAdminV1EntityFilter EntityFilter { get; set; } 
+        public virtual GoogleDatastoreAdminV1EntityFilter EntityFilter { get; set; }
 
         /// <summary>Client-assigned labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Required. Location for the export metadata and data files. The full resource URL of the external
         /// storage location. Currently, only Google Cloud Storage is supported. So output_url_prefix should be of the
@@ -1686,7 +1686,7 @@ namespace Google.Apis.Datastore.v1.Data
         /// ImportEntities operations. By nesting the data files deeper, the same Cloud Storage bucket can be used in
         /// multiple ExportEntities operations without conflict.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputUrlPrefix")]
-        public virtual string OutputUrlPrefix { get; set; } 
+        public virtual string OutputUrlPrefix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1699,7 +1699,7 @@ namespace Google.Apis.Datastore.v1.Data
         /// (this project or another project). See google.datastore.admin.v1.ImportEntitiesRequest.input_url. Only
         /// present if the operation completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputUrl")]
-        public virtual string OutputUrl { get; set; } 
+        public virtual string OutputUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1710,24 +1710,24 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>Metadata common to all Datastore Admin operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("common")]
-        public virtual GoogleDatastoreAdminV1CommonMetadata Common { get; set; } 
+        public virtual GoogleDatastoreAdminV1CommonMetadata Common { get; set; }
 
         /// <summary>Description of which entities are being imported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityFilter")]
-        public virtual GoogleDatastoreAdminV1EntityFilter EntityFilter { get; set; } 
+        public virtual GoogleDatastoreAdminV1EntityFilter EntityFilter { get; set; }
 
         /// <summary>The location of the import metadata file. This will be the same value as the
         /// google.datastore.admin.v1.ExportEntitiesResponse.output_url field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUrl")]
-        public virtual string InputUrl { get; set; } 
+        public virtual string InputUrl { get; set; }
 
         /// <summary>An estimate of the number of bytes processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressBytes")]
-        public virtual GoogleDatastoreAdminV1Progress ProgressBytes { get; set; } 
+        public virtual GoogleDatastoreAdminV1Progress ProgressBytes { get; set; }
 
         /// <summary>An estimate of the number of entities processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressEntities")]
-        public virtual GoogleDatastoreAdminV1Progress ProgressEntities { get; set; } 
+        public virtual GoogleDatastoreAdminV1Progress ProgressEntities { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1740,7 +1740,7 @@ namespace Google.Apis.Datastore.v1.Data
         /// subset of the EntityFilter used in creating the export, otherwise a FAILED_PRECONDITION error will be
         /// returned. If no filter is specified then all entities from the export are imported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityFilter")]
-        public virtual GoogleDatastoreAdminV1EntityFilter EntityFilter { get; set; } 
+        public virtual GoogleDatastoreAdminV1EntityFilter EntityFilter { get; set; }
 
         /// <summary>Required. The full resource URL of the external storage location. Currently, only Google Cloud
         /// Storage is supported. So input_url should be of the form:
@@ -1751,11 +1751,11 @@ namespace Google.Apis.Datastore.v1.Data
         /// considerations](https://cloud.google.com/storage/docs/naming#object-considerations). For more information,
         /// see google.datastore.admin.v1.ExportEntitiesResponse.output_url.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUrl")]
-        public virtual string InputUrl { get; set; } 
+        public virtual string InputUrl { get; set; }
 
         /// <summary>Client-assigned labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1766,27 +1766,27 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ancestor")]
-        public virtual string Ancestor { get; set; } 
+        public virtual string Ancestor { get; set; }
 
         /// <summary>Output only. The resource ID of the index.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexId")]
-        public virtual string IndexId { get; set; } 
+        public virtual string IndexId { get; set; }
 
         /// <summary>Required. The entity kind to which this index applies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Output only. Project ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Required. An ordered sequence of property names and their index attributes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual System.Collections.Generic.IList<GoogleDatastoreAdminV1IndexedProperty> Properties { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleDatastoreAdminV1IndexedProperty> Properties { get; set; }
 
         /// <summary>Output only. The state of the index.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1797,15 +1797,15 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>Metadata common to all Datastore Admin operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("common")]
-        public virtual GoogleDatastoreAdminV1CommonMetadata Common { get; set; } 
+        public virtual GoogleDatastoreAdminV1CommonMetadata Common { get; set; }
 
         /// <summary>The index resource ID that this operation is acting on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexId")]
-        public virtual string IndexId { get; set; } 
+        public virtual string IndexId { get; set; }
 
         /// <summary>An estimate of the number of entities processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressEntities")]
-        public virtual GoogleDatastoreAdminV1Progress ProgressEntities { get; set; } 
+        public virtual GoogleDatastoreAdminV1Progress ProgressEntities { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1816,11 +1816,11 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>Required. The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("direction")]
-        public virtual string Direction { get; set; } 
+        public virtual string Direction { get; set; }
 
         /// <summary>Required. The property name to index.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1831,11 +1831,11 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>The indexes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexes")]
-        public virtual System.Collections.Generic.IList<GoogleDatastoreAdminV1Index> Indexes { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleDatastoreAdminV1Index> Indexes { get; set; }
 
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1847,12 +1847,12 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>The amount of work that has been completed. Note that this may be greater than
         /// work_estimated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workCompleted")]
-        public virtual System.Nullable<long> WorkCompleted { get; set; } 
+        public virtual System.Nullable<long> WorkCompleted { get; set; }
 
         /// <summary>An estimate of how much work needs to be performed. May be zero if the work estimate is
         /// unavailable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workEstimated")]
-        public virtual System.Nullable<long> WorkEstimated { get; set; } 
+        public virtual System.Nullable<long> WorkEstimated { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1863,24 +1863,24 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>The time the operation ended, either successfully or otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>The client-assigned labels which were provided when the operation was created. May also include
         /// additional labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The type of the operation. Can be used as a filter in ListOperationsRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
-        public virtual string OperationType { get; set; } 
+        public virtual string OperationType { get; set; }
 
         /// <summary>The time that work began on the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The current state of the Operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1896,14 +1896,14 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>If empty, then this represents all kinds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kinds")]
-        public virtual System.Collections.Generic.IList<string> Kinds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Kinds { get; set; }
 
         /// <summary>An empty list represents all namespaces. This is the preferred usage for projects that don't use
         /// namespaces. An empty string element represents the default namespace. This should be used if the project has
         /// data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be
         /// unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceIds")]
-        public virtual System.Collections.Generic.IList<string> NamespaceIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> NamespaceIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1914,25 +1914,25 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>Metadata common to all Datastore Admin operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("common")]
-        public virtual GoogleDatastoreAdminV1beta1CommonMetadata Common { get; set; } 
+        public virtual GoogleDatastoreAdminV1beta1CommonMetadata Common { get; set; }
 
         /// <summary>Description of which entities are being exported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityFilter")]
-        public virtual GoogleDatastoreAdminV1beta1EntityFilter EntityFilter { get; set; } 
+        public virtual GoogleDatastoreAdminV1beta1EntityFilter EntityFilter { get; set; }
 
         /// <summary>Location for the export metadata and data files. This will be the same value as the
         /// google.datastore.admin.v1beta1.ExportEntitiesRequest.output_url_prefix field. The final output location is
         /// provided in google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputUrlPrefix")]
-        public virtual string OutputUrlPrefix { get; set; } 
+        public virtual string OutputUrlPrefix { get; set; }
 
         /// <summary>An estimate of the number of bytes processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressBytes")]
-        public virtual GoogleDatastoreAdminV1beta1Progress ProgressBytes { get; set; } 
+        public virtual GoogleDatastoreAdminV1beta1Progress ProgressBytes { get; set; }
 
         /// <summary>An estimate of the number of entities processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressEntities")]
-        public virtual GoogleDatastoreAdminV1beta1Progress ProgressEntities { get; set; } 
+        public virtual GoogleDatastoreAdminV1beta1Progress ProgressEntities { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1945,7 +1945,7 @@ namespace Google.Apis.Datastore.v1.Data
         /// (this project or another project). See google.datastore.admin.v1beta1.ImportEntitiesRequest.input_url. Only
         /// present if the operation completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputUrl")]
-        public virtual string OutputUrl { get; set; } 
+        public virtual string OutputUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1956,24 +1956,24 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>Metadata common to all Datastore Admin operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("common")]
-        public virtual GoogleDatastoreAdminV1beta1CommonMetadata Common { get; set; } 
+        public virtual GoogleDatastoreAdminV1beta1CommonMetadata Common { get; set; }
 
         /// <summary>Description of which entities are being imported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityFilter")]
-        public virtual GoogleDatastoreAdminV1beta1EntityFilter EntityFilter { get; set; } 
+        public virtual GoogleDatastoreAdminV1beta1EntityFilter EntityFilter { get; set; }
 
         /// <summary>The location of the import metadata file. This will be the same value as the
         /// google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUrl")]
-        public virtual string InputUrl { get; set; } 
+        public virtual string InputUrl { get; set; }
 
         /// <summary>An estimate of the number of bytes processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressBytes")]
-        public virtual GoogleDatastoreAdminV1beta1Progress ProgressBytes { get; set; } 
+        public virtual GoogleDatastoreAdminV1beta1Progress ProgressBytes { get; set; }
 
         /// <summary>An estimate of the number of entities processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressEntities")]
-        public virtual GoogleDatastoreAdminV1beta1Progress ProgressEntities { get; set; } 
+        public virtual GoogleDatastoreAdminV1beta1Progress ProgressEntities { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1985,12 +1985,12 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>The amount of work that has been completed. Note that this may be greater than
         /// work_estimated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workCompleted")]
-        public virtual System.Nullable<long> WorkCompleted { get; set; } 
+        public virtual System.Nullable<long> WorkCompleted { get; set; }
 
         /// <summary>An estimate of how much work needs to be performed. May be zero if the work estimate is
         /// unavailable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workEstimated")]
-        public virtual System.Nullable<long> WorkEstimated { get; set; } 
+        public virtual System.Nullable<long> WorkEstimated { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2001,11 +2001,11 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<GoogleLongrunningOperation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleLongrunningOperation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2017,23 +2017,23 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -2041,7 +2041,7 @@ namespace Google.Apis.Datastore.v1.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2054,24 +2054,24 @@ namespace Google.Apis.Datastore.v1.Data
         /// example, `SELECT * FROM Kind WHERE a = 'string literal'` is not allowed, while `SELECT * FROM Kind WHERE a =
         /// @value` is.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowLiterals")]
-        public virtual System.Nullable<bool> AllowLiterals { get; set; } 
+        public virtual System.Nullable<bool> AllowLiterals { get; set; }
 
         /// <summary>For each non-reserved named binding site in the query string, there must be a named parameter with
         /// that name, but not necessarily the inverse. Key must match regex `A-Za-z_$*`, must not match regex `__.*__`,
         /// and must not be `""`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedBindings")]
-        public virtual System.Collections.Generic.IDictionary<string,GqlQueryParameter> NamedBindings { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, GqlQueryParameter> NamedBindings { get; set; }
 
         /// <summary>Numbered binding site @1 references the first numbered parameter, effectively using 1-based
         /// indexing, rather than the usual 0. For each binding site numbered i in `query_string`, there must be an i-th
         /// numbered parameter. The inverse must also be true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("positionalBindings")]
-        public virtual System.Collections.Generic.IList<GqlQueryParameter> PositionalBindings { get; set; } 
+        public virtual System.Collections.Generic.IList<GqlQueryParameter> PositionalBindings { get; set; }
 
         /// <summary>A string of the format described
         /// [here](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryString")]
-        public virtual string QueryString { get; set; } 
+        public virtual string QueryString { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2082,11 +2082,11 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>A query cursor. Query cursors are returned in query result batches.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cursor")]
-        public virtual string Cursor { get; set; } 
+        public virtual string Cursor { get; set; }
 
         /// <summary>A value parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual Value Value { get; set; } 
+        public virtual Value Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2100,7 +2100,7 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>Entities are partitioned into subsets, currently identified by a project ID and namespace ID.
         /// Queries are scoped to a single partition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitionId")]
-        public virtual PartitionId PartitionId { get; set; } 
+        public virtual PartitionId PartitionId { get; set; }
 
         /// <summary>The entity path. An entity path consists of one or more elements composed of a kind and a string or
         /// numerical identifier, which identify entities. The first element identifies a _root entity_, the second
@@ -2112,7 +2112,7 @@ namespace Google.Apis.Datastore.v1.Data
         /// of `Mutation.insert` may have no identifier. A path can never be empty, and a path can have at most 100
         /// elements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual System.Collections.Generic.IList<PathElement> Path { get; set; } 
+        public virtual System.Collections.Generic.IList<PathElement> Path { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2123,7 +2123,7 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>The name of the kind.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2136,11 +2136,11 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>The latitude in degrees. It must be in the range [-90.0, +90.0].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latitude")]
-        public virtual System.Nullable<double> Latitude { get; set; } 
+        public virtual System.Nullable<double> Latitude { get; set; }
 
         /// <summary>The longitude in degrees. It must be in the range [-180.0, +180.0].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
-        public virtual System.Nullable<double> Longitude { get; set; } 
+        public virtual System.Nullable<double> Longitude { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2151,11 +2151,11 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>Required. Keys of entities to look up.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keys")]
-        public virtual System.Collections.Generic.IList<Key> Keys { get; set; } 
+        public virtual System.Collections.Generic.IList<Key> Keys { get; set; }
 
         /// <summary>The options for this lookup request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readOptions")]
-        public virtual ReadOptions ReadOptions { get; set; } 
+        public virtual ReadOptions ReadOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2167,17 +2167,17 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>A list of keys that were not looked up due to resource constraints. The order of results in this
         /// field is undefined and has no relation to the order of the keys in the input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deferred")]
-        public virtual System.Collections.Generic.IList<Key> Deferred { get; set; } 
+        public virtual System.Collections.Generic.IList<Key> Deferred { get; set; }
 
         /// <summary>Entities found as `ResultType.FULL` entities. The order of results in this field is undefined and
         /// has no relation to the order of the keys in the input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("found")]
-        public virtual System.Collections.Generic.IList<EntityResult> Found { get; set; } 
+        public virtual System.Collections.Generic.IList<EntityResult> Found { get; set; }
 
         /// <summary>Entities not found as `ResultType.KEY_ONLY` entities. The order of results in this field is
         /// undefined and has no relation to the order of the keys in the input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("missing")]
-        public virtual System.Collections.Generic.IList<EntityResult> Missing { get; set; } 
+        public virtual System.Collections.Generic.IList<EntityResult> Missing { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2189,26 +2189,26 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>The version of the entity that this mutation is being applied to. If this does not match the
         /// current version on the server, the mutation conflicts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseVersion")]
-        public virtual System.Nullable<long> BaseVersion { get; set; } 
+        public virtual System.Nullable<long> BaseVersion { get; set; }
 
         /// <summary>The key of the entity to delete. The entity may or may not already exist. Must have a complete key
         /// path and must not be reserved/read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delete")]
-        public virtual Key Delete { get; set; } 
+        public virtual Key Delete { get; set; }
 
         /// <summary>The entity to insert. The entity must not already exist. The entity key's final path element may be
         /// incomplete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insert")]
-        public virtual Entity Insert { get; set; } 
+        public virtual Entity Insert { get; set; }
 
         /// <summary>The entity to update. The entity must already exist. Must have a complete key path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("update")]
-        public virtual Entity Update { get; set; } 
+        public virtual Entity Update { get; set; }
 
         /// <summary>The entity to upsert. The entity may or may not already exist. The entity key's final path element
         /// may be incomplete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upsert")]
-        public virtual Entity Upsert { get; set; } 
+        public virtual Entity Upsert { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2220,18 +2220,18 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>Whether a conflict was detected for this mutation. Always false when a conflict detection strategy
         /// field is not set in the mutation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conflictDetected")]
-        public virtual System.Nullable<bool> ConflictDetected { get; set; } 
+        public virtual System.Nullable<bool> ConflictDetected { get; set; }
 
         /// <summary>The automatically allocated key. Set only when the mutation allocated a key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual Key Key { get; set; } 
+        public virtual Key Key { get; set; }
 
         /// <summary>The version of the entity on the server after processing the mutation. If the mutation doesn't
         /// change anything on the server, then the version will be the version of the current entity or, if no entity
         /// is present, a version that is strictly greater than the version of any previous entity and less than the
         /// version of any possible future entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<long> Version { get; set; } 
+        public virtual System.Nullable<long> Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2248,11 +2248,11 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>If not empty, the ID of the namespace to which the entities belong.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceId")]
-        public virtual string NamespaceId { get; set; } 
+        public virtual string NamespaceId { get; set; }
 
         /// <summary>The ID of the project to which the entities belong.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2265,17 +2265,17 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>The auto-allocated ID of the entity. Never equal to zero. Values less than zero are discouraged and
         /// may not be supported in the future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>The kind of the entity. A kind matching regex `__.*__` is reserved/read-only. A kind must not
         /// contain more than 1500 bytes when UTF-8 encoded. Cannot be `""`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The name of the entity. A name matching regex `__.*__` is reserved/read-only. A name must not be
         /// more than 1500 bytes when UTF-8 encoded. Cannot be `""`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2286,7 +2286,7 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>The property to project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("property")]
-        public virtual PropertyReference Property { get; set; } 
+        public virtual PropertyReference Property { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2297,15 +2297,15 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>The operator to filter by.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("op")]
-        public virtual string Op { get; set; } 
+        public virtual string Op { get; set; }
 
         /// <summary>The property to filter by.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("property")]
-        public virtual PropertyReference Property { get; set; } 
+        public virtual PropertyReference Property { get; set; }
 
         /// <summary>The value to compare the property to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual Value Value { get; set; } 
+        public virtual Value Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2316,11 +2316,11 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>The direction to order by. Defaults to `ASCENDING`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("direction")]
-        public virtual string Direction { get; set; } 
+        public virtual string Direction { get; set; }
 
         /// <summary>The property to order by.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("property")]
-        public virtual PropertyReference Property { get; set; } 
+        public virtual PropertyReference Property { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2332,7 +2332,7 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>The name of the property. If name includes "."s, it may be interpreted as a property name
         /// path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2344,46 +2344,46 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>The properties to make distinct. The query results will contain the first result for each distinct
         /// combination of values for the given properties (if empty, all results are returned).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distinctOn")]
-        public virtual System.Collections.Generic.IList<PropertyReference> DistinctOn { get; set; } 
+        public virtual System.Collections.Generic.IList<PropertyReference> DistinctOn { get; set; }
 
         /// <summary>An ending point for the query results. Query cursors are returned in query result batches and [can
         /// only be used to limit the same
         /// query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endCursor")]
-        public virtual string EndCursor { get; set; } 
+        public virtual string EndCursor { get; set; }
 
         /// <summary>The filter to apply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual Filter Filter { get; set; } 
+        public virtual Filter Filter { get; set; }
 
         /// <summary>The kinds to query (if empty, returns entities of all kinds). Currently at most 1 kind may be
         /// specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual System.Collections.Generic.IList<KindExpression> Kind { get; set; } 
+        public virtual System.Collections.Generic.IList<KindExpression> Kind { get; set; }
 
         /// <summary>The maximum number of results to return. Applies after all other constraints. Optional. Unspecified
         /// is interpreted as no limit. Must be >= 0 if specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
-        public virtual System.Nullable<int> Limit { get; set; } 
+        public virtual System.Nullable<int> Limit { get; set; }
 
         /// <summary>The number of results to skip. Applies before limit, but after all other constraints. Optional.
         /// Must be >= 0 if specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offset")]
-        public virtual System.Nullable<int> Offset { get; set; } 
+        public virtual System.Nullable<int> Offset { get; set; }
 
         /// <summary>The order to apply to the query results (if empty, order is unspecified).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("order")]
-        public virtual System.Collections.Generic.IList<PropertyOrder> Order { get; set; } 
+        public virtual System.Collections.Generic.IList<PropertyOrder> Order { get; set; }
 
         /// <summary>The projection to return. Defaults to returning all properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projection")]
-        public virtual System.Collections.Generic.IList<Projection> Projection { get; set; } 
+        public virtual System.Collections.Generic.IList<Projection> Projection { get; set; }
 
         /// <summary>A starting point for the query results. Query cursors are returned in query result batches and [can
         /// only be used to continue the same
         /// query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startCursor")]
-        public virtual string StartCursor { get; set; } 
+        public virtual string StartCursor { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2394,28 +2394,28 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>A cursor that points to the position after the last result in the batch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endCursor")]
-        public virtual string EndCursor { get; set; } 
+        public virtual string EndCursor { get; set; }
 
         /// <summary>The result type for every entity in `entity_results`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityResultType")]
-        public virtual string EntityResultType { get; set; } 
+        public virtual string EntityResultType { get; set; }
 
         /// <summary>The results for this batch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityResults")]
-        public virtual System.Collections.Generic.IList<EntityResult> EntityResults { get; set; } 
+        public virtual System.Collections.Generic.IList<EntityResult> EntityResults { get; set; }
 
         /// <summary>The state of the query after the current batch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("moreResults")]
-        public virtual string MoreResults { get; set; } 
+        public virtual string MoreResults { get; set; }
 
         /// <summary>A cursor that points to the position after the last skipped result. Will be set when
         /// `skipped_results` != 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skippedCursor")]
-        public virtual string SkippedCursor { get; set; } 
+        public virtual string SkippedCursor { get; set; }
 
         /// <summary>The number of results skipped, typically because of an offset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skippedResults")]
-        public virtual System.Nullable<int> SkippedResults { get; set; } 
+        public virtual System.Nullable<int> SkippedResults { get; set; }
 
         /// <summary>The version number of the snapshot this batch was returned from. This applies to the range of
         /// results from the query's `start_cursor` (or the beginning of the query if no cursor was given) to this
@@ -2423,7 +2423,7 @@ namespace Google.Apis.Datastore.v1.Data
         /// batches for the same query can have a greater snapshot version number. Each batch's snapshot version is
         /// valid for all preceding batches. The value will be zero for eventually consistent queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotVersion")]
-        public virtual System.Nullable<long> SnapshotVersion { get; set; } 
+        public virtual System.Nullable<long> SnapshotVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2442,12 +2442,12 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>The non-transactional read consistency to use. Cannot be set to `STRONG` for global
         /// queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readConsistency")]
-        public virtual string ReadConsistency { get; set; } 
+        public virtual string ReadConsistency { get; set; }
 
         /// <summary>The identifier of the transaction in which to read. A transaction identifier is returned by a call
         /// to Datastore.BeginTransaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
-        public virtual string Transaction { get; set; } 
+        public virtual string Transaction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2458,7 +2458,7 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>The transaction identifier of the transaction being retried.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousTransaction")]
-        public virtual string PreviousTransaction { get; set; } 
+        public virtual string PreviousTransaction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2469,12 +2469,12 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>If not empty, the ID of the database against which to make the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
-        public virtual string DatabaseId { get; set; } 
+        public virtual string DatabaseId { get; set; }
 
         /// <summary>Required. A list of keys with complete key paths whose numeric IDs should not be auto-
         /// allocated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keys")]
-        public virtual System.Collections.Generic.IList<Key> Keys { get; set; } 
+        public virtual System.Collections.Generic.IList<Key> Keys { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2492,7 +2492,7 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>Required. The transaction identifier, returned by a call to Datastore.BeginTransaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
-        public virtual string Transaction { get; set; } 
+        public virtual string Transaction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2510,20 +2510,20 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>The GQL query to run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gqlQuery")]
-        public virtual GqlQuery GqlQuery { get; set; } 
+        public virtual GqlQuery GqlQuery { get; set; }
 
         /// <summary>Entities are partitioned into subsets, identified by a partition ID. Queries are scoped to a single
         /// partition. This partition ID is normalized with the standard default context partition ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitionId")]
-        public virtual PartitionId PartitionId { get; set; } 
+        public virtual PartitionId PartitionId { get; set; }
 
         /// <summary>The query to run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
-        public virtual Query Query { get; set; } 
+        public virtual Query Query { get; set; }
 
         /// <summary>The options for this query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readOptions")]
-        public virtual ReadOptions ReadOptions { get; set; } 
+        public virtual ReadOptions ReadOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2534,11 +2534,11 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>A batch of query results (always present).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batch")]
-        public virtual QueryResultBatch Batch { get; set; } 
+        public virtual QueryResultBatch Batch { get; set; }
 
         /// <summary>The parsed form of the `GqlQuery` from the request, if it was set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
-        public virtual Query Query { get; set; } 
+        public virtual Query Query { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2553,17 +2553,17 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2575,11 +2575,11 @@ namespace Google.Apis.Datastore.v1.Data
     {
         /// <summary>The transaction should only allow reads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
-        public virtual ReadOnly ReadOnly__ { get; set; } 
+        public virtual ReadOnly ReadOnly__ { get; set; }
 
         /// <summary>The transaction should allow both reads and writes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readWrite")]
-        public virtual ReadWrite ReadWrite { get; set; } 
+        public virtual ReadWrite ReadWrite { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2591,59 +2591,59 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>An array value. Cannot contain another array value. A `Value` instance that sets field
         /// `array_value` must not set fields `meaning` or `exclude_from_indexes`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arrayValue")]
-        public virtual ArrayValue ArrayValue { get; set; } 
+        public virtual ArrayValue ArrayValue { get; set; }
 
         /// <summary>A blob value. May have at most 1,000,000 bytes. When `exclude_from_indexes` is false, may have at
         /// most 1500 bytes. In JSON requests, must be base64-encoded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blobValue")]
-        public virtual string BlobValue { get; set; } 
+        public virtual string BlobValue { get; set; }
 
         /// <summary>A boolean value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("booleanValue")]
-        public virtual System.Nullable<bool> BooleanValue { get; set; } 
+        public virtual System.Nullable<bool> BooleanValue { get; set; }
 
         /// <summary>A double value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
-        public virtual System.Nullable<double> DoubleValue { get; set; } 
+        public virtual System.Nullable<double> DoubleValue { get; set; }
 
         /// <summary>An entity value. - May have no key. - May have a key with an incomplete key path. - May have a
         /// reserved/read-only key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityValue")]
-        public virtual Entity EntityValue { get; set; } 
+        public virtual Entity EntityValue { get; set; }
 
         /// <summary>If the value should be excluded from all indexes including those defined explicitly.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeFromIndexes")]
-        public virtual System.Nullable<bool> ExcludeFromIndexes { get; set; } 
+        public virtual System.Nullable<bool> ExcludeFromIndexes { get; set; }
 
         /// <summary>A geo point value representing a point on the surface of Earth.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoPointValue")]
-        public virtual LatLng GeoPointValue { get; set; } 
+        public virtual LatLng GeoPointValue { get; set; }
 
         /// <summary>An integer value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integerValue")]
-        public virtual System.Nullable<long> IntegerValue { get; set; } 
+        public virtual System.Nullable<long> IntegerValue { get; set; }
 
         /// <summary>A key value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyValue")]
-        public virtual Key KeyValue { get; set; } 
+        public virtual Key KeyValue { get; set; }
 
         /// <summary>The `meaning` field should only be populated for backwards compatibility.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meaning")]
-        public virtual System.Nullable<int> Meaning { get; set; } 
+        public virtual System.Nullable<int> Meaning { get; set; }
 
         /// <summary>A null value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nullValue")]
-        public virtual string NullValue { get; set; } 
+        public virtual string NullValue { get; set; }
 
         /// <summary>A UTF-8 encoded string value. When `exclude_from_indexes` is false (it is indexed) , may have at
         /// most 1500 bytes. Otherwise, may be set to at most 1,000,000 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
-        public virtual string StringValue { get; set; } 
+        public virtual string StringValue { get; set; }
 
         /// <summary>A timestamp value. When stored in the Datastore, precise only to microseconds; any additional
         /// precision is rounded down.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestampValue")]
-        public virtual object TimestampValue { get; set; } 
+        public virtual object TimestampValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1143,11 +1143,11 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
     {
         /// <summary>Required. The action when a pod creation is denied by the admission rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enforcementMode")]
-        public virtual string EnforcementMode { get; set; } 
+        public virtual string EnforcementMode { get; set; }
 
         /// <summary>Required. How this admission rule will be evaluated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationMode")]
-        public virtual string EvaluationMode { get; set; } 
+        public virtual string EvaluationMode { get; set; }
 
         /// <summary>Optional. The resource names of the attestors that must attest to a container image, in the format
         /// `projects/attestors`. Each attestor must exist before a policy can reference it. To add an attestor to a
@@ -1155,7 +1155,7 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         /// this field must be non-empty when the evaluation_mode field specifies REQUIRE_ATTESTATION, otherwise it must
         /// be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireAttestationsBy")]
-        public virtual System.Collections.Generic.IList<string> RequireAttestationsBy { get; set; } 
+        public virtual System.Collections.Generic.IList<string> RequireAttestationsBy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1167,7 +1167,7 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         /// <summary>An image name pattern to whitelist, in the form `registry/path/to/image`. This supports a trailing
         /// `*` as a wildcard, but this is allowed only in text after the `registry/` part.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namePattern")]
-        public virtual string NamePattern { get; set; } 
+        public virtual string NamePattern { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1180,21 +1180,21 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         /// <summary>Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser
         /// dialogs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Required. The resource name, in the format: `projects/attestors`. This field may not be
         /// updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. Time when the attestor was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>This specifies how an attestation will be read, and how it will be used during policy
         /// enforcement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userOwnedGrafeasNote")]
-        public virtual UserOwnedGrafeasNote UserOwnedGrafeasNote { get; set; } 
+        public virtual UserOwnedGrafeasNote UserOwnedGrafeasNote { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1209,24 +1209,24 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         /// the OpenPGP RFC4880 V4 fingerprint, represented as upper-case hex. If `id` is provided by the caller, it
         /// will be overwritten by the API-calculated ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("asciiArmoredPgpPublicKey")]
-        public virtual string AsciiArmoredPgpPublicKey { get; set; } 
+        public virtual string AsciiArmoredPgpPublicKey { get; set; }
 
         /// <summary>Optional. A descriptive comment. This field may be updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comment")]
-        public virtual string Comment { get; set; } 
+        public virtual string Comment { get; set; }
 
         /// <summary>The ID of this public key. Signatures verified by BinAuthz must include the ID of the public key
         /// that can be used to verify them, and that ID must match the contents of this field exactly. Additional
         /// restrictions on this field can be imposed based on which public key type is encapsulated. See the
         /// documentation on `public_key` cases below for details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>A raw PKIX SubjectPublicKeyInfo format public key. NOTE: `id` may be explicitly provided by the
         /// caller when using this type of public key, but it MUST be a valid RFC3986 URI. If `id` is left blank, a
         /// default one will be computed based on the digest of the DER encoding of the public key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pkixPublicKey")]
-        public virtual PkixPublicKey PkixPublicKey { get; set; } 
+        public virtual PkixPublicKey PkixPublicKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1238,7 +1238,7 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
         /// bindings-by-ID API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; } 
+        public virtual string BindingId { get; set; }
 
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
@@ -1246,7 +1246,7 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
@@ -1268,12 +1268,12 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1305,21 +1305,21 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1350,7 +1350,7 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -1361,7 +1361,7 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
         /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
         /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
@@ -1375,7 +1375,7 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -1384,13 +1384,13 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
     {
         /// <summary>The list of attestors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attestors")]
-        public virtual System.Collections.Generic.IList<Attestor> Attestors { get; set; } 
+        public virtual System.Collections.Generic.IList<Attestor> Attestors { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the
         /// ListAttestorsRequest.page_token field in the subsequent call to the `ListAttestors` method to retrieve the
         /// next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1402,13 +1402,13 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
     {
         /// <summary>A PEM-encoded public key, as described in https://tools.ietf.org/html/rfc7468#section-13</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicKeyPem")]
-        public virtual string PublicKeyPem { get; set; } 
+        public virtual string PublicKeyPem { get; set; }
 
         /// <summary>The signature algorithm used to verify a message against a signature using this key. These
         /// signature algorithm must match the structure and any object identifiers encoded in `public_key_pem` (i.e.
         /// this algorithm must match that of the public key).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatureAlgorithm")]
-        public virtual string SignatureAlgorithm { get; set; } 
+        public virtual string SignatureAlgorithm { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1421,38 +1421,38 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         /// This feature is typically used to exclude Google or third-party infrastructure images from Binary
         /// Authorization policies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("admissionWhitelistPatterns")]
-        public virtual System.Collections.Generic.IList<AdmissionWhitelistPattern> AdmissionWhitelistPatterns { get; set; } 
+        public virtual System.Collections.Generic.IList<AdmissionWhitelistPattern> AdmissionWhitelistPatterns { get; set; }
 
         /// <summary>Optional. Per-cluster admission rules. Cluster spec format: `location.clusterId`. There can be at
         /// most one admission rule per cluster spec. A `location` is either a compute zone (e.g. us-central1-a) or a
         /// region (e.g. us-central1). For `clusterId` syntax restrictions see https://cloud.google.com/container-
         /// engine/reference/rest/v1/projects.zones.clusters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterAdmissionRules")]
-        public virtual System.Collections.Generic.IDictionary<string,AdmissionRule> ClusterAdmissionRules { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, AdmissionRule> ClusterAdmissionRules { get; set; }
 
         /// <summary>Required. Default admission rule for a cluster without a per-cluster, per- kubernetes-service-
         /// account, or per-istio-service-identity admission rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultAdmissionRule")]
-        public virtual AdmissionRule DefaultAdmissionRule { get; set; } 
+        public virtual AdmissionRule DefaultAdmissionRule { get; set; }
 
         /// <summary>Optional. A descriptive comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Optional. Controls the evaluation of a Google-maintained global admission policy for common system-
         /// level images. Images not covered by the global policy will be subject to the project admission policy. This
         /// setting has no effect when specified inside a global admission policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("globalPolicyEvaluationMode")]
-        public virtual string GlobalPolicyEvaluationMode { get; set; } 
+        public virtual string GlobalPolicyEvaluationMode { get; set; }
 
         /// <summary>Output only. The resource name, in the format `projects/policy`. There is at most one policy per
         /// project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. Time when the policy was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1465,7 +1465,7 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual IamPolicy Policy { get; set; } 
+        public virtual IamPolicy Policy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1478,7 +1478,7 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         /// 'storage.*') are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1489,7 +1489,7 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
     {
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1506,21 +1506,21 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         /// Attestor, but callers should not make any other assumptions about the service account email; future versions
         /// may use an email based on a different naming pattern.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delegationServiceAccountEmail")]
-        public virtual string DelegationServiceAccountEmail { get; set; } 
+        public virtual string DelegationServiceAccountEmail { get; set; }
 
         /// <summary>Required. The Grafeas resource name of a Attestation.Authority Note, created by the user, in the
         /// format: `projects/notes`. This field may not be updated. An attestation by this attestor is stored as a
         /// Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas
         /// is an external dependency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noteReference")]
-        public virtual string NoteReference { get; set; } 
+        public virtual string NoteReference { get; set; }
 
         /// <summary>Optional. Public keys that verify attestations signed by this attestor. This field may be updated.
         /// If this field is non-empty, one of the specified public keys must verify that an attestation was signed by
         /// this attestor for the image specified in the admission request. If this field is empty, this attestor always
         /// returns that no valid attestations exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicKeys")]
-        public virtual System.Collections.Generic.IList<AttestorPublicKey> PublicKeys { get; set; } 
+        public virtual System.Collections.Generic.IList<AttestorPublicKey> PublicKeys { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

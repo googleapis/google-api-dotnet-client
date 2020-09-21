@@ -322,15 +322,15 @@ namespace Google.Apis.Discovery.v1.Data
     {
         /// <summary>Indicate the version of the Discovery API used to generate this doc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveryVersion")]
-        public virtual string DiscoveryVersion { get; set; } 
+        public virtual string DiscoveryVersion { get; set; }
 
         /// <summary>The individual directory entries. One entry per api/version pair.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<ItemsData> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<ItemsData> Items { get; set; }
 
         /// <summary>The kind for this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -340,51 +340,51 @@ namespace Google.Apis.Discovery.v1.Data
         {
             /// <summary>The description of this API.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("description")]
-            public virtual string Description { get; set; } 
+            public virtual string Description { get; set; }
 
             /// <summary>A link to the discovery document.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("discoveryLink")]
-            public virtual string DiscoveryLink { get; set; } 
+            public virtual string DiscoveryLink { get; set; }
 
             /// <summary>The URL for the discovery REST document.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("discoveryRestUrl")]
-            public virtual string DiscoveryRestUrl { get; set; } 
+            public virtual string DiscoveryRestUrl { get; set; }
 
             /// <summary>A link to human readable documentation for the API.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("documentationLink")]
-            public virtual string DocumentationLink { get; set; } 
+            public virtual string DocumentationLink { get; set; }
 
             /// <summary>Links to 16x16 and 32x32 icons representing the API.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("icons")]
-            public virtual IconsData Icons { get; set; } 
+            public virtual IconsData Icons { get; set; }
 
             /// <summary>The id of this API.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
-            public virtual string Id { get; set; } 
+            public virtual string Id { get; set; }
 
             /// <summary>The kind for this response.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-            public virtual string Kind { get; set; } 
+            public virtual string Kind { get; set; }
 
             /// <summary>Labels for the status of this API, such as labs or deprecated.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-            public virtual System.Collections.Generic.IList<string> Labels { get; set; } 
+            public virtual System.Collections.Generic.IList<string> Labels { get; set; }
 
             /// <summary>The name of the API.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("name")]
-            public virtual string Name { get; set; } 
+            public virtual string Name { get; set; }
 
             /// <summary>True if this version is the preferred version to use.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("preferred")]
-            public virtual System.Nullable<bool> Preferred { get; set; } 
+            public virtual System.Nullable<bool> Preferred { get; set; }
 
             /// <summary>The title of this API.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("title")]
-            public virtual string Title { get; set; } 
+            public virtual string Title { get; set; }
 
             /// <summary>The version of the API.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("version")]
-            public virtual string Version { get; set; } 
+            public virtual string Version { get; set; }
 
             
 
@@ -393,11 +393,11 @@ namespace Google.Apis.Discovery.v1.Data
             {
                 /// <summary>The URL of the 16x16 icon.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("x16")]
-                public virtual string X16 { get; set; } 
+                public virtual string X16 { get; set; }
 
                 /// <summary>The URL of the 32x32 icon.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("x32")]
-                public virtual string X32 { get; set; } 
+                public virtual string X32 { get; set; }
 
             }
         }
@@ -407,91 +407,91 @@ namespace Google.Apis.Discovery.v1.Data
     {
         /// <summary>A reference to another schema. The value of this property is the "id" of another schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("$ref")]
-        public virtual string Ref__ { get; set; } 
+        public virtual string Ref__ { get; set; }
 
         /// <summary>If this is a schema for an object, this property is the schema for any additional properties with
         /// dynamic keys on this object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalProperties")]
-        public virtual JsonSchema AdditionalProperties { get; set; } 
+        public virtual JsonSchema AdditionalProperties { get; set; }
 
         /// <summary>Additional information about this property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
-        public virtual AnnotationsData Annotations { get; set; } 
+        public virtual AnnotationsData Annotations { get; set; }
 
         /// <summary>The default value of this property (if one exists).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("default")]
-        public virtual string Default__ { get; set; } 
+        public virtual string Default__ { get; set; }
 
         /// <summary>A description of this object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Values this parameter may take (if it is an enum).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enum")]
-        public virtual System.Collections.Generic.IList<string> Enum__ { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Enum__ { get; set; }
 
         /// <summary>The descriptions for the enums. Each position maps to the corresponding value in the "enum"
         /// array.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enumDescriptions")]
-        public virtual System.Collections.Generic.IList<string> EnumDescriptions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> EnumDescriptions { get; set; }
 
         /// <summary>An additional regular expression or key that helps constrain the value. For more details see:
         /// http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.23</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual string Format { get; set; } 
+        public virtual string Format { get; set; }
 
         /// <summary>Unique identifier for this schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>If this is a schema for an array, this property is the schema for each element in the
         /// array.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual JsonSchema Items { get; set; } 
+        public virtual JsonSchema Items { get; set; }
 
         /// <summary>Whether this parameter goes in the query or the path for REST requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>The maximum value of this parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximum")]
-        public virtual string Maximum { get; set; } 
+        public virtual string Maximum { get; set; }
 
         /// <summary>The minimum value of this parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimum")]
-        public virtual string Minimum { get; set; } 
+        public virtual string Minimum { get; set; }
 
         /// <summary>The regular expression this parameter must conform to. Uses Java 6 regex format:
         /// http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
-        public virtual string Pattern { get; set; } 
+        public virtual string Pattern { get; set; }
 
         /// <summary>If this is a schema for an object, list the schema for each property of this object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual System.Collections.Generic.IDictionary<string,JsonSchema> Properties { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, JsonSchema> Properties { get; set; }
 
         /// <summary>The value is read-only, generated by the service. The value cannot be modified by the client. If
         /// the value is included in a POST, PUT, or PATCH request, it is ignored by the service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
-        public virtual System.Nullable<bool> ReadOnly__ { get; set; } 
+        public virtual System.Nullable<bool> ReadOnly__ { get; set; }
 
         /// <summary>Whether this parameter may appear multiple times.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repeated")]
-        public virtual System.Nullable<bool> Repeated { get; set; } 
+        public virtual System.Nullable<bool> Repeated { get; set; }
 
         /// <summary>Whether the parameter is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("required")]
-        public virtual System.Nullable<bool> Required { get; set; } 
+        public virtual System.Nullable<bool> Required { get; set; }
 
         /// <summary>The value type for this schema. A list of values can be found here: http://tools.ietf.org/html
         /// /draft-zyp-json-schema-03#section-5.1</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>In a variant data type, the value of one property is used to determine how to interpret the entire
         /// entity. Its value must exist in a map of descriminant values to schema names.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variant")]
-        public virtual VariantData Variant { get; set; } 
+        public virtual VariantData Variant { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -502,7 +502,7 @@ namespace Google.Apis.Discovery.v1.Data
         {
             /// <summary>A list of methods for which this property is required on requests.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("required")]
-            public virtual System.Collections.Generic.IList<string> Required { get; set; } 
+            public virtual System.Collections.Generic.IList<string> Required { get; set; }
 
         }    
 
@@ -512,21 +512,21 @@ namespace Google.Apis.Discovery.v1.Data
         {
             /// <summary>The name of the type discriminant property.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("discriminant")]
-            public virtual string Discriminant { get; set; } 
+            public virtual string Discriminant { get; set; }
 
             /// <summary>The map of discriminant value to schema to use for parsing..</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("map")]
-            public virtual System.Collections.Generic.IList<MapData> Map { get; set; } 
+            public virtual System.Collections.Generic.IList<MapData> Map { get; set; }
 
             
 
             public class MapData
             {
                 [Newtonsoft.Json.JsonPropertyAttribute("$ref")]
-                public virtual string Ref__ { get; set; } 
+                public virtual string Ref__ { get; set; }
 
                 [Newtonsoft.Json.JsonPropertyAttribute("type_value")]
-                public virtual string TypeValue { get; set; } 
+                public virtual string TypeValue { get; set; }
 
             }
         }
@@ -536,124 +536,124 @@ namespace Google.Apis.Discovery.v1.Data
     {
         /// <summary>Authentication information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auth")]
-        public virtual AuthData Auth { get; set; } 
+        public virtual AuthData Auth { get; set; }
 
         /// <summary>[DEPRECATED] The base path for REST requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("basePath")]
-        public virtual string BasePath { get; set; } 
+        public virtual string BasePath { get; set; }
 
         /// <summary>[DEPRECATED] The base URL for REST requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseUrl")]
-        public virtual string BaseUrl { get; set; } 
+        public virtual string BaseUrl { get; set; }
 
         /// <summary>The path for REST batch requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchPath")]
-        public virtual string BatchPath { get; set; } 
+        public virtual string BatchPath { get; set; }
 
         /// <summary>Indicates how the API name should be capitalized and split into various parts. Useful for
         /// generating pretty class names.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalName")]
-        public virtual string CanonicalName { get; set; } 
+        public virtual string CanonicalName { get; set; }
 
         /// <summary>The description of this API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Indicate the version of the Discovery API used to generate this doc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveryVersion")]
-        public virtual string DiscoveryVersion { get; set; } 
+        public virtual string DiscoveryVersion { get; set; }
 
         /// <summary>A link to human readable documentation for the API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentationLink")]
-        public virtual string DocumentationLink { get; set; } 
+        public virtual string DocumentationLink { get; set; }
 
         /// <summary>The ETag for this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Enable exponential backoff for suitable methods in the generated clients.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exponentialBackoffDefault")]
-        public virtual System.Nullable<bool> ExponentialBackoffDefault { get; set; } 
+        public virtual System.Nullable<bool> ExponentialBackoffDefault { get; set; }
 
         /// <summary>A list of supported features for this API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
-        public virtual System.Collections.Generic.IList<string> Features { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Features { get; set; }
 
         /// <summary>Links to 16x16 and 32x32 icons representing the API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("icons")]
-        public virtual IconsData Icons { get; set; } 
+        public virtual IconsData Icons { get; set; }
 
         /// <summary>The ID of this API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The kind for this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Labels for the status of this API, such as labs or deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IList<string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Labels { get; set; }
 
         /// <summary>API-level methods for this API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("methods")]
-        public virtual System.Collections.Generic.IDictionary<string,RestMethod> Methods { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, RestMethod> Methods { get; set; }
 
         /// <summary>The name of this API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The domain of the owner of this API. Together with the ownerName and a packagePath values, this can
         /// be used to generate a library for this API which would have a unique fully qualified name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerDomain")]
-        public virtual string OwnerDomain { get; set; } 
+        public virtual string OwnerDomain { get; set; }
 
         /// <summary>The name of the owner of this API. See ownerDomain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerName")]
-        public virtual string OwnerName { get; set; } 
+        public virtual string OwnerName { get; set; }
 
         /// <summary>The package of the owner of this API. See ownerDomain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packagePath")]
-        public virtual string PackagePath { get; set; } 
+        public virtual string PackagePath { get; set; }
 
         /// <summary>Common parameters that apply across all apis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IDictionary<string,JsonSchema> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, JsonSchema> Parameters { get; set; }
 
         /// <summary>The protocol described by this document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
-        public virtual string Protocol { get; set; } 
+        public virtual string Protocol { get; set; }
 
         /// <summary>The resources in this API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IDictionary<string,RestResource> Resources { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, RestResource> Resources { get; set; }
 
         /// <summary>The version of this API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revision")]
-        public virtual string Revision { get; set; } 
+        public virtual string Revision { get; set; }
 
         /// <summary>The root URL under which all API services live.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootUrl")]
-        public virtual string RootUrl { get; set; } 
+        public virtual string RootUrl { get; set; }
 
         /// <summary>The schemas for this API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemas")]
-        public virtual System.Collections.Generic.IDictionary<string,JsonSchema> Schemas { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, JsonSchema> Schemas { get; set; }
 
         /// <summary>The base path for all REST requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicePath")]
-        public virtual string ServicePath { get; set; } 
+        public virtual string ServicePath { get; set; }
 
         /// <summary>The title of this API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The version of this API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("version_module")]
-        public virtual System.Nullable<bool> VersionModule { get; set; } 
+        public virtual System.Nullable<bool> VersionModule { get; set; }
 
         
 
@@ -662,7 +662,7 @@ namespace Google.Apis.Discovery.v1.Data
         {
             /// <summary>OAuth 2.0 authentication information.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("oauth2")]
-            public virtual Oauth2Data Oauth2 { get; set; } 
+            public virtual Oauth2Data Oauth2 { get; set; }
 
             
 
@@ -671,7 +671,7 @@ namespace Google.Apis.Discovery.v1.Data
             {
                 /// <summary>Available OAuth 2.0 scopes.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
-                public virtual System.Collections.Generic.IDictionary<string,ScopesDataElement> Scopes { get; set; } 
+                public virtual System.Collections.Generic.IDictionary<string, ScopesDataElement> Scopes { get; set; }
 
                 
 
@@ -680,7 +680,7 @@ namespace Google.Apis.Discovery.v1.Data
                 {
                     /// <summary>Description of scope.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("description")]
-                    public virtual string Description { get; set; } 
+                    public virtual string Description { get; set; }
 
                 }
             }
@@ -691,11 +691,11 @@ namespace Google.Apis.Discovery.v1.Data
         {
             /// <summary>The URL of the 16x16 icon.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("x16")]
-            public virtual string X16 { get; set; } 
+            public virtual string X16 { get; set; }
 
             /// <summary>The URL of the 32x32 icon.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("x32")]
-            public virtual string X32 { get; set; } 
+            public virtual string X32 { get; set; }
 
         }
     }    
@@ -704,68 +704,68 @@ namespace Google.Apis.Discovery.v1.Data
     {
         /// <summary>Description of this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Whether this method requires an ETag to be specified. The ETag is sent as an HTTP If-Match or If-
         /// None-Match header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etagRequired")]
-        public virtual System.Nullable<bool> EtagRequired { get; set; } 
+        public virtual System.Nullable<bool> EtagRequired { get; set; }
 
         /// <summary>HTTP method used by this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
-        public virtual string HttpMethod { get; set; } 
+        public virtual string HttpMethod { get; set; }
 
         /// <summary>A unique ID for this method. This property can be used to match methods between different versions
         /// of Discovery.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Media upload parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaUpload")]
-        public virtual MediaUploadData MediaUpload { get; set; } 
+        public virtual MediaUploadData MediaUpload { get; set; }
 
         /// <summary>Ordered list of required parameters, serves as a hint to clients on how to structure their method
         /// signatures. The array is ordered such that the "most-significant" parameter appears first.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterOrder")]
-        public virtual System.Collections.Generic.IList<string> ParameterOrder { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ParameterOrder { get; set; }
 
         /// <summary>Details for all parameters in this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IDictionary<string,JsonSchema> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, JsonSchema> Parameters { get; set; }
 
         /// <summary>The URI path of this REST method. Should be used in conjunction with the basePath property at the
         /// api-level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; } 
+        public virtual string Path { get; set; }
 
         /// <summary>The schema for the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("request")]
-        public virtual RequestData Request { get; set; } 
+        public virtual RequestData Request { get; set; }
 
         /// <summary>The schema for the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual ResponseData Response { get; set; } 
+        public virtual ResponseData Response { get; set; }
 
         /// <summary>OAuth 2.0 scopes applicable to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
-        public virtual System.Collections.Generic.IList<string> Scopes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
 
         /// <summary>Whether this method supports media downloads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportsMediaDownload")]
-        public virtual System.Nullable<bool> SupportsMediaDownload { get; set; } 
+        public virtual System.Nullable<bool> SupportsMediaDownload { get; set; }
 
         /// <summary>Whether this method supports media uploads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportsMediaUpload")]
-        public virtual System.Nullable<bool> SupportsMediaUpload { get; set; } 
+        public virtual System.Nullable<bool> SupportsMediaUpload { get; set; }
 
         /// <summary>Whether this method supports subscriptions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportsSubscription")]
-        public virtual System.Nullable<bool> SupportsSubscription { get; set; } 
+        public virtual System.Nullable<bool> SupportsSubscription { get; set; }
 
         /// <summary>Indicates that downloads from this method should use the download service URL (i.e. "/download").
         /// Only applies if the method supports media download.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useMediaDownloadService")]
-        public virtual System.Nullable<bool> UseMediaDownloadService { get; set; } 
+        public virtual System.Nullable<bool> UseMediaDownloadService { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -776,15 +776,15 @@ namespace Google.Apis.Discovery.v1.Data
         {
             /// <summary>MIME Media Ranges for acceptable media uploads to this method.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("accept")]
-            public virtual System.Collections.Generic.IList<string> Accept { get; set; } 
+            public virtual System.Collections.Generic.IList<string> Accept { get; set; }
 
             /// <summary>Maximum size of a media upload, such as "1MB", "2GB" or "3TB".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("maxSize")]
-            public virtual string MaxSize { get; set; } 
+            public virtual string MaxSize { get; set; }
 
             /// <summary>Supported upload protocols.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("protocols")]
-            public virtual ProtocolsData Protocols { get; set; } 
+            public virtual ProtocolsData Protocols { get; set; }
 
             
 
@@ -793,11 +793,11 @@ namespace Google.Apis.Discovery.v1.Data
             {
                 /// <summary>Supports the Resumable Media Upload protocol.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("resumable")]
-                public virtual ResumableData Resumable { get; set; } 
+                public virtual ResumableData Resumable { get; set; }
 
                 /// <summary>Supports uploading as a single HTTP request.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("simple")]
-                public virtual SimpleData Simple { get; set; } 
+                public virtual SimpleData Simple { get; set; }
 
                 
 
@@ -806,12 +806,12 @@ namespace Google.Apis.Discovery.v1.Data
                 {
                     /// <summary>True if this endpoint supports uploading multipart media.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("multipart")]
-                    public virtual System.Nullable<bool> Multipart { get; set; } 
+                    public virtual System.Nullable<bool> Multipart { get; set; }
 
                     /// <summary>The URI path to be used for upload. Should be used in conjunction with the basePath
                     /// property at the api-level.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("path")]
-                    public virtual string Path { get; set; } 
+                    public virtual string Path { get; set; }
 
                 }    
 
@@ -820,12 +820,12 @@ namespace Google.Apis.Discovery.v1.Data
                 {
                     /// <summary>True if this endpoint supports upload multipart media.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("multipart")]
-                    public virtual System.Nullable<bool> Multipart { get; set; } 
+                    public virtual System.Nullable<bool> Multipart { get; set; }
 
                     /// <summary>The URI path to be used for upload. Should be used in conjunction with the basePath
                     /// property at the api-level.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("path")]
-                    public virtual string Path { get; set; } 
+                    public virtual string Path { get; set; }
 
                 }
             }
@@ -836,11 +836,11 @@ namespace Google.Apis.Discovery.v1.Data
         {
             /// <summary>Schema ID for the request schema.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("$ref")]
-            public virtual string Ref__ { get; set; } 
+            public virtual string Ref__ { get; set; }
 
             /// <summary>parameter name.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("parameterName")]
-            public virtual string ParameterName { get; set; } 
+            public virtual string ParameterName { get; set; }
 
         }    
 
@@ -849,7 +849,7 @@ namespace Google.Apis.Discovery.v1.Data
         {
             /// <summary>Schema ID for the response schema.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("$ref")]
-            public virtual string Ref__ { get; set; } 
+            public virtual string Ref__ { get; set; }
 
         }
     }    
@@ -858,11 +858,11 @@ namespace Google.Apis.Discovery.v1.Data
     {
         /// <summary>Methods on this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("methods")]
-        public virtual System.Collections.Generic.IDictionary<string,RestMethod> Methods { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, RestMethod> Methods { get; set; }
 
         /// <summary>Sub-resources on this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IDictionary<string,RestResource> Resources { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, RestResource> Resources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

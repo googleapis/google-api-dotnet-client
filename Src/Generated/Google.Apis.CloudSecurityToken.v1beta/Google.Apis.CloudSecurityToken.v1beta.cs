@@ -313,28 +313,28 @@ namespace Google.Apis.CloudSecurityToken.v1beta.Data
         /// `https://iam.googleapis.com/projects/{PROJECT_ID}/workloadIdentityPools/{POOL_ID}/providers/{PROVIDER_ID}`.
         /// Required when exchanging an external credential for a Google access token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audience")]
-        public virtual string Audience { get; set; } 
+        public virtual string Audience { get; set; }
 
         /// <summary>Required. The grant type. Must be `urn:ietf:params:oauth:grant-type:token-exchange`, which
         /// indicates a token exchange is requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("grantType")]
-        public virtual string GrantType { get; set; } 
+        public virtual string GrantType { get; set; }
 
         /// <summary>A set of features that Security Token Service supports, in addition to the standard OAuth 2.0 token
         /// exchange, formatted as a serialized JSON object of Options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
-        public virtual string Options { get; set; } 
+        public virtual string Options { get; set; }
 
         /// <summary>Required. An identifier for the type of requested security token. Must be `urn:ietf:params:oauth
         /// :token-type:access_token`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedTokenType")]
-        public virtual string RequestedTokenType { get; set; } 
+        public virtual string RequestedTokenType { get; set; }
 
         /// <summary>The OAuth 2.0 scopes to include on the resulting access token, formatted as a list of space-
         /// delimited, case-sensitive strings. Required when exchanging an external credential for a Google access
         /// token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
-        public virtual string Scope { get; set; } 
+        public virtual string Scope { get; set; }
 
         /// <summary>Required. The input token. This is a either an external credential issued by a
         /// WorkloadIdentityPoolProvider, or a short-lived access token issued by Google. If the token is an OIDC JWT,
@@ -381,13 +381,13 @@ namespace Google.Apis.CloudSecurityToken.v1beta.Data
         /// type:access_token`. Applying additional security attributes on access tokens that already contain security
         /// attributes is not allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subjectToken")]
-        public virtual string SubjectToken { get; set; } 
+        public virtual string SubjectToken { get; set; }
 
         /// <summary>Required. An identifier that indicates the type of the security token in the `subject_token`
         /// parameter. Supported values are `urn:ietf:params:oauth:token-type:jwt`, `urn:ietf:params:aws:token-
         /// type:aws4_request` and `urn:ietf:params:oauth:token-type:access_token`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subjectTokenType")]
-        public virtual string SubjectTokenType { get; set; } 
+        public virtual string SubjectTokenType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -398,21 +398,21 @@ namespace Google.Apis.CloudSecurityToken.v1beta.Data
     {
         /// <summary>An OAuth 2.0 security token, issued by Google, in response to the token exchange request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access_token")]
-        public virtual string AccessToken { get; set; } 
+        public virtual string AccessToken { get; set; }
 
         /// <summary>The expiration time of `access_token`, in seconds, from the time of issuance. This field is absent
         /// when the `subject_token` in the request is a Google-issued, short-lived access token. In this case, the
         /// expiration time of the `access_token` is the same as the `subject_token`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expires_in")]
-        public virtual System.Nullable<int> ExpiresIn { get; set; } 
+        public virtual System.Nullable<int> ExpiresIn { get; set; }
 
         /// <summary>The token type. Always matches the value of `requested_token_type` from the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issued_token_type")]
-        public virtual string IssuedTokenType { get; set; } 
+        public virtual string IssuedTokenType { get; set; }
 
         /// <summary>The type of `access_token`. Always has the value `Bearer`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token_type")]
-        public virtual string TokenType { get; set; } 
+        public virtual string TokenType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

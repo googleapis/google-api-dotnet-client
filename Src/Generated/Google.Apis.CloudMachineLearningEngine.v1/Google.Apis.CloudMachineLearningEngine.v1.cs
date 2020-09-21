@@ -3262,16 +3262,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>The HTTP Content-Type header value specifying the content type of the body.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
-        public virtual string ContentType { get; set; } 
+        public virtual string ContentType { get; set; }
 
         /// <summary>The HTTP request/response body as raw binary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual string Data { get; set; } 
+        public virtual string Data { get; set; }
 
         /// <summary>Application specific response metadata. Must be set in the first response for streaming
         /// APIs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Extensions { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Extensions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3284,11 +3284,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>The number of accelerators to attach to each machine running the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
-        public virtual System.Nullable<long> Count { get; set; } 
+        public virtual System.Nullable<long> Count { get; set; }
 
         /// <summary>The type of accelerator to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3299,7 +3299,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>Required. The measurement to be added to a trial.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("measurement")]
-        public virtual GoogleCloudMlV1Measurement Measurement { get; set; } 
+        public virtual GoogleCloudMlV1Measurement Measurement { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3327,7 +3327,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// https://ml.googleapis.com/v1/{name=projects/models/versions}?update_mask=autoScaling.minNodes -d
         /// @./update_body.json </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minNodes")]
-        public virtual System.Nullable<int> MinNodes { get; set; } 
+        public virtual System.Nullable<int> MinNodes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3338,10 +3338,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     public class GoogleCloudMlV1AutomatedStoppingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("decayCurveStoppingConfig")]
-        public virtual GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig DecayCurveStoppingConfig { get; set; } 
+        public virtual GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig DecayCurveStoppingConfig { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("medianAutomatedStoppingConfig")]
-        public virtual GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig MedianAutomatedStoppingConfig { get; set; } 
+        public virtual GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig MedianAutomatedStoppingConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3352,7 +3352,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>If true, measurement.elapsed_time is used as the x-axis of each Trials Decay Curve. Otherwise,
         /// Measurement.steps will be used as the x-axis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useElapsedTime")]
-        public virtual System.Nullable<bool> UseElapsedTime { get; set; } 
+        public virtual System.Nullable<bool> UseElapsedTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3368,7 +3368,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// the elapsed_time field of the current trial's latest measurement is used to compute the median objective
         /// value for each completed trial.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useElapsedTime")]
-        public virtual System.Nullable<bool> UseElapsedTime { get; set; } 
+        public virtual System.Nullable<bool> UseElapsedTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3379,20 +3379,20 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>Framework on which the built-in algorithm was trained.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("framework")]
-        public virtual string Framework { get; set; } 
+        public virtual string Framework { get; set; }
 
         /// <summary>The Cloud Storage path to the `model/` directory where the training job saves the trained model.
         /// Only set for successful jobs that don't use hyperparameter tuning.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelPath")]
-        public virtual string ModelPath { get; set; } 
+        public virtual string ModelPath { get; set; }
 
         /// <summary>Python version on which the built-in algorithm was trained.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pythonVersion")]
-        public virtual string PythonVersion { get; set; } 
+        public virtual string PythonVersion { get; set; }
 
         /// <summary>AI Platform runtime version on which the built-in algorithm was trained.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
-        public virtual string RuntimeVersion { get; set; } 
+        public virtual string RuntimeVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3409,10 +3409,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>Available accelerators for the capability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableAccelerators")]
-        public virtual System.Collections.Generic.IList<string> AvailableAccelerators { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AvailableAccelerators { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3424,15 +3424,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>The time at which the operation was submitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The name of the study that the trial belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("study")]
-        public virtual string Study { get; set; } 
+        public virtual string Study { get; set; }
 
         /// <summary>The trial name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trial")]
-        public virtual string Trial { get; set; } 
+        public virtual string Trial { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3451,15 +3451,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>The time at which operation processing completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>True if the Trial should stop.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shouldStop")]
-        public virtual System.Nullable<bool> ShouldStop { get; set; } 
+        public virtual System.Nullable<bool> ShouldStop { get; set; }
 
         /// <summary>The time at which the operation was started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3471,17 +3471,17 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>Optional. If provided, it will be used as the completed trial's final_measurement; Otherwise, the
         /// service will auto-select a previously reported measurement as the final-measurement</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalMeasurement")]
-        public virtual GoogleCloudMlV1Measurement FinalMeasurement { get; set; } 
+        public virtual GoogleCloudMlV1Measurement FinalMeasurement { get; set; }
 
         /// <summary>Optional. A human readable reason why the trial was infeasible. This should only be provided if
         /// `trial_infeasible` is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infeasibleReason")]
-        public virtual string InfeasibleReason { get; set; } 
+        public virtual string InfeasibleReason { get; set; }
 
         /// <summary>Optional. True if the trial cannot be run with the given Parameter, and final_measurement will be
         /// ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trialInfeasible")]
-        public virtual System.Nullable<bool> TrialInfeasible { get; set; } 
+        public virtual System.Nullable<bool> TrialInfeasible { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3491,7 +3491,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>The service account Cloud ML uses to run on TPU node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tpuServiceAccount")]
-        public virtual string TpuServiceAccount { get; set; } 
+        public virtual string TpuServiceAccount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3503,7 +3503,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x <
         /// 65536.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerPort")]
-        public virtual System.Nullable<int> ContainerPort { get; set; } 
+        public virtual System.Nullable<int> ContainerPort { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3520,7 +3520,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-
         /// container/#running-a-command-in-a-shell</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
-        public virtual System.Collections.Generic.IList<string> Args { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Args { get; set; }
 
         /// <summary>Immutable. Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if
         /// this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a
@@ -3529,22 +3529,22 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application
         /// /define-command-argument-container/#running-a-command-in-a-shell</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("command")]
-        public virtual System.Collections.Generic.IList<string> Command { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Command { get; set; }
 
         /// <summary>Immutable. List of environment variables to set in the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
-        public virtual System.Collections.Generic.IList<GoogleCloudMlV1EnvVar> Env { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1EnvVar> Env { get; set; }
 
         /// <summary>Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual string Image { get; set; } 
+        public virtual string Image { get; set; }
 
         /// <summary>Immutable. List of ports to expose from the container. Exposing a port here gives the system
         /// additional information about the network connections a container uses, but is primarily informational. Not
         /// specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the
         /// default "0.0.0.0" address inside a container will be accessible from the network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ports")]
-        public virtual System.Collections.Generic.IList<GoogleCloudMlV1ContainerPort> Ports { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1ContainerPort> Ports { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3557,7 +3557,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// resource, such as a training job. It has the following format:
         /// `projects/{PROJECT_ID}/locations/{REGION}/keyRings/{KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
-        public virtual string KmsKeyName { get; set; } 
+        public virtual string KmsKeyName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3568,7 +3568,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>Name of the environment variable. Must be a C_IDENTIFIER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Variable references $(VAR_NAME) are expanded using the previous defined environment variables in
         /// the container and any service environment variables. If a variable cannot be resolved, the reference in the
@@ -3576,7 +3576,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to
         /// "".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3587,7 +3587,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>Required. The explanation request body.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpBody")]
-        public virtual GoogleApiHttpBody HttpBody { get; set; } 
+        public virtual GoogleApiHttpBody HttpBody { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3601,19 +3601,19 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>Attributes credit by computing the Aumann-Shapley value taking advantage of the model's fully
         /// differentiable structure. Refer to this paper for more details: https://arxiv.org/abs/1703.01365</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integratedGradientsAttribution")]
-        public virtual GoogleCloudMlV1IntegratedGradientsAttribution IntegratedGradientsAttribution { get; set; } 
+        public virtual GoogleCloudMlV1IntegratedGradientsAttribution IntegratedGradientsAttribution { get; set; }
 
         /// <summary>An attribution method that approximates Shapley values for features that contribute to the label
         /// being predicted. A sampling strategy is used to approximate the value rather than considering all subsets of
         /// features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampledShapleyAttribution")]
-        public virtual GoogleCloudMlV1SampledShapleyAttribution SampledShapleyAttribution { get; set; } 
+        public virtual GoogleCloudMlV1SampledShapleyAttribution SampledShapleyAttribution { get; set; }
 
         /// <summary>Attributes credit by computing the XRAI taking advantage of the model's fully differentiable
         /// structure. Refer to this paper for more details: https://arxiv.org/abs/1906.02825 Currently only implemented
         /// for models with natural image inputs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xraiAttribution")]
-        public virtual GoogleCloudMlV1XraiAttribution XraiAttribution { get; set; } 
+        public virtual GoogleCloudMlV1XraiAttribution XraiAttribution { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3623,15 +3623,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     public class GoogleCloudMlV1GetConfigResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual GoogleCloudMlV1Config Config { get; set; } 
+        public virtual GoogleCloudMlV1Config Config { get; set; }
 
         /// <summary>The service account Cloud ML uses to access resources in the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
-        public virtual string ServiceAccount { get; set; } 
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>The project number for `service_account`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountProject")]
-        public virtual System.Nullable<long> ServiceAccountProject { get; set; } 
+        public virtual System.Nullable<long> ServiceAccountProject { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3644,40 +3644,40 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>All recorded object metrics for this trial. This field is not currently populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allMetrics")]
-        public virtual System.Collections.Generic.IList<GoogleCloudMlV1HyperparameterOutputHyperparameterMetric> AllMetrics { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1HyperparameterOutputHyperparameterMetric> AllMetrics { get; set; }
 
         /// <summary>Details related to built-in algorithms jobs. Only set for trials of built-in algorithms jobs that
         /// have succeeded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("builtInAlgorithmOutput")]
-        public virtual GoogleCloudMlV1BuiltInAlgorithmOutput BuiltInAlgorithmOutput { get; set; } 
+        public virtual GoogleCloudMlV1BuiltInAlgorithmOutput BuiltInAlgorithmOutput { get; set; }
 
         /// <summary>Output only. End time for the trial.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>The final objective metric seen for this trial.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalMetric")]
-        public virtual GoogleCloudMlV1HyperparameterOutputHyperparameterMetric FinalMetric { get; set; } 
+        public virtual GoogleCloudMlV1HyperparameterOutputHyperparameterMetric FinalMetric { get; set; }
 
         /// <summary>The hyperparameters given to this trial.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hyperparameters")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Hyperparameters { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Hyperparameters { get; set; }
 
         /// <summary>True if the trial is stopped early.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isTrialStoppedEarly")]
-        public virtual System.Nullable<bool> IsTrialStoppedEarly { get; set; } 
+        public virtual System.Nullable<bool> IsTrialStoppedEarly { get; set; }
 
         /// <summary>Output only. Start time for the trial.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>Output only. The detailed state of the trial.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The trial id for these results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trialId")]
-        public virtual string TrialId { get; set; } 
+        public virtual string TrialId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3688,11 +3688,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>The objective value at this training step.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectiveValue")]
-        public virtual System.Nullable<double> ObjectiveValue { get; set; } 
+        public virtual System.Nullable<double> ObjectiveValue { get; set; }
 
         /// <summary>The global training step for this metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingStep")]
-        public virtual System.Nullable<long> TrainingStep { get; set; } 
+        public virtual System.Nullable<long> TrainingStep { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3704,30 +3704,30 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>Optional. The search algorithm specified for the hyperparameter tuning job. Uses the default AI
         /// Platform hyperparameter tuning algorithm if unspecified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("algorithm")]
-        public virtual string Algorithm { get; set; } 
+        public virtual string Algorithm { get; set; }
 
         /// <summary>Optional. Indicates if the hyperparameter tuning job enables auto trial early stopping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableTrialEarlyStopping")]
-        public virtual System.Nullable<bool> EnableTrialEarlyStopping { get; set; } 
+        public virtual System.Nullable<bool> EnableTrialEarlyStopping { get; set; }
 
         /// <summary>Required. The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`.
         /// Defaults to `MAXIMIZE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("goal")]
-        public virtual string Goal { get; set; } 
+        public virtual string Goal { get; set; }
 
         /// <summary>Optional. The TensorFlow summary tag name to use for optimizing trials. For current versions of
         /// TensorFlow, this tag name should exactly match what is shown in TensorBoard, including all scopes. For
         /// versions of TensorFlow prior to 0.12, this should be only the tag passed to tf.Summary. By default,
         /// "training/hptuning/metric" will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hyperparameterMetricTag")]
-        public virtual string HyperparameterMetricTag { get; set; } 
+        public virtual string HyperparameterMetricTag { get; set; }
 
         /// <summary>Optional. The number of failed trials that need to be seen before failing the hyperparameter tuning
         /// job. You can specify this field to override the default failing criteria for AI Platform hyperparameter
         /// tuning jobs. Defaults to zero, which means the service decides when a hyperparameter job should
         /// fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxFailedTrials")]
-        public virtual System.Nullable<int> MaxFailedTrials { get; set; } 
+        public virtual System.Nullable<int> MaxFailedTrials { get; set; }
 
         /// <summary>Optional. The number of training trials to run concurrently. You can reduce the time it takes to
         /// perform hyperparameter tuning by adding trials in parallel. However, each trail only benefits from the
@@ -3735,21 +3735,21 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// running at the same time, which could reduce the quality of the overall optimization. Each trial will use
         /// the same scale tier and machine types. Defaults to one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxParallelTrials")]
-        public virtual System.Nullable<int> MaxParallelTrials { get; set; } 
+        public virtual System.Nullable<int> MaxParallelTrials { get; set; }
 
         /// <summary>Optional. How many training trials should be attempted to optimize the specified hyperparameters.
         /// Defaults to one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTrials")]
-        public virtual System.Nullable<int> MaxTrials { get; set; } 
+        public virtual System.Nullable<int> MaxTrials { get; set; }
 
         /// <summary>Required. The set of parameters to tune.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
-        public virtual System.Collections.Generic.IList<GoogleCloudMlV1ParameterSpec> Params__ { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1ParameterSpec> Params__ { get; set; }
 
         /// <summary>Optional. The prior hyperparameter tuning job id that users hope to continue with. The job id will
         /// be used to find the corresponding vizier study guid and resume the study.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resumePreviousJobId")]
-        public virtual string ResumePreviousJobId { get; set; } 
+        public virtual string ResumePreviousJobId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3762,7 +3762,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>Number of steps for approximating the path integral. A good value to start is 50 and gradually
         /// increase until the sum to diff property is met within the desired error range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numIntegralSteps")]
-        public virtual System.Nullable<int> NumIntegralSteps { get; set; } 
+        public virtual System.Nullable<int> NumIntegralSteps { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3773,15 +3773,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>Output only. When the job was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. When the job processing was completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Output only. The details of a failure or a cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
-        public virtual string ErrorMessage { get; set; } 
+        public virtual string ErrorMessage { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a job from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-
@@ -3789,41 +3789,41 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// response to `GetJob`, and systems are expected to put that etag in the request to `UpdateJob` to ensure that
         /// their change will be applied to the same version of the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Required. The user-specified id of the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
-        public virtual string JobId { get; set; } 
+        public virtual string JobId { get; set; }
 
         /// <summary>Optional. One or more labels that you can add, to organize your jobs. Each label is a key-value
         /// pair, where both the key and the value are arbitrary strings that you supply. For more information, see the
         /// documentation on using labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Input parameters to create a prediction job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predictionInput")]
-        public virtual GoogleCloudMlV1PredictionInput PredictionInput { get; set; } 
+        public virtual GoogleCloudMlV1PredictionInput PredictionInput { get; set; }
 
         /// <summary>The current prediction job result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predictionOutput")]
-        public virtual GoogleCloudMlV1PredictionOutput PredictionOutput { get; set; } 
+        public virtual GoogleCloudMlV1PredictionOutput PredictionOutput { get; set; }
 
         /// <summary>Output only. When the job processing was started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>Output only. The detailed state of a job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Input parameters to create a training job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingInput")]
-        public virtual GoogleCloudMlV1TrainingInput TrainingInput { get; set; } 
+        public virtual GoogleCloudMlV1TrainingInput TrainingInput { get; set; }
 
         /// <summary>The current training job result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingOutput")]
-        public virtual GoogleCloudMlV1TrainingOutput TrainingOutput { get; set; } 
+        public virtual GoogleCloudMlV1TrainingOutput TrainingOutput { get; set; }
 
     }    
 
@@ -3832,11 +3832,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>The list of jobs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobs")]
-        public virtual System.Collections.Generic.IList<GoogleCloudMlV1Job> Jobs { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1Job> Jobs { get; set; }
 
         /// <summary>Optional. Pass this token as the `page_token` field of the request for a subsequent call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3846,11 +3846,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>Locations where at least one type of CMLE capability is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<GoogleCloudMlV1Location> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1Location> Locations { get; set; }
 
         /// <summary>Optional. Pass this token as the `page_token` field of the request for a subsequent call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3861,11 +3861,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>The list of models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("models")]
-        public virtual System.Collections.Generic.IList<GoogleCloudMlV1Model> Models { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1Model> Models { get; set; }
 
         /// <summary>Optional. Pass this token as the `page_token` field of the request for a subsequent call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3875,7 +3875,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>The studies associated with the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("studies")]
-        public virtual System.Collections.Generic.IList<GoogleCloudMlV1Study> Studies { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1Study> Studies { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3886,7 +3886,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>The trials associated with the study.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trials")]
-        public virtual System.Collections.Generic.IList<GoogleCloudMlV1Trial> Trials { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1Trial> Trials { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3897,11 +3897,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>Optional. Pass this token as the `page_token` field of the request for a subsequent call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudMlV1Version> Versions { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1Version> Versions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3911,10 +3911,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>Capabilities available in the location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
-        public virtual System.Collections.Generic.IList<GoogleCloudMlV1Capability> Capabilities { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1Capability> Capabilities { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3927,7 +3927,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// the model is deployed, so the cost of operating this model will be proportional to `nodes` * number of hours
         /// since last billing cycle plus the cost for each prediction performed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
-        public virtual System.Nullable<int> Nodes { get; set; } 
+        public virtual System.Nullable<int> Nodes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3938,15 +3938,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>Output only. Time that the trial has been running at the point of this measurement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("elapsedTime")]
-        public virtual object ElapsedTime { get; set; } 
+        public virtual object ElapsedTime { get; set; }
 
         /// <summary>Provides a list of metrics that act as inputs into the objective function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-        public virtual System.Collections.Generic.IList<GoogleCloudMlV1MeasurementMetric> Metrics { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1MeasurementMetric> Metrics { get; set; }
 
         /// <summary>The number of steps a machine learning model has been trained for. Must be non-negative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stepCount")]
-        public virtual System.Nullable<long> StepCount { get; set; } 
+        public virtual System.Nullable<long> StepCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3957,11 +3957,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>Required. Metric name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metric")]
-        public virtual string Metric { get; set; } 
+        public virtual string Metric { get; set; }
 
         /// <summary>Required. The value for this metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual System.Nullable<double> Value { get; set; } 
+        public virtual System.Nullable<double> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3975,11 +3975,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// requests that do not specify a version. You can change the default version by calling
         /// projects.models.versions.setDefault.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultVersion")]
-        public virtual GoogleCloudMlV1Version DefaultVersion { get; set; } 
+        public virtual GoogleCloudMlV1Version DefaultVersion { get; set; }
 
         /// <summary>Optional. The description specified for the model when it was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a model from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -3987,18 +3987,18 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// the response to `GetModel`, and systems are expected to put that etag in the request to `UpdateModel` to
         /// ensure that their change will be applied to the model as intended.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Optional. One or more labels that you can add, to organize your models. Each label is a key-value
         /// pair, where both the key and the value are arbitrary strings that you supply. For more information, see the
         /// documentation on using labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Required. The name specified for the model when it was created. The model name must be unique
         /// within the project it is created in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Optional. If true, online prediction nodes send `stderr` and `stdout` streams to Stackdriver
         /// Logging. These can be more verbose than the standard access logs (see `onlinePredictionLogging`) and can
@@ -4006,7 +4006,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// cost](/stackdriver/pricing), especially if your project receives prediction requests at a high QPS. Estimate
         /// your costs before enabling this option. Default is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onlinePredictionConsoleLogging")]
-        public virtual System.Nullable<bool> OnlinePredictionConsoleLogging { get; set; } 
+        public virtual System.Nullable<bool> OnlinePredictionConsoleLogging { get; set; }
 
         /// <summary>Optional. If true, online prediction access logs are sent to StackDriver Logging. These logs are
         /// like standard server access logs, containing information like timestamp and latency for each request. Note
@@ -4014,7 +4014,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this
         /// option. Default is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onlinePredictionLogging")]
-        public virtual System.Nullable<bool> OnlinePredictionLogging { get; set; } 
+        public virtual System.Nullable<bool> OnlinePredictionLogging { get; set; }
 
         /// <summary>Optional. The list of regions where the model is going to be deployed. Only one region per model is
         /// supported. Defaults to 'us-central1' if nothing is set. See the available regions for AI Platform services.
@@ -4022,7 +4022,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// online and batch prediction. * The region for a batch prediction job is set by the region field when
         /// submitting the batch prediction job and does not take its value from this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regions")]
-        public virtual System.Collections.Generic.IList<string> Regions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Regions { get; set; }
 
     }    
 
@@ -4031,39 +4031,39 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>The time the operation was submitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The time operation processing completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Indicates whether a request to cancel this operation has been made.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isCancellationRequested")]
-        public virtual System.Nullable<bool> IsCancellationRequested { get; set; } 
+        public virtual System.Nullable<bool> IsCancellationRequested { get; set; }
 
         /// <summary>The user labels, inherited from the model or the model version being operated on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Contains the name of the model associated with the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelName")]
-        public virtual string ModelName { get; set; } 
+        public virtual string ModelName { get; set; }
 
         /// <summary>The operation type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
-        public virtual string OperationType { get; set; } 
+        public virtual string OperationType { get; set; }
 
         /// <summary>Contains the project number associated with the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
-        public virtual System.Nullable<long> ProjectNumber { get; set; } 
+        public virtual System.Nullable<long> ProjectNumber { get; set; }
 
         /// <summary>The time operation processing started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>Contains the version associated with the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual GoogleCloudMlV1Version Version { get; set; } 
+        public virtual GoogleCloudMlV1Version Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4074,38 +4074,38 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>Required if type is `CATEGORICAL`. The list of possible categories.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoricalValues")]
-        public virtual System.Collections.Generic.IList<string> CategoricalValues { get; set; } 
+        public virtual System.Collections.Generic.IList<string> CategoricalValues { get; set; }
 
         /// <summary>Required if type is `DISCRETE`. A list of feasible points. The list should be in strictly
         /// increasing order. For instance, this parameter might have possible settings of 1.5, 2.5, and 4.0. This list
         /// should not contain more than 1,000 values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discreteValues")]
-        public virtual System.Collections.Generic.IList<System.Nullable<double>> DiscreteValues { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> DiscreteValues { get; set; }
 
         /// <summary>Required if type is `DOUBLE` or `INTEGER`. This field should be unset if type is `CATEGORICAL`.
         /// This value should be integers if type is `INTEGER`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxValue")]
-        public virtual System.Nullable<double> MaxValue { get; set; } 
+        public virtual System.Nullable<double> MaxValue { get; set; }
 
         /// <summary>Required if type is `DOUBLE` or `INTEGER`. This field should be unset if type is `CATEGORICAL`.
         /// This value should be integers if type is INTEGER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minValue")]
-        public virtual System.Nullable<double> MinValue { get; set; } 
+        public virtual System.Nullable<double> MinValue { get; set; }
 
         /// <summary>Required. The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec
         /// message. E.g., "learning_rate".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterName")]
-        public virtual string ParameterName { get; set; } 
+        public virtual string ParameterName { get; set; }
 
         /// <summary>Optional. How the parameter should be scaled to the hypercube. Leave unset for categorical
         /// parameters. Some kind of scaling is strongly recommended for real or integral parameters (e.g.,
         /// `UNIT_LINEAR_SCALE`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scaleType")]
-        public virtual string ScaleType { get; set; } 
+        public virtual string ScaleType { get; set; }
 
         /// <summary>Required. The type of the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4117,7 +4117,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary> Required. The prediction request body. Refer to the [request body details section](#request-body-
         /// details) for more information on how to structure your request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpBody")]
-        public virtual GoogleApiHttpBody HttpBody { get; set; } 
+        public virtual GoogleApiHttpBody HttpBody { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4130,62 +4130,62 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// records in memory before invoking one Tensorflow prediction call internally. So take the record size and
         /// memory available into consideration when setting this parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchSize")]
-        public virtual System.Nullable<long> BatchSize { get; set; } 
+        public virtual System.Nullable<long> BatchSize { get; set; }
 
         /// <summary>Required. The format of the input data files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataFormat")]
-        public virtual string DataFormat { get; set; } 
+        public virtual string DataFormat { get; set; }
 
         /// <summary>Required. The Cloud Storage location of the input data files. May contain wildcards.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputPaths")]
-        public virtual System.Collections.Generic.IList<string> InputPaths { get; set; } 
+        public virtual System.Collections.Generic.IList<string> InputPaths { get; set; }
 
         /// <summary>Optional. The maximum number of workers to be used for parallel processing. Defaults to 10 if not
         /// specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxWorkerCount")]
-        public virtual System.Nullable<long> MaxWorkerCount { get; set; } 
+        public virtual System.Nullable<long> MaxWorkerCount { get; set; }
 
         /// <summary>Use this field if you want to use the default version for the specified model. The string must use
         /// the following format: `"projects/YOUR_PROJECT/models/YOUR_MODEL"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelName")]
-        public virtual string ModelName { get; set; } 
+        public virtual string ModelName { get; set; }
 
         /// <summary>Optional. Format of the output data files, defaults to JSON.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputDataFormat")]
-        public virtual string OutputDataFormat { get; set; } 
+        public virtual string OutputDataFormat { get; set; }
 
         /// <summary>Required. The output Google Cloud Storage location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputPath")]
-        public virtual string OutputPath { get; set; } 
+        public virtual string OutputPath { get; set; }
 
         /// <summary>Required. The Google Compute Engine region to run the prediction job in. See the available regions
         /// for AI Platform services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
-        public virtual string Region { get; set; } 
+        public virtual string Region { get; set; }
 
         /// <summary>Optional. The AI Platform runtime version to use for this batch prediction. If not set, AI Platform
         /// will pick the runtime version used during the CreateVersion request for this model version, or choose the
         /// latest stable version when model version information is not available such as when the model is specified by
         /// uri.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
-        public virtual string RuntimeVersion { get; set; } 
+        public virtual string RuntimeVersion { get; set; }
 
         /// <summary>Optional. The name of the signature defined in the SavedModel to use for this job. Please refer to
         /// [SavedModel](https://tensorflow.github.io/serving/serving_basic.html) for information about how to use
         /// signatures. Defaults to [DEFAULT_SERVING_SIGNATURE_DEF_KEY](https://www.tensorflow.org/api_docs/python/tf/sa
         /// ved_model/signature_constants) , which is "serving_default".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatureName")]
-        public virtual string SignatureName { get; set; } 
+        public virtual string SignatureName { get; set; }
 
         /// <summary>Use this field if you want to specify a Google Cloud Storage path for the model to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>Use this field if you want to specify a version of the model to use. The string is formatted the
         /// same way as `model_version`, with the addition of the version information:
         /// `"projects/YOUR_PROJECT/models/YOUR_MODEL/versions/YOUR_VERSION"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionName")]
-        public virtual string VersionName { get; set; } 
+        public virtual string VersionName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4196,19 +4196,19 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>The number of data instances which resulted in errors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorCount")]
-        public virtual System.Nullable<long> ErrorCount { get; set; } 
+        public virtual System.Nullable<long> ErrorCount { get; set; }
 
         /// <summary>Node hours used by the batch prediction job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeHours")]
-        public virtual System.Nullable<double> NodeHours { get; set; } 
+        public virtual System.Nullable<double> NodeHours { get; set; }
 
         /// <summary>The output Google Cloud Storage location provided at the job creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputPath")]
-        public virtual string OutputPath { get; set; } 
+        public virtual string OutputPath { get; set; }
 
         /// <summary>The number of generated predictions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predictionCount")]
-        public virtual System.Nullable<long> PredictionCount { get; set; } 
+        public virtual System.Nullable<long> PredictionCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4221,7 +4221,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// accelerator configurations for training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-
         /// types-with-gpu)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorConfig")]
-        public virtual GoogleCloudMlV1AcceleratorConfig AcceleratorConfig { get; set; } 
+        public virtual GoogleCloudMlV1AcceleratorConfig AcceleratorConfig { get; set; }
 
         /// <summary>Arguments to the entrypoint command. The following rules apply for container_command and
         /// container_args: - If you do not supply command or args: The defaults defined in the Docker image are used. -
@@ -4232,19 +4232,19 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// your args. It cannot be set if custom container image is not provided. Note that this field and
         /// [TrainingInput.args] are mutually exclusive, i.e., both cannot be set at the same time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerArgs")]
-        public virtual System.Collections.Generic.IList<string> ContainerArgs { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ContainerArgs { get; set; }
 
         /// <summary>The command with which the replica's custom container is run. If provided, it will override default
         /// ENTRYPOINT of the docker image. If not provided, the docker image's ENTRYPOINT is used. It cannot be set if
         /// custom container image is not provided. Note that this field and [TrainingInput.args] are mutually
         /// exclusive, i.e., both cannot be set at the same time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerCommand")]
-        public virtual System.Collections.Generic.IList<string> ContainerCommand { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ContainerCommand { get; set; }
 
         /// <summary>The Docker image to run on the replica. This image must be in Container Registry. Learn more about
         /// [configuring custom containers](/ai-platform/training/docs/distributed-training-containers).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
-        public virtual string ImageUri { get; set; } 
+        public virtual string ImageUri { get; set; }
 
         /// <summary>The AI Platform runtime version that includes a TensorFlow version matching the one used in the
         /// custom container. This field is required if the replica is a TPU worker that uses a custom container.
@@ -4255,7 +4255,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// this field, you must specify the runtime version (TensorFlow minor version). For example, if your custom
         /// container runs TensorFlow `1.x.y`, specify `1.x`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tpuTfVersion")]
-        public virtual string TpuTfVersion { get; set; } 
+        public virtual string TpuTfVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4277,13 +4277,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryTableName")]
-        public virtual string BigqueryTableName { get; set; } 
+        public virtual string BigqueryTableName { get; set; }
 
         /// <summary>Percentage of requests to be logged, expressed as a fraction from 0 to 1. For example, if you want
         /// to log 10% of requests, enter `0.1`. The sampling window is the lifetime of the model version. Defaults to
         /// 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("samplingPercentage")]
-        public virtual System.Nullable<double> SamplingPercentage { get; set; } 
+        public virtual System.Nullable<double> SamplingPercentage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4296,11 +4296,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>HTTP path to send health check requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("health")]
-        public virtual string Health { get; set; } 
+        public virtual string Health { get; set; }
 
         /// <summary>HTTP path to send prediction requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predict")]
-        public virtual string Predict { get; set; } 
+        public virtual string Predict { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4313,7 +4313,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>The number of feature permutations to consider when approximating the Shapley values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numPaths")]
-        public virtual System.Nullable<int> NumPaths { get; set; } 
+        public virtual System.Nullable<int> NumPaths { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4332,7 +4332,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// platform/training/docs/training-jobs#formatting_your_configuration_parameters). For example: ```yaml
         /// trainingInput: scheduling: maxRunningTime: 7200s ```</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRunningTime")]
-        public virtual object MaxRunningTime { get; set; } 
+        public virtual object MaxRunningTime { get; set; }
 
         /// <summary>Optional. The maximum job wait time, expressed in seconds. The field can contain up to nine
         /// fractional digits, terminated by `s`. If not specified, there is no limit to the wait time. The minimum for
@@ -4350,7 +4350,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// jobs#formatting_your_configuration_parameters). For example: ```yaml trainingInput: scheduling: maxWaitTime:
         /// 3600s ```</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxWaitTime")]
-        public virtual object MaxWaitTime { get; set; } 
+        public virtual object MaxWaitTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4374,24 +4374,24 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>Output only. Time at which the study was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. A human readable reason why the Study is inactive. This should be empty if a study is
         /// ACTIVE or COMPLETED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inactiveReason")]
-        public virtual string InactiveReason { get; set; } 
+        public virtual string InactiveReason { get; set; }
 
         /// <summary>Output only. The name of a study.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The detailed state of a study.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Required. Configuration of the study.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("studyConfig")]
-        public virtual GoogleCloudMlV1StudyConfig StudyConfig { get; set; } 
+        public virtual GoogleCloudMlV1StudyConfig StudyConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4402,19 +4402,19 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>The search algorithm specified for the study.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("algorithm")]
-        public virtual string Algorithm { get; set; } 
+        public virtual string Algorithm { get; set; }
 
         /// <summary>Configuration for automated stopping of unpromising Trials.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("automatedStoppingConfig")]
-        public virtual GoogleCloudMlV1AutomatedStoppingConfig AutomatedStoppingConfig { get; set; } 
+        public virtual GoogleCloudMlV1AutomatedStoppingConfig AutomatedStoppingConfig { get; set; }
 
         /// <summary>Metric specs for the study.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-        public virtual System.Collections.Generic.IList<GoogleCloudMlV1StudyConfigMetricSpec> Metrics { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1StudyConfigMetricSpec> Metrics { get; set; }
 
         /// <summary>Required. The set of parameters to tune.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IList<GoogleCloudMlV1StudyConfigParameterSpec> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1StudyConfigParameterSpec> Parameters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4425,11 +4425,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>Required. The optimization goal of the metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("goal")]
-        public virtual string Goal { get; set; } 
+        public virtual string Goal { get; set; }
 
         /// <summary>Required. The name of the metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metric")]
-        public virtual string Metric { get; set; } 
+        public virtual string Metric { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4440,46 +4440,46 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>The value spec for a 'CATEGORICAL' parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoricalValueSpec")]
-        public virtual GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec CategoricalValueSpec { get; set; } 
+        public virtual GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec CategoricalValueSpec { get; set; }
 
         /// <summary>A child node is active if the parameter's value matches the child node's matching_parent_values. If
         /// two items in child_parameter_specs have the same name, they must have disjoint
         /// matching_parent_values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("childParameterSpecs")]
-        public virtual System.Collections.Generic.IList<GoogleCloudMlV1StudyConfigParameterSpec> ChildParameterSpecs { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1StudyConfigParameterSpec> ChildParameterSpecs { get; set; }
 
         /// <summary>The value spec for a 'DISCRETE' parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discreteValueSpec")]
-        public virtual GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec DiscreteValueSpec { get; set; } 
+        public virtual GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec DiscreteValueSpec { get; set; }
 
         /// <summary>The value spec for a 'DOUBLE' parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("doubleValueSpec")]
-        public virtual GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec DoubleValueSpec { get; set; } 
+        public virtual GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec DoubleValueSpec { get; set; }
 
         /// <summary>The value spec for an 'INTEGER' parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integerValueSpec")]
-        public virtual GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec IntegerValueSpec { get; set; } 
+        public virtual GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec IntegerValueSpec { get; set; }
 
         /// <summary>Required. The parameter name must be unique amongst all ParameterSpecs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
-        public virtual string Parameter { get; set; } 
+        public virtual string Parameter { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("parentCategoricalValues")]
-        public virtual GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec ParentCategoricalValues { get; set; } 
+        public virtual GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec ParentCategoricalValues { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("parentDiscreteValues")]
-        public virtual GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec ParentDiscreteValues { get; set; } 
+        public virtual GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec ParentDiscreteValues { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("parentIntValues")]
-        public virtual GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec ParentIntValues { get; set; } 
+        public virtual GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec ParentIntValues { get; set; }
 
         /// <summary>How the parameter should be scaled. Leave unset for categorical parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scaleType")]
-        public virtual string ScaleType { get; set; } 
+        public virtual string ScaleType { get; set; }
 
         /// <summary>Required. The type of the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4489,7 +4489,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>Must be specified if type is `CATEGORICAL`. The list of possible categories.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4501,7 +4501,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// increasing order. For instance, this parameter might have possible settings of 1.5, 2.5, and 4.0. This list
         /// should not contain more than 1,000 values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<System.Nullable<double>> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4511,11 +4511,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>Must be specified if type is `DOUBLE`. Maximum value of the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxValue")]
-        public virtual System.Nullable<double> MaxValue { get; set; } 
+        public virtual System.Nullable<double> MaxValue { get; set; }
 
         /// <summary>Must be specified if type is `DOUBLE`. Minimum value of the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minValue")]
-        public virtual System.Nullable<double> MinValue { get; set; } 
+        public virtual System.Nullable<double> MinValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4525,11 +4525,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>Must be specified if type is `INTEGER`. Maximum value of the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxValue")]
-        public virtual System.Nullable<long> MaxValue { get; set; } 
+        public virtual System.Nullable<long> MaxValue { get; set; }
 
         /// <summary>Must be specified if type is `INTEGER`. Minimum value of the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minValue")]
-        public virtual System.Nullable<long> MinValue { get; set; } 
+        public virtual System.Nullable<long> MinValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4541,7 +4541,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>Matches values of the parent parameter with type 'CATEGORICAL'. All values must exist in
         /// `categorical_value_spec` of parent parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4553,7 +4553,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>Matches values of the parent parameter with type 'DISCRETE'. All values must exist in
         /// `discrete_value_spec` of parent parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<System.Nullable<double>> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4565,7 +4565,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>Matches values of the parent parameter with type 'INTEGER'. All values must lie in
         /// `integer_value_spec` of parent parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4576,19 +4576,19 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>The identifier of the client that is requesting the suggestion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
-        public virtual string ClientId { get; set; } 
+        public virtual string ClientId { get; set; }
 
         /// <summary>The time operation was submitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The name of the study that the trial belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("study")]
-        public virtual string Study { get; set; } 
+        public virtual string Study { get; set; }
 
         /// <summary>The number of suggestions requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestionCount")]
-        public virtual System.Nullable<int> SuggestionCount { get; set; } 
+        public virtual System.Nullable<int> SuggestionCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4601,11 +4601,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// SuggestTrialsRequests have the same `client_id`, the service will return the identical suggested trial if
         /// the trial is pending, and provide a new trial if the last suggested trial was completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
-        public virtual string ClientId { get; set; } 
+        public virtual string ClientId { get; set; }
 
         /// <summary>Required. The number of suggestions requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestionCount")]
-        public virtual System.Nullable<int> SuggestionCount { get; set; } 
+        public virtual System.Nullable<int> SuggestionCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4617,19 +4617,19 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>The time at which operation processing completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>The time at which the operation was started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The state of the study.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("studyState")]
-        public virtual string StudyState { get; set; } 
+        public virtual string StudyState { get; set; }
 
         /// <summary>A list of trials.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trials")]
-        public virtual System.Collections.Generic.IList<GoogleCloudMlV1Trial> Trials { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1Trial> Trials { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4644,14 +4644,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>Optional. Command-line arguments passed to the training application when it starts. If your job
         /// uses a custom container, then the arguments are passed to the container's `ENTRYPOINT` command.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
-        public virtual System.Collections.Generic.IList<string> Args { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Args { get; set; }
 
         /// <summary>Optional. Options for using customer-managed encryption keys (CMEK) to protect resources created by
         /// a training job, instead of using Google's default encryption. If this is set, then all resources created by
         /// the training job will be encrypted with the customer-managed encryption key that you specify. [Learn how and
         /// when to use CMEK with AI Platform Training](/ai-platform/training/docs/cmek).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
-        public virtual GoogleCloudMlV1EncryptionConfig EncryptionConfig { get; set; } 
+        public virtual GoogleCloudMlV1EncryptionConfig EncryptionConfig { get; set; }
 
         /// <summary>Optional. The configuration for evaluators. You should only set `evaluatorConfig.acceleratorConfig`
         /// if `evaluatorType` is set to a Compute Engine machine type. [Learn about restrictions on accelerator
@@ -4661,13 +4661,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// more about [configuring custom containers](/ai-platform/training/docs/distributed-training-
         /// containers).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluatorConfig")]
-        public virtual GoogleCloudMlV1ReplicaConfig EvaluatorConfig { get; set; } 
+        public virtual GoogleCloudMlV1ReplicaConfig EvaluatorConfig { get; set; }
 
         /// <summary>Optional. The number of evaluator replicas to use for the training job. Each replica in the cluster
         /// will be of the type specified in `evaluator_type`. This value can only be used when `scale_tier` is set to
         /// `CUSTOM`. If you set this value, you must also set `evaluator_type`. The default value is zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluatorCount")]
-        public virtual System.Nullable<long> EvaluatorCount { get; set; } 
+        public virtual System.Nullable<long> EvaluatorCount { get; set; }
 
         /// <summary>Optional. Specifies the type of virtual machine to use for your training job's evaluator nodes. The
         /// supported values are the same as those described in the entry for `masterType`. This value must be
@@ -4675,17 +4675,17 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// Engine machine types or both must be legacy machine types. This value must be present when `scaleTier` is
         /// set to `CUSTOM` and `evaluatorCount` is greater than zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluatorType")]
-        public virtual string EvaluatorType { get; set; } 
+        public virtual string EvaluatorType { get; set; }
 
         /// <summary>Optional. The set of Hyperparameters to tune.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hyperparameters")]
-        public virtual GoogleCloudMlV1HyperparameterSpec Hyperparameters { get; set; } 
+        public virtual GoogleCloudMlV1HyperparameterSpec Hyperparameters { get; set; }
 
         /// <summary>Optional. A Google Cloud Storage path in which to store training outputs and other data needed for
         /// training. This path is passed to your TensorFlow program as the '--job-dir' command-line argument. The
         /// benefit of specifying this field is that Cloud ML validates the path for use in training.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobDir")]
-        public virtual string JobDir { get; set; } 
+        public virtual string JobDir { get; set; }
 
         /// <summary>Optional. The configuration for your master worker. You should only set
         /// `masterConfig.acceleratorConfig` if `masterType` is set to a Compute Engine machine type. Learn about
@@ -4694,7 +4694,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// `masterConfig.imageUri` and `runtimeVersion` should be set. Learn more about [configuring custom containers
         /// ](/ai-platform/training/docs/distributed-training-containers).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterConfig")]
-        public virtual GoogleCloudMlV1ReplicaConfig MasterConfig { get; set; } 
+        public virtual GoogleCloudMlV1ReplicaConfig MasterConfig { get; set; }
 
         /// <summary>Optional. Specifies the type of virtual machine to use for your training job's master worker. You
         /// must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine
@@ -4711,7 +4711,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// more about the [special configuration options for training with TPUs](/ml-engine/docs/tensorflow/using-
         /// tpus#configuring_a_custom_tpu_machine).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterType")]
-        public virtual string MasterType { get; set; } 
+        public virtual string MasterType { get; set; }
 
         /// <summary>Optional. The full name of the [Compute Engine network](/vpc/docs/vpc) to which the Job is peered.
         /// For example, `projects/12345/global/networks/myVPC`. The format of this field is
@@ -4720,12 +4720,12 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// unspecified, the Job is not peered with any network. [Learn about using VPC Network Peering.](/ai-
         /// platform/training/docs/vpc-peering).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
-        public virtual string Network { get; set; } 
+        public virtual string Network { get; set; }
 
         /// <summary>Required. The Google Cloud Storage location of the packages with the training program and any
         /// additional dependencies. The maximum number of package URIs is 100.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageUris")]
-        public virtual System.Collections.Generic.IList<string> PackageUris { get; set; } 
+        public virtual System.Collections.Generic.IList<string> PackageUris { get; set; }
 
         /// <summary>Optional. The configuration for parameter servers. You should only set
         /// `parameterServerConfig.acceleratorConfig` if `parameterServerType` is set to a Compute Engine machine type.
@@ -4735,14 +4735,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// value of `masterConfig.imageUri`. Learn more about [configuring custom containers](/ai-
         /// platform/training/docs/distributed-training-containers).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterServerConfig")]
-        public virtual GoogleCloudMlV1ReplicaConfig ParameterServerConfig { get; set; } 
+        public virtual GoogleCloudMlV1ReplicaConfig ParameterServerConfig { get; set; }
 
         /// <summary>Optional. The number of parameter server replicas to use for the training job. Each replica in the
         /// cluster will be of the type specified in `parameter_server_type`. This value can only be used when
         /// `scale_tier` is set to `CUSTOM`. If you set this value, you must also set `parameter_server_type`. The
         /// default value is zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterServerCount")]
-        public virtual System.Nullable<long> ParameterServerCount { get; set; } 
+        public virtual System.Nullable<long> ParameterServerCount { get; set; }
 
         /// <summary>Optional. Specifies the type of virtual machine to use for your training job's parameter server.
         /// The supported values are the same as those described in the entry for `master_type`. This value must be
@@ -4750,11 +4750,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// Engine machine types or both must be legacy machine types. This value must be present when `scaleTier` is
         /// set to `CUSTOM` and `parameter_server_count` is greater than zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterServerType")]
-        public virtual string ParameterServerType { get; set; } 
+        public virtual string ParameterServerType { get; set; }
 
         /// <summary>Required. The Python module name to run after installing the packages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pythonModule")]
-        public virtual string PythonModule { get; set; } 
+        public virtual string PythonModule { get; set; }
 
         /// <summary>Optional. The version of Python used in training. You must either specify this field or specify
         /// `masterConfig.imageUri`. The following Python versions are available: * Python '3.7' is available when
@@ -4763,28 +4763,28 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-
         /// version-list).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pythonVersion")]
-        public virtual string PythonVersion { get; set; } 
+        public virtual string PythonVersion { get; set; }
 
         /// <summary>Required. The region to run the training job in. See the [available regions](/ai-
         /// platform/training/docs/regions) for AI Platform Training.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
-        public virtual string Region { get; set; } 
+        public virtual string Region { get; set; }
 
         /// <summary>Optional. The AI Platform runtime version to use for training. You must either specify this field
         /// or specify `masterConfig.imageUri`. For more information, see the [runtime version list](/ai-
         /// platform/training/docs/runtime-version-list) and learn [how to manage runtime versions](/ai-
         /// platform/training/docs/versioning).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
-        public virtual string RuntimeVersion { get; set; } 
+        public virtual string RuntimeVersion { get; set; }
 
         /// <summary>Required. Specifies the machine types, the number of replicas for workers and parameter
         /// servers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scaleTier")]
-        public virtual string ScaleTier { get; set; } 
+        public virtual string ScaleTier { get; set; }
 
         /// <summary>Optional. Scheduling options for a training job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
-        public virtual GoogleCloudMlV1Scheduling Scheduling { get; set; } 
+        public virtual GoogleCloudMlV1Scheduling Scheduling { get; set; }
 
         /// <summary>Optional. The email address of a service account to use when running the training appplication. You
         /// must have the `iam.serviceAccounts.actAs` permission for the specified service account. In addition, the AI
@@ -4793,14 +4793,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// /custom-service-account) If not specified, the AI Platform Training Google-managed service account is used
         /// by default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
-        public virtual string ServiceAccount { get; set; } 
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>Optional. Use `chief` instead of `master` in the `TF_CONFIG` environment variable when training
         /// with a custom container. Defaults to `false`. [Learn more about this field.](/ai-platform/training/docs
         /// /distributed-training-details#chief-versus-master) This field has no effect for training jobs that don't use
         /// a custom container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useChiefInTfConfig")]
-        public virtual System.Nullable<bool> UseChiefInTfConfig { get; set; } 
+        public virtual System.Nullable<bool> UseChiefInTfConfig { get; set; }
 
         /// <summary>Optional. The configuration for workers. You should only set `workerConfig.acceleratorConfig` if
         /// `workerType` is set to a Compute Engine machine type. [Learn about restrictions on accelerator
@@ -4809,13 +4809,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// not been set, AI Platform uses the value of `masterConfig.imageUri`. Learn more about [configuring custom
         /// containers](/ai-platform/training/docs/distributed-training-containers).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerConfig")]
-        public virtual GoogleCloudMlV1ReplicaConfig WorkerConfig { get; set; } 
+        public virtual GoogleCloudMlV1ReplicaConfig WorkerConfig { get; set; }
 
         /// <summary>Optional. The number of worker replicas to use for the training job. Each replica in the cluster
         /// will be of the type specified in `worker_type`. This value can only be used when `scale_tier` is set to
         /// `CUSTOM`. If you set this value, you must also set `worker_type`. The default value is zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerCount")]
-        public virtual System.Nullable<long> WorkerCount { get; set; } 
+        public virtual System.Nullable<long> WorkerCount { get; set; }
 
         /// <summary>Optional. Specifies the type of virtual machine to use for your training job's worker nodes. The
         /// supported values are the same as those described in the entry for `masterType`. This value must be
@@ -4825,7 +4825,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// tpus#configuring_a_custom_tpu_machine). This value must be present when `scaleTier` is set to `CUSTOM` and
         /// `workerCount` is greater than zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerType")]
-        public virtual string WorkerType { get; set; } 
+        public virtual string WorkerType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4836,34 +4836,34 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>Details related to built-in algorithms jobs. Only set for built-in algorithms jobs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("builtInAlgorithmOutput")]
-        public virtual GoogleCloudMlV1BuiltInAlgorithmOutput BuiltInAlgorithmOutput { get; set; } 
+        public virtual GoogleCloudMlV1BuiltInAlgorithmOutput BuiltInAlgorithmOutput { get; set; }
 
         /// <summary>The number of hyperparameter tuning trials that completed successfully. Only set for hyperparameter
         /// tuning jobs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completedTrialCount")]
-        public virtual System.Nullable<long> CompletedTrialCount { get; set; } 
+        public virtual System.Nullable<long> CompletedTrialCount { get; set; }
 
         /// <summary>The amount of ML units consumed by the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumedMLUnits")]
-        public virtual System.Nullable<double> ConsumedMLUnits { get; set; } 
+        public virtual System.Nullable<double> ConsumedMLUnits { get; set; }
 
         /// <summary>The TensorFlow summary tag name used for optimizing hyperparameter tuning trials. See
         /// [`HyperparameterSpec.hyperparameterMetricTag`](#HyperparameterSpec.FIELDS.hyperparameter_metric_tag) for
         /// more information. Only set for hyperparameter tuning jobs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hyperparameterMetricTag")]
-        public virtual string HyperparameterMetricTag { get; set; } 
+        public virtual string HyperparameterMetricTag { get; set; }
 
         /// <summary>Whether this job is a built-in Algorithm job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isBuiltInAlgorithmJob")]
-        public virtual System.Nullable<bool> IsBuiltInAlgorithmJob { get; set; } 
+        public virtual System.Nullable<bool> IsBuiltInAlgorithmJob { get; set; }
 
         /// <summary>Whether this job is a hyperparameter tuning job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isHyperparameterTuningJob")]
-        public virtual System.Nullable<bool> IsHyperparameterTuningJob { get; set; } 
+        public virtual System.Nullable<bool> IsHyperparameterTuningJob { get; set; }
 
         /// <summary>Results for individual Hyperparameter trials. Only set for hyperparameter tuning jobs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trials")]
-        public virtual System.Collections.Generic.IList<GoogleCloudMlV1HyperparameterOutput> Trials { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1HyperparameterOutput> Trials { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4874,45 +4874,45 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>Output only. The identifier of the client that originally requested this trial.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
-        public virtual string ClientId { get; set; } 
+        public virtual string ClientId { get; set; }
 
         /// <summary>Output only. Time at which the trial's status changed to COMPLETED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>The final measurement containing the objective value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalMeasurement")]
-        public virtual GoogleCloudMlV1Measurement FinalMeasurement { get; set; } 
+        public virtual GoogleCloudMlV1Measurement FinalMeasurement { get; set; }
 
         /// <summary>Output only. A human readable string describing why the trial is infeasible. This should only be
         /// set if trial_infeasible is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infeasibleReason")]
-        public virtual string InfeasibleReason { get; set; } 
+        public virtual string InfeasibleReason { get; set; }
 
         /// <summary>A list of measurements that are strictly lexicographically ordered by their induced tuples (steps,
         /// elapsed_time). These are used for early stopping computations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("measurements")]
-        public virtual System.Collections.Generic.IList<GoogleCloudMlV1Measurement> Measurements { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1Measurement> Measurements { get; set; }
 
         /// <summary>Output only. Name of the trial assigned by the service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The parameters of the trial.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IList<GoogleCloudMlV1TrialParameter> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1TrialParameter> Parameters { get; set; }
 
         /// <summary>Output only. Time at which the trial was started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The detailed state of a trial.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Output only. If true, the parameters in this trial are not attempted again.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trialInfeasible")]
-        public virtual System.Nullable<bool> TrialInfeasible { get; set; } 
+        public virtual System.Nullable<bool> TrialInfeasible { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4924,19 +4924,19 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>Must be set if ParameterType is DOUBLE or DISCRETE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floatValue")]
-        public virtual System.Nullable<double> FloatValue { get; set; } 
+        public virtual System.Nullable<double> FloatValue { get; set; }
 
         /// <summary>Must be set if ParameterType is INTEGER</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
-        public virtual System.Nullable<long> IntValue { get; set; } 
+        public virtual System.Nullable<long> IntValue { get; set; }
 
         /// <summary>The name of the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
-        public virtual string Parameter { get; set; } 
+        public virtual string Parameter { get; set; }
 
         /// <summary>Must be set if ParameterTypeis CATEGORICAL</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
-        public virtual string StringValue { get; set; } 
+        public virtual string StringValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4951,7 +4951,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// if you have specified a Compute Engine (N1) machine type in the `machineType` field. Learn more about [using
         /// GPUs for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorConfig")]
-        public virtual GoogleCloudMlV1AcceleratorConfig AcceleratorConfig { get; set; } 
+        public virtual GoogleCloudMlV1AcceleratorConfig AcceleratorConfig { get; set; }
 
         /// <summary>Automatically scale the number of nodes used to serve the model in response to increases and
         /// decreases in traffic. Care should be taken to ramp up traffic according to the model's ability to scale or
@@ -4959,14 +4959,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// your version uses [GPUs](#Version.FIELDS.accelerator_config). Instead, you must use specify
         /// `manual_scaling`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoScaling")]
-        public virtual GoogleCloudMlV1AutoScaling AutoScaling { get; set; } 
+        public virtual GoogleCloudMlV1AutoScaling AutoScaling { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("container")]
-        public virtual GoogleCloudMlV1ContainerSpec Container { get; set; } 
+        public virtual GoogleCloudMlV1ContainerSpec Container { get; set; }
 
         /// <summary>Output only. The time the version was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Required. The Cloud Storage location of the trained model used to create the version. See the
         /// [guide to model deployment](/ml-engine/docs/tensorflow/deploying-models) for more information. When passing
@@ -4974,15 +4974,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// the model. Once deployed, the model version is hosted by the prediction service, so this location is useful
         /// only as a historical record. The total number of model files can't exceed 1000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentUri")]
-        public virtual string DeploymentUri { get; set; } 
+        public virtual string DeploymentUri { get; set; }
 
         /// <summary>Optional. The description specified for the version when it was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Output only. The details of a failure or a cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
-        public virtual string ErrorMessage { get; set; } 
+        public virtual string ErrorMessage { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a model from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -4990,12 +4990,12 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// the response to `GetVersion`, and systems are expected to put that etag in the request to `UpdateVersion` to
         /// ensure that their change will be applied to the model as intended.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Optional. Configures explainability features on the model's version. Some explanation features
         /// require additional metadata to be loaded as part of the model payload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explanationConfig")]
-        public virtual GoogleCloudMlV1ExplanationConfig ExplanationConfig { get; set; } 
+        public virtual GoogleCloudMlV1ExplanationConfig ExplanationConfig { get; set; }
 
         /// <summary>Optional. The machine learning framework AI Platform uses to train this version of the model. Valid
         /// values are `TENSORFLOW`, `SCIKIT_LEARN`, `XGBOOST`. If you do not specify a framework, AI Platform will
@@ -5005,22 +5005,22 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// specify a [Compute Engine (N1) machine type](/ml-engine/docs/machine-types-online-prediction) in the
         /// `machineType` field, you must specify `TENSORFLOW` for the framework.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("framework")]
-        public virtual string Framework { get; set; } 
+        public virtual string Framework { get; set; }
 
         /// <summary>Output only. If true, this version will be used to handle prediction requests that do not specify a
         /// version. You can change the default version by calling projects.methods.versions.setDefault.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
-        public virtual System.Nullable<bool> IsDefault { get; set; } 
+        public virtual System.Nullable<bool> IsDefault { get; set; }
 
         /// <summary>Optional. One or more labels that you can add, to organize your model versions. Each label is a
         /// key-value pair, where both the key and the value are arbitrary strings that you supply. For more
         /// information, see the documentation on using labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Output only. The time the version was last used for prediction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUseTime")]
-        public virtual object LastUseTime { get; set; } 
+        public virtual object LastUseTime { get; set; }
 
         /// <summary>Optional. The type of machine on which to serve the model. Currently only applies to online
         /// prediction service. If this field is not specified, it defaults to `mls1-c1-m2`. Online prediction supports
@@ -5031,19 +5031,19 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// more about the [differences between machine types](/ml-engine/docs/machine-types-online-
         /// prediction).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
-        public virtual string MachineType { get; set; } 
+        public virtual string MachineType { get; set; }
 
         /// <summary>Manually select the number of nodes to use for serving the model. You should generally use
         /// `auto_scaling` with an appropriate `min_nodes` instead, but this option is available if you want more
         /// predictable billing. Beware that latency and error rates will increase if the traffic exceeds that
         /// capability of the system to serve it based on the selected number of nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manualScaling")]
-        public virtual GoogleCloudMlV1ManualScaling ManualScaling { get; set; } 
+        public virtual GoogleCloudMlV1ManualScaling ManualScaling { get; set; }
 
         /// <summary>Required. The name specified for the version when it was created. The version name must be unique
         /// within the model it is created in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Optional. Cloud Storage paths (`gs://…`) of packages for [custom prediction routines](/ml-
         /// engine/docs/tensorflow/custom-prediction-routines) or [scikit-learn pipelines with custom code](/ml-
@@ -5054,7 +5054,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// ](/ml-engine/docs/tensorflow/runtime-version-list). If you specify this field, you must also set
         /// [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageUris")]
-        public virtual System.Collections.Generic.IList<string> PackageUris { get; set; } 
+        public virtual System.Collections.Generic.IList<string> PackageUris { get; set; }
 
         /// <summary>Optional. The fully qualified name (module_name.class_name) of a class that implements the
         /// Predictor interface described in this reference field. The module containing this class should be included
@@ -5074,7 +5074,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// instance implementing this Predictor class.  raise NotImplementedError() Learn more about [the Predictor
         /// interface and custom prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predictionClass")]
-        public virtual string PredictionClass { get; set; } 
+        public virtual string PredictionClass { get; set; }
 
         /// <summary>Required. The version of Python used in prediction. The following Python versions are available: *
         /// Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when
@@ -5082,30 +5082,30 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each
         /// runtime version](/ml-engine/docs/runtime-version-list).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pythonVersion")]
-        public virtual string PythonVersion { get; set; } 
+        public virtual string PythonVersion { get; set; }
 
         /// <summary>Optional. *Only* specify this field in a projects.models.versions.patch request. Specifying it in a
         /// projects.models.versions.create request has no effect. Configures the request-response pair logging on
         /// predictions from this Version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestLoggingConfig")]
-        public virtual GoogleCloudMlV1RequestLoggingConfig RequestLoggingConfig { get; set; } 
+        public virtual GoogleCloudMlV1RequestLoggingConfig RequestLoggingConfig { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("routes")]
-        public virtual GoogleCloudMlV1RouteMap Routes { get; set; } 
+        public virtual GoogleCloudMlV1RouteMap Routes { get; set; }
 
         /// <summary>Required. The AI Platform runtime version to use for this deployment. For more information, see the
         /// [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-
         /// engine/docs/versioning).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
-        public virtual string RuntimeVersion { get; set; } 
+        public virtual string RuntimeVersion { get; set; }
 
         /// <summary>Optional. Specifies the service account for resource access control.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
-        public virtual string ServiceAccount { get; set; } 
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>Output only. The state of a version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
     }    
 
@@ -5117,7 +5117,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>Number of steps for approximating the path integral. A good value to start is 50 and gradually
         /// increase until the sum to diff property is met within the desired error range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numIntegralSteps")]
-        public virtual System.Nullable<int> NumIntegralSteps { get; set; } 
+        public virtual System.Nullable<int> NumIntegralSteps { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5138,12 +5138,12 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
-        public virtual System.Collections.Generic.IList<GoogleIamV1AuditLogConfig> AuditLogConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleIamV1AuditLogConfig> AuditLogConfigs { get; set; }
 
         /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
         /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5158,11 +5158,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
         /// format of Binding.members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
-        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
 
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
-        public virtual string LogType { get; set; } 
+        public virtual string LogType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5174,7 +5174,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
         /// bindings-by-ID API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; } 
+        public virtual string BindingId { get; set; }
 
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
@@ -5182,7 +5182,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual GoogleTypeExpr Condition { get; set; } 
+        public virtual GoogleTypeExpr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
@@ -5204,12 +5204,12 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5239,12 +5239,12 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
-        public virtual System.Collections.Generic.IList<GoogleIamV1AuditConfig> AuditConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleIamV1AuditConfig> AuditConfigs { get; set; }
 
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<GoogleIamV1Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleIamV1Binding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -5255,7 +5255,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
         /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
         /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
@@ -5269,7 +5269,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -5280,13 +5280,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual GoogleIamV1Policy Policy { get; set; } 
+        public virtual GoogleIamV1Policy Policy { get; set; }
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
         /// will be modified. If no mask is provided, the following default mask is used: `paths: "bindings,
         /// etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5299,7 +5299,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// 'storage.*') are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5310,7 +5310,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5321,11 +5321,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<GoogleLongrunningOperation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleLongrunningOperation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5337,23 +5337,23 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual GoogleRpcStatus Error { get; set; } 
+        public virtual GoogleRpcStatus Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -5361,7 +5361,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5386,17 +5386,17 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5418,21 +5418,21 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

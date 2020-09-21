@@ -586,11 +586,11 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
     {
         /// <summary>Optional. The permissions to appear in result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>Optional. The roles to appear in result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roles")]
-        public virtual System.Collections.Generic.IList<string> Roles { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Roles { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -602,21 +602,21 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         /// <summary>Represents whether all entries in the main_analysis and service_account_impersonation_analysis have
         /// been fully explored to answer the query in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullyExplored")]
-        public virtual System.Nullable<bool> FullyExplored { get; set; } 
+        public virtual System.Nullable<bool> FullyExplored { get; set; }
 
         /// <summary>The main analysis that matches the original request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mainAnalysis")]
-        public virtual IamPolicyAnalysis MainAnalysis { get; set; } 
+        public virtual IamPolicyAnalysis MainAnalysis { get; set; }
 
         /// <summary>A list of non-critical errors happened during the request handling to explain why `fully_explored`
         /// is false, or empty if no error happened.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonCriticalErrors")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1p4beta1AnalysisState> NonCriticalErrors { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1p4beta1AnalysisState> NonCriticalErrors { get; set; }
 
         /// <summary>The service account impersonation analysis if
         /// AnalyzeIamPolicyRequest.analyze_service_account_impersonation is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountImpersonationAnalysis")]
-        public virtual System.Collections.Generic.IList<IamPolicyAnalysis> ServiceAccountImpersonationAnalysis { get; set; } 
+        public virtual System.Collections.Generic.IList<IamPolicyAnalysis> ServiceAccountImpersonationAnalysis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -631,7 +631,7 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
@@ -653,12 +653,12 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -669,15 +669,15 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
     {
         /// <summary>Required. The request query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analysisQuery")]
-        public virtual IamPolicyAnalysisQuery AnalysisQuery { get; set; } 
+        public virtual IamPolicyAnalysisQuery AnalysisQuery { get; set; }
 
         /// <summary>Optional. The request options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
-        public virtual Options Options { get; set; } 
+        public virtual Options Options { get; set; }
 
         /// <summary>Required. Output configuration indicating where the results will be output to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
-        public virtual IamPolicyAnalysisOutputConfig OutputConfig { get; set; } 
+        public virtual IamPolicyAnalysisOutputConfig OutputConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -699,21 +699,21 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -726,7 +726,7 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         /// example: "gs://bucket_name/object_name". See [Viewing and Editing Object
         /// Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata) for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -737,15 +737,15 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
     {
         /// <summary>The analysis state of this access.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analysisState")]
-        public virtual GoogleCloudAssetV1p4beta1AnalysisState AnalysisState { get; set; } 
+        public virtual GoogleCloudAssetV1p4beta1AnalysisState AnalysisState { get; set; }
 
         /// <summary>The permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permission")]
-        public virtual string Permission { get; set; } 
+        public virtual string Permission { get; set; }
 
         /// <summary>The role.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -763,19 +763,19 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         /// <summary>The accesses that match one of the following conditions: - The access_selector, if it is specified
         /// in request; - Otherwise, access specifiers reachable from the policy binding's role.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accesses")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1p4beta1Access> Accesses { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1p4beta1Access> Accesses { get; set; }
 
         /// <summary>Resource edges of the graph starting from the policy attached resource to any descendant resources.
         /// The Edge.source_node contains the full resource name of a parent resource and Edge.target_node contains the
         /// full resource name of a child resource. This field is present only if the output_resource_edges option is
         /// enabled in request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceEdges")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1p4beta1Edge> ResourceEdges { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1p4beta1Edge> ResourceEdges { get; set; }
 
         /// <summary>The resources that match one of the following conditions: - The resource_selector, if it is
         /// specified in request; - Otherwise, resources reachable from the policy attached resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1p4beta1Resource> Resources { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1p4beta1Resource> Resources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -787,13 +787,13 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
     {
         /// <summary>The human-readable description of the cause of failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cause")]
-        public virtual string Cause { get; set; } 
+        public virtual string Cause { get; set; }
 
         /// <summary>The Google standard error code that best describes the state. For example: - OK means the analysis
         /// on this entity has been successfully finished; - PERMISSION_DENIED means an access denied error is
         /// encountered; - DEADLINE_EXCEEDED means the analysis on this entity hasn't been started in time;</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual string Code { get; set; } 
+        public virtual string Code { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -804,11 +804,11 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
     {
         /// <summary>The source node of the edge.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceNode")]
-        public virtual string SourceNode { get; set; } 
+        public virtual string SourceNode { get; set; }
 
         /// <summary>The target node of the edge.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetNode")]
-        public virtual string TargetNode { get; set; } 
+        public virtual string TargetNode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -819,14 +819,14 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
     {
         /// <summary>The analysis state of this identity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analysisState")]
-        public virtual GoogleCloudAssetV1p4beta1AnalysisState AnalysisState { get; set; } 
+        public virtual GoogleCloudAssetV1p4beta1AnalysisState AnalysisState { get; set; }
 
         /// <summary>The identity name in any form of members appear in [IAM policy
         /// binding](https://cloud.google.com/iam/reference/rest/v1/Binding), such as: - user:foo@google.com -
         /// group:group1@google.com - serviceAccount:s1@prj1.iam.gserviceaccount.com - projectOwner:some_project_id -
         /// domain:google.com - allUsers - etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -839,13 +839,13 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         /// contains a member of the group, such as "group:child@google.com" or "user:foo@google.com". This field is
         /// present only if the output_group_edges option is enabled in request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupEdges")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1p4beta1Edge> GroupEdges { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1p4beta1Edge> GroupEdges { get; set; }
 
         /// <summary>Only the identities that match one of the following conditions will be presented: - The
         /// identity_selector, if it is specified in request; - Otherwise, identities reachable from the policy
         /// binding's members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identities")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1p4beta1Identity> Identities { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1p4beta1Identity> Identities { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -856,12 +856,12 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
     {
         /// <summary>The analysis state of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analysisState")]
-        public virtual GoogleCloudAssetV1p4beta1AnalysisState AnalysisState { get; set; } 
+        public virtual GoogleCloudAssetV1p4beta1AnalysisState AnalysisState { get; set; }
 
         /// <summary>The [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-
         /// format)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
-        public virtual string FullResourceName { get; set; } 
+        public virtual string FullResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -872,17 +872,17 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
     {
         /// <summary>The analysis query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analysisQuery")]
-        public virtual IamPolicyAnalysisQuery AnalysisQuery { get; set; } 
+        public virtual IamPolicyAnalysisQuery AnalysisQuery { get; set; }
 
         /// <summary>A list of IamPolicyAnalysisResult that matches the analysis query, or empty if no result is
         /// found.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analysisResults")]
-        public virtual System.Collections.Generic.IList<IamPolicyAnalysisResult> AnalysisResults { get; set; } 
+        public virtual System.Collections.Generic.IList<IamPolicyAnalysisResult> AnalysisResults { get; set; }
 
         /// <summary>Represents whether all entries in the analysis_results have been fully explored to answer the
         /// query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullyExplored")]
-        public virtual System.Nullable<bool> FullyExplored { get; set; } 
+        public virtual System.Nullable<bool> FullyExplored { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -893,7 +893,7 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
     {
         /// <summary>Destination on Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
-        public virtual GcsDestination GcsDestination { get; set; } 
+        public virtual GcsDestination GcsDestination { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -904,11 +904,11 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
     {
         /// <summary>Optional. Specifies roles or permissions for analysis. This is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessSelector")]
-        public virtual AccessSelector AccessSelector { get; set; } 
+        public virtual AccessSelector AccessSelector { get; set; }
 
         /// <summary>Optional. Specifies an identity for analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identitySelector")]
-        public virtual IdentitySelector IdentitySelector { get; set; } 
+        public virtual IdentitySelector IdentitySelector { get; set; }
 
         /// <summary>Required. The relative name of the root asset. Only resources and IAM policies within the parent
         /// will be analyzed. This can only be an organization number (such as "organizations/123"), a folder number
@@ -918,11 +918,11 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         /// project id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-
         /// folders#viewing_or_listing_folders_and_projects).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; } 
+        public virtual string Parent { get; set; }
 
         /// <summary>Optional. Specifies a resource for analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceSelector")]
-        public virtual ResourceSelector ResourceSelector { get; set; } 
+        public virtual ResourceSelector ResourceSelector { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -935,25 +935,25 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         /// <summary>The access control lists derived from the iam_binding that match or potentially match resource and
         /// access selectors specified in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessControlLists")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1p4beta1AccessControlList> AccessControlLists { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1p4beta1AccessControlList> AccessControlLists { get; set; }
 
         /// <summary>The [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format) of the
         /// resource to which the iam_binding policy attaches.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachedResourceFullName")]
-        public virtual string AttachedResourceFullName { get; set; } 
+        public virtual string AttachedResourceFullName { get; set; }
 
         /// <summary>Represents whether all analyses on the iam_binding have successfully finished.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullyExplored")]
-        public virtual System.Nullable<bool> FullyExplored { get; set; } 
+        public virtual System.Nullable<bool> FullyExplored { get; set; }
 
         /// <summary>The Cloud IAM policy binding under analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iamBinding")]
-        public virtual Binding IamBinding { get; set; } 
+        public virtual Binding IamBinding { get; set; }
 
         /// <summary>The identity list derived from members of the iam_binding that match or potentially match identity
         /// selector specified in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identityList")]
-        public virtual GoogleCloudAssetV1p4beta1IdentityList IdentityList { get; set; } 
+        public virtual GoogleCloudAssetV1p4beta1IdentityList IdentityList { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -969,7 +969,7 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         /// id@appspot.gserviceaccount.com". Notice that wildcard characters (such as * and ?) are not supported. You
         /// must give a specific identity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identity")]
-        public virtual string Identity { get; set; } 
+        public virtual string Identity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -981,23 +981,23 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -1005,7 +1005,7 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1027,13 +1027,13 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         /// those advanced analysis results will be included in
         /// AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Default is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyzeServiceAccountImpersonation")]
-        public virtual System.Nullable<bool> AnalyzeServiceAccountImpersonation { get; set; } 
+        public virtual System.Nullable<bool> AnalyzeServiceAccountImpersonation { get; set; }
 
         /// <summary>Optional. If true, the identities section of the result will expand any Google groups appearing in
         /// an IAM policy binding. If identity_selector is specified, the identity in the result will be determined by
         /// the selector, and this flag will have no effect. Default is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expandGroups")]
-        public virtual System.Nullable<bool> ExpandGroups { get; set; } 
+        public virtual System.Nullable<bool> ExpandGroups { get; set; }
 
         /// <summary>Optional. If true, the resource section of the result will expand any resource attached to an IAM
         /// policy to include resources lower in the resource hierarchy. For example, if the request analyzes for which
@@ -1042,23 +1042,23 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         /// resource section of the result will be determined by the selector, and this flag will have no effect.
         /// Default is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expandResources")]
-        public virtual System.Nullable<bool> ExpandResources { get; set; } 
+        public virtual System.Nullable<bool> ExpandResources { get; set; }
 
         /// <summary>Optional. If true, the access section of result will expand any roles appearing in IAM policy
         /// bindings to include their permissions. If access_selector is specified, the access section of the result
         /// will be determined by the selector, and this flag will have no effect. Default is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expandRoles")]
-        public virtual System.Nullable<bool> ExpandRoles { get; set; } 
+        public virtual System.Nullable<bool> ExpandRoles { get; set; }
 
         /// <summary>Optional. If true, the result will output group identity edges, starting from the binding's group
         /// members, to any expanded identities. Default is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputGroupEdges")]
-        public virtual System.Nullable<bool> OutputGroupEdges { get; set; } 
+        public virtual System.Nullable<bool> OutputGroupEdges { get; set; }
 
         /// <summary>Optional. If true, the result will output resource edges, starting from the policy attached
         /// resource, to any expanded resources. Default is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputResourceEdges")]
-        public virtual System.Nullable<bool> OutputResourceEdges { get; set; } 
+        public virtual System.Nullable<bool> OutputResourceEdges { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1072,7 +1072,7 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
         /// format) of a resource of [supported resource types](https://cloud.google.com/asset-inventory/docs/supported-
         /// asset-types#analyzable_asset_types).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
-        public virtual string FullResourceName { get; set; } 
+        public virtual string FullResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1087,17 +1087,17 @@ namespace Google.Apis.CloudAsset.v1p4beta1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -3325,35 +3325,35 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Accuracy is the fraction of predictions given the correct label. For multiclass this is a micro-
         /// averaged metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accuracy")]
-        public virtual System.Nullable<double> Accuracy { get; set; } 
+        public virtual System.Nullable<double> Accuracy { get; set; }
 
         /// <summary>The F1 score is an average of recall and precision. For multiclass this is a macro-averaged
         /// metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("f1Score")]
-        public virtual System.Nullable<double> F1Score { get; set; } 
+        public virtual System.Nullable<double> F1Score { get; set; }
 
         /// <summary>Logarithmic Loss. For multiclass this is a macro-averaged metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logLoss")]
-        public virtual System.Nullable<double> LogLoss { get; set; } 
+        public virtual System.Nullable<double> LogLoss { get; set; }
 
         /// <summary>Precision is the fraction of actual positive predictions that had positive actual labels. For
         /// multiclass this is a macro-averaged metric treating each class as a binary classifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("precision")]
-        public virtual System.Nullable<double> Precision { get; set; } 
+        public virtual System.Nullable<double> Precision { get; set; }
 
         /// <summary>Recall is the fraction of actual positive labels that were given a positive prediction. For
         /// multiclass this is a macro-averaged metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recall")]
-        public virtual System.Nullable<double> Recall { get; set; } 
+        public virtual System.Nullable<double> Recall { get; set; }
 
         /// <summary>Area Under a ROC Curve. For multiclass this is a macro-averaged metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rocAuc")]
-        public virtual System.Nullable<double> RocAuc { get; set; } 
+        public virtual System.Nullable<double> RocAuc { get; set; }
 
         /// <summary>Threshold at which the metrics are computed. For binary classification models this is the positive
         /// class threshold. For multi-class classfication models this is the confidence threshold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
-        public virtual System.Nullable<double> Threshold { get; set; } 
+        public virtual System.Nullable<double> Threshold { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3364,20 +3364,20 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Optional. Defaults to FIXED_TYPE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("argumentKind")]
-        public virtual string ArgumentKind { get; set; } 
+        public virtual string ArgumentKind { get; set; }
 
         /// <summary>Required unless argument_kind = ANY_TYPE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
-        public virtual StandardSqlDataType DataType { get; set; } 
+        public virtual StandardSqlDataType DataType { get; set; }
 
         /// <summary>Optional. Specifies whether the argument is input or output. Can be set for procedures
         /// only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
-        public virtual string Mode { get; set; } 
+        public virtual string Mode { get; set; }
 
         /// <summary>Optional. The name of this argument. Can be absent for function return argument.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3388,15 +3388,15 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Auto-regressive coefficients, an array of double.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoRegressiveCoefficients")]
-        public virtual System.Collections.Generic.IList<System.Nullable<double>> AutoRegressiveCoefficients { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> AutoRegressiveCoefficients { get; set; }
 
         /// <summary>Intercept coefficient, just a double not an array.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interceptCoefficient")]
-        public virtual System.Nullable<double> InterceptCoefficient { get; set; } 
+        public virtual System.Nullable<double> InterceptCoefficient { get; set; }
 
         /// <summary>Moving-average coefficients, an array of double.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("movingAverageCoefficients")]
-        public virtual System.Collections.Generic.IList<System.Nullable<double>> MovingAverageCoefficients { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> MovingAverageCoefficients { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3407,15 +3407,15 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>AIC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aic")]
-        public virtual System.Nullable<double> Aic { get; set; } 
+        public virtual System.Nullable<double> Aic { get; set; }
 
         /// <summary>Log-likelihood.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logLikelihood")]
-        public virtual System.Nullable<double> LogLikelihood { get; set; } 
+        public virtual System.Nullable<double> LogLikelihood { get; set; }
 
         /// <summary>Variance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variance")]
-        public virtual System.Nullable<double> Variance { get; set; } 
+        public virtual System.Nullable<double> Variance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3426,28 +3426,28 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Arima model fitting metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arimaFittingMetrics")]
-        public virtual System.Collections.Generic.IList<ArimaFittingMetrics> ArimaFittingMetrics { get; set; } 
+        public virtual System.Collections.Generic.IList<ArimaFittingMetrics> ArimaFittingMetrics { get; set; }
 
         /// <summary>Repeated as there can be many metric sets (one for each model) in auto-arima and the large-scale
         /// case.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arimaSingleModelForecastingMetrics")]
-        public virtual System.Collections.Generic.IList<ArimaSingleModelForecastingMetrics> ArimaSingleModelForecastingMetrics { get; set; } 
+        public virtual System.Collections.Generic.IList<ArimaSingleModelForecastingMetrics> ArimaSingleModelForecastingMetrics { get; set; }
 
         /// <summary>Whether Arima model fitted with drift or not. It is always false when d is not 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasDrift")]
-        public virtual System.Collections.Generic.IList<System.Nullable<bool>> HasDrift { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<bool>> HasDrift { get; set; }
 
         /// <summary>Non-seasonal order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonSeasonalOrder")]
-        public virtual System.Collections.Generic.IList<ArimaOrder> NonSeasonalOrder { get; set; } 
+        public virtual System.Collections.Generic.IList<ArimaOrder> NonSeasonalOrder { get; set; }
 
         /// <summary>Seasonal periods. Repeated because multiple periods are supported for one time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seasonalPeriods")]
-        public virtual System.Collections.Generic.IList<string> SeasonalPeriods { get; set; } 
+        public virtual System.Collections.Generic.IList<string> SeasonalPeriods { get; set; }
 
         /// <summary>Id to differentiate different time series for the large-scale case.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesId")]
-        public virtual System.Collections.Generic.IList<string> TimeSeriesId { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TimeSeriesId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3458,27 +3458,27 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Arima coefficients.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arimaCoefficients")]
-        public virtual ArimaCoefficients ArimaCoefficients { get; set; } 
+        public virtual ArimaCoefficients ArimaCoefficients { get; set; }
 
         /// <summary>Arima fitting metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arimaFittingMetrics")]
-        public virtual ArimaFittingMetrics ArimaFittingMetrics { get; set; } 
+        public virtual ArimaFittingMetrics ArimaFittingMetrics { get; set; }
 
         /// <summary>Whether Arima model fitted with drift or not. It is always false when d is not 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasDrift")]
-        public virtual System.Nullable<bool> HasDrift { get; set; } 
+        public virtual System.Nullable<bool> HasDrift { get; set; }
 
         /// <summary>Non-seasonal order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonSeasonalOrder")]
-        public virtual ArimaOrder NonSeasonalOrder { get; set; } 
+        public virtual ArimaOrder NonSeasonalOrder { get; set; }
 
         /// <summary>Seasonal periods. Repeated because multiple periods are supported for one time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seasonalPeriods")]
-        public virtual System.Collections.Generic.IList<string> SeasonalPeriods { get; set; } 
+        public virtual System.Collections.Generic.IList<string> SeasonalPeriods { get; set; }
 
         /// <summary>The id to indicate different time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesId")]
-        public virtual string TimeSeriesId { get; set; } 
+        public virtual string TimeSeriesId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3489,15 +3489,15 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Order of the differencing part.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("d")]
-        public virtual System.Nullable<long> D { get; set; } 
+        public virtual System.Nullable<long> D { get; set; }
 
         /// <summary>Order of the autoregressive part.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("p")]
-        public virtual System.Nullable<long> P { get; set; } 
+        public virtual System.Nullable<long> P { get; set; }
 
         /// <summary>Order of the moving-average part.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("q")]
-        public virtual System.Nullable<long> Q { get; set; } 
+        public virtual System.Nullable<long> Q { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3510,11 +3510,11 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>This message is repeated because there are multiple arima models fitted in auto-arima. For non-
         /// auto-arima model, its size is one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arimaModelInfo")]
-        public virtual System.Collections.Generic.IList<ArimaModelInfo> ArimaModelInfo { get; set; } 
+        public virtual System.Collections.Generic.IList<ArimaModelInfo> ArimaModelInfo { get; set; }
 
         /// <summary>Seasonal periods. Repeated because multiple periods are supported for one time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seasonalPeriods")]
-        public virtual System.Collections.Generic.IList<string> SeasonalPeriods { get; set; } 
+        public virtual System.Collections.Generic.IList<string> SeasonalPeriods { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3525,23 +3525,23 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Arima fitting metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arimaFittingMetrics")]
-        public virtual ArimaFittingMetrics ArimaFittingMetrics { get; set; } 
+        public virtual ArimaFittingMetrics ArimaFittingMetrics { get; set; }
 
         /// <summary>Is arima model fitted with drift or not. It is always false when d is not 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasDrift")]
-        public virtual System.Nullable<bool> HasDrift { get; set; } 
+        public virtual System.Nullable<bool> HasDrift { get; set; }
 
         /// <summary>Non-seasonal order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonSeasonalOrder")]
-        public virtual ArimaOrder NonSeasonalOrder { get; set; } 
+        public virtual ArimaOrder NonSeasonalOrder { get; set; }
 
         /// <summary>Seasonal periods. Repeated because multiple periods are supported for one time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seasonalPeriods")]
-        public virtual System.Collections.Generic.IList<string> SeasonalPeriods { get; set; } 
+        public virtual System.Collections.Generic.IList<string> SeasonalPeriods { get; set; }
 
         /// <summary>The id to indicate different time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesId")]
-        public virtual string TimeSeriesId { get; set; } 
+        public virtual string TimeSeriesId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3562,12 +3562,12 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
-        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; }
 
         /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
         /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3582,11 +3582,11 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
         /// format of Binding.members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
-        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
 
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
-        public virtual string LogType { get; set; } 
+        public virtual string LogType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3597,13 +3597,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Output-only, Beta] Index of current ML training iteration. Updated during create model query job
         /// to show job progress.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentIteration")]
-        public virtual System.Nullable<int> CurrentIteration { get; set; } 
+        public virtual System.Nullable<int> CurrentIteration { get; set; }
 
         /// <summary>[Output-only, Beta] Expected number of iterations for the create model query job specified as
         /// num_iterations in the input query. The actual total number of iterations may be less than this number due to
         /// early stop.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expectedTotalIterations")]
-        public virtual System.Nullable<long> ExpectedTotalIterations { get; set; } 
+        public virtual System.Nullable<long> ExpectedTotalIterations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3616,19 +3616,19 @@ namespace Google.Apis.Bigquery.v2.Data
         /// Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the
         /// setting at this level takes precedence if 'encoding' is set at both levels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
-        public virtual string Encoding { get; set; } 
+        public virtual string Encoding { get; set; }
 
         /// <summary>[Optional] If the qualifier is not a valid BigQuery field identifier i.e. does not match
         /// [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as the column field name and is used as field
         /// name in queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
-        public virtual string FieldName { get; set; } 
+        public virtual string FieldName { get; set; }
 
         /// <summary>[Optional] If this is set, only the latest version of value in this column are exposed.
         /// 'onlyReadLatest' can also be set at the column family level. However, the setting at this level takes
         /// precedence if 'onlyReadLatest' is set at both levels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onlyReadLatest")]
-        public virtual System.Nullable<bool> OnlyReadLatest { get; set; } 
+        public virtual System.Nullable<bool> OnlyReadLatest { get; set; }
 
         /// <summary>[Required] Qualifier of the column. Columns in the parent column family that has this exact
         /// qualifier are exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the
@@ -3637,10 +3637,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as
         /// field_name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qualifierEncoded")]
-        public virtual string QualifierEncoded { get; set; } 
+        public virtual string QualifierEncoded { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("qualifierString")]
-        public virtual string QualifierString { get; set; } 
+        public virtual string QualifierString { get; set; }
 
         /// <summary>[Optional] The type to convert the value in cells of this column. The values are expected to be
         /// encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types
@@ -3648,7 +3648,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// set at the column family level. However, the setting at this level takes precedence if 'type' is set at both
         /// levels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3660,31 +3660,31 @@ namespace Google.Apis.Bigquery.v2.Data
         /// (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as
         /// .. Other columns can be accessed as a list through .Column field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
-        public virtual System.Collections.Generic.IList<BigtableColumn> Columns { get; set; } 
+        public virtual System.Collections.Generic.IList<BigtableColumn> Columns { get; set; }
 
         /// <summary>[Optional] The encoding of the values when the type is not STRING. Acceptable encoding values are:
         /// TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase
         /// Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in
         /// 'columns' and specifying an encoding for it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
-        public virtual string Encoding { get; set; } 
+        public virtual string Encoding { get; set; }
 
         /// <summary>Identifier of the column family.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("familyId")]
-        public virtual string FamilyId { get; set; } 
+        public virtual string FamilyId { get; set; }
 
         /// <summary>[Optional] If this is set only the latest version of value are exposed for all columns in this
         /// column family. This can be overridden for a specific column by listing that column in 'columns' and
         /// specifying a different setting for that column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onlyReadLatest")]
-        public virtual System.Nullable<bool> OnlyReadLatest { get; set; } 
+        public virtual System.Nullable<bool> OnlyReadLatest { get; set; }
 
         /// <summary>[Optional] The type to convert the value in cells of this column family. The values are expected to
         /// be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types
         /// are allowed (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is BYTES. This can be
         /// overridden for a specific column by listing that column in 'columns' and specifying a type for it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3698,19 +3698,19 @@ namespace Google.Apis.Bigquery.v2.Data
         /// column families are present in the table schema and their values are read as BYTES. During a query only the
         /// column families referenced in that query are read from Bigtable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnFamilies")]
-        public virtual System.Collections.Generic.IList<BigtableColumnFamily> ColumnFamilies { get; set; } 
+        public virtual System.Collections.Generic.IList<BigtableColumnFamily> ColumnFamilies { get; set; }
 
         /// <summary>[Optional] If field is true, then the column families that are not specified in columnFamilies list
         /// are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is
         /// false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreUnspecifiedColumnFamilies")]
-        public virtual System.Nullable<bool> IgnoreUnspecifiedColumnFamilies { get; set; } 
+        public virtual System.Nullable<bool> IgnoreUnspecifiedColumnFamilies { get; set; }
 
         /// <summary>[Optional] If field is true, then the rowkey column families will be read and converted to string.
         /// Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary.
         /// The default value is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readRowkeyAsString")]
-        public virtual System.Nullable<bool> ReadRowkeyAsString { get; set; } 
+        public virtual System.Nullable<bool> ReadRowkeyAsString { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3721,19 +3721,19 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Aggregate classification metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregateClassificationMetrics")]
-        public virtual AggregateClassificationMetrics AggregateClassificationMetrics { get; set; } 
+        public virtual AggregateClassificationMetrics AggregateClassificationMetrics { get; set; }
 
         /// <summary>Binary confusion matrix at multiple thresholds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binaryConfusionMatrixList")]
-        public virtual System.Collections.Generic.IList<BinaryConfusionMatrix> BinaryConfusionMatrixList { get; set; } 
+        public virtual System.Collections.Generic.IList<BinaryConfusionMatrix> BinaryConfusionMatrixList { get; set; }
 
         /// <summary>Label representing the negative class.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negativeLabel")]
-        public virtual string NegativeLabel { get; set; } 
+        public virtual string NegativeLabel { get; set; }
 
         /// <summary>Label representing the positive class.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("positiveLabel")]
-        public virtual string PositiveLabel { get; set; } 
+        public virtual string PositiveLabel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3744,39 +3744,39 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>The fraction of predictions given the correct label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accuracy")]
-        public virtual System.Nullable<double> Accuracy { get; set; } 
+        public virtual System.Nullable<double> Accuracy { get; set; }
 
         /// <summary>The equally weighted average of recall and precision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("f1Score")]
-        public virtual System.Nullable<double> F1Score { get; set; } 
+        public virtual System.Nullable<double> F1Score { get; set; }
 
         /// <summary>Number of false samples predicted as false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("falseNegatives")]
-        public virtual System.Nullable<long> FalseNegatives { get; set; } 
+        public virtual System.Nullable<long> FalseNegatives { get; set; }
 
         /// <summary>Number of false samples predicted as true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("falsePositives")]
-        public virtual System.Nullable<long> FalsePositives { get; set; } 
+        public virtual System.Nullable<long> FalsePositives { get; set; }
 
         /// <summary>Threshold value used when computing each of the following metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("positiveClassThreshold")]
-        public virtual System.Nullable<double> PositiveClassThreshold { get; set; } 
+        public virtual System.Nullable<double> PositiveClassThreshold { get; set; }
 
         /// <summary>The fraction of actual positive predictions that had positive actual labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("precision")]
-        public virtual System.Nullable<double> Precision { get; set; } 
+        public virtual System.Nullable<double> Precision { get; set; }
 
         /// <summary>The fraction of actual positive labels that were given a positive prediction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recall")]
-        public virtual System.Nullable<double> Recall { get; set; } 
+        public virtual System.Nullable<double> Recall { get; set; }
 
         /// <summary>Number of true samples predicted as false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trueNegatives")]
-        public virtual System.Nullable<long> TrueNegatives { get; set; } 
+        public virtual System.Nullable<long> TrueNegatives { get; set; }
 
         /// <summary>Number of true samples predicted as true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("truePositives")]
-        public virtual System.Nullable<long> TruePositives { get; set; } 
+        public virtual System.Nullable<long> TruePositives { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3791,7 +3791,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
@@ -3813,12 +3813,12 @@ namespace Google.Apis.Bigquery.v2.Data
         /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3828,28 +3828,28 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>[Output-only, Beta] Time taken to run the training iteration in milliseconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("durationMs")]
-        public virtual System.Nullable<long> DurationMs { get; set; } 
+        public virtual System.Nullable<long> DurationMs { get; set; }
 
         /// <summary>[Output-only, Beta] Eval loss computed on the eval data at the end of the iteration. The eval loss
         /// is used for early stopping to avoid overfitting. No eval loss if eval_split_method option is specified as
         /// no_split or auto_split with input data size less than 500 rows.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evalLoss")]
-        public virtual System.Nullable<double> EvalLoss { get; set; } 
+        public virtual System.Nullable<double> EvalLoss { get; set; }
 
         /// <summary>[Output-only, Beta] Index of the ML training iteration, starting from zero for each training
         /// run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
-        public virtual System.Nullable<int> Index { get; set; } 
+        public virtual System.Nullable<int> Index { get; set; }
 
         /// <summary>[Output-only, Beta] Learning rate used for this iteration, it varies for different training
         /// iterations if learn_rate_strategy option is not constant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("learnRate")]
-        public virtual System.Nullable<double> LearnRate { get; set; } 
+        public virtual System.Nullable<double> LearnRate { get; set; }
 
         /// <summary>[Output-only, Beta] Training loss computed on the training data at the end of the iteration. The
         /// training loss function is defined by model type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingLoss")]
-        public virtual System.Nullable<double> TrainingLoss { get; set; } 
+        public virtual System.Nullable<double> TrainingLoss { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3859,7 +3859,7 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>[Output-only, Beta] List of each iteration results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iterationResults")]
-        public virtual System.Collections.Generic.IList<BqmlIterationResult> IterationResults { get; set; } 
+        public virtual System.Collections.Generic.IList<BqmlIterationResult> IterationResults { get; set; }
 
         /// <summary>[Output-only, Beta] Training run start time in milliseconds since the epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
@@ -3877,14 +3877,14 @@ namespace Google.Apis.Bigquery.v2.Data
         /// progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully
         /// completed. CANCELLED: Training run cancelled by the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>[Output-only, Beta] Training options used by this training run. These options are mutable for
         /// subsequent training runs. Default values are explicitly stored for options not specified in the input query
         /// of the first training run. For subsequent training runs, any option not explicitly specified in the input
         /// query will be copied from the previous training run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingOptions")]
-        public virtual TrainingOptionsData TrainingOptions { get; set; } 
+        public virtual TrainingOptionsData TrainingOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3897,31 +3897,31 @@ namespace Google.Apis.Bigquery.v2.Data
         public class TrainingOptionsData
         {
             [Newtonsoft.Json.JsonPropertyAttribute("earlyStop")]
-            public virtual System.Nullable<bool> EarlyStop { get; set; } 
+            public virtual System.Nullable<bool> EarlyStop { get; set; }
 
             [Newtonsoft.Json.JsonPropertyAttribute("l1Reg")]
-            public virtual System.Nullable<double> L1Reg { get; set; } 
+            public virtual System.Nullable<double> L1Reg { get; set; }
 
             [Newtonsoft.Json.JsonPropertyAttribute("l2Reg")]
-            public virtual System.Nullable<double> L2Reg { get; set; } 
+            public virtual System.Nullable<double> L2Reg { get; set; }
 
             [Newtonsoft.Json.JsonPropertyAttribute("learnRate")]
-            public virtual System.Nullable<double> LearnRate { get; set; } 
+            public virtual System.Nullable<double> LearnRate { get; set; }
 
             [Newtonsoft.Json.JsonPropertyAttribute("learnRateStrategy")]
-            public virtual string LearnRateStrategy { get; set; } 
+            public virtual string LearnRateStrategy { get; set; }
 
             [Newtonsoft.Json.JsonPropertyAttribute("lineSearchInitLearnRate")]
-            public virtual System.Nullable<double> LineSearchInitLearnRate { get; set; } 
+            public virtual System.Nullable<double> LineSearchInitLearnRate { get; set; }
 
             [Newtonsoft.Json.JsonPropertyAttribute("maxIteration")]
-            public virtual System.Nullable<long> MaxIteration { get; set; } 
+            public virtual System.Nullable<long> MaxIteration { get; set; }
 
             [Newtonsoft.Json.JsonPropertyAttribute("minRelProgress")]
-            public virtual System.Nullable<double> MinRelProgress { get; set; } 
+            public virtual System.Nullable<double> MinRelProgress { get; set; }
 
             [Newtonsoft.Json.JsonPropertyAttribute("warmStart")]
-            public virtual System.Nullable<bool> WarmStart { get; set; } 
+            public virtual System.Nullable<bool> WarmStart { get; set; }
 
         }
     }    
@@ -3933,7 +3933,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// return top ten (by count) and return one more CategoryCount with category "_OTHER_" and count as aggregate
         /// counts of remaining categories.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoryCounts")]
-        public virtual System.Collections.Generic.IList<CategoryCount> CategoryCounts { get; set; } 
+        public virtual System.Collections.Generic.IList<CategoryCount> CategoryCounts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3944,11 +3944,11 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>The name of category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
-        public virtual string Category { get; set; } 
+        public virtual string Category { get; set; }
 
         /// <summary>The count of training samples matching the category within the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
-        public virtual System.Nullable<long> Count { get; set; } 
+        public virtual System.Nullable<long> Count { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3959,15 +3959,15 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Centroid id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("centroidId")]
-        public virtual System.Nullable<long> CentroidId { get; set; } 
+        public virtual System.Nullable<long> CentroidId { get; set; }
 
         /// <summary>Count of training data rows that were assigned to this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
-        public virtual System.Nullable<long> Count { get; set; } 
+        public virtual System.Nullable<long> Count { get; set; }
 
         /// <summary>Values of highly variant features for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("featureValues")]
-        public virtual System.Collections.Generic.IList<FeatureValue> FeatureValues { get; set; } 
+        public virtual System.Collections.Generic.IList<FeatureValue> FeatureValues { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3978,15 +3978,15 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Centroid id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("centroidId")]
-        public virtual System.Nullable<long> CentroidId { get; set; } 
+        public virtual System.Nullable<long> CentroidId { get; set; }
 
         /// <summary>Cluster radius, the average distance from centroid to each point assigned to the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterRadius")]
-        public virtual System.Nullable<double> ClusterRadius { get; set; } 
+        public virtual System.Nullable<double> ClusterRadius { get; set; }
 
         /// <summary>Cluster size, the total number of points assigned to the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterSize")]
-        public virtual System.Nullable<long> ClusterSize { get; set; } 
+        public virtual System.Nullable<long> ClusterSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3998,7 +3998,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// simple-type fields are supported. When you cluster a table using multiple columns, the order of columns you
         /// specify is important. The order of the specified columns determines the sort order of the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual System.Collections.Generic.IList<string> Fields { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Fields { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4009,15 +4009,15 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>[Beta] Information for all clusters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusters")]
-        public virtual System.Collections.Generic.IList<Cluster> Clusters { get; set; } 
+        public virtual System.Collections.Generic.IList<Cluster> Clusters { get; set; }
 
         /// <summary>Davies-Bouldin index.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("daviesBouldinIndex")]
-        public virtual System.Nullable<double> DaviesBouldinIndex { get; set; } 
+        public virtual System.Nullable<double> DaviesBouldinIndex { get; set; }
 
         /// <summary>Mean of squared distances between each sample to its cluster centroid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meanSquaredDistance")]
-        public virtual System.Nullable<double> MeanSquaredDistance { get; set; } 
+        public virtual System.Nullable<double> MeanSquaredDistance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4028,11 +4028,11 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Confidence threshold used when computing the entries of the confusion matrix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidenceThreshold")]
-        public virtual System.Nullable<double> ConfidenceThreshold { get; set; } 
+        public virtual System.Nullable<double> ConfidenceThreshold { get; set; }
 
         /// <summary>One row per actual label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-        public virtual System.Collections.Generic.IList<Row> Rows { get; set; } 
+        public virtual System.Collections.Generic.IList<Row> Rows { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4042,11 +4042,11 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>[Required] Name of the connection property to set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>[Required] Value of the connection property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4059,25 +4059,25 @@ namespace Google.Apis.Bigquery.v2.Data
         /// columns are treated as bad records, and if there are too many bad records, an invalid error is returned in
         /// the job result. The default value is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowJaggedRows")]
-        public virtual System.Nullable<bool> AllowJaggedRows { get; set; } 
+        public virtual System.Nullable<bool> AllowJaggedRows { get; set; }
 
         /// <summary>[Optional] Indicates if BigQuery should allow quoted data sections that contain newline characters
         /// in a CSV file. The default value is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowQuotedNewlines")]
-        public virtual System.Nullable<bool> AllowQuotedNewlines { get; set; } 
+        public virtual System.Nullable<bool> AllowQuotedNewlines { get; set; }
 
         /// <summary>[Optional] The character encoding of the data. The supported values are UTF-8 or ISO-8859-1. The
         /// default value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values
         /// of the quote and fieldDelimiter properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
-        public virtual string Encoding { get; set; } 
+        public virtual string Encoding { get; set; }
 
         /// <summary>[Optional] The separator for fields in a CSV file. BigQuery converts the string to ISO-8859-1
         /// encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state.
         /// BigQuery also supports the escape sequence "\t" to specify a tab separator. The default value is a comma
         /// (',').</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldDelimiter")]
-        public virtual string FieldDelimiter { get; set; } 
+        public virtual string FieldDelimiter { get; set; }
 
         /// <summary>[Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the
         /// string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its
@@ -4085,7 +4085,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// set the property value to an empty string. If your data contains quoted newline characters, you must also
         /// set the allowQuotedNewlines property to true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quote")]
-        public virtual string Quote { get; set; } 
+        public virtual string Quote { get; set; }
 
         /// <summary>[Optional] The number of rows at the top of a CSV file that BigQuery will skip when reading the
         /// data. The default value is 0. This property is useful if you have header rows in the file that should be
@@ -4096,7 +4096,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise
         /// row N is used to extract column names for the detected schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipLeadingRows")]
-        public virtual System.Nullable<long> SkipLeadingRows { get; set; } 
+        public virtual System.Nullable<long> SkipLeadingRows { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4108,11 +4108,11 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Table reference of the evaluation data after split.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationTable")]
-        public virtual TableReference EvaluationTable { get; set; } 
+        public virtual TableReference EvaluationTable { get; set; }
 
         /// <summary>Table reference of the training data after split.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingTable")]
-        public virtual TableReference TrainingTable { get; set; } 
+        public virtual TableReference TrainingTable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4127,18 +4127,18 @@ namespace Google.Apis.Bigquery.v2.Data
         /// WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email];
         /// access.role: OWNER;</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access")]
-        public virtual System.Collections.Generic.IList<AccessData> Access { get; set; } 
+        public virtual System.Collections.Generic.IList<AccessData> Access { get; set; }
 
         /// <summary>[Output-only] The time when this dataset was created, in milliseconds since the epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual System.Nullable<long> CreationTime { get; set; } 
+        public virtual System.Nullable<long> CreationTime { get; set; }
 
         /// <summary>[Required] A reference that identifies the dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetReference")]
-        public virtual DatasetReference DatasetReference { get; set; } 
+        public virtual DatasetReference DatasetReference { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("defaultEncryptionConfiguration")]
-        public virtual EncryptionConfiguration DefaultEncryptionConfiguration { get; set; } 
+        public virtual EncryptionConfiguration DefaultEncryptionConfiguration { get; set; }
 
         /// <summary>[Optional] The default partition expiration for all partitioned tables in the dataset, in
         /// milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an
@@ -4150,7 +4150,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// updating a partitioned table, that value takes precedence over the default partition expiration time
         /// indicated by this property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultPartitionExpirationMs")]
-        public virtual System.Nullable<long> DefaultPartitionExpirationMs { get; set; } 
+        public virtual System.Nullable<long> DefaultPartitionExpirationMs { get; set; }
 
         /// <summary>[Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is
         /// 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will
@@ -4160,50 +4160,50 @@ namespace Google.Apis.Bigquery.v2.Data
         /// table expires, or if you provide an explicit expirationTime when creating a table, that value takes
         /// precedence over the default expiration time indicated by this property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultTableExpirationMs")]
-        public virtual System.Nullable<long> DefaultTableExpirationMs { get; set; } 
+        public virtual System.Nullable<long> DefaultTableExpirationMs { get; set; }
 
         /// <summary>[Optional] A user-friendly description of the dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>[Output-only] A hash of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>[Optional] A descriptive name for the dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("friendlyName")]
-        public virtual string FriendlyName { get; set; } 
+        public virtual string FriendlyName { get; set; }
 
         /// <summary>[Output-only] The fully-qualified unique name of the dataset in the format projectId:datasetId. The
         /// dataset name without the project name is given in the datasetId field. When creating a new dataset, leave
         /// this field blank, and instead specify the datasetId field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>[Output-only] The resource type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The labels associated with this dataset. You can use these to organize and group your datasets. You
         /// can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for
         /// more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>[Output-only] The date when this dataset or any of its tables was last modified, in milliseconds
         /// since the epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
-        public virtual System.Nullable<long> LastModifiedTime { get; set; } 
+        public virtual System.Nullable<long> LastModifiedTime { get; set; }
 
         /// <summary>The geographic location where the dataset should reside. The default value is US. See details at
         /// https://cloud.google.com/bigquery/docs/locations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>[Output-only] A URL that can be used to access the resource again. You can use this URL in Get or
         /// Update requests to the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         
 
@@ -4213,17 +4213,17 @@ namespace Google.Apis.Bigquery.v2.Data
             /// granted the specified access. Example: "example.com". Maps to IAM policy member
             /// "domain:DOMAIN".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("domain")]
-            public virtual string Domain { get; set; } 
+            public virtual string Domain { get; set; }
 
             /// <summary>[Pick one] An email address of a Google Group to grant access to. Maps to IAM policy member
             /// "group:GROUP".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("groupByEmail")]
-            public virtual string GroupByEmail { get; set; } 
+            public virtual string GroupByEmail { get; set; }
 
             /// <summary>[Pick one] Some other type of member that appears in the IAM Policy but isn't a user, group,
             /// domain, or special group.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("iamMember")]
-            public virtual string IamMember { get; set; } 
+            public virtual string IamMember { get; set; }
 
             /// <summary>[Required] An IAM role ID that should be granted to the user, group, or domain specified in
             /// this access entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER
@@ -4231,26 +4231,26 @@ namespace Google.Apis.Bigquery.v2.Data
             /// formats, but will return only the legacy format. For example, if you set this field to
             /// "roles/bigquery.dataOwner", it will be returned back as "OWNER".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("role")]
-            public virtual string Role { get; set; } 
+            public virtual string Role { get; set; }
 
             /// <summary>[Pick one] A special group to grant access to. Possible values include: projectOwners: Owners
             /// of the enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of
             /// the enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named
             /// IAM members.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("specialGroup")]
-            public virtual string SpecialGroup { get; set; } 
+            public virtual string SpecialGroup { get; set; }
 
             /// <summary>[Pick one] An email address of a user to grant access to. For example: fred@example.com. Maps
             /// to IAM policy member "user:EMAIL" or "serviceAccount:EMAIL".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("userByEmail")]
-            public virtual string UserByEmail { get; set; } 
+            public virtual string UserByEmail { get; set; }
 
             /// <summary>[Pick one] A view from a different dataset to grant access to. Queries executed against that
             /// view will have read access to tables in this dataset. The role field is not required when this field is
             /// set. If that view is updated by any user, access to the view needs to be granted again via an update
             /// operation.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("view")]
-            public virtual TableReference View { get; set; } 
+            public virtual TableReference View { get; set; }
 
         }
     }    
@@ -4261,21 +4261,21 @@ namespace Google.Apis.Bigquery.v2.Data
         /// full information about a particular dataset resource, use the Datasets: get method. This property is omitted
         /// when there are no datasets in the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasets")]
-        public virtual System.Collections.Generic.IList<DatasetsData> Datasets { get; set; } 
+        public virtual System.Collections.Generic.IList<DatasetsData> Datasets { get; set; }
 
         /// <summary>A hash value of the results page. You can use this property to determine if the page has changed
         /// since the last request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The list type. This property always returns the value "bigquery#datasetList".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>A token that can be used to request the next results page. This property is omitted on the final
         /// results page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         
 
@@ -4284,28 +4284,28 @@ namespace Google.Apis.Bigquery.v2.Data
             /// <summary>The dataset reference. Use this property to access specific parts of the dataset's ID, such as
             /// project ID or dataset ID.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("datasetReference")]
-            public virtual DatasetReference DatasetReference { get; set; } 
+            public virtual DatasetReference DatasetReference { get; set; }
 
             /// <summary>A descriptive name for the dataset, if one exists.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("friendlyName")]
-            public virtual string FriendlyName { get; set; } 
+            public virtual string FriendlyName { get; set; }
 
             /// <summary>The fully-qualified, unique, opaque ID of the dataset.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
-            public virtual string Id { get; set; } 
+            public virtual string Id { get; set; }
 
             /// <summary>The resource type. This property always returns the value "bigquery#dataset".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-            public virtual string Kind { get; set; } 
+            public virtual string Kind { get; set; }
 
             /// <summary>The labels associated with this dataset. You can use these to organize and group your
             /// datasets.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-            public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+            public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
             /// <summary>The geographic location where the data resides.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("location")]
-            public virtual string Location { get; set; } 
+            public virtual string Location { get; set; }
 
         }
     }    
@@ -4315,11 +4315,11 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Required] A unique ID for this dataset, without the project name. The ID must contain only letters
         /// (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
-        public virtual string DatasetId { get; set; } 
+        public virtual string DatasetId { get; set; }
 
         /// <summary>[Optional] The ID of the project containing this dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4331,19 +4331,19 @@ namespace Google.Apis.Bigquery.v2.Data
         /// table is newly created. If the table already exists and a value different than the current description is
         /// provided, the job will fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>[Optional] The friendly name for the destination table. This will only be used if the destination
         /// table is newly created. If the table already exists and a value different than the current friendly name is
         /// provided, the job will fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("friendlyName")]
-        public virtual string FriendlyName { get; set; } 
+        public virtual string FriendlyName { get; set; }
 
         /// <summary>[Optional] The labels associated with this table. You can use these to organize and group your
         /// tables. This will only be used if the destination table is newly created. If the table already exists and
         /// labels are different than the current labels are provided, the job will fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4355,7 +4355,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// table. The BigQuery Service Account associated with your project requires access to this encryption
         /// key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
-        public virtual string KmsKeyName { get; set; } 
+        public virtual string KmsKeyName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4366,12 +4366,12 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Number of items being predicted as this label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemCount")]
-        public virtual System.Nullable<long> ItemCount { get; set; } 
+        public virtual System.Nullable<long> ItemCount { get; set; }
 
         /// <summary>The predicted label. For confidence_threshold > 0, we will also add an entry indicating the number
         /// of items under the confidence threshold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predictedLabel")]
-        public virtual string PredictedLabel { get; set; } 
+        public virtual string PredictedLabel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4381,19 +4381,19 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Debugging information. This property is internal to Google and should not be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugInfo")]
-        public virtual string DebugInfo { get; set; } 
+        public virtual string DebugInfo { get; set; }
 
         /// <summary>Specifies where the error occurred, if present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>A human-readable description of the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>A short error code that summarizes the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4405,27 +4405,27 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Populated for ARIMA models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arimaForecastingMetrics")]
-        public virtual ArimaForecastingMetrics ArimaForecastingMetrics { get; set; } 
+        public virtual ArimaForecastingMetrics ArimaForecastingMetrics { get; set; }
 
         /// <summary>Populated for binary classification/classifier models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binaryClassificationMetrics")]
-        public virtual BinaryClassificationMetrics BinaryClassificationMetrics { get; set; } 
+        public virtual BinaryClassificationMetrics BinaryClassificationMetrics { get; set; }
 
         /// <summary>Populated for clustering models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusteringMetrics")]
-        public virtual ClusteringMetrics ClusteringMetrics { get; set; } 
+        public virtual ClusteringMetrics ClusteringMetrics { get; set; }
 
         /// <summary>Populated for multi-class classification/classifier models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiClassClassificationMetrics")]
-        public virtual MultiClassClassificationMetrics MultiClassClassificationMetrics { get; set; } 
+        public virtual MultiClassClassificationMetrics MultiClassClassificationMetrics { get; set; }
 
         /// <summary>Populated for implicit feedback type matrix factorization models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankingMetrics")]
-        public virtual RankingMetrics RankingMetrics { get; set; } 
+        public virtual RankingMetrics RankingMetrics { get; set; }
 
         /// <summary>Populated for regression models and explicit feedback type matrix factorization models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regressionMetrics")]
-        public virtual RegressionMetrics RegressionMetrics { get; set; } 
+        public virtual RegressionMetrics RegressionMetrics { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4435,123 +4435,123 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Number of parallel input segments completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completedParallelInputs")]
-        public virtual System.Nullable<long> CompletedParallelInputs { get; set; } 
+        public virtual System.Nullable<long> CompletedParallelInputs { get; set; }
 
         /// <summary>Milliseconds the average shard spent on CPU-bound tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeMsAvg")]
-        public virtual System.Nullable<long> ComputeMsAvg { get; set; } 
+        public virtual System.Nullable<long> ComputeMsAvg { get; set; }
 
         /// <summary>Milliseconds the slowest shard spent on CPU-bound tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeMsMax")]
-        public virtual System.Nullable<long> ComputeMsMax { get; set; } 
+        public virtual System.Nullable<long> ComputeMsMax { get; set; }
 
         /// <summary>Relative amount of time the average shard spent on CPU-bound tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeRatioAvg")]
-        public virtual System.Nullable<double> ComputeRatioAvg { get; set; } 
+        public virtual System.Nullable<double> ComputeRatioAvg { get; set; }
 
         /// <summary>Relative amount of time the slowest shard spent on CPU-bound tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeRatioMax")]
-        public virtual System.Nullable<double> ComputeRatioMax { get; set; } 
+        public virtual System.Nullable<double> ComputeRatioMax { get; set; }
 
         /// <summary>Stage end time represented as milliseconds since epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endMs")]
-        public virtual System.Nullable<long> EndMs { get; set; } 
+        public virtual System.Nullable<long> EndMs { get; set; }
 
         /// <summary>Unique ID for stage within plan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
+        public virtual System.Nullable<long> Id { get; set; }
 
         /// <summary>IDs for stages that are inputs to this stage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputStages")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> InputStages { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> InputStages { get; set; }
 
         /// <summary>Human-readable name for stage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Number of parallel input segments to be processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parallelInputs")]
-        public virtual System.Nullable<long> ParallelInputs { get; set; } 
+        public virtual System.Nullable<long> ParallelInputs { get; set; }
 
         /// <summary>Milliseconds the average shard spent reading input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readMsAvg")]
-        public virtual System.Nullable<long> ReadMsAvg { get; set; } 
+        public virtual System.Nullable<long> ReadMsAvg { get; set; }
 
         /// <summary>Milliseconds the slowest shard spent reading input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readMsMax")]
-        public virtual System.Nullable<long> ReadMsMax { get; set; } 
+        public virtual System.Nullable<long> ReadMsMax { get; set; }
 
         /// <summary>Relative amount of time the average shard spent reading input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readRatioAvg")]
-        public virtual System.Nullable<double> ReadRatioAvg { get; set; } 
+        public virtual System.Nullable<double> ReadRatioAvg { get; set; }
 
         /// <summary>Relative amount of time the slowest shard spent reading input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readRatioMax")]
-        public virtual System.Nullable<double> ReadRatioMax { get; set; } 
+        public virtual System.Nullable<double> ReadRatioMax { get; set; }
 
         /// <summary>Number of records read into the stage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordsRead")]
-        public virtual System.Nullable<long> RecordsRead { get; set; } 
+        public virtual System.Nullable<long> RecordsRead { get; set; }
 
         /// <summary>Number of records written by the stage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordsWritten")]
-        public virtual System.Nullable<long> RecordsWritten { get; set; } 
+        public virtual System.Nullable<long> RecordsWritten { get; set; }
 
         /// <summary>Total number of bytes written to shuffle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shuffleOutputBytes")]
-        public virtual System.Nullable<long> ShuffleOutputBytes { get; set; } 
+        public virtual System.Nullable<long> ShuffleOutputBytes { get; set; }
 
         /// <summary>Total number of bytes written to shuffle and spilled to disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shuffleOutputBytesSpilled")]
-        public virtual System.Nullable<long> ShuffleOutputBytesSpilled { get; set; } 
+        public virtual System.Nullable<long> ShuffleOutputBytesSpilled { get; set; }
 
         /// <summary>Slot-milliseconds used by the stage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slotMs")]
-        public virtual System.Nullable<long> SlotMs { get; set; } 
+        public virtual System.Nullable<long> SlotMs { get; set; }
 
         /// <summary>Stage start time represented as milliseconds since epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startMs")]
-        public virtual System.Nullable<long> StartMs { get; set; } 
+        public virtual System.Nullable<long> StartMs { get; set; }
 
         /// <summary>Current status for the stage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>List of operations within the stage in dependency order (approximately chronological).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
-        public virtual System.Collections.Generic.IList<ExplainQueryStep> Steps { get; set; } 
+        public virtual System.Collections.Generic.IList<ExplainQueryStep> Steps { get; set; }
 
         /// <summary>Milliseconds the average shard spent waiting to be scheduled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waitMsAvg")]
-        public virtual System.Nullable<long> WaitMsAvg { get; set; } 
+        public virtual System.Nullable<long> WaitMsAvg { get; set; }
 
         /// <summary>Milliseconds the slowest shard spent waiting to be scheduled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waitMsMax")]
-        public virtual System.Nullable<long> WaitMsMax { get; set; } 
+        public virtual System.Nullable<long> WaitMsMax { get; set; }
 
         /// <summary>Relative amount of time the average shard spent waiting to be scheduled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waitRatioAvg")]
-        public virtual System.Nullable<double> WaitRatioAvg { get; set; } 
+        public virtual System.Nullable<double> WaitRatioAvg { get; set; }
 
         /// <summary>Relative amount of time the slowest shard spent waiting to be scheduled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waitRatioMax")]
-        public virtual System.Nullable<double> WaitRatioMax { get; set; } 
+        public virtual System.Nullable<double> WaitRatioMax { get; set; }
 
         /// <summary>Milliseconds the average shard spent on writing output.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeMsAvg")]
-        public virtual System.Nullable<long> WriteMsAvg { get; set; } 
+        public virtual System.Nullable<long> WriteMsAvg { get; set; }
 
         /// <summary>Milliseconds the slowest shard spent on writing output.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeMsMax")]
-        public virtual System.Nullable<long> WriteMsMax { get; set; } 
+        public virtual System.Nullable<long> WriteMsMax { get; set; }
 
         /// <summary>Relative amount of time the average shard spent on writing output.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeRatioAvg")]
-        public virtual System.Nullable<double> WriteRatioAvg { get; set; } 
+        public virtual System.Nullable<double> WriteRatioAvg { get; set; }
 
         /// <summary>Relative amount of time the slowest shard spent on writing output.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeRatioMax")]
-        public virtual System.Nullable<double> WriteRatioMax { get; set; } 
+        public virtual System.Nullable<double> WriteRatioMax { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4561,11 +4561,11 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Machine-readable operation type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Human-readable stage descriptions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substeps")]
-        public virtual System.Collections.Generic.IList<string> Substeps { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Substeps { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4587,21 +4587,21 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4612,33 +4612,33 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Try to detect schema and format options automatically. Any option specified explicitly will be
         /// honored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autodetect")]
-        public virtual System.Nullable<bool> Autodetect { get; set; } 
+        public virtual System.Nullable<bool> Autodetect { get; set; }
 
         /// <summary>[Optional] Additional options if sourceFormat is set to BIGTABLE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigtableOptions")]
-        public virtual BigtableOptions BigtableOptions { get; set; } 
+        public virtual BigtableOptions BigtableOptions { get; set; }
 
         /// <summary>[Optional] The compression type of the data source. Possible values include GZIP and NONE. The
         /// default value is NONE. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and
         /// Avro formats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compression")]
-        public virtual string Compression { get; set; } 
+        public virtual string Compression { get; set; }
 
         /// <summary>[Optional, Trusted Tester] Connection for external data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionId")]
-        public virtual string ConnectionId { get; set; } 
+        public virtual string ConnectionId { get; set; }
 
         /// <summary>Additional properties to set if sourceFormat is set to CSV.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("csvOptions")]
-        public virtual CsvOptions CsvOptions { get; set; } 
+        public virtual CsvOptions CsvOptions { get; set; }
 
         /// <summary>[Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleSheetsOptions")]
-        public virtual GoogleSheetsOptions GoogleSheetsOptions { get; set; } 
+        public virtual GoogleSheetsOptions GoogleSheetsOptions { get; set; }
 
         /// <summary>[Optional, Trusted Tester] Options to configure hive partitioning support.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hivePartitioningOptions")]
-        public virtual HivePartitioningOptions HivePartitioningOptions { get; set; } 
+        public virtual HivePartitioningOptions HivePartitioningOptions { get; set; }
 
         /// <summary>[Optional] Indicates if BigQuery should allow extra values that are not represented in the table
         /// schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad
@@ -4647,26 +4647,26 @@ namespace Google.Apis.Bigquery.v2.Data
         /// columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored.
         /// Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreUnknownValues")]
-        public virtual System.Nullable<bool> IgnoreUnknownValues { get; set; } 
+        public virtual System.Nullable<bool> IgnoreUnknownValues { get; set; }
 
         /// <summary>[Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the
         /// number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid
         /// for CSV, JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This
         /// setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxBadRecords")]
-        public virtual System.Nullable<int> MaxBadRecords { get; set; } 
+        public virtual System.Nullable<int> MaxBadRecords { get; set; }
 
         /// <summary>[Optional] The schema for the data. Schema is required for CSV and JSON formats. Schema is
         /// disallowed for Google Cloud Bigtable, Cloud Datastore backups, and Avro formats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
-        public virtual TableSchema Schema { get; set; } 
+        public virtual TableSchema Schema { get; set; }
 
         /// <summary>[Required] The data format. For CSV files, specify "CSV". For Google sheets, specify
         /// "GOOGLE_SHEETS". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro files, specify
         /// "AVRO". For Google Cloud Datastore backups, specify "DATASTORE_BACKUP". [Beta] For Google Cloud Bigtable,
         /// specify "BIGTABLE".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceFormat")]
-        public virtual string SourceFormat { get; set; } 
+        public virtual string SourceFormat { get; set; }
 
         /// <summary>[Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud
         /// Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size
@@ -4675,7 +4675,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// Google Cloud Datastore backups, exactly one URI can be specified. Also, the '*' wildcard character is not
         /// allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceUris")]
-        public virtual System.Collections.Generic.IList<string> SourceUris { get; set; } 
+        public virtual System.Collections.Generic.IList<string> SourceUris { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4686,15 +4686,15 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>The categorical feature value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoricalValue")]
-        public virtual CategoricalValue CategoricalValue { get; set; } 
+        public virtual CategoricalValue CategoricalValue { get; set; }
 
         /// <summary>The feature column name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("featureColumn")]
-        public virtual string FeatureColumn { get; set; } 
+        public virtual string FeatureColumn { get; set; }
 
         /// <summary>The numerical feature value. This is the centroid value for this feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numericalValue")]
-        public virtual System.Nullable<double> NumericalValue { get; set; } 
+        public virtual System.Nullable<double> NumericalValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4705,7 +4705,7 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
-        public virtual GetPolicyOptions Options { get; set; } 
+        public virtual GetPolicyOptions Options { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4720,7 +4720,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// unset. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
-        public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
+        public virtual System.Nullable<int> RequestedPolicyVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4730,61 +4730,61 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Whether the query result was fetched from the query cache.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheHit")]
-        public virtual System.Nullable<bool> CacheHit { get; set; } 
+        public virtual System.Nullable<bool> CacheHit { get; set; }
 
         /// <summary>[Output-only] The first errors or warnings encountered during the running of the job. The final
         /// message includes the number of errors that caused the process to stop. Errors here do not necessarily mean
         /// that the job has completed or was unsuccessful.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual System.Collections.Generic.IList<ErrorProto> Errors { get; set; } 
+        public virtual System.Collections.Generic.IList<ErrorProto> Errors { get; set; }
 
         /// <summary>A hash of this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Whether the query has completed or not. If rows or totalRows are present, this will always be true.
         /// If this is false, totalRows will not be available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobComplete")]
-        public virtual System.Nullable<bool> JobComplete { get; set; } 
+        public virtual System.Nullable<bool> JobComplete { get; set; }
 
         /// <summary>Reference to the BigQuery Job that was created to run the query. This field will be present even if
         /// the original request timed out, in which case GetQueryResults can be used to read the results once the query
         /// has completed. Since this API only returns the first page of results, subsequent pages can be fetched via
         /// the same mechanism (GetQueryResults).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobReference")]
-        public virtual JobReference JobReference { get; set; } 
+        public virtual JobReference JobReference { get; set; }
 
         /// <summary>The resource type of the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>[Output-only] The number of rows affected by a DML statement. Present only for DML statements
         /// INSERT, UPDATE or DELETE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numDmlAffectedRows")]
-        public virtual System.Nullable<long> NumDmlAffectedRows { get; set; } 
+        public virtual System.Nullable<long> NumDmlAffectedRows { get; set; }
 
         /// <summary>A token used for paging results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
-        public virtual string PageToken { get; set; } 
+        public virtual string PageToken { get; set; }
 
         /// <summary>An object with as many results as can be contained within the maximum permitted reply size. To get
         /// any additional rows, you can call GetQueryResults and specify the jobReference returned above. Present only
         /// when the query completes successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-        public virtual System.Collections.Generic.IList<TableRow> Rows { get; set; } 
+        public virtual System.Collections.Generic.IList<TableRow> Rows { get; set; }
 
         /// <summary>The schema of the results. Present only when the query completes successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
-        public virtual TableSchema Schema { get; set; } 
+        public virtual TableSchema Schema { get; set; }
 
         /// <summary>The total number of bytes processed for this query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesProcessed")]
-        public virtual System.Nullable<long> TotalBytesProcessed { get; set; } 
+        public virtual System.Nullable<long> TotalBytesProcessed { get; set; }
 
         /// <summary>The total number of rows in the complete query result set, which can be more than the number of
         /// rows in this single page of results. Present only when the query completes successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalRows")]
-        public virtual System.Nullable<ulong> TotalRows { get; set; } 
+        public virtual System.Nullable<ulong> TotalRows { get; set; }
 
     }    
 
@@ -4792,11 +4792,11 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>The service account email address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
+        public virtual string Email { get; set; }
 
         /// <summary>The resource type of the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4807,7 +4807,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Optional] Range of a sheet to query from. Only used when non-empty. Typical format:
         /// sheet_name!top_left_cell_id:bottom_right_cell_id For example: sheet1!A1:B20</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual string Range { get; set; } 
+        public virtual string Range { get; set; }
 
         /// <summary>[Optional] The number of rows at the top of a sheet that BigQuery will skip when reading the data.
         /// The default value is 0. This property is useful if you have header rows that should be skipped. When
@@ -4818,7 +4818,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to
         /// extract column names for the detected schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipLeadingRows")]
-        public virtual System.Nullable<long> SkipLeadingRows { get; set; } 
+        public virtual System.Nullable<long> SkipLeadingRows { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4832,7 +4832,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// support hive partitioning. Requesting hive partitioning on an unsupported format will lead to an error.
         /// Currently supported types include: AVRO, CSV, JSON, ORC and Parquet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
-        public virtual string Mode { get; set; } 
+        public virtual string Mode { get; set; }
 
         /// <summary>[Optional, Trusted Tester] When hive partition detection is requested, a common prefix for all
         /// source uris should be supplied. The prefix must end immediately before the partition key encoding begins.
@@ -4842,7 +4842,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// either AUTO or STRINGS detection, the common prefix can be either of gs://bucket/path_to_table or
         /// gs://bucket/path_to_table/ (trailing slash does not matter).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceUriPrefix")]
-        public virtual string SourceUriPrefix { get; set; } 
+        public virtual string SourceUriPrefix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4852,31 +4852,31 @@ namespace Google.Apis.Bigquery.v2.Data
     public class IterationResult : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("arimaResult")]
-        public virtual ArimaResult ArimaResult { get; set; } 
+        public virtual ArimaResult ArimaResult { get; set; }
 
         /// <summary>Information about top clusters for clustering models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterInfos")]
-        public virtual System.Collections.Generic.IList<ClusterInfo> ClusterInfos { get; set; } 
+        public virtual System.Collections.Generic.IList<ClusterInfo> ClusterInfos { get; set; }
 
         /// <summary>Time taken to run the iteration in milliseconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("durationMs")]
-        public virtual System.Nullable<long> DurationMs { get; set; } 
+        public virtual System.Nullable<long> DurationMs { get; set; }
 
         /// <summary>Loss computed on the eval data at the end of iteration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evalLoss")]
-        public virtual System.Nullable<double> EvalLoss { get; set; } 
+        public virtual System.Nullable<double> EvalLoss { get; set; }
 
         /// <summary>Index of the iteration, 0 based.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
-        public virtual System.Nullable<int> Index { get; set; } 
+        public virtual System.Nullable<int> Index { get; set; }
 
         /// <summary>Learn rate used for this iteration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("learnRate")]
-        public virtual System.Nullable<double> LearnRate { get; set; } 
+        public virtual System.Nullable<double> LearnRate { get; set; }
 
         /// <summary>Loss computed on the training data at the end of iteration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingLoss")]
-        public virtual System.Nullable<double> TrainingLoss { get; set; } 
+        public virtual System.Nullable<double> TrainingLoss { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4886,41 +4886,41 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>[Required] Describes the job configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configuration")]
-        public virtual JobConfiguration Configuration { get; set; } 
+        public virtual JobConfiguration Configuration { get; set; }
 
         /// <summary>[Output-only] A hash of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>[Output-only] Opaque ID field of the job</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>[Optional] Reference describing the unique-per-user name of the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobReference")]
-        public virtual JobReference JobReference { get; set; } 
+        public virtual JobReference JobReference { get; set; }
 
         /// <summary>[Output-only] The type of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>[Output-only] A URL that can be used to access this resource again.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>[Output-only] Information about the job, including starting time and ending time of the
         /// job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statistics")]
-        public virtual JobStatistics Statistics { get; set; } 
+        public virtual JobStatistics Statistics { get; set; }
 
         /// <summary>[Output-only] The status of this job. Examine this value when polling an asynchronous job to see if
         /// the job is complete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual JobStatus Status { get; set; } 
+        public virtual JobStatus Status { get; set; }
 
         /// <summary>[Output-only] Email address of the user who ran the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user_email")]
-        public virtual string UserEmail { get; set; } 
+        public virtual string UserEmail { get; set; }
 
     }    
 
@@ -4928,11 +4928,11 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>The final state of the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("job")]
-        public virtual Job Job { get; set; } 
+        public virtual Job Job { get; set; }
 
         /// <summary>The resource type of the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4942,41 +4942,41 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>[Pick one] Copies a table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("copy")]
-        public virtual JobConfigurationTableCopy Copy { get; set; } 
+        public virtual JobConfigurationTableCopy Copy { get; set; }
 
         /// <summary>[Optional] If set, don't actually run this job. A valid query will return a mostly empty response
         /// with some processing statistics, while an invalid query will return the same error it would if it wasn't a
         /// dry run. Behavior of non-query jobs is undefined.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dryRun")]
-        public virtual System.Nullable<bool> DryRun { get; set; } 
+        public virtual System.Nullable<bool> DryRun { get; set; }
 
         /// <summary>[Pick one] Configures an extract job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extract")]
-        public virtual JobConfigurationExtract Extract { get; set; } 
+        public virtual JobConfigurationExtract Extract { get; set; }
 
         /// <summary>[Optional] Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to
         /// terminate the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobTimeoutMs")]
-        public virtual System.Nullable<long> JobTimeoutMs { get; set; } 
+        public virtual System.Nullable<long> JobTimeoutMs { get; set; }
 
         /// <summary>[Output-only] The type of the job. Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobType")]
-        public virtual string JobType { get; set; } 
+        public virtual string JobType { get; set; }
 
         /// <summary>The labels associated with this job. You can use these to organize and group your jobs. Label keys
         /// and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters,
         /// underscores and dashes. International characters are allowed. Label values are optional. Label keys must
         /// start with a letter and each label in the list must have a different key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>[Pick one] Configures a load job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("load")]
-        public virtual JobConfigurationLoad Load { get; set; } 
+        public virtual JobConfigurationLoad Load { get; set; }
 
         /// <summary>[Pick one] Configures a query job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
-        public virtual JobConfigurationQuery Query { get; set; } 
+        public virtual JobConfigurationQuery Query { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4988,48 +4988,48 @@ namespace Google.Apis.Bigquery.v2.Data
         /// SNAPPY, and NONE. The default value is NONE. DEFLATE and SNAPPY are only supported for Avro. Not applicable
         /// when extracting models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compression")]
-        public virtual string Compression { get; set; } 
+        public virtual string Compression { get; set; }
 
         /// <summary>[Optional] The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON or AVRO
         /// for tables and ML_TF_SAVED_MODEL or ML_XGBOOST_BOOSTER for models. The default value for tables is CSV.
         /// Tables with nested or repeated fields cannot be exported as CSV. The default value for models is
         /// ML_TF_SAVED_MODEL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationFormat")]
-        public virtual string DestinationFormat { get; set; } 
+        public virtual string DestinationFormat { get; set; }
 
         /// <summary>[Pick one] DEPRECATED: Use destinationUris instead, passing only one URI as necessary. The fully-
         /// qualified Google Cloud Storage URI where the extracted table should be written.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationUri")]
-        public virtual string DestinationUri { get; set; } 
+        public virtual string DestinationUri { get; set; }
 
         /// <summary>[Pick one] A list of fully-qualified Google Cloud Storage URIs where the extracted table should be
         /// written.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationUris")]
-        public virtual System.Collections.Generic.IList<string> DestinationUris { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DestinationUris { get; set; }
 
         /// <summary>[Optional] Delimiter to use between fields in the exported data. Default is ','. Not applicable
         /// when extracting models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldDelimiter")]
-        public virtual string FieldDelimiter { get; set; } 
+        public virtual string FieldDelimiter { get; set; }
 
         /// <summary>[Optional] Whether to print out a header row in the results. Default is true. Not applicable when
         /// extracting models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("printHeader")]
-        public virtual System.Nullable<bool> PrintHeader { get; set; } 
+        public virtual System.Nullable<bool> PrintHeader { get; set; }
 
         /// <summary>A reference to the model being exported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceModel")]
-        public virtual ModelReference SourceModel { get; set; } 
+        public virtual ModelReference SourceModel { get; set; }
 
         /// <summary>A reference to the table being exported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceTable")]
-        public virtual TableReference SourceTable { get; set; } 
+        public virtual TableReference SourceTable { get; set; }
 
         /// <summary>[Optional] If destinationFormat is set to "AVRO", this flag indicates whether to enable extracting
         /// applicable column types (such as TIMESTAMP) to their corresponding AVRO logical types (timestamp-micros),
         /// instead of only using their raw types (avro-long). Not applicable when extracting models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useAvroLogicalTypes")]
-        public virtual System.Nullable<bool> UseAvroLogicalTypes { get; set; } 
+        public virtual System.Nullable<bool> UseAvroLogicalTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5042,22 +5042,22 @@ namespace Google.Apis.Bigquery.v2.Data
         /// many bad records, an invalid error is returned in the job result. The default value is false. Only
         /// applicable to CSV, ignored for other formats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowJaggedRows")]
-        public virtual System.Nullable<bool> AllowJaggedRows { get; set; } 
+        public virtual System.Nullable<bool> AllowJaggedRows { get; set; }
 
         /// <summary>Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV
         /// file. The default value is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowQuotedNewlines")]
-        public virtual System.Nullable<bool> AllowQuotedNewlines { get; set; } 
+        public virtual System.Nullable<bool> AllowQuotedNewlines { get; set; }
 
         /// <summary>[Optional] Indicates if we should automatically infer the options and schema for CSV and JSON
         /// sources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autodetect")]
-        public virtual System.Nullable<bool> Autodetect { get; set; } 
+        public virtual System.Nullable<bool> Autodetect { get; set; }
 
         /// <summary>[Beta] Clustering specification for the destination table. Must be specified with time-based
         /// partitioning, data in the table will be first partitioned and subsequently clustered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clustering")]
-        public virtual Clustering Clustering { get; set; } 
+        public virtual Clustering Clustering { get; set; }
 
         /// <summary>[Optional] Specifies whether the job is allowed to create new tables. The following values are
         /// supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The
@@ -5065,25 +5065,25 @@ namespace Google.Apis.Bigquery.v2.Data
         /// value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job
         /// completion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createDisposition")]
-        public virtual string CreateDisposition { get; set; } 
+        public virtual string CreateDisposition { get; set; }
 
         /// <summary>Custom encryption configuration (e.g., Cloud KMS keys).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationEncryptionConfiguration")]
-        public virtual EncryptionConfiguration DestinationEncryptionConfiguration { get; set; } 
+        public virtual EncryptionConfiguration DestinationEncryptionConfiguration { get; set; }
 
         /// <summary>[Required] The destination table to load the data into.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationTable")]
-        public virtual TableReference DestinationTable { get; set; } 
+        public virtual TableReference DestinationTable { get; set; }
 
         /// <summary>[Beta] [Optional] Properties with which to create the destination table if it is new.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationTableProperties")]
-        public virtual DestinationTableProperties DestinationTableProperties { get; set; } 
+        public virtual DestinationTableProperties DestinationTableProperties { get; set; }
 
         /// <summary>[Optional] The character encoding of the data. The supported values are UTF-8 or ISO-8859-1. The
         /// default value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values
         /// of the quote and fieldDelimiter properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
-        public virtual string Encoding { get; set; } 
+        public virtual string Encoding { get; set; }
 
         /// <summary>[Optional] The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte
         /// character. To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
@@ -5091,11 +5091,11 @@ namespace Google.Apis.Bigquery.v2.Data
         /// its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator. The
         /// default value is a comma (',').</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldDelimiter")]
-        public virtual string FieldDelimiter { get; set; } 
+        public virtual string FieldDelimiter { get; set; }
 
         /// <summary>[Optional, Trusted Tester] Options to configure hive partitioning support.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hivePartitioningOptions")]
-        public virtual HivePartitioningOptions HivePartitioningOptions { get; set; } 
+        public virtual HivePartitioningOptions HivePartitioningOptions { get; set; }
 
         /// <summary>[Optional] Indicates if BigQuery should allow extra values that are not represented in the table
         /// schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad
@@ -5103,13 +5103,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing
         /// columns JSON: Named values that don't match any column names</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreUnknownValues")]
-        public virtual System.Nullable<bool> IgnoreUnknownValues { get; set; } 
+        public virtual System.Nullable<bool> IgnoreUnknownValues { get; set; }
 
         /// <summary>[Optional] The maximum number of bad records that BigQuery can ignore when running the job. If the
         /// number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid
         /// for CSV and JSON. The default value is 0, which requires that all records are valid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxBadRecords")]
-        public virtual System.Nullable<int> MaxBadRecords { get; set; } 
+        public virtual System.Nullable<int> MaxBadRecords { get; set; }
 
         /// <summary>[Optional] Specifies a string that represents a null value in a CSV file. For example, if you
         /// specify "\N", BigQuery interprets "\N" as a null value when loading a CSV file. The default value is the
@@ -5117,14 +5117,14 @@ namespace Google.Apis.Bigquery.v2.Data
         /// present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the
         /// empty string as an empty value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nullMarker")]
-        public virtual string NullMarker { get; set; } 
+        public virtual string NullMarker { get; set; }
 
         /// <summary>If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into
         /// BigQuery from a Cloud Datastore backup. Property names are case sensitive and must be top-level properties.
         /// If no properties are specified, BigQuery loads all properties. If any named property isn't found in the
         /// Cloud Datastore backup, an invalid error is returned in the job result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectionFields")]
-        public virtual System.Collections.Generic.IList<string> ProjectionFields { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ProjectionFields { get; set; }
 
         /// <summary>[Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the
         /// string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its
@@ -5132,26 +5132,26 @@ namespace Google.Apis.Bigquery.v2.Data
         /// set the property value to an empty string. If your data contains quoted newline characters, you must also
         /// set the allowQuotedNewlines property to true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quote")]
-        public virtual string Quote { get; set; } 
+        public virtual string Quote { get; set; }
 
         /// <summary>[TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and
         /// rangePartitioning should be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rangePartitioning")]
-        public virtual RangePartitioning RangePartitioning { get; set; } 
+        public virtual RangePartitioning RangePartitioning { get; set; }
 
         /// <summary>[Optional] The schema for the destination table. The schema can be omitted if the destination table
         /// already exists, or if you're loading data from Google Cloud Datastore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
-        public virtual TableSchema Schema { get; set; } 
+        public virtual TableSchema Schema { get; set; }
 
         /// <summary>[Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For
         /// example, "foo:STRING, bar:INTEGER, baz:FLOAT".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaInline")]
-        public virtual string SchemaInline { get; set; } 
+        public virtual string SchemaInline { get; set; }
 
         /// <summary>[Deprecated] The format of the schemaInline property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaInlineFormat")]
-        public virtual string SchemaInlineFormat { get; set; } 
+        public virtual string SchemaInlineFormat { get; set; }
 
         /// <summary>Allows the schema of the destination table to be updated as a side effect of the load job if a
         /// schema is autodetected or supplied in the job configuration. Schema update options are supported in two
@@ -5161,19 +5161,19 @@ namespace Google.Apis.Bigquery.v2.Data
         /// adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the
         /// original schema to nullable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaUpdateOptions")]
-        public virtual System.Collections.Generic.IList<string> SchemaUpdateOptions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> SchemaUpdateOptions { get; set; }
 
         /// <summary>[Optional] The number of rows at the top of a CSV file that BigQuery will skip when loading the
         /// data. The default value is 0. This property is useful if you have header rows in the file that should be
         /// skipped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipLeadingRows")]
-        public virtual System.Nullable<int> SkipLeadingRows { get; set; } 
+        public virtual System.Nullable<int> SkipLeadingRows { get; set; }
 
         /// <summary>[Optional] The format of the data files. For CSV files, specify "CSV". For datastore backups,
         /// specify "DATASTORE_BACKUP". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify
         /// "AVRO". For parquet, specify "PARQUET". For orc, specify "ORC". The default value is CSV.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceFormat")]
-        public virtual string SourceFormat { get; set; } 
+        public virtual string SourceFormat { get; set; }
 
         /// <summary>[Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud
         /// Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size
@@ -5182,18 +5182,18 @@ namespace Google.Apis.Bigquery.v2.Data
         /// Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '*' wildcard character is not
         /// allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceUris")]
-        public virtual System.Collections.Generic.IList<string> SourceUris { get; set; } 
+        public virtual System.Collections.Generic.IList<string> SourceUris { get; set; }
 
         /// <summary>Time-based partitioning specification for the destination table. Only one of timePartitioning and
         /// rangePartitioning should be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timePartitioning")]
-        public virtual TimePartitioning TimePartitioning { get; set; } 
+        public virtual TimePartitioning TimePartitioning { get; set; }
 
         /// <summary>[Optional] If sourceFormat is set to "AVRO", indicates whether to enable interpreting logical types
         /// into their corresponding types (ie. TIMESTAMP), instead of only using their raw types (ie.
         /// INTEGER).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useAvroLogicalTypes")]
-        public virtual System.Nullable<bool> UseAvroLogicalTypes { get; set; } 
+        public virtual System.Nullable<bool> UseAvroLogicalTypes { get; set; }
 
         /// <summary>[Optional] Specifies the action that occurs if the destination table already exists. The following
         /// values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data.
@@ -5202,7 +5202,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// WRITE_APPEND. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
         /// Creation, truncation and append actions occur as one atomic update upon job completion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeDisposition")]
-        public virtual string WriteDisposition { get; set; } 
+        public virtual string WriteDisposition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5215,16 +5215,16 @@ namespace Google.Apis.Bigquery.v2.Data
         /// queries, this flag is ignored and large results are always allowed. However, you must still set
         /// destinationTable when result size exceeds the allowed maximum response size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowLargeResults")]
-        public virtual System.Nullable<bool> AllowLargeResults { get; set; } 
+        public virtual System.Nullable<bool> AllowLargeResults { get; set; }
 
         /// <summary>[Beta] Clustering specification for the destination table. Must be specified with time-based
         /// partitioning, data in the table will be first partitioned and subsequently clustered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clustering")]
-        public virtual Clustering Clustering { get; set; } 
+        public virtual Clustering Clustering { get; set; }
 
         /// <summary>Connection properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionProperties")]
-        public virtual System.Collections.Generic.IList<ConnectionProperty> ConnectionProperties { get; set; } 
+        public virtual System.Collections.Generic.IList<ConnectionProperty> ConnectionProperties { get; set; }
 
         /// <summary>[Optional] Specifies whether the job is allowed to create new tables. The following values are
         /// supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The
@@ -5232,67 +5232,67 @@ namespace Google.Apis.Bigquery.v2.Data
         /// value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job
         /// completion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createDisposition")]
-        public virtual string CreateDisposition { get; set; } 
+        public virtual string CreateDisposition { get; set; }
 
         /// <summary>[Optional] Specifies the default dataset to use for unqualified table names in the query. Note that
         /// this does not alter behavior of unqualified dataset names.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultDataset")]
-        public virtual DatasetReference DefaultDataset { get; set; } 
+        public virtual DatasetReference DefaultDataset { get; set; }
 
         /// <summary>Custom encryption configuration (e.g., Cloud KMS keys).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationEncryptionConfiguration")]
-        public virtual EncryptionConfiguration DestinationEncryptionConfiguration { get; set; } 
+        public virtual EncryptionConfiguration DestinationEncryptionConfiguration { get; set; }
 
         /// <summary>[Optional] Describes the table where the query results should be stored. If not present, a new
         /// table will be created to store the results. This property must be set for large results that exceed the
         /// maximum response size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationTable")]
-        public virtual TableReference DestinationTable { get; set; } 
+        public virtual TableReference DestinationTable { get; set; }
 
         /// <summary>[Optional] If true and query uses legacy SQL dialect, flattens all nested and repeated fields in
         /// the query results. allowLargeResults must be true if this is set to false. For standard SQL queries, this
         /// flag is ignored and results are never flattened.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flattenResults")]
-        public virtual System.Nullable<bool> FlattenResults { get; set; } 
+        public virtual System.Nullable<bool> FlattenResults { get; set; }
 
         /// <summary>[Optional] Limits the billing tier for this job. Queries that have resource usage beyond this tier
         /// will fail (without incurring a charge). If unspecified, this will be set to your project default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumBillingTier")]
-        public virtual System.Nullable<int> MaximumBillingTier { get; set; } 
+        public virtual System.Nullable<int> MaximumBillingTier { get; set; }
 
         /// <summary>[Optional] Limits the bytes billed for this job. Queries that will have bytes billed beyond this
         /// limit will fail (without incurring a charge). If unspecified, this will be set to your project
         /// default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumBytesBilled")]
-        public virtual System.Nullable<long> MaximumBytesBilled { get; set; } 
+        public virtual System.Nullable<long> MaximumBytesBilled { get; set; }
 
         /// <summary>Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use
         /// named (@myparam) query parameters in this query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterMode")]
-        public virtual string ParameterMode { get; set; } 
+        public virtual string ParameterMode { get; set; }
 
         /// <summary>[Deprecated] This property is deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preserveNulls")]
-        public virtual System.Nullable<bool> PreserveNulls { get; set; } 
+        public virtual System.Nullable<bool> PreserveNulls { get; set; }
 
         /// <summary>[Optional] Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The
         /// default value is INTERACTIVE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
-        public virtual string Priority { get; set; } 
+        public virtual string Priority { get; set; }
 
         /// <summary>[Required] SQL query text to execute. The useLegacySql field can be used to indicate whether the
         /// query uses legacy SQL or standard SQL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
-        public virtual string Query { get; set; } 
+        public virtual string Query { get; set; }
 
         /// <summary>Query parameters for standard SQL queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryParameters")]
-        public virtual System.Collections.Generic.IList<QueryParameter> QueryParameters { get; set; } 
+        public virtual System.Collections.Generic.IList<QueryParameter> QueryParameters { get; set; }
 
         /// <summary>[TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and
         /// rangePartitioning should be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rangePartitioning")]
-        public virtual RangePartitioning RangePartitioning { get; set; } 
+        public virtual RangePartitioning RangePartitioning { get; set; }
 
         /// <summary>Allows the schema of the destination table to be updated as a side effect of the query job. Schema
         /// update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is
@@ -5301,35 +5301,35 @@ namespace Google.Apis.Bigquery.v2.Data
         /// specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow
         /// relaxing a required field in the original schema to nullable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaUpdateOptions")]
-        public virtual System.Collections.Generic.IList<string> SchemaUpdateOptions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> SchemaUpdateOptions { get; set; }
 
         /// <summary>[Optional] If querying an external data source outside of BigQuery, describes the data format,
         /// location and other properties of the data source. By defining these properties, the data source can then be
         /// queried as if it were a standard BigQuery table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableDefinitions")]
-        public virtual System.Collections.Generic.IDictionary<string,ExternalDataConfiguration> TableDefinitions { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, ExternalDataConfiguration> TableDefinitions { get; set; }
 
         /// <summary>Time-based partitioning specification for the destination table. Only one of timePartitioning and
         /// rangePartitioning should be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timePartitioning")]
-        public virtual TimePartitioning TimePartitioning { get; set; } 
+        public virtual TimePartitioning TimePartitioning { get; set; }
 
         /// <summary>Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true.
         /// If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-
         /// reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as
         /// if flattenResults is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useLegacySql")]
-        public virtual System.Nullable<bool> UseLegacySql { get; set; } 
+        public virtual System.Nullable<bool> UseLegacySql { get; set; }
 
         /// <summary>[Optional] Whether to look for the result in the query cache. The query cache is a best-effort
         /// cache that will be flushed whenever tables in the query are modified. Moreover, the query cache is only
         /// available when a query does not have a destination table specified. The default value is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useQueryCache")]
-        public virtual System.Nullable<bool> UseQueryCache { get; set; } 
+        public virtual System.Nullable<bool> UseQueryCache { get; set; }
 
         /// <summary>Describes user-defined function resources used in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userDefinedFunctionResources")]
-        public virtual System.Collections.Generic.IList<UserDefinedFunctionResource> UserDefinedFunctionResources { get; set; } 
+        public virtual System.Collections.Generic.IList<UserDefinedFunctionResource> UserDefinedFunctionResources { get; set; }
 
         /// <summary>[Optional] Specifies the action that occurs if the destination table already exists. The following
         /// values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and
@@ -5339,7 +5339,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon
         /// job completion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeDisposition")]
-        public virtual string WriteDisposition { get; set; } 
+        public virtual string WriteDisposition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5353,32 +5353,32 @@ namespace Google.Apis.Bigquery.v2.Data
         /// value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job
         /// completion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createDisposition")]
-        public virtual string CreateDisposition { get; set; } 
+        public virtual string CreateDisposition { get; set; }
 
         /// <summary>Custom encryption configuration (e.g., Cloud KMS keys).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationEncryptionConfiguration")]
-        public virtual EncryptionConfiguration DestinationEncryptionConfiguration { get; set; } 
+        public virtual EncryptionConfiguration DestinationEncryptionConfiguration { get; set; }
 
         /// <summary>[Optional] The time when the destination table expires. Expired tables will be deleted and their
         /// storage reclaimed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationExpirationTime")]
-        public virtual object DestinationExpirationTime { get; set; } 
+        public virtual object DestinationExpirationTime { get; set; }
 
         /// <summary>[Required] The destination table</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationTable")]
-        public virtual TableReference DestinationTable { get; set; } 
+        public virtual TableReference DestinationTable { get; set; }
 
         /// <summary>[Optional] Supported operation types in table copy job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
-        public virtual string OperationType { get; set; } 
+        public virtual string OperationType { get; set; }
 
         /// <summary>[Pick one] Source table to copy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceTable")]
-        public virtual TableReference SourceTable { get; set; } 
+        public virtual TableReference SourceTable { get; set; }
 
         /// <summary>[Pick one] Source tables to copy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceTables")]
-        public virtual System.Collections.Generic.IList<TableReference> SourceTables { get; set; } 
+        public virtual System.Collections.Generic.IList<TableReference> SourceTables { get; set; }
 
         /// <summary>[Optional] Specifies the action that occurs if the destination table already exists. The following
         /// values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data.
@@ -5387,7 +5387,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
         /// Creation, truncation and append actions occur as one atomic update upon job completion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeDisposition")]
-        public virtual string WriteDisposition { get; set; } 
+        public virtual string WriteDisposition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5397,19 +5397,19 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>A hash of this page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>List of jobs that were requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobs")]
-        public virtual System.Collections.Generic.IList<JobsData> Jobs { get; set; } 
+        public virtual System.Collections.Generic.IList<JobsData> Jobs { get; set; }
 
         /// <summary>The resource type of the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>A token to request the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         
 
@@ -5417,41 +5417,41 @@ namespace Google.Apis.Bigquery.v2.Data
         {
             /// <summary>[Full-projection-only] Specifies the job configuration.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("configuration")]
-            public virtual JobConfiguration Configuration { get; set; } 
+            public virtual JobConfiguration Configuration { get; set; }
 
             /// <summary>A result object that will be present only if the job has failed.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("errorResult")]
-            public virtual ErrorProto ErrorResult { get; set; } 
+            public virtual ErrorProto ErrorResult { get; set; }
 
             /// <summary>Unique opaque ID of the job.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
-            public virtual string Id { get; set; } 
+            public virtual string Id { get; set; }
 
             /// <summary>Job reference uniquely identifying the job.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("jobReference")]
-            public virtual JobReference JobReference { get; set; } 
+            public virtual JobReference JobReference { get; set; }
 
             /// <summary>The resource type.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-            public virtual string Kind { get; set; } 
+            public virtual string Kind { get; set; }
 
             /// <summary>Running state of the job. When the state is DONE, errorResult can be checked to determine
             /// whether the job succeeded or failed.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("state")]
-            public virtual string State { get; set; } 
+            public virtual string State { get; set; }
 
             /// <summary>[Output-only] Information about the job, including starting time and ending time of the
             /// job.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("statistics")]
-            public virtual JobStatistics Statistics { get; set; } 
+            public virtual JobStatistics Statistics { get; set; }
 
             /// <summary>[Full-projection-only] Describes the state of the job.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("status")]
-            public virtual JobStatus Status { get; set; } 
+            public virtual JobStatus Status { get; set; }
 
             /// <summary>[Full-projection-only] Email address of the user who ran the job.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("user_email")]
-            public virtual string UserEmail { get; set; } 
+            public virtual string UserEmail { get; set; }
 
         }
     }    
@@ -5461,16 +5461,16 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Required] The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9),
         /// underscores (_), or dashes (-). The maximum length is 1,024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
-        public virtual string JobId { get; set; } 
+        public virtual string JobId { get; set; }
 
         /// <summary>The geographic location of the job. See details at
         /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>[Required] The ID of the project containing this job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5480,78 +5480,78 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>[TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completionRatio")]
-        public virtual System.Nullable<double> CompletionRatio { get; set; } 
+        public virtual System.Nullable<double> CompletionRatio { get; set; }
 
         /// <summary>[Output-only] Creation time of this job, in milliseconds since the epoch. This field will be
         /// present on all jobs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual System.Nullable<long> CreationTime { get; set; } 
+        public virtual System.Nullable<long> CreationTime { get; set; }
 
         /// <summary>[Output-only] End time of this job, in milliseconds since the epoch. This field will be present
         /// whenever a job is in the DONE state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual System.Nullable<long> EndTime { get; set; } 
+        public virtual System.Nullable<long> EndTime { get; set; }
 
         /// <summary>[Output-only] Statistics for an extract job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extract")]
-        public virtual JobStatistics4 Extract { get; set; } 
+        public virtual JobStatistics4 Extract { get; set; }
 
         /// <summary>[Output-only] Statistics for a load job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("load")]
-        public virtual JobStatistics3 Load { get; set; } 
+        public virtual JobStatistics3 Load { get; set; }
 
         /// <summary>[Output-only] Number of child jobs executed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numChildJobs")]
-        public virtual System.Nullable<long> NumChildJobs { get; set; } 
+        public virtual System.Nullable<long> NumChildJobs { get; set; }
 
         /// <summary>[Output-only] If this is a child job, the id of the parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentJobId")]
-        public virtual string ParentJobId { get; set; } 
+        public virtual string ParentJobId { get; set; }
 
         /// <summary>[Output-only] Statistics for a query job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
-        public virtual JobStatistics2 Query { get; set; } 
+        public virtual JobStatistics2 Query { get; set; }
 
         /// <summary>[Output-only] Quotas which delayed this job's start time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaDeferments")]
-        public virtual System.Collections.Generic.IList<string> QuotaDeferments { get; set; } 
+        public virtual System.Collections.Generic.IList<string> QuotaDeferments { get; set; }
 
         /// <summary>[Output-only] Job resource usage breakdown by reservation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservationUsage")]
-        public virtual System.Collections.Generic.IList<ReservationUsageData> ReservationUsage { get; set; } 
+        public virtual System.Collections.Generic.IList<ReservationUsageData> ReservationUsage { get; set; }
 
         /// <summary>[Output-only] Name of the primary reservation assigned to this job. Note that this could be
         /// different than reservations reported in the reservation usage field if parent reservations were used to
         /// execute this job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservation_id")]
-        public virtual string ReservationId { get; set; } 
+        public virtual string ReservationId { get; set; }
 
         /// <summary>[Output-only] [Preview] Statistics for row-level security. Present only for query and extract
         /// jobs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowLevelSecurityStatistics")]
-        public virtual RowLevelSecurityStatistics RowLevelSecurityStatistics { get; set; } 
+        public virtual RowLevelSecurityStatistics RowLevelSecurityStatistics { get; set; }
 
         /// <summary>[Output-only] Statistics for a child job of a script.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scriptStatistics")]
-        public virtual ScriptStatistics ScriptStatistics { get; set; } 
+        public virtual ScriptStatistics ScriptStatistics { get; set; }
 
         /// <summary>[Output-only] Start time of this job, in milliseconds since the epoch. This field will be present
         /// when the job transitions from the PENDING state to either RUNNING or DONE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual System.Nullable<long> StartTime { get; set; } 
+        public virtual System.Nullable<long> StartTime { get; set; }
 
         /// <summary>[Output-only] [Deprecated] Use the bytes processed in the query statistics instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesProcessed")]
-        public virtual System.Nullable<long> TotalBytesProcessed { get; set; } 
+        public virtual System.Nullable<long> TotalBytesProcessed { get; set; }
 
         /// <summary>[Output-only] Slot-milliseconds for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSlotMs")]
-        public virtual System.Nullable<long> TotalSlotMs { get; set; } 
+        public virtual System.Nullable<long> TotalSlotMs { get; set; }
 
         /// <summary>[Output-only] [Alpha] Information of the multi-statement transaction if this job is part of
         /// one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionInfoTemplate")]
-        public virtual TransactionInfo TransactionInfoTemplate { get; set; } 
+        public virtual TransactionInfo TransactionInfoTemplate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5561,11 +5561,11 @@ namespace Google.Apis.Bigquery.v2.Data
         {
             /// <summary>[Output-only] Reservation name or "unreserved" for on-demand resources usage.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("name")]
-            public virtual string Name { get; set; } 
+            public virtual string Name { get; set; }
 
             /// <summary>[Output-only] Slot-milliseconds the job spent in the given reservation.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("slotMs")]
-            public virtual System.Nullable<long> SlotMs { get; set; } 
+            public virtual System.Nullable<long> SlotMs { get; set; }
 
         }
     }    
@@ -5574,16 +5574,16 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>[Output-only] Billing tier for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingTier")]
-        public virtual System.Nullable<int> BillingTier { get; set; } 
+        public virtual System.Nullable<int> BillingTier { get; set; }
 
         /// <summary>[Output-only] Whether the query result was fetched from the query cache.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheHit")]
-        public virtual System.Nullable<bool> CacheHit { get; set; } 
+        public virtual System.Nullable<bool> CacheHit { get; set; }
 
         /// <summary>[Output-only] [Preview] The number of row access policies affected by a DDL statement. Present only
         /// for DROP ALL ROW ACCESS POLICIES queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ddlAffectedRowAccessPolicyCount")]
-        public virtual System.Nullable<long> DdlAffectedRowAccessPolicyCount { get; set; } 
+        public virtual System.Nullable<long> DdlAffectedRowAccessPolicyCount { get; set; }
 
         /// <summary>The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible
         /// values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op.
@@ -5592,65 +5592,65 @@ namespace Google.Apis.Bigquery.v2.Data
         /// the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL
         /// target.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ddlOperationPerformed")]
-        public virtual string DdlOperationPerformed { get; set; } 
+        public virtual string DdlOperationPerformed { get; set; }
 
         /// <summary>The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ddlTargetRoutine")]
-        public virtual RoutineReference DdlTargetRoutine { get; set; } 
+        public virtual RoutineReference DdlTargetRoutine { get; set; }
 
         /// <summary>[Output-only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS
         /// POLICY queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ddlTargetRowAccessPolicy")]
-        public virtual RowAccessPolicyReference DdlTargetRowAccessPolicy { get; set; } 
+        public virtual RowAccessPolicyReference DdlTargetRowAccessPolicy { get; set; }
 
         /// <summary>[Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS
         /// POLICIES queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ddlTargetTable")]
-        public virtual TableReference DdlTargetTable { get; set; } 
+        public virtual TableReference DdlTargetTable { get; set; }
 
         /// <summary>[Output-only] The original estimate of bytes processed for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedBytesProcessed")]
-        public virtual System.Nullable<long> EstimatedBytesProcessed { get; set; } 
+        public virtual System.Nullable<long> EstimatedBytesProcessed { get; set; }
 
         /// <summary>[Output-only, Beta] Information about create model query job progress.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelTraining")]
-        public virtual BigQueryModelTraining ModelTraining { get; set; } 
+        public virtual BigQueryModelTraining ModelTraining { get; set; }
 
         /// <summary>[Output-only, Beta] Deprecated; do not use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelTrainingCurrentIteration")]
-        public virtual System.Nullable<int> ModelTrainingCurrentIteration { get; set; } 
+        public virtual System.Nullable<int> ModelTrainingCurrentIteration { get; set; }
 
         /// <summary>[Output-only, Beta] Deprecated; do not use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelTrainingExpectedTotalIteration")]
-        public virtual System.Nullable<long> ModelTrainingExpectedTotalIteration { get; set; } 
+        public virtual System.Nullable<long> ModelTrainingExpectedTotalIteration { get; set; }
 
         /// <summary>[Output-only] The number of rows affected by a DML statement. Present only for DML statements
         /// INSERT, UPDATE or DELETE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numDmlAffectedRows")]
-        public virtual System.Nullable<long> NumDmlAffectedRows { get; set; } 
+        public virtual System.Nullable<long> NumDmlAffectedRows { get; set; }
 
         /// <summary>[Output-only] Describes execution plan for the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryPlan")]
-        public virtual System.Collections.Generic.IList<ExplainQueryStage> QueryPlan { get; set; } 
+        public virtual System.Collections.Generic.IList<ExplainQueryStage> QueryPlan { get; set; }
 
         /// <summary>[Output-only] Referenced routines (persistent user-defined functions and stored procedures) for the
         /// job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referencedRoutines")]
-        public virtual System.Collections.Generic.IList<RoutineReference> ReferencedRoutines { get; set; } 
+        public virtual System.Collections.Generic.IList<RoutineReference> ReferencedRoutines { get; set; }
 
         /// <summary>[Output-only] Referenced tables for the job. Queries that reference more than 50 tables will not
         /// have a complete list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referencedTables")]
-        public virtual System.Collections.Generic.IList<TableReference> ReferencedTables { get; set; } 
+        public virtual System.Collections.Generic.IList<TableReference> ReferencedTables { get; set; }
 
         /// <summary>[Output-only] Job resource usage breakdown by reservation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservationUsage")]
-        public virtual System.Collections.Generic.IList<ReservationUsageData> ReservationUsage { get; set; } 
+        public virtual System.Collections.Generic.IList<ReservationUsageData> ReservationUsage { get; set; }
 
         /// <summary>[Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL
         /// queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
-        public virtual TableSchema Schema { get; set; } 
+        public virtual TableSchema Schema { get; set; }
 
         /// <summary>The type of query statement, if valid. Possible values (new values might be added in the future):
         /// "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference
@@ -5665,40 +5665,40 @@ namespace Google.Apis.Bigquery.v2.Data
         /// REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE
         /// query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statementType")]
-        public virtual string StatementType { get; set; } 
+        public virtual string StatementType { get; set; }
 
         /// <summary>[Output-only] [Beta] Describes a timeline of job execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeline")]
-        public virtual System.Collections.Generic.IList<QueryTimelineSample> Timeline { get; set; } 
+        public virtual System.Collections.Generic.IList<QueryTimelineSample> Timeline { get; set; }
 
         /// <summary>[Output-only] Total bytes billed for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesBilled")]
-        public virtual System.Nullable<long> TotalBytesBilled { get; set; } 
+        public virtual System.Nullable<long> TotalBytesBilled { get; set; }
 
         /// <summary>[Output-only] Total bytes processed for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesProcessed")]
-        public virtual System.Nullable<long> TotalBytesProcessed { get; set; } 
+        public virtual System.Nullable<long> TotalBytesProcessed { get; set; }
 
         /// <summary>[Output-only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the
         /// accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE:
         /// estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND:
         /// estimate is upper bound of what the query would cost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesProcessedAccuracy")]
-        public virtual string TotalBytesProcessedAccuracy { get; set; } 
+        public virtual string TotalBytesProcessedAccuracy { get; set; }
 
         /// <summary>[Output-only] Total number of partitions processed from all partitioned tables referenced in the
         /// job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalPartitionsProcessed")]
-        public virtual System.Nullable<long> TotalPartitionsProcessed { get; set; } 
+        public virtual System.Nullable<long> TotalPartitionsProcessed { get; set; }
 
         /// <summary>[Output-only] Slot-milliseconds for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSlotMs")]
-        public virtual System.Nullable<long> TotalSlotMs { get; set; } 
+        public virtual System.Nullable<long> TotalSlotMs { get; set; }
 
         /// <summary>Standard SQL only: list of undeclared query parameters detected during a dry run
         /// validation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("undeclaredQueryParameters")]
-        public virtual System.Collections.Generic.IList<QueryParameter> UndeclaredQueryParameters { get; set; } 
+        public virtual System.Collections.Generic.IList<QueryParameter> UndeclaredQueryParameters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5708,11 +5708,11 @@ namespace Google.Apis.Bigquery.v2.Data
         {
             /// <summary>[Output-only] Reservation name or "unreserved" for on-demand resources usage.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("name")]
-            public virtual string Name { get; set; } 
+            public virtual string Name { get; set; }
 
             /// <summary>[Output-only] Slot-milliseconds the job spent in the given reservation.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("slotMs")]
-            public virtual System.Nullable<long> SlotMs { get; set; } 
+            public virtual System.Nullable<long> SlotMs { get; set; }
 
         }
     }    
@@ -5723,25 +5723,25 @@ namespace Google.Apis.Bigquery.v2.Data
         /// more bad records encountered than the maximum allowed in the load job configuration, then this number can be
         /// less than the total number of bad records present in the input data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("badRecords")]
-        public virtual System.Nullable<long> BadRecords { get; set; } 
+        public virtual System.Nullable<long> BadRecords { get; set; }
 
         /// <summary>[Output-only] Number of bytes of source data in a load job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputFileBytes")]
-        public virtual System.Nullable<long> InputFileBytes { get; set; } 
+        public virtual System.Nullable<long> InputFileBytes { get; set; }
 
         /// <summary>[Output-only] Number of source files in a load job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputFiles")]
-        public virtual System.Nullable<long> InputFiles { get; set; } 
+        public virtual System.Nullable<long> InputFiles { get; set; }
 
         /// <summary>[Output-only] Size of the loaded data in bytes. Note that while a load job is in the running state,
         /// this value may change.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputBytes")]
-        public virtual System.Nullable<long> OutputBytes { get; set; } 
+        public virtual System.Nullable<long> OutputBytes { get; set; }
 
         /// <summary>[Output-only] Number of rows imported in a load job. Note that while an import job is in the
         /// running state, this value may change.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputRows")]
-        public virtual System.Nullable<long> OutputRows { get; set; } 
+        public virtual System.Nullable<long> OutputRows { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5753,12 +5753,12 @@ namespace Google.Apis.Bigquery.v2.Data
         /// configuration. These values will be in the same order as the URIs specified in the 'destinationUris'
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationUriFileCounts")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> DestinationUriFileCounts { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> DestinationUriFileCounts { get; set; }
 
         /// <summary>[Output-only] Number of user bytes extracted into the result. This is the byte count as computed by
         /// BigQuery for billing purposes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputBytes")]
-        public virtual System.Nullable<long> InputBytes { get; set; } 
+        public virtual System.Nullable<long> InputBytes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5769,17 +5769,17 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Output-only] Final error result of the job. If present, indicates that the job has completed and
         /// was unsuccessful.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorResult")]
-        public virtual ErrorProto ErrorResult { get; set; } 
+        public virtual ErrorProto ErrorResult { get; set; }
 
         /// <summary>[Output-only] The first errors encountered during the running of the job. The final message
         /// includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the
         /// job has completed or was unsuccessful.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual System.Collections.Generic.IList<ErrorProto> Errors { get; set; } 
+        public virtual System.Collections.Generic.IList<ErrorProto> Errors { get; set; }
 
         /// <summary>[Output-only] Running state of the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5790,11 +5790,11 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Models in the requested dataset. Only the following fields are populated: model_reference,
         /// model_type, creation_time, last_modified_time and labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("models")]
-        public virtual System.Collections.Generic.IList<Model> Models { get; set; } 
+        public virtual System.Collections.Generic.IList<Model> Models { get; set; }
 
         /// <summary>A token to request the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5804,13 +5804,13 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>A token to request the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Routines in the requested dataset. Unless read_mask is set in the request, only the following
         /// fields are populated: etag, project_id, dataset_id, routine_id, routine_type, creation_time,
         /// last_modified_time, and language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routines")]
-        public virtual System.Collections.Generic.IList<Routine> Routines { get; set; } 
+        public virtual System.Collections.Generic.IList<Routine> Routines { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5823,7 +5823,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>The legacy BigQuery location ID, e.g. “EU” for the “europe” location. This is for any API consumers
         /// that need the legacy “US” and “EU” locations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("legacyLocationId")]
-        public virtual string LegacyLocationId { get; set; } 
+        public virtual string LegacyLocationId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5834,21 +5834,21 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is
         /// updated. The default value is "true".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableRefresh")]
-        public virtual System.Nullable<bool> EnableRefresh { get; set; } 
+        public virtual System.Nullable<bool> EnableRefresh { get; set; }
 
         /// <summary>[Output-only] [TrustedTester] The time when this materialized view was last modified, in
         /// milliseconds since the epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastRefreshTime")]
-        public virtual System.Nullable<long> LastRefreshTime { get; set; } 
+        public virtual System.Nullable<long> LastRefreshTime { get; set; }
 
         /// <summary>[Required] A query whose result is persisted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
-        public virtual string Query { get; set; } 
+        public virtual string Query { get; set; }
 
         /// <summary>[Optional] [TrustedTester] The maximum frequency at which this materialized view will be refreshed.
         /// The default value is "1800000" (30 minutes).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refreshIntervalMs")]
-        public virtual System.Nullable<long> RefreshIntervalMs { get; set; } 
+        public virtual System.Nullable<long> RefreshIntervalMs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5858,69 +5858,69 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Output only. The time when this model was created, in millisecs since the epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual System.Nullable<long> CreationTime { get; set; } 
+        public virtual System.Nullable<long> CreationTime { get; set; }
 
         /// <summary>Optional. A user-friendly description of this model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Custom encryption configuration (e.g., Cloud KMS keys). This shows the encryption configuration of
         /// the model data while stored in BigQuery storage. This field can be used with PatchModel to update encryption
         /// key for an already encrypted model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfiguration")]
-        public virtual EncryptionConfiguration EncryptionConfiguration { get; set; } 
+        public virtual EncryptionConfiguration EncryptionConfiguration { get; set; }
 
         /// <summary>Output only. A hash of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Optional. The time when this model expires, in milliseconds since the epoch. If not present, the
         /// model will persist indefinitely. Expired models will be deleted and their storage reclaimed. The
         /// defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime
         /// on newly created models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
-        public virtual System.Nullable<long> ExpirationTime { get; set; } 
+        public virtual System.Nullable<long> ExpirationTime { get; set; }
 
         /// <summary>Output only. Input feature columns that were used to train this model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("featureColumns")]
-        public virtual System.Collections.Generic.IList<StandardSqlField> FeatureColumns { get; set; } 
+        public virtual System.Collections.Generic.IList<StandardSqlField> FeatureColumns { get; set; }
 
         /// <summary>Optional. A descriptive name for this model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("friendlyName")]
-        public virtual string FriendlyName { get; set; } 
+        public virtual string FriendlyName { get; set; }
 
         /// <summary>Output only. Label columns that were used to train this model. The output of the model will have a
         /// "predicted_" prefix to these columns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelColumns")]
-        public virtual System.Collections.Generic.IList<StandardSqlField> LabelColumns { get; set; } 
+        public virtual System.Collections.Generic.IList<StandardSqlField> LabelColumns { get; set; }
 
         /// <summary>The labels associated with this model. You can use these to organize and group your models. Label
         /// keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters,
         /// underscores and dashes. International characters are allowed. Label values are optional. Label keys must
         /// start with a letter and each label in the list must have a different key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Output only. The time when this model was last modified, in millisecs since the epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
-        public virtual System.Nullable<long> LastModifiedTime { get; set; } 
+        public virtual System.Nullable<long> LastModifiedTime { get; set; }
 
         /// <summary>Output only. The geographic location where the model resides. This value is inherited from the
         /// dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Required. Unique identifier for this model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelReference")]
-        public virtual ModelReference ModelReference { get; set; } 
+        public virtual ModelReference ModelReference { get; set; }
 
         /// <summary>Output only. Type of the model resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelType")]
-        public virtual string ModelType { get; set; } 
+        public virtual string ModelType { get; set; }
 
         /// <summary>Output only. Information for all training runs in increasing order of start_time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingRuns")]
-        public virtual System.Collections.Generic.IList<TrainingRun> TrainingRuns { get; set; } 
+        public virtual System.Collections.Generic.IList<TrainingRun> TrainingRuns { get; set; }
 
     }    
 
@@ -5930,13 +5930,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// subsequent training runs. Default values are used for any options not specified in the input
         /// query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelOptions")]
-        public virtual ModelOptionsData ModelOptions { get; set; } 
+        public virtual ModelOptionsData ModelOptions { get; set; }
 
         /// <summary>[Output-only, Beta] Information about ml training runs, each training run comprises of multiple
         /// iterations and there may be multiple training runs for the model if warm start is used or if a user decides
         /// to continue a previously cancelled query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingRuns")]
-        public virtual System.Collections.Generic.IList<BqmlTrainingRun> TrainingRuns { get; set; } 
+        public virtual System.Collections.Generic.IList<BqmlTrainingRun> TrainingRuns { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5948,13 +5948,13 @@ namespace Google.Apis.Bigquery.v2.Data
         public class ModelOptionsData
         {
             [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-            public virtual System.Collections.Generic.IList<string> Labels { get; set; } 
+            public virtual System.Collections.Generic.IList<string> Labels { get; set; }
 
             [Newtonsoft.Json.JsonPropertyAttribute("lossType")]
-            public virtual string LossType { get; set; } 
+            public virtual string LossType { get; set; }
 
             [Newtonsoft.Json.JsonPropertyAttribute("modelType")]
-            public virtual string ModelType { get; set; } 
+            public virtual string ModelType { get; set; }
 
         }
     }    
@@ -5963,16 +5963,16 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>[Required] The ID of the dataset containing this model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
-        public virtual string DatasetId { get; set; } 
+        public virtual string DatasetId { get; set; }
 
         /// <summary>[Required] The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
         /// underscores (_). The maximum length is 1,024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
-        public virtual string ModelId { get; set; } 
+        public virtual string ModelId { get; set; }
 
         /// <summary>[Required] The ID of the project containing this model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5983,11 +5983,11 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Aggregate classification metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregateClassificationMetrics")]
-        public virtual AggregateClassificationMetrics AggregateClassificationMetrics { get; set; } 
+        public virtual AggregateClassificationMetrics AggregateClassificationMetrics { get; set; }
 
         /// <summary>Confusion matrix at different thresholds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confusionMatrixList")]
-        public virtual System.Collections.Generic.IList<ConfusionMatrix> ConfusionMatrixList { get; set; } 
+        public virtual System.Collections.Generic.IList<ConfusionMatrix> ConfusionMatrixList { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6017,12 +6017,12 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
-        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; }
 
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -6033,7 +6033,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
         /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
         /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
@@ -6047,7 +6047,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -6055,23 +6055,23 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>A hash of the page of results</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The type of list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>A token to request the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Projects to which you have at least READ access.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projects")]
-        public virtual System.Collections.Generic.IList<ProjectsData> Projects { get; set; } 
+        public virtual System.Collections.Generic.IList<ProjectsData> Projects { get; set; }
 
         /// <summary>The total number of projects in the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalItems")]
-        public virtual System.Nullable<int> TotalItems { get; set; } 
+        public virtual System.Nullable<int> TotalItems { get; set; }
 
         
 
@@ -6079,23 +6079,23 @@ namespace Google.Apis.Bigquery.v2.Data
         {
             /// <summary>A descriptive name for this project.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("friendlyName")]
-            public virtual string FriendlyName { get; set; } 
+            public virtual string FriendlyName { get; set; }
 
             /// <summary>An opaque ID of this project.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
-            public virtual string Id { get; set; } 
+            public virtual string Id { get; set; }
 
             /// <summary>The resource type.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-            public virtual string Kind { get; set; } 
+            public virtual string Kind { get; set; }
 
             /// <summary>The numeric ID of this project.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("numericId")]
-            public virtual System.Nullable<ulong> NumericId { get; set; } 
+            public virtual System.Nullable<ulong> NumericId { get; set; }
 
             /// <summary>A unique reference to this project.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("projectReference")]
-            public virtual ProjectReference ProjectReference { get; set; } 
+            public virtual ProjectReference ProjectReference { get; set; }
 
         }
     }    
@@ -6105,7 +6105,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Required] ID of the project. Can be either the numeric ID or the assigned ID of the
         /// project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6116,15 +6116,15 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Optional] If unset, this is a positional parameter. Otherwise, should be unique within a
         /// query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>[Required] The type of this parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterType")]
-        public virtual QueryParameterType ParameterType { get; set; } 
+        public virtual QueryParameterType ParameterType { get; set; }
 
         /// <summary>[Required] The value of this parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterValue")]
-        public virtual QueryParameterValue ParameterValue { get; set; } 
+        public virtual QueryParameterValue ParameterValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6134,15 +6134,15 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>[Optional] The type of the array's elements, if this is an array.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arrayType")]
-        public virtual QueryParameterType ArrayType { get; set; } 
+        public virtual QueryParameterType ArrayType { get; set; }
 
         /// <summary>[Optional] The types of the fields of this struct, in order, if this is a struct.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structTypes")]
-        public virtual System.Collections.Generic.IList<StructTypesData> StructTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<StructTypesData> StructTypes { get; set; }
 
         /// <summary>[Required] The top level type of this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6152,15 +6152,15 @@ namespace Google.Apis.Bigquery.v2.Data
         {
             /// <summary>[Optional] Human-oriented description of the field.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("description")]
-            public virtual string Description { get; set; } 
+            public virtual string Description { get; set; }
 
             /// <summary>[Optional] The name of this field.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("name")]
-            public virtual string Name { get; set; } 
+            public virtual string Name { get; set; }
 
             /// <summary>[Required] The type of this field.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual QueryParameterType Type { get; set; } 
+            public virtual QueryParameterType Type { get; set; }
 
         }
     }    
@@ -6169,15 +6169,15 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>[Optional] The array values, if this is an array type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arrayValues")]
-        public virtual System.Collections.Generic.IList<QueryParameterValue> ArrayValues { get; set; } 
+        public virtual System.Collections.Generic.IList<QueryParameterValue> ArrayValues { get; set; }
 
         /// <summary>[Optional] The struct field values, in order of the struct type's declaration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structValues")]
-        public virtual System.Collections.Generic.IDictionary<string,QueryParameterValue> StructValues { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, QueryParameterValue> StructValues { get; set; }
 
         /// <summary>[Optional] The value of this value, if a simple scalar type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6187,66 +6187,66 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Connection properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionProperties")]
-        public virtual System.Collections.Generic.IList<ConnectionProperty> ConnectionProperties { get; set; } 
+        public virtual System.Collections.Generic.IList<ConnectionProperty> ConnectionProperties { get; set; }
 
         /// <summary>[Optional] Specifies the default datasetId and projectId to assume for any unqualified table names
         /// in the query. If not set, all table names in the query string must be qualified in the format
         /// 'datasetId.tableId'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultDataset")]
-        public virtual DatasetReference DefaultDataset { get; set; } 
+        public virtual DatasetReference DefaultDataset { get; set; }
 
         /// <summary>[Optional] If set to true, BigQuery doesn't run the job. Instead, if the query is valid, BigQuery
         /// returns statistics about the job such as how many bytes would be processed. If the query is invalid, an
         /// error returns. The default value is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dryRun")]
-        public virtual System.Nullable<bool> DryRun { get; set; } 
+        public virtual System.Nullable<bool> DryRun { get; set; }
 
         /// <summary>The resource type of the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The labels associated with this job. You can use these to organize and group your jobs. Label keys
         /// and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters,
         /// underscores and dashes. International characters are allowed. Label values are optional. Label keys must
         /// start with a letter and each label in the list must have a different key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The geographic location where the job should run. See details at
         /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>[Optional] The maximum number of rows of data to return per page of results. Setting this flag to a
         /// small value such as 1000 and then paging through results might improve reliability when the query result set
         /// is large. In addition to this limit, responses are also limited to 10 MB. By default, there is no maximum
         /// row count, and only the byte limit applies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxResults")]
-        public virtual System.Nullable<long> MaxResults { get; set; } 
+        public virtual System.Nullable<long> MaxResults { get; set; }
 
         /// <summary>[Optional] Limits the bytes billed for this job. Queries that will have bytes billed beyond this
         /// limit will fail (without incurring a charge). If unspecified, this will be set to your project
         /// default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumBytesBilled")]
-        public virtual System.Nullable<long> MaximumBytesBilled { get; set; } 
+        public virtual System.Nullable<long> MaximumBytesBilled { get; set; }
 
         /// <summary>Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use
         /// named (@myparam) query parameters in this query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterMode")]
-        public virtual string ParameterMode { get; set; } 
+        public virtual string ParameterMode { get; set; }
 
         /// <summary>[Deprecated] This property is deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preserveNulls")]
-        public virtual System.Nullable<bool> PreserveNulls { get; set; } 
+        public virtual System.Nullable<bool> PreserveNulls { get; set; }
 
         /// <summary>[Required] A query string, following the BigQuery query syntax, of the query to execute. Example:
         /// "SELECT count(f1) FROM [myProjectId:myDatasetId.myTableId]".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
-        public virtual string Query { get; set; } 
+        public virtual string Query { get; set; }
 
         /// <summary>Query parameters for Standard SQL queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryParameters")]
-        public virtual System.Collections.Generic.IList<QueryParameter> QueryParameters { get; set; } 
+        public virtual System.Collections.Generic.IList<QueryParameter> QueryParameters { get; set; }
 
         /// <summary>A unique user provided identifier to ensure idempotent behavior for queries. Note that this is
         /// different from the job_id. It has the following properties: 1. It is case-sensitive, limited to up to 36
@@ -6263,7 +6263,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// minutes. In other words, if two requests are sent with the same request_id, but more than 15 minutes apart,
         /// idempotency is not guaranteed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; } 
+        public virtual string RequestId { get; set; }
 
         /// <summary>[Optional] How long to wait for the query to complete, in milliseconds, before the request times
         /// out and returns. Note that this is only a timeout for the request, not the query. If the query takes longer
@@ -6271,19 +6271,19 @@ namespace Google.Apis.Bigquery.v2.Data
         /// false. You can call GetQueryResults() to wait for the query to complete and read the results. The default
         /// value is 10000 milliseconds (10 seconds).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutMs")]
-        public virtual System.Nullable<long> TimeoutMs { get; set; } 
+        public virtual System.Nullable<long> TimeoutMs { get; set; }
 
         /// <summary>Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true.
         /// If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-
         /// reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as
         /// if flattenResults is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useLegacySql")]
-        public virtual System.Nullable<bool> UseLegacySql { get; set; } 
+        public virtual System.Nullable<bool> UseLegacySql { get; set; }
 
         /// <summary>[Optional] Whether to look for the result in the query cache. The query cache is a best-effort
         /// cache that will be flushed whenever tables in the query are modified. The default value is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useQueryCache")]
-        public virtual System.Nullable<bool> UseQueryCache { get; set; } 
+        public virtual System.Nullable<bool> UseQueryCache { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6293,57 +6293,57 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Whether the query result was fetched from the query cache.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheHit")]
-        public virtual System.Nullable<bool> CacheHit { get; set; } 
+        public virtual System.Nullable<bool> CacheHit { get; set; }
 
         /// <summary>[Output-only] The first errors or warnings encountered during the running of the job. The final
         /// message includes the number of errors that caused the process to stop. Errors here do not necessarily mean
         /// that the job has completed or was unsuccessful.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual System.Collections.Generic.IList<ErrorProto> Errors { get; set; } 
+        public virtual System.Collections.Generic.IList<ErrorProto> Errors { get; set; }
 
         /// <summary>Whether the query has completed or not. If rows or totalRows are present, this will always be true.
         /// If this is false, totalRows will not be available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobComplete")]
-        public virtual System.Nullable<bool> JobComplete { get; set; } 
+        public virtual System.Nullable<bool> JobComplete { get; set; }
 
         /// <summary>Reference to the Job that was created to run the query. This field will be present even if the
         /// original request timed out, in which case GetQueryResults can be used to read the results once the query has
         /// completed. Since this API only returns the first page of results, subsequent pages can be fetched via the
         /// same mechanism (GetQueryResults).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobReference")]
-        public virtual JobReference JobReference { get; set; } 
+        public virtual JobReference JobReference { get; set; }
 
         /// <summary>The resource type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>[Output-only] The number of rows affected by a DML statement. Present only for DML statements
         /// INSERT, UPDATE or DELETE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numDmlAffectedRows")]
-        public virtual System.Nullable<long> NumDmlAffectedRows { get; set; } 
+        public virtual System.Nullable<long> NumDmlAffectedRows { get; set; }
 
         /// <summary>A token used for paging results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
-        public virtual string PageToken { get; set; } 
+        public virtual string PageToken { get; set; }
 
         /// <summary>An object with as many results as can be contained within the maximum permitted reply size. To get
         /// any additional rows, you can call GetQueryResults and specify the jobReference returned above.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-        public virtual System.Collections.Generic.IList<TableRow> Rows { get; set; } 
+        public virtual System.Collections.Generic.IList<TableRow> Rows { get; set; }
 
         /// <summary>The schema of the results. Present only when the query completes successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
-        public virtual TableSchema Schema { get; set; } 
+        public virtual TableSchema Schema { get; set; }
 
         /// <summary>The total number of bytes processed for this query. If this query was a dry run, this is the number
         /// of bytes that would be processed if the query were run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesProcessed")]
-        public virtual System.Nullable<long> TotalBytesProcessed { get; set; } 
+        public virtual System.Nullable<long> TotalBytesProcessed { get; set; }
 
         /// <summary>The total number of rows in the complete query result set, which can be more than the number of
         /// rows in this single page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalRows")]
-        public virtual System.Nullable<ulong> TotalRows { get; set; } 
+        public virtual System.Nullable<ulong> TotalRows { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6354,23 +6354,23 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Total number of units currently being processed by workers. This does not correspond directly to
         /// slot usage. This is the largest value observed since the last sample.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeUnits")]
-        public virtual System.Nullable<long> ActiveUnits { get; set; } 
+        public virtual System.Nullable<long> ActiveUnits { get; set; }
 
         /// <summary>Total parallel units of work completed by this query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completedUnits")]
-        public virtual System.Nullable<long> CompletedUnits { get; set; } 
+        public virtual System.Nullable<long> CompletedUnits { get; set; }
 
         /// <summary>Milliseconds elapsed since the start of query execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("elapsedMs")]
-        public virtual System.Nullable<long> ElapsedMs { get; set; } 
+        public virtual System.Nullable<long> ElapsedMs { get; set; }
 
         /// <summary>Total parallel units of work remaining for the active stages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pendingUnits")]
-        public virtual System.Nullable<long> PendingUnits { get; set; } 
+        public virtual System.Nullable<long> PendingUnits { get; set; }
 
         /// <summary>Cumulative slot-ms consumed by the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSlotMs")]
-        public virtual System.Nullable<long> TotalSlotMs { get; set; } 
+        public virtual System.Nullable<long> TotalSlotMs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6381,11 +6381,11 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level
         /// NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual string Field { get; set; } 
+        public virtual string Field { get; set; }
 
         /// <summary>[TrustedTester] [Required] Defines the ranges for range partitioning.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual RangeData Range { get; set; } 
+        public virtual RangeData Range { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6396,15 +6396,15 @@ namespace Google.Apis.Bigquery.v2.Data
         {
             /// <summary>[TrustedTester] [Required] The end of range partitioning, exclusive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("end")]
-            public virtual System.Nullable<long> End { get; set; } 
+            public virtual System.Nullable<long> End { get; set; }
 
             /// <summary>[TrustedTester] [Required] The width of each interval.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("interval")]
-            public virtual System.Nullable<long> Interval { get; set; } 
+            public virtual System.Nullable<long> Interval { get; set; }
 
             /// <summary>[TrustedTester] [Required] The start of range partitioning, inclusive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("start")]
-            public virtual System.Nullable<long> Start { get; set; } 
+            public virtual System.Nullable<long> Start { get; set; }
 
         }
     }    
@@ -6415,23 +6415,23 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Determines the goodness of a ranking by computing the percentile rank from the predicted confidence
         /// and dividing it by the original rank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageRank")]
-        public virtual System.Nullable<double> AverageRank { get; set; } 
+        public virtual System.Nullable<double> AverageRank { get; set; }
 
         /// <summary>Calculates a precision per user for all the items by ranking them and then averages all the
         /// precisions across all the users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meanAveragePrecision")]
-        public virtual System.Nullable<double> MeanAveragePrecision { get; set; } 
+        public virtual System.Nullable<double> MeanAveragePrecision { get; set; }
 
         /// <summary>Similar to the mean squared error computed in regression and explicit recommendation models except
         /// instead of computing the rating directly, the output from evaluate is computed against a preference which is
         /// 1 or 0 depending on if the rating exists or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meanSquaredError")]
-        public virtual System.Nullable<double> MeanSquaredError { get; set; } 
+        public virtual System.Nullable<double> MeanSquaredError { get; set; }
 
         /// <summary>A metric to determine the goodness of a ranking calculated from the predicted confidence by
         /// comparing it to an ideal rank measured by the original ratings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("normalizedDiscountedCumulativeGain")]
-        public virtual System.Nullable<double> NormalizedDiscountedCumulativeGain { get; set; } 
+        public virtual System.Nullable<double> NormalizedDiscountedCumulativeGain { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6442,23 +6442,23 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Mean absolute error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meanAbsoluteError")]
-        public virtual System.Nullable<double> MeanAbsoluteError { get; set; } 
+        public virtual System.Nullable<double> MeanAbsoluteError { get; set; }
 
         /// <summary>Mean squared error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meanSquaredError")]
-        public virtual System.Nullable<double> MeanSquaredError { get; set; } 
+        public virtual System.Nullable<double> MeanSquaredError { get; set; }
 
         /// <summary>Mean squared log error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meanSquaredLogError")]
-        public virtual System.Nullable<double> MeanSquaredLogError { get; set; } 
+        public virtual System.Nullable<double> MeanSquaredLogError { get; set; }
 
         /// <summary>Median absolute error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medianAbsoluteError")]
-        public virtual System.Nullable<double> MedianAbsoluteError { get; set; } 
+        public virtual System.Nullable<double> MedianAbsoluteError { get; set; }
 
         /// <summary>R^2 score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rSquared")]
-        public virtual System.Nullable<double> RSquared { get; set; } 
+        public virtual System.Nullable<double> RSquared { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6469,11 +6469,11 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arguments")]
-        public virtual System.Collections.Generic.IList<Argument> Arguments { get; set; } 
+        public virtual System.Collections.Generic.IList<Argument> Arguments { get; set; }
 
         /// <summary>Output only. The time when this routine was created, in milliseconds since the epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual System.Nullable<long> CreationTime { get; set; } 
+        public virtual System.Nullable<long> CreationTime { get; set; }
 
         /// <summary>Required. The body of the routine. For functions, this is the expression in the AS clause. If
         /// language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function
@@ -6483,33 +6483,33 @@ namespace Google.Apis.Bigquery.v2.Data
         /// the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The
         /// definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("definitionBody")]
-        public virtual string DefinitionBody { get; set; } 
+        public virtual string DefinitionBody { get; set; }
 
         /// <summary>Optional. [Experimental] The description of the routine if defined.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Optional. [Experimental] The determinism level of the JavaScript UDF if defined.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("determinismLevel")]
-        public virtual string DeterminismLevel { get; set; } 
+        public virtual string DeterminismLevel { get; set; }
 
         /// <summary>Output only. A hash of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT
         /// libraries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importedLibraries")]
-        public virtual System.Collections.Generic.IList<string> ImportedLibraries { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ImportedLibraries { get; set; }
 
         /// <summary>Optional. Defaults to "SQL".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
-        public virtual string Language { get; set; } 
+        public virtual string Language { get; set; }
 
         /// <summary>Output only. The time when this routine was last modified, in milliseconds since the
         /// epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
-        public virtual System.Nullable<long> LastModifiedTime { get; set; } 
+        public virtual System.Nullable<long> LastModifiedTime { get; set; }
 
         /// <summary>Optional if language = "SQL"; required otherwise. If absent, the return type is inferred from
         /// definition_body at query time in each query that references this routine. If present, then the evaluated
@@ -6522,15 +6522,15 @@ namespace Google.Apis.Bigquery.v2.Data
         /// is automatically changed to INT64 at query time, while the return type of `Decrement` remains
         /// FLOAT64.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnType")]
-        public virtual StandardSqlDataType ReturnType { get; set; } 
+        public virtual StandardSqlDataType ReturnType { get; set; }
 
         /// <summary>Required. Reference describing the ID of this routine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routineReference")]
-        public virtual RoutineReference RoutineReference { get; set; } 
+        public virtual RoutineReference RoutineReference { get; set; }
 
         /// <summary>Required. The type of routine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routineType")]
-        public virtual string RoutineType { get; set; } 
+        public virtual string RoutineType { get; set; }
 
     }    
 
@@ -6538,16 +6538,16 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>[Required] The ID of the dataset containing this routine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
-        public virtual string DatasetId { get; set; } 
+        public virtual string DatasetId { get; set; }
 
         /// <summary>[Required] The ID of the project containing this routine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>[Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
         /// underscores (_). The maximum length is 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routineId")]
-        public virtual string RoutineId { get; set; } 
+        public virtual string RoutineId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6558,11 +6558,11 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>The original label of this row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actualLabel")]
-        public virtual string ActualLabel { get; set; } 
+        public virtual string ActualLabel { get; set; }
 
         /// <summary>Info describing predicted label distribution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<Entry> Entries { get; set; } 
+        public virtual System.Collections.Generic.IList<Entry> Entries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6572,20 +6572,20 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>[Required] The ID of the dataset containing this row access policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
-        public virtual string DatasetId { get; set; } 
+        public virtual string DatasetId { get; set; }
 
         /// <summary>[Required] The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers
         /// (0-9), or underscores (_). The maximum length is 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyId")]
-        public virtual string PolicyId { get; set; } 
+        public virtual string PolicyId { get; set; }
 
         /// <summary>[Required] The ID of the project containing this row access policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>[Required] The ID of the table containing this row access policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
-        public virtual string TableId { get; set; } 
+        public virtual string TableId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6595,7 +6595,7 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>[Output-only] [Preview] Whether any accessed data was protected by row access policies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowLevelSecurityApplied")]
-        public virtual System.Nullable<bool> RowLevelSecurityApplied { get; set; } 
+        public virtual System.Nullable<bool> RowLevelSecurityApplied { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6605,27 +6605,27 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>[Output-only] One-based end column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endColumn")]
-        public virtual System.Nullable<int> EndColumn { get; set; } 
+        public virtual System.Nullable<int> EndColumn { get; set; }
 
         /// <summary>[Output-only] One-based end line.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endLine")]
-        public virtual System.Nullable<int> EndLine { get; set; } 
+        public virtual System.Nullable<int> EndLine { get; set; }
 
         /// <summary>[Output-only] Name of the active procedure, empty if in a top-level script.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("procedureId")]
-        public virtual string ProcedureId { get; set; } 
+        public virtual string ProcedureId { get; set; }
 
         /// <summary>[Output-only] One-based start column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startColumn")]
-        public virtual System.Nullable<int> StartColumn { get; set; } 
+        public virtual System.Nullable<int> StartColumn { get; set; }
 
         /// <summary>[Output-only] One-based start line.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startLine")]
-        public virtual System.Nullable<int> StartLine { get; set; } 
+        public virtual System.Nullable<int> StartLine { get; set; }
 
         /// <summary>[Output-only] Text of the current statement/expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6635,12 +6635,12 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>[Output-only] Whether this child job was a statement or expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationKind")]
-        public virtual string EvaluationKind { get; set; } 
+        public virtual string EvaluationKind { get; set; }
 
         /// <summary>Stack trace showing the line/column/procedure name of each frame on the stack at the point where
         /// the current evaluation happened. The leaf frame is first, the primary script is last. Never empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackFrames")]
-        public virtual System.Collections.Generic.IList<ScriptStackFrame> StackFrames { get; set; } 
+        public virtual System.Collections.Generic.IList<ScriptStackFrame> StackFrames { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6653,13 +6653,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; } 
+        public virtual Policy Policy { get; set; }
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
         /// will be modified. If no mask is provided, the following default mask is used: `paths: "bindings,
         /// etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6669,7 +6669,7 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>[Required] Reference describing the ID of the table that is snapshotted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseTableReference")]
-        public virtual TableReference BaseTableReference { get; set; } 
+        public virtual TableReference BaseTableReference { get; set; }
 
         /// <summary>[Required] The time at which the base table was snapshot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotTime")]
@@ -6694,16 +6694,16 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>The type of the array's elements, if type_kind = "ARRAY".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arrayElementType")]
-        public virtual StandardSqlDataType ArrayElementType { get; set; } 
+        public virtual StandardSqlDataType ArrayElementType { get; set; }
 
         /// <summary>The fields of this struct, in order, if type_kind = "STRUCT".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structType")]
-        public virtual StandardSqlStructType StructType { get; set; } 
+        public virtual StandardSqlStructType StructType { get; set; }
 
         /// <summary>Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64",
         /// "DATE", "ARRAY").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("typeKind")]
-        public virtual string TypeKind { get; set; } 
+        public virtual string TypeKind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6714,13 +6714,13 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Optional. The name of this field. Can be absent for struct fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Optional. The type of this parameter. Absent if not explicitly specified (e.g., CREATE FUNCTION
         /// statement can omit the return type; in this case the output parameter does not have this "type"
         /// field).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual StandardSqlDataType Type { get; set; } 
+        public virtual StandardSqlDataType Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6729,7 +6729,7 @@ namespace Google.Apis.Bigquery.v2.Data
     public class StandardSqlStructType : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual System.Collections.Generic.IList<StandardSqlField> Fields { get; set; } 
+        public virtual System.Collections.Generic.IList<StandardSqlField> Fields { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6740,17 +6740,17 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Output-only] A lower-bound estimate of the number of bytes currently in the streaming
         /// buffer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedBytes")]
-        public virtual System.Nullable<ulong> EstimatedBytes { get; set; } 
+        public virtual System.Nullable<ulong> EstimatedBytes { get; set; }
 
         /// <summary>[Output-only] A lower-bound estimate of the number of rows currently in the streaming
         /// buffer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedRows")]
-        public virtual System.Nullable<ulong> EstimatedRows { get; set; } 
+        public virtual System.Nullable<ulong> EstimatedRows { get; set; }
 
         /// <summary>[Output-only] Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds
         /// since the epoch, if the streaming buffer is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oldestEntryTime")]
-        public virtual System.Nullable<ulong> OldestEntryTime { get; set; } 
+        public virtual System.Nullable<ulong> OldestEntryTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6761,132 +6761,132 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Beta] Clustering specification for the table. Must be specified with partitioning, data in the
         /// table will be first partitioned and subsequently clustered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clustering")]
-        public virtual Clustering Clustering { get; set; } 
+        public virtual Clustering Clustering { get; set; }
 
         /// <summary>[Output-only] The time when this table was created, in milliseconds since the epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual System.Nullable<long> CreationTime { get; set; } 
+        public virtual System.Nullable<long> CreationTime { get; set; }
 
         /// <summary>[Optional] A user-friendly description of this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Custom encryption configuration (e.g., Cloud KMS keys).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfiguration")]
-        public virtual EncryptionConfiguration EncryptionConfiguration { get; set; } 
+        public virtual EncryptionConfiguration EncryptionConfiguration { get; set; }
 
         /// <summary>[Output-only] A hash of the table metadata. Used to ensure there were no concurrent modifications
         /// to the resource when attempting an update. Not guaranteed to change when the table contents or the fields
         /// numRows, numBytes, numLongTermBytes or lastModifiedTime change.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>[Optional] The time when this table expires, in milliseconds since the epoch. If not present, the
         /// table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The
         /// defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime
         /// on newly created tables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
-        public virtual System.Nullable<long> ExpirationTime { get; set; } 
+        public virtual System.Nullable<long> ExpirationTime { get; set; }
 
         /// <summary>[Optional] Describes the data format, location, and other properties of a table stored outside of
         /// BigQuery. By defining these properties, the data source can then be queried as if it were a standard
         /// BigQuery table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalDataConfiguration")]
-        public virtual ExternalDataConfiguration ExternalDataConfiguration { get; set; } 
+        public virtual ExternalDataConfiguration ExternalDataConfiguration { get; set; }
 
         /// <summary>[Optional] A descriptive name for this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("friendlyName")]
-        public virtual string FriendlyName { get; set; } 
+        public virtual string FriendlyName { get; set; }
 
         /// <summary>[Output-only] An opaque ID uniquely identifying the table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>[Output-only] The type of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The labels associated with this table. You can use these to organize and group your tables. Label
         /// keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters,
         /// underscores and dashes. International characters are allowed. Label values are optional. Label keys must
         /// start with a letter and each label in the list must have a different key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>[Output-only] The time when this table was last modified, in milliseconds since the
         /// epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
-        public virtual System.Nullable<ulong> LastModifiedTime { get; set; } 
+        public virtual System.Nullable<ulong> LastModifiedTime { get; set; }
 
         /// <summary>[Output-only] The geographic location where the table resides. This value is inherited from the
         /// dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>[Optional] Materialized view definition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("materializedView")]
-        public virtual MaterializedViewDefinition MaterializedView { get; set; } 
+        public virtual MaterializedViewDefinition MaterializedView { get; set; }
 
         /// <summary>[Output-only, Beta] Present iff this table represents a ML model. Describes the training
         /// information for the model, and it is required to run 'PREDICT' queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
-        public virtual ModelDefinition Model { get; set; } 
+        public virtual ModelDefinition Model { get; set; }
 
         /// <summary>[Output-only] The size of this table in bytes, excluding any data in the streaming
         /// buffer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numBytes")]
-        public virtual System.Nullable<long> NumBytes { get; set; } 
+        public virtual System.Nullable<long> NumBytes { get; set; }
 
         /// <summary>[Output-only] The number of bytes in the table that are considered "long-term storage".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numLongTermBytes")]
-        public virtual System.Nullable<long> NumLongTermBytes { get; set; } 
+        public virtual System.Nullable<long> NumLongTermBytes { get; set; }
 
         /// <summary>[Output-only] [TrustedTester] The physical size of this table in bytes, excluding any data in the
         /// streaming buffer. This includes compression and storage used for time travel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numPhysicalBytes")]
-        public virtual System.Nullable<long> NumPhysicalBytes { get; set; } 
+        public virtual System.Nullable<long> NumPhysicalBytes { get; set; }
 
         /// <summary>[Output-only] The number of rows of data in this table, excluding any data in the streaming
         /// buffer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numRows")]
-        public virtual System.Nullable<ulong> NumRows { get; set; } 
+        public virtual System.Nullable<ulong> NumRows { get; set; }
 
         /// <summary>[TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and
         /// rangePartitioning should be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rangePartitioning")]
-        public virtual RangePartitioning RangePartitioning { get; set; } 
+        public virtual RangePartitioning RangePartitioning { get; set; }
 
         /// <summary>[Optional] If set to true, queries over this table require a partition filter that can be used for
         /// partition elimination to be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requirePartitionFilter")]
-        public virtual System.Nullable<bool> RequirePartitionFilter { get; set; } 
+        public virtual System.Nullable<bool> RequirePartitionFilter { get; set; }
 
         /// <summary>[Optional] Describes the schema of this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
-        public virtual TableSchema Schema { get; set; } 
+        public virtual TableSchema Schema { get; set; }
 
         /// <summary>[Output-only] A URL that can be used to access this resource again.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>[Output-only] Snapshot definition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotDefinition")]
-        public virtual SnapshotDefinition SnapshotDefinition { get; set; } 
+        public virtual SnapshotDefinition SnapshotDefinition { get; set; }
 
         /// <summary>[Output-only] Contains information regarding this table's streaming buffer, if one is present. This
         /// field will be absent if the table is not being streamed to or if there is no data in the streaming
         /// buffer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamingBuffer")]
-        public virtual Streamingbuffer StreamingBuffer { get; set; } 
+        public virtual Streamingbuffer StreamingBuffer { get; set; }
 
         /// <summary>[Required] Reference describing the ID of this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableReference")]
-        public virtual TableReference TableReference { get; set; } 
+        public virtual TableReference TableReference { get; set; }
 
         /// <summary>Time-based partitioning specification for this table. Only one of timePartitioning and
         /// rangePartitioning should be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timePartitioning")]
-        public virtual TimePartitioning TimePartitioning { get; set; } 
+        public virtual TimePartitioning TimePartitioning { get; set; }
 
         /// <summary>[Output-only] Describes the table type. The following values are supported: TABLE: A normal
         /// BigQuery table. VIEW: A virtual table defined by a SQL query. [TrustedTester] SNAPSHOT: An immutable, read-
@@ -6894,18 +6894,18 @@ namespace Google.Apis.Bigquery.v2.Data
         /// persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud
         /// Storage. The default value is TABLE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>[Optional] The view definition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("view")]
-        public virtual ViewDefinition View { get; set; } 
+        public virtual ViewDefinition View { get; set; }
 
     }    
 
     public class TableCell : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("v")]
-        public virtual object V { get; set; } 
+        public virtual object V { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6916,27 +6916,27 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Optional] Accept rows that contain values that do not match the schema. The unknown values are
         /// ignored. Default is false, which treats unknown values as errors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreUnknownValues")]
-        public virtual System.Nullable<bool> IgnoreUnknownValues { get; set; } 
+        public virtual System.Nullable<bool> IgnoreUnknownValues { get; set; }
 
         /// <summary>The resource type of the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The rows to insert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-        public virtual System.Collections.Generic.IList<RowsData> Rows { get; set; } 
+        public virtual System.Collections.Generic.IList<RowsData> Rows { get; set; }
 
         /// <summary>[Optional] Insert all valid rows of a request, even if invalid rows exist. The default value is
         /// false, which causes the entire request to fail if any invalid rows exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipInvalidRows")]
-        public virtual System.Nullable<bool> SkipInvalidRows { get; set; } 
+        public virtual System.Nullable<bool> SkipInvalidRows { get; set; }
 
         /// <summary>If specified, treats the destination table as a base template, and inserts the rows into an
         /// instance table named "{destination}{templateSuffix}". BigQuery will manage creation of the instance table,
         /// using the schema of the base template table. See https://cloud.google.com/bigquery/streaming-data-into-
         /// bigquery#template-tables for considerations when working with templates tables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templateSuffix")]
-        public virtual string TemplateSuffix { get; set; } 
+        public virtual string TemplateSuffix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6947,12 +6947,12 @@ namespace Google.Apis.Bigquery.v2.Data
             /// <summary>[Optional] A unique ID for each row. BigQuery uses this property to detect duplicate insertion
             /// requests on a best-effort basis.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("insertId")]
-            public virtual string InsertId { get; set; } 
+            public virtual string InsertId { get; set; }
 
             /// <summary>[Required] A JSON object that contains a row of data. The object's properties and values must
             /// match the destination table's schema.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("json")]
-            public virtual System.Collections.Generic.IDictionary<string,object> Json { get; set; } 
+            public virtual System.Collections.Generic.IDictionary<string, object> Json { get; set; }
 
         }
     }    
@@ -6961,11 +6961,11 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>An array of errors for rows that were not inserted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertErrors")]
-        public virtual System.Collections.Generic.IList<InsertErrorsData> InsertErrors { get; set; } 
+        public virtual System.Collections.Generic.IList<InsertErrorsData> InsertErrors { get; set; }
 
         /// <summary>The resource type of the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6975,11 +6975,11 @@ namespace Google.Apis.Bigquery.v2.Data
         {
             /// <summary>Error information for the row indicated by the index property.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-            public virtual System.Collections.Generic.IList<ErrorProto> Errors { get; set; } 
+            public virtual System.Collections.Generic.IList<ErrorProto> Errors { get; set; }
 
             /// <summary>The index of the row that error applies to.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("index")]
-            public virtual System.Nullable<long> Index { get; set; } 
+            public virtual System.Nullable<long> Index { get; set; }
 
         }
     }    
@@ -6988,24 +6988,24 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>A hash of this page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The resource type of the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>A token used for paging results. Providing this token instead of the startIndex parameter can help
         /// you retrieve stable results when an underlying table is changing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
-        public virtual string PageToken { get; set; } 
+        public virtual string PageToken { get; set; }
 
         /// <summary>Rows of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-        public virtual System.Collections.Generic.IList<TableRow> Rows { get; set; } 
+        public virtual System.Collections.Generic.IList<TableRow> Rows { get; set; }
 
         /// <summary>The total number of rows in the complete table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalRows")]
-        public virtual System.Nullable<long> TotalRows { get; set; } 
+        public virtual System.Nullable<long> TotalRows { get; set; }
 
     }    
 
@@ -7013,35 +7013,35 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>[Optional] The categories attached to this field, used for field-level access control.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]
-        public virtual CategoriesData Categories { get; set; } 
+        public virtual CategoriesData Categories { get; set; }
 
         /// <summary>[Optional] The field description. The maximum length is 1,024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>[Optional] Describes the nested schema fields if the type property is set to RECORD.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual System.Collections.Generic.IList<TableFieldSchema> Fields { get; set; } 
+        public virtual System.Collections.Generic.IList<TableFieldSchema> Fields { get; set; }
 
         /// <summary>[Optional] The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default
         /// value is NULLABLE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
-        public virtual string Mode { get; set; } 
+        public virtual string Mode { get; set; }
 
         /// <summary>[Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or
         /// underscores (_), and must start with a letter or underscore. The maximum length is 128 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("policyTags")]
-        public virtual PolicyTagsData PolicyTags { get; set; } 
+        public virtual PolicyTagsData PolicyTags { get; set; }
 
         /// <summary>[Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as
         /// INTEGER), FLOAT, FLOAT64 (same as FLOAT), BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME,
         /// RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as
         /// RECORD).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7053,7 +7053,7 @@ namespace Google.Apis.Bigquery.v2.Data
             /// <summary>A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most
             /// 5 categories are allowed.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("names")]
-            public virtual System.Collections.Generic.IList<string> Names { get; set; } 
+            public virtual System.Collections.Generic.IList<string> Names { get; set; }
 
         }    
 
@@ -7062,7 +7062,7 @@ namespace Google.Apis.Bigquery.v2.Data
             /// <summary>A list of category resource names. For example,
             /// "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("names")]
-            public virtual System.Collections.Generic.IList<string> Names { get; set; } 
+            public virtual System.Collections.Generic.IList<string> Names { get; set; }
 
         }
     }    
@@ -7071,23 +7071,23 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>A hash of this page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The type of list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>A token to request the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Tables in the requested dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tables")]
-        public virtual System.Collections.Generic.IList<TablesData> Tables { get; set; } 
+        public virtual System.Collections.Generic.IList<TablesData> Tables { get; set; }
 
         /// <summary>The total number of tables in the dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalItems")]
-        public virtual System.Nullable<int> TotalItems { get; set; } 
+        public virtual System.Nullable<int> TotalItems { get; set; }
 
         
 
@@ -7095,54 +7095,54 @@ namespace Google.Apis.Bigquery.v2.Data
         {
             /// <summary>[Beta] Clustering specification for this table, if configured.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("clustering")]
-            public virtual Clustering Clustering { get; set; } 
+            public virtual Clustering Clustering { get; set; }
 
             /// <summary>The time when this table was created, in milliseconds since the epoch.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-            public virtual System.Nullable<long> CreationTime { get; set; } 
+            public virtual System.Nullable<long> CreationTime { get; set; }
 
             /// <summary>[Optional] The time when this table expires, in milliseconds since the epoch. If not present,
             /// the table will persist indefinitely. Expired tables will be deleted and their storage
             /// reclaimed.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
-            public virtual System.Nullable<long> ExpirationTime { get; set; } 
+            public virtual System.Nullable<long> ExpirationTime { get; set; }
 
             /// <summary>The user-friendly name for this table.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("friendlyName")]
-            public virtual string FriendlyName { get; set; } 
+            public virtual string FriendlyName { get; set; }
 
             /// <summary>An opaque ID of the table</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
-            public virtual string Id { get; set; } 
+            public virtual string Id { get; set; }
 
             /// <summary>The resource type.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-            public virtual string Kind { get; set; } 
+            public virtual string Kind { get; set; }
 
             /// <summary>The labels associated with this table. You can use these to organize and group your
             /// tables.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-            public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+            public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
             /// <summary>The range partitioning specification for this table, if configured.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("rangePartitioning")]
-            public virtual RangePartitioning RangePartitioning { get; set; } 
+            public virtual RangePartitioning RangePartitioning { get; set; }
 
             /// <summary>A reference uniquely identifying the table.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("tableReference")]
-            public virtual TableReference TableReference { get; set; } 
+            public virtual TableReference TableReference { get; set; }
 
             /// <summary>The time-based partitioning specification for this table, if configured.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("timePartitioning")]
-            public virtual TimePartitioning TimePartitioning { get; set; } 
+            public virtual TimePartitioning TimePartitioning { get; set; }
 
             /// <summary>The type of table. Possible values are: TABLE, VIEW.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
-            public virtual string Type { get; set; } 
+            public virtual string Type { get; set; }
 
             /// <summary>Additional details for a view.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("view")]
-            public virtual ViewData View { get; set; } 
+            public virtual ViewData View { get; set; }
 
             
 
@@ -7151,7 +7151,7 @@ namespace Google.Apis.Bigquery.v2.Data
             {
                 /// <summary>True if view is defined in legacy SQL dialect, false if in standard SQL.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("useLegacySql")]
-                public virtual System.Nullable<bool> UseLegacySql { get; set; } 
+                public virtual System.Nullable<bool> UseLegacySql { get; set; }
 
             }
         }
@@ -7161,16 +7161,16 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>[Required] The ID of the dataset containing this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
-        public virtual string DatasetId { get; set; } 
+        public virtual string DatasetId { get; set; }
 
         /// <summary>[Required] The ID of the project containing this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>[Required] The ID of the table. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
         /// underscores (_). The maximum length is 1,024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
-        public virtual string TableId { get; set; } 
+        public virtual string TableId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7180,7 +7180,7 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Represents a single row in the result set, consisting of one or more fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("f")]
-        public virtual System.Collections.Generic.IList<TableCell> F { get; set; } 
+        public virtual System.Collections.Generic.IList<TableCell> F { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7190,7 +7190,7 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Describes the fields in a table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual System.Collections.Generic.IList<TableFieldSchema> Fields { get; set; } 
+        public virtual System.Collections.Generic.IList<TableFieldSchema> Fields { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7203,7 +7203,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// 'storage.*') are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7214,7 +7214,7 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7225,21 +7225,21 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Optional] Number of milliseconds for which to keep the storage for partitions in the table. The
         /// storage in a partition will have an expiration time of its partition time plus this value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationMs")]
-        public virtual System.Nullable<long> ExpirationMs { get; set; } 
+        public virtual System.Nullable<long> ExpirationMs { get; set; }
 
         /// <summary>[Beta] [Optional] If not set, the table is partitioned by pseudo column, referenced via either
         /// '_PARTITIONTIME' as TIMESTAMP type, or '_PARTITIONDATE' as DATE type. If field is specified, the table is
         /// instead partitioned by this field. The field must be a top-level TIMESTAMP or DATE field. Its mode must be
         /// NULLABLE or REQUIRED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual string Field { get; set; } 
+        public virtual string Field { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("requirePartitionFilter")]
-        public virtual System.Nullable<bool> RequirePartitionFilter { get; set; } 
+        public virtual System.Nullable<bool> RequirePartitionFilter { get; set; }
 
         /// <summary>[Required] The only type supported is DAY, which will generate one partition per day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7249,19 +7249,19 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Whether to enable auto ARIMA or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoArima")]
-        public virtual System.Nullable<bool> AutoArima { get; set; } 
+        public virtual System.Nullable<bool> AutoArima { get; set; }
 
         /// <summary>The max value of non-seasonal p and q.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoArimaMaxOrder")]
-        public virtual System.Nullable<long> AutoArimaMaxOrder { get; set; } 
+        public virtual System.Nullable<long> AutoArimaMaxOrder { get; set; }
 
         /// <summary>Batch size for dnn models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchSize")]
-        public virtual System.Nullable<long> BatchSize { get; set; } 
+        public virtual System.Nullable<long> BatchSize { get; set; }
 
         /// <summary>The data frequency of a time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataFrequency")]
-        public virtual string DataFrequency { get; set; } 
+        public virtual string DataFrequency { get; set; }
 
         /// <summary>The column to split data with. This column won't be used as a feature. 1. When data_split_method is
         /// CUSTOM, the corresponding column should be boolean. The rows with true value tag are eval data, and the
@@ -7270,172 +7270,172 @@ namespace Google.Apis.Bigquery.v2.Data
         /// respects the order in Orderable data types: https://cloud.google.com/bigquery/docs/reference/standard-sql
         /// /data-types#data-type-properties</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSplitColumn")]
-        public virtual string DataSplitColumn { get; set; } 
+        public virtual string DataSplitColumn { get; set; }
 
         /// <summary>The fraction of evaluation data over the whole input data. The rest of data will be used as
         /// training data. The format should be double. Accurate to two decimal places. Default value is 0.2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSplitEvalFraction")]
-        public virtual System.Nullable<double> DataSplitEvalFraction { get; set; } 
+        public virtual System.Nullable<double> DataSplitEvalFraction { get; set; }
 
         /// <summary>The data split type for training and evaluation, e.g. RANDOM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSplitMethod")]
-        public virtual string DataSplitMethod { get; set; } 
+        public virtual string DataSplitMethod { get; set; }
 
         /// <summary>Distance type for clustering models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distanceType")]
-        public virtual string DistanceType { get; set; } 
+        public virtual string DistanceType { get; set; }
 
         /// <summary>Dropout probability for dnn models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dropout")]
-        public virtual System.Nullable<double> Dropout { get; set; } 
+        public virtual System.Nullable<double> Dropout { get; set; }
 
         /// <summary>Whether to stop early when the loss doesn't improve significantly any more (compared to
         /// min_relative_progress). Used only for iterative training algorithms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("earlyStop")]
-        public virtual System.Nullable<bool> EarlyStop { get; set; } 
+        public virtual System.Nullable<bool> EarlyStop { get; set; }
 
         /// <summary>Feedback type that specifies which algorithm to run for matrix factorization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feedbackType")]
-        public virtual string FeedbackType { get; set; } 
+        public virtual string FeedbackType { get; set; }
 
         /// <summary>Hidden units for dnn models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hiddenUnits")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> HiddenUnits { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> HiddenUnits { get; set; }
 
         /// <summary>The geographical region based on which the holidays are considered in time series modeling. If a
         /// valid value is specified, then holiday effects modeling is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("holidayRegion")]
-        public virtual string HolidayRegion { get; set; } 
+        public virtual string HolidayRegion { get; set; }
 
         /// <summary>The number of periods ahead that need to be forecasted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("horizon")]
-        public virtual System.Nullable<long> Horizon { get; set; } 
+        public virtual System.Nullable<long> Horizon { get; set; }
 
         /// <summary>Include drift when fitting an ARIMA model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeDrift")]
-        public virtual System.Nullable<bool> IncludeDrift { get; set; } 
+        public virtual System.Nullable<bool> IncludeDrift { get; set; }
 
         /// <summary>Specifies the initial learning rate for the line search learn rate strategy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialLearnRate")]
-        public virtual System.Nullable<double> InitialLearnRate { get; set; } 
+        public virtual System.Nullable<double> InitialLearnRate { get; set; }
 
         /// <summary>Name of input label columns in training data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputLabelColumns")]
-        public virtual System.Collections.Generic.IList<string> InputLabelColumns { get; set; } 
+        public virtual System.Collections.Generic.IList<string> InputLabelColumns { get; set; }
 
         /// <summary>Item column specified for matrix factorization models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemColumn")]
-        public virtual string ItemColumn { get; set; } 
+        public virtual string ItemColumn { get; set; }
 
         /// <summary>The column used to provide the initial centroids for kmeans algorithm when
         /// kmeans_initialization_method is CUSTOM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmeansInitializationColumn")]
-        public virtual string KmeansInitializationColumn { get; set; } 
+        public virtual string KmeansInitializationColumn { get; set; }
 
         /// <summary>The method used to initialize the centroids for kmeans algorithm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmeansInitializationMethod")]
-        public virtual string KmeansInitializationMethod { get; set; } 
+        public virtual string KmeansInitializationMethod { get; set; }
 
         /// <summary>L1 regularization coefficient.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("l1Regularization")]
-        public virtual System.Nullable<double> L1Regularization { get; set; } 
+        public virtual System.Nullable<double> L1Regularization { get; set; }
 
         /// <summary>L2 regularization coefficient.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("l2Regularization")]
-        public virtual System.Nullable<double> L2Regularization { get; set; } 
+        public virtual System.Nullable<double> L2Regularization { get; set; }
 
         /// <summary>Weights associated with each label class, for rebalancing the training data. Only applicable for
         /// classification models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelClassWeights")]
-        public virtual System.Collections.Generic.IDictionary<string,System.Nullable<double>> LabelClassWeights { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<double>> LabelClassWeights { get; set; }
 
         /// <summary>Learning rate in training. Used only for iterative training algorithms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("learnRate")]
-        public virtual System.Nullable<double> LearnRate { get; set; } 
+        public virtual System.Nullable<double> LearnRate { get; set; }
 
         /// <summary>The strategy to determine learn rate for the current iteration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("learnRateStrategy")]
-        public virtual string LearnRateStrategy { get; set; } 
+        public virtual string LearnRateStrategy { get; set; }
 
         /// <summary>Type of loss function used during training run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lossType")]
-        public virtual string LossType { get; set; } 
+        public virtual string LossType { get; set; }
 
         /// <summary>The maximum number of iterations in training. Used only for iterative training
         /// algorithms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxIterations")]
-        public virtual System.Nullable<long> MaxIterations { get; set; } 
+        public virtual System.Nullable<long> MaxIterations { get; set; }
 
         /// <summary>Maximum depth of a tree for boosted tree models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTreeDepth")]
-        public virtual System.Nullable<long> MaxTreeDepth { get; set; } 
+        public virtual System.Nullable<long> MaxTreeDepth { get; set; }
 
         /// <summary>When early_stop is true, stops training when accuracy improvement is less than
         /// 'min_relative_progress'. Used only for iterative training algorithms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minRelativeProgress")]
-        public virtual System.Nullable<double> MinRelativeProgress { get; set; } 
+        public virtual System.Nullable<double> MinRelativeProgress { get; set; }
 
         /// <summary>Minimum split loss for boosted tree models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minSplitLoss")]
-        public virtual System.Nullable<double> MinSplitLoss { get; set; } 
+        public virtual System.Nullable<double> MinSplitLoss { get; set; }
 
         /// <summary>[Beta] Google Cloud Storage URI from which the model was imported. Only applicable for imported
         /// models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelUri")]
-        public virtual string ModelUri { get; set; } 
+        public virtual string ModelUri { get; set; }
 
         /// <summary>A specification of the non-seasonal part of the ARIMA model: the three components (p, d, q) are the
         /// AR order, the degree of differencing, and the MA order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonSeasonalOrder")]
-        public virtual ArimaOrder NonSeasonalOrder { get; set; } 
+        public virtual ArimaOrder NonSeasonalOrder { get; set; }
 
         /// <summary>Number of clusters for clustering models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numClusters")]
-        public virtual System.Nullable<long> NumClusters { get; set; } 
+        public virtual System.Nullable<long> NumClusters { get; set; }
 
         /// <summary>Num factors specified for matrix factorization models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numFactors")]
-        public virtual System.Nullable<long> NumFactors { get; set; } 
+        public virtual System.Nullable<long> NumFactors { get; set; }
 
         /// <summary>Optimization strategy for training linear regression models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optimizationStrategy")]
-        public virtual string OptimizationStrategy { get; set; } 
+        public virtual string OptimizationStrategy { get; set; }
 
         /// <summary>Whether to preserve the input structs in output feature names. Suppose there is a struct A with
         /// field b. When false (default), the output feature name is A_b. When true, the output feature name is
         /// A.b.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preserveInputStructs")]
-        public virtual System.Nullable<bool> PreserveInputStructs { get; set; } 
+        public virtual System.Nullable<bool> PreserveInputStructs { get; set; }
 
         /// <summary>Subsample fraction of the training data to grow tree to prevent overfitting for boosted tree
         /// models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subsample")]
-        public virtual System.Nullable<double> Subsample { get; set; } 
+        public virtual System.Nullable<double> Subsample { get; set; }
 
         /// <summary>Column to be designated as time series data for ARIMA model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesDataColumn")]
-        public virtual string TimeSeriesDataColumn { get; set; } 
+        public virtual string TimeSeriesDataColumn { get; set; }
 
         /// <summary>The id column that will be used to indicate different time series to forecast in
         /// parallel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesIdColumn")]
-        public virtual string TimeSeriesIdColumn { get; set; } 
+        public virtual string TimeSeriesIdColumn { get; set; }
 
         /// <summary>Column to be designated as time series timestamp for ARIMA model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesTimestampColumn")]
-        public virtual string TimeSeriesTimestampColumn { get; set; } 
+        public virtual string TimeSeriesTimestampColumn { get; set; }
 
         /// <summary>User column specified for matrix factorization models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userColumn")]
-        public virtual string UserColumn { get; set; } 
+        public virtual string UserColumn { get; set; }
 
         /// <summary>Hyperparameter for matrix factoration when implicit feedback type is specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("walsAlpha")]
-        public virtual System.Nullable<double> WalsAlpha { get; set; } 
+        public virtual System.Nullable<double> WalsAlpha { get; set; }
 
         /// <summary>Whether to train a model from the last checkpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warmStart")]
-        public virtual System.Nullable<bool> WarmStart { get; set; } 
+        public virtual System.Nullable<bool> WarmStart { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7446,24 +7446,24 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>Data split result of the training run. Only set when the input data is actually split.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSplitResult")]
-        public virtual DataSplitResult DataSplitResult { get; set; } 
+        public virtual DataSplitResult DataSplitResult { get; set; }
 
         /// <summary>The evaluation metrics over training/eval data that were computed at the end of training.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationMetrics")]
-        public virtual EvaluationMetrics EvaluationMetrics { get; set; } 
+        public virtual EvaluationMetrics EvaluationMetrics { get; set; }
 
         /// <summary>Output of each iteration run, results.size() <= max_iterations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
-        public virtual System.Collections.Generic.IList<IterationResult> Results { get; set; } 
+        public virtual System.Collections.Generic.IList<IterationResult> Results { get; set; }
 
         /// <summary>The start time of this training run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>Options that were used for this training run, includes user specified and default options that were
         /// used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingOptions")]
-        public virtual TrainingOptions TrainingOptions { get; set; } 
+        public virtual TrainingOptions TrainingOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7473,7 +7473,7 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>[Output-only] // [Alpha] Id of the transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionId")]
-        public virtual string TransactionId { get; set; } 
+        public virtual string TransactionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7488,11 +7488,11 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Pick one] An inline resource that contains code for a user-defined function (UDF). Providing a
         /// inline code resource is equivalent to providing a URI for a file containing the same code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inlineCode")]
-        public virtual string InlineCode { get; set; } 
+        public virtual string InlineCode { get; set; }
 
         /// <summary>[Pick one] A code resource to load from a Google Cloud Storage URI (gs://bucket/path).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
-        public virtual string ResourceUri { get; set; } 
+        public virtual string ResourceUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7502,17 +7502,17 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>[Required] A query that BigQuery executes when the view is referenced.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
-        public virtual string Query { get; set; } 
+        public virtual string Query { get; set; }
 
         /// <summary>Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to
         /// false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries
         /// and views that reference this view must use the same flag value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useLegacySql")]
-        public virtual System.Nullable<bool> UseLegacySql { get; set; } 
+        public virtual System.Nullable<bool> UseLegacySql { get; set; }
 
         /// <summary>Describes user-defined function resources used in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userDefinedFunctionResources")]
-        public virtual System.Collections.Generic.IList<UserDefinedFunctionResource> UserDefinedFunctionResources { get; set; } 
+        public virtual System.Collections.Generic.IList<UserDefinedFunctionResource> UserDefinedFunctionResources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

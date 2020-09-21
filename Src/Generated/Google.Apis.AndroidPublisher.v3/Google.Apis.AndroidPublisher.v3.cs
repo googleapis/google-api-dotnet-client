@@ -6795,11 +6795,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>Information about the binary payload of this APK.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binary")]
-        public virtual ApkBinary Binary { get; set; } 
+        public virtual ApkBinary Binary { get; set; }
 
         /// <summary>The version code of the APK, as specified in the manifest file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
-        public virtual System.Nullable<int> VersionCode { get; set; } 
+        public virtual System.Nullable<int> VersionCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6811,12 +6811,12 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>A sha1 hash of the APK payload, encoded as a hex string and matching the output of the sha1sum
         /// command.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha1")]
-        public virtual string Sha1 { get; set; } 
+        public virtual string Sha1 { get; set; }
 
         /// <summary>A sha256 hash of the APK payload, encoded as a hex string and matching the output of the sha256sum
         /// command.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha256")]
-        public virtual string Sha256 { get; set; } 
+        public virtual string Sha256 { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6827,7 +6827,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>The definition of the externally-hosted APK and where it is located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externallyHostedApk")]
-        public virtual ExternallyHostedApk ExternallyHostedApk { get; set; } 
+        public virtual ExternallyHostedApk ExternallyHostedApk { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6838,7 +6838,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>The definition of the externally-hosted APK and where it is located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externallyHostedApk")]
-        public virtual ExternallyHostedApk ExternallyHostedApk { get; set; } 
+        public virtual ExternallyHostedApk ExternallyHostedApk { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6849,11 +6849,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>All APKs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apks")]
-        public virtual System.Collections.Generic.IList<Apk> Apks { get; set; } 
+        public virtual System.Collections.Generic.IList<Apk> Apks { get; set; }
 
         /// <summary>The kind of this response ("androidpublisher#apksListResponse").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6864,19 +6864,19 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>The user-visible support email for this app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactEmail")]
-        public virtual string ContactEmail { get; set; } 
+        public virtual string ContactEmail { get; set; }
 
         /// <summary>The user-visible support telephone number for this app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactPhone")]
-        public virtual string ContactPhone { get; set; } 
+        public virtual string ContactPhone { get; set; }
 
         /// <summary>The user-visible website for this app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactWebsite")]
-        public virtual string ContactWebsite { get; set; } 
+        public virtual string ContactWebsite { get; set; }
 
         /// <summary>Default language code, in BCP 47 format (eg "en-US").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultLanguage")]
-        public virtual string DefaultLanguage { get; set; } 
+        public virtual string DefaultLanguage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6888,11 +6888,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Output only. The time (as seconds since Epoch) at which the edit will expire and will be no longer
         /// valid for use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expiryTimeSeconds")]
-        public virtual string ExpiryTimeSeconds { get; set; } 
+        public virtual string ExpiryTimeSeconds { get; set; }
 
         /// <summary>Output only. Identifier of the edit. Can be used in subsequent API calls.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6904,17 +6904,17 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>A sha1 hash of the upload payload, encoded as a hex string and matching the output of the sha1sum
         /// command.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha1")]
-        public virtual string Sha1 { get; set; } 
+        public virtual string Sha1 { get; set; }
 
         /// <summary>A sha256 hash of the upload payload, encoded as a hex string and matching the output of the
         /// sha256sum command.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha256")]
-        public virtual string Sha256 { get; set; } 
+        public virtual string Sha256 { get; set; }
 
         /// <summary>The version code of the Android App Bundle, as specified in the Android App Bundle's base module
         /// APK manifest file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
-        public virtual System.Nullable<int> VersionCode { get; set; } 
+        public virtual System.Nullable<int> VersionCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6925,11 +6925,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>All bundles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bundles")]
-        public virtual System.Collections.Generic.IList<Bundle> Bundles { get; set; } 
+        public virtual System.Collections.Generic.IList<Bundle> Bundles { get; set; }
 
         /// <summary>The kind of this response ("androidpublisher#bundlesListResponse").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6940,11 +6940,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>A comment from a developer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerComment")]
-        public virtual DeveloperComment DeveloperComment { get; set; } 
+        public virtual DeveloperComment DeveloperComment { get; set; }
 
         /// <summary>A comment from a user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userComment")]
-        public virtual UserComment UserComment { get; set; } 
+        public virtual UserComment UserComment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6956,11 +6956,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Countries to target, specified as two letter [CLDR
         /// codes](https://unicode.org/cldr/charts/latest/supplemental/territory_containment_un_m_49.html).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countries")]
-        public virtual System.Collections.Generic.IList<string> Countries { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Countries { get; set; }
 
         /// <summary>Include "rest of world" as well as explicitly targeted countries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeRestOfWorld")]
-        public virtual System.Nullable<bool> IncludeRestOfWorld { get; set; } 
+        public virtual System.Nullable<bool> IncludeRestOfWorld { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6971,7 +6971,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>The type of the deobfuscation file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("symbolType")]
-        public virtual string SymbolType { get; set; } 
+        public virtual string SymbolType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6982,7 +6982,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>The uploaded Deobfuscation File configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deobfuscationFile")]
-        public virtual DeobfuscationFile DeobfuscationFile { get; set; } 
+        public virtual DeobfuscationFile DeobfuscationFile { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6993,11 +6993,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>The last time at which this comment was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModified")]
-        public virtual Timestamp LastModified { get; set; } 
+        public virtual Timestamp LastModified { get; set; }
 
         /// <summary>The content of the comment, i.e. reply body.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7008,47 +7008,47 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>Device CPU make, e.g. "Qualcomm"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuMake")]
-        public virtual string CpuMake { get; set; } 
+        public virtual string CpuMake { get; set; }
 
         /// <summary>Device CPU model, e.g. "MSM8974"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuModel")]
-        public virtual string CpuModel { get; set; } 
+        public virtual string CpuModel { get; set; }
 
         /// <summary>Device class (e.g. tablet)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceClass")]
-        public virtual string DeviceClass { get; set; } 
+        public virtual string DeviceClass { get; set; }
 
         /// <summary>OpenGL version</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glEsVersion")]
-        public virtual System.Nullable<int> GlEsVersion { get; set; } 
+        public virtual System.Nullable<int> GlEsVersion { get; set; }
 
         /// <summary>Device manufacturer (e.g. Motorola)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manufacturer")]
-        public virtual string Manufacturer { get; set; } 
+        public virtual string Manufacturer { get; set; }
 
         /// <summary>Comma separated list of native platforms (e.g. "arm", "arm7")</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nativePlatform")]
-        public virtual string NativePlatform { get; set; } 
+        public virtual string NativePlatform { get; set; }
 
         /// <summary>Device model name (e.g. Droid)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productName")]
-        public virtual string ProductName { get; set; } 
+        public virtual string ProductName { get; set; }
 
         /// <summary>Device RAM in Megabytes, e.g. "2048"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ramMb")]
-        public virtual System.Nullable<int> RamMb { get; set; } 
+        public virtual System.Nullable<int> RamMb { get; set; }
 
         /// <summary>Screen density in DPI</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenDensityDpi")]
-        public virtual System.Nullable<int> ScreenDensityDpi { get; set; } 
+        public virtual System.Nullable<int> ScreenDensityDpi { get; set; }
 
         /// <summary>Screen height in pixels</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenHeightPx")]
-        public virtual System.Nullable<int> ScreenHeightPx { get; set; } 
+        public virtual System.Nullable<int> ScreenHeightPx { get; set; }
 
         /// <summary>Screen width in pixels</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenWidthPx")]
-        public virtual System.Nullable<int> ScreenWidthPx { get; set; } 
+        public virtual System.Nullable<int> ScreenWidthPx { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7059,16 +7059,16 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>Screen dpi.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenDensity")]
-        public virtual System.Nullable<long> ScreenDensity { get; set; } 
+        public virtual System.Nullable<long> ScreenDensity { get; set; }
 
         /// <summary>Supported ABI architectures in the order of preference. The values should be the string as reported
         /// by the platform, e.g. "armeabi-v7a", "x86_64".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedAbis")]
-        public virtual System.Collections.Generic.IList<string> SupportedAbis { get; set; } 
+        public virtual System.Collections.Generic.IList<string> SupportedAbis { get; set; }
 
         /// <summary>All installed locales represented as BCP-47 strings, e.g. "en-US".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedLocales")]
-        public virtual System.Collections.Generic.IList<string> SupportedLocales { get; set; } 
+        public virtual System.Collections.Generic.IList<string> SupportedLocales { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7081,12 +7081,12 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// reference another APK's expansion file. The field's value is the size of the uploaded expansion file in
         /// bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileSize")]
-        public virtual System.Nullable<long> FileSize { get; set; } 
+        public virtual System.Nullable<long> FileSize { get; set; }
 
         /// <summary>If set, this APK's expansion file references another APK's expansion file. The file_size field will
         /// not be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referencesVersion")]
-        public virtual System.Nullable<int> ReferencesVersion { get; set; } 
+        public virtual System.Nullable<int> ReferencesVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7097,7 +7097,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>The uploaded expansion file configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expansionFile")]
-        public virtual ExpansionFile ExpansionFile { get; set; } 
+        public virtual ExpansionFile ExpansionFile { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7110,64 +7110,64 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>The application label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicationLabel")]
-        public virtual string ApplicationLabel { get; set; } 
+        public virtual string ApplicationLabel { get; set; }
 
         /// <summary>A certificate (or array of certificates if a certificate-chain is used) used to sign this APK,
         /// represented as a base64 encoded byte array.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificateBase64s")]
-        public virtual System.Collections.Generic.IList<string> CertificateBase64s { get; set; } 
+        public virtual System.Collections.Generic.IList<string> CertificateBase64s { get; set; }
 
         /// <summary>The URL at which the APK is hosted. This must be an https URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externallyHostedUrl")]
-        public virtual string ExternallyHostedUrl { get; set; } 
+        public virtual string ExternallyHostedUrl { get; set; }
 
         /// <summary>The sha1 checksum of this APK, represented as a base64 encoded byte array.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileSha1Base64")]
-        public virtual string FileSha1Base64 { get; set; } 
+        public virtual string FileSha1Base64 { get; set; }
 
         /// <summary>The sha256 checksum of this APK, represented as a base64 encoded byte array.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileSha256Base64")]
-        public virtual string FileSha256Base64 { get; set; } 
+        public virtual string FileSha256Base64 { get; set; }
 
         /// <summary>The file size in bytes of this APK.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileSize")]
-        public virtual System.Nullable<long> FileSize { get; set; } 
+        public virtual System.Nullable<long> FileSize { get; set; }
 
         /// <summary>The icon image from the APK, as a base64 encoded byte array.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iconBase64")]
-        public virtual string IconBase64 { get; set; } 
+        public virtual string IconBase64 { get; set; }
 
         /// <summary>The maximum SDK supported by this APK (optional).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumSdk")]
-        public virtual System.Nullable<int> MaximumSdk { get; set; } 
+        public virtual System.Nullable<int> MaximumSdk { get; set; }
 
         /// <summary>The minimum SDK targeted by this APK.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumSdk")]
-        public virtual System.Nullable<int> MinimumSdk { get; set; } 
+        public virtual System.Nullable<int> MinimumSdk { get; set; }
 
         /// <summary>The native code environments supported by this APK (optional).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nativeCodes")]
-        public virtual System.Collections.Generic.IList<string> NativeCodes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> NativeCodes { get; set; }
 
         /// <summary>The package name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
-        public virtual string PackageName { get; set; } 
+        public virtual string PackageName { get; set; }
 
         /// <summary>The features required by this APK (optional).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usesFeatures")]
-        public virtual System.Collections.Generic.IList<string> UsesFeatures { get; set; } 
+        public virtual System.Collections.Generic.IList<string> UsesFeatures { get; set; }
 
         /// <summary>The permissions requested by this APK.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usesPermissions")]
-        public virtual System.Collections.Generic.IList<UsesPermission> UsesPermissions { get; set; } 
+        public virtual System.Collections.Generic.IList<UsesPermission> UsesPermissions { get; set; }
 
         /// <summary>The version code of this APK.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
-        public virtual System.Nullable<int> VersionCode { get; set; } 
+        public virtual System.Nullable<int> VersionCode { get; set; }
 
         /// <summary>The version name of this APK.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionName")]
-        public virtual string VersionName { get; set; } 
+        public virtual string VersionName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7178,19 +7178,19 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>A unique id representing this image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>A sha1 hash of the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha1")]
-        public virtual string Sha1 { get; set; } 
+        public virtual string Sha1 { get; set; }
 
         /// <summary>A sha256 hash of the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha256")]
-        public virtual string Sha256 { get; set; } 
+        public virtual string Sha256 { get; set; }
 
         /// <summary>A URL that will serve a preview of the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7201,7 +7201,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>The deleted images.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
-        public virtual System.Collections.Generic.IList<Image> Deleted { get; set; } 
+        public virtual System.Collections.Generic.IList<Image> Deleted { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7212,7 +7212,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>All listed Images.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("images")]
-        public virtual System.Collections.Generic.IList<Image> Images { get; set; } 
+        public virtual System.Collections.Generic.IList<Image> Images { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7223,7 +7223,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>The uploaded image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual Image Image { get; set; } 
+        public virtual Image Image { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7234,54 +7234,54 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>Default language of the localized data, as defined by BCP-47. e.g. "en-US".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultLanguage")]
-        public virtual string DefaultLanguage { get; set; } 
+        public virtual string DefaultLanguage { get; set; }
 
         /// <summary>Default price. Cannot be zero, as in-app products are never free. Always in the developer's
         /// Checkout merchant currency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultPrice")]
-        public virtual Price DefaultPrice { get; set; } 
+        public virtual Price DefaultPrice { get; set; }
 
         /// <summary>Grace period of the subscription, specified in ISO 8601 format. Allows developers to give their
         /// subscribers a grace period when the payment for the new recurrence period is declined. Acceptable values are
         /// P0D (zero days), P3D (three days), P7D (seven days), P14D (14 days), and P30D (30 days).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gracePeriod")]
-        public virtual string GracePeriod { get; set; } 
+        public virtual string GracePeriod { get; set; }
 
         /// <summary>List of localized title and description data. Map key is the language of the localized data, as
         /// defined by BCP-47, e.g. "en-US".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listings")]
-        public virtual System.Collections.Generic.IDictionary<string,InAppProductListing> Listings { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, InAppProductListing> Listings { get; set; }
 
         /// <summary>Package name of the parent app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
-        public virtual string PackageName { get; set; } 
+        public virtual string PackageName { get; set; }
 
         /// <summary>Prices per buyer region. None of these can be zero, as in-app products are never free. Map key is
         /// region code, as defined by ISO 3166-2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prices")]
-        public virtual System.Collections.Generic.IDictionary<string,Price> Prices { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, Price> Prices { get; set; }
 
         /// <summary>The type of the product, e.g. a recurring subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseType")]
-        public virtual string PurchaseType { get; set; } 
+        public virtual string PurchaseType { get; set; }
 
         /// <summary>Stock-keeping-unit (SKU) of the product, unique within an app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sku")]
-        public virtual string Sku { get; set; } 
+        public virtual string Sku { get; set; }
 
         /// <summary>The status of the product, e.g. whether it's active.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>Subscription period, specified in ISO 8601 format. Acceptable values are P1W (one week), P1M (one
         /// month), P3M (three months), P6M (six months), and P1Y (one year).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptionPeriod")]
-        public virtual string SubscriptionPeriod { get; set; } 
+        public virtual string SubscriptionPeriod { get; set; }
 
         /// <summary>Trial period, specified in ISO 8601 format. Acceptable values are anything between P7D (seven days)
         /// and P999D (999 days).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trialPeriod")]
-        public virtual string TrialPeriod { get; set; } 
+        public virtual string TrialPeriod { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7292,15 +7292,15 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>Localized entitlement benefits for a subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("benefits")]
-        public virtual System.Collections.Generic.IList<string> Benefits { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Benefits { get; set; }
 
         /// <summary>Description for the store listing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Title for the store listing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7311,19 +7311,19 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>All in-app products.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inappproduct")]
-        public virtual System.Collections.Generic.IList<InAppProduct> Inappproduct { get; set; } 
+        public virtual System.Collections.Generic.IList<InAppProduct> Inappproduct { get; set; }
 
         /// <summary>The kind of this response ("androidpublisher#inappproductsListResponse").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Information about the current page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual PageInfo PageInfo { get; set; } 
+        public virtual PageInfo PageInfo { get; set; }
 
         /// <summary>Pagination token, to handle a number of products that is over one page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
-        public virtual TokenPagination TokenPagination { get; set; } 
+        public virtual TokenPagination TokenPagination { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7335,17 +7335,17 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>The sha256 fingerprint of the certificate used to sign the generated artifact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificateFingerprint")]
-        public virtual string CertificateFingerprint { get; set; } 
+        public virtual string CertificateFingerprint { get; set; }
 
         /// <summary>The download URL generated for the uploaded artifact. Users that are authorized to download can
         /// follow the link to the Play Store app to install it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadUrl")]
-        public virtual string DownloadUrl { get; set; } 
+        public virtual string DownloadUrl { get; set; }
 
         /// <summary>The sha256 hash of the artifact represented as a lowercase hexadecimal number, matching the output
         /// of the sha256sum command.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha256")]
-        public virtual string Sha256 { get; set; } 
+        public virtual string Sha256 { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7358,22 +7358,22 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// price_currency_code. Price is expressed in micro-units, where 1,000,000 micro-units represents one unit of
         /// the currency. For example, if the subscription price is €1.99, price_amount_micros is 1990000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("introductoryPriceAmountMicros")]
-        public virtual System.Nullable<long> IntroductoryPriceAmountMicros { get; set; } 
+        public virtual System.Nullable<long> IntroductoryPriceAmountMicros { get; set; }
 
         /// <summary>ISO 4217 currency code for the introductory subscription price. For example, if the price is
         /// specified in British pounds sterling, price_currency_code is "GBP".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("introductoryPriceCurrencyCode")]
-        public virtual string IntroductoryPriceCurrencyCode { get; set; } 
+        public virtual string IntroductoryPriceCurrencyCode { get; set; }
 
         /// <summary>The number of billing period to offer introductory pricing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("introductoryPriceCycles")]
-        public virtual System.Nullable<int> IntroductoryPriceCycles { get; set; } 
+        public virtual System.Nullable<int> IntroductoryPriceCycles { get; set; }
 
         /// <summary>Introductory price period, specified in ISO 8601 format. Common values are (but not limited to)
         /// "P1W" (one week), "P1M" (one month), "P3M" (three months), "P6M" (six months), and "P1Y" (one
         /// year).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("introductoryPricePeriod")]
-        public virtual string IntroductoryPricePeriod { get; set; } 
+        public virtual string IntroductoryPricePeriod { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7384,24 +7384,24 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>Full description of the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullDescription")]
-        public virtual string FullDescription { get; set; } 
+        public virtual string FullDescription { get; set; }
 
         /// <summary>Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian
         /// German).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
-        public virtual string Language { get; set; } 
+        public virtual string Language { get; set; }
 
         /// <summary>Short description of the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortDescription")]
-        public virtual string ShortDescription { get; set; } 
+        public virtual string ShortDescription { get; set; }
 
         /// <summary>Localized title of the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>URL of a promotional YouTube video for the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("video")]
-        public virtual string Video { get; set; } 
+        public virtual string Video { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7412,11 +7412,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>The kind of this response ("androidpublisher#listingsListResponse").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>All localized listings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listings")]
-        public virtual System.Collections.Generic.IList<Listing> Listings { get; set; } 
+        public virtual System.Collections.Generic.IList<Listing> Listings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7428,11 +7428,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian
         /// German).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
-        public virtual string Language { get; set; } 
+        public virtual string Language { get; set; }
 
         /// <summary>The text in the given language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7445,16 +7445,16 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Maximum number of results returned in one page. ! The number of results included in the API
         /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultPerPage")]
-        public virtual System.Nullable<int> ResultPerPage { get; set; } 
+        public virtual System.Nullable<int> ResultPerPage { get; set; }
 
         /// <summary>Index of the first result returned in the current page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; } 
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>Total number of results available on the backend ! The total number of results in the result
         /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-        public virtual System.Nullable<int> TotalResults { get; set; } 
+        public virtual System.Nullable<int> TotalResults { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7466,11 +7466,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>3 letter Currency code, as defined by ISO 4217. See
         /// java/com/google/common/money/CurrencyCode.java</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currency")]
-        public virtual string Currency { get; set; } 
+        public virtual string Currency { get; set; }
 
         /// <summary>Price in 1/million of the currency base unit, represented as a string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceMicros")]
-        public virtual string PriceMicros { get; set; } 
+        public virtual string PriceMicros { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7482,63 +7482,63 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>The acknowledgement state of the inapp product. Possible values are: 0. Yet to be acknowledged 1.
         /// Acknowledged</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acknowledgementState")]
-        public virtual System.Nullable<int> AcknowledgementState { get; set; } 
+        public virtual System.Nullable<int> AcknowledgementState { get; set; }
 
         /// <summary>The consumption state of the inapp product. Possible values are: 0. Yet to be consumed 1.
         /// Consumed</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumptionState")]
-        public virtual System.Nullable<int> ConsumptionState { get; set; } 
+        public virtual System.Nullable<int> ConsumptionState { get; set; }
 
         /// <summary>A developer-specified string that contains supplemental information about an order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerPayload")]
-        public virtual string DeveloperPayload { get; set; } 
+        public virtual string DeveloperPayload { get; set; }
 
         /// <summary>This kind represents an inappPurchase object in the androidpublisher service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>An obfuscated version of the id that is uniquely associated with the user's account in your app.
         /// Only present if specified using https://developer.android.com/reference/com/android/billingclient/api/Billin
         /// gFlowParams.Builder#setobfuscatedaccountid when the purchase was made.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedExternalAccountId")]
-        public virtual string ObfuscatedExternalAccountId { get; set; } 
+        public virtual string ObfuscatedExternalAccountId { get; set; }
 
         /// <summary>An obfuscated version of the id that is uniquely associated with the user's profile in your app.
         /// Only present if specified using https://developer.android.com/reference/com/android/billingclient/api/Billin
         /// gFlowParams.Builder#setobfuscatedprofileid when the purchase was made.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedExternalProfileId")]
-        public virtual string ObfuscatedExternalProfileId { get; set; } 
+        public virtual string ObfuscatedExternalProfileId { get; set; }
 
         /// <summary>The order id associated with the purchase of the inapp product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
-        public virtual string OrderId { get; set; } 
+        public virtual string OrderId { get; set; }
 
         /// <summary>The inapp product SKU.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>The purchase state of the order. Possible values are: 0. Purchased 1. Canceled 2. Pending</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseState")]
-        public virtual System.Nullable<int> PurchaseState { get; set; } 
+        public virtual System.Nullable<int> PurchaseState { get; set; }
 
         /// <summary>The time the product was purchased, in milliseconds since the epoch (Jan 1, 1970).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseTimeMillis")]
-        public virtual System.Nullable<long> PurchaseTimeMillis { get; set; } 
+        public virtual System.Nullable<long> PurchaseTimeMillis { get; set; }
 
         /// <summary>The purchase token generated to identify this purchase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseToken")]
-        public virtual string PurchaseToken { get; set; } 
+        public virtual string PurchaseToken { get; set; }
 
         /// <summary>The type of purchase of the inapp product. This field is only set if this purchase was not made
         /// using the standard in-app billing flow. Possible values are: 0. Test (i.e. purchased from a license testing
         /// account) 1. Promo (i.e. purchased using a promo code) 2. Rewarded (i.e. from watching a video ad instead of
         /// paying)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseType")]
-        public virtual System.Nullable<int> PurchaseType { get; set; } 
+        public virtual System.Nullable<int> PurchaseType { get; set; }
 
         /// <summary>The quantity associated with the purchase of the inapp product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
-        public virtual System.Nullable<int> Quantity { get; set; } 
+        public virtual System.Nullable<int> Quantity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7549,7 +7549,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>Payload to attach to the purchase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerPayload")]
-        public virtual string DeveloperPayload { get; set; } 
+        public virtual string DeveloperPayload { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7560,15 +7560,15 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>The name of the user who wrote the review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorName")]
-        public virtual string AuthorName { get; set; } 
+        public virtual string AuthorName { get; set; }
 
         /// <summary>A repeated field containing comments for the review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comments")]
-        public virtual System.Collections.Generic.IList<Comment> Comments { get; set; } 
+        public virtual System.Collections.Generic.IList<Comment> Comments { get; set; }
 
         /// <summary>Unique identifier for this review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewId")]
-        public virtual string ReviewId { get; set; } 
+        public virtual string ReviewId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7579,11 +7579,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>The time at which the reply took effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastEdited")]
-        public virtual Timestamp LastEdited { get; set; } 
+        public virtual Timestamp LastEdited { get; set; }
 
         /// <summary>The reply text that was applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replyText")]
-        public virtual string ReplyText { get; set; } 
+        public virtual string ReplyText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7594,15 +7594,15 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>Information about the current page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual PageInfo PageInfo { get; set; } 
+        public virtual PageInfo PageInfo { get; set; }
 
         /// <summary>List of reviews.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviews")]
-        public virtual System.Collections.Generic.IList<Review> Reviews { get; set; } 
+        public virtual System.Collections.Generic.IList<Review> Reviews { get; set; }
 
         /// <summary>Pagination token, to handle a number of products that is over one page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
-        public virtual TokenPagination TokenPagination { get; set; } 
+        public virtual TokenPagination TokenPagination { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7614,7 +7614,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>The text to set as the reply. Replies of more than approximately 350 characters will be rejected.
         /// HTML tags will be stripped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replyText")]
-        public virtual string ReplyText { get; set; } 
+        public virtual string ReplyText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7625,7 +7625,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>The result of replying/updating a reply to review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
-        public virtual ReviewReplyResult Result { get; set; } 
+        public virtual ReviewReplyResult Result { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7638,11 +7638,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>The cancellation reason the user chose in the survey. Possible values are: 0. Other 1. I don't use
         /// this service enough 2. Technical issues 3. Cost-related reasons 4. I found a better app</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelSurveyReason")]
-        public virtual System.Nullable<int> CancelSurveyReason { get; set; } 
+        public virtual System.Nullable<int> CancelSurveyReason { get; set; }
 
         /// <summary>The customized input cancel reason from the user. Only present when cancelReason is 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userInputCancelReason")]
-        public virtual string UserInputCancelReason { get; set; } 
+        public virtual string UserInputCancelReason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7655,12 +7655,12 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>The desired next expiry time to assign to the subscription, in milliseconds since the Epoch. The
         /// given time must be later/greater than the current expiry time for the subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredExpiryTimeMillis")]
-        public virtual System.Nullable<long> DesiredExpiryTimeMillis { get; set; } 
+        public virtual System.Nullable<long> DesiredExpiryTimeMillis { get; set; }
 
         /// <summary>The expected expiry time for the subscription. If the current expiry time for the subscription is
         /// not the value specified here, the deferral will not occur.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expectedExpiryTimeMillis")]
-        public virtual System.Nullable<long> ExpectedExpiryTimeMillis { get; set; } 
+        public virtual System.Nullable<long> ExpectedExpiryTimeMillis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7674,7 +7674,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>The new price the subscription will renew with if the price change is accepted by the
         /// user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newPrice")]
-        public virtual Price NewPrice { get; set; } 
+        public virtual Price NewPrice { get; set; }
 
         /// <summary>The current state of the price change. Possible values are: 0. Outstanding: State for a pending
         /// price change waiting for the user to agree. In this state, you can optionally seek confirmation from the
@@ -7682,7 +7682,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// with unless it's canceled. The price change takes effect on a future date when the subscription renews. Note
         /// that the change might not occur when the subscription is renewed next.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual System.Nullable<int> State { get; set; } 
+        public virtual System.Nullable<int> State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7694,72 +7694,72 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>The acknowledgement state of the subscription product. Possible values are: 0. Yet to be
         /// acknowledged 1. Acknowledged</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acknowledgementState")]
-        public virtual System.Nullable<int> AcknowledgementState { get; set; } 
+        public virtual System.Nullable<int> AcknowledgementState { get; set; }
 
         /// <summary>Whether the subscription will automatically be renewed when it reaches its current expiry
         /// time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoRenewing")]
-        public virtual System.Nullable<bool> AutoRenewing { get; set; } 
+        public virtual System.Nullable<bool> AutoRenewing { get; set; }
 
         /// <summary>Time at which the subscription will be automatically resumed, in milliseconds since the Epoch. Only
         /// present if the user has requested to pause the subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoResumeTimeMillis")]
-        public virtual System.Nullable<long> AutoResumeTimeMillis { get; set; } 
+        public virtual System.Nullable<long> AutoResumeTimeMillis { get; set; }
 
         /// <summary>The reason why a subscription was canceled or is not auto-renewing. Possible values are: 0. User
         /// canceled the subscription 1. Subscription was canceled by the system, for example because of a billing
         /// problem 2. Subscription was replaced with a new subscription 3. Subscription was canceled by the
         /// developer</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelReason")]
-        public virtual System.Nullable<int> CancelReason { get; set; } 
+        public virtual System.Nullable<int> CancelReason { get; set; }
 
         /// <summary>Information provided by the user when they complete the subscription cancellation flow
         /// (cancellation reason survey).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelSurveyResult")]
-        public virtual SubscriptionCancelSurveyResult CancelSurveyResult { get; set; } 
+        public virtual SubscriptionCancelSurveyResult CancelSurveyResult { get; set; }
 
         /// <summary>ISO 3166-1 alpha-2 billing country/region code of the user at the time the subscription was
         /// granted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
-        public virtual string CountryCode { get; set; } 
+        public virtual string CountryCode { get; set; }
 
         /// <summary>A developer-specified string that contains supplemental information about an order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerPayload")]
-        public virtual string DeveloperPayload { get; set; } 
+        public virtual string DeveloperPayload { get; set; }
 
         /// <summary>The email address of the user when the subscription was purchased. Only present for purchases made
         /// with 'Subscribe with Google'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
-        public virtual string EmailAddress { get; set; } 
+        public virtual string EmailAddress { get; set; }
 
         /// <summary>Time at which the subscription will expire, in milliseconds since the Epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expiryTimeMillis")]
-        public virtual System.Nullable<long> ExpiryTimeMillis { get; set; } 
+        public virtual System.Nullable<long> ExpiryTimeMillis { get; set; }
 
         /// <summary>User account identifier in the third-party service. Only present if account linking happened as
         /// part of the subscription purchase flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalAccountId")]
-        public virtual string ExternalAccountId { get; set; } 
+        public virtual string ExternalAccountId { get; set; }
 
         /// <summary>The family name of the user when the subscription was purchased. Only present for purchases made
         /// with 'Subscribe with Google'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("familyName")]
-        public virtual string FamilyName { get; set; } 
+        public virtual string FamilyName { get; set; }
 
         /// <summary>The given name of the user when the subscription was purchased. Only present for purchases made
         /// with 'Subscribe with Google'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("givenName")]
-        public virtual string GivenName { get; set; } 
+        public virtual string GivenName { get; set; }
 
         /// <summary>Introductory price information of the subscription. This is only present when the subscription was
         /// purchased with an introductory price. This field does not indicate the subscription is currently in
         /// introductory price period.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("introductoryPriceInfo")]
-        public virtual IntroductoryPriceInfo IntroductoryPriceInfo { get; set; } 
+        public virtual IntroductoryPriceInfo IntroductoryPriceInfo { get; set; }
 
         /// <summary>This kind represents a subscriptionPurchase object in the androidpublisher service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The purchase token of the originating purchase if this subscription is one of the following: 0. Re-
         /// signup of a canceled but non-lapsed subscription 1. Upgrade/downgrade from a previous subscription For
@@ -7769,82 +7769,82 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// token Z, this field will be set to Y. If you call this API with purchase token Y, this field will be set to
         /// X. If you call this API with purchase token X, this field will not be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedPurchaseToken")]
-        public virtual string LinkedPurchaseToken { get; set; } 
+        public virtual string LinkedPurchaseToken { get; set; }
 
         /// <summary>An obfuscated version of the id that is uniquely associated with the user's account in your app.
         /// Present for the following purchases: * If account linking happened as part of the subscription purchase
         /// flow. * It was specified using https://developer.android.com/reference/com/android/billingclient/api/Billing
         /// FlowParams.Builder#setobfuscatedaccountid when the purchase was made.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedExternalAccountId")]
-        public virtual string ObfuscatedExternalAccountId { get; set; } 
+        public virtual string ObfuscatedExternalAccountId { get; set; }
 
         /// <summary>An obfuscated version of the id that is uniquely associated with the user's profile in your app.
         /// Only present if specified using https://developer.android.com/reference/com/android/billingclient/api/Billin
         /// gFlowParams.Builder#setobfuscatedprofileid when the purchase was made.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedExternalProfileId")]
-        public virtual string ObfuscatedExternalProfileId { get; set; } 
+        public virtual string ObfuscatedExternalProfileId { get; set; }
 
         /// <summary>The order id of the latest recurring order associated with the purchase of the
         /// subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
-        public virtual string OrderId { get; set; } 
+        public virtual string OrderId { get; set; }
 
         /// <summary>The payment state of the subscription. Possible values are: 0. Payment pending 1. Payment received
         /// 2. Free trial 3. Pending deferred upgrade/downgrade</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paymentState")]
-        public virtual System.Nullable<int> PaymentState { get; set; } 
+        public virtual System.Nullable<int> PaymentState { get; set; }
 
         /// <summary>Price of the subscription, not including tax. Price is expressed in micro-units, where 1,000,000
         /// micro-units represents one unit of the currency. For example, if the subscription price is €1.99,
         /// price_amount_micros is 1990000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceAmountMicros")]
-        public virtual System.Nullable<long> PriceAmountMicros { get; set; } 
+        public virtual System.Nullable<long> PriceAmountMicros { get; set; }
 
         /// <summary>The latest price change information available. This is present only when there is an upcoming price
         /// change for the subscription yet to be applied. Once the subscription renews with the new price or the
         /// subscription is canceled, no price change information will be returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceChange")]
-        public virtual SubscriptionPriceChange PriceChange { get; set; } 
+        public virtual SubscriptionPriceChange PriceChange { get; set; }
 
         /// <summary>ISO 4217 currency code for the subscription price. For example, if the price is specified in
         /// British pounds sterling, price_currency_code is "GBP".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceCurrencyCode")]
-        public virtual string PriceCurrencyCode { get; set; } 
+        public virtual string PriceCurrencyCode { get; set; }
 
         /// <summary>The Google profile id of the user when the subscription was purchased. Only present for purchases
         /// made with 'Subscribe with Google'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileId")]
-        public virtual string ProfileId { get; set; } 
+        public virtual string ProfileId { get; set; }
 
         /// <summary>The profile name of the user when the subscription was purchased. Only present for purchases made
         /// with 'Subscribe with Google'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileName")]
-        public virtual string ProfileName { get; set; } 
+        public virtual string ProfileName { get; set; }
 
         /// <summary>The promotion code applied on this purchase. This field is only set if a vanity code promotion is
         /// applied when the subscription was purchased.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionCode")]
-        public virtual string PromotionCode { get; set; } 
+        public virtual string PromotionCode { get; set; }
 
         /// <summary>The type of promotion applied on this purchase. This field is only set if a promotion is applied
         /// when the subscription was purchased. Possible values are: 0. One time code 1. Vanity code</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionType")]
-        public virtual System.Nullable<int> PromotionType { get; set; } 
+        public virtual System.Nullable<int> PromotionType { get; set; }
 
         /// <summary>The type of purchase of the subscription. This field is only set if this purchase was not made
         /// using the standard in-app billing flow. Possible values are: 0. Test (i.e. purchased from a license testing
         /// account) 1. Promo (i.e. purchased using a promo code)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseType")]
-        public virtual System.Nullable<int> PurchaseType { get; set; } 
+        public virtual System.Nullable<int> PurchaseType { get; set; }
 
         /// <summary>Time at which the subscription was granted, in milliseconds since the Epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTimeMillis")]
-        public virtual System.Nullable<long> StartTimeMillis { get; set; } 
+        public virtual System.Nullable<long> StartTimeMillis { get; set; }
 
         /// <summary>The time at which the subscription was canceled by the user, in milliseconds since the epoch. Only
         /// present if cancelReason is 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userCancellationTimeMillis")]
-        public virtual System.Nullable<long> UserCancellationTimeMillis { get; set; } 
+        public virtual System.Nullable<long> UserCancellationTimeMillis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7855,7 +7855,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>Payload to attach to the purchase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerPayload")]
-        public virtual string DeveloperPayload { get; set; } 
+        public virtual string DeveloperPayload { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7866,7 +7866,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>The information about the new desired expiry time for the subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deferralInfo")]
-        public virtual SubscriptionDeferralInfo DeferralInfo { get; set; } 
+        public virtual SubscriptionDeferralInfo DeferralInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7877,7 +7877,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>The new expiry time for the subscription in milliseconds since the Epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newExpiryTimeMillis")]
-        public virtual System.Nullable<long> NewExpiryTimeMillis { get; set; } 
+        public virtual System.Nullable<long> NewExpiryTimeMillis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7888,7 +7888,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>All system APK variants created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variants")]
-        public virtual System.Collections.Generic.IList<Variant> Variants { get; set; } 
+        public virtual System.Collections.Generic.IList<Variant> Variants { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7899,7 +7899,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>All testing Google Groups, as email addresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleGroups")]
-        public virtual System.Collections.Generic.IList<string> GoogleGroups { get; set; } 
+        public virtual System.Collections.Generic.IList<string> GoogleGroups { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7913,11 +7913,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Non-negative fractions of a second at nanosecond resolution. Must be from 0 to 999,999,999
         /// inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
-        public virtual System.Nullable<int> Nanos { get; set; } 
+        public virtual System.Nullable<int> Nanos { get; set; }
 
         /// <summary>Represents seconds of UTC time since Unix epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
-        public virtual System.Nullable<long> Seconds { get; set; } 
+        public virtual System.Nullable<long> Seconds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7934,10 +7934,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Tokens to pass to the standard list field 'page_token'. Whenever available, tokens are preferred
         /// over manipulating start_index.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("previousPageToken")]
-        public virtual string PreviousPageToken { get; set; } 
+        public virtual string PreviousPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7949,11 +7949,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>In a read request, represents all active releases in the track. In an update request, represents
         /// desired changes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releases")]
-        public virtual System.Collections.Generic.IList<TrackRelease> Releases { get; set; } 
+        public virtual System.Collections.Generic.IList<TrackRelease> Releases { get; set; }
 
         /// <summary>Identifier of the track.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("track")]
-        public virtual string TrackValue { get; set; } 
+        public virtual string TrackValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7964,37 +7964,37 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>Restricts a release to a specific set of countries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryTargeting")]
-        public virtual CountryTargeting CountryTargeting { get; set; } 
+        public virtual CountryTargeting CountryTargeting { get; set; }
 
         /// <summary>In-app update priority of the release. All newly added APKs in the release will be considered at
         /// this priority. Can take values in the range [0, 5], with 5 the highest priority. Defaults to 0.
         /// in_app_update_priority can not be updated once the release is rolled out. See
         /// https://developer.android.com/guide/playcore/in-app-updates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inAppUpdatePriority")]
-        public virtual System.Nullable<int> InAppUpdatePriority { get; set; } 
+        public virtual System.Nullable<int> InAppUpdatePriority { get; set; }
 
         /// <summary>The release name. Not required to be unique. If not set, the name is generated from the APK's
         /// version_name. If the release contains multiple APKs, the name is generated from the date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>A description of what is new in this release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releaseNotes")]
-        public virtual System.Collections.Generic.IList<LocalizedText> ReleaseNotes { get; set; } 
+        public virtual System.Collections.Generic.IList<LocalizedText> ReleaseNotes { get; set; }
 
         /// <summary>The status of the release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>Fraction of users who are eligible for a staged release. 0 < fraction < 1. Can only be set when
         /// status is "inProgress" or "halted".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userFraction")]
-        public virtual System.Nullable<double> UserFraction { get; set; } 
+        public virtual System.Nullable<double> UserFraction { get; set; }
 
         /// <summary>Version codes of all APKs in the release. Must include version codes to retain from previous
         /// releases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionCodes")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> VersionCodes { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> VersionCodes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8005,11 +8005,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>The kind of this response ("androidpublisher#tracksListResponse").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>All tracks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tracks")]
-        public virtual System.Collections.Generic.IList<Track> Tracks { get; set; } 
+        public virtual System.Collections.Generic.IList<Track> Tracks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8021,57 +8021,57 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Integer Android SDK version of the user's device at the time the review was written, e.g. 23 is
         /// Marshmallow. May be absent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidOsVersion")]
-        public virtual System.Nullable<int> AndroidOsVersion { get; set; } 
+        public virtual System.Nullable<int> AndroidOsVersion { get; set; }
 
         /// <summary>Integer version code of the app as installed at the time the review was written. May be
         /// absent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appVersionCode")]
-        public virtual System.Nullable<int> AppVersionCode { get; set; } 
+        public virtual System.Nullable<int> AppVersionCode { get; set; }
 
         /// <summary>String version name of the app as installed at the time the review was written. May be
         /// absent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appVersionName")]
-        public virtual string AppVersionName { get; set; } 
+        public virtual string AppVersionName { get; set; }
 
         /// <summary>Codename for the reviewer's device, e.g. klte, flounder. May be absent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("device")]
-        public virtual string Device { get; set; } 
+        public virtual string Device { get; set; }
 
         /// <summary>Information about the characteristics of the user's device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceMetadata")]
-        public virtual DeviceMetadata DeviceMetadata { get; set; } 
+        public virtual DeviceMetadata DeviceMetadata { get; set; }
 
         /// <summary>The last time at which this comment was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModified")]
-        public virtual Timestamp LastModified { get; set; } 
+        public virtual Timestamp LastModified { get; set; }
 
         /// <summary>Untranslated text of the review, where the review was translated. If the review was not translated
         /// this is left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalText")]
-        public virtual string OriginalText { get; set; } 
+        public virtual string OriginalText { get; set; }
 
         /// <summary>Language code for the reviewer. This is taken from the device settings so is not guaranteed to
         /// match the language the review is written in. May be absent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewerLanguage")]
-        public virtual string ReviewerLanguage { get; set; } 
+        public virtual string ReviewerLanguage { get; set; }
 
         /// <summary>The star rating associated with the review, from 1 to 5.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("starRating")]
-        public virtual System.Nullable<int> StarRating { get; set; } 
+        public virtual System.Nullable<int> StarRating { get; set; }
 
         /// <summary>The content of the comment, i.e. review body. In some cases users have been able to write a review
         /// with separate title and body; in those cases the title and body are concatenated and separated by a tab
         /// character.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>Number of users who have given this review a thumbs down.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbsDownCount")]
-        public virtual System.Nullable<int> ThumbsDownCount { get; set; } 
+        public virtual System.Nullable<int> ThumbsDownCount { get; set; }
 
         /// <summary>Number of users who have given this review a thumbs up.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbsUpCount")]
-        public virtual System.Nullable<int> ThumbsUpCount { get; set; } 
+        public virtual System.Nullable<int> ThumbsUpCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8082,11 +8082,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>Optionally, the maximum SDK version for which the permission is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxSdkVersion")]
-        public virtual System.Nullable<int> MaxSdkVersion { get; set; } 
+        public virtual System.Nullable<int> MaxSdkVersion { get; set; }
 
         /// <summary>The name of the permission requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8097,11 +8097,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>The device spec used to generate the APK.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceSpec")]
-        public virtual DeviceSpec DeviceSpec { get; set; } 
+        public virtual DeviceSpec DeviceSpec { get; set; }
 
         /// <summary>Output only. The ID of a previously created system APK variant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variantId")]
-        public virtual System.Nullable<long> VariantId { get; set; } 
+        public virtual System.Nullable<long> VariantId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8113,35 +8113,35 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>This kind represents a voided purchase object in the androidpublisher service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The order id which uniquely identifies a one-time purchase, subscription purchase, or subscription
         /// renewal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
-        public virtual string OrderId { get; set; } 
+        public virtual string OrderId { get; set; }
 
         /// <summary>The time at which the purchase was made, in milliseconds since the epoch (Jan 1, 1970).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseTimeMillis")]
-        public virtual System.Nullable<long> PurchaseTimeMillis { get; set; } 
+        public virtual System.Nullable<long> PurchaseTimeMillis { get; set; }
 
         /// <summary>The token which uniquely identifies a one-time purchase or subscription. To uniquely identify
         /// subscription renewals use order_id (available starting from version 3 of the API).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseToken")]
-        public virtual string PurchaseToken { get; set; } 
+        public virtual string PurchaseToken { get; set; }
 
         /// <summary>The reason why the purchase was voided, possible values are: 0. Other 1. Remorse 2. Not_received 3.
         /// Defective 4. Accidental_purchase 5. Fraud 6. Friendly_fraud 7. Chargeback</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voidedReason")]
-        public virtual System.Nullable<int> VoidedReason { get; set; } 
+        public virtual System.Nullable<int> VoidedReason { get; set; }
 
         /// <summary>The initiator of voided purchase, possible values are: 0. User 1. Developer 2. Google</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voidedSource")]
-        public virtual System.Nullable<int> VoidedSource { get; set; } 
+        public virtual System.Nullable<int> VoidedSource { get; set; }
 
         /// <summary>The time at which the purchase was canceled/refunded/charged-back, in milliseconds since the epoch
         /// (Jan 1, 1970).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voidedTimeMillis")]
-        public virtual System.Nullable<long> VoidedTimeMillis { get; set; } 
+        public virtual System.Nullable<long> VoidedTimeMillis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8152,14 +8152,14 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>General pagination information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual PageInfo PageInfo { get; set; } 
+        public virtual PageInfo PageInfo { get; set; }
 
         /// <summary>Pagination information for token pagination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
-        public virtual TokenPagination TokenPagination { get; set; } 
+        public virtual TokenPagination TokenPagination { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("voidedPurchases")]
-        public virtual System.Collections.Generic.IList<VoidedPurchase> VoidedPurchases { get; set; } 
+        public virtual System.Collections.Generic.IList<VoidedPurchase> VoidedPurchases { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

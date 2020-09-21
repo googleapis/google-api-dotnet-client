@@ -2048,16 +2048,16 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>The HTTP Content-Type header value specifying the content type of the body.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
-        public virtual string ContentType { get; set; } 
+        public virtual string ContentType { get; set; }
 
         /// <summary>The HTTP request/response body as raw binary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual string Data { get; set; } 
+        public virtual string Data { get; set; }
 
         /// <summary>Application specific response metadata. Must be set in the first response for streaming
         /// APIs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Extensions { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Extensions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2075,7 +2075,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>Number of user events that were joined with latest catalog items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rejoinedUserEventsCount")]
-        public virtual System.Nullable<long> RejoinedUserEventsCount { get; set; } 
+        public virtual System.Nullable<long> RejoinedUserEventsCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2088,7 +2088,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// number}/locations/{location_id}/catalogs/{catalog_id}/eventStores/{event_store_id}/recommendationModels/{rec
         /// ommendation_model_id}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommendationModel")]
-        public virtual string RecommendationModel { get; set; } 
+        public virtual string RecommendationModel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2112,25 +2112,25 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// events#import (Default for userEvents.import) 2. "user_events_ga360" using
         /// https://support.google.com/analytics/answer/3437719?hl=en</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSchema")]
-        public virtual string DataSchema { get; set; } 
+        public virtual string DataSchema { get; set; }
 
         /// <summary>Required. The BigQuery data set to copy the data from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
-        public virtual string DatasetId { get; set; } 
+        public virtual string DatasetId { get; set; }
 
         /// <summary>Optional. Intermediate Cloud Storage directory used for the import. Can be specified if one wants
         /// to have the BigQuery export to a specific Cloud Storage directory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsStagingDir")]
-        public virtual string GcsStagingDir { get; set; } 
+        public virtual string GcsStagingDir { get; set; }
 
         /// <summary>Optional. The project id (can be project # or id) that the BigQuery source is in. If not specified,
         /// inherits the project id from the parent request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Required. The BigQuery table to copy the data from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
-        public virtual string TableId { get; set; } 
+        public virtual string TableId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2141,19 +2141,19 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>Required. The catalog item level configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("catalogItemLevelConfig")]
-        public virtual GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig CatalogItemLevelConfig { get; set; } 
+        public virtual GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig CatalogItemLevelConfig { get; set; }
 
         /// <summary>Required. The ID of the default event store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultEventStoreId")]
-        public virtual string DefaultEventStoreId { get; set; } 
+        public virtual string DefaultEventStoreId { get; set; }
 
         /// <summary>Required. The catalog display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The fully qualified resource name of the catalog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2164,7 +2164,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>Optional. A list of catalog items to update/create. Recommended max of 10k items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("catalogItems")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1CatalogItem> CatalogItems { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1CatalogItem> CatalogItems { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2179,50 +2179,50 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports &
         /// Fitness", "Athletic Clothing", "Shoes"] } ]</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoryHierarchies")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy> CategoryHierarchies { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy> CategoryHierarchies { get; set; }
 
         /// <summary>Optional. Catalog item description. UTF-8 encoded string with a length limit of 5 KiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Required. Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id
         /// must be unique among all catalog items within the same catalog. It should also be used when logging user
         /// events in order for the user events to be joined with the Catalog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Optional. Highly encouraged. Extra catalog item attributes to be included in the recommendation
         /// model. For example, for retail products, this could include the store name, vendor, style, color, etc. These
         /// are very strong signals for recommendation model, thus we highly recommend providing the item attributes
         /// here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemAttributes")]
-        public virtual GoogleCloudRecommendationengineV1beta1FeatureMap ItemAttributes { get; set; } 
+        public virtual GoogleCloudRecommendationengineV1beta1FeatureMap ItemAttributes { get; set; }
 
         /// <summary>Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit
         /// of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-
         /// ai/docs/catalog#item-group-id).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemGroupId")]
-        public virtual string ItemGroupId { get; set; } 
+        public virtual string ItemGroupId { get; set; }
 
         /// <summary>Optional. Deprecated. The model automatically detects the text language. Your catalog can include
         /// text in different languages, but duplicating catalog items to provide text in multiple languages can result
         /// in degraded model performance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>Optional. Metadata specific to retail products.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productMetadata")]
-        public virtual GoogleCloudRecommendationengineV1beta1ProductCatalogItem ProductMetadata { get; set; } 
+        public virtual GoogleCloudRecommendationengineV1beta1ProductCatalogItem ProductMetadata { get; set; }
 
         /// <summary>Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded
         /// string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing
         /// the tag as part of the predict request filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
-        public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>Required. Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2235,7 +2235,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most
         /// specific).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]
-        public virtual System.Collections.Generic.IList<string> Categories { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Categories { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2248,12 +2248,12 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// <summary>Optional. Level of the catalog at which events are uploaded. See https://cloud.google.com
         /// /recommendations-ai/docs/catalog#catalog-levels for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventItemLevel")]
-        public virtual string EventItemLevel { get; set; } 
+        public virtual string EventItemLevel { get; set; }
 
         /// <summary>Optional. Level of the catalog at which predictions are made. See https://cloud.google.com
         /// /recommendations-ai/docs/catalog#catalog-levels for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predictItemLevel")]
-        public virtual string PredictItemLevel { get; set; } 
+        public virtual string PredictItemLevel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2264,7 +2264,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>Required. The prediction API key registration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predictionApiKeyRegistration")]
-        public virtual GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration PredictionApiKeyRegistration { get; set; } 
+        public virtual GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration PredictionApiKeyRegistration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2278,13 +2278,13 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// Users can arrive at the site by coming to the site directly, or coming through Google search, and
         /// etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventAttributes")]
-        public virtual GoogleCloudRecommendationengineV1beta1FeatureMap EventAttributes { get; set; } 
+        public virtual GoogleCloudRecommendationengineV1beta1FeatureMap EventAttributes { get; set; }
 
         /// <summary>Optional. A list of identifiers for the independent experiment groups this user event belongs to.
         /// This is used to distinguish between user events associated with different experiment setups (e.g. using
         /// Recommendation Engine system, using different recommendation models).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("experimentIds")]
-        public virtual System.Collections.Generic.IList<string> ExperimentIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExperimentIds { get; set; }
 
         /// <summary>Optional. A unique id of a web page view. This should be kept the same for all user events
         /// triggered from the same pageview. For example, an item detail page view could trigger multiple events as the
@@ -2292,7 +2292,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// they can be grouped together properly. This `pageViewId` will be automatically generated if using the
         /// JavaScript pixel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageViewId")]
-        public virtual string PageViewId { get; set; } 
+        public virtual string PageViewId { get; set; }
 
         /// <summary>Optional. Recommendation token included in the recommendation prediction response. This field
         /// enables accurate attribution of recommendation model performance. This token enables us to accurately
@@ -2302,17 +2302,17 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// on product K's page, log the PredictResponse.recommendation_token to this field. Optional, but highly
         /// encouraged for user events that are the result of a recommendation prediction query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommendationToken")]
-        public virtual string RecommendationToken { get; set; } 
+        public virtual string RecommendationToken { get; set; }
 
         /// <summary>Optional. The referrer url of the current page. When using the JavaScript pixel, this value is
         /// filled in automatically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referrerUri")]
-        public virtual string ReferrerUri { get; set; } 
+        public virtual string ReferrerUri { get; set; }
 
         /// <summary>Optional. Complete url (window.location.href) of the user's current page. When using the JavaScript
         /// pixel, this value is filled in automatically. Maximum length 5KB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2327,13 +2327,13 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// encoded strings. For example: `{ "colors": {"value": ["yellow", "green"]}, "sizes": {"value":["S",
         /// "M"]}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoricalFeatures")]
-        public virtual System.Collections.Generic.IDictionary<string,GoogleCloudRecommendationengineV1beta1FeatureMapStringList> CategoricalFeatures { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRecommendationengineV1beta1FeatureMapStringList> CategoricalFeatures { get; set; }
 
         /// <summary>Numerical features. Some examples would be the height/weight of a product, or age of a customer.
         /// Feature names must be UTF-8 encoded strings. For example: `{ "lengths_cm": {"value":[2.3, 15.4]},
         /// "heights_cm": {"value":[8.1, 6.4]} }`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numericalFeatures")]
-        public virtual System.Collections.Generic.IDictionary<string,GoogleCloudRecommendationengineV1beta1FeatureMapFloatList> NumericalFeatures { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRecommendationengineV1beta1FeatureMapFloatList> NumericalFeatures { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2344,7 +2344,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>Float feature value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual System.Collections.Generic.IList<System.Nullable<float>> Value { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<float>> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2355,7 +2355,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>String feature value with a length limit of 128 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual System.Collections.Generic.IList<string> Value { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2370,7 +2370,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// be up to 2 GB. See [Importing catalog information](/recommendations-ai/docs/upload-catalog) for the expected
         /// file format and setup instructions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUris")]
-        public virtual System.Collections.Generic.IList<string> InputUris { get; set; } 
+        public virtual System.Collections.Generic.IList<string> InputUris { get; set; }
 
         /// <summary>Optional. The schema to use when parsing the data from the source. Supported values for catalog
         /// imports: 1: "catalog_recommendations_ai" using https://cloud.google.com/recommendations-ai/docs/upload-
@@ -2380,7 +2380,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// events#import (Default for userEvents.import) 2. "user_events_ga360" using
         /// https://support.google.com/analytics/answer/3437719?hl=en</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jsonSchema")]
-        public virtual string JsonSchema { get; set; } 
+        public virtual string JsonSchema { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2391,15 +2391,15 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>Optional. Height of the image in number of pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
-        public virtual System.Nullable<int> Height { get; set; } 
+        public virtual System.Nullable<int> Height { get; set; }
 
         /// <summary>Required. URL of the image with a length limit of 5 KiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>Optional. Width of the image in number of pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
-        public virtual System.Nullable<int> Width { get; set; } 
+        public virtual System.Nullable<int> Width { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2410,22 +2410,22 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>Optional. The desired location of errors incurred during the Import.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorsConfig")]
-        public virtual GoogleCloudRecommendationengineV1beta1ImportErrorsConfig ErrorsConfig { get; set; } 
+        public virtual GoogleCloudRecommendationengineV1beta1ImportErrorsConfig ErrorsConfig { get; set; }
 
         /// <summary>Required. The desired input location of the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputConfig")]
-        public virtual GoogleCloudRecommendationengineV1beta1InputConfig InputConfig { get; set; } 
+        public virtual GoogleCloudRecommendationengineV1beta1InputConfig InputConfig { get; set; }
 
         /// <summary>Optional. Unique identifier provided by client, within the ancestor dataset scope. Ensures
         /// idempotency and used for request deduplication. Server-generated if unspecified. Up to 128 characters long.
         /// This is returned as google.longrunning.Operation.name in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; } 
+        public virtual string RequestId { get; set; }
 
         /// <summary>Optional. Indicates which fields in the provided imported 'items' to update. If not set, will by
         /// default update all fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2437,11 +2437,11 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>A sample of errors encountered while processing the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
-        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
 
         /// <summary>Echoes the destination for the complete errors in the request if set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorsConfig")]
-        public virtual GoogleCloudRecommendationengineV1beta1ImportErrorsConfig ErrorsConfig { get; set; } 
+        public virtual GoogleCloudRecommendationengineV1beta1ImportErrorsConfig ErrorsConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2454,7 +2454,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// Import errors will be written to a file in this bucket, one per line, as a JSON-encoded `google.rpc.Status`
         /// message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
-        public virtual string GcsPrefix { get; set; } 
+        public virtual string GcsPrefix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2466,28 +2466,28 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>Operation create time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Count of entries that encountered errors while processing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
-        public virtual System.Nullable<long> FailureCount { get; set; } 
+        public virtual System.Nullable<long> FailureCount { get; set; }
 
         /// <summary>Name of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationName")]
-        public virtual string OperationName { get; set; } 
+        public virtual string OperationName { get; set; }
 
         /// <summary>Id of the request / operation. This is parroting back the requestId that was passed in the
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; } 
+        public virtual string RequestId { get; set; }
 
         /// <summary>Count of entries that were processed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
-        public virtual System.Nullable<long> SuccessCount { get; set; } 
+        public virtual System.Nullable<long> SuccessCount { get; set; }
 
         /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2498,18 +2498,18 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>Optional. The desired location of errors incurred during the Import.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorsConfig")]
-        public virtual GoogleCloudRecommendationengineV1beta1ImportErrorsConfig ErrorsConfig { get; set; } 
+        public virtual GoogleCloudRecommendationengineV1beta1ImportErrorsConfig ErrorsConfig { get; set; }
 
         /// <summary>Required. The desired input location of the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputConfig")]
-        public virtual GoogleCloudRecommendationengineV1beta1InputConfig InputConfig { get; set; } 
+        public virtual GoogleCloudRecommendationengineV1beta1InputConfig InputConfig { get; set; }
 
         /// <summary>Optional. Unique identifier provided by client, within the ancestor dataset scope. Ensures
         /// idempotency for expensive long running operations. Server-generated if unspecified. Up to 128 characters
         /// long. This is returned as google.longrunning.Operation.name in the response. Note that this field must not
         /// be set if the desired input config is catalog_inline_source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; } 
+        public virtual string RequestId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2522,15 +2522,15 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>A sample of errors encountered while processing the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
-        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
 
         /// <summary>Echoes the destination for the complete errors if this field was set in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorsConfig")]
-        public virtual GoogleCloudRecommendationengineV1beta1ImportErrorsConfig ErrorsConfig { get; set; } 
+        public virtual GoogleCloudRecommendationengineV1beta1ImportErrorsConfig ErrorsConfig { get; set; }
 
         /// <summary>Aggregated statistics of user event import status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importSummary")]
-        public virtual GoogleCloudRecommendationengineV1beta1UserEventImportSummary ImportSummary { get; set; } 
+        public virtual GoogleCloudRecommendationengineV1beta1UserEventImportSummary ImportSummary { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2541,19 +2541,19 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>BigQuery input source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigQuerySource")]
-        public virtual GoogleCloudRecommendationengineV1beta1BigQuerySource BigQuerySource { get; set; } 
+        public virtual GoogleCloudRecommendationengineV1beta1BigQuerySource BigQuerySource { get; set; }
 
         /// <summary>The Inline source for the input content for Catalog items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("catalogInlineSource")]
-        public virtual GoogleCloudRecommendationengineV1beta1CatalogInlineSource CatalogInlineSource { get; set; } 
+        public virtual GoogleCloudRecommendationengineV1beta1CatalogInlineSource CatalogInlineSource { get; set; }
 
         /// <summary>Google Cloud Storage location for the input content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
-        public virtual GoogleCloudRecommendationengineV1beta1GcsSource GcsSource { get; set; } 
+        public virtual GoogleCloudRecommendationengineV1beta1GcsSource GcsSource { get; set; }
 
         /// <summary>The Inline source for the input content for UserEvents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEventInlineSource")]
-        public virtual GoogleCloudRecommendationengineV1beta1UserEventInlineSource UserEventInlineSource { get; set; } 
+        public virtual GoogleCloudRecommendationengineV1beta1UserEventInlineSource UserEventInlineSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2564,12 +2564,12 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>The catalog items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("catalogItems")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1CatalogItem> CatalogItems { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1CatalogItem> CatalogItems { get; set; }
 
         /// <summary>If empty, the list is complete. If nonempty, the token to pass to the next request's
         /// ListCatalogItemRequest.page_token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2580,11 +2580,11 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>Output only. All the customer's catalogs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("catalogs")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1Catalog> Catalogs { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1Catalog> Catalogs { get; set; }
 
         /// <summary>Pagination token, if not returned indicates the last page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2596,11 +2596,11 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// <summary>If empty, the list is complete. If nonempty, pass the token to the next request's
         /// `ListPredictionApiKeysRegistrationsRequest.pageToken`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of registered API keys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predictionApiKeyRegistrations")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration> PredictionApiKeyRegistrations { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration> PredictionApiKeyRegistrations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2612,11 +2612,11 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// <summary>If empty, the list is complete. If nonempty, the token to pass to the next request's
         /// ListUserEvents.page_token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The user events.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEvents")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1UserEvent> UserEvents { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1UserEvent> UserEvents { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2629,7 +2629,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// that returns arbitrary catalog items. Note that the dryRun mode should only be used for testing the API, or
         /// if the model is not ready.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dryRun")]
-        public virtual System.Nullable<bool> DryRun { get; set; } 
+        public virtual System.Nullable<bool> DryRun { get; set; }
 
         /// <summary>Optional. Filter for restricting prediction results. Accepts values for tags and the
         /// `filterOutOfStockItems` flag. * Tag expressions. Restricts predictions to items that match all of the
@@ -2642,7 +2642,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// returned. If you want generic (unfiltered) popular items to be returned instead, set `strictFiltering` to
         /// false in `PredictRequest.params`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual string Filter { get; set; } 
+        public virtual string Filter { get; set; }
 
         /// <summary>Optional. The labels for the predict request. * Label keys can contain lowercase letters, digits
         /// and hyphens, must start with a letter, and must end with a letter or digit. * Non-zero label values can
@@ -2650,16 +2650,16 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// digit. * No more than 64 labels can be associated with a given request. See https://goo.gl/xmQnxf for more
         /// information on and examples of labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Optional. Maximum number of results to return per page. Set this property to the number of
         /// prediction results required. If zero, the service will choose a reasonable default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
-        public virtual System.Nullable<int> PageSize { get; set; } 
+        public virtual System.Nullable<int> PageSize { get; set; }
 
         /// <summary>Optional. The previous PredictResponse.next_page_token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
-        public virtual string PageToken { get; set; } 
+        public virtual string PageToken { get; set; }
 
         /// <summary>Optional. Additional domain specific parameters for the predictions. Allowed values: *
         /// `returnCatalogItem`: Boolean. If set to true, the associated catalogItem object will be returned in the
@@ -2670,13 +2670,13 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// set to false, the service will return generic (unfiltered) popular items instead of empty if your filter
         /// blocks all prediction results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Params__ { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
 
         /// <summary>Required. Context about the user, what they are looking at and what action they took to trigger the
         /// predict request. Note that this user event detail won't be ingested to userEvent logs. Thus, a separate
         /// userEvent write request is required for event logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEvent")]
-        public virtual GoogleCloudRecommendationengineV1beta1UserEvent UserEvent { get; set; } 
+        public virtual GoogleCloudRecommendationengineV1beta1UserEvent UserEvent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2687,30 +2687,30 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>True if the dryRun property was set in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dryRun")]
-        public virtual System.Nullable<bool> DryRun { get; set; } 
+        public virtual System.Nullable<bool> DryRun { get; set; }
 
         /// <summary>IDs of items in the request that were missing from the catalog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsMissingInCatalog")]
-        public virtual System.Collections.Generic.IList<string> ItemsMissingInCatalog { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ItemsMissingInCatalog { get; set; }
 
         /// <summary>Additional domain specific prediction response metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>If empty, the list is complete. If nonempty, the token to pass to the next request's
         /// PredictRequest.page_token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A unique recommendation token. This should be included in the user event logs resulting from this
         /// recommendation, which enables accurate attribution of recommendation model performance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommendationToken")]
-        public virtual string RecommendationToken { get; set; } 
+        public virtual string RecommendationToken { get; set; }
 
         /// <summary>A list of recommended items. The order represents the ranking (from the most relevant item to the
         /// least).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult> Results { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult> Results { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2721,14 +2721,14 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>ID of the recommended catalog item</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Additional item metadata / annotations. Possible values: * `catalogItem`: JSON representation of
         /// the catalogItem. Will be set if `returnCatalogItem` is set to true in `PredictRequest.params`. * `score`:
         /// Prediction score in double value. Will be set if `returnItemScore` is set to true in
         /// `PredictRequest.params`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemMetadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> ItemMetadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> ItemMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2739,7 +2739,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>The API key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiKey")]
-        public virtual string ApiKey { get; set; } 
+        public virtual string ApiKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2750,39 +2750,39 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>Optional. The available quantity of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableQuantity")]
-        public virtual System.Nullable<long> AvailableQuantity { get; set; } 
+        public virtual System.Nullable<long> AvailableQuantity { get; set; }
 
         /// <summary>Optional. Canonical URL directly linking to the item detail page with a length limit of 5
         /// KiB..</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalProductUri")]
-        public virtual string CanonicalProductUri { get; set; } 
+        public virtual string CanonicalProductUri { get; set; }
 
         /// <summary>Optional. A map to pass the costs associated with the product. For example: {"manufacturing": 45.5}
         /// The profit of selling this item is computed like so: * If 'exactPrice' is provided, profit = displayPrice -
         /// sum(costs) * If 'priceRange' is provided, profit = minPrice - sum(costs)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("costs")]
-        public virtual System.Collections.Generic.IDictionary<string,System.Nullable<float>> Costs { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<float>> Costs { get; set; }
 
         /// <summary>Optional. Only required if the price is set. Currency code for price/costs. Use three-character
         /// ISO-4217 code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
-        public virtual string CurrencyCode { get; set; } 
+        public virtual string CurrencyCode { get; set; }
 
         /// <summary>Optional. The exact product price.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exactPrice")]
-        public virtual GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice ExactPrice { get; set; } 
+        public virtual GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice ExactPrice { get; set; }
 
         /// <summary>Optional. Product images for the catalog item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("images")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1Image> Images { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1Image> Images { get; set; }
 
         /// <summary>Optional. The product price range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceRange")]
-        public virtual GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange PriceRange { get; set; } 
+        public virtual GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange PriceRange { get; set; }
 
         /// <summary>Optional. Online stock state of the catalog item. Default is `IN_STOCK`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stockState")]
-        public virtual string StockState { get; set; } 
+        public virtual string StockState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2793,12 +2793,12 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>Optional. Display price of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayPrice")]
-        public virtual System.Nullable<float> DisplayPrice { get; set; } 
+        public virtual System.Nullable<float> DisplayPrice { get; set; }
 
         /// <summary>Optional. Price of the product without any discount. If zero, by default set to be the
         /// 'displayPrice'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalPrice")]
-        public virtual System.Nullable<float> OriginalPrice { get; set; } 
+        public virtual System.Nullable<float> OriginalPrice { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2810,11 +2810,11 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>Required. The maximum product price.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("max")]
-        public virtual System.Nullable<float> Max { get; set; } 
+        public virtual System.Nullable<float> Max { get; set; }
 
         /// <summary>Required. The minimum product price.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("min")]
-        public virtual System.Nullable<float> Min { get; set; } 
+        public virtual System.Nullable<float> Min { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2828,41 +2828,41 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// `IN_STOCK`. Note that if an item is out of stock, you must set the `stock_state` field to be `OUT_OF_STOCK`.
         /// Leaving this field unspecified / as zero is not sufficient to mark the item out of stock.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableQuantity")]
-        public virtual System.Nullable<int> AvailableQuantity { get; set; } 
+        public virtual System.Nullable<int> AvailableQuantity { get; set; }
 
         /// <summary>Optional. Currency code for price/costs. Use three-character ISO-4217 code. Required only if
         /// originalPrice or displayPrice is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
-        public virtual string CurrencyCode { get; set; } 
+        public virtual string CurrencyCode { get; set; }
 
         /// <summary>Optional. Display price of the product (e.g. discounted price). If provided, this will override the
         /// display price in Catalog for this product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayPrice")]
-        public virtual System.Nullable<float> DisplayPrice { get; set; } 
+        public virtual System.Nullable<float> DisplayPrice { get; set; }
 
         /// <summary>Required. Catalog item ID. UTF-8 encoded string with a length limit of 128 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Optional. Extra features associated with a product in the user event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemAttributes")]
-        public virtual GoogleCloudRecommendationengineV1beta1FeatureMap ItemAttributes { get; set; } 
+        public virtual GoogleCloudRecommendationengineV1beta1FeatureMap ItemAttributes { get; set; }
 
         /// <summary>Optional. Original price of the product. If provided, this will override the original price in
         /// Catalog for this product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalPrice")]
-        public virtual System.Nullable<float> OriginalPrice { get; set; } 
+        public virtual System.Nullable<float> OriginalPrice { get; set; }
 
         /// <summary>Optional. Quantity of the product associated with the user event. For example, this field will be 2
         /// if two products are added to the shopping cart for `add-to-cart` event. Required for `add-to-cart`, `add-to-
         /// list`, `remove-from-cart`, `checkout-start`, `purchase-complete`, `refund` event types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
-        public virtual System.Nullable<int> Quantity { get; set; } 
+        public virtual System.Nullable<int> Quantity { get; set; }
 
         /// <summary>Optional. Item stock state. If provided, this overrides the stock state in Catalog for items in
         /// this event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stockState")]
-        public virtual string StockState { get; set; } 
+        public virtual string StockState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2875,19 +2875,19 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// items added or present in the cart before purchase. This can only be set for `add-to-cart`, `remove-from-
         /// cart`, `checkout-start`, `purchase-complete`, or `shopping-cart-page-view` events.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cartId")]
-        public virtual string CartId { get; set; } 
+        public virtual string CartId { get; set; }
 
         /// <summary>Required for `add-to-list` and `remove-from-list` events. The id or name of the list that the item
         /// is being added to or removed from. Other event types should not set this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listId")]
-        public virtual string ListId { get; set; } 
+        public virtual string ListId { get; set; }
 
         /// <summary>Required for `category-page-view` events. Other event types should not set this field. The
         /// categories associated with a category page. Category pages include special pages such as sales or
         /// promotions. For instance, a special sale page may have the category hierarchy: categories : ["Sales", "2017
         /// Black Friday Deals"].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageCategories")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy> PageCategories { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy> PageCategories { get; set; }
 
         /// <summary>The main product details related to the event. This field is required for the following event
         /// types: * `add-to-cart` * `add-to-list` * `checkout-start` * `detail-page-view` * `purchase-complete` *
@@ -2900,18 +2900,18 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// broswing the whole page yet. This field is not allowed for the following event types: * `category-page-view`
         /// * `home-page-view`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productDetails")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1ProductDetail> ProductDetails { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1ProductDetail> ProductDetails { get; set; }
 
         /// <summary>Optional. A transaction represents the entire purchase transaction. Required for `purchase-
         /// complete` events. Optional for `checkout-start` events. Other event types should not set this
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseTransaction")]
-        public virtual GoogleCloudRecommendationengineV1beta1PurchaseTransaction PurchaseTransaction { get; set; } 
+        public virtual GoogleCloudRecommendationengineV1beta1PurchaseTransaction PurchaseTransaction { get; set; }
 
         /// <summary>Required for `search` events. Other event types should not set this field. The user's search query
         /// as UTF-8 encoded text with a length limit of 5 KiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchQuery")]
-        public virtual string SearchQuery { get; set; } 
+        public virtual string SearchQuery { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2926,26 +2926,26 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// sum(CatalogItem.costs). If CatalogItem.cost is not specified for one of the items, CatalogItem.cost based
         /// profit *cannot* be calculated for this Transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("costs")]
-        public virtual System.Collections.Generic.IDictionary<string,System.Nullable<float>> Costs { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<float>> Costs { get; set; }
 
         /// <summary>Required. Currency code. Use three-character ISO-4217 code. This field is not required if the event
         /// type is `refund`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
-        public virtual string CurrencyCode { get; set; } 
+        public virtual string CurrencyCode { get; set; }
 
         /// <summary>Optional. The transaction ID with a length limit of 128 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Required. Total revenue or grand total associated with the transaction. This value include
         /// shipping, tax, or other adjustments to total revenue that you want to include as part of your revenue
         /// calculations. This field is not required if the event type is `refund`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revenue")]
-        public virtual System.Nullable<float> Revenue { get; set; } 
+        public virtual System.Nullable<float> Revenue { get; set; }
 
         /// <summary>Optional. All the taxes associated with the transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxes")]
-        public virtual System.Collections.Generic.IDictionary<string,System.Nullable<float>> Taxes { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<float>> Taxes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2957,11 +2957,11 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>Operation create time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The ID of the request / operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationName")]
-        public virtual string OperationName { get; set; } 
+        public virtual string OperationName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2980,12 +2980,12 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// specific visitor: `visitorId = "visitor1024"` The filtering fields are assumed to have an implicit
         /// AND.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual string Filter { get; set; } 
+        public virtual string Filter { get; set; }
 
         /// <summary>Optional. The default value is false. Override this flag to true to actually perform the purge. If
         /// the field is not set to true, a sampling of events to be deleted will be returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("force")]
-        public virtual System.Nullable<bool> Force { get; set; } 
+        public virtual System.Nullable<bool> Force { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2997,12 +2997,12 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>The total count of events purged as a result of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purgedEventsCount")]
-        public virtual System.Nullable<long> PurgedEventsCount { get; set; } 
+        public virtual System.Nullable<long> PurgedEventsCount { get; set; }
 
         /// <summary>A sampling of events deleted (or will be deleted) depending on the `force` property in the request.
         /// Max of 500 items will be returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEventsSample")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1UserEvent> UserEventsSample { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1UserEvent> UserEventsSample { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3014,7 +3014,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// <summary>Required. The type of the catalog rejoin to define the scope and range of the user events to be
         /// rejoined with catalog items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEventRejoinScope")]
-        public virtual string UserEventRejoinScope { get; set; } 
+        public virtual string UserEventRejoinScope { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3026,16 +3026,16 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>Optional. User event detailed information common across different recommendation types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventDetail")]
-        public virtual GoogleCloudRecommendationengineV1beta1EventDetail EventDetail { get; set; } 
+        public virtual GoogleCloudRecommendationengineV1beta1EventDetail EventDetail { get; set; }
 
         /// <summary>Optional. This field should *not* be set when using JavaScript pixel or the Recommendations AI Tag.
         /// Defaults to `EVENT_SOURCE_UNSPECIFIED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventSource")]
-        public virtual string EventSource { get; set; } 
+        public virtual string EventSource { get; set; }
 
         /// <summary>Optional. Only required for ImportUserEvents method. Timestamp of user event created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
-        public virtual object EventTime { get; set; } 
+        public virtual object EventTime { get; set; }
 
         /// <summary>Required. User event type. Allowed values are: * `add-to-cart` Products being added to cart. *
         /// `add-to-list` Items being added to a list (shopping list, favorites etc). * `category-page-view` Special
@@ -3046,7 +3046,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// * `remove-from-list` Items being removed from a list. * `search` Product search. * `shopping-cart-page-view`
         /// User viewing a shopping cart. * `impression` List of items displayed. Used by Google Tag Manager.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
-        public virtual string EventType { get; set; } 
+        public virtual string EventType { get; set; }
 
         /// <summary>Optional. Retail product specific user event metadata. This field is required for the following
         /// event types: * `add-to-cart` * `add-to-list` * `category-page-view` * `checkout-start` * `detail-page-view`
@@ -3055,11 +3055,11 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// should be set for this unless the shopping cart is empty. This field is not allowed for the following event
         /// types: * `home-page-view`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productEventDetail")]
-        public virtual GoogleCloudRecommendationengineV1beta1ProductEventDetail ProductEventDetail { get; set; } 
+        public virtual GoogleCloudRecommendationengineV1beta1ProductEventDetail ProductEventDetail { get; set; }
 
         /// <summary>Required. User information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userInfo")]
-        public virtual GoogleCloudRecommendationengineV1beta1UserInfo UserInfo { get; set; } 
+        public virtual GoogleCloudRecommendationengineV1beta1UserInfo UserInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3071,12 +3071,12 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>Count of user events imported with complete existing catalog information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("joinedEventsCount")]
-        public virtual System.Nullable<long> JoinedEventsCount { get; set; } 
+        public virtual System.Nullable<long> JoinedEventsCount { get; set; }
 
         /// <summary>Count of user events imported, but with catalog information not found in the imported
         /// catalog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unjoinedEventsCount")]
-        public virtual System.Nullable<long> UnjoinedEventsCount { get; set; } 
+        public virtual System.Nullable<long> UnjoinedEventsCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3087,7 +3087,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>Optional. A list of user events to import. Recommended max of 10k items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEvents")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1UserEvent> UserEvents { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommendationengineV1beta1UserEvent> UserEvents { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3101,30 +3101,30 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// javascript pixel. This flag should be set only if the API request is made directly from the end user such as
         /// a mobile app (and not if a gateway or a server is processing and pushing the user events).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directUserRequest")]
-        public virtual System.Nullable<bool> DirectUserRequest { get; set; } 
+        public virtual System.Nullable<bool> DirectUserRequest { get; set; }
 
         /// <summary>Optional. IP address of the user. This could be either IPv4 (e.g. 104.133.9.80) or IPv6 (e.g.
         /// 2001:0db8:85a3:0000:0000:8a2e:0370:7334). This should *not* be set when using the javascript pixel or if
         /// `direct_user_request` is set. Used to extract location information for personalization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
-        public virtual string IpAddress { get; set; } 
+        public virtual string IpAddress { get; set; }
 
         /// <summary>Optional. User agent as included in the HTTP header. UTF-8 encoded string with a length limit of 1
         /// KiB. This should *not* be set when using the JavaScript pixel or if `directUserRequest` is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
-        public virtual string UserAgent { get; set; } 
+        public virtual string UserAgent { get; set; }
 
         /// <summary>Optional. Unique identifier for logged-in user with a length limit of 128 bytes. Required only for
         /// logged-in users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
-        public virtual string UserId { get; set; } 
+        public virtual string UserId { get; set; }
 
         /// <summary>Required. A unique identifier for tracking visitors with a length limit of 128 bytes. For example,
         /// this could be implemented with a http cookie, which should be able to uniquely identify a visitor on a
         /// single device. This unique identifier should not change if the visitor log in/out of the website. Maximum
         /// length 128 bytes. Cannot be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3135,11 +3135,11 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<GoogleLongrunningOperation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleLongrunningOperation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3151,23 +3151,23 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual GoogleRpcStatus Error { get; set; } 
+        public virtual GoogleRpcStatus Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -3175,7 +3175,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3200,17 +3200,17 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

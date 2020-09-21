@@ -2044,19 +2044,19 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>Required. The ID of the customer for whom the device is being claimed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
-        public virtual System.Nullable<long> CustomerId { get; set; } 
+        public virtual System.Nullable<long> CustomerId { get; set; }
 
         /// <summary>Required. Required. The device identifier of the device to claim.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
-        public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
+        public virtual DeviceIdentifier DeviceIdentifier { get; set; }
 
         /// <summary>Optional. The metadata to attach to the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceMetadata")]
-        public virtual DeviceMetadata DeviceMetadata { get; set; } 
+        public virtual DeviceMetadata DeviceMetadata { get; set; }
 
         /// <summary>Required. The section type of the device's provisioning record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sectionType")]
-        public virtual string SectionType { get; set; } 
+        public virtual string SectionType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2067,12 +2067,12 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>The device ID of the claimed device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
-        public virtual System.Nullable<long> DeviceId { get; set; } 
+        public virtual System.Nullable<long> DeviceId { get; set; }
 
         /// <summary>The resource name of the device in the format
         /// `partners/[PARTNER_ID]/devices/[DEVICE_ID]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceName")]
-        public virtual string DeviceName { get; set; } 
+        public virtual string DeviceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2084,7 +2084,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>Required. A list of device claims.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claims")]
-        public virtual System.Collections.Generic.IList<PartnerClaim> Claims { get; set; } 
+        public virtual System.Collections.Generic.IList<PartnerClaim> Claims { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2096,33 +2096,33 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         /// <summary>Optional. Email address of customer's users in the admin role. Each email address must be
         /// associated with a Google Account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminEmails")]
-        public virtual System.Collections.Generic.IList<string> AdminEmails { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AdminEmails { get; set; }
 
         /// <summary>Output only. The ID of the company. Assigned by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companyId")]
-        public virtual System.Nullable<long> CompanyId { get; set; } 
+        public virtual System.Nullable<long> CompanyId { get; set; }
 
         /// <summary>Required. The name of the company. For example _XYZ Corp_. Displayed to the company's employees in
         /// the zero-touch enrollment portal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companyName")]
-        public virtual string CompanyName { get; set; } 
+        public virtual string CompanyName { get; set; }
 
         /// <summary>Output only. The API resource name of the company. The resource name is one of the following
         /// formats: * `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]` * `partners/[PARTNER_ID]/vendors/[VENDOR_ID]` *
         /// `partners/[PARTNER_ID]/vendors/[VENDOR_ID]/customers/[CUSTOMER_ID]` Assigned by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. Input only. Email address of customer's users in the owner role. At least one
         /// `owner_email` is required. Each email address must be associated with a Google Account. Owners share the
         /// same access as admins but can also add, delete, and edit your organization's portal users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerEmails")]
-        public virtual System.Collections.Generic.IList<string> OwnerEmails { get; set; } 
+        public virtual System.Collections.Generic.IList<string> OwnerEmails { get; set; }
 
         /// <summary>Output only. Whether any user from the company has accepted the latest Terms of Service (ToS). See
         /// TermsStatus.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("termsStatus")]
-        public virtual string TermsStatus { get; set; } 
+        public virtual string TermsStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2138,54 +2138,54 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         /// <summary>Required. The name of the organization. Zero-touch enrollment shows this organization name to
         /// device users during device provisioning.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companyName")]
-        public virtual string CompanyName { get; set; } 
+        public virtual string CompanyName { get; set; }
 
         /// <summary>Output only. The ID of the configuration. Assigned by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configurationId")]
-        public virtual System.Nullable<long> ConfigurationId { get; set; } 
+        public virtual System.Nullable<long> ConfigurationId { get; set; }
 
         /// <summary>Required. A short name that describes the configuration's purpose. For example, _Sales team_ or
         /// _Temporary employees_. The zero-touch enrollment portal displays this name to IT admins.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configurationName")]
-        public virtual string ConfigurationName { get; set; } 
+        public virtual string ConfigurationName { get; set; }
 
         /// <summary>Required. The email address that device users can contact to get help. Zero-touch enrollment shows
         /// this email address to device users before device provisioning. The value is validated on input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactEmail")]
-        public virtual string ContactEmail { get; set; } 
+        public virtual string ContactEmail { get; set; }
 
         /// <summary>Required. The telephone number that device users can call, using another device, to get help. Zero-
         /// touch enrollment shows this number to device users before device provisioning. Accepts numerals, spaces, the
         /// plus sign, hyphens, and parentheses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactPhone")]
-        public virtual string ContactPhone { get; set; } 
+        public virtual string ContactPhone { get; set; }
 
         /// <summary>A message, containing one or two sentences, to help device users get help or give them more details
         /// about what’s happening to their device. Zero-touch enrollment shows this message before the device is
         /// provisioned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customMessage")]
-        public virtual string CustomMessage { get; set; } 
+        public virtual string CustomMessage { get; set; }
 
         /// <summary>The JSON-formatted EMM provisioning extras that are passed to the DPC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dpcExtras")]
-        public virtual string DpcExtras { get; set; } 
+        public virtual string DpcExtras { get; set; }
 
         /// <summary>Required. The resource name of the selected DPC (device policy controller) in the format
         /// `customers/[CUSTOMER_ID]/dpcs`. To list the supported DPCs, call `customers.dpcs.list`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dpcResourcePath")]
-        public virtual string DpcResourcePath { get; set; } 
+        public virtual string DpcResourcePath { get; set; }
 
         /// <summary>Required. Whether this is the default configuration that zero-touch enrollment applies to any new
         /// devices the organization purchases in the future. Only one customer configuration can be the default.
         /// Setting this value to `true`, changes the previous default configuration's `isDefault` value to
         /// `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
-        public virtual System.Nullable<bool> IsDefault { get; set; } 
+        public virtual System.Nullable<bool> IsDefault { get; set; }
 
         /// <summary>Output only. The API resource name in the format
         /// `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. Assigned by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2198,7 +2198,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         /// at least one `owner_email` that's associated with a Google Account. The values for `companyId` and `name`
         /// must be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
-        public virtual Company Customer { get; set; } 
+        public virtual Company Customer { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2210,11 +2210,11 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         /// <summary>Required. The configuration applied to the device in the format
         /// `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configuration")]
-        public virtual string Configuration { get; set; } 
+        public virtual string Configuration { get; set; }
 
         /// <summary>Required. The device the configuration is applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("device")]
-        public virtual DeviceReference Device { get; set; } 
+        public virtual DeviceReference Device { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2225,7 +2225,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>The configurations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configurations")]
-        public virtual System.Collections.Generic.IList<Configuration> Configurations { get; set; } 
+        public virtual System.Collections.Generic.IList<Configuration> Configurations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2236,12 +2236,12 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>The customer accounts the calling user is a member of.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customers")]
-        public virtual System.Collections.Generic.IList<Company> Customers { get; set; } 
+        public virtual System.Collections.Generic.IList<Company> Customers { get; set; }
 
         /// <summary>A token used to access the next page of results. Omitted if no further results are
         /// available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2252,12 +2252,12 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>The customer's devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("devices")]
-        public virtual System.Collections.Generic.IList<Device> Devices { get; set; } 
+        public virtual System.Collections.Generic.IList<Device> Devices { get; set; }
 
         /// <summary>A token used to access the next page of results. Omitted if no further results are
         /// available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2268,7 +2268,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>The list of DPCs available to the customer that support zero-touch enrollment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dpcs")]
-        public virtual System.Collections.Generic.IList<Dpc> Dpcs { get; set; } 
+        public virtual System.Collections.Generic.IList<Dpc> Dpcs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2279,7 +2279,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>Required. The device to remove the configuration from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("device")]
-        public virtual DeviceReference Device { get; set; } 
+        public virtual DeviceReference Device { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2290,7 +2290,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>Required. The device to unclaim.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("device")]
-        public virtual DeviceReference Device { get; set; } 
+        public virtual DeviceReference Device { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2303,30 +2303,30 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         /// claim with the type `SECTION_TYPE_ZERO_TOUCH`. Call `partners.devices.unclaim` or
         /// `partners.devices.unclaimAsync` to remove the device from zero-touch enrollment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claims")]
-        public virtual System.Collections.Generic.IList<DeviceClaim> Claims { get; set; } 
+        public virtual System.Collections.Generic.IList<DeviceClaim> Claims { get; set; }
 
         /// <summary>Not available to resellers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configuration")]
-        public virtual string Configuration { get; set; } 
+        public virtual string Configuration { get; set; }
 
         /// <summary>Output only. The ID of the device. Assigned by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
-        public virtual System.Nullable<long> DeviceId { get; set; } 
+        public virtual System.Nullable<long> DeviceId { get; set; }
 
         /// <summary>The hardware IDs that identify a manufactured device. To learn more, read
         /// [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
-        public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
+        public virtual DeviceIdentifier DeviceIdentifier { get; set; }
 
         /// <summary>The metadata attached to the device. Structured as key-value pairs. To learn more, read [Device
         /// metadata](https://developers.google.com/zero-touch/guides/metadata).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceMetadata")]
-        public virtual DeviceMetadata DeviceMetadata { get; set; } 
+        public virtual DeviceMetadata DeviceMetadata { get; set; }
 
         /// <summary>Output only. The API resource name in the format `partners/[PARTNER_ID]/devices/[DEVICE_ID]`.
         /// Assigned by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2339,25 +2339,25 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>The ID of the Customer that purchased the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerCompanyId")]
-        public virtual System.Nullable<long> OwnerCompanyId { get; set; } 
+        public virtual System.Nullable<long> OwnerCompanyId { get; set; }
 
         /// <summary>The ID of the reseller that claimed the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resellerId")]
-        public virtual System.Nullable<long> ResellerId { get; set; } 
+        public virtual System.Nullable<long> ResellerId { get; set; }
 
         /// <summary>Output only. The type of claim made on the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sectionType")]
-        public virtual string SectionType { get; set; } 
+        public virtual string SectionType { get; set; }
 
         /// <summary>The timestamp when the device will exit ‘vacation mode’. This value is present iff the device is in
         /// 'vacation mode'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vacationModeExpireTime")]
-        public virtual object VacationModeExpireTime { get; set; } 
+        public virtual object VacationModeExpireTime { get; set; }
 
         /// <summary>The timestamp when the device was put into ‘vacation mode’. This value is present iff the device is
         /// in 'vacation mode'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vacationModeStartTime")]
-        public virtual object VacationModeStartTime { get; set; } 
+        public virtual object VacationModeStartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2369,28 +2369,28 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>The device’s IMEI number. Validated on input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imei")]
-        public virtual string Imei { get; set; } 
+        public virtual string Imei { get; set; }
 
         /// <summary>The device manufacturer’s name. Matches the device's built-in value returned from
         /// `android.os.Build.MANUFACTURER`. Allowed values are listed in [manufacturers](/zero-touch/resources
         /// /manufacturer-names#manufacturers-names).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manufacturer")]
-        public virtual string Manufacturer { get; set; } 
+        public virtual string Manufacturer { get; set; }
 
         /// <summary>The device’s MEID number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meid")]
-        public virtual string Meid { get; set; } 
+        public virtual string Meid { get; set; }
 
         /// <summary>The device model's name. Matches the device's built-in value returned from
         /// `android.os.Build.MODEL`. Allowed values are listed in [models](/zero-touch/resources/manufacturer-names
         /// #model-names).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
-        public virtual string Model { get; set; } 
+        public virtual string Model { get; set; }
 
         /// <summary>The manufacturer's serial number for the device. This value might not be unique across different
         /// device models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
-        public virtual string SerialNumber { get; set; } 
+        public virtual string SerialNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2402,7 +2402,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>Metadata entries recorded as key-value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Entries { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Entries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2417,11 +2417,11 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>The ID of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
-        public virtual System.Nullable<long> DeviceId { get; set; } 
+        public virtual System.Nullable<long> DeviceId { get; set; }
 
         /// <summary>The hardware IDs of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
-        public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
+        public virtual DeviceIdentifier DeviceIdentifier { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2435,16 +2435,16 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         /// <summary>The number of metadata updates in the operation. This might be different from the number of updates
         /// in the request if the API can't parse some of the updates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("devicesCount")]
-        public virtual System.Nullable<int> DevicesCount { get; set; } 
+        public virtual System.Nullable<int> DevicesCount { get; set; }
 
         /// <summary>The processing status of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processingStatus")]
-        public virtual string ProcessingStatus { get; set; } 
+        public virtual string ProcessingStatus { get; set; }
 
         /// <summary>The processing progress of the operation. Measured as a number from 0 to 100. A value of 10O doesnt
         /// always mean the operation completed—check for the inclusion of a `done` field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
-        public virtual System.Nullable<int> Progress { get; set; } 
+        public virtual System.Nullable<int> Progress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2457,12 +2457,12 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         /// <summary>The processing status for each device in the operation. One `PerDeviceStatus` per device. The list
         /// order matches the items in the original request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("perDeviceStatus")]
-        public virtual System.Collections.Generic.IList<OperationPerDevice> PerDeviceStatus { get; set; } 
+        public virtual System.Collections.Generic.IList<OperationPerDevice> PerDeviceStatus { get; set; }
 
         /// <summary>A summary of how many items in the operation the server processed successfully. Updated as the
         /// operation progresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
-        public virtual System.Nullable<int> SuccessCount { get; set; } 
+        public virtual System.Nullable<int> SuccessCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2477,18 +2477,18 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         /// <summary>Output only. The title of the DPC app in Google Play. For example, _Google Apps Device Policy_.
         /// Useful in an application's user interface.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dpcName")]
-        public virtual string DpcName { get; set; } 
+        public virtual string DpcName { get; set; }
 
         /// <summary>Output only. The API resource name in the format `customers/[CUSTOMER_ID]/dpcs/[DPC_ID]`. Assigned
         /// by the server. To maintain a reference to a DPC across customer accounts, persist and match the last path
         /// component (`DPC_ID`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The DPC's Android application ID that looks like a Java package name. Zero-touch
         /// enrollment installs the DPC app onto a device using this identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
-        public virtual string PackageName { get; set; } 
+        public virtual string PackageName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2509,16 +2509,16 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>Required. Required. The device identifier to search for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
-        public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
+        public virtual DeviceIdentifier DeviceIdentifier { get; set; }
 
         /// <summary>Required. The maximum number of devices to show in a page of results. Must be between 1 and 100
         /// inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
-        public virtual System.Nullable<long> Limit { get; set; } 
+        public virtual System.Nullable<long> Limit { get; set; }
 
         /// <summary>A token specifying which result page to return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
-        public virtual string PageToken { get; set; } 
+        public virtual string PageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2529,16 +2529,16 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>Found devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("devices")]
-        public virtual System.Collections.Generic.IList<Device> Devices { get; set; } 
+        public virtual System.Collections.Generic.IList<Device> Devices { get; set; }
 
         /// <summary>A token used to access the next page of results. Omitted if no further results are
         /// available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The total count of items in the list irrespective of pagination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
-        public virtual System.Nullable<int> TotalSize { get; set; } 
+        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2549,20 +2549,20 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>Required. The list of customer IDs to search for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> CustomerId { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> CustomerId { get; set; }
 
         /// <summary>Required. The maximum number of devices to show in a page of results. Must be between 1 and 100
         /// inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
-        public virtual System.Nullable<long> Limit { get; set; } 
+        public virtual System.Nullable<long> Limit { get; set; }
 
         /// <summary>A token specifying which result page to return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
-        public virtual string PageToken { get; set; } 
+        public virtual string PageToken { get; set; }
 
         /// <summary>Required. The section type of the device's provisioning record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sectionType")]
-        public virtual string SectionType { get; set; } 
+        public virtual string SectionType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2573,16 +2573,16 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>The customer's devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("devices")]
-        public virtual System.Collections.Generic.IList<Device> Devices { get; set; } 
+        public virtual System.Collections.Generic.IList<Device> Devices { get; set; }
 
         /// <summary>A token used to access the next page of results. Omitted if no further results are
         /// available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The total count of items in the list irrespective of pagination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
-        public virtual System.Nullable<int> TotalSize { get; set; } 
+        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2593,16 +2593,16 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>List of customers related to this reseller partner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customers")]
-        public virtual System.Collections.Generic.IList<Company> Customers { get; set; } 
+        public virtual System.Collections.Generic.IList<Company> Customers { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Omitted if no further results are
         /// available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The total count of items in the list irrespective of pagination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
-        public virtual System.Nullable<int> TotalSize { get; set; } 
+        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2613,16 +2613,16 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>List of customers of the vendor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customers")]
-        public virtual System.Collections.Generic.IList<Company> Customers { get; set; } 
+        public virtual System.Collections.Generic.IList<Company> Customers { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Omitted if no further results are
         /// available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The total count of items in the list irrespective of pagination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
-        public virtual System.Nullable<int> TotalSize { get; set; } 
+        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2634,16 +2634,16 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         /// <summary>A token to retrieve the next page of results. Omitted if no further results are
         /// available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The total count of items in the list irrespective of pagination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
-        public virtual System.Nullable<int> TotalSize { get; set; } 
+        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>List of vendors of the reseller partner. Fields `name`, `companyId` and `companyName` are populated
         /// to the Company object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vendors")]
-        public virtual System.Collections.Generic.IList<Company> Vendors { get; set; } 
+        public virtual System.Collections.Generic.IList<Company> Vendors { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2655,29 +2655,29 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>This field will always be not set if the operation is created by `claimAsync`, `unclaimAsync`, or
         /// `updateMetadataAsync`. In this case, error information for each device is set in
         /// `response.perDeviceStatus.result.status`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>This field will contain a `DevicesLongRunningOperationMetadata` object if the operation is created
         /// by `claimAsync`, `unclaimAsync`, or `updateMetadataAsync`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>This field will contain a `DevicesLongRunningOperationResponse` object if the operation is created
         /// by `claimAsync`, `unclaimAsync`, or `updateMetadataAsync`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2688,19 +2688,19 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>A copy of the original device-claim request received by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claim")]
-        public virtual PartnerClaim Claim { get; set; } 
+        public virtual PartnerClaim Claim { get; set; }
 
         /// <summary>The processing result for each device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
-        public virtual PerDeviceStatusInBatch Result { get; set; } 
+        public virtual PerDeviceStatusInBatch Result { get; set; }
 
         /// <summary>A copy of the original device-unclaim request received by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unclaim")]
-        public virtual PartnerUnclaim Unclaim { get; set; } 
+        public virtual PartnerUnclaim Unclaim { get; set; }
 
         /// <summary>A copy of the original metadata-update request received by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMetadata")]
-        public virtual UpdateMetadataArguments UpdateMetadata { get; set; } 
+        public virtual UpdateMetadataArguments UpdateMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2711,19 +2711,19 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>Required. The ID of the customer for whom the device is being claimed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
-        public virtual System.Nullable<long> CustomerId { get; set; } 
+        public virtual System.Nullable<long> CustomerId { get; set; }
 
         /// <summary>Required. Required. Device identifier of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
-        public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
+        public virtual DeviceIdentifier DeviceIdentifier { get; set; }
 
         /// <summary>Required. The metadata to attach to the device at claim.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceMetadata")]
-        public virtual DeviceMetadata DeviceMetadata { get; set; } 
+        public virtual DeviceMetadata DeviceMetadata { get; set; }
 
         /// <summary>Required. The section type of the device's provisioning record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sectionType")]
-        public virtual string SectionType { get; set; } 
+        public virtual string SectionType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2734,24 +2734,24 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>Required. Device ID of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
-        public virtual System.Nullable<long> DeviceId { get; set; } 
+        public virtual System.Nullable<long> DeviceId { get; set; }
 
         /// <summary>Required. Device identifier of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
-        public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
+        public virtual DeviceIdentifier DeviceIdentifier { get; set; }
 
         /// <summary>Required. The section type of the device's provisioning record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sectionType")]
-        public virtual string SectionType { get; set; } 
+        public virtual string SectionType { get; set; }
 
         /// <summary>Optional. The duration of the vacation unlock starting from when the request is processed. (1 day
         /// is treated as 24 hours)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vacationModeDays")]
-        public virtual System.Nullable<int> VacationModeDays { get; set; } 
+        public virtual System.Nullable<int> VacationModeDays { get; set; }
 
         /// <summary>Optional. The expiration time of the vacation unlock.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vacationModeExpireTime")]
-        public virtual object VacationModeExpireTime { get; set; } 
+        public virtual object VacationModeExpireTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2762,19 +2762,19 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>If processing succeeds, the device ID of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
-        public virtual System.Nullable<long> DeviceId { get; set; } 
+        public virtual System.Nullable<long> DeviceId { get; set; }
 
         /// <summary>If processing fails, the error type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorIdentifier")]
-        public virtual string ErrorIdentifier { get; set; } 
+        public virtual string ErrorIdentifier { get; set; }
 
         /// <summary>If processing fails, a developer message explaining what went wrong.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
-        public virtual string ErrorMessage { get; set; } 
+        public virtual string ErrorMessage { get; set; }
 
         /// <summary>The result status of the device after processing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2789,17 +2789,17 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2810,24 +2810,24 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>Required. The device ID returned by `ClaimDevice`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
-        public virtual System.Nullable<long> DeviceId { get; set; } 
+        public virtual System.Nullable<long> DeviceId { get; set; }
 
         /// <summary>Required. The device identifier you used when you claimed this device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
-        public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
+        public virtual DeviceIdentifier DeviceIdentifier { get; set; }
 
         /// <summary>Required. The section type of the device's provisioning record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sectionType")]
-        public virtual string SectionType { get; set; } 
+        public virtual string SectionType { get; set; }
 
         /// <summary>The duration of the vacation unlock starting from when the request is processed. (1 day is treated
         /// as 24 hours)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vacationModeDays")]
-        public virtual System.Nullable<int> VacationModeDays { get; set; } 
+        public virtual System.Nullable<int> VacationModeDays { get; set; }
 
         /// <summary>The expiration time of the vacation unlock.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vacationModeExpireTime")]
-        public virtual object VacationModeExpireTime { get; set; } 
+        public virtual object VacationModeExpireTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2838,7 +2838,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>Required. The list of devices to unclaim.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unclaims")]
-        public virtual System.Collections.Generic.IList<PartnerUnclaim> Unclaims { get; set; } 
+        public virtual System.Collections.Generic.IList<PartnerUnclaim> Unclaims { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2849,7 +2849,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>Required. The list of metadata updates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updates")]
-        public virtual System.Collections.Generic.IList<UpdateMetadataArguments> Updates { get; set; } 
+        public virtual System.Collections.Generic.IList<UpdateMetadataArguments> Updates { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2860,7 +2860,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>Required. The metadata to attach to the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceMetadata")]
-        public virtual DeviceMetadata DeviceMetadata { get; set; } 
+        public virtual DeviceMetadata DeviceMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2871,15 +2871,15 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     {
         /// <summary>Required. Device ID of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
-        public virtual System.Nullable<long> DeviceId { get; set; } 
+        public virtual System.Nullable<long> DeviceId { get; set; }
 
         /// <summary>Required. Device identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
-        public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
+        public virtual DeviceIdentifier DeviceIdentifier { get; set; }
 
         /// <summary>Required. The metadata to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceMetadata")]
-        public virtual DeviceMetadata DeviceMetadata { get; set; } 
+        public virtual DeviceMetadata DeviceMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

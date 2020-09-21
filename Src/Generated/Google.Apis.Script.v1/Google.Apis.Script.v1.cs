@@ -1894,11 +1894,11 @@ namespace Google.Apis.Script.v1.Data
         /// <summary>The list of script project files. One of the files is a script manifest; it must be named
         /// "appsscript", must have type of JSON, and include the manifest configurations for the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
-        public virtual System.Collections.Generic.IList<File> Files { get; set; } 
+        public virtual System.Collections.Generic.IList<File> Files { get; set; }
 
         /// <summary>The script project's Drive ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scriptId")]
-        public virtual string ScriptId { get; set; } 
+        public virtual string ScriptId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1911,11 +1911,11 @@ namespace Google.Apis.Script.v1.Data
         /// of a Google Doc, Google Sheet, Google Form, or Google Slides file. If not set, a standalone script project
         /// is created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentId")]
-        public virtual string ParentId { get; set; } 
+        public virtual string ParentId { get; set; }
 
         /// <summary>The title for the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1926,19 +1926,19 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>The deployment configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentConfig")]
-        public virtual DeploymentConfig DeploymentConfig { get; set; } 
+        public virtual DeploymentConfig DeploymentConfig { get; set; }
 
         /// <summary>The deployment ID for this deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentId")]
-        public virtual string DeploymentId { get; set; } 
+        public virtual string DeploymentId { get; set; }
 
         /// <summary>The deployment's entry points.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryPoints")]
-        public virtual System.Collections.Generic.IList<EntryPoint> EntryPoints { get; set; } 
+        public virtual System.Collections.Generic.IList<EntryPoint> EntryPoints { get; set; }
 
         /// <summary>Last modified date time stamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1949,19 +1949,19 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>The description for this deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The manifest file name for this deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manifestFileName")]
-        public virtual string ManifestFileName { get; set; } 
+        public virtual string ManifestFileName { get; set; }
 
         /// <summary>The script project's Drive ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scriptId")]
-        public virtual string ScriptId { get; set; } 
+        public virtual string ScriptId { get; set; }
 
         /// <summary>The version number on which this deployment is based.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionNumber")]
-        public virtual System.Nullable<int> VersionNumber { get; set; } 
+        public virtual System.Nullable<int> VersionNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1982,19 +1982,19 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>Add-on properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addOn")]
-        public virtual GoogleAppsScriptTypeAddOnEntryPoint AddOn { get; set; } 
+        public virtual GoogleAppsScriptTypeAddOnEntryPoint AddOn { get; set; }
 
         /// <summary>The type of the entry point.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryPointType")]
-        public virtual string EntryPointType { get; set; } 
+        public virtual string EntryPointType { get; set; }
 
         /// <summary>An entry point specification for Apps Script API execution calls.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionApi")]
-        public virtual GoogleAppsScriptTypeExecutionApiEntryPoint ExecutionApi { get; set; } 
+        public virtual GoogleAppsScriptTypeExecutionApiEntryPoint ExecutionApi { get; set; }
 
         /// <summary>An entry point specification for web apps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webApp")]
-        public virtual GoogleAppsScriptTypeWebAppEntryPoint WebApp { get; set; } 
+        public virtual GoogleAppsScriptTypeWebAppEntryPoint WebApp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2005,7 +2005,7 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>The result of the execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
-        public virtual ScriptExecutionResult Result { get; set; } 
+        public virtual ScriptExecutionResult Result { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2019,17 +2019,17 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>The error message thrown by Apps Script, usually localized into the user's language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
-        public virtual string ErrorMessage { get; set; } 
+        public virtual string ErrorMessage { get; set; }
 
         /// <summary>The error type, for example `TypeError` or `ReferenceError`. If the error type is unavailable, this
         /// field is not included.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorType")]
-        public virtual string ErrorType { get; set; } 
+        public virtual string ErrorType { get; set; }
 
         /// <summary>An array of objects that provide a stack trace through the script to show where the execution
         /// failed, with the deepest call first.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scriptStackTraceElements")]
-        public virtual System.Collections.Generic.IList<ScriptStackTraceElement> ScriptStackTraceElements { get; set; } 
+        public virtual System.Collections.Generic.IList<ScriptStackTraceElement> ScriptStackTraceElements { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2043,19 +2043,19 @@ namespace Google.Apis.Script.v1.Data
         /// version rather than the version deployed for use with the Apps Script API. Optional; default is
         /// `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("devMode")]
-        public virtual System.Nullable<bool> DevMode { get; set; } 
+        public virtual System.Nullable<bool> DevMode { get; set; }
 
         /// <summary>The name of the function to execute in the given script. The name does not include parentheses or
         /// parameters. It can reference a function in an included library such as `Library.libFunction1`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("function")]
-        public virtual string Function { get; set; } 
+        public virtual string Function { get; set; }
 
         /// <summary>The parameters to be passed to the function being executed. The object type for each parameter
         /// should match the expected type in Apps Script. Parameters cannot be Apps Script-specific object types (such
         /// as a `Document` or a `Calendar`); they can only be primitive types such as `string`, `number`, `array`,
         /// `object`, or `boolean`. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IList<object> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IList<object> Parameters { get; set; }
 
         /// <summary>*Deprecated*. For use with Android add-ons only. An ID that represents the user's current session
         /// in the Android app for Google Docs or Sheets, included as extra data in the
@@ -2065,7 +2065,7 @@ namespace Google.Apis.Script.v1.Data
         /// like the user's current cursor position (in Docs) or selected cell (in Sheets). To retrieve the state, call
         /// `Intent.getStringExtra("com.google.android.apps.docs.addons.SessionState")`. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionState")]
-        public virtual string SessionState { get; set; } 
+        public virtual string SessionState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2081,7 +2081,7 @@ namespace Google.Apis.Script.v1.Data
         /// or a `Calendar`); they can only return primitive types such as a `string`, `number`, `array`, `object`, or
         /// `boolean`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
-        public virtual object Result { get; set; } 
+        public virtual object Result { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2095,34 +2095,34 @@ namespace Google.Apis.Script.v1.Data
         /// <summary>Creation date timestamp. This read-only field is only visible to users who have WRITER permission
         /// for the script project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The defined set of functions in the script file, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionSet")]
-        public virtual GoogleAppsScriptTypeFunctionSet FunctionSet { get; set; } 
+        public virtual GoogleAppsScriptTypeFunctionSet FunctionSet { get; set; }
 
         /// <summary>The user who modified the file most recently. This read-only field is only visible to users who
         /// have WRITER permission for the script project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifyUser")]
-        public virtual GoogleAppsScriptTypeUser LastModifyUser { get; set; } 
+        public virtual GoogleAppsScriptTypeUser LastModifyUser { get; set; }
 
         /// <summary>The name of the file. The file extension is not part of the file name, which can be identified from
         /// the type field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The file content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual string Source { get; set; } 
+        public virtual string Source { get; set; }
 
         /// <summary>The type of the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>Last modified date timestamp. This read-only field is only visible to users who have WRITER
         /// permission for the script project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2133,27 +2133,27 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>The add-on's required list of supported container types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addOnType")]
-        public virtual string AddOnType { get; set; } 
+        public virtual string AddOnType { get; set; }
 
         /// <summary>The add-on's optional description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The add-on's optional help URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("helpUrl")]
-        public virtual string HelpUrl { get; set; } 
+        public virtual string HelpUrl { get; set; }
 
         /// <summary>The add-on's required post install tip URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postInstallTipUrl")]
-        public virtual string PostInstallTipUrl { get; set; } 
+        public virtual string PostInstallTipUrl { get; set; }
 
         /// <summary>The add-on's optional report issue URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportIssueUrl")]
-        public virtual string ReportIssueUrl { get; set; } 
+        public virtual string ReportIssueUrl { get; set; }
 
         /// <summary>The add-on's required title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2164,7 +2164,7 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>Who has permission to run the API executable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access")]
-        public virtual string Access { get; set; } 
+        public virtual string Access { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2175,7 +2175,7 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>The entry point's configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryPointConfig")]
-        public virtual GoogleAppsScriptTypeExecutionApiConfig EntryPointConfig { get; set; } 
+        public virtual GoogleAppsScriptTypeExecutionApiConfig EntryPointConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2186,7 +2186,7 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>The function name in the script project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2197,7 +2197,7 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>A list of functions composing the set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<GoogleAppsScriptTypeFunction> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleAppsScriptTypeFunction> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2210,31 +2210,31 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>Duration the execution spent executing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual object Duration { get; set; } 
+        public virtual object Duration { get; set; }
 
         /// <summary>Name of the function the started the execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionName")]
-        public virtual string FunctionName { get; set; } 
+        public virtual string FunctionName { get; set; }
 
         /// <summary>The executions status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processStatus")]
-        public virtual string ProcessStatus { get; set; } 
+        public virtual string ProcessStatus { get; set; }
 
         /// <summary>The executions type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processType")]
-        public virtual string ProcessType { get; set; } 
+        public virtual string ProcessType { get; set; }
 
         /// <summary>Name of the script being executed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectName")]
-        public virtual string ProjectName { get; set; } 
+        public virtual string ProjectName { get; set; }
 
         /// <summary>Time the execution started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The executing users access level to the script.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAccessLevel")]
-        public virtual string UserAccessLevel { get; set; } 
+        public virtual string UserAccessLevel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2245,19 +2245,19 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>The user's domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
-        public virtual string Domain { get; set; } 
+        public virtual string Domain { get; set; }
 
         /// <summary>The user's identifying email address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
+        public virtual string Email { get; set; }
 
         /// <summary>The user's display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The user's photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photoUrl")]
-        public virtual string PhotoUrl { get; set; } 
+        public virtual string PhotoUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2268,11 +2268,11 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>Who has permission to run the web app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access")]
-        public virtual string Access { get; set; } 
+        public virtual string Access { get; set; }
 
         /// <summary>Who to execute the web app as.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executeAs")]
-        public virtual string ExecuteAs { get; set; } 
+        public virtual string ExecuteAs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2283,11 +2283,11 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>The entry point's configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryPointConfig")]
-        public virtual GoogleAppsScriptTypeWebAppConfig EntryPointConfig { get; set; } 
+        public virtual GoogleAppsScriptTypeWebAppConfig EntryPointConfig { get; set; }
 
         /// <summary>The URL for the web application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2298,11 +2298,11 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>The list of deployments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployments")]
-        public virtual System.Collections.Generic.IList<Deployment> Deployments { get; set; } 
+        public virtual System.Collections.Generic.IList<Deployment> Deployments { get; set; }
 
         /// <summary>The token that can be used in the next call to get the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2313,11 +2313,11 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>Token for the next page of results. If empty, there are no more pages remaining.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>List of processes matching request parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processes")]
-        public virtual System.Collections.Generic.IList<GoogleAppsScriptTypeProcess> Processes { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleAppsScriptTypeProcess> Processes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2328,11 +2328,11 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>Token for the next page of results. If empty, there are no more pages remaining.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>List of processes matching request parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processes")]
-        public virtual System.Collections.Generic.IList<GoogleAppsScriptTypeProcess> Processes { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleAppsScriptTypeProcess> Processes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2343,7 +2343,7 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>Repeated field of dynamically typed values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<Value> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<Value> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2355,11 +2355,11 @@ namespace Google.Apis.Script.v1.Data
         /// <summary>The token use to fetch the next page of records. if not exist in the response, that means no more
         /// versions to list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versions")]
-        public virtual System.Collections.Generic.IList<Version> Versions { get; set; } 
+        public virtual System.Collections.Generic.IList<Version> Versions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2371,15 +2371,15 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>Number of active users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeUsers")]
-        public virtual System.Collections.Generic.IList<MetricsValue> ActiveUsers { get; set; } 
+        public virtual System.Collections.Generic.IList<MetricsValue> ActiveUsers { get; set; }
 
         /// <summary>Number of failed executions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failedExecutions")]
-        public virtual System.Collections.Generic.IList<MetricsValue> FailedExecutions { get; set; } 
+        public virtual System.Collections.Generic.IList<MetricsValue> FailedExecutions { get; set; }
 
         /// <summary>Number of total executions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalExecutions")]
-        public virtual System.Collections.Generic.IList<MetricsValue> TotalExecutions { get; set; } 
+        public virtual System.Collections.Generic.IList<MetricsValue> TotalExecutions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2390,15 +2390,15 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>Required field indicating the end time of the interval.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Required field indicating the start time of the interval.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>Indicates the number of executions counted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual System.Nullable<ulong> Value { get; set; } 
+        public virtual System.Nullable<ulong> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2421,18 +2421,18 @@ namespace Google.Apis.Script.v1.Data
         /// <summary>This field indicates whether the script execution has completed. A completed execution has a
         /// populated `response` field containing the ExecutionResponse from function that was executed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>If a `run` call succeeds but the script function (or Apps Script itself) throws an exception, this
         /// field contains a Status object. The `Status` object's `details` field contains an array with a single
         /// ExecutionError object that provides information about the nature of the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>If the script function returns successfully, this field contains an ExecutionResponse object with
         /// the function's return value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2443,33 +2443,33 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>When the script was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>User who originally created the script.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creator")]
-        public virtual GoogleAppsScriptTypeUser Creator { get; set; } 
+        public virtual GoogleAppsScriptTypeUser Creator { get; set; }
 
         /// <summary>User who last modified the script.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifyUser")]
-        public virtual GoogleAppsScriptTypeUser LastModifyUser { get; set; } 
+        public virtual GoogleAppsScriptTypeUser LastModifyUser { get; set; }
 
         /// <summary>The parent's Drive ID that the script will be attached to. This is usually the ID of a Google
         /// Document or Google Sheet. This filed is optional, and if not set, a stand-alone script will be
         /// created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentId")]
-        public virtual string ParentId { get; set; } 
+        public virtual string ParentId { get; set; }
 
         /// <summary>The script project's Drive ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scriptId")]
-        public virtual string ScriptId { get; set; } 
+        public virtual string ScriptId { get; set; }
 
         /// <summary>The title for the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>When the script was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2480,7 +2480,7 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>The returned value of the execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnValue")]
-        public virtual Value ReturnValue { get; set; } 
+        public virtual Value ReturnValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2491,11 +2491,11 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>The name of the function that failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("function")]
-        public virtual string Function { get; set; } 
+        public virtual string Function { get; set; }
 
         /// <summary>The line number where the script failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineNumber")]
-        public virtual System.Nullable<int> LineNumber { get; set; } 
+        public virtual System.Nullable<int> LineNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2508,17 +2508,17 @@ namespace Google.Apis.Script.v1.Data
         /// <summary>The status code. For this API, this value either: - 10, indicating a `SCRIPT_TIMEOUT` error, - 3,
         /// indicating an `INVALID_ARGUMENT` error, or - 1, indicating a `CANCELLED` execution. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>An array that contains a single ExecutionError object that provides information about the nature of
         /// the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which is in English. Any user-facing error message is localized
         /// and sent in the details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2530,7 +2530,7 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>Unordered map of dynamically typed values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual System.Collections.Generic.IDictionary<string,Value> Fields { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, Value> Fields { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2541,7 +2541,7 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>The deployment configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentConfig")]
-        public virtual DeploymentConfig DeploymentConfig { get; set; } 
+        public virtual DeploymentConfig DeploymentConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2552,39 +2552,39 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>Represents a boolean value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
-        public virtual System.Nullable<bool> BoolValue { get; set; } 
+        public virtual System.Nullable<bool> BoolValue { get; set; }
 
         /// <summary>Represents raw byte values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesValue")]
-        public virtual string BytesValue { get; set; } 
+        public virtual string BytesValue { get; set; }
 
         /// <summary>Represents a date in ms since the epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateValue")]
-        public virtual System.Nullable<long> DateValue { get; set; } 
+        public virtual System.Nullable<long> DateValue { get; set; }
 
         /// <summary>Represents a repeated `Value`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listValue")]
-        public virtual ListValue ListValue { get; set; } 
+        public virtual ListValue ListValue { get; set; }
 
         /// <summary>Represents a null value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nullValue")]
-        public virtual string NullValue { get; set; } 
+        public virtual string NullValue { get; set; }
 
         /// <summary>Represents a double value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numberValue")]
-        public virtual System.Nullable<double> NumberValue { get; set; } 
+        public virtual System.Nullable<double> NumberValue { get; set; }
 
         /// <summary>Represents a structured proto value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protoValue")]
-        public virtual System.Collections.Generic.IDictionary<string,object> ProtoValue { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> ProtoValue { get; set; }
 
         /// <summary>Represents a string value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
-        public virtual string StringValue { get; set; } 
+        public virtual string StringValue { get; set; }
 
         /// <summary>Represents a structured value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structValue")]
-        public virtual Struct StructValue { get; set; } 
+        public virtual Struct StructValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2597,20 +2597,20 @@ namespace Google.Apis.Script.v1.Data
     {
         /// <summary>When the version was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The description for this version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The script project's Drive ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scriptId")]
-        public virtual string ScriptId { get; set; } 
+        public virtual string ScriptId { get; set; }
 
         /// <summary>The incremental ID that is created by Apps Script when a version is created. This is system
         /// assigned number and is immutable once created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionNumber")]
-        public virtual System.Nullable<int> VersionNumber { get; set; } 
+        public virtual System.Nullable<int> VersionNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

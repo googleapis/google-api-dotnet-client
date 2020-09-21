@@ -779,64 +779,64 @@ namespace Google.Apis.PolyService.v1.Data
         /// <summary>The author's publicly visible name. Use this name when giving credit to the author. For more
         /// information, see [Licensing](/poly/discover/licensing).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorName")]
-        public virtual string AuthorName { get; set; } 
+        public virtual string AuthorName { get; set; }
 
         /// <summary>For published assets, the time when the asset was published. For unpublished assets, the time when
         /// the asset was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The human-readable description, set by the asset's author.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The human-readable name, set by the asset's author.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>A list of Formats where each format describes one representation of the asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formats")]
-        public virtual System.Collections.Generic.IList<Format> Formats { get; set; } 
+        public virtual System.Collections.Generic.IList<Format> Formats { get; set; }
 
         /// <summary>Whether this asset has been curated by the Poly team.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isCurated")]
-        public virtual System.Nullable<bool> IsCurated { get; set; } 
+        public virtual System.Nullable<bool> IsCurated { get; set; }
 
         /// <summary>The license under which the author has made the asset available for use, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("license")]
-        public virtual string License { get; set; } 
+        public virtual string License { get; set; }
 
         /// <summary>Application-defined opaque metadata for this asset. This field is only returned when querying for
         /// the signed-in user's own assets, not for public assets. This string is limited to 1K chars. It is up to the
         /// creator of the asset to define the format for this string (for example, JSON).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual string Metadata { get; set; } 
+        public virtual string Metadata { get; set; }
 
         /// <summary>The unique identifier for the asset in the form: `assets/{ASSET_ID}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Hints for displaying the asset. Note that these parameters are not immutable; the author of an
         /// asset may change them post-publication.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("presentationParams")]
-        public virtual PresentationParams PresentationParams { get; set; } 
+        public virtual PresentationParams PresentationParams { get; set; }
 
         /// <summary>The remix info for the asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remixInfo")]
-        public virtual RemixInfo RemixInfo { get; set; } 
+        public virtual RemixInfo RemixInfo { get; set; }
 
         /// <summary>The thumbnail image for the asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnail")]
-        public virtual File Thumbnail { get; set; } 
+        public virtual File Thumbnail { get; set; }
 
         /// <summary>The time when the asset was last modified. For published assets, whose contents are immutable, the
         /// update time changes only when metadata properties, such as visibility, are updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The visibility of the asset and who can access it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
-        public virtual string Visibility { get; set; } 
+        public virtual string Visibility { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -847,19 +847,19 @@ namespace Google.Apis.PolyService.v1.Data
     {
         /// <summary>The code associated with this message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual string Code { get; set; } 
+        public virtual string Code { get; set; }
 
         /// <summary>An optional file path. Only present for those error codes that specify it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
-        public virtual string FilePath { get; set; } 
+        public virtual string FilePath { get; set; }
 
         /// <summary>An optional image error. Only present for INVALID_IMAGE_FILE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageError")]
-        public virtual ImageError ImageError { get; set; } 
+        public virtual ImageError ImageError { get; set; }
 
         /// <summary>An optional OBJ parse error. Only present for OBJ_PARSE_ERROR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objParseError")]
-        public virtual ObjParseError ObjParseError { get; set; } 
+        public virtual ObjParseError ObjParseError { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -871,16 +871,16 @@ namespace Google.Apis.PolyService.v1.Data
         /// <summary>The MIME content-type, such as `image/png`. For more information, see [MIME
         /// types](//developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
-        public virtual string ContentType { get; set; } 
+        public virtual string ContentType { get; set; }
 
         /// <summary>The path of the resource file relative to the root file. For root or thumbnail files, this is just
         /// the filename.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relativePath")]
-        public virtual string RelativePath { get; set; } 
+        public virtual string RelativePath { get; set; }
 
         /// <summary>The URL where the file data can be retrieved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -895,17 +895,17 @@ namespace Google.Apis.PolyService.v1.Data
     {
         /// <summary>Complexity stats about this representation of the asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formatComplexity")]
-        public virtual FormatComplexity FormatComplexity { get; set; } 
+        public virtual FormatComplexity FormatComplexity { get; set; }
 
         /// <summary>A short string that identifies the format type of this representation. Possible values are: `FBX`,
         /// `GLTF`, `GLTF2`, `OBJ`, and `TILT`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formatType")]
-        public virtual string FormatType { get; set; } 
+        public virtual string FormatType { get; set; }
 
         /// <summary>A list of dependencies of the root element. May include, but is not limited to, materials,
         /// textures, and shader programs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<File> Resources { get; set; } 
+        public virtual System.Collections.Generic.IList<File> Resources { get; set; }
 
         /// <summary>The root of the file hierarchy. This will always be populated. For some format_types - such as
         /// `TILT`, which are self-contained - this is all of the data.
@@ -913,7 +913,7 @@ namespace Google.Apis.PolyService.v1.Data
         /// Other types - such as `OBJ` - often reference other data elements. These are contained in the resources
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("root")]
-        public virtual File Root { get; set; } 
+        public virtual File Root { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -926,11 +926,11 @@ namespace Google.Apis.PolyService.v1.Data
         /// formats of the same asset with the same format_type. This hint allows you to sort formats from the most-
         /// detailed (0) to least-detailed (integers greater than 0).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lodHint")]
-        public virtual System.Nullable<int> LodHint { get; set; } 
+        public virtual System.Nullable<int> LodHint { get; set; }
 
         /// <summary>The estimated number of triangles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triangleCount")]
-        public virtual System.Nullable<long> TriangleCount { get; set; } 
+        public virtual System.Nullable<long> TriangleCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -941,11 +941,11 @@ namespace Google.Apis.PolyService.v1.Data
     {
         /// <summary>The type of image error encountered. Optional for older image errors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual string Code { get; set; } 
+        public virtual string Code { get; set; }
 
         /// <summary>The file path in the import of the image that was rejected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
-        public virtual string FilePath { get; set; } 
+        public virtual string FilePath { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -956,16 +956,16 @@ namespace Google.Apis.PolyService.v1.Data
     {
         /// <summary>A list of assets that match the criteria specified in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assets")]
-        public virtual System.Collections.Generic.IList<Asset> Assets { get; set; } 
+        public virtual System.Collections.Generic.IList<Asset> Assets { get; set; }
 
         /// <summary>The continuation token for retrieving the next page. If empty, indicates that there are no more
         /// pages. To get the next page, submit the same request specifying this value as the page_token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The total number of assets in the list, without pagination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
-        public virtual System.Nullable<int> TotalSize { get; set; } 
+        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -976,16 +976,16 @@ namespace Google.Apis.PolyService.v1.Data
     {
         /// <summary>A list of assets that match the criteria specified in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assets")]
-        public virtual System.Collections.Generic.IList<Asset> Assets { get; set; } 
+        public virtual System.Collections.Generic.IList<Asset> Assets { get; set; }
 
         /// <summary>The continuation token for retrieving the next page. If empty, indicates that there are no more
         /// pages. To get the next page, submit the same request specifying this value as the page_token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The total number of assets in the list, without pagination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
-        public virtual System.Nullable<int> TotalSize { get; set; } 
+        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -997,15 +997,15 @@ namespace Google.Apis.PolyService.v1.Data
         /// <summary>The continuation token for retrieving the next page. If empty, indicates that there are no more
         /// pages. To get the next page, submit the same request specifying this value as the page_token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The total number of assets in the list, without pagination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
-        public virtual System.Nullable<int> TotalSize { get; set; } 
+        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>A list of UserAssets matching the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAssets")]
-        public virtual System.Collections.Generic.IList<UserAsset> UserAssets { get; set; } 
+        public virtual System.Collections.Generic.IList<UserAsset> UserAssets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1016,28 +1016,28 @@ namespace Google.Apis.PolyService.v1.Data
     {
         /// <summary>The type of problem found (required).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual string Code { get; set; } 
+        public virtual string Code { get; set; }
 
         /// <summary>The ending character index at which the problem was found.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
-        public virtual System.Nullable<int> EndIndex { get; set; } 
+        public virtual System.Nullable<int> EndIndex { get; set; }
 
         /// <summary>The file path in which the problem was found.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
-        public virtual string FilePath { get; set; } 
+        public virtual string FilePath { get; set; }
 
         /// <summary>The text of the line. Note that this may be truncated if the line was very long. This may not
         /// include the error if it occurs after line truncation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("line")]
-        public virtual string Line { get; set; } 
+        public virtual string Line { get; set; }
 
         /// <summary>Line number at which the problem was found.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineNumber")]
-        public virtual System.Nullable<int> LineNumber { get; set; } 
+        public virtual System.Nullable<int> LineNumber { get; set; }
 
         /// <summary>The starting character index at which the problem was found.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; } 
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1052,12 +1052,12 @@ namespace Google.Apis.PolyService.v1.Data
         /// This is represented as a six-digit hexademical triplet specifying the RGB components of the background
         /// color, e.g. #FF0000 for Red.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
-        public virtual string BackgroundColor { get; set; } 
+        public virtual string BackgroundColor { get; set; }
 
         /// <summary>The materials' diffuse/albedo color. This does not apply to vertex colors or texture
         /// maps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colorSpace")]
-        public virtual string ColorSpace { get; set; } 
+        public virtual string ColorSpace { get; set; }
 
         /// <summary>A rotation that should be applied to the object root to make it upright. More precisely, this
         /// quaternion transforms from "object space" (the space in which the object is defined) to "presentation
@@ -1072,7 +1072,7 @@ namespace Google.Apis.PolyService.v1.Data
         ///
         /// Please note: this is applicable only to the gLTF.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orientingRotation")]
-        public virtual Quaternion OrientingRotation { get; set; } 
+        public virtual Quaternion OrientingRotation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1084,19 +1084,19 @@ namespace Google.Apis.PolyService.v1.Data
     {
         /// <summary>The scalar component.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("w")]
-        public virtual System.Nullable<double> W { get; set; } 
+        public virtual System.Nullable<double> W { get; set; }
 
         /// <summary>The x component.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("x")]
-        public virtual System.Nullable<double> X { get; set; } 
+        public virtual System.Nullable<double> X { get; set; }
 
         /// <summary>The y component.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("y")]
-        public virtual System.Nullable<double> Y { get; set; } 
+        public virtual System.Nullable<double> Y { get; set; }
 
         /// <summary>The z component.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("z")]
-        public virtual System.Nullable<double> Z { get; set; } 
+        public virtual System.Nullable<double> Z { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1107,7 +1107,7 @@ namespace Google.Apis.PolyService.v1.Data
     {
         /// <summary>Resource ids for the sources of this remix, of the form: `assets/{ASSET_ID}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceAsset")]
-        public virtual System.Collections.Generic.IList<string> SourceAsset { get; set; } 
+        public virtual System.Collections.Generic.IList<string> SourceAsset { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1120,20 +1120,20 @@ namespace Google.Apis.PolyService.v1.Data
         /// <summary>The id of newly created asset. If this is empty when the operation is complete it means the import
         /// failed. Please refer to the assetImportMessages field to understand what went wrong.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetId")]
-        public virtual string AssetId { get; set; } 
+        public virtual string AssetId { get; set; }
 
         /// <summary>The id of the asset import.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetImportId")]
-        public virtual string AssetImportId { get; set; } 
+        public virtual string AssetImportId { get; set; }
 
         /// <summary>The message from the asset import. This will contain any warnings (or - in the case of failure -
         /// errors) that occurred during import.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetImportMessages")]
-        public virtual System.Collections.Generic.IList<AssetImportMessage> AssetImportMessages { get; set; } 
+        public virtual System.Collections.Generic.IList<AssetImportMessage> AssetImportMessages { get; set; }
 
         /// <summary>The publish URL for the asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishUrl")]
-        public virtual string PublishUrl { get; set; } 
+        public virtual string PublishUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1144,7 +1144,7 @@ namespace Google.Apis.PolyService.v1.Data
     {
         /// <summary>An Asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("asset")]
-        public virtual Asset Asset { get; set; } 
+        public virtual Asset Asset { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

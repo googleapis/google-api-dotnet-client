@@ -374,7 +374,7 @@ namespace Google.Apis.Indexing.v3.Data
     {
         /// <summary>Description of the notification events received for this URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlNotificationMetadata")]
-        public virtual UrlNotificationMetadata UrlNotificationMetadata { get; set; } 
+        public virtual UrlNotificationMetadata UrlNotificationMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -387,16 +387,16 @@ namespace Google.Apis.Indexing.v3.Data
         /// <summary>Creation timestamp for this notification. Users should _not_ specify it, the field is ignored at
         /// the request time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notifyTime")]
-        public virtual object NotifyTime { get; set; } 
+        public virtual object NotifyTime { get; set; }
 
         /// <summary>The URL life cycle event that Google is being notified about.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The object of this notification. The URL must be owned by the publisher of this notification and,
         /// in case of `URL_UPDATED` notifications, it _must_ be crawlable by Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -407,15 +407,15 @@ namespace Google.Apis.Indexing.v3.Data
     {
         /// <summary>Latest notification received with type `URL_REMOVED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestRemove")]
-        public virtual UrlNotification LatestRemove { get; set; } 
+        public virtual UrlNotification LatestRemove { get; set; }
 
         /// <summary>Latest notification received with type `URL_UPDATED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestUpdate")]
-        public virtual UrlNotification LatestUpdate { get; set; } 
+        public virtual UrlNotification LatestUpdate { get; set; }
 
         /// <summary>URL to which this metadata refers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -12473,30 +12473,30 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Required. The display name of the custom metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The minimum visible video duration required (in seconds) in order for an impression to be recorded.
         /// You must specify minimum_duration, minimum_quartile or both. If both are specified, an impression meets the
         /// metric criteria if either requirement is met (whichever happens first).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumDuration")]
-        public virtual string MinimumDuration { get; set; } 
+        public virtual string MinimumDuration { get; set; }
 
         /// <summary>The minimum visible video duration required, based on the video quartiles, in order for an
         /// impression to be recorded. You must specify minimum_duration, minimum_quartile or both. If both are
         /// specified, an impression meets the metric criteria if either requirement is met (whichever happens
         /// first).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumQuartile")]
-        public virtual string MinimumQuartile { get; set; } 
+        public virtual string MinimumQuartile { get; set; }
 
         /// <summary>Required. The minimum percentage of the video ad's pixels visible on the screen in order for an
         /// impression to be recorded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumViewability")]
-        public virtual string MinimumViewability { get; set; } 
+        public virtual string MinimumViewability { get; set; }
 
         /// <summary>Required. The minimum percentage of the video ad's volume required in order for an impression to be
         /// recorded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumVolume")]
-        public virtual string MinimumVolume { get; set; } 
+        public virtual string MinimumVolume { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12507,7 +12507,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Adloox's brand safety settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedAdlooxCategories")]
-        public virtual System.Collections.Generic.IList<string> ExcludedAdlooxCategories { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExcludedAdlooxCategories { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12518,56 +12518,56 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Required. Immutable. Ad server related settings of the advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adServerConfig")]
-        public virtual AdvertiserAdServerConfig AdServerConfig { get; set; } 
+        public virtual AdvertiserAdServerConfig AdServerConfig { get; set; }
 
         /// <summary>Output only. The unique ID of the advertiser. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Required. Creative related settings of the advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeConfig")]
-        public virtual AdvertiserCreativeConfig CreativeConfig { get; set; } 
+        public virtual AdvertiserCreativeConfig CreativeConfig { get; set; }
 
         /// <summary>Settings that control how advertiser data may be accessed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataAccessConfig")]
-        public virtual AdvertiserDataAccessConfig DataAccessConfig { get; set; } 
+        public virtual AdvertiserDataAccessConfig DataAccessConfig { get; set; }
 
         /// <summary>Required. The display name of the advertiser. Must be UTF-8 encoded with a maximum size of 240
         /// bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Required. Controls whether or not insertion orders and line items of the advertiser can spend their
         /// budgets and bid on inventory. * Accepted values are `ENTITY_STATUS_ACTIVE` and
         /// `ENTITY_STATUS_SCHEDULED_FOR_DELETION`. * If set to `ENTITY_STATUS_SCHEDULED_FOR_DELETION`, the advertiser
         /// will be deleted 30 days from when it was first scheduled for deletion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
-        public virtual string EntityStatus { get; set; } 
+        public virtual string EntityStatus { get; set; }
 
         /// <summary>Required. General settings of the advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generalConfig")]
-        public virtual AdvertiserGeneralConfig GeneralConfig { get; set; } 
+        public virtual AdvertiserGeneralConfig GeneralConfig { get; set; }
 
         /// <summary>Integration details of the advertiser. Only integrationCode is currently applicable to advertiser.
         /// Other fields of IntegrationDetails are not supported and will be ignored if provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integrationDetails")]
-        public virtual IntegrationDetails IntegrationDetails { get; set; } 
+        public virtual IntegrationDetails IntegrationDetails { get; set; }
 
         /// <summary>Output only. The resource name of the advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. Immutable. The unique ID of the partner that the advertiser belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerId")]
-        public virtual System.Nullable<long> PartnerId { get; set; } 
+        public virtual System.Nullable<long> PartnerId { get; set; }
 
         /// <summary>Targeting settings related to ad serving of the advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingConfig")]
-        public virtual AdvertiserTargetingConfig ServingConfig { get; set; } 
+        public virtual AdvertiserTargetingConfig ServingConfig { get; set; }
 
         /// <summary>Output only. The timestamp when the advertiser was last updated. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12579,11 +12579,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The configuration for advertisers that use both Campaign Manager (CM) and third-party ad
         /// servers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmHybridConfig")]
-        public virtual CmHybridConfig CmHybridConfig { get; set; } 
+        public virtual CmHybridConfig CmHybridConfig { get; set; }
 
         /// <summary>The configuration for advertisers that use third-party ad servers only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyOnlyConfig")]
-        public virtual ThirdPartyOnlyConfig ThirdPartyOnlyConfig { get; set; } 
+        public virtual ThirdPartyOnlyConfig ThirdPartyOnlyConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12594,25 +12594,25 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Whether or not the advertiser is enabled for dynamic creatives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicCreativeEnabled")]
-        public virtual System.Nullable<bool> DynamicCreativeEnabled { get; set; } 
+        public virtual System.Nullable<bool> DynamicCreativeEnabled { get; set; }
 
         /// <summary>An ID for configuring campaign monitoring provided by Integral Ad Service (IAS). The DV360 system
         /// will append an IAS "Campaign Monitor" tag containing this ID to the creative tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iasClientId")]
-        public virtual System.Nullable<long> IasClientId { get; set; } 
+        public virtual System.Nullable<long> IasClientId { get; set; }
 
         /// <summary>Whether or not to use DV360's Online Behavioral Advertising (OBA) compliance. Warning: Changing OBA
         /// settings may cause the audit status of your creatives to be reset by some ad exchanges, making them
         /// ineligible to serve until they are re-approved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("obaComplianceDisabled")]
-        public virtual System.Nullable<bool> ObaComplianceDisabled { get; set; } 
+        public virtual System.Nullable<bool> ObaComplianceDisabled { get; set; }
 
         /// <summary>By setting this field to `true`, you, on behalf of your company, authorize Google to use video
         /// creatives associated with this Display & Video 360 advertiser to provide reporting and features related to
         /// the advertiser's television campaigns. Applicable only when the advertiser has a CM hybrid ad server
         /// configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoCreativeDataSharingAuthorized")]
-        public virtual System.Nullable<bool> VideoCreativeDataSharingAuthorized { get; set; } 
+        public virtual System.Nullable<bool> VideoCreativeDataSharingAuthorized { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12624,7 +12624,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Structured Data Files (SDF) settings for the advertiser. If not specified, the SDF settings of the
         /// parent partner are used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sdfConfig")]
-        public virtual AdvertiserSdfConfig SdfConfig { get; set; } 
+        public virtual AdvertiserSdfConfig SdfConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12644,20 +12644,20 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// Romanian Leu * `RUB` : Russian Ruble * `SEK` : Swedish Krona * `TRY` : Turkish Lira * `TWD` : New Taiwan
         /// Dollar * `USD` : US Dollar * `ZAR` : South African Rand</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
-        public virtual string CurrencyCode { get; set; } 
+        public virtual string CurrencyCode { get; set; }
 
         /// <summary>Required. The domain URL of the advertiser's primary website. The system will send this information
         /// to publishers that require website URL to associate a campaign with an advertiser. Provide a URL with no
         /// path or query string, beginning with `http:` or `https:`. For example, http://www.example.com</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainUrl")]
-        public virtual string DomainUrl { get; set; } 
+        public virtual string DomainUrl { get; set; }
 
         /// <summary>Output only. The standard TZ database name of the advertiser's time zone. For example,
         /// `America/New_York`. See more at: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones For CM hybrid
         /// advertisers, the time zone is the same as that of the associated CM account; for third-party only
         /// advertisers, the time zone is the same as that of the parent partner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
-        public virtual string TimeZone { get; set; } 
+        public virtual string TimeZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12670,12 +12670,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// an advertiser inherits the SDF configuration from the parent partner. To override the partner configuration,
         /// set this field to `true` and provide the new configuration in sdfConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overridePartnerSdfConfig")]
-        public virtual System.Nullable<bool> OverridePartnerSdfConfig { get; set; } 
+        public virtual System.Nullable<bool> OverridePartnerSdfConfig { get; set; }
 
         /// <summary>The SDF configuration for the advertiser. * Required when overridePartnerSdfConfig is `true`. *
         /// Output only when overridePartnerSdfConfig is `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sdfConfig")]
-        public virtual SdfConfig SdfConfig { get; set; } 
+        public virtual SdfConfig SdfConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12687,7 +12687,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Whether or not connected TV devices are exempt from viewability targeting for all video line items
         /// under the advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptTvFromViewabilityTargeting")]
-        public virtual System.Nullable<bool> ExemptTvFromViewabilityTargeting { get; set; } 
+        public virtual System.Nullable<bool> ExemptTvFromViewabilityTargeting { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12702,12 +12702,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// continuous age range. The reach of a continuous age range targeting can be expanded by also targeting an
         /// audience of an unknown age.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageRange")]
-        public virtual string AgeRange { get; set; } 
+        public virtual string AgeRange { get; set; }
 
         /// <summary>Required. The targeting_option_id of a TargetingOption of type
         /// `TARGETING_TYPE_AGE_RANGE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; } 
+        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12719,7 +12719,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The age range of an audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageRange")]
-        public virtual string AgeRange { get; set; } 
+        public virtual string AgeRange { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12732,15 +12732,15 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. The ID of the app. Android's Play store app uses bundle ID, for example
         /// `com.google.android.gm`. Apple's App store app ID uses 9 digit string, for example `422689480`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appId")]
-        public virtual string AppId { get; set; } 
+        public virtual string AppId { get; set; }
 
         /// <summary>Output only. The display name of the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Indicates if this option is being negatively targeted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negative")]
-        public virtual System.Nullable<bool> Negative { get; set; } 
+        public virtual System.Nullable<bool> Negative { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12752,16 +12752,16 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The display name of the app category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Indicates if this option is being negatively targeted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negative")]
-        public virtual System.Nullable<bool> Negative { get; set; } 
+        public virtual System.Nullable<bool> Negative { get; set; }
 
         /// <summary>Required. The targeting_option_id field when targeting_type is
         /// `TARGETING_TYPE_APP_CATEGORY`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; } 
+        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12774,7 +12774,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The name of the app collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12785,12 +12785,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The asset content. For uploaded assets, the content is the serving path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual string Content { get; set; } 
+        public virtual string Content { get; set; }
 
         /// <summary>Media ID of the uploaded asset. This is a unique identifier for the asset. This ID can be passed to
         /// other API calls, e.g. CreateCreative to associate the asset with a creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaId")]
-        public virtual System.Nullable<long> MediaId { get; set; } 
+        public virtual System.Nullable<long> MediaId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12801,11 +12801,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The associated asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("asset")]
-        public virtual Asset Asset { get; set; } 
+        public virtual Asset Asset { get; set; }
 
         /// <summary>The role of this asset for the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12817,15 +12817,15 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Output only. The unique ID of the assigned inventory source. The ID is only unique within a given
         /// inventory source group. It may be reused in other contexts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedInventorySourceId")]
-        public virtual System.Nullable<long> AssignedInventorySourceId { get; set; } 
+        public virtual System.Nullable<long> AssignedInventorySourceId { get; set; }
 
         /// <summary>Required. The ID of the inventory source entity being targeted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceId")]
-        public virtual string InventorySourceId { get; set; } 
+        public virtual string InventorySourceId { get; set; }
 
         /// <summary>Output only. The resource name of the assigned inventory source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12838,16 +12838,16 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Output only. The unique ID of the assigned location. The ID is only unique within a location list.
         /// It may be reused in other contexts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedLocationId")]
-        public virtual System.Nullable<long> AssignedLocationId { get; set; } 
+        public virtual System.Nullable<long> AssignedLocationId { get; set; }
 
         /// <summary>Output only. The resource name of the assigned location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. The ID of the targeting option assigned to the location list. Must be of type
         /// TARGETING_TYPE_GEO_REGION.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; } 
+        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12860,79 +12860,79 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Age range details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_AGE_RANGE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageRangeDetails")]
-        public virtual AgeRangeAssignedTargetingOptionDetails AgeRangeDetails { get; set; } 
+        public virtual AgeRangeAssignedTargetingOptionDetails AgeRangeDetails { get; set; }
 
         /// <summary>App category details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_APP_CATEGORY`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appCategoryDetails")]
-        public virtual AppCategoryAssignedTargetingOptionDetails AppCategoryDetails { get; set; } 
+        public virtual AppCategoryAssignedTargetingOptionDetails AppCategoryDetails { get; set; }
 
         /// <summary>App details. This field will be populated when the TargetingType is `TARGETING_TYPE_APP`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appDetails")]
-        public virtual AppAssignedTargetingOptionDetails AppDetails { get; set; } 
+        public virtual AppAssignedTargetingOptionDetails AppDetails { get; set; }
 
         /// <summary>Output only. The unique ID of the assigned targeting option. The ID is only unique within a given
         /// line item and targeting type. It may be reused in other contexts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOptionId")]
-        public virtual string AssignedTargetingOptionId { get; set; } 
+        public virtual string AssignedTargetingOptionId { get; set; }
 
         /// <summary>Audience targeting details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_AUDIENCE_GROUP`. You can only target one audience group option per line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audienceGroupDetails")]
-        public virtual AudienceGroupAssignedTargetingOptionDetails AudienceGroupDetails { get; set; } 
+        public virtual AudienceGroupAssignedTargetingOptionDetails AudienceGroupDetails { get; set; }
 
         /// <summary>Authorized seller status details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`. You can only target one authorized seller status option per line
         /// item. If a line item doesn't have an authorized seller status option, all authorized sellers indicated as
         /// DIRECT or RESELLER in the ads.txt file are targeted by default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedSellerStatusDetails")]
-        public virtual AuthorizedSellerStatusAssignedTargetingOptionDetails AuthorizedSellerStatusDetails { get; set; } 
+        public virtual AuthorizedSellerStatusAssignedTargetingOptionDetails AuthorizedSellerStatusDetails { get; set; }
 
         /// <summary>Browser details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_BROWSER`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("browserDetails")]
-        public virtual BrowserAssignedTargetingOptionDetails BrowserDetails { get; set; } 
+        public virtual BrowserAssignedTargetingOptionDetails BrowserDetails { get; set; }
 
         /// <summary>Carrier and ISP details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_CARRIER_AND_ISP`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierAndIspDetails")]
-        public virtual CarrierAndIspAssignedTargetingOptionDetails CarrierAndIspDetails { get; set; } 
+        public virtual CarrierAndIspAssignedTargetingOptionDetails CarrierAndIspDetails { get; set; }
 
         /// <summary>Category details. This field will be populated when the TargetingType is `TARGETING_TYPE_CATEGORY`.
         /// Targeting a category will also target its subcategories. If a category is excluded from targeting and a
         /// subcategory is included, the exclusion will take precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoryDetails")]
-        public virtual CategoryAssignedTargetingOptionDetails CategoryDetails { get; set; } 
+        public virtual CategoryAssignedTargetingOptionDetails CategoryDetails { get; set; }
 
         /// <summary>Channel details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_CHANNEL`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelDetails")]
-        public virtual ChannelAssignedTargetingOptionDetails ChannelDetails { get; set; } 
+        public virtual ChannelAssignedTargetingOptionDetails ChannelDetails { get; set; }
 
         /// <summary>Content instream position details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentInstreamPositionDetails")]
-        public virtual ContentInstreamPositionAssignedTargetingOptionDetails ContentInstreamPositionDetails { get; set; } 
+        public virtual ContentInstreamPositionAssignedTargetingOptionDetails ContentInstreamPositionDetails { get; set; }
 
         /// <summary>Content outstream position details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentOutstreamPositionDetails")]
-        public virtual ContentOutstreamPositionAssignedTargetingOptionDetails ContentOutstreamPositionDetails { get; set; } 
+        public virtual ContentOutstreamPositionAssignedTargetingOptionDetails ContentOutstreamPositionDetails { get; set; }
 
         /// <summary>Day and time details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_DAY_AND_TIME`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dayAndTimeDetails")]
-        public virtual DayAndTimeAssignedTargetingOptionDetails DayAndTimeDetails { get; set; } 
+        public virtual DayAndTimeAssignedTargetingOptionDetails DayAndTimeDetails { get; set; }
 
         /// <summary>Device make and model details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_DEVICE_MAKE_MODEL`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceMakeModelDetails")]
-        public virtual DeviceMakeModelAssignedTargetingOptionDetails DeviceMakeModelDetails { get; set; } 
+        public virtual DeviceMakeModelAssignedTargetingOptionDetails DeviceMakeModelDetails { get; set; }
 
         /// <summary>Device Type details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_DEVICE_TYPE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceTypeDetails")]
-        public virtual DeviceTypeAssignedTargetingOptionDetails DeviceTypeDetails { get; set; } 
+        public virtual DeviceTypeAssignedTargetingOptionDetails DeviceTypeDetails { get; set; }
 
         /// <summary>Digital content label details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION`. Digital content labels are targeting exclusions.
@@ -12941,92 +12941,92 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// advertiser exclusions, but can't override them. A line item won't serve if all the digital content labels
         /// are excluded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digitalContentLabelExclusionDetails")]
-        public virtual DigitalContentLabelAssignedTargetingOptionDetails DigitalContentLabelExclusionDetails { get; set; } 
+        public virtual DigitalContentLabelAssignedTargetingOptionDetails DigitalContentLabelExclusionDetails { get; set; }
 
         /// <summary>Environment details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_ENVIRONMENT`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environmentDetails")]
-        public virtual EnvironmentAssignedTargetingOptionDetails EnvironmentDetails { get; set; } 
+        public virtual EnvironmentAssignedTargetingOptionDetails EnvironmentDetails { get; set; }
 
         /// <summary>Exchange details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_EXCHANGE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exchangeDetails")]
-        public virtual ExchangeAssignedTargetingOptionDetails ExchangeDetails { get; set; } 
+        public virtual ExchangeAssignedTargetingOptionDetails ExchangeDetails { get; set; }
 
         /// <summary>Gender details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_GENDER`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("genderDetails")]
-        public virtual GenderAssignedTargetingOptionDetails GenderDetails { get; set; } 
+        public virtual GenderAssignedTargetingOptionDetails GenderDetails { get; set; }
 
         /// <summary>Geographic region details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_GEO_REGION`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoRegionDetails")]
-        public virtual GeoRegionAssignedTargetingOptionDetails GeoRegionDetails { get; set; } 
+        public virtual GeoRegionAssignedTargetingOptionDetails GeoRegionDetails { get; set; }
 
         /// <summary>Household income details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_HOUSEHOLD_INCOME`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("householdIncomeDetails")]
-        public virtual HouseholdIncomeAssignedTargetingOptionDetails HouseholdIncomeDetails { get; set; } 
+        public virtual HouseholdIncomeAssignedTargetingOptionDetails HouseholdIncomeDetails { get; set; }
 
         /// <summary>Output only. The inheritance status of the assigned targeting option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inheritance")]
-        public virtual string Inheritance { get; set; } 
+        public virtual string Inheritance { get; set; }
 
         /// <summary>Inventory source details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_INVENTORY_SOURCE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceDetails")]
-        public virtual InventorySourceAssignedTargetingOptionDetails InventorySourceDetails { get; set; } 
+        public virtual InventorySourceAssignedTargetingOptionDetails InventorySourceDetails { get; set; }
 
         /// <summary>Inventory source group details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceGroupDetails")]
-        public virtual InventorySourceGroupAssignedTargetingOptionDetails InventorySourceGroupDetails { get; set; } 
+        public virtual InventorySourceGroupAssignedTargetingOptionDetails InventorySourceGroupDetails { get; set; }
 
         /// <summary>Keyword details. This field will be populated when the TargetingType is `TARGETING_TYPE_KEYWORD`. A
         /// maximum of 5000 direct negative keywords can be assigned to a line item. No limit on number of positive
         /// keywords that can be assigned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keywordDetails")]
-        public virtual KeywordAssignedTargetingOptionDetails KeywordDetails { get; set; } 
+        public virtual KeywordAssignedTargetingOptionDetails KeywordDetails { get; set; }
 
         /// <summary>Language details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_LANGUAGE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageDetails")]
-        public virtual LanguageAssignedTargetingOptionDetails LanguageDetails { get; set; } 
+        public virtual LanguageAssignedTargetingOptionDetails LanguageDetails { get; set; }
 
         /// <summary>Output only. The resource name for this assigned targeting option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Keyword details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST`. A maximum of 4 negative keyword lists can be assigned to a line
         /// item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negativeKeywordListDetails")]
-        public virtual NegativeKeywordListAssignedTargetingOptionDetails NegativeKeywordListDetails { get; set; } 
+        public virtual NegativeKeywordListAssignedTargetingOptionDetails NegativeKeywordListDetails { get; set; }
 
         /// <summary>On screen position details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_ON_SCREEN_POSITION`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onScreenPositionDetails")]
-        public virtual OnScreenPositionAssignedTargetingOptionDetails OnScreenPositionDetails { get; set; } 
+        public virtual OnScreenPositionAssignedTargetingOptionDetails OnScreenPositionDetails { get; set; }
 
         /// <summary>Operating system details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_OPERATING_SYSTEM`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatingSystemDetails")]
-        public virtual OperatingSystemAssignedTargetingOptionDetails OperatingSystemDetails { get; set; } 
+        public virtual OperatingSystemAssignedTargetingOptionDetails OperatingSystemDetails { get; set; }
 
         /// <summary>Parental status details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_PARENTAL_STATUS`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentalStatusDetails")]
-        public virtual ParentalStatusAssignedTargetingOptionDetails ParentalStatusDetails { get; set; } 
+        public virtual ParentalStatusAssignedTargetingOptionDetails ParentalStatusDetails { get; set; }
 
         /// <summary>Proximity location list details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_PROXIMITY_LOCATION_LIST`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proximityLocationListDetails")]
-        public virtual ProximityLocationListAssignedTargetingOptionDetails ProximityLocationListDetails { get; set; } 
+        public virtual ProximityLocationListAssignedTargetingOptionDetails ProximityLocationListDetails { get; set; }
 
         /// <summary>Regional location list details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_REGIONAL_LOCATION_LIST`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionalLocationListDetails")]
-        public virtual RegionalLocationListAssignedTargetingOptionDetails RegionalLocationListDetails { get; set; } 
+        public virtual RegionalLocationListAssignedTargetingOptionDetails RegionalLocationListDetails { get; set; }
 
         /// <summary>Sensitive category details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`. Sensitive categories are targeting exclusions. Advertiser
@@ -13034,40 +13034,40 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// in line item settings). Line item settings can exclude sensitive categories in addition to advertiser
         /// exclusions, but can't override them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveCategoryExclusionDetails")]
-        public virtual SensitiveCategoryAssignedTargetingOptionDetails SensitiveCategoryExclusionDetails { get; set; } 
+        public virtual SensitiveCategoryAssignedTargetingOptionDetails SensitiveCategoryExclusionDetails { get; set; }
 
         /// <summary>Sub-exchange details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_SUB_EXCHANGE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subExchangeDetails")]
-        public virtual SubExchangeAssignedTargetingOptionDetails SubExchangeDetails { get; set; } 
+        public virtual SubExchangeAssignedTargetingOptionDetails SubExchangeDetails { get; set; }
 
         /// <summary>Output only. Identifies the type of this assigned targeting option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingType")]
-        public virtual string TargetingType { get; set; } 
+        public virtual string TargetingType { get; set; }
 
         /// <summary>Third party verification details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_THIRD_PARTY_VERIFIER`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyVerifierDetails")]
-        public virtual ThirdPartyVerifierAssignedTargetingOptionDetails ThirdPartyVerifierDetails { get; set; } 
+        public virtual ThirdPartyVerifierAssignedTargetingOptionDetails ThirdPartyVerifierDetails { get; set; }
 
         /// <summary>URL details. This field will be populated when the TargetingType is `TARGETING_TYPE_URL`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlDetails")]
-        public virtual UrlAssignedTargetingOptionDetails UrlDetails { get; set; } 
+        public virtual UrlAssignedTargetingOptionDetails UrlDetails { get; set; }
 
         /// <summary>User rewarded content details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_USER_REWARDED_CONTENT`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userRewardedContentDetails")]
-        public virtual UserRewardedContentAssignedTargetingOptionDetails UserRewardedContentDetails { get; set; } 
+        public virtual UserRewardedContentAssignedTargetingOptionDetails UserRewardedContentDetails { get; set; }
 
         /// <summary>Video player size details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoPlayerSizeDetails")]
-        public virtual VideoPlayerSizeAssignedTargetingOptionDetails VideoPlayerSizeDetails { get; set; } 
+        public virtual VideoPlayerSizeAssignedTargetingOptionDetails VideoPlayerSizeDetails { get; set; }
 
         /// <summary>Viewability details. This field will be populated when the TargetingType is
         /// `TARGETING_TYPE_VIEWABILITY`. You can only target one viewability option per line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewabilityDetails")]
-        public virtual ViewabilityAssignedTargetingOptionDetails ViewabilityDetails { get; set; } 
+        public virtual ViewabilityAssignedTargetingOptionDetails ViewabilityDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13079,19 +13079,19 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The ID of the advertiser that the assigend user role applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Output only. The ID of the assigned user role.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedUserRoleId")]
-        public virtual string AssignedUserRoleId { get; set; } 
+        public virtual string AssignedUserRoleId { get; set; }
 
         /// <summary>The ID of the partner that the assigned user role applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerId")]
-        public virtual System.Nullable<long> PartnerId { get; set; } 
+        public virtual System.Nullable<long> PartnerId { get; set; }
 
         /// <summary>Required. The user role to assign to a user for the entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userRole")]
-        public virtual string UserRole { get; set; } 
+        public virtual string UserRole { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13106,34 +13106,34 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The first and third party audience ids and recencies of the excluded first and third party audience
         /// group. Used for negative targeting. Its COMPLEMENT is used to UNION other audience groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedFirstAndThirdPartyAudienceGroup")]
-        public virtual FirstAndThirdPartyAudienceGroup ExcludedFirstAndThirdPartyAudienceGroup { get; set; } 
+        public virtual FirstAndThirdPartyAudienceGroup ExcludedFirstAndThirdPartyAudienceGroup { get; set; }
 
         /// <summary>The Google audience ids of the excluded Google audience group. Used for negative targeting. It's
         /// COMPLEMENT is used to UNION other audience groups. Only contains Affinity, In-market and Installed-apps type
         /// Google audiences. All items are logically ‘OR’ of each other.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedGoogleAudienceGroup")]
-        public virtual GoogleAudienceGroup ExcludedGoogleAudienceGroup { get; set; } 
+        public virtual GoogleAudienceGroup ExcludedGoogleAudienceGroup { get; set; }
 
         /// <summary>The combined audience ids of the included combined audience group. Contains combined audience ids
         /// only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedCombinedAudienceGroup")]
-        public virtual CombinedAudienceGroup IncludedCombinedAudienceGroup { get; set; } 
+        public virtual CombinedAudienceGroup IncludedCombinedAudienceGroup { get; set; }
 
         /// <summary>The custom list ids of the included custom list group. Contains custom list ids only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedCustomListGroup")]
-        public virtual CustomListGroup IncludedCustomListGroup { get; set; } 
+        public virtual CustomListGroup IncludedCustomListGroup { get; set; }
 
         /// <summary>The first and third party audience ids and recencies of included first and third party audience
         /// groups. Each first and third party audience group contains first and third party audience ids only. The
         /// relation between each first and third party audience group is INTERSECTION, and the result is UNION'ed with
         /// other audience groups. Repeated groups with same settings will be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedFirstAndThirdPartyAudienceGroups")]
-        public virtual System.Collections.Generic.IList<FirstAndThirdPartyAudienceGroup> IncludedFirstAndThirdPartyAudienceGroups { get; set; } 
+        public virtual System.Collections.Generic.IList<FirstAndThirdPartyAudienceGroup> IncludedFirstAndThirdPartyAudienceGroups { get; set; }
 
         /// <summary>The Google audience ids of the included Google audience group. Contains Google audience ids
         /// only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedGoogleAudienceGroup")]
-        public virtual GoogleAudienceGroup IncludedGoogleAudienceGroup { get; set; } 
+        public virtual GoogleAudienceGroup IncludedGoogleAudienceGroup { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13144,11 +13144,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The offset in percentage of the audio or video duration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percentage")]
-        public virtual System.Nullable<long> Percentage { get; set; } 
+        public virtual System.Nullable<long> Percentage { get; set; }
 
         /// <summary>The offset in seconds from the start of the audio or video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
-        public virtual System.Nullable<long> Seconds { get; set; } 
+        public virtual System.Nullable<long> Seconds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13163,7 +13163,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// * Demographic * Google Audiences, including Affinity, Custom Affinity, and In-market audiences * Inventory
         /// source * Keyword * Mobile app category * User lists * Video targeting * Viewability</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupCriteriaCount")]
-        public virtual System.Nullable<long> AdGroupCriteriaCount { get; set; } 
+        public virtual System.Nullable<long> AdGroupCriteriaCount { get; set; }
 
         /// <summary>The number of individual targeting options from the following targeting types that are assigned to
         /// a line item under this advertiser. These individual targeting options count towards the limit of 900000
@@ -13172,37 +13172,37 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// Environment * Geography, including business chains and proximity * ISP * Language * Third-party
         /// verification</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignCriteriaCount")]
-        public virtual System.Nullable<long> CampaignCriteriaCount { get; set; } 
+        public virtual System.Nullable<long> CampaignCriteriaCount { get; set; }
 
         /// <summary>The number of channels created under this advertiser. These channels count towards the limit of
         /// 1000 channels per advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelsCount")]
-        public virtual System.Nullable<long> ChannelsCount { get; set; } 
+        public virtual System.Nullable<long> ChannelsCount { get; set; }
 
         /// <summary>The number of negative keyword lists created under this advertiser. These negative keyword lists
         /// count towards the limit of 20 negative keyword lists per advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negativeKeywordListsCount")]
-        public virtual System.Nullable<long> NegativeKeywordListsCount { get; set; } 
+        public virtual System.Nullable<long> NegativeKeywordListsCount { get; set; }
 
         /// <summary>The number of negatively targeted channels created under this advertiser. These negatively targeted
         /// channels count towards the limit of 5 negatively targeted channels per advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negativelyTargetedChannelsCount")]
-        public virtual System.Nullable<long> NegativelyTargetedChannelsCount { get; set; } 
+        public virtual System.Nullable<long> NegativelyTargetedChannelsCount { get; set; }
 
         /// <summary>The number of ACTIVE and PAUSED campaigns under this advertiser. These campaigns count towards the
         /// limit of 9999 campaigns per advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usedCampaignsCount")]
-        public virtual System.Nullable<long> UsedCampaignsCount { get; set; } 
+        public virtual System.Nullable<long> UsedCampaignsCount { get; set; }
 
         /// <summary>The number of ACTIVE, PAUSED and DRAFT insertion orders under this advertiser. These insertion
         /// orders count towards the limit of 9999 insertion orders per advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usedInsertionOrdersCount")]
-        public virtual System.Nullable<long> UsedInsertionOrdersCount { get; set; } 
+        public virtual System.Nullable<long> UsedInsertionOrdersCount { get; set; }
 
         /// <summary>The number of ACTIVE, PAUSED, and DRAFT line items under this advertiser. These line items count
         /// towards the limit of 9999 line items per advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usedLineItemsCount")]
-        public virtual System.Nullable<long> UsedLineItemsCount { get; set; } 
+        public virtual System.Nullable<long> UsedLineItemsCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13214,12 +13214,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The authorized seller status to target.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedSellerStatus")]
-        public virtual string AuthorizedSellerStatus { get; set; } 
+        public virtual string AuthorizedSellerStatus { get; set; }
 
         /// <summary>Required. The targeting_option_id of a TargetingOption of type
         /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; } 
+        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13232,7 +13232,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The authorized seller status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedSellerStatus")]
-        public virtual string AuthorizedSellerStatus { get; set; } 
+        public virtual string AuthorizedSellerStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13243,7 +13243,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>A strategy that uses a fixed bid price.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixedBid")]
-        public virtual FixedBidStrategy FixedBid { get; set; } 
+        public virtual FixedBidStrategy FixedBid { get; set; }
 
         /// <summary>A strategy that automatically adjusts the bid to optimize to your performance goal while spending
         /// the full budget. At insertion order level, the markup_type of line items cannot be set to
@@ -13255,12 +13255,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN` the line_item_type of the insertion order line items must
         /// be `LINE_ITEM_TYPE_VIDEO_DEFAULT`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximizeSpendAutoBid")]
-        public virtual MaximizeSpendBidStrategy MaximizeSpendAutoBid { get; set; } 
+        public virtual MaximizeSpendBidStrategy MaximizeSpendAutoBid { get; set; }
 
         /// <summary>A strategy that automatically adjusts the bid to meet or beat a specified performance goal. It is
         /// to be used only for a line item entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceGoalAutoBid")]
-        public virtual PerformanceGoalBidStrategy PerformanceGoalAutoBid { get; set; } 
+        public virtual PerformanceGoalBidStrategy PerformanceGoalAutoBid { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13272,16 +13272,16 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The display name of the browser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Indicates if this option is being negatively targeted. All assigned browser targeting options on
         /// the same line item must have the same value for this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negative")]
-        public virtual System.Nullable<bool> Negative { get; set; } 
+        public virtual System.Nullable<bool> Negative { get; set; }
 
         /// <summary>Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_BROWSER`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; } 
+        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13293,7 +13293,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The display name of the browser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13305,12 +13305,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The assigned targeting options to create in batch, specified as a list of
         /// `CreateAssignedTargetingOptionsRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createRequests")]
-        public virtual System.Collections.Generic.IList<CreateAssignedTargetingOptionsRequest> CreateRequests { get; set; } 
+        public virtual System.Collections.Generic.IList<CreateAssignedTargetingOptionsRequest> CreateRequests { get; set; }
 
         /// <summary>The assigned targeting options to delete in batch, specified as a list of
         /// `DeleteAssignedTargetingOptionsRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteRequests")]
-        public virtual System.Collections.Generic.IList<DeleteAssignedTargetingOptionsRequest> DeleteRequests { get; set; } 
+        public virtual System.Collections.Generic.IList<DeleteAssignedTargetingOptionsRequest> DeleteRequests { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13321,7 +13321,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The list of assigned targeting options that have been successfully created. This list will be
         /// absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdAssignedTargetingOptions")]
-        public virtual System.Collections.Generic.IList<AssignedTargetingOption> CreatedAssignedTargetingOptions { get; set; } 
+        public virtual System.Collections.Generic.IList<AssignedTargetingOption> CreatedAssignedTargetingOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13333,22 +13333,22 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The ID of the advertiser that owns the parent inventory source group. The parent partner does not
         /// have access to these assigned inventory sources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>The assigned inventory sources to create in bulk, specified as a list of
         /// AssignedInventorySources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdAssignedInventorySources")]
-        public virtual System.Collections.Generic.IList<AssignedInventorySource> CreatedAssignedInventorySources { get; set; } 
+        public virtual System.Collections.Generic.IList<AssignedInventorySource> CreatedAssignedInventorySources { get; set; }
 
         /// <summary>The IDs of the assigned inventory sources to delete in bulk, specified as a list of
         /// assigned_inventory_source_ids.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletedAssignedInventorySources")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> DeletedAssignedInventorySources { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> DeletedAssignedInventorySources { get; set; }
 
         /// <summary>The ID of the partner that owns the inventory source group. Only this partner has write access to
         /// these assigned inventory sources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerId")]
-        public virtual System.Nullable<long> PartnerId { get; set; } 
+        public virtual System.Nullable<long> PartnerId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13360,7 +13360,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The list of assigned inventory sources that have been successfully created. This list will be
         /// absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedInventorySources")]
-        public virtual System.Collections.Generic.IList<AssignedInventorySource> AssignedInventorySources { get; set; } 
+        public virtual System.Collections.Generic.IList<AssignedInventorySource> AssignedInventorySources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13371,12 +13371,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The assigned locations to create in bulk, specified as a list of AssignedLocations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdAssignedLocations")]
-        public virtual System.Collections.Generic.IList<AssignedLocation> CreatedAssignedLocations { get; set; } 
+        public virtual System.Collections.Generic.IList<AssignedLocation> CreatedAssignedLocations { get; set; }
 
         /// <summary>The IDs of the assigned locations to delete in bulk, specified as a list of
         /// assigned_location_ids.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletedAssignedLocations")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> DeletedAssignedLocations { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> DeletedAssignedLocations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13388,7 +13388,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The list of assigned locations that have been successfully created. This list will be absent if
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedLocations")]
-        public virtual System.Collections.Generic.IList<AssignedLocation> AssignedLocations { get; set; } 
+        public virtual System.Collections.Generic.IList<AssignedLocation> AssignedLocations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13399,12 +13399,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The assigned user roles to create in batch, specified as a list of AssignedUserRoles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdAssignedUserRoles")]
-        public virtual System.Collections.Generic.IList<AssignedUserRole> CreatedAssignedUserRoles { get; set; } 
+        public virtual System.Collections.Generic.IList<AssignedUserRole> CreatedAssignedUserRoles { get; set; }
 
         /// <summary>The assigned user roles to delete in batch, specified as a list of assigned_user_role_ids. The
         /// format of assigned_user_role_id is `entityType-entityid`, for example `partner-123`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletedAssignedUserRoles")]
-        public virtual System.Collections.Generic.IList<string> DeletedAssignedUserRoles { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DeletedAssignedUserRoles { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13415,7 +13415,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The list of assigned user roles that have been successfully created. This list will be absent if
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdAssignedUserRoles")]
-        public virtual System.Collections.Generic.IList<AssignedUserRole> CreatedAssignedUserRoles { get; set; } 
+        public virtual System.Collections.Generic.IList<AssignedUserRole> CreatedAssignedUserRoles { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13427,12 +13427,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The assigned targeting options to create in batch, specified as a list of
         /// `CreateAssignedTargetingOptionsRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createRequests")]
-        public virtual System.Collections.Generic.IList<CreateAssignedTargetingOptionsRequest> CreateRequests { get; set; } 
+        public virtual System.Collections.Generic.IList<CreateAssignedTargetingOptionsRequest> CreateRequests { get; set; }
 
         /// <summary>The assigned targeting options to delete in batch, specified as a list of
         /// `DeleteAssignedTargetingOptionsRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteRequests")]
-        public virtual System.Collections.Generic.IList<DeleteAssignedTargetingOptionsRequest> DeleteRequests { get; set; } 
+        public virtual System.Collections.Generic.IList<DeleteAssignedTargetingOptionsRequest> DeleteRequests { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13443,7 +13443,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The list of assigned targeting options that have been successfully created. This list will be
         /// absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdAssignedTargetingOptions")]
-        public virtual System.Collections.Generic.IList<AssignedTargetingOption> CreatedAssignedTargetingOptions { get; set; } 
+        public virtual System.Collections.Generic.IList<AssignedTargetingOption> CreatedAssignedTargetingOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13454,11 +13454,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The negative keywords to create in batch, specified as a list of NegativeKeywords.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdNegativeKeywords")]
-        public virtual System.Collections.Generic.IList<NegativeKeyword> CreatedNegativeKeywords { get; set; } 
+        public virtual System.Collections.Generic.IList<NegativeKeyword> CreatedNegativeKeywords { get; set; }
 
         /// <summary>The negative keywords to delete in batch, specified as a list of keyword_values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletedNegativeKeywords")]
-        public virtual System.Collections.Generic.IList<string> DeletedNegativeKeywords { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DeletedNegativeKeywords { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13470,7 +13470,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The list of negative keywords that have been successfully created. This list will be absent if
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negativeKeywords")]
-        public virtual System.Collections.Generic.IList<NegativeKeyword> NegativeKeywords { get; set; } 
+        public virtual System.Collections.Generic.IList<NegativeKeyword> NegativeKeywords { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13482,12 +13482,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The assigned targeting options to create in batch, specified as a list of
         /// `CreateAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createRequests")]
-        public virtual System.Collections.Generic.IList<CreateAssignedTargetingOptionsRequest> CreateRequests { get; set; } 
+        public virtual System.Collections.Generic.IList<CreateAssignedTargetingOptionsRequest> CreateRequests { get; set; }
 
         /// <summary>The assigned targeting options to delete in batch, specified as a list of
         /// `DeleteAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteRequests")]
-        public virtual System.Collections.Generic.IList<DeleteAssignedTargetingOptionsRequest> DeleteRequests { get; set; } 
+        public virtual System.Collections.Generic.IList<DeleteAssignedTargetingOptionsRequest> DeleteRequests { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13498,7 +13498,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The list of assigned targeting options that have been successfully created. This list will be
         /// absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdAssignedTargetingOptions")]
-        public virtual System.Collections.Generic.IList<AssignedTargetingOption> CreatedAssignedTargetingOptions { get; set; } 
+        public virtual System.Collections.Generic.IList<AssignedTargetingOption> CreatedAssignedTargetingOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13509,19 +13509,19 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The ID of the advertiser that owns the parent channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>The sites to create in batch, specified as a list of Sites.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdSites")]
-        public virtual System.Collections.Generic.IList<Site> CreatedSites { get; set; } 
+        public virtual System.Collections.Generic.IList<Site> CreatedSites { get; set; }
 
         /// <summary>The sites to delete in batch, specified as a list of site url_or_app_ids.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletedSites")]
-        public virtual System.Collections.Generic.IList<string> DeletedSites { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DeletedSites { get; set; }
 
         /// <summary>The ID of the partner that owns the parent channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerId")]
-        public virtual System.Nullable<long> PartnerId { get; set; } 
+        public virtual System.Nullable<long> PartnerId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13532,7 +13532,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The list of sites that have been successfully created. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sites")]
-        public virtual System.Collections.Generic.IList<Site> Sites { get; set; } 
+        public virtual System.Collections.Generic.IList<Site> Sites { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13542,13 +13542,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The list of assigned targeting options. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOptions")]
-        public virtual System.Collections.Generic.IList<AssignedTargetingOption> AssignedTargetingOptions { get; set; } 
+        public virtual System.Collections.Generic.IList<AssignedTargetingOption> AssignedTargetingOptions { get; set; }
 
         /// <summary>A token identifying the next page of results. This value should be specified as the pageToken in a
         /// subsequent BulkListAdvertiserAssignedTargetingOptionsRequest to fetch the next page of results. This token
         /// will be absent if there are no more assigned_targeting_options to return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13558,13 +13558,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The list of assigned targeting options. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOptions")]
-        public virtual System.Collections.Generic.IList<AssignedTargetingOption> AssignedTargetingOptions { get; set; } 
+        public virtual System.Collections.Generic.IList<AssignedTargetingOption> AssignedTargetingOptions { get; set; }
 
         /// <summary>A token identifying the next page of results. This value should be specified as the pageToken in a
         /// subsequent BulkListLineItemAssignedTargetingOptionsRequest to fetch the next page of results. This token
         /// will be absent if there are no more assigned_targeting_options to return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13575,42 +13575,42 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The unique ID of the advertiser the campaign belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Required. The planned spend and duration of the campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignFlight")]
-        public virtual CampaignFlight CampaignFlight { get; set; } 
+        public virtual CampaignFlight CampaignFlight { get; set; }
 
         /// <summary>Required. The goal of the campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignGoal")]
-        public virtual CampaignGoal CampaignGoal { get; set; } 
+        public virtual CampaignGoal CampaignGoal { get; set; }
 
         /// <summary>Output only. The unique ID of the campaign. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignId")]
-        public virtual System.Nullable<long> CampaignId { get; set; } 
+        public virtual System.Nullable<long> CampaignId { get; set; }
 
         /// <summary>Required. The display name of the campaign. Must be UTF-8 encoded with a maximum size of 240
         /// bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Required. Controls whether or not the insertion orders under this campaign can spend their budgets
         /// and bid on inventory. * Accepted values are `ENTITY_STATUS_ACTIVE`, `ENTITY_STATUS_ARCHIVED`, and
         /// `ENTITY_STATUS_PAUSED`. * For CreateCampaign method, `ENTITY_STATUS_ARCHIVED` is not allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
-        public virtual string EntityStatus { get; set; } 
+        public virtual string EntityStatus { get; set; }
 
         /// <summary>Required. The frequency cap setting of the campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frequencyCap")]
-        public virtual FrequencyCap FrequencyCap { get; set; } 
+        public virtual FrequencyCap FrequencyCap { get; set; }
 
         /// <summary>Output only. The resource name of the campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The timestamp when the campaign was last updated. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13626,13 +13626,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// later. * `end_date` is optional. If specified, it must be the `start_date` or later. * Any specified date
         /// must be before the year 2037.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plannedDates")]
-        public virtual DateRange PlannedDates { get; set; } 
+        public virtual DateRange PlannedDates { get; set; }
 
         /// <summary>The amount the campaign is expected to spend for its given planned_dates. This will not limit
         /// serving, but will be used for tracking spend in the DV360 UI. The amount is in micros. Must be greater than
         /// or equal to 0. For example, 500000000 represents 500 standard units of the currency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plannedSpendAmountMicros")]
-        public virtual System.Nullable<long> PlannedSpendAmountMicros { get; set; } 
+        public virtual System.Nullable<long> PlannedSpendAmountMicros { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13643,14 +13643,14 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Required. The type of the campaign goal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignGoalType")]
-        public virtual string CampaignGoalType { get; set; } 
+        public virtual string CampaignGoalType { get; set; }
 
         /// <summary>Required. The performance goal of the campaign. Acceptable values for performance_goal_type are: *
         /// `PERFORMANCE_GOAL_TYPE_CPM` * `PERFORMANCE_GOAL_TYPE_CPC` * `PERFORMANCE_GOAL_TYPE_CPA` *
         /// `PERFORMANCE_GOAL_TYPE_CPIAVC` * `PERFORMANCE_GOAL_TYPE_CTR` * `PERFORMANCE_GOAL_TYPE_VIEWABILITY` *
         /// `PERFORMANCE_GOAL_TYPE_OTHER`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceGoal")]
-        public virtual PerformanceGoal PerformanceGoal { get; set; } 
+        public virtual PerformanceGoal PerformanceGoal { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13662,17 +13662,17 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The display name of the carrier or ISP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Indicates if this option is being negatively targeted. All assigned carrier and ISP targeting
         /// options on the same line item must have the same value for this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negative")]
-        public virtual System.Nullable<bool> Negative { get; set; } 
+        public virtual System.Nullable<bool> Negative { get; set; }
 
         /// <summary>Required. The targeting_option_id of a TargetingOption of type
         /// `TARGETING_TYPE_CARRIER_AND_ISP`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; } 
+        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13684,11 +13684,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The display name of the carrier or ISP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. The type indicating if it's carrier or ISP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13700,15 +13700,15 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The display name of the category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Indicates if this option is being negatively targeted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negative")]
-        public virtual System.Nullable<bool> Negative { get; set; } 
+        public virtual System.Nullable<bool> Negative { get; set; }
 
         /// <summary>Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_CATEGORY`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; } 
+        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13720,7 +13720,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The display name of the category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13731,24 +13731,24 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The ID of the advertiser that owns the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Output only. The unique ID of the channel. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
-        public virtual System.Nullable<long> ChannelId { get; set; } 
+        public virtual System.Nullable<long> ChannelId { get; set; }
 
         /// <summary>Required. The display name of the channel. Must be UTF-8 encoded with a maximum length of 240
         /// bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. The resource name of the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ID of the partner that owns the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerId")]
-        public virtual System.Nullable<long> PartnerId { get; set; } 
+        public virtual System.Nullable<long> PartnerId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13762,12 +13762,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// channel](partners.channels#Channel.FIELDS.channel_id) or [advertiser-owned
         /// channel](advertisers.channels#Channel.FIELDS.channel_id) resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
-        public virtual System.Nullable<long> ChannelId { get; set; } 
+        public virtual System.Nullable<long> ChannelId { get; set; }
 
         /// <summary>Indicates if this option is being negatively targeted. For advertiser level assigned targeting
         /// option, this field must be true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negative")]
-        public virtual System.Nullable<bool> Negative { get; set; } 
+        public virtual System.Nullable<bool> Negative { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13779,32 +13779,32 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. Immutable. Account ID of the CM Floodlight configuration linked with the DV360
         /// advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmAccountId")]
-        public virtual System.Nullable<long> CmAccountId { get; set; } 
+        public virtual System.Nullable<long> CmAccountId { get; set; }
 
         /// <summary>Required. Immutable. ID of the CM Floodlight configuration linked with the DV360
         /// advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmFloodlightConfigId")]
-        public virtual System.Nullable<long> CmFloodlightConfigId { get; set; } 
+        public virtual System.Nullable<long> CmFloodlightConfigId { get; set; }
 
         /// <summary>Required. Immutable. By setting this field to `true`, you, on behalf of your company, authorize the
         /// sharing of information from the given Floodlight configuration to this Display & Video 360
         /// advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmFloodlightLinkingAuthorized")]
-        public virtual System.Nullable<bool> CmFloodlightLinkingAuthorized { get; set; } 
+        public virtual System.Nullable<bool> CmFloodlightLinkingAuthorized { get; set; }
 
         /// <summary>A list of CM sites whose placements will be synced to DV360 as creatives. If absent or empty in
         /// CreateAdvertiser method, the system will automatically create a CM site. Removing sites from this list may
         /// cause DV360 creatives synced from CM to be deleted. At least one site must be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmSyncableSiteIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> CmSyncableSiteIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> CmSyncableSiteIds { get; set; }
 
         /// <summary>Whether or not to report DV360 cost to CM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dv360ToCmCostReportingEnabled")]
-        public virtual System.Nullable<bool> Dv360ToCmCostReportingEnabled { get; set; } 
+        public virtual System.Nullable<bool> Dv360ToCmCostReportingEnabled { get; set; }
 
         /// <summary>Whether or not to include DV360 data in CM data transfer reports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dv360ToCmDataSharingEnabled")]
-        public virtual System.Nullable<bool> Dv360ToCmDataSharingEnabled { get; set; } 
+        public virtual System.Nullable<bool> Dv360ToCmDataSharingEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13815,15 +13815,15 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The ad ID of the campaign manager tracking Ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmAdId")]
-        public virtual System.Nullable<long> CmAdId { get; set; } 
+        public virtual System.Nullable<long> CmAdId { get; set; }
 
         /// <summary>The creative ID of the campaign manager tracking Ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmCreativeId")]
-        public virtual System.Nullable<long> CmCreativeId { get; set; } 
+        public virtual System.Nullable<long> CmCreativeId { get; set; }
 
         /// <summary>The placement ID of the campaign manager tracking Ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmPlacementId")]
-        public virtual System.Nullable<long> CmPlacementId { get; set; } 
+        public virtual System.Nullable<long> CmPlacementId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13834,15 +13834,15 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The unique ID of the combined audience. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("combinedAudienceId")]
-        public virtual System.Nullable<long> CombinedAudienceId { get; set; } 
+        public virtual System.Nullable<long> CombinedAudienceId { get; set; }
 
         /// <summary>Output only. The display name of the combined audience. .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. The resource name of the combined audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13856,7 +13856,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// with same id will be ignored. The number of combined audience settings should be no more than five, error
         /// will be thrown otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("settings")]
-        public virtual System.Collections.Generic.IList<CombinedAudienceTargetingSetting> Settings { get; set; } 
+        public virtual System.Collections.Generic.IList<CombinedAudienceTargetingSetting> Settings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13868,7 +13868,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. Combined audience id of combined audience targeting setting. This id is
         /// combined_audience_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("combinedAudienceId")]
-        public virtual System.Nullable<long> CombinedAudienceId { get; set; } 
+        public virtual System.Nullable<long> CombinedAudienceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13881,12 +13881,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The content instream position for video or audio ads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentInstreamPosition")]
-        public virtual string ContentInstreamPosition { get; set; } 
+        public virtual string ContentInstreamPosition { get; set; }
 
         /// <summary>Required. The targeting_option_id field when targeting_type is
         /// `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; } 
+        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13899,7 +13899,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The content instream position.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentInstreamPosition")]
-        public virtual string ContentInstreamPosition { get; set; } 
+        public virtual string ContentInstreamPosition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13912,12 +13912,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The content outstream position.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentOutstreamPosition")]
-        public virtual string ContentOutstreamPosition { get; set; } 
+        public virtual string ContentOutstreamPosition { get; set; }
 
         /// <summary>Required. The targeting_option_id field when targeting_type is
         /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; } 
+        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13930,7 +13930,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The content outstream position.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentOutstreamPosition")]
-        public virtual string ContentOutstreamPosition { get; set; } 
+        public virtual string ContentOutstreamPosition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13944,13 +13944,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// sum of all of the conversions counted by all of the Floodlight activity IDs specified in this
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivityConfigs")]
-        public virtual System.Collections.Generic.IList<TrackingFloodlightActivityConfig> FloodlightActivityConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<TrackingFloodlightActivityConfig> FloodlightActivityConfigs { get; set; }
 
         /// <summary>The percentage of post-view conversions to count, in millis (1/1000 of a percent). Must be between
         /// 0 and 100000 inclusive. For example, to track 50% of the post-click conversions, set a value of
         /// 50000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postViewCountPercentageMillis")]
-        public virtual System.Nullable<long> PostViewCountPercentageMillis { get; set; } 
+        public virtual System.Nullable<long> PostViewCountPercentageMillis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13961,11 +13961,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Required. The name of the counter event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. The name used to identify this counter event in reports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportingName")]
-        public virtual string ReportingName { get; set; } 
+        public virtual string ReportingName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13977,7 +13977,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. The filename of the asset, including the file extension. The filename must be UTF-8
         /// encoded with a maximum size of 240 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filename")]
-        public virtual string Filename { get; set; } 
+        public virtual string Filename { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13988,7 +13988,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The uploaded asset, if successful.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("asset")]
-        public virtual Asset Asset { get; set; } 
+        public virtual Asset Asset { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14000,11 +14000,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Required. The assigned targeting options to create and add.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOptions")]
-        public virtual System.Collections.Generic.IList<AssignedTargetingOption> AssignedTargetingOptions { get; set; } 
+        public virtual System.Collections.Generic.IList<AssignedTargetingOption> AssignedTargetingOptions { get; set; }
 
         /// <summary>Required. Identifies the type of this assigned targeting option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingType")]
-        public virtual string TargetingType { get; set; } 
+        public virtual string TargetingType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14015,31 +14015,31 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The ID of the advertiser to download SDF for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Filters on entities by their entity IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idFilter")]
-        public virtual IdFilter IdFilter { get; set; } 
+        public virtual IdFilter IdFilter { get; set; }
 
         /// <summary>Filters on Inventory Sources by their IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceFilter")]
-        public virtual InventorySourceFilter InventorySourceFilter { get; set; } 
+        public virtual InventorySourceFilter InventorySourceFilter { get; set; }
 
         /// <summary>Filters on selected file types. The entities in each file are filtered by a chosen set of filter
         /// entities. The filter entities must be the same type as, or a parent type of, the selected file
         /// types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentEntityFilter")]
-        public virtual ParentEntityFilter ParentEntityFilter { get; set; } 
+        public virtual ParentEntityFilter ParentEntityFilter { get; set; }
 
         /// <summary>The ID of the partner to download SDF for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerId")]
-        public virtual System.Nullable<long> PartnerId { get; set; } 
+        public virtual System.Nullable<long> PartnerId { get; set; }
 
         /// <summary>Required. The SDF version of the downloaded file. If set to `SDF_VERSION_UNSPECIFIED`, this will
         /// default to the version specified by the advertiser or partner identified by `root_id`. An advertiser
         /// inherits its SDF version from its partner unless configured otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14054,33 +14054,33 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` * `CREATIVE_TYPE_PUBLISHER_HOSTED` If this field is specified,
         /// width_pixels and height_pixels are both required and must be greater than or equal to 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalDimensions")]
-        public virtual System.Collections.Generic.IList<Dimensions> AdditionalDimensions { get; set; } 
+        public virtual System.Collections.Generic.IList<Dimensions> AdditionalDimensions { get; set; }
 
         /// <summary>Output only. The unique ID of the advertiser the creative belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Third-party HTML tracking tag to be appended to the creative tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appendedTag")]
-        public virtual string AppendedTag { get; set; } 
+        public virtual string AppendedTag { get; set; }
 
         /// <summary>Required. Assets associated to this creative. Assets can be associated to the creative in one of
         /// following roles: * `ASSET_ROLE_UNSPECIFIED` * `ASSET_ROLE_MAIN` * `ASSET_ROLE_BACKUP` *
         /// `ASSET_ROLE_POLITE_LOAD`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assets")]
-        public virtual System.Collections.Generic.IList<AssetAssociation> Assets { get; set; } 
+        public virtual System.Collections.Generic.IList<AssetAssociation> Assets { get; set; }
 
         /// <summary>Output only. The unique ID of the Campaign Manager placement associated with the creative. This
         /// field is only applicable for creatives that are synced from Campaign Manager.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmPlacementId")]
-        public virtual System.Nullable<long> CmPlacementId { get; set; } 
+        public virtual System.Nullable<long> CmPlacementId { get; set; }
 
         /// <summary>The Campaign Manager tracking ad associated with the creative. Optional for the following
         /// creative_type when created by an advertiser that uses both Campaign Manager and third-party ad serving: *
         /// `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
         /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` Output only for other cases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmTrackingAd")]
-        public virtual CmTrackingAd CmTrackingAd { get; set; } 
+        public virtual CmTrackingAd CmTrackingAd { get; set; }
 
         /// <summary>The IDs of companion creatives for a video creative. You can assign existing display creatives
         /// (with image or HTML5 assets) to serve surrounding the publisher's video player. Companions display around
@@ -14088,51 +14088,51 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// additional dimensions can not be companion creatives. This field is only supported for following
         /// creative_type: * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companionCreativeIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> CompanionCreativeIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> CompanionCreativeIds { get; set; }
 
         /// <summary>Counter events for a rich media creative. Counters track the number of times that a user interacts
         /// with any part of a rich media creative in a specified way (mouse-overs, mouse-outs, clicks, taps, data
         /// loading, keyboard entries, etc.). Any event that can be captured in the creative can be recorded as a
         /// counter. Leave it empty or unset for creatives containing image assets only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("counterEvents")]
-        public virtual System.Collections.Generic.IList<CounterEvent> CounterEvents { get; set; } 
+        public virtual System.Collections.Generic.IList<CounterEvent> CounterEvents { get; set; }
 
         /// <summary>Output only. The timestamp when the creative was created. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. A list of attributes of the creative that is generated by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeAttributes")]
-        public virtual System.Collections.Generic.IList<string> CreativeAttributes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> CreativeAttributes { get; set; }
 
         /// <summary>Output only. The unique ID of the creative. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeId")]
-        public virtual System.Nullable<long> CreativeId { get; set; } 
+        public virtual System.Nullable<long> CreativeId { get; set; }
 
         /// <summary>Required. Immutable. The type of the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeType")]
-        public virtual string CreativeType { get; set; } 
+        public virtual string CreativeType { get; set; }
 
         /// <summary>Required. Primary dimensions of the creative. Applicable to all creative types. The value of
         /// width_pixels and height_pixels defaults to `0` when creative_type is one of: * `CREATIVE_TYPE_VIDEO` *
         /// `CREATIVE_TYPE_TEMPLATED_APP_INSTALL_INTERSTITIAL` * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_NATIVE_VIDEO` *
         /// `CREATIVE_TYPE_TEMPLATED_APP_INSTALL_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
-        public virtual Dimensions Dimensions { get; set; } 
+        public virtual Dimensions Dimensions { get; set; }
 
         /// <summary>Required. The display name of the creative. Must be UTF-8 encoded with a maximum size of 240
         /// bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. Indicates whether the creative is dynamic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dynamic")]
-        public virtual System.Nullable<bool> Dynamic { get; set; } 
+        public virtual System.Nullable<bool> Dynamic { get; set; }
 
         /// <summary>Required. Controls whether or not the creative can serve. Accepted values are: *
         /// `ENTITY_STATUS_ACTIVE` * `ENTITY_STATUS_ARCHIVED` * `ENTITY_STATUS_PAUSED`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
-        public virtual string EntityStatus { get; set; } 
+        public virtual string EntityStatus { get; set; }
 
         /// <summary>Required. Exit events for this creative. An exit (also known as a click tag) is any area in your
         /// creative that someone can click or tap to open an advertiser's landing page. Every creative must include at
@@ -14140,42 +14140,42 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// Designer's tap area. * Define a JavaScript variable called "clickTag". * Use the Enabler (Enabler.exit()) to
         /// track exits in rich media formats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exitEvents")]
-        public virtual System.Collections.Generic.IList<ExitEvent> ExitEvents { get; set; } 
+        public virtual System.Collections.Generic.IList<ExitEvent> ExitEvents { get; set; }
 
         /// <summary>Optional. Indicates the creative will automatically expand on hover. Optional and only valid for
         /// third-party expandable creatives. Third-party expandable creatives are creatives with following hosting
         /// source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: *
         /// `CREATIVE_TYPE_EXPANDABLE`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expandOnHover")]
-        public virtual System.Nullable<bool> ExpandOnHover { get; set; } 
+        public virtual System.Nullable<bool> ExpandOnHover { get; set; }
 
         /// <summary>Optional. Specifies the expanding direction of the creative. Required and only valid for third-
         /// party expandable creatives. Third-party expandable creatives are creatives with following hosting source: *
         /// `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `CREATIVE_TYPE_EXPANDABLE`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expandingDirection")]
-        public virtual string ExpandingDirection { get; set; } 
+        public virtual string ExpandingDirection { get; set; }
 
         /// <summary>Required. Indicates where the creative is hosted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostingSource")]
-        public virtual string HostingSource { get; set; } 
+        public virtual string HostingSource { get; set; }
 
         /// <summary>Output only. Indicates the third-party VAST tag creative requires HTML5 Video support. Output only
         /// and only valid for third-party VAST tag creatives. Third-party VAST tag creatives are creatives with
         /// following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: *
         /// `CREATIVE_TYPE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("html5Video")]
-        public virtual System.Nullable<bool> Html5Video { get; set; } 
+        public virtual System.Nullable<bool> Html5Video { get; set; }
 
         /// <summary>Indicates whether Integral Ad Science (IAS) campaign monitoring is enabled. To enable this for the
         /// creative, make sure the Advertiser.creative_config.ias_client_id has been set to your IAS client
         /// ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iasCampaignMonitoring")]
-        public virtual System.Nullable<bool> IasCampaignMonitoring { get; set; } 
+        public virtual System.Nullable<bool> IasCampaignMonitoring { get; set; }
 
         /// <summary>ID information used to link this creative to an external system. Must be UTF-8 encoded with a
         /// length of no more than 10,000 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integrationCode")]
-        public virtual string IntegrationCode { get; set; } 
+        public virtual string IntegrationCode { get; set; }
 
         /// <summary>JavaScript measurement URL from supported third-party verification providers (ComScore,
         /// DoubleVerify, IAS, Moat). HTML script tags are not supported. This field is only supported in following
@@ -14183,44 +14183,44 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// `CREATIVE_TYPE_NATIVE_APP_INSTALL` * `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` *
         /// `CREATIVE_TYPE_NATIVE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jsTrackerUrl")]
-        public virtual string JsTrackerUrl { get; set; } 
+        public virtual string JsTrackerUrl { get; set; }
 
         /// <summary>Output only. The IDs of the line items this creative is associated with. To associate a creative to
         /// a line item, use LineItem.creative_ids instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> LineItemIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> LineItemIds { get; set; }
 
         /// <summary>Output only. Media duration of the creative. Applicable when creative_type is one of: *
         /// `CREATIVE_TYPE_VIDEO` * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_NATIVE_VIDEO` *
         /// `CREATIVE_TYPE_PUBLISHER_HOSTED`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaDuration")]
-        public virtual object MediaDuration { get; set; } 
+        public virtual object MediaDuration { get; set; }
 
         /// <summary>Output only. The resource name of the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>User notes for this creative. Must be UTF-8 encoded with a length of no more than 20,000
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
-        public virtual string Notes { get; set; } 
+        public virtual string Notes { get; set; }
 
         /// <summary>Specifies the OBA icon for a video creative. This field is only supported in following
         /// creative_type: * `CREATIVE_TYPE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("obaIcon")]
-        public virtual ObaIcon ObaIcon { get; set; } 
+        public virtual ObaIcon ObaIcon { get; set; }
 
         /// <summary>Amount of time to play the video before counting a view. This field is required when skippable is
         /// true. This field is only supported for the following creative_type: * `CREATIVE_TYPE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressOffset")]
-        public virtual AudioVideoOffset ProgressOffset { get; set; } 
+        public virtual AudioVideoOffset ProgressOffset { get; set; }
 
         /// <summary>Optional. Indicates that the creative relies on HTML5 to render properly. Optional and only valid
         /// for third-party tag creatives. Third-party tag creatives are creatives with following hosting_source: *
         /// `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `CREATIVE_TYPE_STANDARD` *
         /// `CREATIVE_TYPE_EXPANDABLE`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireHtml5")]
-        public virtual System.Nullable<bool> RequireHtml5 { get; set; } 
+        public virtual System.Nullable<bool> RequireHtml5 { get; set; }
 
         /// <summary>Optional. Indicates that the creative requires MRAID (Mobile Rich Media Ad Interface Definitions
         /// system). Set this if the creative relies on mobile gestures for interactivity, such as swiping or tapping.
@@ -14228,7 +14228,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: *
         /// `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_EXPANDABLE`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireMraid")]
-        public virtual System.Nullable<bool> RequireMraid { get; set; } 
+        public virtual System.Nullable<bool> RequireMraid { get; set; }
 
         /// <summary>Optional. Indicates that the creative will wait for a return ping for attribution. Only valid when
         /// using a Campaign Manager tracking ad with a third-party ad server parameter and the ${DC_DBM_TOKEN} macro.
@@ -14238,41 +14238,41 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// creatives are creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with
         /// following creative_type: * `CREATIVE_TYPE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requirePingForAttribution")]
-        public virtual System.Nullable<bool> RequirePingForAttribution { get; set; } 
+        public virtual System.Nullable<bool> RequirePingForAttribution { get; set; }
 
         /// <summary>Output only. The current status of the creative review process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewStatus")]
-        public virtual ReviewStatusInfo ReviewStatus { get; set; } 
+        public virtual ReviewStatusInfo ReviewStatus { get; set; }
 
         /// <summary>Amount of time to play the video before the skip button appears. This field is required when
         /// skippable is true. This field is only supported for the following creative_type: *
         /// `CREATIVE_TYPE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipOffset")]
-        public virtual AudioVideoOffset SkipOffset { get; set; } 
+        public virtual AudioVideoOffset SkipOffset { get; set; }
 
         /// <summary>Whether the user can choose to skip a video creative. This field is only supported for the
         /// following creative_type: * `CREATIVE_TYPE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skippable")]
-        public virtual System.Nullable<bool> Skippable { get; set; } 
+        public virtual System.Nullable<bool> Skippable { get; set; }
 
         /// <summary>Optional. The original third-party tag used for the creative. Required and only valid for third-
         /// party tag creatives. Third-party tag creatives are creatives with following hosting_source: *
         /// `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `CREATIVE_TYPE_STANDARD` *
         /// `CREATIVE_TYPE_EXPANDABLE`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyTag")]
-        public virtual string ThirdPartyTag { get; set; } 
+        public virtual string ThirdPartyTag { get; set; }
 
         /// <summary>Tracking URLs from third parties to track interactions with a video creative. This field is only
         /// supported for the following creative_type: * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_VIDEO` *
         /// `CREATIVE_TYPE_NATIVE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyUrls")]
-        public virtual System.Collections.Generic.IList<ThirdPartyUrl> ThirdPartyUrls { get; set; } 
+        public virtual System.Collections.Generic.IList<ThirdPartyUrl> ThirdPartyUrls { get; set; }
 
         /// <summary>Timer custom events for a rich media creative. Timers track the time during which a user views and
         /// interacts with a specified part of a rich media creative. A creative can have multiple timer events, each
         /// timed independently. Leave it empty or unset for creatives containing image assets only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timerEvents")]
-        public virtual System.Collections.Generic.IList<TimerEvent> TimerEvents { get; set; } 
+        public virtual System.Collections.Generic.IList<TimerEvent> TimerEvents { get; set; }
 
         /// <summary>Tracking URLs for analytics providers or third-party ad technology vendors. The URLs must start
         /// with https (except on inventory that doesn't require SSL compliance). If using macros in your URL, use only
@@ -14281,7 +14281,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// `CREATIVE_TYPE_NATIVE_APP_INSTALL` * `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` *
         /// `CREATIVE_TYPE_NATIVE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackerUrls")]
-        public virtual System.Collections.Generic.IList<string> TrackerUrls { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TrackerUrls { get; set; }
 
         /// <summary>Output only. Audio/Video transcodes. Display & Video 360 transcodes the main asset into a number of
         /// alternative versions that use different file formats or have different properties (resolution, audio bit
@@ -14291,30 +14291,30 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// following creative_type: * `CREATIVE_TYPE_VIDEO` * `CREATIVE_TYPE_NATIVE_VIDEO` *
         /// `CREATIVE_TYPE_AUDIO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcodes")]
-        public virtual System.Collections.Generic.IList<Transcode> Transcodes { get; set; } 
+        public virtual System.Collections.Generic.IList<Transcode> Transcodes { get; set; }
 
         /// <summary>Optional. An optional creative identifier provided by a registry that is unique across all
         /// platforms. Universal Ad ID is part of the VAST 4.0 standard. It can be modified after the creative is
         /// created. This field is only supported for the following creative_type: * `CREATIVE_TYPE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("universalAdId")]
-        public virtual UniversalAdId UniversalAdId { get; set; } 
+        public virtual UniversalAdId UniversalAdId { get; set; }
 
         /// <summary>Output only. The timestamp when the creative was last updated. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>Optional. The URL of the VAST tag for a third-party VAST tag creative. Required and only valid for
         /// third-party VAST tag creatives. Third-party VAST tag creatives are creatives with following hosting_source:
         /// * `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `CREATIVE_TYPE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vastTagUrl")]
-        public virtual string VastTagUrl { get; set; } 
+        public virtual string VastTagUrl { get; set; }
 
         /// <summary>Output only. Indicates the third-party VAST tag creative requires VPAID (Digital Video Player-Ad
         /// Interface). Output only and only valid for third-party VAST tag creatives. Third-party VAST tag creatives
         /// are creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following
         /// creative_type: * `CREATIVE_TYPE_VIDEO`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpaid")]
-        public virtual System.Nullable<bool> Vpaid { get; set; } 
+        public virtual System.Nullable<bool> Vpaid { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14325,17 +14325,17 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The type of creative that can be assigned to the inventory source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeType")]
-        public virtual string CreativeType { get; set; } 
+        public virtual string CreativeType { get; set; }
 
         /// <summary>The configuration for display creatives. Applicable when creative_type is
         /// `CREATIVE_TYPE_STANDARD`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayCreativeConfig")]
-        public virtual InventorySourceDisplayCreativeConfig DisplayCreativeConfig { get; set; } 
+        public virtual InventorySourceDisplayCreativeConfig DisplayCreativeConfig { get; set; }
 
         /// <summary>The configuration for video creatives. Applicable when creative_type is
         /// `CREATIVE_TYPE_VIDEO`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoCreativeConfig")]
-        public virtual InventorySourceVideoCreativeConfig VideoCreativeConfig { get; set; } 
+        public virtual InventorySourceVideoCreativeConfig VideoCreativeConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14346,33 +14346,33 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Immutable. The unique ID of the advertiser that owns the custom bidding algorithm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Output only. The unique ID of the custom bidding algorithm. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customBiddingAlgorithmId")]
-        public virtual System.Nullable<long> CustomBiddingAlgorithmId { get; set; } 
+        public virtual System.Nullable<long> CustomBiddingAlgorithmId { get; set; }
 
         /// <summary>Required. Immutable. The type of custom bidding algorithm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customBiddingAlgorithmType")]
-        public virtual string CustomBiddingAlgorithmType { get; set; } 
+        public virtual string CustomBiddingAlgorithmType { get; set; }
 
         /// <summary>Required. The display name of the custom bidding algorithm. Must be UTF-8 encoded with a maximum
         /// size of 240 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Controls whether or not the custom bidding algorithm can be used as a bidding strategy. Accepted
         /// values are: * `ENTITY_STATUS_ACTIVE` * `ENTITY_STATUS_ARCHIVED`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
-        public virtual string EntityStatus { get; set; } 
+        public virtual string EntityStatus { get; set; }
 
         /// <summary>Output only. The resource name of the custom bidding algorithm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Immutable. The unique ID of the partner that owns the custom bidding algorithm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerId")]
-        public virtual System.Nullable<long> PartnerId { get; set; } 
+        public virtual System.Nullable<long> PartnerId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14383,15 +14383,15 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The unique ID of the custom list. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customListId")]
-        public virtual System.Nullable<long> CustomListId { get; set; } 
+        public virtual System.Nullable<long> CustomListId { get; set; }
 
         /// <summary>Output only. The display name of the custom list. .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. The resource name of the custom list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14404,7 +14404,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. All custom list targeting settings in custom list group. Repeated settings with same id
         /// will be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("settings")]
-        public virtual System.Collections.Generic.IList<CustomListTargetingSetting> Settings { get; set; } 
+        public virtual System.Collections.Generic.IList<CustomListTargetingSetting> Settings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14415,7 +14415,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Required. Custom id of custom list targeting setting. This id is custom_list_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customListId")]
-        public virtual System.Nullable<long> CustomListId { get; set; } 
+        public virtual System.Nullable<long> CustomListId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14432,15 +14432,15 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by
         /// itself or a year and month where the day is not significant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
-        public virtual System.Nullable<int> Day { get; set; } 
+        public virtual System.Nullable<int> Day { get; set; }
 
         /// <summary>Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("month")]
-        public virtual System.Nullable<int> Month { get; set; } 
+        public virtual System.Nullable<int> Month { get; set; }
 
         /// <summary>Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("year")]
-        public virtual System.Nullable<int> Year { get; set; } 
+        public virtual System.Nullable<int> Year { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14452,12 +14452,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The upper bound of the date range, inclusive. Must specify a positive value for `year`, `month`,
         /// and `day`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
-        public virtual Date EndDate { get; set; } 
+        public virtual Date EndDate { get; set; }
 
         /// <summary>The lower bound of the date range, inclusive. Must specify a positive value for `year`, `month`,
         /// and `day`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
-        public virtual Date StartDate { get; set; } 
+        public virtual Date StartDate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14469,22 +14469,22 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Required. The day of the week for this day and time targeting setting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dayOfWeek")]
-        public virtual string DayOfWeek { get; set; } 
+        public virtual string DayOfWeek { get; set; }
 
         /// <summary>Required. The end hour for day and time targeting. Must be between 1 (1 hour after start of day)
         /// and 24 (end of day).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endHour")]
-        public virtual System.Nullable<int> EndHour { get; set; } 
+        public virtual System.Nullable<int> EndHour { get; set; }
 
         /// <summary>Required. The start hour for day and time targeting. Must be between 0 (start of day) and 23 (1
         /// hour before end of day).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startHour")]
-        public virtual System.Nullable<int> StartHour { get; set; } 
+        public virtual System.Nullable<int> StartHour { get; set; }
 
         /// <summary>Required. The mechanism used to determine which timezone to use for this day and time targeting
         /// setting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZoneResolution")]
-        public virtual string TimeZoneResolution { get; set; } 
+        public virtual string TimeZoneResolution { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14496,11 +14496,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Required. The assigned targeting option IDs to delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOptionIds")]
-        public virtual System.Collections.Generic.IList<string> AssignedTargetingOptionIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AssignedTargetingOptionIds { get; set; }
 
         /// <summary>Required. Identifies the type of this assigned targeting option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingType")]
-        public virtual string TargetingType { get; set; } 
+        public virtual string TargetingType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14512,16 +14512,16 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The display name of the device make and model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Indicates if this option is being negatively targeted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negative")]
-        public virtual System.Nullable<bool> Negative { get; set; } 
+        public virtual System.Nullable<bool> Negative { get; set; }
 
         /// <summary>Required. The targeting_option_id field when targeting_type is
         /// `TARGETING_TYPE_DEVICE_MAKE_MODEL`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; } 
+        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14533,7 +14533,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The display name of the device make and model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14545,11 +14545,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The display name of the device type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceType")]
-        public virtual string DeviceType { get; set; } 
+        public virtual string DeviceType { get; set; }
 
         /// <summary>Required. ID of the device type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; } 
+        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14561,7 +14561,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The device type that is used to be targeted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceType")]
-        public virtual string DeviceType { get; set; } 
+        public virtual string DeviceType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14573,11 +14573,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The display name of the digital content label rating tier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentRatingTier")]
-        public virtual string ContentRatingTier { get; set; } 
+        public virtual string ContentRatingTier { get; set; }
 
         /// <summary>Required. ID of the digital content label to be EXCLUDED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedTargetingOptionId")]
-        public virtual string ExcludedTargetingOptionId { get; set; } 
+        public virtual string ExcludedTargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14590,7 +14590,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. An enum for the content label brand safety tiers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentRatingTier")]
-        public virtual string ContentRatingTier { get; set; } 
+        public virtual string ContentRatingTier { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14601,11 +14601,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The height in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("heightPixels")]
-        public virtual System.Nullable<int> HeightPixels { get; set; } 
+        public virtual System.Nullable<int> HeightPixels { get; set; }
 
         /// <summary>The width in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("widthPixels")]
-        public virtual System.Nullable<int> WidthPixels { get; set; } 
+        public virtual System.Nullable<int> WidthPixels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14616,27 +14616,27 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Avoid bidding on apps with the star ratings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appStarRating")]
-        public virtual DoubleVerifyAppStarRating AppStarRating { get; set; } 
+        public virtual DoubleVerifyAppStarRating AppStarRating { get; set; }
 
         /// <summary>Avoid bidding on apps with the age rating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("avoidedAgeRatings")]
-        public virtual System.Collections.Generic.IList<string> AvoidedAgeRatings { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AvoidedAgeRatings { get; set; }
 
         /// <summary>DV Brand Safety Controls.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brandSafetyCategories")]
-        public virtual DoubleVerifyBrandSafetyCategories BrandSafetyCategories { get; set; } 
+        public virtual DoubleVerifyBrandSafetyCategories BrandSafetyCategories { get; set; }
 
         /// <summary>Display viewability settings (applicable to display line items only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayViewability")]
-        public virtual DoubleVerifyDisplayViewability DisplayViewability { get; set; } 
+        public virtual DoubleVerifyDisplayViewability DisplayViewability { get; set; }
 
         /// <summary>Avoid Sites and Apps with historical Fraud & IVT Rates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fraudInvalidTraffic")]
-        public virtual DoubleVerifyFraudInvalidTraffic FraudInvalidTraffic { get; set; } 
+        public virtual DoubleVerifyFraudInvalidTraffic FraudInvalidTraffic { get; set; }
 
         /// <summary>Video viewability settings (applicable to video line items only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoViewability")]
-        public virtual DoubleVerifyVideoViewability VideoViewability { get; set; } 
+        public virtual DoubleVerifyVideoViewability VideoViewability { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14647,11 +14647,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Avoid bidding on apps with insufficient star ratings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("avoidInsufficientStarRating")]
-        public virtual System.Nullable<bool> AvoidInsufficientStarRating { get; set; } 
+        public virtual System.Nullable<bool> AvoidInsufficientStarRating { get; set; }
 
         /// <summary>Avoid bidding on apps with the star ratings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("avoidedStarRating")]
-        public virtual string AvoidedStarRating { get; set; } 
+        public virtual string AvoidedStarRating { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14662,15 +14662,15 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Unknown or unrateable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("avoidUnknownBrandSafetyCategory")]
-        public virtual System.Nullable<bool> AvoidUnknownBrandSafetyCategory { get; set; } 
+        public virtual System.Nullable<bool> AvoidUnknownBrandSafetyCategory { get; set; }
 
         /// <summary>Brand safety high severity avoidance categories.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("avoidedHighSeverityCategories")]
-        public virtual System.Collections.Generic.IList<string> AvoidedHighSeverityCategories { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AvoidedHighSeverityCategories { get; set; }
 
         /// <summary>Brand safety medium severity avoidance categories.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("avoidedMediumSeverityCategories")]
-        public virtual System.Collections.Generic.IList<string> AvoidedMediumSeverityCategories { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AvoidedMediumSeverityCategories { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14681,11 +14681,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Target web and app inventory to maximize IAB viewable rate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iab")]
-        public virtual string Iab { get; set; } 
+        public virtual string Iab { get; set; }
 
         /// <summary>Target web and app inventory to maximize 100% viewable duration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewableDuring")]
-        public virtual string ViewableDuring { get; set; } 
+        public virtual string ViewableDuring { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14696,11 +14696,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Insufficient Historical Fraud & IVT Stats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("avoidInsufficientOption")]
-        public virtual System.Nullable<bool> AvoidInsufficientOption { get; set; } 
+        public virtual System.Nullable<bool> AvoidInsufficientOption { get; set; }
 
         /// <summary>Avoid Sites and Apps with historical Fraud & IVT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("avoidedFraudOption")]
-        public virtual string AvoidedFraudOption { get; set; } 
+        public virtual string AvoidedFraudOption { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14711,15 +14711,15 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Target inventory to maximize impressions with 400x300 or greater player size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playerImpressionRate")]
-        public virtual string PlayerImpressionRate { get; set; } 
+        public virtual string PlayerImpressionRate { get; set; }
 
         /// <summary>Target web inventory to maximize IAB viewable rate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoIab")]
-        public virtual string VideoIab { get; set; } 
+        public virtual string VideoIab { get; set; }
 
         /// <summary>Target web inventory to maximize fully viewable rate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoViewableRate")]
-        public virtual string VideoViewableRate { get; set; } 
+        public virtual string VideoViewableRate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14741,12 +14741,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The serving environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
-        public virtual string Environment { get; set; } 
+        public virtual string Environment { get; set; }
 
         /// <summary>Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_ENVIRONMENT` (e.g.,
         /// "508010" for targeting the `ENVIRONMENT_WEB_OPTIMIZED` option).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; } 
+        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14758,7 +14758,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The serving environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
-        public virtual string Environment { get; set; } 
+        public virtual string Environment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14770,7 +14770,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_EXCHANGE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; } 
+        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14781,7 +14781,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>All enabled exchanges in the partner. Duplicate enabled exchanges will be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledExchanges")]
-        public virtual System.Collections.Generic.IList<ExchangeConfigEnabledExchange> EnabledExchanges { get; set; } 
+        public virtual System.Collections.Generic.IList<ExchangeConfigEnabledExchange> EnabledExchanges { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14792,21 +14792,21 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The enabled exchange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exchange")]
-        public virtual string Exchange { get; set; } 
+        public virtual string Exchange { get; set; }
 
         /// <summary>Output only. Agency ID of Google Ad Manager. The field is only relevant when Google Ad Manager is
         /// the enabled exchange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleAdManagerAgencyId")]
-        public virtual string GoogleAdManagerAgencyId { get; set; } 
+        public virtual string GoogleAdManagerAgencyId { get; set; }
 
         /// <summary>Output only. Network ID of Google Ad Manager. The field is only relevant when Google Ad Manager is
         /// the enabled exchange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleAdManagerBuyerNetworkId")]
-        public virtual string GoogleAdManagerBuyerNetworkId { get; set; } 
+        public virtual string GoogleAdManagerBuyerNetworkId { get; set; }
 
         /// <summary>Output only. Seat ID of the enabled exchange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seatId")]
-        public virtual string SeatId { get; set; } 
+        public virtual string SeatId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14817,11 +14817,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The exchange reviewing the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exchange")]
-        public virtual string Exchange { get; set; } 
+        public virtual string Exchange { get; set; }
 
         /// <summary>Status of the exchange review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14833,7 +14833,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The type of exchange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exchange")]
-        public virtual string Exchange { get; set; } 
+        public virtual string Exchange { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14845,21 +14845,21 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The name of the click tag of the exit event. The name must be unique within one creative. Leave it
         /// empty or unset for creatives containing image assets only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The name used to identify this event in reports. Leave it empty or unset for creatives containing
         /// image assets only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportingName")]
-        public virtual string ReportingName { get; set; } 
+        public virtual string ReportingName { get; set; }
 
         /// <summary>Required. The type of the exit event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>Required. The click through URL of the exit event. This is required when type is: *
         /// `EXIT_EVENT_TYPE_DEFAULT` * `EXIT_EVENT_TYPE_BACKUP`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14874,81 +14874,81 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// less than 1000, the number will be hidden and 0 will be returned due to privacy reasons. Otherwise, the
         /// number will be rounded off to two significant digits. Only returned in GET request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeDisplayAudienceSize")]
-        public virtual System.Nullable<long> ActiveDisplayAudienceSize { get; set; } 
+        public virtual System.Nullable<long> ActiveDisplayAudienceSize { get; set; }
 
         /// <summary>Output only. The source of the audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audienceSource")]
-        public virtual string AudienceSource { get; set; } 
+        public virtual string AudienceSource { get; set; }
 
         /// <summary>Output only. The type of the audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audienceType")]
-        public virtual string AudienceType { get; set; } 
+        public virtual string AudienceType { get; set; }
 
         /// <summary>The user-provided description of the audience. Only applicable to first party audiences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Output only. The estimated audience size for the Display network. If the size is less than 1000,
         /// the number will be hidden and 0 will be returned due to privacy reasons. Otherwise, the number will be
         /// rounded off to two significant digits. Only returned in GET request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayAudienceSize")]
-        public virtual System.Nullable<long> DisplayAudienceSize { get; set; } 
+        public virtual System.Nullable<long> DisplayAudienceSize { get; set; }
 
         /// <summary>Output only. The estimated desktop audience size in Display network. If the size is less than 1000,
         /// the number will be hidden and 0 will be returned due to privacy reasons. Otherwise, the number will be
         /// rounded off to two significant digits. Only applicable to first party audiences. Only returned in GET
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayDesktopAudienceSize")]
-        public virtual System.Nullable<long> DisplayDesktopAudienceSize { get; set; } 
+        public virtual System.Nullable<long> DisplayDesktopAudienceSize { get; set; }
 
         /// <summary>Output only. The estimated mobile app audience size in Display network. If the size is less than
         /// 1000, the number will be hidden and 0 will be returned due to privacy reasons. Otherwise, the number will be
         /// rounded off to two significant digits. Only applicable to first party audiences. Only returned in GET
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayMobileAppAudienceSize")]
-        public virtual System.Nullable<long> DisplayMobileAppAudienceSize { get; set; } 
+        public virtual System.Nullable<long> DisplayMobileAppAudienceSize { get; set; }
 
         /// <summary>Output only. The estimated mobile web audience size in Display network. If the size is less than
         /// 1000, the number will be hidden and 0 will be returned due to privacy reasons. Otherwise, the number will be
         /// rounded off to two significant digits. Only applicable to first party audiences. Only returned in GET
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayMobileWebAudienceSize")]
-        public virtual System.Nullable<long> DisplayMobileWebAudienceSize { get; set; } 
+        public virtual System.Nullable<long> DisplayMobileWebAudienceSize { get; set; }
 
         /// <summary>The display name of the first and third party audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. The unique ID of the first and third party audience. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstAndThirdPartyAudienceId")]
-        public virtual System.Nullable<long> FirstAndThirdPartyAudienceId { get; set; } 
+        public virtual System.Nullable<long> FirstAndThirdPartyAudienceId { get; set; }
 
         /// <summary>Output only. Whether the audience is a first or third party audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstAndThirdPartyAudienceType")]
-        public virtual string FirstAndThirdPartyAudienceType { get; set; } 
+        public virtual string FirstAndThirdPartyAudienceType { get; set; }
 
         /// <summary>Output only. The estimated audience size for Gmail network. If the size is less than 1000, the
         /// number will be hidden and 0 will be returned due to privacy reasons. Otherwise, the number will be rounded
         /// off to two significant digits. Only applicable to first party audiences. Only returned in GET
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gmailAudienceSize")]
-        public virtual System.Nullable<long> GmailAudienceSize { get; set; } 
+        public virtual System.Nullable<long> GmailAudienceSize { get; set; }
 
         /// <summary>The duration in days that an entry remains in the audience after the qualifying event. Only
         /// applicable to first party audiences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipDurationDays")]
-        public virtual System.Nullable<long> MembershipDurationDays { get; set; } 
+        public virtual System.Nullable<long> MembershipDurationDays { get; set; }
 
         /// <summary>Output only. The resource name of the first and third party audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The estimated audience size for YouTube network. If the size is less than 1000, the
         /// number will be hidden and 0 will be returned due to privacy reasons. Otherwise, the number will be rounded
         /// off to two significant digits. Only applicable to first party audiences. Only returned in GET
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("youtubeAudienceSize")]
-        public virtual System.Nullable<long> YoutubeAudienceSize { get; set; } 
+        public virtual System.Nullable<long> YoutubeAudienceSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14961,7 +14961,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. All first and third party audience targeting settings in first and third party audience
         /// group. Repeated settings with same id are not allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("settings")]
-        public virtual System.Collections.Generic.IList<FirstAndThirdPartyAudienceTargetingSetting> Settings { get; set; } 
+        public virtual System.Collections.Generic.IList<FirstAndThirdPartyAudienceTargetingSetting> Settings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14973,14 +14973,14 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. First and third party audience id of the first and third party audience targeting
         /// setting. This id is first_and_third_party_audience_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstAndThirdPartyAudienceId")]
-        public virtual System.Nullable<long> FirstAndThirdPartyAudienceId { get; set; } 
+        public virtual System.Nullable<long> FirstAndThirdPartyAudienceId { get; set; }
 
         /// <summary>The recency of the first and third party audience targeting setting. Only applicable to first party
         /// audiences, otherwise will be ignored. For more info, refer to
         /// https://support.google.com/displayvideo/answer/2949947#recency When unspecified, no recency limit will be
         /// used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recency")]
-        public virtual string Recency { get; set; } 
+        public virtual string Recency { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14994,7 +14994,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// to billable unit of the given currency and smaller than or equal to the upper limit 1000000000. For example,
         /// 1500000 represents 1.5 standard units of the currency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bidAmountMicros")]
-        public virtual System.Nullable<long> BidAmountMicros { get; set; } 
+        public virtual System.Nullable<long> BidAmountMicros { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15005,7 +15005,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The Active View video viewability metric configuration for the Floodlight group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeViewConfig")]
-        public virtual ActiveViewVideoViewabilityMetricConfig ActiveViewConfig { get; set; } 
+        public virtual ActiveViewVideoViewabilityMetricConfig ActiveViewConfig { get; set; }
 
         /// <summary>User-defined custom variables owned by the Floodlight group. Use custom Floodlight variables to
         /// create reporting data that is tailored to your unique business needs. Custom Floodlight variables use the
@@ -15018,28 +15018,28 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// through "U100", inclusive. String values must be less than 64 characters long, and cannot contain the
         /// following characters: `"<>`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customVariables")]
-        public virtual System.Collections.Generic.IDictionary<string,object> CustomVariables { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> CustomVariables { get; set; }
 
         /// <summary>Required. The display name of the Floodlight group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. The unique ID of the Floodlight group. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightGroupId")]
-        public virtual System.Nullable<long> FloodlightGroupId { get; set; } 
+        public virtual System.Nullable<long> FloodlightGroupId { get; set; }
 
         /// <summary>Required. The lookback window for the Floodlight group. Both click_days and impression_days are
         /// required. Acceptable values for both are `0` to `90`, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lookbackWindow")]
-        public virtual LookbackWindow LookbackWindow { get; set; } 
+        public virtual LookbackWindow LookbackWindow { get; set; }
 
         /// <summary>Output only. The resource name of the Floodlight group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. The web tag type enabled for the Floodlight group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webTagType")]
-        public virtual string WebTagType { get; set; } 
+        public virtual string WebTagType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15052,12 +15052,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The maximum number of times a user may be shown with the same ad during this period. Must be
         /// greater than 0. Applicable when unlimited is `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxImpressions")]
-        public virtual System.Nullable<int> MaxImpressions { get; set; } 
+        public virtual System.Nullable<int> MaxImpressions { get; set; }
 
         /// <summary>The time unit in which the frequency cap will be applied. Applicable when unlimited is
         /// `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeUnit")]
-        public virtual string TimeUnit { get; set; } 
+        public virtual string TimeUnit { get; set; }
 
         /// <summary>The number of time_unit the frequency cap will last. Applicable when unlimited is `false`. The
         /// following restrictions apply based on the value of time_unit: * `TIME_UNIT_LIFETIME` - this field is output
@@ -15065,12 +15065,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// between 1 and 4 * `TIME_UNIT_DAYS` - must be between 1 and 6 * `TIME_UNIT_HOURS` - must be between 1 and 23
         /// * `TIME_UNIT_MINUTES` - must be between 1 and 59</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeUnitCount")]
-        public virtual System.Nullable<int> TimeUnitCount { get; set; } 
+        public virtual System.Nullable<int> TimeUnitCount { get; set; }
 
         /// <summary>Whether unlimited frequency capping is applied. When this field is set to `true`, the remaining
         /// frequency cap fields are not applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unlimited")]
-        public virtual System.Nullable<bool> Unlimited { get; set; } 
+        public virtual System.Nullable<bool> Unlimited { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15082,11 +15082,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The gender of the audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gender")]
-        public virtual string Gender { get; set; } 
+        public virtual string Gender { get; set; }
 
         /// <summary>Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_GENDER`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; } 
+        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15098,7 +15098,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The gender of an audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gender")]
-        public virtual string Gender { get; set; } 
+        public virtual string Gender { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15110,20 +15110,20 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The display name of the geographic region (e.g., "Ontario, Canada").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. The type of geographic region targeting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoRegionType")]
-        public virtual string GeoRegionType { get; set; } 
+        public virtual string GeoRegionType { get; set; }
 
         /// <summary>Indicates if this option is being negatively targeted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negative")]
-        public virtual System.Nullable<bool> Negative { get; set; } 
+        public virtual System.Nullable<bool> Negative { get; set; }
 
         /// <summary>Required. The targeting_option_id of a TargetingOption of type
         /// `TARGETING_TYPE_GEO_REGION`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; } 
+        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15135,11 +15135,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The display name of the geographic region (e.g., "Ontario, Canada").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. The type of geographic region targeting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoRegionType")]
-        public virtual string GeoRegionType { get; set; } 
+        public virtual string GeoRegionType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15150,19 +15150,19 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The display name of the Google audience. .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. The unique ID of the Google audience. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleAudienceId")]
-        public virtual System.Nullable<long> GoogleAudienceId { get; set; } 
+        public virtual System.Nullable<long> GoogleAudienceId { get; set; }
 
         /// <summary>Output only. The type of Google audience. .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleAudienceType")]
-        public virtual string GoogleAudienceType { get; set; } 
+        public virtual string GoogleAudienceType { get; set; }
 
         /// <summary>Output only. The resource name of the google audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15175,7 +15175,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. All Google audience targeting settings in Google audience group. Repeated settings with
         /// same id will be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("settings")]
-        public virtual System.Collections.Generic.IList<GoogleAudienceTargetingSetting> Settings { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleAudienceTargetingSetting> Settings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15187,7 +15187,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. Google audience id of the Google audience targeting setting. This id is
         /// google_audience_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleAudienceId")]
-        public virtual System.Nullable<long> GoogleAudienceId { get; set; } 
+        public virtual System.Nullable<long> GoogleAudienceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15198,7 +15198,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Name of the media resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
-        public virtual string ResourceName { get; set; } 
+        public virtual string ResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15210,12 +15210,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The household income of the audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("householdIncome")]
-        public virtual string HouseholdIncome { get; set; } 
+        public virtual string HouseholdIncome { get; set; }
 
         /// <summary>Required. The targeting_option_id of a TargetingOption of type
         /// `TARGETING_TYPE_HOUSEHOLD_INCOME`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; } 
+        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15227,7 +15227,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The household income of an audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("householdIncome")]
-        public virtual string HouseholdIncome { get; set; } 
+        public virtual string HouseholdIncome { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15239,32 +15239,32 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>YouTube Ads to download by ID. All IDs must belong to the same Advertiser or Partner specified in
         /// CreateSdfDownloadTaskRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupAdIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> AdGroupAdIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> AdGroupAdIds { get; set; }
 
         /// <summary>YouTube Ad Groups to download by ID. All IDs must belong to the same Advertiser or Partner
         /// specified in CreateSdfDownloadTaskRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> AdGroupIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> AdGroupIds { get; set; }
 
         /// <summary>Campaigns to download by ID. All IDs must belong to the same Advertiser or Partner specified in
         /// CreateSdfDownloadTaskRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> CampaignIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> CampaignIds { get; set; }
 
         /// <summary>Insertion Orders to download by ID. All IDs must belong to the same Advertiser or Partner specified
         /// in CreateSdfDownloadTaskRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertionOrderIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> InsertionOrderIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> InsertionOrderIds { get; set; }
 
         /// <summary>Line Items to download by ID. All IDs must belong to the same Advertiser or Partner specified in
         /// CreateSdfDownloadTaskRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> LineItemIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> LineItemIds { get; set; }
 
         /// <summary>Media Products to download by ID. All IDs must belong to the same Advertiser or Partner specified
         /// in CreateSdfDownloadTaskRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaProductIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> MediaProductIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> MediaProductIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15275,24 +15275,24 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The unique ID of the advertiser the insertion order belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Optional. The bidding strategy of the insertion order. By default, fixed_bid is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bidStrategy")]
-        public virtual BiddingStrategy BidStrategy { get; set; } 
+        public virtual BiddingStrategy BidStrategy { get; set; }
 
         /// <summary>Required. The budget allocation settings of the insertion order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("budget")]
-        public virtual InsertionOrderBudget Budget { get; set; } 
+        public virtual InsertionOrderBudget Budget { get; set; }
 
         /// <summary>Required. Immutable. The unique ID of the campaign that the insertion order belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignId")]
-        public virtual System.Nullable<long> CampaignId { get; set; } 
+        public virtual System.Nullable<long> CampaignId { get; set; }
 
         /// <summary>Required. The display name of the insertion order. Must be UTF-8 encoded with a maximum size of 240
         /// bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Required. Controls whether or not the insertion order can spend its budget and bid on inventory. *
         /// For CreateInsertionOrder method, only `ENTITY_STATUS_DRAFT` is allowed. To activate an insertion order, use
@@ -15300,41 +15300,41 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// order cannot be changed back to `ENTITY_STATUS_DRAFT` status from any other status. * An insertion order
         /// cannot be set to `ENTITY_STATUS_ACTIVE` if its parent campaign is not active.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
-        public virtual string EntityStatus { get; set; } 
+        public virtual string EntityStatus { get; set; }
 
         /// <summary>Required. The frequency capping setting of the insertion order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frequencyCap")]
-        public virtual FrequencyCap FrequencyCap { get; set; } 
+        public virtual FrequencyCap FrequencyCap { get; set; }
 
         /// <summary>Output only. The unique ID of the insertion order. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertionOrderId")]
-        public virtual System.Nullable<long> InsertionOrderId { get; set; } 
+        public virtual System.Nullable<long> InsertionOrderId { get; set; }
 
         /// <summary>Additional integration details of the insertion order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integrationDetails")]
-        public virtual IntegrationDetails IntegrationDetails { get; set; } 
+        public virtual IntegrationDetails IntegrationDetails { get; set; }
 
         /// <summary>Output only. The resource name of the insertion order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. The budget spending speed setting of the insertion order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pacing")]
-        public virtual Pacing Pacing { get; set; } 
+        public virtual Pacing Pacing { get; set; }
 
         /// <summary>The partner costs associated with the insertion order. If absent or empty in CreateInsertionOrder
         /// method, the newly created insertion order will inherit partner costs from the partner settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerCosts")]
-        public virtual System.Collections.Generic.IList<PartnerCost> PartnerCosts { get; set; } 
+        public virtual System.Collections.Generic.IList<PartnerCost> PartnerCosts { get; set; }
 
         /// <summary>Required. Performance goal of the insertion order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceGoal")]
-        public virtual PerformanceGoal PerformanceGoal { get; set; } 
+        public virtual PerformanceGoal PerformanceGoal { get; set; }
 
         /// <summary>Output only. The timestamp when the insertion order was last updated. Assigned by the
         /// system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15346,17 +15346,17 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The type of automation used to manage bid and budget for the insertion order. If this field is
         /// unspecified in creation, the value defaults to `INSERTION_ORDER_AUTOMATION_TYPE_NONE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("automationType")]
-        public virtual string AutomationType { get; set; } 
+        public virtual string AutomationType { get; set; }
 
         /// <summary>Required. The list of budget segments. Use a budget segment to specify a specific budget for a
         /// given period of time an insertion order is running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("budgetSegments")]
-        public virtual System.Collections.Generic.IList<InsertionOrderBudgetSegment> BudgetSegments { get; set; } 
+        public virtual System.Collections.Generic.IList<InsertionOrderBudgetSegment> BudgetSegments { get; set; }
 
         /// <summary>Required. Immutable. The budget unit specifies whether the budget is currency based or impression
         /// based.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("budgetUnit")]
-        public virtual string BudgetUnit { get; set; } 
+        public virtual string BudgetUnit { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15369,11 +15369,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// in micros. Must be greater than 0. For example, 500000000 represents 500 standard units of the
         /// currency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("budgetAmountMicros")]
-        public virtual System.Nullable<long> BudgetAmountMicros { get; set; } 
+        public virtual System.Nullable<long> BudgetAmountMicros { get; set; }
 
         /// <summary>The ID of the campaign budget linked to this insertion order budget segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignBudgetId")]
-        public virtual System.Nullable<long> CampaignBudgetId { get; set; } 
+        public virtual System.Nullable<long> CampaignBudgetId { get; set; }
 
         /// <summary>Required. The start and end date settings of the budget segment. They are resolved relative to the
         /// parent advertiser's time zone. * When creating a new budget segment, both `start_date` and `end_date` must
@@ -15381,13 +15381,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// an immutable `start_date`. * `end_date` must be the `start_date` or later, both before the year
         /// 2037.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
-        public virtual DateRange DateRange { get; set; } 
+        public virtual DateRange DateRange { get; set; }
 
         /// <summary>The budget segment description. It can be used to enter Purchase Order information for each budget
         /// segment and have that information printed on the invoices. Must be UTF-8 encoded with a length of no more
         /// than 80 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15398,55 +15398,55 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Display Viewability section (applicable to display line items only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayViewability")]
-        public virtual string DisplayViewability { get; set; } 
+        public virtual string DisplayViewability { get; set; }
 
         /// <summary>Brand Safety - **Unrateable**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeUnrateable")]
-        public virtual System.Nullable<bool> ExcludeUnrateable { get; set; } 
+        public virtual System.Nullable<bool> ExcludeUnrateable { get; set; }
 
         /// <summary>Ad Fraud settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedAdFraudRisk")]
-        public virtual string ExcludedAdFraudRisk { get; set; } 
+        public virtual string ExcludedAdFraudRisk { get; set; }
 
         /// <summary>Brand Safety - **Adult content**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedAdultRisk")]
-        public virtual string ExcludedAdultRisk { get; set; } 
+        public virtual string ExcludedAdultRisk { get; set; }
 
         /// <summary>Brand Safety - **Alcohol**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedAlcoholRisk")]
-        public virtual string ExcludedAlcoholRisk { get; set; } 
+        public virtual string ExcludedAlcoholRisk { get; set; }
 
         /// <summary>Brand Safety - **Drugs**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedDrugsRisk")]
-        public virtual string ExcludedDrugsRisk { get; set; } 
+        public virtual string ExcludedDrugsRisk { get; set; }
 
         /// <summary>Brand Safety - **Gambling**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedGamblingRisk")]
-        public virtual string ExcludedGamblingRisk { get; set; } 
+        public virtual string ExcludedGamblingRisk { get; set; }
 
         /// <summary>Brand Safety - **Hate speech**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedHateSpeechRisk")]
-        public virtual string ExcludedHateSpeechRisk { get; set; } 
+        public virtual string ExcludedHateSpeechRisk { get; set; }
 
         /// <summary>Brand Safety - **Illegal downloads**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedIllegalDownloadsRisk")]
-        public virtual string ExcludedIllegalDownloadsRisk { get; set; } 
+        public virtual string ExcludedIllegalDownloadsRisk { get; set; }
 
         /// <summary>Brand Safety - **Offensive language**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedOffensiveLanguageRisk")]
-        public virtual string ExcludedOffensiveLanguageRisk { get; set; } 
+        public virtual string ExcludedOffensiveLanguageRisk { get; set; }
 
         /// <summary>Brand Safety - **Violence**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedViolenceRisk")]
-        public virtual string ExcludedViolenceRisk { get; set; } 
+        public virtual string ExcludedViolenceRisk { get; set; }
 
         /// <summary>True advertising quality (applicable to Display line items only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traqScoreOption")]
-        public virtual string TraqScoreOption { get; set; } 
+        public virtual string TraqScoreOption { get; set; }
 
         /// <summary>Video Viewability Section (applicable to video line items only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoViewability")]
-        public virtual string VideoViewability { get; set; } 
+        public virtual string VideoViewability { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15458,13 +15458,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Additional details of the entry in string format. Must be UTF-8 encoded with a length of no more
         /// than 1000 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual string Details { get; set; } 
+        public virtual string Details { get; set; }
 
         /// <summary>An external identifier to be associated with the entry. The integration code will show up together
         /// with the entry in many places in the system, for example, reporting. Must be UTF-8 encoded with a length of
         /// no more than 500 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integrationCode")]
-        public virtual string IntegrationCode { get; set; } 
+        public virtual string IntegrationCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15475,65 +15475,65 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Whether the inventory source has a guaranteed or non-guaranteed delivery.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commitment")]
-        public virtual string Commitment { get; set; } 
+        public virtual string Commitment { get; set; }
 
         /// <summary>The creative requirements of the inventory source. Not applicable for auction packages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeConfigs")]
-        public virtual System.Collections.Generic.IList<CreativeConfig> CreativeConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<CreativeConfig> CreativeConfigs { get; set; }
 
         /// <summary>The ID in the exchange space that uniquely identifies the inventory source. Must be unique across
         /// buyers within each exchange but not necessarily unique across exchanges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dealId")]
-        public virtual string DealId { get; set; } 
+        public virtual string DealId { get; set; }
 
         /// <summary>The delivery method of the inventory source. * For non-guaranteed inventory sources, the only
         /// acceptable value is `INVENTORY_SOURCE_DELIVERY_METHOD_PROGRAMMATIC`. * For guaranteed inventory sources,
         /// acceptable values are `INVENTORY_SOURCE_DELIVERY_METHOD_TAG` and
         /// `INVENTORY_SOURCE_DELIVERY_METHOD_PROGRAMMATIC`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryMethod")]
-        public virtual string DeliveryMethod { get; set; } 
+        public virtual string DeliveryMethod { get; set; }
 
         /// <summary>The display name of the inventory source. Must be UTF-8 encoded with a maximum size of 240
         /// bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The exchange to which the inventory source belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exchange")]
-        public virtual string Exchange { get; set; } 
+        public virtual string Exchange { get; set; }
 
         /// <summary>Output only. The unique ID of the inventory source. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceId")]
-        public virtual System.Nullable<long> InventorySourceId { get; set; } 
+        public virtual System.Nullable<long> InventorySourceId { get; set; }
 
         /// <summary>Denotes the type of the inventory source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceType")]
-        public virtual string InventorySourceType { get; set; } 
+        public virtual string InventorySourceType { get; set; }
 
         /// <summary>Output only. The resource name of the inventory source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The publisher/seller name of the inventory source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisherName")]
-        public virtual string PublisherName { get; set; } 
+        public virtual string PublisherName { get; set; }
 
         /// <summary>Required. The rate details of the inventory source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rateDetails")]
-        public virtual RateDetails RateDetails { get; set; } 
+        public virtual RateDetails RateDetails { get; set; }
 
         /// <summary>The status settings of the inventory source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual InventorySourceStatus Status { get; set; } 
+        public virtual InventorySourceStatus Status { get; set; }
 
         /// <summary>The time range when this inventory source starts and stops serving.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeRange")]
-        public virtual TimeRange TimeRange { get; set; } 
+        public virtual TimeRange TimeRange { get; set; }
 
         /// <summary>Output only. The timestamp when the inventory source was last updated. Assigned by the
         /// system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15546,7 +15546,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. ID of the inventory source. Should refer to the inventory_source_id field of an
         /// InventorySource resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceId")]
-        public virtual System.Nullable<long> InventorySourceId { get; set; } 
+        public virtual System.Nullable<long> InventorySourceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15557,7 +15557,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The size requirements for display creatives that can be assigned to the inventory source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeSize")]
-        public virtual Dimensions CreativeSize { get; set; } 
+        public virtual Dimensions CreativeSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15570,7 +15570,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// specified in CreateSdfDownloadTaskRequest. Leave empty to download all Inventory Sources for the selected
         /// Advertiser or Partner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> InventorySourceIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> InventorySourceIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15582,15 +15582,15 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. The display name of the inventory source group. Must be UTF-8 encoded with a maximum size
         /// of 240 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. The unique ID of the inventory source group. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceGroupId")]
-        public virtual System.Nullable<long> InventorySourceGroupId { get; set; } 
+        public virtual System.Nullable<long> InventorySourceGroupId { get; set; }
 
         /// <summary>Output only. The resource name of the inventory source group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15603,7 +15603,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. ID of the inventory source group. Should refer to the inventory_source_group_id field of
         /// an InventorySourceGroup resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceGroupId")]
-        public virtual System.Nullable<long> InventorySourceGroupId { get; set; } 
+        public virtual System.Nullable<long> InventorySourceGroupId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15617,29 +15617,29 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// `INVENTORY_SOURCE_CONFIG_STATUS_COMPLETED`. An inventory source must be configured (fill in the required
         /// fields, choose creatives, and select a default campaign) before it can serve.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configStatus")]
-        public virtual string ConfigStatus { get; set; } 
+        public virtual string ConfigStatus { get; set; }
 
         /// <summary>The user-provided reason for pausing this inventory source. Must not exceed 100 characters. Only
         /// applicable when entity_status is set to `ENTITY_STATUS_PAUSED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityPauseReason")]
-        public virtual string EntityPauseReason { get; set; } 
+        public virtual string EntityPauseReason { get; set; }
 
         /// <summary>Whether or not the inventory source is servable. Acceptable values are `ENTITY_STATUS_ACTIVE`,
         /// `ENTITY_STATUS_ARCHIVED`, and `ENTITY_STATUS_PAUSED`. Default value is `ENTITY_STATUS_ACTIVE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
-        public virtual string EntityStatus { get; set; } 
+        public virtual string EntityStatus { get; set; }
 
         /// <summary>Output only. The seller-provided reason for pausing this inventory source. Only applicable for
         /// inventory sources synced directly from the publishers and when seller_status is set to
         /// `ENTITY_STATUS_PAUSED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sellerPauseReason")]
-        public virtual string SellerPauseReason { get; set; } 
+        public virtual string SellerPauseReason { get; set; }
 
         /// <summary>Output only. The status set by the seller for the inventory source. Only applicable for inventory
         /// sources synced directly from the publishers. Acceptable values are `ENTITY_STATUS_ACTIVE` and
         /// `ENTITY_STATUS_PAUSED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sellerStatus")]
-        public virtual string SellerStatus { get; set; } 
+        public virtual string SellerStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15651,7 +15651,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The duration requirements for the video creatives that can be assigned to the inventory
         /// source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual object Duration { get; set; } 
+        public virtual object Duration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15665,11 +15665,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// be UTF-8 encoded with a maximum size of 255 bytes. Maximum number of characters is 80. Maximum number of
         /// words is 10.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyword")]
-        public virtual string Keyword { get; set; } 
+        public virtual string Keyword { get; set; }
 
         /// <summary>Indicates if this option is being negatively targeted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negative")]
-        public virtual System.Nullable<bool> Negative { get; set; } 
+        public virtual System.Nullable<bool> Negative { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15681,16 +15681,16 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The display name of the language (e.g., "French").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Indicates if this option is being negatively targeted. All assigned language targeting options on
         /// the same line item must have the same value for this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negative")]
-        public virtual System.Nullable<bool> Negative { get; set; } 
+        public virtual System.Nullable<bool> Negative { get; set; }
 
         /// <summary>Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_LANGUAGE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; } 
+        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15702,7 +15702,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The display name of the language (e.g., "French").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15713,32 +15713,32 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The unique ID of the advertiser the line item belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Required. The bidding strategy of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bidStrategy")]
-        public virtual BiddingStrategy BidStrategy { get; set; } 
+        public virtual BiddingStrategy BidStrategy { get; set; }
 
         /// <summary>Required. The budget allocation setting of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("budget")]
-        public virtual LineItemBudget Budget { get; set; } 
+        public virtual LineItemBudget Budget { get; set; }
 
         /// <summary>Output only. The unique ID of the campaign that the line item belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignId")]
-        public virtual System.Nullable<long> CampaignId { get; set; } 
+        public virtual System.Nullable<long> CampaignId { get; set; }
 
         /// <summary>The conversion tracking setting of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionCounting")]
-        public virtual ConversionCountingConfig ConversionCounting { get; set; } 
+        public virtual ConversionCountingConfig ConversionCounting { get; set; }
 
         /// <summary>The IDs of the creatives associated with the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> CreativeIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> CreativeIds { get; set; }
 
         /// <summary>Required. The display name of the line item. Must be UTF-8 encoded with a maximum size of 240
         /// bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Required. Controls whether or not the line item can spend its budget and bid on inventory. * For
         /// CreateLineItem method, only `ENTITY_STATUS_DRAFT` is allowed. To activate a line item, use UpdateLineItem
@@ -15746,56 +15746,56 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// to `ENTITY_STATUS_DRAFT` status from any other status. * If the line item's parent insertion order is not
         /// active, the line item can't spend its budget even if its own status is `ENTITY_STATUS_ACTIVE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
-        public virtual string EntityStatus { get; set; } 
+        public virtual string EntityStatus { get; set; }
 
         /// <summary>Required. The start and end time of the line item's flight.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flight")]
-        public virtual LineItemFlight Flight { get; set; } 
+        public virtual LineItemFlight Flight { get; set; }
 
         /// <summary>Required. The frequency capping setting of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frequencyCap")]
-        public virtual FrequencyCap FrequencyCap { get; set; } 
+        public virtual FrequencyCap FrequencyCap { get; set; }
 
         /// <summary>Required. Immutable. The unique ID of the insertion order that the line item belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertionOrderId")]
-        public virtual System.Nullable<long> InsertionOrderId { get; set; } 
+        public virtual System.Nullable<long> InsertionOrderId { get; set; }
 
         /// <summary>Integration details of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integrationDetails")]
-        public virtual IntegrationDetails IntegrationDetails { get; set; } 
+        public virtual IntegrationDetails IntegrationDetails { get; set; }
 
         /// <summary>The IDs of the private inventory sources assigned to the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> InventorySourceIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> InventorySourceIds { get; set; }
 
         /// <summary>Output only. The unique ID of the line item. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
-        public virtual System.Nullable<long> LineItemId { get; set; } 
+        public virtual System.Nullable<long> LineItemId { get; set; }
 
         /// <summary>Required. Immutable. The type of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemType")]
-        public virtual string LineItemType { get; set; } 
+        public virtual string LineItemType { get; set; }
 
         /// <summary>Output only. The resource name of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. The budget spending speed setting of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pacing")]
-        public virtual Pacing Pacing { get; set; } 
+        public virtual Pacing Pacing { get; set; }
 
         /// <summary>The partner costs associated with the line item. If absent or empty in CreateLineItem method, the
         /// newly created line item will inherit partner costs from its parent insertion order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerCosts")]
-        public virtual System.Collections.Generic.IList<PartnerCost> PartnerCosts { get; set; } 
+        public virtual System.Collections.Generic.IList<PartnerCost> PartnerCosts { get; set; }
 
         /// <summary>Required. The partner revenue model setting of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerRevenueModel")]
-        public virtual PartnerRevenueModel PartnerRevenueModel { get; set; } 
+        public virtual PartnerRevenueModel PartnerRevenueModel { get; set; }
 
         /// <summary>Output only. The timestamp when the line item was last updated. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15807,12 +15807,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. The type of the budget allocation. `LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC` is only
         /// applicable when automatic budget allocation is enabled for the parent insertion order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("budgetAllocationType")]
-        public virtual string BudgetAllocationType { get; set; } 
+        public virtual string BudgetAllocationType { get; set; }
 
         /// <summary>Output only. The budget unit specifies whether the budget is currency based or impression based.
         /// This value is inherited from the parent insertion order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("budgetUnit")]
-        public virtual string BudgetUnit { get; set; } 
+        public virtual string BudgetUnit { get; set; }
 
         /// <summary>The maximum budget amount the line item will spend. Must be greater than 0. When
         /// budget_allocation_type is: * `LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC`, this field is immutable and is
@@ -15822,7 +15822,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// the maximum number of impressions to serve. * `LINE_ITEM_BUDGET_ALLOCATION_TYPE_UNLIMITED`, this field is
         /// not applicable and will be ignored by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxAmount")]
-        public virtual System.Nullable<long> MaxAmount { get; set; } 
+        public virtual System.Nullable<long> MaxAmount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15837,11 +15837,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// existing flight with a `start_date` in the past has a mutable `end_date` but an immutable `start_date`. *
         /// `end_date` must be the `start_date` or later, both before the year 2037.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
-        public virtual DateRange DateRange { get; set; } 
+        public virtual DateRange DateRange { get; set; }
 
         /// <summary>Required. The type of the line item's flight dates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flightDateType")]
-        public virtual string FlightDateType { get; set; } 
+        public virtual string FlightDateType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15852,13 +15852,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The list of assigned targeting options. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOptions")]
-        public virtual System.Collections.Generic.IList<AssignedTargetingOption> AssignedTargetingOptions { get; set; } 
+        public virtual System.Collections.Generic.IList<AssignedTargetingOption> AssignedTargetingOptions { get; set; }
 
         /// <summary>A token identifying the next page of results. This value should be specified as the pageToken in a
         /// subsequent ListAdvertiserAssignedTargetingOptionsRequest to fetch the next page of results. This token will
         /// be absent if there are no more assigned_targeting_options to return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15868,12 +15868,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The list of advertisers. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertisers")]
-        public virtual System.Collections.Generic.IList<Advertiser> Advertisers { get; set; } 
+        public virtual System.Collections.Generic.IList<Advertiser> Advertisers { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
         /// subsequent call to `ListAdvertisers` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15884,12 +15884,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The list of assigned inventory sources. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedInventorySources")]
-        public virtual System.Collections.Generic.IList<AssignedInventorySource> AssignedInventorySources { get; set; } 
+        public virtual System.Collections.Generic.IList<AssignedInventorySource> AssignedInventorySources { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
         /// subsequent call to `ListAssignedInventorySources` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15900,12 +15900,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The list of assigned locations. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedLocations")]
-        public virtual System.Collections.Generic.IList<AssignedLocation> AssignedLocations { get; set; } 
+        public virtual System.Collections.Generic.IList<AssignedLocation> AssignedLocations { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
         /// subsequent call to `ListAssignedLocations` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15915,12 +15915,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The list of campaigns. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaigns")]
-        public virtual System.Collections.Generic.IList<Campaign> Campaigns { get; set; } 
+        public virtual System.Collections.Generic.IList<Campaign> Campaigns { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
         /// subsequent call to `ListCampaigns` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15930,12 +15930,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The list of channels. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channels")]
-        public virtual System.Collections.Generic.IList<Channel> Channels { get; set; } 
+        public virtual System.Collections.Generic.IList<Channel> Channels { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
         /// subsequent call to `ListChannels` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15945,12 +15945,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The list of combined audiences. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("combinedAudiences")]
-        public virtual System.Collections.Generic.IList<CombinedAudience> CombinedAudiences { get; set; } 
+        public virtual System.Collections.Generic.IList<CombinedAudience> CombinedAudiences { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
         /// subsequent call to `ListCombinedAudiences` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15960,13 +15960,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The list of creatives. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creatives")]
-        public virtual System.Collections.Generic.IList<Creative> Creatives { get; set; } 
+        public virtual System.Collections.Generic.IList<Creative> Creatives { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
         /// subsequent call to `ListCreativesRequest` method to retrieve the next page of results. If this field is
         /// null, it means this is the last page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15976,13 +15976,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The list of custom bidding algorithms. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customBiddingAlgorithms")]
-        public virtual System.Collections.Generic.IList<CustomBiddingAlgorithm> CustomBiddingAlgorithms { get; set; } 
+        public virtual System.Collections.Generic.IList<CustomBiddingAlgorithm> CustomBiddingAlgorithms { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
         /// subsequent call to `ListCustomBiddingAlgorithmsRequest` method to retrieve the next page of results. If this
         /// field is null, it means this is the last page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15992,12 +15992,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The list of custom lists. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customLists")]
-        public virtual System.Collections.Generic.IList<CustomList> CustomLists { get; set; } 
+        public virtual System.Collections.Generic.IList<CustomList> CustomLists { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
         /// subsequent call to `ListCustomLists` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16008,12 +16008,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The list of first and third party audiences. Audience size properties will not be included. This
         /// list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstAndThirdPartyAudiences")]
-        public virtual System.Collections.Generic.IList<FirstAndThirdPartyAudience> FirstAndThirdPartyAudiences { get; set; } 
+        public virtual System.Collections.Generic.IList<FirstAndThirdPartyAudience> FirstAndThirdPartyAudiences { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
         /// subsequent call to `ListFirstAndThirdPartyAudiences` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16023,12 +16023,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The list of Google audiences. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleAudiences")]
-        public virtual System.Collections.Generic.IList<GoogleAudience> GoogleAudiences { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleAudience> GoogleAudiences { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
         /// subsequent call to `ListGoogleAudiences` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16038,12 +16038,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The list of insertion orders. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertionOrders")]
-        public virtual System.Collections.Generic.IList<InsertionOrder> InsertionOrders { get; set; } 
+        public virtual System.Collections.Generic.IList<InsertionOrder> InsertionOrders { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
         /// subsequent call to `ListInsertionOrders` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16054,12 +16054,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The list of inventory source groups. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceGroups")]
-        public virtual System.Collections.Generic.IList<InventorySourceGroup> InventorySourceGroups { get; set; } 
+        public virtual System.Collections.Generic.IList<InventorySourceGroup> InventorySourceGroups { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
         /// subsequent call to `ListInventorySourceGroups` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16069,12 +16069,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The list of inventory sources. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySources")]
-        public virtual System.Collections.Generic.IList<InventorySource> InventorySources { get; set; } 
+        public virtual System.Collections.Generic.IList<InventorySource> InventorySources { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
         /// subsequent call to `ListInventorySources` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16085,13 +16085,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The list of assigned targeting options. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOptions")]
-        public virtual System.Collections.Generic.IList<AssignedTargetingOption> AssignedTargetingOptions { get; set; } 
+        public virtual System.Collections.Generic.IList<AssignedTargetingOption> AssignedTargetingOptions { get; set; }
 
         /// <summary>A token identifying the next page of results. This value should be specified as the pageToken in a
         /// subsequent ListLineItemAssignedTargetingOptionsRequest to fetch the next page of results. This token will be
         /// absent if there are no more assigned_targeting_options to return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16101,12 +16101,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The list of line items. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
-        public virtual System.Collections.Generic.IList<LineItem> LineItems { get; set; } 
+        public virtual System.Collections.Generic.IList<LineItem> LineItems { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
         /// subsequent call to `ListLineItems` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16116,12 +16116,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The list of location lists. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationLists")]
-        public virtual System.Collections.Generic.IList<LocationList> LocationLists { get; set; } 
+        public virtual System.Collections.Generic.IList<LocationList> LocationLists { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
         /// subsequent call to `ListLocationLists` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16132,12 +16132,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The list of negative keyword lists. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negativeKeywordLists")]
-        public virtual System.Collections.Generic.IList<NegativeKeywordList> NegativeKeywordLists { get; set; } 
+        public virtual System.Collections.Generic.IList<NegativeKeywordList> NegativeKeywordLists { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
         /// subsequent call to `ListNegativeKeywordLists` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16148,12 +16148,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The list of negative keywords. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negativeKeywords")]
-        public virtual System.Collections.Generic.IList<NegativeKeyword> NegativeKeywords { get; set; } 
+        public virtual System.Collections.Generic.IList<NegativeKeyword> NegativeKeywords { get; set; }
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
         /// subsequent call to `ListNegativeKeywords` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16163,13 +16163,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The list of assigned targeting options. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOptions")]
-        public virtual System.Collections.Generic.IList<AssignedTargetingOption> AssignedTargetingOptions { get; set; } 
+        public virtual System.Collections.Generic.IList<AssignedTargetingOption> AssignedTargetingOptions { get; set; }
 
         /// <summary>A token identifying the next page of results. This value should be specified as the pageToken in a
         /// subsequent ListPartnerAssignedTargetingOptionsRequest to fetch the next page of results. This token will be
         /// absent if there are no more assigned_targeting_options to return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16180,11 +16180,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
         /// subsequent call to `ListPartners` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of partners. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partners")]
-        public virtual System.Collections.Generic.IList<Partner> Partners { get; set; } 
+        public virtual System.Collections.Generic.IList<Partner> Partners { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16196,11 +16196,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
         /// subsequent call to `ListSites` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of sites. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sites")]
-        public virtual System.Collections.Generic.IList<Site> Sites { get; set; } 
+        public virtual System.Collections.Generic.IList<Site> Sites { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16212,11 +16212,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
         /// subsequent call to `ListTargetingOptions` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of targeting options. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptions")]
-        public virtual System.Collections.Generic.IList<TargetingOption> TargetingOptions { get; set; } 
+        public virtual System.Collections.Generic.IList<TargetingOption> TargetingOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16228,11 +16228,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// subsequent call to `ListUsers` method to retrieve the next page of results. This token will be absent if
         /// there are no more results to return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of users. This list will be absent if empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("users")]
-        public virtual System.Collections.Generic.IList<User> Users { get; set; } 
+        public virtual System.Collections.Generic.IList<User> Users { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16243,25 +16243,25 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Required. Immutable. The unique ID of the advertiser the location list belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Required. The display name of the location list. Must be UTF-8 encoded with a maximum size of 240
         /// bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. The unique ID of the location list. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationListId")]
-        public virtual System.Nullable<long> LocationListId { get; set; } 
+        public virtual System.Nullable<long> LocationListId { get; set; }
 
         /// <summary>Required. Immutable. The type of location. All locations in the list will share this
         /// type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationType")]
-        public virtual string LocationType { get; set; } 
+        public virtual string LocationType { get; set; }
 
         /// <summary>Output only. The resource name of the location list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16273,11 +16273,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Lookback window, in days, from the last time a given user clicked on one of your ads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickDays")]
-        public virtual System.Nullable<int> ClickDays { get; set; } 
+        public virtual System.Nullable<int> ClickDays { get; set; }
 
         /// <summary>Lookback window, in days, from the last time a given user viewed one of your ads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("impressionDays")]
-        public virtual System.Nullable<int> ImpressionDays { get; set; } 
+        public virtual System.Nullable<int> ImpressionDays { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16290,19 +16290,19 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The ID of the Custom Bidding Algorithm used by this strategy. Only applicable when
         /// performance_goal_type is set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customBiddingAlgorithmId")]
-        public virtual System.Nullable<long> CustomBiddingAlgorithmId { get; set; } 
+        public virtual System.Nullable<long> CustomBiddingAlgorithmId { get; set; }
 
         /// <summary>The maximum average CPM that may be bid, in micros of the advertiser's currency. Must be greater
         /// than or equal to a billable unit of the given currency. For example, 1500000 represents 1.5 standard units
         /// of the currency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxAverageCpmBidAmountMicros")]
-        public virtual System.Nullable<long> MaxAverageCpmBidAmountMicros { get; set; } 
+        public virtual System.Nullable<long> MaxAverageCpmBidAmountMicros { get; set; }
 
         /// <summary>Required. The type of the performance goal that the bidding strategy tries to minimize while
         /// spending the full budget. `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` is not supported for this
         /// strategy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceGoalType")]
-        public virtual string PerformanceGoalType { get; set; } 
+        public virtual string PerformanceGoalType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16313,11 +16313,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Whether or not to report DV360 cost to CM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dv360ToCmCostReportingEnabled")]
-        public virtual System.Nullable<bool> Dv360ToCmCostReportingEnabled { get; set; } 
+        public virtual System.Nullable<bool> Dv360ToCmCostReportingEnabled { get; set; }
 
         /// <summary>Whether or not to include DV360 data in CM data transfer reports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dv360ToCmDataSharingEnabled")]
-        public virtual System.Nullable<bool> Dv360ToCmDataSharingEnabled { get; set; } 
+        public virtual System.Nullable<bool> Dv360ToCmDataSharingEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16328,19 +16328,19 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The 3-letter currency code defined in ISO 4217.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
-        public virtual string CurrencyCode { get; set; } 
+        public virtual string CurrencyCode { get; set; }
 
         /// <summary>Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999
         /// inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be
         /// positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is
         /// represented as `units`=-1 and `nanos`=-750,000,000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
-        public virtual System.Nullable<int> Nanos { get; set; } 
+        public virtual System.Nullable<int> Nanos { get; set; }
 
         /// <summary>The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US
         /// dollar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("units")]
-        public virtual System.Nullable<long> Units { get; set; } 
+        public virtual System.Nullable<long> Units { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16354,11 +16354,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// Valid characters are restricted to ASCII characters only. The only URL-escaping permitted is for
         /// representing whitespace between words. Leading or trailing whitespace is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keywordValue")]
-        public virtual string KeywordValue { get; set; } 
+        public virtual string KeywordValue { get; set; }
 
         /// <summary>Output only. The resource name of the negative keyword.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16369,20 +16369,20 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The unique ID of the advertiser the negative keyword list belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; } 
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
 
         /// <summary>Required. The display name of the negative keyword list. Must be UTF-8 encoded with a maximum size
         /// of 255 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. The resource name of the negative keyword list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The unique ID of the negative keyword list. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negativeKeywordListId")]
-        public virtual System.Nullable<long> NegativeKeywordListId { get; set; } 
+        public virtual System.Nullable<long> NegativeKeywordListId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16395,7 +16395,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. ID of the negative keyword list. Should refer to the negative_keyword_list_id field of a
         /// NegativeKeywordList resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negativeKeywordListId")]
-        public virtual System.Nullable<long> NegativeKeywordListId { get; set; } 
+        public virtual System.Nullable<long> NegativeKeywordListId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16407,37 +16407,37 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. The click tracking URL of the OBA icon. Only URLs of the following domains are allowed: *
         /// https://info.evidon.com * https://l.betrad.com</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickTrackingUrl")]
-        public virtual string ClickTrackingUrl { get; set; } 
+        public virtual string ClickTrackingUrl { get; set; }
 
         /// <summary>The dimensions of the OBA icon.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
-        public virtual Dimensions Dimensions { get; set; } 
+        public virtual Dimensions Dimensions { get; set; }
 
         /// <summary>Required. The landing page URL of the OBA icon. Only URLs of the following domains are allowed: *
         /// https://info.evidon.com * https://l.betrad.com</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("landingPageUrl")]
-        public virtual string LandingPageUrl { get; set; } 
+        public virtual string LandingPageUrl { get; set; }
 
         /// <summary>The position of the OBA icon on the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("position")]
-        public virtual string Position { get; set; } 
+        public virtual string Position { get; set; }
 
         /// <summary>The program of the OBA icon. For example: “AdChoices”.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("program")]
-        public virtual string Program { get; set; } 
+        public virtual string Program { get; set; }
 
         /// <summary>The MIME type of the OBA icon resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceMimeType")]
-        public virtual string ResourceMimeType { get; set; } 
+        public virtual string ResourceMimeType { get; set; }
 
         /// <summary>The URL of the OBA icon resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUrl")]
-        public virtual string ResourceUrl { get; set; } 
+        public virtual string ResourceUrl { get; set; }
 
         /// <summary>Required. The view tracking URL of the OBA icon. Only URLs of the following domains are allowed: *
         /// https://info.evidon.com * https://l.betrad.com</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewTrackingUrl")]
-        public virtual string ViewTrackingUrl { get; set; } 
+        public virtual string ViewTrackingUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16449,12 +16449,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The on screen position.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onScreenPosition")]
-        public virtual string OnScreenPosition { get; set; } 
+        public virtual string OnScreenPosition { get; set; }
 
         /// <summary>Required. The targeting_option_id field when targeting_type is
         /// `TARGETING_TYPE_ON_SCREEN_POSITION`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; } 
+        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16467,7 +16467,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The on screen position.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onScreenPosition")]
-        public virtual string OnScreenPosition { get; set; } 
+        public virtual string OnScreenPosition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16479,16 +16479,16 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The display name of the operating system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Indicates if this option is being negatively targeted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negative")]
-        public virtual System.Nullable<bool> Negative { get; set; } 
+        public virtual System.Nullable<bool> Negative { get; set; }
 
         /// <summary>Required. The targeting option ID populated in targeting_option_id field when targeting_type is
         /// `TARGETING_TYPE_OPERATING_SYSTEM`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; } 
+        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16500,7 +16500,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The display name of the operating system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16512,23 +16512,23 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -16536,7 +16536,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16548,7 +16548,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Maximum number of impressions to serve every day. Applicable when the budget is impression based.
         /// Must be greater than 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dailyMaxImpressions")]
-        public virtual System.Nullable<long> DailyMaxImpressions { get; set; } 
+        public virtual System.Nullable<long> DailyMaxImpressions { get; set; }
 
         /// <summary>Maximum currency amount to spend every day in micros of advertiser's currency. Applicable when the
         /// budget is currency based. Must be greater than 0. For example, for 1.5 standard unit of the currency, set
@@ -16559,18 +16559,18 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// round down to 10250000, a value of 10.25. If set to 505, it will round up to 10000, a value of
         /// 0.01.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dailyMaxMicros")]
-        public virtual System.Nullable<long> DailyMaxMicros { get; set; } 
+        public virtual System.Nullable<long> DailyMaxMicros { get; set; }
 
         /// <summary>Required. The time period in which the pacing budget will be spent. When automatic budget
         /// allocation is enabled at the insertion order via auto_budget_allocation, this field is output only and
         /// defaults to `PACING_PERIOD_FLIGHT`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pacingPeriod")]
-        public virtual string PacingPeriod { get; set; } 
+        public virtual string PacingPeriod { get; set; }
 
         /// <summary>Required. The type of pacing that defines how the budget amount will be spent across the
         /// pacing_period.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pacingType")]
-        public virtual string PacingType { get; set; } 
+        public virtual string PacingType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16582,16 +16582,16 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Required. File types that will be returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
-        public virtual System.Collections.Generic.IList<string> FileType { get; set; } 
+        public virtual System.Collections.Generic.IList<string> FileType { get; set; }
 
         /// <summary>The IDs of the specified filter type. This is used to filter entities to fetch. If filter type is
         /// not `FILTER_TYPE_NONE`, at least one ID must be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> FilterIds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> FilterIds { get; set; }
 
         /// <summary>Required. Filter type used to filter fetched entities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterType")]
-        public virtual string FilterType { get; set; } 
+        public virtual string FilterType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16603,12 +16603,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The parental status of the audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentalStatus")]
-        public virtual string ParentalStatus { get; set; } 
+        public virtual string ParentalStatus { get; set; }
 
         /// <summary>Required. The targeting_option_id of a TargetingOption of type
         /// `TARGETING_TYPE_PARENTAL_STATUS`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; } 
+        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16620,7 +16620,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The parental status of an audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentalStatus")]
-        public virtual string ParentalStatus { get; set; } 
+        public virtual string ParentalStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16631,39 +16631,39 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Ad server related settings of the partner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adServerConfig")]
-        public virtual PartnerAdServerConfig AdServerConfig { get; set; } 
+        public virtual PartnerAdServerConfig AdServerConfig { get; set; }
 
         /// <summary>Settings that control how partner data may be accessed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataAccessConfig")]
-        public virtual PartnerDataAccessConfig DataAccessConfig { get; set; } 
+        public virtual PartnerDataAccessConfig DataAccessConfig { get; set; }
 
         /// <summary>The display name of the partner. Must be UTF-8 encoded with a maximum size of 240 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. The status of the partner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityStatus")]
-        public virtual string EntityStatus { get; set; } 
+        public virtual string EntityStatus { get; set; }
 
         /// <summary>Settings that control which exchanges are enabled for the partner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exchangeConfig")]
-        public virtual ExchangeConfig ExchangeConfig { get; set; } 
+        public virtual ExchangeConfig ExchangeConfig { get; set; }
 
         /// <summary>General settings of the partner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generalConfig")]
-        public virtual PartnerGeneralConfig GeneralConfig { get; set; } 
+        public virtual PartnerGeneralConfig GeneralConfig { get; set; }
 
         /// <summary>Output only. The resource name of the partner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The unique ID of the partner. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerId")]
-        public virtual System.Nullable<long> PartnerId { get; set; } 
+        public virtual System.Nullable<long> PartnerId { get; set; }
 
         /// <summary>Output only. The timestamp when the partner was last updated. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16674,7 +16674,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Measurement settings of a partner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("measurementConfig")]
-        public virtual MeasurementConfig MeasurementConfig { get; set; } 
+        public virtual MeasurementConfig MeasurementConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16688,29 +16688,29 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Required. The type of the partner cost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("costType")]
-        public virtual string CostType { get; set; } 
+        public virtual string CostType { get; set; }
 
         /// <summary>The CPM fee amount in micros of advertiser's currency. Applicable when the fee_type is
         /// `PARTNER_FEE_TYPE_CPM_FEE`. Must be greater than or equal to 0. For example, for 1.5 standard unit of the
         /// advertiser's currency, set this field to 1500000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feeAmount")]
-        public virtual System.Nullable<long> FeeAmount { get; set; } 
+        public virtual System.Nullable<long> FeeAmount { get; set; }
 
         /// <summary>The media fee percentage in millis (1/1000 of a percent). Applicable when the fee_type is
         /// `PARTNER_FEE_TYPE_MEDIA_FEE`. Must be greater than or equal to 0. For example: 100 represents
         /// 0.1%.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feePercentageMillis")]
-        public virtual System.Nullable<long> FeePercentageMillis { get; set; } 
+        public virtual System.Nullable<long> FeePercentageMillis { get; set; }
 
         /// <summary>Required. The fee type for this partner cost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feeType")]
-        public virtual string FeeType { get; set; } 
+        public virtual string FeeType { get; set; }
 
         /// <summary>The invoice type for this partner cost. * Required when cost_type is one of: -
         /// `PARTNER_COST_TYPE_ADLOOX` - `PARTNER_COST_TYPE_DOUBLE_VERIFY` - `PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE`. *
         /// Output only for other types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invoiceType")]
-        public virtual string InvoiceType { get; set; } 
+        public virtual string InvoiceType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16722,7 +16722,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Structured Data Files (SDF) settings for the partner. The SDF configuration for the
         /// partner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sdfConfig")]
-        public virtual SdfConfig SdfConfig { get; set; } 
+        public virtual SdfConfig SdfConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16733,12 +16733,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Immutable. Partner's currency in ISO 4217 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
-        public virtual string CurrencyCode { get; set; } 
+        public virtual string CurrencyCode { get; set; }
 
         /// <summary>Immutable. The standard TZ database name of the partner's time zone. For example,
         /// `America/New_York`. See more at: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
-        public virtual string TimeZone { get; set; } 
+        public virtual string TimeZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16756,11 +16756,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// represents the total media cost percent markup in millis. For example, 100 represents 0.1% (decimal
         /// 0.001).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("markupAmount")]
-        public virtual System.Nullable<long> MarkupAmount { get; set; } 
+        public virtual System.Nullable<long> MarkupAmount { get; set; }
 
         /// <summary>Required. The markup type of the partner revenue model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("markupType")]
-        public virtual string MarkupType { get; set; } 
+        public virtual string MarkupType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16773,23 +16773,23 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// one of: * `PERFORMANCE_GOAL_TYPE_CPM` * `PERFORMANCE_GOAL_TYPE_CPC` * `PERFORMANCE_GOAL_TYPE_CPA` *
         /// `PERFORMANCE_GOAL_TYPE_CPIAVC` For example 1500000 represents 1.5 standard units of the currency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceGoalAmountMicros")]
-        public virtual System.Nullable<long> PerformanceGoalAmountMicros { get; set; } 
+        public virtual System.Nullable<long> PerformanceGoalAmountMicros { get; set; }
 
         /// <summary>The decimal representation of the goal percentage in micros. Applicable when performance_goal_type
         /// is one of: * `PERFORMANCE_GOAL_TYPE_CTR` * `PERFORMANCE_GOAL_TYPE_VIEWABILITY` For example, 70000 represents
         /// 7% (decimal 0.07).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceGoalPercentageMicros")]
-        public virtual System.Nullable<long> PerformanceGoalPercentageMicros { get; set; } 
+        public virtual System.Nullable<long> PerformanceGoalPercentageMicros { get; set; }
 
         /// <summary>A key performance indicator (KPI) string, which can be empty. Must be UTF-8 encoded with a length
         /// of no more than 100 characters. Applicable when performance_goal_type is set to
         /// `PERFORMANCE_GOAL_TYPE_OTHER`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceGoalString")]
-        public virtual string PerformanceGoalString { get; set; } 
+        public virtual string PerformanceGoalString { get; set; }
 
         /// <summary>Required. The type of the performance goal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceGoalType")]
-        public virtual string PerformanceGoalType { get; set; } 
+        public virtual string PerformanceGoalType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16801,14 +16801,14 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The ID of the Custom Bidding Algorithm used by this strategy. Only applicable when
         /// performance_goal_type is set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customBiddingAlgorithmId")]
-        public virtual System.Nullable<long> CustomBiddingAlgorithmId { get; set; } 
+        public virtual System.Nullable<long> CustomBiddingAlgorithmId { get; set; }
 
         /// <summary>The maximum average CPM that may be bid, in micros of the advertiser's currency. Must be greater
         /// than or equal to a billable unit of the given currency. Not applicable when performance_goal_type is set to
         /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`. For example, 1500000 represents 1.5 standard units of
         /// the currency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxAverageCpmBidAmountMicros")]
-        public virtual System.Nullable<long> MaxAverageCpmBidAmountMicros { get; set; } 
+        public virtual System.Nullable<long> MaxAverageCpmBidAmountMicros { get; set; }
 
         /// <summary>Required. The performance goal the bidding strategy will attempt to meet or beat, in micros of the
         /// advertiser's currency or in micro of the ROAS (Return On Advertising Spend) value which is also based on
@@ -16823,14 +16823,14 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// CPM target is $2 and an impression is 40% likely to be viewable, the bid price will be $0.80 CPM (40% of
         /// $2). For example, 1500000 represents 1.5 standard units of the currency or ROAS value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceGoalAmountMicros")]
-        public virtual System.Nullable<long> PerformanceGoalAmountMicros { get; set; } 
+        public virtual System.Nullable<long> PerformanceGoalAmountMicros { get; set; }
 
         /// <summary>Required. The type of the performance goal that the bidding strategy will try to meet or beat. For
         /// line item level usage, the value must be one of: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA` *
         /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` *
         /// `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceGoalType")]
-        public virtual string PerformanceGoalType { get; set; } 
+        public virtual string PerformanceGoalType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16843,14 +16843,14 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. ID of the proximity location list. Should refer to the location_list_id field of a
         /// LocationList resource whose type is `TARGETING_LOCATION_TYPE_PROXIMITY`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proximityLocationListId")]
-        public virtual System.Nullable<long> ProximityLocationListId { get; set; } 
+        public virtual System.Nullable<long> ProximityLocationListId { get; set; }
 
         /// <summary>Required. Radius range for proximity location list. This represents the size of the area around a
         /// chosen location that will be targeted. `All` proximity location targeting under a single line item must have
         /// the same radius range value. Set this value to match any existing targeting. If updated, this field will
         /// change the radius range for all proximity targeting under the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proximityRadiusRange")]
-        public virtual string ProximityRadiusRange { get; set; } 
+        public virtual string ProximityRadiusRange { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16861,11 +16861,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The publisher reviewing the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisherName")]
-        public virtual string PublisherName { get; set; } 
+        public virtual string PublisherName { get; set; }
 
         /// <summary>Status of the publisher review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16877,21 +16877,21 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The rate type. Acceptable values are `INVENTORY_SOURCE_RATE_TYPE_CPM_FIXED`,
         /// `INVENTORY_SOURCE_RATE_TYPE_CPM_FLOOR`, and `INVENTORY_SOURCE_RATE_TYPE_CPD`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceRateType")]
-        public virtual string InventorySourceRateType { get; set; } 
+        public virtual string InventorySourceRateType { get; set; }
 
         /// <summary>Output only. The amount that the buyer has committed to spending on the inventory source up front.
         /// Only applicable for guaranteed inventory sources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumSpend")]
-        public virtual Money MinimumSpend { get; set; } 
+        public virtual Money MinimumSpend { get; set; }
 
         /// <summary>The rate for the inventory source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rate")]
-        public virtual Money Rate { get; set; } 
+        public virtual Money Rate { get; set; }
 
         /// <summary>Required for guaranteed inventory sources. The number of impressions guaranteed by the
         /// seller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unitsPurchased")]
-        public virtual System.Nullable<long> UnitsPurchased { get; set; } 
+        public virtual System.Nullable<long> UnitsPurchased { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16903,12 +16903,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Indicates if this option is being negatively targeted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negative")]
-        public virtual System.Nullable<bool> Negative { get; set; } 
+        public virtual System.Nullable<bool> Negative { get; set; }
 
         /// <summary>Required. ID of the regional location list. Should refer to the location_list_id field of a
         /// LocationList resource whose type is `TARGETING_LOCATION_TYPE_REGIONAL`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionalLocationListId")]
-        public virtual System.Nullable<long> RegionalLocationListId { get; set; } 
+        public virtual System.Nullable<long> RegionalLocationListId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16920,23 +16920,23 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Represents the basic approval needed for a creative to begin serving. Summary of
         /// creative_and_landing_page_review_status and content_and_policy_review_status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approvalStatus")]
-        public virtual string ApprovalStatus { get; set; } 
+        public virtual string ApprovalStatus { get; set; }
 
         /// <summary>Content and policy review status for the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentAndPolicyReviewStatus")]
-        public virtual string ContentAndPolicyReviewStatus { get; set; } 
+        public virtual string ContentAndPolicyReviewStatus { get; set; }
 
         /// <summary>Creative and landing page review status for the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeAndLandingPageReviewStatus")]
-        public virtual string CreativeAndLandingPageReviewStatus { get; set; } 
+        public virtual string CreativeAndLandingPageReviewStatus { get; set; }
 
         /// <summary>Exchange review statuses for the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exchangeReviewStatuses")]
-        public virtual System.Collections.Generic.IList<ExchangeReviewStatus> ExchangeReviewStatuses { get; set; } 
+        public virtual System.Collections.Generic.IList<ExchangeReviewStatus> ExchangeReviewStatuses { get; set; }
 
         /// <summary>Publisher review statuses for the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisherReviewStatuses")]
-        public virtual System.Collections.Generic.IList<PublisherReviewStatus> PublisherReviewStatuses { get; set; } 
+        public virtual System.Collections.Generic.IList<PublisherReviewStatus> PublisherReviewStatuses { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16947,11 +16947,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>An administrator email address to which the SDF processing status reports will be sent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminEmail")]
-        public virtual string AdminEmail { get; set; } 
+        public virtual string AdminEmail { get; set; }
 
         /// <summary>Required. The version of SDF being used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16964,7 +16964,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// the format `download/sdfdownloadtasks/media/{media_id}`. `media_id` will be made available by the long
         /// running operation service once the task status is done.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
-        public virtual string ResourceName { get; set; } 
+        public virtual string ResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16975,15 +16975,15 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The time when the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The time when execution was completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>The SDF version used to execute this download task.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16995,11 +16995,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Required. ID of the sensitive category to be EXCLUDED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedTargetingOptionId")]
-        public virtual string ExcludedTargetingOptionId { get; set; } 
+        public virtual string ExcludedTargetingOptionId { get; set; }
 
         /// <summary>Output only. An enum for the DV360 Sensitive category content classifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveCategory")]
-        public virtual string SensitiveCategory { get; set; } 
+        public virtual string SensitiveCategory { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17011,7 +17011,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. An enum for the DV360 Sensitive category content classifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveCategory")]
-        public virtual string SensitiveCategory { get; set; } 
+        public virtual string SensitiveCategory { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17022,12 +17022,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The resource name of the site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. The URL or app ID of the site. Must be UTF-8 encoded with a maximum length of 240
         /// bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlOrAppId")]
-        public virtual string UrlOrAppId { get; set; } 
+        public virtual string UrlOrAppId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17042,17 +17042,17 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17065,7 +17065,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. The targeting_option_id of a TargetingOption of type
         /// `TARGETING_TYPE_SUB_EXCHANGE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; } 
+        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17077,7 +17077,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The display name of the sub-exchange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17088,116 +17088,116 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Age range details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageRangeDetails")]
-        public virtual AgeRangeTargetingOptionDetails AgeRangeDetails { get; set; } 
+        public virtual AgeRangeTargetingOptionDetails AgeRangeDetails { get; set; }
 
         /// <summary>App category details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appCategoryDetails")]
-        public virtual AppCategoryTargetingOptionDetails AppCategoryDetails { get; set; } 
+        public virtual AppCategoryTargetingOptionDetails AppCategoryDetails { get; set; }
 
         /// <summary>Authorized seller status resource details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedSellerStatusDetails")]
-        public virtual AuthorizedSellerStatusTargetingOptionDetails AuthorizedSellerStatusDetails { get; set; } 
+        public virtual AuthorizedSellerStatusTargetingOptionDetails AuthorizedSellerStatusDetails { get; set; }
 
         /// <summary>Browser details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("browserDetails")]
-        public virtual BrowserTargetingOptionDetails BrowserDetails { get; set; } 
+        public virtual BrowserTargetingOptionDetails BrowserDetails { get; set; }
 
         /// <summary>Carrier and ISP details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierAndIspDetails")]
-        public virtual CarrierAndIspTargetingOptionDetails CarrierAndIspDetails { get; set; } 
+        public virtual CarrierAndIspTargetingOptionDetails CarrierAndIspDetails { get; set; }
 
         /// <summary>Category resource details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoryDetails")]
-        public virtual CategoryTargetingOptionDetails CategoryDetails { get; set; } 
+        public virtual CategoryTargetingOptionDetails CategoryDetails { get; set; }
 
         /// <summary>Content instream position details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentInstreamPositionDetails")]
-        public virtual ContentInstreamPositionTargetingOptionDetails ContentInstreamPositionDetails { get; set; } 
+        public virtual ContentInstreamPositionTargetingOptionDetails ContentInstreamPositionDetails { get; set; }
 
         /// <summary>Content outstream position details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentOutstreamPositionDetails")]
-        public virtual ContentOutstreamPositionTargetingOptionDetails ContentOutstreamPositionDetails { get; set; } 
+        public virtual ContentOutstreamPositionTargetingOptionDetails ContentOutstreamPositionDetails { get; set; }
 
         /// <summary>Device make and model resource details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceMakeModelDetails")]
-        public virtual DeviceMakeModelTargetingOptionDetails DeviceMakeModelDetails { get; set; } 
+        public virtual DeviceMakeModelTargetingOptionDetails DeviceMakeModelDetails { get; set; }
 
         /// <summary>Device type details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceTypeDetails")]
-        public virtual DeviceTypeTargetingOptionDetails DeviceTypeDetails { get; set; } 
+        public virtual DeviceTypeTargetingOptionDetails DeviceTypeDetails { get; set; }
 
         /// <summary>Digital content label details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digitalContentLabelDetails")]
-        public virtual DigitalContentLabelTargetingOptionDetails DigitalContentLabelDetails { get; set; } 
+        public virtual DigitalContentLabelTargetingOptionDetails DigitalContentLabelDetails { get; set; }
 
         /// <summary>Environment details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environmentDetails")]
-        public virtual EnvironmentTargetingOptionDetails EnvironmentDetails { get; set; } 
+        public virtual EnvironmentTargetingOptionDetails EnvironmentDetails { get; set; }
 
         /// <summary>Exchange details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exchangeDetails")]
-        public virtual ExchangeTargetingOptionDetails ExchangeDetails { get; set; } 
+        public virtual ExchangeTargetingOptionDetails ExchangeDetails { get; set; }
 
         /// <summary>Gender details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("genderDetails")]
-        public virtual GenderTargetingOptionDetails GenderDetails { get; set; } 
+        public virtual GenderTargetingOptionDetails GenderDetails { get; set; }
 
         /// <summary>Geographic region resource details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoRegionDetails")]
-        public virtual GeoRegionTargetingOptionDetails GeoRegionDetails { get; set; } 
+        public virtual GeoRegionTargetingOptionDetails GeoRegionDetails { get; set; }
 
         /// <summary>Household income details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("householdIncomeDetails")]
-        public virtual HouseholdIncomeTargetingOptionDetails HouseholdIncomeDetails { get; set; } 
+        public virtual HouseholdIncomeTargetingOptionDetails HouseholdIncomeDetails { get; set; }
 
         /// <summary>Language resource details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageDetails")]
-        public virtual LanguageTargetingOptionDetails LanguageDetails { get; set; } 
+        public virtual LanguageTargetingOptionDetails LanguageDetails { get; set; }
 
         /// <summary>Output only. The resource name for this targeting option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>On screen position details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onScreenPositionDetails")]
-        public virtual OnScreenPositionTargetingOptionDetails OnScreenPositionDetails { get; set; } 
+        public virtual OnScreenPositionTargetingOptionDetails OnScreenPositionDetails { get; set; }
 
         /// <summary>Operating system resources details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatingSystemDetails")]
-        public virtual OperatingSystemTargetingOptionDetails OperatingSystemDetails { get; set; } 
+        public virtual OperatingSystemTargetingOptionDetails OperatingSystemDetails { get; set; }
 
         /// <summary>Parental status details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentalStatusDetails")]
-        public virtual ParentalStatusTargetingOptionDetails ParentalStatusDetails { get; set; } 
+        public virtual ParentalStatusTargetingOptionDetails ParentalStatusDetails { get; set; }
 
         /// <summary>Sensitive Category details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveCategoryDetails")]
-        public virtual SensitiveCategoryTargetingOptionDetails SensitiveCategoryDetails { get; set; } 
+        public virtual SensitiveCategoryTargetingOptionDetails SensitiveCategoryDetails { get; set; }
 
         /// <summary>Sub-exchange details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subExchangeDetails")]
-        public virtual SubExchangeTargetingOptionDetails SubExchangeDetails { get; set; } 
+        public virtual SubExchangeTargetingOptionDetails SubExchangeDetails { get; set; }
 
         /// <summary>Output only. A unique identifier for this targeting option. The tuple {`targeting_type`,
         /// `targeting_option_id`} will be unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; } 
+        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>Output only. The type of this targeting option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingType")]
-        public virtual string TargetingType { get; set; } 
+        public virtual string TargetingType { get; set; }
 
         /// <summary>User rewarded content details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userRewardedContentDetails")]
-        public virtual UserRewardedContentTargetingOptionDetails UserRewardedContentDetails { get; set; } 
+        public virtual UserRewardedContentTargetingOptionDetails UserRewardedContentDetails { get; set; }
 
         /// <summary>Video player size details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoPlayerSizeDetails")]
-        public virtual VideoPlayerSizeTargetingOptionDetails VideoPlayerSizeDetails { get; set; } 
+        public virtual VideoPlayerSizeTargetingOptionDetails VideoPlayerSizeDetails { get; set; }
 
         /// <summary>Viewability resource details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewabilityDetails")]
-        public virtual ViewabilityTargetingOptionDetails ViewabilityDetails { get; set; } 
+        public virtual ViewabilityTargetingOptionDetails ViewabilityDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17209,7 +17209,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Whether or not order ID reporting for pixels is enabled. This value cannot be changed once set to
         /// `true`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pixelOrderIdReportingEnabled")]
-        public virtual System.Nullable<bool> PixelOrderIdReportingEnabled { get; set; } 
+        public virtual System.Nullable<bool> PixelOrderIdReportingEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17220,12 +17220,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The type of interaction needs to be tracked by the tracking URL</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>Tracking URL used to track the interaction. Provide a URL with optional path or query string,
         /// beginning with `https:`. For example, https://www.example.com/path</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17237,15 +17237,15 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Third party brand verifier -- Adloox.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adloox")]
-        public virtual Adloox Adloox { get; set; } 
+        public virtual Adloox Adloox { get; set; }
 
         /// <summary>Third party brand verifier -- DoubleVerify.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("doubleVerify")]
-        public virtual DoubleVerify DoubleVerify { get; set; } 
+        public virtual DoubleVerify DoubleVerify { get; set; }
 
         /// <summary>Third party brand verifier -- Integral Ad Science.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integralAdScience")]
-        public virtual IntegralAdScience IntegralAdScience { get; set; } 
+        public virtual IntegralAdScience IntegralAdScience { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17256,11 +17256,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Required. The upper bound of a time range, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Required. The lower bound of a time range, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17271,11 +17271,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Required. The name of the timer event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. The name used to identify this timer event in reports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportingName")]
-        public virtual string ReportingName { get; set; } 
+        public virtual string ReportingName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17286,17 +17286,17 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Required. The ID of the Floodlight activity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivityId")]
-        public virtual System.Nullable<long> FloodlightActivityId { get; set; } 
+        public virtual System.Nullable<long> FloodlightActivityId { get; set; }
 
         /// <summary>Required. The number of days after an ad has been clicked in which a conversion may be counted.
         /// Must be between 0 and 90 inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postClickLookbackWindowDays")]
-        public virtual System.Nullable<int> PostClickLookbackWindowDays { get; set; } 
+        public virtual System.Nullable<int> PostClickLookbackWindowDays { get; set; }
 
         /// <summary>Required. The number of days after an ad has been viewed in which a conversion may be counted. Must
         /// be between 0 and 90 inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postViewLookbackWindowDays")]
-        public virtual System.Nullable<int> PostViewLookbackWindowDays { get; set; } 
+        public virtual System.Nullable<int> PostViewLookbackWindowDays { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17308,40 +17308,40 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The bit rate for the audio stream of the transcoded video, or the bit rate for the transcoded
         /// audio, in kilobits per second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioBitRateKbps")]
-        public virtual System.Nullable<long> AudioBitRateKbps { get; set; } 
+        public virtual System.Nullable<long> AudioBitRateKbps { get; set; }
 
         /// <summary>The sample rate for the audio stream of the transcoded video, or the sample rate for the transcoded
         /// audio, in hertz.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioSampleRateHz")]
-        public virtual System.Nullable<long> AudioSampleRateHz { get; set; } 
+        public virtual System.Nullable<long> AudioSampleRateHz { get; set; }
 
         /// <summary>The transcoding bit rate of the transcoded video, in kilobits per second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bitRateKbps")]
-        public virtual System.Nullable<long> BitRateKbps { get; set; } 
+        public virtual System.Nullable<long> BitRateKbps { get; set; }
 
         /// <summary>The dimensions of the transcoded video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
-        public virtual Dimensions Dimensions { get; set; } 
+        public virtual Dimensions Dimensions { get; set; }
 
         /// <summary>The size of the transcoded file, in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileSizeBytes")]
-        public virtual System.Nullable<long> FileSizeBytes { get; set; } 
+        public virtual System.Nullable<long> FileSizeBytes { get; set; }
 
         /// <summary>The frame rate of the transcoded video, in frames per second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frameRate")]
-        public virtual System.Nullable<float> FrameRate { get; set; } 
+        public virtual System.Nullable<float> FrameRate { get; set; }
 
         /// <summary>The MIME type of the transcoded file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; } 
+        public virtual string MimeType { get; set; }
 
         /// <summary>The name of the transcoded file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Indicates if the transcoding was successful.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcoded")]
-        public virtual System.Nullable<bool> Transcoded { get; set; } 
+        public virtual System.Nullable<bool> Transcoded { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17353,11 +17353,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>The unique creative identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The registry provides unique creative identifiers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("registry")]
-        public virtual string Registry { get; set; } 
+        public virtual string Registry { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17369,13 +17369,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Indicates if this option is being negatively targeted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negative")]
-        public virtual System.Nullable<bool> Negative { get; set; } 
+        public virtual System.Nullable<bool> Negative { get; set; }
 
         /// <summary>Required. The URL, for example `example.com`. DV360 supports two levels of subdirectory targeting,
         /// for example `www.example.com/one-subdirectory-level/second-level`, and five levels of subdomain targeting,
         /// for example `five.four.three.two.one.example.com`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17387,24 +17387,24 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>The assigned user roles. Required in CreateUser. Output only in UpdateUser. Can only be updated
         /// through BulkEditAssignedUserRoles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedUserRoles")]
-        public virtual System.Collections.Generic.IList<AssignedUserRole> AssignedUserRoles { get; set; } 
+        public virtual System.Collections.Generic.IList<AssignedUserRole> AssignedUserRoles { get; set; }
 
         /// <summary>Required. The display name of the user. Must be UTF-8 encoded with a maximum size of 240
         /// bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Required. Immutable. The email address used to identify the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
+        public virtual string Email { get; set; }
 
         /// <summary>Output only. The resource name of the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The unique ID of the user. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
-        public virtual System.Nullable<long> UserId { get; set; } 
+        public virtual System.Nullable<long> UserId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17417,11 +17417,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. The targeting_option_id field when targeting_type is
         /// `TARGETING_TYPE_USER_REWARDED_CONTENT`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; } 
+        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>Output only. User rewarded content status for video ads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userRewardedContent")]
-        public virtual string UserRewardedContent { get; set; } 
+        public virtual string UserRewardedContent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17433,7 +17433,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. User rewarded content status for video ads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userRewardedContent")]
-        public virtual string UserRewardedContent { get; set; } 
+        public virtual string UserRewardedContent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17447,11 +17447,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. The targeting_option_id field when targeting_type is
         /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; } 
+        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>Output only. The video player size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoPlayerSize")]
-        public virtual string VideoPlayerSize { get; set; } 
+        public virtual string VideoPlayerSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17463,7 +17463,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The video player size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoPlayerSize")]
-        public virtual string VideoPlayerSize { get; set; } 
+        public virtual string VideoPlayerSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17476,11 +17476,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_VIEWABILITY` (e.g.,
         /// "509010" for targeting the `VIEWABILITY_10_PERCENT_OR_MORE` option).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
-        public virtual string TargetingOptionId { get; set; } 
+        public virtual string TargetingOptionId { get; set; }
 
         /// <summary>Output only. The predicted viewability percentage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewability")]
-        public virtual string Viewability { get; set; } 
+        public virtual string Viewability { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17492,7 +17492,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>Output only. The predicted viewability percentage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewability")]
-        public virtual string Viewability { get; set; } 
+        public virtual string Viewability { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

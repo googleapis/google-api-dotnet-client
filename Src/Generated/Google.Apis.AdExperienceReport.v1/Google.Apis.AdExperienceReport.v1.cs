@@ -373,37 +373,37 @@ namespace Google.Apis.AdExperienceReport.v1.Data
     {
         /// <summary>The site's Ad Experience Report status on this platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("betterAdsStatus")]
-        public virtual string BetterAdsStatus { get; set; } 
+        public virtual string BetterAdsStatus { get; set; }
 
         /// <summary>The time at which [enforcement](https://support.google.com/webtools/answer/7308033) against the
         /// site began or will begin on this platform. Not set when the filter_status is OFF.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enforcementTime")]
-        public virtual object EnforcementTime { get; set; } 
+        public virtual object EnforcementTime { get; set; }
 
         /// <summary>The site's [enforcement status](https://support.google.com/webtools/answer/7308033) on this
         /// platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterStatus")]
-        public virtual string FilterStatus { get; set; } 
+        public virtual string FilterStatus { get; set; }
 
         /// <summary>The time at which the site's status last changed on this platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastChangeTime")]
-        public virtual object LastChangeTime { get; set; } 
+        public virtual object LastChangeTime { get; set; }
 
         /// <summary>The site's regions on this platform. No longer populated, because there is no longer any semantic
         /// difference between sites in different regions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
-        public virtual System.Collections.Generic.IList<string> Region { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Region { get; set; }
 
         /// <summary>A link to the full Ad Experience Report for the site on this platform.. Not set in
         /// ViolatingSitesResponse. Note that you must complete the [Search Console verification
         /// process](https://support.google.com/webmasters/answer/9008080) for the site before you can access the full
         /// report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportUrl")]
-        public virtual string ReportUrl { get; set; } 
+        public virtual string ReportUrl { get; set; }
 
         /// <summary>Whether the site is currently under review on this platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("underReview")]
-        public virtual System.Nullable<bool> UnderReview { get; set; } 
+        public virtual System.Nullable<bool> UnderReview { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -414,15 +414,15 @@ namespace Google.Apis.AdExperienceReport.v1.Data
     {
         /// <summary>The site's Ad Experience Report summary on desktop.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desktopSummary")]
-        public virtual PlatformSummary DesktopSummary { get; set; } 
+        public virtual PlatformSummary DesktopSummary { get; set; }
 
         /// <summary>The site's Ad Experience Report summary on mobile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileSummary")]
-        public virtual PlatformSummary MobileSummary { get; set; } 
+        public virtual PlatformSummary MobileSummary { get; set; }
 
         /// <summary>The name of the reviewed site, e.g. `google.com`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewedSite")]
-        public virtual string ReviewedSite { get; set; } 
+        public virtual string ReviewedSite { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -433,7 +433,7 @@ namespace Google.Apis.AdExperienceReport.v1.Data
     {
         /// <summary>The list of violating sites.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violatingSites")]
-        public virtual System.Collections.Generic.IList<SiteSummaryResponse> ViolatingSites { get; set; } 
+        public virtual System.Collections.Generic.IList<SiteSummaryResponse> ViolatingSites { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

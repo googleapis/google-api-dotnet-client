@@ -5631,50 +5631,50 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-
         /// hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("avatarUri")]
-        public virtual string AvatarUri { get; set; } 
+        public virtual string AvatarUri { get; set; }
 
         /// <summary>Immutable. The default language of the agent as a language tag. See [Language
         /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported
         /// language codes. This field cannot be set by the Agents.UpdateAgent method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultLanguageCode")]
-        public virtual string DefaultLanguageCode { get; set; } 
+        public virtual string DefaultLanguageCode { get; set; }
 
         /// <summary>The description of the agent. The maximum length is 500 characters. If exceeded, the request is
         /// rejected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Required. The human-readable name of the agent, unique within the location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Indicates if automatic spell correction is enabled in detect intent requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSpellCorrection")]
-        public virtual System.Nullable<bool> EnableSpellCorrection { get; set; } 
+        public virtual System.Nullable<bool> EnableSpellCorrection { get; set; }
 
         /// <summary>Indicates if stackdriver logging is enabled for the agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverLogging")]
-        public virtual System.Nullable<bool> EnableStackdriverLogging { get; set; } 
+        public virtual System.Nullable<bool> EnableStackdriverLogging { get; set; }
 
         /// <summary>The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent
         /// populates the name automatically. Format: `projects//locations//agents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Speech recognition related settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechToTextSettings")]
-        public virtual GoogleCloudDialogflowCxV3beta1SpeechToTextSettings SpeechToTextSettings { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1SpeechToTextSettings SpeechToTextSettings { get; set; }
 
         /// <summary>Immutable. Name of the start flow in this agent. A start flow will be automatically created when
         /// the agent is created, and can only be deleted by deleting the agent. Format:
         /// `projects//locations//agents//flows/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startFlow")]
-        public virtual string StartFlow { get; set; } 
+        public virtual string StartFlow { get; set; }
 
         /// <summary>Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-
         /// zones), e.g., America/New_York, Europe/Paris.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
-        public virtual string TimeZone { get; set; } 
+        public virtual string TimeZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5688,11 +5688,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be
         /// provided in the first request and `audio` must be provided in all following requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audio")]
-        public virtual string Audio { get; set; } 
+        public virtual string Audio { get; set; }
 
         /// <summary>Required. Instructs the speech recognizer how to process the speech audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual GoogleCloudDialogflowCxV3beta1InputAudioConfig Config { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1InputAudioConfig Config { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5703,7 +5703,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Name of the created version. Format: `projects//locations//agents//flows//versions/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5714,15 +5714,15 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Instructs the speech synthesizer how to generate the output audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputAudioConfig")]
-        public virtual GoogleCloudDialogflowCxV3beta1OutputAudioConfig OutputAudioConfig { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1OutputAudioConfig OutputAudioConfig { get; set; }
 
         /// <summary>Required. The input specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryInput")]
-        public virtual GoogleCloudDialogflowCxV3beta1QueryInput QueryInput { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1QueryInput QueryInput { get; set; }
 
         /// <summary>The parameters of this query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryParams")]
-        public virtual GoogleCloudDialogflowCxV3beta1QueryParameters QueryParams { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1QueryParameters QueryParams { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5738,20 +5738,20 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// audio fields may be present in the response structure. In these cases, only the top-most-level audio output
         /// has content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputAudio")]
-        public virtual string OutputAudio { get; set; } 
+        public virtual string OutputAudio { get; set; }
 
         /// <summary>The config used by the speech synthesizer to generate the output audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputAudioConfig")]
-        public virtual GoogleCloudDialogflowCxV3beta1OutputAudioConfig OutputAudioConfig { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1OutputAudioConfig OutputAudioConfig { get; set; }
 
         /// <summary>The result of the conversational query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryResult")]
-        public virtual GoogleCloudDialogflowCxV3beta1QueryResult QueryResult { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1QueryResult QueryResult { get; set; }
 
         /// <summary>Output only. The unique identifier of the response. It can be used to locate a response in the
         /// training example set or for reporting issues.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseId")]
-        public virtual string ResponseId { get; set; } 
+        public virtual string ResponseId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5774,35 +5774,35 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Indicates whether the entity type can be automatically expanded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoExpansionMode")]
-        public virtual string AutoExpansionMode { get; set; } 
+        public virtual string AutoExpansionMode { get; set; }
 
         /// <summary>Required. The human-readable name of the entity type, unique within the agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Enables fuzzy entity extraction during classification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableFuzzyExtraction")]
-        public virtual System.Nullable<bool> EnableFuzzyExtraction { get; set; } 
+        public virtual System.Nullable<bool> EnableFuzzyExtraction { get; set; }
 
         /// <summary>The collection of entity entries associated with the entity type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entities")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1EntityTypeEntity> Entities { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1EntityTypeEntity> Entities { get; set; }
 
         /// <summary>Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a
         /// size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an
         /// exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded
         /// phrases should be mutually exclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedPhrases")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase> ExcludedPhrases { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase> ExcludedPhrases { get; set; }
 
         /// <summary>Required. Indicates the kind of entity type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format:
         /// `projects//locations//agents//entityTypes/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5815,14 +5815,14 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection
         /// must contain exactly one synonym equal to `value`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("synonyms")]
-        public virtual System.Collections.Generic.IList<string> Synonyms { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Synonyms { get; set; }
 
         /// <summary>Required. The primary value associated with this entity entry. For example, if the entity type is
         /// *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in
         /// place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity
         /// types (with or without aliases).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5833,7 +5833,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. The word or phrase to be excluded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5850,25 +5850,25 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>The human-readable description of the environment. The maximum length is 500 characters. If
         /// exceeded, the request is rejected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Required. The human-readable name of the environment (unique in an agent). Limit of 64
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The name of the environment. Format: `projects//locations//agents//environments/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. Update time of this environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>Required. A list of configurations for flow versions. You should include version configs for all
         /// flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionConfigs")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig> VersionConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig> VersionConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5879,7 +5879,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. Format: projects//locations//agents//flows//versions/.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5894,25 +5894,25 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. The name of the event to handle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("event")]
-        public virtual string Event__ { get; set; } 
+        public virtual string Event__ { get; set; }
 
         /// <summary>Output only. The unique identifier of this event handler.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The target flow to transition to. Format: `projects//locations//agents//flows/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetFlow")]
-        public virtual string TargetFlow { get; set; } 
+        public virtual string TargetFlow { get; set; }
 
         /// <summary>The target page to transition to. Format: `projects//locations//agents//flows//pages/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetPage")]
-        public virtual string TargetPage { get; set; } 
+        public virtual string TargetPage { get; set; }
 
         /// <summary>The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled
         /// with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling
         /// webhooks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerFulfillment")]
-        public virtual GoogleCloudDialogflowCxV3beta1Fulfillment TriggerFulfillment { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1Fulfillment TriggerFulfillment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5925,7 +5925,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// agent to. The format of this URI must be `gs:`. If left unspecified, the serialized agent is returned
         /// inline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
-        public virtual string AgentUri { get; set; } 
+        public virtual string AgentUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5936,12 +5936,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Uncompressed raw byte content for agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentContent")]
-        public virtual string AgentContent { get; set; } 
+        public virtual string AgentContent { get; set; }
 
         /// <summary>The URI to a file containing the exported agent. This field is populated only if `agent_uri` is
         /// specified in ExportAgentRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
-        public virtual string AgentUri { get; set; } 
+        public virtual string AgentUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5960,11 +5960,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>The description of the flow. The maximum length is 500 characters. If exceeded, the request is
         /// rejected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Required. The human-readable name of the flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no
         /// match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used
@@ -5972,15 +5972,15 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-
         /// match basis. The first one that matches the event get executed, with the rest being ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventHandlers")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1EventHandler> EventHandlers { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1EventHandler> EventHandlers { get; set; }
 
         /// <summary>The unique identifier of the flow. Format: `projects//locations//agents//flows/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>NLU related settings of the flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nluSettings")]
-        public virtual GoogleCloudDialogflowCxV3beta1NluSettings NluSettings { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1NluSettings NluSettings { get; set; }
 
         /// <summary>A flow's transition routes serve two purposes: * They are responsible for matching the user's first
         /// utterances in the flow. * They are inherited by every page's transition routes and can support use cases
@@ -5990,7 +5990,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// TransitionRoutes with only condition specified. TransitionRoutes with intent specified are inherited by
         /// pages in the flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitionRoutes")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TransitionRoute> TransitionRoutes { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TransitionRoute> TransitionRoutes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6004,7 +6004,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Parameters to collect from the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1FormParameter> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1FormParameter> Parameters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6016,37 +6016,37 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>The default value of an optional parameter. If the parameter is required, the default value will be
         /// ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
-        public virtual object DefaultValue { get; set; } 
+        public virtual object DefaultValue { get; set; }
 
         /// <summary>Required. The human-readable name of the parameter, unique within the form.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/`
         /// for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or
         /// `projects//locations//agents//entityTypes/` for developer entity types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
-        public virtual string EntityType { get; set; } 
+        public virtual string EntityType { get; set; }
 
         /// <summary>Required. Defines fill behavior for the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fillBehavior")]
-        public virtual GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior FillBehavior { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior FillBehavior { get; set; }
 
         /// <summary>Indicates whether the parameter represents a list of values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isList")]
-        public virtual System.Nullable<bool> IsList { get; set; } 
+        public virtual System.Nullable<bool> IsList { get; set; }
 
         /// <summary>Indicates whether the parameter content is logged in text and audio. If it is set to true, the
         /// parameter content will be replaced to parameter name in both request and response. The default value is
         /// false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redact")]
-        public virtual System.Nullable<bool> Redact { get; set; } 
+        public virtual System.Nullable<bool> Redact { get; set; }
 
         /// <summary>Indicates whether the parameter is required. Optional parameters will not trigger prompts; however,
         /// they are filled if the user specifies them. Required parameters must be filled before form filling
         /// concludes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("required")]
-        public virtual System.Nullable<bool> Required { get; set; } 
+        public virtual System.Nullable<bool> Required { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6058,7 +6058,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Required. The fulfillment to provide the initial prompt that the agent can present to the user in
         /// order to fill the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialPromptFulfillment")]
-        public virtual GoogleCloudDialogflowCxV3beta1Fulfillment InitialPromptFulfillment { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1Fulfillment InitialPromptFulfillment { get; set; }
 
         /// <summary>The handlers for parameter-level events, used to provide reprompt for the parameter or transition
         /// to a different page/flow. The supported events are: * `sys.no-match-`, where N can be from 1 to 6 * `sys.no-
@@ -6075,7 +6075,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// will be called to provide a prompt. If the event handler for the corresponding event can't be found on the
         /// parameter, `initial_prompt_fulfillment` will be re-prompted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repromptEventHandlers")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1EventHandler> RepromptEventHandlers { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1EventHandler> RepromptEventHandlers { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6086,16 +6086,16 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>The matched intent/event to fulfill.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("match")]
-        public virtual GoogleCloudDialogflowCxV3beta1Match Match { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1Match Match { get; set; }
 
         /// <summary>Must be same as the corresponding MatchIntent request, otherwise the behavior is
         /// undefined.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchIntentRequest")]
-        public virtual GoogleCloudDialogflowCxV3beta1MatchIntentRequest MatchIntentRequest { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1MatchIntentRequest MatchIntentRequest { get; set; }
 
         /// <summary>Instructs the speech synthesizer how to generate output audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputAudioConfig")]
-        public virtual GoogleCloudDialogflowCxV3beta1OutputAudioConfig OutputAudioConfig { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1OutputAudioConfig OutputAudioConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6111,20 +6111,20 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// audio fields may be present in the response structure. In these cases, only the top-most-level audio output
         /// has content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputAudio")]
-        public virtual string OutputAudio { get; set; } 
+        public virtual string OutputAudio { get; set; }
 
         /// <summary>The config used by the speech synthesizer to generate the output audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputAudioConfig")]
-        public virtual GoogleCloudDialogflowCxV3beta1OutputAudioConfig OutputAudioConfig { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1OutputAudioConfig OutputAudioConfig { get; set; }
 
         /// <summary>The result of the conversational query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryResult")]
-        public virtual GoogleCloudDialogflowCxV3beta1QueryResult QueryResult { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1QueryResult QueryResult { get; set; }
 
         /// <summary>Output only. The unique identifier of the response. It can be used to locate a response in the
         /// training example set or for reporting issues.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseId")]
-        public virtual string ResponseId { get; set; } 
+        public virtual string ResponseId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6139,24 +6139,24 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Conditional cases for this fulfillment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditionalCases")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases> ConditionalCases { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases> ConditionalCases { get; set; }
 
         /// <summary>The list of rich message responses to present to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ResponseMessage> Messages { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ResponseMessage> Messages { get; set; }
 
         /// <summary>Set parameter values before executing the webhook.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setParameterActions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction> SetParameterActions { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction> SetParameterActions { get; set; }
 
         /// <summary>The tag used by the webhook to identify which fulfillment is being called. This field is required
         /// if `webhook` is specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
-        public virtual string Tag { get; set; } 
+        public virtual string Tag { get; set; }
 
         /// <summary>The webhook to call. Format: `projects//locations//agents//webhooks/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhook")]
-        public virtual string Webhook { get; set; } 
+        public virtual string Webhook { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6168,7 +6168,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>A list of cascading if-else conditions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cases")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase> Cases { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase> Cases { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6180,13 +6180,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>A list of case content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("caseContent")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent> CaseContent { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent> CaseContent { get; set; }
 
         /// <summary>The condition to activate and select this case. Empty means the condition is always true. The
         /// condition is evaluated against form parameters or session parameters. See the [conditions
         /// reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual string Condition { get; set; } 
+        public virtual string Condition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6197,11 +6197,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Additional cases to be evaluated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalCases")]
-        public virtual GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases AdditionalCases { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases AdditionalCases { get; set; }
 
         /// <summary>Returned message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual GoogleCloudDialogflowCxV3beta1ResponseMessage Message { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1ResponseMessage Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6212,11 +6212,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Display name of the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
-        public virtual string Parameter { get; set; } 
+        public virtual string Parameter { get; set; }
 
         /// <summary>The new value of the parameter. A null value clears the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual object Value { get; set; } 
+        public virtual object Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6227,7 +6227,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>The unique identifier of the new agent. Format: `projects//locations//agents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agent")]
-        public virtual string Agent { get; set; } 
+        public virtual string Agent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6238,13 +6238,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. Audio encoding of the audio content to process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioEncoding")]
-        public virtual string AudioEncoding { get; set; } 
+        public virtual string AudioEncoding { get; set; }
 
         /// <summary>Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with
         /// information about the recognized speech words, e.g. start and end time offsets. If false or unspecified,
         /// Speech doesn't return any word-level information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableWordInfo")]
-        public virtual System.Nullable<bool> EnableWordInfo { get; set; } 
+        public virtual System.Nullable<bool> EnableWordInfo { get; set; }
 
         /// <summary>Optional. Which Speech model to select for the given request. Select the model best suited to your
         /// domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the
@@ -6253,22 +6253,22 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com
         /// /speech-to-text/docs/basics#select-model) for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
-        public virtual string Model { get; set; } 
+        public virtual string Model { get; set; }
 
         /// <summary>Optional. Which variant of the Speech model to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelVariant")]
-        public virtual string ModelVariant { get; set; } 
+        public virtual string ModelVariant { get; set; }
 
         /// <summary>Optional. A list of strings containing words and phrases that the speech recognizer should
         /// recognize with higher likelihood. See [the Cloud Speech documentation](https://cloud.google.com/speech-to-
         /// text/docs/basics#phrase-hints) for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phraseHints")]
-        public virtual System.Collections.Generic.IList<string> PhraseHints { get; set; } 
+        public virtual System.Collections.Generic.IList<string> PhraseHints { get; set; }
 
         /// <summary>Sample rate (in Hertz) of the audio content sent in the query. Refer to [Cloud Speech API
         /// documentation](https://cloud.google.com/speech-to-text/docs/basics) for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleRateHertz")]
-        public virtual System.Nullable<int> SampleRateHertz { get; set; } 
+        public virtual System.Nullable<int> SampleRateHertz { get; set; }
 
         /// <summary>Optional. If `false` (default), recognition does not cease until the client closes the stream. If
         /// `true`, the recognizer will detect a single spoken utterance in input audio. Recognition ceases when it
@@ -6276,7 +6276,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// client should close the stream and start a new request with a new stream as needed. Note: This setting is
         /// relevant only for streaming methods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("singleUtterance")]
-        public virtual System.Nullable<bool> SingleUtterance { get; set; } 
+        public virtual System.Nullable<bool> SingleUtterance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6289,35 +6289,35 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. The human-readable name of the intent, unique within the agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in
         /// the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the
         /// case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as
         /// negative examples that triggers no-match event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isFallback")]
-        public virtual System.Nullable<bool> IsFallback { get; set; } 
+        public virtual System.Nullable<bool> IsFallback { get; set; }
 
         /// <summary>The unique identifier of the intent. Required for the Intents.UpdateIntent method.
         /// Intents.CreateIntent populates the name automatically. Format:
         /// `projects//locations//agents//intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The collection of parameters associated with the intent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1IntentParameter> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1IntentParameter> Parameters { get; set; }
 
         /// <summary>The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is
         /// unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in
         /// the console. - If the supplied value is negative, the intent is ignored in runtime detect intent
         /// requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
-        public virtual System.Nullable<int> Priority { get; set; } 
+        public virtual System.Nullable<int> Priority { get; set; }
 
         /// <summary>The collection of training phrases the agent is trained on to identify the intent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingPhrases")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase> TrainingPhrases { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase> TrainingPhrases { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6330,7 +6330,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Required. The unique identifier of the intent. Format:
         /// `projects//locations//agents//intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intent")]
-        public virtual string Intent { get; set; } 
+        public virtual string Intent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6343,22 +6343,22 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or
         /// `projects//locations//agents//entityTypes/` for developer entity types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
-        public virtual string EntityType { get; set; } 
+        public virtual string EntityType { get; set; }
 
         /// <summary>Required. The unique identifier of the parameter. This field is used by training phrases to
         /// annotate their parts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Indicates whether the parameter represents a list of values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isList")]
-        public virtual System.Nullable<bool> IsList { get; set; } 
+        public virtual System.Nullable<bool> IsList { get; set; }
 
         /// <summary>Indicates whether the parameter content is logged in text and audio. If it is set to true, the
         /// parameter content will be replaced to parameter id in both request and response. The default value is
         /// false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redact")]
-        public virtual System.Nullable<bool> Redact { get; set; } 
+        public virtual System.Nullable<bool> Redact { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6369,7 +6369,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Output only. The unique identifier of the training phrase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Required. The ordered list of training phrase parts. The parts are concatenated in order to form
         /// the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow
@@ -6380,11 +6380,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of
         /// the phrase that you want to annotate, and the `parameter_id` field is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parts")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart> Parts { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart> Parts { get; set; }
 
         /// <summary>Indicates how many times this example was added to the intent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repeatCount")]
-        public virtual System.Nullable<int> RepeatCount { get; set; } 
+        public virtual System.Nullable<int> RepeatCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6396,11 +6396,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>The parameter used to annotate this part of the training phrase. This field is required for
         /// annotated parts of the training phrase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterId")]
-        public virtual string ParameterId { get; set; } 
+        public virtual string ParameterId { get; set; }
 
         /// <summary>Required. The text for this part.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6412,12 +6412,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>The list of agents. There will be a maximum number of items returned based on the page_size field
         /// in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agents")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Agent> Agents { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Agent> Agents { get; set; }
 
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6429,12 +6429,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>The list of entity types. There will be a maximum number of items returned based on the page_size
         /// field in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1EntityType> EntityTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1EntityType> EntityTypes { get; set; }
 
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6447,12 +6447,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// field in the request. The list may in some cases be empty or contain fewer entries than page_size even if
         /// this isn't the last page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environments")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Environment> Environments { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Environment> Environments { get; set; }
 
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6464,12 +6464,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>The list of flows. There will be a maximum number of items returned based on the page_size field in
         /// the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flows")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Flow> Flows { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Flow> Flows { get; set; }
 
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6481,12 +6481,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>The list of intents. There will be a maximum number of items returned based on the page_size field
         /// in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intents")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Intent> Intents { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Intent> Intents { get; set; }
 
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6498,12 +6498,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of pages. There will be a maximum number of items returned based on the page_size field in
         /// the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pages")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Page> Pages { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Page> Pages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6515,12 +6515,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of session entity types. There will be a maximum number of items returned based on the
         /// page_size field in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionEntityTypes")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1SessionEntityType> SessionEntityTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1SessionEntityType> SessionEntityTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6532,13 +6532,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of transition route groups. There will be a maximum number of items returned based on the
         /// page_size field in the request. The list may in some cases be empty or contain fewer entries than page_size
         /// even if this isn't the last page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitionRouteGroups")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TransitionRouteGroup> TransitionRouteGroups { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TransitionRouteGroup> TransitionRouteGroups { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6550,13 +6550,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of versions. There will be a maximum number of items returned based on the page_size field
         /// in the request. The list may in some cases be empty or contain fewer entries than page_size even if this
         /// isn't the last page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Version> Versions { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Version> Versions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6568,12 +6568,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of webhooks. There will be a maximum number of items returned based on the page_size field
         /// in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhooks")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Webhook> Webhooks { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Webhook> Webhooks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6586,7 +6586,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// which can potentially impact other flow's behavior. If `allow_override_agent_resources` is false, conflicted
         /// agent-level resources will not be overridden (i.e. intents, entities, webhooks).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowOverrideAgentResources")]
-        public virtual System.Nullable<bool> AllowOverrideAgentResources { get; set; } 
+        public virtual System.Nullable<bool> AllowOverrideAgentResources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6598,12 +6598,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Represents a list of snapshots for an environment. Time of the snapshots is stored in
         /// `update_time`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environments")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Environment> Environments { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Environment> Environments { get; set; }
 
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6617,16 +6617,16 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// the classification threshold. This value may change for the same end-user expression at any time due to a
         /// model retraining or change in implementation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
-        public virtual System.Nullable<float> Confidence { get; set; } 
+        public virtual System.Nullable<float> Confidence { get; set; }
 
         /// <summary>The Intent that matched the query. Some, not all fields are filled in this message, including but
         /// not limited to: `name` and `display_name`. Only filled for `INTENT` match type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intent")]
-        public virtual GoogleCloudDialogflowCxV3beta1Intent Intent { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1Intent Intent { get; set; }
 
         /// <summary>Type of this Match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchType")]
-        public virtual string MatchType { get; set; } 
+        public virtual string MatchType { get; set; }
 
         /// <summary>The collection of parameters extracted from the query. Depending on your protocol or client library
         /// language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a
@@ -6635,12 +6635,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// parameter value type - MapValue value: - If parameter's entity type is a composite entity: map from
         /// composite entity property names to property values - Else: parameter value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
 
         /// <summary>Final text input which was matched during MatchIntent. This value can be different from original
         /// input sent in request because of spelling correction or other processing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolvedInput")]
-        public virtual string ResolvedInput { get; set; } 
+        public virtual string ResolvedInput { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6651,11 +6651,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. The input specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryInput")]
-        public virtual GoogleCloudDialogflowCxV3beta1QueryInput QueryInput { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1QueryInput QueryInput { get; set; }
 
         /// <summary>The parameters of this query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryParams")]
-        public virtual GoogleCloudDialogflowCxV3beta1QueryParameters QueryParams { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1QueryParameters QueryParams { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6667,27 +6667,27 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>The current Page. Some, not all fields are filled in this message, including but not limited to
         /// `name` and `display_name`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentPage")]
-        public virtual GoogleCloudDialogflowCxV3beta1Page CurrentPage { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1Page CurrentPage { get; set; }
 
         /// <summary>Match results, if more than one, ordered descendingly by the confidence we have that the particular
         /// intent matches the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matches")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Match> Matches { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Match> Matches { get; set; }
 
         /// <summary>If natural language text was provided as input, this field will contain a copy of the
         /// text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>If natural language speech audio was provided as input, this field will contain the trascript for
         /// the audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
-        public virtual string Transcript { get; set; } 
+        public virtual string Transcript { get; set; }
 
         /// <summary>If an intent was provided as input, this field will contain a copy of the intent
         /// identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerIntent")]
-        public virtual string TriggerIntent { get; set; } 
+        public virtual string TriggerIntent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6701,15 +6701,15 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// than the threshold value, then a no-match event will be triggered. The score values range from 0.0
         /// (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("classificationThreshold")]
-        public virtual System.Nullable<float> ClassificationThreshold { get; set; } 
+        public virtual System.Nullable<float> ClassificationThreshold { get; set; }
 
         /// <summary>Indicates NLU model training mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelTrainingMode")]
-        public virtual string ModelTrainingMode { get; set; } 
+        public virtual string ModelTrainingMode { get; set; }
 
         /// <summary>Indicates the type of NLU model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelType")]
-        public virtual string ModelType { get; set; } 
+        public virtual string ModelType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6720,18 +6720,18 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. Audio encoding of the synthesized audio content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioEncoding")]
-        public virtual string AudioEncoding { get; set; } 
+        public virtual string AudioEncoding { get; set; }
 
         /// <summary>Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the
         /// synthesizer will use the default sample rate based on the audio encoding. If this is different from the
         /// voice's natural sample rate, then the synthesizer will honor this request by converting to the desired
         /// sample rate (which might result in worse audio quality).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleRateHertz")]
-        public virtual System.Nullable<int> SampleRateHertz { get; set; } 
+        public virtual System.Nullable<int> SampleRateHertz { get; set; }
 
         /// <summary>Optional. Configuration of how speech should be synthesized.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("synthesizeSpeechConfig")]
-        public virtual GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig SynthesizeSpeechConfig { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig SynthesizeSpeechConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6750,25 +6750,25 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. The human-readable name of the page, unique within the agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The fulfillment to call when the session is entering the page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryFulfillment")]
-        public virtual GoogleCloudDialogflowCxV3beta1Fulfillment EntryFulfillment { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1Fulfillment EntryFulfillment { get; set; }
 
         /// <summary>Handlers associated with the page to handle events such as webhook errors, no match or no
         /// input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventHandlers")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1EventHandler> EventHandlers { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1EventHandler> EventHandlers { get; set; }
 
         /// <summary>The form associated with the page, used for collecting parameters relevant to the page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("form")]
-        public virtual GoogleCloudDialogflowCxV3beta1Form Form { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1Form Form { get; set; }
 
         /// <summary>The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage
         /// populates the name automatically. Format: `projects//locations//agents//flows//pages/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be
         /// unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the
@@ -6777,7 +6777,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// ordered list takes precedence.
         /// Format:`projects//locations//agents//flows//transitionRouteGroups/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitionRouteGroups")]
-        public virtual System.Collections.Generic.IList<string> TransitionRouteGroups { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TransitionRouteGroups { get; set; }
 
         /// <summary>A list of transitions for the transition rules of this page. They route the conversation to another
         /// page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in
@@ -6785,7 +6785,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// defined in the transition route groups. * TransitionRoutes defined in flow with intent specified. *
         /// TransitionRoutes defined in the page with only condition specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitionRoutes")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TransitionRoute> TransitionRoutes { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TransitionRoute> TransitionRoutes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6797,11 +6797,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Always present for WebhookRequest. Ignored for WebhookResponse. The unique identifier of the
         /// current page. Format: `projects//locations//agents//flows//pages/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentPage")]
-        public virtual string CurrentPage { get; set; } 
+        public virtual string CurrentPage { get; set; }
 
         /// <summary>Optional for both WebhookRequest and WebhookResponse. Information about the form.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formInfo")]
-        public virtual GoogleCloudDialogflowCxV3beta1PageInfoFormInfo FormInfo { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1PageInfoFormInfo FormInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6813,7 +6813,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Optional for both WebhookRequest and WebhookResponse. The parameters contained in the form. Note
         /// that the webhook cannot add or remove any form parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterInfo")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo> ParameterInfo { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo> ParameterInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6825,29 +6825,29 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Always present for WebhookRequest. Required for WebhookResponse. The human-readable name of the
         /// parameter, unique within the form. This field cannot be modified by the webhook.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Optional for WebhookRequest. Ignored for WebhookResponse. Indicates if the parameter value was just
         /// collected on the last conversation turn.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("justCollected")]
-        public virtual System.Nullable<bool> JustCollected { get; set; } 
+        public virtual System.Nullable<bool> JustCollected { get; set; }
 
         /// <summary>Optional for both WebhookRequest and WebhookResponse. Indicates whether the parameter is required.
         /// Optional parameters will not trigger prompts; however, they are filled if the user specifies them. Required
         /// parameters must be filled before form filling concludes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("required")]
-        public virtual System.Nullable<bool> Required { get; set; } 
+        public virtual System.Nullable<bool> Required { get; set; }
 
         /// <summary>Always present for WebhookRequest. Required for WebhookResponse. The state of the parameter. This
         /// field can be set to INVALID by the webhook to invalidate the parameter; other values set by the webhook will
         /// be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Optional for both WebhookRequest and WebhookResponse. The value of the parameter. This field can be
         /// set by the webhook to change the parameter value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual object Value { get; set; } 
+        public virtual object Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6859,22 +6859,22 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>The natural language speech audio to be processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audio")]
-        public virtual GoogleCloudDialogflowCxV3beta1AudioInput Audio { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1AudioInput Audio { get; set; }
 
         /// <summary>The intent to be triggered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intent")]
-        public virtual GoogleCloudDialogflowCxV3beta1IntentInput Intent { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1IntentInput Intent { get; set; }
 
         /// <summary>Required. The language of the input. See [Language
         /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported
         /// language codes. Note that queries in the same session do not necessarily need to specify the same
         /// language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>The natural language text to be processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual GoogleCloudDialogflowCxV3beta1TextInput Text { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1TextInput Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6885,7 +6885,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>The geo location of this conversational query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoLocation")]
-        public virtual GoogleTypeLatLng GeoLocation { get; set; } 
+        public virtual GoogleTypeLatLng GeoLocation { get; set; }
 
         /// <summary>Additional parameters to be put into session parameters. To remove a parameter from the session,
         /// clients should explicitly set the parameter value to null. Depending on your protocol or client library
@@ -6895,23 +6895,23 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// parameter value type - MapValue value: - If parameter's entity type is a composite entity: map from
         /// composite entity property names to property values - Else: parameter value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
 
         /// <summary>This field can be used to pass custom data into the webhook associated with the agent. Arbitrary
         /// JSON objects are supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
 
         /// <summary>Additional session entity types to replace or extend developer entity types with. The entity
         /// synonyms apply to all languages and persist for the session of this query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionEntityTypes")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1SessionEntityType> SessionEntityTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1SessionEntityType> SessionEntityTypes { get; set; }
 
         /// <summary>The time zone of this conversational query from the [time zone database](https://www.iana.org/time-
         /// zones), e.g., America/New_York, Europe/Paris. If not provided, the time zone specified in the agent is
         /// used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
-        public virtual string TimeZone { get; set; } 
+        public virtual string TimeZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6923,18 +6923,18 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>The current Page. Some, not all fields are filled in this message, including but not limited to
         /// `name` and `display_name`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentPage")]
-        public virtual GoogleCloudDialogflowCxV3beta1Page CurrentPage { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1Page CurrentPage { get; set; }
 
         /// <summary>The free-form diagnostic info. For example, this field could contain webhook call latency. The
         /// string keys of the Struct's fields map can change without notice.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diagnosticInfo")]
-        public virtual System.Collections.Generic.IDictionary<string,object> DiagnosticInfo { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> DiagnosticInfo { get; set; }
 
         /// <summary>The Intent that matched the conversational query. Some, not all fields are filled in this message,
         /// including but not limited to: `name` and `display_name`. This field is deprecated, please use
         /// QueryResult.match instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intent")]
-        public virtual GoogleCloudDialogflowCxV3beta1Intent Intent { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1Intent Intent { get; set; }
 
         /// <summary>The intent detection confidence. Values range from 0.0 (completely uncertain) to 1.0 (completely
         /// certain). This value is for informational purpose only and is only used to help match the best intent within
@@ -6942,17 +6942,17 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// model retraining or change in implementation. This field is deprecated, please use QueryResult.match
         /// instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intentDetectionConfidence")]
-        public virtual System.Nullable<float> IntentDetectionConfidence { get; set; } 
+        public virtual System.Nullable<float> IntentDetectionConfidence { get; set; }
 
         /// <summary>The language that was triggered during intent detection. See [Language
         /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported
         /// language codes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>Intent match result, could be an intent or an event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("match")]
-        public virtual GoogleCloudDialogflowCxV3beta1Match Match { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1Match Match { get; set; }
 
         /// <summary>The collected session parameters. Depending on your protocol or client library language, this is a
         /// map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey,
@@ -6961,40 +6961,40 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names
         /// to property values - Else: parameter value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
 
         /// <summary>The list of rich messages returned to the client. Responses vary from simple text messages to more
         /// sophisticated, structured payloads used to drive complex logic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseMessages")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ResponseMessage> ResponseMessages { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ResponseMessage> ResponseMessages { get; set; }
 
         /// <summary>If natural language text was provided as input, this field will contain a copy of the
         /// text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>If natural language speech audio was provided as input, this field will contain the trascript for
         /// the audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
-        public virtual string Transcript { get; set; } 
+        public virtual string Transcript { get; set; }
 
         /// <summary>If an event was provided as input, this field will contain the name of the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerEvent")]
-        public virtual string TriggerEvent { get; set; } 
+        public virtual string TriggerEvent { get; set; }
 
         /// <summary>If an intent was provided as input, this field will contain a copy of the intent
         /// identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerIntent")]
-        public virtual string TriggerIntent { get; set; } 
+        public virtual string TriggerIntent { get; set; }
 
         /// <summary>The list of webhook payload in WebhookResponse.payload, in the order of call sequence. If some
         /// webhook call fails or doesn't return any payload, an empty `Struct` would be used instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookPayloads")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> WebhookPayloads { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> WebhookPayloads { get; set; }
 
         /// <summary>The list of webhook call status in the order of call sequence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookStatuses")]
-        public virtual System.Collections.Generic.IList<GoogleRpcStatus> WebhookStatuses { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> WebhookStatuses { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7013,43 +7013,43 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Indicates that the conversation succeeded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversationSuccess")]
-        public virtual GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess ConversationSuccess { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess ConversationSuccess { get; set; }
 
         /// <summary>Output only. A signal that indicates the interaction with the Dialogflow agent has ended. This
         /// message is generated by Dialogflow only when the conversation reaches `END_SESSION` or `END_PAGE` page. It
         /// is not supposed to be defined by the user. It's guaranteed that there is at most one such message in each
         /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endInteraction")]
-        public virtual GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction EndInteraction { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction EndInteraction { get; set; }
 
         /// <summary>Hands off conversation to a human agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("liveAgentHandoff")]
-        public virtual GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff LiveAgentHandoff { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff LiveAgentHandoff { get; set; }
 
         /// <summary>Output only. An audio response message composed of both the synthesized Dialogflow agent responses
         /// and responses defined via play_audio. This message is generated by Dialogflow only and not supposed to be
         /// defined by the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mixedAudio")]
-        public virtual GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio MixedAudio { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio MixedAudio { get; set; }
 
         /// <summary>A text or ssml response that is preferentially used for TTS output audio synthesis, as described in
         /// the comment on the ResponseMessage message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputAudioText")]
-        public virtual GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText OutputAudioText { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText OutputAudioText { get; set; }
 
         /// <summary>Returns a response containing a custom, platform-specific payload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
 
         /// <summary>Signal that the client should play an audio clip hosted at a client-specific URI. Dialogflow uses
         /// this to construct mixed_audio. However, Dialogflow itself does not try to read or process the URI in any
         /// way.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playAudio")]
-        public virtual GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio PlayAudio { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio PlayAudio { get; set; }
 
         /// <summary>Returns a text response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual GoogleCloudDialogflowCxV3beta1ResponseMessageText Text { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1ResponseMessageText Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7065,7 +7065,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Custom metadata. Dialogflow doesn't impose any structure on this.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7089,7 +7089,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Custom metadata for your handoff procedure. Dialogflow doesn't impose any structure on
         /// this.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7102,7 +7102,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Segments this audio response is composed of.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segments")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment> Segments { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment> Segments { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7114,17 +7114,17 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Output only. Whether the playback of this segment can be interrupted by the end user's speech and
         /// the client should then start the next Dialogflow request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowPlaybackInterruption")]
-        public virtual System.Nullable<bool> AllowPlaybackInterruption { get; set; } 
+        public virtual System.Nullable<bool> AllowPlaybackInterruption { get; set; }
 
         /// <summary>Raw audio synthesized from the Dialogflow agent's response using the output config specified in the
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audio")]
-        public virtual string Audio { get; set; } 
+        public virtual string Audio { get; set; }
 
         /// <summary>Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not
         /// impose any validation on it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7137,16 +7137,16 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Output only. Whether the playback of this message can be interrupted by the end user's speech and
         /// the client can then starts the next Dialogflow request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowPlaybackInterruption")]
-        public virtual System.Nullable<bool> AllowPlaybackInterruption { get; set; } 
+        public virtual System.Nullable<bool> AllowPlaybackInterruption { get; set; }
 
         /// <summary>The SSML text to be synthesized. For more information, see [SSML](/speech/text-to-
         /// speech/docs/ssml).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ssml")]
-        public virtual string Ssml { get; set; } 
+        public virtual string Ssml { get; set; }
 
         /// <summary>The raw text to be synthesized.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7158,12 +7158,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Output only. Whether the playback of this message can be interrupted by the end user's speech and
         /// the client can then starts the next Dialogflow request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowPlaybackInterruption")]
-        public virtual System.Nullable<bool> AllowPlaybackInterruption { get; set; } 
+        public virtual System.Nullable<bool> AllowPlaybackInterruption { get; set; }
 
         /// <summary>Required. URI of the audio clip. Dialogflow does not impose any validation on this value. It is
         /// specific to the client that reads it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioUri")]
-        public virtual string AudioUri { get; set; } 
+        public virtual string AudioUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7175,11 +7175,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Output only. Whether the playback of this message can be interrupted by the end user's speech and
         /// the client can then starts the next Dialogflow request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowPlaybackInterruption")]
-        public virtual System.Nullable<bool> AllowPlaybackInterruption { get; set; } 
+        public virtual System.Nullable<bool> AllowPlaybackInterruption { get; set; }
 
         /// <summary>Required. A collection of text responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual System.Collections.Generic.IList<string> Text { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7190,12 +7190,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Uncompressed raw byte content for agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentContent")]
-        public virtual string AgentContent { get; set; } 
+        public virtual string AgentContent { get; set; }
 
         /// <summary>The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to restore agent from. The
         /// format of this URI must be `gs:`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
-        public virtual string AgentUri { get; set; } 
+        public virtual string AgentUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7211,19 +7211,19 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. The collection of entities to override or supplement the custom entity type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entities")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1EntityTypeEntity> Entities { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1EntityTypeEntity> Entities { get; set; }
 
         /// <summary>Required. Indicates whether the additional data should override or supplement the custom entity
         /// type definition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityOverrideMode")]
-        public virtual string EntityOverrideMode { get; set; } 
+        public virtual string EntityOverrideMode { get; set; }
 
         /// <summary>Required. The unique identifier of the session entity type. Format:
         /// `projects//locations//agents//sessions//entityTypes/` or
         /// `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified,
         /// we assume default 'draft' environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7237,13 +7237,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// parameter from the session, the webhook should explicitly set the parameter value to null in
         /// WebhookResponse. The map is keyed by parameters' display names.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
 
         /// <summary>Always present for WebhookRequest. Ignored for WebhookResponse. The unique identifier of the
         /// session. This field can be used by the webhook to identify a user. Format:
         /// `projects//locations//agents//sessions/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("session")]
-        public virtual string Session { get; set; } 
+        public virtual string Session { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7254,7 +7254,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Whether to use speech adaptation for speech recognition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSpeechAdaptation")]
-        public virtual System.Nullable<bool> EnableSpeechAdaptation { get; set; } 
+        public virtual System.Nullable<bool> EnableSpeechAdaptation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7266,22 +7266,22 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Optional. An identifier which selects 'audio effects' profiles that are applied on (post
         /// synthesized) text to speech. Effects are applied on top of each other in the order they are given.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectsProfileId")]
-        public virtual System.Collections.Generic.IList<string> EffectsProfileId { get; set; } 
+        public virtual System.Collections.Generic.IList<string> EffectsProfileId { get; set; }
 
         /// <summary>Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the
         /// original pitch. -20 means decrease 20 semitones from the original pitch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pitch")]
-        public virtual System.Nullable<double> Pitch { get; set; } 
+        public virtual System.Nullable<double> Pitch { get; set; }
 
         /// <summary>Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported
         /// by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native
         /// 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speakingRate")]
-        public virtual System.Nullable<double> SpeakingRate { get; set; } 
+        public virtual System.Nullable<double> SpeakingRate { get; set; }
 
         /// <summary>Optional. The desired voice of the synthesized audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voice")]
-        public virtual GoogleCloudDialogflowCxV3beta1VoiceSelectionParams Voice { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1VoiceSelectionParams Voice { get; set; }
 
         /// <summary>Optional. Volume gain (in dB) of the normal native volume supported by the specific voice, in the
         /// range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A
@@ -7290,7 +7290,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value
         /// greater than that.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeGainDb")]
-        public virtual System.Nullable<double> VolumeGainDb { get; set; } 
+        public virtual System.Nullable<double> VolumeGainDb { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7302,7 +7302,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Required. The UTF-8 encoded natural language text to be processed. Text length must not exceed 256
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7327,31 +7327,31 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// `condition` must be specified. When both `intent` and `condition` are specified, the transition can only
         /// happen when both are fulfilled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual string Condition { get; set; } 
+        public virtual string Condition { get; set; }
 
         /// <summary>The unique identifier of an Intent. Format: `projects//locations//agents//intents/`. Indicates that
         /// the transition can only happen when the given intent is matched. At least one of `intent` or `condition`
         /// must be specified. When both `intent` and `condition` are specified, the transition can only happen when
         /// both are fulfilled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intent")]
-        public virtual string Intent { get; set; } 
+        public virtual string Intent { get; set; }
 
         /// <summary>Output only. The unique identifier of this transition route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The target flow to transition to. Format: `projects//locations//agents//flows/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetFlow")]
-        public virtual string TargetFlow { get; set; } 
+        public virtual string TargetFlow { get; set; }
 
         /// <summary>The target page to transition to. Format: `projects//locations//agents//flows//pages/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetPage")]
-        public virtual string TargetPage { get; set; } 
+        public virtual string TargetPage { get; set; }
 
         /// <summary>The fulfillment to call when the condition is satisfied. At least one of `trigger_fulfillment` and
         /// `target` must be specified. When both are defined, `trigger_fulfillment` is executed first.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerFulfillment")]
-        public virtual GoogleCloudDialogflowCxV3beta1Fulfillment TriggerFulfillment { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1Fulfillment TriggerFulfillment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7363,19 +7363,19 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Required. The human-readable name of the transition route group, unique within the Agent. The
         /// display name can be no longer than 30 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The unique identifier of the transition route group.
         /// TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format:
         /// `projects//locations//agents//flows//transitionRouteGroups/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Transition routes associated with the TransitionRouteGroup. Duplicate transition routes (i.e. using
         /// the same `intent`) are not allowed. Note that the `name` field is not used in the transition route group
         /// scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitionRoutes")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TransitionRoute> TransitionRoutes { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TransitionRoute> TransitionRoutes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7386,30 +7386,30 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Output only. Create time of the version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The description of the version. The maximum length is 500 characters. If exceeded, the request is
         /// rejected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Required. The human-readable name of the version. Limit of 64 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Format: projects//locations//agents//flows//versions/. Version ID is a self-increasing number
         /// generated by Dialogflow upon version creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The NLU settings of the flow at version creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nluSettings")]
-        public virtual GoogleCloudDialogflowCxV3beta1NluSettings NluSettings { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1NluSettings NluSettings { get; set; }
 
         /// <summary>Output only. The state of this version. This field is read-only and cannot be set by create and
         /// update methods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7421,14 +7421,14 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Optional. The name of the voice. If not set, the service will choose a voice based on the other
         /// parameters such as language_code and ssml_gender.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Optional. The preferred gender of the voice. If not set, the service will choose a voice based on
         /// the other parameters such as language_code and name. Note that this is only a preference, not requirement.
         /// If a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a
         /// different gender rather than failing the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ssmlGender")]
-        public virtual string SsmlGender { get; set; } 
+        public virtual string SsmlGender { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7441,27 +7441,27 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Indicates whether the webhook is disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
-        public virtual System.Nullable<bool> Disabled { get; set; } 
+        public virtual System.Nullable<bool> Disabled { get; set; }
 
         /// <summary>Required. The human-readable name of the webhook, unique within the agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Configuration for a generic web service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("genericWebService")]
-        public virtual GoogleCloudDialogflowCxV3beta1WebhookGenericWebService GenericWebService { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1WebhookGenericWebService GenericWebService { get; set; }
 
         /// <summary>The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method.
         /// Webhooks.CreateWebhook populates the name automatically. Format:
         /// `projects//locations//agents//webhooks/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response
         /// from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30
         /// seconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
-        public virtual object Timeout { get; set; } 
+        public virtual object Timeout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7472,19 +7472,19 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>The password for HTTP Basic authentication.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
-        public virtual string Password { get; set; } 
+        public virtual string Password { get; set; }
 
         /// <summary>The HTTP request headers to send together with webhook requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestHeaders")]
-        public virtual System.Collections.Generic.IDictionary<string,string> RequestHeaders { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> RequestHeaders { get; set; }
 
         /// <summary>Required. The webhook URI for receiving POST requests. It must use https protocol.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The user name for HTTP Basic authentication.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7496,32 +7496,32 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Always present. The unique identifier of the DetectIntentResponse that will be returned to the API
         /// caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectIntentResponseId")]
-        public virtual string DetectIntentResponseId { get; set; } 
+        public virtual string DetectIntentResponseId { get; set; }
 
         /// <summary>Always present. Information about the fulfillment that triggered this webhook call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentInfo")]
-        public virtual GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo FulfillmentInfo { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo FulfillmentInfo { get; set; }
 
         /// <summary>Information about the last matched intent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intentInfo")]
-        public virtual GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo IntentInfo { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo IntentInfo { get; set; }
 
         /// <summary>The list of rich message responses to present to the user. Webhook can choose to append or replace
         /// this list in WebhookResponse.fulfillment_response;</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ResponseMessage> Messages { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ResponseMessage> Messages { get; set; }
 
         /// <summary>Information about page status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual GoogleCloudDialogflowCxV3beta1PageInfo PageInfo { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1PageInfo PageInfo { get; set; }
 
         /// <summary>Custom data set in QueryParameters.payload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
 
         /// <summary>Information about session status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionInfo")]
-        public virtual GoogleCloudDialogflowCxV3beta1SessionInfo SessionInfo { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1SessionInfo SessionInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7532,7 +7532,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Always present. The tag used to identify which fulfillment is being called.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
-        public virtual string Tag { get; set; } 
+        public virtual string Tag { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7544,13 +7544,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Always present. The unique identifier of the last matched intent. Format:
         /// `projects//locations//agents//intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastMatchedIntent")]
-        public virtual string LastMatchedIntent { get; set; } 
+        public virtual string LastMatchedIntent { get; set; }
 
         /// <summary>Parameters identified as a result of intent matching. This is a map of the name of the identified
         /// parameter to the value of the parameter identified from the user's utterance. All parameters defined in the
         /// matched intent that are identified will be surfaced here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IDictionary<string,GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue> Parameters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7561,11 +7561,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Always present. Original text value extracted from user utterance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalValue")]
-        public virtual string OriginalValue { get; set; } 
+        public virtual string OriginalValue { get; set; }
 
         /// <summary>Always present. Structured value for the parameter extracted from user utterance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolvedValue")]
-        public virtual object ResolvedValue { get; set; } 
+        public virtual object ResolvedValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7577,29 +7577,29 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>The fulfillment response to send to the user. This field can be omitted by the webhook if it does
         /// not intend to send any response to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentResponse")]
-        public virtual GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse FulfillmentResponse { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse FulfillmentResponse { get; set; }
 
         /// <summary>Information about page status. This field can be omitted by the webhook if it does not intend to
         /// modify page status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual GoogleCloudDialogflowCxV3beta1PageInfo PageInfo { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1PageInfo PageInfo { get; set; }
 
         /// <summary>Value to append directly to QueryResult.webhook_payloads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
 
         /// <summary>Information about session status. This field can be omitted by the webhook if it does not intend to
         /// modify session status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionInfo")]
-        public virtual GoogleCloudDialogflowCxV3beta1SessionInfo SessionInfo { get; set; } 
+        public virtual GoogleCloudDialogflowCxV3beta1SessionInfo SessionInfo { get; set; }
 
         /// <summary>The target flow to transition to. Format: `projects//locations//agents//flows/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetFlow")]
-        public virtual string TargetFlow { get; set; } 
+        public virtual string TargetFlow { get; set; }
 
         /// <summary>The target page to transition to. Format: `projects//locations//agents//flows//pages/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetPage")]
-        public virtual string TargetPage { get; set; } 
+        public virtual string TargetPage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7610,11 +7610,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Merge behavior for `messages`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mergeBehavior")]
-        public virtual string MergeBehavior { get; set; } 
+        public virtual string MergeBehavior { get; set; }
 
         /// <summary>The list of rich message responses to present to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ResponseMessage> Messages { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ResponseMessage> Messages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7628,17 +7628,17 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// entities) of this message part. If this is empty, Dialogflow could not annotate the phrase part with a
         /// system entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
-        public virtual string EntityType { get; set; } 
+        public virtual string EntityType { get; set; }
 
         /// <summary>The [Dialogflow system entity formatted value ](https://cloud.google.com/dialogflow/docs/reference
         /// /system-entities) of this message part. For example for a system entity of type `@sys.unit-currency`, this
         /// may contain: { "amount": 5, "currency": "USD" } </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedValue")]
-        public virtual object FormattedValue { get; set; } 
+        public virtual object FormattedValue { get; set; }
 
         /// <summary>A part of a message possibly annotated with an entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7649,7 +7649,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>The collection of updated or created entity types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2EntityType> EntityTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2EntityType> EntityTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7660,7 +7660,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>The collection of updated or created intents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intents")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2Intent> Intents { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2Intent> Intents { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7681,7 +7681,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if
         /// there are no matching queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifespanCount")]
-        public virtual System.Nullable<int> LifespanCount { get; set; } 
+        public virtual System.Nullable<int> LifespanCount { get; set; }
 
         /// <summary>Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or
         /// `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to
@@ -7691,7 +7691,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` *
         /// `*_dialog_params_size`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Optional. The collection of parameters associated with this context. Depending on your protocol or
         /// client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed
@@ -7700,7 +7700,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// parameter value type - MapValue value: - If parameter's entity type is a composite entity: map from
         /// composite entity property names to property values - Else: parameter value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7712,20 +7712,20 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>The unique identifier of the conversation this notification refers to. Format:
         /// `projects//conversations/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversation")]
-        public virtual string Conversation { get; set; } 
+        public virtual string Conversation { get; set; }
 
         /// <summary>More detailed information about an error. Only set for type
         /// UNRECOVERABLE_ERROR_IN_PHONE_CALL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorStatus")]
-        public virtual GoogleRpcStatus ErrorStatus { get; set; } 
+        public virtual GoogleRpcStatus ErrorStatus { get; set; }
 
         /// <summary>Payload of NEW_MESSAGE event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newMessagePayload")]
-        public virtual GoogleCloudDialogflowV2Message NewMessagePayload { get; set; } 
+        public virtual GoogleCloudDialogflowV2Message NewMessagePayload { get; set; }
 
         /// <summary>The type of the event that this notification refers to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7741,28 +7741,28 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. Indicates whether the entity type can be automatically expanded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoExpansionMode")]
-        public virtual string AutoExpansionMode { get; set; } 
+        public virtual string AutoExpansionMode { get; set; }
 
         /// <summary>Required. The name of the entity type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Optional. Enables fuzzy entity extraction during classification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableFuzzyExtraction")]
-        public virtual System.Nullable<bool> EnableFuzzyExtraction { get; set; } 
+        public virtual System.Nullable<bool> EnableFuzzyExtraction { get; set; }
 
         /// <summary>Optional. The collection of entity entries associated with the entity type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entities")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2EntityTypeEntity> Entities { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2EntityTypeEntity> Entities { get; set; }
 
         /// <summary>Required. Indicates the kind of entity type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and
         /// EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7775,14 +7775,14 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection
         /// must contain exactly one synonym equal to `value`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("synonyms")]
-        public virtual System.Collections.Generic.IList<string> Synonyms { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Synonyms { get; set; }
 
         /// <summary>Required. The primary value associated with this entity entry. For example, if the entity type is
         /// *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in
         /// place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity
         /// types (with or without aliases).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7798,11 +7798,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// language codes. Note that queries in the same session do not necessarily need to specify the same
         /// language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>Required. The unique identifier of the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The collection of parameters associated with the event. Depending on your protocol or client
         /// library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a
@@ -7811,7 +7811,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// parameter value type - MapValue value: - If parameter's entity type is a composite entity: map from
         /// composite entity property names to property values - Else: parameter value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7822,12 +7822,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Zip compressed raw byte content for agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentContent")]
-        public virtual string AgentContent { get; set; } 
+        public virtual string AgentContent { get; set; }
 
         /// <summary>The URI to a file containing the exported agent. This field is populated only if `agent_uri` is
         /// specified in `ExportAgentRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
-        public virtual string AgentUri { get; set; } 
+        public virtual string AgentUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7843,95 +7843,95 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Optional. The name of the action associated with the intent. Note: The action name must not contain
         /// whitespaces.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual string Action { get; set; } 
+        public virtual string Action { get; set; }
 
         /// <summary>Optional. The list of platforms for which the first responses will be copied from the messages in
         /// PLATFORM_UNSPECIFIED (i.e. default platform).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultResponsePlatforms")]
-        public virtual System.Collections.Generic.IList<string> DefaultResponsePlatforms { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DefaultResponsePlatforms { get; set; }
 
         /// <summary>Required. The name of this intent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Optional. The collection of event names that trigger the intent. If the collection of input
         /// contexts is not empty, all of the contexts must be present in the active user session for an event to
         /// trigger this intent. Event names are limited to 150 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("events")]
-        public virtual System.Collections.Generic.IList<string> Events { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Events { get; set; }
 
         /// <summary>Read-only. Information about all followup intents that have this intent as a direct or indirect
         /// parent. We populate this field only in the output.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("followupIntentInfo")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentFollowupIntentInfo> FollowupIntentInfo { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentFollowupIntentInfo> FollowupIntentInfo { get; set; }
 
         /// <summary>Optional. The list of context names required for this intent to be triggered. Format:
         /// `projects//agent/sessions/-/contexts/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputContextNames")]
-        public virtual System.Collections.Generic.IList<string> InputContextNames { get; set; } 
+        public virtual System.Collections.Generic.IList<string> InputContextNames { get; set; }
 
         /// <summary>Optional. Indicates whether this is a fallback intent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isFallback")]
-        public virtual System.Nullable<bool> IsFallback { get; set; } 
+        public virtual System.Nullable<bool> IsFallback { get; set; }
 
         /// <summary>Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow
         /// console.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessage> Messages { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessage> Messages { get; set; }
 
         /// <summary>Optional. Indicates whether Machine Learning is disabled for the intent. Note: If `ml_disabled`
         /// setting is set to true, then this intent is not taken into account during inference in `ML ONLY` match mode.
         /// Also, auto-markup in the UI is turned off.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mlDisabled")]
-        public virtual System.Nullable<bool> MlDisabled { get; set; } 
+        public virtual System.Nullable<bool> MlDisabled { get; set; }
 
         /// <summary>Optional. The unique identifier of this intent. Required for Intents.UpdateIntent and
         /// Intents.BatchUpdateIntents methods. Format: `projects//agent/intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Optional. The collection of contexts that are activated when the intent is matched. Context
         /// messages in this collection should not set the parameters field. Setting the `lifespan_count` to 0 will
         /// reset the context when the intent is matched. Format: `projects//agent/sessions/-/contexts/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputContexts")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2Context> OutputContexts { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2Context> OutputContexts { get; set; }
 
         /// <summary>Optional. The collection of parameters associated with the intent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentParameter> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentParameter> Parameters { get; set; }
 
         /// <summary>Read-only after creation. The unique identifier of the parent intent in the chain of followup
         /// intents. You can set this field when creating an intent, for example with CreateIntent or
         /// BatchUpdateIntents, in order to make this intent a followup intent. It identifies the parent followup
         /// intent. Format: `projects//agent/intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentFollowupIntentName")]
-        public virtual string ParentFollowupIntentName { get; set; } 
+        public virtual string ParentFollowupIntentName { get; set; }
 
         /// <summary>Optional. The priority of this intent. Higher numbers represent higher priorities. - If the
         /// supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the
         /// `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime
         /// detect intent requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
-        public virtual System.Nullable<int> Priority { get; set; } 
+        public virtual System.Nullable<int> Priority { get; set; }
 
         /// <summary>Optional. Indicates whether to delete all contexts in the current session when this intent is
         /// matched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resetContexts")]
-        public virtual System.Nullable<bool> ResetContexts { get; set; } 
+        public virtual System.Nullable<bool> ResetContexts { get; set; }
 
         /// <summary>Read-only. The unique identifier of the root intent in the chain of followup intents. It identifies
         /// the correct followup intents chain for this intent. We populate this field only in the output. Format:
         /// `projects//agent/intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootFollowupIntentName")]
-        public virtual string RootFollowupIntentName { get; set; } 
+        public virtual string RootFollowupIntentName { get; set; }
 
         /// <summary>Optional. The collection of examples that the agent is trained on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingPhrases")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentTrainingPhrase> TrainingPhrases { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentTrainingPhrase> TrainingPhrases { get; set; }
 
         /// <summary>Optional. Indicates whether webhooks are enabled for the intent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookState")]
-        public virtual string WebhookState { get; set; } 
+        public virtual string WebhookState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7942,12 +7942,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>The unique identifier of the followup intent. Format: `projects//agent/intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("followupIntentName")]
-        public virtual string FollowupIntentName { get; set; } 
+        public virtual string FollowupIntentName { get; set; }
 
         /// <summary>The unique identifier of the followup intent's parent. Format:
         /// `projects//agent/intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentFollowupIntentName")]
-        public virtual string ParentFollowupIntentName { get; set; } 
+        public virtual string ParentFollowupIntentName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7960,63 +7960,63 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>The basic card response for Actions on Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("basicCard")]
-        public virtual GoogleCloudDialogflowV2IntentMessageBasicCard BasicCard { get; set; } 
+        public virtual GoogleCloudDialogflowV2IntentMessageBasicCard BasicCard { get; set; }
 
         /// <summary>Browse carousel card for Actions on Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("browseCarouselCard")]
-        public virtual GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard BrowseCarouselCard { get; set; } 
+        public virtual GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard BrowseCarouselCard { get; set; }
 
         /// <summary>The card response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("card")]
-        public virtual GoogleCloudDialogflowV2IntentMessageCard Card { get; set; } 
+        public virtual GoogleCloudDialogflowV2IntentMessageCard Card { get; set; }
 
         /// <summary>The carousel card response for Actions on Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carouselSelect")]
-        public virtual GoogleCloudDialogflowV2IntentMessageCarouselSelect CarouselSelect { get; set; } 
+        public virtual GoogleCloudDialogflowV2IntentMessageCarouselSelect CarouselSelect { get; set; }
 
         /// <summary>The image response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual GoogleCloudDialogflowV2IntentMessageImage Image { get; set; } 
+        public virtual GoogleCloudDialogflowV2IntentMessageImage Image { get; set; }
 
         /// <summary>The link out suggestion chip for Actions on Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkOutSuggestion")]
-        public virtual GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion LinkOutSuggestion { get; set; } 
+        public virtual GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion LinkOutSuggestion { get; set; }
 
         /// <summary>The list card response for Actions on Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listSelect")]
-        public virtual GoogleCloudDialogflowV2IntentMessageListSelect ListSelect { get; set; } 
+        public virtual GoogleCloudDialogflowV2IntentMessageListSelect ListSelect { get; set; }
 
         /// <summary>The media content card for Actions on Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaContent")]
-        public virtual GoogleCloudDialogflowV2IntentMessageMediaContent MediaContent { get; set; } 
+        public virtual GoogleCloudDialogflowV2IntentMessageMediaContent MediaContent { get; set; }
 
         /// <summary>A custom platform-specific response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
 
         /// <summary>Optional. The platform that this message is intended for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platform")]
-        public virtual string Platform { get; set; } 
+        public virtual string Platform { get; set; }
 
         /// <summary>The quick replies response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quickReplies")]
-        public virtual GoogleCloudDialogflowV2IntentMessageQuickReplies QuickReplies { get; set; } 
+        public virtual GoogleCloudDialogflowV2IntentMessageQuickReplies QuickReplies { get; set; }
 
         /// <summary>The voice and text-only responses for Actions on Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("simpleResponses")]
-        public virtual GoogleCloudDialogflowV2IntentMessageSimpleResponses SimpleResponses { get; set; } 
+        public virtual GoogleCloudDialogflowV2IntentMessageSimpleResponses SimpleResponses { get; set; }
 
         /// <summary>The suggestion chips for Actions on Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestions")]
-        public virtual GoogleCloudDialogflowV2IntentMessageSuggestions Suggestions { get; set; } 
+        public virtual GoogleCloudDialogflowV2IntentMessageSuggestions Suggestions { get; set; }
 
         /// <summary>Table card for Actions on Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableCard")]
-        public virtual GoogleCloudDialogflowV2IntentMessageTableCard TableCard { get; set; } 
+        public virtual GoogleCloudDialogflowV2IntentMessageTableCard TableCard { get; set; }
 
         /// <summary>The text response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual GoogleCloudDialogflowV2IntentMessageText Text { get; set; } 
+        public virtual GoogleCloudDialogflowV2IntentMessageText Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8027,23 +8027,23 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. The collection of card buttons.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buttons")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessageBasicCardButton> Buttons { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessageBasicCardButton> Buttons { get; set; }
 
         /// <summary>Required, unless image is present. The body text of the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedText")]
-        public virtual string FormattedText { get; set; } 
+        public virtual string FormattedText { get; set; }
 
         /// <summary>Optional. The image for the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual GoogleCloudDialogflowV2IntentMessageImage Image { get; set; } 
+        public virtual GoogleCloudDialogflowV2IntentMessageImage Image { get; set; }
 
         /// <summary>Optional. The subtitle of the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
-        public virtual string Subtitle { get; set; } 
+        public virtual string Subtitle { get; set; }
 
         /// <summary>Optional. The title of the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8054,11 +8054,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. Action to take when a user taps on the button.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openUriAction")]
-        public virtual GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction OpenUriAction { get; set; } 
+        public virtual GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction OpenUriAction { get; set; }
 
         /// <summary>Required. The title of the button.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8069,7 +8069,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. The HTTP or HTTPS scheme URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8081,12 +8081,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. Settings for displaying the image. Applies to every image in items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageDisplayOptions")]
-        public virtual string ImageDisplayOptions { get; set; } 
+        public virtual string ImageDisplayOptions { get; set; }
 
         /// <summary>Required. List of items in the Browse Carousel Card. Minimum of two items, maximum of
         /// ten.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem> Items { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8097,24 +8097,24 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. Description of the carousel item. Maximum of four lines of text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Optional. Text that appears at the bottom of the Browse Carousel Card. Maximum of one line of
         /// text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("footer")]
-        public virtual string Footer { get; set; } 
+        public virtual string Footer { get; set; }
 
         /// <summary>Optional. Hero image for the carousel item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual GoogleCloudDialogflowV2IntentMessageImage Image { get; set; } 
+        public virtual GoogleCloudDialogflowV2IntentMessageImage Image { get; set; }
 
         /// <summary>Required. Action to present to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openUriAction")]
-        public virtual GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction OpenUriAction { get; set; } 
+        public virtual GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction OpenUriAction { get; set; }
 
         /// <summary>Required. Title of the carousel item. Maximum of two lines of text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8125,12 +8125,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. URL</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via
         /// web browser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlTypeHint")]
-        public virtual string UrlTypeHint { get; set; } 
+        public virtual string UrlTypeHint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8141,19 +8141,19 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. The collection of card buttons.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buttons")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessageCardButton> Buttons { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessageCardButton> Buttons { get; set; }
 
         /// <summary>Optional. The public URI to an image file for the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
-        public virtual string ImageUri { get; set; } 
+        public virtual string ImageUri { get; set; }
 
         /// <summary>Optional. The subtitle of the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
-        public virtual string Subtitle { get; set; } 
+        public virtual string Subtitle { get; set; }
 
         /// <summary>Optional. The title of the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8164,11 +8164,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. The text to send back to the Dialogflow API or a URI to open.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postback")]
-        public virtual string Postback { get; set; } 
+        public virtual string Postback { get; set; }
 
         /// <summary>Optional. The text to show on the button.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8179,7 +8179,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. Carousel items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessageCarouselSelectItem> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessageCarouselSelectItem> Items { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8190,19 +8190,19 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. The body text of the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Optional. The image to display.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual GoogleCloudDialogflowV2IntentMessageImage Image { get; set; } 
+        public virtual GoogleCloudDialogflowV2IntentMessageImage Image { get; set; }
 
         /// <summary>Required. Additional info about the option item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("info")]
-        public virtual GoogleCloudDialogflowV2IntentMessageSelectItemInfo Info { get; set; } 
+        public virtual GoogleCloudDialogflowV2IntentMessageSelectItemInfo Info { get; set; }
 
         /// <summary>Required. Title of the carousel item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8213,11 +8213,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. Column heading.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual string Header { get; set; } 
+        public virtual string Header { get; set; }
 
         /// <summary>Optional. Defines text alignment for all cells in this column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("horizontalAlignment")]
-        public virtual string HorizontalAlignment { get; set; } 
+        public virtual string HorizontalAlignment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8229,11 +8229,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Optional. A text description of the image to be used for accessibility, e.g., screen
         /// readers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessibilityText")]
-        public virtual string AccessibilityText { get; set; } 
+        public virtual string AccessibilityText { get; set; }
 
         /// <summary>Optional. The public URI to an image file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
-        public virtual string ImageUri { get; set; } 
+        public virtual string ImageUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8245,11 +8245,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. The name of the app or site this chip is linking to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationName")]
-        public virtual string DestinationName { get; set; } 
+        public virtual string DestinationName { get; set; }
 
         /// <summary>Required. The URI of the app or site to open when the user taps the suggestion chip.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8260,15 +8260,15 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. List items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessageListSelectItem> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessageListSelectItem> Items { get; set; }
 
         /// <summary>Optional. Subtitle of the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
-        public virtual string Subtitle { get; set; } 
+        public virtual string Subtitle { get; set; }
 
         /// <summary>Optional. The overall title of the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8279,19 +8279,19 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. The main text describing the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Optional. The image to display.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual GoogleCloudDialogflowV2IntentMessageImage Image { get; set; } 
+        public virtual GoogleCloudDialogflowV2IntentMessageImage Image { get; set; }
 
         /// <summary>Required. Additional information about this option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("info")]
-        public virtual GoogleCloudDialogflowV2IntentMessageSelectItemInfo Info { get; set; } 
+        public virtual GoogleCloudDialogflowV2IntentMessageSelectItemInfo Info { get; set; }
 
         /// <summary>Required. The title of the list item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8302,11 +8302,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. List of media objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaObjects")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject> MediaObjects { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject> MediaObjects { get; set; }
 
         /// <summary>Optional. What type of media is the content (ie "audio").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaType")]
-        public virtual string MediaType { get; set; } 
+        public virtual string MediaType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8317,23 +8317,23 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. Url where the media is stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentUrl")]
-        public virtual string ContentUrl { get; set; } 
+        public virtual string ContentUrl { get; set; }
 
         /// <summary>Optional. Description of media card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Optional. Icon to display above media content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("icon")]
-        public virtual GoogleCloudDialogflowV2IntentMessageImage Icon { get; set; } 
+        public virtual GoogleCloudDialogflowV2IntentMessageImage Icon { get; set; }
 
         /// <summary>Optional. Image to display above media content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("largeImage")]
-        public virtual GoogleCloudDialogflowV2IntentMessageImage LargeImage { get; set; } 
+        public virtual GoogleCloudDialogflowV2IntentMessageImage LargeImage { get; set; }
 
         /// <summary>Required. Name of media card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8344,11 +8344,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. The collection of quick replies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quickReplies")]
-        public virtual System.Collections.Generic.IList<string> QuickReplies { get; set; } 
+        public virtual System.Collections.Generic.IList<string> QuickReplies { get; set; }
 
         /// <summary>Optional. The title of the collection of quick replies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8359,11 +8359,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. A unique key that will be sent back to the agent if this response is given.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>Optional. A list of synonyms that can also be used to trigger this item in dialog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("synonyms")]
-        public virtual System.Collections.Generic.IList<string> Synonyms { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Synonyms { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8374,17 +8374,17 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. The text to display.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayText")]
-        public virtual string DisplayText { get; set; } 
+        public virtual string DisplayText { get; set; }
 
         /// <summary>One of text_to_speech or ssml must be provided. Structured spoken response to the user in the SSML
         /// format. Mutually exclusive with text_to_speech.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ssml")]
-        public virtual string Ssml { get; set; } 
+        public virtual string Ssml { get; set; }
 
         /// <summary>One of text_to_speech or ssml must be provided. The plain text of the speech output. Mutually
         /// exclusive with ssml.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textToSpeech")]
-        public virtual string TextToSpeech { get; set; } 
+        public virtual string TextToSpeech { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8396,7 +8396,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. The list of simple responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("simpleResponses")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessageSimpleResponse> SimpleResponses { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessageSimpleResponse> SimpleResponses { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8408,7 +8408,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. The text shown the in the suggestion chip.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8419,7 +8419,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. The list of suggested replies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessageSuggestion> Suggestions { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessageSuggestion> Suggestions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8430,27 +8430,27 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. List of buttons for the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buttons")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessageBasicCardButton> Buttons { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessageBasicCardButton> Buttons { get; set; }
 
         /// <summary>Optional. Display properties for the columns in this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnProperties")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessageColumnProperties> ColumnProperties { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessageColumnProperties> ColumnProperties { get; set; }
 
         /// <summary>Optional. Image which should be displayed on the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual GoogleCloudDialogflowV2IntentMessageImage Image { get; set; } 
+        public virtual GoogleCloudDialogflowV2IntentMessageImage Image { get; set; }
 
         /// <summary>Optional. Rows in this table of data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessageTableCardRow> Rows { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessageTableCardRow> Rows { get; set; }
 
         /// <summary>Optional. Subtitle to the title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
-        public virtual string Subtitle { get; set; } 
+        public virtual string Subtitle { get; set; }
 
         /// <summary>Required. Title of the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8461,7 +8461,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. Text in this cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8472,11 +8472,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. List of cells that make up this row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cells")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessageTableCardCell> Cells { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessageTableCardCell> Cells { get; set; }
 
         /// <summary>Optional. Whether to add a visual divider after this row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dividerAfter")]
-        public virtual System.Nullable<bool> DividerAfter { get; set; } 
+        public virtual System.Nullable<bool> DividerAfter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8487,7 +8487,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. The collection of the agent's responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual System.Collections.Generic.IList<string> Text { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8499,40 +8499,40 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Optional. The default value to use when the `value` yields an empty result. Default values can be
         /// extracted from contexts by using the following syntax: `#context_name.parameter_name`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
-        public virtual string DefaultValue { get; set; } 
+        public virtual string DefaultValue { get; set; }
 
         /// <summary>Required. The name of the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Optional. The name of the entity type, prefixed with `@`, that describes values of the parameter.
         /// If the parameter is required, this must be provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityTypeDisplayName")]
-        public virtual string EntityTypeDisplayName { get; set; } 
+        public virtual string EntityTypeDisplayName { get; set; }
 
         /// <summary>Optional. Indicates whether the parameter represents a list of values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isList")]
-        public virtual System.Nullable<bool> IsList { get; set; } 
+        public virtual System.Nullable<bool> IsList { get; set; }
 
         /// <summary>Optional. Indicates whether the parameter is required. That is, whether the intent cannot be
         /// completed without collecting the parameter value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mandatory")]
-        public virtual System.Nullable<bool> Mandatory { get; set; } 
+        public virtual System.Nullable<bool> Mandatory { get; set; }
 
         /// <summary>The unique identifier of this parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Optional. The collection of prompts that the agent can present to the user in order to collect a
         /// value for the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prompts")]
-        public virtual System.Collections.Generic.IList<string> Prompts { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Prompts { get; set; }
 
         /// <summary>Optional. The definition of the parameter value. It can be: - a constant string, - a parameter
         /// value defined as `$parameter_name`, - an original parameter value defined as `$parameter_name.original`, - a
         /// parameter value from some context defined as `#context_name.parameter_name`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8543,7 +8543,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Output only. The unique identifier of this training phrase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. The ordered list of training phrase parts. The parts are concatenated in order to form
         /// the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow
@@ -8555,16 +8555,16 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all
         /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parts")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentTrainingPhrasePart> Parts { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentTrainingPhrasePart> Parts { get; set; }
 
         /// <summary>Optional. Indicates how many times this example was added to the intent. Each time a developer adds
         /// an existing sample by editing an intent or training, this counter is increased.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timesAddedCount")]
-        public virtual System.Nullable<int> TimesAddedCount { get; set; } 
+        public virtual System.Nullable<int> TimesAddedCount { get; set; }
 
         /// <summary>Required. The type of the training phrase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8576,22 +8576,22 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Optional. The parameter name for the value extracted from the annotated part of the example. This
         /// field is required for annotated parts of the training phrase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alias")]
-        public virtual string Alias { get; set; } 
+        public virtual string Alias { get; set; }
 
         /// <summary>Optional. The entity type name prefixed with `@`. This field is required for annotated parts of the
         /// training phrase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
-        public virtual string EntityType { get; set; } 
+        public virtual string EntityType { get; set; }
 
         /// <summary>Required. The text for this part.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>Optional. Indicates whether the text was manually annotated. This field is set to true when the
         /// Dialogflow Console is used to manually annotate the part. When creating an annotated part with the API, you
         /// must set this to true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userDefined")]
-        public virtual System.Nullable<bool> UserDefined { get; set; } 
+        public virtual System.Nullable<bool> UserDefined { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8602,32 +8602,32 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. The message content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual string Content { get; set; } 
+        public virtual string Content { get; set; }
 
         /// <summary>Output only. The time when the message was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Optional. The message language. This should be a [BCP-47](https://www.rfc-
         /// editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>Output only. The annotation for the message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageAnnotation")]
-        public virtual GoogleCloudDialogflowV2MessageAnnotation MessageAnnotation { get; set; } 
+        public virtual GoogleCloudDialogflowV2MessageAnnotation MessageAnnotation { get; set; }
 
         /// <summary>The unique identifier of the message. Format: `projects//conversations//messages/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The participant that sends this message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("participant")]
-        public virtual string Participant { get; set; } 
+        public virtual string Participant { get; set; }
 
         /// <summary>Output only. The role of the participant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("participantRole")]
-        public virtual string ParticipantRole { get; set; } 
+        public virtual string ParticipantRole { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8638,12 +8638,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Indicates whether the text message contains entities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containEntities")]
-        public virtual System.Nullable<bool> ContainEntities { get; set; } 
+        public virtual System.Nullable<bool> ContainEntities { get; set; }
 
         /// <summary>The collection of annotated message parts ordered by their position in the message. You can recover
         /// the annotated message by concatenating [AnnotatedMessagePart.text].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parts")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2AnnotatedMessagePart> Parts { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2AnnotatedMessagePart> Parts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8660,16 +8660,16 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// agents and populated with the caller ID in [E.164 format](https://en.wikipedia.org/wiki/E.164) for
         /// Essentials Edition agents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
 
         /// <summary>The source of this request, e.g., `google`, `facebook`, `slack`. It is set by Dialogflow-owned
         /// servers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual string Source { get; set; } 
+        public virtual string Source { get; set; }
 
         /// <summary>Optional. The version of the protocol used for this request. This field is AoG-specific.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8680,33 +8680,33 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>The action name from the matched intent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual string Action { get; set; } 
+        public virtual string Action { get; set; }
 
         /// <summary>This field is set to: - `false` if the matched intent has required parameters and not all of the
         /// required parameter values have been collected. - `true` if all required parameter values have been
         /// collected, or if the matched intent doesn't contain any required parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allRequiredParamsPresent")]
-        public virtual System.Nullable<bool> AllRequiredParamsPresent { get; set; } 
+        public virtual System.Nullable<bool> AllRequiredParamsPresent { get; set; }
 
         /// <summary>Free-form diagnostic information for the associated detect intent request. The fields of this data
         /// can change without notice, so you should not write code that depends on its structure. The data may contain:
         /// - webhook call latency - webhook errors</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diagnosticInfo")]
-        public virtual System.Collections.Generic.IDictionary<string,object> DiagnosticInfo { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> DiagnosticInfo { get; set; }
 
         /// <summary>The collection of rich messages to present to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentMessages")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessage> FulfillmentMessages { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessage> FulfillmentMessages { get; set; }
 
         /// <summary>The text to be pronounced to the user or shown on the screen. Note: This is a legacy field,
         /// `fulfillment_messages` should be preferred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentText")]
-        public virtual string FulfillmentText { get; set; } 
+        public virtual string FulfillmentText { get; set; }
 
         /// <summary>The intent that matched the conversational query. Some, not all fields are filled in this message,
         /// including but not limited to: `name`, `display_name`, `end_interaction` and `is_fallback`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intent")]
-        public virtual GoogleCloudDialogflowV2Intent Intent { get; set; } 
+        public virtual GoogleCloudDialogflowV2Intent Intent { get; set; }
 
         /// <summary>The intent detection confidence. Values range from 0.0 (completely uncertain) to 1.0 (completely
         /// certain). This value is for informational purpose only and is only used to help match the best intent within
@@ -8714,18 +8714,18 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// model retraining or change in implementation. If there are `multiple knowledge_answers` messages, this value
         /// is set to the greatest `knowledgeAnswers.match_confidence` value in the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intentDetectionConfidence")]
-        public virtual System.Nullable<float> IntentDetectionConfidence { get; set; } 
+        public virtual System.Nullable<float> IntentDetectionConfidence { get; set; }
 
         /// <summary>The language that was triggered during intent detection. See [Language
         /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported
         /// language codes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>The collection of output contexts. If applicable, `output_contexts.parameters` contains entries
         /// with name `.original` containing the original parameter values before the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputContexts")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2Context> OutputContexts { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2Context> OutputContexts { get; set; }
 
         /// <summary>The collection of extracted parameters. Depending on your protocol or client library language, this
         /// is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey,
@@ -8734,7 +8734,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names
         /// to property values - Else: parameter value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
 
         /// <summary>The original conversational query text: - If natural language text was provided as input,
         /// `query_text` contains a copy of the input. - If natural language speech audio was provided as input,
@@ -8742,12 +8742,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// particular one is picked. - If automatic spell correction is enabled, `query_text` will contain the
         /// corrected user input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryText")]
-        public virtual string QueryText { get; set; } 
+        public virtual string QueryText { get; set; }
 
         /// <summary>The sentiment analysis result, which depends on the `sentiment_analysis_request_config` specified
         /// in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sentimentAnalysisResult")]
-        public virtual GoogleCloudDialogflowV2SentimentAnalysisResult SentimentAnalysisResult { get; set; } 
+        public virtual GoogleCloudDialogflowV2SentimentAnalysisResult SentimentAnalysisResult { get; set; }
 
         /// <summary>The Speech recognition confidence between 0.0 and 1.0. A higher number indicates an estimated
         /// greater likelihood that the recognized words are correct. The default of 0.0 is a sentinel value indicating
@@ -8755,17 +8755,17 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// isn't set for StreamingDetectIntent since the streaming endpoint has separate confidence estimates per
         /// portion of the audio in StreamingRecognitionResult.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechRecognitionConfidence")]
-        public virtual System.Nullable<float> SpeechRecognitionConfidence { get; set; } 
+        public virtual System.Nullable<float> SpeechRecognitionConfidence { get; set; }
 
         /// <summary>If the query was fulfilled by a webhook call, this field is set to the value of the `payload` field
         /// returned in the webhook response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookPayload")]
-        public virtual System.Collections.Generic.IDictionary<string,object> WebhookPayload { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> WebhookPayload { get; set; }
 
         /// <summary>If the query was fulfilled by a webhook call, this field is set to the value of the `source` field
         /// returned in the webhook response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookSource")]
-        public virtual string WebhookSource { get; set; } 
+        public virtual string WebhookSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8778,11 +8778,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>A non-negative number in the [0, +inf) range, which represents the absolute magnitude of sentiment,
         /// regardless of score (positive or negative).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("magnitude")]
-        public virtual System.Nullable<float> Magnitude { get; set; } 
+        public virtual System.Nullable<float> Magnitude { get; set; }
 
         /// <summary>Sentiment score between -1.0 (negative sentiment) and 1.0 (positive sentiment).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
-        public virtual System.Nullable<float> Score { get; set; } 
+        public virtual System.Nullable<float> Score { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8798,7 +8798,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>The sentiment analysis result for `query_text`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryTextSentiment")]
-        public virtual GoogleCloudDialogflowV2Sentiment QueryTextSentiment { get; set; } 
+        public virtual GoogleCloudDialogflowV2Sentiment QueryTextSentiment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8813,12 +8813,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. The collection of entities associated with this session entity type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entities")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2EntityTypeEntity> Entities { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2EntityTypeEntity> Entities { get; set; }
 
         /// <summary>Required. Indicates whether the additional data should override or supplement the custom entity
         /// type definition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityOverrideMode")]
-        public virtual string EntityOverrideMode { get; set; } 
+        public virtual string EntityOverrideMode { get; set; }
 
         /// <summary>Required. The unique identifier of this session entity type. Format:
         /// `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`.
@@ -8826,7 +8826,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// we assume default '-' user. `` must be the display name of an existing entity type in the same agent that
         /// will be overridden or supplemented.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8838,23 +8838,23 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Optional. The contents of the original request that was passed to `[Streaming]DetectIntent`
         /// call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalDetectIntentRequest")]
-        public virtual GoogleCloudDialogflowV2OriginalDetectIntentRequest OriginalDetectIntentRequest { get; set; } 
+        public virtual GoogleCloudDialogflowV2OriginalDetectIntentRequest OriginalDetectIntentRequest { get; set; }
 
         /// <summary>The result of the conversational query or event processing. Contains the same value as
         /// `[Streaming]DetectIntentResponse.query_result`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryResult")]
-        public virtual GoogleCloudDialogflowV2QueryResult QueryResult { get; set; } 
+        public virtual GoogleCloudDialogflowV2QueryResult QueryResult { get; set; }
 
         /// <summary>The unique identifier of the response. Contains the same value as
         /// `[Streaming]DetectIntentResponse.response_id`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseId")]
-        public virtual string ResponseId { get; set; } 
+        public virtual string ResponseId { get; set; }
 
         /// <summary>The unique identifier of detectIntent request session. Can be used to identify end-user inside
         /// webhook implementation. Format: `projects//agent/sessions/`, or
         /// `projects//agent/environments//users//sessions/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("session")]
-        public virtual string Session { get; set; } 
+        public virtual string Session { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8870,24 +8870,24 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Optional. Invokes the supplied events. When this field is set, Dialogflow ignores the
         /// `fulfillment_text`, `fulfillment_messages`, and `payload` fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("followupEventInput")]
-        public virtual GoogleCloudDialogflowV2EventInput FollowupEventInput { get; set; } 
+        public virtual GoogleCloudDialogflowV2EventInput FollowupEventInput { get; set; }
 
         /// <summary>Optional. The rich response messages intended for the end-user. When provided, Dialogflow uses this
         /// field to populate QueryResult.fulfillment_messages sent to the integration or API caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentMessages")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessage> FulfillmentMessages { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessage> FulfillmentMessages { get; set; }
 
         /// <summary>Optional. The text response message intended for the end-user. It is recommended to use
         /// `fulfillment_messages.text.text[0]` instead. When provided, Dialogflow uses this field to populate
         /// QueryResult.fulfillment_text sent to the integration or API caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentText")]
-        public virtual string FulfillmentText { get; set; } 
+        public virtual string FulfillmentText { get; set; }
 
         /// <summary>Optional. The collection of output contexts that will overwrite currently active contexts for the
         /// session and reset their lifespans. When provided, Dialogflow uses this field to populate
         /// QueryResult.output_contexts sent to the integration or API caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputContexts")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2Context> OutputContexts { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2Context> OutputContexts { get; set; }
 
         /// <summary>Optional. This field can be used to pass custom data from your webhook to the integration or API
         /// caller. Arbitrary JSON objects are supported. When provided, Dialogflow uses this field to populate
@@ -8896,20 +8896,20 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// messages. See the format definition at [Google Assistant Dialogflow webhook
         /// format](https://developers.google.com/assistant/actions/build/json/dialogflow-webhook-json)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
 
         /// <summary>Optional. Additional session entity types to replace or extend developer entity types with. The
         /// entity synonyms apply to all languages and persist for the session. Setting this data from a webhook
         /// overwrites the session entity types that have been set using `detectIntent`, `streamingDetectIntent` or
         /// SessionEntityType management methods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionEntityTypes")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SessionEntityType> SessionEntityTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SessionEntityType> SessionEntityTypes { get; set; }
 
         /// <summary>Optional. A custom field used to identify the webhook source. Arbitrary strings are supported. When
         /// provided, Dialogflow uses this field to populate QueryResult.webhook_source sent to the integration or API
         /// caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual string Source { get; set; } 
+        public virtual string Source { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8924,35 +8924,35 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Output only. Number of examples that have annotations in the annotated conversation
         /// dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completedExampleCount")]
-        public virtual System.Nullable<long> CompletedExampleCount { get; set; } 
+        public virtual System.Nullable<long> CompletedExampleCount { get; set; }
 
         /// <summary>Output only. Creation time of this annotated conversation dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Optional. The description of the annotated conversation dataset. Maximum of 10000 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Required. The display name of the annotated conversation dataset. It's specified when user starts
         /// an annotation task. Maximum of 64 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. Number of examples in the annotated conversation dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exampleCount")]
-        public virtual System.Nullable<long> ExampleCount { get; set; } 
+        public virtual System.Nullable<long> ExampleCount { get; set; }
 
         /// <summary>Output only. AnnotatedConversationDataset resource name. Format:
         /// `projects//conversationDatasets//annotatedConversationDatasets/`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. Question type name that identifies a labeling task. A question is a single task that a
         /// worker answers. A question type is set of related questions. Each question belongs to a particular question
         /// type. It can be used in CrowdCompute UI to filter and manage labeling tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("questionTypeName")]
-        public virtual string QuestionTypeName { get; set; } 
+        public virtual string QuestionTypeName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8963,15 +8963,15 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Number of smart messaging entries disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabledCount")]
-        public virtual System.Nullable<int> DisabledCount { get; set; } 
+        public virtual System.Nullable<int> DisabledCount { get; set; }
 
         /// <summary>Number of smart messaging entries enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledCount")]
-        public virtual System.Nullable<int> EnabledCount { get; set; } 
+        public virtual System.Nullable<int> EnabledCount { get; set; }
 
         /// <summary>Number of smart messaging entries unreviewed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreviewedCount")]
-        public virtual System.Nullable<int> UnreviewedCount { get; set; } 
+        public virtual System.Nullable<int> UnreviewedCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8982,7 +8982,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>The collection of updated or created entity types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1EntityType> EntityTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1EntityType> EntityTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8993,7 +8993,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>The collection of updated or created intents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intents")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Intent> Intents { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Intent> Intents { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9014,7 +9014,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if
         /// there are no matching queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifespanCount")]
-        public virtual System.Nullable<int> LifespanCount { get; set; } 
+        public virtual System.Nullable<int> LifespanCount { get; set; }
 
         /// <summary>Required. The unique identifier of the context. Supported formats: -
         /// `projects//agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`, -
@@ -9026,7 +9026,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` *
         /// `*_dialog_params_size`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Optional. The collection of parameters associated with this context. Depending on your protocol or
         /// client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed
@@ -9035,7 +9035,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// parameter value type - MapValue value: - If parameter's entity type is a composite entity: map from
         /// composite entity property names to property values - Else: parameter value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9051,29 +9051,29 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. Indicates whether the entity type can be automatically expanded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoExpansionMode")]
-        public virtual string AutoExpansionMode { get; set; } 
+        public virtual string AutoExpansionMode { get; set; }
 
         /// <summary>Required. The name of the entity type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Optional. Enables fuzzy entity extraction during classification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableFuzzyExtraction")]
-        public virtual System.Nullable<bool> EnableFuzzyExtraction { get; set; } 
+        public virtual System.Nullable<bool> EnableFuzzyExtraction { get; set; }
 
         /// <summary>Optional. The collection of entity entries associated with the entity type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entities")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1EntityTypeEntity> Entities { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1EntityTypeEntity> Entities { get; set; }
 
         /// <summary>Required. Indicates the kind of entity type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and
         /// EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` -
         /// `projects//locations//agent/entityTypes/`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9086,14 +9086,14 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection
         /// must contain exactly one synonym equal to `value`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("synonyms")]
-        public virtual System.Collections.Generic.IList<string> Synonyms { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Synonyms { get; set; }
 
         /// <summary>Required. The primary value associated with this entity entry. For example, if the entity type is
         /// *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in
         /// place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity
         /// types (with or without aliases).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9109,11 +9109,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// language codes. Note that queries in the same session do not necessarily need to specify the same
         /// language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>Required. The unique identifier of the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The collection of parameters associated with the event. Depending on your protocol or client
         /// library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a
@@ -9122,7 +9122,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// parameter value type - MapValue value: - If parameter's entity type is a composite entity: map from
         /// composite entity property names to property values - Else: parameter value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9133,12 +9133,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Zip compressed raw byte content for agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentContent")]
-        public virtual string AgentContent { get; set; } 
+        public virtual string AgentContent { get; set; }
 
         /// <summary>The URI to a file containing the exported agent. This field is populated only if `agent_uri` is
         /// specified in `ExportAgentRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
-        public virtual string AgentUri { get; set; } 
+        public virtual string AgentUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9154,53 +9154,53 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Optional. The name of the action associated with the intent. Note: The action name must not contain
         /// whitespaces.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual string Action { get; set; } 
+        public virtual string Action { get; set; }
 
         /// <summary>Optional. The list of platforms for which the first responses will be copied from the messages in
         /// PLATFORM_UNSPECIFIED (i.e. default platform).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultResponsePlatforms")]
-        public virtual System.Collections.Generic.IList<string> DefaultResponsePlatforms { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DefaultResponsePlatforms { get; set; }
 
         /// <summary>Required. The name of this intent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on
         /// Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is
         /// false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endInteraction")]
-        public virtual System.Nullable<bool> EndInteraction { get; set; } 
+        public virtual System.Nullable<bool> EndInteraction { get; set; }
 
         /// <summary>Optional. The collection of event names that trigger the intent. If the collection of input
         /// contexts is not empty, all of the contexts must be present in the active user session for an event to
         /// trigger this intent. Event names are limited to 150 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("events")]
-        public virtual System.Collections.Generic.IList<string> Events { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Events { get; set; }
 
         /// <summary>Output only. Information about all followup intents that have this intent as a direct or indirect
         /// parent. We populate this field only in the output.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("followupIntentInfo")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo> FollowupIntentInfo { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo> FollowupIntentInfo { get; set; }
 
         /// <summary>Optional. The list of context names required for this intent to be triggered. Formats: -
         /// `projects//agent/sessions/-/contexts/` - `projects//locations//agent/sessions/-/contexts/`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputContextNames")]
-        public virtual System.Collections.Generic.IList<string> InputContextNames { get; set; } 
+        public virtual System.Collections.Generic.IList<string> InputContextNames { get; set; }
 
         /// <summary>Optional. Indicates whether this is a fallback intent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isFallback")]
-        public virtual System.Nullable<bool> IsFallback { get; set; } 
+        public virtual System.Nullable<bool> IsFallback { get; set; }
 
         /// <summary>Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow
         /// console.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessage> Messages { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessage> Messages { get; set; }
 
         /// <summary>Optional. Indicates whether Machine Learning is disabled for the intent. Note: If `ml_disabled`
         /// setting is set to true, then this intent is not taken into account during inference in `ML ONLY` match mode.
         /// Also, auto-markup in the UI is turned off.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mlDisabled")]
-        public virtual System.Nullable<bool> MlDisabled { get; set; } 
+        public virtual System.Nullable<bool> MlDisabled { get; set; }
 
         /// <summary>Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled`
         /// setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match
@@ -9209,55 +9209,55 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April
         /// 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mlEnabled")]
-        public virtual System.Nullable<bool> MlEnabled { get; set; } 
+        public virtual System.Nullable<bool> MlEnabled { get; set; }
 
         /// <summary>Optional. The unique identifier of this intent. Required for Intents.UpdateIntent and
         /// Intents.BatchUpdateIntents methods. Supported formats: - `projects//agent/intents/` -
         /// `projects//locations//agent/intents/`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Optional. The collection of contexts that are activated when the intent is matched. Context
         /// messages in this collection should not set the parameters field. Setting the `lifespan_count` to 0 will
         /// reset the context when the intent is matched. Format: `projects//agent/sessions/-/contexts/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputContexts")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Context> OutputContexts { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Context> OutputContexts { get; set; }
 
         /// <summary>Optional. The collection of parameters associated with the intent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentParameter> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentParameter> Parameters { get; set; }
 
         /// <summary>Optional. The unique identifier of the parent intent in the chain of followup intents. You can set
         /// this field when creating an intent, for example with CreateIntent or BatchUpdateIntents, in order to make
         /// this intent a followup intent. It identifies the parent followup intent. Format:
         /// `projects//agent/intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentFollowupIntentName")]
-        public virtual string ParentFollowupIntentName { get; set; } 
+        public virtual string ParentFollowupIntentName { get; set; }
 
         /// <summary>Optional. The priority of this intent. Higher numbers represent higher priorities. - If the
         /// supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the
         /// `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime
         /// detect intent requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
-        public virtual System.Nullable<int> Priority { get; set; } 
+        public virtual System.Nullable<int> Priority { get; set; }
 
         /// <summary>Optional. Indicates whether to delete all contexts in the current session when this intent is
         /// matched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resetContexts")]
-        public virtual System.Nullable<bool> ResetContexts { get; set; } 
+        public virtual System.Nullable<bool> ResetContexts { get; set; }
 
         /// <summary>Output only. The unique identifier of the root intent in the chain of followup intents. It
         /// identifies the correct followup intents chain for this intent. Format: `projects//agent/intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootFollowupIntentName")]
-        public virtual string RootFollowupIntentName { get; set; } 
+        public virtual string RootFollowupIntentName { get; set; }
 
         /// <summary>Optional. The collection of examples that the agent is trained on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingPhrases")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentTrainingPhrase> TrainingPhrases { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentTrainingPhrase> TrainingPhrases { get; set; }
 
         /// <summary>Optional. Indicates whether webhooks are enabled for the intent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookState")]
-        public virtual string WebhookState { get; set; } 
+        public virtual string WebhookState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9268,12 +9268,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>The unique identifier of the followup intent. Format: `projects//agent/intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("followupIntentName")]
-        public virtual string FollowupIntentName { get; set; } 
+        public virtual string FollowupIntentName { get; set; }
 
         /// <summary>The unique identifier of the followup intent's parent. Format:
         /// `projects//agent/intents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentFollowupIntentName")]
-        public virtual string ParentFollowupIntentName { get; set; } 
+        public virtual string ParentFollowupIntentName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9284,88 +9284,88 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Displays a basic card for Actions on Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("basicCard")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageBasicCard BasicCard { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageBasicCard BasicCard { get; set; }
 
         /// <summary>Browse carousel card for Actions on Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("browseCarouselCard")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard BrowseCarouselCard { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard BrowseCarouselCard { get; set; }
 
         /// <summary>Displays a card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("card")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageCard Card { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageCard Card { get; set; }
 
         /// <summary>Displays a carousel card for Actions on Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carouselSelect")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect CarouselSelect { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect CarouselSelect { get; set; }
 
         /// <summary>Displays an image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageImage Image { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageImage Image { get; set; }
 
         /// <summary>Displays a link out suggestion chip for Actions on Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkOutSuggestion")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion LinkOutSuggestion { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion LinkOutSuggestion { get; set; }
 
         /// <summary>Displays a list card for Actions on Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listSelect")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageListSelect ListSelect { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageListSelect ListSelect { get; set; }
 
         /// <summary>The media content card for Actions on Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaContent")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageMediaContent MediaContent { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageMediaContent MediaContent { get; set; }
 
         /// <summary>A custom platform-specific response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
 
         /// <summary>Optional. The platform that this message is intended for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platform")]
-        public virtual string Platform { get; set; } 
+        public virtual string Platform { get; set; }
 
         /// <summary>Displays quick replies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quickReplies")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageQuickReplies QuickReplies { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageQuickReplies QuickReplies { get; set; }
 
         /// <summary>Rich Business Messaging (RBM) carousel rich card response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rbmCarouselRichCard")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard RbmCarouselRichCard { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard RbmCarouselRichCard { get; set; }
 
         /// <summary>Standalone Rich Business Messaging (RBM) rich card response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rbmStandaloneRichCard")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard RbmStandaloneRichCard { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard RbmStandaloneRichCard { get; set; }
 
         /// <summary>Rich Business Messaging (RBM) text response. RBM allows businesses to send enriched and branded
         /// versions of SMS. See https://jibe.google.com/business-messaging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rbmText")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageRbmText RbmText { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageRbmText RbmText { get; set; }
 
         /// <summary>Returns a voice or text-only response for Actions on Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("simpleResponses")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses SimpleResponses { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses SimpleResponses { get; set; }
 
         /// <summary>Displays suggestion chips for Actions on Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestions")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageSuggestions Suggestions { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageSuggestions Suggestions { get; set; }
 
         /// <summary>Table card for Actions on Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableCard")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageTableCard TableCard { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageTableCard TableCard { get; set; }
 
         /// <summary>Plays audio from a file in Telephony Gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("telephonyPlayAudio")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio TelephonyPlayAudio { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio TelephonyPlayAudio { get; set; }
 
         /// <summary>Synthesizes speech in Telephony Gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("telephonySynthesizeSpeech")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech TelephonySynthesizeSpeech { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech TelephonySynthesizeSpeech { get; set; }
 
         /// <summary>Transfers the call in Telephony Gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("telephonyTransferCall")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall TelephonyTransferCall { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall TelephonyTransferCall { get; set; }
 
         /// <summary>Returns a text response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageText Text { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageText Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9376,23 +9376,23 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. The collection of card buttons.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buttons")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton> Buttons { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton> Buttons { get; set; }
 
         /// <summary>Required, unless image is present. The body text of the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedText")]
-        public virtual string FormattedText { get; set; } 
+        public virtual string FormattedText { get; set; }
 
         /// <summary>Optional. The image for the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageImage Image { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageImage Image { get; set; }
 
         /// <summary>Optional. The subtitle of the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
-        public virtual string Subtitle { get; set; } 
+        public virtual string Subtitle { get; set; }
 
         /// <summary>Optional. The title of the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9403,11 +9403,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. Action to take when a user taps on the button.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openUriAction")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction OpenUriAction { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction OpenUriAction { get; set; }
 
         /// <summary>Required. The title of the button.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9418,7 +9418,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. The HTTP or HTTPS scheme URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9430,12 +9430,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. Settings for displaying the image. Applies to every image in items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageDisplayOptions")]
-        public virtual string ImageDisplayOptions { get; set; } 
+        public virtual string ImageDisplayOptions { get; set; }
 
         /// <summary>Required. List of items in the Browse Carousel Card. Minimum of two items, maximum of
         /// ten.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem> Items { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9446,24 +9446,24 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. Description of the carousel item. Maximum of four lines of text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Optional. Text that appears at the bottom of the Browse Carousel Card. Maximum of one line of
         /// text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("footer")]
-        public virtual string Footer { get; set; } 
+        public virtual string Footer { get; set; }
 
         /// <summary>Optional. Hero image for the carousel item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageImage Image { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageImage Image { get; set; }
 
         /// <summary>Required. Action to present to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openUriAction")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction OpenUriAction { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction OpenUriAction { get; set; }
 
         /// <summary>Required. Title of the carousel item. Maximum of two lines of text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9474,12 +9474,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. URL</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via
         /// web browser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlTypeHint")]
-        public virtual string UrlTypeHint { get; set; } 
+        public virtual string UrlTypeHint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9490,19 +9490,19 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. The collection of card buttons.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buttons")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageCardButton> Buttons { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageCardButton> Buttons { get; set; }
 
         /// <summary>Optional. The public URI to an image file for the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
-        public virtual string ImageUri { get; set; } 
+        public virtual string ImageUri { get; set; }
 
         /// <summary>Optional. The subtitle of the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
-        public virtual string Subtitle { get; set; } 
+        public virtual string Subtitle { get; set; }
 
         /// <summary>Optional. The title of the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9513,11 +9513,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. The text to send back to the Dialogflow API or a URI to open.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postback")]
-        public virtual string Postback { get; set; } 
+        public virtual string Postback { get; set; }
 
         /// <summary>Optional. The text to show on the button.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9528,7 +9528,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. Carousel items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem> Items { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9539,19 +9539,19 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. The body text of the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Optional. The image to display.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageImage Image { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageImage Image { get; set; }
 
         /// <summary>Required. Additional info about the option item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("info")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo Info { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo Info { get; set; }
 
         /// <summary>Required. Title of the carousel item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9562,11 +9562,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. Column heading.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual string Header { get; set; } 
+        public virtual string Header { get; set; }
 
         /// <summary>Optional. Defines text alignment for all cells in this column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("horizontalAlignment")]
-        public virtual string HorizontalAlignment { get; set; } 
+        public virtual string HorizontalAlignment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9578,11 +9578,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>A text description of the image to be used for accessibility, e.g., screen readers. Required if
         /// image_uri is set for CarouselSelect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessibilityText")]
-        public virtual string AccessibilityText { get; set; } 
+        public virtual string AccessibilityText { get; set; }
 
         /// <summary>Optional. The public URI to an image file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
-        public virtual string ImageUri { get; set; } 
+        public virtual string ImageUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9594,11 +9594,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. The name of the app or site this chip is linking to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationName")]
-        public virtual string DestinationName { get; set; } 
+        public virtual string DestinationName { get; set; }
 
         /// <summary>Required. The URI of the app or site to open when the user taps the suggestion chip.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9609,15 +9609,15 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. List items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageListSelectItem> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageListSelectItem> Items { get; set; }
 
         /// <summary>Optional. Subtitle of the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
-        public virtual string Subtitle { get; set; } 
+        public virtual string Subtitle { get; set; }
 
         /// <summary>Optional. The overall title of the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9628,19 +9628,19 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. The main text describing the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Optional. The image to display.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageImage Image { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageImage Image { get; set; }
 
         /// <summary>Required. Additional information about this option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("info")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo Info { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo Info { get; set; }
 
         /// <summary>Required. The title of the list item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9651,11 +9651,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. List of media objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaObjects")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject> MediaObjects { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject> MediaObjects { get; set; }
 
         /// <summary>Optional. What type of media is the content (ie "audio").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaType")]
-        public virtual string MediaType { get; set; } 
+        public virtual string MediaType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9666,23 +9666,23 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. Url where the media is stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentUrl")]
-        public virtual string ContentUrl { get; set; } 
+        public virtual string ContentUrl { get; set; }
 
         /// <summary>Optional. Description of media card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Optional. Icon to display above media content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("icon")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageImage Icon { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageImage Icon { get; set; }
 
         /// <summary>Optional. Image to display above media content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("largeImage")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageImage LargeImage { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageImage LargeImage { get; set; }
 
         /// <summary>Required. Name of media card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9693,11 +9693,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. The collection of quick replies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quickReplies")]
-        public virtual System.Collections.Generic.IList<string> QuickReplies { get; set; } 
+        public virtual System.Collections.Generic.IList<string> QuickReplies { get; set; }
 
         /// <summary>Optional. The title of the collection of quick replies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9709,21 +9709,21 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Optional. Description of the card (at most 2000 bytes). At least one of the title, description or
         /// media must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Optional. However at least one of the title, description or media must be set. Media (image, GIF or
         /// a video) to include in the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("media")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia Media { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia Media { get; set; }
 
         /// <summary>Optional. List of suggestions to include in the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion> Suggestions { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion> Suggestions { get; set; }
 
         /// <summary>Optional. Title of the card (at most 200 bytes). At least one of the title, description or media
         /// must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9738,20 +9738,20 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// from the content-type field in the HTTP headers when the platform fetches the file. The content-type field
         /// must be present and accurate in the HTTP response from the URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileUri")]
-        public virtual string FileUri { get; set; } 
+        public virtual string FileUri { get; set; }
 
         /// <summary>Required for cards with vertical orientation. The height of the media within a rich card with a
         /// vertical layout. For a standalone card with horizontal layout, height is not customizable, and this field is
         /// ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
-        public virtual string Height { get; set; } 
+        public virtual string Height { get; set; }
 
         /// <summary>Optional. Publicly reachable URI of the thumbnail.If you don't provide a thumbnail URI, the RBM
         /// platform displays a blank placeholder thumbnail until the user's device downloads the file. Depending on the
         /// user's setting, the file may not download automatically and may require the user to tap a download
         /// button.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUri")]
-        public virtual string ThumbnailUri { get; set; } 
+        public virtual string ThumbnailUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9765,11 +9765,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Required. The cards in the carousel. A carousel must have at least 2 cards and at most
         /// 10.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cardContents")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent> CardContents { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent> CardContents { get; set; }
 
         /// <summary>Required. The width of the cards in the carousel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cardWidth")]
-        public virtual string CardWidth { get; set; } 
+        public virtual string CardWidth { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9782,16 +9782,16 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. Card content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cardContent")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent CardContent { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent CardContent { get; set; }
 
         /// <summary>Required. Orientation of the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cardOrientation")]
-        public virtual string CardOrientation { get; set; } 
+        public virtual string CardOrientation { get; set; }
 
         /// <summary>Required if orientation is horizontal. Image preview alignment for standalone cards with horizontal
         /// layout.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailImageAlignment")]
-        public virtual string ThumbnailImageAlignment { get; set; } 
+        public virtual string ThumbnailImageAlignment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9803,24 +9803,24 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Suggested client side action: Dial a phone number</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dial")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial Dial { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial Dial { get; set; }
 
         /// <summary>Suggested client side action: Open a URI on device</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openUrl")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri OpenUrl { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri OpenUrl { get; set; }
 
         /// <summary>Opaque payload that the Dialogflow receives in a user event when the user taps the suggested
         /// action. This data will be also forwarded to webhook to allow performing custom business logic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postbackData")]
-        public virtual string PostbackData { get; set; } 
+        public virtual string PostbackData { get; set; }
 
         /// <summary>Suggested client side action: Share user location</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shareLocation")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation ShareLocation { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation ShareLocation { get; set; }
 
         /// <summary>Text to display alongside the action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9834,7 +9834,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// [E.164](https://en.wikipedia.org/wiki/E.164) format. An example of a correctly formatted phone number:
         /// +15556767888.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
-        public virtual string PhoneNumber { get; set; } 
+        public virtual string PhoneNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9847,7 +9847,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. The uri to open on the user device</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9868,11 +9868,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Opaque payload that the Dialogflow receives in a user event when the user taps the suggested reply.
         /// This data will be also forwarded to webhook to allow performing custom business logic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postbackData")]
-        public virtual string PostbackData { get; set; } 
+        public virtual string PostbackData { get; set; }
 
         /// <summary>Suggested reply text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9884,11 +9884,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Predefined client side actions that user can choose</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction Action { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction Action { get; set; }
 
         /// <summary>Predefined replies for user to select instead of typing</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reply")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply Reply { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply Reply { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9899,11 +9899,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. One or more suggestions to show to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rbmSuggestion")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion> RbmSuggestion { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion> RbmSuggestion { get; set; }
 
         /// <summary>Required. Text sent and displayed to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9914,11 +9914,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. A unique key that will be sent back to the agent if this response is given.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>Optional. A list of synonyms that can also be used to trigger this item in dialog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("synonyms")]
-        public virtual System.Collections.Generic.IList<string> Synonyms { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Synonyms { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9929,17 +9929,17 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. The text to display.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayText")]
-        public virtual string DisplayText { get; set; } 
+        public virtual string DisplayText { get; set; }
 
         /// <summary>One of text_to_speech or ssml must be provided. Structured spoken response to the user in the SSML
         /// format. Mutually exclusive with text_to_speech.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ssml")]
-        public virtual string Ssml { get; set; } 
+        public virtual string Ssml { get; set; }
 
         /// <summary>One of text_to_speech or ssml must be provided. The plain text of the speech output. Mutually
         /// exclusive with ssml.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textToSpeech")]
-        public virtual string TextToSpeech { get; set; } 
+        public virtual string TextToSpeech { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9951,7 +9951,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. The list of simple responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("simpleResponses")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse> SimpleResponses { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse> SimpleResponses { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9963,7 +9963,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. The text shown the in the suggestion chip.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9974,7 +9974,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. The list of suggested replies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageSuggestion> Suggestions { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageSuggestion> Suggestions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9985,27 +9985,27 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. List of buttons for the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buttons")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton> Buttons { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton> Buttons { get; set; }
 
         /// <summary>Optional. Display properties for the columns in this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnProperties")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageColumnProperties> ColumnProperties { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageColumnProperties> ColumnProperties { get; set; }
 
         /// <summary>Optional. Image which should be displayed on the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual GoogleCloudDialogflowV2beta1IntentMessageImage Image { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1IntentMessageImage Image { get; set; }
 
         /// <summary>Optional. Rows in this table of data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageTableCardRow> Rows { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageTableCardRow> Rows { get; set; }
 
         /// <summary>Optional. Subtitle to the title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
-        public virtual string Subtitle { get; set; } 
+        public virtual string Subtitle { get; set; }
 
         /// <summary>Required. Title of the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10016,7 +10016,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. Text in this cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10027,11 +10027,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. List of cells that make up this row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cells")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageTableCardCell> Cells { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessageTableCardCell> Cells { get; set; }
 
         /// <summary>Optional. Whether to add a visual divider after this row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dividerAfter")]
-        public virtual System.Nullable<bool> DividerAfter { get; set; } 
+        public virtual System.Nullable<bool> DividerAfter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10048,7 +10048,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// by default when enabling the Dialogflow V2 API. For audio from other sources, consider using the
         /// `TelephonySynthesizeSpeech` message with SSML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioUri")]
-        public virtual string AudioUri { get; set; } 
+        public virtual string AudioUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10062,11 +10062,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>The SSML to be synthesized. For more information, see
         /// [SSML](https://developers.google.com/actions/reference/ssml).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ssml")]
-        public virtual string Ssml { get; set; } 
+        public virtual string Ssml { get; set; }
 
         /// <summary>The raw text to be synthesized.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10079,7 +10079,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// format](https://en.wikipedia.org/wiki/E.164). We currently only allow transferring to US numbers
         /// (+1xxxyyyzzzz).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
-        public virtual string PhoneNumber { get; set; } 
+        public virtual string PhoneNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10090,7 +10090,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Optional. The collection of the agent's responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual System.Collections.Generic.IList<string> Text { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10102,40 +10102,40 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Optional. The default value to use when the `value` yields an empty result. Default values can be
         /// extracted from contexts by using the following syntax: `#context_name.parameter_name`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
-        public virtual string DefaultValue { get; set; } 
+        public virtual string DefaultValue { get; set; }
 
         /// <summary>Required. The name of the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Optional. The name of the entity type, prefixed with `@`, that describes values of the parameter.
         /// If the parameter is required, this must be provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityTypeDisplayName")]
-        public virtual string EntityTypeDisplayName { get; set; } 
+        public virtual string EntityTypeDisplayName { get; set; }
 
         /// <summary>Optional. Indicates whether the parameter represents a list of values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isList")]
-        public virtual System.Nullable<bool> IsList { get; set; } 
+        public virtual System.Nullable<bool> IsList { get; set; }
 
         /// <summary>Optional. Indicates whether the parameter is required. That is, whether the intent cannot be
         /// completed without collecting the parameter value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mandatory")]
-        public virtual System.Nullable<bool> Mandatory { get; set; } 
+        public virtual System.Nullable<bool> Mandatory { get; set; }
 
         /// <summary>The unique identifier of this parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Optional. The collection of prompts that the agent can present to the user in order to collect a
         /// value for the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prompts")]
-        public virtual System.Collections.Generic.IList<string> Prompts { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Prompts { get; set; }
 
         /// <summary>Optional. The definition of the parameter value. It can be: - a constant string, - a parameter
         /// value defined as `$parameter_name`, - an original parameter value defined as `$parameter_name.original`, - a
         /// parameter value from some context defined as `#context_name.parameter_name`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10146,7 +10146,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Output only. The unique identifier of this training phrase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. The ordered list of training phrase parts. The parts are concatenated in order to form
         /// the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow
@@ -10158,16 +10158,16 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all
         /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parts")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart> Parts { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart> Parts { get; set; }
 
         /// <summary>Optional. Indicates how many times this example was added to the intent. Each time a developer adds
         /// an existing sample by editing an intent or training, this counter is increased.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timesAddedCount")]
-        public virtual System.Nullable<int> TimesAddedCount { get; set; } 
+        public virtual System.Nullable<int> TimesAddedCount { get; set; }
 
         /// <summary>Required. The type of the training phrase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10179,22 +10179,22 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Optional. The parameter name for the value extracted from the annotated part of the example. This
         /// field is required for annotated parts of the training phrase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alias")]
-        public virtual string Alias { get; set; } 
+        public virtual string Alias { get; set; }
 
         /// <summary>Optional. The entity type name prefixed with `@`. This field is required for annotated parts of the
         /// training phrase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
-        public virtual string EntityType { get; set; } 
+        public virtual string EntityType { get; set; }
 
         /// <summary>Required. The text for this part.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>Optional. Indicates whether the text was manually annotated. This field is set to true when the
         /// Dialogflow Console is used to manually annotate the part. When creating an annotated part with the API, you
         /// must set this to true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userDefined")]
-        public virtual System.Nullable<bool> UserDefined { get; set; } 
+        public virtual System.Nullable<bool> UserDefined { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10205,7 +10205,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>A list of answers from Knowledge Connector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("answers")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer> Answers { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer> Answers { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10217,12 +10217,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>The piece of text from the `source` knowledge base document that answers this conversational
         /// query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("answer")]
-        public virtual string Answer { get; set; } 
+        public virtual string Answer { get; set; }
 
         /// <summary>The corresponding FAQ question if the answer was extracted from a FAQ Document, empty
         /// otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("faqQuestion")]
-        public virtual string FaqQuestion { get; set; } 
+        public virtual string FaqQuestion { get; set; }
 
         /// <summary>The system's confidence score that this Knowledge answer is a good match for this conversational
         /// query. The range is from 0.0 (completely uncertain) to 1.0 (completely certain). Note: The confidence score
@@ -10230,19 +10230,19 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// improvement. It may be deprecated in the future. We recommend using `match_confidence_level` which should be
         /// generally more stable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchConfidence")]
-        public virtual System.Nullable<float> MatchConfidence { get; set; } 
+        public virtual System.Nullable<float> MatchConfidence { get; set; }
 
         /// <summary>The system's confidence level that this knowledge answer is a good match for this conversational
         /// query. NOTE: The confidence level for a given `` pair may change without notice, as it depends on models
         /// that are constantly being improved. However, it will change less frequently than the confidence score below,
         /// and should be preferred for referencing the quality of an answer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchConfidenceLevel")]
-        public virtual string MatchConfidenceLevel { get; set; } 
+        public virtual string MatchConfidenceLevel { get; set; }
 
         /// <summary>Indicates which Knowledge Document this answer was extracted from. Format:
         /// `projects//knowledgeBases//documents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual string Source { get; set; } 
+        public virtual string Source { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10253,7 +10253,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. Output only. The current state of this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10264,7 +10264,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>New annotated conversation dataset created by the labeling task.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotatedConversationDataset")]
-        public virtual GoogleCloudDialogflowV2beta1AnnotatedConversationDataset AnnotatedConversationDataset { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1AnnotatedConversationDataset AnnotatedConversationDataset { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10281,16 +10281,16 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// agents and populated with the caller ID in [E.164 format](https://en.wikipedia.org/wiki/E.164) for
         /// Essentials Edition agents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
 
         /// <summary>The source of this request, e.g., `google`, `facebook`, `slack`. It is set by Dialogflow-owned
         /// servers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual string Source { get; set; } 
+        public virtual string Source { get; set; }
 
         /// <summary>Optional. The version of the protocol used for this request. This field is AoG-specific.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10301,33 +10301,33 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>The action name from the matched intent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual string Action { get; set; } 
+        public virtual string Action { get; set; }
 
         /// <summary>This field is set to: - `false` if the matched intent has required parameters and not all of the
         /// required parameter values have been collected. - `true` if all required parameter values have been
         /// collected, or if the matched intent doesn't contain any required parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allRequiredParamsPresent")]
-        public virtual System.Nullable<bool> AllRequiredParamsPresent { get; set; } 
+        public virtual System.Nullable<bool> AllRequiredParamsPresent { get; set; }
 
         /// <summary>Free-form diagnostic information for the associated detect intent request. The fields of this data
         /// can change without notice, so you should not write code that depends on its structure. The data may contain:
         /// - webhook call latency - webhook errors</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diagnosticInfo")]
-        public virtual System.Collections.Generic.IDictionary<string,object> DiagnosticInfo { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> DiagnosticInfo { get; set; }
 
         /// <summary>The collection of rich messages to present to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentMessages")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessage> FulfillmentMessages { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessage> FulfillmentMessages { get; set; }
 
         /// <summary>The text to be pronounced to the user or shown on the screen. Note: This is a legacy field,
         /// `fulfillment_messages` should be preferred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentText")]
-        public virtual string FulfillmentText { get; set; } 
+        public virtual string FulfillmentText { get; set; }
 
         /// <summary>The intent that matched the conversational query. Some, not all fields are filled in this message,
         /// including but not limited to: `name`, `display_name`, `end_interaction` and `is_fallback`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intent")]
-        public virtual GoogleCloudDialogflowV2beta1Intent Intent { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1Intent Intent { get; set; }
 
         /// <summary>The intent detection confidence. Values range from 0.0 (completely uncertain) to 1.0 (completely
         /// certain). This value is for informational purpose only and is only used to help match the best intent within
@@ -10335,23 +10335,23 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// model retraining or change in implementation. If there are `multiple knowledge_answers` messages, this value
         /// is set to the greatest `knowledgeAnswers.match_confidence` value in the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intentDetectionConfidence")]
-        public virtual System.Nullable<float> IntentDetectionConfidence { get; set; } 
+        public virtual System.Nullable<float> IntentDetectionConfidence { get; set; }
 
         /// <summary>The result from Knowledge Connector (if any), ordered by decreasing
         /// `KnowledgeAnswers.match_confidence`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("knowledgeAnswers")]
-        public virtual GoogleCloudDialogflowV2beta1KnowledgeAnswers KnowledgeAnswers { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1KnowledgeAnswers KnowledgeAnswers { get; set; }
 
         /// <summary>The language that was triggered during intent detection. See [Language
         /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported
         /// language codes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>The collection of output contexts. If applicable, `output_contexts.parameters` contains entries
         /// with name `.original` containing the original parameter values before the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputContexts")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Context> OutputContexts { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Context> OutputContexts { get; set; }
 
         /// <summary>The collection of extracted parameters. Depending on your protocol or client library language, this
         /// is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey,
@@ -10360,7 +10360,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names
         /// to property values - Else: parameter value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
 
         /// <summary>The original conversational query text: - If natural language text was provided as input,
         /// `query_text` contains a copy of the input. - If natural language speech audio was provided as input,
@@ -10368,12 +10368,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// particular one is picked. - If automatic spell correction is enabled, `query_text` will contain the
         /// corrected user input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryText")]
-        public virtual string QueryText { get; set; } 
+        public virtual string QueryText { get; set; }
 
         /// <summary>The sentiment analysis result, which depends on the `sentiment_analysis_request_config` specified
         /// in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sentimentAnalysisResult")]
-        public virtual GoogleCloudDialogflowV2beta1SentimentAnalysisResult SentimentAnalysisResult { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1SentimentAnalysisResult SentimentAnalysisResult { get; set; }
 
         /// <summary>The Speech recognition confidence between 0.0 and 1.0. A higher number indicates an estimated
         /// greater likelihood that the recognized words are correct. The default of 0.0 is a sentinel value indicating
@@ -10381,17 +10381,17 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// isn't set for StreamingDetectIntent since the streaming endpoint has separate confidence estimates per
         /// portion of the audio in StreamingRecognitionResult.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechRecognitionConfidence")]
-        public virtual System.Nullable<float> SpeechRecognitionConfidence { get; set; } 
+        public virtual System.Nullable<float> SpeechRecognitionConfidence { get; set; }
 
         /// <summary>If the query was fulfilled by a webhook call, this field is set to the value of the `payload` field
         /// returned in the webhook response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookPayload")]
-        public virtual System.Collections.Generic.IDictionary<string,object> WebhookPayload { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> WebhookPayload { get; set; }
 
         /// <summary>If the query was fulfilled by a webhook call, this field is set to the value of the `source` field
         /// returned in the webhook response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookSource")]
-        public virtual string WebhookSource { get; set; } 
+        public virtual string WebhookSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10404,11 +10404,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>A non-negative number in the [0, +inf) range, which represents the absolute magnitude of sentiment,
         /// regardless of score (positive or negative).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("magnitude")]
-        public virtual System.Nullable<float> Magnitude { get; set; } 
+        public virtual System.Nullable<float> Magnitude { get; set; }
 
         /// <summary>Sentiment score between -1.0 (negative sentiment) and 1.0 (positive sentiment).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
-        public virtual System.Nullable<float> Score { get; set; } 
+        public virtual System.Nullable<float> Score { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10424,7 +10424,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>The sentiment analysis result for `query_text`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryTextSentiment")]
-        public virtual GoogleCloudDialogflowV2beta1Sentiment QueryTextSentiment { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1Sentiment QueryTextSentiment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10439,12 +10439,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Required. The collection of entities associated with this session entity type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entities")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1EntityTypeEntity> Entities { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1EntityTypeEntity> Entities { get; set; }
 
         /// <summary>Required. Indicates whether the additional data should override or supplement the custom entity
         /// type definition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityOverrideMode")]
-        public virtual string EntityOverrideMode { get; set; } 
+        public virtual string EntityOverrideMode { get; set; }
 
         /// <summary>Required. The unique identifier of this session entity type. Supported formats: -
         /// `projects//agent/sessions//entityTypes/` - `projects//locations//agent/sessions//entityTypes/` -
@@ -10454,7 +10454,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// assume default '-' user. `` must be the display name of an existing entity type in the same agent that will
         /// be overridden or supplemented.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10465,29 +10465,29 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Alternative query results from KnowledgeService.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternativeQueryResults")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1QueryResult> AlternativeQueryResults { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1QueryResult> AlternativeQueryResults { get; set; }
 
         /// <summary>Optional. The contents of the original request that was passed to `[Streaming]DetectIntent`
         /// call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalDetectIntentRequest")]
-        public virtual GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest OriginalDetectIntentRequest { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest OriginalDetectIntentRequest { get; set; }
 
         /// <summary>The result of the conversational query or event processing. Contains the same value as
         /// `[Streaming]DetectIntentResponse.query_result`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryResult")]
-        public virtual GoogleCloudDialogflowV2beta1QueryResult QueryResult { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1QueryResult QueryResult { get; set; }
 
         /// <summary>The unique identifier of the response. Contains the same value as
         /// `[Streaming]DetectIntentResponse.response_id`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseId")]
-        public virtual string ResponseId { get; set; } 
+        public virtual string ResponseId { get; set; }
 
         /// <summary>The unique identifier of detectIntent request session. Can be used to identify end-user inside
         /// webhook implementation. Supported formats: - `projects//agent/sessions/, -
         /// `projects//locations//agent/sessions/`, - `projects//agent/environments//users//sessions/`, -
         /// `projects//locations//agent/environments//users//sessions/`,</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("session")]
-        public virtual string Session { get; set; } 
+        public virtual string Session { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10504,29 +10504,29 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is
         /// false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endInteraction")]
-        public virtual System.Nullable<bool> EndInteraction { get; set; } 
+        public virtual System.Nullable<bool> EndInteraction { get; set; }
 
         /// <summary>Optional. Invokes the supplied events. When this field is set, Dialogflow ignores the
         /// `fulfillment_text`, `fulfillment_messages`, and `payload` fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("followupEventInput")]
-        public virtual GoogleCloudDialogflowV2beta1EventInput FollowupEventInput { get; set; } 
+        public virtual GoogleCloudDialogflowV2beta1EventInput FollowupEventInput { get; set; }
 
         /// <summary>Optional. The rich response messages intended for the end-user. When provided, Dialogflow uses this
         /// field to populate QueryResult.fulfillment_messages sent to the integration or API caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentMessages")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessage> FulfillmentMessages { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessage> FulfillmentMessages { get; set; }
 
         /// <summary>Optional. The text response message intended for the end-user. It is recommended to use
         /// `fulfillment_messages.text.text[0]` instead. When provided, Dialogflow uses this field to populate
         /// QueryResult.fulfillment_text sent to the integration or API caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentText")]
-        public virtual string FulfillmentText { get; set; } 
+        public virtual string FulfillmentText { get; set; }
 
         /// <summary>Optional. The collection of output contexts that will overwrite currently active contexts for the
         /// session and reset their lifespans. When provided, Dialogflow uses this field to populate
         /// QueryResult.output_contexts sent to the integration or API caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputContexts")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Context> OutputContexts { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Context> OutputContexts { get; set; }
 
         /// <summary>Optional. This field can be used to pass custom data from your webhook to the integration or API
         /// caller. Arbitrary JSON objects are supported. When provided, Dialogflow uses this field to populate
@@ -10535,20 +10535,20 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// messages. See the format definition at [Google Assistant Dialogflow webhook
         /// format](https://developers.google.com/assistant/actions/build/json/dialogflow-webhook-json)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
 
         /// <summary>Optional. Additional session entity types to replace or extend developer entity types with. The
         /// entity synonyms apply to all languages and persist for the session. Setting this data from a webhook
         /// overwrites the session entity types that have been set using `detectIntent`, `streamingDetectIntent` or
         /// SessionEntityType management methods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionEntityTypes")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1SessionEntityType> SessionEntityTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1SessionEntityType> SessionEntityTypes { get; set; }
 
         /// <summary>Optional. A custom field used to identify the webhook source. Arbitrary strings are supported. When
         /// provided, Dialogflow uses this field to populate QueryResult.webhook_source sent to the integration or API
         /// caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual string Source { get; set; } 
+        public virtual string Source { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10559,7 +10559,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Name of the created version. Format: `projects//locations//agents//flows//versions/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10570,12 +10570,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>Uncompressed raw byte content for agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentContent")]
-        public virtual string AgentContent { get; set; } 
+        public virtual string AgentContent { get; set; }
 
         /// <summary>The URI to a file containing the exported agent. This field is populated only if `agent_uri` is
         /// specified in ExportAgentRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
-        public virtual string AgentUri { get; set; } 
+        public virtual string AgentUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10586,7 +10586,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>The unique identifier of the new agent. Format: `projects//locations//agents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agent")]
-        public virtual string Agent { get; set; } 
+        public virtual string Agent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10597,11 +10597,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<GoogleLongrunningOperation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleLongrunningOperation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10613,23 +10613,23 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual GoogleRpcStatus Error { get; set; } 
+        public virtual GoogleRpcStatus Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -10637,7 +10637,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10662,17 +10662,17 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10685,11 +10685,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>The latitude in degrees. It must be in the range [-90.0, +90.0].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latitude")]
-        public virtual System.Nullable<double> Latitude { get; set; } 
+        public virtual System.Nullable<double> Latitude { get; set; }
 
         /// <summary>The longitude in degrees. It must be in the range [-180.0, +180.0].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
-        public virtual System.Nullable<double> Longitude { get; set; } 
+        public virtual System.Nullable<double> Longitude { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

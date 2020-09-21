@@ -1461,11 +1461,11 @@ namespace Google.Apis.PubsubLite.v1.Data
     {
         /// <summary>Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishMibPerSec")]
-        public virtual System.Nullable<int> PublishMibPerSec { get; set; } 
+        public virtual System.Nullable<int> PublishMibPerSec { get; set; }
 
         /// <summary>Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 32.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscribeMibPerSec")]
-        public virtual System.Nullable<int> SubscribeMibPerSec { get; set; } 
+        public virtual System.Nullable<int> SubscribeMibPerSec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1478,15 +1478,15 @@ namespace Google.Apis.PubsubLite.v1.Data
         /// start_cursor before the first message and an end_cursor after the last message will retrieve all
         /// messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endCursor")]
-        public virtual Cursor EndCursor { get; set; } 
+        public virtual Cursor EndCursor { get; set; }
 
         /// <summary>Required. The partition for which we should compute message stats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partition")]
-        public virtual System.Nullable<long> Partition { get; set; } 
+        public virtual System.Nullable<long> Partition { get; set; }
 
         /// <summary>The inclusive start of the range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startCursor")]
-        public virtual Cursor StartCursor { get; set; } 
+        public virtual Cursor StartCursor { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1497,22 +1497,22 @@ namespace Google.Apis.PubsubLite.v1.Data
     {
         /// <summary>The number of quota bytes accounted to these messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageBytes")]
-        public virtual System.Nullable<long> MessageBytes { get; set; } 
+        public virtual System.Nullable<long> MessageBytes { get; set; }
 
         /// <summary>The count of messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageCount")]
-        public virtual System.Nullable<long> MessageCount { get; set; } 
+        public virtual System.Nullable<long> MessageCount { get; set; }
 
         /// <summary>The minimum event timestamp across these messages. For the purposes of this computation, if a
         /// message does not have an event time, we use the publish time. The timestamp will be unset if there are no
         /// messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumEventTime")]
-        public virtual object MinimumEventTime { get; set; } 
+        public virtual object MinimumEventTime { get; set; }
 
         /// <summary>The minimum publish timestamp across these messages. Note that publish timestamps within a
         /// partition are non-decreasing. The timestamp will be unset if there are no messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumPublishTime")]
-        public virtual object MinimumPublishTime { get; set; } 
+        public virtual object MinimumPublishTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1523,7 +1523,7 @@ namespace Google.Apis.PubsubLite.v1.Data
     {
         /// <summary>The offset of a message within a topic partition. Must be greater than or equal 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offset")]
-        public virtual System.Nullable<long> Offset { get; set; } 
+        public virtual System.Nullable<long> Offset { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1534,7 +1534,7 @@ namespace Google.Apis.PubsubLite.v1.Data
     {
         /// <summary>The DeliveryRequirement for this subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryRequirement")]
-        public virtual string DeliveryRequirement { get; set; } 
+        public virtual string DeliveryRequirement { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1556,11 +1556,11 @@ namespace Google.Apis.PubsubLite.v1.Data
         /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
         /// there are no subsequent pages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The partition cursors from this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitionCursors")]
-        public virtual System.Collections.Generic.IList<PartitionCursor> PartitionCursors { get; set; } 
+        public virtual System.Collections.Generic.IList<PartitionCursor> PartitionCursors { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1572,12 +1572,12 @@ namespace Google.Apis.PubsubLite.v1.Data
         /// <summary>A token that can be sent as `page_token` to retrieve the next page of results. If this field is
         /// omitted, there are no more results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of subscriptions in the requested parent. The order of the subscriptions is
         /// unspecified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptions")]
-        public virtual System.Collections.Generic.IList<Subscription> Subscriptions { get; set; } 
+        public virtual System.Collections.Generic.IList<Subscription> Subscriptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1589,12 +1589,12 @@ namespace Google.Apis.PubsubLite.v1.Data
         /// <summary>A token that can be sent as `page_token` to retrieve the next page of results. If this field is
         /// omitted, there are no more results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The names of subscriptions attached to the topic. The order of the subscriptions is
         /// unspecified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptions")]
-        public virtual System.Collections.Generic.IList<string> Subscriptions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Subscriptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1606,11 +1606,11 @@ namespace Google.Apis.PubsubLite.v1.Data
         /// <summary>A token that can be sent as `page_token` to retrieve the next page of results. If this field is
         /// omitted, there are no more results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of topic in the requested parent. The order of the topics is unspecified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topics")]
-        public virtual System.Collections.Generic.IList<Topic> Topics { get; set; } 
+        public virtual System.Collections.Generic.IList<Topic> Topics { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1621,18 +1621,18 @@ namespace Google.Apis.PubsubLite.v1.Data
     {
         /// <summary>The capacity configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capacity")]
-        public virtual Capacity Capacity { get; set; } 
+        public virtual Capacity Capacity { get; set; }
 
         /// <summary>The number of partitions in the topic. Must be at least 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
-        public virtual System.Nullable<long> Count { get; set; } 
+        public virtual System.Nullable<long> Count { get; set; }
 
         /// <summary>DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in
         /// the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s).
         /// This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for
         /// 20 partitions. This value must be in the range [1,4].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scale")]
-        public virtual System.Nullable<int> Scale { get; set; } 
+        public virtual System.Nullable<int> Scale { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1643,11 +1643,11 @@ namespace Google.Apis.PubsubLite.v1.Data
     {
         /// <summary>The value of the cursor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cursor")]
-        public virtual Cursor Cursor { get; set; } 
+        public virtual Cursor Cursor { get; set; }
 
         /// <summary>The partition this is for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partition")]
-        public virtual System.Nullable<long> Partition { get; set; } 
+        public virtual System.Nullable<long> Partition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1660,12 +1660,12 @@ namespace Google.Apis.PubsubLite.v1.Data
         /// topic's partitions grows beyond this value, older messages will be dropped to make room for newer ones,
         /// regardless of the value of `period`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("perPartitionBytes")]
-        public virtual System.Nullable<long> PerPartitionBytes { get; set; } 
+        public virtual System.Nullable<long> PerPartitionBytes { get; set; }
 
         /// <summary>How long a published message is retained. If unset, messages will be retained as long as the bytes
         /// retained for each partition is below `per_partition_bytes`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("period")]
-        public virtual object Period { get; set; } 
+        public virtual object Period { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1676,17 +1676,17 @@ namespace Google.Apis.PubsubLite.v1.Data
     {
         /// <summary>The settings for this subscription's message delivery.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryConfig")]
-        public virtual DeliveryConfig DeliveryConfig { get; set; } 
+        public virtual DeliveryConfig DeliveryConfig { get; set; }
 
         /// <summary>The name of the subscription. Structured like:
         /// projects/{project_number}/locations/{location}/subscriptions/{subscription_id}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The name of the topic this subscription is attached to. Structured like:
         /// projects/{project_number}/locations/{location}/topics/{topic_id}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topic")]
-        public virtual string Topic { get; set; } 
+        public virtual string Topic { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1698,15 +1698,15 @@ namespace Google.Apis.PubsubLite.v1.Data
         /// <summary>The name of the topic. Structured like:
         /// projects/{project_number}/locations/{location}/topics/{topic_id}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The settings for this topic's partitions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitionConfig")]
-        public virtual PartitionConfig PartitionConfig { get; set; } 
+        public virtual PartitionConfig PartitionConfig { get; set; }
 
         /// <summary>The settings for this topic's message retention.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retentionConfig")]
-        public virtual RetentionConfig RetentionConfig { get; set; } 
+        public virtual RetentionConfig RetentionConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1717,7 +1717,7 @@ namespace Google.Apis.PubsubLite.v1.Data
     {
         /// <summary>The number of partitions in the topic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitionCount")]
-        public virtual System.Nullable<long> PartitionCount { get; set; } 
+        public virtual System.Nullable<long> PartitionCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

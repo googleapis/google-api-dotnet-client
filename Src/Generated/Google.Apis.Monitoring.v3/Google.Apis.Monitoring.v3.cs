@@ -4345,7 +4345,7 @@ namespace Google.Apis.Monitoring.v3.Data
         /// specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of the
         /// alignment_period is 2 years, or 104 weeks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alignmentPeriod")]
-        public virtual object AlignmentPeriod { get; set; } 
+        public virtual object AlignmentPeriod { get; set; }
 
         /// <summary>The reduction operation to be used to combine time series into a single time series, where the
         /// value of each data point in the resulting series is a function of all the already aligned values in the
@@ -4356,7 +4356,7 @@ namespace Google.Apis.Monitoring.v3.Data
         /// then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be
         /// specified; otherwise, an error is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crossSeriesReducer")]
-        public virtual string CrossSeriesReducer { get; set; } 
+        public virtual string CrossSeriesReducer { get; set; }
 
         /// <summary>The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine
         /// how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset
@@ -4367,7 +4367,7 @@ namespace Google.Apis.Monitoring.v3.Data
         /// time series have the same resource type, then the time series are aggregated into a single output time
         /// series. If cross_series_reducer is not defined, this field is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupByFields")]
-        public virtual System.Collections.Generic.IList<string> GroupByFields { get; set; } 
+        public virtual System.Collections.Generic.IList<string> GroupByFields { get; set; }
 
         /// <summary>An Aligner describes how to bring the data points in a single time series into temporal alignment.
         /// Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically
@@ -4378,7 +4378,7 @@ namespace Google.Apis.Monitoring.v3.Data
         /// reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to
         /// ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("perSeriesAligner")]
-        public virtual string PerSeriesAligner { get; set; } 
+        public virtual string PerSeriesAligner { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4392,51 +4392,51 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>How to combine the results of multiple conditions to determine if an incident should be opened. If
         /// condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("combiner")]
-        public virtual string Combiner { get; set; } 
+        public virtual string Combiner { get; set; }
 
         /// <summary>A list of conditions for the policy. The conditions are combined by AND or OR according to the
         /// combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have
         /// from one to six conditions. If condition_time_series_query_language is present, it must be the only
         /// condition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
-        public virtual System.Collections.Generic.IList<Condition> Conditions { get; set; } 
+        public virtual System.Collections.Generic.IList<Condition> Conditions { get; set; }
 
         /// <summary>A read-only record of the creation of the alerting policy. If provided in a call to create or
         /// update, this field will be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationRecord")]
-        public virtual MutationRecord CreationRecord { get; set; } 
+        public virtual MutationRecord CreationRecord { get; set; }
 
         /// <summary>A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To
         /// avoid confusion, don't use the same display name for multiple policies in the same project. The name is
         /// limited to 512 Unicode characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Documentation that is included with notifications and incidents related to this policy. Best
         /// practice is for the documentation to include information to help responders understand, mitigate, escalate,
         /// and correct the underlying problems detected by the alerting policy. Notification channels that have limited
         /// capacity might not show this documentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentation")]
-        public virtual Documentation Documentation { get; set; } 
+        public virtual Documentation Documentation { get; set; }
 
         /// <summary>Whether or not the policy is enabled. On write, the default interpretation if unset is that the
         /// policy is enabled. On read, clients should not make any assumption about the state if it has not been
         /// populated. The field should always be populated on List and Get operations, unless a field projection has
         /// been specified that strips it out.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>A read-only record of the most recent change to the alerting policy. If provided in a call to
         /// create or update, this field will be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mutationRecord")]
-        public virtual MutationRecord MutationRecord { get; set; } 
+        public virtual MutationRecord MutationRecord { get; set; }
 
         /// <summary>Required if the policy exists. The resource name for this policy. The format is:
         /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Stackdriver
         /// Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name
         /// field in the alerting policy passed as part of the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Identifies the notification channels to which notifications should be sent when incidents are
         /// opened or closed or when new violations occur on an already opened incident. Each element of this array
@@ -4444,19 +4444,19 @@ namespace Google.Apis.Monitoring.v3.Data
         /// ListNotificationChannels method. The format of the entries in this field is:
         /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationChannels")]
-        public virtual System.Collections.Generic.IList<string> NotificationChannels { get; set; } 
+        public virtual System.Collections.Generic.IList<string> NotificationChannels { get; set; }
 
         /// <summary>User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The
         /// field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes,
         /// whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and
         /// dashes. Keys must begin with a letter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> UserLabels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
 
         /// <summary>Read-only description of how the alert policy is invalid. OK if the alert policy is valid. If not
         /// OK, the alert policy will not generate incidents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validity")]
-        public virtual Status Validity { get; set; } 
+        public virtual Status Validity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4469,7 +4469,7 @@ namespace Google.Apis.Monitoring.v3.Data
         /// label in the gae_app monitored resource:
         /// https://cloud.google.com/monitoring/api/resources#tag_gae_app</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("moduleId")]
-        public virtual string ModuleId { get; set; } 
+        public virtual string ModuleId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4489,11 +4489,11 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>The password to use when authenticating with the HTTP server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
-        public virtual string Password { get; set; } 
+        public virtual string Password { get; set; }
 
         /// <summary>The username to use when authenticating with the HTTP server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4508,33 +4508,33 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>Good service is defined to be the count of requests made to this service that return
         /// successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availability")]
-        public virtual AvailabilityCriteria Availability { get; set; } 
+        public virtual AvailabilityCriteria Availability { get; set; }
 
         /// <summary>Good service is defined to be the count of requests made to this service that are fast enough with
         /// respect to latency.threshold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latency")]
-        public virtual LatencyCriteria Latency { get; set; } 
+        public virtual LatencyCriteria Latency { get; set; }
 
         /// <summary>OPTIONAL: The set of locations to which this SLI is relevant. Telemetry from other locations will
         /// not be used to calculate performance for this SLI. If omitted, this SLI applies to all locations in which
         /// the Service has activity. For service types that don't support breaking down by location, setting this field
         /// will result in an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual System.Collections.Generic.IList<string> Location { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Location { get; set; }
 
         /// <summary>OPTIONAL: The set of RPCs to which this SLI is relevant. Telemetry from other methods will not be
         /// used to calculate performance for this SLI. If omitted, this SLI applies to all the Service's methods. For
         /// service types that don't support breaking down by method, setting this field will result in an
         /// error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual System.Collections.Generic.IList<string> Method { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Method { get; set; }
 
         /// <summary>OPTIONAL: The set of API versions to which this SLI is relevant. Telemetry from other API versions
         /// will not be used to calculate performance for this SLI. If omitted, this SLI applies to all API versions.
         /// For service types that don't support breaking down by version, setting this field will result in an
         /// error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Collections.Generic.IList<string> Version { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4554,15 +4554,15 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>The explicit buckets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explicitBuckets")]
-        public virtual Explicit ExplicitBuckets { get; set; } 
+        public virtual Explicit ExplicitBuckets { get; set; }
 
         /// <summary>The exponential buckets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exponentialBuckets")]
-        public virtual Exponential ExponentialBuckets { get; set; } 
+        public virtual Exponential ExponentialBuckets { get; set; }
 
         /// <summary>The linear bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linearBuckets")]
-        public virtual Linear LinearBuckets { get; set; } 
+        public virtual Linear LinearBuckets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4575,7 +4575,7 @@ namespace Google.Apis.Monitoring.v3.Data
         /// resource label in the api monitored resource:
         /// https://cloud.google.com/monitoring/api/resources#tag_api</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4587,22 +4587,22 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>The name of the Kubernetes cluster in which this Istio service is defined. Corresponds to the
         /// cluster_name resource label in k8s_cluster resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
-        public virtual string ClusterName { get; set; } 
+        public virtual string ClusterName { get; set; }
 
         /// <summary>The location of the Kubernetes cluster in which this Istio service is defined. Corresponds to the
         /// location resource label in k8s_cluster resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>The name of the Istio service underlying this service. Corresponds to the destination_service_name
         /// metric label in Istio metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
-        public virtual string ServiceName { get; set; } 
+        public virtual string ServiceName { get; set; }
 
         /// <summary>The namespace of the Istio service underlying this service. Corresponds to the
         /// destination_service_namespace metric label in Istio metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceNamespace")]
-        public virtual string ServiceNamespace { get; set; } 
+        public virtual string ServiceNamespace { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4614,36 +4614,36 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>The end time of the interval.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>The measurement metadata. Example: "process_id" -> 12345</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,TypedValue> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, TypedValue> Metadata { get; set; }
 
         /// <summary>The name of the plugin. Example: "disk".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plugin")]
-        public virtual string Plugin { get; set; } 
+        public virtual string Plugin { get; set; }
 
         /// <summary>The instance name of the plugin Example: "hdcl".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pluginInstance")]
-        public virtual string PluginInstance { get; set; } 
+        public virtual string PluginInstance { get; set; }
 
         /// <summary>The start time of the interval.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The measurement type. Example: "memory".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The measurement type instance. Example: "used".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("typeInstance")]
-        public virtual string TypeInstance { get; set; } 
+        public virtual string TypeInstance { get; set; }
 
         /// <summary>The measured values during this time interval. Each value must have a different
         /// data_source_name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<CollectdValue> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<CollectdValue> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4655,16 +4655,16 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>Records the error status for the payload. If this field is present, the partial errors for nested
         /// values won't be populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>The zero-based index in CreateCollectdTimeSeriesRequest.collectd_payloads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
-        public virtual System.Nullable<int> Index { get; set; } 
+        public virtual System.Nullable<int> Index { get; set; }
 
         /// <summary>Records the error status for values that were not written due to an error.Failed payloads for which
         /// nothing is written will not include partial value errors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueErrors")]
-        public virtual System.Collections.Generic.IList<CollectdValueError> ValueErrors { get; set; } 
+        public virtual System.Collections.Generic.IList<CollectdValueError> ValueErrors { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4676,15 +4676,15 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>The data source for the collectd value. For example, there are two data sources for network
         /// measurements: "rx" and "tx".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceName")]
-        public virtual string DataSourceName { get; set; } 
+        public virtual string DataSourceName { get; set; }
 
         /// <summary>The type of measurement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceType")]
-        public virtual string DataSourceType { get; set; } 
+        public virtual string DataSourceType { get; set; }
 
         /// <summary>The measurement value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual TypedValue Value { get; set; } 
+        public virtual TypedValue Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4695,12 +4695,12 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>Records the error status for the value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>The zero-based index in CollectdPayload.values within the parent
         /// CreateCollectdTimeSeriesRequest.collectd_payloads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
-        public virtual System.Nullable<int> Index { get; set; } 
+        public virtual System.Nullable<int> Index { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4712,16 +4712,16 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>A condition that checks that a time series continues to receive new data points.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditionAbsent")]
-        public virtual MetricAbsence ConditionAbsent { get; set; } 
+        public virtual MetricAbsence ConditionAbsent { get; set; }
 
         /// <summary>A condition that compares a time series against a threshold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditionThreshold")]
-        public virtual MetricThreshold ConditionThreshold { get; set; } 
+        public virtual MetricThreshold ConditionThreshold { get; set; }
 
         /// <summary>A short name or phrase used to identify the condition in dashboards, notifications, and incidents.
         /// To avoid confusion, don't use the same display name for multiple conditions in the same policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Required if the condition exists. The unique resource name for this condition. Its format is:
         /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is
@@ -4734,7 +4734,7 @@ namespace Google.Apis.Monitoring.v3.Data
         /// make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise,
         /// treat the change as a new condition and let the existing condition be deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4748,12 +4748,12 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>String or regex content to match. Maximum 1024 bytes. An empty content string indicates no content
         /// matching is to be performed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual string Content { get; set; } 
+        public virtual string Content { get; set; }
 
         /// <summary>The type of content matcher that will be applied to the server output, compared to the content
         /// string when the check is run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matcher")]
-        public virtual string Matcher { get; set; } 
+        public virtual string Matcher { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4766,15 +4766,15 @@ namespace Google.Apis.Monitoring.v3.Data
         /// point for each time series, so no two payloads can have the same values for all of the fields plugin,
         /// plugin_instance, type, and type_instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectdPayloads")]
-        public virtual System.Collections.Generic.IList<CollectdPayload> CollectdPayloads { get; set; } 
+        public virtual System.Collections.Generic.IList<CollectdPayload> CollectdPayloads { get; set; }
 
         /// <summary>The version of collectd that collected the data. Example: "5.3.0-192.el6".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectdVersion")]
-        public virtual string CollectdVersion { get; set; } 
+        public virtual string CollectdVersion { get; set; }
 
         /// <summary>The monitored resource associated with the time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
-        public virtual MonitoredResource Resource { get; set; } 
+        public virtual MonitoredResource Resource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4787,13 +4787,13 @@ namespace Google.Apis.Monitoring.v3.Data
         /// requests for which nothing is written will return an error response instead. Requests where data points were
         /// rejected by the backend will set summary instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payloadErrors")]
-        public virtual System.Collections.Generic.IList<CollectdPayloadError> PayloadErrors { get; set; } 
+        public virtual System.Collections.Generic.IList<CollectdPayloadError> PayloadErrors { get; set; }
 
         /// <summary>Aggregate statistics from writing the payloads. This field is omitted if all points were
         /// successfully written, so that the response is empty. This is for backwards compatibility with clients that
         /// log errors on any non-empty response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summary")]
-        public virtual CreateTimeSeriesSummary Summary { get; set; } 
+        public virtual CreateTimeSeriesSummary Summary { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4807,7 +4807,7 @@ namespace Google.Apis.Monitoring.v3.Data
         /// TimeSeries value must fully specify a unique time series by supplying all label values for the metric and
         /// the monitored resource.The maximum number of TimeSeries objects per Create request is 200.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeries")]
-        public virtual System.Collections.Generic.IList<TimeSeries> TimeSeries { get; set; } 
+        public virtual System.Collections.Generic.IList<TimeSeries> TimeSeries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4818,15 +4818,15 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>The number of points that failed to be written. Order is not guaranteed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual System.Collections.Generic.IList<Error> Errors { get; set; } 
+        public virtual System.Collections.Generic.IList<Error> Errors { get; set; }
 
         /// <summary>The number of points that were successfully written.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successPointCount")]
-        public virtual System.Nullable<int> SuccessPointCount { get; set; } 
+        public virtual System.Nullable<int> SuccessPointCount { get; set; }
 
         /// <summary>The number of points in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalPointCount")]
-        public virtual System.Nullable<int> TotalPointCount { get; set; } 
+        public virtual System.Nullable<int> TotalPointCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4856,37 +4856,37 @@ namespace Google.Apis.Monitoring.v3.Data
         /// bucket has number N-1. The size of bucket_counts must not be greater than N. If the size is less than N,
         /// then the remaining buckets are assigned values of zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketCounts")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> BucketCounts { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> BucketCounts { get; set; }
 
         /// <summary>Required in the Cloud Monitoring API v3. Defines the histogram bucket boundaries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketOptions")]
-        public virtual BucketOptions BucketOptions { get; set; } 
+        public virtual BucketOptions BucketOptions { get; set; }
 
         /// <summary>The number of values in the population. Must be non-negative. This value must equal the sum of the
         /// values in bucket_counts if a histogram is provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
-        public virtual System.Nullable<long> Count { get; set; } 
+        public virtual System.Nullable<long> Count { get; set; }
 
         /// <summary>Must be in increasing order of value field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemplars")]
-        public virtual System.Collections.Generic.IList<Exemplar> Exemplars { get; set; } 
+        public virtual System.Collections.Generic.IList<Exemplar> Exemplars { get; set; }
 
         /// <summary>The arithmetic mean of the values in the population. If count is zero then this field must be
         /// zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mean")]
-        public virtual System.Nullable<double> Mean { get; set; } 
+        public virtual System.Nullable<double> Mean { get; set; }
 
         /// <summary>If specified, contains the range of the population values. The field must not be present if the
         /// count is zero. This field is presently ignored by the Cloud Monitoring API v3.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual Range Range { get; set; } 
+        public virtual Range Range { get; set; }
 
         /// <summary>The sum of squared deviations from the mean of the values in the population. For values x_i this
         /// is: Sum[i=1..n]((x_i - mean)^2) Knuth, "The Art of Computer Programming", Vol. 2, page 232, 3rd edition
         /// describes Welford's method for accumulating this sum in one pass.If count is zero then this field must be
         /// zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sumOfSquaredDeviation")]
-        public virtual System.Nullable<double> SumOfSquaredDeviation { get; set; } 
+        public virtual System.Nullable<double> SumOfSquaredDeviation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4902,12 +4902,12 @@ namespace Google.Apis.Monitoring.v3.Data
         /// aggregating values. Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind =
         /// CUMULATIVE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distributionFilter")]
-        public virtual string DistributionFilter { get; set; } 
+        public virtual string DistributionFilter { get; set; }
 
         /// <summary>Range of values considered "good." For a one-sided range, set one bound to an infinite
         /// value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual GoogleMonitoringV3Range Range { get; set; } 
+        public virtual GoogleMonitoringV3Range Range { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4920,12 +4920,12 @@ namespace Google.Apis.Monitoring.v3.Data
         /// Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is
         /// smaller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual string Content { get; set; } 
+        public virtual string Content { get; set; }
 
         /// <summary>The format of the content field. Presently, only the value "text/markdown" is supported. See
         /// Markdown (https://en.wikipedia.org/wiki/Markdown) for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; } 
+        public virtual string MimeType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4943,7 +4943,7 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>Map from label to its value, for all labels dropped in any aggregation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Label { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Label { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4964,11 +4964,11 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>The number of points that couldn't be written because of status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pointCount")]
-        public virtual System.Nullable<int> PointCount { get; set; } 
+        public virtual System.Nullable<int> PointCount { get; set; }
 
         /// <summary>The status of the requested write operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual Status Status { get; set; } 
+        public virtual Status Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4986,15 +4986,15 @@ namespace Google.Apis.Monitoring.v3.Data
         /// type.googleapis.com/google.monitoring.v3.DroppedLabelsThere may be only a single attachment of any given
         /// message type in a single exemplar, and this is enforced by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachments")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Attachments { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Attachments { get; set; }
 
         /// <summary>The observation (sampling) time of the above value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
-        public virtual object Timestamp { get; set; } 
+        public virtual object Timestamp { get; set; }
 
         /// <summary>Value of the exemplar point. This value determines to which bucket the exemplar belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual System.Nullable<double> Value { get; set; } 
+        public virtual System.Nullable<double> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5008,7 +5008,7 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>The values must be monotonically increasing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bounds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<double>> Bounds { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> Bounds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5022,15 +5022,15 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>Must be greater than 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("growthFactor")]
-        public virtual System.Nullable<double> GrowthFactor { get; set; } 
+        public virtual System.Nullable<double> GrowthFactor { get; set; }
 
         /// <summary>Must be greater than 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numFiniteBuckets")]
-        public virtual System.Nullable<int> NumFiniteBuckets { get; set; } 
+        public virtual System.Nullable<int> NumFiniteBuckets { get; set; }
 
         /// <summary>Must be greater than 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scale")]
-        public virtual System.Nullable<double> Scale { get; set; } 
+        public virtual System.Nullable<double> Scale { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5041,45 +5041,45 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>The field cardinality.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cardinality")]
-        public virtual string Cardinality { get; set; } 
+        public virtual string Cardinality { get; set; }
 
         /// <summary>The string value of the default value of this field. Proto2 syntax only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
-        public virtual string DefaultValue { get; set; } 
+        public virtual string DefaultValue { get; set; }
 
         /// <summary>The field JSON name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jsonName")]
-        public virtual string JsonName { get; set; } 
+        public virtual string JsonName { get; set; }
 
         /// <summary>The field type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The field name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The field number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("number")]
-        public virtual System.Nullable<int> Number { get; set; } 
+        public virtual System.Nullable<int> Number { get; set; }
 
         /// <summary>The index of the field type in Type.oneofs, for message or enumeration types. The first type has
         /// index 1; zero means the type is not in the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oneofIndex")]
-        public virtual System.Nullable<int> OneofIndex { get; set; } 
+        public virtual System.Nullable<int> OneofIndex { get; set; }
 
         /// <summary>The protocol buffer options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
-        public virtual System.Collections.Generic.IList<Option> Options { get; set; } 
+        public virtual System.Collections.Generic.IList<Option> Options { get; set; }
 
         /// <summary>Whether to use alternative packed wire representation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packed")]
-        public virtual System.Nullable<bool> Packed { get; set; } 
+        public virtual System.Nullable<bool> Packed { get; set; }
 
         /// <summary>The field type URL, without the scheme, for message or enumeration types. Example:
         /// "type.googleapis.com/google.protobuf.Timestamp".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("typeUrl")]
-        public virtual string TypeUrl { get; set; } 
+        public virtual string TypeUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5096,7 +5096,7 @@ namespace Google.Apis.Monitoring.v3.Data
         /// expiration, even though the API does impose an upper limit on the maximum expiration that is
         /// permitted).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; } 
+        public virtual object ExpireTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5109,13 +5109,13 @@ namespace Google.Apis.Monitoring.v3.Data
         /// (i.e. other channels of the same type with the same fingerprint such as other email channels with the same
         /// email address or other sms channels with the same number).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual string Code { get; set; } 
+        public virtual string Code { get; set; }
 
         /// <summary>The expiration time associated with the code that was returned. If an expiration was provided in
         /// the request, this is the minimum of the requested expiration in the request and the max permitted
         /// expiration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; } 
+        public virtual object ExpireTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5128,11 +5128,11 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>Range maximum.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("max")]
-        public virtual System.Nullable<double> Max { get; set; } 
+        public virtual System.Nullable<double> Max { get; set; }
 
         /// <summary>Range minimum.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("min")]
-        public virtual System.Nullable<double> Min { get; set; } 
+        public virtual System.Nullable<double> Min { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5156,29 +5156,29 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>A user-assigned name for this group, used only for display purposes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The filter used to determine which monitored resources belong to this group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual string Filter { get; set; } 
+        public virtual string Filter { get; set; }
 
         /// <summary>If true, the members of this group are considered to be a cluster. The system can perform
         /// additional analysis on groups that are clusters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isCluster")]
-        public virtual System.Nullable<bool> IsCluster { get; set; } 
+        public virtual System.Nullable<bool> IsCluster { get; set; }
 
         /// <summary>Output only. The name of this group. The format is:
         /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new
         /// name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that
         /// is generated automatically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The name of the group's parent, if it has one. The format is:
         /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty
         /// string, "".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentName")]
-        public virtual string ParentName { get; set; } 
+        public virtual string ParentName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5189,7 +5189,7 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>The authentication information. Optional when creating an HTTP check; defaults to empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authInfo")]
-        public virtual BasicAuthentication AuthInfo { get; set; } 
+        public virtual BasicAuthentication AuthInfo { get; set; }
 
         /// <summary>The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body
         /// passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API
@@ -5197,11 +5197,11 @@ namespace Google.Apis.Monitoring.v3.Data
         /// byte size is 1 megabyte. Note: As with all bytes fields JSON representations are base64 encoded. e.g.:
         /// "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
-        public virtual string Body { get; set; } 
+        public virtual string Body { get; set; }
 
         /// <summary>The content type to use for the check.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
-        public virtual string ContentType { get; set; } 
+        public virtual string ContentType { get; set; }
 
         /// <summary>The list of headers to send as part of the Uptime check request. If two headers have the same key
         /// and different values, they should be entered as a single header, with the value being a comma-separated list
@@ -5209,41 +5209,41 @@ namespace Google.Apis.Monitoring.v3.Data
         /// Entering two separate headers with the same key in a Create call will cause the first to be overwritten by
         /// the second. The maximum number of headers allowed is 100.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Headers { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Headers { get; set; }
 
         /// <summary>Boolean specifying whether to encrypt the header information. Encryption should be specified for
         /// any headers related to authentication that you do not wish to be seen when retrieving the configuration. The
         /// server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to true
         /// then the headers will be obscured with ******.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maskHeaders")]
-        public virtual System.Nullable<bool> MaskHeaders { get; set; } 
+        public virtual System.Nullable<bool> MaskHeaders { get; set; }
 
         /// <summary>Optional (defaults to "/"). The path to the page against which to run the check. Will be combined
         /// with the host (specified within the monitored_resource) and port to construct the full URL. If the provided
         /// path does not begin with "/", a "/" will be prepended automatically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; } 
+        public virtual string Path { get; set; }
 
         /// <summary>Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is true). The TCP port on the
         /// HTTP server against which to run the check. Will be combined with host (specified within the
         /// monitored_resource) and path to construct the full URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
-        public virtual System.Nullable<int> Port { get; set; } 
+        public virtual System.Nullable<int> Port { get; set; }
 
         /// <summary>The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then request_method
         /// defaults to GET.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestMethod")]
-        public virtual string RequestMethod { get; set; } 
+        public virtual string RequestMethod { get; set; }
 
         /// <summary>If true, use HTTPS instead of HTTP to run the check.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useSsl")]
-        public virtual System.Nullable<bool> UseSsl { get; set; } 
+        public virtual System.Nullable<bool> UseSsl { get; set; }
 
         /// <summary>Boolean specifying whether to include SSL certificate validation as a part of the Uptime check.
         /// Only applies to checks where monitored_resource is set to uptime_url. If use_ssl is false, setting
         /// validate_ssl to true has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateSsl")]
-        public virtual System.Nullable<bool> ValidateSsl { get; set; } 
+        public virtual System.Nullable<bool> ValidateSsl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5255,32 +5255,32 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>The checker's human-readable name. The display name should be unique within a Stackdriver Workspace
         /// in order to make it easier to identify; however, uniqueness is not enforced.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The GCP zone the Uptime check should egress from. Only respected for internal Uptime checks, where
         /// internal_network is specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpZone")]
-        public virtual string GcpZone { get; set; } 
+        public virtual string GcpZone { get; set; }
 
         /// <summary>A unique resource name for this InternalChecker. The format is:
         /// projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the
         /// Stackdriver Workspace project for the Uptime check config associated with the internal checker.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The GCP VPC network (https://cloud.google.com/vpc/docs/vpc) where the internal resource lives (ex:
         /// "default").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
-        public virtual string Network { get; set; } 
+        public virtual string Network { get; set; }
 
         /// <summary>The GCP project ID where the internal checker lives. Not necessary the same as the Workspace
         /// project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerProjectId")]
-        public virtual string PeerProjectId { get; set; } 
+        public virtual string PeerProjectId { get; set; }
 
         /// <summary>The current operational state of the internal checker.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5291,17 +5291,17 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>A human-readable description for the label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The key for this label. The key must meet the following criteria: Does not exceed 100 characters.
         /// Matches the following regular expression: [a-zA-Z][a-zA-Z0-9_]* The first character must be an upper- or
         /// lower-case letter. The remaining characters must be letters, digits, or underscores.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>The type of data that can be assigned to the label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
-        public virtual string ValueType { get; set; } 
+        public virtual string ValueType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5312,15 +5312,15 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>A bool label value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
-        public virtual System.Nullable<bool> BoolValue { get; set; } 
+        public virtual System.Nullable<bool> BoolValue { get; set; }
 
         /// <summary>An int64 label value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("int64Value")]
-        public virtual System.Nullable<long> Int64Value { get; set; } 
+        public virtual System.Nullable<long> Int64Value { get; set; }
 
         /// <summary>A string label value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
-        public virtual string StringValue { get; set; } 
+        public virtual string StringValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5332,7 +5332,7 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>Good service is defined to be the count of requests made to this service that return in no more
         /// than threshold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
-        public virtual object Threshold { get; set; } 
+        public virtual object Threshold { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5346,15 +5346,15 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>Must be greater than 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numFiniteBuckets")]
-        public virtual System.Nullable<int> NumFiniteBuckets { get; set; } 
+        public virtual System.Nullable<int> NumFiniteBuckets { get; set; }
 
         /// <summary>Lower bound of the first bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offset")]
-        public virtual System.Nullable<double> Offset { get; set; } 
+        public virtual System.Nullable<double> Offset { get; set; }
 
         /// <summary>Must be greater than 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
-        public virtual System.Nullable<double> Width { get; set; } 
+        public virtual System.Nullable<double> Width { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5365,17 +5365,17 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>The returned alert policies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alertPolicies")]
-        public virtual System.Collections.Generic.IList<AlertPolicy> AlertPolicies { get; set; } 
+        public virtual System.Collections.Generic.IList<AlertPolicy> AlertPolicies { get; set; }
 
         /// <summary>If there might be more results than were returned, then this field is set to a non-empty value. To
         /// see the additional results, use that value as page_token in the next call to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The total number of alert policies in all pages. This number is only an estimate, and may change in
         /// subsequent pages. https://aip.dev/158</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
-        public virtual System.Nullable<int> TotalSize { get; set; } 
+        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5386,16 +5386,16 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>A set of monitored resources in the group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<MonitoredResource> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<MonitoredResource> Members { get; set; }
 
         /// <summary>If there are more results than have been returned, then this field is set to a non-empty value. To
         /// see the additional results, use that value as page_token in the next call to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The total number of elements matching this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
-        public virtual System.Nullable<int> TotalSize { get; set; } 
+        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5406,12 +5406,12 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>The groups that match the specified filters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
-        public virtual System.Collections.Generic.IList<Group> Group { get; set; } 
+        public virtual System.Collections.Generic.IList<Group> Group { get; set; }
 
         /// <summary>If there are more results than have been returned, then this field is set to a non-empty value. To
         /// see the additional results, use that value as page_token in the next call to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5423,12 +5423,12 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>The metric descriptors that are available to the project and that match the value of filter, if
         /// present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricDescriptors")]
-        public virtual System.Collections.Generic.IList<MetricDescriptor> MetricDescriptors { get; set; } 
+        public virtual System.Collections.Generic.IList<MetricDescriptor> MetricDescriptors { get; set; }
 
         /// <summary>If there are more results than have been returned, then this field is set to a non-empty value. To
         /// see the additional results, use that value as page_token in the next call to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5440,12 +5440,12 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>If there are more results than have been returned, then this field is set to a non-empty value. To
         /// see the additional results, use that value as page_token in the next call to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The monitored resource descriptors that are available to this project and that match filter, if
         /// present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceDescriptors")]
-        public virtual System.Collections.Generic.IList<MonitoredResourceDescriptor> ResourceDescriptors { get; set; } 
+        public virtual System.Collections.Generic.IList<MonitoredResourceDescriptor> ResourceDescriptors { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5457,13 +5457,13 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>The monitored resource descriptors supported for the specified project, optionally
         /// filtered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelDescriptors")]
-        public virtual System.Collections.Generic.IList<NotificationChannelDescriptor> ChannelDescriptors { get; set; } 
+        public virtual System.Collections.Generic.IList<NotificationChannelDescriptor> ChannelDescriptors { get; set; }
 
         /// <summary>If not empty, indicates that there may be more results that match the request. Use the value in the
         /// page_token field in a subsequent request to fetch the next set of results. If empty, all results have been
         /// returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5476,16 +5476,16 @@ namespace Google.Apis.Monitoring.v3.Data
         /// page_token field in a subsequent request to fetch the next set of results. If empty, all results have been
         /// returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The notification channels defined for the specified project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationChannels")]
-        public virtual System.Collections.Generic.IList<NotificationChannel> NotificationChannels { get; set; } 
+        public virtual System.Collections.Generic.IList<NotificationChannel> NotificationChannels { get; set; }
 
         /// <summary>The total number of notification channels in all pages. This number is only an estimate, and may
         /// change in subsequent pages. https://aip.dev/158</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
-        public virtual System.Nullable<int> TotalSize { get; set; } 
+        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5497,11 +5497,11 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>If there are more results than have been returned, then this field is set to a non-empty value. To
         /// see the additional results, use that value as page_token in the next call to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ServiceLevelObjectives matching the specified filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceLevelObjectives")]
-        public virtual System.Collections.Generic.IList<ServiceLevelObjective> ServiceLevelObjectives { get; set; } 
+        public virtual System.Collections.Generic.IList<ServiceLevelObjective> ServiceLevelObjectives { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5513,11 +5513,11 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>If there are more results than have been returned, then this field is set to a non-empty value. To
         /// see the additional results, use that value as page_token in the next call to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The Services matching the specified filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
-        public virtual System.Collections.Generic.IList<Service> Services { get; set; } 
+        public virtual System.Collections.Generic.IList<Service> Services { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5529,23 +5529,23 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>Query execution errors that may have caused the time series data returned to be
         /// incomplete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionErrors")]
-        public virtual System.Collections.Generic.IList<Status> ExecutionErrors { get; set; } 
+        public virtual System.Collections.Generic.IList<Status> ExecutionErrors { get; set; }
 
         /// <summary>If there are more results than have been returned, then this field is set to a non-empty value. To
         /// see the additional results, use that value as page_token in the next call to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>One or more time series that match the filter included in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeries")]
-        public virtual System.Collections.Generic.IList<TimeSeries> TimeSeries { get; set; } 
+        public virtual System.Collections.Generic.IList<TimeSeries> TimeSeries { get; set; }
 
         /// <summary>The unit in which all time_series point values are reported. unit follows the UCUM format for units
         /// as seen in https://unitsofmeasure.org/ucum.html. If different time_series have different units (for example,
         /// because they come from different metric types, or a unit is absent), then unit will be
         /// "{not_a_unit}".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
-        public virtual string Unit { get; set; } 
+        public virtual string Unit { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5559,16 +5559,16 @@ namespace Google.Apis.Monitoring.v3.Data
         /// next_page_token is passed to the subsequent List method call (in the request message's page_token
         /// field).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The total number of Uptime check configurations for the project, irrespective of any
         /// pagination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
-        public virtual System.Nullable<int> TotalSize { get; set; } 
+        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>The returned Uptime check configurations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uptimeCheckConfigs")]
-        public virtual System.Collections.Generic.IList<UptimeCheckConfig> UptimeCheckConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<UptimeCheckConfig> UptimeCheckConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5582,12 +5582,12 @@ namespace Google.Apis.Monitoring.v3.Data
         /// next_page_token is passed to the subsequent List method call (in the request message's page_token field).
         /// NOTE: this field is not yet implemented</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The returned list of IP addresses (including region and location) that the checkers run
         /// from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uptimeCheckIps")]
-        public virtual System.Collections.Generic.IList<UptimeCheckIp> UptimeCheckIps { get; set; } 
+        public virtual System.Collections.Generic.IList<UptimeCheckIp> UptimeCheckIps { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5599,17 +5599,17 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>Identifier for the mesh in which this Istio service is defined. Corresponds to the mesh_uid metric
         /// label in Istio metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meshUid")]
-        public virtual string MeshUid { get; set; } 
+        public virtual string MeshUid { get; set; }
 
         /// <summary>The name of the Istio service underlying this service. Corresponds to the destination_service_name
         /// metric label in Istio metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
-        public virtual string ServiceName { get; set; } 
+        public virtual string ServiceName { get; set; }
 
         /// <summary>The namespace of the Istio service underlying this service. Corresponds to the
         /// destination_service_namespace metric label in Istio metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceNamespace")]
-        public virtual string ServiceNamespace { get; set; } 
+        public virtual string ServiceNamespace { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5622,12 +5622,12 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>The set of label values that uniquely identify this metric. All labels listed in the
         /// MetricDescriptor must be assigned values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>An existing metric type, see google.api.MetricDescriptor. For example,
         /// custom.googleapis.com/invoice/paid/amount.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5645,13 +5645,13 @@ namespace Google.Apis.Monitoring.v3.Data
         /// request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable
         /// to use the ListTimeSeries method when debugging this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregations")]
-        public virtual System.Collections.Generic.IList<Aggregation> Aggregations { get; set; } 
+        public virtual System.Collections.Generic.IList<Aggregation> Aggregations { get; set; }
 
         /// <summary>The amount of time that a time series must fail to report new data to be considered failing.
         /// Currently, only values that are a multiple of a minute--e.g. 60, 120, or 300 seconds--are supported. If an
         /// invalid value is given, an error will be returned. The Duration.nanos field is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual object Duration { get; set; } 
+        public virtual object Duration { get; set; }
 
         /// <summary>A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series
         /// should be compared with the threshold.The filter is similar to the one that is specified in the
@@ -5660,13 +5660,13 @@ namespace Google.Apis.Monitoring.v3.Data
         /// metric type and optionally may contain restrictions on resource type, resource labels, and metric labels.
         /// This field may not exceed 2048 Unicode characters in length.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual string Filter { get; set; } 
+        public virtual string Filter { get; set; }
 
         /// <summary>The number/percent of time series for which the comparison must hold in order for the condition to
         /// trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time
         /// series that have been identified by filter and aggregations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trigger")]
-        public virtual Trigger Trigger { get; set; } 
+        public virtual Trigger Trigger { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5678,50 +5678,50 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>A detailed description of the metric, which can be used in documentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>A concise name for the metric, which can be displayed in user interfaces. Use sentence case without
         /// an ending period, for example "Request count". This field is optional but it is recommended to be set for
         /// any metrics associated with user-visible concepts, such as Quota.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The set of labels that can be used to describe a specific instance of this metric type. For
         /// example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP
         /// response code, response_code, so you can look at latencies for successful responses or just for responses
         /// that failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; } 
+        public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; }
 
         /// <summary>Optional. The launch stage of the metric definition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
-        public virtual string LaunchStage { get; set; } 
+        public virtual string LaunchStage { get; set; }
 
         /// <summary>Optional. Metadata which can be used to guide usage of the metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual MetricDescriptorMetadata Metadata { get; set; } 
+        public virtual MetricDescriptorMetadata Metadata { get; set; }
 
         /// <summary>Whether the metric records instantaneous values, changes to a value, etc. Some combinations of
         /// metric_kind and value_type might not be supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricKind")]
-        public virtual string MetricKind { get; set; } 
+        public virtual string MetricKind { get; set; }
 
         /// <summary>Read-only. If present, then a time series, which is identified partially by a metric type and a
         /// MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the
         /// monitored resource types listed here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoredResourceTypes")]
-        public virtual System.Collections.Generic.IList<string> MonitoredResourceTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> MonitoredResourceTypes { get; set; }
 
         /// <summary>The resource name of the metric descriptor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined
         /// metric types have the DNS name custom.googleapis.com or external.googleapis.com. Metric types should use a
         /// natural hierarchical grouping. For example: "custom.googleapis.com/invoice/paid/amount"
         /// "external.googleapis.com/prometheus/up" "appengine.googleapis.com/http/server/response_latencies" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The units in which the metric value is reported. It is only applicable if the value_type is INT64,
         /// DOUBLE, or DISTRIBUTION. The unit defines the representation of the stored metric values.Different systems
@@ -5755,12 +5755,12 @@ namespace Google.Apis.Monitoring.v3.Data
         /// indicates a metric contains a ratio, typically in the range 0..1, that will be multiplied by 100 and
         /// displayed as a percentage (so a metric value 0.03 means "3 percent").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
-        public virtual string Unit { get; set; } 
+        public virtual string Unit { get; set; }
 
         /// <summary>Whether the measurement is an integer, a floating-point number, etc. Some combinations of
         /// metric_kind and value_type might not be supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
-        public virtual string ValueType { get; set; } 
+        public virtual string ValueType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5772,17 +5772,17 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>The delay of data points caused by ingestion. Data points older than this age are guaranteed to be
         /// ingested and available to be read, excluding data loss due to errors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ingestDelay")]
-        public virtual object IngestDelay { get; set; } 
+        public virtual object IngestDelay { get; set; }
 
         /// <summary>Deprecated. Must use the MetricDescriptor.launch_stage instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
-        public virtual string LaunchStage { get; set; } 
+        public virtual string LaunchStage { get; set; }
 
         /// <summary>The sampling period of metric data points. For metrics which are written periodically, consecutive
         /// data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher
         /// granularity have a smaller sampling period.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("samplePeriod")]
-        public virtual object SamplePeriod { get; set; } 
+        public virtual object SamplePeriod { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5796,12 +5796,12 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>Range of values considered "good." For a one-sided range, set one bound to an infinite
         /// value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
-        public virtual GoogleMonitoringV3Range Range { get; set; } 
+        public virtual GoogleMonitoringV3Range Range { get; set; }
 
         /// <summary>A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying the TimeSeries
         /// to use for evaluating window quality.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeries")]
-        public virtual string TimeSeries { get; set; } 
+        public virtual string TimeSeries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5817,14 +5817,14 @@ namespace Google.Apis.Monitoring.v3.Data
         /// request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable
         /// to use the ListTimeSeries method when debugging this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregations")]
-        public virtual System.Collections.Generic.IList<Aggregation> Aggregations { get; set; } 
+        public virtual System.Collections.Generic.IList<Aggregation> Aggregations { get; set; }
 
         /// <summary>The comparison to apply between the time series (indicated by filter and aggregation) and the
         /// threshold (indicated by threshold_value). The comparison is applied on each time series, with the time
         /// series on the left-hand side and the threshold on the right-hand side.Only COMPARISON_LT and COMPARISON_GT
         /// are supported currently.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comparison")]
-        public virtual string Comparison { get; set; } 
+        public virtual string Comparison { get; set; }
 
         /// <summary>Specifies the alignment of data points in individual time series selected by denominatorFilter as
         /// well as how to combine the retrieved time series together (such as when aggregating multiple streams on each
@@ -5832,7 +5832,7 @@ namespace Google.Apis.Monitoring.v3.Data
         /// resources).When computing ratios, the aggregations and denominator_aggregations fields must use the same
         /// alignment period and produce time series that have the same periodicity and labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("denominatorAggregations")]
-        public virtual System.Collections.Generic.IList<Aggregation> DenominatorAggregations { get; set; } 
+        public virtual System.Collections.Generic.IList<Aggregation> DenominatorAggregations { get; set; }
 
         /// <summary>A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies a time series that
         /// should be used as the denominator of a ratio that will be compared with the threshold. If a
@@ -5840,7 +5840,7 @@ namespace Google.Apis.Monitoring.v3.Data
         /// numerator.The filter must specify the metric type and optionally may contain restrictions on resource type,
         /// resource labels, and metric labels. This field may not exceed 2048 Unicode characters in length.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("denominatorFilter")]
-        public virtual string DenominatorFilter { get; set; } 
+        public virtual string DenominatorFilter { get; set; }
 
         /// <summary>The amount of time that a time series must violate the threshold to be considered failing.
         /// Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If
@@ -5849,7 +5849,7 @@ namespace Google.Apis.Monitoring.v3.Data
         /// the aggregations field); a good duration is long enough so that a single outlier does not generate spurious
         /// alerts, but short enough that unhealthy states are detected and alerted on quickly.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual object Duration { get; set; } 
+        public virtual object Duration { get; set; }
 
         /// <summary>A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series
         /// should be compared with the threshold.The filter is similar to the one that is specified in the
@@ -5858,18 +5858,18 @@ namespace Google.Apis.Monitoring.v3.Data
         /// metric type and optionally may contain restrictions on resource type, resource labels, and metric labels.
         /// This field may not exceed 2048 Unicode characters in length.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual string Filter { get; set; } 
+        public virtual string Filter { get; set; }
 
         /// <summary>A value against which to compare the time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thresholdValue")]
-        public virtual System.Nullable<double> ThresholdValue { get; set; } 
+        public virtual System.Nullable<double> ThresholdValue { get; set; }
 
         /// <summary>The number/percent of time series for which the comparison must hold in order for the condition to
         /// trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time
         /// series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and
         /// denominator_aggregations are specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trigger")]
-        public virtual Trigger Trigger { get; set; } 
+        public virtual Trigger Trigger { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5887,13 +5887,13 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>Required. Values for all of the labels listed in the associated monitored resource descriptor. For
         /// example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Required. The monitored resource type. This field must match the type field of a
         /// MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance.
         /// For a list of types, see Monitoring resource types and Logging resource types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5909,23 +5909,23 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>Optional. A detailed description of the monitored resource type that might be used in
         /// documentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Optional. A concise name for the monitored resource type that might be displayed in user
         /// interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example,
         /// "Google Cloud SQL Database".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Required. A set of labels used to describe instances of this monitored resource type. For example,
         /// an individual Google Cloud SQL database is identified by values for the labels "database_id" and
         /// "zone".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; } 
+        public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; }
 
         /// <summary>Optional. The launch stage of the monitored resource definition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
-        public virtual string LaunchStage { get; set; } 
+        public virtual string LaunchStage { get; set; }
 
         /// <summary>Optional. The resource name of the monitored resource descriptor:
         /// "projects/{project_id}/monitoredResourceDescriptors/{type}" where {type} is the value of the type field in
@@ -5933,12 +5933,12 @@ namespace Google.Apis.Monitoring.v3.Data
         /// that do not use project information can use the resource name format
         /// "monitoredResourceDescriptors/{type}".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Required. The monitored resource type. For example, the type "cloudsql_database" represents
         /// databases in Google Cloud SQL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5955,11 +5955,11 @@ namespace Google.Apis.Monitoring.v3.Data
         /// label values can be only strings, Boolean values, or a list of strings. For example: { "name": "my-test-
         /// instance", "security_group": ["a", "b", "c"], "spot_instance": false } </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("systemLabels")]
-        public virtual System.Collections.Generic.IDictionary<string,object> SystemLabels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> SystemLabels { get; set; }
 
         /// <summary>Output only. A map of user-defined metadata labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> UserLabels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5970,11 +5970,11 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>When the change occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mutateTime")]
-        public virtual object MutateTime { get; set; } 
+        public virtual object MutateTime { get; set; }
 
         /// <summary>The email address of the user making the change.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mutatedBy")]
-        public virtual string MutatedBy { get; set; } 
+        public virtual string MutatedBy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5990,13 +5990,13 @@ namespace Google.Apis.Monitoring.v3.Data
         /// additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>An optional human-readable name for this notification channel. It is recommended that you specify a
         /// non-empty and unique name in order to make it easier to identify the channels in your project, though this
         /// is not enforced. The display name is limited to 512 Unicode characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Whether notifications are forwarded to the described channel. This makes it possible to disable
         /// delivery of notifications to a particular channel without removing the channel from all alerting policies
@@ -6004,24 +6004,24 @@ namespace Google.Apis.Monitoring.v3.Data
         /// receive notifications from the same set of alerting policies on the channel at some point in the
         /// future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>Configuration fields that define the channel and its behavior. The permissible and required labels
         /// are specified in the NotificationChannelDescriptor.labels of the NotificationChannelDescriptor corresponding
         /// to the type field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The full REST resource name for this channel. The format is:
         /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned
         /// by the server on creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The type of the notification channel. This field matches the value of the
         /// NotificationChannelDescriptor.type field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>User-supplied key/value data that does not need to conform to the corresponding
         /// NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for
@@ -6029,7 +6029,7 @@ namespace Google.Apis.Monitoring.v3.Data
         /// and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can
         /// contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> UserLabels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
 
         /// <summary>Indicates whether this channel has been verified or not. On a ListNotificationChannels or
         /// GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it
@@ -6040,7 +6040,7 @@ namespace Google.Apis.Monitoring.v3.Data
         /// this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the
         /// value of this field, you must call VerifyNotificationChannel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verificationStatus")]
-        public virtual string VerificationStatus { get; set; } 
+        public virtual string VerificationStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6053,33 +6053,33 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>A human-readable description of the notification channel type. The description may include a
         /// description of the properties of the channel and pointers to external documentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>A human-readable name for the notification channel type. This form of the name is suitable for a
         /// user interface.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The set of labels that must be defined to identify a particular channel of the corresponding type.
         /// Each label includes a description for how that field should be populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; } 
+        public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; }
 
         /// <summary>The product launch stage for channels of this type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
-        public virtual string LaunchStage { get; set; } 
+        public virtual string LaunchStage { get; set; }
 
         /// <summary>The full REST resource name for this descriptor. The format is:
         /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannelDescriptors/[TYPE] In the above, [TYPE] is the value of
         /// the type field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The type of notification channel, such as "email" and "sms". To view the full list of channels, see
         /// Channel descriptors (https://cloud.google.com/monitoring/alerts/using-channels-api#ncd). Notification
         /// channel types are globally unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6092,13 +6092,13 @@ namespace Google.Apis.Monitoring.v3.Data
         /// short name. For example, "map_entry". For custom options, it should be the fully-qualified name. For
         /// example, "google.api.http".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper
         /// type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored
         /// as an int32 value using the google.protobuf.Int32Value type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Value { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6110,15 +6110,15 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>BasicSli to evaluate to judge window quality.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("basicSliPerformance")]
-        public virtual BasicSli BasicSliPerformance { get; set; } 
+        public virtual BasicSli BasicSliPerformance { get; set; }
 
         /// <summary>RequestBasedSli to evaluate to judge window quality.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performance")]
-        public virtual RequestBasedSli Performance { get; set; } 
+        public virtual RequestBasedSli Performance { get; set; }
 
         /// <summary>If window performance >= threshold, the window is counted as good.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
-        public virtual System.Nullable<double> Threshold { get; set; } 
+        public virtual System.Nullable<double> Threshold { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6134,11 +6134,11 @@ namespace Google.Apis.Monitoring.v3.Data
         /// specifying the same start time and increasing end times, until an event resets the cumulative value to zero
         /// and sets a new start time for the following points.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interval")]
-        public virtual TimeInterval Interval { get; set; } 
+        public virtual TimeInterval Interval { get; set; }
 
         /// <summary>The value of the data point.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual TypedValue Value { get; set; } 
+        public virtual TypedValue Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6150,11 +6150,11 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>The time interval associated with the point.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeInterval")]
-        public virtual TimeInterval TimeInterval { get; set; } 
+        public virtual TimeInterval TimeInterval { get; set; }
 
         /// <summary>The values that make up the point.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<TypedValue> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<TypedValue> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6165,18 +6165,18 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>A positive number that is the maximum number of time_series_data to return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
-        public virtual System.Nullable<int> PageSize { get; set; } 
+        public virtual System.Nullable<int> PageSize { get; set; }
 
         /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a previous call
         /// to this method. Using this field causes the method to return additional results from the previous method
         /// call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
-        public virtual string PageToken { get; set; } 
+        public virtual string PageToken { get; set; }
 
         /// <summary>Required. The query in the monitoring query language format. The default time zone is in
         /// UTC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
-        public virtual string Query { get; set; } 
+        public virtual string Query { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6188,20 +6188,20 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>If there are more results than have been returned, then this field is set to a non-empty value. To
         /// see the additional results, use that value as page_token in the next call to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Query execution errors that may have caused the time series data returned to be incomplete. The
         /// available data will be available in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
-        public virtual System.Collections.Generic.IList<Status> PartialErrors { get; set; } 
+        public virtual System.Collections.Generic.IList<Status> PartialErrors { get; set; }
 
         /// <summary>The time series data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesData")]
-        public virtual System.Collections.Generic.IList<TimeSeriesData> TimeSeriesData { get; set; } 
+        public virtual System.Collections.Generic.IList<TimeSeriesData> TimeSeriesData { get; set; }
 
         /// <summary>The descriptor for the time series data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesDescriptor")]
-        public virtual TimeSeriesDescriptor TimeSeriesDescriptor { get; set; } 
+        public virtual TimeSeriesDescriptor TimeSeriesDescriptor { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6212,11 +6212,11 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>The maximum of the population values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("max")]
-        public virtual System.Nullable<double> Max { get; set; } 
+        public virtual System.Nullable<double> Max { get; set; }
 
         /// <summary>The minimum of the population values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("min")]
-        public virtual System.Nullable<double> Min { get; set; } 
+        public virtual System.Nullable<double> Min { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6229,12 +6229,12 @@ namespace Google.Apis.Monitoring.v3.Data
         /// fall into a good range. The total_service is the total count of all values aggregated in the
         /// Distribution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distributionCut")]
-        public virtual DistributionCut DistributionCut { get; set; } 
+        public virtual DistributionCut DistributionCut { get; set; }
 
         /// <summary>good_total_ratio is used when the ratio of good_service to total_service is computed from two
         /// TimeSeries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("goodTotalRatio")]
-        public virtual TimeSeriesRatio GoodTotalRatio { get; set; } 
+        public virtual TimeSeriesRatio GoodTotalRatio { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6247,11 +6247,11 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>The group of resources being monitored. Should be only the [GROUP_ID], and not the full-path
         /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
-        public virtual string GroupId { get; set; } 
+        public virtual string GroupId { get; set; }
 
         /// <summary>The resource type of the group members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
-        public virtual string ResourceType { get; set; } 
+        public virtual string ResourceType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6271,36 +6271,36 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>Type used for App Engine services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appEngine")]
-        public virtual AppEngine AppEngine { get; set; } 
+        public virtual AppEngine AppEngine { get; set; }
 
         /// <summary>Type used for Cloud Endpoints services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudEndpoints")]
-        public virtual CloudEndpoints CloudEndpoints { get; set; } 
+        public virtual CloudEndpoints CloudEndpoints { get; set; }
 
         /// <summary>Type used for Istio services that live in a Kubernetes cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterIstio")]
-        public virtual ClusterIstio ClusterIstio { get; set; } 
+        public virtual ClusterIstio ClusterIstio { get; set; }
 
         /// <summary>Custom service type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("custom")]
-        public virtual Custom Custom { get; set; } 
+        public virtual Custom Custom { get; set; }
 
         /// <summary>Name used for UI elements listing this Service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Type used for Istio services scoped to an Istio mesh.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meshIstio")]
-        public virtual MeshIstio MeshIstio { get; set; } 
+        public virtual MeshIstio MeshIstio { get; set; }
 
         /// <summary>Resource name for this Service. The format is:
         /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Configuration for how to query telemetry on a Service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("telemetry")]
-        public virtual Telemetry Telemetry { get; set; } 
+        public virtual Telemetry Telemetry { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6319,15 +6319,15 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>Basic SLI on a well-known service type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("basicSli")]
-        public virtual BasicSli BasicSli { get; set; } 
+        public virtual BasicSli BasicSli { get; set; }
 
         /// <summary>Request-based SLIs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestBased")]
-        public virtual RequestBasedSli RequestBased { get; set; } 
+        public virtual RequestBasedSli RequestBased { get; set; }
 
         /// <summary>Windows-based SLIs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowsBased")]
-        public virtual WindowsBasedSli WindowsBased { get; set; } 
+        public virtual WindowsBasedSli WindowsBased { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6343,31 +6343,31 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK,
         /// FORTNIGHT, and MONTH are supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("calendarPeriod")]
-        public virtual string CalendarPeriod { get; set; } 
+        public virtual string CalendarPeriod { get; set; }
 
         /// <summary>Name used for UI elements listing this SLO.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The fraction of service that must be good in order for this objective to be met. 0 < goal <=
         /// 0.999.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("goal")]
-        public virtual System.Nullable<double> Goal { get; set; } 
+        public virtual System.Nullable<double> Goal { get; set; }
 
         /// <summary>Resource name for this ServiceLevelObjective. The format is:
         /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>A rolling time period, semantically "in the past ". Must be an integer multiple of 1 day no larger
         /// than 30 days.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rollingPeriod")]
-        public virtual object RollingPeriod { get; set; } 
+        public virtual object RollingPeriod { get; set; }
 
         /// <summary>The definition of good service, used to measure and calculate the quality of the Service's
         /// performance with respect to a single aspect of service quality.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceLevelIndicator")]
-        public virtual ServiceLevelIndicator ServiceLevelIndicator { get; set; } 
+        public virtual ServiceLevelIndicator ServiceLevelIndicator { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6380,7 +6380,7 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>The path-qualified name of the .proto file that contained the associated protobuf element. For
         /// example: "google/protobuf/source_context.proto".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
-        public virtual string FileName { get; set; } 
+        public virtual string FileName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6396,7 +6396,7 @@ namespace Google.Apis.Monitoring.v3.Data
         /// identifier for a span within a trace; it is a 16-character hexadecimal encoding of an 8-byte
         /// array.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spanName")]
-        public virtual string SpanName { get; set; } 
+        public virtual string SpanName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6410,17 +6410,17 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6432,7 +6432,7 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>The TCP port on the server against which to run the check. Will be combined with host (specified
         /// within the monitored_resource) to construct the full URL. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
-        public virtual System.Nullable<int> Port { get; set; } 
+        public virtual System.Nullable<int> Port { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6444,7 +6444,7 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>The full name of the resource that defines this service. Formatted as described in
         /// https://cloud.google.com/apis/design/resource_names.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
-        public virtual string ResourceName { get; set; } 
+        public virtual string ResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6471,12 +6471,12 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>Required. The end of the time interval.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Optional. The beginning of the time interval. The default value for the start time is the end time.
         /// The start time must not be later than the end time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6491,11 +6491,11 @@ namespace Google.Apis.Monitoring.v3.Data
         /// will include metadata labels that are explicitly named in the reduction. When creating a time series, this
         /// field is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual MonitoredResourceMetadata Metadata { get; set; } 
+        public virtual MonitoredResourceMetadata Metadata { get; set; }
 
         /// <summary>The associated metric. A fully-specified metric used to identify the time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metric")]
-        public virtual Metric Metric { get; set; } 
+        public virtual Metric Metric { get; set; }
 
         /// <summary>The metric kind of the time series. When listing time series, this metric kind might be different
         /// from the metric kind of the associated metric if this time series is an alignment or reduction of other time
@@ -6504,7 +6504,7 @@ namespace Google.Apis.Monitoring.v3.Data
         /// specifies the metric kind of the new descriptor and must be either GAUGE (the default) or
         /// CUMULATIVE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricKind")]
-        public virtual string MetricKind { get; set; } 
+        public virtual string MetricKind { get; set; }
 
         /// <summary>The data points of this time series. When listing time series, points are returned in reverse time
         /// order.When creating a time series, this field must contain exactly one point and the point's type must be
@@ -6512,24 +6512,24 @@ namespace Google.Apis.Monitoring.v3.Data
         /// created, then the value type of the descriptor is determined by the point's type, which must be BOOL, INT64,
         /// DOUBLE, or DISTRIBUTION.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("points")]
-        public virtual System.Collections.Generic.IList<Point> Points { get; set; } 
+        public virtual System.Collections.Generic.IList<Point> Points { get; set; }
 
         /// <summary>The associated monitored resource. Custom metrics can use only certain monitored resource types in
         /// their time series data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
-        public virtual MonitoredResource Resource { get; set; } 
+        public virtual MonitoredResource Resource { get; set; }
 
         /// <summary>The units in which the metric value is reported. It is only applicable if the value_type is INT64,
         /// DOUBLE, or DISTRIBUTION. The unit defines the representation of the stored metric values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
-        public virtual string Unit { get; set; } 
+        public virtual string Unit { get; set; }
 
         /// <summary>The value type of the time series. When listing time series, this value type might be different
         /// from the value type of the associated metric if this time series is an alignment or reduction of other time
         /// series.When creating a time series, this field is optional. If present, it must be the same as the type of
         /// the data in the points field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
-        public virtual string ValueType { get; set; } 
+        public virtual string ValueType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6542,11 +6542,11 @@ namespace Google.Apis.Monitoring.v3.Data
         /// label_descriptors field of the TimeSeriesDescriptor associated with this object. Each value must have a
         /// value of the type given in the corresponding entry of label_descriptors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelValues")]
-        public virtual System.Collections.Generic.IList<LabelValue> LabelValues { get; set; } 
+        public virtual System.Collections.Generic.IList<LabelValue> LabelValues { get; set; }
 
         /// <summary>The points in the time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pointData")]
-        public virtual System.Collections.Generic.IList<PointData> PointData { get; set; } 
+        public virtual System.Collections.Generic.IList<PointData> PointData { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6557,11 +6557,11 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>Descriptors for the labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelDescriptors")]
-        public virtual System.Collections.Generic.IList<LabelDescriptor> LabelDescriptors { get; set; } 
+        public virtual System.Collections.Generic.IList<LabelDescriptor> LabelDescriptors { get; set; }
 
         /// <summary>Descriptors for the point data value columns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pointDescriptors")]
-        public virtual System.Collections.Generic.IList<ValueDescriptor> PointDescriptors { get; set; } 
+        public virtual System.Collections.Generic.IList<ValueDescriptor> PointDescriptors { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6578,19 +6578,19 @@ namespace Google.Apis.Monitoring.v3.Data
         /// inadequate quality. Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or
         /// MetricKind = CUMULATIVE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("badServiceFilter")]
-        public virtual string BadServiceFilter { get; set; } 
+        public virtual string BadServiceFilter { get; set; }
 
         /// <summary>A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries
         /// quantifying good service provided. Must have ValueType = DOUBLE or ValueType = INT64 and must have
         /// MetricKind = DELTA or MetricKind = CUMULATIVE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("goodServiceFilter")]
-        public virtual string GoodServiceFilter { get; set; } 
+        public virtual string GoodServiceFilter { get; set; }
 
         /// <summary>A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries
         /// quantifying total demanded service. Must have ValueType = DOUBLE or ValueType = INT64 and must have
         /// MetricKind = DELTA or MetricKind = CUMULATIVE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalServiceFilter")]
-        public virtual string TotalServiceFilter { get; set; } 
+        public virtual string TotalServiceFilter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6603,12 +6603,12 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>The absolute number of time series that must fail the predicate for the condition to be
         /// triggered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
-        public virtual System.Nullable<int> Count { get; set; } 
+        public virtual System.Nullable<int> Count { get; set; }
 
         /// <summary>The percentage of time series that must fail the predicate for the condition to be
         /// triggered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percent")]
-        public virtual System.Nullable<double> Percent { get; set; } 
+        public virtual System.Nullable<double> Percent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6619,27 +6619,27 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>The list of fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual System.Collections.Generic.IList<Field> Fields { get; set; } 
+        public virtual System.Collections.Generic.IList<Field> Fields { get; set; }
 
         /// <summary>The fully qualified message name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The list of types appearing in oneof definitions in this type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oneofs")]
-        public virtual System.Collections.Generic.IList<string> Oneofs { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Oneofs { get; set; }
 
         /// <summary>The protocol buffer options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
-        public virtual System.Collections.Generic.IList<Option> Options { get; set; } 
+        public virtual System.Collections.Generic.IList<Option> Options { get; set; }
 
         /// <summary>The source context.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceContext")]
-        public virtual SourceContext SourceContext { get; set; } 
+        public virtual SourceContext SourceContext { get; set; }
 
         /// <summary>The source syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syntax")]
-        public virtual string Syntax { get; set; } 
+        public virtual string Syntax { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6650,24 +6650,24 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>A Boolean value: true or false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
-        public virtual System.Nullable<bool> BoolValue { get; set; } 
+        public virtual System.Nullable<bool> BoolValue { get; set; }
 
         /// <summary>A distribution value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distributionValue")]
-        public virtual Distribution DistributionValue { get; set; } 
+        public virtual Distribution DistributionValue { get; set; }
 
         /// <summary>A 64-bit double-precision floating-point number. Its magnitude is approximately ±10±300 and it has
         /// 16 significant digits of precision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
-        public virtual System.Nullable<double> DoubleValue { get; set; } 
+        public virtual System.Nullable<double> DoubleValue { get; set; }
 
         /// <summary>A 64-bit integer. Its range is approximately ±9.2x1018.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("int64Value")]
-        public virtual System.Nullable<long> Int64Value { get; set; } 
+        public virtual System.Nullable<long> Int64Value { get; set; }
 
         /// <summary>A variable-length string value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
-        public virtual string StringValue { get; set; } 
+        public virtual string StringValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6681,67 +6681,67 @@ namespace Google.Apis.Monitoring.v3.Data
         /// entries will be ignored. This field is optional and should only be specified if a content match is required
         /// as part of the/ Uptime check.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentMatchers")]
-        public virtual System.Collections.Generic.IList<ContentMatcher> ContentMatchers { get; set; } 
+        public virtual System.Collections.Generic.IList<ContentMatcher> ContentMatchers { get; set; }
 
         /// <summary>A human-friendly name for the Uptime check configuration. The display name should be unique within
         /// a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
         /// Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Contains information needed to make an HTTP or HTTPS check.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpCheck")]
-        public virtual HttpCheck HttpCheck { get; set; } 
+        public virtual HttpCheck HttpCheck { get; set; }
 
         /// <summary>The internal checkers that this check will egress from. If is_internal is true and this list is
         /// empty, the check will egress from all the InternalCheckers configured for the project that owns this
         /// UptimeCheckConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalCheckers")]
-        public virtual System.Collections.Generic.IList<InternalChecker> InternalCheckers { get; set; } 
+        public virtual System.Collections.Generic.IList<InternalChecker> InternalCheckers { get; set; }
 
         /// <summary>If this is true, then checks are made only from the 'internal_checkers'. If it is false, then
         /// checks are made only from the 'selected_regions'. It is an error to provide 'selected_regions' when
         /// is_internal is true, or to provide 'internal_checkers' when is_internal is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isInternal")]
-        public virtual System.Nullable<bool> IsInternal { get; set; } 
+        public virtual System.Nullable<bool> IsInternal { get; set; }
 
         /// <summary>The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the
         /// configuration. The following monitored resource types are supported for Uptime checks: uptime_url,
         /// gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoredResource")]
-        public virtual MonitoredResource MonitoredResource { get; set; } 
+        public virtual MonitoredResource MonitoredResource { get; set; }
 
         /// <summary>A unique resource name for this Uptime check configuration. The format is:
         /// projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] This field should be omitted when
         /// creating the Uptime check configuration; on create, the resource name is assigned by the server and included
         /// in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>How often, in seconds, the Uptime check is performed. Currently, the only supported values are 60s
         /// (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("period")]
-        public virtual object Period { get; set; } 
+        public virtual object Period { get; set; }
 
         /// <summary>The group resource associated with the configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceGroup")]
-        public virtual ResourceGroup ResourceGroup { get; set; } 
+        public virtual ResourceGroup ResourceGroup { get; set; }
 
         /// <summary>The list of regions from which the check will be run. Some regions contain one location, and others
         /// contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3
         /// locations. Not specifying this field will result in Uptime checks running from all available
         /// regions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectedRegions")]
-        public virtual System.Collections.Generic.IList<string> SelectedRegions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> SelectedRegions { get; set; }
 
         /// <summary>Contains information needed to make a TCP check.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tcpCheck")]
-        public virtual TcpCheck TcpCheck { get; set; } 
+        public virtual TcpCheck TcpCheck { get; set; }
 
         /// <summary>The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds).
         /// Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
-        public virtual object Timeout { get; set; } 
+        public virtual object Timeout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6756,16 +6756,16 @@ namespace Google.Apis.Monitoring.v3.Data
         /// rely on the IP addresses being in IPv4 format indefinitely, and should support interpreting this field in
         /// either IPv4 or IPv6 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
-        public virtual string IpAddress { get; set; } 
+        public virtual string IpAddress { get; set; }
 
         /// <summary>A more specific location within the region that typically encodes a particular city/town/metro (and
         /// its containing state/province or country) within the broader umbrella region category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>A broad region category in which the IP address is located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
-        public virtual string Region { get; set; } 
+        public virtual string Region { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6776,21 +6776,21 @@ namespace Google.Apis.Monitoring.v3.Data
     {
         /// <summary>The value key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>The value stream kind.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricKind")]
-        public virtual string MetricKind { get; set; } 
+        public virtual string MetricKind { get; set; }
 
         /// <summary>The unit in which time_series point values are reported. unit follows the UCUM format for units as
         /// seen in https://unitsofmeasure.org/ucum.html. unit is only valid if value_type is INTEGER, DOUBLE,
         /// DISTRIBUTION.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
-        public virtual string Unit { get; set; } 
+        public virtual string Unit { get; set; }
 
         /// <summary>The value type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
-        public virtual string ValueType { get; set; } 
+        public virtual string ValueType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6805,7 +6805,7 @@ namespace Google.Apis.Monitoring.v3.Data
         /// (in general, one is only guaranteed that the code is valid UTF-8; one should not make any assumptions
         /// regarding the structure or format of the code).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual string Code { get; set; } 
+        public virtual string Code { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6818,26 +6818,26 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries
         /// with ValueType = BOOL. The window is good if any true values appear in the window.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("goodBadMetricFilter")]
-        public virtual string GoodBadMetricFilter { get; set; } 
+        public virtual string GoodBadMetricFilter { get; set; }
 
         /// <summary>A window is good if its performance is high enough.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("goodTotalRatioThreshold")]
-        public virtual PerformanceThreshold GoodTotalRatioThreshold { get; set; } 
+        public virtual PerformanceThreshold GoodTotalRatioThreshold { get; set; }
 
         /// <summary>A window is good if the metric's value is in a good range, averaged across returned
         /// streams.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricMeanInRange")]
-        public virtual MetricRange MetricMeanInRange { get; set; } 
+        public virtual MetricRange MetricMeanInRange { get; set; }
 
         /// <summary>A window is good if the metric's value is in a good range, summed across returned
         /// streams.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricSumInRange")]
-        public virtual MetricRange MetricSumInRange { get; set; } 
+        public virtual MetricRange MetricSumInRange { get; set; }
 
         /// <summary>Duration over which window quality is evaluated. Must be an integer fraction of a day and at least
         /// 60s.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowPeriod")]
-        public virtual object WindowPeriod { get; set; } 
+        public virtual object WindowPeriod { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

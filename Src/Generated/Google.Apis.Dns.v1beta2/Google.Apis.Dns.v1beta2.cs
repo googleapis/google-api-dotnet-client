@@ -2286,32 +2286,32 @@ namespace Google.Apis.Dns.v1beta2.Data
     {
         /// <summary>Which ResourceRecordSets to add?</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additions")]
-        public virtual System.Collections.Generic.IList<ResourceRecordSet> Additions { get; set; } 
+        public virtual System.Collections.Generic.IList<ResourceRecordSet> Additions { get; set; }
 
         /// <summary>Which ResourceRecordSets to remove? Must match existing data exactly.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletions")]
-        public virtual System.Collections.Generic.IList<ResourceRecordSet> Deletions { get; set; } 
+        public virtual System.Collections.Generic.IList<ResourceRecordSet> Deletions { get; set; }
 
         /// <summary>Unique identifier for the resource; defined by the server (output only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>If the DNS queries for the zone will be served.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isServing")]
-        public virtual System.Nullable<bool> IsServing { get; set; } 
+        public virtual System.Nullable<bool> IsServing { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The time that this operation was started by the server (output only). This is in RFC3339 text
         /// format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTime { get; set; } 
+        public virtual string StartTime { get; set; }
 
         /// <summary>Status of the operation (output only). A status of "done" means that the request to update the
         /// authoritative servers has been sent but the servers might not be updated yet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2322,14 +2322,14 @@ namespace Google.Apis.Dns.v1beta2.Data
     {
         /// <summary>The requested changes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("changes")]
-        public virtual System.Collections.Generic.IList<Change> Changes { get; set; } 
+        public virtual System.Collections.Generic.IList<Change> Changes { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual ResponseHeader Header { get; set; } 
+        public virtual ResponseHeader Header { get; set; }
 
         /// <summary>Type of resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The presence of this field indicates that there exist more results following your last page of
         /// results in pagination order. To fetch them, make another list request using this value as your pagination
@@ -2338,7 +2338,7 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a
         /// "snapshot" of collections larger than the maximum page size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2350,35 +2350,35 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// <summary>String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation
         /// time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("algorithm")]
-        public virtual string Algorithm { get; set; } 
+        public virtual string Algorithm { get; set; }
 
         /// <summary>The time that this resource was created in the control plane. This is in RFC3339 text format.
         /// Output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual string CreationTime { get; set; } 
+        public virtual string CreationTime { get; set; }
 
         /// <summary>A mutable string of at most 1024 characters associated with this resource for the user's
         /// convenience. Has no effect on the resource's function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are
         /// needed to construct a DS record that points at this DNS key. Output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digests")]
-        public virtual System.Collections.Generic.IList<DnsKeyDigest> Digests { get; set; } 
+        public virtual System.Collections.Generic.IList<DnsKeyDigest> Digests { get; set; }
 
         /// <summary>Unique identifier for the resource; defined by the server (output only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be
         /// present as DNSKEY Resource Records for the use of resolvers validating existing signatures.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isActive")]
-        public virtual System.Nullable<bool> IsActive { get; set; } 
+        public virtual System.Nullable<bool> IsActive { get; set; }
 
         /// <summary>Length of the key in bits. Specified at creation time then immutable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyLength")]
-        public virtual System.Nullable<long> KeyLength { get; set; } 
+        public virtual System.Nullable<long> KeyLength { get; set; }
 
         /// <summary>The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this
         /// DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In
@@ -2386,21 +2386,21 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified
         /// in RFC4034 Appendix B. Output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyTag")]
-        public virtual System.Nullable<int> KeyTag { get; set; } 
+        public virtual System.Nullable<int> KeyTag { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Base64 encoded public half of this key. Output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicKey")]
-        public virtual string PublicKey { get; set; } 
+        public virtual string PublicKey { get; set; }
 
         /// <summary>One of "KEY_SIGNING" or "ZONE_SIGNING". Keys of type KEY_SIGNING have the Secure Entry Point flag
         /// set and, when active, will be used to sign only resource record sets of type DNSKEY. Otherwise, the Secure
         /// Entry Point flag will be cleared and this key will be used to sign only resource record sets of other types.
         /// Immutable after creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2410,11 +2410,11 @@ namespace Google.Apis.Dns.v1beta2.Data
     {
         /// <summary>The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digest")]
-        public virtual string Digest { get; set; } 
+        public virtual string Digest { get; set; }
 
         /// <summary>Specifies the algorithm used to calculate this digest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2426,21 +2426,21 @@ namespace Google.Apis.Dns.v1beta2.Data
     {
         /// <summary>String mnemonic specifying the DNSSEC algorithm of this key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("algorithm")]
-        public virtual string Algorithm { get; set; } 
+        public virtual string Algorithm { get; set; }
 
         /// <summary>Length of the keys in bits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyLength")]
-        public virtual System.Nullable<long> KeyLength { get; set; } 
+        public virtual System.Nullable<long> KeyLength { get; set; }
 
         /// <summary>Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys
         /// have the Secure Entry Point flag set and, when active, will only be used to sign resource record sets of
         /// type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and will be used to sign all
         /// other types of resource record sets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyType")]
-        public virtual string KeyType { get; set; } 
+        public virtual string KeyType { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2451,14 +2451,14 @@ namespace Google.Apis.Dns.v1beta2.Data
     {
         /// <summary>The requested resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsKeys")]
-        public virtual System.Collections.Generic.IList<DnsKey> DnsKeys { get; set; } 
+        public virtual System.Collections.Generic.IList<DnsKey> DnsKeys { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual ResponseHeader Header { get; set; } 
+        public virtual ResponseHeader Header { get; set; }
 
         /// <summary>Type of resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The presence of this field indicates that there exist more results following your last page of
         /// results in pagination order. To fetch them, make another list request using this value as your pagination
@@ -2467,7 +2467,7 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a
         /// "snapshot" of collections larger than the maximum page size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2480,78 +2480,78 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// <summary>The time that this resource was created on the server. This is in RFC3339 text format. Output
         /// only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual string CreationTime { get; set; } 
+        public virtual string CreationTime { get; set; }
 
         /// <summary>A mutable string of at most 1024 characters associated with this resource for the user's
         /// convenience. Has no effect on the managed zone's function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The DNS name of this managed zone, for instance "example.com.".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsName")]
-        public virtual string DnsName { get; set; } 
+        public virtual string DnsName { get; set; }
 
         /// <summary>DNSSEC configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnssecConfig")]
-        public virtual ManagedZoneDnsSecConfig DnssecConfig { get; set; } 
+        public virtual ManagedZoneDnsSecConfig DnssecConfig { get; set; }
 
         /// <summary>The presence for this field indicates that outbound forwarding is enabled for this zone. The value
         /// of this field contains the set of destinations to forward to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingConfig")]
-        public virtual ManagedZoneForwardingConfig ForwardingConfig { get; set; } 
+        public virtual ManagedZoneForwardingConfig ForwardingConfig { get; set; }
 
         /// <summary>Unique identifier for the resource; defined by the server (output only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<ulong> Id { get; set; } 
+        public virtual System.Nullable<ulong> Id { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>User labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>User assigned name for this resource. Must be unique within the project. The name must be 1-63
         /// characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters,
         /// digits or dashes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name
         /// servers that all host the same ManagedZones. Most users will leave this field unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nameServerSet")]
-        public virtual string NameServerSet { get; set; } 
+        public virtual string NameServerSet { get; set; }
 
         /// <summary>Delegate your managed_zone to these virtual name servers; defined by the server (output
         /// only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nameServers")]
-        public virtual System.Collections.Generic.IList<string> NameServers { get; set; } 
+        public virtual System.Collections.Generic.IList<string> NameServers { get; set; }
 
         /// <summary>The presence of this field indicates that DNS Peering is enabled for this zone. The value of this
         /// field contains the network to peer with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peeringConfig")]
-        public virtual ManagedZonePeeringConfig PeeringConfig { get; set; } 
+        public virtual ManagedZonePeeringConfig PeeringConfig { get; set; }
 
         /// <summary>For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible
         /// from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateVisibilityConfig")]
-        public virtual ManagedZonePrivateVisibilityConfig PrivateVisibilityConfig { get; set; } 
+        public virtual ManagedZonePrivateVisibilityConfig PrivateVisibilityConfig { get; set; }
 
         /// <summary>The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS will
         /// resolve reverse lookup queries using automatically configured records for VPC resources. This only applies
         /// to networks listed under private_visibility_config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reverseLookupConfig")]
-        public virtual ManagedZoneReverseLookupConfig ReverseLookupConfig { get; set; } 
+        public virtual ManagedZoneReverseLookupConfig ReverseLookupConfig { get; set; }
 
         /// <summary>This field links to the associated service directory namespace. This field should not be set for
         /// public zones or forwarding zones.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceDirectoryConfig")]
-        public virtual ManagedZoneServiceDirectoryConfig ServiceDirectoryConfig { get; set; } 
+        public virtual ManagedZoneServiceDirectoryConfig ServiceDirectoryConfig { get; set; }
 
         /// <summary>The zone's visibility: public zones are exposed to the Internet, while private zones are visible
         /// only to Virtual Private Cloud resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
-        public virtual string Visibility { get; set; } 
+        public virtual string Visibility { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2562,19 +2562,19 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// <summary>Specifies parameters for generating initial DnsKeys for this ManagedZone. Can only be changed while
         /// the state is OFF.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultKeySpecs")]
-        public virtual System.Collections.Generic.IList<DnsKeySpec> DefaultKeySpecs { get; set; } 
+        public virtual System.Collections.Generic.IList<DnsKeySpec> DefaultKeySpecs { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Specifies the mechanism for authenticated denial-of-existence responses. Can only be changed while
         /// the state is OFF.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonExistence")]
-        public virtual string NonExistence { get; set; } 
+        public virtual string NonExistence { get; set; }
 
         /// <summary>Specifies whether DNSSEC is enabled, and what mode it is in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2583,12 +2583,12 @@ namespace Google.Apis.Dns.v1beta2.Data
     public class ManagedZoneForwardingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>List of target name servers to forward to. Cloud DNS will select the best available name server if
         /// more than one target is given.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetNameServers")]
-        public virtual System.Collections.Generic.IList<ManagedZoneForwardingConfigNameServerTarget> TargetNameServers { get; set; } 
+        public virtual System.Collections.Generic.IList<ManagedZoneForwardingConfigNameServerTarget> TargetNameServers { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2601,14 +2601,14 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this
         /// target.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingPath")]
-        public virtual string ForwardingPath { get; set; } 
+        public virtual string ForwardingPath { get; set; }
 
         /// <summary>IPv4 address of a target name server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipv4Address")]
-        public virtual string Ipv4Address { get; set; } 
+        public virtual string Ipv4Address { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2617,10 +2617,10 @@ namespace Google.Apis.Dns.v1beta2.Data
     public class ManagedZoneOperationsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual ResponseHeader Header { get; set; } 
+        public virtual ResponseHeader Header { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The presence of this field indicates that there exist more results following your last page of
         /// results in pagination order. To fetch them, make another list request using this value as your page token.
@@ -2629,11 +2629,11 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a
         /// consistent snapshot of a collection larger than the maximum page size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The operation resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2642,11 +2642,11 @@ namespace Google.Apis.Dns.v1beta2.Data
     public class ManagedZonePeeringConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The network with which to peer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetNetwork")]
-        public virtual ManagedZonePeeringConfigTargetNetwork TargetNetwork { get; set; } 
+        public virtual ManagedZonePeeringConfigTargetNetwork TargetNetwork { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2658,15 +2658,15 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// that the peering connection is active. The producer network can deactivate a zone. The zone is automatically
         /// deactivated if the producer network that the zone targeted is deleted. Output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deactivateTime")]
-        public virtual string DeactivateTime { get; set; } 
+        public virtual string DeactivateTime { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The fully qualified URL of the VPC network to forward queries to. This should be formatted like
         /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUrl")]
-        public virtual string NetworkUrl { get; set; } 
+        public virtual string NetworkUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2675,11 +2675,11 @@ namespace Google.Apis.Dns.v1beta2.Data
     public class ManagedZonePrivateVisibilityConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The list of VPC networks that can see this zone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networks")]
-        public virtual System.Collections.Generic.IList<ManagedZonePrivateVisibilityConfigNetwork> Networks { get; set; } 
+        public virtual System.Collections.Generic.IList<ManagedZonePrivateVisibilityConfigNetwork> Networks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2688,12 +2688,12 @@ namespace Google.Apis.Dns.v1beta2.Data
     public class ManagedZonePrivateVisibilityConfigNetwork : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The fully qualified URL of the VPC network to bind to. This should be formatted like
         /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUrl")]
-        public virtual string NetworkUrl { get; set; } 
+        public virtual string NetworkUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2702,7 +2702,7 @@ namespace Google.Apis.Dns.v1beta2.Data
     public class ManagedZoneReverseLookupConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2712,11 +2712,11 @@ namespace Google.Apis.Dns.v1beta2.Data
     public class ManagedZoneServiceDirectoryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Contains information about the namespace associated with the zone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
-        public virtual ManagedZoneServiceDirectoryConfigNamespace Namespace__ { get; set; } 
+        public virtual ManagedZoneServiceDirectoryConfigNamespace Namespace__ { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2727,16 +2727,16 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// <summary>The time that the namespace backing this zone was deleted, empty string if it still exists. This is
         /// in RFC3339 text format. Output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletionTime")]
-        public virtual string DeletionTime { get; set; } 
+        public virtual string DeletionTime { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The fully qualified URL of the namespace associated with the zone. This should be formatted like ht
         /// tps://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}</sum
         /// mary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceUrl")]
-        public virtual string NamespaceUrl { get; set; } 
+        public virtual string NamespaceUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2745,15 +2745,15 @@ namespace Google.Apis.Dns.v1beta2.Data
     public class ManagedZonesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual ResponseHeader Header { get; set; } 
+        public virtual ResponseHeader Header { get; set; }
 
         /// <summary>Type of resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The managed zone resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedZones")]
-        public virtual System.Collections.Generic.IList<ManagedZone> ManagedZones { get; set; } 
+        public virtual System.Collections.Generic.IList<ManagedZone> ManagedZones { get; set; }
 
         /// <summary>The presence of this field indicates that there exist more results following your last page of
         /// results in pagination order. To fetch them, make another list request using this value as your page token.
@@ -2762,7 +2762,7 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a
         /// consistent snapshot of a collection larger than the maximum page size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2775,40 +2775,40 @@ namespace Google.Apis.Dns.v1beta2.Data
     {
         /// <summary>Only populated if the operation targeted a DnsKey (output only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsKeyContext")]
-        public virtual OperationDnsKeyContext DnsKeyContext { get; set; } 
+        public virtual OperationDnsKeyContext DnsKeyContext { get; set; }
 
         /// <summary>Unique identifier for the resource. This is the client_operation_id if the client specified it when
         /// the mutation was initiated, otherwise, it is generated by the server. The name must be 1-63 characters long
         /// and match the regular expression [-a-z0-9]? (output only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The time that this operation was started by the server. This is in RFC3339 text format (output
         /// only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTime { get; set; } 
+        public virtual string StartTime { get; set; }
 
         /// <summary>Status of the operation. Can be one of the following: "PENDING" or "DONE" (output only). A status
         /// of "DONE" means that the request to update the authoritative servers has been sent, but the servers might
         /// not be updated yet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>Type of the operation. Operations include insert, update, and delete (output only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>User who requested the operation, for example: user@example.com. cloud-dns-system for operations
         /// automatically done by the system. (output only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
-        public virtual string User { get; set; } 
+        public virtual string User { get; set; }
 
         /// <summary>Only populated if the operation targeted a ManagedZone (output only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zoneContext")]
-        public virtual OperationManagedZoneContext ZoneContext { get; set; } 
+        public virtual OperationManagedZoneContext ZoneContext { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2818,11 +2818,11 @@ namespace Google.Apis.Dns.v1beta2.Data
     {
         /// <summary>The post-operation DnsKey resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newValue")]
-        public virtual DnsKey NewValue { get; set; } 
+        public virtual DnsKey NewValue { get; set; }
 
         /// <summary>The pre-operation DnsKey resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oldValue")]
-        public virtual DnsKey OldValue { get; set; } 
+        public virtual DnsKey OldValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2832,11 +2832,11 @@ namespace Google.Apis.Dns.v1beta2.Data
     {
         /// <summary>The post-operation ManagedZone resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newValue")]
-        public virtual ManagedZone NewValue { get; set; } 
+        public virtual ManagedZone NewValue { get; set; }
 
         /// <summary>The pre-operation ManagedZone resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oldValue")]
-        public virtual ManagedZone OldValue { get; set; } 
+        public virtual ManagedZone OldValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2845,11 +2845,11 @@ namespace Google.Apis.Dns.v1beta2.Data
     public class PoliciesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual ResponseHeader Header { get; set; } 
+        public virtual ResponseHeader Header { get; set; }
 
         /// <summary>Type of resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The presence of this field indicates that there exist more results following your last page of
         /// results in pagination order. To fetch them, make another list request using this value as your page token.
@@ -2858,11 +2858,11 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a
         /// consistent snapshot of a collection larger than the maximum page size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The policy resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policies")]
-        public virtual System.Collections.Generic.IList<Policy> Policies { get; set; } 
+        public virtual System.Collections.Generic.IList<Policy> Policies { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2871,10 +2871,10 @@ namespace Google.Apis.Dns.v1beta2.Data
     public class PoliciesPatchResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual ResponseHeader Header { get; set; } 
+        public virtual ResponseHeader Header { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; } 
+        public virtual Policy Policy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2883,10 +2883,10 @@ namespace Google.Apis.Dns.v1beta2.Data
     public class PoliciesUpdateResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual ResponseHeader Header { get; set; } 
+        public virtual ResponseHeader Header { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; } 
+        public virtual Policy Policy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2899,38 +2899,38 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// forwarded to a name server that you choose. Names such as .internal are not available when an alternative
         /// name server is specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternativeNameServerConfig")]
-        public virtual PolicyAlternativeNameServerConfig AlternativeNameServerConfig { get; set; } 
+        public virtual PolicyAlternativeNameServerConfig AlternativeNameServerConfig { get; set; }
 
         /// <summary>A mutable string of at most 1024 characters associated with this resource for the user's
         /// convenience. Has no effect on the policy's function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN
         /// connections. When enabled, a virtual IP address will be allocated from each of the sub-networks that are
         /// bound to this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableInboundForwarding")]
-        public virtual System.Nullable<bool> EnableInboundForwarding { get; set; } 
+        public virtual System.Nullable<bool> EnableInboundForwarding { get; set; }
 
         /// <summary>Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging
         /// if not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableLogging")]
-        public virtual System.Nullable<bool> EnableLogging { get; set; } 
+        public virtual System.Nullable<bool> EnableLogging { get; set; }
 
         /// <summary>Unique identifier for the resource; defined by the server (output only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<ulong> Id { get; set; } 
+        public virtual System.Nullable<ulong> Id { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>User assigned name for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>List of network names specifying networks to which this policy is applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networks")]
-        public virtual System.Collections.Generic.IList<PolicyNetwork> Networks { get; set; } 
+        public virtual System.Collections.Generic.IList<PolicyNetwork> Networks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2939,13 +2939,13 @@ namespace Google.Apis.Dns.v1beta2.Data
     public class PolicyAlternativeNameServerConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Sets an alternative name server for the associated networks. When specified, all DNS queries are
         /// forwarded to a name server that you choose. Names such as .internal are not available when an alternative
         /// name server is specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetNameServers")]
-        public virtual System.Collections.Generic.IList<PolicyAlternativeNameServerConfigTargetNameServer> TargetNameServers { get; set; } 
+        public virtual System.Collections.Generic.IList<PolicyAlternativeNameServerConfigTargetNameServer> TargetNameServers { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2958,14 +2958,14 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this
         /// target.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingPath")]
-        public virtual string ForwardingPath { get; set; } 
+        public virtual string ForwardingPath { get; set; }
 
         /// <summary>IPv4 address to forward to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipv4Address")]
-        public virtual string Ipv4Address { get; set; } 
+        public virtual string Ipv4Address { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2974,12 +2974,12 @@ namespace Google.Apis.Dns.v1beta2.Data
     public class PolicyNetwork : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The fully qualified URL of the VPC network to bind to. This should be formatted like
         /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUrl")]
-        public virtual string NetworkUrl { get; set; } 
+        public virtual string NetworkUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2991,18 +2991,18 @@ namespace Google.Apis.Dns.v1beta2.Data
     {
         /// <summary>User assigned unique identifier for the resource (output only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Unique numeric identifier for the resource; defined by the server (output only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("number")]
-        public virtual System.Nullable<ulong> Number { get; set; } 
+        public virtual System.Nullable<ulong> Number { get; set; }
 
         /// <summary>Quotas assigned to this project (output only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quota")]
-        public virtual Quota Quota { get; set; } 
+        public virtual Quota Quota { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3013,62 +3013,62 @@ namespace Google.Apis.Dns.v1beta2.Data
     {
         /// <summary>Maximum allowed number of DnsKeys per ManagedZone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsKeysPerManagedZone")]
-        public virtual System.Nullable<int> DnsKeysPerManagedZone { get; set; } 
+        public virtual System.Nullable<int> DnsKeysPerManagedZone { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Maximum allowed number of managed zones in the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedZones")]
-        public virtual System.Nullable<int> ManagedZones { get; set; } 
+        public virtual System.Nullable<int> ManagedZones { get; set; }
 
         /// <summary>Maximum allowed number of managed zones which can be attached to a network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedZonesPerNetwork")]
-        public virtual System.Nullable<int> ManagedZonesPerNetwork { get; set; } 
+        public virtual System.Nullable<int> ManagedZonesPerNetwork { get; set; }
 
         /// <summary>Maximum allowed number of networks to which a privately scoped zone can be attached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networksPerManagedZone")]
-        public virtual System.Nullable<int> NetworksPerManagedZone { get; set; } 
+        public virtual System.Nullable<int> NetworksPerManagedZone { get; set; }
 
         /// <summary>Maximum allowed number of networks per policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networksPerPolicy")]
-        public virtual System.Nullable<int> NetworksPerPolicy { get; set; } 
+        public virtual System.Nullable<int> NetworksPerPolicy { get; set; }
 
         /// <summary>Maximum allowed number of policies per project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policies")]
-        public virtual System.Nullable<int> Policies { get; set; } 
+        public virtual System.Nullable<int> Policies { get; set; }
 
         /// <summary>Maximum allowed number of ResourceRecords per ResourceRecordSet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceRecordsPerRrset")]
-        public virtual System.Nullable<int> ResourceRecordsPerRrset { get; set; } 
+        public virtual System.Nullable<int> ResourceRecordsPerRrset { get; set; }
 
         /// <summary>Maximum allowed number of ResourceRecordSets to add per ChangesCreateRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rrsetAdditionsPerChange")]
-        public virtual System.Nullable<int> RrsetAdditionsPerChange { get; set; } 
+        public virtual System.Nullable<int> RrsetAdditionsPerChange { get; set; }
 
         /// <summary>Maximum allowed number of ResourceRecordSets to delete per ChangesCreateRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rrsetDeletionsPerChange")]
-        public virtual System.Nullable<int> RrsetDeletionsPerChange { get; set; } 
+        public virtual System.Nullable<int> RrsetDeletionsPerChange { get; set; }
 
         /// <summary>Maximum allowed number of ResourceRecordSets per zone in the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rrsetsPerManagedZone")]
-        public virtual System.Nullable<int> RrsetsPerManagedZone { get; set; } 
+        public virtual System.Nullable<int> RrsetsPerManagedZone { get; set; }
 
         /// <summary>Maximum allowed number of target name servers per managed forwarding zone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetNameServersPerManagedZone")]
-        public virtual System.Nullable<int> TargetNameServersPerManagedZone { get; set; } 
+        public virtual System.Nullable<int> TargetNameServersPerManagedZone { get; set; }
 
         /// <summary>Maximum allowed number of alternative target name servers per policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetNameServersPerPolicy")]
-        public virtual System.Nullable<int> TargetNameServersPerPolicy { get; set; } 
+        public virtual System.Nullable<int> TargetNameServersPerPolicy { get; set; }
 
         /// <summary>Maximum allowed size for total rrdata in one ChangesCreateRequest in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalRrdataSizePerChange")]
-        public virtual System.Nullable<int> TotalRrdataSizePerChange { get; set; } 
+        public virtual System.Nullable<int> TotalRrdataSizePerChange { get; set; }
 
         /// <summary>DNSSEC algorithm and key length types that can be used for DnsKeys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whitelistedKeySpecs")]
-        public virtual System.Collections.Generic.IList<DnsKeySpec> WhitelistedKeySpecs { get; set; } 
+        public virtual System.Collections.Generic.IList<DnsKeySpec> WhitelistedKeySpecs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3078,27 +3078,27 @@ namespace Google.Apis.Dns.v1beta2.Data
     public class ResourceRecordSet : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>For example, www.example.com.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rrdatas")]
-        public virtual System.Collections.Generic.IList<string> Rrdatas { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Rrdatas { get; set; }
 
         /// <summary>As defined in RFC 4034 (section 3.2).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatureRrdatas")]
-        public virtual System.Collections.Generic.IList<string> SignatureRrdatas { get; set; } 
+        public virtual System.Collections.Generic.IList<string> SignatureRrdatas { get; set; }
 
         /// <summary>Number of seconds that this ResourceRecordSet can be cached by resolvers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
-        public virtual System.Nullable<int> Ttl { get; set; } 
+        public virtual System.Nullable<int> Ttl { get; set; }
 
         /// <summary>The identifier of a supported record type. See the list of Supported DNS record types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3107,11 +3107,11 @@ namespace Google.Apis.Dns.v1beta2.Data
     public class ResourceRecordSetsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual ResponseHeader Header { get; set; } 
+        public virtual ResponseHeader Header { get; set; }
 
         /// <summary>Type of resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The presence of this field indicates that there exist more results following your last page of
         /// results in pagination order. To fetch them, make another list request using this value as your pagination
@@ -3120,11 +3120,11 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a
         /// consistent snapshot of a collection larger than the maximum page size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The resource record set resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rrsets")]
-        public virtual System.Collections.Generic.IList<ResourceRecordSet> Rrsets { get; set; } 
+        public virtual System.Collections.Generic.IList<ResourceRecordSet> Rrsets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3136,7 +3136,7 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// <summary>For mutating operation requests that completed successfully. This is the client_operation_id if the
         /// client specified it, otherwise it is generated by the server (output only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; } 
+        public virtual string OperationId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

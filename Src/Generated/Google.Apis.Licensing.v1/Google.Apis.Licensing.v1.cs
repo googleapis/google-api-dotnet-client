@@ -929,40 +929,40 @@ namespace Google.Apis.Licensing.v1.Data
     {
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etags")]
-        public virtual string Etags { get; set; } 
+        public virtual string Etags { get; set; }
 
         /// <summary>Identifies the resource as a LicenseAssignment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>A product's unique identifier. For more information about products in this version of the API, see
         /// Product and SKU IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
+        public virtual string ProductId { get; set; }
 
         /// <summary>Display Name of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productName")]
-        public virtual string ProductName { get; set; } 
+        public virtual string ProductName { get; set; }
 
         /// <summary>Link to this page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>A product SKU's unique identifier. For more information about available SKUs in this version of the
         /// API, see Products and SKUs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skuId")]
-        public virtual string SkuId { get; set; } 
+        public virtual string SkuId { get; set; }
 
         /// <summary>Display Name of the sku of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skuName")]
-        public virtual string SkuName { get; set; } 
+        public virtual string SkuName { get; set; }
 
         /// <summary>The user's current primary email address. If the user's email address changes, use the new email
         /// address in your API requests. Since a userId is subject to change, do not use a userId value as a key for
         /// persistent data. This key could break if the current user's email address changes. If the userId is
         /// suspended, the license status changes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
-        public virtual string UserId { get; set; } 
+        public virtual string UserId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -973,7 +973,7 @@ namespace Google.Apis.Licensing.v1.Data
     {
         /// <summary>Email id of the user</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
-        public virtual string UserId { get; set; } 
+        public virtual string UserId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -983,21 +983,21 @@ namespace Google.Apis.Licensing.v1.Data
     {
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The LicenseAssignments in this page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<LicenseAssignment> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<LicenseAssignment> Items { get; set; }
 
         /// <summary>Identifies the resource as a collection of LicenseAssignments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token that you must submit in a subsequent request to retrieve additional license results
         /// matching your query parameters. The maxResults query string is related to the nextPageToken since maxResults
         /// determines how many entries are returned on each next page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
     }
 }

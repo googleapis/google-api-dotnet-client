@@ -9679,16 +9679,16 @@ namespace Google.Apis.YouTube.v3.Data
     public class AbuseReport : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("abuseTypes")]
-        public virtual System.Collections.Generic.IList<AbuseType> AbuseTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<AbuseType> AbuseTypes { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("relatedEntities")]
-        public virtual System.Collections.Generic.IList<RelatedEntity> RelatedEntities { get; set; } 
+        public virtual System.Collections.Generic.IList<RelatedEntity> RelatedEntities { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("subject")]
-        public virtual Entity Subject { get; set; } 
+        public virtual Entity Subject { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9697,7 +9697,7 @@ namespace Google.Apis.YouTube.v3.Data
     public class AbuseType : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9709,11 +9709,11 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The value of allowed indicates whether the access to the policy is allowed or denied by
         /// default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowed")]
-        public virtual System.Nullable<bool> Allowed { get; set; } 
+        public virtual System.Nullable<bool> Allowed { get; set; }
 
         /// <summary>A list of region codes that identify countries where the default policy do not apply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exception")]
-        public virtual System.Collections.Generic.IList<string> Exception { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Exception { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9730,24 +9730,24 @@ namespace Google.Apis.YouTube.v3.Data
         /// example, if the snippet.type value is videoRated, then the contentDetails object's content identifies the
         /// rated video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentDetails")]
-        public virtual ActivityContentDetails ContentDetails { get; set; } 
+        public virtual ActivityContentDetails ContentDetails { get; set; }
 
         /// <summary>Etag of this resource</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The ID that YouTube uses to uniquely identify the activity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "youtube#activity".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The snippet object contains basic details about the activity, including the activity's type and
         /// group ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual ActivitySnippet Snippet { get; set; } 
+        public virtual ActivitySnippet Snippet { get; set; }
 
     }    
 
@@ -9758,57 +9758,57 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The bulletin object contains details about a channel bulletin post. This object is only present if
         /// the snippet.type is bulletin.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bulletin")]
-        public virtual ActivityContentDetailsBulletin Bulletin { get; set; } 
+        public virtual ActivityContentDetailsBulletin Bulletin { get; set; }
 
         /// <summary>The channelItem object contains details about a resource which was added to a channel. This
         /// property is only present if the snippet.type is channelItem.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelItem")]
-        public virtual ActivityContentDetailsChannelItem ChannelItem { get; set; } 
+        public virtual ActivityContentDetailsChannelItem ChannelItem { get; set; }
 
         /// <summary>The comment object contains information about a resource that received a comment. This property is
         /// only present if the snippet.type is comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comment")]
-        public virtual ActivityContentDetailsComment Comment { get; set; } 
+        public virtual ActivityContentDetailsComment Comment { get; set; }
 
         /// <summary>The favorite object contains information about a video that was marked as a favorite video. This
         /// property is only present if the snippet.type is favorite.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("favorite")]
-        public virtual ActivityContentDetailsFavorite Favorite { get; set; } 
+        public virtual ActivityContentDetailsFavorite Favorite { get; set; }
 
         /// <summary>The like object contains information about a resource that received a positive (like) rating. This
         /// property is only present if the snippet.type is like.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("like")]
-        public virtual ActivityContentDetailsLike Like { get; set; } 
+        public virtual ActivityContentDetailsLike Like { get; set; }
 
         /// <summary>The playlistItem object contains information about a new playlist item. This property is only
         /// present if the snippet.type is playlistItem.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playlistItem")]
-        public virtual ActivityContentDetailsPlaylistItem PlaylistItem { get; set; } 
+        public virtual ActivityContentDetailsPlaylistItem PlaylistItem { get; set; }
 
         /// <summary>The promotedItem object contains details about a resource which is being promoted. This property is
         /// only present if the snippet.type is promotedItem.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotedItem")]
-        public virtual ActivityContentDetailsPromotedItem PromotedItem { get; set; } 
+        public virtual ActivityContentDetailsPromotedItem PromotedItem { get; set; }
 
         /// <summary>The recommendation object contains information about a recommended resource. This property is only
         /// present if the snippet.type is recommendation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommendation")]
-        public virtual ActivityContentDetailsRecommendation Recommendation { get; set; } 
+        public virtual ActivityContentDetailsRecommendation Recommendation { get; set; }
 
         /// <summary>The social object contains details about a social network post. This property is only present if
         /// the snippet.type is social.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("social")]
-        public virtual ActivityContentDetailsSocial Social { get; set; } 
+        public virtual ActivityContentDetailsSocial Social { get; set; }
 
         /// <summary>The subscription object contains information about a channel that a user subscribed to. This
         /// property is only present if the snippet.type is subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
-        public virtual ActivityContentDetailsSubscription Subscription { get; set; } 
+        public virtual ActivityContentDetailsSubscription Subscription { get; set; }
 
         /// <summary>The upload object contains information about the uploaded video. This property is only present if
         /// the snippet.type is upload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upload")]
-        public virtual ActivityContentDetailsUpload Upload { get; set; } 
+        public virtual ActivityContentDetailsUpload Upload { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9820,7 +9820,7 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The resourceId object contains information that identifies the resource associated with a bulletin
         /// post. @mutable youtube.activities.insert</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual ResourceId ResourceId { get; set; } 
+        public virtual ResourceId ResourceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9832,7 +9832,7 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The resourceId object contains information that identifies the resource that was added to the
         /// channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual ResourceId ResourceId { get; set; } 
+        public virtual ResourceId ResourceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9844,7 +9844,7 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The resourceId object contains information that identifies the resource associated with the
         /// comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual ResourceId ResourceId { get; set; } 
+        public virtual ResourceId ResourceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9856,7 +9856,7 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The resourceId object contains information that identifies the resource that was marked as a
         /// favorite.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual ResourceId ResourceId { get; set; } 
+        public virtual ResourceId ResourceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9867,7 +9867,7 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The resourceId object contains information that identifies the rated resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual ResourceId ResourceId { get; set; } 
+        public virtual ResourceId ResourceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9878,16 +9878,16 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The value that YouTube uses to uniquely identify the playlist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playlistId")]
-        public virtual string PlaylistId { get; set; } 
+        public virtual string PlaylistId { get; set; }
 
         /// <summary>ID of the item within the playlist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playlistItemId")]
-        public virtual string PlaylistItemId { get; set; } 
+        public virtual string PlaylistItemId { get; set; }
 
         /// <summary>The resourceId object contains information about the resource that was added to the
         /// playlist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual ResourceId ResourceId { get; set; } 
+        public virtual ResourceId ResourceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9898,48 +9898,48 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The URL the client should fetch to request a promoted item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adTag")]
-        public virtual string AdTag { get; set; } 
+        public virtual string AdTag { get; set; }
 
         /// <summary>The URL the client should ping to indicate that the user clicked through on this promoted
         /// item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickTrackingUrl")]
-        public virtual string ClickTrackingUrl { get; set; } 
+        public virtual string ClickTrackingUrl { get; set; }
 
         /// <summary>The URL the client should ping to indicate that the user was shown this promoted item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeViewUrl")]
-        public virtual string CreativeViewUrl { get; set; } 
+        public virtual string CreativeViewUrl { get; set; }
 
         /// <summary>The type of call-to-action, a message to the user indicating action that can be taken.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ctaType")]
-        public virtual string CtaType { get; set; } 
+        public virtual string CtaType { get; set; }
 
         /// <summary>The custom call-to-action button text. If specified, it will override the default button text for
         /// the cta_type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customCtaButtonText")]
-        public virtual string CustomCtaButtonText { get; set; } 
+        public virtual string CustomCtaButtonText { get; set; }
 
         /// <summary>The text description to accompany the promoted item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("descriptionText")]
-        public virtual string DescriptionText { get; set; } 
+        public virtual string DescriptionText { get; set; }
 
         /// <summary>The URL the client should direct the user to, if the user chooses to visit the advertiser's
         /// website.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationUrl")]
-        public virtual string DestinationUrl { get; set; } 
+        public virtual string DestinationUrl { get; set; }
 
         /// <summary>The list of forecasting URLs. The client should ping all of these URLs when a promoted item is not
         /// available, to indicate that a promoted item could have been shown.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forecastingUrl")]
-        public virtual System.Collections.Generic.IList<string> ForecastingUrl { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ForecastingUrl { get; set; }
 
         /// <summary>The list of impression URLs. The client should ping all of these URLs to indicate that the user was
         /// shown this promoted item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("impressionUrl")]
-        public virtual System.Collections.Generic.IList<string> ImpressionUrl { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ImpressionUrl { get; set; }
 
         /// <summary>The ID that YouTube uses to uniquely identify the promoted video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoId")]
-        public virtual string VideoId { get; set; } 
+        public virtual string VideoId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9950,16 +9950,16 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The reason that the resource is recommended to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The resourceId object contains information that identifies the recommended resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual ResourceId ResourceId { get; set; } 
+        public virtual ResourceId ResourceId { get; set; }
 
         /// <summary>The seedResourceId object contains information about the resource that caused the
         /// recommendation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seedResourceId")]
-        public virtual ResourceId SeedResourceId { get; set; } 
+        public virtual ResourceId SeedResourceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9970,24 +9970,24 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The author of the social network post.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("author")]
-        public virtual string Author { get; set; } 
+        public virtual string Author { get; set; }
 
         /// <summary>An image of the post's author.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
-        public virtual string ImageUrl { get; set; } 
+        public virtual string ImageUrl { get; set; }
 
         /// <summary>The URL of the social network post.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referenceUrl")]
-        public virtual string ReferenceUrl { get; set; } 
+        public virtual string ReferenceUrl { get; set; }
 
         /// <summary>The resourceId object encapsulates information that identifies the resource associated with a
         /// social network post.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual ResourceId ResourceId { get; set; } 
+        public virtual ResourceId ResourceId { get; set; }
 
         /// <summary>The name of the social network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9999,7 +9999,7 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The resourceId object contains information that identifies the resource that the user subscribed
         /// to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual ResourceId ResourceId { get; set; } 
+        public virtual ResourceId ResourceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10010,7 +10010,7 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The ID that YouTube uses to uniquely identify the uploaded video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoId")]
-        public virtual string VideoId { get; set; } 
+        public virtual string VideoId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10020,40 +10020,40 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Serialized EventId of the request which produced this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Activity> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Activity> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#activityListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the next page in the
         /// result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>General pagination information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual PageInfo PageInfo { get; set; } 
+        public virtual PageInfo PageInfo { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the previous page in
         /// the result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prevPageToken")]
-        public virtual string PrevPageToken { get; set; } 
+        public virtual string PrevPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
-        public virtual TokenPagination TokenPagination { get; set; } 
+        public virtual TokenPagination TokenPagination { get; set; }
 
         /// <summary>The visitorId identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
     }    
 
@@ -10063,41 +10063,41 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The ID that YouTube uses to uniquely identify the channel associated with the activity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
-        public virtual string ChannelId { get; set; } 
+        public virtual string ChannelId { get; set; }
 
         /// <summary>Channel title for the channel responsible for this activity</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelTitle")]
-        public virtual string ChannelTitle { get; set; } 
+        public virtual string ChannelTitle { get; set; }
 
         /// <summary>The description of the resource primarily associated with the activity. @mutable
         /// youtube.activities.insert</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The group ID associated with the activity. A group ID identifies user events that are associated
         /// with the same user and resource. For example, if a user rates a video and marks the same video as a
         /// favorite, the entries for those events would have the same group ID in the user's activity feed. In your
         /// user interface, you can avoid repetition by grouping events with the same groupId value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
-        public virtual string GroupId { get; set; } 
+        public virtual string GroupId { get; set; }
 
         /// <summary>The date and time that the video was uploaded. The value is specified in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
-        public virtual string PublishedAt { get; set; } 
+        public virtual string PublishedAt { get; set; }
 
         /// <summary>A map of thumbnail images associated with the resource that is primarily associated with the
         /// activity. For each object in the map, the key is the name of the thumbnail image, and the value is an object
         /// that contains other information about the thumbnail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnails")]
-        public virtual ThumbnailDetails Thumbnails { get; set; } 
+        public virtual ThumbnailDetails Thumbnails { get; set; }
 
         /// <summary>The title of the resource primarily associated with the activity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The type of activity that the resource describes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10109,19 +10109,19 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The ID that YouTube uses to uniquely identify the caption track.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "youtube#caption".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The snippet object contains basic details about the caption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual CaptionSnippet Snippet { get; set; } 
+        public virtual CaptionSnippet Snippet { get; set; }
 
     }    
 
@@ -10129,24 +10129,24 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Serialized EventId of the request which produced this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         /// <summary>A list of captions that match the request criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Caption> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Caption> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#captionListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The visitorId identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
     }    
 
@@ -10155,12 +10155,12 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The type of audio track associated with the caption track.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioTrackType")]
-        public virtual string AudioTrackType { get; set; } 
+        public virtual string AudioTrackType { get; set; }
 
         /// <summary>The reason that YouTube failed to process the caption track. This property is only present if the
         /// state property's value is failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureReason")]
-        public virtual string FailureReason { get; set; } 
+        public virtual string FailureReason { get; set; }
 
         /// <summary>Indicates whether YouTube synchronized the caption track to the audio track in the video. The value
         /// will be true if a sync was explicitly requested when the caption track was uploaded. For example, when
@@ -10168,55 +10168,55 @@ namespace Google.Apis.YouTube.v3.Data
         /// YouTube to sync the uploaded track to the video. If the value is false, YouTube uses the time codes in the
         /// uploaded caption track to determine when to display captions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isAutoSynced")]
-        public virtual System.Nullable<bool> IsAutoSynced { get; set; } 
+        public virtual System.Nullable<bool> IsAutoSynced { get; set; }
 
         /// <summary>Indicates whether the track contains closed captions for the deaf and hard of hearing. The default
         /// value is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isCC")]
-        public virtual System.Nullable<bool> IsCC { get; set; } 
+        public virtual System.Nullable<bool> IsCC { get; set; }
 
         /// <summary>Indicates whether the caption track is a draft. If the value is true, then the track is not
         /// publicly visible. The default value is false. @mutable youtube.captions.insert
         /// youtube.captions.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDraft")]
-        public virtual System.Nullable<bool> IsDraft { get; set; } 
+        public virtual System.Nullable<bool> IsDraft { get; set; }
 
         /// <summary>Indicates whether caption track is formatted for "easy reader," meaning it is at a third-grade
         /// level for language learners. The default value is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isEasyReader")]
-        public virtual System.Nullable<bool> IsEasyReader { get; set; } 
+        public virtual System.Nullable<bool> IsEasyReader { get; set; }
 
         /// <summary>Indicates whether the caption track uses large text for the vision-impaired. The default value is
         /// false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isLarge")]
-        public virtual System.Nullable<bool> IsLarge { get; set; } 
+        public virtual System.Nullable<bool> IsLarge { get; set; }
 
         /// <summary>The language of the caption track. The property value is a BCP-47 language tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
-        public virtual string Language { get; set; } 
+        public virtual string Language { get; set; }
 
         /// <summary>The date and time when the caption track was last updated. The value is specified in ISO 8601
         /// format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdated")]
-        public virtual string LastUpdated { get; set; } 
+        public virtual string LastUpdated { get; set; }
 
         /// <summary>The name of the caption track. The name is intended to be visible to the user as an option during
         /// playback.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The caption track's status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The caption track's type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackKind")]
-        public virtual string TrackKind { get; set; } 
+        public virtual string TrackKind { get; set; }
 
         /// <summary>The ID that YouTube uses to uniquely identify the video associated with the caption track. @mutable
         /// youtube.captions.insert</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoId")]
-        public virtual string VideoId { get; set; } 
+        public virtual string VideoId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10227,24 +10227,24 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The format of the video stream that you are sending to Youtube. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual string Format { get; set; } 
+        public virtual string Format { get; set; }
 
         /// <summary>The frame rate of the inbound video data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frameRate")]
-        public virtual string FrameRate { get; set; } 
+        public virtual string FrameRate { get; set; }
 
         /// <summary>The ingestionInfo object contains information that YouTube provides that you need to transmit your
         /// RTMP or HTTP stream to YouTube.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ingestionInfo")]
-        public virtual IngestionInfo IngestionInfo { get; set; } 
+        public virtual IngestionInfo IngestionInfo { get; set; }
 
         /// <summary> The method or protocol used to transmit the video stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ingestionType")]
-        public virtual string IngestionType { get; set; } 
+        public virtual string IngestionType { get; set; }
 
         /// <summary>The resolution of the inbound video data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolution")]
-        public virtual string Resolution { get; set; } 
+        public virtual string Resolution { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10256,64 +10256,64 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The auditionDetails object encapsulates channel data that is relevant for YouTube Partners during
         /// the audition process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditDetails")]
-        public virtual ChannelAuditDetails AuditDetails { get; set; } 
+        public virtual ChannelAuditDetails AuditDetails { get; set; }
 
         /// <summary>The brandingSettings object encapsulates information about the branding of the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brandingSettings")]
-        public virtual ChannelBrandingSettings BrandingSettings { get; set; } 
+        public virtual ChannelBrandingSettings BrandingSettings { get; set; }
 
         /// <summary>The contentDetails object encapsulates information about the channel's content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentDetails")]
-        public virtual ChannelContentDetails ContentDetails { get; set; } 
+        public virtual ChannelContentDetails ContentDetails { get; set; }
 
         /// <summary>The contentOwnerDetails object encapsulates channel data that is relevant for YouTube Partners
         /// linked with the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentOwnerDetails")]
-        public virtual ChannelContentOwnerDetails ContentOwnerDetails { get; set; } 
+        public virtual ChannelContentOwnerDetails ContentOwnerDetails { get; set; }
 
         /// <summary>The conversionPings object encapsulates information about conversion pings that need to be
         /// respected by the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionPings")]
-        public virtual ChannelConversionPings ConversionPings { get; set; } 
+        public virtual ChannelConversionPings ConversionPings { get; set; }
 
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The ID that YouTube uses to uniquely identify the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The invideoPromotion object encapsulates information about promotion campaign associated with the
         /// channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invideoPromotion")]
-        public virtual InvideoPromotion InvideoPromotion { get; set; } 
+        public virtual InvideoPromotion InvideoPromotion { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "youtube#channel".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Localizations for different languages</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localizations")]
-        public virtual System.Collections.Generic.IDictionary<string,ChannelLocalization> Localizations { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, ChannelLocalization> Localizations { get; set; }
 
         /// <summary>The snippet object contains basic details about the channel, such as its title, description, and
         /// thumbnail images.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual ChannelSnippet Snippet { get; set; } 
+        public virtual ChannelSnippet Snippet { get; set; }
 
         /// <summary>The statistics object encapsulates statistics for the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statistics")]
-        public virtual ChannelStatistics Statistics { get; set; } 
+        public virtual ChannelStatistics Statistics { get; set; }
 
         /// <summary>The status object encapsulates information about the privacy status of the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual ChannelStatus Status { get; set; } 
+        public virtual ChannelStatus Status { get; set; }
 
         /// <summary>The topicDetails object encapsulates information about Freebase topics associated with the
         /// channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topicDetails")]
-        public virtual ChannelTopicDetails TopicDetails { get; set; } 
+        public virtual ChannelTopicDetails TopicDetails { get; set; }
 
     }    
 
@@ -10323,15 +10323,15 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Whether or not the channel respects the community guidelines.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("communityGuidelinesGoodStanding")]
-        public virtual System.Nullable<bool> CommunityGuidelinesGoodStanding { get; set; } 
+        public virtual System.Nullable<bool> CommunityGuidelinesGoodStanding { get; set; }
 
         /// <summary>Whether or not the channel has any unresolved claims.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentIdClaimsGoodStanding")]
-        public virtual System.Nullable<bool> ContentIdClaimsGoodStanding { get; set; } 
+        public virtual System.Nullable<bool> ContentIdClaimsGoodStanding { get; set; }
 
         /// <summary>Whether or not the channel has any copyright strikes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("copyrightStrikesGoodStanding")]
-        public virtual System.Nullable<bool> CopyrightStrikesGoodStanding { get; set; } 
+        public virtual System.Nullable<bool> CopyrightStrikesGoodStanding { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10341,16 +10341,16 @@ namespace Google.Apis.YouTube.v3.Data
     public class ChannelBannerResource : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#channelBannerResource".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The URL of this banner image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
     }    
 
@@ -10359,19 +10359,19 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Branding properties for the channel view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channel")]
-        public virtual ChannelSettings Channel { get; set; } 
+        public virtual ChannelSettings Channel { get; set; }
 
         /// <summary>Additional experimental branding properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hints")]
-        public virtual System.Collections.Generic.IList<PropertyValue> Hints { get; set; } 
+        public virtual System.Collections.Generic.IList<PropertyValue> Hints { get; set; }
 
         /// <summary>Branding properties for branding images.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual ImageSettings Image { get; set; } 
+        public virtual ImageSettings Image { get; set; }
 
         /// <summary>Branding properties for the watch page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("watch")]
-        public virtual WatchSettings Watch { get; set; } 
+        public virtual WatchSettings Watch { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10381,7 +10381,7 @@ namespace Google.Apis.YouTube.v3.Data
     public class ChannelContentDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("relatedPlaylists")]
-        public virtual RelatedPlaylistsData RelatedPlaylists { get; set; } 
+        public virtual RelatedPlaylistsData RelatedPlaylists { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10392,27 +10392,27 @@ namespace Google.Apis.YouTube.v3.Data
             /// <summary>The ID of the playlist that contains the channel"s favorite videos. Use the
             /// playlistItems.insert and playlistItems.delete to add or remove items from that list.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("favorites")]
-            public virtual string Favorites { get; set; } 
+            public virtual string Favorites { get; set; }
 
             /// <summary>The ID of the playlist that contains the channel"s liked videos. Use the playlistItems.insert
             /// and playlistItems.delete to add or remove items from that list.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("likes")]
-            public virtual string Likes { get; set; } 
+            public virtual string Likes { get; set; }
 
             /// <summary>The ID of the playlist that contains the channel"s uploaded videos. Use the videos.insert
             /// method to upload new videos and the videos.delete method to delete previously uploaded videos.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("uploads")]
-            public virtual string Uploads { get; set; } 
+            public virtual string Uploads { get; set; }
 
             /// <summary>The ID of the playlist that contains the channel"s watch history. Use the playlistItems.insert
             /// and playlistItems.delete to add or remove items from that list.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("watchHistory")]
-            public virtual string WatchHistory { get; set; } 
+            public virtual string WatchHistory { get; set; }
 
             /// <summary>The ID of the playlist that contains the channel"s watch later playlist. Use the
             /// playlistItems.insert and playlistItems.delete to add or remove items from that list.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("watchLater")]
-            public virtual string WatchLater { get; set; } 
+            public virtual string WatchLater { get; set; }
 
         }
     }    
@@ -10423,12 +10423,12 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The ID of the content owner linked to the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentOwner")]
-        public virtual string ContentOwner { get; set; } 
+        public virtual string ContentOwner { get; set; }
 
         /// <summary>The date and time of when the channel was linked to the content owner. The value is specified in
         /// ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeLinked")]
-        public virtual string TimeLinked { get; set; } 
+        public virtual string TimeLinked { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10440,7 +10440,7 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Defines the context of the ping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
-        public virtual string Context { get; set; } 
+        public virtual string Context { get; set; }
 
         /// <summary>The url (without the schema) that the player shall send the ping to. It's at caller's descretion to
         /// decide which schema to use (http vs https) Example of a returned url: //googleads.g.doubleclick.net/pagead/
@@ -10448,7 +10448,7 @@ namespace Google.Apis.YouTube.v3.Data
         /// cview%3Butuid%3DGISQtTNGYqaYl4sKxoVvKA=default The caller must append biscotti authentication (ms param in
         /// case of mobile, for example) to this ping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionUrl")]
-        public virtual string ConversionUrl { get; set; } 
+        public virtual string ConversionUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10461,7 +10461,7 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>Pings that the app shall fire (authenticated by biscotti cookie). Each ping has a context, in which
         /// the app must fire the ping, and a url identifying the ping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pings")]
-        public virtual System.Collections.Generic.IList<ChannelConversionPing> Pings { get; set; } 
+        public virtual System.Collections.Generic.IList<ChannelConversionPing> Pings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10471,40 +10471,40 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Serialized EventId of the request which produced this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Channel> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Channel> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#channelListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the next page in the
         /// result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>General pagination information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual PageInfo PageInfo { get; set; } 
+        public virtual PageInfo PageInfo { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the previous page in
         /// the result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prevPageToken")]
-        public virtual string PrevPageToken { get; set; } 
+        public virtual string PrevPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
-        public virtual TokenPagination TokenPagination { get; set; } 
+        public virtual TokenPagination TokenPagination { get; set; }
 
         /// <summary>The visitorId identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
     }    
 
@@ -10513,11 +10513,11 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The localized strings for channel's description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The localized strings for channel's title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10527,19 +10527,19 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The YouTube channel ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
-        public virtual string ChannelId { get; set; } 
+        public virtual string ChannelId { get; set; }
 
         /// <summary>The channel's URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelUrl")]
-        public virtual string ChannelUrl { get; set; } 
+        public virtual string ChannelUrl { get; set; }
 
         /// <summary>The channel's display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The channels's avatar URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileImageUrl")]
-        public virtual string ProfileImageUrl { get; set; } 
+        public virtual string ProfileImageUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10550,33 +10550,33 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The contentDetails object contains details about the channel section content, such as a list of
         /// playlists or channels featured in the section.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentDetails")]
-        public virtual ChannelSectionContentDetails ContentDetails { get; set; } 
+        public virtual ChannelSectionContentDetails ContentDetails { get; set; }
 
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The ID that YouTube uses to uniquely identify the channel section.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#channelSection".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Localizations for different languages</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localizations")]
-        public virtual System.Collections.Generic.IDictionary<string,ChannelSectionLocalization> Localizations { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, ChannelSectionLocalization> Localizations { get; set; }
 
         /// <summary>The snippet object contains basic details about the channel section, such as its type, style and
         /// title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual ChannelSectionSnippet Snippet { get; set; } 
+        public virtual ChannelSectionSnippet Snippet { get; set; }
 
         /// <summary>The targeting object contains basic targeting settings about the channel section.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targeting")]
-        public virtual ChannelSectionTargeting Targeting { get; set; } 
+        public virtual ChannelSectionTargeting Targeting { get; set; }
 
     }    
 
@@ -10585,12 +10585,12 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The channel ids for type multiple_channels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channels")]
-        public virtual System.Collections.Generic.IList<string> Channels { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Channels { get; set; }
 
         /// <summary>The playlist ids for type single_playlist and multiple_playlists. For singlePlaylist, only one
         /// playlistId is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playlists")]
-        public virtual System.Collections.Generic.IList<string> Playlists { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Playlists { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10600,24 +10600,24 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Serialized EventId of the request which produced this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         /// <summary>A list of ChannelSections that match the request criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<ChannelSection> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<ChannelSection> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#channelSectionListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The visitorId identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
     }    
 
@@ -10626,7 +10626,7 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The localized strings for channel section's title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10638,31 +10638,31 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The ID that YouTube uses to uniquely identify the channel that published the channel
         /// section.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
-        public virtual string ChannelId { get; set; } 
+        public virtual string ChannelId { get; set; }
 
         /// <summary>The language of the channel section's default title and description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultLanguage")]
-        public virtual string DefaultLanguage { get; set; } 
+        public virtual string DefaultLanguage { get; set; }
 
         /// <summary>Localized title, read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localized")]
-        public virtual ChannelSectionLocalization Localized { get; set; } 
+        public virtual ChannelSectionLocalization Localized { get; set; }
 
         /// <summary>The position of the channel section in the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("position")]
-        public virtual System.Nullable<long> Position { get; set; } 
+        public virtual System.Nullable<long> Position { get; set; }
 
         /// <summary>The style of the channel section.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("style")]
-        public virtual string Style { get; set; } 
+        public virtual string Style { get; set; }
 
         /// <summary>The channel section's title for multiple_playlists and multiple_channels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The type of the channel section.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10673,15 +10673,15 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The country the channel section is targeting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countries")]
-        public virtual System.Collections.Generic.IList<string> Countries { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Countries { get; set; }
 
         /// <summary>The language the channel section is targeting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languages")]
-        public virtual System.Collections.Generic.IList<string> Languages { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Languages { get; set; }
 
         /// <summary>The region the channel section is targeting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regions")]
-        public virtual System.Collections.Generic.IList<string> Regions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Regions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10692,59 +10692,59 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The country of the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
-        public virtual string Country { get; set; } 
+        public virtual string Country { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("defaultLanguage")]
-        public virtual string DefaultLanguage { get; set; } 
+        public virtual string DefaultLanguage { get; set; }
 
         /// <summary>Which content tab users should see when viewing the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultTab")]
-        public virtual string DefaultTab { get; set; } 
+        public virtual string DefaultTab { get; set; }
 
         /// <summary>Specifies the channel description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Title for the featured channels tab.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("featuredChannelsTitle")]
-        public virtual string FeaturedChannelsTitle { get; set; } 
+        public virtual string FeaturedChannelsTitle { get; set; }
 
         /// <summary>The list of featured channels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("featuredChannelsUrls")]
-        public virtual System.Collections.Generic.IList<string> FeaturedChannelsUrls { get; set; } 
+        public virtual System.Collections.Generic.IList<string> FeaturedChannelsUrls { get; set; }
 
         /// <summary>Lists keywords associated with the channel, comma-separated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keywords")]
-        public virtual string Keywords { get; set; } 
+        public virtual string Keywords { get; set; }
 
         /// <summary>Whether user-submitted comments left on the channel page need to be approved by the channel owner
         /// to be publicly visible.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("moderateComments")]
-        public virtual System.Nullable<bool> ModerateComments { get; set; } 
+        public virtual System.Nullable<bool> ModerateComments { get; set; }
 
         /// <summary>A prominent color that can be rendered on this channel page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileColor")]
-        public virtual string ProfileColor { get; set; } 
+        public virtual string ProfileColor { get; set; }
 
         /// <summary>Whether the tab to browse the videos should be displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("showBrowseView")]
-        public virtual System.Nullable<bool> ShowBrowseView { get; set; } 
+        public virtual System.Nullable<bool> ShowBrowseView { get; set; }
 
         /// <summary>Whether related channels should be proposed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("showRelatedChannels")]
-        public virtual System.Nullable<bool> ShowRelatedChannels { get; set; } 
+        public virtual System.Nullable<bool> ShowRelatedChannels { get; set; }
 
         /// <summary>Specifies the channel title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ID for a Google Analytics account to track and measure traffic to the channels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingAnalyticsAccountId")]
-        public virtual string TrackingAnalyticsAccountId { get; set; } 
+        public virtual string TrackingAnalyticsAccountId { get; set; }
 
         /// <summary>The trailer of the channel, for users that are not subscribers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unsubscribedTrailer")]
-        public virtual string UnsubscribedTrailer { get; set; } 
+        public virtual string UnsubscribedTrailer { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10755,28 +10755,28 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The country of the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
-        public virtual string Country { get; set; } 
+        public virtual string Country { get; set; }
 
         /// <summary>The custom url of the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customUrl")]
-        public virtual string CustomUrl { get; set; } 
+        public virtual string CustomUrl { get; set; }
 
         /// <summary>The language of the channel's default title and description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultLanguage")]
-        public virtual string DefaultLanguage { get; set; } 
+        public virtual string DefaultLanguage { get; set; }
 
         /// <summary>The description of the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Localized title and description, read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localized")]
-        public virtual ChannelLocalization Localized { get; set; } 
+        public virtual ChannelLocalization Localized { get; set; }
 
         /// <summary>The date and time that the channel was created. The value is specified in < a href="//www.w3.org/TR
         /// /NOTE-datetime">ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
-        public virtual string PublishedAt { get; set; } 
+        public virtual string PublishedAt { get; set; }
 
         /// <summary>A map of thumbnail images associated with the channel. For each object in the map, the key is the
         /// name of the thumbnail image, and the value is an object that contains other information about the thumbnail.
@@ -10786,11 +10786,11 @@ namespace Google.Apis.YouTube.v3.Data
         /// be available in the https domain, which is how the URLs appear in API responses. After that time, you might
         /// see broken images in your application if it tries to load YouTube images from the http domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnails")]
-        public virtual ThumbnailDetails Thumbnails { get; set; } 
+        public virtual ThumbnailDetails Thumbnails { get; set; }
 
         /// <summary>The channel's title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10801,23 +10801,23 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The number of comments for the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commentCount")]
-        public virtual System.Nullable<ulong> CommentCount { get; set; } 
+        public virtual System.Nullable<ulong> CommentCount { get; set; }
 
         /// <summary>Whether or not the number of subscribers is shown for this user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hiddenSubscriberCount")]
-        public virtual System.Nullable<bool> HiddenSubscriberCount { get; set; } 
+        public virtual System.Nullable<bool> HiddenSubscriberCount { get; set; }
 
         /// <summary>The number of subscribers that the channel has.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriberCount")]
-        public virtual System.Nullable<ulong> SubscriberCount { get; set; } 
+        public virtual System.Nullable<ulong> SubscriberCount { get; set; }
 
         /// <summary>The number of videos uploaded to the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoCount")]
-        public virtual System.Nullable<ulong> VideoCount { get; set; } 
+        public virtual System.Nullable<ulong> VideoCount { get; set; }
 
         /// <summary>The number of times the channel has been viewed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewCount")]
-        public virtual System.Nullable<ulong> ViewCount { get; set; } 
+        public virtual System.Nullable<ulong> ViewCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10829,22 +10829,22 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>If true, then the user is linked to either a YouTube username or G+ account. Otherwise, the user
         /// doesn't have a public YouTube identity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isLinked")]
-        public virtual System.Nullable<bool> IsLinked { get; set; } 
+        public virtual System.Nullable<bool> IsLinked { get; set; }
 
         /// <summary>The long uploads status of this channel. See https://support.google.com/youtube/answer/71673 for
         /// more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longUploadsStatus")]
-        public virtual string LongUploadsStatus { get; set; } 
+        public virtual string LongUploadsStatus { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("madeForKids")]
-        public virtual System.Nullable<bool> MadeForKids { get; set; } 
+        public virtual System.Nullable<bool> MadeForKids { get; set; }
 
         /// <summary>Privacy status of the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privacyStatus")]
-        public virtual string PrivacyStatus { get; set; } 
+        public virtual string PrivacyStatus { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("selfDeclaredMadeForKids")]
-        public virtual System.Nullable<bool> SelfDeclaredMadeForKids { get; set; } 
+        public virtual System.Nullable<bool> SelfDeclaredMadeForKids { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10855,11 +10855,11 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Name of the store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeName")]
-        public virtual string StoreName { get; set; } 
+        public virtual string StoreName { get; set; }
 
         /// <summary>Landing page of the store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeUrl")]
-        public virtual string StoreUrl { get; set; } 
+        public virtual string StoreUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10870,12 +10870,12 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>A list of Wikipedia URLs that describe the channel's content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topicCategories")]
-        public virtual System.Collections.Generic.IList<string> TopicCategories { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TopicCategories { get; set; }
 
         /// <summary>A list of Freebase topic IDs associated with the channel. You can retrieve information about each
         /// topic using the Freebase Topic API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topicIds")]
-        public virtual System.Collections.Generic.IList<string> TopicIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TopicIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10886,19 +10886,19 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The ID that YouTube uses to uniquely identify the comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "youtube#comment".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The snippet object contains basic details about the comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual CommentSnippet Snippet { get; set; } 
+        public virtual CommentSnippet Snippet { get; set; }
 
     }    
 
@@ -10906,36 +10906,36 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Serialized EventId of the request which produced this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         /// <summary>A list of comments that match the request criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Comment> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Comment> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#commentListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the next page in the
         /// result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>General pagination information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual PageInfo PageInfo { get; set; } 
+        public virtual PageInfo PageInfo { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
-        public virtual TokenPagination TokenPagination { get; set; } 
+        public virtual TokenPagination TokenPagination { get; set; }
 
         /// <summary>The visitorId identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
     }    
 
@@ -10943,71 +10943,71 @@ namespace Google.Apis.YouTube.v3.Data
     public class CommentSnippet : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("authorChannelId")]
-        public virtual CommentSnippetAuthorChannelId AuthorChannelId { get; set; } 
+        public virtual CommentSnippetAuthorChannelId AuthorChannelId { get; set; }
 
         /// <summary>Link to the author's YouTube channel, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorChannelUrl")]
-        public virtual string AuthorChannelUrl { get; set; } 
+        public virtual string AuthorChannelUrl { get; set; }
 
         /// <summary>The name of the user who posted the comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorDisplayName")]
-        public virtual string AuthorDisplayName { get; set; } 
+        public virtual string AuthorDisplayName { get; set; }
 
         /// <summary>The URL for the avatar of the user who posted the comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorProfileImageUrl")]
-        public virtual string AuthorProfileImageUrl { get; set; } 
+        public virtual string AuthorProfileImageUrl { get; set; }
 
         /// <summary>Whether the current viewer can rate this comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canRate")]
-        public virtual System.Nullable<bool> CanRate { get; set; } 
+        public virtual System.Nullable<bool> CanRate { get; set; }
 
         /// <summary>The id of the corresponding YouTube channel. In case of a channel comment this is the channel the
         /// comment refers to. In case of a video comment it's the video's channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
-        public virtual string ChannelId { get; set; } 
+        public virtual string ChannelId { get; set; }
 
         /// <summary>The total number of likes this comment has received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("likeCount")]
-        public virtual System.Nullable<long> LikeCount { get; set; } 
+        public virtual System.Nullable<long> LikeCount { get; set; }
 
         /// <summary>The comment's moderation status. Will not be set if the comments were requested through the id
         /// filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("moderationStatus")]
-        public virtual string ModerationStatus { get; set; } 
+        public virtual string ModerationStatus { get; set; }
 
         /// <summary>The unique id of the parent comment, only set for replies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentId")]
-        public virtual string ParentId { get; set; } 
+        public virtual string ParentId { get; set; }
 
         /// <summary>The date and time when the comment was orignally published. The value is specified in ISO 8601
         /// format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
-        public virtual string PublishedAt { get; set; } 
+        public virtual string PublishedAt { get; set; }
 
         /// <summary>The comment's text. The format is either plain text or HTML dependent on what has been requested.
         /// Even the plain text representation may differ from the text originally posted in that it may replace video
         /// links with video titles etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textDisplay")]
-        public virtual string TextDisplay { get; set; } 
+        public virtual string TextDisplay { get; set; }
 
         /// <summary>The comment's original raw text as initially posted or last updated. The original text will only be
         /// returned if it is accessible to the viewer, which is only guaranteed if the viewer is the comment's
         /// author.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textOriginal")]
-        public virtual string TextOriginal { get; set; } 
+        public virtual string TextOriginal { get; set; }
 
         /// <summary>The date and time when was last updated . The value is specified in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updatedAt")]
-        public virtual string UpdatedAt { get; set; } 
+        public virtual string UpdatedAt { get; set; }
 
         /// <summary>The ID of the video the comment refers to, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoId")]
-        public virtual string VideoId { get; set; } 
+        public virtual string VideoId { get; set; }
 
         /// <summary>The rating the viewer has given to this comment. For the time being this will never return
         /// RATE_TYPE_DISLIKE and instead return RATE_TYPE_NONE. This may change in the future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewerRating")]
-        public virtual string ViewerRating { get; set; } 
+        public virtual string ViewerRating { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11017,7 +11017,7 @@ namespace Google.Apis.YouTube.v3.Data
     public class CommentSnippetAuthorChannelId : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11029,26 +11029,26 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The ID that YouTube uses to uniquely identify the comment thread.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#commentThread".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The replies object contains a limited number of replies (if any) to the top level comment found in
         /// the snippet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replies")]
-        public virtual CommentThreadReplies Replies { get; set; } 
+        public virtual CommentThreadReplies Replies { get; set; }
 
         /// <summary>The snippet object contains basic details about the comment thread and also the top level
         /// comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual CommentThreadSnippet Snippet { get; set; } 
+        public virtual CommentThreadSnippet Snippet { get; set; }
 
     }    
 
@@ -11056,36 +11056,36 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Serialized EventId of the request which produced this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         /// <summary>A list of comment threads that match the request criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<CommentThread> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<CommentThread> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#commentThreadListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the next page in the
         /// result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>General pagination information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual PageInfo PageInfo { get; set; } 
+        public virtual PageInfo PageInfo { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
-        public virtual TokenPagination TokenPagination { get; set; } 
+        public virtual TokenPagination TokenPagination { get; set; }
 
         /// <summary>The visitorId identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
     }    
 
@@ -11095,7 +11095,7 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>A limited number of replies. Unless the number of replies returned equals total_reply_count in the
         /// snippet the returned replies are only a subset of the total number of replies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comments")]
-        public virtual System.Collections.Generic.IList<Comment> Comments { get; set; } 
+        public virtual System.Collections.Generic.IList<Comment> Comments { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11107,29 +11107,29 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>Whether the current viewer of the thread can reply to it. This is viewer specific - other viewers
         /// may see a different value for this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canReply")]
-        public virtual System.Nullable<bool> CanReply { get; set; } 
+        public virtual System.Nullable<bool> CanReply { get; set; }
 
         /// <summary>The YouTube channel the comments in the thread refer to or the channel with the video the comments
         /// refer to. If video_id isn't set the comments refer to the channel itself.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
-        public virtual string ChannelId { get; set; } 
+        public virtual string ChannelId { get; set; }
 
         /// <summary>Whether the thread (and therefore all its comments) is visible to all YouTube users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isPublic")]
-        public virtual System.Nullable<bool> IsPublic { get; set; } 
+        public virtual System.Nullable<bool> IsPublic { get; set; }
 
         /// <summary>The top level comment of this thread.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topLevelComment")]
-        public virtual Comment TopLevelComment { get; set; } 
+        public virtual Comment TopLevelComment { get; set; }
 
         /// <summary>The total number of replies (not including the top level comment).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalReplyCount")]
-        public virtual System.Nullable<long> TotalReplyCount { get; set; } 
+        public virtual System.Nullable<long> TotalReplyCount { get; set; }
 
         /// <summary>The ID of the video the comments refer to, if any. No video_id implies a channel discussion
         /// comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoId")]
-        public virtual string VideoId { get; set; } 
+        public virtual string VideoId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11141,311 +11141,311 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The video's Australian Classification Board (ACB) or Australian Communications and Media Authority
         /// (ACMA) rating. ACMA ratings are used to classify children's television programming.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acbRating")]
-        public virtual string AcbRating { get; set; } 
+        public virtual string AcbRating { get; set; }
 
         /// <summary>The video's rating from Italy's Autorità per le Garanzie nelle Comunicazioni (AGCOM).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agcomRating")]
-        public virtual string AgcomRating { get; set; } 
+        public virtual string AgcomRating { get; set; }
 
         /// <summary>The video's Anatel (Asociación Nacional de Televisión) rating for Chilean television.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("anatelRating")]
-        public virtual string AnatelRating { get; set; } 
+        public virtual string AnatelRating { get; set; }
 
         /// <summary>The video's British Board of Film Classification (BBFC) rating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bbfcRating")]
-        public virtual string BbfcRating { get; set; } 
+        public virtual string BbfcRating { get; set; }
 
         /// <summary>The video's rating from Thailand's Board of Film and Video Censors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bfvcRating")]
-        public virtual string BfvcRating { get; set; } 
+        public virtual string BfvcRating { get; set; }
 
         /// <summary>The video's rating from the Austrian Board of Media Classification (Bundesministerium für
         /// Unterricht, Kunst und Kultur).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bmukkRating")]
-        public virtual string BmukkRating { get; set; } 
+        public virtual string BmukkRating { get; set; }
 
         /// <summary>Rating system for Canadian TV - Canadian TV Classification System The video's rating from the
         /// Canadian Radio-Television and Telecommunications Commission (CRTC) for Canadian English-language broadcasts.
         /// For more information, see the Canadian Broadcast Standards Council website.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("catvRating")]
-        public virtual string CatvRating { get; set; } 
+        public virtual string CatvRating { get; set; }
 
         /// <summary>The video's rating from the Canadian Radio-Television and Telecommunications Commission (CRTC) for
         /// Canadian French-language broadcasts. For more information, see the Canadian Broadcast Standards Council
         /// website.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("catvfrRating")]
-        public virtual string CatvfrRating { get; set; } 
+        public virtual string CatvfrRating { get; set; }
 
         /// <summary>The video's Central Board of Film Certification (CBFC - India) rating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cbfcRating")]
-        public virtual string CbfcRating { get; set; } 
+        public virtual string CbfcRating { get; set; }
 
         /// <summary>The video's Consejo de Calificación Cinematográfica (Chile) rating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cccRating")]
-        public virtual string CccRating { get; set; } 
+        public virtual string CccRating { get; set; }
 
         /// <summary>The video's rating from Portugal's Comissão de Classificação de Espect´culos.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cceRating")]
-        public virtual string CceRating { get; set; } 
+        public virtual string CceRating { get; set; }
 
         /// <summary>The video's rating in Switzerland.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chfilmRating")]
-        public virtual string ChfilmRating { get; set; } 
+        public virtual string ChfilmRating { get; set; }
 
         /// <summary>The video's Canadian Home Video Rating System (CHVRS) rating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chvrsRating")]
-        public virtual string ChvrsRating { get; set; } 
+        public virtual string ChvrsRating { get; set; }
 
         /// <summary>The video's rating from the Commission de Contrôle des Films (Belgium).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cicfRating")]
-        public virtual string CicfRating { get; set; } 
+        public virtual string CicfRating { get; set; }
 
         /// <summary>The video's rating from Romania's CONSILIUL NATIONAL AL AUDIOVIZUALULUI (CNA).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cnaRating")]
-        public virtual string CnaRating { get; set; } 
+        public virtual string CnaRating { get; set; }
 
         /// <summary>Rating system in France - Commission de classification cinematographique</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cncRating")]
-        public virtual string CncRating { get; set; } 
+        public virtual string CncRating { get; set; }
 
         /// <summary>The video's rating from France's Conseil supérieur de l’audiovisuel, which rates broadcast
         /// content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("csaRating")]
-        public virtual string CsaRating { get; set; } 
+        public virtual string CsaRating { get; set; }
 
         /// <summary>The video's rating from Luxembourg's Commission de surveillance de la classification des films
         /// (CSCF).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cscfRating")]
-        public virtual string CscfRating { get; set; } 
+        public virtual string CscfRating { get; set; }
 
         /// <summary>The video's rating in the Czech Republic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("czfilmRating")]
-        public virtual string CzfilmRating { get; set; } 
+        public virtual string CzfilmRating { get; set; }
 
         /// <summary>The video's Departamento de Justiça, Classificação, Qualificação e Títulos (DJCQT - Brazil)
         /// rating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("djctqRating")]
-        public virtual string DjctqRating { get; set; } 
+        public virtual string DjctqRating { get; set; }
 
         /// <summary>Reasons that explain why the video received its DJCQT (Brazil) rating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("djctqRatingReasons")]
-        public virtual System.Collections.Generic.IList<string> DjctqRatingReasons { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DjctqRatingReasons { get; set; }
 
         /// <summary>Rating system in Turkey - Evaluation and Classification Board of the Ministry of Culture and
         /// Tourism</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ecbmctRating")]
-        public virtual string EcbmctRating { get; set; } 
+        public virtual string EcbmctRating { get; set; }
 
         /// <summary>The video's rating in Estonia.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eefilmRating")]
-        public virtual string EefilmRating { get; set; } 
+        public virtual string EefilmRating { get; set; }
 
         /// <summary>The video's rating in Egypt.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("egfilmRating")]
-        public virtual string EgfilmRating { get; set; } 
+        public virtual string EgfilmRating { get; set; }
 
         /// <summary>The video's Eirin (映倫) rating. Eirin is the Japanese rating system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eirinRating")]
-        public virtual string EirinRating { get; set; } 
+        public virtual string EirinRating { get; set; }
 
         /// <summary>The video's rating from Malaysia's Film Censorship Board.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fcbmRating")]
-        public virtual string FcbmRating { get; set; } 
+        public virtual string FcbmRating { get; set; }
 
         /// <summary>The video's rating from Hong Kong's Office for Film, Newspaper and Article
         /// Administration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fcoRating")]
-        public virtual string FcoRating { get; set; } 
+        public virtual string FcoRating { get; set; }
 
         /// <summary>This property has been deprecated. Use the contentDetails.contentRating.cncRating
         /// instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fmocRating")]
-        public virtual string FmocRating { get; set; } 
+        public virtual string FmocRating { get; set; }
 
         /// <summary>The video's rating from South Africa's Film and Publication Board.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fpbRating")]
-        public virtual string FpbRating { get; set; } 
+        public virtual string FpbRating { get; set; }
 
         /// <summary>Reasons that explain why the video received its FPB (South Africa) rating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fpbRatingReasons")]
-        public virtual System.Collections.Generic.IList<string> FpbRatingReasons { get; set; } 
+        public virtual System.Collections.Generic.IList<string> FpbRatingReasons { get; set; }
 
         /// <summary>The video's Freiwillige Selbstkontrolle der Filmwirtschaft (FSK - Germany) rating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fskRating")]
-        public virtual string FskRating { get; set; } 
+        public virtual string FskRating { get; set; }
 
         /// <summary>The video's rating in Greece.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("grfilmRating")]
-        public virtual string GrfilmRating { get; set; } 
+        public virtual string GrfilmRating { get; set; }
 
         /// <summary>The video's Instituto de la Cinematografía y de las Artes Audiovisuales (ICAA - Spain)
         /// rating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("icaaRating")]
-        public virtual string IcaaRating { get; set; } 
+        public virtual string IcaaRating { get; set; }
 
         /// <summary>The video's Irish Film Classification Office (IFCO - Ireland) rating. See the IFCO website for more
         /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ifcoRating")]
-        public virtual string IfcoRating { get; set; } 
+        public virtual string IfcoRating { get; set; }
 
         /// <summary>The video's rating in Israel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ilfilmRating")]
-        public virtual string IlfilmRating { get; set; } 
+        public virtual string IlfilmRating { get; set; }
 
         /// <summary>The video's INCAA (Instituto Nacional de Cine y Artes Audiovisuales - Argentina) rating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("incaaRating")]
-        public virtual string IncaaRating { get; set; } 
+        public virtual string IncaaRating { get; set; }
 
         /// <summary>The video's rating from the Kenya Film Classification Board.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kfcbRating")]
-        public virtual string KfcbRating { get; set; } 
+        public virtual string KfcbRating { get; set; }
 
         /// <summary>The video's NICAM/Kijkwijzer rating from the Nederlands Instituut voor de Classificatie van
         /// Audiovisuele Media (Netherlands).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kijkwijzerRating")]
-        public virtual string KijkwijzerRating { get; set; } 
+        public virtual string KijkwijzerRating { get; set; }
 
         /// <summary>The video's Korea Media Rating Board (영상물등급위원회) rating. The KMRB rates videos in South
         /// Korea.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmrbRating")]
-        public virtual string KmrbRating { get; set; } 
+        public virtual string KmrbRating { get; set; }
 
         /// <summary>The video's rating from Indonesia's Lembaga Sensor Film.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lsfRating")]
-        public virtual string LsfRating { get; set; } 
+        public virtual string LsfRating { get; set; }
 
         /// <summary>The video's rating from Malta's Film Age-Classification Board.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mccaaRating")]
-        public virtual string MccaaRating { get; set; } 
+        public virtual string MccaaRating { get; set; }
 
         /// <summary>The video's rating from the Danish Film Institute's (Det Danske Filminstitut) Media Council for
         /// Children and Young People.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mccypRating")]
-        public virtual string MccypRating { get; set; } 
+        public virtual string MccypRating { get; set; }
 
         /// <summary>The video's rating system for Vietnam - MCST</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mcstRating")]
-        public virtual string McstRating { get; set; } 
+        public virtual string McstRating { get; set; }
 
         /// <summary>The video's rating from Singapore's Media Development Authority (MDA) and, specifically, it's Board
         /// of Film Censors (BFC).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mdaRating")]
-        public virtual string MdaRating { get; set; } 
+        public virtual string MdaRating { get; set; }
 
         /// <summary>The video's rating from Medietilsynet, the Norwegian Media Authority.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medietilsynetRating")]
-        public virtual string MedietilsynetRating { get; set; } 
+        public virtual string MedietilsynetRating { get; set; }
 
         /// <summary>The video's rating from Finland's Kansallinen Audiovisuaalinen Instituutti (National Audiovisual
         /// Institute).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mekuRating")]
-        public virtual string MekuRating { get; set; } 
+        public virtual string MekuRating { get; set; }
 
         /// <summary>The rating system for MENA countries, a clone of MPAA. It is needed to prevent titles go live w/o
         /// additional QC check, since some of them can be inappropriate for the countries at all. See b/33408548 for
         /// more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("menaMpaaRating")]
-        public virtual string MenaMpaaRating { get; set; } 
+        public virtual string MenaMpaaRating { get; set; }
 
         /// <summary>The video's rating from the Ministero dei Beni e delle Attività Culturali e del Turismo
         /// (Italy).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mibacRating")]
-        public virtual string MibacRating { get; set; } 
+        public virtual string MibacRating { get; set; }
 
         /// <summary>The video's Ministerio de Cultura (Colombia) rating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mocRating")]
-        public virtual string MocRating { get; set; } 
+        public virtual string MocRating { get; set; }
 
         /// <summary>The video's rating from Taiwan's Ministry of Culture (文化部).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("moctwRating")]
-        public virtual string MoctwRating { get; set; } 
+        public virtual string MoctwRating { get; set; }
 
         /// <summary>The video's Motion Picture Association of America (MPAA) rating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mpaaRating")]
-        public virtual string MpaaRating { get; set; } 
+        public virtual string MpaaRating { get; set; }
 
         /// <summary>The rating system for trailer, DVD, and Ad in the US. See
         /// http://movielabs.com/md/ratings/v2.3/html/US_MPAAT_Ratings.html.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mpaatRating")]
-        public virtual string MpaatRating { get; set; } 
+        public virtual string MpaatRating { get; set; }
 
         /// <summary>The video's rating from the Movie and Television Review and Classification Board
         /// (Philippines).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mtrcbRating")]
-        public virtual string MtrcbRating { get; set; } 
+        public virtual string MtrcbRating { get; set; }
 
         /// <summary>The video's rating from the Maldives National Bureau of Classification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nbcRating")]
-        public virtual string NbcRating { get; set; } 
+        public virtual string NbcRating { get; set; }
 
         /// <summary>The video's rating in Poland.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nbcplRating")]
-        public virtual string NbcplRating { get; set; } 
+        public virtual string NbcplRating { get; set; }
 
         /// <summary>The video's rating from the Bulgarian National Film Center.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nfrcRating")]
-        public virtual string NfrcRating { get; set; } 
+        public virtual string NfrcRating { get; set; }
 
         /// <summary>The video's rating from Nigeria's National Film and Video Censors Board.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nfvcbRating")]
-        public virtual string NfvcbRating { get; set; } 
+        public virtual string NfvcbRating { get; set; }
 
         /// <summary>The video's rating from the Nacionãlais Kino centrs (National Film Centre of Latvia).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nkclvRating")]
-        public virtual string NkclvRating { get; set; } 
+        public virtual string NkclvRating { get; set; }
 
         /// <summary>The National Media Council ratings system for United Arab Emirates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nmcRating")]
-        public virtual string NmcRating { get; set; } 
+        public virtual string NmcRating { get; set; }
 
         /// <summary>The video's Office of Film and Literature Classification (OFLC - New Zealand) rating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oflcRating")]
-        public virtual string OflcRating { get; set; } 
+        public virtual string OflcRating { get; set; }
 
         /// <summary>The video's rating in Peru.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pefilmRating")]
-        public virtual string PefilmRating { get; set; } 
+        public virtual string PefilmRating { get; set; }
 
         /// <summary>The video's rating from the Hungarian Nemzeti Filmiroda, the Rating Committee of the National
         /// Office of Film.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rcnofRating")]
-        public virtual string RcnofRating { get; set; } 
+        public virtual string RcnofRating { get; set; }
 
         /// <summary>The video's rating in Venezuela.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resorteviolenciaRating")]
-        public virtual string ResorteviolenciaRating { get; set; } 
+        public virtual string ResorteviolenciaRating { get; set; }
 
         /// <summary>The video's General Directorate of Radio, Television and Cinematography (Mexico) rating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rtcRating")]
-        public virtual string RtcRating { get; set; } 
+        public virtual string RtcRating { get; set; }
 
         /// <summary>The video's rating from Ireland's Raidió Teilifís Éireann.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rteRating")]
-        public virtual string RteRating { get; set; } 
+        public virtual string RteRating { get; set; }
 
         /// <summary>The video's National Film Registry of the Russian Federation (MKRF - Russia) rating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("russiaRating")]
-        public virtual string RussiaRating { get; set; } 
+        public virtual string RussiaRating { get; set; }
 
         /// <summary>The video's rating in Slovakia.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skfilmRating")]
-        public virtual string SkfilmRating { get; set; } 
+        public virtual string SkfilmRating { get; set; }
 
         /// <summary>The video's rating in Iceland.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smaisRating")]
-        public virtual string SmaisRating { get; set; } 
+        public virtual string SmaisRating { get; set; }
 
         /// <summary>The video's rating from Statens medieråd (Sweden's National Media Council).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smsaRating")]
-        public virtual string SmsaRating { get; set; } 
+        public virtual string SmsaRating { get; set; }
 
         /// <summary>The video's TV Parental Guidelines (TVPG) rating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tvpgRating")]
-        public virtual string TvpgRating { get; set; } 
+        public virtual string TvpgRating { get; set; }
 
         /// <summary>A rating that YouTube uses to identify age-restricted content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ytRating")]
-        public virtual string YtRating { get; set; } 
+        public virtual string YtRating { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11454,13 +11454,13 @@ namespace Google.Apis.YouTube.v3.Data
     public class Entity : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("typeId")]
-        public virtual string TypeId { get; set; } 
+        public virtual string TypeId { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11471,15 +11471,15 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Altitude above the reference ellipsoid, in meters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("altitude")]
-        public virtual System.Nullable<double> Altitude { get; set; } 
+        public virtual System.Nullable<double> Altitude { get; set; }
 
         /// <summary>Latitude in degrees.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latitude")]
-        public virtual System.Nullable<double> Latitude { get; set; } 
+        public virtual System.Nullable<double> Latitude { get; set; }
 
         /// <summary>Longitude in degrees.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
-        public virtual System.Nullable<double> Longitude { get; set; } 
+        public virtual System.Nullable<double> Longitude { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11490,20 +11490,20 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The ID that YouTube uses to uniquely identify the i18n language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "youtube#i18nLanguage".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The snippet object contains basic details about the i18n language, such as language code and human-
         /// readable name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual I18nLanguageSnippet Snippet { get; set; } 
+        public virtual I18nLanguageSnippet Snippet { get; set; }
 
     }    
 
@@ -11511,25 +11511,25 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Serialized EventId of the request which produced this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         /// <summary>A list of supported i18n languages. In this map, the i18n language ID is the map key, and its value
         /// is the corresponding i18nLanguage resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<I18nLanguage> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<I18nLanguage> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#i18nLanguageListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The visitorId identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
     }    
 
@@ -11538,11 +11538,11 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>A short BCP-47 code that uniquely identifies a language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hl")]
-        public virtual string Hl { get; set; } 
+        public virtual string Hl { get; set; }
 
         /// <summary>The human-readable name of the language in the language itself.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11553,20 +11553,20 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The ID that YouTube uses to uniquely identify the i18n region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "youtube#i18nRegion".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The snippet object contains basic details about the i18n region, such as region code and human-
         /// readable name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual I18nRegionSnippet Snippet { get; set; } 
+        public virtual I18nRegionSnippet Snippet { get; set; }
 
     }    
 
@@ -11574,25 +11574,25 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Serialized EventId of the request which produced this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         /// <summary>A list of regions where YouTube is available. In this map, the i18n region ID is the map key, and
         /// its value is the corresponding i18nRegion resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<I18nRegion> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<I18nRegion> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#i18nRegionListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The visitorId identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
     }    
 
@@ -11601,11 +11601,11 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The region code as a 2-letter ISO country code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gl")]
-        public virtual string Gl { get; set; } 
+        public virtual string Gl { get; set; }
 
         /// <summary>The human-readable name of the region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11617,95 +11617,95 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The URL for the background image shown on the video watch page. The image should be 1200px by
         /// 615px, with a maximum file size of 128k.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundImageUrl")]
-        public virtual LocalizedProperty BackgroundImageUrl { get; set; } 
+        public virtual LocalizedProperty BackgroundImageUrl { get; set; }
 
         /// <summary>This is used only in update requests; if it's set, we use this URL to generate all of the above
         /// banner URLs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bannerExternalUrl")]
-        public virtual string BannerExternalUrl { get; set; } 
+        public virtual string BannerExternalUrl { get; set; }
 
         /// <summary>Banner image. Desktop size (1060x175).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bannerImageUrl")]
-        public virtual string BannerImageUrl { get; set; } 
+        public virtual string BannerImageUrl { get; set; }
 
         /// <summary>Banner image. Mobile size high resolution (1440x395).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bannerMobileExtraHdImageUrl")]
-        public virtual string BannerMobileExtraHdImageUrl { get; set; } 
+        public virtual string BannerMobileExtraHdImageUrl { get; set; }
 
         /// <summary>Banner image. Mobile size high resolution (1280x360).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bannerMobileHdImageUrl")]
-        public virtual string BannerMobileHdImageUrl { get; set; } 
+        public virtual string BannerMobileHdImageUrl { get; set; }
 
         /// <summary>Banner image. Mobile size (640x175).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bannerMobileImageUrl")]
-        public virtual string BannerMobileImageUrl { get; set; } 
+        public virtual string BannerMobileImageUrl { get; set; }
 
         /// <summary>Banner image. Mobile size low resolution (320x88).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bannerMobileLowImageUrl")]
-        public virtual string BannerMobileLowImageUrl { get; set; } 
+        public virtual string BannerMobileLowImageUrl { get; set; }
 
         /// <summary>Banner image. Mobile size medium/high resolution (960x263).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bannerMobileMediumHdImageUrl")]
-        public virtual string BannerMobileMediumHdImageUrl { get; set; } 
+        public virtual string BannerMobileMediumHdImageUrl { get; set; }
 
         /// <summary>Banner image. Tablet size extra high resolution (2560x424).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bannerTabletExtraHdImageUrl")]
-        public virtual string BannerTabletExtraHdImageUrl { get; set; } 
+        public virtual string BannerTabletExtraHdImageUrl { get; set; }
 
         /// <summary>Banner image. Tablet size high resolution (2276x377).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bannerTabletHdImageUrl")]
-        public virtual string BannerTabletHdImageUrl { get; set; } 
+        public virtual string BannerTabletHdImageUrl { get; set; }
 
         /// <summary>Banner image. Tablet size (1707x283).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bannerTabletImageUrl")]
-        public virtual string BannerTabletImageUrl { get; set; } 
+        public virtual string BannerTabletImageUrl { get; set; }
 
         /// <summary>Banner image. Tablet size low resolution (1138x188).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bannerTabletLowImageUrl")]
-        public virtual string BannerTabletLowImageUrl { get; set; } 
+        public virtual string BannerTabletLowImageUrl { get; set; }
 
         /// <summary>Banner image. TV size high resolution (1920x1080).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bannerTvHighImageUrl")]
-        public virtual string BannerTvHighImageUrl { get; set; } 
+        public virtual string BannerTvHighImageUrl { get; set; }
 
         /// <summary>Banner image. TV size extra high resolution (2120x1192).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bannerTvImageUrl")]
-        public virtual string BannerTvImageUrl { get; set; } 
+        public virtual string BannerTvImageUrl { get; set; }
 
         /// <summary>Banner image. TV size low resolution (854x480).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bannerTvLowImageUrl")]
-        public virtual string BannerTvLowImageUrl { get; set; } 
+        public virtual string BannerTvLowImageUrl { get; set; }
 
         /// <summary>Banner image. TV size medium resolution (1280x720).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bannerTvMediumImageUrl")]
-        public virtual string BannerTvMediumImageUrl { get; set; } 
+        public virtual string BannerTvMediumImageUrl { get; set; }
 
         /// <summary>The image map script for the large banner image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("largeBrandedBannerImageImapScript")]
-        public virtual LocalizedProperty LargeBrandedBannerImageImapScript { get; set; } 
+        public virtual LocalizedProperty LargeBrandedBannerImageImapScript { get; set; }
 
         /// <summary>The URL for the 854px by 70px image that appears below the video player in the expanded video view
         /// of the video watch page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("largeBrandedBannerImageUrl")]
-        public virtual LocalizedProperty LargeBrandedBannerImageUrl { get; set; } 
+        public virtual LocalizedProperty LargeBrandedBannerImageUrl { get; set; }
 
         /// <summary>The image map script for the small banner image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smallBrandedBannerImageImapScript")]
-        public virtual LocalizedProperty SmallBrandedBannerImageImapScript { get; set; } 
+        public virtual LocalizedProperty SmallBrandedBannerImageImapScript { get; set; }
 
         /// <summary>The URL for the 640px by 70px banner image that appears below the video player in the default view
         /// of the video watch page. The URL for the image that appears above the top-left corner of the video player.
         /// This is a 25-pixel-high image with a flexible width that cannot exceed 170 pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smallBrandedBannerImageUrl")]
-        public virtual LocalizedProperty SmallBrandedBannerImageUrl { get; set; } 
+        public virtual LocalizedProperty SmallBrandedBannerImageUrl { get; set; }
 
         /// <summary>The URL for a 1px by 1px tracking pixel that can be used to collect statistics for views of the
         /// channel or video pages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingImageUrl")]
-        public virtual string TrackingImageUrl { get; set; } 
+        public virtual string TrackingImageUrl { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("watchIconImageUrl")]
-        public virtual string WatchIconImageUrl { get; set; } 
+        public virtual string WatchIconImageUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11717,28 +11717,28 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The backup ingestion URL that you should use to stream video to YouTube. You have the option of
         /// simultaneously streaming the content that you are sending to the ingestionAddress to this URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupIngestionAddress")]
-        public virtual string BackupIngestionAddress { get; set; } 
+        public virtual string BackupIngestionAddress { get; set; }
 
         /// <summary>The primary ingestion URL that you should use to stream video to YouTube. You must stream video to
         /// this URL. Depending on which application or tool you use to encode your video stream, you may need to enter
         /// the stream URL and stream name separately or you may need to concatenate them in the following format:
         /// *STREAM_URL/STREAM_NAME* </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ingestionAddress")]
-        public virtual string IngestionAddress { get; set; } 
+        public virtual string IngestionAddress { get; set; }
 
         /// <summary>This ingestion url may be used instead of backupIngestionAddress in order to stream via RTMPS. Not
         /// applicable to non-RTMP streams.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rtmpsBackupIngestionAddress")]
-        public virtual string RtmpsBackupIngestionAddress { get; set; } 
+        public virtual string RtmpsBackupIngestionAddress { get; set; }
 
         /// <summary>This ingestion url may be used instead of ingestionAddress in order to stream via RTMPS. Not
         /// applicable to non-RTMP streams.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rtmpsIngestionAddress")]
-        public virtual string RtmpsIngestionAddress { get; set; } 
+        public virtual string RtmpsIngestionAddress { get; set; }
 
         /// <summary>The HTTP or RTMP stream name that YouTube assigns to the video stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamName")]
-        public virtual string StreamName { get; set; } 
+        public virtual string StreamName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11749,24 +11749,24 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The bytes the uploaded image. Only used in api to youtube communication.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageBytes")]
-        public virtual string ImageBytes { get; set; } 
+        public virtual string ImageBytes { get; set; }
 
         /// <summary>The url of the uploaded image. Only used in apiary to api communication.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
-        public virtual string ImageUrl { get; set; } 
+        public virtual string ImageUrl { get; set; }
 
         /// <summary>The spatial position within the video where the branding watermark will be displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("position")]
-        public virtual InvideoPosition Position { get; set; } 
+        public virtual InvideoPosition Position { get; set; }
 
         /// <summary>The channel to which this branding links. If not present it defaults to the current
         /// channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetChannelId")]
-        public virtual string TargetChannelId { get; set; } 
+        public virtual string TargetChannelId { get; set; }
 
         /// <summary>The temporal position within the video where watermark will be displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timing")]
-        public virtual InvideoTiming Timing { get; set; } 
+        public virtual InvideoTiming Timing { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11778,11 +11778,11 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Describes in which corner of the video the visual widget will appear.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cornerPosition")]
-        public virtual string CornerPosition { get; set; } 
+        public virtual string CornerPosition { get; set; }
 
         /// <summary>Defines the position type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11795,21 +11795,21 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The default temporal position within the video where the promoted item will be displayed. Can be
         /// overridden by more specific timing in the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultTiming")]
-        public virtual InvideoTiming DefaultTiming { get; set; } 
+        public virtual InvideoTiming DefaultTiming { get; set; }
 
         /// <summary>List of promoted items in decreasing priority.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<PromotedItem> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<PromotedItem> Items { get; set; }
 
         /// <summary>The spatial position within the video where the promoted item will be displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("position")]
-        public virtual InvideoPosition Position { get; set; } 
+        public virtual InvideoPosition Position { get; set; }
 
         /// <summary>Indicates whether the channel's promotional campaign uses "smart timing." This feature attempts to
         /// show promotions at a point in the video when they are more likely to be clicked and less likely to disrupt
         /// the viewing experience. This feature also picks up a single promotion to show on each video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useSmartTiming")]
-        public virtual System.Nullable<bool> UseSmartTiming { get; set; } 
+        public virtual System.Nullable<bool> UseSmartTiming { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11821,19 +11821,19 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>Defines the duration in milliseconds for which the promotion should be displayed. If missing, the
         /// client should use the default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("durationMs")]
-        public virtual System.Nullable<ulong> DurationMs { get; set; } 
+        public virtual System.Nullable<ulong> DurationMs { get; set; }
 
         /// <summary>Defines the time at which the promotion will appear. Depending on the value of type the value of
         /// the offsetMs field will represent a time offset from the start or from the end of the video, expressed in
         /// milliseconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offsetMs")]
-        public virtual System.Nullable<ulong> OffsetMs { get; set; } 
+        public virtual System.Nullable<ulong> OffsetMs { get; set; }
 
         /// <summary>Describes a timing type. If the value is offsetFromStart, then the offsetMs field represents an
         /// offset from the start of the video. If the value is offsetFromEnd, then the offsetMs field represents an
         /// offset from the end of the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11842,7 +11842,7 @@ namespace Google.Apis.YouTube.v3.Data
     public class LanguageTag : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11852,7 +11852,7 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The name that should be used when referring to this level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11866,35 +11866,35 @@ namespace Google.Apis.YouTube.v3.Data
         /// content can be shown in an embedded video player or if it will be archived and therefore available for
         /// viewing after the event has concluded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentDetails")]
-        public virtual LiveBroadcastContentDetails ContentDetails { get; set; } 
+        public virtual LiveBroadcastContentDetails ContentDetails { get; set; }
 
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The ID that YouTube assigns to uniquely identify the broadcast.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#liveBroadcast".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The snippet object contains basic details about the event, including its title, description, start
         /// time, and end time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual LiveBroadcastSnippet Snippet { get; set; } 
+        public virtual LiveBroadcastSnippet Snippet { get; set; }
 
         /// <summary>The statistics object contains info about the event's current stats. These include concurrent
         /// viewers and total chat count. Statistics can change (in either direction) during the lifetime of an event.
         /// Statistics are only returned while the event is live.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statistics")]
-        public virtual LiveBroadcastStatistics Statistics { get; set; } 
+        public virtual LiveBroadcastStatistics Statistics { get; set; }
 
         /// <summary>The status object contains information about the event's status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual LiveBroadcastStatus Status { get; set; } 
+        public virtual LiveBroadcastStatus Status { get; set; }
 
     }    
 
@@ -11903,36 +11903,36 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>This value uniquely identifies the live stream bound to the broadcast.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundStreamId")]
-        public virtual string BoundStreamId { get; set; } 
+        public virtual string BoundStreamId { get; set; }
 
         /// <summary>The date and time that the live stream referenced by boundStreamId was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundStreamLastUpdateTimeMs")]
-        public virtual string BoundStreamLastUpdateTimeMs { get; set; } 
+        public virtual string BoundStreamLastUpdateTimeMs { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("closedCaptionsType")]
-        public virtual string ClosedCaptionsType { get; set; } 
+        public virtual string ClosedCaptionsType { get; set; }
 
         /// <summary>This setting indicates whether auto start is enabled for this broadcast. The default value for this
         /// property is false. This setting can only be used by Events.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableAutoStart")]
-        public virtual System.Nullable<bool> EnableAutoStart { get; set; } 
+        public virtual System.Nullable<bool> EnableAutoStart { get; set; }
 
         /// <summary>This setting indicates whether auto stop is enabled for this broadcast. The default value for this
         /// property is false. This setting can only be used by Events.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableAutoStop")]
-        public virtual System.Nullable<bool> EnableAutoStop { get; set; } 
+        public virtual System.Nullable<bool> EnableAutoStop { get; set; }
 
         /// <summary>This setting indicates whether HTTP POST closed captioning is enabled for this broadcast. The
         /// ingestion URL of the closed captions is returned through the liveStreams API. This is mutually exclusive
         /// with using the closed_captions_type property, and is equivalent to setting closed_captions_type to
         /// CLOSED_CAPTIONS_HTTP_POST.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableClosedCaptions")]
-        public virtual System.Nullable<bool> EnableClosedCaptions { get; set; } 
+        public virtual System.Nullable<bool> EnableClosedCaptions { get; set; }
 
         /// <summary>This setting indicates whether YouTube should enable content encryption for the
         /// broadcast.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableContentEncryption")]
-        public virtual System.Nullable<bool> EnableContentEncryption { get; set; } 
+        public virtual System.Nullable<bool> EnableContentEncryption { get; set; }
 
         /// <summary>This setting determines whether viewers can access DVR controls while watching the video. DVR
         /// controls enable the viewer to control the video playback experience by pausing, rewinding, or fast
@@ -11940,39 +11940,39 @@ namespace Google.Apis.YouTube.v3.Data
         /// and also set the enableArchive property's value to true if you want to make playback available immediately
         /// after the broadcast ends.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableDvr")]
-        public virtual System.Nullable<bool> EnableDvr { get; set; } 
+        public virtual System.Nullable<bool> EnableDvr { get; set; }
 
         /// <summary>This setting indicates whether the broadcast video can be played in an embedded player. If you
         /// choose to archive the video (using the enableArchive property), this setting will also apply to the archived
         /// video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableEmbed")]
-        public virtual System.Nullable<bool> EnableEmbed { get; set; } 
+        public virtual System.Nullable<bool> EnableEmbed { get; set; }
 
         /// <summary>Indicates whether this broadcast has low latency enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableLowLatency")]
-        public virtual System.Nullable<bool> EnableLowLatency { get; set; } 
+        public virtual System.Nullable<bool> EnableLowLatency { get; set; }
 
         /// <summary>If both this and enable_low_latency are set, they must match. LATENCY_NORMAL should match
         /// enable_low_latency=false LATENCY_LOW should match enable_low_latency=true LATENCY_ULTRA_LOW should have
         /// enable_low_latency omitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latencyPreference")]
-        public virtual string LatencyPreference { get; set; } 
+        public virtual string LatencyPreference { get; set; }
 
         /// <summary>The mesh for projecting the video if projection is mesh. The mesh value must be a UTF-8 string
         /// containing the base-64 encoding of 3D mesh data that follows the Spherical Video V2 RFC specification for an
         /// mshp box, excluding the box size and type but including the following four reserved zero bytes for the
         /// version and flags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mesh")]
-        public virtual string Mesh { get; set; } 
+        public virtual string Mesh { get; set; }
 
         /// <summary>The monitorStream object contains information about the monitor stream, which the broadcaster can
         /// use to review the event content before the broadcast stream is shown publicly.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitorStream")]
-        public virtual MonitorStreamInfo MonitorStream { get; set; } 
+        public virtual MonitorStreamInfo MonitorStream { get; set; }
 
         /// <summary>The projection format of this broadcast. This defaults to rectangular.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projection")]
-        public virtual string Projection { get; set; } 
+        public virtual string Projection { get; set; }
 
         /// <summary>Automatically start recording after the event goes live. The default value for this property is
         /// true. *Important:* You must also set the enableDvr property's value to true if you want the playback to be
@@ -11980,14 +11980,14 @@ namespace Google.Apis.YouTube.v3.Data
         /// the enableDvr property to true, there may be a delay of around one day before the archived video will be
         /// available for playback.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordFromStart")]
-        public virtual System.Nullable<bool> RecordFromStart { get; set; } 
+        public virtual System.Nullable<bool> RecordFromStart { get; set; }
 
         /// <summary>This setting indicates whether the broadcast should automatically begin with an in-stream slate
         /// when you update the broadcast's status to live. After updating the status, you then need to send a
         /// liveCuepoints.insert request that sets the cuepoint's eventState to end to remove the in-stream slate and
         /// make your broadcast stream visible to viewers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startWithSlate")]
-        public virtual System.Nullable<bool> StartWithSlate { get; set; } 
+        public virtual System.Nullable<bool> StartWithSlate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11997,41 +11997,41 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Serialized EventId of the request which produced this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         /// <summary>A list of broadcasts that match the request criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<LiveBroadcast> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<LiveBroadcast> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#liveBroadcastListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the next page in the
         /// result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>General pagination information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual PageInfo PageInfo { get; set; } 
+        public virtual PageInfo PageInfo { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the previous page in
         /// the result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prevPageToken")]
-        public virtual string PrevPageToken { get; set; } 
+        public virtual string PrevPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
-        public virtual TokenPagination TokenPagination { get; set; } 
+        public virtual TokenPagination TokenPagination { get; set; }
 
         /// <summary>The visitorId identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
     }    
 
@@ -12041,57 +12041,57 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The date and time that the broadcast actually ended. This information is only available once the
         /// broadcast's state is complete. The value is specified in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actualEndTime")]
-        public virtual string ActualEndTime { get; set; } 
+        public virtual string ActualEndTime { get; set; }
 
         /// <summary>The date and time that the broadcast actually started. This information is only available once the
         /// broadcast's state is live. The value is specified in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actualStartTime")]
-        public virtual string ActualStartTime { get; set; } 
+        public virtual string ActualStartTime { get; set; }
 
         /// <summary>The ID that YouTube uses to uniquely identify the channel that is publishing the
         /// broadcast.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
-        public virtual string ChannelId { get; set; } 
+        public virtual string ChannelId { get; set; }
 
         /// <summary>The broadcast's description. As with the title, you can set this field by modifying the broadcast
         /// resource or by setting the description field of the corresponding video resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Indicates whether this broadcast is the default broadcast. Internal only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDefaultBroadcast")]
-        public virtual System.Nullable<bool> IsDefaultBroadcast { get; set; } 
+        public virtual System.Nullable<bool> IsDefaultBroadcast { get; set; }
 
         /// <summary>The id of the live chat for this broadcast.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("liveChatId")]
-        public virtual string LiveChatId { get; set; } 
+        public virtual string LiveChatId { get; set; }
 
         /// <summary>The date and time that the broadcast was added to YouTube's live broadcast schedule. The value is
         /// specified in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
-        public virtual string PublishedAt { get; set; } 
+        public virtual string PublishedAt { get; set; }
 
         /// <summary>The date and time that the broadcast is scheduled to end. The value is specified in ISO 8601
         /// format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledEndTime")]
-        public virtual string ScheduledEndTime { get; set; } 
+        public virtual string ScheduledEndTime { get; set; }
 
         /// <summary>The date and time that the broadcast is scheduled to start. The value is specified in ISO 8601
         /// format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledStartTime")]
-        public virtual string ScheduledStartTime { get; set; } 
+        public virtual string ScheduledStartTime { get; set; }
 
         /// <summary>A map of thumbnail images associated with the broadcast. For each nested object in this object, the
         /// key is the name of the thumbnail image, and the value is an object that contains other information about the
         /// thumbnail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnails")]
-        public virtual ThumbnailDetails Thumbnails { get; set; } 
+        public virtual ThumbnailDetails Thumbnails { get; set; }
 
         /// <summary>The broadcast's title. Note that the broadcast represents exactly one YouTube video. You can set
         /// this field by modifying the broadcast resource or by setting the title field of the corresponding video
         /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12106,7 +12106,7 @@ namespace Google.Apis.YouTube.v3.Data
         /// that this field will not be filled after the broadcast ends. So this property would not identify the number
         /// of chat messages for an archived video of a completed live broadcast.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalChatCount")]
-        public virtual System.Nullable<ulong> TotalChatCount { get; set; } 
+        public virtual System.Nullable<ulong> TotalChatCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12118,32 +12118,32 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The broadcast's status. The status can be updated using the API's liveBroadcasts.transition
         /// method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifeCycleStatus")]
-        public virtual string LifeCycleStatus { get; set; } 
+        public virtual string LifeCycleStatus { get; set; }
 
         /// <summary>Priority of the live broadcast event (internal state).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("liveBroadcastPriority")]
-        public virtual string LiveBroadcastPriority { get; set; } 
+        public virtual string LiveBroadcastPriority { get; set; }
 
         /// <summary>Whether the broadcast is made for kids or not, decided by YouTube instead of the creator. This
         /// field is read only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("madeForKids")]
-        public virtual System.Nullable<bool> MadeForKids { get; set; } 
+        public virtual System.Nullable<bool> MadeForKids { get; set; }
 
         /// <summary>The broadcast's privacy status. Note that the broadcast represents exactly one YouTube video, so
         /// the privacy settings are identical to those supported for videos. In addition, you can set this field by
         /// modifying the broadcast resource or by setting the privacyStatus field of the corresponding video
         /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privacyStatus")]
-        public virtual string PrivacyStatus { get; set; } 
+        public virtual string PrivacyStatus { get; set; }
 
         /// <summary>The broadcast's recording status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordingStatus")]
-        public virtual string RecordingStatus { get; set; } 
+        public virtual string RecordingStatus { get; set; }
 
         /// <summary>This field will be set to True if the creator declares the broadcast to be kids only: go/live-cw-
         /// work.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfDeclaredMadeForKids")]
-        public virtual System.Nullable<bool> SelfDeclaredMadeForKids { get; set; } 
+        public virtual System.Nullable<bool> SelfDeclaredMadeForKids { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12154,20 +12154,20 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The ID that YouTube assigns to uniquely identify the ban.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// `"youtube#liveChatBan"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The `snippet` object contains basic details about the ban.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual LiveChatBanSnippet Snippet { get; set; } 
+        public virtual LiveChatBanSnippet Snippet { get; set; }
 
     }    
 
@@ -12175,18 +12175,18 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The duration of a ban, only filled if the ban has type TEMPORARY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("banDurationSeconds")]
-        public virtual System.Nullable<ulong> BanDurationSeconds { get; set; } 
+        public virtual System.Nullable<ulong> BanDurationSeconds { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("bannedUserDetails")]
-        public virtual ChannelProfileDetails BannedUserDetails { get; set; } 
+        public virtual ChannelProfileDetails BannedUserDetails { get; set; }
 
         /// <summary>The chat this ban is pertinent to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("liveChatId")]
-        public virtual string LiveChatId { get; set; } 
+        public virtual string LiveChatId { get; set; }
 
         /// <summary>The type of ban.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12196,19 +12196,19 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>A rendered string that displays the fund amount and currency to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amountDisplayString")]
-        public virtual string AmountDisplayString { get; set; } 
+        public virtual string AmountDisplayString { get; set; }
 
         /// <summary>The amount of the fund.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amountMicros")]
-        public virtual System.Nullable<ulong> AmountMicros { get; set; } 
+        public virtual System.Nullable<ulong> AmountMicros { get; set; }
 
         /// <summary>The currency in which the fund was made.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currency")]
-        public virtual string Currency { get; set; } 
+        public virtual string Currency { get; set; }
 
         /// <summary>The comment added by the user to this fan funding event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userComment")]
-        public virtual string UserComment { get; set; } 
+        public virtual string UserComment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12219,24 +12219,24 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The authorDetails object contains basic details about the user that posted this message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorDetails")]
-        public virtual LiveChatMessageAuthorDetails AuthorDetails { get; set; } 
+        public virtual LiveChatMessageAuthorDetails AuthorDetails { get; set; }
 
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The ID that YouTube assigns to uniquely identify the message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#liveChatMessage".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The snippet object contains basic details about the message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual LiveChatMessageSnippet Snippet { get; set; } 
+        public virtual LiveChatMessageSnippet Snippet { get; set; }
 
     }    
 
@@ -12244,35 +12244,35 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The YouTube channel ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
-        public virtual string ChannelId { get; set; } 
+        public virtual string ChannelId { get; set; }
 
         /// <summary>The channel's URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelUrl")]
-        public virtual string ChannelUrl { get; set; } 
+        public virtual string ChannelUrl { get; set; }
 
         /// <summary>The channel's display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Whether the author is a moderator of the live chat.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isChatModerator")]
-        public virtual System.Nullable<bool> IsChatModerator { get; set; } 
+        public virtual System.Nullable<bool> IsChatModerator { get; set; }
 
         /// <summary>Whether the author is the owner of the live chat.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isChatOwner")]
-        public virtual System.Nullable<bool> IsChatOwner { get; set; } 
+        public virtual System.Nullable<bool> IsChatOwner { get; set; }
 
         /// <summary>Whether the author is a sponsor of the live chat.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isChatSponsor")]
-        public virtual System.Nullable<bool> IsChatSponsor { get; set; } 
+        public virtual System.Nullable<bool> IsChatSponsor { get; set; }
 
         /// <summary>Whether the author's identity has been verified by YouTube.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isVerified")]
-        public virtual System.Nullable<bool> IsVerified { get; set; } 
+        public virtual System.Nullable<bool> IsVerified { get; set; }
 
         /// <summary>The channels's avatar URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileImageUrl")]
-        public virtual string ProfileImageUrl { get; set; } 
+        public virtual string ProfileImageUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12281,7 +12281,7 @@ namespace Google.Apis.YouTube.v3.Data
     public class LiveChatMessageDeletedDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("deletedMessageId")]
-        public virtual string DeletedMessageId { get; set; } 
+        public virtual string DeletedMessageId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12291,49 +12291,49 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Serialized EventId of the request which produced this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<LiveChatMessage> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<LiveChatMessage> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#liveChatMessageListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The date and time when the underlying stream went offline. The value is specified in ISO 8601
         /// format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offlineAt")]
-        public virtual string OfflineAt { get; set; } 
+        public virtual string OfflineAt { get; set; }
 
         /// <summary>General pagination information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual PageInfo PageInfo { get; set; } 
+        public virtual PageInfo PageInfo { get; set; }
 
         /// <summary>The amount of time the client should wait before polling again.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pollingIntervalMillis")]
-        public virtual System.Nullable<long> PollingIntervalMillis { get; set; } 
+        public virtual System.Nullable<long> PollingIntervalMillis { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
-        public virtual TokenPagination TokenPagination { get; set; } 
+        public virtual TokenPagination TokenPagination { get; set; }
 
         /// <summary>The visitorId identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
     }    
 
     public class LiveChatMessageRetractedDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("retractedMessageId")]
-        public virtual string RetractedMessageId { get; set; } 
+        public virtual string RetractedMessageId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12347,55 +12347,55 @@ namespace Google.Apis.YouTube.v3.Data
         /// messageRetractedEvent - the author that retracted their message userBannedEvent - the moderator that took
         /// the action superChatEvent - the user that made the purchase</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorChannelId")]
-        public virtual string AuthorChannelId { get; set; } 
+        public virtual string AuthorChannelId { get; set; }
 
         /// <summary>Contains a string that can be displayed to the user. If this field is not present the message is
         /// silent, at the moment only messages of type TOMBSTONE and CHAT_ENDED_EVENT are silent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayMessage")]
-        public virtual string DisplayMessage { get; set; } 
+        public virtual string DisplayMessage { get; set; }
 
         /// <summary>Details about the funding event, this is only set if the type is 'fanFundingEvent'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fanFundingEventDetails")]
-        public virtual LiveChatFanFundingEventDetails FanFundingEventDetails { get; set; } 
+        public virtual LiveChatFanFundingEventDetails FanFundingEventDetails { get; set; }
 
         /// <summary>Whether the message has display content that should be displayed to users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasDisplayContent")]
-        public virtual System.Nullable<bool> HasDisplayContent { get; set; } 
+        public virtual System.Nullable<bool> HasDisplayContent { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("liveChatId")]
-        public virtual string LiveChatId { get; set; } 
+        public virtual string LiveChatId { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("messageDeletedDetails")]
-        public virtual LiveChatMessageDeletedDetails MessageDeletedDetails { get; set; } 
+        public virtual LiveChatMessageDeletedDetails MessageDeletedDetails { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("messageRetractedDetails")]
-        public virtual LiveChatMessageRetractedDetails MessageRetractedDetails { get; set; } 
+        public virtual LiveChatMessageRetractedDetails MessageRetractedDetails { get; set; }
 
         /// <summary>The date and time when the message was orignally published. The value is specified in ISO 8601
         /// format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
-        public virtual string PublishedAt { get; set; } 
+        public virtual string PublishedAt { get; set; }
 
         /// <summary>Details about the Super Chat event, this is only set if the type is 'superChatEvent'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("superChatDetails")]
-        public virtual LiveChatSuperChatDetails SuperChatDetails { get; set; } 
+        public virtual LiveChatSuperChatDetails SuperChatDetails { get; set; }
 
         /// <summary>Details about the Super Sticker event, this is only set if the type is
         /// 'superStickerEvent'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("superStickerDetails")]
-        public virtual LiveChatSuperStickerDetails SuperStickerDetails { get; set; } 
+        public virtual LiveChatSuperStickerDetails SuperStickerDetails { get; set; }
 
         /// <summary>Details about the text message, this is only set if the type is 'textMessageEvent'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textMessageDetails")]
-        public virtual LiveChatTextMessageDetails TextMessageDetails { get; set; } 
+        public virtual LiveChatTextMessageDetails TextMessageDetails { get; set; }
 
         /// <summary>The type of message, this will always be present, it determines the contents of the message as well
         /// as which fields will be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("userBannedDetails")]
-        public virtual LiveChatUserBannedMessageDetails UserBannedDetails { get; set; } 
+        public virtual LiveChatUserBannedMessageDetails UserBannedDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12407,20 +12407,20 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The ID that YouTube assigns to uniquely identify the moderator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#liveChatModerator".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The snippet object contains basic details about the moderator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual LiveChatModeratorSnippet Snippet { get; set; } 
+        public virtual LiveChatModeratorSnippet Snippet { get; set; }
 
     }    
 
@@ -12428,41 +12428,41 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Serialized EventId of the request which produced this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         /// <summary>A list of moderators that match the request criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<LiveChatModerator> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<LiveChatModerator> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#liveChatModeratorListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the next page in the
         /// result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>General pagination information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual PageInfo PageInfo { get; set; } 
+        public virtual PageInfo PageInfo { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the previous page in
         /// the result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prevPageToken")]
-        public virtual string PrevPageToken { get; set; } 
+        public virtual string PrevPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
-        public virtual TokenPagination TokenPagination { get; set; } 
+        public virtual TokenPagination TokenPagination { get; set; }
 
         /// <summary>The visitorId identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
     }    
 
@@ -12470,11 +12470,11 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The ID of the live chat this moderator can act on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("liveChatId")]
-        public virtual string LiveChatId { get; set; } 
+        public virtual string LiveChatId { get; set; }
 
         /// <summary>Details about the moderator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("moderatorDetails")]
-        public virtual ChannelProfileDetails ModeratorDetails { get; set; } 
+        public virtual ChannelProfileDetails ModeratorDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12484,24 +12484,24 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>A rendered string that displays the fund amount and currency to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amountDisplayString")]
-        public virtual string AmountDisplayString { get; set; } 
+        public virtual string AmountDisplayString { get; set; }
 
         /// <summary>The amount purchased by the user, in micros (1,750,000 micros = 1.75).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amountMicros")]
-        public virtual System.Nullable<ulong> AmountMicros { get; set; } 
+        public virtual System.Nullable<ulong> AmountMicros { get; set; }
 
         /// <summary>The currency in which the purchase was made.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currency")]
-        public virtual string Currency { get; set; } 
+        public virtual string Currency { get; set; }
 
         /// <summary>The tier in which the amount belongs. Lower amounts belong to lower tiers. The lowest tier is
         /// 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
-        public virtual System.Nullable<long> Tier { get; set; } 
+        public virtual System.Nullable<long> Tier { get; set; }
 
         /// <summary>The comment added by the user to this Super Chat event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userComment")]
-        public virtual string UserComment { get; set; } 
+        public virtual string UserComment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12511,24 +12511,24 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>A rendered string that displays the fund amount and currency to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amountDisplayString")]
-        public virtual string AmountDisplayString { get; set; } 
+        public virtual string AmountDisplayString { get; set; }
 
         /// <summary>The amount purchased by the user, in micros (1,750,000 micros = 1.75).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amountMicros")]
-        public virtual System.Nullable<ulong> AmountMicros { get; set; } 
+        public virtual System.Nullable<ulong> AmountMicros { get; set; }
 
         /// <summary>The currency in which the purchase was made.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currency")]
-        public virtual string Currency { get; set; } 
+        public virtual string Currency { get; set; }
 
         /// <summary>Information about the Super Sticker.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("superStickerMetadata")]
-        public virtual SuperStickerMetadata SuperStickerMetadata { get; set; } 
+        public virtual SuperStickerMetadata SuperStickerMetadata { get; set; }
 
         /// <summary>The tier in which the amount belongs. Lower amounts belong to lower tiers. The lowest tier is
         /// 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
-        public virtual System.Nullable<long> Tier { get; set; } 
+        public virtual System.Nullable<long> Tier { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12538,7 +12538,7 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The user's message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageText")]
-        public virtual string MessageText { get; set; } 
+        public virtual string MessageText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12548,15 +12548,15 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The duration of the ban. This property is only present if the banType is temporary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("banDurationSeconds")]
-        public virtual System.Nullable<ulong> BanDurationSeconds { get; set; } 
+        public virtual System.Nullable<ulong> BanDurationSeconds { get; set; }
 
         /// <summary>The type of ban.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("banType")]
-        public virtual string BanType { get; set; } 
+        public virtual string BanType { get; set; }
 
         /// <summary>The details of the user that was banned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bannedUserDetails")]
-        public virtual ChannelProfileDetails BannedUserDetails { get; set; } 
+        public virtual ChannelProfileDetails BannedUserDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12568,33 +12568,33 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The cdn object defines the live stream's content delivery network (CDN) settings. These settings
         /// provide details about the manner in which you stream your content to YouTube.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cdn")]
-        public virtual CdnSettings Cdn { get; set; } 
+        public virtual CdnSettings Cdn { get; set; }
 
         /// <summary>The content_details object contains information about the stream, including the closed captions
         /// ingestion URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentDetails")]
-        public virtual LiveStreamContentDetails ContentDetails { get; set; } 
+        public virtual LiveStreamContentDetails ContentDetails { get; set; }
 
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The ID that YouTube assigns to uniquely identify the stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "youtube#liveStream".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The snippet object contains basic details about the stream, including its channel, title, and
         /// description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual LiveStreamSnippet Snippet { get; set; } 
+        public virtual LiveStreamSnippet Snippet { get; set; }
 
         /// <summary>The status object contains information about live stream's status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual LiveStreamStatus Status { get; set; } 
+        public virtual LiveStreamStatus Status { get; set; }
 
     }    
 
@@ -12602,19 +12602,19 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The long-form description of the issue and how to resolve it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The short-form reason for this issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>How severe this issue is to the stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
-        public virtual string Severity { get; set; } 
+        public virtual string Severity { get; set; }
 
         /// <summary>The kind of error happening.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12625,7 +12625,7 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The ingestion URL where the closed captions of this stream are sent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("closedCaptionsIngestionUrl")]
-        public virtual string ClosedCaptionsIngestionUrl { get; set; } 
+        public virtual string ClosedCaptionsIngestionUrl { get; set; }
 
         /// <summary>Indicates whether the stream is reusable, which means that it can be bound to multiple broadcasts.
         /// It is common for broadcasters to reuse the same stream for many different broadcasts if those broadcasts
@@ -12637,7 +12637,7 @@ namespace Google.Apis.YouTube.v3.Data
         /// to retrieve the resource for a non-reusable stream is to use the id parameter to identify the stream.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isReusable")]
-        public virtual System.Nullable<bool> IsReusable { get; set; } 
+        public virtual System.Nullable<bool> IsReusable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12647,15 +12647,15 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The configurations issues on this stream</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configurationIssues")]
-        public virtual System.Collections.Generic.IList<LiveStreamConfigurationIssue> ConfigurationIssues { get; set; } 
+        public virtual System.Collections.Generic.IList<LiveStreamConfigurationIssue> ConfigurationIssues { get; set; }
 
         /// <summary>The last time this status was updated (in seconds)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTimeSeconds")]
-        public virtual System.Nullable<ulong> LastUpdateTimeSeconds { get; set; } 
+        public virtual System.Nullable<ulong> LastUpdateTimeSeconds { get; set; }
 
         /// <summary>The status code of this stream</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12665,40 +12665,40 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Serialized EventId of the request which produced this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         /// <summary>A list of live streams that match the request criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<LiveStream> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<LiveStream> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#liveStreamListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the next page in the
         /// result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual PageInfo PageInfo { get; set; } 
+        public virtual PageInfo PageInfo { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the previous page in
         /// the result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prevPageToken")]
-        public virtual string PrevPageToken { get; set; } 
+        public virtual string PrevPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
-        public virtual TokenPagination TokenPagination { get; set; } 
+        public virtual TokenPagination TokenPagination { get; set; }
 
         /// <summary>The visitorId identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
     }    
 
@@ -12707,22 +12707,22 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The ID that YouTube uses to uniquely identify the channel that is transmitting the
         /// stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
-        public virtual string ChannelId { get; set; } 
+        public virtual string ChannelId { get; set; }
 
         /// <summary>The stream's description. The value cannot be longer than 10000 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("isDefaultStream")]
-        public virtual System.Nullable<bool> IsDefaultStream { get; set; } 
+        public virtual System.Nullable<bool> IsDefaultStream { get; set; }
 
         /// <summary>The date and time that the stream was created. The value is specified in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
-        public virtual string PublishedAt { get; set; } 
+        public virtual string PublishedAt { get; set; }
 
         /// <summary>The stream's title. The value must be between 1 and 128 characters long.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12733,10 +12733,10 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The health status of the stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthStatus")]
-        public virtual LiveStreamHealthStatus HealthStatus { get; set; } 
+        public virtual LiveStreamHealthStatus HealthStatus { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("streamStatus")]
-        public virtual string StreamStatus { get; set; } 
+        public virtual string StreamStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12745,14 +12745,14 @@ namespace Google.Apis.YouTube.v3.Data
     public class LocalizedProperty : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("default")]
-        public virtual string Default__ { get; set; } 
+        public virtual string Default__ { get; set; }
 
         /// <summary>The language of the default property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultLanguage")]
-        public virtual LanguageTag DefaultLanguage { get; set; } 
+        public virtual LanguageTag DefaultLanguage { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("localized")]
-        public virtual System.Collections.Generic.IList<LocalizedString> Localized { get; set; } 
+        public virtual System.Collections.Generic.IList<LocalizedString> Localized { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12761,10 +12761,10 @@ namespace Google.Apis.YouTube.v3.Data
     public class LocalizedString : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
-        public virtual string Language { get; set; } 
+        public virtual string Language { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12776,15 +12776,15 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "youtube#member".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The snippet object contains basic details about the member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual MemberSnippet Snippet { get; set; } 
+        public virtual MemberSnippet Snippet { get; set; }
 
     }    
 
@@ -12792,35 +12792,35 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Serialized EventId of the request which produced this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         /// <summary>A list of members that match the request criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Member> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Member> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#memberListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the next page in the
         /// result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual PageInfo PageInfo { get; set; } 
+        public virtual PageInfo PageInfo { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
-        public virtual TokenPagination TokenPagination { get; set; } 
+        public virtual TokenPagination TokenPagination { get; set; }
 
         /// <summary>The visitorId identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
     }    
 
@@ -12828,15 +12828,15 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The id of the channel that's offering memberships.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creatorChannelId")]
-        public virtual string CreatorChannelId { get; set; } 
+        public virtual string CreatorChannelId { get; set; }
 
         /// <summary>Details about the member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberDetails")]
-        public virtual ChannelProfileDetails MemberDetails { get; set; } 
+        public virtual ChannelProfileDetails MemberDetails { get; set; }
 
         /// <summary>Details about the user's membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipsDetails")]
-        public virtual MembershipsDetails MembershipsDetails { get; set; } 
+        public virtual MembershipsDetails MembershipsDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12847,23 +12847,23 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>Ids of all levels that the user has access to. This includes the currently active level and all
         /// other levels that are included because of a higher purchase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessibleLevels")]
-        public virtual System.Collections.Generic.IList<string> AccessibleLevels { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AccessibleLevels { get; set; }
 
         /// <summary>Id of the highest level that the user has access to at the moment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("highestAccessibleLevel")]
-        public virtual string HighestAccessibleLevel { get; set; } 
+        public virtual string HighestAccessibleLevel { get; set; }
 
         /// <summary>Display name for the highest level that the user has access to at the moment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("highestAccessibleLevelDisplayName")]
-        public virtual string HighestAccessibleLevelDisplayName { get; set; } 
+        public virtual string HighestAccessibleLevelDisplayName { get; set; }
 
         /// <summary>Data about memberships duration without taking into consideration pricing levels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipsDuration")]
-        public virtual MembershipsDuration MembershipsDuration { get; set; } 
+        public virtual MembershipsDuration MembershipsDuration { get; set; }
 
         /// <summary>Data about memberships duration on particular pricing levels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipsDurationAtLevels")]
-        public virtual System.Collections.Generic.IList<MembershipsDurationAtLevel> MembershipsDurationAtLevels { get; set; } 
+        public virtual System.Collections.Generic.IList<MembershipsDurationAtLevel> MembershipsDurationAtLevels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12873,12 +12873,12 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The date and time when the user became a continuous member across all levels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberSince")]
-        public virtual string MemberSince { get; set; } 
+        public virtual string MemberSince { get; set; }
 
         /// <summary>The cumulative time the user has been a member across all levels in complete months (the time is
         /// rounded down to the nearest integer).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberTotalDurationMonths")]
-        public virtual System.Nullable<int> MemberTotalDurationMonths { get; set; } 
+        public virtual System.Nullable<int> MemberTotalDurationMonths { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12888,16 +12888,16 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Pricing level ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("level")]
-        public virtual string Level { get; set; } 
+        public virtual string Level { get; set; }
 
         /// <summary>The date and time when the user became a continuous member for the given level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberSince")]
-        public virtual string MemberSince { get; set; } 
+        public virtual string MemberSince { get; set; }
 
         /// <summary>The cumulative time the user has been a member for the given level in complete months (the time is
         /// rounded down to the nearest integer).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberTotalDurationMonths")]
-        public virtual System.Nullable<int> MemberTotalDurationMonths { get; set; } 
+        public virtual System.Nullable<int> MemberTotalDurationMonths { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12910,20 +12910,20 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The ID that YouTube assigns to uniquely identify the memberships level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#membershipsLevelListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The snippet object contains basic details about the level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual MembershipsLevelSnippet Snippet { get; set; } 
+        public virtual MembershipsLevelSnippet Snippet { get; set; }
 
     }    
 
@@ -12931,24 +12931,24 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Serialized EventId of the request which produced this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         /// <summary>A list of pricing levels offered by a creator to the fans.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<MembershipsLevel> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<MembershipsLevel> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#membershipsLevelListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The visitorId identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
     }    
 
@@ -12956,11 +12956,11 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The id of the channel that's offering channel memberships.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creatorChannelId")]
-        public virtual string CreatorChannelId { get; set; } 
+        public virtual string CreatorChannelId { get; set; }
 
         /// <summary>Details about the pricing level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("levelDetails")]
-        public virtual LevelDetails LevelDetails { get; set; } 
+        public virtual LevelDetails LevelDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12972,11 +12972,11 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>If you have set the enableMonitorStream property to true, then this property determines the length
         /// of the live broadcast delay.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("broadcastStreamDelayMs")]
-        public virtual System.Nullable<long> BroadcastStreamDelayMs { get; set; } 
+        public virtual System.Nullable<long> BroadcastStreamDelayMs { get; set; }
 
         /// <summary>HTML code that embeds a player that plays the monitor stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("embedHtml")]
-        public virtual string EmbedHtml { get; set; } 
+        public virtual string EmbedHtml { get; set; }
 
         /// <summary>This value determines whether the monitor stream is enabled for the broadcast. If the monitor
         /// stream is enabled, then YouTube will broadcast the event content on a special stream intended only for the
@@ -12985,7 +12985,7 @@ namespace Google.Apis.YouTube.v3.Data
         /// broadcast delay for your event. *Note:* This property cannot be updated once the broadcast is in the testing
         /// or live state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableMonitorStream")]
-        public virtual System.Nullable<bool> EnableMonitorStream { get; set; } 
+        public virtual System.Nullable<bool> EnableMonitorStream { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12997,11 +12997,11 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The number of results included in the API response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultsPerPage")]
-        public virtual System.Nullable<int> ResultsPerPage { get; set; } 
+        public virtual System.Nullable<int> ResultsPerPage { get; set; }
 
         /// <summary>The total number of results in the result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
-        public virtual System.Nullable<int> TotalResults { get; set; } 
+        public virtual System.Nullable<int> TotalResults { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13021,37 +13021,37 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The contentDetails object contains information like video count.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentDetails")]
-        public virtual PlaylistContentDetails ContentDetails { get; set; } 
+        public virtual PlaylistContentDetails ContentDetails { get; set; }
 
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The ID that YouTube uses to uniquely identify the playlist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "youtube#playlist".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Localizations for different languages</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localizations")]
-        public virtual System.Collections.Generic.IDictionary<string,PlaylistLocalization> Localizations { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, PlaylistLocalization> Localizations { get; set; }
 
         /// <summary>The player object contains information that you would use to play the playlist in an embedded
         /// player.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("player")]
-        public virtual PlaylistPlayer Player { get; set; } 
+        public virtual PlaylistPlayer Player { get; set; }
 
         /// <summary>The snippet object contains basic details about the playlist, such as its title and
         /// description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual PlaylistSnippet Snippet { get; set; } 
+        public virtual PlaylistSnippet Snippet { get; set; }
 
         /// <summary>The status object contains status information for the playlist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual PlaylistStatus Status { get; set; } 
+        public virtual PlaylistStatus Status { get; set; }
 
     }    
 
@@ -13059,7 +13059,7 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The number of videos in the playlist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemCount")]
-        public virtual System.Nullable<long> ItemCount { get; set; } 
+        public virtual System.Nullable<long> ItemCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13080,28 +13080,28 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The contentDetails object is included in the resource if the included item is a YouTube video. The
         /// object contains additional information about the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentDetails")]
-        public virtual PlaylistItemContentDetails ContentDetails { get; set; } 
+        public virtual PlaylistItemContentDetails ContentDetails { get; set; }
 
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The ID that YouTube uses to uniquely identify the playlist item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "youtube#playlistItem".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The snippet object contains basic details about the playlist item, such as its title and position
         /// in the playlist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual PlaylistItemSnippet Snippet { get; set; } 
+        public virtual PlaylistItemSnippet Snippet { get; set; }
 
         /// <summary>The status object contains information about the playlist item's privacy status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual PlaylistItemStatus Status { get; set; } 
+        public virtual PlaylistItemStatus Status { get; set; }
 
     }    
 
@@ -13112,27 +13112,27 @@ namespace Google.Apis.YouTube.v3.Data
         /// in the context of the playlist.) By default, assume that the video.endTime is the end of the
         /// video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endAt")]
-        public virtual string EndAt { get; set; } 
+        public virtual string EndAt { get; set; }
 
         /// <summary>A user-generated note for this item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("note")]
-        public virtual string Note { get; set; } 
+        public virtual string Note { get; set; }
 
         /// <summary>The time, measured in seconds from the start of the video, when the video should start playing.
         /// (The playlist owner can specify the times when the video should start and stop playing when the video is
         /// played in the context of the playlist.) The default value is 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startAt")]
-        public virtual string StartAt { get; set; } 
+        public virtual string StartAt { get; set; }
 
         /// <summary>The ID that YouTube uses to uniquely identify a video. To retrieve the video resource, set the id
         /// query parameter to this value in your API request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoId")]
-        public virtual string VideoId { get; set; } 
+        public virtual string VideoId { get; set; }
 
         /// <summary>The date and time that the video was published to YouTube. The value is specified in ISO 8601
         /// format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoPublishedAt")]
-        public virtual string VideoPublishedAt { get; set; } 
+        public virtual string VideoPublishedAt { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13141,41 +13141,41 @@ namespace Google.Apis.YouTube.v3.Data
     public class PlaylistItemListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Serialized EventId of the request which produced this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         /// <summary>A list of playlist items that match the request criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<PlaylistItem> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<PlaylistItem> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#playlistItemListResponse". Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the next page in the
         /// result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>General pagination information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual PageInfo PageInfo { get; set; } 
+        public virtual PageInfo PageInfo { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the previous page in
         /// the result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prevPageToken")]
-        public virtual string PrevPageToken { get; set; } 
+        public virtual string PrevPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
-        public virtual TokenPagination TokenPagination { get; set; } 
+        public virtual TokenPagination TokenPagination { get; set; }
 
         /// <summary>The visitorId identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
     }    
 
@@ -13186,44 +13186,44 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The ID that YouTube uses to uniquely identify the user that added the item to the
         /// playlist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
-        public virtual string ChannelId { get; set; } 
+        public virtual string ChannelId { get; set; }
 
         /// <summary>Channel title for the channel that the playlist item belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelTitle")]
-        public virtual string ChannelTitle { get; set; } 
+        public virtual string ChannelTitle { get; set; }
 
         /// <summary>The item's description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The ID that YouTube uses to uniquely identify thGe playlist that the playlist item is in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playlistId")]
-        public virtual string PlaylistId { get; set; } 
+        public virtual string PlaylistId { get; set; }
 
         /// <summary>The order in which the item appears in the playlist. The value uses a zero-based index, so the
         /// first item has a position of 0, the second item has a position of 1, and so forth.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("position")]
-        public virtual System.Nullable<long> Position { get; set; } 
+        public virtual System.Nullable<long> Position { get; set; }
 
         /// <summary>The date and time that the item was added to the playlist. The value is specified in ISO 8601
         /// format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
-        public virtual string PublishedAt { get; set; } 
+        public virtual string PublishedAt { get; set; }
 
         /// <summary>The id object contains information that can be used to uniquely identify the resource that is
         /// included in the playlist as the playlist item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual ResourceId ResourceId { get; set; } 
+        public virtual ResourceId ResourceId { get; set; }
 
         /// <summary>A map of thumbnail images associated with the playlist item. For each object in the map, the key is
         /// the name of the thumbnail image, and the value is an object that contains other information about the
         /// thumbnail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnails")]
-        public virtual ThumbnailDetails Thumbnails { get; set; } 
+        public virtual ThumbnailDetails Thumbnails { get; set; }
 
         /// <summary>The item's title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13234,7 +13234,7 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>This resource's privacy status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privacyStatus")]
-        public virtual string PrivacyStatus { get; set; } 
+        public virtual string PrivacyStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13244,41 +13244,41 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Serialized EventId of the request which produced this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         /// <summary>A list of playlists that match the request criteria</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Playlist> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Playlist> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#playlistListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the next page in the
         /// result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>General pagination information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual PageInfo PageInfo { get; set; } 
+        public virtual PageInfo PageInfo { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the previous page in
         /// the result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prevPageToken")]
-        public virtual string PrevPageToken { get; set; } 
+        public virtual string PrevPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
-        public virtual TokenPagination TokenPagination { get; set; } 
+        public virtual TokenPagination TokenPagination { get; set; }
 
         /// <summary>The visitorId identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
     }    
 
@@ -13287,11 +13287,11 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The localized strings for playlist's description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The localized strings for playlist's title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13301,7 +13301,7 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>An  tag that embeds a player that will play the playlist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("embedHtml")]
-        public virtual string EmbedHtml { get; set; } 
+        public virtual string EmbedHtml { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13312,42 +13312,42 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The ID that YouTube uses to uniquely identify the channel that published the playlist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
-        public virtual string ChannelId { get; set; } 
+        public virtual string ChannelId { get; set; }
 
         /// <summary>The channel title of the channel that the video belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelTitle")]
-        public virtual string ChannelTitle { get; set; } 
+        public virtual string ChannelTitle { get; set; }
 
         /// <summary>The language of the playlist's default title and description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultLanguage")]
-        public virtual string DefaultLanguage { get; set; } 
+        public virtual string DefaultLanguage { get; set; }
 
         /// <summary>The playlist's description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Localized title and description, read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localized")]
-        public virtual PlaylistLocalization Localized { get; set; } 
+        public virtual PlaylistLocalization Localized { get; set; }
 
         /// <summary>The date and time that the playlist was created. The value is specified in ISO 8601
         /// format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
-        public virtual string PublishedAt { get; set; } 
+        public virtual string PublishedAt { get; set; }
 
         /// <summary>Keyword tags associated with the playlist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
-        public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>A map of thumbnail images associated with the playlist. For each object in the map, the key is the
         /// name of the thumbnail image, and the value is an object that contains other information about the
         /// thumbnail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnails")]
-        public virtual ThumbnailDetails Thumbnails { get; set; } 
+        public virtual ThumbnailDetails Thumbnails { get; set; }
 
         /// <summary>The playlist's title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13357,7 +13357,7 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The playlist's privacy status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privacyStatus")]
-        public virtual string PrivacyStatus { get; set; } 
+        public virtual string PrivacyStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13369,21 +13369,21 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>A custom message to display for this promotion. This field is currently ignored unless the promoted
         /// item is a website.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customMessage")]
-        public virtual string CustomMessage { get; set; } 
+        public virtual string CustomMessage { get; set; }
 
         /// <summary>Identifies the promoted item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual PromotedItemId Id { get; set; } 
+        public virtual PromotedItemId Id { get; set; }
 
         /// <summary>If true, the content owner's name will be used when displaying the promotion. This field can only
         /// be set when the update is made on behalf of the content owner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotedByContentOwner")]
-        public virtual System.Nullable<bool> PromotedByContentOwner { get; set; } 
+        public virtual System.Nullable<bool> PromotedByContentOwner { get; set; }
 
         /// <summary>The temporal position within the video where the promoted item will be displayed. If present, it
         /// overrides the default timing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timing")]
-        public virtual InvideoTiming Timing { get; set; } 
+        public virtual InvideoTiming Timing { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13395,21 +13395,21 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>If type is recentUpload, this field identifies the channel from which to take the recent upload. If
         /// missing, the channel is assumed to be the same channel for which the invideoPromotion is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recentlyUploadedBy")]
-        public virtual string RecentlyUploadedBy { get; set; } 
+        public virtual string RecentlyUploadedBy { get; set; }
 
         /// <summary>Describes the type of the promoted item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>If the promoted item represents a video, this field represents the unique YouTube ID identifying
         /// it. This field will be present only if type has the value video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoId")]
-        public virtual string VideoId { get; set; } 
+        public virtual string VideoId { get; set; }
 
         /// <summary>If the promoted item represents a website, this field represents the url pointing to the website.
         /// This field will be present only if type has the value website.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("websiteUrl")]
-        public virtual string WebsiteUrl { get; set; } 
+        public virtual string WebsiteUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13420,11 +13420,11 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>A property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("property")]
-        public virtual string Property { get; set; } 
+        public virtual string Property { get; set; }
 
         /// <summary>The property's value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13433,7 +13433,7 @@ namespace Google.Apis.YouTube.v3.Data
     public class RelatedEntity : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("entity")]
-        public virtual Entity Entity { get; set; } 
+        public virtual Entity Entity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13445,21 +13445,21 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The ID that YouTube uses to uniquely identify the referred resource, if that resource is a channel.
         /// This property is only present if the resourceId.kind value is youtube#channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
-        public virtual string ChannelId { get; set; } 
+        public virtual string ChannelId { get; set; }
 
         /// <summary>The type of the API resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The ID that YouTube uses to uniquely identify the referred resource, if that resource is a
         /// playlist. This property is only present if the resourceId.kind value is youtube#playlist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playlistId")]
-        public virtual string PlaylistId { get; set; } 
+        public virtual string PlaylistId { get; set; }
 
         /// <summary>The ID that YouTube uses to uniquely identify the referred resource, if that resource is a video.
         /// This property is only present if the resourceId.kind value is youtube#video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoId")]
-        public virtual string VideoId { get; set; } 
+        public virtual string VideoId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13469,44 +13469,44 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Serialized EventId of the request which produced this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         /// <summary>Pagination information for token pagination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<SearchResult> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<SearchResult> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#searchListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the next page in the
         /// result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>General pagination information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual PageInfo PageInfo { get; set; } 
+        public virtual PageInfo PageInfo { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the previous page in
         /// the result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prevPageToken")]
-        public virtual string PrevPageToken { get; set; } 
+        public virtual string PrevPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
-        public virtual string RegionCode { get; set; } 
+        public virtual string RegionCode { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
-        public virtual TokenPagination TokenPagination { get; set; } 
+        public virtual TokenPagination TokenPagination { get; set; }
 
         /// <summary>The visitorId identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
     }    
 
@@ -13517,22 +13517,22 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The id object contains information that can be used to uniquely identify the resource that matches
         /// the search request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual ResourceId Id { get; set; } 
+        public virtual ResourceId Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "youtube#searchResult".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The snippet object contains basic details about a search result, such as its title or description.
         /// For example, if the search result is a video, then the title will be the video's title and the description
         /// will be the video's description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual SearchResultSnippet Snippet { get; set; } 
+        public virtual SearchResultSnippet Snippet { get; set; }
 
     }    
 
@@ -13543,35 +13543,35 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The value that YouTube uses to uniquely identify the channel that published the resource that the
         /// search result identifies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
-        public virtual string ChannelId { get; set; } 
+        public virtual string ChannelId { get; set; }
 
         /// <summary>The title of the channel that published the resource that the search result identifies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelTitle")]
-        public virtual string ChannelTitle { get; set; } 
+        public virtual string ChannelTitle { get; set; }
 
         /// <summary>A description of the search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>It indicates if the resource (video or channel) has upcoming/active live broadcast content. Or it's
         /// "none" if there is not any upcoming/active live broadcasts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("liveBroadcastContent")]
-        public virtual string LiveBroadcastContent { get; set; } 
+        public virtual string LiveBroadcastContent { get; set; }
 
         /// <summary>The creation date and time of the resource that the search result identifies. The value is
         /// specified in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
-        public virtual string PublishedAt { get; set; } 
+        public virtual string PublishedAt { get; set; }
 
         /// <summary>A map of thumbnail images associated with the search result. For each object in the map, the key is
         /// the name of the thumbnail image, and the value is an object that contains other information about the
         /// thumbnail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnails")]
-        public virtual ThumbnailDetails Thumbnails { get; set; } 
+        public virtual ThumbnailDetails Thumbnails { get; set; }
 
         /// <summary>The title of the search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13583,15 +13583,15 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string `"youtube#sponsor"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The `snippet` object contains basic details about the sponsor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual SponsorSnippet Snippet { get; set; } 
+        public virtual SponsorSnippet Snippet { get; set; }
 
     }    
 
@@ -13599,35 +13599,35 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Serialized EventId of the request which produced this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         /// <summary>A list of sponsors that match the request criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Sponsor> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Sponsor> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// `"youtube#sponsorListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token that can be used as the value of the `pageToken` parameter to retrieve the next page in
         /// the result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual PageInfo PageInfo { get; set; } 
+        public virtual PageInfo PageInfo { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
-        public virtual TokenPagination TokenPagination { get; set; } 
+        public virtual TokenPagination TokenPagination { get; set; }
 
         /// <summary>The `visitorId` identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
     }    
 
@@ -13635,20 +13635,20 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The id of the channel being sponsored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
-        public virtual string ChannelId { get; set; } 
+        public virtual string ChannelId { get; set; }
 
         /// <summary>The cumulative time a user has been a sponsor in months.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cumulativeDurationMonths")]
-        public virtual System.Nullable<int> CumulativeDurationMonths { get; set; } 
+        public virtual System.Nullable<int> CumulativeDurationMonths { get; set; }
 
         /// <summary>Details about the sponsor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sponsorDetails")]
-        public virtual ChannelProfileDetails SponsorDetails { get; set; } 
+        public virtual ChannelProfileDetails SponsorDetails { get; set; }
 
         /// <summary>The date and time when the user became a sponsor. The value is specified in ISO 8601 (`YYYY-MM-
         /// DDThh:mm:ss.sZ`) format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sponsorSince")]
-        public virtual string SponsorSince { get; set; } 
+        public virtual string SponsorSince { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13661,28 +13661,28 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The contentDetails object contains basic statistics about the subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentDetails")]
-        public virtual SubscriptionContentDetails ContentDetails { get; set; } 
+        public virtual SubscriptionContentDetails ContentDetails { get; set; }
 
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The ID that YouTube uses to uniquely identify the subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "youtube#subscription".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The snippet object contains basic details about the subscription, including its title and the
         /// channel that the user subscribed to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual SubscriptionSnippet Snippet { get; set; } 
+        public virtual SubscriptionSnippet Snippet { get; set; }
 
         /// <summary>The subscriberSnippet object contains basic details about the subscriber.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriberSnippet")]
-        public virtual SubscriptionSubscriberSnippet SubscriberSnippet { get; set; } 
+        public virtual SubscriptionSubscriberSnippet SubscriberSnippet { get; set; }
 
     }    
 
@@ -13691,15 +13691,15 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The type of activity this subscription is for (only uploads, everything).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activityType")]
-        public virtual string ActivityType { get; set; } 
+        public virtual string ActivityType { get; set; }
 
         /// <summary>The number of new items in the subscription since its content was last read.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newItemCount")]
-        public virtual System.Nullable<long> NewItemCount { get; set; } 
+        public virtual System.Nullable<long> NewItemCount { get; set; }
 
         /// <summary>The approximate number of items that the subscription points to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalItemCount")]
-        public virtual System.Nullable<long> TotalItemCount { get; set; } 
+        public virtual System.Nullable<long> TotalItemCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13709,40 +13709,40 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Serialized EventId of the request which produced this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         /// <summary>A list of subscriptions that match the request criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Subscription> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Subscription> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#subscriptionListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the next page in the
         /// result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual PageInfo PageInfo { get; set; } 
+        public virtual PageInfo PageInfo { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the previous page in
         /// the result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prevPageToken")]
-        public virtual string PrevPageToken { get; set; } 
+        public virtual string PrevPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
-        public virtual TokenPagination TokenPagination { get; set; } 
+        public virtual TokenPagination TokenPagination { get; set; }
 
         /// <summary>The visitorId identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
     }    
 
@@ -13752,34 +13752,34 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The ID that YouTube uses to uniquely identify the subscriber's channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
-        public virtual string ChannelId { get; set; } 
+        public virtual string ChannelId { get; set; }
 
         /// <summary>Channel title for the channel that the subscription belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelTitle")]
-        public virtual string ChannelTitle { get; set; } 
+        public virtual string ChannelTitle { get; set; }
 
         /// <summary>The subscription's details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>The date and time that the subscription was created. The value is specified in ISO 8601
         /// format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
-        public virtual string PublishedAt { get; set; } 
+        public virtual string PublishedAt { get; set; }
 
         /// <summary>The id object contains information about the channel that the user subscribed to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual ResourceId ResourceId { get; set; } 
+        public virtual ResourceId ResourceId { get; set; }
 
         /// <summary>A map of thumbnail images associated with the video. For each object in the map, the key is the
         /// name of the thumbnail image, and the value is an object that contains other information about the
         /// thumbnail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnails")]
-        public virtual ThumbnailDetails Thumbnails { get; set; } 
+        public virtual ThumbnailDetails Thumbnails { get; set; }
 
         /// <summary>The subscription's title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13791,19 +13791,19 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The channel ID of the subscriber.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
-        public virtual string ChannelId { get; set; } 
+        public virtual string ChannelId { get; set; }
 
         /// <summary>The description of the subscriber.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Thumbnails for this subscriber.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnails")]
-        public virtual ThumbnailDetails Thumbnails { get; set; } 
+        public virtual ThumbnailDetails Thumbnails { get; set; }
 
         /// <summary>The title of the subscriber.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13814,20 +13814,20 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The ID that YouTube assigns to uniquely identify the Super Chat event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// `"youtube#superChatEvent"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The `snippet` object contains basic details about the Super Chat event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual SuperChatEventSnippet Snippet { get; set; } 
+        public virtual SuperChatEventSnippet Snippet { get; set; }
 
     }    
 
@@ -13835,35 +13835,35 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Serialized EventId of the request which produced this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         /// <summary>A list of Super Chat purchases that match the request criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<SuperChatEvent> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<SuperChatEvent> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#superChatEventListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the next page in the
         /// result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual PageInfo PageInfo { get; set; } 
+        public virtual PageInfo PageInfo { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
-        public virtual TokenPagination TokenPagination { get; set; } 
+        public virtual TokenPagination TokenPagination { get; set; }
 
         /// <summary>The visitorId identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
     }    
 
@@ -13872,46 +13872,46 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The purchase amount, in micros of the purchase currency. e.g., 1 is represented as
         /// 1000000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amountMicros")]
-        public virtual System.Nullable<ulong> AmountMicros { get; set; } 
+        public virtual System.Nullable<ulong> AmountMicros { get; set; }
 
         /// <summary>Channel id where the event occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
-        public virtual string ChannelId { get; set; } 
+        public virtual string ChannelId { get; set; }
 
         /// <summary>The text contents of the comment left by the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commentText")]
-        public virtual string CommentText { get; set; } 
+        public virtual string CommentText { get; set; }
 
         /// <summary>The date and time when the event occurred. The value is specified in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdAt")]
-        public virtual string CreatedAt { get; set; } 
+        public virtual string CreatedAt { get; set; }
 
         /// <summary>The currency in which the purchase was made. ISO 4217.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currency")]
-        public virtual string Currency { get; set; } 
+        public virtual string Currency { get; set; }
 
         /// <summary>A rendered string that displays the purchase amount and currency (e.g., "$1.00"). The string is
         /// rendered for the given language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayString")]
-        public virtual string DisplayString { get; set; } 
+        public virtual string DisplayString { get; set; }
 
         /// <summary>True if this event is a Super Sticker event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isSuperStickerEvent")]
-        public virtual System.Nullable<bool> IsSuperStickerEvent { get; set; } 
+        public virtual System.Nullable<bool> IsSuperStickerEvent { get; set; }
 
         /// <summary>The tier for the paid message, which is based on the amount of money spent to purchase the
         /// message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageType")]
-        public virtual System.Nullable<long> MessageType { get; set; } 
+        public virtual System.Nullable<long> MessageType { get; set; }
 
         /// <summary>If this event is a Super Sticker event, this field will contain metadata about the Super
         /// Sticker.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("superStickerMetadata")]
-        public virtual SuperStickerMetadata SuperStickerMetadata { get; set; } 
+        public virtual SuperStickerMetadata SuperStickerMetadata { get; set; }
 
         /// <summary>Details about the supporter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supporterDetails")]
-        public virtual ChannelProfileDetails SupporterDetails { get; set; } 
+        public virtual ChannelProfileDetails SupporterDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13922,16 +13922,16 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>Internationalized alt text that describes the sticker image and any animation associated with
         /// it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("altText")]
-        public virtual string AltText { get; set; } 
+        public virtual string AltText { get; set; }
 
         /// <summary>Specifies the localization language in which the alt text is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("altTextLanguage")]
-        public virtual string AltTextLanguage { get; set; } 
+        public virtual string AltTextLanguage { get; set; }
 
         /// <summary>Unique identifier of the Super Sticker. This is a shorter form of the alt_text that includes pack
         /// name and a recognizable characteristic of the sticker.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stickerId")]
-        public virtual string StickerId { get; set; } 
+        public virtual string StickerId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13940,13 +13940,13 @@ namespace Google.Apis.YouTube.v3.Data
     public class TestItem : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("gaia")]
-        public virtual System.Nullable<long> Gaia { get; set; } 
+        public virtual System.Nullable<long> Gaia { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual TestItemTestItemSnippet Snippet { get; set; } 
+        public virtual TestItemTestItemSnippet Snippet { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13964,25 +13964,25 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#thirdPartyLink".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The linking_token identifies a YouTube account and channel with which the third party account is
         /// linked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkingToken")]
-        public virtual string LinkingToken { get; set; } 
+        public virtual string LinkingToken { get; set; }
 
         /// <summary>The snippet object contains basic details about the third- party account link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual ThirdPartyLinkSnippet Snippet { get; set; } 
+        public virtual ThirdPartyLinkSnippet Snippet { get; set; }
 
         /// <summary>The status object contains information about the status of the link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual ThirdPartyLinkStatus Status { get; set; } 
+        public virtual ThirdPartyLinkStatus Status { get; set; }
 
     }    
 
@@ -13992,11 +13992,11 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Information specific to a link between a channel and a store on a merchandising platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelToStoreLink")]
-        public virtual ChannelToStoreLinkDetails ChannelToStoreLink { get; set; } 
+        public virtual ChannelToStoreLinkDetails ChannelToStoreLink { get; set; }
 
         /// <summary>Type of the link named after the entities that are being linked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14006,7 +14006,7 @@ namespace Google.Apis.YouTube.v3.Data
     public class ThirdPartyLinkStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("linkStatus")]
-        public virtual string LinkStatus { get; set; } 
+        public virtual string LinkStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14017,15 +14017,15 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>(Optional) Height of the thumbnail image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
-        public virtual System.Nullable<long> Height { get; set; } 
+        public virtual System.Nullable<long> Height { get; set; }
 
         /// <summary>The thumbnail image's URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>(Optional) Width of the thumbnail image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
-        public virtual System.Nullable<long> Width { get; set; } 
+        public virtual System.Nullable<long> Width { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14036,23 +14036,23 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The default image for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("default")]
-        public virtual Thumbnail Default__ { get; set; } 
+        public virtual Thumbnail Default__ { get; set; }
 
         /// <summary>The high quality image for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("high")]
-        public virtual Thumbnail High { get; set; } 
+        public virtual Thumbnail High { get; set; }
 
         /// <summary>The maximum resolution quality image for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxres")]
-        public virtual Thumbnail Maxres { get; set; } 
+        public virtual Thumbnail Maxres { get; set; }
 
         /// <summary>The medium quality image for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medium")]
-        public virtual Thumbnail Medium { get; set; } 
+        public virtual Thumbnail Medium { get; set; }
 
         /// <summary>The standard quality image for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("standard")]
-        public virtual Thumbnail Standard { get; set; } 
+        public virtual Thumbnail Standard { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14062,24 +14062,24 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Serialized EventId of the request which produced this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         /// <summary>A list of thumbnails.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<ThumbnailDetails> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<ThumbnailDetails> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#thumbnailSetResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The visitorId identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
     }    
 
@@ -14096,51 +14096,51 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>Age restriction details related to a video. This data can only be retrieved by the video
         /// owner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageGating")]
-        public virtual VideoAgeGating AgeGating { get; set; } 
+        public virtual VideoAgeGating AgeGating { get; set; }
 
         /// <summary>The contentDetails object contains information about the video content, including the length of the
         /// video and its aspect ratio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentDetails")]
-        public virtual VideoContentDetails ContentDetails { get; set; } 
+        public virtual VideoContentDetails ContentDetails { get; set; }
 
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The fileDetails object encapsulates information about the video file that was uploaded to YouTube,
         /// including the file's resolution, duration, audio and video codecs, stream bitrates, and more. This data can
         /// only be retrieved by the video owner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileDetails")]
-        public virtual VideoFileDetails FileDetails { get; set; } 
+        public virtual VideoFileDetails FileDetails { get; set; }
 
         /// <summary>The ID that YouTube uses to uniquely identify the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "youtube#video".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The liveStreamingDetails object contains metadata about a live video broadcast. The object will
         /// only be present in a video resource if the video is an upcoming, live, or completed live
         /// broadcast.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("liveStreamingDetails")]
-        public virtual VideoLiveStreamingDetails LiveStreamingDetails { get; set; } 
+        public virtual VideoLiveStreamingDetails LiveStreamingDetails { get; set; }
 
         /// <summary>The localizations object contains localized versions of the basic details about the video, such as
         /// its title and description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localizations")]
-        public virtual System.Collections.Generic.IDictionary<string,VideoLocalization> Localizations { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, VideoLocalization> Localizations { get; set; }
 
         /// <summary>The monetizationDetails object encapsulates information about the monetization status of the
         /// video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monetizationDetails")]
-        public virtual VideoMonetizationDetails MonetizationDetails { get; set; } 
+        public virtual VideoMonetizationDetails MonetizationDetails { get; set; }
 
         /// <summary>The player object contains information that you would use to play the video in an embedded
         /// player.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("player")]
-        public virtual VideoPlayer Player { get; set; } 
+        public virtual VideoPlayer Player { get; set; }
 
         /// <summary>The processingDetails object encapsulates information about YouTube's progress in processing the
         /// uploaded video file. The properties in the object identify the current processing status and an estimate of
@@ -14150,41 +14150,41 @@ namespace Google.Apis.YouTube.v3.Data
         /// YouTube has made in processing the uploaded video file. This data can only be retrieved by the video
         /// owner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processingDetails")]
-        public virtual VideoProcessingDetails ProcessingDetails { get; set; } 
+        public virtual VideoProcessingDetails ProcessingDetails { get; set; }
 
         /// <summary>The projectDetails object contains information about the project specific video metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectDetails")]
-        public virtual VideoProjectDetails ProjectDetails { get; set; } 
+        public virtual VideoProjectDetails ProjectDetails { get; set; }
 
         /// <summary>The recordingDetails object encapsulates information about the location, date and address where the
         /// video was recorded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordingDetails")]
-        public virtual VideoRecordingDetails RecordingDetails { get; set; } 
+        public virtual VideoRecordingDetails RecordingDetails { get; set; }
 
         /// <summary>The snippet object contains basic details about the video, such as its title, description, and
         /// category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual VideoSnippet Snippet { get; set; } 
+        public virtual VideoSnippet Snippet { get; set; }
 
         /// <summary>The statistics object contains statistics about the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statistics")]
-        public virtual VideoStatistics Statistics { get; set; } 
+        public virtual VideoStatistics Statistics { get; set; }
 
         /// <summary>The status object contains information about the video's uploading, processing, and privacy
         /// statuses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual VideoStatus Status { get; set; } 
+        public virtual VideoStatus Status { get; set; }
 
         /// <summary>The suggestions object encapsulates suggestions that identify opportunities to improve the video
         /// quality or the metadata for the uploaded video. This data can only be retrieved by the video
         /// owner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestions")]
-        public virtual VideoSuggestions Suggestions { get; set; } 
+        public virtual VideoSuggestions Suggestions { get; set; }
 
         /// <summary>The topicDetails object encapsulates information about Freebase topics associated with the
         /// video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topicDetails")]
-        public virtual VideoTopicDetails TopicDetails { get; set; } 
+        public virtual VideoTopicDetails TopicDetails { get; set; }
 
     }    
 
@@ -14192,25 +14192,25 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Additional comments regarding the abuse report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comments")]
-        public virtual string Comments { get; set; } 
+        public virtual string Comments { get; set; }
 
         /// <summary>The language that the content was viewed in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
-        public virtual string Language { get; set; } 
+        public virtual string Language { get; set; }
 
         /// <summary>The high-level, or primary, reason that the content is abusive. The value is an abuse report reason
         /// ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasonId")]
-        public virtual string ReasonId { get; set; } 
+        public virtual string ReasonId { get; set; }
 
         /// <summary>The specific, or secondary, reason that this content is abusive (if available). The value is an
         /// abuse report reason ID that is a valid secondary reason for the primary reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryReasonId")]
-        public virtual string SecondaryReasonId { get; set; } 
+        public virtual string SecondaryReasonId { get; set; }
 
         /// <summary>The ID that YouTube uses to uniquely identify the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoId")]
-        public virtual string VideoId { get; set; } 
+        public virtual string VideoId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14222,20 +14222,20 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The ID of this abuse report reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// `"youtube#videoAbuseReportReason"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The `snippet` object contains basic details about the abuse report reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual VideoAbuseReportReasonSnippet Snippet { get; set; } 
+        public virtual VideoAbuseReportReasonSnippet Snippet { get; set; }
 
     }    
 
@@ -14243,24 +14243,24 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Serialized EventId of the request which produced this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         /// <summary>A list of valid abuse reasons that are used with `video.ReportAbuse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<VideoAbuseReportReason> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<VideoAbuseReportReason> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// `"youtube#videoAbuseReportReasonListResponse"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The `visitorId` identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
     }    
 
@@ -14269,12 +14269,12 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The localized label belonging to this abuse report reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; } 
+        public virtual string Label { get; set; }
 
         /// <summary>The secondary reasons associated with this reason, if any are available. (There might be 0 or
         /// more.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryReasons")]
-        public virtual System.Collections.Generic.IList<VideoAbuseReportSecondaryReason> SecondaryReasons { get; set; } 
+        public virtual System.Collections.Generic.IList<VideoAbuseReportSecondaryReason> SecondaryReasons { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14284,11 +14284,11 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The ID of this abuse report secondary reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The localized label for this abuse report secondary reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; } 
+        public virtual string Label { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14299,17 +14299,17 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>Indicates whether or not the video has alcoholic beverage content. Only users of legal purchasing
         /// age in a particular country, as identified by ICAP, can view the content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alcoholContent")]
-        public virtual System.Nullable<bool> AlcoholContent { get; set; } 
+        public virtual System.Nullable<bool> AlcoholContent { get; set; }
 
         /// <summary>Age-restricted trailers. For redband trailers and adult-rated video-games. Only users aged 18+ can
         /// view the content. The the field is true the content is restricted to viewers aged 18+. Otherwise The field
         /// won't be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restricted")]
-        public virtual System.Nullable<bool> Restricted { get; set; } 
+        public virtual System.Nullable<bool> Restricted { get; set; }
 
         /// <summary>Video game rating, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoGameRating")]
-        public virtual string VideoGameRating { get; set; } 
+        public virtual string VideoGameRating { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14321,20 +14321,20 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>The ID that YouTube uses to uniquely identify the video category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#videoCategory".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The snippet object contains basic details about the video category, including its title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual VideoCategorySnippet Snippet { get; set; } 
+        public virtual VideoCategorySnippet Snippet { get; set; }
 
     }    
 
@@ -14342,42 +14342,42 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Serialized EventId of the request which produced this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         /// <summary>A list of video categories that can be associated with YouTube videos. In this map, the video
         /// category ID is the map key, and its value is the corresponding videoCategory resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<VideoCategory> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<VideoCategory> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#videoCategoryListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the next page in the
         /// result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>General pagination information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual PageInfo PageInfo { get; set; } 
+        public virtual PageInfo PageInfo { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the previous page in
         /// the result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prevPageToken")]
-        public virtual string PrevPageToken { get; set; } 
+        public virtual string PrevPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
-        public virtual TokenPagination TokenPagination { get; set; } 
+        public virtual TokenPagination TokenPagination { get; set; }
 
         /// <summary>The visitorId identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
     }    
 
@@ -14385,15 +14385,15 @@ namespace Google.Apis.YouTube.v3.Data
     public class VideoCategorySnippet : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("assignable")]
-        public virtual System.Nullable<bool> Assignable { get; set; } 
+        public virtual System.Nullable<bool> Assignable { get; set; }
 
         /// <summary>The YouTube channel that created the video category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
-        public virtual string ChannelId { get; set; } 
+        public virtual string ChannelId { get; set; }
 
         /// <summary>The video category's title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14404,25 +14404,25 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The value of captions indicates whether the video has captions or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("caption")]
-        public virtual string Caption { get; set; } 
+        public virtual string Caption { get; set; }
 
         /// <summary>Specifies the ratings that the video received under various rating schemes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentRating")]
-        public virtual ContentRating ContentRating { get; set; } 
+        public virtual ContentRating ContentRating { get; set; }
 
         /// <summary>The countryRestriction object contains information about the countries where a video is (or is not)
         /// viewable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryRestriction")]
-        public virtual AccessPolicy CountryRestriction { get; set; } 
+        public virtual AccessPolicy CountryRestriction { get; set; }
 
         /// <summary>The value of definition indicates whether the video is available in high definition or only in
         /// standard definition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("definition")]
-        public virtual string Definition { get; set; } 
+        public virtual string Definition { get; set; }
 
         /// <summary>The value of dimension indicates whether the video is available in 3D or in 2D.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
-        public virtual string Dimension { get; set; } 
+        public virtual string Dimension { get; set; }
 
         /// <summary>The length of the video. The tag value is an ISO 8601 duration in the format PT#M#S, in which the
         /// letters PT indicate that the value specifies a period of time, and the letters M and S refer to length in
@@ -14430,26 +14430,26 @@ namespace Google.Apis.YouTube.v3.Data
         /// specify the number of minutes (or seconds) of the video. For example, a value of PT15M51S indicates that the
         /// video is 15 minutes and 51 seconds long.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual string Duration { get; set; } 
+        public virtual string Duration { get; set; }
 
         /// <summary>Indicates whether the video uploader has provided a custom thumbnail image for the video. This
         /// property is only visible to the video uploader.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasCustomThumbnail")]
-        public virtual System.Nullable<bool> HasCustomThumbnail { get; set; } 
+        public virtual System.Nullable<bool> HasCustomThumbnail { get; set; }
 
         /// <summary>The value of is_license_content indicates whether the video is licensed content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licensedContent")]
-        public virtual System.Nullable<bool> LicensedContent { get; set; } 
+        public virtual System.Nullable<bool> LicensedContent { get; set; }
 
         /// <summary>Specifies the projection format of the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projection")]
-        public virtual string Projection { get; set; } 
+        public virtual string Projection { get; set; }
 
         /// <summary>The regionRestriction object contains information about the countries where a video is (or is not)
         /// viewable. The object will contain either the contentDetails.regionRestriction.allowed property or the
         /// contentDetails.regionRestriction.blocked property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionRestriction")]
-        public virtual VideoContentDetailsRegionRestriction RegionRestriction { get; set; } 
+        public virtual VideoContentDetailsRegionRestriction RegionRestriction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14462,13 +14462,13 @@ namespace Google.Apis.YouTube.v3.Data
         /// present and a country is not listed in its value, then the video is blocked from appearing in that country.
         /// If this property is present and contains an empty list, the video is blocked in all countries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowed")]
-        public virtual System.Collections.Generic.IList<string> Allowed { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Allowed { get; set; }
 
         /// <summary>A list of region codes that identify countries where the video is blocked. If this property is
         /// present and a country is not listed in its value, then the video is viewable in that country. If this
         /// property is present and contains an empty list, the video is viewable in all countries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blocked")]
-        public virtual System.Collections.Generic.IList<string> Blocked { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Blocked { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14481,46 +14481,46 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>A list of audio streams contained in the uploaded video file. Each item in the list contains
         /// detailed metadata about an audio stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioStreams")]
-        public virtual System.Collections.Generic.IList<VideoFileDetailsAudioStream> AudioStreams { get; set; } 
+        public virtual System.Collections.Generic.IList<VideoFileDetailsAudioStream> AudioStreams { get; set; }
 
         /// <summary>The uploaded video file's combined (video and audio) bitrate in bits per second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bitrateBps")]
-        public virtual System.Nullable<ulong> BitrateBps { get; set; } 
+        public virtual System.Nullable<ulong> BitrateBps { get; set; }
 
         /// <summary>The uploaded video file's container format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("container")]
-        public virtual string Container { get; set; } 
+        public virtual string Container { get; set; }
 
         /// <summary>The date and time when the uploaded video file was created. The value is specified in ISO 8601
         /// format. Currently, the following ISO 8601 formats are supported: - Date only: YYYY-MM-DD - Naive time: YYYY-
         /// MM-DDTHH:MM:SS - Time with timezone: YYYY-MM-DDTHH:MM:SS+HH:MM </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual string CreationTime { get; set; } 
+        public virtual string CreationTime { get; set; }
 
         /// <summary>The length of the uploaded video in milliseconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("durationMs")]
-        public virtual System.Nullable<ulong> DurationMs { get; set; } 
+        public virtual System.Nullable<ulong> DurationMs { get; set; }
 
         /// <summary>The uploaded file's name. This field is present whether a video file or another type of file was
         /// uploaded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
-        public virtual string FileName { get; set; } 
+        public virtual string FileName { get; set; }
 
         /// <summary>The uploaded file's size in bytes. This field is present whether a video file or another type of
         /// file was uploaded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileSize")]
-        public virtual System.Nullable<ulong> FileSize { get; set; } 
+        public virtual System.Nullable<ulong> FileSize { get; set; }
 
         /// <summary>The uploaded file's type as detected by YouTube's video processing engine. Currently, YouTube only
         /// processes video files, but this field is present whether a video file or another type of file was
         /// uploaded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
-        public virtual string FileType { get; set; } 
+        public virtual string FileType { get; set; }
 
         /// <summary>A list of video streams contained in the uploaded video file. Each item in the list contains
         /// detailed metadata about a video stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoStreams")]
-        public virtual System.Collections.Generic.IList<VideoFileDetailsVideoStream> VideoStreams { get; set; } 
+        public virtual System.Collections.Generic.IList<VideoFileDetailsVideoStream> VideoStreams { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14531,20 +14531,20 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The audio stream's bitrate, in bits per second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bitrateBps")]
-        public virtual System.Nullable<ulong> BitrateBps { get; set; } 
+        public virtual System.Nullable<ulong> BitrateBps { get; set; }
 
         /// <summary>The number of audio channels that the stream contains.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelCount")]
-        public virtual System.Nullable<long> ChannelCount { get; set; } 
+        public virtual System.Nullable<long> ChannelCount { get; set; }
 
         /// <summary>The audio codec that the stream uses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codec")]
-        public virtual string Codec { get; set; } 
+        public virtual string Codec { get; set; }
 
         /// <summary>A value that uniquely identifies a video vendor. Typically, the value is a four-letter vendor
         /// code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vendor")]
-        public virtual string Vendor { get; set; } 
+        public virtual string Vendor { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14556,38 +14556,38 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The video content's display aspect ratio, which specifies the aspect ratio in which the video
         /// should be displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aspectRatio")]
-        public virtual System.Nullable<double> AspectRatio { get; set; } 
+        public virtual System.Nullable<double> AspectRatio { get; set; }
 
         /// <summary>The video stream's bitrate, in bits per second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bitrateBps")]
-        public virtual System.Nullable<ulong> BitrateBps { get; set; } 
+        public virtual System.Nullable<ulong> BitrateBps { get; set; }
 
         /// <summary>The video codec that the stream uses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codec")]
-        public virtual string Codec { get; set; } 
+        public virtual string Codec { get; set; }
 
         /// <summary>The video stream's frame rate, in frames per second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frameRateFps")]
-        public virtual System.Nullable<double> FrameRateFps { get; set; } 
+        public virtual System.Nullable<double> FrameRateFps { get; set; }
 
         /// <summary>The encoded video content's height in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("heightPixels")]
-        public virtual System.Nullable<long> HeightPixels { get; set; } 
+        public virtual System.Nullable<long> HeightPixels { get; set; }
 
         /// <summary>The amount that YouTube needs to rotate the original source content to properly display the
         /// video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rotation")]
-        public virtual string Rotation { get; set; } 
+        public virtual string Rotation { get; set; }
 
         /// <summary>A value that uniquely identifies a video vendor. Typically, the value is a four-letter vendor
         /// code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vendor")]
-        public virtual string Vendor { get; set; } 
+        public virtual string Vendor { get; set; }
 
         /// <summary>The encoded video content's width in pixels. You can calculate the video's encoding aspect ratio as
         /// width_pixels / height_pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("widthPixels")]
-        public virtual System.Nullable<long> WidthPixels { get; set; } 
+        public virtual System.Nullable<long> WidthPixels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14597,40 +14597,40 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Serialized EventId of the request which produced this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Video> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<Video> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#videoListResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the next page in the
         /// result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>General pagination information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual PageInfo PageInfo { get; set; } 
+        public virtual PageInfo PageInfo { get; set; }
 
         /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the previous page in
         /// the result set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prevPageToken")]
-        public virtual string PrevPageToken { get; set; } 
+        public virtual string PrevPageToken { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
-        public virtual TokenPagination TokenPagination { get; set; } 
+        public virtual TokenPagination TokenPagination { get; set; }
 
         /// <summary>The visitorId identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
     }    
 
@@ -14642,17 +14642,17 @@ namespace Google.Apis.YouTube.v3.Data
         /// field will be removed and the live chat closed down. For persistent broadcasts that live chat id will no
         /// longer be tied to this video but rather to the new video being displayed at the persistent page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeLiveChatId")]
-        public virtual string ActiveLiveChatId { get; set; } 
+        public virtual string ActiveLiveChatId { get; set; }
 
         /// <summary>The time that the broadcast actually ended. The value is specified in ISO 8601 format. This value
         /// will not be available until the broadcast is over.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actualEndTime")]
-        public virtual string ActualEndTime { get; set; } 
+        public virtual string ActualEndTime { get; set; }
 
         /// <summary>The time that the broadcast actually started. The value is specified in ISO 8601 format. This value
         /// will not be available until the broadcast begins.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actualStartTime")]
-        public virtual string ActualStartTime { get; set; } 
+        public virtual string ActualStartTime { get; set; }
 
         /// <summary>The number of viewers currently watching the broadcast. The property and its value will be present
         /// if the broadcast has current viewers and the broadcast owner has not hidden the viewcount for the video.
@@ -14660,18 +14660,18 @@ namespace Google.Apis.YouTube.v3.Data
         /// So, this property would not identify the number of viewers watching an archived video of a live broadcast
         /// that already ended.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("concurrentViewers")]
-        public virtual System.Nullable<ulong> ConcurrentViewers { get; set; } 
+        public virtual System.Nullable<ulong> ConcurrentViewers { get; set; }
 
         /// <summary>The time that the broadcast is scheduled to end. The value is specified in ISO 8601 format. If the
         /// value is empty or the property is not present, then the broadcast is scheduled to continue
         /// indefinitely.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledEndTime")]
-        public virtual string ScheduledEndTime { get; set; } 
+        public virtual string ScheduledEndTime { get; set; }
 
         /// <summary>The time that the broadcast is scheduled to begin. The value is specified in ISO 8601
         /// format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledStartTime")]
-        public virtual string ScheduledStartTime { get; set; } 
+        public virtual string ScheduledStartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14682,11 +14682,11 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Localized version of the video's description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Localized version of the video's title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14697,7 +14697,7 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The value of access indicates whether the video can be monetized or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access")]
-        public virtual AccessPolicy Access { get; set; } 
+        public virtual AccessPolicy Access { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14707,15 +14707,15 @@ namespace Google.Apis.YouTube.v3.Data
     public class VideoPlayer : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("embedHeight")]
-        public virtual System.Nullable<long> EmbedHeight { get; set; } 
+        public virtual System.Nullable<long> EmbedHeight { get; set; }
 
         /// <summary>An  tag that embeds a player that will play the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("embedHtml")]
-        public virtual string EmbedHtml { get; set; } 
+        public virtual string EmbedHtml { get; set; }
 
         /// <summary>The embed width</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("embedWidth")]
-        public virtual System.Nullable<long> EmbedWidth { get; set; } 
+        public virtual System.Nullable<long> EmbedWidth { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14728,45 +14728,45 @@ namespace Google.Apis.YouTube.v3.Data
         /// playback experience, are available for the video. You can retrieve these suggestions by requesting the
         /// suggestions part in your videos.list() request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("editorSuggestionsAvailability")]
-        public virtual string EditorSuggestionsAvailability { get; set; } 
+        public virtual string EditorSuggestionsAvailability { get; set; }
 
         /// <summary>This value indicates whether file details are available for the uploaded video. You can retrieve a
         /// video's file details by requesting the fileDetails part in your videos.list() request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileDetailsAvailability")]
-        public virtual string FileDetailsAvailability { get; set; } 
+        public virtual string FileDetailsAvailability { get; set; }
 
         /// <summary>The reason that YouTube failed to process the video. This property will only have a value if the
         /// processingStatus property's value is failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processingFailureReason")]
-        public virtual string ProcessingFailureReason { get; set; } 
+        public virtual string ProcessingFailureReason { get; set; }
 
         /// <summary>This value indicates whether the video processing engine has generated suggestions that might
         /// improve YouTube's ability to process the the video, warnings that explain video processing problems, or
         /// errors that cause video processing problems. You can retrieve these suggestions by requesting the
         /// suggestions part in your videos.list() request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processingIssuesAvailability")]
-        public virtual string ProcessingIssuesAvailability { get; set; } 
+        public virtual string ProcessingIssuesAvailability { get; set; }
 
         /// <summary>The processingProgress object contains information about the progress YouTube has made in
         /// processing the video. The values are really only relevant if the video's processing status is
         /// processing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processingProgress")]
-        public virtual VideoProcessingDetailsProcessingProgress ProcessingProgress { get; set; } 
+        public virtual VideoProcessingDetailsProcessingProgress ProcessingProgress { get; set; }
 
         /// <summary>The video's processing status. This value indicates whether YouTube was able to process the video
         /// or if the video is still being processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processingStatus")]
-        public virtual string ProcessingStatus { get; set; } 
+        public virtual string ProcessingStatus { get; set; }
 
         /// <summary>This value indicates whether keyword (tag) suggestions are available for the video. Tags can be
         /// added to a video's metadata to make it easier for other users to find the video. You can retrieve these
         /// suggestions by requesting the suggestions part in your videos.list() request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagSuggestionsAvailability")]
-        public virtual string TagSuggestionsAvailability { get; set; } 
+        public virtual string TagSuggestionsAvailability { get; set; }
 
         /// <summary>This value indicates whether thumbnail images have been generated for the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailsAvailability")]
-        public virtual string ThumbnailsAvailability { get; set; } 
+        public virtual string ThumbnailsAvailability { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14781,17 +14781,17 @@ namespace Google.Apis.YouTube.v3.Data
         /// the number of parts that have already been processed, it is possible that the calculated progress could
         /// periodically decrease while YouTube processes a video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partsProcessed")]
-        public virtual System.Nullable<ulong> PartsProcessed { get; set; } 
+        public virtual System.Nullable<ulong> PartsProcessed { get; set; }
 
         /// <summary>An estimate of the total number of parts that need to be processed for the video. The number may be
         /// updated with more precise estimates while YouTube processes the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partsTotal")]
-        public virtual System.Nullable<ulong> PartsTotal { get; set; } 
+        public virtual System.Nullable<ulong> PartsTotal { get; set; }
 
         /// <summary>An estimate of the amount of time, in millseconds, that YouTube needs to finish processing the
         /// video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeLeftMs")]
-        public virtual System.Nullable<ulong> TimeLeftMs { get; set; } 
+        public virtual System.Nullable<ulong> TimeLeftMs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14802,7 +14802,7 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>A list of project tags associated with the video during the upload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
-        public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14813,11 +14813,11 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Rating of a video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rating")]
-        public virtual string Rating { get; set; } 
+        public virtual string Rating { get; set; }
 
         /// <summary>The ID that YouTube uses to uniquely identify the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoId")]
-        public virtual string VideoId { get; set; } 
+        public virtual string VideoId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14827,24 +14827,24 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Serialized EventId of the request which produced this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
+        public virtual string EventId { get; set; }
 
         /// <summary>A list of ratings that match the request criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<VideoRating> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<VideoRating> Items { get; set; }
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "youtube#videoGetRatingResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The visitorId identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
+        public virtual string VisitorId { get; set; }
 
     }    
 
@@ -14853,16 +14853,16 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The geolocation information associated with the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual GeoPoint Location { get; set; } 
+        public virtual GeoPoint Location { get; set; }
 
         /// <summary>The text description of the location where the video was recorded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationDescription")]
-        public virtual string LocationDescription { get; set; } 
+        public virtual string LocationDescription { get; set; }
 
         /// <summary>The date and time when the video was recorded. The value is specified in ISO 8601 (YYYY-MM-
         /// DDThh:mm:ss.sssZ) format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordingDate")]
-        public virtual string RecordingDate { get; set; } 
+        public virtual string RecordingDate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14873,56 +14873,56 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The YouTube video category associated with the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoryId")]
-        public virtual string CategoryId { get; set; } 
+        public virtual string CategoryId { get; set; }
 
         /// <summary>The ID that YouTube uses to uniquely identify the channel that the video was uploaded to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
-        public virtual string ChannelId { get; set; } 
+        public virtual string ChannelId { get; set; }
 
         /// <summary>Channel title for the channel that the video belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelTitle")]
-        public virtual string ChannelTitle { get; set; } 
+        public virtual string ChannelTitle { get; set; }
 
         /// <summary>The default_audio_language property specifies the language spoken in the video's default audio
         /// track.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultAudioLanguage")]
-        public virtual string DefaultAudioLanguage { get; set; } 
+        public virtual string DefaultAudioLanguage { get; set; }
 
         /// <summary>The language of the videos's default snippet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultLanguage")]
-        public virtual string DefaultLanguage { get; set; } 
+        public virtual string DefaultLanguage { get; set; }
 
         /// <summary>The video's description. @mutable youtube.videos.insert youtube.videos.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Indicates if the video is an upcoming/active live broadcast. Or it's "none" if the video is not an
         /// upcoming/active live broadcast.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("liveBroadcastContent")]
-        public virtual string LiveBroadcastContent { get; set; } 
+        public virtual string LiveBroadcastContent { get; set; }
 
         /// <summary>Localized snippet selected with the hl parameter. If no such localization exists, this field is
         /// populated with the default snippet. (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localized")]
-        public virtual VideoLocalization Localized { get; set; } 
+        public virtual VideoLocalization Localized { get; set; }
 
         /// <summary>The date and time that the video was uploaded. The value is specified in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
-        public virtual string PublishedAt { get; set; } 
+        public virtual string PublishedAt { get; set; }
 
         /// <summary>A list of keyword tags associated with the video. Tags may contain spaces.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
-        public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>A map of thumbnail images associated with the video. For each object in the map, the key is the
         /// name of the thumbnail image, and the value is an object that contains other information about the
         /// thumbnail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnails")]
-        public virtual ThumbnailDetails Thumbnails { get; set; } 
+        public virtual ThumbnailDetails Thumbnails { get; set; }
 
         /// <summary>The video's title. @mutable youtube.videos.insert youtube.videos.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14933,25 +14933,25 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The number of comments for the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commentCount")]
-        public virtual System.Nullable<ulong> CommentCount { get; set; } 
+        public virtual System.Nullable<ulong> CommentCount { get; set; }
 
         /// <summary>The number of users who have indicated that they disliked the video by giving it a negative
         /// rating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dislikeCount")]
-        public virtual System.Nullable<ulong> DislikeCount { get; set; } 
+        public virtual System.Nullable<ulong> DislikeCount { get; set; }
 
         /// <summary>The number of users who currently have the video marked as a favorite video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("favoriteCount")]
-        public virtual System.Nullable<ulong> FavoriteCount { get; set; } 
+        public virtual System.Nullable<ulong> FavoriteCount { get; set; }
 
         /// <summary>The number of users who have indicated that they liked the video by giving it a positive
         /// rating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("likeCount")]
-        public virtual System.Nullable<ulong> LikeCount { get; set; } 
+        public virtual System.Nullable<ulong> LikeCount { get; set; }
 
         /// <summary>The number of times the video has been viewed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewCount")]
-        public virtual System.Nullable<ulong> ViewCount { get; set; } 
+        public virtual System.Nullable<ulong> ViewCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14963,46 +14963,46 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>This value indicates if the video can be embedded on another website. @mutable
         /// youtube.videos.insert youtube.videos.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("embeddable")]
-        public virtual System.Nullable<bool> Embeddable { get; set; } 
+        public virtual System.Nullable<bool> Embeddable { get; set; }
 
         /// <summary>This value explains why a video failed to upload. This property is only present if the uploadStatus
         /// property indicates that the upload failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureReason")]
-        public virtual string FailureReason { get; set; } 
+        public virtual string FailureReason { get; set; }
 
         /// <summary>The video's license. @mutable youtube.videos.insert youtube.videos.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("license")]
-        public virtual string License { get; set; } 
+        public virtual string License { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("madeForKids")]
-        public virtual System.Nullable<bool> MadeForKids { get; set; } 
+        public virtual System.Nullable<bool> MadeForKids { get; set; }
 
         /// <summary>The video's privacy status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privacyStatus")]
-        public virtual string PrivacyStatus { get; set; } 
+        public virtual string PrivacyStatus { get; set; }
 
         /// <summary>This value indicates if the extended video statistics on the watch page can be viewed by everyone.
         /// Note that the view count, likes, etc will still be visible if this is disabled. @mutable
         /// youtube.videos.insert youtube.videos.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicStatsViewable")]
-        public virtual System.Nullable<bool> PublicStatsViewable { get; set; } 
+        public virtual System.Nullable<bool> PublicStatsViewable { get; set; }
 
         /// <summary>The date and time when the video is scheduled to publish. It can be set only if the privacy status
         /// of the video is private. The value is specified in ISO 8601 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishAt")]
-        public virtual string PublishAt { get; set; } 
+        public virtual string PublishAt { get; set; }
 
         /// <summary>This value explains why YouTube rejected an uploaded video. This property is only present if the
         /// uploadStatus property indicates that the upload was rejected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rejectionReason")]
-        public virtual string RejectionReason { get; set; } 
+        public virtual string RejectionReason { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("selfDeclaredMadeForKids")]
-        public virtual System.Nullable<bool> SelfDeclaredMadeForKids { get; set; } 
+        public virtual System.Nullable<bool> SelfDeclaredMadeForKids { get; set; }
 
         /// <summary>The status of the uploaded video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadStatus")]
-        public virtual string UploadStatus { get; set; } 
+        public virtual string UploadStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15015,29 +15015,29 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>A list of video editing operations that might improve the video quality or playback experience of
         /// the uploaded video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("editorSuggestions")]
-        public virtual System.Collections.Generic.IList<string> EditorSuggestions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> EditorSuggestions { get; set; }
 
         /// <summary>A list of errors that will prevent YouTube from successfully processing the uploaded video video.
         /// These errors indicate that, regardless of the video's current processing status, eventually, that status
         /// will almost certainly be failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processingErrors")]
-        public virtual System.Collections.Generic.IList<string> ProcessingErrors { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ProcessingErrors { get; set; }
 
         /// <summary>A list of suggestions that may improve YouTube's ability to process the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processingHints")]
-        public virtual System.Collections.Generic.IList<string> ProcessingHints { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ProcessingHints { get; set; }
 
         /// <summary>A list of reasons why YouTube may have difficulty transcoding the uploaded video or that might
         /// result in an erroneous transcoding. These warnings are generated before YouTube actually processes the
         /// uploaded video file. In addition, they identify issues that are unlikely to cause the video processing to
         /// fail but that might cause problems such as sync issues, video artifacts, or a missing audio track.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processingWarnings")]
-        public virtual System.Collections.Generic.IList<string> ProcessingWarnings { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ProcessingWarnings { get; set; }
 
         /// <summary>A list of keyword tags that could be added to the video's metadata to increase the likelihood that
         /// users will locate your video when searching or browsing on YouTube.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagSuggestions")]
-        public virtual System.Collections.Generic.IList<VideoSuggestionsTagSuggestion> TagSuggestions { get; set; } 
+        public virtual System.Collections.Generic.IList<VideoSuggestionsTagSuggestion> TagSuggestions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15051,11 +15051,11 @@ namespace Google.Apis.YouTube.v3.Data
         /// By default, tag suggestions are relevant for all categories if there are no restricts defined for the
         /// keyword.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoryRestricts")]
-        public virtual System.Collections.Generic.IList<string> CategoryRestricts { get; set; } 
+        public virtual System.Collections.Generic.IList<string> CategoryRestricts { get; set; }
 
         /// <summary>The keyword tag suggested for the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
-        public virtual string Tag { get; set; } 
+        public virtual string Tag { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15068,18 +15068,18 @@ namespace Google.Apis.YouTube.v3.Data
         /// that may be mentioned in, or appear in the video. You can retrieve information about each topic using
         /// Freebase Topic API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relevantTopicIds")]
-        public virtual System.Collections.Generic.IList<string> RelevantTopicIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> RelevantTopicIds { get; set; }
 
         /// <summary>A list of Wikipedia URLs that provide a high-level description of the video's content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topicCategories")]
-        public virtual System.Collections.Generic.IList<string> TopicCategories { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TopicCategories { get; set; }
 
         /// <summary>A list of Freebase topic IDs that are centrally associated with the video. These are topics that
         /// are centrally featured in the video, and it can be said that the video is mainly about each of these. You
         /// can retrieve information about each topic using the < a
         /// href="http://wiki.freebase.com/wiki/Topic_API">Freebase Topic API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topicIds")]
-        public virtual System.Collections.Generic.IList<string> TopicIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TopicIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15090,15 +15090,15 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>The text color for the video watch page's branded area.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
-        public virtual string BackgroundColor { get; set; } 
+        public virtual string BackgroundColor { get; set; }
 
         /// <summary>An ID that uniquely identifies a playlist that displays next to the video player.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("featuredPlaylistId")]
-        public virtual string FeaturedPlaylistId { get; set; } 
+        public virtual string FeaturedPlaylistId { get; set; }
 
         /// <summary>The background color for the video watch page's branded area.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textColor")]
-        public virtual string TextColor { get; set; } 
+        public virtual string TextColor { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

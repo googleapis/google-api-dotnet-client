@@ -1022,23 +1022,23 @@ namespace Google.Apis.YouTubeReporting.v1.Data
     {
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blobGeneration")]
-        public virtual System.Nullable<long> BlobGeneration { get; set; } 
+        public virtual System.Nullable<long> BlobGeneration { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blobId")]
-        public virtual string BlobId { get; set; } 
+        public virtual string BlobId { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadReadHandle")]
-        public virtual string DownloadReadHandle { get; set; } 
+        public virtual string DownloadReadHandle { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readToken")]
-        public virtual string ReadToken { get; set; } 
+        public virtual string ReadToken { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadMetadataContainer")]
-        public virtual string UploadMetadataContainer { get; set; } 
+        public virtual string UploadMetadataContainer { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1049,47 +1049,47 @@ namespace Google.Apis.YouTubeReporting.v1.Data
     {
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blobRef")]
-        public virtual string BlobRef { get; set; } 
+        public virtual string BlobRef { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blobstore2Info")]
-        public virtual GdataBlobstore2Info Blobstore2Info { get; set; } 
+        public virtual GdataBlobstore2Info Blobstore2Info { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cosmoBinaryReference")]
-        public virtual string CosmoBinaryReference { get; set; } 
+        public virtual string CosmoBinaryReference { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crc32cHash")]
-        public virtual System.Nullable<long> Crc32cHash { get; set; } 
+        public virtual System.Nullable<long> Crc32cHash { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inline")]
-        public virtual string Inline { get; set; } 
+        public virtual string Inline { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("length")]
-        public virtual System.Nullable<long> Length { get; set; } 
+        public virtual System.Nullable<long> Length { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("md5Hash")]
-        public virtual string Md5Hash { get; set; } 
+        public virtual string Md5Hash { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
-        public virtual GdataObjectId ObjectId { get; set; } 
+        public virtual GdataObjectId ObjectId { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; } 
+        public virtual string Path { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referenceType")]
-        public virtual string ReferenceType { get; set; } 
+        public virtual string ReferenceType { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha1Hash")]
-        public virtual string Sha1Hash { get; set; } 
+        public virtual string Sha1Hash { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1100,23 +1100,23 @@ namespace Google.Apis.YouTubeReporting.v1.Data
     {
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bestGuess")]
-        public virtual string BestGuess { get; set; } 
+        public virtual string BestGuess { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fromBytes")]
-        public virtual string FromBytes { get; set; } 
+        public virtual string FromBytes { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fromFileName")]
-        public virtual string FromFileName { get; set; } 
+        public virtual string FromFileName { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fromHeader")]
-        public virtual string FromHeader { get; set; } 
+        public virtual string FromHeader { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fromUrlPath")]
-        public virtual string FromUrlPath { get; set; } 
+        public virtual string FromUrlPath { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1127,23 +1127,23 @@ namespace Google.Apis.YouTubeReporting.v1.Data
     {
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("checksumsLocation")]
-        public virtual GdataCompositeMedia ChecksumsLocation { get; set; } 
+        public virtual GdataCompositeMedia ChecksumsLocation { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chunkSizeBytes")]
-        public virtual System.Nullable<long> ChunkSizeBytes { get; set; } 
+        public virtual System.Nullable<long> ChunkSizeBytes { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectLocation")]
-        public virtual GdataCompositeMedia ObjectLocation { get; set; } 
+        public virtual GdataCompositeMedia ObjectLocation { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectSizeBytes")]
-        public virtual System.Nullable<long> ObjectSizeBytes { get; set; } 
+        public virtual System.Nullable<long> ObjectSizeBytes { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectVersion")]
-        public virtual string ObjectVersion { get; set; } 
+        public virtual string ObjectVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1154,7 +1154,7 @@ namespace Google.Apis.YouTubeReporting.v1.Data
     {
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectLocation")]
-        public virtual GdataCompositeMedia ObjectLocation { get; set; } 
+        public virtual GdataCompositeMedia ObjectLocation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1165,15 +1165,15 @@ namespace Google.Apis.YouTubeReporting.v1.Data
     {
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("checksumsInfo")]
-        public virtual GdataCompositeMedia ChecksumsInfo { get; set; } 
+        public virtual GdataCompositeMedia ChecksumsInfo { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectInfo")]
-        public virtual GdataCompositeMedia ObjectInfo { get; set; } 
+        public virtual GdataCompositeMedia ObjectInfo { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectVersion")]
-        public virtual string ObjectVersion { get; set; } 
+        public virtual string ObjectVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1184,11 +1184,11 @@ namespace Google.Apis.YouTubeReporting.v1.Data
     {
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectVersion")]
-        public virtual string ObjectVersion { get; set; } 
+        public virtual string ObjectVersion { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalObject")]
-        public virtual GdataCompositeMedia OriginalObject { get; set; } 
+        public virtual GdataCompositeMedia OriginalObject { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1199,11 +1199,11 @@ namespace Google.Apis.YouTubeReporting.v1.Data
     {
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectSizeBytes")]
-        public virtual System.Nullable<long> ObjectSizeBytes { get; set; } 
+        public virtual System.Nullable<long> ObjectSizeBytes { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectVersion")]
-        public virtual string ObjectVersion { get; set; } 
+        public virtual string ObjectVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1214,11 +1214,11 @@ namespace Google.Apis.YouTubeReporting.v1.Data
     {
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowGzipCompression")]
-        public virtual System.Nullable<bool> AllowGzipCompression { get; set; } 
+        public virtual System.Nullable<bool> AllowGzipCompression { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreRange")]
-        public virtual System.Nullable<bool> IgnoreRange { get; set; } 
+        public virtual System.Nullable<bool> IgnoreRange { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1229,123 +1229,123 @@ namespace Google.Apis.YouTubeReporting.v1.Data
     {
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("algorithm")]
-        public virtual string Algorithm { get; set; } 
+        public virtual string Algorithm { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigstoreObjectRef")]
-        public virtual string BigstoreObjectRef { get; set; } 
+        public virtual string BigstoreObjectRef { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blobRef")]
-        public virtual string BlobRef { get; set; } 
+        public virtual string BlobRef { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blobstore2Info")]
-        public virtual GdataBlobstore2Info Blobstore2Info { get; set; } 
+        public virtual GdataBlobstore2Info Blobstore2Info { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compositeMedia")]
-        public virtual System.Collections.Generic.IList<GdataCompositeMedia> CompositeMedia { get; set; } 
+        public virtual System.Collections.Generic.IList<GdataCompositeMedia> CompositeMedia { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
-        public virtual string ContentType { get; set; } 
+        public virtual string ContentType { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentTypeInfo")]
-        public virtual GdataContentTypeInfo ContentTypeInfo { get; set; } 
+        public virtual GdataContentTypeInfo ContentTypeInfo { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cosmoBinaryReference")]
-        public virtual string CosmoBinaryReference { get; set; } 
+        public virtual string CosmoBinaryReference { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crc32cHash")]
-        public virtual System.Nullable<long> Crc32cHash { get; set; } 
+        public virtual System.Nullable<long> Crc32cHash { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diffChecksumsResponse")]
-        public virtual GdataDiffChecksumsResponse DiffChecksumsResponse { get; set; } 
+        public virtual GdataDiffChecksumsResponse DiffChecksumsResponse { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diffDownloadResponse")]
-        public virtual GdataDiffDownloadResponse DiffDownloadResponse { get; set; } 
+        public virtual GdataDiffDownloadResponse DiffDownloadResponse { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diffUploadRequest")]
-        public virtual GdataDiffUploadRequest DiffUploadRequest { get; set; } 
+        public virtual GdataDiffUploadRequest DiffUploadRequest { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diffUploadResponse")]
-        public virtual GdataDiffUploadResponse DiffUploadResponse { get; set; } 
+        public virtual GdataDiffUploadResponse DiffUploadResponse { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diffVersionResponse")]
-        public virtual GdataDiffVersionResponse DiffVersionResponse { get; set; } 
+        public virtual GdataDiffVersionResponse DiffVersionResponse { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadParameters")]
-        public virtual GdataDownloadParameters DownloadParameters { get; set; } 
+        public virtual GdataDownloadParameters DownloadParameters { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filename")]
-        public virtual string Filename { get; set; } 
+        public virtual string Filename { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hash")]
-        public virtual string Hash { get; set; } 
+        public virtual string Hash { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hashVerified")]
-        public virtual System.Nullable<bool> HashVerified { get; set; } 
+        public virtual System.Nullable<bool> HashVerified { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inline")]
-        public virtual string Inline { get; set; } 
+        public virtual string Inline { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isPotentialRetry")]
-        public virtual System.Nullable<bool> IsPotentialRetry { get; set; } 
+        public virtual System.Nullable<bool> IsPotentialRetry { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("length")]
-        public virtual System.Nullable<long> Length { get; set; } 
+        public virtual System.Nullable<long> Length { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("md5Hash")]
-        public virtual string Md5Hash { get; set; } 
+        public virtual string Md5Hash { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaId")]
-        public virtual string MediaId { get; set; } 
+        public virtual string MediaId { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
-        public virtual GdataObjectId ObjectId { get; set; } 
+        public virtual GdataObjectId ObjectId { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; } 
+        public virtual string Path { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referenceType")]
-        public virtual string ReferenceType { get; set; } 
+        public virtual string ReferenceType { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha1Hash")]
-        public virtual string Sha1Hash { get; set; } 
+        public virtual string Sha1Hash { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha256Hash")]
-        public virtual string Sha256Hash { get; set; } 
+        public virtual string Sha256Hash { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
-        public virtual System.Nullable<ulong> Timestamp { get; set; } 
+        public virtual System.Nullable<ulong> Timestamp { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
-        public virtual string Token { get; set; } 
+        public virtual string Token { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1356,15 +1356,15 @@ namespace Google.Apis.YouTubeReporting.v1.Data
     {
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
-        public virtual string BucketName { get; set; } 
+        public virtual string BucketName { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
-        public virtual System.Nullable<long> Generation { get; set; } 
+        public virtual System.Nullable<long> Generation { get; set; }
 
         /// <summary>gdata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectName")]
-        public virtual string ObjectName { get; set; } 
+        public virtual string ObjectName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1375,28 +1375,28 @@ namespace Google.Apis.YouTubeReporting.v1.Data
     {
         /// <summary>The creation date/time of the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The date/time when this job will expire/expired. After a job expired, no new reports are
         /// generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; } 
+        public virtual object ExpireTime { get; set; }
 
         /// <summary>The server-generated ID of the job (max. 40 characters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The name of the job (max. 100 characters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The type of reports this job creates. Corresponds to the ID of a ReportType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportTypeId")]
-        public virtual string ReportTypeId { get; set; } 
+        public virtual string ReportTypeId { get; set; }
 
         /// <summary>True if this a system-managed job that cannot be modified by the user; otherwise false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("systemManaged")]
-        public virtual System.Nullable<bool> SystemManaged { get; set; } 
+        public virtual System.Nullable<bool> SystemManaged { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1407,12 +1407,12 @@ namespace Google.Apis.YouTubeReporting.v1.Data
     {
         /// <summary>The list of jobs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobs")]
-        public virtual System.Collections.Generic.IList<Job> Jobs { get; set; } 
+        public virtual System.Collections.Generic.IList<Job> Jobs { get; set; }
 
         /// <summary>A token to retrieve next page of results. Pass this value in the ListJobsRequest.page_token field
         /// in the subsequent call to `ListJobs` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1424,11 +1424,11 @@ namespace Google.Apis.YouTubeReporting.v1.Data
         /// <summary>A token to retrieve next page of results. Pass this value in the ListReportTypesRequest.page_token
         /// field in the subsequent call to `ListReportTypes` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of report types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportTypes")]
-        public virtual System.Collections.Generic.IList<ReportType> ReportTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<ReportType> ReportTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1440,11 +1440,11 @@ namespace Google.Apis.YouTubeReporting.v1.Data
         /// <summary>A token to retrieve next page of results. Pass this value in the ListReportsRequest.page_token
         /// field in the subsequent call to `ListReports` method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of report types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reports")]
-        public virtual System.Collections.Generic.IList<Report> Reports { get; set; } 
+        public virtual System.Collections.Generic.IList<Report> Reports { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1455,31 +1455,31 @@ namespace Google.Apis.YouTubeReporting.v1.Data
     {
         /// <summary>The date/time when this report was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The URL from which the report can be downloaded (max. 1000 characters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadUrl")]
-        public virtual string DownloadUrl { get; set; } 
+        public virtual string DownloadUrl { get; set; }
 
         /// <summary>The end of the time period that the report instance covers. The value is exclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>The server-generated ID of the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The date/time when the job this report belongs to will expire/expired.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobExpireTime")]
-        public virtual object JobExpireTime { get; set; } 
+        public virtual object JobExpireTime { get; set; }
 
         /// <summary>The ID of the job that created this report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
-        public virtual string JobId { get; set; } 
+        public virtual string JobId { get; set; }
 
         /// <summary>The start of the time period that the report instance covers. The value is inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1490,20 +1490,20 @@ namespace Google.Apis.YouTubeReporting.v1.Data
     {
         /// <summary>The date/time when this report type was/will be deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deprecateTime")]
-        public virtual object DeprecateTime { get; set; } 
+        public virtual object DeprecateTime { get; set; }
 
         /// <summary>The ID of the report type (max. 100 characters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The name of the report type (max. 100 characters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>True if this a system-managed report type; otherwise false. Reporting jobs for system-managed
         /// report types are created automatically and can thus not be used in the `CreateJob` method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("systemManaged")]
-        public virtual System.Nullable<bool> SystemManaged { get; set; } 
+        public virtual System.Nullable<bool> SystemManaged { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

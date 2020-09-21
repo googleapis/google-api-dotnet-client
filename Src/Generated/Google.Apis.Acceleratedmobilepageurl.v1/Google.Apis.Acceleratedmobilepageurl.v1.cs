@@ -311,16 +311,16 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1.Data
     {
         /// <summary>The AMP URL pointing to the publisher's web server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ampUrl")]
-        public virtual string AmpUrlValue { get; set; } 
+        public virtual string AmpUrlValue { get; set; }
 
         /// <summary>The [AMP Cache URL](/amp/cache/overview#amp-cache-url-format) pointing to the cached document in
         /// the Google AMP Cache.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cdnAmpUrl")]
-        public virtual string CdnAmpUrl { get; set; } 
+        public virtual string CdnAmpUrl { get; set; }
 
         /// <summary>The original non-AMP URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalUrl")]
-        public virtual string OriginalUrl { get; set; } 
+        public virtual string OriginalUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -331,15 +331,15 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1.Data
     {
         /// <summary>The error code of an API call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
-        public virtual string ErrorCode { get; set; } 
+        public virtual string ErrorCode { get; set; }
 
         /// <summary>An optional descriptive error message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
-        public virtual string ErrorMessage { get; set; } 
+        public virtual string ErrorMessage { get; set; }
 
         /// <summary>The original non-AMP URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalUrl")]
-        public virtual string OriginalUrl { get; set; } 
+        public virtual string OriginalUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -350,12 +350,12 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1.Data
     {
         /// <summary>The lookup_strategy being requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lookupStrategy")]
-        public virtual string LookupStrategy { get; set; } 
+        public virtual string LookupStrategy { get; set; }
 
         /// <summary>List of URLs to look up for the paired AMP URLs. The URLs are case-sensitive. Up to 50 URLs per
         /// lookup (see [Usage Limits](/amp/cache/reference/limits)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urls")]
-        public virtual System.Collections.Generic.IList<string> Urls { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Urls { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -368,11 +368,11 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1.Data
         /// as URLs in the batch request. If BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated only
         /// once.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ampUrls")]
-        public virtual System.Collections.Generic.IList<AmpUrl> AmpUrls { get; set; } 
+        public virtual System.Collections.Generic.IList<AmpUrl> AmpUrls { get; set; }
 
         /// <summary>The errors for requested URLs that have no AMP URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlErrors")]
-        public virtual System.Collections.Generic.IList<AmpUrlError> UrlErrors { get; set; } 
+        public virtual System.Collections.Generic.IList<AmpUrlError> UrlErrors { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

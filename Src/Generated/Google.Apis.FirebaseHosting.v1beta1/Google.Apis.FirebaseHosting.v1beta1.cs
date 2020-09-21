@@ -3757,12 +3757,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     {
         /// <summary>The email address of the user when the user performed the action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
+        public virtual string Email { get; set; }
 
         /// <summary>A profile image URL for the user. May not be present if the user has changed their email address or
         /// deleted their account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
-        public virtual string ImageUrl { get; set; } 
+        public virtual string ImageUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3773,12 +3773,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     {
         /// <summary>The domain name upon which the DNS challenge must be satisfied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainName")]
-        public virtual string DomainName { get; set; } 
+        public virtual string DomainName { get; set; }
 
         /// <summary>The value that must be present as a TXT record on the domain name to satisfy the
         /// challenge.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
-        public virtual string Token { get; set; } 
+        public virtual string Token { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3789,11 +3789,11 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     {
         /// <summary>The URL path on which to serve the specified token to satisfy the certificate challenge.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; } 
+        public virtual string Path { get; set; }
 
         /// <summary>The token to serve at the specified URL path to satisfy the certificate challenge.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
-        public virtual string Token { get; set; } 
+        public virtual string Token { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3805,44 +3805,44 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     {
         /// <summary>Output only. The time at which the channel was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The time at which the channel will be automatically deleted. If null, the channel will not be
         /// automatically deleted. This field is present in output whether set directly or via the `ttl`
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; } 
+        public virtual object ExpireTime { get; set; }
 
         /// <summary>Text labels used for extra metadata and/or filtering.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The fully-qualified identifier of the Channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The current release for the channel, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("release")]
-        public virtual Release Release { get; set; } 
+        public virtual Release Release { get; set; }
 
         /// <summary>The number of previous releases to retain on the channel for rollback or other purposes. Must be a
         /// number between 1-100. Defaults to 10 for new channels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retainedReleaseCount")]
-        public virtual System.Nullable<int> RetainedReleaseCount { get; set; } 
+        public virtual System.Nullable<int> RetainedReleaseCount { get; set; }
 
         /// <summary>Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the
         /// time of the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
-        public virtual object Ttl { get; set; } 
+        public virtual object Ttl { get; set; }
 
         /// <summary>Output only. The time at which the channel was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>Output only. The URL at which the channel can be viewed. For the `live` channel, the content of the
         /// current release may also be visible at other URLs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3854,21 +3854,21 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         /// <summary>If provided, only paths that do not match any of the regexes in this list will be included in the
         /// new version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclude")]
-        public virtual PathFilter Exclude { get; set; } 
+        public virtual PathFilter Exclude { get; set; }
 
         /// <summary>If true, immediately finalize the version after cloning is complete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalize")]
-        public virtual System.Nullable<bool> Finalize { get; set; } 
+        public virtual System.Nullable<bool> Finalize { get; set; }
 
         /// <summary>If provided, only paths that match one or more regexes in this list will be included in the new
         /// version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("include")]
-        public virtual PathFilter Include { get; set; } 
+        public virtual PathFilter Include { get; set; }
 
         /// <summary>Required. The name of the version to be cloned, in the format:
         /// `sites/{site}/versions/{version}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceVersion")]
-        public virtual string SourceVersion { get; set; } 
+        public virtual string SourceVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3883,11 +3883,11 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         /// <summary>Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if
         /// not supplied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
-        public virtual string Region { get; set; } 
+        public virtual string Region { get; set; }
 
         /// <summary>Required. User-defined ID of the Cloud Run service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceId")]
-        public virtual string ServiceId { get; set; } 
+        public virtual string ServiceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3898,28 +3898,28 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     {
         /// <summary>Required. The domain name of the association.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainName")]
-        public virtual string DomainName { get; set; } 
+        public virtual string DomainName { get; set; }
 
         /// <summary>If set, the domain should redirect with the provided parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainRedirect")]
-        public virtual DomainRedirect DomainRedirect { get; set; } 
+        public virtual DomainRedirect DomainRedirect { get; set; }
 
         /// <summary>Output only. Information about the provisioning of certificates and the health of the DNS
         /// resolution for the domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisioning")]
-        public virtual DomainProvisioning Provisioning { get; set; } 
+        public virtual DomainProvisioning Provisioning { get; set; }
 
         /// <summary>Required. The site name of the association.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("site")]
-        public virtual string Site { get; set; } 
+        public virtual string Site { get; set; }
 
         /// <summary>Output only. Additional status of the domain association.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>Output only. The time at which the domain was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3930,36 +3930,36 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     {
         /// <summary>The TXT records (for the certificate challenge) that were found at the last DNS fetch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certChallengeDiscoveredTxt")]
-        public virtual System.Collections.Generic.IList<string> CertChallengeDiscoveredTxt { get; set; } 
+        public virtual System.Collections.Generic.IList<string> CertChallengeDiscoveredTxt { get; set; }
 
         /// <summary>The DNS challenge for generating a certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certChallengeDns")]
-        public virtual CertDnsChallenge CertChallengeDns { get; set; } 
+        public virtual CertDnsChallenge CertChallengeDns { get; set; }
 
         /// <summary>The HTTP challenge for generating a certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certChallengeHttp")]
-        public virtual CertHttpChallenge CertChallengeHttp { get; set; } 
+        public virtual CertHttpChallenge CertChallengeHttp { get; set; }
 
         /// <summary>The certificate provisioning status; updated when Firebase Hosting provisions an SSL certificate
         /// for the domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certStatus")]
-        public virtual string CertStatus { get; set; } 
+        public virtual string CertStatus { get; set; }
 
         /// <summary>The IPs found at the last DNS fetch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveredIps")]
-        public virtual System.Collections.Generic.IList<string> DiscoveredIps { get; set; } 
+        public virtual System.Collections.Generic.IList<string> DiscoveredIps { get; set; }
 
         /// <summary>The time at which the last DNS fetch occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsFetchTime")]
-        public virtual object DnsFetchTime { get; set; } 
+        public virtual object DnsFetchTime { get; set; }
 
         /// <summary>The DNS record match status as of the last DNS fetch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsStatus")]
-        public virtual string DnsStatus { get; set; } 
+        public virtual string DnsStatus { get; set; }
 
         /// <summary>The list of IPs to which the domain is expected to resolve.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expectedIps")]
-        public virtual System.Collections.Generic.IList<string> ExpectedIps { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExpectedIps { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3971,11 +3971,11 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     {
         /// <summary>Required. The domain name to redirect to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainName")]
-        public virtual string DomainName { get; set; } 
+        public virtual string DomainName { get; set; }
 
         /// <summary>Required. The redirect status code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3998,15 +3998,15 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         /// <summary>The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching) to match against the
         /// request URL path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glob")]
-        public virtual string Glob { get; set; } 
+        public virtual string Glob { get; set; }
 
         /// <summary>Required. The additional headers to add to the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Headers { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Headers { get; set; }
 
         /// <summary>The user-supplied RE2 regular expression to match against the request URL path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regex")]
-        public virtual string Regex { get; set; } 
+        public virtual string Regex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4018,7 +4018,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         /// <summary>Required. The user-supplied path where country and language specific content will be looked for
         /// within the public directory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("root")]
-        public virtual string Root { get; set; } 
+        public virtual string Root { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4029,12 +4029,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     {
         /// <summary>The list of channels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channels")]
-        public virtual System.Collections.Generic.IList<Channel> Channels { get; set; } 
+        public virtual System.Collections.Generic.IList<Channel> Channels { get; set; }
 
         /// <summary>If there are additional releases remaining beyond the ones in this response, then supply this token
         /// in the next [`list`](../sites.channels/list) call to continue with the next set of releases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4045,11 +4045,11 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     {
         /// <summary>The list of domains, if any exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domains")]
-        public virtual System.Collections.Generic.IList<Domain> Domains { get; set; } 
+        public virtual System.Collections.Generic.IList<Domain> Domains { get; set; }
 
         /// <summary>The pagination token, if more results exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4060,11 +4060,11 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         /// <summary>If there are additional releases remaining beyond the ones in this response, then supply this token
         /// in the next [`list`](../sites.versions.files/list) call to continue with the next set of releases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of hashes of files that still need to be uploaded, if any exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releases")]
-        public virtual System.Collections.Generic.IList<Release> Releases { get; set; } 
+        public virtual System.Collections.Generic.IList<Release> Releases { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4074,11 +4074,11 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     {
         /// <summary>The list path/hashes in the specified version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
-        public virtual System.Collections.Generic.IList<VersionFile> Files { get; set; } 
+        public virtual System.Collections.Generic.IList<VersionFile> Files { get; set; }
 
         /// <summary>The pagination token, if more results exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4088,11 +4088,11 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     {
         /// <summary>The pagination token, if more results exist</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of versions, if any exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versions")]
-        public virtual System.Collections.Generic.IList<Version> Versions { get; set; } 
+        public virtual System.Collections.Generic.IList<Version> Versions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4104,23 +4104,23 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -4128,7 +4128,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4139,7 +4139,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     {
         /// <summary>An array of regexes to filter by.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regexes")]
-        public virtual System.Collections.Generic.IList<string> Regexes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Regexes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4152,7 +4152,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         /// that a file path to an empty hash will remove the path from the version. Calculate a hash by Gzipping the
         /// file then taking the SHA256 hash of the newly compressed file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Files { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Files { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4163,14 +4163,14 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         /// <summary>The content hashes of the specified files that need to be uploaded to the specified
         /// endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadRequiredHashes")]
-        public virtual System.Collections.Generic.IList<string> UploadRequiredHashes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> UploadRequiredHashes { get; set; }
 
         /// <summary>The URL to which the files should be uploaded, in the format: "https://upload-
         /// firebasehosting.googleapis.com/upload/sites/site-name /versions/versionID/files". Perform a multipart `POST`
         /// of the Gzipped file contents to the URL using a forward slash and the hash of the file appended to the
         /// end.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadUrl")]
-        public virtual string UploadUrl { get; set; } 
+        public virtual string UploadUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4182,12 +4182,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     {
         /// <summary>If true, preview URLs are enabled for this version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("active")]
-        public virtual System.Nullable<bool> Active { get; set; } 
+        public virtual System.Nullable<bool> Active { get; set; }
 
         /// <summary>Indicates the expiration time for previewing this version; preview URL requests received after this
         /// time will 404.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; } 
+        public virtual object ExpireTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4200,23 +4200,23 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         /// <summary>The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching) to match against the
         /// request URL path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glob")]
-        public virtual string Glob { get; set; } 
+        public virtual string Glob { get; set; }
 
         /// <summary>Required. The value to put in the HTTP location header of the response. The location can contain
         /// capture group values from the pattern using a `:` prefix to identify the segment and an optional `*` to
         /// capture the rest of the URL. For example: "glob": "/:capture*", "statusCode": 301, "location":
         /// "https://example.com/foo/:capture"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>The user-supplied RE2 regular expression to match against the request URL path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regex")]
-        public virtual string Regex { get; set; } 
+        public virtual string Regex { get; set; }
 
         /// <summary>Required. The status HTTP code to return in the response. It must be a valid 3xx status
         /// code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusCode")]
-        public virtual System.Nullable<int> StatusCode { get; set; } 
+        public virtual System.Nullable<int> StatusCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4229,30 +4229,30 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         /// <summary>The deploy description when the release was created. The value can be up to 512
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>Output only. The unique identifier for the release, in the format: sites/ site-
         /// name/releases/releaseID This name is provided in the response body when you call the
         /// [`CreateRelease`](sites.releases/create) endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. The time at which the version is set to be public.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releaseTime")]
-        public virtual object ReleaseTime { get; set; } 
+        public virtual object ReleaseTime { get; set; }
 
         /// <summary>Output only. Identifies the user who created the release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releaseUser")]
-        public virtual ActingUser ReleaseUser { get; set; } 
+        public virtual ActingUser ReleaseUser { get; set; }
 
         /// <summary>Explains the reason for the release. Specify a value for this field only when creating a
         /// `SITE_DISABLE` type release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>Output only. The configuration and content that was released.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual Version Version { get; set; } 
+        public virtual Version Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4265,28 +4265,28 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     {
         /// <summary>The request will be forwarded to Firebase Dynamic Links.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicLinks")]
-        public virtual System.Nullable<bool> DynamicLinks { get; set; } 
+        public virtual System.Nullable<bool> DynamicLinks { get; set; }
 
         /// <summary>The function to proxy requests to. Must match the exported function name exactly.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("function")]
-        public virtual string Function { get; set; } 
+        public virtual string Function { get; set; }
 
         /// <summary>The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching) to match against the
         /// request URL path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glob")]
-        public virtual string Glob { get; set; } 
+        public virtual string Glob { get; set; }
 
         /// <summary>The URL path to rewrite the request to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; } 
+        public virtual string Path { get; set; }
 
         /// <summary>The user-supplied RE2 regular expression to match against the request URL path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regex")]
-        public virtual string Regex { get; set; } 
+        public virtual string Regex { get; set; }
 
         /// <summary>The request will be forwarded to Cloud Run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("run")]
-        public virtual CloudRunRewrite Run { get; set; } 
+        public virtual CloudRunRewrite Run { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4300,36 +4300,36 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     {
         /// <summary>How to handle well known App Association files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appAssociation")]
-        public virtual string AppAssociation { get; set; } 
+        public virtual string AppAssociation { get; set; }
 
         /// <summary>Defines whether to drop the file extension from uploaded files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cleanUrls")]
-        public virtual System.Nullable<bool> CleanUrls { get; set; } 
+        public virtual System.Nullable<bool> CleanUrls { get; set; }
 
         /// <summary>An array of objects, where each object specifies a URL pattern that, if matched to the request URL
         /// path, triggers Hosting to apply the specified custom response headers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
-        public virtual System.Collections.Generic.IList<Header> Headers { get; set; } 
+        public virtual System.Collections.Generic.IList<Header> Headers { get; set; }
 
         /// <summary>Optional. Defines i18n rewrite behavior.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("i18n")]
-        public virtual I18nConfig I18n { get; set; } 
+        public virtual I18nConfig I18n { get; set; }
 
         /// <summary>An array of objects (called redirect rules), where each rule specifies a URL pattern that, if
         /// matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination
         /// path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirects")]
-        public virtual System.Collections.Generic.IList<Redirect> Redirects { get; set; } 
+        public virtual System.Collections.Generic.IList<Redirect> Redirects { get; set; }
 
         /// <summary>An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if
         /// matched to the request URL path, triggers Hosting to respond as if the service were given the specified
         /// destination URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rewrites")]
-        public virtual System.Collections.Generic.IList<Rewrite> Rewrites { get; set; } 
+        public virtual System.Collections.Generic.IList<Rewrite> Rewrites { get; set; }
 
         /// <summary>Defines how to handle a trailing slash in the URL path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trailingSlashBehavior")]
-        public virtual string TrailingSlashBehavior { get; set; } 
+        public virtual string TrailingSlashBehavior { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4341,14 +4341,14 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     {
         /// <summary>Whether or not web requests made by site visitors are logged via Cloud Logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudLoggingEnabled")]
-        public virtual System.Nullable<bool> CloudLoggingEnabled { get; set; } 
+        public virtual System.Nullable<bool> CloudLoggingEnabled { get; set; }
 
         /// <summary>The number of FINALIZED versions that will be held for a site before automatic deletion. When a new
         /// version is deployed, content for versions in storage in excess of this number will be deleted, and will no
         /// longer be billed for storage usage. Oldest versions will be deleted first; sites are created with an
         /// unlimited number of max_versions by default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxVersions")]
-        public virtual System.Nullable<long> MaxVersions { get; set; } 
+        public virtual System.Nullable<long> MaxVersions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4363,17 +4363,17 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4386,52 +4386,52 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         /// <summary>The configuration for the behavior of the site. This configuration exists in the
         /// [`firebase.json`](/docs/cli/#the_firebasejson_file) file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual ServingConfig Config { get; set; } 
+        public virtual ServingConfig Config { get; set; }
 
         /// <summary>Output only. The time at which the version was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. Identifies the user who created the version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createUser")]
-        public virtual ActingUser CreateUser { get; set; } 
+        public virtual ActingUser CreateUser { get; set; }
 
         /// <summary>Output only. The time at which the version was `DELETED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
-        public virtual object DeleteTime { get; set; } 
+        public virtual object DeleteTime { get; set; }
 
         /// <summary>Output only. Identifies the user who `DELETED` the version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteUser")]
-        public virtual ActingUser DeleteUser { get; set; } 
+        public virtual ActingUser DeleteUser { get; set; }
 
         /// <summary>Output only. The total number of files associated with the version. This value is calculated after
         /// a version is `FINALIZED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileCount")]
-        public virtual System.Nullable<long> FileCount { get; set; } 
+        public virtual System.Nullable<long> FileCount { get; set; }
 
         /// <summary>Output only. The time at which the version was `FINALIZED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalizeTime")]
-        public virtual object FinalizeTime { get; set; } 
+        public virtual object FinalizeTime { get; set; }
 
         /// <summary>Output only. Identifies the user who `FINALIZED` the version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalizeUser")]
-        public virtual ActingUser FinalizeUser { get; set; } 
+        public virtual ActingUser FinalizeUser { get; set; }
 
         /// <summary>The labels used for extra metadata and/or filtering.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The unique identifier for a version, in the format: sites/site-name /versions/versionID This name
         /// is provided in the response body when you call the [`CreateVersion`](../sites.versions/create)
         /// endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Version preview configuration for the site version. This configuration specfies whether previewing
         /// is enabled for this site version. Version previews allow you to preview your site at a custom URL before
         /// releasing it as the live version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preview")]
-        public virtual PreviewConfig Preview { get; set; } 
+        public virtual PreviewConfig Preview { get; set; }
 
         /// <summary>The deploy status of a version. For a successful deploy, call the
         /// [`CreateVersion`](sites.versions/create) endpoint to make a new version (`CREATED` status), [upload all
@@ -4440,12 +4440,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         /// the system will automatically mark the version as `ABANDONED`. You can also change the status of a version
         /// to `DELETED` by calling the [`DeleteVersion`](sites.versions/delete) endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>Output only. The total stored bytesize of the version. This value is calculated after a version is
         /// `FINALIZED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionBytes")]
-        public virtual System.Nullable<long> VersionBytes { get; set; } 
+        public virtual System.Nullable<long> VersionBytes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4456,16 +4456,16 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     {
         /// <summary>The SHA256 content hash of the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hash")]
-        public virtual string Hash { get; set; } 
+        public virtual string Hash { get; set; }
 
         /// <summary>The URI at which the file's content should display.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; } 
+        public virtual string Path { get; set; }
 
         /// <summary>Output only. The current status of a particular file in the specified version. The value will be
         /// either `pending upload` or `uploaded`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

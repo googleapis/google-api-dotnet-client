@@ -1127,36 +1127,36 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
     {
         /// <summary>The type of the achievement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("achievementType")]
-        public virtual string AchievementType { get; set; } 
+        public virtual string AchievementType { get; set; }
 
         /// <summary>The draft data of the achievement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("draft")]
-        public virtual AchievementConfigurationDetail Draft { get; set; } 
+        public virtual AchievementConfigurationDetail Draft { get; set; }
 
         /// <summary>The ID of the achievement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The initial state of the achievement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialState")]
-        public virtual string InitialState { get; set; } 
+        public virtual string InitialState { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `gamesConfiguration#achievementConfiguration`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The read-only published data of the achievement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("published")]
-        public virtual AchievementConfigurationDetail Published { get; set; } 
+        public virtual AchievementConfigurationDetail Published { get; set; }
 
         /// <summary>Steps to unlock. Only applicable to incremental achievements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stepsToUnlock")]
-        public virtual System.Nullable<int> StepsToUnlock { get; set; } 
+        public virtual System.Nullable<int> StepsToUnlock { get; set; }
 
         /// <summary>The token for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
-        public virtual string Token { get; set; } 
+        public virtual string Token { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1167,28 +1167,28 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
     {
         /// <summary>Localized strings for the achievement description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual LocalizedStringBundle Description { get; set; } 
+        public virtual LocalizedStringBundle Description { get; set; }
 
         /// <summary>The icon url of this achievement. Writes to this field are ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
-        public virtual string IconUrl { get; set; } 
+        public virtual string IconUrl { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `gamesConfiguration#achievementConfigurationDetail`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Localized strings for the achievement name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual LocalizedStringBundle Name { get; set; } 
+        public virtual LocalizedStringBundle Name { get; set; }
 
         /// <summary>Point value for the achievement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pointValue")]
-        public virtual System.Nullable<int> PointValue { get; set; } 
+        public virtual System.Nullable<int> PointValue { get; set; }
 
         /// <summary>The sort rank of this achievement. Writes to this field are ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sortRank")]
-        public virtual System.Nullable<int> SortRank { get; set; } 
+        public virtual System.Nullable<int> SortRank { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1199,16 +1199,16 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
     {
         /// <summary>The achievement configurations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<AchievementConfiguration> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<AchievementConfiguration> Items { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `gamesConfiguration#achievementConfigurationListResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The pagination token for the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1220,32 +1220,32 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
         /// <summary>When the language requires special treatment of "small" numbers (as with 2, 3, and 4 in Czech; or
         /// numbers ending 2, 3, or 4 but not 12, 13, or 14 in Polish).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("few")]
-        public virtual LocalizedStringBundle Few { get; set; } 
+        public virtual LocalizedStringBundle Few { get; set; }
 
         /// <summary>When the language requires special treatment of "large" numbers (as with numbers ending 11-99 in
         /// Maltese).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("many")]
-        public virtual LocalizedStringBundle Many { get; set; } 
+        public virtual LocalizedStringBundle Many { get; set; }
 
         /// <summary>When the language requires special treatment of numbers like one (as with the number 1 in English
         /// and most other languages; in Russian, any number ending in 1 but not ending in 11 is in this
         /// class).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("one")]
-        public virtual LocalizedStringBundle One { get; set; } 
+        public virtual LocalizedStringBundle One { get; set; }
 
         /// <summary>When the language does not require special treatment of the given quantity (as with all numbers in
         /// Chinese, or 42 in English).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("other")]
-        public virtual LocalizedStringBundle Other { get; set; } 
+        public virtual LocalizedStringBundle Other { get; set; }
 
         /// <summary>When the language requires special treatment of numbers like two (as with 2 in Welsh, or 102 in
         /// Slovenian).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("two")]
-        public virtual LocalizedStringBundle Two { get; set; } 
+        public virtual LocalizedStringBundle Two { get; set; }
 
         /// <summary>When the language requires special treatment of the number 0 (as in Arabic).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zero")]
-        public virtual LocalizedStringBundle Zero { get; set; } 
+        public virtual LocalizedStringBundle Zero { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1256,20 +1256,20 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
     {
         /// <summary>The curreny code string. Only used for CURRENCY format type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
-        public virtual string CurrencyCode { get; set; } 
+        public virtual string CurrencyCode { get; set; }
 
         /// <summary>The number of decimal places for number. Only used for NUMERIC format type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numDecimalPlaces")]
-        public virtual System.Nullable<int> NumDecimalPlaces { get; set; } 
+        public virtual System.Nullable<int> NumDecimalPlaces { get; set; }
 
         /// <summary>The formatting for the number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numberFormatType")]
-        public virtual string NumberFormatType { get; set; } 
+        public virtual string NumberFormatType { get; set; }
 
         /// <summary>An optional suffix for the NUMERIC format type. These strings follow the same plural rules as all
         /// Android string resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suffix")]
-        public virtual GamesNumberAffixConfiguration Suffix { get; set; } 
+        public virtual GamesNumberAffixConfiguration Suffix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1280,20 +1280,20 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
     {
         /// <summary>The image type for the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
-        public virtual string ImageType { get; set; } 
+        public virtual string ImageType { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `gamesConfiguration#imageConfiguration`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The resource ID of resource which the image belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual string ResourceId { get; set; } 
+        public virtual string ResourceId { get; set; }
 
         /// <summary>The url for this image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1304,35 +1304,35 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
     {
         /// <summary>The draft data of the leaderboard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("draft")]
-        public virtual LeaderboardConfigurationDetail Draft { get; set; } 
+        public virtual LeaderboardConfigurationDetail Draft { get; set; }
 
         /// <summary>The ID of the leaderboard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `gamesConfiguration#leaderboardConfiguration`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The read-only published data of the leaderboard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("published")]
-        public virtual LeaderboardConfigurationDetail Published { get; set; } 
+        public virtual LeaderboardConfigurationDetail Published { get; set; }
 
         /// <summary>Maximum score that can be posted to this leaderboard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreMax")]
-        public virtual System.Nullable<long> ScoreMax { get; set; } 
+        public virtual System.Nullable<long> ScoreMax { get; set; }
 
         /// <summary>Minimum score that can be posted to this leaderboard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreMin")]
-        public virtual System.Nullable<long> ScoreMin { get; set; } 
+        public virtual System.Nullable<long> ScoreMin { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("scoreOrder")]
-        public virtual string ScoreOrder { get; set; } 
+        public virtual string ScoreOrder { get; set; }
 
         /// <summary>The token for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
-        public virtual string Token { get; set; } 
+        public virtual string Token { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1343,24 +1343,24 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
     {
         /// <summary>The icon url of this leaderboard. Writes to this field are ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
-        public virtual string IconUrl { get; set; } 
+        public virtual string IconUrl { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `gamesConfiguration#leaderboardConfigurationDetail`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Localized strings for the leaderboard name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual LocalizedStringBundle Name { get; set; } 
+        public virtual LocalizedStringBundle Name { get; set; }
 
         /// <summary>The score formatting for the leaderboard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreFormat")]
-        public virtual GamesNumberFormatConfiguration ScoreFormat { get; set; } 
+        public virtual GamesNumberFormatConfiguration ScoreFormat { get; set; }
 
         /// <summary>The sort rank of this leaderboard. Writes to this field are ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sortRank")]
-        public virtual System.Nullable<int> SortRank { get; set; } 
+        public virtual System.Nullable<int> SortRank { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1371,16 +1371,16 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
     {
         /// <summary>The leaderboard configurations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<LeaderboardConfiguration> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<LeaderboardConfiguration> Items { get; set; }
 
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `gamesConfiguration#leaderboardConfigurationListResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The pagination token for the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1392,15 +1392,15 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `gamesConfiguration#localizedString`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The locale string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
-        public virtual string Locale { get; set; } 
+        public virtual string Locale { get; set; }
 
         /// <summary>The string value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1412,11 +1412,11 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
         /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
         /// `gamesConfiguration#localizedStringBundle`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The locale strings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("translations")]
-        public virtual System.Collections.Generic.IList<LocalizedString> Translations { get; set; } 
+        public virtual System.Collections.Generic.IList<LocalizedString> Translations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

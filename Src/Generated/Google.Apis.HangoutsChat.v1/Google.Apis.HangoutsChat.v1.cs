@@ -988,11 +988,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>The name of the parameter for the action script.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>The value of the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1003,11 +1003,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>The type of bot response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>URL for users to auth or config. (Only for REQUEST_CONFIG response types.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1022,20 +1022,20 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>Length of the substring in the plain-text message body this annotation corresponds to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("length")]
-        public virtual System.Nullable<int> Length { get; set; } 
+        public virtual System.Nullable<int> Length { get; set; }
 
         /// <summary>Start index (0-based, inclusive) in the plain-text message body this annotation corresponds
         /// to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; } 
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The type of this annotation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The metadata of user mention.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userMention")]
-        public virtual UserMentionMetadata UserMention { get; set; } 
+        public virtual UserMentionMetadata UserMention { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1047,37 +1047,37 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>A reference to the attachment data. This is used with the media API to download the attachment
         /// data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachmentDataRef")]
-        public virtual AttachmentDataRef AttachmentDataRef { get; set; } 
+        public virtual AttachmentDataRef AttachmentDataRef { get; set; }
 
         /// <summary>The original file name for the content, not the full path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentName")]
-        public virtual string ContentName { get; set; } 
+        public virtual string ContentName { get; set; }
 
         /// <summary>The content type (MIME type) of the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
-        public virtual string ContentType { get; set; } 
+        public virtual string ContentType { get; set; }
 
         /// <summary>Output only. The download URL which should be used to allow a human user to download the
         /// attachment. Bots should not use this URL to download attachment content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadUri")]
-        public virtual string DownloadUri { get; set; } 
+        public virtual string DownloadUri { get; set; }
 
         /// <summary>A reference to the drive attachment. This is used with the Drive API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveDataRef")]
-        public virtual DriveDataRef DriveDataRef { get; set; } 
+        public virtual DriveDataRef DriveDataRef { get; set; }
 
         /// <summary>Resource name of the attachment, in the form "spaces/messages/attachments".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The source of the attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual string Source { get; set; } 
+        public virtual string Source { get; set; }
 
         /// <summary>Output only. The thumbnail URL which should be used to preview the attachment to a human user. Bots
         /// should not use this URL to download attachment content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUri")]
-        public virtual string ThumbnailUri { get; set; } 
+        public virtual string ThumbnailUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1089,7 +1089,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>The resource name of the attachment data. This is used with the media API to download the
         /// attachment data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
-        public virtual string ResourceName { get; set; } 
+        public virtual string ResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1100,11 +1100,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>A button with image and onclick action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageButton")]
-        public virtual ImageButton ImageButton { get; set; } 
+        public virtual ImageButton ImageButton { get; set; }
 
         /// <summary>A button with text and onclick action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textButton")]
-        public virtual TextButton TextButton { get; set; } 
+        public virtual TextButton TextButton { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1115,19 +1115,19 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>The actions of this card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cardActions")]
-        public virtual System.Collections.Generic.IList<CardAction> CardActions { get; set; } 
+        public virtual System.Collections.Generic.IList<CardAction> CardActions { get; set; }
 
         /// <summary>The header of the card. A header usually contains a title and an image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual CardHeader Header { get; set; } 
+        public virtual CardHeader Header { get; set; }
 
         /// <summary>Name of the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Sections are separated by a line divider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sections")]
-        public virtual System.Collections.Generic.IList<Section> Sections { get; set; } 
+        public virtual System.Collections.Generic.IList<Section> Sections { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1139,11 +1139,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>The label used to be displayed in the action menu item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionLabel")]
-        public virtual string ActionLabel { get; set; } 
+        public virtual string ActionLabel { get; set; }
 
         /// <summary>The onclick action for this action item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual OnClick OnClick { get; set; } 
+        public virtual OnClick OnClick { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1153,20 +1153,20 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>The image's type (e.g. square border or circular border).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageStyle")]
-        public virtual string ImageStyle { get; set; } 
+        public virtual string ImageStyle { get; set; }
 
         /// <summary>The URL of the image in the card header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
-        public virtual string ImageUrl { get; set; } 
+        public virtual string ImageUrl { get; set; }
 
         /// <summary>The subtitle of the card header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
-        public virtual string Subtitle { get; set; } 
+        public virtual string Subtitle { get; set; }
 
         /// <summary>The title must be specified. The header has a fixed height: if both a title and subtitle is
         /// specified, each will take up 1 line. If only the title is specified, it will take up both lines.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1179,44 +1179,44 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// CARD_CLICKED events. See the [Interactive Cards guide](/hangouts/chat/how-tos/cards-onclick) for more
         /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual FormAction Action { get; set; } 
+        public virtual FormAction Action { get; set; }
 
         /// <summary>The URL the bot should redirect the user to after they have completed an authorization or
         /// configuration flow outside of Google Chat. See the [Authorizing access to 3p services guide](/hangouts/chat
         /// /how-tos/auth-3p) for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configCompleteRedirectUrl")]
-        public virtual string ConfigCompleteRedirectUrl { get; set; } 
+        public virtual string ConfigCompleteRedirectUrl { get; set; }
 
         /// <summary>The timestamp indicating when the event was dispatched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
-        public virtual object EventTime { get; set; } 
+        public virtual object EventTime { get; set; }
 
         /// <summary>The message that triggered the event, if applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual Message Message { get; set; } 
+        public virtual Message Message { get; set; }
 
         /// <summary>The room or DM in which the event occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("space")]
-        public virtual Space Space { get; set; } 
+        public virtual Space Space { get; set; }
 
         /// <summary>The bot-defined key for the thread related to the event. See the thread_key field of the
         /// `spaces.message.create` request for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threadKey")]
-        public virtual string ThreadKey { get; set; } 
+        public virtual string ThreadKey { get; set; }
 
         /// <summary>A secret value that bots can use to verify if a request is from Google. The token is randomly
         /// generated by Google, remains static, and can be obtained from the Google Chat API configuration page in the
         /// Cloud Console. Developers can revoke/regenerate it if needed from the same page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
-        public virtual string Token { get; set; } 
+        public virtual string Token { get; set; }
 
         /// <summary>The type of the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The user that triggered the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
-        public virtual User User { get; set; } 
+        public virtual User User { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1227,7 +1227,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>The id for the drive file, for use with the Drive API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveFileId")]
-        public virtual string DriveFileId { get; set; } 
+        public virtual string DriveFileId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1251,11 +1251,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// information is echoed back to the bot as part of the card click event. The same method name can be used for
         /// several elements that trigger a common behavior if desired.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionMethodName")]
-        public virtual string ActionMethodName { get; set; } 
+        public virtual string ActionMethodName { get; set; }
 
         /// <summary>List of action parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IList<ActionParameter> Parameters { get; set; } 
+        public virtual System.Collections.Generic.IList<ActionParameter> Parameters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1268,15 +1268,15 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// height for the image while waiting for it to load. It's not meant to override the native aspect ratio of the
         /// image. If unset, the server fills it by prefetching the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aspectRatio")]
-        public virtual System.Nullable<double> AspectRatio { get; set; } 
+        public virtual System.Nullable<double> AspectRatio { get; set; }
 
         /// <summary>The URL of the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
-        public virtual string ImageUrl { get; set; } 
+        public virtual string ImageUrl { get; set; }
 
         /// <summary>The onclick action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual OnClick OnClick { get; set; } 
+        public virtual OnClick OnClick { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1287,20 +1287,20 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>The icon specified by an enum that indices to an icon provided by Chat API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("icon")]
-        public virtual string Icon { get; set; } 
+        public virtual string Icon { get; set; }
 
         /// <summary>The icon specified by a URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
-        public virtual string IconUrl { get; set; } 
+        public virtual string IconUrl { get; set; }
 
         /// <summary>The name of this image_button which will be used for accessibility. Default value will be provided
         /// if developers don't specify.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The onclick action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual OnClick OnClick { get; set; } 
+        public virtual OnClick OnClick { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1312,35 +1312,35 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>The text of the bottom label. Formatted text supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bottomLabel")]
-        public virtual string BottomLabel { get; set; } 
+        public virtual string BottomLabel { get; set; }
 
         /// <summary>A button that can be clicked to trigger an action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("button")]
-        public virtual Button Button { get; set; } 
+        public virtual Button Button { get; set; }
 
         /// <summary>The text of the content. Formatted text supported and always required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual string Content { get; set; } 
+        public virtual string Content { get; set; }
 
         /// <summary>If the content should be multiline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentMultiline")]
-        public virtual System.Nullable<bool> ContentMultiline { get; set; } 
+        public virtual System.Nullable<bool> ContentMultiline { get; set; }
 
         /// <summary>An enum value that will be replaced by the Chat API with the corresponding icon image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("icon")]
-        public virtual string Icon { get; set; } 
+        public virtual string Icon { get; set; }
 
         /// <summary>The icon specified by a URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
-        public virtual string IconUrl { get; set; } 
+        public virtual string IconUrl { get; set; }
 
         /// <summary>The onclick action. Only the top label, bottom label and content region are clickable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual OnClick OnClick { get; set; } 
+        public virtual OnClick OnClick { get; set; }
 
         /// <summary>The text of the top label. Formatted text supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topLabel")]
-        public virtual string TopLabel { get; set; } 
+        public virtual string TopLabel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1350,12 +1350,12 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>List of memberships in the requested (or first) page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberships")]
-        public virtual System.Collections.Generic.IList<Membership> Memberships { get; set; } 
+        public virtual System.Collections.Generic.IList<Membership> Memberships { get; set; }
 
         /// <summary>Continuation token to retrieve the next page of results. It will be empty for the last page of
         /// results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1366,11 +1366,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>Continuation token to retrieve the next page of results. It will be empty for the last page of
         /// results. Tokens expire in an hour. An error is thrown if an expired token is passed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>List of spaces in the requested (or first) page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spaces")]
-        public virtual System.Collections.Generic.IList<Space> Spaces { get; set; } 
+        public virtual System.Collections.Generic.IList<Space> Spaces { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1381,7 +1381,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>Name of the media resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
-        public virtual string ResourceName { get; set; } 
+        public virtual string ResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1393,20 +1393,20 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>The creation time of the membership a.k.a the time at which the member joined the space, if
         /// applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Member details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("member")]
-        public virtual User Member { get; set; } 
+        public virtual User Member { get; set; }
 
         /// <summary>Resource name of the membership, in the form "spaces/members". Example:
         /// spaces/AAAAMpdlehY/members/105115627578887013105</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>State of the membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1417,60 +1417,60 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>Input only. Parameters that a bot can use to configure how its response is posted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionResponse")]
-        public virtual ActionResponse ActionResponse { get; set; } 
+        public virtual ActionResponse ActionResponse { get; set; }
 
         /// <summary>Output only. Annotations associated with the text in this message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
-        public virtual System.Collections.Generic.IList<Annotation> Annotations { get; set; } 
+        public virtual System.Collections.Generic.IList<Annotation> Annotations { get; set; }
 
         /// <summary>Plain-text body of the message with all bot mentions stripped out.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("argumentText")]
-        public virtual string ArgumentText { get; set; } 
+        public virtual string ArgumentText { get; set; }
 
         /// <summary>User uploaded attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachment")]
-        public virtual System.Collections.Generic.IList<Attachment> Attachment { get; set; } 
+        public virtual System.Collections.Generic.IList<Attachment> Attachment { get; set; }
 
         /// <summary>Rich, formatted and interactive cards that can be used to display UI elements such as: formatted
         /// texts, buttons, clickable images. Cards are normally displayed below the plain-text body of the
         /// message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cards")]
-        public virtual System.Collections.Generic.IList<Card> Cards { get; set; } 
+        public virtual System.Collections.Generic.IList<Card> Cards { get; set; }
 
         /// <summary>Output only. The time at which the message was created in Hangouts Chat server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>A plain-text description of the message's cards, used when the actual cards cannot be displayed
         /// (e.g. mobile notifications).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fallbackText")]
-        public virtual string FallbackText { get; set; } 
+        public virtual string FallbackText { get; set; }
 
         /// <summary>Resource name, in the form "spaces/messages". Example:
         /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Text for generating preview chips. This text will not be displayed to the user, but any links to
         /// images, web pages, videos, etc. included here will generate preview chips.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previewText")]
-        public virtual string PreviewText { get; set; } 
+        public virtual string PreviewText { get; set; }
 
         /// <summary>The user who created the message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sender")]
-        public virtual User Sender { get; set; } 
+        public virtual User Sender { get; set; }
 
         /// <summary>The space the message belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("space")]
-        public virtual Space Space { get; set; } 
+        public virtual Space Space { get; set; }
 
         /// <summary>Plain-text body of the message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>The thread the message belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thread")]
-        public virtual Thread Thread { get; set; } 
+        public virtual Thread Thread { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1481,11 +1481,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>A form action will be trigger by this onclick if specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual FormAction Action { get; set; } 
+        public virtual FormAction Action { get; set; }
 
         /// <summary>This onclick triggers an open link action if specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openLink")]
-        public virtual OpenLink OpenLink { get; set; } 
+        public virtual OpenLink OpenLink { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1496,7 +1496,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>The URL to open.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1509,11 +1509,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>The header of the section, text formatted supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual string Header { get; set; } 
+        public virtual string Header { get; set; }
 
         /// <summary>A section must contain at least 1 widget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
-        public virtual System.Collections.Generic.IList<WidgetMarkup> Widgets { get; set; } 
+        public virtual System.Collections.Generic.IList<WidgetMarkup> Widgets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1525,23 +1525,23 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>Output only. The display name (only if the space is a room). Please note that this field might not
         /// be populated in direct messages between humans.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Resource name of the space, in the form "spaces". Example: spaces/AAAAMpdlehYs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Whether the space is a DM between a bot and a single human.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("singleUserBotDm")]
-        public virtual System.Nullable<bool> SingleUserBotDm { get; set; } 
+        public virtual System.Nullable<bool> SingleUserBotDm { get; set; }
 
         /// <summary>Whether the messages are threaded in this space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threaded")]
-        public virtual System.Nullable<bool> Threaded { get; set; } 
+        public virtual System.Nullable<bool> Threaded { get; set; }
 
         /// <summary>Output only. The type of a space. This is deprecated. Use `single_user_bot_dm` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1552,11 +1552,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>The onclick action of the button.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual OnClick OnClick { get; set; } 
+        public virtual OnClick OnClick { get; set; }
 
         /// <summary>The text of the button.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1566,7 +1566,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class TextParagraph : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1578,7 +1578,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>Resource name, in the form "spaces/threads". Example:
         /// spaces/AAAAMpdlehY/threads/UMxbHmzDlr4</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1589,19 +1589,19 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>The user's display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Obfuscated domain information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainId")]
-        public virtual string DomainId { get; set; } 
+        public virtual string DomainId { get; set; }
 
         /// <summary>Resource name, in the format "users".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>User type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1612,11 +1612,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>The type of user mention.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The user mentioned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
-        public virtual User User { get; set; } 
+        public virtual User User { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1627,19 +1627,19 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>A list of buttons. Buttons is also oneof data and only one of these fields should be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buttons")]
-        public virtual System.Collections.Generic.IList<Button> Buttons { get; set; } 
+        public virtual System.Collections.Generic.IList<Button> Buttons { get; set; }
 
         /// <summary>Display an image in this widget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual Image Image { get; set; } 
+        public virtual Image Image { get; set; }
 
         /// <summary>Display a key value item in this widget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyValue")]
-        public virtual KeyValue KeyValue { get; set; } 
+        public virtual KeyValue KeyValue { get; set; }
 
         /// <summary>Display a text paragraph in this widget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textParagraph")]
-        public virtual TextParagraph TextParagraph { get; set; } 
+        public virtual TextParagraph TextParagraph { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

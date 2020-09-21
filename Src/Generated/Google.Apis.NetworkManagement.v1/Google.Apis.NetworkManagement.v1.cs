@@ -1415,11 +1415,11 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>Causes that the analysis is aborted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cause")]
-        public virtual string Cause { get; set; } 
+        public virtual string Cause { get; set; }
 
         /// <summary>URI of the resource that caused the abort.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
-        public virtual string ResourceUri { get; set; } 
+        public virtual string ResourceUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1440,12 +1440,12 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
-        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; }
 
         /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
         /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1460,11 +1460,11 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
         /// format of Binding.members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
-        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
 
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
-        public virtual string LogType { get; set; } 
+        public virtual string LogType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1479,7 +1479,7 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
+        public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
@@ -1501,12 +1501,12 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
         /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
-        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1524,11 +1524,11 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>Output only. The time the test was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The user-supplied description of the Connectivity Test. Maximum of 512 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Required. Destination specification of the Connectivity Test. You can use a combination of
         /// destination IP address, Compute Engine VM instance, or VPC network to uniquely identify the destination
@@ -1539,35 +1539,35 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// the destination location is ambiguous. However, the result can include endpoints that you don't intend to
         /// test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
-        public virtual Endpoint Destination { get; set; } 
+        public virtual Endpoint Destination { get; set; }
 
         /// <summary>Output only. The display name of a Connectivity Test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Resource labels to represent user-provided metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Required. Unique name of the resource using the form:
         /// `projects/{project_id}/locations/global/connectivityTests/{test_id}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>IP Protocol of the test. When not provided, "TCP" is assumed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
-        public virtual string Protocol { get; set; } 
+        public virtual string Protocol { get; set; }
 
         /// <summary>Output only. The reachability details of this test from the latest run. The details are updated
         /// when creating a new test, updating an existing test, or triggering a one-time rerun of an existing
         /// test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reachabilityDetails")]
-        public virtual ReachabilityDetails ReachabilityDetails { get; set; } 
+        public virtual ReachabilityDetails ReachabilityDetails { get; set; }
 
         /// <summary>Other projects that may be relevant for reachability analysis. This is applicable to scenarios
         /// where a test can cross project boundaries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relatedProjects")]
-        public virtual System.Collections.Generic.IList<string> RelatedProjects { get; set; } 
+        public virtual System.Collections.Generic.IList<string> RelatedProjects { get; set; }
 
         /// <summary>Required. Source specification of the Connectivity Test. You can use a combination of source IP
         /// address, virtual machine (VM) instance, or Compute Engine network to uniquely identify the source location.
@@ -1580,11 +1580,11 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// even if the source location is ambiguous. However, the test result may include endpoints that you don't
         /// intend to test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual Endpoint Source { get; set; } 
+        public virtual Endpoint Source { get; set; }
 
         /// <summary>Output only. The time the test's configuration was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1595,11 +1595,11 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>URI of the resource that the packet is delivered to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
-        public virtual string ResourceUri { get; set; } 
+        public virtual string ResourceUri { get; set; }
 
         /// <summary>Target type where the packet is delivered to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; } 
+        public virtual string Target { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1610,11 +1610,11 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>Cause that the packet is dropped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cause")]
-        public virtual string Cause { get; set; } 
+        public virtual string Cause { get; set; }
 
         /// <summary>URI of the resource that caused the drop.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
-        public virtual string ResourceUri { get; set; } 
+        public virtual string ResourceUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1635,26 +1635,26 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>A Compute Engine instance URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
-        public virtual string Instance { get; set; } 
+        public virtual string Instance { get; set; }
 
         /// <summary>The IP address of the endpoint, which can be an external or internal IP. An IPv6 address is only
         /// allowed when the test's destination is a [global load balancer VIP](/load-balancing/docs/load-balancing-
         /// overview).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
-        public virtual string IpAddress { get; set; } 
+        public virtual string IpAddress { get; set; }
 
         /// <summary>A Compute Engine network URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
-        public virtual string Network { get; set; } 
+        public virtual string Network { get; set; }
 
         /// <summary>Type of the network where the endpoint is located. Applicable only to source endpoint, as
         /// destination network type can be inferred from the source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkType")]
-        public virtual string NetworkType { get; set; } 
+        public virtual string NetworkType { get; set; }
 
         /// <summary>The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
-        public virtual System.Nullable<int> Port { get; set; } 
+        public virtual System.Nullable<int> Port { get; set; }
 
         /// <summary>Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide
         /// a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the
@@ -1662,7 +1662,7 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// the IP address that you provide is from the service project. In this case, the network that the IP address
         /// resides in is defined in the host project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1674,31 +1674,31 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>Destination IP address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationIp")]
-        public virtual string DestinationIp { get; set; } 
+        public virtual string DestinationIp { get; set; }
 
         /// <summary>URI of the network where this packet is sent to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationNetworkUri")]
-        public virtual string DestinationNetworkUri { get; set; } 
+        public virtual string DestinationNetworkUri { get; set; }
 
         /// <summary>Destination port. Only valid when protocol is TCP or UDP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationPort")]
-        public virtual System.Nullable<int> DestinationPort { get; set; } 
+        public virtual System.Nullable<int> DestinationPort { get; set; }
 
         /// <summary>IP protocol in string format, for example: "TCP", "UDP", "ICMP".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
-        public virtual string Protocol { get; set; } 
+        public virtual string Protocol { get; set; }
 
         /// <summary>Source IP address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceIp")]
-        public virtual string SourceIp { get; set; } 
+        public virtual string SourceIp { get; set; }
 
         /// <summary>URI of the network where this packet originates from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceNetworkUri")]
-        public virtual string SourceNetworkUri { get; set; } 
+        public virtual string SourceNetworkUri { get; set; }
 
         /// <summary>Source port. Only valid when protocol is TCP or UDP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourcePort")]
-        public virtual System.Nullable<int> SourcePort { get; set; } 
+        public virtual System.Nullable<int> SourcePort { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1720,21 +1720,21 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
         /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
+        public virtual string Expression { get; set; }
 
         /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1745,35 +1745,35 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>Possible values: ALLOW, DENY</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual string Action { get; set; } 
+        public virtual string Action { get; set; }
 
         /// <summary>Possible values: INGRESS, EGRESS</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("direction")]
-        public virtual string Direction { get; set; } 
+        public virtual string Direction { get; set; }
 
         /// <summary>Name of a Compute Engine firewall rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>URI of a Compute Engine network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
-        public virtual string NetworkUri { get; set; } 
+        public virtual string NetworkUri { get; set; }
 
         /// <summary>Priority of the firewall rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
-        public virtual System.Nullable<int> Priority { get; set; } 
+        public virtual System.Nullable<int> Priority { get; set; }
 
         /// <summary>Target service accounts of the firewall rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetServiceAccounts")]
-        public virtual System.Collections.Generic.IList<string> TargetServiceAccounts { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TargetServiceAccounts { get; set; }
 
         /// <summary>Target tags of the firewall rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetTags")]
-        public virtual System.Collections.Generic.IList<string> TargetTags { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TargetTags { get; set; }
 
         /// <summary>URI of a Compute Engine firewall rule. Implied default rule does not have URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1784,11 +1784,11 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>URI of the resource that the packet is forwarded to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
-        public virtual string ResourceUri { get; set; } 
+        public virtual string ResourceUri { get; set; }
 
         /// <summary>Target type where this packet is forwarded to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; } 
+        public virtual string Target { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1799,31 +1799,31 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>Name of a Compute Engine forwarding rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Port range defined in the forwarding rule that matches the test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchedPortRange")]
-        public virtual string MatchedPortRange { get; set; } 
+        public virtual string MatchedPortRange { get; set; }
 
         /// <summary>Protocol defined in the forwarding rule that matches the test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchedProtocol")]
-        public virtual string MatchedProtocol { get; set; } 
+        public virtual string MatchedProtocol { get; set; }
 
         /// <summary>Network URI. Only valid for Internal Load Balancer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
-        public virtual string NetworkUri { get; set; } 
+        public virtual string NetworkUri { get; set; }
 
         /// <summary>Target type of the forwarding rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; } 
+        public virtual string Target { get; set; }
 
         /// <summary>URI of a Compute Engine forwarding rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>VIP of the forwarding rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vip")]
-        public virtual string Vip { get; set; } 
+        public virtual string Vip { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1834,35 +1834,35 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>Name of a Compute Engine instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>External IP address of the network interface.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalIp")]
-        public virtual string ExternalIp { get; set; } 
+        public virtual string ExternalIp { get; set; }
 
         /// <summary>Name of the network interface of a Compute Engine instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interface")]
-        public virtual string Interface__ { get; set; } 
+        public virtual string Interface__ { get; set; }
 
         /// <summary>Internal IP address of the network interface.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalIp")]
-        public virtual string InternalIp { get; set; } 
+        public virtual string InternalIp { get; set; }
 
         /// <summary>Network tags configured on the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkTags")]
-        public virtual System.Collections.Generic.IList<string> NetworkTags { get; set; } 
+        public virtual System.Collections.Generic.IList<string> NetworkTags { get; set; }
 
         /// <summary>URI of a Compute Engine network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
-        public virtual string NetworkUri { get; set; } 
+        public virtual string NetworkUri { get; set; }
 
         /// <summary>Service account authorized for the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
-        public virtual string ServiceAccount { get; set; } 
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>URI of a Compute Engine instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1873,15 +1873,15 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>Page token to fetch the next set of Connectivity Tests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>List of Connectivity Tests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<ConnectivityTest> Resources { get; set; } 
+        public virtual System.Collections.Generic.IList<ConnectivityTest> Resources { get; set; }
 
         /// <summary>Locations that could not be reached (when querying all locations with `-`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1892,11 +1892,11 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>A list of locations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; }
 
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1907,11 +1907,11 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1922,23 +1922,23 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>Name of a Compute Engine instance or network endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>A list of firewall rule URIs allowing probes from health check IP ranges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthCheckAllowingFirewallRules")]
-        public virtual System.Collections.Generic.IList<string> HealthCheckAllowingFirewallRules { get; set; } 
+        public virtual System.Collections.Generic.IList<string> HealthCheckAllowingFirewallRules { get; set; }
 
         /// <summary>A list of firewall rule URIs blocking probes from health check IP ranges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthCheckBlockingFirewallRules")]
-        public virtual System.Collections.Generic.IList<string> HealthCheckBlockingFirewallRules { get; set; } 
+        public virtual System.Collections.Generic.IList<string> HealthCheckBlockingFirewallRules { get; set; }
 
         /// <summary>State of the health check firewall configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthCheckFirewallState")]
-        public virtual string HealthCheckFirewallState { get; set; } 
+        public virtual string HealthCheckFirewallState { get; set; }
 
         /// <summary>URI of a Compute Engine instance or network endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1949,23 +1949,23 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>Type of load balancer's backend configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backendType")]
-        public virtual string BackendType { get; set; } 
+        public virtual string BackendType { get; set; }
 
         /// <summary>Backend configuration URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backendUri")]
-        public virtual string BackendUri { get; set; } 
+        public virtual string BackendUri { get; set; }
 
         /// <summary>Information for the loadbalancer backends.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backends")]
-        public virtual System.Collections.Generic.IList<LoadBalancerBackend> Backends { get; set; } 
+        public virtual System.Collections.Generic.IList<LoadBalancerBackend> Backends { get; set; }
 
         /// <summary>URI of the health check for the load balancer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthCheckUri")]
-        public virtual string HealthCheckUri { get; set; } 
+        public virtual string HealthCheckUri { get; set; }
 
         /// <summary>Type of the load balancer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancerType")]
-        public virtual string LoadBalancerType { get; set; } 
+        public virtual string LoadBalancerType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1976,25 +1976,25 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-
         /// east1"}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>Resource name for the location, which may vary between implementations. For example: `"projects
         /// /example-project/locations/us-east1"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2005,15 +2005,15 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>Name of a Compute Engine network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The IP range that matches the test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchedIpRange")]
-        public virtual string MatchedIpRange { get; set; } 
+        public virtual string MatchedIpRange { get; set; }
 
         /// <summary>URI of a Compute Engine network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2025,23 +2025,23 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -2049,7 +2049,7 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2060,32 +2060,32 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>API version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
+        public virtual string ApiVersion { get; set; }
 
         /// <summary>Specifies if cancellation was requested for the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
-        public virtual System.Nullable<bool> CancelRequested { get; set; } 
+        public virtual System.Nullable<bool> CancelRequested { get; set; }
 
         /// <summary>The time the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The time the operation finished running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Human-readable status of the operation, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
-        public virtual string StatusDetail { get; set; } 
+        public virtual string StatusDetail { get; set; }
 
         /// <summary>Target of the operation - for example
         /// projects/project-1/locations/global/connectivityTests/test-1</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; } 
+        public virtual string Target { get; set; }
 
         /// <summary>Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
-        public virtual string Verb { get; set; } 
+        public virtual string Verb { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2115,12 +2115,12 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
-        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; }
 
         /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
         /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
-        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
         /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
@@ -2131,7 +2131,7 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
         /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
         /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
@@ -2145,7 +2145,7 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; } 
+        public virtual System.Nullable<int> Version { get; set; }
 
     }    
 
@@ -2154,20 +2154,20 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>The details of a failure or a cancellation of reachability analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>The overall reachability result of the test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
-        public virtual string Result { get; set; } 
+        public virtual string Result { get; set; }
 
         /// <summary>Result may contain a list of traces if a test has multiple possible paths in the network, such as
         /// when destination endpoint is a load balancer with multiple backends.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traces")]
-        public virtual System.Collections.Generic.IList<Trace> Traces { get; set; } 
+        public virtual System.Collections.Generic.IList<Trace> Traces { get; set; }
 
         /// <summary>The time the reachability state was verified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifyTime")]
-        public virtual object VerifyTime { get; set; } 
+        public virtual object VerifyTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2185,40 +2185,40 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>Destination IP range of the route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destIpRange")]
-        public virtual string DestIpRange { get; set; } 
+        public virtual string DestIpRange { get; set; }
 
         /// <summary>Name of a Compute Engine route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Instance tags of the route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceTags")]
-        public virtual System.Collections.Generic.IList<string> InstanceTags { get; set; } 
+        public virtual System.Collections.Generic.IList<string> InstanceTags { get; set; }
 
         /// <summary>URI of a Compute Engine network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
-        public virtual string NetworkUri { get; set; } 
+        public virtual string NetworkUri { get; set; }
 
         /// <summary>Next hop of the route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextHop")]
-        public virtual string NextHop { get; set; } 
+        public virtual string NextHop { get; set; }
 
         /// <summary>Type of next hop.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextHopType")]
-        public virtual string NextHopType { get; set; } 
+        public virtual string NextHopType { get; set; }
 
         /// <summary>Priority of the route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
-        public virtual System.Nullable<int> Priority { get; set; } 
+        public virtual System.Nullable<int> Priority { get; set; }
 
         /// <summary>Type of route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routeType")]
-        public virtual string RouteType { get; set; } 
+        public virtual string RouteType { get; set; }
 
         /// <summary>URI of a Compute Engine route. Dynamic route from cloud router does not have a URI. Advertised
         /// route from Google Cloud VPC to on-premises network also does not have a URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2231,13 +2231,13 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
-        public virtual Policy Policy { get; set; } 
+        public virtual Policy Policy { get; set; }
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
         /// will be modified. If no mask is provided, the following default mask is used: `paths: "bindings,
         /// etag"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2252,17 +2252,17 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2274,73 +2274,73 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>Display info of the final state "abort" and reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("abort")]
-        public virtual AbortInfo Abort { get; set; } 
+        public virtual AbortInfo Abort { get; set; }
 
         /// <summary>This is a step that leads to the final state Drop.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("causesDrop")]
-        public virtual System.Nullable<bool> CausesDrop { get; set; } 
+        public virtual System.Nullable<bool> CausesDrop { get; set; }
 
         /// <summary>Display info of the final state "deliver" and reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliver")]
-        public virtual DeliverInfo Deliver { get; set; } 
+        public virtual DeliverInfo Deliver { get; set; }
 
         /// <summary>A description of the step. Usually this is a summary of the state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Display info of the final state "drop" and reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("drop")]
-        public virtual DropInfo Drop { get; set; } 
+        public virtual DropInfo Drop { get; set; }
 
         /// <summary>Display info of the source and destination under analysis. The endpiont info in an intermediate
         /// state may differ with the initial input, as it might be modified by state like NAT, or Connection
         /// Proxy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
-        public virtual EndpointInfo Endpoint { get; set; } 
+        public virtual EndpointInfo Endpoint { get; set; }
 
         /// <summary>Display info of a Compute Engine firewall rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firewall")]
-        public virtual FirewallInfo Firewall { get; set; } 
+        public virtual FirewallInfo Firewall { get; set; }
 
         /// <summary>Display info of the final state "forward" and reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forward")]
-        public virtual ForwardInfo Forward { get; set; } 
+        public virtual ForwardInfo Forward { get; set; }
 
         /// <summary>Display info of a Compute Engine forwarding rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingRule")]
-        public virtual ForwardingRuleInfo ForwardingRule { get; set; } 
+        public virtual ForwardingRuleInfo ForwardingRule { get; set; }
 
         /// <summary>Display info of a Compute Engine instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
-        public virtual InstanceInfo Instance { get; set; } 
+        public virtual InstanceInfo Instance { get; set; }
 
         /// <summary>Display info of the load balancers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancer")]
-        public virtual LoadBalancerInfo LoadBalancer { get; set; } 
+        public virtual LoadBalancerInfo LoadBalancer { get; set; }
 
         /// <summary>Display info of a GCP network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
-        public virtual NetworkInfo Network { get; set; } 
+        public virtual NetworkInfo Network { get; set; }
 
         /// <summary>Project ID that contains the configuration this step is validating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Display info of a Compute Engine route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("route")]
-        public virtual RouteInfo Route { get; set; } 
+        public virtual RouteInfo Route { get; set; }
 
         /// <summary>Each step is in one of the pre-defined states.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Display info of a Compute Engine VPN gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpnGateway")]
-        public virtual VpnGatewayInfo VpnGateway { get; set; } 
+        public virtual VpnGatewayInfo VpnGateway { get; set; }
 
         /// <summary>Display info of a Compute Engine VPN tunnel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpnTunnel")]
-        public virtual VpnTunnelInfo VpnTunnel { get; set; } 
+        public virtual VpnTunnelInfo VpnTunnel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2353,7 +2353,7 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// 'storage.*') are not allowed. For more information see [IAM
         /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2364,7 +2364,7 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2381,14 +2381,14 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// model. If there are multiple traces starting from different source locations, then the endpoint_info may be
         /// different between traces.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpointInfo")]
-        public virtual EndpointInfo EndpointInfo { get; set; } 
+        public virtual EndpointInfo EndpointInfo { get; set; }
 
         /// <summary>A trace of a test contains multiple steps from the initial state to the final state (delivered,
         /// dropped, forwarded, or aborted). The steps are ordered by the processing sequence within the simulated
         /// network state machine. It is critical to preserve the order of the steps and avoid reordering or sorting
         /// them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
-        public virtual System.Collections.Generic.IList<Step> Steps { get; set; } 
+        public virtual System.Collections.Generic.IList<Step> Steps { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2399,28 +2399,28 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>Name of a VPN gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>IP address of the VPN gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
-        public virtual string IpAddress { get; set; } 
+        public virtual string IpAddress { get; set; }
 
         /// <summary>URI of a Compute Engine network where the VPN gateway is configured.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
-        public virtual string NetworkUri { get; set; } 
+        public virtual string NetworkUri { get; set; }
 
         /// <summary>Name of a GCP region where this VPN gateway is configured.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
-        public virtual string Region { get; set; } 
+        public virtual string Region { get; set; }
 
         /// <summary>URI of a VPN gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>A VPN tunnel that is associated with this VPN gateway. There may be multiple VPN tunnels configured
         /// on a VPN gateway, and only the one relevant to the test is displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpnTunnelUri")]
-        public virtual string VpnTunnelUri { get; set; } 
+        public virtual string VpnTunnelUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2431,39 +2431,39 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>Name of a VPN tunnel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>URI of a Compute Engine network where the VPN tunnel is configured.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
-        public virtual string NetworkUri { get; set; } 
+        public virtual string NetworkUri { get; set; }
 
         /// <summary>Name of a GCP region where this VPN tunnel is configured.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
-        public virtual string Region { get; set; } 
+        public virtual string Region { get; set; }
 
         /// <summary>URI of a VPN gateway at remote end of the tunnel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remoteGateway")]
-        public virtual string RemoteGateway { get; set; } 
+        public virtual string RemoteGateway { get; set; }
 
         /// <summary>Remote VPN gateway's IP address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remoteGatewayIp")]
-        public virtual string RemoteGatewayIp { get; set; } 
+        public virtual string RemoteGatewayIp { get; set; }
 
         /// <summary>Type of the routing policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routingType")]
-        public virtual string RoutingType { get; set; } 
+        public virtual string RoutingType { get; set; }
 
         /// <summary>URI of the VPN gateway at local end of the tunnel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceGateway")]
-        public virtual string SourceGateway { get; set; } 
+        public virtual string SourceGateway { get; set; }
 
         /// <summary>Local VPN gateway's IP address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceGatewayIp")]
-        public virtual string SourceGatewayIp { get; set; } 
+        public virtual string SourceGatewayIp { get; set; }
 
         /// <summary>URI of a VPN tunnel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

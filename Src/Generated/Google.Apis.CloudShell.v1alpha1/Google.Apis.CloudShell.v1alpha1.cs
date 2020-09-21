@@ -686,16 +686,16 @@ namespace Google.Apis.CloudShell.v1alpha1.Data
     {
         /// <summary>The OAuth access token that should be sent to the environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
-        public virtual string AccessToken { get; set; } 
+        public virtual string AccessToken { get; set; }
 
         /// <summary>The time when the credentials expire. If not set, defaults to one hour from when the server
         /// received the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; } 
+        public virtual object ExpireTime { get; set; }
 
         /// <summary>The OAuth ID token that should be sent to the environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idToken")]
-        public virtual string IdToken { get; set; } 
+        public virtual string IdToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -706,7 +706,7 @@ namespace Google.Apis.CloudShell.v1alpha1.Data
     {
         /// <summary>Key that should be added to the environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual PublicKey Key { get; set; } 
+        public virtual PublicKey Key { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -730,62 +730,62 @@ namespace Google.Apis.CloudShell.v1alpha1.Data
         /// <summary>Required. Full path to the Docker image used to run this environment, e.g. "gcr.io/dev-con/cloud-
         /// devshell:latest".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dockerImage")]
-        public virtual string DockerImage { get; set; } 
+        public virtual string DockerImage { get; set; }
 
         /// <summary>Output only. The environment's identifier, unique among the user's environments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Output only. Full name of this resource, in the format
         /// `users/{owner_email}/environments/{environment_id}`. `{owner_email}` is the email address of the user to
         /// whom this environment belongs, and `{environment_id}` is the identifier of this environment. For example,
         /// `users/someone@example.com/environments/default`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. Public keys associated with the environment. Clients can connect to this environment
         /// via SSH only if they possess a private key corresponding to at least one of these public keys. Keys can be
         /// added to or removed from the environment using the CreatePublicKey and DeletePublicKey methods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicKeys")]
-        public virtual System.Collections.Generic.IList<PublicKey> PublicKeys { get; set; } 
+        public virtual System.Collections.Generic.IList<PublicKey> PublicKeys { get; set; }
 
         /// <summary>Indicates the size of the backing VM running the environment. If set to something other than
         /// DEFAULT, it will be reverted to the default VM size after vm_size_expire_time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
-        public virtual string Size { get; set; } 
+        public virtual string Size { get; set; }
 
         /// <summary>Output only. Host to which clients can connect to initiate SSH sessions with the
         /// environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sshHost")]
-        public virtual string SshHost { get; set; } 
+        public virtual string SshHost { get; set; }
 
         /// <summary>Output only. Port to which clients can connect to initiate SSH sessions with the
         /// environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sshPort")]
-        public virtual System.Nullable<int> SshPort { get; set; } 
+        public virtual System.Nullable<int> SshPort { get; set; }
 
         /// <summary>Output only. Username that clients should use when initiating SSH sessions with the
         /// environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sshUsername")]
-        public virtual string SshUsername { get; set; } 
+        public virtual string SshUsername { get; set; }
 
         /// <summary>Output only. Current execution state of this environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Output only. The time when the Environment will expire back to the default VM size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmSizeExpireTime")]
-        public virtual object VmSizeExpireTime { get; set; } 
+        public virtual object VmSizeExpireTime { get; set; }
 
         /// <summary>Output only. Host to which clients can connect to initiate HTTPS or WSS connections with the
         /// environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webHost")]
-        public virtual string WebHost { get; set; } 
+        public virtual string WebHost { get; set; }
 
         /// <summary>Output only. Ports to which clients can connect to initiate HTTPS or WSS connections with the
         /// environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webPorts")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> WebPorts { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> WebPorts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -797,23 +797,23 @@ namespace Google.Apis.CloudShell.v1alpha1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -821,7 +821,7 @@ namespace Google.Apis.CloudShell.v1alpha1.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -832,11 +832,11 @@ namespace Google.Apis.CloudShell.v1alpha1.Data
     {
         /// <summary>Required. Format of this key's content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual string Format { get; set; } 
+        public virtual string Format { get; set; }
 
         /// <summary>Required. Content of this key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
+        public virtual string Key { get; set; }
 
         /// <summary>Output only. Full name of this resource, in the format
         /// `users/{owner_email}/environments/{environment_id}/publicKeys/{key_id}`. `{owner_email}` is the email
@@ -844,7 +844,7 @@ namespace Google.Apis.CloudShell.v1alpha1.Data
         /// which the key grants access. `{key_id}` is the unique identifier of the key. For example,
         /// `users/someone@example.com/environments/default/publicKeys/myKey`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -855,7 +855,7 @@ namespace Google.Apis.CloudShell.v1alpha1.Data
     {
         /// <summary>Current state of the environment being started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -868,11 +868,11 @@ namespace Google.Apis.CloudShell.v1alpha1.Data
         /// will be pre-authenticated with gcloud so that the user can run gcloud commands in Cloud Shell without having
         /// to log in. This code can be updated later by calling AuthorizeEnvironment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
-        public virtual string AccessToken { get; set; } 
+        public virtual string AccessToken { get; set; }
 
         /// <summary>Public keys that should be added to the environment before it is started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicKeys")]
-        public virtual System.Collections.Generic.IList<PublicKey> PublicKeys { get; set; } 
+        public virtual System.Collections.Generic.IList<PublicKey> PublicKeys { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -884,7 +884,7 @@ namespace Google.Apis.CloudShell.v1alpha1.Data
     {
         /// <summary>Environment that was started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
-        public virtual Environment Environment { get; set; } 
+        public virtual Environment Environment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -899,17 +899,17 @@ namespace Google.Apis.CloudShell.v1alpha1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

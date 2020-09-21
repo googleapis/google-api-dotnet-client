@@ -971,7 +971,7 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         /// <summary>Required. IDs of the Photos. HTTP GET requests require the following syntax for the URL query
         /// parameter: `photoIds==&...`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photoIds")]
-        public virtual System.Collections.Generic.IList<string> PhotoIds { get; set; } 
+        public virtual System.Collections.Generic.IList<string> PhotoIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -982,7 +982,7 @@ namespace Google.Apis.StreetViewPublish.v1.Data
     {
         /// <summary>The status for the operation to delete a single Photo in the batch request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual System.Collections.Generic.IList<Status> Status { get; set; } 
+        public virtual System.Collections.Generic.IList<Status> Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -994,7 +994,7 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         /// <summary>List of results for each individual Photo requested, in the same order as the requests in
         /// BatchGetPhotos.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
-        public virtual System.Collections.Generic.IList<PhotoResponse> Results { get; set; } 
+        public virtual System.Collections.Generic.IList<PhotoResponse> Results { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1005,7 +1005,7 @@ namespace Google.Apis.StreetViewPublish.v1.Data
     {
         /// <summary>Required. List of UpdatePhotoRequests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updatePhotoRequests")]
-        public virtual System.Collections.Generic.IList<UpdatePhotoRequest> UpdatePhotoRequests { get; set; } 
+        public virtual System.Collections.Generic.IList<UpdatePhotoRequest> UpdatePhotoRequests { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1016,7 +1016,7 @@ namespace Google.Apis.StreetViewPublish.v1.Data
     {
         /// <summary>List of results for each individual Photo updated, in the same order as the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
-        public virtual System.Collections.Generic.IList<PhotoResponse> Results { get; set; } 
+        public virtual System.Collections.Generic.IList<PhotoResponse> Results { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1027,7 +1027,7 @@ namespace Google.Apis.StreetViewPublish.v1.Data
     {
         /// <summary>Required. The destination of the connection from the containing photo to another photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual PhotoId Target { get; set; } 
+        public virtual PhotoId Target { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1050,11 +1050,11 @@ namespace Google.Apis.StreetViewPublish.v1.Data
     {
         /// <summary>The latitude in degrees. It must be in the range [-90.0, +90.0].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latitude")]
-        public virtual System.Nullable<double> Latitude { get; set; } 
+        public virtual System.Nullable<double> Latitude { get; set; }
 
         /// <summary>The longitude in degrees. It must be in the range [-180.0, +180.0].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
-        public virtual System.Nullable<double> Longitude { get; set; } 
+        public virtual System.Nullable<double> Longitude { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1066,12 +1066,12 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         /// <summary>Required. A name assigned to this Level, restricted to 3 characters. Consider how the elevator
         /// buttons would be labeled for this level if there was an elevator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Floor number, used for ordering. 0 indicates the ground level, 1 indicates the first level above
         /// ground level, -1 indicates the first level under ground level. Non-integer values are OK.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("number")]
-        public virtual System.Nullable<double> Number { get; set; } 
+        public virtual System.Nullable<double> Number { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1083,12 +1083,12 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>List of photos. The pageSize field in the request determines the number of items
         /// returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photos")]
-        public virtual System.Collections.Generic.IList<Photo> Photos { get; set; } 
+        public virtual System.Collections.Generic.IList<Photo> Photos { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1100,23 +1100,23 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -1124,7 +1124,7 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1136,56 +1136,56 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         /// <summary>Absolute time when the photo was captured. When the photo has no exif timestamp, this is used to
         /// set a timestamp in the photo metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("captureTime")]
-        public virtual object CaptureTime { get; set; } 
+        public virtual object CaptureTime { get; set; }
 
         /// <summary>Connections to other photos. A connection represents the link from this photo to another
         /// photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connections")]
-        public virtual System.Collections.Generic.IList<Connection> Connections { get; set; } 
+        public virtual System.Collections.Generic.IList<Connection> Connections { get; set; }
 
         /// <summary>Output only. The download URL for the photo bytes. This field is set only when GetPhotoRequest.view
         /// is set to PhotoView.INCLUDE_DOWNLOAD_URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadUrl")]
-        public virtual string DownloadUrl { get; set; } 
+        public virtual string DownloadUrl { get; set; }
 
         /// <summary>Output only. Status in Google Maps, whether this photo was published or rejected. Not currently
         /// populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mapsPublishStatus")]
-        public virtual string MapsPublishStatus { get; set; } 
+        public virtual string MapsPublishStatus { get; set; }
 
         /// <summary>Required when updating a photo. Output only when creating a photo. Identifier for the photo, which
         /// is unique among all photos in Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photoId")]
-        public virtual PhotoId PhotoId { get; set; } 
+        public virtual PhotoId PhotoId { get; set; }
 
         /// <summary>Places where this photo belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("places")]
-        public virtual System.Collections.Generic.IList<Place> Places { get; set; } 
+        public virtual System.Collections.Generic.IList<Place> Places { get; set; }
 
         /// <summary>Pose of the photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pose")]
-        public virtual Pose Pose { get; set; } 
+        public virtual Pose Pose { get; set; }
 
         /// <summary>Output only. The share link for the photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shareLink")]
-        public virtual string ShareLink { get; set; } 
+        public virtual string ShareLink { get; set; }
 
         /// <summary>Output only. The thumbnail URL for showing a preview of the given photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
-        public virtual string ThumbnailUrl { get; set; } 
+        public virtual string ThumbnailUrl { get; set; }
 
         /// <summary>Output only. Status of rights transfer on this photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferStatus")]
-        public virtual string TransferStatus { get; set; } 
+        public virtual string TransferStatus { get; set; }
 
         /// <summary>Required when creating a photo. Input only. The resource URL where the photo bytes are uploaded
         /// to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadReference")]
-        public virtual UploadRef UploadReference { get; set; } 
+        public virtual UploadRef UploadReference { get; set; }
 
         /// <summary>Output only. View count of the photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewCount")]
-        public virtual System.Nullable<long> ViewCount { get; set; } 
+        public virtual System.Nullable<long> ViewCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1196,7 +1196,7 @@ namespace Google.Apis.StreetViewPublish.v1.Data
     {
         /// <summary>Required. A unique identifier for a photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1208,11 +1208,11 @@ namespace Google.Apis.StreetViewPublish.v1.Data
     {
         /// <summary>The Photo resource, if the request was successful.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photo")]
-        public virtual Photo Photo { get; set; } 
+        public virtual Photo Photo { get; set; }
 
         /// <summary>The status for the operation to get or update a single photo in the batch request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual Status Status { get; set; } 
+        public virtual Status Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1224,15 +1224,15 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         /// <summary>Output-only. The language_code that the name is localized with. This should be the language_code
         /// specified in the request, but may be a fallback.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>Output-only. The name of the place, localized to the language_code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Place identifier, as described in https://developers.google.com/places/place-id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placeId")]
-        public virtual string PlaceId { get; set; } 
+        public virtual string PlaceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1246,39 +1246,39 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         /// https://developer.android.com/reference/android/location/Location#getAccuracy(). Other platforms have
         /// different methods of obtaining similar accuracy estimations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accuracyMeters")]
-        public virtual System.Nullable<float> AccuracyMeters { get; set; } 
+        public virtual System.Nullable<float> AccuracyMeters { get; set; }
 
         /// <summary>Altitude of the pose in meters above WGS84 ellipsoid. NaN indicates an unmeasured
         /// quantity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("altitude")]
-        public virtual System.Nullable<double> Altitude { get; set; } 
+        public virtual System.Nullable<double> Altitude { get; set; }
 
         /// <summary>Compass heading, measured at the center of the photo in degrees clockwise from North. Value must be
         /// >=0 and <360. NaN indicates an unmeasured quantity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("heading")]
-        public virtual System.Nullable<double> Heading { get; set; } 
+        public virtual System.Nullable<double> Heading { get; set; }
 
         /// <summary>Latitude and longitude pair of the pose, as explained here:
         /// https://cloud.google.com/datastore/docs/reference/rest/Shared.Types/LatLng When creating a Photo, if the
         /// latitude and longitude pair are not provided, the geolocation from the exif header is used. A latitude and
         /// longitude pair not provided in the photo or exif header causes the photo process to fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latLngPair")]
-        public virtual LatLng LatLngPair { get; set; } 
+        public virtual LatLng LatLngPair { get; set; }
 
         /// <summary>Level (the floor in a building) used to configure vertical navigation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("level")]
-        public virtual Level Level { get; set; } 
+        public virtual Level Level { get; set; }
 
         /// <summary>Pitch, measured at the center of the photo in degrees. Value must be >=-90 and <= 90. A value of
         /// -90 means looking directly down, and a value of 90 means looking directly up. NaN indicates an unmeasured
         /// quantity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pitch")]
-        public virtual System.Nullable<double> Pitch { get; set; } 
+        public virtual System.Nullable<double> Pitch { get; set; }
 
         /// <summary>Roll, measured in degrees. Value must be >= 0 and <360. A value of 0 means level with the horizon.
         /// NaN indicates an unmeasured quantity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roll")]
-        public virtual System.Nullable<double> Roll { get; set; } 
+        public virtual System.Nullable<double> Roll { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1293,17 +1293,17 @@ namespace Google.Apis.StreetViewPublish.v1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1314,7 +1314,7 @@ namespace Google.Apis.StreetViewPublish.v1.Data
     {
         /// <summary>Required. Photo object containing the new metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photo")]
-        public virtual Photo Photo { get; set; } 
+        public virtual Photo Photo { get; set; }
 
         /// <summary>Required. Mask that identifies fields on the photo metadata to update. If not present, the old
         /// Photo metadata is entirely replaced with the new Photo metadata in this request. The update fails if invalid
@@ -1324,7 +1324,7 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         /// get replaced with the new contents. For example, if updateMask contains `connections` and
         /// `UpdatePhotoRequest.photo.connections` is empty, all connections are removed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1336,7 +1336,7 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         /// <summary>Required. An upload reference should be unique for each user. It follows the form:
         /// "https://streetviewpublish.googleapis.com/media/user/{account_id}/photo/{upload_reference}"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadUrl")]
-        public virtual string UploadUrl { get; set; } 
+        public virtual string UploadUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

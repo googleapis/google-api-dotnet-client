@@ -329,24 +329,24 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>The actor responsible for this action (or empty if all actors are responsible).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actor")]
-        public virtual Actor Actor { get; set; } 
+        public virtual Actor Actor { get; set; }
 
         /// <summary>The type and detailed information about the action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detail")]
-        public virtual ActionDetail Detail { get; set; } 
+        public virtual ActionDetail Detail { get; set; }
 
         /// <summary>The target this action affects (or empty if affecting all targets). This represents the state of
         /// the target immediately after this action occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual Target Target { get; set; } 
+        public virtual Target Target { get; set; }
 
         /// <summary>The action occurred over this time range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeRange")]
-        public virtual TimeRange TimeRange { get; set; } 
+        public virtual TimeRange TimeRange { get; set; }
 
         /// <summary>The action occurred at this specific time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
-        public virtual object Timestamp { get; set; } 
+        public virtual object Timestamp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -357,47 +357,47 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>A change about comments was made.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comment")]
-        public virtual Comment Comment { get; set; } 
+        public virtual Comment Comment { get; set; }
 
         /// <summary>An object was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("create")]
-        public virtual Create Create { get; set; } 
+        public virtual Create Create { get; set; }
 
         /// <summary>An object was deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delete")]
-        public virtual Delete Delete { get; set; } 
+        public virtual Delete Delete { get; set; }
 
         /// <summary>A change happened in data leak prevention status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dlpChange")]
-        public virtual DataLeakPreventionChange DlpChange { get; set; } 
+        public virtual DataLeakPreventionChange DlpChange { get; set; }
 
         /// <summary>An object was edited.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("edit")]
-        public virtual Edit Edit { get; set; } 
+        public virtual Edit Edit { get; set; }
 
         /// <summary>An object was moved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("move")]
-        public virtual Move Move { get; set; } 
+        public virtual Move Move { get; set; }
 
         /// <summary>The permission on an object was changed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionChange")]
-        public virtual PermissionChange PermissionChange { get; set; } 
+        public virtual PermissionChange PermissionChange { get; set; }
 
         /// <summary>An object was referenced in an application outside of Drive/Docs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reference")]
-        public virtual ApplicationReference Reference { get; set; } 
+        public virtual ApplicationReference Reference { get; set; }
 
         /// <summary>An object was renamed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rename")]
-        public virtual Rename Rename { get; set; } 
+        public virtual Rename Rename { get; set; }
 
         /// <summary>A deleted object was restored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restore")]
-        public virtual Restore Restore { get; set; } 
+        public virtual Restore Restore { get; set; }
 
         /// <summary>Settings were changed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("settingsChange")]
-        public virtual SettingsChange SettingsChange { get; set; } 
+        public virtual SettingsChange SettingsChange { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -408,23 +408,23 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>An administrator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("administrator")]
-        public virtual Administrator Administrator { get; set; } 
+        public virtual Administrator Administrator { get; set; }
 
         /// <summary>An anonymous user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("anonymous")]
-        public virtual AnonymousUser Anonymous { get; set; } 
+        public virtual AnonymousUser Anonymous { get; set; }
 
         /// <summary>An account acting on behalf of another.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("impersonation")]
-        public virtual Impersonation Impersonation { get; set; } 
+        public virtual Impersonation Impersonation { get; set; }
 
         /// <summary>A non-user actor (i.e. system triggered).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("system")]
-        public virtual SystemEvent System { get; set; } 
+        public virtual SystemEvent System { get; set; }
 
         /// <summary>An end user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
-        public virtual User User { get; set; } 
+        public virtual User User { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -457,7 +457,7 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>The reference type corresponding to this event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -468,11 +468,11 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>The user to whom the comment was assigned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedUser")]
-        public virtual User AssignedUser { get; set; } 
+        public virtual User AssignedUser { get; set; }
 
         /// <summary>The sub-type of this event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtype")]
-        public virtual string Subtype { get; set; } 
+        public virtual string Subtype { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -483,19 +483,19 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>A change on an assignment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignment")]
-        public virtual Assignment Assignment { get; set; } 
+        public virtual Assignment Assignment { get; set; }
 
         /// <summary>Users who are mentioned in this comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentionedUsers")]
-        public virtual System.Collections.Generic.IList<User> MentionedUsers { get; set; } 
+        public virtual System.Collections.Generic.IList<User> MentionedUsers { get; set; }
 
         /// <summary>A change on a regular posted comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("post")]
-        public virtual Post Post { get; set; } 
+        public virtual Post Post { get; set; }
 
         /// <summary>A change on a suggestion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestion")]
-        public virtual Suggestion Suggestion { get; set; } 
+        public virtual Suggestion Suggestion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -509,11 +509,11 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>The individual activities are consolidated using the legacy strategy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("legacy")]
-        public virtual Legacy Legacy { get; set; } 
+        public virtual Legacy Legacy { get; set; }
 
         /// <summary>The individual activities are not consolidated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("none")]
-        public virtual NoConsolidation None { get; set; } 
+        public virtual NoConsolidation None { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -524,7 +524,7 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>The the original object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalObject")]
-        public virtual TargetReference OriginalObject { get; set; } 
+        public virtual TargetReference OriginalObject { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -535,16 +535,16 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>If present, indicates the object was created by copying an existing Drive object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("copy")]
-        public virtual Copy Copy { get; set; } 
+        public virtual Copy Copy { get; set; }
 
         /// <summary>If present, indicates the object was newly created (e.g. as a blank document), not derived from a
         /// Drive object or external object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("new")]
-        public virtual New New__ { get; set; } 
+        public virtual New New__ { get; set; }
 
         /// <summary>If present, indicates the object originated externally and was uploaded to Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upload")]
-        public virtual Upload Upload { get; set; } 
+        public virtual Upload Upload { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -555,7 +555,7 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>The type of Data Leak Prevention (DLP) change.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -566,7 +566,7 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>The type of delete action taken.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -584,11 +584,11 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>An opaque string used to identify this domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("legacyId")]
-        public virtual string LegacyId { get; set; } 
+        public virtual string LegacyId { get; set; }
 
         /// <summary>The name of the domain, e.g. "google.com".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -600,15 +600,15 @@ namespace Google.Apis.DriveActivity.v2.Data
         /// <summary>The resource name of the shared drive. The format is "COLLECTION_ID/DRIVE_ID". Clients should not
         /// assume a specific collection ID for this resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The root of this shared drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("root")]
-        public virtual DriveItem Root { get; set; } 
+        public virtual DriveItem Root { get; set; }
 
         /// <summary>The title of the shared drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -623,30 +623,30 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>Details on all actions in this activity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actions")]
-        public virtual System.Collections.Generic.IList<Action> Actions { get; set; } 
+        public virtual System.Collections.Generic.IList<Action> Actions { get; set; }
 
         /// <summary>All actor(s) responsible for the activity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actors")]
-        public virtual System.Collections.Generic.IList<Actor> Actors { get; set; } 
+        public virtual System.Collections.Generic.IList<Actor> Actors { get; set; }
 
         /// <summary>Key information about the primary action for this activity. This is either representative, or the
         /// most important, of all actions in the activity, according to the ConsolidationStrategy in the
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryActionDetail")]
-        public virtual ActionDetail PrimaryActionDetail { get; set; } 
+        public virtual ActionDetail PrimaryActionDetail { get; set; }
 
         /// <summary>All Google Drive objects this activity is about (e.g. file, folder, drive). This represents the
         /// state of the target immediately after the actions occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targets")]
-        public virtual System.Collections.Generic.IList<Target> Targets { get; set; } 
+        public virtual System.Collections.Generic.IList<Target> Targets { get; set; }
 
         /// <summary>The activity occurred over this time range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeRange")]
-        public virtual TimeRange TimeRange { get; set; } 
+        public virtual TimeRange TimeRange { get; set; }
 
         /// <summary>The activity occurred at this specific time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
-        public virtual object Timestamp { get; set; } 
+        public virtual object Timestamp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -664,7 +664,7 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>The type of Drive folder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -675,36 +675,36 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>The Drive item is a file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveFile")]
-        public virtual DriveFile DriveFile { get; set; } 
+        public virtual DriveFile DriveFile { get; set; }
 
         /// <summary>The Drive item is a folder. Includes information about the type of folder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveFolder")]
-        public virtual DriveFolder DriveFolder { get; set; } 
+        public virtual DriveFolder DriveFolder { get; set; }
 
         /// <summary>This field is deprecated; please use the `driveFile` field instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("file")]
-        public virtual File File { get; set; } 
+        public virtual File File { get; set; }
 
         /// <summary>This field is deprecated; please use the `driveFolder` field instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("folder")]
-        public virtual Folder Folder { get; set; } 
+        public virtual Folder Folder { get; set; }
 
         /// <summary>The MIME type of the Drive item. See https://developers.google.com/drive/v3/web/mime-
         /// types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; } 
+        public virtual string MimeType { get; set; }
 
         /// <summary>The target Drive item. The format is "items/ITEM_ID".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Information about the owner of this Drive item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("owner")]
-        public virtual Owner Owner { get; set; } 
+        public virtual Owner Owner { get; set; }
 
         /// <summary>The title of the Drive item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -715,27 +715,27 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>The Drive item is a file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveFile")]
-        public virtual DriveFile DriveFile { get; set; } 
+        public virtual DriveFile DriveFile { get; set; }
 
         /// <summary>The Drive item is a folder. Includes information about the type of folder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveFolder")]
-        public virtual DriveFolder DriveFolder { get; set; } 
+        public virtual DriveFolder DriveFolder { get; set; }
 
         /// <summary>This field is deprecated; please use the `driveFile` field instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("file")]
-        public virtual File File { get; set; } 
+        public virtual File File { get; set; }
 
         /// <summary>This field is deprecated; please use the `driveFolder` field instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("folder")]
-        public virtual Folder Folder { get; set; } 
+        public virtual Folder Folder { get; set; }
 
         /// <summary>The target Drive item. The format is "items/ITEM_ID".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The title of the Drive item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -747,11 +747,11 @@ namespace Google.Apis.DriveActivity.v2.Data
         /// <summary>The resource name of the shared drive. The format is "COLLECTION_ID/DRIVE_ID". Clients should not
         /// assume a specific collection ID for this resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The title of the shared drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -777,22 +777,22 @@ namespace Google.Apis.DriveActivity.v2.Data
         /// <summary>The comment in the discussion thread. This identifier is an opaque string compatible with the Drive
         /// API; see https://developers.google.com/drive/v3/reference/comments/get</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("legacyCommentId")]
-        public virtual string LegacyCommentId { get; set; } 
+        public virtual string LegacyCommentId { get; set; }
 
         /// <summary>The discussion thread to which the comment was added. This identifier is an opaque string
         /// compatible with the Drive API and references the first comment in a discussion; see
         /// https://developers.google.com/drive/v3/reference/comments/get</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("legacyDiscussionId")]
-        public virtual string LegacyDiscussionId { get; set; } 
+        public virtual string LegacyDiscussionId { get; set; }
 
         /// <summary>The link to the discussion thread containing this comment, for example,
         /// "https://docs.google.com/DOCUMENT_ID/edit?disco=THREAD_ID".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkToDiscussion")]
-        public virtual string LinkToDiscussion { get; set; } 
+        public virtual string LinkToDiscussion { get; set; }
 
         /// <summary>The Drive item containing this comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual DriveItem Parent { get; set; } 
+        public virtual DriveItem Parent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -803,7 +803,7 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>This field is deprecated; please see `DriveFolder.type` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -814,11 +814,11 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>The email address of the group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
+        public virtual string Email { get; set; }
 
         /// <summary>The title of the group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -830,7 +830,7 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>The impersonated user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("impersonatedUser")]
-        public virtual User ImpersonatedUser { get; set; } 
+        public virtual User ImpersonatedUser { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -841,12 +841,12 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>True if this is the user making the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isCurrentUser")]
-        public virtual System.Nullable<bool> IsCurrentUser { get; set; } 
+        public virtual System.Nullable<bool> IsCurrentUser { get; set; }
 
         /// <summary>The identifier for this user that can be used with the People API to get more information. The
         /// format is "people/ACCOUNT_ID". See https://developers.google.com/people/.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("personName")]
-        public virtual string PersonName { get; set; } 
+        public virtual string PersonName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -867,11 +867,11 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>The added parent object(s).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addedParents")]
-        public virtual System.Collections.Generic.IList<TargetReference> AddedParents { get; set; } 
+        public virtual System.Collections.Generic.IList<TargetReference> AddedParents { get; set; }
 
         /// <summary>The removed parent object(s).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removedParents")]
-        public virtual System.Collections.Generic.IList<TargetReference> RemovedParents { get; set; } 
+        public virtual System.Collections.Generic.IList<TargetReference> RemovedParents { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -896,19 +896,19 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>The domain of the Drive item owner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
-        public virtual Domain Domain { get; set; } 
+        public virtual Domain Domain { get; set; }
 
         /// <summary>The drive that owns the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("drive")]
-        public virtual DriveReference Drive { get; set; } 
+        public virtual DriveReference Drive { get; set; }
 
         /// <summary>This field is deprecated; please use the `drive` field instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamDrive")]
-        public virtual TeamDriveReference TeamDrive { get; set; } 
+        public virtual TeamDriveReference TeamDrive { get; set; }
 
         /// <summary>The user that owns the Drive item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
-        public virtual User User { get; set; } 
+        public virtual User User { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -920,28 +920,28 @@ namespace Google.Apis.DriveActivity.v2.Data
         /// <summary>If true, the item can be discovered (e.g. in the user's "Shared with me" collection) without
         /// needing a link to the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowDiscovery")]
-        public virtual System.Nullable<bool> AllowDiscovery { get; set; } 
+        public virtual System.Nullable<bool> AllowDiscovery { get; set; }
 
         /// <summary>If set, this permission applies to anyone, even logged out users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("anyone")]
-        public virtual Anyone Anyone { get; set; } 
+        public virtual Anyone Anyone { get; set; }
 
         /// <summary>The domain to whom this permission applies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
-        public virtual Domain Domain { get; set; } 
+        public virtual Domain Domain { get; set; }
 
         /// <summary>The group to whom this permission applies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
-        public virtual Group Group { get; set; } 
+        public virtual Group Group { get; set; }
 
         /// <summary>Indicates the Google Drive permissions role. The role determines a user's ability to read, write,
         /// and comment on items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
+        public virtual string Role { get; set; }
 
         /// <summary>The user to whom this permission applies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
-        public virtual User User { get; set; } 
+        public virtual User User { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -952,11 +952,11 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>The set of permissions added by this change.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addedPermissions")]
-        public virtual System.Collections.Generic.IList<Permission> AddedPermissions { get; set; } 
+        public virtual System.Collections.Generic.IList<Permission> AddedPermissions { get; set; }
 
         /// <summary>The set of permissions removed by this change.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removedPermissions")]
-        public virtual System.Collections.Generic.IList<Permission> RemovedPermissions { get; set; } 
+        public virtual System.Collections.Generic.IList<Permission> RemovedPermissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -967,7 +967,7 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>The sub-type of this event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtype")]
-        public virtual string Subtype { get; set; } 
+        public virtual string Subtype { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -979,12 +979,12 @@ namespace Google.Apis.DriveActivity.v2.Data
         /// <summary>Return activities for this Drive folder and all children and descendants. The format is
         /// "items/ITEM_ID".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ancestorName")]
-        public virtual string AncestorName { get; set; } 
+        public virtual string AncestorName { get; set; }
 
         /// <summary>Details on how to consolidate related actions that make up the activity. If not set, then related
         /// actions are not consolidated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consolidationStrategy")]
-        public virtual ConsolidationStrategy ConsolidationStrategy { get; set; } 
+        public virtual ConsolidationStrategy ConsolidationStrategy { get; set; }
 
         /// <summary>The filtering for items returned from this query request. The format of the filter string is a
         /// sequence of expressions, joined by an optional "AND", where each expression is of the form "field operator
@@ -995,23 +995,23 @@ namespace Google.Apis.DriveActivity.v2.Data
         /// detail.action_detail_case: RENAME - detail.action_detail_case:(CREATE EDIT) -
         /// -detail.action_detail_case:MOVE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual string Filter { get; set; } 
+        public virtual string Filter { get; set; }
 
         /// <summary>Return activities for this Drive item. The format is "items/ITEM_ID".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemName")]
-        public virtual string ItemName { get; set; } 
+        public virtual string ItemName { get; set; }
 
         /// <summary>The miminum number of activities desired in the response; the server will attempt to return at
         /// least this quanitity. The server may also return fewer activities if it has a partial response ready before
         /// the request times out. If not set, a default value is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
-        public virtual System.Nullable<int> PageSize { get; set; } 
+        public virtual System.Nullable<int> PageSize { get; set; }
 
         /// <summary>The token identifying which page of results to return. Set this to the next_page_token value
         /// returned from a previous query to obtain the following page of results. If not set, the first page of
         /// results will be returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
-        public virtual string PageToken { get; set; } 
+        public virtual string PageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1022,12 +1022,12 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>List of activity requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activities")]
-        public virtual System.Collections.Generic.IList<DriveActivity> Activities { get; set; } 
+        public virtual System.Collections.Generic.IList<DriveActivity> Activities { get; set; }
 
         /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
         /// list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1038,11 +1038,11 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>The new title of the drive object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newTitle")]
-        public virtual string NewTitle { get; set; } 
+        public virtual string NewTitle { get; set; }
 
         /// <summary>The previous title of the drive object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oldTitle")]
-        public virtual string OldTitle { get; set; } 
+        public virtual string OldTitle { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1053,7 +1053,7 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>The type of restore action taken.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1064,11 +1064,11 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>The feature which had a change in restriction policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feature")]
-        public virtual string Feature { get; set; } 
+        public virtual string Feature { get; set; }
 
         /// <summary>The restriction in place after the change.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newRestriction")]
-        public virtual string NewRestriction { get; set; } 
+        public virtual string NewRestriction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1079,7 +1079,7 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>The set of changes made to restrictions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictionChanges")]
-        public virtual System.Collections.Generic.IList<RestrictionChange> RestrictionChanges { get; set; } 
+        public virtual System.Collections.Generic.IList<RestrictionChange> RestrictionChanges { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1090,7 +1090,7 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>The sub-type of this event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtype")]
-        public virtual string Subtype { get; set; } 
+        public virtual string Subtype { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1101,7 +1101,7 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>The type of the system event that may triggered activity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1112,19 +1112,19 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>The target is a shared drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("drive")]
-        public virtual Drive Drive { get; set; } 
+        public virtual Drive Drive { get; set; }
 
         /// <summary>The target is a Drive item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveItem")]
-        public virtual DriveItem DriveItem { get; set; } 
+        public virtual DriveItem DriveItem { get; set; }
 
         /// <summary>The target is a comment on a Drive file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileComment")]
-        public virtual FileComment FileComment { get; set; } 
+        public virtual FileComment FileComment { get; set; }
 
         /// <summary>This field is deprecated; please use the `drive` field instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamDrive")]
-        public virtual TeamDrive TeamDrive { get; set; } 
+        public virtual TeamDrive TeamDrive { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1135,15 +1135,15 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>The target is a shared drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("drive")]
-        public virtual DriveReference Drive { get; set; } 
+        public virtual DriveReference Drive { get; set; }
 
         /// <summary>The target is a Drive item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveItem")]
-        public virtual DriveItemReference DriveItem { get; set; } 
+        public virtual DriveItemReference DriveItem { get; set; }
 
         /// <summary>This field is deprecated; please use the `drive` field instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamDrive")]
-        public virtual TeamDriveReference TeamDrive { get; set; } 
+        public virtual TeamDriveReference TeamDrive { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1154,15 +1154,15 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>This field is deprecated; please see `Drive.name` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>This field is deprecated; please see `Drive.root` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("root")]
-        public virtual DriveItem Root { get; set; } 
+        public virtual DriveItem Root { get; set; }
 
         /// <summary>This field is deprecated; please see `Drive.title` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1173,11 +1173,11 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>This field is deprecated; please see `DriveReference.name` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>This field is deprecated; please see `DriveReference.title` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1188,11 +1188,11 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>The end of the time range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>The start of the time range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1217,15 +1217,15 @@ namespace Google.Apis.DriveActivity.v2.Data
     {
         /// <summary>A user whose account has since been deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletedUser")]
-        public virtual DeletedUser DeletedUser { get; set; } 
+        public virtual DeletedUser DeletedUser { get; set; }
 
         /// <summary>A known user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("knownUser")]
-        public virtual KnownUser KnownUser { get; set; } 
+        public virtual KnownUser KnownUser { get; set; }
 
         /// <summary>A user about whom nothing is currently known.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unknownUser")]
-        public virtual UnknownUser UnknownUser { get; set; } 
+        public virtual UnknownUser UnknownUser { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

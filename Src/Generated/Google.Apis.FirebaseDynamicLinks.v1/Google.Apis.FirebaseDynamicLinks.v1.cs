@@ -585,11 +585,11 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
     {
         /// <summary>Google Play Campaign Measurements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googlePlayAnalytics")]
-        public virtual GooglePlayAnalytics GooglePlayAnalytics { get; set; } 
+        public virtual GooglePlayAnalytics GooglePlayAnalytics { get; set; }
 
         /// <summary>iTunes Connect App Analytics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itunesConnectAnalytics")]
-        public virtual ITunesConnectAnalytics ItunesConnectAnalytics { get; set; } 
+        public virtual ITunesConnectAnalytics ItunesConnectAnalytics { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -600,20 +600,20 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
     {
         /// <summary>Link to open on Android if the app is not installed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidFallbackLink")]
-        public virtual string AndroidFallbackLink { get; set; } 
+        public virtual string AndroidFallbackLink { get; set; }
 
         /// <summary>If specified, this overrides the ‘link’ parameter on Android.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidLink")]
-        public virtual string AndroidLink { get; set; } 
+        public virtual string AndroidLink { get; set; }
 
         /// <summary>Minimum version code for the Android app. If the installed app’s version code is lower, then the
         /// user is taken to the Play Store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidMinPackageVersionCode")]
-        public virtual string AndroidMinPackageVersionCode { get; set; } 
+        public virtual string AndroidMinPackageVersionCode { get; set; }
 
         /// <summary>Android package name of the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidPackageName")]
-        public virtual string AndroidPackageName { get; set; } 
+        public virtual string AndroidPackageName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -625,26 +625,26 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         /// <summary>Information about the Dynamic Link to be shortened. [Learn
         /// more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicLinkInfo")]
-        public virtual DynamicLinkInfo DynamicLinkInfo { get; set; } 
+        public virtual DynamicLinkInfo DynamicLinkInfo { get; set; }
 
         /// <summary>Full long Dynamic Link URL with desired query parameters specified. For example,
         /// "https://sample.app.goo.gl/?link=http://www.google.com=com.sample", [Learn
         /// more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longDynamicLink")]
-        public virtual string LongDynamicLink { get; set; } 
+        public virtual string LongDynamicLink { get; set; }
 
         /// <summary>Link name to associate with the link. It's used for marketer to identify manually-created links in
         /// the Firebase console (https://console.firebase.google.com/). Links must be named to be tracked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Google SDK version. Version takes the form "$major.$minor.$patch"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sdkVersion")]
-        public virtual string SdkVersion { get; set; } 
+        public virtual string SdkVersion { get; set; }
 
         /// <summary>Short Dynamic Link suffix. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suffix")]
-        public virtual Suffix Suffix { get; set; } 
+        public virtual Suffix Suffix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -655,15 +655,15 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
     {
         /// <summary>Short Dynamic Link value. e.g. https://abcd.app.goo.gl/wxyz</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedShortLink")]
-        public virtual ManagedShortLink ManagedShortLink { get; set; } 
+        public virtual ManagedShortLink ManagedShortLink { get; set; }
 
         /// <summary>Preview link to show the link flow chart. (debug info.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previewLink")]
-        public virtual string PreviewLink { get; set; } 
+        public virtual string PreviewLink { get; set; }
 
         /// <summary>Information about potential warnings on link creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual System.Collections.Generic.IList<DynamicLinkWarning> Warning { get; set; } 
+        public virtual System.Collections.Generic.IList<DynamicLinkWarning> Warning { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -675,21 +675,21 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         /// <summary>Information about the Dynamic Link to be shortened. [Learn
         /// more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicLinkInfo")]
-        public virtual DynamicLinkInfo DynamicLinkInfo { get; set; } 
+        public virtual DynamicLinkInfo DynamicLinkInfo { get; set; }
 
         /// <summary>Full long Dynamic Link URL with desired query parameters specified. For example,
         /// "https://sample.app.goo.gl/?link=http://www.google.com=com.sample", [Learn
         /// more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longDynamicLink")]
-        public virtual string LongDynamicLink { get; set; } 
+        public virtual string LongDynamicLink { get; set; }
 
         /// <summary>Google SDK version. Version takes the form "$major.$minor.$patch"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sdkVersion")]
-        public virtual string SdkVersion { get; set; } 
+        public virtual string SdkVersion { get; set; }
 
         /// <summary>Short Dynamic Link suffix. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suffix")]
-        public virtual Suffix Suffix { get; set; } 
+        public virtual Suffix Suffix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -700,15 +700,15 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
     {
         /// <summary>Preview link to show the link flow chart. (debug info.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previewLink")]
-        public virtual string PreviewLink { get; set; } 
+        public virtual string PreviewLink { get; set; }
 
         /// <summary>Short Dynamic Link value. e.g. https://abcd.app.goo.gl/wxyz</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortLink")]
-        public virtual string ShortLink { get; set; } 
+        public virtual string ShortLink { get; set; }
 
         /// <summary>Information about potential warnings on link creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual System.Collections.Generic.IList<DynamicLinkWarning> Warning { get; set; } 
+        public virtual System.Collections.Generic.IList<DynamicLinkWarning> Warning { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -719,7 +719,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
     {
         /// <summary>Link to open on desktop.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desktopFallbackLink")]
-        public virtual string DesktopFallbackLink { get; set; } 
+        public virtual string DesktopFallbackLink { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -730,33 +730,33 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
     {
         /// <summary>Device model name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceModelName")]
-        public virtual string DeviceModelName { get; set; } 
+        public virtual string DeviceModelName { get; set; }
 
         /// <summary>Device language code setting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>Device language code setting obtained by executing JavaScript code in WebView.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCodeFromWebview")]
-        public virtual string LanguageCodeFromWebview { get; set; } 
+        public virtual string LanguageCodeFromWebview { get; set; }
 
         /// <summary>Device language code raw setting. iOS does returns language code in different format than iOS
         /// WebView. For example WebView returns en_US, but iOS returns en-US. Field below will return raw value
         /// returned by iOS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCodeRaw")]
-        public virtual string LanguageCodeRaw { get; set; } 
+        public virtual string LanguageCodeRaw { get; set; }
 
         /// <summary>Device display resolution height.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenResolutionHeight")]
-        public virtual System.Nullable<long> ScreenResolutionHeight { get; set; } 
+        public virtual System.Nullable<long> ScreenResolutionHeight { get; set; }
 
         /// <summary>Device display resolution width.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenResolutionWidth")]
-        public virtual System.Nullable<long> ScreenResolutionWidth { get; set; } 
+        public virtual System.Nullable<long> ScreenResolutionWidth { get; set; }
 
         /// <summary>Device timezone setting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timezone")]
-        public virtual string Timezone { get; set; } 
+        public virtual string Timezone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -767,15 +767,15 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
     {
         /// <summary>The number of times this event occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
-        public virtual System.Nullable<long> Count { get; set; } 
+        public virtual System.Nullable<long> Count { get; set; }
 
         /// <summary>Link event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("event")]
-        public virtual string Event__ { get; set; } 
+        public virtual string Event__ { get; set; }
 
         /// <summary>Requested platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platform")]
-        public virtual string Platform { get; set; } 
+        public virtual string Platform { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -787,49 +787,49 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         /// <summary>Parameters used for tracking. See all tracking parameters in the
         /// [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyticsInfo")]
-        public virtual AnalyticsInfo AnalyticsInfo { get; set; } 
+        public virtual AnalyticsInfo AnalyticsInfo { get; set; }
 
         /// <summary>Android related information. See Android related parameters in the
         /// [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidInfo")]
-        public virtual AndroidInfo AndroidInfo { get; set; } 
+        public virtual AndroidInfo AndroidInfo { get; set; }
 
         /// <summary>Desktop related information. See desktop related parameters in the
         /// [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desktopInfo")]
-        public virtual DesktopInfo DesktopInfo { get; set; } 
+        public virtual DesktopInfo DesktopInfo { get; set; }
 
         /// <summary>E.g. https://maps.app.goo.gl, https://maps.page.link, https://g.co/maps More examples can be found
         /// in description of getNormalizedUriPrefix in j/c/g/firebase/dynamiclinks/uri/DdlDomain.java Will fallback to
         /// dynamic_link_domain is this field is missing</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainUriPrefix")]
-        public virtual string DomainUriPrefix { get; set; } 
+        public virtual string DomainUriPrefix { get; set; }
 
         /// <summary>Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl [Learn
         /// more](https://firebase.google.com/docs/dynamic-links/android/receive) on how to set up Dynamic Link domain
         /// associated with your Firebase project. Required if missing domain_uri_prefix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicLinkDomain")]
-        public virtual string DynamicLinkDomain { get; set; } 
+        public virtual string DynamicLinkDomain { get; set; }
 
         /// <summary>iOS related information. See iOS related parameters in the
         /// [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosInfo")]
-        public virtual IosInfo IosInfo { get; set; } 
+        public virtual IosInfo IosInfo { get; set; }
 
         /// <summary>The link your app will open, You can specify any URL your app can handle. This link must be a well-
         /// formatted URL, be properly URL-encoded, and use the HTTP or HTTPS scheme. See 'link' parameters in the
         /// [documentation](https://firebase.google.com/docs/dynamic-links/create-manually). Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
-        public virtual string Link { get; set; } 
+        public virtual string Link { get; set; }
 
         /// <summary>Information of navigation behavior of a Firebase Dynamic Links.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("navigationInfo")]
-        public virtual NavigationInfo NavigationInfo { get; set; } 
+        public virtual NavigationInfo NavigationInfo { get; set; }
 
         /// <summary>Parameters for social meta tag params. Used to set meta tag data for link previews on social
         /// sites.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("socialMetaTagInfo")]
-        public virtual SocialMetaTagInfo SocialMetaTagInfo { get; set; } 
+        public virtual SocialMetaTagInfo SocialMetaTagInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -840,7 +840,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
     {
         /// <summary>Dynamic Link event stats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkEventStats")]
-        public virtual System.Collections.Generic.IList<DynamicLinkEventStat> LinkEventStats { get; set; } 
+        public virtual System.Collections.Generic.IList<DynamicLinkEventStat> LinkEventStats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -851,15 +851,15 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
     {
         /// <summary>The warning code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warningCode")]
-        public virtual string WarningCode { get; set; } 
+        public virtual string WarningCode { get; set; }
 
         /// <summary>The document describing the warning, and helps resolve.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warningDocumentLink")]
-        public virtual string WarningDocumentLink { get; set; } 
+        public virtual string WarningDocumentLink { get; set; }
 
         /// <summary>The warning message to help developers improve their requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warningMessage")]
-        public virtual string WarningMessage { get; set; } 
+        public virtual string WarningMessage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -872,39 +872,39 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         /// <summary>App installation epoch time (https://en.wikipedia.org/wiki/Unix_time). This is a client signal for
         /// a more accurate weak match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appInstallationTime")]
-        public virtual System.Nullable<long> AppInstallationTime { get; set; } 
+        public virtual System.Nullable<long> AppInstallationTime { get; set; }
 
         /// <summary>APP bundle ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bundleId")]
-        public virtual string BundleId { get; set; } 
+        public virtual string BundleId { get; set; }
 
         /// <summary>Device information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("device")]
-        public virtual DeviceInfo Device { get; set; } 
+        public virtual DeviceInfo Device { get; set; }
 
         /// <summary>iOS version, ie: 9.3.5. Consider adding "build".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosVersion")]
-        public virtual string IosVersion { get; set; } 
+        public virtual string IosVersion { get; set; }
 
         /// <summary>App post install attribution retrieval information. Disambiguates mechanism (iSDK or developer
         /// invoked) to retrieve payload from clicked link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retrievalMethod")]
-        public virtual string RetrievalMethod { get; set; } 
+        public virtual string RetrievalMethod { get; set; }
 
         /// <summary>Google SDK version. Version takes the form "$major.$minor.$patch"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sdkVersion")]
-        public virtual string SdkVersion { get; set; } 
+        public virtual string SdkVersion { get; set; }
 
         /// <summary>Possible unique matched link that server need to check before performing fingerprint match. If
         /// passed link is short server need to expand the link. If link is long server need to vslidate the
         /// link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uniqueMatchLinkToCheck")]
-        public virtual string UniqueMatchLinkToCheck { get; set; } 
+        public virtual string UniqueMatchLinkToCheck { get; set; }
 
         /// <summary>Strong match page information. Disambiguates between default UI and custom page to present when
         /// strong match succeeds/fails to find cookie.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visualStyle")]
-        public virtual string VisualStyle { get; set; } 
+        public virtual string VisualStyle { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -916,80 +916,80 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         /// <summary>The minimum version for app, specified by dev through ?imv= parameter. Return to iSDK to allow app
         /// to evaluate if current version meets this.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appMinimumVersion")]
-        public virtual string AppMinimumVersion { get; set; } 
+        public virtual string AppMinimumVersion { get; set; }
 
         /// <summary>The confidence of the returned attribution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributionConfidence")]
-        public virtual string AttributionConfidence { get; set; } 
+        public virtual string AttributionConfidence { get; set; }
 
         /// <summary>The deep-link attributed post-install via one of several techniques (fingerprint, copy
         /// unique).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deepLink")]
-        public virtual string DeepLink { get; set; } 
+        public virtual string DeepLink { get; set; }
 
         /// <summary>User-agent specific custom-scheme URIs for iSDK to open. This will be set according to the user-
         /// agent tha the click was originally made in. There is no Safari-equivalent custom-scheme open URLs. ie:
         /// googlechrome://www.example.com ie: firefox://open-url?url=http://www.example.com ie: opera-
         /// http://example.com</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalBrowserDestinationLink")]
-        public virtual string ExternalBrowserDestinationLink { get; set; } 
+        public virtual string ExternalBrowserDestinationLink { get; set; }
 
         /// <summary>The link to navigate to update the app if min version is not met. This is either (in order): 1)
         /// fallback link (from ?ifl= parameter, if specified by developer) or 2) AppStore URL (from ?isi= parameter, if
         /// specified), or 3) the payload link (from required link= parameter).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fallbackLink")]
-        public virtual string FallbackLink { get; set; } 
+        public virtual string FallbackLink { get; set; }
 
         /// <summary>Invitation ID attributed post-install via one of several techniques (fingerprint, copy
         /// unique).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invitationId")]
-        public virtual string InvitationId { get; set; } 
+        public virtual string InvitationId { get; set; }
 
         /// <summary>Instruction for iSDK to attemmpt to perform strong match. For instance, if browser does not
         /// support/allow cookie or outside of support browsers, this will be false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isStrongMatchExecutable")]
-        public virtual System.Nullable<bool> IsStrongMatchExecutable { get; set; } 
+        public virtual System.Nullable<bool> IsStrongMatchExecutable { get; set; }
 
         /// <summary>Describes why match failed, ie: "discarded due to low confidence". This message will be publicly
         /// visible.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchMessage")]
-        public virtual string MatchMessage { get; set; } 
+        public virtual string MatchMessage { get; set; }
 
         /// <summary>Which IP version the request was made from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestIpVersion")]
-        public virtual string RequestIpVersion { get; set; } 
+        public virtual string RequestIpVersion { get; set; }
 
         /// <summary>Entire FDL (short or long) attributed post-install via one of several techniques (fingerprint, copy
         /// unique).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedLink")]
-        public virtual string RequestedLink { get; set; } 
+        public virtual string RequestedLink { get; set; }
 
         /// <summary>The entire FDL, expanded from a short link. It is the same as the requested_link, if it is long.
         /// Parameters from this should not be used directly (ie: server can default utm_[campaign|medium|source] to a
         /// value when requested_link lack them, server determine the best fallback_link when requested_link specifies
         /// >1 fallback links).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolvedLink")]
-        public virtual string ResolvedLink { get; set; } 
+        public virtual string ResolvedLink { get; set; }
 
         /// <summary>Scion campaign value to be propagated by iSDK to Scion at post-install.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utmCampaign")]
-        public virtual string UtmCampaign { get; set; } 
+        public virtual string UtmCampaign { get; set; }
 
         /// <summary>Scion content value to be propagated by iSDK to Scion at app-reopen.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utmContent")]
-        public virtual string UtmContent { get; set; } 
+        public virtual string UtmContent { get; set; }
 
         /// <summary>Scion medium value to be propagated by iSDK to Scion at post-install.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utmMedium")]
-        public virtual string UtmMedium { get; set; } 
+        public virtual string UtmMedium { get; set; }
 
         /// <summary>Scion source value to be propagated by iSDK to Scion at post-install.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utmSource")]
-        public virtual string UtmSource { get; set; } 
+        public virtual string UtmSource { get; set; }
 
         /// <summary>Scion term value to be propagated by iSDK to Scion at app-reopen.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utmTerm")]
-        public virtual string UtmTerm { get; set; } 
+        public virtual string UtmTerm { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1001,17 +1001,17 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
     {
         /// <summary>APP bundle ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bundleId")]
-        public virtual string BundleId { get; set; } 
+        public virtual string BundleId { get; set; }
 
         /// <summary>FDL link to be verified from an app universal link open. The FDL link can be one of: 1) short FDL.
         /// e.g. .page.link/, or 2) long FDL. e.g. .page.link/?{query params}, or 3) Invite FDL. e.g.
         /// .page.link/i/</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedLink")]
-        public virtual string RequestedLink { get; set; } 
+        public virtual string RequestedLink { get; set; }
 
         /// <summary>Google SDK version. Version takes the form "$major.$minor.$patch"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sdkVersion")]
-        public virtual string SdkVersion { get; set; } 
+        public virtual string SdkVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1024,41 +1024,41 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         /// <summary>The deep-link attributed the app universal link open. For both regular FDL links and invite FDL
         /// links.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deepLink")]
-        public virtual string DeepLink { get; set; } 
+        public virtual string DeepLink { get; set; }
 
         /// <summary>Optional invitation ID, for only invite typed requested FDL links.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invitationId")]
-        public virtual string InvitationId { get; set; } 
+        public virtual string InvitationId { get; set; }
 
         /// <summary>FDL input value of the "=" parameter, minimum app version to be returned to Google Firebase SDK
         /// running on iOS-9.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosMinAppVersion")]
-        public virtual string IosMinAppVersion { get; set; } 
+        public virtual string IosMinAppVersion { get; set; }
 
         /// <summary>The entire FDL, expanded from a short link. It is the same as the requested_link, if it is
         /// long.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolvedLink")]
-        public virtual string ResolvedLink { get; set; } 
+        public virtual string ResolvedLink { get; set; }
 
         /// <summary>Scion campaign value to be propagated by iSDK to Scion at app-reopen.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utmCampaign")]
-        public virtual string UtmCampaign { get; set; } 
+        public virtual string UtmCampaign { get; set; }
 
         /// <summary>Scion content value to be propagated by iSDK to Scion at app-reopen.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utmContent")]
-        public virtual string UtmContent { get; set; } 
+        public virtual string UtmContent { get; set; }
 
         /// <summary>Scion medium value to be propagated by iSDK to Scion at app-reopen.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utmMedium")]
-        public virtual string UtmMedium { get; set; } 
+        public virtual string UtmMedium { get; set; }
 
         /// <summary>Scion source value to be propagated by iSDK to Scion at app-reopen.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utmSource")]
-        public virtual string UtmSource { get; set; } 
+        public virtual string UtmSource { get; set; }
 
         /// <summary>Scion term value to be propagated by iSDK to Scion at app-reopen.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utmTerm")]
-        public virtual string UtmTerm { get; set; } 
+        public virtual string UtmTerm { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1072,29 +1072,29 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         /// <summary>[AdWords autotagging parameter](https://support.google.com/analytics/answer/1033981?hl=en); used to
         /// measure Google AdWords ads. This value is generated dynamically and should never be modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gclid")]
-        public virtual string Gclid { get; set; } 
+        public virtual string Gclid { get; set; }
 
         /// <summary>Campaign name; used for keyword analysis to identify a specific product promotion or strategic
         /// campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utmCampaign")]
-        public virtual string UtmCampaign { get; set; } 
+        public virtual string UtmCampaign { get; set; }
 
         /// <summary>Campaign content; used for A/B testing and content-targeted ads to differentiate ads or links that
         /// point to the same URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utmContent")]
-        public virtual string UtmContent { get; set; } 
+        public virtual string UtmContent { get; set; }
 
         /// <summary>Campaign medium; used to identify a medium such as email or cost-per-click.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utmMedium")]
-        public virtual string UtmMedium { get; set; } 
+        public virtual string UtmMedium { get; set; }
 
         /// <summary>Campaign source; used to identify a search engine, newsletter, or other source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utmSource")]
-        public virtual string UtmSource { get; set; } 
+        public virtual string UtmSource { get; set; }
 
         /// <summary>Campaign term; used with paid search to supply the keywords for ads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utmTerm")]
-        public virtual string UtmTerm { get; set; } 
+        public virtual string UtmTerm { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1105,20 +1105,20 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
     {
         /// <summary>Affiliate token used to create affiliate-coded links.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("at")]
-        public virtual string At { get; set; } 
+        public virtual string At { get; set; }
 
         /// <summary>Campaign text that developers can optionally add to any link in order to track sales from a
         /// specific marketing campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ct")]
-        public virtual string Ct { get; set; } 
+        public virtual string Ct { get; set; }
 
         /// <summary>iTune media types, including music, podcasts, audiobooks and so on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mt")]
-        public virtual string Mt { get; set; } 
+        public virtual string Mt { get; set; }
 
         /// <summary>Provider token that enables analytics for Dynamic Links from within iTunes Connect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pt")]
-        public virtual string Pt { get; set; } 
+        public virtual string Pt { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1129,32 +1129,32 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
     {
         /// <summary>iOS App Store ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosAppStoreId")]
-        public virtual string IosAppStoreId { get; set; } 
+        public virtual string IosAppStoreId { get; set; }
 
         /// <summary>iOS bundle ID of the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosBundleId")]
-        public virtual string IosBundleId { get; set; } 
+        public virtual string IosBundleId { get; set; }
 
         /// <summary>Custom (destination) scheme to use for iOS. By default, we’ll use the bundle ID as the custom
         /// scheme. Developer can override this behavior using this param.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosCustomScheme")]
-        public virtual string IosCustomScheme { get; set; } 
+        public virtual string IosCustomScheme { get; set; }
 
         /// <summary>Link to open on iOS if the app is not installed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosFallbackLink")]
-        public virtual string IosFallbackLink { get; set; } 
+        public virtual string IosFallbackLink { get; set; }
 
         /// <summary>iPad bundle ID of the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosIpadBundleId")]
-        public virtual string IosIpadBundleId { get; set; } 
+        public virtual string IosIpadBundleId { get; set; }
 
         /// <summary>If specified, this overrides the ios_fallback_link value on iPads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosIpadFallbackLink")]
-        public virtual string IosIpadFallbackLink { get; set; } 
+        public virtual string IosIpadFallbackLink { get; set; }
 
         /// <summary>iOS minimum version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosMinimumVersion")]
-        public virtual string IosMinimumVersion { get; set; } 
+        public virtual string IosMinimumVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1165,27 +1165,27 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
     {
         /// <summary>Creation timestamp of the short link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual object CreationTime { get; set; } 
+        public virtual object CreationTime { get; set; }
 
         /// <summary>Attributes that have been flagged about this short url.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flaggedAttribute")]
-        public virtual System.Collections.Generic.IList<string> FlaggedAttribute { get; set; } 
+        public virtual System.Collections.Generic.IList<string> FlaggedAttribute { get; set; }
 
         /// <summary>Full Dyamic Link info</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("info")]
-        public virtual DynamicLinkInfo Info { get; set; } 
+        public virtual DynamicLinkInfo Info { get; set; }
 
         /// <summary>Short durable link url, for example, "https://sample.app.goo.gl/xyz123". Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
-        public virtual string Link { get; set; } 
+        public virtual string Link { get; set; }
 
         /// <summary>Link name defined by the creator. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkName")]
-        public virtual string LinkName { get; set; } 
+        public virtual string LinkName { get; set; }
 
         /// <summary>Visibility status of link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
-        public virtual string Visibility { get; set; } 
+        public virtual string Visibility { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1197,7 +1197,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         /// <summary>If this option is on, FDL click will be forced to redirect rather than show an interstitial
         /// page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableForcedRedirect")]
-        public virtual System.Nullable<bool> EnableForcedRedirect { get; set; } 
+        public virtual System.Nullable<bool> EnableForcedRedirect { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1209,15 +1209,15 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
     {
         /// <summary>A short description of the link. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("socialDescription")]
-        public virtual string SocialDescription { get; set; } 
+        public virtual string SocialDescription { get; set; }
 
         /// <summary>An image url string. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("socialImageLink")]
-        public virtual string SocialImageLink { get; set; } 
+        public virtual string SocialImageLink { get; set; }
 
         /// <summary>Title to be displayed. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("socialTitle")]
-        public virtual string SocialTitle { get; set; } 
+        public virtual string SocialTitle { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1228,11 +1228,11 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
     {
         /// <summary>Only applies to Option.CUSTOM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customSuffix")]
-        public virtual string CustomSuffix { get; set; } 
+        public virtual string CustomSuffix { get; set; }
 
         /// <summary>Suffix option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("option")]
-        public virtual string Option { get; set; } 
+        public virtual string Option { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

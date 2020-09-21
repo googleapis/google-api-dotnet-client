@@ -558,15 +558,15 @@ namespace Google.Apis.AdMob.v1.Data
         /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by
         /// itself or a year and month where the day is not significant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
-        public virtual System.Nullable<int> Day { get; set; } 
+        public virtual System.Nullable<int> Day { get; set; }
 
         /// <summary>Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("month")]
-        public virtual System.Nullable<int> Month { get; set; } 
+        public virtual System.Nullable<int> Month { get; set; }
 
         /// <summary>Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("year")]
-        public virtual System.Nullable<int> Year { get; set; } 
+        public virtual System.Nullable<int> Year { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -577,11 +577,11 @@ namespace Google.Apis.AdMob.v1.Data
     {
         /// <summary>End date of the date range, inclusive. Must be greater than or equal to the start date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
-        public virtual Date EndDate { get; set; } 
+        public virtual Date EndDate { get; set; }
 
         /// <summary>Start date of the date range, inclusive. Must be less than or equal to the end date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
-        public virtual Date StartDate { get; set; } 
+        public virtual Date StartDate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -592,7 +592,7 @@ namespace Google.Apis.AdMob.v1.Data
     {
         /// <summary>Network report specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportSpec")]
-        public virtual MediationReportSpec ReportSpec { get; set; } 
+        public virtual MediationReportSpec ReportSpec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -609,16 +609,16 @@ namespace Google.Apis.AdMob.v1.Data
     {
         /// <summary>Additional information about the generated report, such as warnings about the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("footer")]
-        public virtual ReportFooter Footer { get; set; } 
+        public virtual ReportFooter Footer { get; set; }
 
         /// <summary>Report generation settings that describes the report contents, such as the report date range and
         /// localization settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual ReportHeader Header { get; set; } 
+        public virtual ReportHeader Header { get; set; }
 
         /// <summary>Actual report data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("row")]
-        public virtual ReportRow Row { get; set; } 
+        public virtual ReportRow Row { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -629,7 +629,7 @@ namespace Google.Apis.AdMob.v1.Data
     {
         /// <summary>Network report specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportSpec")]
-        public virtual NetworkReportSpec ReportSpec { get; set; } 
+        public virtual NetworkReportSpec ReportSpec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -646,16 +646,16 @@ namespace Google.Apis.AdMob.v1.Data
     {
         /// <summary>Additional information about the generated report, such as warnings about the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("footer")]
-        public virtual ReportFooter Footer { get; set; } 
+        public virtual ReportFooter Footer { get; set; }
 
         /// <summary>Report generation settings that describes the report contents, such as the report date range and
         /// localization settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual ReportHeader Header { get; set; } 
+        public virtual ReportHeader Header { get; set; }
 
         /// <summary>Actual report data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("row")]
-        public virtual ReportRow Row { get; set; } 
+        public virtual ReportRow Row { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -666,12 +666,12 @@ namespace Google.Apis.AdMob.v1.Data
     {
         /// <summary>Publisher that the client credentials can access.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("account")]
-        public virtual System.Collections.Generic.IList<PublisherAccount> Account { get; set; } 
+        public virtual System.Collections.Generic.IList<PublisherAccount> Account { get; set; }
 
         /// <summary>If not empty, indicates that there might be more accounts for the request; you must pass this value
         /// in a new `ListPublisherAccountsRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -685,12 +685,12 @@ namespace Google.Apis.AdMob.v1.Data
         /// daily average rate is used for the currency conversion. Defaults to the account currency code if
         /// unspecified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
-        public virtual string CurrencyCode { get; set; } 
+        public virtual string CurrencyCode { get; set; }
 
         /// <summary>Language used for any localized text, such as some dimension value display labels. The language tag
         /// defined in the IETF BCP47. Defaults to 'en-US' if unspecified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -709,43 +709,43 @@ namespace Google.Apis.AdMob.v1.Data
     {
         /// <summary>The date range for which the report is generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
-        public virtual DateRange DateRange { get; set; } 
+        public virtual DateRange DateRange { get; set; }
 
         /// <summary>Describes which report rows to match based on their dimension values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilters")]
-        public virtual System.Collections.Generic.IList<MediationReportSpecDimensionFilter> DimensionFilters { get; set; } 
+        public virtual System.Collections.Generic.IList<MediationReportSpecDimensionFilter> DimensionFilters { get; set; }
 
         /// <summary>List of dimensions of the report. The value combination of these dimensions determines the row of
         /// the report. If no dimensions are specified, the report returns a single row of requested metrics for the
         /// entire account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
-        public virtual System.Collections.Generic.IList<string> Dimensions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Dimensions { get; set; }
 
         /// <summary>Localization settings of the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localizationSettings")]
-        public virtual LocalizationSettings LocalizationSettings { get; set; } 
+        public virtual LocalizationSettings LocalizationSettings { get; set; }
 
         /// <summary>Maximum number of report data rows to return. If the value is not set, the API returns as many rows
         /// as possible, up to 100000. Acceptable values are 1-100000, inclusive. Values larger than 100000 return an
         /// error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxReportRows")]
-        public virtual System.Nullable<int> MaxReportRows { get; set; } 
+        public virtual System.Nullable<int> MaxReportRows { get; set; }
 
         /// <summary>List of metrics of the report. A report must specify at least one metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-        public virtual System.Collections.Generic.IList<string> Metrics { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
 
         /// <summary>Describes the sorting of report rows. The order of the condition in the list defines its
         /// precedence; the earlier the condition, the higher its precedence. If no sort conditions are specified, the
         /// row ordering is undefined.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sortConditions")]
-        public virtual System.Collections.Generic.IList<MediationReportSpecSortCondition> SortConditions { get; set; } 
+        public virtual System.Collections.Generic.IList<MediationReportSpecSortCondition> SortConditions { get; set; }
 
         /// <summary>A report time zone. Accepts an IANA TZ name values, such as "America/Los_Angeles." If no time zone
         /// is defined, the account default takes effect. Check default value by the get account action. **Warning:**
         /// The "America/Los_Angeles" is the only supported value at the moment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
-        public virtual string TimeZone { get; set; } 
+        public virtual string TimeZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -756,12 +756,12 @@ namespace Google.Apis.AdMob.v1.Data
     {
         /// <summary>Applies the filter criterion to the specified dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
-        public virtual string Dimension { get; set; } 
+        public virtual string Dimension { get; set; }
 
         /// <summary>Matches a row if its value for the specified dimension is in one of the values specified in this
         /// condition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchesAny")]
-        public virtual StringList MatchesAny { get; set; } 
+        public virtual StringList MatchesAny { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -772,15 +772,15 @@ namespace Google.Apis.AdMob.v1.Data
     {
         /// <summary>Sort by the specified dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
-        public virtual string Dimension { get; set; } 
+        public virtual string Dimension { get; set; }
 
         /// <summary>Sort by the specified metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metric")]
-        public virtual string Metric { get; set; } 
+        public virtual string Metric { get; set; }
 
         /// <summary>Sorting order of the dimension or metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("order")]
-        public virtual string Order { get; set; } 
+        public virtual string Order { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -800,43 +800,43 @@ namespace Google.Apis.AdMob.v1.Data
     {
         /// <summary>The date range for which the report is generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
-        public virtual DateRange DateRange { get; set; } 
+        public virtual DateRange DateRange { get; set; }
 
         /// <summary>Describes which report rows to match based on their dimension values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilters")]
-        public virtual System.Collections.Generic.IList<NetworkReportSpecDimensionFilter> DimensionFilters { get; set; } 
+        public virtual System.Collections.Generic.IList<NetworkReportSpecDimensionFilter> DimensionFilters { get; set; }
 
         /// <summary>List of dimensions of the report. The value combination of these dimensions determines the row of
         /// the report. If no dimensions are specified, the report returns a single row of requested metrics for the
         /// entire account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
-        public virtual System.Collections.Generic.IList<string> Dimensions { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Dimensions { get; set; }
 
         /// <summary>Localization settings of the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localizationSettings")]
-        public virtual LocalizationSettings LocalizationSettings { get; set; } 
+        public virtual LocalizationSettings LocalizationSettings { get; set; }
 
         /// <summary>Maximum number of report data rows to return. If the value is not set, the API returns as many rows
         /// as possible, up to 100000. Acceptable values are 1-100000, inclusive. Values larger than 100000 return an
         /// error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxReportRows")]
-        public virtual System.Nullable<int> MaxReportRows { get; set; } 
+        public virtual System.Nullable<int> MaxReportRows { get; set; }
 
         /// <summary>List of metrics of the report. A report must specify at least one metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-        public virtual System.Collections.Generic.IList<string> Metrics { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
 
         /// <summary>Describes the sorting of report rows. The order of the condition in the list defines its
         /// precedence; the earlier the condition, the higher its precedence. If no sort conditions are specified, the
         /// row ordering is undefined.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sortConditions")]
-        public virtual System.Collections.Generic.IList<NetworkReportSpecSortCondition> SortConditions { get; set; } 
+        public virtual System.Collections.Generic.IList<NetworkReportSpecSortCondition> SortConditions { get; set; }
 
         /// <summary>A report time zone. Accepts an IANA TZ name values, such as "America/Los_Angeles." If no time zone
         /// is defined, the account default takes effect. Check default value by the get account action. **Warning:**
         /// The "America/Los_Angeles" is the only supported value at the moment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
-        public virtual string TimeZone { get; set; } 
+        public virtual string TimeZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -847,12 +847,12 @@ namespace Google.Apis.AdMob.v1.Data
     {
         /// <summary>Applies the filter criterion to the specified dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
-        public virtual string Dimension { get; set; } 
+        public virtual string Dimension { get; set; }
 
         /// <summary>Matches a row if its value for the specified dimension is in one of the values specified in this
         /// condition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchesAny")]
-        public virtual StringList MatchesAny { get; set; } 
+        public virtual StringList MatchesAny { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -863,15 +863,15 @@ namespace Google.Apis.AdMob.v1.Data
     {
         /// <summary>Sort by the specified dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
-        public virtual string Dimension { get; set; } 
+        public virtual string Dimension { get; set; }
 
         /// <summary>Sort by the specified metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metric")]
-        public virtual string Metric { get; set; } 
+        public virtual string Metric { get; set; }
 
         /// <summary>Sorting order of the dimension or metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("order")]
-        public virtual string Order { get; set; } 
+        public virtual string Order { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -884,21 +884,21 @@ namespace Google.Apis.AdMob.v1.Data
         /// <summary>Currency code of the earning-related metrics, which is the 3-letter code defined in ISO 4217. The
         /// daily average rate is used for the currency conversion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
-        public virtual string CurrencyCode { get; set; } 
+        public virtual string CurrencyCode { get; set; }
 
         /// <summary>Resource name of this account. Format is accounts/{publisher_id}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The unique ID by which this publisher account can be identified in the API requests (for example,
         /// pub-1234567890).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisherId")]
-        public virtual string PublisherId { get; set; } 
+        public virtual string PublisherId { get; set; }
 
         /// <summary>The time zone that is used in reports that are generated for this account. The value is a time-zone
         /// ID as specified by the CLDR project, for example, "America/Los_Angeles".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportingTimeZone")]
-        public virtual string ReportingTimeZone { get; set; } 
+        public virtual string ReportingTimeZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -911,11 +911,11 @@ namespace Google.Apis.AdMob.v1.Data
         /// <summary>Total number of rows that matched the request. Warning: This count does NOT always match the number
         /// of rows in the response. Do not make that assumption when processing the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchingRowCount")]
-        public virtual System.Nullable<long> MatchingRowCount { get; set; } 
+        public virtual System.Nullable<long> MatchingRowCount { get; set; }
 
         /// <summary>Warnings associated with generation of the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
-        public virtual System.Collections.Generic.IList<ReportWarning> Warnings { get; set; } 
+        public virtual System.Collections.Generic.IList<ReportWarning> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -928,17 +928,17 @@ namespace Google.Apis.AdMob.v1.Data
         /// <summary>The date range for which the report is generated. This is identical to the range specified in the
         /// report request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
-        public virtual DateRange DateRange { get; set; } 
+        public virtual DateRange DateRange { get; set; }
 
         /// <summary>Localization settings of the report. This is identical to the settings in the report
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localizationSettings")]
-        public virtual LocalizationSettings LocalizationSettings { get; set; } 
+        public virtual LocalizationSettings LocalizationSettings { get; set; }
 
         /// <summary>The report time zone. The value is a time-zone ID as specified by the CLDR project, for example,
         /// "America/Los_Angeles".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportingTimeZone")]
-        public virtual string ReportingTimeZone { get; set; } 
+        public virtual string ReportingTimeZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -949,12 +949,12 @@ namespace Google.Apis.AdMob.v1.Data
     {
         /// <summary>Map of dimension values in a row, with keys as enum name of the dimensions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionValues")]
-        public virtual System.Collections.Generic.IDictionary<string,ReportRowDimensionValue> DimensionValues { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, ReportRowDimensionValue> DimensionValues { get; set; }
 
         /// <summary>Map of metric values in a row, with keys as enum name of the metrics. If a metric being requested
         /// has no value returned, the map will not include it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricValues")]
-        public virtual System.Collections.Generic.IDictionary<string,ReportRowMetricValue> MetricValues { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, ReportRowMetricValue> MetricValues { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -966,11 +966,11 @@ namespace Google.Apis.AdMob.v1.Data
         /// <summary>The localized string representation of the value. If unspecified, the display label should be
         /// derived from the value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayLabel")]
-        public virtual string DisplayLabel { get; set; } 
+        public virtual string DisplayLabel { get; set; }
 
         /// <summary>Dimension value in the format specified in the report's spec Dimension enum.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -981,16 +981,16 @@ namespace Google.Apis.AdMob.v1.Data
     {
         /// <summary>Double precision (approximate) decimal values. Rates are from 0 to 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
-        public virtual System.Nullable<double> DoubleValue { get; set; } 
+        public virtual System.Nullable<double> DoubleValue { get; set; }
 
         /// <summary>Metric integer value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integerValue")]
-        public virtual System.Nullable<long> IntegerValue { get; set; } 
+        public virtual System.Nullable<long> IntegerValue { get; set; }
 
         /// <summary>Amount in micros. One million is equivalent to one unit. Currency value is in the unit (USD, EUR or
         /// other) specified by the request. For example, $6.50 whould be represented as 6500000 micros.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("microsValue")]
-        public virtual System.Nullable<long> MicrosValue { get; set; } 
+        public virtual System.Nullable<long> MicrosValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1001,11 +1001,11 @@ namespace Google.Apis.AdMob.v1.Data
     {
         /// <summary>Describes the details of the warning message, in English.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Type of the warning.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1016,7 +1016,7 @@ namespace Google.Apis.AdMob.v1.Data
     {
         /// <summary>The string values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

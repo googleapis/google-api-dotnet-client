@@ -2714,21 +2714,21 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// GCP `Project`. The ID of the Project's default GCP resource location. The location must be one of the
         /// available [GCP resource locations](https://firebase.google.com/docs/projects/locations).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>Deprecated. Instead, to link a Project with a Google Analytics account, call
         /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) after you add Firebase resources to the
         /// GCP `Project`. The region code (CLDR) that the account will use for Google Analytics data For example: US,
         /// GB, or DE In Java, use `com.google.i18n.identifiers.RegionCode`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
-        public virtual string RegionCode { get; set; } 
+        public virtual string RegionCode { get; set; }
 
         /// <summary>Deprecated. Instead, to link a Project with a Google Analytics account, call
         /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) after you add Firebase resources to the
         /// GCP `Project`. The time zone that the account will use for Google Analytics data. For example:
         /// America/Los_Angeles or Africa/Abidjan</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
-        public virtual string TimeZone { get; set; } 
+        public virtual string TimeZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2740,12 +2740,12 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// to link with the `FirebaseProject`. Specifying this field will provision a new Google Analytics property in
         /// your Google Analytics account and associate the new property with the `FirebaseProject`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyticsAccountId")]
-        public virtual string AnalyticsAccountId { get; set; } 
+        public virtual string AnalyticsAccountId { get; set; }
 
         /// <summary>The ID for the existing Google Analytics property that you want to associate with the
         /// `FirebaseProject`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyticsPropertyId")]
-        public virtual string AnalyticsPropertyId { get; set; } 
+        public virtual string AnalyticsPropertyId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2755,7 +2755,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     {
         /// <summary>The default Firebase Realtime Database URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseURL")]
-        public virtual string DatabaseURL { get; set; } 
+        public virtual string DatabaseURL { get; set; }
 
         /// <summary>The ID of the Project's default GCP resource location. The location is one of the available [GCP
         /// resource locations](https://firebase.google.com/docs/projects/locations). This field is omitted if the
@@ -2763,17 +2763,17 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// call [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add Firebase resources to
         /// the Project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>Immutable. A user-assigned unique identifier for the `FirebaseProject`. This identifier may appear
         /// in URLs or names for some Firebase resources associated with the Project, but it should generally be treated
         /// as a convenience alias to reference the Project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>The default Cloud Storage for Firebase storage bucket name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageBucket")]
-        public virtual string StorageBucket { get; set; } 
+        public virtual string StorageBucket { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2784,14 +2784,14 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// <summary>The Analytics Property object associated with the specified `FirebaseProject`. This object contains
         /// the details of the Google Analytics property associated with the Project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyticsProperty")]
-        public virtual AnalyticsProperty AnalyticsProperty { get; set; } 
+        public virtual AnalyticsProperty AnalyticsProperty { get; set; }
 
         /// <summary> - For `AndroidApps` and `IosApps`: a map of `app` to `streamId` for each Firebase App in the
         /// specified `FirebaseProject`. Each `app` and `streamId` appears only once. - For `WebApps`: a map of `app` to
         /// `streamId` and `measurementId` for each `WebApp` in the specified `FirebaseProject`. Each `app`, `streamId`,
         /// and `measurementId` appears only once.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamMappings")]
-        public virtual System.Collections.Generic.IList<StreamMapping> StreamMappings { get; set; } 
+        public virtual System.Collections.Generic.IList<StreamMapping> StreamMappings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2803,7 +2803,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// <summary>The display name of the Google Analytics property associated with the specified
         /// `FirebaseProject`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The globally unique, Google-assigned identifier of the Google Analytics property associated with
         /// the specified `FirebaseProject`. If you called
@@ -2811,7 +2811,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// Google Analytics account, the value in this `id` field is the same as the ID of the property either
         /// specified or provisioned with that call to `AddGoogleAnalytics`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2823,11 +2823,11 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// <summary>Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier
         /// should be treated as an opaque token, as the data format is not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appId")]
-        public virtual string AppId { get; set; } 
+        public virtual string AppId { get; set; }
 
         /// <summary>The user-assigned display name for the `AndroidApp`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The resource name of the AndroidApp, in the format: projects/ PROJECT_IDENTIFIER/androidApps/APP_ID
         /// * PROJECT_IDENTIFIER: the parent Project's
@@ -2837,17 +2837,17 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier
         /// for the App (see [`appId`](../projects.androidApps#AndroidApp.FIELDS.app_id)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Immutable. The canonical package name of the Android app as would appear in the Google Play
         /// Developer Console.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
-        public virtual string PackageName { get; set; } 
+        public virtual string PackageName { get; set; }
 
         /// <summary>Immutable. A user-assigned unique identifier of the parent FirebaseProject for the
         /// `AndroidApp`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2858,12 +2858,12 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     {
         /// <summary>The contents of the JSON configuration file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configFileContents")]
-        public virtual string ConfigFileContents { get; set; } 
+        public virtual string ConfigFileContents { get; set; }
 
         /// <summary>The filename that the configuration artifact for the `AndroidApp` is typically saved as. For
         /// example: `google-services.json`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configFilename")]
-        public virtual string ConfigFilename { get; set; } 
+        public virtual string ConfigFilename { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2879,7 +2879,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// name. For example, if your `projectId` is `myproject123`, your default Hosting site name might be:
         /// `myproject123-a5c16`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostingSite")]
-        public virtual string HostingSite { get; set; } 
+        public virtual string HostingSite { get; set; }
 
         /// <summary>The ID of the Project's default GCP resource location. The location is one of the available [GCP
         /// resource locations](https://firebase.google.com/docs/projects/locations). This field is omitted if the
@@ -2887,7 +2887,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// call [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add Firebase resources to
         /// the Project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>The default Firebase Realtime Database instance name, in the format: PROJECT_ID Though rare, your
         /// `projectId` might already be used as the name for an existing Realtime Database instance in another project
@@ -2896,12 +2896,12 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// Realtime Database instance name. For example, if your `projectId` is `myproject123`, your default database
         /// instance name might be: `myproject123-a5c16`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("realtimeDatabaseInstance")]
-        public virtual string RealtimeDatabaseInstance { get; set; } 
+        public virtual string RealtimeDatabaseInstance { get; set; }
 
         /// <summary>The default Cloud Storage for Firebase storage bucket, in the format:
         /// PROJECT_ID.appspot.com</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageBucket")]
-        public virtual string StorageBucket { get; set; } 
+        public virtual string StorageBucket { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2922,7 +2922,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// <summary>The ID of the Project's default GCP resource location. The location must be one of the available
         /// [GCP resource locations](https://firebase.google.com/docs/projects/locations).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2934,16 +2934,16 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// <summary>Output only. Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This
         /// identifier should be treated as an opaque token, as the data format is not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appId")]
-        public virtual string AppId { get; set; } 
+        public virtual string AppId { get; set; }
 
         /// <summary>The user-assigned display name of the Firebase App.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The resource name of the Firebase App, in the format: projects/PROJECT_ID /iosApps/APP_ID or
         /// projects/PROJECT_ID/androidApps/APP_ID or projects/ PROJECT_ID/webApps/APP_ID</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. Immutable. The platform-specific identifier of the App. *Note:* For most use cases,
         /// use `appId`, which is the canonical, globally unique identifier for referencing an App. This string is
@@ -2952,11 +2952,11 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// format may change as platforms evolve. This string is only unique within a `FirebaseProject` and its
         /// associated Apps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
-        public virtual string Namespace__ { get; set; } 
+        public virtual string Namespace__ { get; set; }
 
         /// <summary>The platform of the Firebase App.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platform")]
-        public virtual string Platform { get; set; } 
+        public virtual string Platform { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2973,7 +2973,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     {
         /// <summary>The user-assigned display name of the Project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The resource name of the Project, in the format: projects/PROJECT_IDENTIFIER PROJECT_IDENTIFIER:
         /// the Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or
@@ -2981,29 +2981,29 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for
         /// PROJECT_IDENTIFIER in any response body will be the `ProjectId`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Immutable. A user-assigned unique identifier for the Project. This identifier may appear in URLs or
         /// names for some Firebase resources associated with the Project, but it should generally be treated as a
         /// convenience alias to reference the Project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Immutable. The globally unique, Google-assigned canonical identifier for the Project. Use this
         /// identifier when configuring integrations and/or making API calls to Firebase or third-party
         /// services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
-        public virtual System.Nullable<long> ProjectNumber { get; set; } 
+        public virtual System.Nullable<long> ProjectNumber { get; set; }
 
         /// <summary>The default Firebase resources associated with the Project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual DefaultResources Resources { get; set; } 
+        public virtual DefaultResources Resources { get; set; }
 
         /// <summary>Output only. The lifecycle state of the Project. Updates to the state must be performed via
         /// com.google.cloudresourcemanager.v1.Projects.DeleteProject and
         /// com.google.cloudresourcemanager.v1.Projects.UndeleteProject</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3015,20 +3015,20 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// <summary>Immutable. The globally unique, Firebase-assigned identifier for the `IosApp`. This identifier
         /// should be treated as an opaque token, as the data format is not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appId")]
-        public virtual string AppId { get; set; } 
+        public virtual string AppId { get; set; }
 
         /// <summary>The automatically generated Apple ID assigned to the iOS app by Apple in the iOS App
         /// Store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appStoreId")]
-        public virtual string AppStoreId { get; set; } 
+        public virtual string AppStoreId { get; set; }
 
         /// <summary>Immutable. The canonical bundle ID of the iOS app as it would appear in the iOS AppStore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bundleId")]
-        public virtual string BundleId { get; set; } 
+        public virtual string BundleId { get; set; }
 
         /// <summary>The user-assigned display name for the `IosApp`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID *
         /// PROJECT_IDENTIFIER: the parent Project's
@@ -3038,12 +3038,12 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier
         /// for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Immutable. A user-assigned unique identifier of the parent FirebaseProject for the
         /// `IosApp`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3054,12 +3054,12 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     {
         /// <summary>The content of the XML configuration file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configFileContents")]
-        public virtual string ConfigFileContents { get; set; } 
+        public virtual string ConfigFileContents { get; set; }
 
         /// <summary>The filename that the configuration artifact for the `IosApp` is typically saved as. For example:
         /// `GoogleService-Info.plist`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configFilename")]
-        public virtual string ConfigFilename { get; set; } 
+        public virtual string ConfigFilename { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3069,14 +3069,14 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     {
         /// <summary>List of each `AndroidApp` associated with the specified `FirebaseProject`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apps")]
-        public virtual System.Collections.Generic.IList<AndroidApp> Apps { get; set; } 
+        public virtual System.Collections.Generic.IList<AndroidApp> Apps { get; set; }
 
         /// <summary>If the result list is too large to fit in a single response, then a token is returned. If the
         /// string is empty, then this response is the last page of results. This token can be used in a subsequent call
         /// to `ListAndroidApps` to find the next group of Apps. Page tokens are short-lived and should not be
         /// persisted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3086,14 +3086,14 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     {
         /// <summary>One page of results from a call to `ListAvailableLocations`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; }
 
         /// <summary>If the result list is too large to fit in a single response, then a token is returned. If the
         /// string is empty, then this response is the last page of results and all available locations have been
         /// listed. This token can be used in a subsequent call to `ListAvailableLocations` to find more locations. Page
         /// tokens are short-lived and should not be persisted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3106,11 +3106,11 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// calls to `ListAvailableProjects` to find the next group of Projects. Page tokens are short-lived and should
         /// not be persisted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The list of GCP `Projects` which can have Firebase resources added to them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectInfo")]
-        public virtual System.Collections.Generic.IList<ProjectInfo> ProjectInfo { get; set; } 
+        public virtual System.Collections.Generic.IList<ProjectInfo> ProjectInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3123,11 +3123,11 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// calls to `ListFirebaseProjects` to find the next group of Projects. Page tokens are short-lived and should
         /// not be persisted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>One page of the list of Projects that are accessible to the caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
-        public virtual System.Collections.Generic.IList<FirebaseProject> Results { get; set; } 
+        public virtual System.Collections.Generic.IList<FirebaseProject> Results { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3137,14 +3137,14 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     {
         /// <summary>List of each `IosApp` associated with the specified `FirebaseProject`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apps")]
-        public virtual System.Collections.Generic.IList<IosApp> Apps { get; set; } 
+        public virtual System.Collections.Generic.IList<IosApp> Apps { get; set; }
 
         /// <summary>If the result list is too large to fit in a single response, then a token is returned. If the
         /// string is empty, then this response is the last page of results. This token can be used in a subsequent call
         /// to `ListIosApps` to find the next group of Apps. Page tokens are short-lived and should not be
         /// persisted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3154,7 +3154,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     {
         /// <summary>The list of each `ShaCertificate` associated with the `AndroidApp`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificates")]
-        public virtual System.Collections.Generic.IList<ShaCertificate> Certificates { get; set; } 
+        public virtual System.Collections.Generic.IList<ShaCertificate> Certificates { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3164,14 +3164,14 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     {
         /// <summary>List of each `WebApp` associated with the specified `FirebaseProject`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apps")]
-        public virtual System.Collections.Generic.IList<WebApp> Apps { get; set; } 
+        public virtual System.Collections.Generic.IList<WebApp> Apps { get; set; }
 
         /// <summary>If the result list is too large to fit in a single response, then a token is returned. If the
         /// string is empty, then this response is the last page of results. This token can be used in a subsequent call
         /// to `ListWebApps` to find the next group of Apps. Page tokens are short-lived and should not be
         /// persisted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3182,17 +3182,17 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     {
         /// <summary>Products and services that are available in the GCP resource location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
-        public virtual System.Collections.Generic.IList<string> Features { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Features { get; set; }
 
         /// <summary>The ID of the GCP resource location. It will be one of the available [GCP resource
         /// locations](https://firebase.google.com/docs/projects/locations#types).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>Indicates whether the GCP resource location is a [regional or multi-regional
         /// location](https://firebase.google.com/docs/projects/locations#types) for data replication.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3211,23 +3211,23 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -3235,7 +3235,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3246,7 +3246,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     {
         /// <summary>The user-assigned display name of the GCP `Project`, for example: `My App`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The ID of the Project's default GCP resource location. The location is one of the available [GCP
         /// resource locations](https://firebase.google.com/docs/projects/locations). Not all Projects will have this
@@ -3255,13 +3255,13 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add Firebase resources to the
         /// Project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>The resource name of the GCP `Project` to which Firebase resources can be added, in the format:
         /// projects/PROJECT_IDENTIFIER Refer to the `FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name)
         /// field for details about PROJECT_IDENTIFIER values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
-        public virtual string Project { get; set; } 
+        public virtual string Project { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3274,7 +3274,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// `FirebaseProject` is removed. - If set, and the specified `FirebaseProject` is currently associated with a
         /// *different* Google Analytics property, then the response is a `412 Precondition Failed` error. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyticsPropertyId")]
-        public virtual string AnalyticsPropertyId { get; set; } 
+        public virtual string AnalyticsPropertyId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3284,13 +3284,13 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     {
         /// <summary>One page of results from a call to `SearchFirebaseApps`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apps")]
-        public virtual System.Collections.Generic.IList<FirebaseAppInfo> Apps { get; set; } 
+        public virtual System.Collections.Generic.IList<FirebaseAppInfo> Apps { get; set; }
 
         /// <summary>If the result list is too large to fit in a single response, then a token is returned. This token
         /// can be used in a subsequent calls to `SearchFirebaseApps` to find the next group of Apps. Page tokens are
         /// short-lived and should not be persisted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3301,7 +3301,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     {
         /// <summary>The type of SHA certificate encoded in the hash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certType")]
-        public virtual string CertType { get; set; } 
+        public virtual string CertType { get; set; }
 
         /// <summary>The resource name of the ShaCertificate for the AndroidApp, in the format:
         /// projects/PROJECT_IDENTIFIER/androidApps/APP_ID/sha/SHA_HASH * PROJECT_IDENTIFIER: the parent Project's
@@ -3312,11 +3312,11 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// for the App (see [`appId`](../projects.androidApps#AndroidApp.FIELDS.app_id)). * SHA_HASH: the certificate
         /// hash for the App (see [`shaHash`](../projects.androidApps.sha#ShaCertificate.FIELDS.sha_hash)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The certificate hash for the `AndroidApp`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shaHash")]
-        public virtual string ShaHash { get; set; } 
+        public virtual string ShaHash { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3331,17 +3331,17 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3353,24 +3353,24 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// <summary>The canonical error code (see codes.proto) that most closely corresponds to this status. May be
         /// missing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalCode")]
-        public virtual System.Nullable<int> CanonicalCode { get; set; } 
+        public virtual System.Nullable<int> CanonicalCode { get; set; }
 
         /// <summary>Numeric code drawn from the space specified below. Often, this is the canonical error space, and
         /// code is drawn from google3/util/task/codes.proto</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>Detail message</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>message_set associates an arbitrary proto message with the status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageSet")]
-        public virtual MessageSet MessageSet { get; set; } 
+        public virtual MessageSet MessageSet { get; set; }
 
         /// <summary>The following are usually only present when code != 0 Space to which this status belongs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("space")]
-        public virtual string Space { get; set; } 
+        public virtual string Space { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3385,20 +3385,20 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// [`name`](../projects#FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER
         /// values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("app")]
-        public virtual string App { get; set; } 
+        public virtual string App { get; set; }
 
         /// <summary>Applicable for Firebase Web Apps only. The unique Google-assigned identifier of the Google
         /// Analytics web stream associated with the Firebase Web App. Firebase SDKs use this ID to interact with Google
         /// Analytics APIs. Learn more about this ID and Google Analytics web streams in the [Analytics
         /// documentation](https://support.google.com/analytics/topic/9303475).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("measurementId")]
-        public virtual string MeasurementId { get; set; } 
+        public virtual string MeasurementId { get; set; }
 
         /// <summary>The unique Google-assigned identifier of the Google Analytics data stream associated with the
         /// Firebase App. Learn more about Google Analytics data streams in the [Analytics
         /// documentation](https://support.google.com/analytics/answer/9303323).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamId")]
-        public virtual System.Nullable<long> StreamId { get; set; } 
+        public virtual System.Nullable<long> StreamId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3410,15 +3410,15 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// <summary>Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This identifier
         /// should be treated as an opaque token, as the data format is not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appId")]
-        public virtual string AppId { get; set; } 
+        public virtual string AppId { get; set; }
 
         /// <summary>The URLs where the `WebApp` is hosted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appUrls")]
-        public virtual System.Collections.Generic.IList<string> AppUrls { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AppUrls { get; set; }
 
         /// <summary>The user-assigned display name for the `WebApp`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /webApps/APP_ID *
         /// PROJECT_IDENTIFIER: the parent Project's
@@ -3428,19 +3428,19 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier
         /// for the App (see [`appId`](../projects.webApps#WebApp.FIELDS.app_id)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Immutable. A user-assigned unique identifier of the parent FirebaseProject for the
         /// `WebApp`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Output only. Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is
         /// only used to populate the `namespace` value for the `WebApp`. For most use cases, use `appId` to identify or
         /// reference the App. The `webId` value is only unique within a `FirebaseProject` and its associated
         /// Apps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webId")]
-        public virtual string WebId { get; set; } 
+        public virtual string WebId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3451,20 +3451,20 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     {
         /// <summary>The API key associated with the `WebApp`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiKey")]
-        public virtual string ApiKey { get; set; } 
+        public virtual string ApiKey { get; set; }
 
         /// <summary>Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appId")]
-        public virtual string AppId { get; set; } 
+        public virtual string AppId { get; set; }
 
         /// <summary>The domain Firebase Auth configures for OAuth redirects, in the format:
         /// PROJECT_ID.firebaseapp.com</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authDomain")]
-        public virtual string AuthDomain { get; set; } 
+        public virtual string AuthDomain { get; set; }
 
         /// <summary>The default Firebase Realtime Database URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseURL")]
-        public virtual string DatabaseURL { get; set; } 
+        public virtual string DatabaseURL { get; set; }
 
         /// <summary>The ID of the Project's default GCP resource location. The location is one of the available [GCP
         /// resource locations](https://firebase.google.com/docs/projects/locations). This field is omitted if the
@@ -3472,7 +3472,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// call [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add Firebase resources to
         /// the Project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>The unique Google-assigned identifier of the Google Analytics web stream associated with the
         /// `WebApp`. Firebase SDKs use this ID to interact with Google Analytics APIs. This field is only present if
@@ -3485,19 +3485,19 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// Having this ID in your config object is optional, but it does serve as a fallback in the rare case that the
         /// dynamic fetch fails.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("measurementId")]
-        public virtual string MeasurementId { get; set; } 
+        public virtual string MeasurementId { get; set; }
 
         /// <summary>The sender ID for use with Firebase Cloud Messaging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messagingSenderId")]
-        public virtual string MessagingSenderId { get; set; } 
+        public virtual string MessagingSenderId { get; set; }
 
         /// <summary>Immutable. A user-assigned unique identifier for the `FirebaseProject`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>The default Cloud Storage for Firebase storage bucket name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageBucket")]
-        public virtual string StorageBucket { get; set; } 
+        public virtual string StorageBucket { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

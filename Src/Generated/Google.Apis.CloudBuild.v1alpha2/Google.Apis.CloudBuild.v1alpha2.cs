@@ -763,15 +763,15 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         /// workspace matching any path pattern will be uploaded to Cloud Storage with this location as a
         /// prefix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>Path globs used to match files in the build's workspace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paths")]
-        public virtual System.Collections.Generic.IList<string> Paths { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Paths { get; set; }
 
         /// <summary>Output only. Stores timing information for pushing all artifact objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timing")]
-        public virtual TimeSpan Timing { get; set; } 
+        public virtual TimeSpan Timing { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -783,12 +783,12 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
     {
         /// <summary>The file hash of the artifact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHash")]
-        public virtual System.Collections.Generic.IList<FileHashes> FileHash { get; set; } 
+        public virtual System.Collections.Generic.IList<FileHashes> FileHash { get; set; }
 
         /// <summary>The path of an artifact in a Google Cloud Storage bucket, with the generation number. For example,
         /// `gs://mybucket/path/to/output.jar#generation`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -803,7 +803,7 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         /// the Build resource's results field. If any of the images fail to be pushed, the build is marked
         /// FAILURE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("images")]
-        public virtual System.Collections.Generic.IList<string> Images { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Images { get; set; }
 
         /// <summary>A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
         /// Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage
@@ -811,7 +811,7 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         /// objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is
         /// marked FAILURE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objects")]
-        public virtual ArtifactObjects Objects { get; set; } 
+        public virtual ArtifactObjects Objects { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -830,119 +830,119 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         /// <summary>Artifacts produced by the build that should be uploaded upon successful completion of all build
         /// steps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("artifacts")]
-        public virtual Artifacts Artifacts { get; set; } 
+        public virtual Artifacts Artifacts { get; set; }
 
         /// <summary>Output only. The ID of the `BuildTrigger` that triggered this build, if it was triggered
         /// automatically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildTriggerId")]
-        public virtual string BuildTriggerId { get; set; } 
+        public virtual string BuildTriggerId { get; set; }
 
         /// <summary>Output only. Time at which the request to create the build was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. Time at which execution of the build was finished. The difference between finish_time
         /// and start_time is the duration of the build's execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finishTime")]
-        public virtual object FinishTime { get; set; } 
+        public virtual object FinishTime { get; set; }
 
         /// <summary>Output only. Unique identifier of the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>A list of images to be pushed upon the successful completion of all build steps. The images are
         /// pushed using the builder service account's credentials. The digests of the pushed images will be stored in
         /// the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked
         /// `FAILURE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("images")]
-        public virtual System.Collections.Generic.IList<string> Images { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Images { get; set; }
 
         /// <summary>Output only. URL to logs for this build in Google Cloud Console.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logUrl")]
-        public virtual string LogUrl { get; set; } 
+        public virtual string LogUrl { get; set; }
 
         /// <summary>Google Cloud Storage bucket where logs should be written (see [Bucket Name
         /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of
         /// the format `${logs_bucket}/log-${build_id}.txt`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logsBucket")]
-        public virtual string LogsBucket { get; set; } 
+        public virtual string LogsBucket { get; set; }
 
         /// <summary>Output only. The 'Build' name with format:
         /// `projects/{project}/locations/{location}/builds/{build}`, where {build} is a unique identifier generated by
         /// the service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Special options for this build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
-        public virtual BuildOptions Options { get; set; } 
+        public virtual BuildOptions Options { get; set; }
 
         /// <summary>Output only. ID of the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>TTL in queue for this build. If provided and the build is enqueued longer than this value, the
         /// build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queueTtl")]
-        public virtual object QueueTtl { get; set; } 
+        public virtual object QueueTtl { get; set; }
 
         /// <summary>Output only. Results of the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
-        public virtual Results Results { get; set; } 
+        public virtual Results Results { get; set; }
 
         /// <summary>Secrets to decrypt using Cloud Key Management Service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secrets")]
-        public virtual System.Collections.Generic.IList<Secret> Secrets { get; set; } 
+        public virtual System.Collections.Generic.IList<Secret> Secrets { get; set; }
 
         /// <summary>IAM service account whose credentials will be used at build runtime. Must be of the format
         /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service
         /// account. This field is in alpha and is not publicly available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
-        public virtual string ServiceAccount { get; set; } 
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>The location of the source files to build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual Source Source { get; set; } 
+        public virtual Source Source { get; set; }
 
         /// <summary>Output only. A permanent fixed identifier for source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceProvenance")]
-        public virtual SourceProvenance SourceProvenance { get; set; } 
+        public virtual SourceProvenance SourceProvenance { get; set; }
 
         /// <summary>Output only. Time at which execution of the build was started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>Output only. Status of the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>Output only. Customer-readable message about the current status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
-        public virtual string StatusDetail { get; set; } 
+        public virtual string StatusDetail { get; set; }
 
         /// <summary>Required. The operations to be performed on the workspace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
-        public virtual System.Collections.Generic.IList<BuildStep> Steps { get; set; } 
+        public virtual System.Collections.Generic.IList<BuildStep> Steps { get; set; }
 
         /// <summary>Substitutions data for `Build` resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substitutions")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Substitutions { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Substitutions { get; set; }
 
         /// <summary>Tags for annotation of a `Build`. These are not docker tags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
-        public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>Amount of time that this build should be allowed to run, to second granularity. If this amount of
         /// time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking
         /// from `startTime`. Default time is ten minutes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
-        public virtual object Timeout { get; set; } 
+        public virtual object Timeout { get; set; }
 
         /// <summary>Output only. Stores timing information for phases of the build. Valid keys are: * BUILD: time to
         /// execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If
         /// the build does not specify source or images, these keys will not be included.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timing")]
-        public virtual System.Collections.Generic.IDictionary<string,TimeSpan> Timing { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, TimeSpan> Timing { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -953,7 +953,7 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
     {
         /// <summary>The build that the operation is tracking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("build")]
-        public virtual Build Build { get; set; } 
+        public virtual Build Build { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -968,51 +968,51 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         /// present, the maximum disk size is 1000GB; builds that request more than the maximum are rejected with an
         /// error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
-        public virtual System.Nullable<long> DiskSizeGb { get; set; } 
+        public virtual System.Nullable<long> DiskSizeGb { get; set; }
 
         /// <summary>Option to specify whether or not to apply bash style string operations to the substitutions. NOTE:
         /// this is always enabled for triggered builds and cannot be overridden in the build configuration
         /// file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicSubstitutions")]
-        public virtual System.Nullable<bool> DynamicSubstitutions { get; set; } 
+        public virtual System.Nullable<bool> DynamicSubstitutions { get; set; }
 
         /// <summary>A list of global environment variable definitions that will exist for all build steps in this
         /// build. If a variable is defined in both globally and in a build step, the variable will use the build step
         /// value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value
         /// "VALUE".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
-        public virtual System.Collections.Generic.IList<string> Env { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Env { get; set; }
 
         /// <summary>Option to define build log streaming behavior to Google Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logStreamingOption")]
-        public virtual string LogStreamingOption { get; set; } 
+        public virtual string LogStreamingOption { get; set; }
 
         /// <summary>Option to specify the logging mode, which determines if and where build logs are stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logging")]
-        public virtual string Logging { get; set; } 
+        public virtual string Logging { get; set; }
 
         /// <summary>Compute Engine machine type on which to run the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
-        public virtual string MachineType { get; set; } 
+        public virtual string MachineType { get; set; }
 
         /// <summary>Requested verifiability options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedVerifyOption")]
-        public virtual string RequestedVerifyOption { get; set; } 
+        public virtual string RequestedVerifyOption { get; set; }
 
         /// <summary>A list of global environment variables, which are encrypted using a Cloud Key Management Service
         /// crypto key. These values must be specified in the build's `Secret`. These variables will be available to all
         /// build steps in this build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretEnv")]
-        public virtual System.Collections.Generic.IList<string> SecretEnv { get; set; } 
+        public virtual System.Collections.Generic.IList<string> SecretEnv { get; set; }
 
         /// <summary>Requested hash for SourceProvenance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceProvenanceHash")]
-        public virtual System.Collections.Generic.IList<string> SourceProvenanceHash { get; set; } 
+        public virtual System.Collections.Generic.IList<string> SourceProvenanceHash { get; set; }
 
         /// <summary>Option to specify behavior when there is an error in the substitution checks. NOTE: this is always
         /// set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substitutionOption")]
-        public virtual string SubstitutionOption { get; set; } 
+        public virtual string SubstitutionOption { get; set; }
 
         /// <summary>Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior
         /// to starting the build process. Upon completion of the build, volumes and their contents are discarded.
@@ -1020,12 +1020,12 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         /// in a build with only one step is not valid as it is indicative of a build request with an incorrect
         /// configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
-        public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; } 
+        public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; }
 
         /// <summary>Option to specify a `WorkerPool` for the build. Format:
         /// projects/{project}/locations/{location}/workerPools/{workerPool} This field is experimental.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
-        public virtual string WorkerPool { get; set; } 
+        public virtual string WorkerPool { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1039,7 +1039,7 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         /// does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will
         /// be used as arguments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
-        public virtual System.Collections.Generic.IList<string> Args { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Args { get; set; }
 
         /// <summary>Working directory to use when running this step's container. If this value is a relative path, it
         /// is relative to the build's working directory. If this value is absolute, it may be outside the build's
@@ -1048,22 +1048,22 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         /// with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's
         /// execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dir")]
-        public virtual string Dir { get; set; } 
+        public virtual string Dir { get; set; }
 
         /// <summary>Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's
         /// default entrypoint is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entrypoint")]
-        public virtual string Entrypoint { get; set; } 
+        public virtual string Entrypoint { get; set; }
 
         /// <summary>A list of environment variable definitions to be used when running a step. The elements are of the
         /// form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
-        public virtual System.Collections.Generic.IList<string> Env { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Env { get; set; }
 
         /// <summary>Unique identifier for this build step, used in `wait_for` to reference this build step as a
         /// dependency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         /// <summary>Required. The name of the container image that will run this particular build step. If the image is
         /// available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to
@@ -1075,43 +1075,43 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         /// a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the
         /// name for a later build step.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. Stores timing information for pulling this build step's builder image only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pullTiming")]
-        public virtual TimeSpan PullTiming { get; set; } 
+        public virtual TimeSpan PullTiming { get; set; }
 
         /// <summary>A list of environment variables which are encrypted using a Cloud Key Management Service crypto
         /// key. These values must be specified in the build's `Secret`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretEnv")]
-        public virtual System.Collections.Generic.IList<string> SecretEnv { get; set; } 
+        public virtual System.Collections.Generic.IList<string> SecretEnv { get; set; }
 
         /// <summary>Output only. Status of the build step. At this time, build step status is only updated on build
         /// completion; step status is not updated in real-time as the build progresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
+        public virtual string Status { get; set; }
 
         /// <summary>Time limit for executing this build step. If not defined, the step has no time limit and will be
         /// allowed to continue to run until either it completes or the build itself times out.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
-        public virtual object Timeout { get; set; } 
+        public virtual object Timeout { get; set; }
 
         /// <summary>Output only. Stores timing information for executing this build step.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timing")]
-        public virtual TimeSpan Timing { get; set; } 
+        public virtual TimeSpan Timing { get; set; }
 
         /// <summary>List of volumes to mount into the build step. Each volume is created as an empty volume prior to
         /// execution of the build step. Upon completion of the build, volumes and their contents are discarded. Using a
         /// named volume in only one step is not valid as it is indicative of a build request with an incorrect
         /// configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
-        public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; } 
+        public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; }
 
         /// <summary>The ID(s) of the step(s) that this build step depends on. This build step will not start until all
         /// the build steps in `wait_for` have completed successfully. If `wait_for` is empty, this build step will
         /// start when all previous build steps in the `Build.Steps` list have completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waitFor")]
-        public virtual System.Collections.Generic.IList<string> WaitFor { get; set; } 
+        public virtual System.Collections.Generic.IList<string> WaitFor { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1122,16 +1122,16 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
     {
         /// <summary>Docker Registry 2.0 digest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digest")]
-        public virtual string Digest { get; set; } 
+        public virtual string Digest { get; set; }
 
         /// <summary>Name used to push the container image to Google Container Registry, as presented to `docker
         /// push`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. Stores timing information for pushing the specified image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pushTiming")]
-        public virtual TimeSpan PushTiming { get; set; } 
+        public virtual TimeSpan PushTiming { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1160,7 +1160,7 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
     {
         /// <summary>Collection of file hashes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHash")]
-        public virtual System.Collections.Generic.IList<Hash> FileHash { get; set; } 
+        public virtual System.Collections.Generic.IList<Hash> FileHash { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1171,7 +1171,7 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
     {
         /// <summary>The URI to which JSON-containing HTTP POST requests should be sent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1182,11 +1182,11 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
     {
         /// <summary>The type of hash that was performed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The hash value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1197,7 +1197,7 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
     {
         /// <summary>`WorkerPools` for the specified project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerPools")]
-        public virtual System.Collections.Generic.IList<WorkerPool> WorkerPools { get; set; } 
+        public virtual System.Collections.Generic.IList<WorkerPool> WorkerPools { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1211,7 +1211,7 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         /// `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and
         /// {network} is the name of a VPC network in the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peeredNetwork")]
-        public virtual string PeeredNetwork { get; set; } 
+        public virtual string PeeredNetwork { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1224,23 +1224,23 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         /// <summary>The filter string to use for notification filtering. Currently, this is assumed to be a CEL
         /// program. See https://opensource.google/projects/cel for more.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual string Filter { get; set; } 
+        public virtual string Filter { get; set; }
 
         /// <summary>Configuration for HTTP delivery.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpDelivery")]
-        public virtual HTTPDelivery HttpDelivery { get; set; } 
+        public virtual HTTPDelivery HttpDelivery { get; set; }
 
         /// <summary>Configuration for Slack delivery.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slackDelivery")]
-        public virtual SlackDelivery SlackDelivery { get; set; } 
+        public virtual SlackDelivery SlackDelivery { get; set; }
 
         /// <summary>Configuration for SMTP (email) delivery.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smtpDelivery")]
-        public virtual SMTPDelivery SmtpDelivery { get; set; } 
+        public virtual SMTPDelivery SmtpDelivery { get; set; }
 
         /// <summary>Escape hatch for users to supply custom delivery configs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structDelivery")]
-        public virtual System.Collections.Generic.IDictionary<string,object> StructDelivery { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> StructDelivery { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1251,19 +1251,19 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
     {
         /// <summary>The API version of this configuration format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
+        public virtual string ApiVersion { get; set; }
 
         /// <summary>The type of notifier to use (e.g. SMTPNotifier).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Metadata for referring to/handling/deploying this notifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual NotifierMetadata Metadata { get; set; } 
+        public virtual NotifierMetadata Metadata { get; set; }
 
         /// <summary>The actual configuration for this notifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
-        public virtual NotifierSpec Spec { get; set; } 
+        public virtual NotifierSpec Spec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1275,12 +1275,12 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         /// <summary>The human-readable and user-given name for the notifier. For example: "repo-merge-email-
         /// notifier".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The string representing the name and version of notifier to deploy. Expected to be of the form of
         /// "/:". For example: "gcr.io/my-project/notifiers/smtp:1.2.34".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notifier")]
-        public virtual string Notifier { get; set; } 
+        public virtual string Notifier { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1292,13 +1292,13 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
     {
         /// <summary>Name is the local name of the secret, such as the verbatim string "my-smtp-password".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Value is interpreted to be a resource path for fetching the actual (versioned) secret data for this
         /// secret. For example, this would be a Google Cloud Secret Manager secret version resource path like:
         /// "projects/my-project/secrets/my-secret/versions/latest".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1311,7 +1311,7 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         /// <summary>The value of `secret_ref` should be a `name` that is registered in a `Secret` in the `secrets` list
         /// of the `Spec`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretRef")]
-        public virtual string SecretRef { get; set; } 
+        public virtual string SecretRef { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1322,11 +1322,11 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
     {
         /// <summary>The configuration of this particular notifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notification")]
-        public virtual Notification Notification { get; set; } 
+        public virtual Notification Notification { get; set; }
 
         /// <summary>Configurations for secret resources used by this particular notifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secrets")]
-        public virtual System.Collections.Generic.IList<NotifierSecret> Secrets { get; set; } 
+        public virtual System.Collections.Generic.IList<NotifierSecret> Secrets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1338,23 +1338,23 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -1362,7 +1362,7 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1374,39 +1374,39 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         /// <summary>Regex matching branches to build. The syntax of the regular expressions accepted is the syntax
         /// accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("branchName")]
-        public virtual string BranchName { get; set; } 
+        public virtual string BranchName { get; set; }
 
         /// <summary>Explicit commit SHA to build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commitSha")]
-        public virtual string CommitSha { get; set; } 
+        public virtual string CommitSha { get; set; }
 
         /// <summary>Directory, relative to the source root, in which to run the build. This must be a relative path. If
         /// a step's `dir` is specified and is an absolute path, this value is ignored for that step's
         /// execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dir")]
-        public virtual string Dir { get; set; } 
+        public virtual string Dir { get; set; }
 
         /// <summary>Only trigger a build if the revision regex does NOT match the revision regex.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invertRegex")]
-        public virtual System.Nullable<bool> InvertRegex { get; set; } 
+        public virtual System.Nullable<bool> InvertRegex { get; set; }
 
         /// <summary>ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the
         /// build is assumed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
+        public virtual string ProjectId { get; set; }
 
         /// <summary>Required. Name of the Cloud Source Repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repoName")]
-        public virtual string RepoName { get; set; } 
+        public virtual string RepoName { get; set; }
 
         /// <summary>Substitutions to use in a triggered build. Should only be used with RunBuildTrigger</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substitutions")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Substitutions { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Substitutions { get; set; }
 
         /// <summary>Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted
         /// by RE2 and described at https://github.com/google/re2/wiki/Syntax</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagName")]
-        public virtual string TagName { get; set; } 
+        public virtual string TagName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1417,29 +1417,29 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
     {
         /// <summary>Path to the artifact manifest. Only populated when artifacts are uploaded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("artifactManifest")]
-        public virtual string ArtifactManifest { get; set; } 
+        public virtual string ArtifactManifest { get; set; }
 
         /// <summary>Time to push all non-container artifacts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("artifactTiming")]
-        public virtual TimeSpan ArtifactTiming { get; set; } 
+        public virtual TimeSpan ArtifactTiming { get; set; }
 
         /// <summary>List of build step digests, in the order corresponding to build step indices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildStepImages")]
-        public virtual System.Collections.Generic.IList<string> BuildStepImages { get; set; } 
+        public virtual System.Collections.Generic.IList<string> BuildStepImages { get; set; }
 
         /// <summary>List of build step outputs, produced by builder images, in the order corresponding to build step
         /// indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output
         /// by writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildStepOutputs")]
-        public virtual System.Collections.Generic.IList<string> BuildStepOutputs { get; set; } 
+        public virtual System.Collections.Generic.IList<string> BuildStepOutputs { get; set; }
 
         /// <summary>Container images that were built as a part of the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("images")]
-        public virtual System.Collections.Generic.IList<BuiltImage> Images { get; set; } 
+        public virtual System.Collections.Generic.IList<BuiltImage> Images { get; set; }
 
         /// <summary>Number of artifacts uploaded. Only populated when artifacts are uploaded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numArtifacts")]
-        public virtual System.Nullable<long> NumArtifacts { get; set; } 
+        public virtual System.Nullable<long> NumArtifacts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1451,28 +1451,28 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         /// <summary>This is the SMTP account/email that appears in the `From:` of the email. If empty, it is assumed to
         /// be sender.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fromAddress")]
-        public virtual string FromAddress { get; set; } 
+        public virtual string FromAddress { get; set; }
 
         /// <summary>The SMTP sender's password.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
-        public virtual NotifierSecretRef Password { get; set; } 
+        public virtual NotifierSecretRef Password { get; set; }
 
         /// <summary>The SMTP port of the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
-        public virtual string Port { get; set; } 
+        public virtual string Port { get; set; }
 
         /// <summary>This is the list of addresses to which we send the email (i.e. in the `To:` of the
         /// email).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recipientAddresses")]
-        public virtual System.Collections.Generic.IList<string> RecipientAddresses { get; set; } 
+        public virtual System.Collections.Generic.IList<string> RecipientAddresses { get; set; }
 
         /// <summary>This is the SMTP account/email that is used to send the message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("senderAddress")]
-        public virtual string SenderAddress { get; set; } 
+        public virtual string SenderAddress { get; set; }
 
         /// <summary>The address of the SMTP server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("server")]
-        public virtual string Server { get; set; } 
+        public virtual string Server { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1484,13 +1484,13 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
     {
         /// <summary>Cloud KMS key name to use to decrypt these envs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
-        public virtual string KmsKeyName { get; set; } 
+        public virtual string KmsKeyName { get; set; }
 
         /// <summary>Map of environment variable name to its encrypted value. Secret environment variables must be
         /// unique across all of a build's secrets, and must be used by at least one build step. Values can be at most
         /// 64 KB in size. There can be at most 100 secret values across all of a build's secrets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretEnv")]
-        public virtual System.Collections.Generic.IDictionary<string,string> SecretEnv { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> SecretEnv { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1502,7 +1502,7 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
     {
         /// <summary>The secret reference for the Slack webhook URI for sending messages to a channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookUri")]
-        public virtual NotifierSecretRef WebhookUri { get; set; } 
+        public virtual NotifierSecretRef WebhookUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1513,11 +1513,11 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
     {
         /// <summary>If provided, get the source from this location in a Cloud Source Repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repoSource")]
-        public virtual RepoSource RepoSource { get; set; } 
+        public virtual RepoSource RepoSource { get; set; }
 
         /// <summary>If provided, get the source from this location in Google Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageSource")]
-        public virtual StorageSource StorageSource { get; set; } 
+        public virtual StorageSource StorageSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1533,15 +1533,15 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         /// contain the hash values for those files. If the build source came in a single package such as a gzipped
         /// tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
-        public virtual System.Collections.Generic.IDictionary<string,FileHashes> FileHashes { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, FileHashes> FileHashes { get; set; }
 
         /// <summary>A copy of the build's `source.repo_source`, if exists, with any revisions resolved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolvedRepoSource")]
-        public virtual RepoSource ResolvedRepoSource { get; set; } 
+        public virtual RepoSource ResolvedRepoSource { get; set; }
 
         /// <summary>A copy of the build's `source.storage_source`, if exists, with any generations resolved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolvedStorageSource")]
-        public virtual StorageSource ResolvedStorageSource { get; set; } 
+        public virtual StorageSource ResolvedStorageSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1556,17 +1556,17 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1578,17 +1578,17 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         /// <summary>Google Cloud Storage bucket containing the source (see [Bucket Name
         /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
-        public virtual string Bucket { get; set; } 
+        public virtual string Bucket { get; set; }
 
         /// <summary>Google Cloud Storage generation for the object. If the generation is omitted, the latest generation
         /// will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
-        public virtual System.Nullable<long> Generation { get; set; } 
+        public virtual System.Nullable<long> Generation { get; set; }
 
         /// <summary>Google Cloud Storage object containing the source. This object must be a gzipped archive file
         /// (`.tar.gz`) containing source to build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("object")]
-        public virtual string Object__ { get; set; } 
+        public virtual string Object__ { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1599,11 +1599,11 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
     {
         /// <summary>End of time span.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Start of time span.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1616,12 +1616,12 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         /// <summary>Name of the volume to mount. Volume names must be unique per build step and must be valid names for
         /// Docker volumes. Each named volume must be used by at least two build steps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Path at which to mount the volume. Paths must be absolute and cannot conflict with other volume
         /// paths on the same build step or with certain reserved volume paths.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; } 
+        public virtual string Path { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1633,13 +1633,13 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         /// <summary>Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/ If
         /// `0` is specified, Cloud Build will use a standard disk size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
-        public virtual System.Nullable<long> DiskSizeGb { get; set; } 
+        public virtual System.Nullable<long> DiskSizeGb { get; set; }
 
         /// <summary>Machine Type of the worker, such as n1-standard-1. See https://cloud.google.com/compute/docs
         /// /machine-types. If left blank, Cloud Build will use a standard unspecified machine to create the worker
         /// pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
-        public virtual string MachineType { get; set; } 
+        public virtual string MachineType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1653,38 +1653,38 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
     {
         /// <summary>Output only. Time at which the request to create the `WorkerPool` was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. Time at which the request to delete the `WorkerPool` was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
-        public virtual object DeleteTime { get; set; } 
+        public virtual object DeleteTime { get; set; }
 
         /// <summary>Output only. The resource name of the `WorkerPool`. Format of the name is
         /// `projects/{project_id}/workerPools/{worker_pool_id}`, where the value of {worker_pool_id} is provided in the
         /// CreateWorkerPool request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Network configuration for the `WorkerPool`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
-        public virtual NetworkConfig NetworkConfig { get; set; } 
+        public virtual NetworkConfig NetworkConfig { get; set; }
 
         /// <summary>Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently
         /// supported. Note that `region` cannot be changed once the `WorkerPool` is created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
-        public virtual string Region { get; set; } 
+        public virtual string Region { get; set; }
 
         /// <summary>Output only. WorkerPool state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Output only. Time at which the request to update the `WorkerPool` was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>Worker configuration for the `WorkerPool`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerConfig")]
-        public virtual WorkerConfig WorkerConfig { get; set; } 
+        public virtual WorkerConfig WorkerConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

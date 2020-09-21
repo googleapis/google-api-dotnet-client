@@ -756,33 +756,33 @@ namespace Google.Apis.CloudRun.v1beta1.Data
     {
         /// <summary>description is a human readable description of this column. +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>format is an optional OpenAPI type definition for this column. The 'name' format is applied to the
         /// primary identifier column to assist in clients identifying column is the resource name. See
         /// https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types for more.
         /// +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual string Format { get; set; } 
+        public virtual string Format { get; set; }
 
         /// <summary>JSONPath is a simple JSON path, i.e. with array notation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jsonPath")]
-        public virtual string JsonPath { get; set; } 
+        public virtual string JsonPath { get; set; }
 
         /// <summary>name is a human readable name for the column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>priority is an integer defining the relative importance of this column compared to others. Lower
         /// numbers are considered higher priority. Columns that may be omitted in limited space scenarios should be
         /// given a higher priority. +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
-        public virtual System.Nullable<int> Priority { get; set; } 
+        public virtual System.Nullable<int> Priority { get; set; }
 
         /// <summary>type is an OpenAPI type definition for this column. See https://github.com/OAI/OpenAPI-
         /// Specification/blob/master/versions/2.0.md#data-types for more.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -794,19 +794,19 @@ namespace Google.Apis.CloudRun.v1beta1.Data
     {
         /// <summary>The API version for this call such as "k8s.apiextensions.io/v1beta1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
+        public virtual string ApiVersion { get; set; }
 
         /// <summary>The kind of resource, in this case always "CustomResourceDefinition".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Metadata associated with this CustomResourceDefinition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual ObjectMeta Metadata { get; set; } 
+        public virtual ObjectMeta Metadata { get; set; }
 
         /// <summary>Spec describes how the user wants the resources to appear</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
-        public virtual CustomResourceDefinitionSpec Spec { get; set; } 
+        public virtual CustomResourceDefinitionSpec Spec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -818,30 +818,30 @@ namespace Google.Apis.CloudRun.v1beta1.Data
         /// <summary>Categories is a list of grouped resources custom resources belong to (e.g. 'all')
         /// +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]
-        public virtual System.Collections.Generic.IList<string> Categories { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Categories { get; set; }
 
         /// <summary>Kind is the serialized kind of the resource. It is normally CamelCase and singular.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>ListKind is the serialized kind of the list for this resource. Defaults to List.
         /// +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listKind")]
-        public virtual string ListKind { get; set; } 
+        public virtual string ListKind { get; set; }
 
         /// <summary>Plural is the plural name of the resource to serve. It must match the name of the
         /// CustomResourceDefinition-registration too: plural.group and it must be all lowercase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plural")]
-        public virtual string Plural { get; set; } 
+        public virtual string Plural { get; set; }
 
         /// <summary>ShortNames are short names for the resource. It must be all lowercase. +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortNames")]
-        public virtual System.Collections.Generic.IList<string> ShortNames { get; set; } 
+        public virtual System.Collections.Generic.IList<string> ShortNames { get; set; }
 
         /// <summary>Singular is the singular name of the resource. It must be all lowercase Defaults to lowercased
         /// +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("singular")]
-        public virtual string Singular { get; set; } 
+        public virtual string Singular { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -853,34 +853,34 @@ namespace Google.Apis.CloudRun.v1beta1.Data
         /// <summary>AdditionalPrinterColumns are additional columns shown e.g. in kubectl next to the name. Defaults to
         /// a created-at column. +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalPrinterColumns")]
-        public virtual System.Collections.Generic.IList<CustomResourceColumnDefinition> AdditionalPrinterColumns { get; set; } 
+        public virtual System.Collections.Generic.IList<CustomResourceColumnDefinition> AdditionalPrinterColumns { get; set; }
 
         /// <summary>Group is the group this resource belongs in</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
-        public virtual string Group { get; set; } 
+        public virtual string Group { get; set; }
 
         /// <summary>Names are the names used to describe this custom resource</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("names")]
-        public virtual CustomResourceDefinitionNames Names { get; set; } 
+        public virtual CustomResourceDefinitionNames Names { get; set; }
 
         /// <summary>Scope indicates whether this resource is cluster or namespace scoped. Default is
         /// namespaced</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
-        public virtual string Scope { get; set; } 
+        public virtual string Scope { get; set; }
 
         /// <summary>Subresources describes the subresources for CustomResources +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subresources")]
-        public virtual CustomResourceSubresources Subresources { get; set; } 
+        public virtual CustomResourceSubresources Subresources { get; set; }
 
         /// <summary>Validation describes the validation methods for CustomResources +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validation")]
-        public virtual CustomResourceValidation Validation { get; set; } 
+        public virtual CustomResourceValidation Validation { get; set; }
 
         /// <summary>Version is the version this resource belongs in Should be always first item in Versions field if
         /// provided. Optional, but at least one of Version or Versions must be set. Deprecated: Please use `Versions`.
         /// +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
+        public virtual string Version { get; set; }
 
         /// <summary>Versions is the list of all supported versions for this resource. If Version field is provided,
         /// this field is optional. Validation: All versions must use the same validation schema for now. i.e., top
@@ -892,7 +892,7 @@ namespace Google.Apis.CloudRun.v1beta1.Data
         /// by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2,
         /// v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10. +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versions")]
-        public virtual System.Collections.Generic.IList<CustomResourceDefinitionVersion> Versions { get; set; } 
+        public virtual System.Collections.Generic.IList<CustomResourceDefinitionVersion> Versions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -902,16 +902,16 @@ namespace Google.Apis.CloudRun.v1beta1.Data
     {
         /// <summary>Name is the version name, e.g. “v1”, “v2beta1”, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Served is a flag enabling/disabling this version from being served via REST APIs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("served")]
-        public virtual System.Nullable<bool> Served { get; set; } 
+        public virtual System.Nullable<bool> Served { get; set; }
 
         /// <summary>Storage flags the version as storage version. There must be exactly one flagged as storage
         /// version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storage")]
-        public virtual System.Nullable<bool> Storage { get; set; } 
+        public virtual System.Nullable<bool> Storage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -926,21 +926,21 @@ namespace Google.Apis.CloudRun.v1beta1.Data
         /// .status. Must be set to work with HPA. If there is no value under the given path in the CustomResource, the
         /// status label selector value in the /scale subresource will default to the empty string. +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelSelectorPath")]
-        public virtual string LabelSelectorPath { get; set; } 
+        public virtual string LabelSelectorPath { get; set; }
 
         /// <summary>SpecReplicasPath defines the JSON path inside of a CustomResource that corresponds to
         /// Scale.Spec.Replicas. Only JSON paths without the array notation are allowed. Must be a JSON Path under
         /// .spec. If there is no value under the given path in the CustomResource, the /scale subresource will return
         /// an error on GET.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("specReplicasPath")]
-        public virtual string SpecReplicasPath { get; set; } 
+        public virtual string SpecReplicasPath { get; set; }
 
         /// <summary>StatusReplicasPath defines the JSON path inside of a CustomResource that corresponds to
         /// Scale.Status.Replicas. Only JSON paths without the array notation are allowed. Must be a JSON Path under
         /// .status. If there is no value under the given path in the CustomResource, the status replica value in the
         /// /scale subresource will default to 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusReplicasPath")]
-        public virtual string StatusReplicasPath { get; set; } 
+        public virtual string StatusReplicasPath { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -962,11 +962,11 @@ namespace Google.Apis.CloudRun.v1beta1.Data
     {
         /// <summary>Scale denotes the scale subresource for CustomResources +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scale")]
-        public virtual CustomResourceSubresourceScale Scale { get; set; } 
+        public virtual CustomResourceSubresourceScale Scale { get; set; }
 
         /// <summary>Status denotes the status subresource for CustomResources +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual CustomResourceSubresourceStatus Status { get; set; } 
+        public virtual CustomResourceSubresourceStatus Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -977,7 +977,7 @@ namespace Google.Apis.CloudRun.v1beta1.Data
     {
         /// <summary>OpenAPIV3Schema is the OpenAPI v3 schema to be validated against. +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openAPIV3Schema")]
-        public virtual JSONSchemaProps OpenAPIV3Schema { get; set; } 
+        public virtual JSONSchemaProps OpenAPIV3Schema { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -987,10 +987,10 @@ namespace Google.Apis.CloudRun.v1beta1.Data
     public class ExternalDocumentation : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1001,7 +1001,7 @@ namespace Google.Apis.CloudRun.v1beta1.Data
     public class JSON : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("raw")]
-        public virtual string Raw { get; set; } 
+        public virtual string Raw { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1011,112 +1011,112 @@ namespace Google.Apis.CloudRun.v1beta1.Data
     public class JSONSchemaProps : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("additionalItems")]
-        public virtual JSONSchemaPropsOrBool AdditionalItems { get; set; } 
+        public virtual JSONSchemaPropsOrBool AdditionalItems { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("additionalProperties")]
-        public virtual JSONSchemaPropsOrBool AdditionalProperties { get; set; } 
+        public virtual JSONSchemaPropsOrBool AdditionalProperties { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("allOf")]
-        public virtual System.Collections.Generic.IList<JSONSchemaProps> AllOf { get; set; } 
+        public virtual System.Collections.Generic.IList<JSONSchemaProps> AllOf { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("anyOf")]
-        public virtual System.Collections.Generic.IList<JSONSchemaProps> AnyOf { get; set; } 
+        public virtual System.Collections.Generic.IList<JSONSchemaProps> AnyOf { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("default")]
-        public virtual JSON Default__ { get; set; } 
+        public virtual JSON Default__ { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("definitions")]
-        public virtual System.Collections.Generic.IDictionary<string,JSONSchemaProps> Definitions { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, JSONSchemaProps> Definitions { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("dependencies")]
-        public virtual System.Collections.Generic.IDictionary<string,JSONSchemaPropsOrStringArray> Dependencies { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, JSONSchemaPropsOrStringArray> Dependencies { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("enum")]
-        public virtual System.Collections.Generic.IList<string> Enum__ { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Enum__ { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("example")]
-        public virtual JSON Example { get; set; } 
+        public virtual JSON Example { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("exclusiveMaximum")]
-        public virtual System.Nullable<bool> ExclusiveMaximum { get; set; } 
+        public virtual System.Nullable<bool> ExclusiveMaximum { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("exclusiveMinimum")]
-        public virtual System.Nullable<bool> ExclusiveMinimum { get; set; } 
+        public virtual System.Nullable<bool> ExclusiveMinimum { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("externalDocs")]
-        public virtual ExternalDocumentation ExternalDocs { get; set; } 
+        public virtual ExternalDocumentation ExternalDocs { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual string Format { get; set; } 
+        public virtual string Format { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
+        public virtual string Id { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual JSONSchemaPropsOrArray Items { get; set; } 
+        public virtual JSONSchemaPropsOrArray Items { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("maxItems")]
-        public virtual System.Nullable<long> MaxItems { get; set; } 
+        public virtual System.Nullable<long> MaxItems { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("maxLength")]
-        public virtual System.Nullable<long> MaxLength { get; set; } 
+        public virtual System.Nullable<long> MaxLength { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("maxProperties")]
-        public virtual System.Nullable<long> MaxProperties { get; set; } 
+        public virtual System.Nullable<long> MaxProperties { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("maximum")]
-        public virtual System.Nullable<double> Maximum { get; set; } 
+        public virtual System.Nullable<double> Maximum { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("minItems")]
-        public virtual System.Nullable<long> MinItems { get; set; } 
+        public virtual System.Nullable<long> MinItems { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("minLength")]
-        public virtual System.Nullable<long> MinLength { get; set; } 
+        public virtual System.Nullable<long> MinLength { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("minProperties")]
-        public virtual System.Nullable<long> MinProperties { get; set; } 
+        public virtual System.Nullable<long> MinProperties { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("minimum")]
-        public virtual System.Nullable<double> Minimum { get; set; } 
+        public virtual System.Nullable<double> Minimum { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("multipleOf")]
-        public virtual System.Nullable<double> MultipleOf { get; set; } 
+        public virtual System.Nullable<double> MultipleOf { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("not")]
-        public virtual JSONSchemaProps Not { get; set; } 
+        public virtual JSONSchemaProps Not { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("oneOf")]
-        public virtual System.Collections.Generic.IList<JSONSchemaProps> OneOf { get; set; } 
+        public virtual System.Collections.Generic.IList<JSONSchemaProps> OneOf { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
-        public virtual string Pattern { get; set; } 
+        public virtual string Pattern { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("patternProperties")]
-        public virtual System.Collections.Generic.IDictionary<string,JSONSchemaProps> PatternProperties { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, JSONSchemaProps> PatternProperties { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual System.Collections.Generic.IDictionary<string,JSONSchemaProps> Properties { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, JSONSchemaProps> Properties { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("ref")]
-        public virtual string Ref__ { get; set; } 
+        public virtual string Ref__ { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("required")]
-        public virtual System.Collections.Generic.IList<string> Required { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Required { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
-        public virtual string Schema { get; set; } 
+        public virtual string Schema { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        public virtual string Type { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("uniqueItems")]
-        public virtual System.Nullable<bool> UniqueItems { get; set; } 
+        public virtual System.Nullable<bool> UniqueItems { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1127,10 +1127,10 @@ namespace Google.Apis.CloudRun.v1beta1.Data
     public class JSONSchemaPropsOrArray : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("jsonSchemas")]
-        public virtual System.Collections.Generic.IList<JSONSchemaProps> JsonSchemas { get; set; } 
+        public virtual System.Collections.Generic.IList<JSONSchemaProps> JsonSchemas { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
-        public virtual JSONSchemaProps Schema { get; set; } 
+        public virtual JSONSchemaProps Schema { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1141,10 +1141,10 @@ namespace Google.Apis.CloudRun.v1beta1.Data
     public class JSONSchemaPropsOrBool : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("allows")]
-        public virtual System.Nullable<bool> Allows { get; set; } 
+        public virtual System.Nullable<bool> Allows { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
-        public virtual JSONSchemaProps Schema { get; set; } 
+        public virtual JSONSchemaProps Schema { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1154,10 +1154,10 @@ namespace Google.Apis.CloudRun.v1beta1.Data
     public class JSONSchemaPropsOrStringArray : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("property")]
-        public virtual System.Collections.Generic.IList<string> Property { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Property { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
-        public virtual JSONSchemaProps Schema { get; set; } 
+        public virtual JSONSchemaProps Schema { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1167,23 +1167,23 @@ namespace Google.Apis.CloudRun.v1beta1.Data
     {
         /// <summary>The API version for this call such as "k8s.apiextensions.io/v1beta1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
+        public virtual string ApiVersion { get; set; }
 
         /// <summary>List of CustomResourceDefinitions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<CustomResourceDefinition> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<CustomResourceDefinition> Items { get; set; }
 
         /// <summary>The kind of this resource, in this case "CustomResourceDefinitionList".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Metadata associated with this CustomResourceDefinition list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual ListMeta Metadata { get; set; } 
+        public virtual ListMeta Metadata { get; set; }
 
         /// <summary>Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1199,7 +1199,7 @@ namespace Google.Apis.CloudRun.v1beta1.Data
         /// if the server configuration has changed or more than a few minutes have passed. The resourceVersion field
         /// returned when using this continue value will be identical to the value in the first response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("continue")]
-        public virtual string Continue__ { get; set; } 
+        public virtual string Continue__ { get; set; }
 
         /// <summary>String that identifies the server's internal version of this object that can be used by clients to
         /// determine when objects have changed. Value must be treated as opaque by clients and passed unmodified back
@@ -1207,11 +1207,11 @@ namespace Google.Apis.CloudRun.v1beta1.Data
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency
         /// +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceVersion")]
-        public virtual string ResourceVersion { get; set; } 
+        public virtual string ResourceVersion { get; set; }
 
         /// <summary>SelfLink is a URL representing this object. Populated by the system. Read-only. +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1225,27 +1225,27 @@ namespace Google.Apis.CloudRun.v1beta1.Data
         /// external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when
         /// modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Annotations { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
         /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The name of the
         /// cluster which the object belongs to. This is used to distinguish resources with same name and namespace in
         /// different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in
         /// create or update request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
-        public virtual string ClusterName { get; set; } 
+        public virtual string ClusterName { get; set; }
 
         /// <summary>(Optional) CreationTimestamp is a timestamp representing the server time when this object was
         /// created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not
         /// set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null
         /// for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
-        public virtual object CreationTimestamp { get; set; } 
+        public virtual object CreationTimestamp { get; set; }
 
         /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds
         /// allowed for this object to gracefully terminate before it will be removed from the system. Only set when
         /// deletionTimestamp is also set. May only be shortened. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletionGracePeriodSeconds")]
-        public virtual System.Nullable<int> DeletionGracePeriodSeconds { get; set; } 
+        public virtual System.Nullable<int> DeletionGracePeriodSeconds { get; set; }
 
         /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported DeletionTimestamp
         /// is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a
@@ -1262,14 +1262,14 @@ namespace Google.Apis.CloudRun.v1beta1.Data
         /// requested. Populated by the system when a graceful deletion is requested. Read-only. More info:
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletionTimestamp")]
-        public virtual object DeletionTimestamp { get; set; } 
+        public virtual object DeletionTimestamp { get; set; }
 
         /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Must be empty
         /// before the object is deleted from the registry. Each entry is an identifier for the responsible component
         /// that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this
         /// list can only be removed. +patchStrategy=merge</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalizers")]
-        public virtual System.Collections.Generic.IList<string> Finalizers { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Finalizers { get; set; }
 
         /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported GenerateName is
         /// an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been
@@ -1283,36 +1283,36 @@ namespace Google.Apis.CloudRun.v1beta1.Data
         /// https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName =
         /// 2;</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generateName")]
-        public virtual string GenerateName { get; set; } 
+        public virtual string GenerateName { get; set; }
 
         /// <summary>(Optional) A sequence number representing a specific generation of the desired state. Populated by
         /// the system. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
-        public virtual System.Nullable<int> Generation { get; set; } 
+        public virtual System.Nullable<int> Generation { get; set; }
 
         /// <summary>(Optional) Map of string keys and values that can be used to organize and categorize (scope and
         /// select) objects. May match selectors of replication controllers and routes. More info:
         /// http://kubernetes.io/docs/user-guide/labels</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Name must be unique within a namespace, within a Cloud Run region. Is required when creating
         /// resources, although some resources may allow a client to request the generation of an appropriate name
         /// automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be
         /// updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud
         /// Run the namespace must be equal to either the project ID or project number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
-        public virtual string Namespace__ { get; set; } 
+        public virtual string Namespace__ { get; set; }
 
         /// <summary>(Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of objects
         /// that own this object. If ALL objects in the list have been deleted, this object will be garbage
         /// collected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerReferences")]
-        public virtual System.Collections.Generic.IList<OwnerReference> OwnerReferences { get; set; } 
+        public virtual System.Collections.Generic.IList<OwnerReference> OwnerReferences { get; set; }
 
         /// <summary>(Optional) An opaque value that represents the internal version of this object that can be used by
         /// clients to determine when objects have changed. May be used for optimistic concurrency, change detection,
@@ -1322,18 +1322,18 @@ namespace Google.Apis.CloudRun.v1beta1.Data
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-
         /// consistency</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceVersion")]
-        public virtual string ResourceVersion { get; set; } 
+        public virtual string ResourceVersion { get; set; }
 
         /// <summary>(Optional) SelfLink is a URL representing this object. Populated by the system. Read-only. string
         /// selfLink = 4;</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
-        public virtual string SelfLink { get; set; } 
+        public virtual string SelfLink { get; set; }
 
         /// <summary>(Optional) UID is the unique in time and space value for this object. It is typically generated by
         /// the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by
         /// the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
-        public virtual string Uid { get; set; } 
+        public virtual string Uid { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1345,30 +1345,30 @@ namespace Google.Apis.CloudRun.v1beta1.Data
     {
         /// <summary>API version of the referent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
+        public virtual string ApiVersion { get; set; }
 
         /// <summary>If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted
         /// from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs
         /// "delete" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned. +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blockOwnerDeletion")]
-        public virtual System.Nullable<bool> BlockOwnerDeletion { get; set; } 
+        public virtual System.Nullable<bool> BlockOwnerDeletion { get; set; }
 
         /// <summary>If true, this reference points to the managing controller. +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("controller")]
-        public virtual System.Nullable<bool> Controller { get; set; } 
+        public virtual System.Nullable<bool> Controller { get; set; }
 
         /// <summary>Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md
         /// #types-kinds</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
-        public virtual string Uid { get; set; } 
+        public virtual string Uid { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

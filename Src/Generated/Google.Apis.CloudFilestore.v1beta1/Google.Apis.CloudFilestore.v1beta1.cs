@@ -1545,53 +1545,53 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// <summary>Output only. Capacity of the backup. This would be the size of the file share when the backup is
         /// restored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capacityGb")]
-        public virtual System.Nullable<long> CapacityGb { get; set; } 
+        public virtual System.Nullable<long> CapacityGb { get; set; }
 
         /// <summary>Output only. The time when the backup was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>A description of the backup with 2048 characters or less. Requests with longer descriptions will be
         /// rejected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Output only. Amount of bytes that will be downloaded if the backup is restored</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadBytes")]
-        public virtual System.Nullable<long> DownloadBytes { get; set; } 
+        public virtual System.Nullable<long> DownloadBytes { get; set; }
 
         /// <summary>Resource labels to represent user provided metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Output only. The resource name of the backup, in the format
         /// projects/{project_id}/locations/{location_id}/backups/{backup_id}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Name of the file share in the source Cloud Filestore instance that the backup is created
         /// from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceFileShare")]
-        public virtual string SourceFileShare { get; set; } 
+        public virtual string SourceFileShare { get; set; }
 
         /// <summary>The resource name of the source Cloud Filestore instance, in the format
         /// projects/{project_id}/locations/{location_id}/instances/{instance_id}, used to create this backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceInstance")]
-        public virtual string SourceInstance { get; set; } 
+        public virtual string SourceInstance { get; set; }
 
         /// <summary>Output only. The service tier of the source Cloud Filestore instance that this backup is created
         /// from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceInstanceTier")]
-        public virtual string SourceInstanceTier { get; set; } 
+        public virtual string SourceInstanceTier { get; set; }
 
         /// <summary>Output only. The backup state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Output only. The size of the storage used by the backup. As backups share storage, this number is
         /// expected to change with backup creation/deletion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageBytes")]
-        public virtual System.Nullable<long> StorageBytes { get; set; } 
+        public virtual System.Nullable<long> StorageBytes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1619,21 +1619,21 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     {
         /// <summary>File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capacityGb")]
-        public virtual System.Nullable<long> CapacityGb { get; set; } 
+        public virtual System.Nullable<long> CapacityGb { get; set; }
 
         /// <summary>The name of the file share (must be 16 characters or less).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Nfs Export Options. There is a limit of 10 export options per file share.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nfsExportOptions")]
-        public virtual System.Collections.Generic.IList<NfsExportOptions> NfsExportOptions { get; set; } 
+        public virtual System.Collections.Generic.IList<NfsExportOptions> NfsExportOptions { get; set; }
 
         /// <summary>The resource name of the backup, in the format
         /// projects/{project_id}/locations/{location_id}/backups/{backup_id}, that this file share has been restored
         /// from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceBackup")]
-        public virtual string SourceBackup { get; set; } 
+        public virtual string SourceBackup { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1646,75 +1646,75 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// consumer_defined_name is used for notification/UI purposes for consumer to recognize their
         /// instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerDefinedName")]
-        public virtual string ConsumerDefinedName { get; set; } 
+        public virtual string ConsumerDefinedName { get; set; }
 
         /// <summary>Output only. Timestamp when the resource was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Optional. Resource labels to represent user provided metadata. Each label is a key-value pair,
         /// where both the key and the value are arbitrary strings provided by the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The MaintenancePolicies that have been attached to the instance. The key must be of the type name
         /// of the oneof policy name defined in MaintenancePolicy, and the referenced policy must define the same policy
         /// type. For complete details of MaintenancePolicy, please refer to go/cloud-saas-mw-ug.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicyNames")]
-        public virtual System.Collections.Generic.IDictionary<string,string> MaintenancePolicyNames { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> MaintenancePolicyNames { get; set; }
 
         /// <summary>The MaintenanceSchedule contains the scheduling information of published maintenance
         /// schedule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedules")]
-        public virtual System.Collections.Generic.IDictionary<string,GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule> MaintenanceSchedules { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule> MaintenanceSchedules { get; set; }
 
         /// <summary>Optional. The MaintenanceSettings associated with instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSettings")]
-        public virtual GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings MaintenanceSettings { get; set; } 
+        public virtual GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings MaintenanceSettings { get; set; }
 
         /// <summary>Unique name of the resource. It uses the form:
         /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Output only. Custom string attributes used primarily to expose producer-specific information in
         /// monitoring dashboards. See go/get-instance-metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producerMetadata")]
-        public virtual System.Collections.Generic.IDictionary<string,string> ProducerMetadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> ProducerMetadata { get; set; }
 
         /// <summary>Output only. The list of data plane resources provisioned for this instance, e.g. compute VMs. See
         /// go/get-instance-metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisionedResources")]
-        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource> ProvisionedResources { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource> ProvisionedResources { get; set; }
 
         /// <summary>Link to the SLM instance template. Only populated when updating SLM instances via SSA's Actuation
         /// service adaptor. Service producers with custom control plane (e.g. Cloud SQL) doesn't need to populate this
         /// field. Instead they should use software_versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slmInstanceTemplate")]
-        public virtual string SlmInstanceTemplate { get; set; } 
+        public virtual string SlmInstanceTemplate { get; set; }
 
         /// <summary>Output only. SLO metadata for instance classification in the Standardized dataplane SLO platform.
         /// See go/cloud-ssa-standard-slo for feature description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sloMetadata")]
-        public virtual GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata SloMetadata { get; set; } 
+        public virtual GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata SloMetadata { get; set; }
 
         /// <summary>Software versions that are used to deploy this instance. This can be mutated by rollout
         /// services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("softwareVersions")]
-        public virtual System.Collections.Generic.IDictionary<string,string> SoftwareVersions { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> SoftwareVersions { get; set; }
 
         /// <summary>Output only. Current lifecycle state of the resource (e.g. if it's being created or ready to
         /// use).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Output only. ID of the associated GCP tenant project. See go/get-instance-metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tenantProjectId")]
-        public virtual string TenantProjectId { get; set; } 
+        public virtual string TenantProjectId { get; set; }
 
         /// <summary>Output only. Timestamp when the resource was last modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; } 
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1727,20 +1727,20 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// <summary>Can this scheduled update be rescheduled? By default, it's true and API needs to do explicitly
         /// check whether it's set, if it's set as false explicitly, it's false</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canReschedule")]
-        public virtual System.Nullable<bool> CanReschedule { get; set; } 
+        public virtual System.Nullable<bool> CanReschedule { get; set; }
 
         /// <summary>The scheduled end time for the maintenance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>The rollout management policy this maintenance schedule is associated with. When doing reschedule
         /// update request, the reschedule should be against this given policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rolloutManagementPolicy")]
-        public virtual string RolloutManagementPolicy { get; set; } 
+        public virtual string RolloutManagementPolicy { get; set; }
 
         /// <summary>The scheduled start time for the maintenance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1754,7 +1754,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// maintenance on the instance. Rollout service will include the instance in reported rollout progress as not
         /// attempted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclude")]
-        public virtual System.Nullable<bool> Exclude { get; set; } 
+        public virtual System.Nullable<bool> Exclude { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1769,15 +1769,15 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// by adding entry here. For semantic see SloMetadata.exclusions. If both instance and node level exclusions
         /// are present for time period, the node level's reason will be reported by Eligibility Exporter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion> Exclusions { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion> Exclusions { get; set; }
 
         /// <summary>The location of the node, if different from instance location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
+        public virtual string Location { get; set; }
 
         /// <summary>The id of the node. This should be equal to SaasInstanceNode.node_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeId")]
-        public virtual string NodeId { get; set; } 
+        public virtual string NodeId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1791,11 +1791,11 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// documentation (https://cloud.google.com/compute/docs/reference/rest/v1/), prefixed with 'compute-', for
         /// example: 'compute-instance', 'compute-disk', 'compute-autoscaler'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
-        public virtual string ResourceType { get; set; } 
+        public virtual string ResourceType { get; set; }
 
         /// <summary>URL identifying the resource, e.g. "https://www.googleapis.com/compute/v1/projects/...)".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUrl")]
-        public virtual string ResourceUrl { get; set; } 
+        public virtual string ResourceUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1808,12 +1808,12 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     {
         /// <summary>Whether an instance is eligible or ineligible.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eligible")]
-        public virtual System.Nullable<bool> Eligible { get; set; } 
+        public virtual System.Nullable<bool> Eligible { get; set; }
 
         /// <summary>User-defined reason for the current value of instance eligibility. Usually, this can be directly
         /// mapped to the internal state. An empty reason is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1828,22 +1828,22 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// committed at least 10 minutes before the original exclusion expiration - otherwise it is possible that there
         /// will be "gaps" in the exclusion application in the exported timeseries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual object Duration { get; set; } 
+        public virtual object Duration { get; set; }
 
         /// <summary>Human-readable reason for the exclusion. This should be a static string (e.g. "Disruptive update in
         /// progress") and should not contain dynamically generated data (e.g. instance name). Can be left
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
+        public virtual string Reason { get; set; }
 
         /// <summary>Name of an SLI that this exclusion applies to. Can be left empty, signaling that the instance
         /// should be excluded from all SLIs defined in the service SLO configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sliName")]
-        public virtual string SliName { get; set; } 
+        public virtual string SliName { get; set; }
 
         /// <summary>Start time of the exclusion. No alignment (e.g. to a full minute) needed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1854,7 +1854,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     {
         /// <summary>Optional. User-defined instance eligibility.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eligibility")]
-        public virtual GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility Eligibility { get; set; } 
+        public virtual GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility Eligibility { get; set; }
 
         /// <summary>List of SLO exclusion windows. When multiple entries in the list match (matching the exclusion
         /// time-window against current time point) the exclusion reason used in the first matching entry will be
@@ -1865,18 +1865,18 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// instance SLO exclusion, use of custom instance eligibility is recommended. See 'eligibility' field
         /// below.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion> Exclusions { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion> Exclusions { get; set; }
 
         /// <summary>Optional. List of nodes. Some producers need to use per-node metadata to calculate SLO. This field
         /// allows such producers to publish per-node SLO meta data, which will be consumed by SSA Eligibility Exporter
         /// and published in the form of per node metric to Monarch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
-        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata> Nodes { get; set; } 
+        public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata> Nodes { get; set; }
 
         /// <summary>Name of the SLO tier the Instance belongs to. This name will be expected to match the tiers
         /// specified in the service SLO configuration. Field is mandatory and must not be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
-        public virtual string Tier { get; set; } 
+        public virtual string Tier { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1887,47 +1887,47 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     {
         /// <summary>Output only. The time when the instance was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The description of the instance (2048 characters or less).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual string Description { get; set; }
 
         /// <summary>Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting
         /// each other.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
+        public virtual string ETag { get; set; }
 
         /// <summary>File system shares on the instance. For this version, only a single file share is
         /// supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileShares")]
-        public virtual System.Collections.Generic.IList<FileShareConfig> FileShares { get; set; } 
+        public virtual System.Collections.Generic.IList<FileShareConfig> FileShares { get; set; }
 
         /// <summary>Resource labels to represent user provided metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Output only. The resource name of the instance, in the format
         /// projects/{project_id}/locations/{location_id}/instances/{instance_id}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>VPC networks to which the instance is connected. For this version, only a single network is
         /// supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networks")]
-        public virtual System.Collections.Generic.IList<NetworkConfig> Networks { get; set; } 
+        public virtual System.Collections.Generic.IList<NetworkConfig> Networks { get; set; }
 
         /// <summary>Output only. The instance state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
+        public virtual string State { get; set; }
 
         /// <summary>Output only. Additional information about the instance state, if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
-        public virtual string StatusMessage { get; set; } 
+        public virtual string StatusMessage { get; set; }
 
         /// <summary>The service tier of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
-        public virtual string Tier { get; set; } 
+        public virtual string Tier { get; set; }
 
     }    
 
@@ -1939,16 +1939,16 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// response will only return backups in reachable locations and the "unreachable" field will be populated with
         /// a list of unreachable locations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backups")]
-        public virtual System.Collections.Generic.IList<Backup> Backups { get; set; } 
+        public virtual System.Collections.Generic.IList<Backup> Backups { get; set; }
 
         /// <summary>The token you can use to retrieve the next page of results. Not returned if there are no more
         /// results in the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1962,16 +1962,16 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// unreachable, the response will only return instances in reachable locations and the "unreachable" field will
         /// be populated with a list of unreachable locations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
-        public virtual System.Collections.Generic.IList<Instance> Instances { get; set; } 
+        public virtual System.Collections.Generic.IList<Instance> Instances { get; set; }
 
         /// <summary>The token you can use to retrieve the next page of results. Not returned if there are no more
         /// results in the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1982,11 +1982,11 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     {
         /// <summary>A list of locations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; }
 
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1997,11 +1997,11 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     {
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2012,25 +2012,25 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-
         /// east1"}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
+        public virtual string LocationId { get; set; }
 
         /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>Resource name for the location, which may vary between implementations. For example: `"projects
         /// /example-project/locations/us-east1"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2042,17 +2042,17 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// <summary>Output only. IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or IPv6 addresses
         /// in the format {block 1}:{block 2}:{block 3}:{block 4}:{block 5}:{block 6}:{block 7}:{block 8}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddresses")]
-        public virtual System.Collections.Generic.IList<string> IpAddresses { get; set; } 
+        public virtual System.Collections.Generic.IList<string> IpAddresses { get; set; }
 
         /// <summary>Internet protocol versions for which the instance has IP addresses assigned. For this version, only
         /// MODE_IPV4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modes")]
-        public virtual System.Collections.Generic.IList<string> Modes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Modes { get; set; }
 
         /// <summary>The name of the Google Compute Engine [VPC network](/compute/docs/networks-and-firewalls#networks)
         /// to which the instance is connected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
-        public virtual string Network { get; set; } 
+        public virtual string Network { get; set; }
 
         /// <summary>A /29 CIDR block for Basic or a /23 CIDR block for High Scale in one of the [internal IP address
         /// ranges](https://www.arin.net/knowledge/address_filters.html) that identifies the range of IP addresses
@@ -2060,7 +2060,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the
         /// selected VPC network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservedIpRange")]
-        public virtual string ReservedIpRange { get; set; } 
+        public virtual string ReservedIpRange { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2072,31 +2072,31 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// <summary>Either READ_ONLY, for allowing only read requests on the exported directory, or READ_WRITE, for
         /// allowing both read and write requests. The default is READ_WRITE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessMode")]
-        public virtual string AccessMode { get; set; } 
+        public virtual string AccessMode { get; set; }
 
         /// <summary>An integer representing the anonymous group id with a default value of 65534. Anon_gid may only be
         /// set with squash_mode of ROOT_SQUASH. An error will be returned if this field is specified for other
         /// squash_mode settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("anonGid")]
-        public virtual System.Nullable<long> AnonGid { get; set; } 
+        public virtual System.Nullable<long> AnonGid { get; set; }
 
         /// <summary>An integer representing the anonymous user id with a default value of 65534. Anon_uid may only be
         /// set with squash_mode of ROOT_SQUASH. An error will be returned if this field is specified for other
         /// squash_mode settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("anonUid")]
-        public virtual System.Nullable<long> AnonUid { get; set; } 
+        public virtual System.Nullable<long> AnonUid { get; set; }
 
         /// <summary>List of either an IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or CIDR
         /// ranges in the format {octet 1}.{octet 2}.{octet 3}.{octet 4}/{mask size} which may mount the file share.
         /// Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
         /// The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipRanges")]
-        public virtual System.Collections.Generic.IList<string> IpRanges { get; set; } 
+        public virtual System.Collections.Generic.IList<string> IpRanges { get; set; }
 
         /// <summary>Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not
         /// allowing root access. The default is NO_ROOT_SQUASH.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("squashMode")]
-        public virtual string SquashMode { get; set; } 
+        public virtual string SquashMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2108,23 +2108,23 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -2132,7 +2132,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2143,33 +2143,33 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     {
         /// <summary>[Output only] API version used to start the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
+        public virtual string ApiVersion { get; set; }
 
         /// <summary>[Output only] Identifies whether the user has requested cancellation of the operation. Operations
         /// that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1,
         /// corresponding to `Code.CANCELLED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
-        public virtual System.Nullable<bool> CancelRequested { get; set; } 
+        public virtual System.Nullable<bool> CancelRequested { get; set; }
 
         /// <summary>[Output only] The time the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; }
 
         /// <summary>[Output only] The time the operation finished running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>[Output only] Human-readable status of the operation, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
-        public virtual string StatusDetail { get; set; } 
+        public virtual string StatusDetail { get; set; }
 
         /// <summary>[Output only] Server-defined resource path for the target of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; } 
+        public virtual string Target { get; set; }
 
         /// <summary>[Output only] Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
-        public virtual string Verb { get; set; } 
+        public virtual string Verb { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2181,17 +2181,17 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// <summary>Required. Name of the file share in the Cloud Filestore instance that the snapshot is being
         /// restored to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileShare")]
-        public virtual string FileShare { get; set; } 
+        public virtual string FileShare { get; set; }
 
         /// <summary>The resource name of the backup, in the format
         /// projects/{project_id}/locations/{location_id}/backups/{backup_id}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceBackup")]
-        public virtual string SourceBackup { get; set; } 
+        public virtual string SourceBackup { get; set; }
 
         /// <summary>The resource name of the snapshot, in the format
         /// projects/{project_id}/locations/{location_id}/snapshots/{snapshot_id}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshot")]
-        public virtual string SourceSnapshot { get; set; } 
+        public virtual string SourceSnapshot { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2206,17 +2206,17 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -363,36 +363,36 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// <summary>An identifier of a group of messages that can be collapsed, so that only the last message gets sent
         /// when delivery can be resumed. A maximum of 4 different collapse keys is allowed at any given time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collapseKey")]
-        public virtual string CollapseKey { get; set; } 
+        public virtual string CollapseKey { get; set; }
 
         /// <summary>Arbitrary key/value payload. If present, it will override
         /// google.firebase.fcm.v1.Message.data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Data { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Data { get; set; }
 
         /// <summary>If set to true, messages will be allowed to be delivered to the app while the device is in direct
         /// boot mode. See [Support Direct Boot mode](https://developer.android.com/training/articles/direct-
         /// boot).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directBootOk")]
-        public virtual System.Nullable<bool> DirectBootOk { get; set; } 
+        public virtual System.Nullable<bool> DirectBootOk { get; set; }
 
         /// <summary>Options for features provided by the FCM SDK for Android.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fcmOptions")]
-        public virtual AndroidFcmOptions FcmOptions { get; set; } 
+        public virtual AndroidFcmOptions FcmOptions { get; set; }
 
         /// <summary>Notification to send to android devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notification")]
-        public virtual AndroidNotification Notification { get; set; } 
+        public virtual AndroidNotification Notification { get; set; }
 
         /// <summary>Message priority. Can take "normal" and "high" values. For more information, see [Setting the
         /// priority of a message](https://goo.gl/GjONJv).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
-        public virtual string Priority { get; set; } 
+        public virtual string Priority { get; set; }
 
         /// <summary>Package name of the application where the registration token must match in order to receive the
         /// message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedPackageName")]
-        public virtual string RestrictedPackageName { get; set; } 
+        public virtual string RestrictedPackageName { get; set; }
 
         /// <summary>How long (in seconds) the message should be kept in FCM storage if the device is offline. The
         /// maximum time to live supported is 4 weeks, and the default value is 4 weeks if not set. Set it to 0 if want
@@ -402,7 +402,7 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// be encoded in JSON format as "3s", while 3 seconds and 1 nanosecond should be expressed in JSON format as
         /// "3.000000001s". The ttl will be rounded down to the nearest second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
-        public virtual object Ttl { get; set; } 
+        public virtual object Ttl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -413,7 +413,7 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
     {
         /// <summary>Label associated with the message's analytics data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyticsLabel")]
-        public virtual string AnalyticsLabel { get; set; } 
+        public virtual string AnalyticsLabel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -425,18 +425,18 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// <summary>The notification's body text. If present, it will override
         /// google.firebase.fcm.v1.Notification.body.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
-        public virtual string Body { get; set; } 
+        public virtual string Body { get; set; }
 
         /// <summary>Variable string values to be used in place of the format specifiers in body_loc_key to use to
         /// localize the body text to the user's current localization. See [Formatting and
         /// Styling](https://goo.gl/MalYE3) for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bodyLocArgs")]
-        public virtual System.Collections.Generic.IList<string> BodyLocArgs { get; set; } 
+        public virtual System.Collections.Generic.IList<string> BodyLocArgs { get; set; }
 
         /// <summary>The key to the body string in the app's string resources to use to localize the body text to the
         /// user's current localization. See [String Resources](https://goo.gl/NdFZGI) for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bodyLocKey")]
-        public virtual string BodyLocKey { get; set; } 
+        public virtual string BodyLocKey { get; set; }
 
         /// <summary>The [notification's channel
         /// id](https://developer.android.com/guide/topics/ui/notifiers/notifications#ManageChannels) (new in Android
@@ -444,57 +444,57 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// received. If you don't send this channel ID in the request, or if the channel ID provided has not yet been
         /// created by the app, FCM uses the channel ID specified in the app manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
-        public virtual string ChannelId { get; set; } 
+        public virtual string ChannelId { get; set; }
 
         /// <summary>The action associated with a user click on the notification. If specified, an activity with a
         /// matching intent filter is launched when a user clicks on the notification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickAction")]
-        public virtual string ClickAction { get; set; } 
+        public virtual string ClickAction { get; set; }
 
         /// <summary>The notification's icon color, expressed in #rrggbb format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
-        public virtual string Color { get; set; } 
+        public virtual string Color { get; set; }
 
         /// <summary>If set to true, use the Android framework's default LED light settings for the notification.
         /// Default values are specified in [config.xml](https://android.googlesource.com/platform/frameworks/base/+/mas
         /// ter/core/res/res/values/config.xml). If `default_light_settings` is set to true and `light_settings` is also
         /// set, the user-specified `light_settings` is used instead of the default value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultLightSettings")]
-        public virtual System.Nullable<bool> DefaultLightSettings { get; set; } 
+        public virtual System.Nullable<bool> DefaultLightSettings { get; set; }
 
         /// <summary>If set to true, use the Android framework's default sound for the notification. Default values are
         /// specified in [config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/va
         /// lues/config.xml).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultSound")]
-        public virtual System.Nullable<bool> DefaultSound { get; set; } 
+        public virtual System.Nullable<bool> DefaultSound { get; set; }
 
         /// <summary>If set to true, use the Android framework's default vibrate pattern for the notification. Default
         /// values are specified in [config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core
         /// /res/res/values/config.xml). If `default_vibrate_timings` is set to true and `vibrate_timings` is also set,
         /// the default value is used instead of the user-specified `vibrate_timings`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultVibrateTimings")]
-        public virtual System.Nullable<bool> DefaultVibrateTimings { get; set; } 
+        public virtual System.Nullable<bool> DefaultVibrateTimings { get; set; }
 
         /// <summary>Set the time that the event in the notification occurred. Notifications in the panel are sorted by
         /// this time. A point in time is represented using [protobuf.Timestamp](https://developers.google.com/protocol-
         /// buffers/docs/reference/java/com/google/protobuf/Timestamp).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
-        public virtual object EventTime { get; set; } 
+        public virtual object EventTime { get; set; }
 
         /// <summary>The notification's icon. Sets the notification icon to myicon for drawable resource myicon. If you
         /// don't send this key in the request, FCM displays the launcher icon specified in your app manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("icon")]
-        public virtual string Icon { get; set; } 
+        public virtual string Icon { get; set; }
 
         /// <summary>Contains the URL of an image that is going to be displayed in a notification. If present, it will
         /// override google.firebase.fcm.v1.Notification.image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual string Image { get; set; } 
+        public virtual string Image { get; set; }
 
         /// <summary>Settings to control the notification's LED blinking rate and color if LED is available on the
         /// device. The total blinking time is controlled by the OS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lightSettings")]
-        public virtual LightSettings LightSettings { get; set; } 
+        public virtual LightSettings LightSettings { get; set; }
 
         /// <summary>Set whether or not this notification is relevant only to the current device. Some notifications can
         /// be bridged to other devices for remote display, such as a Wear OS watch. This hint can be set to recommend
@@ -502,7 +502,7 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// guides](https://developer.android.com/training/wearables/notifications/bridger#existing-method-of-
         /// preventing-bridging)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localOnly")]
-        public virtual System.Nullable<bool> LocalOnly { get; set; } 
+        public virtual System.Nullable<bool> LocalOnly { get; set; }
 
         /// <summary>Sets the number of items this notification represents. May be displayed as a badge count for
         /// launchers that support badging.See [Notification Badge](https://developer.android.com/training/notify-
@@ -511,7 +511,7 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// unspecified, systems that support badging use the default, which is to increment a number displayed on the
         /// long-press menu each time a new notification arrives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationCount")]
-        public virtual System.Nullable<int> NotificationCount { get; set; } 
+        public virtual System.Nullable<int> NotificationCount { get; set; }
 
         /// <summary>Set the relative priority for this notification. Priority is an indication of how much of the
         /// user's attention should be consumed by this notification. Low-priority notifications may be hidden from the
@@ -521,45 +521,45 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// delivered, whereas [AndroidMessagePriority](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.
         /// messages#androidmessagepriority) is an FCM concept that controls when the message is delivered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationPriority")]
-        public virtual string NotificationPriority { get; set; } 
+        public virtual string NotificationPriority { get; set; }
 
         /// <summary>The sound to play when the device receives the notification. Supports "default" or the filename of
         /// a sound resource bundled in the app. Sound files must reside in /res/raw/.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sound")]
-        public virtual string Sound { get; set; } 
+        public virtual string Sound { get; set; }
 
         /// <summary>When set to false or unset, the notification is automatically dismissed when the user clicks it in
         /// the panel. When set to true, the notification persists even when the user clicks it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sticky")]
-        public virtual System.Nullable<bool> Sticky { get; set; } 
+        public virtual System.Nullable<bool> Sticky { get; set; }
 
         /// <summary>Identifier used to replace existing notifications in the notification drawer. If not specified,
         /// each request creates a new notification. If specified and a notification with the same tag is already being
         /// shown, the new notification replaces the existing one in the notification drawer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
-        public virtual string Tag { get; set; } 
+        public virtual string Tag { get; set; }
 
         /// <summary>Sets the "ticker" text, which is sent to accessibility services. Prior to API level 21
         /// (`Lollipop`), sets the text that is displayed in the status bar when the notification first
         /// arrives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ticker")]
-        public virtual string Ticker { get; set; } 
+        public virtual string Ticker { get; set; }
 
         /// <summary>The notification's title. If present, it will override
         /// google.firebase.fcm.v1.Notification.title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>Variable string values to be used in place of the format specifiers in title_loc_key to use to
         /// localize the title text to the user's current localization. See [Formatting and
         /// Styling](https://goo.gl/MalYE3) for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("titleLocArgs")]
-        public virtual System.Collections.Generic.IList<string> TitleLocArgs { get; set; } 
+        public virtual System.Collections.Generic.IList<string> TitleLocArgs { get; set; }
 
         /// <summary>The key to the title string in the app's string resources to use to localize the title text to the
         /// user's current localization. See [String Resources](https://goo.gl/NdFZGI) for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("titleLocKey")]
-        public virtual string TitleLocKey { get; set; } 
+        public virtual string TitleLocKey { get; set; }
 
         /// <summary>Set the vibration pattern to use. Pass in an array of
         /// [protobuf.Duration](https://developers.google.com/protocol-
@@ -569,13 +569,13 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// and to turn the vibrator on. If `vibrate_timings` is set and `default_vibrate_timings` is set to `true`, the
         /// default value is used instead of the user-specified `vibrate_timings`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vibrateTimings")]
-        public virtual System.Collections.Generic.IList<object> VibrateTimings { get; set; } 
+        public virtual System.Collections.Generic.IList<object> VibrateTimings { get; set; }
 
         /// <summary>Set the
         /// [Notification.visibility](https://developer.android.com/reference/android/app/Notification.html#visibility)
         /// of the notification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
-        public virtual string Visibility { get; set; } 
+        public virtual string Visibility { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -586,20 +586,20 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
     {
         /// <summary>Options for features provided by the FCM SDK for iOS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fcmOptions")]
-        public virtual ApnsFcmOptions FcmOptions { get; set; } 
+        public virtual ApnsFcmOptions FcmOptions { get; set; }
 
         /// <summary>HTTP request headers defined in Apple Push Notification Service. Refer to [APNs request headers](ht
         /// tps://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_no
         /// tification_requests_to_apns) for supported headers, e.g. "apns-priority": "10".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Headers { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Headers { get; set; }
 
         /// <summary>APNs payload as a JSON object, including both `aps` dictionary and custom payload. See [Payload Key
         /// Reference](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_serv
         /// er/generating_a_remote_notification). If present, it overrides google.firebase.fcm.v1.Notification.title and
         /// google.firebase.fcm.v1.Notification.body.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -610,12 +610,12 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
     {
         /// <summary>Label associated with the message's analytics data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyticsLabel")]
-        public virtual string AnalyticsLabel { get; set; } 
+        public virtual string AnalyticsLabel { get; set; }
 
         /// <summary>Contains the URL of an image that is going to be displayed in a notification. If present, it will
         /// override google.firebase.fcm.v1.Notification.image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual string Image { get; set; } 
+        public virtual string Image { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -662,19 +662,19 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// distinguish between a default value and the value being unset. If omitted, this color object is to be
         /// rendered as a solid color (as if the alpha value had been explicitly given with a value of 1.0).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alpha")]
-        public virtual System.Nullable<float> Alpha { get; set; } 
+        public virtual System.Nullable<float> Alpha { get; set; }
 
         /// <summary>The amount of blue in the color as a value in the interval [0, 1].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blue")]
-        public virtual System.Nullable<float> Blue { get; set; } 
+        public virtual System.Nullable<float> Blue { get; set; }
 
         /// <summary>The amount of green in the color as a value in the interval [0, 1].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("green")]
-        public virtual System.Nullable<float> Green { get; set; } 
+        public virtual System.Nullable<float> Green { get; set; }
 
         /// <summary>The amount of red in the color as a value in the interval [0, 1].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("red")]
-        public virtual System.Nullable<float> Red { get; set; } 
+        public virtual System.Nullable<float> Red { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -685,7 +685,7 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
     {
         /// <summary>Label associated with the message's analytics data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyticsLabel")]
-        public virtual string AnalyticsLabel { get; set; } 
+        public virtual string AnalyticsLabel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -697,19 +697,19 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// <summary>Required. Set `color` of the LED with
         /// [google.type.Color](https://github.com/googleapis/googleapis/blob/master/google/type/color.proto).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
-        public virtual Color Color { get; set; } 
+        public virtual Color Color { get; set; }
 
         /// <summary>Required. Along with `light_on_duration `, define the blink rate of LED flashes. Resolution defined
         /// by [proto.Duration](https://developers.google.com/protocol-
         /// buffers/docs/reference/google.protobuf#google.protobuf.Duration)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lightOffDuration")]
-        public virtual object LightOffDuration { get; set; } 
+        public virtual object LightOffDuration { get; set; }
 
         /// <summary>Required. Along with `light_off_duration`, define the blink rate of LED flashes. Resolution defined
         /// by [proto.Duration](https://developers.google.com/protocol-
         /// buffers/docs/reference/google.protobuf#google.protobuf.Duration)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lightOnDuration")]
-        public virtual object LightOnDuration { get; set; } 
+        public virtual object LightOnDuration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -721,46 +721,46 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// <summary>Input only. Android specific options for messages sent through [FCM connection
         /// server](https://goo.gl/4GLdUl).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("android")]
-        public virtual AndroidConfig Android { get; set; } 
+        public virtual AndroidConfig Android { get; set; }
 
         /// <summary>Input only. [Apple Push Notification Service](https://goo.gl/MXRTPa) specific options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apns")]
-        public virtual ApnsConfig Apns { get; set; } 
+        public virtual ApnsConfig Apns { get; set; }
 
         /// <summary>Condition to send a message to, e.g. "'foo' in topics && 'bar' in topics".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual string Condition { get; set; } 
+        public virtual string Condition { get; set; }
 
         /// <summary>Input only. Arbitrary key/value payload. The key should not be a reserved word ("from",
         /// "message_type", or any word starting with "google" or "gcm").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Data { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Data { get; set; }
 
         /// <summary>Input only. Template for FCM SDK feature options to use across all platforms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fcmOptions")]
-        public virtual FcmOptions FcmOptions { get; set; } 
+        public virtual FcmOptions FcmOptions { get; set; }
 
         /// <summary>Output Only. The identifier of the message sent, in the format of
         /// `projects/messages/{message_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>Input only. Basic notification template to use across all platforms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notification")]
-        public virtual Notification Notification { get; set; } 
+        public virtual Notification Notification { get; set; }
 
         /// <summary>Registration token to send a message to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
-        public virtual string Token { get; set; } 
+        public virtual string Token { get; set; }
 
         /// <summary>Topic name to send a message to, e.g. "weather". Note: "/topics/" prefix should not be
         /// provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topic")]
-        public virtual string Topic { get; set; } 
+        public virtual string Topic { get; set; }
 
         /// <summary>Input only. [Webpush protocol](https://tools.ietf.org/html/rfc8030) options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webpush")]
-        public virtual WebpushConfig Webpush { get; set; } 
+        public virtual WebpushConfig Webpush { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -771,7 +771,7 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
     {
         /// <summary>The notification's body text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
-        public virtual string Body { get; set; } 
+        public virtual string Body { get; set; }
 
         /// <summary>Contains the URL of an image that is going to be downloaded on the device and displayed in a
         /// notification. JPEG, PNG, BMP have full support across platforms. Animated GIF and video only work on iOS.
@@ -779,11 +779,11 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// size limit. Quota usage and implications/costs for hosting image on Firebase Storage:
         /// https://firebase.google.com/pricing</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual string Image { get; set; } 
+        public virtual string Image { get; set; }
 
         /// <summary>The notification's title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -794,11 +794,11 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
     {
         /// <summary>Required. Message to send.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual Message Message { get; set; } 
+        public virtual Message Message { get; set; }
 
         /// <summary>Flag for testing the request without actually delivering the message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
-        public virtual System.Nullable<bool> ValidateOnly { get; set; } 
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -810,23 +810,23 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// <summary>Arbitrary key/value payload. If present, it will override
         /// google.firebase.fcm.v1.Message.data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Data { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Data { get; set; }
 
         /// <summary>Options for features provided by the FCM SDK for Web.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fcmOptions")]
-        public virtual WebpushFcmOptions FcmOptions { get; set; } 
+        public virtual WebpushFcmOptions FcmOptions { get; set; }
 
         /// <summary>HTTP headers defined in webpush protocol. Refer to [Webpush
         /// protocol](https://tools.ietf.org/html/rfc8030#section-5) for supported headers, e.g. "TTL": "15".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Headers { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, string> Headers { get; set; }
 
         /// <summary>Web Notification options as a JSON object. Supports Notification instance properties as defined in
         /// [Web Notification API](https://developer.mozilla.org/en-US/docs/Web/API/Notification). If present, "title"
         /// and "body" fields override [google.firebase.fcm.v1.Notification.title] and
         /// [google.firebase.fcm.v1.Notification.body].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notification")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Notification { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Notification { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -837,12 +837,12 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
     {
         /// <summary>Label associated with the message's analytics data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyticsLabel")]
-        public virtual string AnalyticsLabel { get; set; } 
+        public virtual string AnalyticsLabel { get; set; }
 
         /// <summary>The link to open when the user clicks on the notification. For all URL values, HTTPS is
         /// required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
-        public virtual string Link { get; set; } 
+        public virtual string Link { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

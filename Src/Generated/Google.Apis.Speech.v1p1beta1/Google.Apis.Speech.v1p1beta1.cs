@@ -748,7 +748,7 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     {
         /// <summary>The class item's value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -762,15 +762,15 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// <summary>If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case
         /// sensitive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customClassId")]
-        public virtual string CustomClassId { get; set; } 
+        public virtual string CustomClassId { get; set; }
 
         /// <summary>A collection of class items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<ClassItem> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<ClassItem> Items { get; set; }
 
         /// <summary>The resource name of the custom class.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -781,11 +781,11 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     {
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -798,21 +798,21 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     {
         /// <summary>Time of the most recent processing update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
-        public virtual object LastUpdateTime { get; set; } 
+        public virtual object LastUpdateTime { get; set; }
 
         /// <summary>Approximate percentage of audio processed thus far. Guaranteed to be 100 when the audio is fully
         /// processed and the results are available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
-        public virtual System.Nullable<int> ProgressPercent { get; set; } 
+        public virtual System.Nullable<int> ProgressPercent { get; set; }
 
         /// <summary>Time when the request was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>Output only. The URI of the audio file being transcribed. Empty if the audio was sent as byte
         /// content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -823,12 +823,12 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     {
         /// <summary>Required. The audio data to be recognized.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audio")]
-        public virtual RecognitionAudio Audio { get; set; } 
+        public virtual RecognitionAudio Audio { get; set; }
 
         /// <summary>Required. Provides information to the recognizer that specifies how to process the
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual RecognitionConfig Config { get; set; } 
+        public virtual RecognitionConfig Config { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -841,7 +841,7 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     {
         /// <summary>Sequential list of transcription results corresponding to sequential portions of audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
-        public virtual System.Collections.Generic.IList<SpeechRecognitionResult> Results { get; set; } 
+        public virtual System.Collections.Generic.IList<SpeechRecognitionResult> Results { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -853,23 +853,23 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
+        public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
+        public virtual Status Error { get; set; }
 
         /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
         /// and common metadata such as create time. Some services might not provide such metadata. Any method that
         /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
         /// If you use the default HTTP mapping, the `name` should be a resource name ending with
         /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
         /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
@@ -877,7 +877,7 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -905,11 +905,11 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// recommend using a binary search approach to finding the optimal value for your use case. Speech recognition
         /// will skip PhraseSets with a boost value of 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boost")]
-        public virtual System.Nullable<float> Boost { get; set; } 
+        public virtual System.Nullable<float> Boost { get; set; }
 
         /// <summary>The phrase itself.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -926,15 +926,15 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// to finding the optimal value for your use case. Speech recognition will skip PhraseSets with a boost value
         /// of 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boost")]
-        public virtual System.Nullable<float> Boost { get; set; } 
+        public virtual System.Nullable<float> Boost { get; set; }
 
         /// <summary>The resource name of the phrase set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
+        public virtual string Name { get; set; }
 
         /// <summary>A list of word and phrases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phrases")]
-        public virtual System.Collections.Generic.IList<Phrase> Phrases { get; set; } 
+        public virtual System.Collections.Generic.IList<Phrase> Phrases { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -948,7 +948,7 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// <summary>The audio data bytes encoded as specified in `RecognitionConfig`. Note: as with all bytes fields,
         /// proto buffers use a pure binary representation, whereas JSON representations use base64.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual string Content { get; set; } 
+        public virtual string Content { get; set; }
 
         /// <summary>URI that points to a file that contains audio data bytes as specified in `RecognitionConfig`. The
         /// file must not be compressed (for example, gzip). Currently, only Google Cloud Storage URIs are supported,
@@ -956,7 +956,7 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// google.rpc.Code.INVALID_ARGUMENT). For more information, see [Request
         /// URIs](https://cloud.google.com/storage/docs/reference-uris).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -969,7 +969,7 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// is set it supersedes the `speech_contexts` field. For more information, see the [speech
         /// adaptation](https://cloud.google.com/speech-to-text/docs/context-strength) documentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adaptation")]
-        public virtual SpeechAdaptation Adaptation { get; set; } 
+        public virtual SpeechAdaptation Adaptation { get; set; }
 
         /// <summary>A list of up to 3 additional [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags,
         /// listing possible alternative languages of the supplied audio. See [Language
@@ -979,7 +979,7 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// tag of the language detected in the audio. Note: This feature is only supported for Voice Command and Voice
         /// Search use cases and performance may vary for other use cases (e.g., phone call transcription).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternativeLanguageCodes")]
-        public virtual System.Collections.Generic.IList<string> AlternativeLanguageCodes { get; set; } 
+        public virtual System.Collections.Generic.IList<string> AlternativeLanguageCodes { get; set; }
 
         /// <summary>The number of channels in the input audio data. ONLY set this for MULTI-CHANNEL recognition. Valid
         /// values for LINEAR16 and FLAC are `1`-`8`. Valid values for OGG_OPUS are '1'-'254'. Valid value for MULAW,
@@ -987,7 +987,7 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// We only recognize the first channel by default. To perform independent recognition on each channel set
         /// `enable_separate_recognition_per_channel` to 'true'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioChannelCount")]
-        public virtual System.Nullable<int> AudioChannelCount { get; set; } 
+        public virtual System.Nullable<int> AudioChannelCount { get; set; }
 
         /// <summary>Config to enable speaker diarization and set additional parameters to make diarization better
         /// suited for your application. Note: When this is enabled, we send all the words from the beginning of the
@@ -996,18 +996,18 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// requests, the diarization results will be provided only in the top alternative of the FINAL
         /// SpeechRecognitionResult.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diarizationConfig")]
-        public virtual SpeakerDiarizationConfig DiarizationConfig { get; set; } 
+        public virtual SpeakerDiarizationConfig DiarizationConfig { get; set; }
 
         /// <summary>If set, specifies the estimated number of speakers in the conversation. Defaults to '2'. Ignored
         /// unless enable_speaker_diarization is set to true. Note: Use diarization_config instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diarizationSpeakerCount")]
-        public virtual System.Nullable<int> DiarizationSpeakerCount { get; set; } 
+        public virtual System.Nullable<int> DiarizationSpeakerCount { get; set; }
 
         /// <summary>If 'true', adds punctuation to recognition result hypotheses. This feature is only available in
         /// select languages. Setting this for requests in other languages has no effect at all. The default 'false'
         /// value does not add punctuation to result hypotheses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableAutomaticPunctuation")]
-        public virtual System.Nullable<bool> EnableAutomaticPunctuation { get; set; } 
+        public virtual System.Nullable<bool> EnableAutomaticPunctuation { get; set; }
 
         /// <summary>This needs to be set to `true` explicitly and `audio_channel_count` > 1 to get each channel
         /// recognized separately. The recognition result will contain a `channel_tag` field to state which channel that
@@ -1015,47 +1015,47 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// cumulatively for all channels recognized: `audio_channel_count` multiplied by the length of the
         /// audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSeparateRecognitionPerChannel")]
-        public virtual System.Nullable<bool> EnableSeparateRecognitionPerChannel { get; set; } 
+        public virtual System.Nullable<bool> EnableSeparateRecognitionPerChannel { get; set; }
 
         /// <summary>If 'true', enables speaker detection for each recognized word in the top alternative of the
         /// recognition result using a speaker_tag provided in the WordInfo. Note: Use diarization_config
         /// instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSpeakerDiarization")]
-        public virtual System.Nullable<bool> EnableSpeakerDiarization { get; set; } 
+        public virtual System.Nullable<bool> EnableSpeakerDiarization { get; set; }
 
         /// <summary>If `true`, the top result includes a list of words and the confidence for those words. If `false`,
         /// no word-level confidence information is returned. The default is `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableWordConfidence")]
-        public virtual System.Nullable<bool> EnableWordConfidence { get; set; } 
+        public virtual System.Nullable<bool> EnableWordConfidence { get; set; }
 
         /// <summary>If `true`, the top result includes a list of words and the start and end time offsets (timestamps)
         /// for those words. If `false`, no word-level time offset information is returned. The default is
         /// `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableWordTimeOffsets")]
-        public virtual System.Nullable<bool> EnableWordTimeOffsets { get; set; } 
+        public virtual System.Nullable<bool> EnableWordTimeOffsets { get; set; }
 
         /// <summary>Encoding of audio data sent in all `RecognitionAudio` messages. This field is optional for `FLAC`
         /// and `WAV` audio files and required for all other audio formats. For details, see AudioEncoding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
-        public virtual string Encoding { get; set; } 
+        public virtual string Encoding { get; set; }
 
         /// <summary>Required. The language of the supplied audio as a [BCP-47](https://www.rfc-
         /// editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US". See [Language
         /// Support](https://cloud.google.com/speech-to-text/docs/languages) for a list of the currently supported
         /// language codes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>Maximum number of recognition hypotheses to be returned. Specifically, the maximum number of
         /// `SpeechRecognitionAlternative` messages within each `SpeechRecognitionResult`. The server may return fewer
         /// than `max_alternatives`. Valid values are `0`-`30`. A value of `0` or `1` will return a maximum of one. If
         /// omitted, will return a maximum of one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxAlternatives")]
-        public virtual System.Nullable<int> MaxAlternatives { get; set; } 
+        public virtual System.Nullable<int> MaxAlternatives { get; set; }
 
         /// <summary>Metadata regarding this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual RecognitionMetadata Metadata { get; set; } 
+        public virtual RecognitionMetadata Metadata { get; set; }
 
         /// <summary>Which model to select for the given request. Select the model best suited to your domain to get
         /// best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in
@@ -1067,13 +1067,13 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// long-form audio. Ideally the audio is high-fidelity, recorded at a 16khz or greater sampling rate.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
-        public virtual string Model { get; set; } 
+        public virtual string Model { get; set; }
 
         /// <summary>If set to `true`, the server will attempt to filter out profanities, replacing all but the initial
         /// character in each filtered word with asterisks, e.g. "f***". If set to `false` or omitted, profanities won't
         /// be filtered out.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profanityFilter")]
-        public virtual System.Nullable<bool> ProfanityFilter { get; set; } 
+        public virtual System.Nullable<bool> ProfanityFilter { get; set; }
 
         /// <summary>Sample rate in Hertz of the audio data sent in all `RecognitionAudio` messages. Valid values are:
         /// 8000-48000. 16000 is optimal. For best results, set the sampling rate of the audio source to 16000 Hz. If
@@ -1081,20 +1081,20 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// optional for FLAC and WAV audio files, but is required for all other audio formats. For details, see
         /// AudioEncoding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleRateHertz")]
-        public virtual System.Nullable<int> SampleRateHertz { get; set; } 
+        public virtual System.Nullable<int> SampleRateHertz { get; set; }
 
         /// <summary>Array of SpeechContext. A means to provide context to assist the speech recognition. For more
         /// information, see [speech adaptation](https://cloud.google.com/speech-to-text/docs/context-
         /// strength).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechContexts")]
-        public virtual System.Collections.Generic.IList<SpeechContext> SpeechContexts { get; set; } 
+        public virtual System.Collections.Generic.IList<SpeechContext> SpeechContexts { get; set; }
 
         /// <summary>Set to true to use an enhanced model for speech recognition. If `use_enhanced` is set to true and
         /// the `model` field is not set, then an appropriate enhanced model is chosen if an enhanced model exists for
         /// the audio. If `use_enhanced` is true and an enhanced version of the specified model does not exist, then the
         /// speech is recognized using the standard version of the specified model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useEnhanced")]
-        public virtual System.Nullable<bool> UseEnhanced { get; set; } 
+        public virtual System.Nullable<bool> UseEnhanced { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1105,45 +1105,45 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     {
         /// <summary>Description of the content. Eg. "Recordings of federal supreme court hearings from 2012".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioTopic")]
-        public virtual string AudioTopic { get; set; } 
+        public virtual string AudioTopic { get; set; }
 
         /// <summary>The industry vertical to which this speech recognition request most closely applies. This is most
         /// indicative of the topics contained in the audio. Use the 6-digit NAICS code to identify the industry
         /// vertical - see https://www.naics.com/search/.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryNaicsCodeOfAudio")]
-        public virtual System.Nullable<long> IndustryNaicsCodeOfAudio { get; set; } 
+        public virtual System.Nullable<long> IndustryNaicsCodeOfAudio { get; set; }
 
         /// <summary>The use case most closely describing the audio content to be recognized.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interactionType")]
-        public virtual string InteractionType { get; set; } 
+        public virtual string InteractionType { get; set; }
 
         /// <summary>The audio type that most closely describes the audio being recognized.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("microphoneDistance")]
-        public virtual string MicrophoneDistance { get; set; } 
+        public virtual string MicrophoneDistance { get; set; }
 
         /// <summary>Obfuscated (privacy-protected) ID of the user, to identify number of unique users using the
         /// service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedId")]
-        public virtual System.Nullable<long> ObfuscatedId { get; set; } 
+        public virtual System.Nullable<long> ObfuscatedId { get; set; }
 
         /// <summary>The original media the speech was recorded on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalMediaType")]
-        public virtual string OriginalMediaType { get; set; } 
+        public virtual string OriginalMediaType { get; set; }
 
         /// <summary>Mime type of the original audio file. For example `audio/m4a`, `audio/x-alaw-basic`, `audio/mp3`,
         /// `audio/3gpp`. A list of possible audio mime types is maintained at http://www.iana.org/assignments/media-
         /// types/media-types.xhtml#audio</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalMimeType")]
-        public virtual string OriginalMimeType { get; set; } 
+        public virtual string OriginalMimeType { get; set; }
 
         /// <summary>The device used to make the recording. Examples 'Nexus 5X' or 'Polycom SoundStation IP 6000' or
         /// 'POTS' or 'VoIP' or 'Cardioid Microphone'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordingDeviceName")]
-        public virtual string RecordingDeviceName { get; set; } 
+        public virtual string RecordingDeviceName { get; set; }
 
         /// <summary>The type of device the speech was recorded with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordingDeviceType")]
-        public virtual string RecordingDeviceType { get; set; } 
+        public virtual string RecordingDeviceType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1154,12 +1154,12 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     {
         /// <summary>Required. The audio data to be recognized.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audio")]
-        public virtual RecognitionAudio Audio { get; set; } 
+        public virtual RecognitionAudio Audio { get; set; }
 
         /// <summary>Required. Provides information to the recognizer that specifies how to process the
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual RecognitionConfig Config { get; set; } 
+        public virtual RecognitionConfig Config { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1171,7 +1171,7 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     {
         /// <summary>Sequential list of transcription results corresponding to sequential portions of audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
-        public virtual System.Collections.Generic.IList<SpeechRecognitionResult> Results { get; set; } 
+        public virtual System.Collections.Generic.IList<SpeechRecognitionResult> Results { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1183,23 +1183,23 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// <summary>If 'true', enables speaker detection for each recognized word in the top alternative of the
         /// recognition result using a speaker_tag provided in the WordInfo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSpeakerDiarization")]
-        public virtual System.Nullable<bool> EnableSpeakerDiarization { get; set; } 
+        public virtual System.Nullable<bool> EnableSpeakerDiarization { get; set; }
 
         /// <summary>Maximum number of speakers in the conversation. This range gives you more flexibility by allowing
         /// the system to automatically determine the correct number of speakers. If not set, the default value is
         /// 6.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxSpeakerCount")]
-        public virtual System.Nullable<int> MaxSpeakerCount { get; set; } 
+        public virtual System.Nullable<int> MaxSpeakerCount { get; set; }
 
         /// <summary>Minimum number of speakers in the conversation. This range gives you more flexibility by allowing
         /// the system to automatically determine the correct number of speakers. If not set, the default value is
         /// 2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minSpeakerCount")]
-        public virtual System.Nullable<int> MinSpeakerCount { get; set; } 
+        public virtual System.Nullable<int> MinSpeakerCount { get; set; }
 
         /// <summary>Output only. Unused.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speakerTag")]
-        public virtual System.Nullable<int> SpeakerTag { get; set; } 
+        public virtual System.Nullable<int> SpeakerTag { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1212,12 +1212,12 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// fill in the rest of its fields, giving it a unique `custom_class_id`. Refer to the inline defined class in
         /// phrase hints by its `custom_class_id`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customClasses")]
-        public virtual System.Collections.Generic.IList<CustomClass> CustomClasses { get; set; } 
+        public virtual System.Collections.Generic.IList<CustomClass> CustomClasses { get; set; }
 
         /// <summary>A collection of phrase sets. To specify the hints inline, leave the phrase set's `name` blank and
         /// fill in the rest of its fields. Any phrase set can use any custom class.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phraseSets")]
-        public virtual System.Collections.Generic.IList<PhraseSet> PhraseSets { get; set; } 
+        public virtual System.Collections.Generic.IList<PhraseSet> PhraseSets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1233,7 +1233,7 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// cases are best served with values between 0 and 20. We recommend using a binary search approach to finding
         /// the optimal value for your use case.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boost")]
-        public virtual System.Nullable<float> Boost { get; set; } 
+        public virtual System.Nullable<float> Boost { get; set; }
 
         /// <summary>A list of strings containing words and phrases "hints" so that the speech recognition is more
         /// likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for
@@ -1244,7 +1244,7 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// the year, using the $MONTH class improves the likelihood of correctly transcribing audio that includes
         /// months.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phrases")]
-        public virtual System.Collections.Generic.IList<string> Phrases { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Phrases { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1259,16 +1259,16 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// accurate and users should not rely on it to be always provided. The default of 0.0 is a sentinel value
         /// indicating `confidence` was not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
-        public virtual System.Nullable<float> Confidence { get; set; } 
+        public virtual System.Nullable<float> Confidence { get; set; }
 
         /// <summary>Transcript text representing the words that the user spoke.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
-        public virtual string Transcript { get; set; } 
+        public virtual string Transcript { get; set; }
 
         /// <summary>A list of word-specific information for each recognized word. Note: When
         /// `enable_speaker_diarization` is true, you will see all the words from the beginning of the audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("words")]
-        public virtual System.Collections.Generic.IList<WordInfo> Words { get; set; } 
+        public virtual System.Collections.Generic.IList<WordInfo> Words { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1281,18 +1281,18 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// These alternatives are ordered in terms of accuracy, with the top (first) alternative being the most
         /// probable, as ranked by the recognizer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternatives")]
-        public virtual System.Collections.Generic.IList<SpeechRecognitionAlternative> Alternatives { get; set; } 
+        public virtual System.Collections.Generic.IList<SpeechRecognitionAlternative> Alternatives { get; set; }
 
         /// <summary>For multi-channel audio, this is the channel number corresponding to the recognized result for the
         /// audio from that channel. For audio_channel_count = N, its output values can range from '1' to 'N'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelTag")]
-        public virtual System.Nullable<int> ChannelTag { get; set; } 
+        public virtual System.Nullable<int> ChannelTag { get; set; }
 
         /// <summary>Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the
         /// language in this result. This language code was detected to have the most likelihood of being spoken in the
         /// audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1307,17 +1307,17 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
+        public virtual System.Nullable<int> Code { get; set; }
 
         /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
         /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1332,30 +1332,30 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// accurate and users should not rely on it to be always provided. The default of 0.0 is a sentinel value
         /// indicating `confidence` was not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
-        public virtual System.Nullable<float> Confidence { get; set; } 
+        public virtual System.Nullable<float> Confidence { get; set; }
 
         /// <summary>Time offset relative to the beginning of the audio, and corresponding to the end of the spoken
         /// word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an
         /// experimental feature and the accuracy of the time offset can vary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        public virtual object EndTime { get; set; }
 
         /// <summary>Output only. A distinct integer value is assigned for every speaker within the audio. This field
         /// specifies which one of those speakers was detected to have spoken this word. Value ranges from '1' to
         /// diarization_speaker_count. speaker_tag is set if enable_speaker_diarization = 'true' and only in the top
         /// alternative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speakerTag")]
-        public virtual System.Nullable<int> SpeakerTag { get; set; } 
+        public virtual System.Nullable<int> SpeakerTag { get; set; }
 
         /// <summary>Time offset relative to the beginning of the audio, and corresponding to the start of the spoken
         /// word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an
         /// experimental feature and the accuracy of the time offset can vary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        public virtual object StartTime { get; set; }
 
         /// <summary>The word corresponding to this set of information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("word")]
-        public virtual string Word { get; set; } 
+        public virtual string Word { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

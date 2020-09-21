@@ -461,11 +461,11 @@ namespace Google.Apis.GroupsMigration.v1.Data
     {
         /// <summary>The kind of insert resource this is.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
+        public virtual string Kind { get; set; }
 
         /// <summary>The status of the insert request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseCode")]
-        public virtual string ResponseCode { get; set; } 
+        public virtual string ResponseCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

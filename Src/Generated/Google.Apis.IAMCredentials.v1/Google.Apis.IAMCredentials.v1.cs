@@ -548,7 +548,7 @@ namespace Google.Apis.IAMCredentials.v1.Data
         /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing
         /// it with a project ID is invalid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delegates")]
-        public virtual System.Collections.Generic.IList<string> Delegates { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Delegates { get; set; }
 
         /// <summary>The desired lifetime duration of the access token in seconds. By default, the maximum allowed value
         /// is 1 hour. To set a lifetime of up to 12 hours, you can add the service account as an allowed value in an
@@ -556,13 +556,13 @@ namespace Google.Apis.IAMCredentials.v1.Data
         /// constraint. See detailed instructions at https://cloud.google.com/iam/help/credentials/lifetime If a value
         /// is not specified, the token's lifetime will be set to a default value of 1 hour.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifetime")]
-        public virtual object Lifetime { get; set; } 
+        public virtual object Lifetime { get; set; }
 
         /// <summary>Required. Code to identify the scopes to be included in the OAuth 2.0 access token. See
         /// https://developers.google.com/identity/protocols/googlescopes for more information. At least one value
         /// required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
-        public virtual System.Collections.Generic.IList<string> Scope { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Scope { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -572,11 +572,11 @@ namespace Google.Apis.IAMCredentials.v1.Data
     {
         /// <summary>The OAuth 2.0 access token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
-        public virtual string AccessToken { get; set; } 
+        public virtual string AccessToken { get; set; }
 
         /// <summary>Token expiration time. The expiration time is always set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; } 
+        public virtual object ExpireTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -587,7 +587,7 @@ namespace Google.Apis.IAMCredentials.v1.Data
         /// <summary>Required. The audience for the token, such as the API or account that this token grants access
         /// to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audience")]
-        public virtual string Audience { get; set; } 
+        public virtual string Audience { get; set; }
 
         /// <summary>The sequence of service accounts in a delegation chain. Each service account must be granted the
         /// `roles/iam.serviceAccountTokenCreator` role on its next service account in the chain. The last service
@@ -596,12 +596,12 @@ namespace Google.Apis.IAMCredentials.v1.Data
         /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing
         /// it with a project ID is invalid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delegates")]
-        public virtual System.Collections.Generic.IList<string> Delegates { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Delegates { get; set; }
 
         /// <summary>Include the service account email in the token. If set to `true`, the token will contain `email`
         /// and `email_verified` claims.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeEmail")]
-        public virtual System.Nullable<bool> IncludeEmail { get; set; } 
+        public virtual System.Nullable<bool> IncludeEmail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -611,7 +611,7 @@ namespace Google.Apis.IAMCredentials.v1.Data
     {
         /// <summary>The OpenId Connect ID token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
-        public virtual string Token { get; set; } 
+        public virtual string Token { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -626,11 +626,11 @@ namespace Google.Apis.IAMCredentials.v1.Data
         /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing
         /// it with a project ID is invalid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delegates")]
-        public virtual System.Collections.Generic.IList<string> Delegates { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Delegates { get; set; }
 
         /// <summary>Required. The bytes to sign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual string Payload { get; set; } 
+        public virtual string Payload { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -645,13 +645,13 @@ namespace Google.Apis.IAMCredentials.v1.Data
         /// `https://www.googleapis.com/service_accounts/v1/metadata/raw/{ACCOUNT_EMAIL}` - JSON Web Key (JWK):
         /// `https://www.googleapis.com/service_accounts/v1/metadata/jwk/{ACCOUNT_EMAIL}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyId")]
-        public virtual string KeyId { get; set; } 
+        public virtual string KeyId { get; set; }
 
         /// <summary>The signature for the blob. Does not include the original blob. After the key pair referenced by
         /// the `key_id` response field expires, Google no longer exposes the public key that can be used to verify the
         /// blob. As a result, the receiver can no longer verify the signature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signedBlob")]
-        public virtual string SignedBlob { get; set; } 
+        public virtual string SignedBlob { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -666,14 +666,14 @@ namespace Google.Apis.IAMCredentials.v1.Data
         /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing
         /// it with a project ID is invalid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delegates")]
-        public virtual System.Collections.Generic.IList<string> Delegates { get; set; } 
+        public virtual System.Collections.Generic.IList<string> Delegates { get; set; }
 
         /// <summary>Required. The JWT payload to sign. Must be a serialized JSON object that contains a JWT Claims Set.
         /// For example: `{"sub": "user@example.com", "iat": 313435}` If the JWT Claims Set contains an expiration time
         /// (`exp`) claim, it must be an integer timestamp that is not in the past and no more than 12 hours in the
         /// future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual string Payload { get; set; } 
+        public virtual string Payload { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -688,14 +688,14 @@ namespace Google.Apis.IAMCredentials.v1.Data
         /// `https://www.googleapis.com/service_accounts/v1/metadata/raw/{ACCOUNT_EMAIL}` - JSON Web Key (JWK):
         /// `https://www.googleapis.com/service_accounts/v1/metadata/jwk/{ACCOUNT_EMAIL}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyId")]
-        public virtual string KeyId { get; set; } 
+        public virtual string KeyId { get; set; }
 
         /// <summary>The signed JWT. Contains the automatically generated header; the client-supplied payload; and the
         /// signature, which is generated using the key referenced by the `kid` field in the header. After the key pair
         /// referenced by the `key_id` response field expires, Google no longer exposes the public key that can be used
         /// to verify the JWT. As a result, the receiver can no longer verify the signature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signedJwt")]
-        public virtual string SignedJwt { get; set; } 
+        public virtual string SignedJwt { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
