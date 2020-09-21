@@ -32,10 +32,10 @@ public {{ api.className }}Service(Google.Apis.Services.BaseClientService.Initial
 /// <summary>Gets the service supported features.</summary>
 public override System.Collections.Generic.IList<string> Features => {% noeol %}
 {% if api.features %}
-new string[] {{% parameter_list %}
+new string[] { {% parameter_list %}
 {% for feature in api.features %}
 {% parameter %}"{{ feature }}"{% end_parameter %}
-{% endfor %}{% end_parameter_list %}};
+{% endfor %}, {% end_parameter_list %} };
 {% else %}
 new string[0];
 {% endif %}
