@@ -75,7 +75,7 @@ public {{ method.className }}Request(
     {% for p in method.requiredParameters %}
         {% parameter %}
             {% if p.enumType %}
- {{ method.className }}Request.{% camel_case p.enumType.className %}Enum
+ {% camel_case p.enumType.className %}Enum
             {% elif p.repeated %}
  Google.Apis.Util.Repeatable<string>
             {% else %}
