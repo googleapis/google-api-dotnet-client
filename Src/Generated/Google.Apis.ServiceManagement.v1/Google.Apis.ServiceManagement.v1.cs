@@ -1339,67 +1339,6 @@ namespace Google.Apis.ServiceManagement.v1
 
         }
 
-        /// <summary>Disables a service for a project, so it can no longer be be used for the project. It prevents
-        /// accidental usage that may cause unexpected billing charges or security leaks. Operation</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="serviceName">Required. Name of the service to disable. Specifying an unknown service name will cause
-        /// the request to fail.</param>
-        public virtual DisableRequest Disable(Google.Apis.ServiceManagement.v1.Data.DisableServiceRequest body, string serviceName)
-        {
-            return new DisableRequest(service, body, serviceName);
-        }
-
-        /// <summary>Disables a service for a project, so it can no longer be be used for the project. It prevents
-        /// accidental usage that may cause unexpected billing charges or security leaks. Operation</summary>
-        public class DisableRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>
-        {
-            /// <summary>Constructs a new Disable request.</summary>
-            public DisableRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.DisableServiceRequest body, string serviceName) : base(service)
-            {
-                ServiceName = serviceName;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>Required. Name of the service to disable. Specifying an unknown service name will cause the
-            /// request to fail.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string ServiceName { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.ServiceManagement.v1.Data.DisableServiceRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "disable";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/services/{serviceName}:disable";
-
-            /// <summary>Initializes Disable parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add("serviceName", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "serviceName",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-
-        }
-
         /// <summary>Enables a service for a project, so it can be used for the project. See [Cloud Auth
         /// Guide](https://cloud.google.com/docs/authentication) for more information. Operation</summary>
         /// <param name="body">The body of the request.</param>
@@ -2607,19 +2546,6 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// <summary>Message describing the error or warning.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Request message for DisableService method.</summary>
-    public class DisableServiceRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The identity of consumer resource which service disablement will be applied to. The
-        /// Google Service Management implementation accepts the following forms: - "project:" Note: this is made
-        /// compatible with google.api.servicecontrol.v1.Operation.consumer_id.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("consumerId")]
-        public virtual string ConsumerId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

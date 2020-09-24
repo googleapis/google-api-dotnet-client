@@ -7953,7 +7953,9 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// API service account must have publisher permissions on the given Cloud Pub/Sub topic. Not having adequate
         /// permissions causes the calls that send notifications to fail. If a notification can't be published to Cloud
         /// Pub/Sub, errors are logged to Cloud Logging (see [Viewing logs](/healthcare/docs/how-tos/logging)). If the
-        /// number of errors exceeds a certain rate, some aren't submitted.</summary>
+        /// number of errors exceeds a certain rate, some aren't submitted. Note that not all operations trigger
+        /// notifications, see [Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/how-
+        /// tos/pubsub) for specific details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual string PubsubTopic { get; set; }
 

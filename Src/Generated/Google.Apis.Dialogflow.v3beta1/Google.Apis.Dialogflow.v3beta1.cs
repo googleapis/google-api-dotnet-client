@@ -5918,6 +5918,17 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents the event to trigger.</summary>
+    public class GoogleCloudDialogflowCxV3beta1EventInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("event")]
+        public virtual string Event__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The request message for Agents.ExportAgent.</summary>
     public class GoogleCloudDialogflowCxV3beta1ExportAgentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6861,6 +6872,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("audio")]
         public virtual GoogleCloudDialogflowCxV3beta1AudioInput Audio { get; set; }
 
+        /// <summary>The event to be triggered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("event")]
+        public virtual GoogleCloudDialogflowCxV3beta1EventInput Event__ { get; set; }
+
         /// <summary>The intent to be triggered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intent")]
         public virtual GoogleCloudDialogflowCxV3beta1IntentInput Intent { get; set; }
@@ -6883,6 +6898,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// <summary>Represents the parameters of a conversational query.</summary>
     public class GoogleCloudDialogflowCxV3beta1QueryParameters : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Configures whether sentiment analysis should be performed. If not provided, sentiment analysis is
+        /// not performed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analyzeQueryTextSentiment")]
+        public virtual System.Nullable<bool> AnalyzeQueryTextSentiment { get; set; }
+
         /// <summary>The geo location of this conversational query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoLocation")]
         public virtual GoogleTypeLatLng GeoLocation { get; set; }
@@ -6967,6 +6987,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// sophisticated, structured payloads used to drive complex logic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseMessages")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ResponseMessage> ResponseMessages { get; set; }
+
+        /// <summary>The sentiment analyss result, which depends on `analyze_query_text_sentiment`, specified in the
+        /// request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentimentAnalysisResult")]
+        public virtual GoogleCloudDialogflowCxV3beta1SentimentAnalysisResult SentimentAnalysisResult { get; set; }
 
         /// <summary>If natural language text was provided as input, this field will contain a copy of the
         /// text.</summary>
@@ -7196,6 +7221,23 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// format of this URI must be `gs:`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The result of sentiment analysis. Sentiment analysis inspects user input and identifies the prevailing
+    /// subjective opinion, especially to determine a user's attitude as positive, negative, or neutral.</summary>
+    public class GoogleCloudDialogflowCxV3beta1SentimentAnalysisResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A non-negative number in the [0, +inf) range, which represents the absolute magnitude of sentiment,
+        /// regardless of score (positive or negative).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("magnitude")]
+        public virtual System.Nullable<float> Magnitude { get; set; }
+
+        /// <summary>Sentiment score between -1.0 (negative sentiment) and 1.0 (positive sentiment).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10581,12 +10623,54 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Metadata returned for the TestCases.ExportTestCases long running operation.</summary>
+    public class GoogleCloudDialogflowV3alpha1ExportTestCasesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for TestCases.ExportTestCases.</summary>
+    public class GoogleCloudDialogflowV3alpha1ExportTestCasesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Uncompressed raw byte content for test cases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>The URI to a file containing the exported test cases. This field is populated only if `gcs_uri` is
+        /// specified in ExportTestCasesRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
+        public virtual string GcsUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The response message for Agents.ImportAgent.</summary>
     public class GoogleCloudDialogflowV3alpha1ImportAgentResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The unique identifier of the new agent. Format: `projects//locations//agents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agent")]
         public virtual string Agent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata returned for the TestCases.ImportTestCases long running operation.</summary>
+    public class GoogleCloudDialogflowV3alpha1ImportTestCasesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for TestCases.ImportTestCases.</summary>
+    public class GoogleCloudDialogflowV3alpha1ImportTestCasesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique identifiers of the new test cases. Format:
+        /// `projects//locations//agents//testCases/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

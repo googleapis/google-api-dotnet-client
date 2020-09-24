@@ -8879,12 +8879,54 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Metadata returned for the TestCases.ExportTestCases long running operation.</summary>
+    public class GoogleCloudDialogflowV3alpha1ExportTestCasesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for TestCases.ExportTestCases.</summary>
+    public class GoogleCloudDialogflowV3alpha1ExportTestCasesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Uncompressed raw byte content for test cases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>The URI to a file containing the exported test cases. This field is populated only if `gcs_uri` is
+        /// specified in ExportTestCasesRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
+        public virtual string GcsUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The response message for Agents.ImportAgent.</summary>
     public class GoogleCloudDialogflowV3alpha1ImportAgentResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The unique identifier of the new agent. Format: `projects//locations//agents/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agent")]
         public virtual string Agent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata returned for the TestCases.ImportTestCases long running operation.</summary>
+    public class GoogleCloudDialogflowV3alpha1ImportTestCasesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for TestCases.ImportTestCases.</summary>
+    public class GoogleCloudDialogflowV3alpha1ImportTestCasesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique identifiers of the new test cases. Format:
+        /// `projects//locations//agents//testCases/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

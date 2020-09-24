@@ -817,7 +817,9 @@ namespace Google.Apis.RealTimeBidding.v1
 
             /// <summary>Updates a creative.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Name of the creative to update. See creative.name.</param>
+            /// <param name="name">Name of the creative. Follows the pattern `buyers/{buyer}/creatives/{creative}`, where `{buyer}`
+            /// represents the account ID of the buyer who owns the creative, and `{creative}` is the buyer-specific creative ID
+            /// that references this creative in the bid response.</param>
             public virtual PatchRequest Patch(Google.Apis.RealTimeBidding.v1.Data.Creative body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -835,7 +837,9 @@ namespace Google.Apis.RealTimeBidding.v1
                 }
 
 
-                /// <summary>Name of the creative to update. See creative.name.</summary>
+                /// <summary>Name of the creative. Follows the pattern `buyers/{buyer}/creatives/{creative}`, where
+                /// `{buyer}` represents the account ID of the buyer who owns the creative, and `{creative}` is the
+                /// buyer-specific creative ID that references this creative in the bid response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1542,9 +1546,9 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("impressionTrackingUrls")]
         public virtual System.Collections.Generic.IList<string> ImpressionTrackingUrls { get; set; }
 
-        /// <summary>Output only. Name of the creative. Follows the pattern `buyers/{buyer}/creatives/{creative}`, where
-        /// `{buyer}` represents the account ID of the buyer who owns the creative, and `{creative}` is the buyer-
-        /// specific creative ID that references this creative in the bid response.</summary>
+        /// <summary>Name of the creative. Follows the pattern `buyers/{buyer}/creatives/{creative}`, where `{buyer}`
+        /// represents the account ID of the buyer who owns the creative, and `{creative}` is the buyer-specific
+        /// creative ID that references this creative in the bid response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

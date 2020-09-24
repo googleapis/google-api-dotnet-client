@@ -5906,7 +5906,7 @@
    }
   }
  }, 
- "revision": "20200917", 
+ "revision": "20200922", 
  "rootUrl": "https://displayvideo.googleapis.com/", 
  "schemas": {
   "ActiveViewVideoViewabilityMetricConfig": {

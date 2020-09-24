@@ -317,7 +317,7 @@
    }
   }
  }, 
- "revision": "20200910", 
+ "revision": "20200921", 
  "rootUrl": "https://cloudbuild.googleapis.com/", 
  "schemas": {
   "ArtifactObjects": {

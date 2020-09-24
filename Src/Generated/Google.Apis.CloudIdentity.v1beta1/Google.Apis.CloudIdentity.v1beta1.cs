@@ -1598,6 +1598,73 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
 
 
+            /// <summary>Check a potential member for membership in a group.</summary>
+            /// <param name="parent">[Resource name](https://cloud.google.com/apis/design/resource_names) of the group to check the
+            /// transitive membership in. Format: `groups/{group_id}`, where `group_id` is the unique id assigned to the Group to
+            /// which the Membership belongs to.</param>
+            public virtual CheckTransitiveMembershipRequest CheckTransitiveMembership(string parent)
+            {
+                return new CheckTransitiveMembershipRequest(service, parent);
+            }
+
+            /// <summary>Check a potential member for membership in a group.</summary>
+            public class CheckTransitiveMembershipRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.CheckTransitiveMembershipResponse>
+            {
+                /// <summary>Constructs a new CheckTransitiveMembership request.</summary>
+                public CheckTransitiveMembershipRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>[Resource name](https://cloud.google.com/apis/design/resource_names) of the group to check
+                /// the transitive membership in. Format: `groups/{group_id}`, where `group_id` is the unique id
+                /// assigned to the Group to which the Membership belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Required. A CEL expression that MUST include member specification. This is a `required`
+                /// field. Example query: member_key_id == ‘member_key_id_value’ [ && member_key_namespace ==
+                /// ‘member_key_namespace_value’ ]</summary>
+                [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Query { get; set; }
+
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "checkTransitiveMembership";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+parent}/memberships:checkTransitiveMembership";
+
+                /// <summary>Initializes CheckTransitiveMembership parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^groups/[^/]+$",
+                    });
+                    RequestParameters.Add("query", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "query",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+
+            }
+
             /// <summary>Creates a `Membership`.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The parent `Group` resource under which to create the `Membership`. Must be of the
@@ -1756,6 +1823,79 @@ namespace Google.Apis.CloudIdentity.v1beta1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^groups/[^/]+/memberships/[^/]+$",
+                    });
+                }
+
+            }
+
+            /// <summary>Get a membership graph of a member or member/group.</summary>
+            /// <param name="parent">Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the group to
+            /// search transitive memberships in. Format: `groups/{group_id}`, where `group_id` is the unique ID assigned to the
+            /// Group to which the Membership belongs to. group_id can be a wildcard collection id "-". When a group_id is
+            /// specified, the membership graph will be constrained to paths between the member (defined in the query) and the
+            /// parent. If a wildcard collection is provided, all membership paths connected to the member will be
+            /// returned.</param>
+            public virtual GetMembershipGraphRequest GetMembershipGraph(string parent)
+            {
+                return new GetMembershipGraphRequest(service, parent);
+            }
+
+            /// <summary>Get a membership graph of a member or member/group.</summary>
+            public class GetMembershipGraphRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
+            {
+                /// <summary>Constructs a new GetMembershipGraph request.</summary>
+                public GetMembershipGraphRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the group
+                /// to search transitive memberships in. Format: `groups/{group_id}`, where `group_id` is the unique ID
+                /// assigned to the Group to which the Membership belongs to. group_id can be a wildcard collection id
+                /// "-". When a group_id is specified, the membership graph will be constrained to paths between the
+                /// member (defined in the query) and the parent. If a wildcard collection is provided, all membership
+                /// paths connected to the member will be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Required. A CEL expression that MUST include member specification AND label(s). Example
+                /// query: member_key_id == ‘member_key_id_value’ [ && member_key_namespace ==
+                /// ‘member_key_namespace_value’ ] && in labels</summary>
+                [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Query { get; set; }
+
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getMembershipGraph";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+parent}/memberships:getMembershipGraph";
+
+                /// <summary>Initializes GetMembershipGraph parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^groups/[^/]+$",
+                    });
+                    RequestParameters.Add("query", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "query",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
 
@@ -2003,6 +2143,175 @@ namespace Google.Apis.CloudIdentity.v1beta1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^groups/[^/]+/memberships/[^/]+$",
+                    });
+                }
+
+            }
+
+            /// <summary>Search transitive groups of a member.</summary>
+            /// <param name="parent">[Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search
+            /// transitive memberships in. Format: `groups/{group_id}`, where `group_id` is always '-' as this API will search
+            /// across all groups for a given member.</param>
+            public virtual SearchTransitiveGroupsRequest SearchTransitiveGroups(string parent)
+            {
+                return new SearchTransitiveGroupsRequest(service, parent);
+            }
+
+            /// <summary>Search transitive groups of a member.</summary>
+            public class SearchTransitiveGroupsRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.SearchTransitiveGroupsResponse>
+            {
+                /// <summary>Constructs a new SearchTransitiveGroups request.</summary>
+                public SearchTransitiveGroupsRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>[Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search
+                /// transitive memberships in. Format: `groups/{group_id}`, where `group_id` is always '-' as this API
+                /// will search across all groups for a given member.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>The default page size is 200 (max 1000).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The next_page_token value returned from a previous list request, if any.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Required. A CEL expression that MUST include member specification AND label(s). This is a
+                /// `required` field. Users can search on label attributes of groups. CONTAINS match ('in') is supported
+                /// on labels. Example query: member_key_id == ‘member_key_id_value’ [ && member_key_namespace ==
+                /// ‘member_key_namespace_value’ ] && in labels</summary>
+                [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Query { get; set; }
+
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "searchTransitiveGroups";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+parent}/memberships:searchTransitiveGroups";
+
+                /// <summary>Initializes SearchTransitiveGroups parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^groups/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("query", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "query",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+
+            }
+
+            /// <summary>Search transitive memberships of a group.</summary>
+            /// <param name="parent">[Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search
+            /// transitive memberships in. Format: `groups/{group_id}`, where `group_id` is the unique ID assigned to the
+            /// Group.</param>
+            public virtual SearchTransitiveMembershipsRequest SearchTransitiveMemberships(string parent)
+            {
+                return new SearchTransitiveMembershipsRequest(service, parent);
+            }
+
+            /// <summary>Search transitive memberships of a group.</summary>
+            public class SearchTransitiveMembershipsRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.SearchTransitiveMembershipsResponse>
+            {
+                /// <summary>Constructs a new SearchTransitiveMemberships request.</summary>
+                public SearchTransitiveMembershipsRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>[Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search
+                /// transitive memberships in. Format: `groups/{group_id}`, where `group_id` is the unique ID assigned
+                /// to the Group.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>The default page size is 200 (max 1000).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The next_page_token value returned from a previous list request, if any.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "searchTransitiveMemberships";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+parent}/memberships:searchTransitiveMemberships";
+
+                /// <summary>Initializes SearchTransitiveMemberships parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^groups/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
 
@@ -2650,6 +2959,19 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// <summary>Resultant DeviceUser object for the action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceUser")]
         public virtual DeviceUser DeviceUser { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for MembershipsService.CheckTransitiveMembership.</summary>
+    public class CheckTransitiveMembershipResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Response does not include the possible roles of a member since the behavior of this rpc is not all-
+        /// or-nothing unlike the other rpcs. So, it may not be possible to list all the roles definitively, due to
+        /// possible lack of authorization in some of the paths.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasMembership")]
+        public virtual System.Nullable<bool> HasMembership { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3442,6 +3764,38 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Message representing a transitive group of a user or a group.</summary>
+    public class GroupRelation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Display name for this group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Resource name for this group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("group")]
+        public virtual string Group { get; set; }
+
+        /// <summary>Entity key has an id and a namespace. In case of discussion forums, the id will be an email address
+        /// without a namespace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupKey")]
+        public virtual EntityKey GroupKey { get; set; }
+
+        /// <summary>Labels for Group resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>The relation between the member and the transitive group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relationType")]
+        public virtual string RelationType { get; set; }
+
+        /// <summary>Membership roles of the member for the group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roles")]
+        public virtual System.Collections.Generic.IList<TransitiveMembershipRole> Roles { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response message that is returned in LRO result of ListClientStates Operation.</summary>
     public class ListClientStatesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3561,6 +3915,30 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// <summary>Token to retrieve the next page of results. Empty if there are no more results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Message representing a transitive membership of a group.</summary>
+    public class MemberRelation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resource name for this member if member is a GROUP, otherwise it is empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("member")]
+        public virtual string Member { get; set; }
+
+        /// <summary>Entity key has an id and a namespace. In case of discussion forums, the id will be an email address
+        /// without a namespace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferredMemberKey")]
+        public virtual System.Collections.Generic.IList<EntityKey> PreferredMemberKey { get; set; }
+
+        /// <summary>The relation between the group and the transitive member.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relationType")]
+        public virtual string RelationType { get; set; }
+
+        /// <summary>The membership role details (i.e name of role and expiry time).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roles")]
+        public virtual System.Collections.Generic.IList<TransitiveMembershipRole> Roles { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3727,6 +4105,37 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response message for MembershipsService.SearchTransitiveGroups.</summary>
+    public class SearchTransitiveGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of transitive groups satisfying the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberships")]
+        public virtual System.Collections.Generic.IList<GroupRelation> Memberships { get; set; }
+
+        /// <summary>Token to retrieve the next page of results, or empty if there are no more results available for
+        /// listing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for MembershipsService.SearchTransitiveMemberships.</summary>
+    public class SearchTransitiveMembershipsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of transitive members satisfying the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberships")]
+        public virtual System.Collections.Generic.IList<MemberRelation> Memberships { get; set; }
+
+        /// <summary>Token to retrieve the next page of results, or empty if there are no more results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
     /// message contains three pieces of data: error code, error message, and error details. You can find out more about
@@ -3747,6 +4156,18 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Message representing the role of a TransitiveMembership.</summary>
+    public class TransitiveMembershipRole : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>TransitiveMembershipRole in string format. Currently supported TransitiveMembershipRoles:
+        /// `"MEMBER"`, `"OWNER"`, and `"MANAGER"`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

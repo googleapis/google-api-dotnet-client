@@ -1768,7 +1768,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// time, at which point the Project is no longer accessible. Until the deletion completes, you can check the
         /// lifecycle state checked by retrieving the Project with GetProject, and the Project remains visible to
         /// ListProjects. However, you cannot update the project. After the deletion completes, the Project is not
-        /// retrievable by the GetProject and ListProjects methods. The caller must have modify permissions for this
+        /// retrievable by the GetProject and ListProjects methods. The caller must have delete permissions for this
         /// Project.</summary>
         /// <param name="projectId">The Project ID (for example, `foo-bar-123`). Required.</param>
         public virtual DeleteRequest Delete(string projectId)
@@ -1782,7 +1782,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// time, at which point the Project is no longer accessible. Until the deletion completes, you can check the
         /// lifecycle state checked by retrieving the Project with GetProject, and the Project remains visible to
         /// ListProjects. However, you cannot update the project. After the deletion completes, the Project is not
-        /// retrievable by the GetProject and ListProjects methods. The caller must have modify permissions for this
+        /// retrievable by the GetProject and ListProjects methods. The caller must have delete permissions for this
         /// Project.</summary>
         public class DeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Empty>
         {
@@ -2575,7 +2575,8 @@ namespace Google.Apis.CloudResourceManager.v1
 
         /// <summary>Restores the Project identified by the specified `project_id` (for example, `my-project-123`). You
         /// can only use this method for a Project that has a lifecycle state of DELETE_REQUESTED. After deletion
-        /// starts, the Project cannot be restored. The caller must have modify permissions for this Project.</summary>
+        /// starts, the Project cannot be restored. The caller must have undelete permissions for this
+        /// Project.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Required. The project ID (for example, `foo-bar-123`).</param>
         public virtual UndeleteRequest Undelete(Google.Apis.CloudResourceManager.v1.Data.UndeleteProjectRequest body, string projectId)
@@ -2585,7 +2586,8 @@ namespace Google.Apis.CloudResourceManager.v1
 
         /// <summary>Restores the Project identified by the specified `project_id` (for example, `my-project-123`). You
         /// can only use this method for a Project that has a lifecycle state of DELETE_REQUESTED. After deletion
-        /// starts, the Project cannot be restored. The caller must have modify permissions for this Project.</summary>
+        /// starts, the Project cannot be restored. The caller must have undelete permissions for this
+        /// Project.</summary>
         public class UndeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Empty>
         {
             /// <summary>Constructs a new Undelete request.</summary>

@@ -3600,7 +3600,7 @@ namespace Google.Apis.Gmail.v1
                 }
 
 
-                /// <summary>Creates a filter.</summary>
+                /// <summary>Creates a filter. Note: you can only create a maximum of 1,000 filters.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
                 /// user.</param>
@@ -3609,7 +3609,7 @@ namespace Google.Apis.Gmail.v1
                     return new CreateRequest(service, body, userId);
                 }
 
-                /// <summary>Creates a filter.</summary>
+                /// <summary>Creates a filter. Note: you can only create a maximum of 1,000 filters.</summary>
                 public class CreateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.Filter>
                 {
                     /// <summary>Constructs a new Create request.</summary>

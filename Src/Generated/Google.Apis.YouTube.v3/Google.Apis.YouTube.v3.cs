@@ -10284,11 +10284,6 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>The invideoPromotion object encapsulates information about promotion campaign associated with the
-        /// channel.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("invideoPromotion")]
-        public virtual InvideoPromotion InvideoPromotion { get; set; }
-
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "youtube#channel".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -11783,33 +11778,6 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>Defines the position type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Describes an invideo promotion campaign consisting of multiple promoted items. A campaign belongs to a
-    /// single channel_id.</summary>
-    public class InvideoPromotion : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The default temporal position within the video where the promoted item will be displayed. Can be
-        /// overridden by more specific timing in the item.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("defaultTiming")]
-        public virtual InvideoTiming DefaultTiming { get; set; }
-
-        /// <summary>List of promoted items in decreasing priority.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<PromotedItem> Items { get; set; }
-
-        /// <summary>The spatial position within the video where the promoted item will be displayed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("position")]
-        public virtual InvideoPosition Position { get; set; }
-
-        /// <summary>Indicates whether the channel's promotional campaign uses "smart timing." This feature attempts to
-        /// show promotions at a point in the video when they are more likely to be clicked and less likely to disrupt
-        /// the viewing experience. This feature also picks up a single promotion to show on each video.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("useSmartTiming")]
-        public virtual System.Nullable<bool> UseSmartTiming { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13358,58 +13326,6 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The playlist's privacy status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privacyStatus")]
         public virtual string PrivacyStatus { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Describes a single promoted item.</summary>
-    public class PromotedItem : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A custom message to display for this promotion. This field is currently ignored unless the promoted
-        /// item is a website.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("customMessage")]
-        public virtual string CustomMessage { get; set; }
-
-        /// <summary>Identifies the promoted item.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual PromotedItemId Id { get; set; }
-
-        /// <summary>If true, the content owner's name will be used when displaying the promotion. This field can only
-        /// be set when the update is made on behalf of the content owner.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("promotedByContentOwner")]
-        public virtual System.Nullable<bool> PromotedByContentOwner { get; set; }
-
-        /// <summary>The temporal position within the video where the promoted item will be displayed. If present, it
-        /// overrides the default timing.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("timing")]
-        public virtual InvideoTiming Timing { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Describes a single promoted item id. It is a union of various possible types.</summary>
-    public class PromotedItemId : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>If type is recentUpload, this field identifies the channel from which to take the recent upload. If
-        /// missing, the channel is assumed to be the same channel for which the invideoPromotion is set.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("recentlyUploadedBy")]
-        public virtual string RecentlyUploadedBy { get; set; }
-
-        /// <summary>Describes the type of the promoted item.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>If the promoted item represents a video, this field represents the unique YouTube ID identifying
-        /// it. This field will be present only if type has the value video.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("videoId")]
-        public virtual string VideoId { get; set; }
-
-        /// <summary>If the promoted item represents a website, this field represents the url pointing to the website.
-        /// This field will be present only if type has the value website.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("websiteUrl")]
-        public virtual string WebsiteUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
