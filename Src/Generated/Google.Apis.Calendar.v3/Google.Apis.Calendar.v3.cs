@@ -4649,7 +4649,8 @@ namespace Google.Apis.Calendar.v3.Data
         public virtual System.Collections.Generic.IList<EventAttachment> Attachments { get; set; }
 
         /// <summary>The attendees of the event. See the Events with attendees guide for more information on scheduling
-        /// events with other calendar users.</summary>
+        /// events with other calendar users. Service accounts need to use domain-wide delegation of authority to
+        /// populate the attendee list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attendees")]
         public virtual System.Collections.Generic.IList<EventAttendee> Attendees { get; set; }
 

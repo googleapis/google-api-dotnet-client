@@ -1458,9 +1458,2044 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     public ConsentStoresResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                        AttributeDefinitions = new AttributeDefinitionsResource(service);
+                        ConsentArtifacts = new ConsentArtifactsResource(service);
+                        Consents = new ConsentsResource(service);
+                        UserDataMappings = new UserDataMappingsResource(service);
 
                     }
 
+                    /// <summary>Gets the AttributeDefinitions resource.</summary>
+                    public virtual AttributeDefinitionsResource AttributeDefinitions { get; }
+
+                    /// <summary>The "attributeDefinitions" collection of methods.</summary>
+                    public class AttributeDefinitionsResource
+                    {
+                        private const string Resource = "attributeDefinitions";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public AttributeDefinitionsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+
+                        }
+
+
+                        /// <summary>Creates a new Attribute definition in the parent Consent store.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">Required. The name of the consent store that this Attribute definition belongs to.</param>
+                        public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.AttributeDefinition body, string parent)
+                        {
+                            return new CreateRequest(service, body, parent);
+                        }
+
+                        /// <summary>Creates a new Attribute definition in the parent Consent store.</summary>
+                        public class CreateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.AttributeDefinition>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.AttributeDefinition body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. The name of the consent store that this Attribute definition belongs
+                            /// to.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Required. The ID of the Attribute definition to create. The string must match
+                            /// the following regex: `_a-zA-Z{0,255}` and must not be a reserved keyword within the
+                            /// Common Expression Language as listed on https://github.com/google/cel-
+                            /// spec/blob/master/doc/langdef.md.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("attributeDefinitionId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string AttributeDefinitionId { get; set; }
+
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudHealthcare.v1beta1.Data.AttributeDefinition Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "create";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+parent}/attributeDefinitions";
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+$",
+                                });
+                                RequestParameters.Add("attributeDefinitionId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "attributeDefinitionId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+
+                        }
+
+                        /// <summary>Deletes the specified Attribute definition. Fails if it is referenced by the latest
+                        /// revision of any Consent or User data mapping.</summary>
+                        /// <param name="name">Required. The resource name of the Attribute definition to delete.</param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(service, name);
+                        }
+
+                        /// <summary>Deletes the specified Attribute definition. Fails if it is referenced by the latest
+                        /// revision of any Consent or User data mapping.</summary>
+                        public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Empty>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. The resource name of the Attribute definition to delete.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+/attributeDefinitions/[^/]+$",
+                                });
+                            }
+
+                        }
+
+                        /// <summary>Gets the specified Attribute definition.</summary>
+                        /// <param name="name">Required. The resource name of the Attribute definition to get.</param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>Gets the specified Attribute definition.</summary>
+                        public class GetRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.AttributeDefinition>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. The resource name of the Attribute definition to get.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+/attributeDefinitions/[^/]+$",
+                                });
+                            }
+
+                        }
+
+                        /// <summary>Lists the Attribute definitions in the given Consent store.</summary>
+                        /// <param name="parent">Required. Name of the Consent store to retrieve attribute definitions from.</param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>Lists the Attribute definitions in the given Consent store.</summary>
+                        public class ListRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ListAttributeDefinitionsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. Name of the Consent store to retrieve attribute definitions
+                            /// from.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Restricts the attributes returned to those matching a filter. Syntax:
+                            /// https://cloud.google.com/appengine/docs/standard/python/search/query_strings. The only
+                            /// field available for filtering is `category`.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>Limit on the number of attribute definitions to return in a single response. If
+                            /// zero the default page size of 100 is used.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>Token to retrieve the next page of results or empty to get the first
+                            /// page.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+parent}/attributeDefinitions";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+
+                        }
+
+                        /// <summary>Updates the specified Attribute definition.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">Resource name of the attribute definition, of the form `projects/{project_id}/locations/{location
+                        /// _id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`.</param>
+                        ///
+                        public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.AttributeDefinition body, string name)
+                        {
+                            return new PatchRequest(service, body, name);
+                        }
+
+                        /// <summary>Updates the specified Attribute definition.</summary>
+                        public class PatchRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.AttributeDefinition>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.AttributeDefinition body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Resource name of the attribute definition, of the form `projects/{project_id}/l
+                            /// ocations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeD
+                            /// efinitions/{attribute_definition_id}`.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>The update mask that applies to the resource. For the `FieldMask` definition,
+                            /// see https://developers.google.com/protocol-
+                            /// buffers/docs/reference/google.protobuf#fieldmask. The `description`, `possible_values`,
+                            /// `consent_default_values`, and `data_mapping_default_value` fields are allowed to be
+                            /// updated. The updated `possible_values` must contain all values from the previous
+                            /// `possible_values`.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudHealthcare.v1beta1.Data.AttributeDefinition Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "patch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}";
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+/attributeDefinitions/[^/]+$",
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+
+                        }
+                    }
+                    /// <summary>Gets the ConsentArtifacts resource.</summary>
+                    public virtual ConsentArtifactsResource ConsentArtifacts { get; }
+
+                    /// <summary>The "consentArtifacts" collection of methods.</summary>
+                    public class ConsentArtifactsResource
+                    {
+                        private const string Resource = "consentArtifacts";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public ConsentArtifactsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+
+                        }
+
+
+                        /// <summary>Creates a new Consent artifact in the parent Consent store.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">Required. The name of the Consent store this consent artifact belongs to.</param>
+                        public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.ConsentArtifact body, string parent)
+                        {
+                            return new CreateRequest(service, body, parent);
+                        }
+
+                        /// <summary>Creates a new Consent artifact in the parent Consent store.</summary>
+                        public class CreateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ConsentArtifact>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.ConsentArtifact body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. The name of the Consent store this consent artifact belongs
+                            /// to.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudHealthcare.v1beta1.Data.ConsentArtifact Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "create";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+parent}/consentArtifacts";
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+$",
+                                });
+                            }
+
+                        }
+
+                        /// <summary>Deletes the specified Consent artifact. Fails if it is referenced by the latest
+                        /// revision of any Consent.</summary>
+                        /// <param name="name">Required. The resource name of the consent artifact to delete.</param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(service, name);
+                        }
+
+                        /// <summary>Deletes the specified Consent artifact. Fails if it is referenced by the latest
+                        /// revision of any Consent.</summary>
+                        public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Empty>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. The resource name of the consent artifact to delete.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+/consentArtifacts/[^/]+$",
+                                });
+                            }
+
+                        }
+
+                        /// <summary>Gets the specified Consent artifact.</summary>
+                        /// <param name="name">Required. The resource name of the consent artifact to retrieve.</param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>Gets the specified Consent artifact.</summary>
+                        public class GetRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ConsentArtifact>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. The resource name of the consent artifact to retrieve.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+/consentArtifacts/[^/]+$",
+                                });
+                            }
+
+                        }
+
+                        /// <summary>Lists the Consent artifacts in the given Consent store.</summary>
+                        /// <param name="parent">Required. Name of the Consent store to retrieve consent artifacts from.</param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>Lists the Consent artifacts in the given Consent store.</summary>
+                        public class ListRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ListConsentArtifactsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. Name of the Consent store to retrieve consent artifacts
+                            /// from.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Restricts the artifacts returned to those matching a filter. Syntax:
+                            /// https://cloud.google.com/appengine/docs/standard/python/search/query_strings The fields
+                            /// available for filtering are: - user_id - consent_content_version</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>Limit on the number of consent artifacts to return in a single response. If
+                            /// zero the default page size of 100 is used.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>The next_page_token value returned from the previous List request, if
+                            /// any.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+parent}/consentArtifacts";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+
+                        }
+                    }
+                    /// <summary>Gets the Consents resource.</summary>
+                    public virtual ConsentsResource Consents { get; }
+
+                    /// <summary>The "consents" collection of methods.</summary>
+                    public class ConsentsResource
+                    {
+                        private const string Resource = "consents";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public ConsentsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+
+                        }
+
+
+                        /// <summary>Activates the latest revision of the specified Consent by committing a new revision
+                        /// with `state` updated to `ACTIVE`. If the latest revision of the given consent is in the
+                        /// `ACTIVE` state, no new revision is committed. A FAILED_PRECONDITION error occurs if the
+                        /// latest revision of the given consent is in the `REJECTED` or `REVOKED` state.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">Required. The resource name of the consent to activate, of the form `projects/{project_id}/locati
+                        /// ons/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. An INVALID_ARGUMENT
+                        /// error occurs if `revision_id` is specified in the name.</param>
+                        public virtual ActivateRequest Activate(Google.Apis.CloudHealthcare.v1beta1.Data.ActivateConsentRequest body, string name)
+                        {
+                            return new ActivateRequest(service, body, name);
+                        }
+
+                        /// <summary>Activates the latest revision of the specified Consent by committing a new revision
+                        /// with `state` updated to `ACTIVE`. If the latest revision of the given consent is in the
+                        /// `ACTIVE` state, no new revision is committed. A FAILED_PRECONDITION error occurs if the
+                        /// latest revision of the given consent is in the `REJECTED` or `REVOKED` state.</summary>
+                        public class ActivateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Consent>
+                        {
+                            /// <summary>Constructs a new Activate request.</summary>
+                            public ActivateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.ActivateConsentRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. The resource name of the consent to activate, of the form `projects/{
+                            /// project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_i
+                            /// d}/consents/{consent_id}`. An INVALID_ARGUMENT error occurs if `revision_id` is
+                            /// specified in the name.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudHealthcare.v1beta1.Data.ActivateConsentRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "activate";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}:activate";
+
+                            /// <summary>Initializes Activate parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+/consents/[^/]+$",
+                                });
+                            }
+
+                        }
+
+                        /// <summary>Creates a new Consent in the parent Consent store.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">Required. Name of the consent store.</param>
+                        public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.Consent body, string parent)
+                        {
+                            return new CreateRequest(service, body, parent);
+                        }
+
+                        /// <summary>Creates a new Consent in the parent Consent store.</summary>
+                        public class CreateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Consent>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.Consent body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. Name of the consent store.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudHealthcare.v1beta1.Data.Consent Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "create";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+parent}/consents";
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+$",
+                                });
+                            }
+
+                        }
+
+                        /// <summary>Deletes the Consent and its revisions. To keep a record of the Consent but mark it
+                        /// inactive, see [RevokeConsent]. To delete a revision of a Consent, see
+                        /// [DeleteConsentRevision]. This operation does not delete the related consent
+                        /// artifact.</summary>
+                        /// <param name="name">Required. The resource name of the consent to delete, of the form `projects/{project_id}/location
+                        /// s/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. An INVALID_ARGUMENT
+                        /// error occurs if `revision_id` is specified in the name.</param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(service, name);
+                        }
+
+                        /// <summary>Deletes the Consent and its revisions. To keep a record of the Consent but mark it
+                        /// inactive, see [RevokeConsent]. To delete a revision of a Consent, see
+                        /// [DeleteConsentRevision]. This operation does not delete the related consent
+                        /// artifact.</summary>
+                        public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Empty>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. The resource name of the consent to delete, of the form `projects/{pr
+                            /// oject_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}
+                            /// /consents/{consent_id}`. An INVALID_ARGUMENT error occurs if `revision_id` is specified
+                            /// in the name.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+/consents/[^/]+$",
+                                });
+                            }
+
+                        }
+
+                        /// <summary>Deletes the specified revision of a Consent. An INVALID_ARGUMENT error occurs if
+                        /// the specified revision is the latest revision.</summary>
+                        /// <param name="name">Required. The resource name of the consent revision to delete, of the form `projects/{project_id}
+                        /// /locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}@{revision_id}`
+                        /// . An INVALID_ARGUMENT error occurs if `revision_id` is not specified in the name.</param>
+                        public virtual DeleteRevisionRequest DeleteRevision(string name)
+                        {
+                            return new DeleteRevisionRequest(service, name);
+                        }
+
+                        /// <summary>Deletes the specified revision of a Consent. An INVALID_ARGUMENT error occurs if
+                        /// the specified revision is the latest revision.</summary>
+                        public class DeleteRevisionRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Empty>
+                        {
+                            /// <summary>Constructs a new DeleteRevision request.</summary>
+                            public DeleteRevisionRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. The resource name of the consent revision to delete, of the form `pro
+                            /// jects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_
+                            /// store_id}/consents/{consent_id}@{revision_id}`. An INVALID_ARGUMENT error occurs if
+                            /// `revision_id` is not specified in the name.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "deleteRevision";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}:deleteRevision";
+
+                            /// <summary>Initializes DeleteRevision parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+/consents/[^/]+$",
+                                });
+                            }
+
+                        }
+
+                        /// <summary>Gets the specified revision of a Consent, or the latest revision if `revision_id`
+                        /// is not specified in the resource name.</summary>
+                        /// <param name="name">Required. The resource name of the consent to retrieve, of the form `projects/{project_id}/locati
+                        /// ons/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. In order to
+                        /// retrieve a previous revision of the consent, also provide the revision ID: `projects/{project_id}/locations/{locatio
+                        /// n_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}@{revision_id}`</param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>Gets the specified revision of a Consent, or the latest revision if `revision_id`
+                        /// is not specified in the resource name.</summary>
+                        public class GetRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Consent>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. The resource name of the consent to retrieve, of the form `projects/{
+                            /// project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_i
+                            /// d}/consents/{consent_id}`. In order to retrieve a previous revision of the consent, also
+                            /// provide the revision ID: `projects/{project_id}/locations/{location_id}/datasets/{datase
+                            /// t_id}/consentStores/{consent_store_id}/consents/{consent_id}@{revision_id}`</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+/consents/[^/]+$",
+                                });
+                            }
+
+                        }
+
+                        /// <summary>Lists the Consent in the given Consent store, returning each consent's latest
+                        /// revision.</summary>
+                        /// <param name="parent">Required. Name of the Consent store to retrieve consents from.</param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>Lists the Consent in the given Consent store, returning each consent's latest
+                        /// revision.</summary>
+                        public class ListRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ListConsentsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. Name of the Consent store to retrieve consents from.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Restricts the consents returned to those matching a filter. Syntax:
+                            /// https://cloud.google.com/appengine/docs/standard/python/search/query_strings The fields
+                            /// available for filtering are: - user_id - consent_artifact - state -
+                            /// state_change_time</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>Limit on the number of consents to return in a single response. If zero the
+                            /// default page size of 100 is used.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>The next_page_token value returned from the previous List request, if
+                            /// any.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+parent}/consents";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+
+                        }
+
+                        /// <summary>Lists the revisions of the given Consent in reverse chronological order.</summary>
+                        /// <param name="name">Required. The resource name of the consent to retrieve revisions for.</param>
+                        public virtual ListRevisionsRequest ListRevisions(string name)
+                        {
+                            return new ListRevisionsRequest(service, name);
+                        }
+
+                        /// <summary>Lists the revisions of the given Consent in reverse chronological order.</summary>
+                        public class ListRevisionsRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ListConsentRevisionsResponse>
+                        {
+                            /// <summary>Constructs a new ListRevisions request.</summary>
+                            public ListRevisionsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. The resource name of the consent to retrieve revisions for.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Restricts the revisions returned to those matching a filter. Syntax:
+                            /// https://cloud.google.com/appengine/docs/standard/python/search/query_strings.
+                            /// Fields/functions available for filtering are: - user_id - consent_artifact - state -
+                            /// revision_create_time</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>Limit on the number of revisions to return in a single response. If zero the
+                            /// default page size of 100 is used.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>Token to retrieve the next page of results or empty if there are no more
+                            /// results in the list.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "listRevisions";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}:listRevisions";
+
+                            /// <summary>Initializes ListRevisions parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+/consents/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+
+                        }
+
+                        /// <summary>Updates the latest revision of the specified Consent by committing a new revision
+                        /// with the changes. A FAILED_PRECONDITION error occurs if the latest revision of the given
+                        /// consent is in the `REJECTED` or `REVOKED` state.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets
+                        /// /{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.</param>
+                        public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.Consent body, string name)
+                        {
+                            return new PatchRequest(service, body, name);
+                        }
+
+                        /// <summary>Updates the latest revision of the specified Consent by committing a new revision
+                        /// with the changes. A FAILED_PRECONDITION error occurs if the latest revision of the given
+                        /// consent is in the `REJECTED` or `REVOKED` state.</summary>
+                        public class PatchRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Consent>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.Consent body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Resource name of the Consent, of the form `projects/{project_id}/locations/{loc
+                            /// ation_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>The update mask to apply to the resource. For the `FieldMask` definition, see
+                            /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
+                            /// The `user_id`, `policies`, and `consent_artifact` fields can be updated.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudHealthcare.v1beta1.Data.Consent Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "patch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}";
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+/consents/[^/]+$",
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+
+                        }
+
+                        /// <summary>Rejects the latest revision of the specified Consent by committing a new revision
+                        /// with `state` updated to `REJECTED`. If the latest revision of the given consent is in the
+                        /// `REJECTED` state, no new revision is committed. A FAILED_PRECONDITION error occurs if the
+                        /// latest revision of the given consent is in the `ACTIVE` or `REVOKED` state.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">Required. The resource name of the consent to reject, of the form `projects/{project_id}/location
+                        /// s/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. An INVALID_ARGUMENT
+                        /// error occurs if `revision_id` is specified in the name.</param>
+                        public virtual RejectRequest Reject(Google.Apis.CloudHealthcare.v1beta1.Data.RejectConsentRequest body, string name)
+                        {
+                            return new RejectRequest(service, body, name);
+                        }
+
+                        /// <summary>Rejects the latest revision of the specified Consent by committing a new revision
+                        /// with `state` updated to `REJECTED`. If the latest revision of the given consent is in the
+                        /// `REJECTED` state, no new revision is committed. A FAILED_PRECONDITION error occurs if the
+                        /// latest revision of the given consent is in the `ACTIVE` or `REVOKED` state.</summary>
+                        public class RejectRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Consent>
+                        {
+                            /// <summary>Constructs a new Reject request.</summary>
+                            public RejectRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.RejectConsentRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. The resource name of the consent to reject, of the form `projects/{pr
+                            /// oject_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}
+                            /// /consents/{consent_id}`. An INVALID_ARGUMENT error occurs if `revision_id` is specified
+                            /// in the name.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudHealthcare.v1beta1.Data.RejectConsentRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "reject";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}:reject";
+
+                            /// <summary>Initializes Reject parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+/consents/[^/]+$",
+                                });
+                            }
+
+                        }
+
+                        /// <summary>Revokes the latest revision of the specified Consent by committing a new revision
+                        /// with `state` updated to `REVOKED`. If the latest revision of the given consent is in the
+                        /// `REVOKED` state, no new revision is committed. A FAILED_PRECONDITION error occurs if the
+                        /// latest revision of the given consent is in `DRAFT` or `REJECTED` state.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">Required. The resource name of the consent to revoke, of the form `projects/{project_id}/location
+                        /// s/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. An INVALID_ARGUMENT
+                        /// error occurs if `revision_id` is specified in the name.</param>
+                        public virtual RevokeRequest Revoke(Google.Apis.CloudHealthcare.v1beta1.Data.RevokeConsentRequest body, string name)
+                        {
+                            return new RevokeRequest(service, body, name);
+                        }
+
+                        /// <summary>Revokes the latest revision of the specified Consent by committing a new revision
+                        /// with `state` updated to `REVOKED`. If the latest revision of the given consent is in the
+                        /// `REVOKED` state, no new revision is committed. A FAILED_PRECONDITION error occurs if the
+                        /// latest revision of the given consent is in `DRAFT` or `REJECTED` state.</summary>
+                        public class RevokeRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Consent>
+                        {
+                            /// <summary>Constructs a new Revoke request.</summary>
+                            public RevokeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.RevokeConsentRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. The resource name of the consent to revoke, of the form `projects/{pr
+                            /// oject_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}
+                            /// /consents/{consent_id}`. An INVALID_ARGUMENT error occurs if `revision_id` is specified
+                            /// in the name.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudHealthcare.v1beta1.Data.RevokeConsentRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "revoke";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}:revoke";
+
+                            /// <summary>Initializes Revoke parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+/consents/[^/]+$",
+                                });
+                            }
+
+                        }
+                    }
+                    /// <summary>Gets the UserDataMappings resource.</summary>
+                    public virtual UserDataMappingsResource UserDataMappings { get; }
+
+                    /// <summary>The "userDataMappings" collection of methods.</summary>
+                    public class UserDataMappingsResource
+                    {
+                        private const string Resource = "userDataMappings";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public UserDataMappingsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+
+                        }
+
+
+                        /// <summary>Archives the specified User data mapping.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">The resource name of the user data mapping to archive.</param>
+                        public virtual ArchiveRequest Archive(Google.Apis.CloudHealthcare.v1beta1.Data.ArchiveUserDataMappingRequest body, string name)
+                        {
+                            return new ArchiveRequest(service, body, name);
+                        }
+
+                        /// <summary>Archives the specified User data mapping.</summary>
+                        public class ArchiveRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ArchiveUserDataMappingResponse>
+                        {
+                            /// <summary>Constructs a new Archive request.</summary>
+                            public ArchiveRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.ArchiveUserDataMappingRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>The resource name of the user data mapping to archive.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudHealthcare.v1beta1.Data.ArchiveUserDataMappingRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "archive";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}:archive";
+
+                            /// <summary>Initializes Archive parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+/userDataMappings/[^/]+$",
+                                });
+                            }
+
+                        }
+
+                        /// <summary>Creates a new User data mapping in the parent Consent store.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">Required. Name of the consent store.</param>
+                        public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.UserDataMapping body, string parent)
+                        {
+                            return new CreateRequest(service, body, parent);
+                        }
+
+                        /// <summary>Creates a new User data mapping in the parent Consent store.</summary>
+                        public class CreateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.UserDataMapping>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.UserDataMapping body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. Name of the consent store.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudHealthcare.v1beta1.Data.UserDataMapping Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "create";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+parent}/userDataMappings";
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+$",
+                                });
+                            }
+
+                        }
+
+                        /// <summary>Deletes the specified User data mapping.</summary>
+                        /// <param name="name">Required. The resource name of the user data mapping to delete.</param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(service, name);
+                        }
+
+                        /// <summary>Deletes the specified User data mapping.</summary>
+                        public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Empty>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. The resource name of the user data mapping to delete.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+/userDataMappings/[^/]+$",
+                                });
+                            }
+
+                        }
+
+                        /// <summary>Gets the specified User data mapping.</summary>
+                        /// <param name="name">Required. The resource name of the user data mapping to retrieve.</param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>Gets the specified User data mapping.</summary>
+                        public class GetRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.UserDataMapping>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. The resource name of the user data mapping to retrieve.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+/userDataMappings/[^/]+$",
+                                });
+                            }
+
+                        }
+
+                        /// <summary>Lists the User data mappings in the given Consent store.</summary>
+                        /// <param name="parent">Required. Name of the Consent store to retrieve user data mappings from.</param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>Lists the User data mappings in the given Consent store.</summary>
+                        public class ListRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ListUserDataMappingsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. Name of the Consent store to retrieve user data mappings
+                            /// from.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Restricts the user data mappings returned to those matching a filter. Syntax:
+                            /// https://cloud.google.com/appengine/docs/standard/python/search/query_strings The fields
+                            /// available for filtering are: - data_id - user_id - archived - archive_time</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>Limit on the number of user data mappings to return in a single response. If
+                            /// zero the default page size of 100 is used.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>Token to retrieve the next page of results or empty to get the first
+                            /// page.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+parent}/userDataMappings";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+
+                        }
+
+                        /// <summary>Updates the specified User data mapping.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id
+                        /// }/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.</param>
+                        public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.UserDataMapping body, string name)
+                        {
+                            return new PatchRequest(service, body, name);
+                        }
+
+                        /// <summary>Updates the specified User data mapping.</summary>
+                        public class PatchRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.UserDataMapping>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.UserDataMapping body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Resource name of the User data mapping, of the form `projects/{project_id}/loca
+                            /// tions/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappi
+                            /// ngs/{user_data_mapping_id}`.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>The update mask that applies to the resource. For the `FieldMask` definition,
+                            /// see https://developers.google.com/protocol-
+                            /// buffers/docs/reference/google.protobuf#fieldmask.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudHealthcare.v1beta1.Data.UserDataMapping Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "patch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}";
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+/userDataMappings/[^/]+$",
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+
+                        }
+                    }
+
+                    /// <summary>Checks if a particular data_id of a User data mapping in the given Consent store is
+                    /// consented for a given use.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="consentStore">Name of the Consent store where the requested data_id is stored, of the form
+                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`.</param>
+                    public virtual CheckDataAccessRequest CheckDataAccess(Google.Apis.CloudHealthcare.v1beta1.Data.CheckDataAccessRequest body, string consentStore)
+                    {
+                        return new CheckDataAccessRequest(service, body, consentStore);
+                    }
+
+                    /// <summary>Checks if a particular data_id of a User data mapping in the given Consent store is
+                    /// consented for a given use.</summary>
+                    public class CheckDataAccessRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.CheckDataAccessResponse>
+                    {
+                        /// <summary>Constructs a new CheckDataAccess request.</summary>
+                        public CheckDataAccessRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.CheckDataAccessRequest body, string consentStore) : base(service)
+                        {
+                            ConsentStore = consentStore;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Name of the Consent store where the requested data_id is stored, of the form `proje
+                        /// cts/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_
+                        /// id}`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("consentStore", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ConsentStore { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1beta1.Data.CheckDataAccessRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "checkDataAccess";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+consentStore}:checkDataAccess";
+
+                        /// <summary>Initializes CheckDataAccess parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("consentStore", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "consentStore",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+$",
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Creates a new Consent store in the parent dataset. Attempting to create a consent store
+                    /// with the same ID as an existing store fails with an ALREADY_EXISTS error.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. The name of the dataset this Consent store belongs to.</param>
+                    public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.ConsentStore body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a new Consent store in the parent dataset. Attempting to create a consent store
+                    /// with the same ID as an existing store fails with an ALREADY_EXISTS error.</summary>
+                    public class CreateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ConsentStore>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.ConsentStore body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The name of the dataset this Consent store belongs to.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>The ID of the consent store to create. The string must match the following regex:
+                        /// `[\p{L}\p{N}_\-\.]{1,256}`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("consentStoreId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ConsentStoreId { get; set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1beta1.Data.ConsentStore Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/consentStores";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
+                            });
+                            RequestParameters.Add("consentStoreId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "consentStoreId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Deletes the specified Consent store and removes all consent data in the specified
+                    /// consent store.</summary>
+                    /// <param name="name">Required. The resource name of the Consent store to delete.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes the specified Consent store and removes all consent data in the specified
+                    /// consent store.</summary>
+                    public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The resource name of the Consent store to delete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+$",
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Evaluates the end user's Consents for all matching User data mappings. Note: User data
+                    /// mappings are indexed asynchronously, so there might be a slight delay between the time a mapping
+                    /// is created or updated and when it is included in the results of EvaluateUserConsents.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="consentStore">Name of the Consent store to retrieve user data mappings from.</param>
+                    public virtual EvaluateUserConsentsRequest EvaluateUserConsents(Google.Apis.CloudHealthcare.v1beta1.Data.EvaluateUserConsentsRequest body, string consentStore)
+                    {
+                        return new EvaluateUserConsentsRequest(service, body, consentStore);
+                    }
+
+                    /// <summary>Evaluates the end user's Consents for all matching User data mappings. Note: User data
+                    /// mappings are indexed asynchronously, so there might be a slight delay between the time a mapping
+                    /// is created or updated and when it is included in the results of EvaluateUserConsents.</summary>
+                    public class EvaluateUserConsentsRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.EvaluateUserConsentsResponse>
+                    {
+                        /// <summary>Constructs a new EvaluateUserConsents request.</summary>
+                        public EvaluateUserConsentsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.EvaluateUserConsentsRequest body, string consentStore) : base(service)
+                        {
+                            ConsentStore = consentStore;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Name of the Consent store to retrieve user data mappings from.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("consentStore", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ConsentStore { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1beta1.Data.EvaluateUserConsentsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "evaluateUserConsents";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+consentStore}:evaluateUserConsents";
+
+                        /// <summary>Initializes EvaluateUserConsents parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("consentStore", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "consentStore",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+$",
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Gets the specified Consent store.</summary>
+                    /// <param name="name">Required. The resource name of the Consent store to get.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets the specified Consent store.</summary>
+                    public class GetRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ConsentStore>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The resource name of the Consent store to get.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+$",
+                            });
+                        }
+
+                    }
 
                     /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource
                     /// exists and does not have a policy set.</summary>
@@ -1527,6 +3562,257 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Lists the Consent stores in the given dataset.</summary>
+                    /// <param name="parent">Required. Name of the dataset.</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists the Consent stores in the given dataset.</summary>
+                    public class ListRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ListConsentStoresResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. Name of the dataset.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Restricts the stores returned to those matching a filter. Syntax:
+                        /// https://cloud.google.com/appengine/docs/standard/python/search/query_strings. Only filtering
+                        /// on labels is supported. For example, `labels.key=value`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Limit on the number of Consent stores to return in a single response. If zero the
+                        /// default page size of 100 is used.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Token to retrieve the next page of results or empty to get the first
+                        /// page.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/consentStores";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Updates the specified Consent store.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Resource name of the Consent store, of the form
+                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`.</param>
+                    public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.ConsentStore body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates the specified Consent store.</summary>
+                    public class PatchRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ConsentStore>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.ConsentStore body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Resource name of the Consent store, of the form `projects/{project_id}/locations/{l
+                        /// ocation_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>The update mask that applies to the resource. For the `FieldMask` definition, see
+                        /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask. The
+                        /// `labels` field is allowed to be updated.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1beta1.Data.ConsentStore Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Queries all data_ids that are consented for a given use in the given Consent store and
+                    /// writes them to a specified destination. The returned Operation includes a progress counter for
+                    /// the number of User data mappings processed. Errors are logged to Cloud Logging (see [Viewing
+                    /// logs] (/healthcare/docs/how-tos/logging)). For example, the following sample log entry shows a
+                    /// `failed to evaluate consent policy` error that occurred during a QueryAccessibleData call to
+                    /// consent store `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores
+                    /// /{consent_store_id}`. ```json jsonPayload: { @type:
+                    /// "type.googleapis.com/google.cloud.healthcare.logging.QueryAccessibleDataLogEntry" error: { code:
+                    /// 9 message: "failed to evaluate consent policy" } resourceName: "projects/{project_id}/locations/
+                    /// {location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}" }
+                    /// logName: "projects/{project_id}/logs/healthcare.googleapis.com%2Fquery_accessible_data"
+                    /// operation: { id:
+                    /// "projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/operations/{operation_id}"
+                    /// producer: "healthcare.googleapis.com/QueryAccessibleData" } receiveTimestamp: "TIMESTAMP"
+                    /// resource: { labels: { consent_store_id: "{consent_store_id}" dataset_id: "{dataset_id}"
+                    /// location: "{location_id}" project_id: "{project_id}" } type: "healthcare_consent_store" }
+                    /// severity: "ERROR" timestamp: "TIMESTAMP" ```</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="consentStore">Name of the Consent store to retrieve user data mappings from.</param>
+                    public virtual QueryAccessibleDataRequest QueryAccessibleData(Google.Apis.CloudHealthcare.v1beta1.Data.QueryAccessibleDataRequest body, string consentStore)
+                    {
+                        return new QueryAccessibleDataRequest(service, body, consentStore);
+                    }
+
+                    /// <summary>Queries all data_ids that are consented for a given use in the given Consent store and
+                    /// writes them to a specified destination. The returned Operation includes a progress counter for
+                    /// the number of User data mappings processed. Errors are logged to Cloud Logging (see [Viewing
+                    /// logs] (/healthcare/docs/how-tos/logging)). For example, the following sample log entry shows a
+                    /// `failed to evaluate consent policy` error that occurred during a QueryAccessibleData call to
+                    /// consent store `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores
+                    /// /{consent_store_id}`. ```json jsonPayload: { @type:
+                    /// "type.googleapis.com/google.cloud.healthcare.logging.QueryAccessibleDataLogEntry" error: { code:
+                    /// 9 message: "failed to evaluate consent policy" } resourceName: "projects/{project_id}/locations/
+                    /// {location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}" }
+                    /// logName: "projects/{project_id}/logs/healthcare.googleapis.com%2Fquery_accessible_data"
+                    /// operation: { id:
+                    /// "projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/operations/{operation_id}"
+                    /// producer: "healthcare.googleapis.com/QueryAccessibleData" } receiveTimestamp: "TIMESTAMP"
+                    /// resource: { labels: { consent_store_id: "{consent_store_id}" dataset_id: "{dataset_id}"
+                    /// location: "{location_id}" project_id: "{project_id}" } type: "healthcare_consent_store" }
+                    /// severity: "ERROR" timestamp: "TIMESTAMP" ```</summary>
+                    public class QueryAccessibleDataRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new QueryAccessibleData request.</summary>
+                        public QueryAccessibleDataRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.QueryAccessibleDataRequest body, string consentStore) : base(service)
+                        {
+                            ConsentStore = consentStore;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Name of the Consent store to retrieve user data mappings from.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("consentStore", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ConsentStore { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1beta1.Data.QueryAccessibleDataRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "queryAccessibleData";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+consentStore}:queryAccessibleData";
+
+                        /// <summary>Initializes QueryAccessibleData parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("consentStore", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "consentStore",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+$",
                             });
                         }
 
@@ -8969,6 +11255,30 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 namespace Google.Apis.CloudHealthcare.v1beta1.Data
 {    
 
+    /// <summary>Activates the latest revision of the specified Consent by committing a new revision with `state`
+    /// updated to `ACTIVE`. If the latest revision of the given consent is in the `ACTIVE` state, no new revision is
+    /// committed.</summary>
+    public class ActivateConsentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The resource name of the consent artifact that contains proof of the end user's consent,
+        /// of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_stor
+        /// e_id}/consentArtifacts/{consent_artifact_id}`. If the draft consent had a consent artifact, this consent
+        /// artifact overwrites it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentArtifact")]
+        public virtual string ConsentArtifact { get; set; }
+
+        /// <summary>Timestamp in UTC of when this consent is considered expired.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
+
+        /// <summary>The time to live for this consent from when it is marked as active.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual object Ttl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>An annotation record.</summary>
     public class Annotation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9048,6 +11358,75 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
 
         /// <summary>Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/d
         /// atasets/{dataset_id}/annotationStores/{annotation_store_id}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Archives the specified User data mapping.</summary>
+    public class ArchiveUserDataMappingRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Archives the specified User data mapping.</summary>
+    public class ArchiveUserDataMappingResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An attribute value for a consent or data mapping. Each Attribute must have a corresponding
+    /// AttributeDefinition in the consent store that defines the default and allowed values.</summary>
+    public class Attribute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates the name of an attribute defined at the consent store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeDefinitionId")]
+        public virtual string AttributeDefinitionId { get; set; }
+
+        /// <summary>The value of the attribute. Must be an acceptable value as defined in the consent store. For
+        /// example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count",
+        /// when the attribute name is data type, this field must contain one of those values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A client-defined consent attribute.</summary>
+    public class AttributeDefinition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Possible values for the attribute. An empty list is invalid. The list can only be
+        /// expanded after creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedValues")]
+        public virtual System.Collections.Generic.IList<string> AllowedValues { get; set; }
+
+        /// <summary>Required. The category of the attribute. The value of this field cannot be changed after
+        /// creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>Default values of the attribute in consents. If no default values are specified, it defaults to an
+        /// empty value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentDefaultValues")]
+        public virtual System.Collections.Generic.IList<string> ConsentDefaultValues { get; set; }
+
+        /// <summary>Default value of the attribute in user data mappings. If no default value is specified, it defaults
+        /// to an empty value. This field is only applicable to attributes of the category `RESOURCE`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataMappingDefaultValue")]
+        public virtual string DataMappingDefaultValue { get; set; }
+
+        /// <summary>A description of the attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Resource name of the attribute definition, of the form `projects/{project_id}/locations/{location_i
+        /// d}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`.</
+        /// summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -9175,10 +11554,194 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Checks if a particular data_id of a User data mapping in the given Consent store is consented for a
+    /// given use.</summary>
+    public class CheckDataAccessRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Consents to evaluate the access request against. They must have the same `user_id` as the data
+        /// to check access for, exist in the current `consent_store`, and can have a `state` of either `ACTIVE` or
+        /// `DRAFT`. A maximum of 100 consents can be provided here.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentList")]
+        public virtual ConsentList ConsentList { get; set; }
+
+        /// <summary>The unique identifier of the data to check access for. It must exist in the given
+        /// `consent_store`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataId")]
+        public virtual string DataId { get; set; }
+
+        /// <summary>The values of request attributes associated with this access request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestAttributes")]
+        public virtual System.Collections.Generic.IDictionary<string, string> RequestAttributes { get; set; }
+
+        /// <summary>The view for CheckDataAccessResponse.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseView")]
+        public virtual string ResponseView { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Checks if a particular data_id of a User data mapping in the given Consent store is consented for a
+    /// given use.</summary>
+    public class CheckDataAccessResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource names of all evaluated Consents mapped to their evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentDetails")]
+        public virtual System.Collections.Generic.IDictionary<string, ConsentEvaluation> ConsentDetails { get; set; }
+
+        /// <summary>Whether the requested data is consented for the given use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consented")]
+        public virtual System.Nullable<bool> Consented { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Cloud Healthcare API resource.</summary>
     public class CloudHealthcareSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Full path of a Cloud Healthcare API resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents an end user's consent.</summary>
+    public class Consent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The resource name of the consent artifact that contains proof of the end user's consent,
+        /// of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_stor
+        /// e_id}/consentArtifacts/{consent_artifact_id}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentArtifact")]
+        public virtual string ConsentArtifact { get; set; }
+
+        /// <summary>Timestamp in UTC of when this consent is considered expired.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
+
+        /// <summary>Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{
+        /// dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Represents an end user's consent in terms of the resources that can be accessed and under what
+        /// conditions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policies")]
+        public virtual System.Collections.Generic.IList<GoogleCloudHealthcareV1beta1ConsentPolicy> Policies { get; set; }
+
+        /// <summary>Output only. The timestamp that the revision was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionCreateTime")]
+        public virtual object RevisionCreateTime { get; set; }
+
+        /// <summary>Output only. The revision ID of the consent. The format is an 8-character hexadecimal string. Refer
+        /// to a specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
+        public virtual string RevisionId { get; set; }
+
+        /// <summary>Indicates the current state of this consent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Input only. The time to live for this consent from when it is created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual object Ttl { get; set; }
+
+        /// <summary>Required. User's UUID provided by the client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Proof of an end user's consent.</summary>
+    public class ConsentArtifact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Screenshots of the consent content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentContentScreenshots")]
+        public virtual System.Collections.Generic.IList<Image> ConsentContentScreenshots { get; set; }
+
+        /// <summary>An string indicating the version of the consent content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentContentVersion")]
+        public virtual string ConsentContentVersion { get; set; }
+
+        /// <summary>A signature from guardian.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guardianSignature")]
+        public virtual Signature GuardianSignature { get; set; }
+
+        /// <summary>Metadata associated with the consent artifact. For example, the consent locale or user agent
+        /// version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/d
+        /// atasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. User's UUID provided by the client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
+
+        /// <summary>User's signature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userSignature")]
+        public virtual Signature UserSignature { get; set; }
+
+        /// <summary>A signature from a witness.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("witnessSignature")]
+        public virtual Signature WitnessSignature { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The detailed evaluation of a particular Consent.</summary>
+    public class ConsentEvaluation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The evaluation result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationResult")]
+        public virtual string EvaluationResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>List of resource names of Consent resources.</summary>
+    public class ConsentList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource names of the Consents to evaluate against, of the form `projects/{project_id}/location
+        /// s/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consents")]
+        public virtual System.Collections.Generic.IList<string> Consents { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a Consent store.</summary>
+    public class ConsentStore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Default time to live for consents in this store. Must be at least 24 hours. Updating this field
+        /// will not affect the expiration time of existing consents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultConsentTtl")]
+        public virtual object DefaultConsentTtl { get; set; }
+
+        /// <summary>If true, UpdateConsent creates the consent if it does not already exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableConsentCreateOnUpdate")]
+        public virtual System.Nullable<bool> EnableConsentCreateOnUpdate { get; set; }
+
+        /// <summary>User-supplied key-value pairs used to organize Consent stores. Label keys must be between 1 and 63
+        /// characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular
+        /// expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and 63 characters long, have a UTF-8 encoding
+        /// of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+        /// No more than 64 labels can be associated with a given store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Resource name of the Consent store, of the form `projects/{project_id}/locations/{location_id}/data
+        /// sets/{dataset_id}/consentStores/{consent_store_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -9555,6 +12118,62 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// AnnotationSource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchedCount")]
         public virtual System.Nullable<long> MatchedCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Evaluate an end user's Consents for all matching User data mappings.</summary>
+    public class EvaluateUserConsentsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource names of the consents to evaluate against. Consents must be in the current
+        /// `consent_store` and belong to the current `user_id`. Consents can be either active or draft. If this field
+        /// is empty, the default behavior is to use all active consents that belong to `user_id`. A maximum of 100
+        /// consents can be provided here.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentList")]
+        public virtual ConsentList ConsentList { get; set; }
+
+        /// <summary>Limit on the number of user data mappings to return in a single response. If zero the default page
+        /// size of 100 is used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; }
+
+        /// <summary>Token to retrieve the next page of results to get the first page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; }
+
+        /// <summary>The values of request attributes associated with this access request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestAttributes")]
+        public virtual System.Collections.Generic.IDictionary<string, string> RequestAttributes { get; set; }
+
+        /// <summary>The values of resources attributes associated with the type of data being requested. If no values
+        /// are specified, then all data types are queried.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceAttributes")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ResourceAttributes { get; set; }
+
+        /// <summary>The view for EvaluateUserConsentsResponse.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseView")]
+        public virtual string ResponseView { get; set; }
+
+        /// <summary>Required. User ID to evaluate consents for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Evaluate an end user's Consents for all matching User data mappings.</summary>
+    public class EvaluateUserConsentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token to retrieve the next page of results or empty if there are no more results in the list. This
+        /// token is valid for 72 hours after it is created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The consent evaluation result for each `data_id`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<Result> Results { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9963,6 +12582,37 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// content only, no metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The Cloud Storage location for export.</summary>
+    public class GoogleCloudHealthcareV1beta1ConsentGcsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URI for a Cloud Storage directory where the server writes result files, in the format `gs
+        /// ://{bucket-id}/{path/to/destination/dir}`. If there is no trailing slash, the service appends one when
+        /// composing the object path. The user is responsible for creating the Cloud Storage bucket and directory
+        /// referenced in `uri_prefix`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uriPrefix")]
+        public virtual string UriPrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents an end user's consent in terms of the resources that can be accessed and under what
+    /// conditions.</summary>
+    public class GoogleCloudHealthcareV1beta1ConsentPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The request conditions to meet to grant access.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationRule")]
+        public virtual Expr AuthorizationRule { get; set; }
+
+        /// <summary>The data resources that this policy applies to. A data resource is a match if it matches all the
+        /// attributes listed here.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceAttributes")]
+        public virtual System.Collections.Generic.IList<Attribute> ResourceAttributes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10384,6 +13034,27 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>An image.</summary>
+    public class Image : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Input only. Points to a Cloud Storage URI containing the image. The URI must be in the following
+        /// format: `gs://{bucket_id}/{object_id}`. The Cloud Healthcare API service account must have the
+        /// `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. The image at this URI is copied
+        /// to a Cloud Storage location managed by the Cloud Healthcare API. Responses to image fetching requests return
+        /// the image in raw_bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
+        public virtual string GcsUri { get; set; }
+
+        /// <summary>Image content represented as a stream of bytes. This field is populated when returned in
+        /// GetConsentArtifact response, but not included in CreateConsentArtifact and ListConsentArtifact
+        /// response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawBytes")]
+        public virtual string RawBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Image annotation.</summary>
     public class ImageAnnotation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10654,6 +13325,91 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Lists the Attribute definitions in the given Consent store.</summary>
+    public class ListAttributeDefinitionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The returned attribute definitions. The maximum number of attributes returned is determined by the
+        /// value of page_size in the ListAttributeDefinitionsRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeDefinitions")]
+        public virtual System.Collections.Generic.IList<AttributeDefinition> AttributeDefinitions { get; set; }
+
+        /// <summary>Token to retrieve the next page of results or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Lists the Consent artifacts in the given Consent store.</summary>
+    public class ListConsentArtifactsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The returned consent artifacts. The maximum number of artifacts returned is determined by the value
+        /// of page_size in the ListConsentArtifactsRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentArtifacts")]
+        public virtual System.Collections.Generic.IList<ConsentArtifact> ConsentArtifacts { get; set; }
+
+        /// <summary>Token to retrieve the next page of results or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Lists the revisions of the given Consent in reverse chronological order.</summary>
+    public class ListConsentRevisionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The returned consent revisions. The maximum number of revisions returned is determined by the value
+        /// of `page_size` in the ListConsentRevisionsRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consents")]
+        public virtual System.Collections.Generic.IList<Consent> Consents { get; set; }
+
+        /// <summary>Token to retrieve the next page of results or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Lists the Consent stores in the given dataset.</summary>
+    public class ListConsentStoresResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The returned Consent stores. The maximum number of stores returned is determined by the value of
+        /// page_size in the ListConsentStoresRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentStores")]
+        public virtual System.Collections.Generic.IList<ConsentStore> ConsentStores { get; set; }
+
+        /// <summary>Token to retrieve the next page of results or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Lists the Consents in the given Consent store.</summary>
+    public class ListConsentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The returned consents. The maximum number of consents returned is determined by the value of
+        /// page_size in the ListConsentsRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consents")]
+        public virtual System.Collections.Generic.IList<Consent> Consents { get; set; }
+
+        /// <summary>Token to retrieve the next page of results or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Lists the available datasets.</summary>
     public class ListDatasetsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10768,6 +13524,23 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Lists the User data mappings in the given Consent store.</summary>
+    public class ListUserDataMappingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token to retrieve the next page of results or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The returned user data mappings. The maximum number of user data mappings returned is determined by
+        /// the value of page_size in the ListUserDataMappingsRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userDataMappings")]
+        public virtual System.Collections.Generic.IList<UserDataMapping> UserDataMappings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A resource that represents Google Cloud Platform location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10863,7 +13636,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// API service account must have publisher permissions on the given Cloud Pub/Sub topic. Not having adequate
         /// permissions causes the calls that send notifications to fail. If a notification can't be published to Cloud
         /// Pub/Sub, errors are logged to Cloud Logging (see [Viewing logs](/healthcare/docs/how-tos/logging)). If the
-        /// number of errors exceeds a certain rate, some aren't submitted.</summary>
+        /// number of errors exceeds a certain rate, some aren't submitted. Note that not all operations trigger
+        /// notifications, see [Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/how-
+        /// tos/pubsub) for specific details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual string PubsubTopic { get; set; }
 
@@ -11066,10 +13841,50 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Queries all data_ids that are consented for a given use in the given Consent store and writes them to a
+    /// specified destination. The returned Operation includes a progress counter for the number of User data mappings
+    /// processed. Errors are logged to Cloud Logging (see [Viewing logs] (/healthcare/docs/how-tos/logging) and
+    /// [QueryAccessibleData] for a sample log entry).</summary>
+    public class QueryAccessibleDataRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Cloud Storage destination. The Cloud Healthcare API service account must have the
+        /// `roles/storage.objectAdmin` Cloud IAM role for this Cloud Storage location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
+        public virtual GoogleCloudHealthcareV1beta1ConsentGcsDestination GcsDestination { get; set; }
+
+        /// <summary>The values of request attributes associated with this access request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestAttributes")]
+        public virtual System.Collections.Generic.IDictionary<string, string> RequestAttributes { get; set; }
+
+        /// <summary>The values of resources attributes associated with the type of data being requested. If no values
+        /// are specified, then all data types are included in the output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceAttributes")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ResourceAttributes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Define how to redact sensitive values. Default behaviour is erase. For example, "My name is Jane."
     /// becomes "My name is ."</summary>
     public class RedactConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Rejects the latest revision of the specified Consent by committing a new revision with `state` updated
+    /// to `REJECTED`. If the latest revision of the given consent is in the `REJECTED` state, no new revision is
+    /// committed.</summary>
+    public class RejectConsentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the consent artifact that contains proof of the end user's rejection of the
+        /// draft consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStore
+        /// s/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. If the draft consent had a consent artifact,
+        /// this consent artifact overwrites it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentArtifact")]
+        public virtual string ConsentArtifact { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -11100,6 +13915,40 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>List of resources IDs. For example, "Patient/1234".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<string> ResourcesValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The consent evaluation result for a single `data_id`.</summary>
+    public class Result : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource names of all evaluated Consents mapped to their evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentDetails")]
+        public virtual System.Collections.Generic.IDictionary<string, ConsentEvaluation> ConsentDetails { get; set; }
+
+        /// <summary>Whether the requested data is consented for the given use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consented")]
+        public virtual System.Nullable<bool> Consented { get; set; }
+
+        /// <summary>The unique identifier of the data the consents were checked for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataId")]
+        public virtual string DataId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Revokes the latest revision of the specified Consent by committing a new revision with `state` updated
+    /// to `REVOKED`. If the latest revision of the given consent is in the `REVOKED` state, no new revision is
+    /// committed.</summary>
+    public class RevokeConsentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the consent artifact that contains proof of the end user's revocation of the
+        /// consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{con
+        /// sent_store_id}/consentArtifacts/{consent_artifact_id}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentArtifact")]
+        public virtual string ConsentArtifact { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11289,6 +14138,30 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>User signature.</summary>
+    public class Signature : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An image of the user's signature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual Image Image { get; set; }
+
+        /// <summary>Metadata associated with the user's signature. For example, the user's name or the user's
+        /// title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>Timestamp of the signature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signatureTime")]
+        public virtual object SignatureTime { get; set; }
+
+        /// <summary>User's UUID provided by the client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
     /// message contains three pieces of data: error code, error message, and error details. You can find out more about
@@ -11412,6 +14285,41 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// unspecified for composite types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primitive")]
         public virtual string Primitive { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Maps a user data entry to its end user and Attributes.</summary>
+    public class UserDataMapping : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Indicates the time when this data mapping was archived.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archiveTime")]
+        public virtual object ArchiveTime { get; set; }
+
+        /// <summary>Output only. Indicates whether this data mapping is archived.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archived")]
+        public virtual System.Nullable<bool> Archived { get; set; }
+
+        /// <summary>Required. A unique identifier for the mapped data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataId")]
+        public virtual string DataId { get; set; }
+
+        /// <summary>Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/
+        /// datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Attributes of end user data. Each attribute can have exactly one value specified. Only explicitly
+        /// set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User
+        /// data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the
+        /// field "values" in each Attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceAttributes")]
+        public virtual System.Collections.Generic.IList<Attribute> ResourceAttributes { get; set; }
+
+        /// <summary>Required. User's UUID provided by the client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

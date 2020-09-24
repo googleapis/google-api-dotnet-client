@@ -2376,7 +2376,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary> Information related to the Google Cloud resource.</summary>
+    /// <summary>Information related to the Google Cloud resource.</summary>
     public class GoogleCloudSecuritycenterV1Resource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The full resource name of the resource. See:
@@ -2388,7 +2388,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
-        /// <summary> The human readable name of resource's parent.</summary>
+        /// <summary>The human readable name of resource's parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentDisplayName")]
         public virtual string ParentDisplayName { get; set; }
 
@@ -2396,7 +2396,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
 
-        /// <summary> The human readable name of project that the resource belongs to.</summary>
+        /// <summary>The human readable name of project that the resource belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectDisplayName")]
         public virtual string ProjectDisplayName { get; set; }
 
@@ -2522,51 +2522,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Security Command Center representation of a Google Cloud resource. The Asset is a Security Command
-    /// Center resource that captures information about a single Google Cloud resource. All modifications to an Asset
-    /// are only within the context of Security Command Center and don't affect the referenced Google Cloud
-    /// resource.</summary>
-    public class GoogleCloudSecuritycenterV1p1beta1Asset : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The time at which the asset was created in Security Command Center.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>Cloud IAM Policy information associated with the Google Cloud resource described by the Security
-        /// Command Center asset. This information is managed and defined by the Google Cloud resource and cannot be
-        /// modified by the user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("iamPolicy")]
-        public virtual GoogleCloudSecuritycenterV1p1beta1IamPolicy IamPolicy { get; set; }
-
-        /// <summary>The relative resource name of this asset. See:
-        /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-        /// "organizations/{organization_id}/assets/{asset_id}".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Resource managed properties. These properties are managed and defined by the Google Cloud resource
-        /// and cannot be modified by the user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceProperties")]
-        public virtual System.Collections.Generic.IDictionary<string, object> ResourceProperties { get; set; }
-
-        /// <summary>Security Command Center managed properties. These properties are managed by Security Command Center
-        /// and cannot be modified by the user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("securityCenterProperties")]
-        public virtual GoogleCloudSecuritycenterV1p1beta1SecurityCenterProperties SecurityCenterProperties { get; set; }
-
-        /// <summary>User specified security marks. These marks are entirely managed by the user and come from the
-        /// SecurityMarks resource that belongs to the asset.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("securityMarks")]
-        public virtual GoogleCloudSecuritycenterV1p1beta1SecurityMarks SecurityMarks { get; set; }
-
-        /// <summary>The time at which the asset was last updated, added, or deleted in Cloud SCC.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Security Command Center finding. A finding is a record of assessment data (security, risk, health or
     /// privacy) ingested into Security Command Center for presentation, notification, analysis, policy testing, and
     /// enforcement. For example, an XSS vulnerability in an App Engine application is a finding.</summary>
@@ -2618,7 +2573,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("securityMarks")]
         public virtual GoogleCloudSecuritycenterV1p1beta1SecurityMarks SecurityMarks { get; set; }
 
-        /// <summary>The severity of the finding.</summary>
+        /// <summary>The severity of the finding. This field is managed by the source that writes the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }
 
@@ -2631,20 +2586,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// <summary>The state of the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Cloud IAM Policy information associated with the Google Cloud resource described by the Security
-    /// Command Center asset. This information is managed and defined by the Google Cloud resource and cannot be
-    /// modified by the user.</summary>
-    public class GoogleCloudSecuritycenterV1p1beta1IamPolicy : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The JSON representation of the Policy associated with the asset. See
-        /// https://cloud.google.com/iam/docs/reference/rest/v1/Policy for format details.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyBlob")]
-        public virtual string PolicyBlob { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2665,15 +2606,11 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual GoogleCloudSecuritycenterV1p1beta1Resource Resource { get; set; }
 
-        /// <summary>If it's an asset based notification config, this field will be populated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("temporalAsset")]
-        public virtual GoogleCloudSecuritycenterV1p1beta1TemporalAsset TemporalAsset { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary> Information related to the Google Cloud resource.</summary>
+    /// <summary>Information related to the Google Cloud resource.</summary>
     public class GoogleCloudSecuritycenterV1p1beta1Resource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The full resource name of the resource. See:
@@ -2685,7 +2622,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
-        /// <summary> The human readable name of resource's parent.</summary>
+        /// <summary>The human readable name of resource's parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentDisplayName")]
         public virtual string ParentDisplayName { get; set; }
 
@@ -2693,7 +2630,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
 
-        /// <summary> The human readable name of project that the resource belongs to.</summary>
+        /// <summary>The human readable name of project that the resource belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectDisplayName")]
         public virtual string ProjectDisplayName { get; set; }
 
@@ -2711,51 +2648,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// <summary>The state of an asset discovery run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Security Command Center managed properties. These properties are managed by Security Command Center and
-    /// cannot be modified by the user.</summary>
-    public class GoogleCloudSecuritycenterV1p1beta1SecurityCenterProperties : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The user defined display name for this resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceDisplayName")]
-        public virtual string ResourceDisplayName { get; set; }
-
-        /// <summary>The full resource name of the Google Cloud resource this asset represents. This field is immutable
-        /// after create time. See: https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
-        public virtual string ResourceName { get; set; }
-
-        /// <summary>Owners of the Google Cloud resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceOwners")]
-        public virtual System.Collections.Generic.IList<string> ResourceOwners { get; set; }
-
-        /// <summary>The full resource name of the immediate parent of the resource. See:
-        /// https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceParent")]
-        public virtual string ResourceParent { get; set; }
-
-        /// <summary>The user defined display name for the parent of this resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceParentDisplayName")]
-        public virtual string ResourceParentDisplayName { get; set; }
-
-        /// <summary>The full resource name of the project the resource belongs to. See:
-        /// https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceProject")]
-        public virtual string ResourceProject { get; set; }
-
-        /// <summary>The user defined display name for the project of this resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceProjectDisplayName")]
-        public virtual string ResourceProjectDisplayName { get; set; }
-
-        /// <summary>The type of the Google Cloud resource. Examples include: APPLICATION, PROJECT, and ORGANIZATION.
-        /// This is a case insensitive field defined by Security Command Center and/or the producer of the resource and
-        /// is immutable after create time.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
-        public virtual string ResourceType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2779,22 +2671,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Wrapper over asset object that also captures the state change for the asset e.g. if it was a newly
-    /// created asset vs updated or deleted asset.</summary>
-    public class GoogleCloudSecuritycenterV1p1beta1TemporalAsset : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Asset data that includes attributes, properties and marks about the asset.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("asset")]
-        public virtual GoogleCloudSecuritycenterV1p1beta1Asset Asset { get; set; }
-
-        /// <summary>Represents if the asset was created/updated/deleted.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("changeType")]
-        public virtual string ChangeType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

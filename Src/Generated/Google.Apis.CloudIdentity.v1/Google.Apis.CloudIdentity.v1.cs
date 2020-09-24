@@ -3374,11 +3374,6 @@ namespace Google.Apis.CloudIdentity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("removeRoles")]
         public virtual System.Collections.Generic.IList<string> RemoveRoles { get; set; }
 
-        /// <summary>The `MembershipRole`s to be updated. Updating roles in the same request as adding or removing roles
-        /// is not supported. Must not be set if either `add_roles` or `remove_roles` is set.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateRolesParams")]
-        public virtual System.Collections.Generic.IList<UpdateMembershipRolesParams> UpdateRolesParams { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -3465,23 +3460,6 @@ namespace Google.Apis.CloudIdentity.v1.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The details of an update to a `MembershipRole`.</summary>
-    public class UpdateMembershipRolesParams : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The fully-qualified names of fields to update. May only contain the field
-        /// `expiry_detail`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fieldMask")]
-        public virtual object FieldMask { get; set; }
-
-        /// <summary>The `MembershipRole`s to be updated. Only `MEMBER` `MembershipRole` can currently be
-        /// updated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("membershipRole")]
-        public virtual MembershipRole MembershipRole { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

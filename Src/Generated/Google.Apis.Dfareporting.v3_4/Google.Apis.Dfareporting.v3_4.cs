@@ -23567,12 +23567,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
         public virtual System.Nullable<long> LastModifiedTime { get; set; }
 
-        [Newtonsoft.Json.JsonPropertyAttribute("mediaRequestInfo")]
-        public virtual MediaRequestInfo MediaRequestInfo { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("mediaResponseInfo")]
-        public virtual MediaResponseInfo MediaResponseInfo { get; set; }
-
         /// <summary>The ID of the report this file was generated from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportId")]
         public virtual System.Nullable<long> ReportId { get; set; }
@@ -24515,98 +24509,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         /// blank, the default value for your account will be used. Acceptable values are 0 to 90, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postImpressionActivitiesDuration")]
         public virtual System.Nullable<int> PostImpressionActivitiesDuration { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Extra information added to operations that support Scotty media requests.</summary>
-    public class MediaRequestInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The number of current bytes uploaded or downloaded.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("currentBytes")]
-        public virtual System.Nullable<long> CurrentBytes { get; set; }
-
-        /// <summary>Data to be copied to backend requests. Custom data is returned to Scotty in the agent_state field,
-        /// which Scotty will then provide in subsequent upload notifications.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("customData")]
-        public virtual string CustomData { get; set; }
-
-        /// <summary>Set if the http request info is diff encoded. The value of this field is the version number of the
-        /// base revision. This is corresponding to Apiary's mediaDiffObjectVersion
-        /// (//depot/google3/java/com/google/api/server/media/variable/DiffObjectVersionVariable.java). See go/esf-
-        /// scotty-diff-upload for more information.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("diffObjectVersion")]
-        public virtual string DiffObjectVersion { get; set; }
-
-        /// <summary>The type of notification received from Scotty.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notificationType")]
-        public virtual string NotificationType { get; set; }
-
-        /// <summary>The Scotty request ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; }
-
-        /// <summary>The total size of the file.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("totalBytes")]
-        public virtual System.Nullable<long> TotalBytes { get; set; }
-
-        /// <summary>Whether the total bytes field contains an estimated data.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("totalBytesIsEstimated")]
-        public virtual System.Nullable<bool> TotalBytesIsEstimated { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>This message is for backends to pass their scotty media specific fields to ESF. Backend will include
-    /// this in their response message to ESF. Example: ExportFile is an rpc defined for upload using scotty from ESF.
-    /// rpc ExportFile(ExportFileRequest) returns (ExportFileResponse) Message ExportFileResponse will include
-    /// apiserving.MediaResponseInfo to tell ESF about data like dynamic_dropzone it needs to pass to Scotty. message
-    /// ExportFileResponse { optional gdata.Media blob = 1; optional apiserving.MediaResponseInfo media_response_info =
-    /// 2 }</summary>
-    public class MediaResponseInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Data to copy from backend response to the next backend requests. Custom data is returned to Scotty
-        /// in the agent_state field, which Scotty will then provide in subsequent upload notifications.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("customData")]
-        public virtual string CustomData { get; set; }
-
-        /// <summary>Specifies any transformation to be applied to data before persisting it or retrieving from storage.
-        /// E.g., encryption options for blobstore2. This should be of the form
-        /// uploader_service.DataStorageTransform.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataStorageTransform")]
-        public virtual string DataStorageTransform { get; set; }
-
-        /// <summary>Specifies the Scotty Drop Target to use for uploads. If present in a media response, Scotty does
-        /// not upload to a standard drop zone. Instead, Scotty saves the upload directly to the location specified in
-        /// this drop target. Unlike drop zones, the drop target is the final storage location for an upload. So, the
-        /// agent does not need to clone the blob at the end of the upload. The agent is responsible for garbage
-        /// collecting any orphaned blobs that may occur due to aborted uploads. For more information, see the drop
-        /// target design doc here: http://goto/ScottyDropTarget This field will be preferred to dynamicDropzone. If
-        /// provided, the identified field in the response must be of the type uploader.agent.DropTarget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dynamicDropTarget")]
-        public virtual string DynamicDropTarget { get; set; }
-
-        /// <summary>Specifies the Scotty dropzone to use for uploads.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dynamicDropzone")]
-        public virtual string DynamicDropzone { get; set; }
-
-        /// <summary>Request class to use for all Blobstore operations for this request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestClass")]
-        public virtual string RequestClass { get; set; }
-
-        /// <summary>Specifies the TrafficClass that Scotty should use for any RPCs to fetch the response bytes. Will
-        /// override the traffic class GTOS of the incoming http request. This is a temporary field to facilitate
-        /// whitelisting and experimentation by the bigstore agent only. For instance, this does not apply to RTMP
-        /// reads. WARNING: DO NOT USE WITHOUT PERMISSION FROM THE SCOTTY TEAM.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("trafficClassField")]
-        public virtual string TrafficClassField { get; set; }
-
-        /// <summary>Tells Scotty to verify hashes on the agent's behalf by parsing out the X-Goog-Hash
-        /// header.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("verifyHashFromHeader")]
-        public virtual System.Nullable<bool> VerifyHashFromHeader { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
