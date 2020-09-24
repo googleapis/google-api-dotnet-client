@@ -313,7 +313,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
         public class ListRequest : ReportsBaseServiceRequest<Google.Apis.Admin.Reports.reports_v1.Data.Activities>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string userKey, ListRequest.ApplicationNameEnum applicationName) : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string userKey, ApplicationNameEnum applicationName) : base(service)
             {
                 UserKey = userKey;
                 ApplicationName = applicationName;
@@ -624,7 +624,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
         public class WatchRequest : ReportsBaseServiceRequest<Google.Apis.Admin.Reports.reports_v1.Data.Channel>
         {
             /// <summary>Constructs a new Watch request.</summary>
-            public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Reports.reports_v1.Data.Channel body, string userKey, WatchRequest.ApplicationNameEnum applicationName) : base(service)
+            public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Reports.reports_v1.Data.Channel body, string userKey, ApplicationNameEnum applicationName) : base(service)
             {
                 UserKey = userKey;
                 ApplicationName = applicationName;
@@ -1140,7 +1140,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
         public class GetRequest : ReportsBaseServiceRequest<Google.Apis.Admin.Reports.reports_v1.Data.UsageReports>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, GetRequest.EntityTypeEnum entityType, GetRequest.EntityKeyEnum entityKey, string date) : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, EntityTypeEnum entityType, EntityKeyEnum entityKey, string date) : base(service)
             {
                 EntityType = entityType;
                 EntityKey = entityKey;

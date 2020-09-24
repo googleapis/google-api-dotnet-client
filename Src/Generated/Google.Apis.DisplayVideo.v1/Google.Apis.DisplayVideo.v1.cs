@@ -2657,7 +2657,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption>
                     {
                         /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption body, long advertiserId, long lineItemId, CreateRequest.TargetingTypeEnum targetingType) : base(service)
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption body, long advertiserId, long lineItemId, TargetingTypeEnum targetingType) : base(service)
                         {
                             AdvertiserId = advertiserId;
                             LineItemId = lineItemId;
@@ -2878,7 +2878,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
-                        public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId, DeleteRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
+                        public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId, TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
                         {
                             AdvertiserId = advertiserId;
                             LineItemId = lineItemId;
@@ -3106,7 +3106,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption>
                     {
                         /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId, GetRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
+                        public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId, TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
                         {
                             AdvertiserId = advertiserId;
                             LineItemId = lineItemId;
@@ -3332,7 +3332,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListLineItemAssignedTargetingOptionsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId, ListRequest.TargetingTypeEnum targetingType) : base(service)
+                        public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, long lineItemId, TargetingTypeEnum targetingType) : base(service)
                         {
                             AdvertiserId = advertiserId;
                             LineItemId = lineItemId;
@@ -5720,7 +5720,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption body, long advertiserId, CreateRequest.TargetingTypeEnum targetingType) : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption body, long advertiserId, TargetingTypeEnum targetingType) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         TargetingType = targetingType;
@@ -5923,7 +5923,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, DeleteRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, long advertiserId, TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         TargetingType = targetingType;
@@ -6133,7 +6133,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, GetRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         TargetingType = targetingType;
@@ -6341,7 +6341,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListAdvertiserAssignedTargetingOptionsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, ListRequest.TargetingTypeEnum targetingType) : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, long advertiserId, TargetingTypeEnum targetingType) : base(service)
                     {
                         AdvertiserId = advertiserId;
                         TargetingType = targetingType;
@@ -10359,7 +10359,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption body, long partnerId, CreateRequest.TargetingTypeEnum targetingType) : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption body, long partnerId, TargetingTypeEnum targetingType) : base(service)
                     {
                         PartnerId = partnerId;
                         TargetingType = targetingType;
@@ -10565,7 +10565,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, long partnerId, DeleteRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
+                    public DeleteRequest(Google.Apis.Services.IClientService service, long partnerId, TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
                     {
                         PartnerId = partnerId;
                         TargetingType = targetingType;
@@ -10777,7 +10777,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption>
                 {
                     /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, long partnerId, GetRequest.TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
+                    public GetRequest(Google.Apis.Services.IClientService service, long partnerId, TargetingTypeEnum targetingType, string assignedTargetingOptionId) : base(service)
                     {
                         PartnerId = partnerId;
                         TargetingType = targetingType;
@@ -10988,7 +10988,7 @@ namespace Google.Apis.DisplayVideo.v1
                 public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListPartnerAssignedTargetingOptionsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, long partnerId, ListRequest.TargetingTypeEnum targetingType) : base(service)
+                    public ListRequest(Google.Apis.Services.IClientService service, long partnerId, TargetingTypeEnum targetingType) : base(service)
                     {
                         PartnerId = partnerId;
                         TargetingType = targetingType;
@@ -11630,7 +11630,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.TargetingOption>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, GetRequest.TargetingTypeEnum targetingType, string targetingOptionId) : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, TargetingTypeEnum targetingType, string targetingOptionId) : base(service)
                 {
                     TargetingType = targetingType;
                     TargetingOptionId = targetingOptionId;
@@ -11830,7 +11830,7 @@ namespace Google.Apis.DisplayVideo.v1
             public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListTargetingOptionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, ListRequest.TargetingTypeEnum targetingType) : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, TargetingTypeEnum targetingType) : base(service)
                 {
                     TargetingType = targetingType;
                     InitParameters();

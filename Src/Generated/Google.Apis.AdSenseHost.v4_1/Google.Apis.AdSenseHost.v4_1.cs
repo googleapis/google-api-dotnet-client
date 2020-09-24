@@ -1429,7 +1429,7 @@ namespace Google.Apis.AdSenseHost.v4_1
         public class StartRequest : AdSenseHostBaseServiceRequest<Google.Apis.AdSenseHost.v4_1.Data.AssociationSession>
         {
             /// <summary>Constructs a new Start request.</summary>
-            public StartRequest(Google.Apis.Services.IClientService service, StartRequest.ProductCodeEnum productCode, string websiteUrl) : base(service)
+            public StartRequest(Google.Apis.Services.IClientService service, ProductCodeEnum productCode, string websiteUrl) : base(service)
             {
                 ProductCode = productCode;
                 WebsiteUrl = websiteUrl;

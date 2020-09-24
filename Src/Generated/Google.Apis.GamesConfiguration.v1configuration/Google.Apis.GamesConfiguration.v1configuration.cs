@@ -595,7 +595,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         public class UploadRequest : GamesConfigurationBaseServiceRequest<Google.Apis.GamesConfiguration.v1configuration.Data.ImageConfiguration>
         {
             /// <summary>Constructs a new Upload request.</summary>
-            public UploadRequest(Google.Apis.Services.IClientService service, string resourceId, UploadRequest.ImageTypeEnum imageType) : base(service)
+            public UploadRequest(Google.Apis.Services.IClientService service, string resourceId, ImageTypeEnum imageType) : base(service)
             {
                 ResourceId = resourceId;
                 ImageType = imageType;

@@ -615,7 +615,7 @@ namespace Google.Apis.Testing.v1
         public class GetRequest : TestingBaseServiceRequest<Google.Apis.Testing.v1.Data.TestEnvironmentCatalog>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, GetRequest.EnvironmentTypeEnum environmentType) : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, EnvironmentTypeEnum environmentType) : base(service)
             {
                 EnvironmentType = environmentType;
                 InitParameters();

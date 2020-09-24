@@ -1451,7 +1451,7 @@ namespace Google.Apis.Games.v1
         public class ListCategoriesByPlayerRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.CategoryListResponse>
         {
             /// <summary>Constructs a new ListCategoriesByPlayer request.</summary>
-            public ListCategoriesByPlayerRequest(Google.Apis.Services.IClientService service, string playerId, ListCategoriesByPlayerRequest.CollectionEnum collection) : base(service)
+            public ListCategoriesByPlayerRequest(Google.Apis.Services.IClientService service, string playerId, CollectionEnum collection) : base(service)
             {
                 PlayerId = playerId;
                 Collection = collection;
@@ -1643,7 +1643,7 @@ namespace Google.Apis.Games.v1
         public class ListRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.PlayerListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, ListRequest.CollectionEnum collection) : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, CollectionEnum collection) : base(service)
             {
                 Collection = collection;
                 InitParameters();
@@ -1845,7 +1845,7 @@ namespace Google.Apis.Games.v1
         public class GetRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.PlayerLeaderboardScoreListResponse>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string playerId, string leaderboardId, GetRequest.TimeSpanEnum timeSpan) : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string playerId, string leaderboardId, TimeSpanEnum timeSpan) : base(service)
             {
                 PlayerId = playerId;
                 LeaderboardId = leaderboardId;
@@ -2016,7 +2016,7 @@ namespace Google.Apis.Games.v1
         public class ListRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.LeaderboardScores>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string leaderboardId, ListRequest.CollectionEnum collection, ListRequest.TimeSpanEnum timeSpan) : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string leaderboardId, CollectionEnum collection, TimeSpanEnum timeSpan) : base(service)
             {
                 LeaderboardId = leaderboardId;
                 Collection = collection;
@@ -2166,7 +2166,7 @@ namespace Google.Apis.Games.v1
         public class ListWindowRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.LeaderboardScores>
         {
             /// <summary>Constructs a new ListWindow request.</summary>
-            public ListWindowRequest(Google.Apis.Services.IClientService service, string leaderboardId, ListWindowRequest.CollectionEnum collection, ListWindowRequest.TimeSpanEnum timeSpan) : base(service)
+            public ListWindowRequest(Google.Apis.Services.IClientService service, string leaderboardId, CollectionEnum collection, TimeSpanEnum timeSpan) : base(service)
             {
                 LeaderboardId = leaderboardId;
                 Collection = collection;

@@ -955,7 +955,7 @@ namespace Google.Apis.Reseller.v1
         public class DeleteRequest : ResellerBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string customerId, string subscriptionId, DeleteRequest.DeletionTypeEnum deletionType) : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string customerId, string subscriptionId, DeletionTypeEnum deletionType) : base(service)
             {
                 CustomerId = customerId;
                 SubscriptionId = subscriptionId;

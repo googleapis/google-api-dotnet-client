@@ -8637,7 +8637,7 @@ namespace Google.Apis.Dfareporting.v3_3
         public class DeleteRequest : DfareportingBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, long profileId, long objectId, string name, DeleteRequest.ObjectTypeEnum objectType) : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, long profileId, long objectId, string name, ObjectTypeEnum objectType) : base(service)
             {
                 ProfileId = profileId;
                 ObjectId = objectId;

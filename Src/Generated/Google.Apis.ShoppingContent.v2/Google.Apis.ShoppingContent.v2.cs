@@ -4470,7 +4470,7 @@ namespace Google.Apis.ShoppingContent.v2
         public class GettestordertemplateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersGetTestOrderTemplateResponse>
         {
             /// <summary>Constructs a new Gettestordertemplate request.</summary>
-            public GettestordertemplateRequest(Google.Apis.Services.IClientService service, ulong merchantId, GettestordertemplateRequest.TemplateNameEnum templateName) : base(service)
+            public GettestordertemplateRequest(Google.Apis.Services.IClientService service, ulong merchantId, TemplateNameEnum templateName) : base(service)
             {
                 MerchantId = merchantId;
                 TemplateName = templateName;
