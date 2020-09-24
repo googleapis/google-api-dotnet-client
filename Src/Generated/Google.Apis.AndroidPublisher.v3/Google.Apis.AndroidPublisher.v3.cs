@@ -1013,7 +1013,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class UploadRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.DeobfuscationFilesUploadResponse>
             {
                 /// <summary>Constructs a new Upload request.</summary>
-                public UploadRequest(Google.Apis.Services.IClientService service, string packageName, string editId, int apkVersionCode, UploadRequest.DeobfuscationFileTypeEnum deobfuscationFileType) : base(service)
+                public UploadRequest(Google.Apis.Services.IClientService service, string packageName, string editId, int apkVersionCode, DeobfuscationFileTypeEnum deobfuscationFileType) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -1534,7 +1534,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ExpansionFile>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string packageName, string editId, int apkVersionCode, GetRequest.ExpansionFileTypeEnum expansionFileType) : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string packageName, string editId, int apkVersionCode, ExpansionFileTypeEnum expansionFileType) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -1646,7 +1646,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class PatchRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ExpansionFile>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.ExpansionFile body, string packageName, string editId, int apkVersionCode, PatchRequest.ExpansionFileTypeEnum expansionFileType) : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.ExpansionFile body, string packageName, string editId, int apkVersionCode, ExpansionFileTypeEnum expansionFileType) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -1765,7 +1765,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class UpdateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ExpansionFile>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.ExpansionFile body, string packageName, string editId, int apkVersionCode, UpdateRequest.ExpansionFileTypeEnum expansionFileType) : base(service)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.ExpansionFile body, string packageName, string editId, int apkVersionCode, ExpansionFileTypeEnum expansionFileType) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -1881,7 +1881,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class UploadRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ExpansionFilesUploadResponse>
             {
                 /// <summary>Constructs a new Upload request.</summary>
-                public UploadRequest(Google.Apis.Services.IClientService service, string packageName, string editId, int apkVersionCode, UploadRequest.ExpansionFileTypeEnum expansionFileType) : base(service)
+                public UploadRequest(Google.Apis.Services.IClientService service, string packageName, string editId, int apkVersionCode, ExpansionFileTypeEnum expansionFileType) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -2178,7 +2178,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class DeleteRequest : AndroidPublisherBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string packageName, string editId, string language, DeleteRequest.ImageTypeEnum imageType, string imageId) : base(service)
+                public DeleteRequest(Google.Apis.Services.IClientService service, string packageName, string editId, string language, ImageTypeEnum imageType, string imageId) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -2320,7 +2320,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class DeleteallRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ImagesDeleteAllResponse>
             {
                 /// <summary>Constructs a new Deleteall request.</summary>
-                public DeleteallRequest(Google.Apis.Services.IClientService service, string packageName, string editId, string language, DeleteallRequest.ImageTypeEnum imageType) : base(service)
+                public DeleteallRequest(Google.Apis.Services.IClientService service, string packageName, string editId, string language, ImageTypeEnum imageType) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -2448,7 +2448,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ImagesListResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string packageName, string editId, string language, ListRequest.ImageTypeEnum imageType) : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string packageName, string editId, string language, ImageTypeEnum imageType) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;
@@ -2577,7 +2577,7 @@ namespace Google.Apis.AndroidPublisher.v3
             public class UploadRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ImagesUploadResponse>
             {
                 /// <summary>Constructs a new Upload request.</summary>
-                public UploadRequest(Google.Apis.Services.IClientService service, string packageName, string editId, string language, UploadRequest.ImageTypeEnum imageType) : base(service)
+                public UploadRequest(Google.Apis.Services.IClientService service, string packageName, string editId, string language, ImageTypeEnum imageType) : base(service)
                 {
                     PackageName = packageName;
                     EditId = editId;

@@ -3150,7 +3150,7 @@ namespace Google.Apis.YouTube.v3
         public class SetModerationStatusRequest : YouTubeBaseServiceRequest<string>
         {
             /// <summary>Constructs a new SetModerationStatus request.</summary>
-            public SetModerationStatusRequest(Google.Apis.Services.IClientService service, Google.Apis.Util.Repeatable<string> id, SetModerationStatusRequest.ModerationStatusEnum moderationStatus) : base(service)
+            public SetModerationStatusRequest(Google.Apis.Services.IClientService service, Google.Apis.Util.Repeatable<string> id, ModerationStatusEnum moderationStatus) : base(service)
             {
                 Id = id;
                 ModerationStatus = moderationStatus;
@@ -4142,7 +4142,7 @@ namespace Google.Apis.YouTube.v3
         public class TransitionRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.LiveBroadcast>
         {
             /// <summary>Constructs a new Transition request.</summary>
-            public TransitionRequest(Google.Apis.Services.IClientService service, string id, TransitionRequest.BroadcastStatusEnum broadcastStatus, Google.Apis.Util.Repeatable<string> part) : base(service)
+            public TransitionRequest(Google.Apis.Services.IClientService service, string id, BroadcastStatusEnum broadcastStatus, Google.Apis.Util.Repeatable<string> part) : base(service)
             {
                 Id = id;
                 BroadcastStatus = broadcastStatus;
@@ -7735,7 +7735,7 @@ namespace Google.Apis.YouTube.v3
         public class DeleteRequest : YouTubeBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string linkingToken, DeleteRequest.TypeEnum type) : base(service)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string linkingToken, TypeEnum type) : base(service)
             {
                 LinkingToken = linkingToken;
                 Type = type;
@@ -9150,7 +9150,7 @@ namespace Google.Apis.YouTube.v3
         public class RateRequest : YouTubeBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Rate request.</summary>
-            public RateRequest(Google.Apis.Services.IClientService service, string id, RateRequest.RatingEnum rating) : base(service)
+            public RateRequest(Google.Apis.Services.IClientService service, string id, RatingEnum rating) : base(service)
             {
                 Id = id;
                 Rating = rating;

@@ -2514,7 +2514,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
         public class PatchRequest : AdExchangeBuyerBaseServiceRequest<Google.Apis.AdExchangeBuyer.v1_4.Data.Proposal>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyer.v1_4.Data.Proposal body, string proposalId, long revisionNumber, PatchRequest.UpdateActionEnum updateAction) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyer.v1_4.Data.Proposal body, string proposalId, long revisionNumber, UpdateActionEnum updateAction) : base(service)
             {
                 ProposalId = proposalId;
                 RevisionNumber = revisionNumber;
@@ -2720,7 +2720,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
         public class UpdateRequest : AdExchangeBuyerBaseServiceRequest<Google.Apis.AdExchangeBuyer.v1_4.Data.Proposal>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyer.v1_4.Data.Proposal body, string proposalId, long revisionNumber, UpdateRequest.UpdateActionEnum updateAction) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyer.v1_4.Data.Proposal body, string proposalId, long revisionNumber, UpdateActionEnum updateAction) : base(service)
             {
                 ProposalId = proposalId;
                 RevisionNumber = revisionNumber;
