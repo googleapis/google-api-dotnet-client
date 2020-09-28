@@ -953,7 +953,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">The parent resource where this build will be created. Format:
                 /// `projects/{project}/locations/{location}`</param>
-                public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.CreateBuildRequest body, string parent)
+                public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.Build body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
                 }
@@ -964,7 +964,7 @@ namespace Google.Apis.CloudBuild.v1
                 public class CreateRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.CreateBuildRequest body, string parent) : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.Build body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -977,9 +977,13 @@ namespace Google.Apis.CloudBuild.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Required. ID of the project.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ProjectId { get; set; }
+
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudBuild.v1.Data.CreateBuildRequest Body { get; set; }
+                    Google.Apis.CloudBuild.v1.Data.Build Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -1005,6 +1009,14 @@ namespace Google.Apis.CloudBuild.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
 
@@ -2314,21 +2326,6 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Request to create a new build.</summary>
-    public class CreateBuildRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Build resource to create.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("build")]
-        public virtual Build Build { get; set; }
-
-        /// <summary>Required. ID of the project.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

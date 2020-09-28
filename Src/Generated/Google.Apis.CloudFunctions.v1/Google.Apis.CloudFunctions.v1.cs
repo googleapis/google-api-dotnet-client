@@ -1407,6 +1407,10 @@ namespace Google.Apis.CloudFunctions.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("availableMemoryMb")]
         public virtual System.Nullable<int> AvailableMemoryMb { get; set; }
 
+        /// <summary>Build environment variables that shall be available during build time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildEnvironmentVariables")]
+        public virtual System.Collections.Generic.IDictionary<string, string> BuildEnvironmentVariables { get; set; }
+
         /// <summary>Output only. The Cloud Build ID of the latest successful deployment of the function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildId")]
         public virtual string BuildId { get; set; }
@@ -1442,7 +1446,11 @@ namespace Google.Apis.CloudFunctions.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>The limit on the maximum number of function instances that may coexist at a given time.</summary>
+        /// <summary>The limit on the maximum number of function instances that may coexist at a given time. In some
+        /// cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances
+        /// than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may
+        /// want to factor in a safety margin and set a lower max instances value than your function can tolerate. See
+        /// the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxInstances")]
         public virtual System.Nullable<int> MaxInstances { get; set; }
 

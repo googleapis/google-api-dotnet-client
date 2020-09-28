@@ -579,7 +579,7 @@
    }
   }
  }, 
- "revision": "20200915", 
+ "revision": "20200924", 
  "rootUrl": "https://apigateway.googleapis.com/", 
  "schemas": {
   "ApigatewayAuditConfig": {

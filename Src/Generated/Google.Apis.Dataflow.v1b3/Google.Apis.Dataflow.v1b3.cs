@@ -6222,7 +6222,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>Additional user labels to be specified for the job. Keys and values must follow the restrictions
         /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-
-        /// resources#restrictions) page.</summary>
+        /// resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name":
+        /// "wrench", "mass": "1kg", "count": "3" }.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalUserLabels")]
         public virtual System.Collections.Generic.IDictionary<string, string> AdditionalUserLabels { get; set; }
 
@@ -6262,8 +6263,11 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
         public virtual string ServiceAccountEmail { get; set; }
 
-        /// <summary>Subnetwork to which VMs will be assigned, if desired. Expected to be of the form
-        /// "regions/REGION/subnetworks/SUBNETWORK".</summary>
+        /// <summary>Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a
+        /// complete URL or an abbreviated path. Expected to be of the form
+        /// "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or
+        /// "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use
+        /// the complete URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; }
 
@@ -7734,7 +7738,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>Additional user labels to be specified for the job. Keys and values should follow the restrictions
         /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-
-        /// resources#restrictions) page.</summary>
+        /// resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name":
+        /// "wrench", "mass": "1kg", "count": "3" }.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalUserLabels")]
         public virtual System.Collections.Generic.IDictionary<string, string> AdditionalUserLabels { get; set; }
 
@@ -7750,7 +7755,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipConfiguration")]
         public virtual string IpConfiguration { get; set; }
 
-        /// <summary>Optional. Name for the Cloud KMS key for the job. Key format is:
+        /// <summary>Name for the Cloud KMS key for the job. Key format is:
         /// projects//locations//keyRings//cryptoKeys/</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; }
@@ -7778,8 +7783,11 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
         public virtual string ServiceAccountEmail { get; set; }
 
-        /// <summary>Subnetwork to which VMs will be assigned, if desired. Expected to be of the form
-        /// "regions/REGION/subnetworks/SUBNETWORK".</summary>
+        /// <summary>Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a
+        /// complete URL or an abbreviated path. Expected to be of the form
+        /// "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or
+        /// "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use
+        /// the complete URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; }
 

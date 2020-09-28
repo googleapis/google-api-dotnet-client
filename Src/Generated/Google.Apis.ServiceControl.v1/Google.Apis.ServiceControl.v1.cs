@@ -741,7 +741,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string PrincipalEmail { get; set; }
 
         /// <summary>String representation of identity of requesting party. Populated for both first and third party
-        /// identities. Only present for APIs that support third-party identities.</summary>
+        /// identities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principalSubject")]
         public virtual string PrincipalSubject { get; set; }
 
