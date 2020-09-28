@@ -174,7 +174,7 @@
    }
   }
  }, 
- "revision": "20200922", 
+ "revision": "20200924", 
  "rootUrl": "https://displayvideo.googleapis.com/", 
  "schemas": {
   "GoogleBytestreamMedia": {

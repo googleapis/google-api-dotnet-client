@@ -3136,7 +3136,7 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         }
 
-        /// <summary>Update the local inventory of a product in your Merchant Center account.</summary>
+        /// <summary>Updates the local inventory of a product in your Merchant Center account.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the account that contains the product. This account cannot be a multi-client
         /// account.</param>
@@ -3147,7 +3147,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             return new InsertRequest(service, body, merchantId, productId);
         }
 
-        /// <summary>Update the local inventory of a product in your Merchant Center account.</summary>
+        /// <summary>Updates the local inventory of a product in your Merchant Center account.</summary>
         public class InsertRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.LocalInventory>
         {
             /// <summary>Constructs a new Insert request.</summary>

@@ -1606,11 +1606,12 @@ namespace Google.Apis.PeopleService.v1
             [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object RequestMaskIncludeField { get; set; }
 
-            /// <summary>Required. The resource names of the people to provide information about. - To get information
-            /// about the authenticated user, specify `people/me`. - To get information about a google account, specify
-            /// `people/{account_id}`. - To get information about a contact, specify the resource name that identifies
-            /// the contact as returned by [`people.connections.list`](/people/api/rest/v1/people.connections/list). You
-            /// can include up to 50 resource names in one request.</summary>
+            /// <summary>Required. The resource names of the people to provide information about. It's repeatable. The
+            /// URL query parameter should be resourceNames==&... - To get information about the authenticated user,
+            /// specify `people/me`. - To get information about a google account, specify `people/{account_id}`. - To
+            /// get information about a contact, specify the resource name that identifies the contact as returned by
+            /// [`people.connections.list`](/people/api/rest/v1/people.connections/list). You can include up to 50
+            /// resource names in one request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 

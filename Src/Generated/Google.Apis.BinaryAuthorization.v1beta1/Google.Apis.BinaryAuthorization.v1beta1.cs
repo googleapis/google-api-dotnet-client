@@ -794,6 +794,67 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
                 }
 
             }
+
+            /// <summary>Returns whether the given Attestation for the given image URI was signed by the given
+            /// Attestor</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="attestor">Required. The resource name of the Attestor of the occurrence, in the format
+            /// `projects/attestors`.</param>
+            public virtual ValidateAttestationOccurrenceRequest ValidateAttestationOccurrence(Google.Apis.BinaryAuthorization.v1beta1.Data.ValidateAttestationOccurrenceRequest body, string attestor)
+            {
+                return new ValidateAttestationOccurrenceRequest(service, body, attestor);
+            }
+
+            /// <summary>Returns whether the given Attestation for the given image URI was signed by the given
+            /// Attestor</summary>
+            public class ValidateAttestationOccurrenceRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1beta1.Data.ValidateAttestationOccurrenceResponse>
+            {
+                /// <summary>Constructs a new ValidateAttestationOccurrence request.</summary>
+                public ValidateAttestationOccurrenceRequest(Google.Apis.Services.IClientService service, Google.Apis.BinaryAuthorization.v1beta1.Data.ValidateAttestationOccurrenceRequest body, string attestor) : base(service)
+                {
+                    Attestor = attestor;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The resource name of the Attestor of the occurrence, in the format
+                /// `projects/attestors`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("attestor", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Attestor { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.BinaryAuthorization.v1beta1.Data.ValidateAttestationOccurrenceRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "validateAttestationOccurrence";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+attestor}:validateAttestationOccurrence";
+
+                /// <summary>Initializes ValidateAttestationOccurrence parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("attestor", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "attestor",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/attestors/[^/]+$",
+                    });
+                }
+
+            }
         }
         /// <summary>Gets the Policy resource.</summary>
         public virtual PolicyResource Policy { get; }
@@ -1173,6 +1234,36 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Occurrence that represents a single "attestation". The authenticity of an attestation can be verified
+    /// using the attached signature. If the verifier trusts the public key of the signer, then verifying the signature
+    /// is sufficient to establish trust. In this circumstance, the authority to which this attestation is attached is
+    /// primarily useful for lookup (how to find this attestation if you already know the authority and artifact to be
+    /// verified) and intent (for which authority this attestation was intended to sign.</summary>
+    public class AttestationOccurrence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>One or more JWTs encoding a self-contained attestation. Each JWT encodes the payload that it
+        /// verifies within the JWT itself. Verifier implementation SHOULD ignore the `serialized_payload` field when
+        /// verifying these JWTs. If only JWTs are present on this AttestationOccurrence, then the `serialized_payload`
+        /// SHOULD be left empty. Each JWT SHOULD encode a claim specific to the `resource_uri` of this Occurrence, but
+        /// this is not validated by Grafeas metadata API implementations. The JWT itself is opaque to
+        /// Grafeas.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jwts")]
+        public virtual System.Collections.Generic.IList<Jwt> Jwts { get; set; }
+
+        /// <summary>Required. The serialized payload that is verified by one or more `signatures`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serializedPayload")]
+        public virtual string SerializedPayload { get; set; }
+
+        /// <summary>One or more signatures over `serialized_payload`. Verifier implementations should consider this
+        /// attestation message verified if at least one `signature` verifies `serialized_payload`. See `Signature` in
+        /// common.proto for more details on signature structure and verification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signatures")]
+        public virtual System.Collections.Generic.IList<Signature> Signatures { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>An attestor that attests to container image artifacts. An existing attestor cannot be modified except
     /// where indicated.</summary>
     public class Attestor : Google.Apis.Requests.IDirectResponseSchema
@@ -1378,6 +1469,17 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
 
     }    
 
+    public class Jwt : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The compact encoding of a JWS, which is always three base64 encoded strings joined by periods. For
+        /// details, see: https://tools.ietf.org/html/rfc7515.html#section-3.1</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compactJwt")]
+        public virtual string CompactJwt { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response message for BinauthzManagementService.ListAttestors.</summary>
     public class ListAttestorsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1470,6 +1572,42 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Verifiers (e.g. Kritis implementations) MUST verify signatures with respect to the trust anchors
+    /// defined in policy (e.g. a Kritis policy). Typically this means that the verifier has been configured with a map
+    /// from `public_key_id` to public key material (and any required parameters, e.g. signing algorithm). In
+    /// particular, verification implementations MUST NOT treat the signature `public_key_id` as anything more than a
+    /// key lookup hint. The `public_key_id` DOES NOT validate or authenticate a public key; it only provides a
+    /// mechanism for quickly selecting a public key ALREADY CONFIGURED on the verifier through a trusted channel.
+    /// Verification implementations MUST reject signatures in any of the following circumstances: * The `public_key_id`
+    /// is not recognized by the verifier. * The public key that `public_key_id` refers to does not verify the signature
+    /// with respect to the payload. The `signature` contents SHOULD NOT be "attached" (where the payload is included
+    /// with the serialized `signature` bytes). Verifiers MUST ignore any "attached" payload and only verify signatures
+    /// with respect to explicitly provided payload (e.g. a `payload` field on the proto message that holds this
+    /// Signature, or the canonical serialization of the proto message that holds this signature).</summary>
+    public class Signature : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The identifier for the public key that verifies this signature. * The `public_key_id` is required.
+        /// * The `public_key_id` SHOULD be an RFC3986 conformant URI. * When possible, the `public_key_id` SHOULD be an
+        /// immutable reference, such as a cryptographic digest. Examples of valid `public_key_id`s: OpenPGP V4 public
+        /// key fingerprint: * "openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA" See
+        /// https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr for more details on this scheme. RFC6920
+        /// digest-named SubjectPublicKeyInfo (digest of the DER serialization): *
+        /// "ni:sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU" *
+        /// "nih:sha-256;703f68f42aba2c6de30f488a5ea122fef76324679c9bf89791ba95a1271589a5"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicKeyId")]
+        public virtual string PublicKeyId { get; set; }
+
+        /// <summary>The content of the signature, an opaque bytestring. The payload that this signature verifies MUST
+        /// be unambiguously provided with the Signature during verification. A wrapper message might provide the
+        /// payload explicitly. Alternatively, a message might have a canonical serialization that can always be
+        /// unambiguously computed to derive the payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signature")]
+        public virtual string SignatureValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request message for `TestIamPermissions` method.</summary>
     public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1520,6 +1658,43 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
         /// returns that no valid attestations exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicKeys")]
         public virtual System.Collections.Generic.IList<AttestorPublicKey> PublicKeys { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for ValidationHelperV1.ValidateAttestationOccurrence.</summary>
+    public class ValidateAttestationOccurrenceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. An AttestationOccurrence to be checked that it can be verified by the Attestor. It does
+        /// not have to be an existing entity in Container Analysis. It must otherwise be a valid
+        /// AttestationOccurrence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attestation")]
+        public virtual AttestationOccurrence Attestation { get; set; }
+
+        /// <summary>Required. The resource name of the Note to which the containing Occurrence is associated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("occurrenceNote")]
+        public virtual string OccurrenceNote { get; set; }
+
+        /// <summary>Required. The URI of the artifact (e.g. container image) that is the subject of the containing
+        /// Occurrence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("occurrenceResourceUri")]
+        public virtual string OccurrenceResourceUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for ValidationHelperV1.ValidateAttestationOccurrence.</summary>
+    public class ValidateAttestationOccurrenceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The reason for denial if the Attestation couldn't be validated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("denialReason")]
+        public virtual string DenialReason { get; set; }
+
+        /// <summary>The result of the Attestation validation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual string Result { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
