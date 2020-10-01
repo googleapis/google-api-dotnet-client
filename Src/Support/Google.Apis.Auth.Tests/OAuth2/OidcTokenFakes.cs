@@ -126,7 +126,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
             }
             // The way we have for identifying that a response came from the compute metadata server identity endpoint
             // is through the request URI, and that's how we know to not build a TokenResponse, so we need to set that here.
-            request.RequestUri = new Uri(GoogleAuthConsts.ComputeOidcTokenUrl + request.RequestUri.Query);
+            request.RequestUri = new Uri(GoogleAuthConsts.EffectiveComputeOidcTokenUrl + request.RequestUri.Query);
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 // The Compute metadata server identity endpoint only sends the raw id_token in the response.

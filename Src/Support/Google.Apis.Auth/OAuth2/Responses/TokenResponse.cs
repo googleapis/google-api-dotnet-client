@@ -144,7 +144,7 @@ namespace Google.Apis.Auth.OAuth2.Responses
                 TokenResponse newToken;
                 // GCE's metadata server identity endpoint doesn't return a TokenResponse but the raw
                 // id_token, so we build a TokenResponse from that.
-                if (response.RequestMessage?.RequestUri?.AbsoluteUri.StartsWith(GoogleAuthConsts.ComputeOidcTokenUrl) == true)
+                if (response.RequestMessage?.RequestUri?.AbsoluteUri.StartsWith(GoogleAuthConsts.EffectiveComputeOidcTokenUrl) == true)
                 {
                     newToken = new TokenResponse
                     {

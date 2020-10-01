@@ -169,7 +169,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Responses
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 Content = new StringContent(OidcComputeSuccessMessageHandler.FirstCallToken),
-                RequestMessage = new HttpRequestMessage(HttpMethod.Get, GoogleAuthConsts.ComputeOidcTokenUrl)
+                RequestMessage = new HttpRequestMessage(HttpMethod.Get, GoogleAuthConsts.EffectiveComputeOidcTokenUrl)
             };
 
             MockClock clock = new MockClock(new DateTime(2020, 02, 02, 2, 20, 20, DateTimeKind.Utc));
