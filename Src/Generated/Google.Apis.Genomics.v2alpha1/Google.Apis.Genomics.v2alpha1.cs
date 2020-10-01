@@ -1099,6 +1099,22 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Configuration for an existing disk to be attached to the VM.</summary>
+    public class ExistingDisk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If `disk` contains slashes, the Cloud Life Sciences API assumes that it is a complete URL for the
+        /// disk. If `disk` does not contain slashes, the Cloud Life Sciences API assumes that the disk is a zonal disk
+        /// and a URL will be generated of the form `zones//disks/`, where `` is the zone in which the instance is
+        /// allocated. The disk must be ext4 formatted. If all `Mount` references to this disk have the `read_only` flag
+        /// set to true, the disk will be attached in `read-only` mode and can be shared with other instances.
+        /// Otherwise, the disk will be available for writing but cannot be shared.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disk")]
+        public virtual string Disk { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>An event generated when the execution of a pipeline has failed. Note that other events can continue to
     /// occur after this event.</summary>
     public class FailedEvent : Google.Apis.Requests.IDirectResponseSchema
@@ -1299,6 +1315,30 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         /// <summary>The time at which the job began to run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration for a persistent disk to be attached to the VM. See
+    /// https://cloud.google.com/compute/docs/disks/performance for more information about disk type, size, and
+    /// performance considerations.</summary>
+    public class PersistentDisk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The size, in GB, of the disk to attach. If the size is not specified, a default is chosen to ensure
+        /// reasonable I/O performance. If the disk type is specified as `local-ssd`, multiple local drives are
+        /// automatically combined to provide the requested size. Note, however, that each physical SSD is 375GB in
+        /// size, and no more than 8 drives can be attached to a single instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
+        public virtual System.Nullable<int> SizeGb { get; set; }
+
+        /// <summary>An image to put on the disk before attaching it to the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceImage")]
+        public virtual string SourceImage { get; set; }
+
+        /// <summary>The Compute Engine disk type. If unspecified, `pd-standard` is used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1589,6 +1629,31 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         /// those required by the pipeline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual ServiceAccount ServiceAccount { get; set; }
+
+        /// <summary>The list of disks and other storage to create or attach to the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
+        public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Carries information about storage that can be attached to a VM.</summary>
+    public class Volume : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration for a existing disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("existingDisk")]
+        public virtual ExistingDisk ExistingDisk { get; set; }
+
+        /// <summary>Configuration for a persistent disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("persistentDisk")]
+        public virtual PersistentDisk PersistentDisk { get; set; }
+
+        /// <summary>A user-supplied name for the volume. Used when mounting the volume into `Actions`. The name must
+        /// contain only upper and lowercase alphanumeric characters and hyphens and cannot start with a
+        /// hyphen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volume")]
+        public virtual string VolumeValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

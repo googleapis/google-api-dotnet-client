@@ -309,8 +309,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                 }
 
 
-                /// <summary>ApplyParameters will update current set of Parameters to the set of specified nodes of the
-                /// Memcached Instance.</summary>
+                /// <summary>ApplyParameters will restart the set of specified nodes in order to update them to the
+                /// current set of parameters for the Memcached Instance.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. Resource name of the Memcached instance for which parameter group updates should be
                 /// applied.</param>
@@ -319,8 +319,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                     return new ApplyParametersRequest(service, body, name);
                 }
 
-                /// <summary>ApplyParameters will update current set of Parameters to the set of specified nodes of the
-                /// Memcached Instance.</summary>
+                /// <summary>ApplyParameters will restart the set of specified nodes in order to update them to the
+                /// current set of parameters for the Memcached Instance.</summary>
                 public class ApplyParametersRequest : CloudMemorystoreforMemcachedBaseServiceRequest<Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data.Operation>
                 {
                     /// <summary>Constructs a new ApplyParameters request.</summary>
@@ -370,7 +370,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
 
                 }
 
-                /// <summary>Creates a new Instance in a given project and location.</summary>
+                /// <summary>Creates a new Instance in a given location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The resource name of the instance location using the form:
                 /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region</param>
@@ -379,7 +379,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Creates a new Instance in a given project and location.</summary>
+                /// <summary>Creates a new Instance in a given location.</summary>
                 public class CreateRequest : CloudMemorystoreforMemcachedBaseServiceRequest<Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -400,7 +400,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                     /// <summary>Required. The logical name of the Memcached instance in the user project with the
                     /// following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must
                     /// start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. *
-                    /// Must be unique within the user project / location</summary>
+                    /// Must be unique within the user project / location If any of the above are not met, will raise an
+                    /// invalid argument error.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("instanceId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string InstanceId { get; set; }
 
@@ -551,7 +552,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
 
                 }
 
-                /// <summary>Lists Instances in a given project and location.</summary>
+                /// <summary>Lists Instances in a given location.</summary>
                 /// <param name="parent">Required. The resource name of the instance location using the form:
                 /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region</param>
                 public virtual ListRequest List(string parent)
@@ -559,7 +560,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists Instances in a given project and location.</summary>
+                /// <summary>Lists Instances in a given location.</summary>
                 public class ListRequest : CloudMemorystoreforMemcachedBaseServiceRequest<Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data.ListInstancesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>

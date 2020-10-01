@@ -398,7 +398,7 @@ namespace Google.Apis.Storagetransfer.v1
         }
 
         /// <summary>Gets a transfer job.</summary>
-        /// <param name="jobName">Required. The job to get.</param>
+        /// <param name="jobName">" Required. The job to get.</param>
         public virtual GetRequest Get(string jobName)
         {
             return new GetRequest(service, jobName);
@@ -415,7 +415,7 @@ namespace Google.Apis.Storagetransfer.v1
             }
 
 
-            /// <summary>Required. The job to get.</summary>
+            /// <summary>" Required. The job to get.</summary>
             [Google.Apis.Util.RequestParameterAttribute("jobName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string JobName { get; private set; }
 
@@ -1639,7 +1639,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
 
         /// <summary>Required. The job to update. `transferJob` is expected to specify only four fields: description,
         /// transfer_spec, notification_config, and status. An `UpdateTransferJobRequest` that specifies other fields
-        /// will be rejected with the error INVALID_ARGUMENT.</summary>
+        /// will be rejected with the error INVALID_ARGUMENT. Updating a job satus to DELETED requires
+        /// `storagetransfer.jobs.delete` permissions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferJob")]
         public virtual TransferJob TransferJob { get; set; }
 

@@ -80,10 +80,10 @@ namespace Google.Apis.YouTube.v3
 
         #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://www.googleapis.com/batch/youtube";
+        public override string BatchUri => "https://www.googleapis.com/batch/youtube/v3";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
-        public override string BatchPath => "batch/youtube";
+        public override string BatchPath => "batch/youtube/v3";
         #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the YouTube Data API v3.</summary>
@@ -3933,7 +3933,7 @@ namespace Google.Apis.YouTube.v3
         /// <summary>Retrieve the list of broadcasts associated with the given channel.</summary>
         /// <param name="part">The *part* parameter specifies a comma-separated list of one or more liveBroadcast resource
         /// properties that the API response will include. The part names that you can include in the parameter value are id,
-        /// snippet, contentDetails, and status.</param>
+        /// snippet, contentDetails, status and statistics.</param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> part)
         {
             return new ListRequest(service, part);
@@ -3952,7 +3952,7 @@ namespace Google.Apis.YouTube.v3
 
             /// <summary>The *part* parameter specifies a comma-separated list of one or more liveBroadcast resource
             /// properties that the API response will include. The part names that you can include in the parameter
-            /// value are id, snippet, contentDetails, and status.</summary>
+            /// value are id, snippet, contentDetails, status and statistics.</summary>
             [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Part { get; private set; }
 

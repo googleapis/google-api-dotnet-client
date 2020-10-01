@@ -53,9 +53,9 @@ namespace Google.Apis.Books.v1
         /// <summary>Gets the service base URI.</summary>
         public override string BaseUri =>
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://www.googleapis.com/";
+            BaseUriOverride ?? "https://books.googleapis.com/";
         #else
-            "https://www.googleapis.com/";
+            "https://books.googleapis.com/";
         #endif
 
         /// <summary>Gets the service base path.</summary>
@@ -63,10 +63,10 @@ namespace Google.Apis.Books.v1
 
         #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://www.googleapis.com/batch/books/v1";
+        public override string BatchUri => "https://books.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
-        public override string BatchPath => "batch/books/v1";
+        public override string BatchPath => "batch";
         #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Books API.</summary>
