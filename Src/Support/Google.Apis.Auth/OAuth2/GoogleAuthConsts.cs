@@ -14,6 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
+
 namespace Google.Apis.Auth.OAuth2
 {
     /// <summary>
@@ -47,15 +49,16 @@ namespace Google.Apis.Auth.OAuth2
         /// </remarks>
         public const string OidcTokenUrl = "https://oauth2.googleapis.com/token";
 
+        // Constant strings to avoid duplication below.
+        // IP address instead of name to avoid DNS resolution
+        private const string DefaultMetadataAddress = "169.254.169.254";
+        internal const string DefaultMetadataServerUrl = "http://" + DefaultMetadataAddress;
+        private const string ComputeTokenUrlSuffix = "/computeMetadata/v1/instance/service-accounts/default/token";
+        private const string ComputeOidcTokenUrlSuffix = "/computeMetadata/v1/instance/service-accounts/default/identity";
+
         /// <summary>The Compute Engine authorization token server URL</summary>
         /// <remarks>IP address instead of name to avoid DNS resolution</remarks>
-        public const string ComputeTokenUrl =
-            "http://169.254.169.254/computeMetadata/v1/instance/service-accounts/default/token";
-
-        /// <summary>The Compute Engine authorization token server URL for OIDC. This requires an audience parameter to be added.</summary>
-        /// <remarks>IP address instead of name to avoid DNS resolution</remarks>
-        internal const string ComputeOidcTokenUrl =
-            "http://169.254.169.254/computeMetadata/v1/instance/service-accounts/default/identity";
+        public const string ComputeTokenUrl = DefaultMetadataServerUrl + ComputeTokenUrlSuffix;
 
         /// <summary>The path to the Google revocation endpoint.</summary>
         public const string RevokeTokenUrl = "https://oauth2.googleapis.com/revoke";
@@ -71,5 +74,29 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <summary>Installed application localhost redirect URI.</summary>
         public const string LocalhostRedirectUri = "http://localhost";
+
+        /// <summary>
+        /// The effective Compute Engine authorization token server URL.
+        /// This takes account of the GCE_METADATA_HOST environment variable.
+        /// </summary>
+        internal static string EffectiveComputeTokenUrl => GetEffectiveMetadataUrl(ComputeTokenUrlSuffix, ComputeTokenUrl);
+
+        /// <summary>
+        /// The effective Compute Engine authorization token server URL for OIDC. This requires an audience parameter to be added.
+        /// This takes account of the GCE_METADATA_HOST environment variable.
+        /// </summary>
+        internal static string EffectiveComputeOidcTokenUrl => GetEffectiveMetadataUrl(ComputeOidcTokenUrlSuffix, DefaultMetadataServerUrl + ComputeOidcTokenUrlSuffix);
+
+        /// <summary>
+        /// The effective Compute Engine metadata token server URL (with no path).
+        /// This takes account of the GCE_METADATA_HOST environment variable.
+        /// </summary>
+        internal static string EffectiveMetadataServerUrl => GetEffectiveMetadataUrl(null, DefaultMetadataServerUrl);
+
+        private static string GetEffectiveMetadataUrl(string suffix, string defaultValue)
+        {
+            string env = Environment.GetEnvironmentVariable("GCE_METADATA_HOST");
+            return string.IsNullOrEmpty(env) ? defaultValue : "http://" + env + suffix;
+        }
     }
 }

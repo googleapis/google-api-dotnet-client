@@ -37,8 +37,9 @@ namespace Google.Apis.Auth.OAuth2
     /// </summary>
     public class ComputeCredential : ServiceCredential, IOidcTokenProvider, IGoogleCredential
     {
-        /// <summary>The metadata server url.</summary>
-        public const string MetadataServerUrl = "http://169.254.169.254"; // IP address instead of name to avoid DNS resolution
+        /// <summary>The metadata server url. This can be overridden (for the purposes of Compute environment detection and
+        /// auth token retrieval) using the GCE_METADATA_HOST environment variable.</summary>
+        public const string MetadataServerUrl = GoogleAuthConsts.DefaultMetadataServerUrl;
 
         /// <summary>Caches result from first call to <c>IsRunningOnComputeEngine</c> </summary>
         private readonly static Lazy<Task<bool>> isRunningOnComputeEngineCached = new Lazy<Task<bool>>(
@@ -66,7 +67,7 @@ namespace Google.Apis.Auth.OAuth2
         
         /// <summary>
         /// An initializer class for the Compute credential. It uses <see cref="GoogleAuthConsts.ComputeTokenUrl"/>
-        /// as the token server URL.
+        /// as the token server URL (optionally overriding the host using the GCE_METADATA_HOST environment variable).
         /// </summary>
         new public class Initializer : ServiceCredential.Initializer
         {
@@ -78,15 +79,15 @@ namespace Google.Apis.Auth.OAuth2
             /// <summary>Constructs a new initializer using the default compute token URL
             /// and the default OIDC token URL.</summary>
             public Initializer()
-                : this(GoogleAuthConsts.ComputeTokenUrl) {}
+                : this(GoogleAuthConsts.EffectiveComputeTokenUrl) {}
 
             /// <summary>Constructs a new initializer using the given token URL
             /// and the default OIDC token URL.</summary>
             public Initializer(string tokenUrl)
-                : this(tokenUrl, GoogleAuthConsts.ComputeOidcTokenUrl) {}
+                : this(tokenUrl, GoogleAuthConsts.EffectiveComputeOidcTokenUrl) {}
 
             /// <summary>Constructs a new initializer using the given token URL
-            /// and OIDC token URL.</summary>
+            /// and OIDC token URL (optionally overriding the host using the GCE_METADATA_HOST environment variable).</summary>
             public Initializer(string tokenUrl, string oidcTokenUrl)
                 : base(tokenUrl) => OidcTokenUrl = oidcTokenUrl;
 
@@ -176,7 +177,7 @@ namespace Google.Apis.Auth.OAuth2
                     cts.CancelAfter(MetadataServerPingTimeoutInMilliseconds);
                     try
                     {
-                        var httpRequest = new HttpRequestMessage(HttpMethod.Get, MetadataServerUrl);
+                        var httpRequest = new HttpRequestMessage(HttpMethod.Get, GoogleAuthConsts.EffectiveMetadataServerUrl);
                         httpRequest.Headers.Add(MetadataFlavor, GoogleMetadataHeader);
                         var response = await httpClient.SendAsync(httpRequest, cts.Token).ConfigureAwait(false);
                         if (response.Headers.TryGetValues(MetadataFlavor, out var headerValues)
