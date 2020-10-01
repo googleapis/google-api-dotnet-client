@@ -4253,9 +4253,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual System.Nullable<long> CurrentDiskSize { get; set; }
 
         /// <summary>The database engine type and version. The *databaseVersion* field cannot be changed after instance
-        /// creation. MySQL instances: *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*,
-        /// *POSTGRES_10*, *POSTGRES_11* or *POSTGRES_12* (default). SQL Server instances: *SQLSERVER_2017_STANDARD*
-        /// (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.</summary>
+        /// creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances:
+        /// *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11* or *POSTGRES_12* (default). SQL Server instances:
+        /// *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or
+        /// *SQLSERVER_2017_WEB*.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
         public virtual string DatabaseVersion { get; set; }
 
@@ -4491,6 +4492,31 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Deny Maintenance Periods. This specifies a date range during when all CSA rollout will be
+    /// denied.</summary>
+    public class DenyMaintenancePeriod : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>"deny maintenance period" end date. If the year of the end date is empty, the year of the start
+        /// date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is
+        /// in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+        public virtual string EndDate { get; set; }
+
+        /// <summary>"deny maintenance period" start date. If the year of the start date is empty, the year of the end
+        /// date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is
+        /// in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual string StartDate { get; set; }
+
+        /// <summary>Time in UTC when the "deny maintenance period" starts on start_date and ends on end_date. The time
+        /// is in format: HH:mm:SS, i.e., 00:00:00</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("time")]
+        public virtual string Time { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Disk encryption configuration for an instance.</summary>
     public class DiskEncryptionConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4633,8 +4659,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowedStringValues")]
         public virtual System.Collections.Generic.IList<string> AllowedStringValues { get; set; }
 
-        /// <summary>The database version this flag applies to. Can be *MYSQL_5_5*, *MYSQL_5_6*, or *MYSQL_5_7*.
-        /// *MYSQL_5_7* is applicable only to Second Generation instances.</summary>
+        /// <summary>The database version this flag applies to. Can be *MYSQL_8_0*, *MYSQL_5_6*, or
+        /// *MYSQL_5_7*.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appliesTo")]
         public virtual System.Collections.Generic.IList<string> AppliesTo { get; set; }
 
@@ -4967,31 +4993,6 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Maintenance Deny Periods. This specifies a date range during when all CSA rollout will be
-    /// denied.</summary>
-    public class MaintenanceDenyPeriod : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>"maintenance deny period" end date. If the year of the end date is empty, the year of the start
-        /// date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is
-        /// in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
-        public virtual string EndDate { get; set; }
-
-        /// <summary>"maintenance deny period" start date. If the year of the start date is empty, the year of the end
-        /// date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is
-        /// in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
-        public virtual string StartDate { get; set; }
-
-        /// <summary>Time in UTC when the "no maintenance interval" starts on start_date and ends on end_date. The time
-        /// is in format: HH:mm:SS, i.e., 00:00:00</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("time")]
-        public virtual string Time { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5334,6 +5335,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("activationPolicy")]
         public virtual string ActivationPolicy { get; set; }
 
+        /// <summary>Active Directory configuration, for now relevant only for SQL Server</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeDirectoryConfig")]
+        public virtual SqlActiveDirectoryConfig ActiveDirectoryConfig { get; set; }
+
         /// <summary>The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation
         /// instances only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedGaeApplications")]
@@ -5377,6 +5382,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("databaseReplicationEnabled")]
         public virtual System.Nullable<bool> DatabaseReplicationEnabled { get; set; }
 
+        /// <summary>Deny maintenance periods</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("denyMaintenancePeriods")]
+        public virtual System.Collections.Generic.IList<DenyMaintenancePeriod> DenyMaintenancePeriods { get; set; }
+
         /// <summary>The settings for IP Management. This allows to enable or disable the instance IP and manage which
         /// external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation
         /// instances.</summary>
@@ -5392,10 +5401,6 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// applicable to First Generation instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationPreference")]
         public virtual LocationPreference LocationPreference { get; set; }
-
-        /// <summary>Maintenance deny periods</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceDenyPeriods")]
-        public virtual System.Collections.Generic.IList<MaintenanceDenyPeriod> MaintenanceDenyPeriods { get; set; }
 
         /// <summary>The maintenance window for this instance. This specifies when the instance can be restarted for
         /// maintenance purposes.</summary>
@@ -5436,6 +5441,21 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// pair.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
         public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Active Directory configuration, for now relevant only for SQL Server</summary>
+    public class SqlActiveDirectoryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Domain name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>This will be always sql#activeDirectoryConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

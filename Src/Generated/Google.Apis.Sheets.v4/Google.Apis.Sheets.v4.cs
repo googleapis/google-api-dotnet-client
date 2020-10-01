@@ -2016,9 +2016,9 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Adds a data source. After the data source is added successfully, an associated DataSource sheet is
+    /// <summary>Adds a data source. After the data source is added successfully, an associated DATA_SOURCE sheet is
     /// created and an execution is triggered to refresh the sheet to read data from the data source. The request
-    /// requires an additional bigquery.readonly OAuth scope.</summary>
+    /// requires an additional `bigquery.readonly` OAuth scope.</summary>
     public class AddDataSourceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The data source to add.</summary>
@@ -2564,7 +2564,7 @@ namespace Google.Apis.Sheets.v4.Data
     public class BasicFilter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The criteria for showing/hiding values per column. The map's key is the column index, and the value
-        /// is the criteria for that column.</summary>
+        /// is the criteria for that column. This field is deprecated in favor of filter_specs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("criteria")]
         public virtual System.Collections.Generic.IDictionary<string, FilterCriteria> Criteria { get; set; }
 
@@ -2882,7 +2882,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The specification of a BigQuery data source.</summary>
+    /// <summary>The specification of a BigQuery data source that's connected to a sheet.</summary>
     public class BigQueryDataSourceSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ID of a BigQuery enabled GCP project with a billing account attached. For any queries executed
@@ -2913,7 +2913,8 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Specifies a BigQuery table definition. Only native tables is allowed.</summary>
+    /// <summary>Specifies a BigQuery table definition. Only [native tables](https://cloud.google.com/bigquery/docs
+    /// /tables-intro) is allowed.</summary>
     public class BigQueryTableSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The BigQuery dataset id.</summary>
@@ -3153,8 +3154,7 @@ namespace Google.Apis.Sheets.v4.Data
     public class CellData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Information about a data source formula on the cell. The field is set if
-        /// user_entered_value is a formula referencing some [SheetType.DATA_SOURCE] sheet, e.g
-        /// `=SUM(DataSheet!Column)`.</summary>
+        /// user_entered_value is a formula referencing some DATA_SOURCE sheet, e.g `=SUM(DataSheet!Column)`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceFormula")]
         public virtual DataSourceFormula DataSourceFormula { get; set; }
 
@@ -3744,7 +3744,12 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The data execution status.</summary>
+    /// <summary>The data execution status. A data execution is created to sync a data source object with the latest
+    /// data from a DataSource. It is usually scheduled to run at background, you can check its state to tell if an
+    /// execution completes There are several scenarios where a data execution is triggered to run: * Adding a data
+    /// source creates an associated data source sheet as well as a data execution to sync the data from the data source
+    /// to the sheet. * Updating a data source creates a data execution to refresh the associated data source sheet
+    /// similarly. * You can send refresh request to explicitly refresh one or multiple data source objects.</summary>
     public class DataExecutionStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The error code.</summary>
@@ -3815,17 +3820,17 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("calculatedColumns")]
         public virtual System.Collections.Generic.IList<DataSourceColumn> CalculatedColumns { get; set; }
 
-        /// <summary>The spreadsheet-scoped unique ID that identifies the data source.</summary>
+        /// <summary>The spreadsheet-scoped unique ID that identifies the data source. Example: 1080547365.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
         public virtual string DataSourceId { get; set; }
 
         /// <summary>The ID of the Sheet connected with the data source. The field cannot be changed once set. When
-        /// creating a data source, an associated SheetType.DATA_SOURCE sheet is also created, if the field is not
-        /// specified, the ID of the created sheet will be randomly generated.</summary>
+        /// creating a data source, an associated DATA_SOURCE sheet is also created, if the field is not specified, the
+        /// ID of the created sheet will be randomly generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
         public virtual System.Nullable<int> SheetId { get; set; }
 
-        /// <summary>The DataSourceSpec.</summary>
+        /// <summary>The DataSourceSpec for the data source connected with this spreadsheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
         public virtual DataSourceSpec Spec { get; set; }
 
@@ -3848,7 +3853,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A data source column.</summary>
+    /// <summary>A column in a data source.</summary>
     public class DataSourceColumn : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The formula of the calculated column.</summary>
@@ -3863,7 +3868,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An unique identifier that references to a data source column.</summary>
+    /// <summary>An unique identifier that references a data source column.</summary>
     public class DataSourceColumnReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The display name of the column. It should be unique within a data source.</summary>
@@ -3892,7 +3897,7 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>Reference to a data source object.</summary>
     public class DataSourceObjectReference : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>References to a DataSourceChart.</summary>
+        /// <summary>References to a data source chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chartId")]
         public virtual System.Nullable<int> ChartId { get; set; }
 
@@ -3908,7 +3913,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceTableAnchorCell")]
         public virtual GridCoordinate DataSourceTableAnchorCell { get; set; }
 
-        /// <summary>References to a SheetType.DATA_SOURCE sheet.</summary>
+        /// <summary>References to a DATA_SOURCE sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
         public virtual string SheetId { get; set; }
 
@@ -3927,12 +3932,13 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A parameter in a data source's query. The parameter allows user to pass in values from the spreadsheet
-    /// into a query.</summary>
+    /// <summary>A parameter in a data source's query. The parameter allows the user to pass in values from the
+    /// spreadsheet into a query.</summary>
     public class DataSourceParameter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Named parameter. Must be a legitimate identifier for the DataSource that supports it. For example,
-        /// BigQuery identifier</summary>
+        /// [BigQuery identifier](https://cloud.google.com/bigquery/docs/reference/standard-
+        /// sql/lexical#identifiers).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3948,7 +3954,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Schedule refreshes in a time interval everyday.</summary>
+    /// <summary>A schedule for data to refresh every day in a given time interval.</summary>
     public class DataSourceRefreshDailySchedule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The start time of a time interval in which a data source refresh is scheduled. Only `hours` part is
@@ -3960,7 +3966,8 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Schedule refreshes in a time interval on specified days in a month and repeats monthly.</summary>
+    /// <summary>A monthly schedule for data to refresh on specific days in the month in a given time
+    /// interval.</summary>
     public class DataSourceRefreshMonthlySchedule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Days of the month to refresh. Only 1-28 are supported, mapping to the 1st to the 28th day. At lesat
@@ -3977,10 +3984,10 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The data source refresh schedule. All data sources in the spreadsheet are scheduled to refresh in a
-    /// future time interval. The time interval size defaults to the one defined in the Sheets editor. For example, if a
-    /// daily schedule at start time of 8am is scheduled, and the time interval is 4 hours, the scheduled refresh will
-    /// happen between 8am and 12pm every day.</summary>
+    /// <summary>Schedule for refreshing the data source. Data sources in the spreadsheet are refreshed within a time
+    /// interval. You can specify the start time by clicking the Scheduled Refresh button in the Sheets editor, but the
+    /// interval is fixed at 4 hours. For example, if you specify a start time of 8am , the refresh will take place
+    /// between 8am and 12pm every day.</summary>
     public class DataSourceRefreshSchedule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Daily refresh schedule.</summary>
@@ -3999,7 +4006,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextRun")]
         public virtual Interval NextRun { get; set; }
 
-        /// <summary>The scope of the refresh.</summary>
+        /// <summary>The scope of the refresh. Must be ALL_DATA_SOURCES.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refreshScope")]
         public virtual string RefreshScope { get; set; }
 
@@ -4011,7 +4018,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Schedule refreshes in a time interval on specified days in a week and repeats weekly.</summary>
+    /// <summary>A weekly schedule for data to refresh on specific days in a given time interval.</summary>
     public class DataSourceRefreshWeeklySchedule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Days of the week to refresh. At least one day must be specified.</summary>
@@ -4027,7 +4034,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A range along a single dimension on a DataSource sheet.</summary>
+    /// <summary>A range along a single dimension on a DATA_SOURCE sheet.</summary>
     public class DataSourceSheetDimensionRange : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The columns on the data source sheet.</summary>
@@ -4042,7 +4049,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Additional properties of a SheetType.DATA_SOURCE sheet.</summary>
+    /// <summary>Additional properties of a DATA_SOURCE sheet.</summary>
     public class DataSourceSheetProperties : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The columns displayed on the sheet, corresponding to the values in RowData.</summary>
@@ -4053,7 +4060,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataExecutionStatus")]
         public virtual DataExecutionStatus DataExecutionStatus { get; set; }
 
-        /// <summary>ID of the DataSource the sheet connected with.</summary>
+        /// <summary>ID of the DataSource the sheet is connected to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
         public virtual string DataSourceId { get; set; }
 
@@ -4061,14 +4068,15 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The specification of a data source.</summary>
+    /// <summary>This specifies the details of the data source. For example, for BigQuery, this specifies information
+    /// about the BigQuery source.</summary>
     public class DataSourceSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A BigQueryDataSourceSpec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigQuery")]
         public virtual BigQueryDataSourceSpec BigQuery { get; set; }
 
-        /// <summary>The parameters of the data source.</summary>
+        /// <summary>The parameters of the data source, used when querying the data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IList<DataSourceParameter> Parameters { get; set; }
 
@@ -4076,8 +4084,8 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A data source table, allowing to import a static table of data from the DataSource into Sheets. This is
-    /// also known as "Extract" in the Sheets editor.</summary>
+    /// <summary>A data source table, which allows the user to import a static table of data from the DataSource into
+    /// Sheets. This is also known as "Extract" in the Sheets editor.</summary>
     public class DataSourceTable : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The type to select columns for the data source table. Defaults to SELECTED.</summary>
@@ -4359,7 +4367,8 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>Deletes the requested sheet.</summary>
     public class DeleteSheetRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the sheet to delete.</summary>
+        /// <summary>The ID of the sheet to delete. If the sheet is of SheetType.DATA_SOURCE type, the associated
+        /// DataSource is also deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
         public virtual System.Nullable<int> SheetId { get; set; }
 
@@ -4598,7 +4607,9 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("newSheetName")]
         public virtual string NewSheetName { get; set; }
 
-        /// <summary>The sheet to duplicate.</summary>
+        /// <summary>The sheet to duplicate. If the source sheet is of DATA_SOURCE type, its backing DataSource is also
+        /// duplicated and associated with the new copy of the sheet. No data execution is triggered, the grid data of
+        /// this sheet is also copied over but only available after the batch request completes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceSheetId")]
         public virtual System.Nullable<int> SourceSheetId { get; set; }
 
@@ -4782,7 +4793,7 @@ namespace Google.Apis.Sheets.v4.Data
     public class FilterView : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The criteria for showing/hiding values per column. The map's key is the column index, and the value
-        /// is the criteria for that column.</summary>
+        /// is the criteria for that column. This field is deprecated in favor of filter_specs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("criteria")]
         public virtual System.Collections.Generic.IDictionary<string, FilterCriteria> Criteria { get; set; }
 
@@ -5741,7 +5752,8 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>An optional mapping of filters per source column offset. The filters are applied before aggregating
         /// data into the pivot table. The map's key is the column offset of the source range that you want to filter,
         /// and the value is the criteria for that column. For example, if the source was `C10:E15`, a key of `0` will
-        /// have the filter for column `C`, whereas the key `1` is for column `D`.</summary>
+        /// have the filter for column `C`, whereas the key `1` is for column `D`. This field is deprecated in favor of
+        /// filter_specs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("criteria")]
         public virtual System.Collections.Generic.IDictionary<string, PivotFilterCriteria> Criteria { get; set; }
 
@@ -5892,9 +5904,9 @@ namespace Google.Apis.Sheets.v4.Data
     }    
 
     /// <summary>Refreshes one or multiple data source objects in the spreadsheet by the specified references. The
-    /// request requires an additional bigquery.readonly OAuth scope. If there're multiple refresh requests referencing
-    /// the same data source objects in one batch, only the last refresh request is processed, and all those requests
-    /// will have the same response accordingly.</summary>
+    /// request requires an additional `bigquery.readonly` OAuth scope. If there are multiple refresh requests
+    /// referencing the same data source objects in one batch, only the last refresh request is processed, and all those
+    /// requests will have the same response accordingly.</summary>
     public class RefreshDataSourceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Reference to a DataSource. If specified, refreshes all associated data source objects for the data
@@ -6336,8 +6348,9 @@ namespace Google.Apis.Sheets.v4.Data
     /// baseline value can be highlighted, like changes over time.</summary>
     public class ScorecardChartSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The aggregation type for key and baseline chart data in scorecard chart. This field is
-        /// optional.</summary>
+        /// <summary>The aggregation type for key and baseline chart data in scorecard chart. This field is not
+        /// supported for data source charts. Use the ChartData.aggregateType field of the key_value_data or
+        /// baseline_value_data instead for data source charts. This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregateType")]
         public virtual string AggregateType { get; set; }
 
@@ -6455,7 +6468,8 @@ namespace Google.Apis.Sheets.v4.Data
         /// the number of ranges requested on this sheet. For example, if this is representing `Sheet1`, and the
         /// spreadsheet was requested with ranges `Sheet1!A1:C10` and `Sheet1!D15:E20`, then the first GridData will
         /// have a startRow/startColumn of `0`, while the second one will have `startRow 14` (zero-based row 15), and
-        /// `startColumn 3` (zero-based column D).</summary>
+        /// `startColumn 3` (zero-based column D). For a DATA_SOURCE sheet, you can not request a specific range, the
+        /// GridData contains all the values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual System.Collections.Generic.IList<GridData> Data { get; set; }
 
@@ -6495,14 +6509,14 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>Properties of a sheet.</summary>
     public class SheetProperties : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. If present, the field contains SheetType.DATA_SOURCE sheet specific
-        /// properties.</summary>
+        /// <summary>Output only. If present, the field contains DATA_SOURCE sheet specific properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceSheetProperties")]
         public virtual DataSourceSheetProperties DataSourceSheetProperties { get; set; }
 
         /// <summary>Additional properties of the sheet if this sheet is a grid. (If the sheet is an object sheet,
         /// containing a chart or image, then this field will be absent.) When writing it is an error to set any grid
-        /// properties on non-grid sheets.</summary>
+        /// properties on non-grid sheets. If this sheet is a DATA_SOURCE sheet, this field is output only but contains
+        /// the properties that reflect how a data source sheet is rendered in the UI, e.g. row_count.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gridProperties")]
         public virtual GridProperties GridProperties { get; set; }
 
@@ -7241,15 +7255,15 @@ namespace Google.Apis.Sheets.v4.Data
     }    
 
     /// <summary>Updates a data source. After the data source is updated successfully, an execution is triggered to
-    /// refresh the associated DataSource sheet to read data from the updated data source. The request requires an
-    /// additional bigquery.readonly OAuth scope.</summary>
+    /// refresh the associated DATA_SOURCE sheet to read data from the updated data source. The request requires an
+    /// additional `bigquery.readonly` OAuth scope.</summary>
     public class UpdateDataSourceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The data source to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
         public virtual DataSource DataSource { get; set; }
 
-        /// <summary>The fields that should be updated. At least one field must be specified. The root 'dataSource' is
+        /// <summary>The fields that should be updated. At least one field must be specified. The root `dataSource` is
         /// implied and should not be specified. A single `"*"` can be used as short-hand for listing every
         /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]

@@ -1598,7 +1598,9 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
 
 
-            /// <summary>Check a potential member for membership in a group.</summary>
+            /// <summary>Check a potential member for membership in a group. A member has membership to a group as long
+            /// as there is a single viewable transitive membership between the group and the member. The actor must
+            /// have view permissions to at least one transitive membership between the member and group.</summary>
             /// <param name="parent">[Resource name](https://cloud.google.com/apis/design/resource_names) of the group to check the
             /// transitive membership in. Format: `groups/{group_id}`, where `group_id` is the unique id assigned to the Group to
             /// which the Membership belongs to.</param>
@@ -1607,7 +1609,9 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 return new CheckTransitiveMembershipRequest(service, parent);
             }
 
-            /// <summary>Check a potential member for membership in a group.</summary>
+            /// <summary>Check a potential member for membership in a group. A member has membership to a group as long
+            /// as there is a single viewable transitive membership between the group and the member. The actor must
+            /// have view permissions to at least one transitive membership between the member and group.</summary>
             public class CheckTransitiveMembershipRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.CheckTransitiveMembershipResponse>
             {
                 /// <summary>Constructs a new CheckTransitiveMembership request.</summary>
@@ -1625,8 +1629,9 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>Required. A CEL expression that MUST include member specification. This is a `required`
-                /// field. Example query: member_key_id == ‘member_key_id_value’ [ && member_key_namespace ==
-                /// ‘member_key_namespace_value’ ]</summary>
+                /// field. Certain groups are uniquely identified by both a 'member_key_id' and a
+                /// 'member_key_namespace', which requires an additional query input: 'member_key_namespace'. Example
+                /// query: `member_key_id == 'member_key_id_value'`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Query { get; set; }
 
@@ -1828,7 +1833,9 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
             }
 
-            /// <summary>Get a membership graph of a member or member/group.</summary>
+            /// <summary>Get a membership graph of just a member or both a member and a group. Given a member, the
+            /// response will contain all membership paths from the member. Given both a group and a member, the
+            /// response will contain all membership paths between the group and the member.</summary>
             /// <param name="parent">Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the group to
             /// search transitive memberships in. Format: `groups/{group_id}`, where `group_id` is the unique ID assigned to the
             /// Group to which the Membership belongs to. group_id can be a wildcard collection id "-". When a group_id is
@@ -1840,7 +1847,9 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 return new GetMembershipGraphRequest(service, parent);
             }
 
-            /// <summary>Get a membership graph of a member or member/group.</summary>
+            /// <summary>Get a membership graph of just a member or both a member and a group. Given a member, the
+            /// response will contain all membership paths from the member. Given both a group and a member, the
+            /// response will contain all membership paths between the group and the member.</summary>
             public class GetMembershipGraphRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
             {
                 /// <summary>Constructs a new GetMembershipGraph request.</summary>
@@ -1860,9 +1869,10 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Required. A CEL expression that MUST include member specification AND label(s). Example
-                /// query: member_key_id == ‘member_key_id_value’ [ && member_key_namespace ==
-                /// ‘member_key_namespace_value’ ] && in labels</summary>
+                /// <summary>Required. A CEL expression that MUST include member specification AND label(s). Certain
+                /// groups are uniquely identified by both a 'member_key_id' and a 'member_key_namespace', which
+                /// requires an additional query input: 'member_key_namespace'. Example query: `member_key_id ==
+                /// 'member_key_id_value' && in labels`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Query { get; set; }
 
@@ -2148,7 +2158,8 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
             }
 
-            /// <summary>Search transitive groups of a member.</summary>
+            /// <summary>Search transitive groups of a member. A transitive group is any group that has a direct or
+            /// indirect membership to the member. Actor must have view permissions all transitive groups.</summary>
             /// <param name="parent">[Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search
             /// transitive memberships in. Format: `groups/{group_id}`, where `group_id` is always '-' as this API will search
             /// across all groups for a given member.</param>
@@ -2157,7 +2168,8 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 return new SearchTransitiveGroupsRequest(service, parent);
             }
 
-            /// <summary>Search transitive groups of a member.</summary>
+            /// <summary>Search transitive groups of a member. A transitive group is any group that has a direct or
+            /// indirect membership to the member. Actor must have view permissions all transitive groups.</summary>
             public class SearchTransitiveGroupsRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.SearchTransitiveGroupsResponse>
             {
                 /// <summary>Constructs a new SearchTransitiveGroups request.</summary>
@@ -2184,8 +2196,9 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
                 /// <summary>Required. A CEL expression that MUST include member specification AND label(s). This is a
                 /// `required` field. Users can search on label attributes of groups. CONTAINS match ('in') is supported
-                /// on labels. Example query: member_key_id == ‘member_key_id_value’ [ && member_key_namespace ==
-                /// ‘member_key_namespace_value’ ] && in labels</summary>
+                /// on labels. Certain groups are uniquely identified by both a 'member_key_id' and a
+                /// 'member_key_namespace', which requires an additional query input: 'member_key_namespace'. Example
+                /// query: `member_key_id == 'member_key_id_value' && in labels`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Query { get; set; }
 
@@ -2240,7 +2253,8 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
             }
 
-            /// <summary>Search transitive memberships of a group.</summary>
+            /// <summary>Search transitive memberships of a group. A transitive membership is any direct or indirect
+            /// membership of a group. Actor must have view permissions to all transitive memberships.</summary>
             /// <param name="parent">[Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search
             /// transitive memberships in. Format: `groups/{group_id}`, where `group_id` is the unique ID assigned to the
             /// Group.</param>
@@ -2249,7 +2263,8 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 return new SearchTransitiveMembershipsRequest(service, parent);
             }
 
-            /// <summary>Search transitive memberships of a group.</summary>
+            /// <summary>Search transitive memberships of a group. A transitive membership is any direct or indirect
+            /// membership of a group. Actor must have view permissions to all transitive memberships.</summary>
             public class SearchTransitiveMembershipsRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.SearchTransitiveMembershipsResponse>
             {
                 /// <summary>Constructs a new SearchTransitiveMemberships request.</summary>
@@ -3989,7 +4004,9 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     /// <summary>Membership graph's path information as an adjacency list.</summary>
     public class MembershipAdjacencyList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Each edge contains information about the member that belongs to this group.</summary>
+        /// <summary>Each edge contains information about the member that belongs to this group. Note: Fields returned
+        /// here will help identify the specific Membership resource (e.g name, preferred_member_key and role), but may
+        /// not be a comprehensive list of all fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("edges")]
         public virtual System.Collections.Generic.IList<Membership> Edges { get; set; }
 

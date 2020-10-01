@@ -5920,7 +5920,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     }    
 
     /// <summary>Common config settings for resources of Compute Engine cluster instances, applicable to all instances
-    /// in the cluster. NEXT ID: 14</summary>
+    /// in the cluster.</summary>
     public class GceClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. If true, all instances in the cluster will only have internal IP addresses. By default,
@@ -5944,6 +5944,10 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// projects/[project_id]/regions/global/default default</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }
+
+        /// <summary>Optional. Node Group Affinity for sole-tenant clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeGroupAffinity")]
+        public virtual NodeGroupAffinity NodeGroupAffinity { get; set; }
 
         /// <summary>Optional. The type of IPv6 access for a cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateIpv6GoogleAccess")]
@@ -6725,6 +6729,18 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// 'projects/{project}/locations/{location}/clusters/{cluster_id}'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetGkeCluster")]
         public virtual string TargetGkeCluster { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Node Group Affinity for clusters using sole-tenant node groups.</summary>
+    public class NodeGroupAffinity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The name of a single node group
+        /// (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) a cluster will be created on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeGroupUri")]
+        public virtual string NodeGroupUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

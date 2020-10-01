@@ -7297,6 +7297,17 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response message for [Documents.BatchUpdateSmartMessagingEntries]</summary>
+    public class GoogleCloudDialogflowV2beta1BatchUpdateSmartMessagingEntriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of updated smart message entries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smartMessagingEntries")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1SmartMessagingEntry> SmartMessagingEntries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Dialogflow contexts are similar to natural language context. If a person says to you "they are orange",
     /// you need context in order to understand what "they" is referring to. Similarly, for Dialogflow to handle an end-
     /// user expression like that, it needs to be provided with context in order to correctly match an intent. Using
@@ -8753,6 +8764,49 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// be overridden or supplemented.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Smart Messaging Entry resource.</summary>
+    public class GoogleCloudDialogflowV2beta1SmartMessagingEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Metadata of the message entry</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageInfo")]
+        public virtual GoogleCloudDialogflowV2beta1SmartMessagingEntryInfo MessageInfo { get; set; }
+
+        /// <summary>The unique identifier of this message entry. Required for [Documents.GetSmartMessagingEntry],
+        /// [Documents.CreateSmartMessagingEntry], [Documents.UpdateSmartMessagingEntry], and
+        /// [Documents.DeleteSmartMessagingEntry]. Format:
+        /// `projects//knowledgeBases//documents//smartMessagingEntries/`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The raw text of the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawText")]
+        public virtual string RawText { get; set; }
+
+        /// <summary>Required. Smart Messaging Entry's enabled/disabled state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Smart messaging entry info.</summary>
+    public class GoogleCloudDialogflowV2beta1SmartMessagingEntryInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Method of how the smart messaging entry was created. When the smart messaging entry
+        /// was generated from GenerateDocument, the value is AUTOMATIC; when the entry was manually added through
+        /// CreateSmartMessagingEntry, the value is MANUAL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationMethod")]
+        public virtual string CreationMethod { get; set; }
+
+        /// <summary>The number of times an entry's message text has been uttered</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("occurrenceCount")]
+        public virtual System.Nullable<int> OccurrenceCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

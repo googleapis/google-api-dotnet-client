@@ -306,7 +306,7 @@
    }
   }
  }, 
- "revision": "20200915", 
+ "revision": "20200928", 
  "rootUrl": "https://doubleclickbidmanager.googleapis.com/", 
  "schemas": {
   "DownloadLineItemsRequest": {

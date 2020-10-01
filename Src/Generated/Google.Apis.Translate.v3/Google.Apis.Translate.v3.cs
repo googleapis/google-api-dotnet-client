@@ -1664,8 +1664,8 @@ namespace Google.Apis.Translate.v3.Data
     /// <summary>The response message for language detection.</summary>
     public class DetectLanguageResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of detected languages sorted by detection confidence in descending order. The most probable
-        /// language first.</summary>
+        /// <summary>The most probable language detected by the Translation API. For each request, the Translation API
+        /// will always return only one result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languages")]
         public virtual System.Collections.Generic.IList<DetectedLanguage> Languages { get; set; }
 
