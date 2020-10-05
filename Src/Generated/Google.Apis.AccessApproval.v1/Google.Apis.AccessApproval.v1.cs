@@ -472,8 +472,8 @@ namespace Google.Apis.AccessApproval.v1
 
             /// <summary>Lists approval requests associated with a project, folder, or organization. Approval requests
             /// can be filtered by state (pending, active, dismissed). The order is reverse chronological.</summary>
-            /// <param name="parent">The parent resource. This may be "projects/{project_id}", "folders/{folder_id}", or
-            /// "organizations/{organization_id}".</param>
+            /// <param name="parent">The parent resource. This may be "projects/{project}", "folders/{folder}", or
+            /// "organizations/{organization}".</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -491,16 +491,16 @@ namespace Google.Apis.AccessApproval.v1
                 }
 
 
-                /// <summary>The parent resource. This may be "projects/{project_id}", "folders/{folder_id}", or
-                /// "organizations/{organization_id}".</summary>
+                /// <summary>The parent resource. This may be "projects/{project}", "folders/{folder}", or
+                /// "organizations/{organization}".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
                 /// <summary>A filter on the type of approval requests to retrieve. Must be one of the following values:
-                /// 1. [not set]: Requests that are pending or have active approvals. 2. ALL: All requests. 3. PENDING:
-                /// Only pending requests. 4. ACTIVE: Only active (i.e. currently approved) requests. 5. DISMISSED: Only
-                /// dismissed (including expired) requests. 6. HISTORY: Active and dismissed (including expired)
-                /// requests. </summary>
+                /// * [not set]: Requests that are pending or have active approvals. * ALL: All requests. * PENDING:
+                /// Only pending requests. * ACTIVE: Only active (i.e. currently approved) requests. * DISMISSED: Only
+                /// dismissed (including expired) requests. * HISTORY: Active and dismissed (including expired)
+                /// requests.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -671,9 +671,9 @@ namespace Google.Apis.AccessApproval.v1
         /// <summary>Updates the settings associated with a project, folder, or organization. Settings to update are
         /// determined by the value of field_mask.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The resource name of the settings. Format is one of: 1.
-        /// "projects/{project_id}/accessApprovalSettings" 2. "folders/{folder_id}/accessApprovalSettings" 3.
-        /// "organizations/{organization_id}/accessApprovalSettings" </param>
+        /// <param name="name">The resource name of the settings. Format is one of: *
+        /// "projects/{project}/accessApprovalSettings" * "folders/{folder}/accessApprovalSettings" *
+        /// "organizations/{organization}/accessApprovalSettings"</param>
         public virtual UpdateAccessApprovalSettingsRequest UpdateAccessApprovalSettings(Google.Apis.AccessApproval.v1.Data.AccessApprovalSettings body, string name)
         {
             return new UpdateAccessApprovalSettingsRequest(service, body, name);
@@ -692,9 +692,9 @@ namespace Google.Apis.AccessApproval.v1
             }
 
 
-            /// <summary>The resource name of the settings. Format is one of: 1.
-            /// "projects/{project_id}/accessApprovalSettings" 2. "folders/{folder_id}/accessApprovalSettings" 3.
-            /// "organizations/{organization_id}/accessApprovalSettings" </summary>
+            /// <summary>The resource name of the settings. Format is one of: *
+            /// "projects/{project}/accessApprovalSettings" * "folders/{folder}/accessApprovalSettings" *
+            /// "organizations/{organization}/accessApprovalSettings"</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -959,8 +959,8 @@ namespace Google.Apis.AccessApproval.v1
 
             /// <summary>Lists approval requests associated with a project, folder, or organization. Approval requests
             /// can be filtered by state (pending, active, dismissed). The order is reverse chronological.</summary>
-            /// <param name="parent">The parent resource. This may be "projects/{project_id}", "folders/{folder_id}", or
-            /// "organizations/{organization_id}".</param>
+            /// <param name="parent">The parent resource. This may be "projects/{project}", "folders/{folder}", or
+            /// "organizations/{organization}".</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -978,16 +978,16 @@ namespace Google.Apis.AccessApproval.v1
                 }
 
 
-                /// <summary>The parent resource. This may be "projects/{project_id}", "folders/{folder_id}", or
-                /// "organizations/{organization_id}".</summary>
+                /// <summary>The parent resource. This may be "projects/{project}", "folders/{folder}", or
+                /// "organizations/{organization}".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
                 /// <summary>A filter on the type of approval requests to retrieve. Must be one of the following values:
-                /// 1. [not set]: Requests that are pending or have active approvals. 2. ALL: All requests. 3. PENDING:
-                /// Only pending requests. 4. ACTIVE: Only active (i.e. currently approved) requests. 5. DISMISSED: Only
-                /// dismissed (including expired) requests. 6. HISTORY: Active and dismissed (including expired)
-                /// requests. </summary>
+                /// * [not set]: Requests that are pending or have active approvals. * ALL: All requests. * PENDING:
+                /// Only pending requests. * ACTIVE: Only active (i.e. currently approved) requests. * DISMISSED: Only
+                /// dismissed (including expired) requests. * HISTORY: Active and dismissed (including expired)
+                /// requests.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -1158,9 +1158,9 @@ namespace Google.Apis.AccessApproval.v1
         /// <summary>Updates the settings associated with a project, folder, or organization. Settings to update are
         /// determined by the value of field_mask.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The resource name of the settings. Format is one of: 1.
-        /// "projects/{project_id}/accessApprovalSettings" 2. "folders/{folder_id}/accessApprovalSettings" 3.
-        /// "organizations/{organization_id}/accessApprovalSettings" </param>
+        /// <param name="name">The resource name of the settings. Format is one of: *
+        /// "projects/{project}/accessApprovalSettings" * "folders/{folder}/accessApprovalSettings" *
+        /// "organizations/{organization}/accessApprovalSettings"</param>
         public virtual UpdateAccessApprovalSettingsRequest UpdateAccessApprovalSettings(Google.Apis.AccessApproval.v1.Data.AccessApprovalSettings body, string name)
         {
             return new UpdateAccessApprovalSettingsRequest(service, body, name);
@@ -1179,9 +1179,9 @@ namespace Google.Apis.AccessApproval.v1
             }
 
 
-            /// <summary>The resource name of the settings. Format is one of: 1.
-            /// "projects/{project_id}/accessApprovalSettings" 2. "folders/{folder_id}/accessApprovalSettings" 3.
-            /// "organizations/{organization_id}/accessApprovalSettings" </summary>
+            /// <summary>The resource name of the settings. Format is one of: *
+            /// "projects/{project}/accessApprovalSettings" * "folders/{folder}/accessApprovalSettings" *
+            /// "organizations/{organization}/accessApprovalSettings"</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -1446,8 +1446,8 @@ namespace Google.Apis.AccessApproval.v1
 
             /// <summary>Lists approval requests associated with a project, folder, or organization. Approval requests
             /// can be filtered by state (pending, active, dismissed). The order is reverse chronological.</summary>
-            /// <param name="parent">The parent resource. This may be "projects/{project_id}", "folders/{folder_id}", or
-            /// "organizations/{organization_id}".</param>
+            /// <param name="parent">The parent resource. This may be "projects/{project}", "folders/{folder}", or
+            /// "organizations/{organization}".</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -1465,16 +1465,16 @@ namespace Google.Apis.AccessApproval.v1
                 }
 
 
-                /// <summary>The parent resource. This may be "projects/{project_id}", "folders/{folder_id}", or
-                /// "organizations/{organization_id}".</summary>
+                /// <summary>The parent resource. This may be "projects/{project}", "folders/{folder}", or
+                /// "organizations/{organization}".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
                 /// <summary>A filter on the type of approval requests to retrieve. Must be one of the following values:
-                /// 1. [not set]: Requests that are pending or have active approvals. 2. ALL: All requests. 3. PENDING:
-                /// Only pending requests. 4. ACTIVE: Only active (i.e. currently approved) requests. 5. DISMISSED: Only
-                /// dismissed (including expired) requests. 6. HISTORY: Active and dismissed (including expired)
-                /// requests. </summary>
+                /// * [not set]: Requests that are pending or have active approvals. * ALL: All requests. * PENDING:
+                /// Only pending requests. * ACTIVE: Only active (i.e. currently approved) requests. * DISMISSED: Only
+                /// dismissed (including expired) requests. * HISTORY: Active and dismissed (including expired)
+                /// requests.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -1645,9 +1645,9 @@ namespace Google.Apis.AccessApproval.v1
         /// <summary>Updates the settings associated with a project, folder, or organization. Settings to update are
         /// determined by the value of field_mask.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The resource name of the settings. Format is one of: 1.
-        /// "projects/{project_id}/accessApprovalSettings" 2. "folders/{folder_id}/accessApprovalSettings" 3.
-        /// "organizations/{organization_id}/accessApprovalSettings" </param>
+        /// <param name="name">The resource name of the settings. Format is one of: *
+        /// "projects/{project}/accessApprovalSettings" * "folders/{folder}/accessApprovalSettings" *
+        /// "organizations/{organization}/accessApprovalSettings"</param>
         public virtual UpdateAccessApprovalSettingsRequest UpdateAccessApprovalSettings(Google.Apis.AccessApproval.v1.Data.AccessApprovalSettings body, string name)
         {
             return new UpdateAccessApprovalSettingsRequest(service, body, name);
@@ -1666,9 +1666,9 @@ namespace Google.Apis.AccessApproval.v1
             }
 
 
-            /// <summary>The resource name of the settings. Format is one of: 1.
-            /// "projects/{project_id}/accessApprovalSettings" 2. "folders/{folder_id}/accessApprovalSettings" 3.
-            /// "organizations/{organization_id}/accessApprovalSettings" </summary>
+            /// <summary>The resource name of the settings. Format is one of: *
+            /// "projects/{project}/accessApprovalSettings" * "folders/{folder}/accessApprovalSettings" *
+            /// "organizations/{organization}/accessApprovalSettings"</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -1747,9 +1747,9 @@ namespace Google.Apis.AccessApproval.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enrolledServices")]
         public virtual System.Collections.Generic.IList<EnrolledService> EnrolledServices { get; set; }
 
-        /// <summary>The resource name of the settings. Format is one of: 1.
-        /// "projects/{project_id}/accessApprovalSettings" 2. "folders/{folder_id}/accessApprovalSettings" 3.
-        /// "organizations/{organization_id}/accessApprovalSettings" </summary>
+        /// <summary>The resource name of the settings. Format is one of: * "projects/{project}/accessApprovalSettings"
+        /// * "folders/{folder}/accessApprovalSettings" *
+        /// "organizations/{organization}/accessApprovalSettings"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1768,16 +1768,16 @@ namespace Google.Apis.AccessApproval.v1.Data
     {
         /// <summary>The "home office" location of the principal. A two-letter country code (ISO 3166-1 alpha-2), such
         /// as "US", "DE" or "GB" or a region code. In some limited situations Google systems may refer refer to a
-        /// region code instead of a country code. Possible Region Codes: 1. ASI: Asia 2. EUR: Europe 3. OCE: Oceania 4.
-        /// AFR: Africa 5. NAM: North America 6. SAM: South America 7. ANT: Antarctica 8. ANY: Any location </summary>
+        /// region code instead of a country code. Possible Region Codes: * ASI: Asia * EUR: Europe * OCE: Oceania *
+        /// AFR: Africa * NAM: North America * SAM: South America * ANT: Antarctica * ANY: Any location</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principalOfficeCountry")]
         public virtual string PrincipalOfficeCountry { get; set; }
 
         /// <summary>Physical location of the principal at the time of the access. A two-letter country code (ISO 3166-1
         /// alpha-2), such as "US", "DE" or "GB" or a region code. In some limited situations Google systems may refer
-        /// refer to a region code instead of a country code. Possible Region Codes: 1. ASI: Asia 2. EUR: Europe 3. OCE:
-        /// Oceania 4. AFR: Africa 5. NAM: North America 6. SAM: South America 7. ANT: Antarctica 8. ANY: Any location
-        /// </summary>
+        /// refer to a region code instead of a country code. Possible Region Codes: * ASI: Asia * EUR: Europe * OCE:
+        /// Oceania * AFR: Africa * NAM: North America * SAM: South America * ANT: Antarctica * ANY: Any
+        /// location</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principalPhysicalLocationCountry")]
         public virtual string PrincipalPhysicalLocationCountry { get; set; }
 
@@ -1811,7 +1811,7 @@ namespace Google.Apis.AccessApproval.v1.Data
         public virtual DismissDecision Dismiss { get; set; }
 
         /// <summary>The resource name of the request. Format is
-        /// "{projects|folders|organizations}/{id}/approvalRequests/{approval_request_id}".</summary>
+        /// "{projects|folders|organizations}/{id}/approvalRequests/{approval_request}".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1911,11 +1911,17 @@ namespace Google.Apis.AccessApproval.v1.Data
     public class EnrolledService : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The product for which Access Approval will be enrolled. Allowed values are listed below (case-
-        /// sensitive): 1. all 2. ga-only 3. appengine.googleapis.com 4. bigquery.googleapis.com 5.
-        /// bigtable.googleapis.com 6. cloudkms.googleapis.com 7. compute.googleapis.com 8. dataflow.googleapis.com 9.
-        /// iam.googleapis.com 10. pubsub.googleapis.com 11. storage.googleapis.com Note: 'all' will enroll the resource
-        /// in all products supported at both 'GA' and 'Preview' levels. 'ga-only' will only enroll the resource in
-        /// products supported at 'GA' level.</summary>
+        /// sensitive): * all * GA * App Engine * BigQuery * Cloud Bigtable * Cloud Key Management Service * Compute
+        /// Engine * Cloud Dataflow * Cloud Identity and Access Management * Cloud Pub/Sub * Cloud Storage * Persistent
+        /// Disk Note: These values are supported as input for legacy purposes, but will not be returned from the API. *
+        /// all * ga-only * appengine.googleapis.com * bigquery.googleapis.com * bigtable.googleapis.com *
+        /// cloudkms.googleapis.com * compute.googleapis.com * dataflow.googleapis.com * iam.googleapis.com *
+        /// pubsub.googleapis.com * storage.googleapis.com Calls to UpdateAccessApprovalSettings using 'all', 'ga-only',
+        /// or any of the XXX.googleapis.com will be translated to the associated product name ('all', 'GA', 'App
+        /// Engine', etc.). Note: 'all' will enroll the resource in all products supported at both 'GA' and 'Preview'
+        /// levels. 'ga-only'/'GA' will only enroll the resource in products supported at 'GA' level. More information
+        /// about levels of support is available at https://cloud.google.com/access-approval/docs/supported-
+        /// services</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudProduct")]
         public virtual string CloudProduct { get; set; }
 

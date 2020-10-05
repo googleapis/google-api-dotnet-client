@@ -514,7 +514,7 @@ namespace Google.Apis.CloudRedis.v1
 
                 }
 
-                /// <summary>Initiates a failover of the master node to current replica node for a specific STANDARD
+                /// <summary>Initiates a failover of the primary node to current replica node for a specific STANDARD
                 /// tier Cloud Memorystore for Redis instance.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. Redis instance resource name using the form:
@@ -525,7 +525,7 @@ namespace Google.Apis.CloudRedis.v1
                     return new FailoverRequest(service, body, name);
                 }
 
-                /// <summary>Initiates a failover of the master node to current replica node for a specific STANDARD
+                /// <summary>Initiates a failover of the primary node to current replica node for a specific STANDARD
                 /// tier Cloud Memorystore for Redis instance.</summary>
                 public class FailoverRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.Operation>
                 {
@@ -1602,8 +1602,8 @@ namespace Google.Apis.CloudRedis.v1.Data
     {
         /// <summary>A list of Redis instances in the project in the specified location, or across all locations. If the
         /// `location_id` in the parent field of the request is "-", all regions available to the project are queried,
-        /// and the results aggregated. If in such an aggregated query a location is unavailable, a dummy Redis entry is
-        /// included in the response with the `name` field set to a value of the form
+        /// and the results aggregated. If in such an aggregated query a location is unavailable, a placeholder Redis
+        /// entry is included in the response with the `name` field set to a value of the form
         /// `projects/{project_id}/locations/{location_id}/instances/`- and the `status` field set to ERROR and
         /// `status_message` field set to "location not available for ListInstances".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]

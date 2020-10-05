@@ -7367,7 +7367,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; }
 
-        /// <summary>The destination the issue applies to.</summary>
+        /// <summary>The destination the issue applies to. If this field is empty then the issue applies to all
+        /// available destinations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; }
 

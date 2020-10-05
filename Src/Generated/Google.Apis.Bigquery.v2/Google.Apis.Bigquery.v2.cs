@@ -4200,6 +4200,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
+        /// <summary>[Output-only] Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPZS")]
+        public virtual System.Nullable<bool> SatisfiesPZS { get; set; }
+
         /// <summary>[Output-only] A URL that can be used to access the resource again. You can use this URL in Get or
         /// Update requests to the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
@@ -4826,18 +4830,25 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class HivePartitioningOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Optional, Trusted Tester] When set, what mode of hive partitioning to use when reading data. Two
-        /// modes are supported. (1) AUTO: automatically infer partition key name(s) and type(s). (2) STRINGS:
-        /// automatically infer partition key name(s). All types are interpreted as strings. Not all storage formats
-        /// support hive partitioning. Requesting hive partitioning on an unsupported format will lead to an error.
-        /// Currently supported types include: AVRO, CSV, JSON, ORC and Parquet.</summary>
+        /// <summary>[Optional] When set, what mode of hive partitioning to use when reading data. The following modes
+        /// are supported. (1) AUTO: automatically infer partition key name(s) and type(s). (2) STRINGS: automatically
+        /// infer partition key name(s). All types are interpreted as strings. (3) CUSTOM: partition key schema is
+        /// encoded in the source URI prefix. Not all storage formats support hive partitioning. Requesting hive
+        /// partitioning on an unsupported format will lead to an error. Currently supported types include: AVRO, CSV,
+        /// JSON, ORC and Parquet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
 
-        /// <summary>[Optional, Trusted Tester] When hive partition detection is requested, a common prefix for all
-        /// source uris should be supplied. The prefix must end immediately before the partition key encoding begins.
-        /// For example, consider files following this data layout.
-        /// gs://bucket/path_to_table/dt=2019-01-01/country=BR/id=7/file.avro
+        /// <summary>[Optional] If set to true, queries over this table require a partition filter that can be used for
+        /// partition elimination to be specified. Note that this field should only be true when creating a permanent
+        /// external table or querying a temporary external table. Hive-partitioned loads with requirePartitionFilter
+        /// explicitly set to true will fail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requirePartitionFilter")]
+        public virtual System.Nullable<bool> RequirePartitionFilter { get; set; }
+
+        /// <summary>[Optional] When hive partition detection is requested, a common prefix for all source uris should
+        /// be supplied. The prefix must end immediately before the partition key encoding begins. For example, consider
+        /// files following this data layout. gs://bucket/path_to_table/dt=2019-01-01/country=BR/id=7/file.avro
         /// gs://bucket/path_to_table/dt=2018-12-31/country=CA/id=3/file.avro When hive partitioning is requested with
         /// either AUTO or STRINGS detection, the common prefix can be either of gs://bucket/path_to_table or
         /// gs://bucket/path_to_table/ (trailing slash does not matter).</summary>
@@ -4990,9 +5001,9 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("compression")]
         public virtual string Compression { get; set; }
 
-        /// <summary>[Optional] The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON or AVRO
-        /// for tables and ML_TF_SAVED_MODEL or ML_XGBOOST_BOOSTER for models. The default value for tables is CSV.
-        /// Tables with nested or repeated fields cannot be exported as CSV. The default value for models is
+        /// <summary>[Optional] The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON, PARQUET
+        /// or AVRO for tables and ML_TF_SAVED_MODEL or ML_XGBOOST_BOOSTER for models. The default value for tables is
+        /// CSV. Tables with nested or repeated fields cannot be exported as CSV. The default value for models is
         /// ML_TF_SAVED_MODEL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationFormat")]
         public virtual string DestinationFormat { get; set; }
@@ -7252,7 +7263,9 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requirePartitionFilter")]
         public virtual System.Nullable<bool> RequirePartitionFilter { get; set; }
 
-        /// <summary>[Required] The only type supported is DAY, which will generate one partition per day.</summary>
+        /// <summary>[Required] The supported types are DAY, HOUR, MONTH, and YEAR, which will generate one partition
+        /// per day, hour, month, and year, respectively. When the type is not specified, the default behavior is
+        /// DAY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 

@@ -7446,10 +7446,6 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("zoneAffinity")]
         public virtual System.Collections.Generic.IList<string> ZoneAffinity { get; set; }
 
-        /// <summary>If set, objects placed in this bucket are required to be separated by disaster domain.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("zoneSeparation")]
-        public virtual System.Nullable<bool> ZoneSeparation { get; set; }
-
         
 
         /// <summary>The bucket's billing configuration.</summary>
