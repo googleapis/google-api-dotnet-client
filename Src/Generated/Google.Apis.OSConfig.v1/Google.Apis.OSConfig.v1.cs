@@ -9,10 +9,10 @@
 
 // Generated code. DO NOT EDIT!
 
-namespace Google.Apis.SystemsManagement.v1
+namespace Google.Apis.OSConfig.v1
 {
-    /// <summary>The SystemsManagement Service.</summary>
-    public class SystemsManagementService : Google.Apis.Services.BaseClientService
+    /// <summary>The OSConfig Service.</summary>
+    public class OSConfigService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
         public const string Version = "v1";
@@ -21,13 +21,13 @@ namespace Google.Apis.SystemsManagement.v1
         public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public SystemsManagementService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        public OSConfigService() : this(new Google.Apis.Services.BaseClientService.Initializer())
         {
         }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public SystemsManagementService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
+        public OSConfigService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
         }
@@ -57,7 +57,7 @@ namespace Google.Apis.SystemsManagement.v1
         public override string BatchPath => "batch";
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Cloud OS Config API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the OS Config API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -65,7 +65,7 @@ namespace Google.Apis.SystemsManagement.v1
 
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Cloud OS Config API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the OS Config API.</summary>
         public static class ScopeConstants
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -79,11 +79,11 @@ namespace Google.Apis.SystemsManagement.v1
         public virtual ProjectsResource Projects { get; }
     }
 
-    /// <summary>A base abstract class for SystemsManagement requests.</summary>
-    public abstract class SystemsManagementBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
+    /// <summary>A base abstract class for OSConfig requests.</summary>
+    public abstract class OSConfigBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        /// <summary>Constructs a new SystemsManagementBaseServiceRequest instance.</summary>
-        protected SystemsManagementBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
+        /// <summary>Constructs a new OSConfigBaseServiceRequest instance.</summary>
+        protected OSConfigBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -158,7 +158,7 @@ namespace Google.Apis.SystemsManagement.v1
         [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string UploadProtocol { get; set; }
 
-        /// <summary>Initializes SystemsManagement parameter list.</summary>
+        /// <summary>Initializes OSConfig parameter list.</summary>
         protected override void InitParameters()
         {
             base.InitParameters();
@@ -293,16 +293,16 @@ namespace Google.Apis.SystemsManagement.v1
             /// <summary>Create an OS Config patch deployment.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The project to apply this patch deployment to in the form `projects`.</param>
-            public virtual CreateRequest Create(Google.Apis.SystemsManagement.v1.Data.PatchDeployment body, string parent)
+            public virtual CreateRequest Create(Google.Apis.OSConfig.v1.Data.PatchDeployment body, string parent)
             {
                 return new CreateRequest(service, body, parent);
             }
 
             /// <summary>Create an OS Config patch deployment.</summary>
-            public class CreateRequest : SystemsManagementBaseServiceRequest<Google.Apis.SystemsManagement.v1.Data.PatchDeployment>
+            public class CreateRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.PatchDeployment>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.SystemsManagement.v1.Data.PatchDeployment body, string parent) : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.OSConfig.v1.Data.PatchDeployment body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -323,7 +323,7 @@ namespace Google.Apis.SystemsManagement.v1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.SystemsManagement.v1.Data.PatchDeployment Body { get; set; }
+                Google.Apis.OSConfig.v1.Data.PatchDeployment Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -371,7 +371,7 @@ namespace Google.Apis.SystemsManagement.v1
             }
 
             /// <summary>Delete an OS Config patch deployment.</summary>
-            public class DeleteRequest : SystemsManagementBaseServiceRequest<Google.Apis.SystemsManagement.v1.Data.Empty>
+            public class DeleteRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
                 public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -422,7 +422,7 @@ namespace Google.Apis.SystemsManagement.v1
             }
 
             /// <summary>Get an OS Config patch deployment.</summary>
-            public class GetRequest : SystemsManagementBaseServiceRequest<Google.Apis.SystemsManagement.v1.Data.PatchDeployment>
+            public class GetRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.PatchDeployment>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -472,7 +472,7 @@ namespace Google.Apis.SystemsManagement.v1
             }
 
             /// <summary>Get a page of OS Config patch deployments.</summary>
-            public class ListRequest : SystemsManagementBaseServiceRequest<Google.Apis.SystemsManagement.v1.Data.ListPatchDeploymentsResponse>
+            public class ListRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.ListPatchDeploymentsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
@@ -584,7 +584,7 @@ namespace Google.Apis.SystemsManagement.v1
                 }
 
                 /// <summary>Get a list of instance details for a given patch job.</summary>
-                public class ListRequest : SystemsManagementBaseServiceRequest<Google.Apis.SystemsManagement.v1.Data.ListPatchJobInstanceDetailsResponse>
+                public class ListRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.ListPatchJobInstanceDetailsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
@@ -669,17 +669,17 @@ namespace Google.Apis.SystemsManagement.v1
             /// restarted.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Required. Name of the patch in the form `projects/patchJobs`</param>
-            public virtual CancelRequest Cancel(Google.Apis.SystemsManagement.v1.Data.CancelPatchJobRequest body, string name)
+            public virtual CancelRequest Cancel(Google.Apis.OSConfig.v1.Data.CancelPatchJobRequest body, string name)
             {
                 return new CancelRequest(service, body, name);
             }
 
             /// <summary>Cancel a patch job. The patch job must be active. Canceled patch jobs cannot be
             /// restarted.</summary>
-            public class CancelRequest : SystemsManagementBaseServiceRequest<Google.Apis.SystemsManagement.v1.Data.PatchJob>
+            public class CancelRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.PatchJob>
             {
                 /// <summary>Constructs a new Cancel request.</summary>
-                public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.SystemsManagement.v1.Data.CancelPatchJobRequest body, string name) : base(service)
+                public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.OSConfig.v1.Data.CancelPatchJobRequest body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -693,7 +693,7 @@ namespace Google.Apis.SystemsManagement.v1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.SystemsManagement.v1.Data.CancelPatchJobRequest Body { get; set; }
+                Google.Apis.OSConfig.v1.Data.CancelPatchJobRequest Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -727,16 +727,16 @@ namespace Google.Apis.SystemsManagement.v1
             /// <summary>Patch VM instances by creating and running a patch job.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The project in which to run this patch in the form `projects`</param>
-            public virtual ExecuteRequest Execute(Google.Apis.SystemsManagement.v1.Data.ExecutePatchJobRequest body, string parent)
+            public virtual ExecuteRequest Execute(Google.Apis.OSConfig.v1.Data.ExecutePatchJobRequest body, string parent)
             {
                 return new ExecuteRequest(service, body, parent);
             }
 
             /// <summary>Patch VM instances by creating and running a patch job.</summary>
-            public class ExecuteRequest : SystemsManagementBaseServiceRequest<Google.Apis.SystemsManagement.v1.Data.PatchJob>
+            public class ExecuteRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.PatchJob>
             {
                 /// <summary>Constructs a new Execute request.</summary>
-                public ExecuteRequest(Google.Apis.Services.IClientService service, Google.Apis.SystemsManagement.v1.Data.ExecutePatchJobRequest body, string parent) : base(service)
+                public ExecuteRequest(Google.Apis.Services.IClientService service, Google.Apis.OSConfig.v1.Data.ExecutePatchJobRequest body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -750,7 +750,7 @@ namespace Google.Apis.SystemsManagement.v1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.SystemsManagement.v1.Data.ExecutePatchJobRequest Body { get; set; }
+                Google.Apis.OSConfig.v1.Data.ExecutePatchJobRequest Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -791,7 +791,7 @@ namespace Google.Apis.SystemsManagement.v1
 
             /// <summary>Get the patch job. This can be used to track the progress of an ongoing patch job or review the
             /// details of completed jobs.</summary>
-            public class GetRequest : SystemsManagementBaseServiceRequest<Google.Apis.SystemsManagement.v1.Data.PatchJob>
+            public class GetRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.PatchJob>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -840,7 +840,7 @@ namespace Google.Apis.SystemsManagement.v1
             }
 
             /// <summary>Get a list of patch jobs.</summary>
-            public class ListRequest : SystemsManagementBaseServiceRequest<Google.Apis.SystemsManagement.v1.Data.ListPatchJobsResponse>
+            public class ListRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.ListPatchJobsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
@@ -923,7 +923,7 @@ namespace Google.Apis.SystemsManagement.v1
     }
 }
 
-namespace Google.Apis.SystemsManagement.v1.Data
+namespace Google.Apis.OSConfig.v1.Data
 {    
 
     /// <summary>Apt patching is completed by executing `apt-get update && apt-get upgrade`. Additional options can be

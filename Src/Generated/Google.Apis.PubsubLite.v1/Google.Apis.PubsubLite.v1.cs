@@ -1510,7 +1510,8 @@ namespace Google.Apis.PubsubLite.v1.Data
         public virtual object MinimumEventTime { get; set; }
 
         /// <summary>The minimum publish timestamp across these messages. Note that publish timestamps within a
-        /// partition are non-decreasing. The timestamp will be unset if there are no messages.</summary>
+        /// partition are not guaranteed to be non-decreasing. The timestamp will be unset if there are no
+        /// messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumPublishTime")]
         public virtual object MinimumPublishTime { get; set; }
 

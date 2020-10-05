@@ -2671,7 +2671,7 @@
    }
   }
  }, 
- "revision": "20200930", 
+ "revision": "20201001", 
  "rootUrl": "https://androidpublisher.googleapis.com/", 
  "schemas": {
   "Apk": {

@@ -188,7 +188,7 @@
    }
   }
  }, 
- "revision": "20200923", 
+ "revision": "20201001", 
  "rootUrl": "https://pagespeedonline.googleapis.com/", 
  "schemas": {
   "AuditRefs": {

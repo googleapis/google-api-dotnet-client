@@ -2611,12 +2611,15 @@ namespace Google.Apis.YouTube.v3
             /// compatible with the 'id' filter. Valid values: published, heldForReview, likelySpam.</summary>
             public enum ModerationStatusEnum
             {
+                /// <summary>The comment is available for public display.</summary>
                 [Google.Apis.Util.StringValueAttribute("published")]
                 Published,
+                /// <summary>The comment is awaiting review by a moderator.</summary>
                 [Google.Apis.Util.StringValueAttribute("heldForReview")]
                 HeldForReview,
                 [Google.Apis.Util.StringValueAttribute("likelySpam")]
                 LikelySpam,
+                /// <summary>The comment is unfit for display.</summary>
                 [Google.Apis.Util.StringValueAttribute("rejected")]
                 Rejected,
             }
@@ -2630,8 +2633,10 @@ namespace Google.Apis.YouTube.v3
             {
                 [Google.Apis.Util.StringValueAttribute("orderUnspecified")]
                 OrderUnspecified,
+                /// <summary>Order by time.</summary>
                 [Google.Apis.Util.StringValueAttribute("time")]
                 Time,
+                /// <summary>Order by relevance.</summary>
                 [Google.Apis.Util.StringValueAttribute("relevance")]
                 Relevance,
             }
@@ -2656,8 +2661,10 @@ namespace Google.Apis.YouTube.v3
             {
                 [Google.Apis.Util.StringValueAttribute("textFormatUnspecified")]
                 TextFormatUnspecified,
+                /// <summary>Returns the comments in HTML format. This is the default value.</summary>
                 [Google.Apis.Util.StringValueAttribute("html")]
                 Html,
+                /// <summary>Returns the comments in plain text format.</summary>
                 [Google.Apis.Util.StringValueAttribute("plainText")]
                 PlainText,
             }
@@ -3013,8 +3020,10 @@ namespace Google.Apis.YouTube.v3
             {
                 [Google.Apis.Util.StringValueAttribute("textFormatUnspecified")]
                 TextFormatUnspecified,
+                /// <summary>Returns the comments in HTML format. This is the default value.</summary>
                 [Google.Apis.Util.StringValueAttribute("html")]
                 Html,
+                /// <summary>Returns the comments in plain text format.</summary>
                 [Google.Apis.Util.StringValueAttribute("plainText")]
                 PlainText,
             }
@@ -3175,12 +3184,15 @@ namespace Google.Apis.YouTube.v3
             /// MODERATION_STATUS_REJECTED.</summary>
             public enum ModerationStatusEnum
             {
+                /// <summary>The comment is available for public display.</summary>
                 [Google.Apis.Util.StringValueAttribute("published")]
                 Published,
+                /// <summary>The comment is awaiting review by a moderator.</summary>
                 [Google.Apis.Util.StringValueAttribute("heldForReview")]
                 HeldForReview,
                 [Google.Apis.Util.StringValueAttribute("likelySpam")]
                 LikelySpam,
+                /// <summary>The comment is unfit for display.</summary>
                 [Google.Apis.Util.StringValueAttribute("rejected")]
                 Rejected,
             }
@@ -3965,12 +3977,16 @@ namespace Google.Apis.YouTube.v3
             {
                 [Google.Apis.Util.StringValueAttribute("broadcastStatusFilterUnspecified")]
                 BroadcastStatusFilterUnspecified,
+                /// <summary>Return all broadcasts.</summary>
                 [Google.Apis.Util.StringValueAttribute("all")]
                 All,
+                /// <summary>Return current live broadcasts.</summary>
                 [Google.Apis.Util.StringValueAttribute("active")]
                 Active,
+                /// <summary>Return broadcasts that have not yet started.</summary>
                 [Google.Apis.Util.StringValueAttribute("upcoming")]
                 Upcoming,
+                /// <summary>Return broadcasts that have already ended.</summary>
                 [Google.Apis.Util.StringValueAttribute("completed")]
                 Completed,
             }
@@ -3984,10 +4000,13 @@ namespace Google.Apis.YouTube.v3
             {
                 [Google.Apis.Util.StringValueAttribute("broadcastTypeFilterUnspecified")]
                 BroadcastTypeFilterUnspecified,
+                /// <summary>Return all broadcasts.</summary>
                 [Google.Apis.Util.StringValueAttribute("all")]
                 All,
+                /// <summary>Return only scheduled event broadcasts.</summary>
                 [Google.Apis.Util.StringValueAttribute("event")]
                 Event__,
+                /// <summary>Return only persistent broadcasts.</summary>
                 [Google.Apis.Util.StringValueAttribute("persistent")]
                 Persistent,
             }
@@ -4164,10 +4183,15 @@ namespace Google.Apis.YouTube.v3
             {
                 [Google.Apis.Util.StringValueAttribute("statusUnspecified")]
                 StatusUnspecified,
+                /// <summary>Start testing the broadcast. YouTube transmits video to the broadcast's monitor stream.
+                /// Note that you can only transition a broadcast to the testing state if its
+                /// contentDetails.monitorStream.enableMonitorStream property is set to true.",</summary>
                 [Google.Apis.Util.StringValueAttribute("testing")]
                 Testing,
+                /// <summary>Return only persistent broadcasts.</summary>
                 [Google.Apis.Util.StringValueAttribute("live")]
                 Live,
+                /// <summary>The broadcast is over. YouTube stops transmitting video.</summary>
                 [Google.Apis.Util.StringValueAttribute("complete")]
                 Complete,
             }
@@ -5486,8 +5510,10 @@ namespace Google.Apis.YouTube.v3
             {
                 [Google.Apis.Util.StringValueAttribute("listMembersModeUnknown")]
                 ListMembersModeUnknown,
+                /// <summary>Return only members that joined after the first call with this mode was made.</summary>
                 [Google.Apis.Util.StringValueAttribute("updates")]
                 Updates,
+                /// <summary>Return all current members, from newest to oldest.</summary>
                 [Google.Apis.Util.StringValueAttribute("all_current")]
                 AllCurrent,
             }
@@ -6519,8 +6545,10 @@ namespace Google.Apis.YouTube.v3
             {
                 [Google.Apis.Util.StringValueAttribute("channelTypeUnspecified")]
                 ChannelTypeUnspecified,
+                /// <summary>Return all channels.</summary>
                 [Google.Apis.Util.StringValueAttribute("any")]
                 Any,
+                /// <summary>Only retrieve shows.</summary>
                 [Google.Apis.Util.StringValueAttribute("show")]
                 Show,
             }
@@ -6534,10 +6562,13 @@ namespace Google.Apis.YouTube.v3
             {
                 [Google.Apis.Util.StringValueAttribute("none")]
                 None,
+                /// <summary>The live broadcast is upcoming.</summary>
                 [Google.Apis.Util.StringValueAttribute("upcoming")]
                 Upcoming,
+                /// <summary>The live broadcast is active.</summary>
                 [Google.Apis.Util.StringValueAttribute("live")]
                 Live,
+                /// <summary>The live broadcast has been completed.</summary>
                 [Google.Apis.Util.StringValueAttribute("completed")]
                 Completed,
             }
@@ -6587,16 +6618,24 @@ namespace Google.Apis.YouTube.v3
             {
                 [Google.Apis.Util.StringValueAttribute("searchSortUnspecified")]
                 SearchSortUnspecified,
+                /// <summary>Resources are sorted in reverse chronological order based on the date they were
+                /// created.</summary>
                 [Google.Apis.Util.StringValueAttribute("date")]
                 Date,
+                /// <summary>Resources are sorted from highest to lowest rating.</summary>
                 [Google.Apis.Util.StringValueAttribute("rating")]
                 Rating,
+                /// <summary>Resources are sorted from highest to lowest number of views.</summary>
                 [Google.Apis.Util.StringValueAttribute("viewCount")]
                 ViewCount,
+                /// <summary>Resources are sorted based on their relevance to the search query. This is the default
+                /// value for this parameter.</summary>
                 [Google.Apis.Util.StringValueAttribute("relevance")]
                 Relevance,
+                /// <summary>Resources are sorted alphabetically by title.</summary>
                 [Google.Apis.Util.StringValueAttribute("title")]
                 Title,
+                /// <summary>Channels are sorted in descending order of their number of uploaded videos.</summary>
                 [Google.Apis.Util.StringValueAttribute("videoCount")]
                 VideoCount,
             }
@@ -6642,10 +6681,17 @@ namespace Google.Apis.YouTube.v3
             {
                 [Google.Apis.Util.StringValueAttribute("safeSearchSettingUnspecified")]
                 SafeSearchSettingUnspecified,
+                /// <summary>YouTube will not filter the search result set.</summary>
                 [Google.Apis.Util.StringValueAttribute("none")]
                 None,
+                /// <summary>YouTube will filter some content from search results and, at the least, will filter content
+                /// that is restricted in your locale. Based on their content, search results could be removed from
+                /// search results or demoted in search results. This is the default parameter value.</summary>
                 [Google.Apis.Util.StringValueAttribute("moderate")]
                 Moderate,
+                /// <summary>YouTube will try to exclude all restricted content from the search result set. Based on
+                /// their content, search results could be removed from search results or demoted in search
+                /// results.</summary>
                 [Google.Apis.Util.StringValueAttribute("strict")]
                 Strict,
             }
@@ -6667,10 +6713,13 @@ namespace Google.Apis.YouTube.v3
             {
                 [Google.Apis.Util.StringValueAttribute("videoCaptionUnspecified")]
                 VideoCaptionUnspecified,
+                /// <summary>Do not filter results based on caption availability.</summary>
                 [Google.Apis.Util.StringValueAttribute("any")]
                 Any,
+                /// <summary>Only include videos that have captions.</summary>
                 [Google.Apis.Util.StringValueAttribute("closedCaption")]
                 ClosedCaption,
+                /// <summary>Only include videos that do not have captions.</summary>
                 [Google.Apis.Util.StringValueAttribute("none")]
                 None,
             }
@@ -6686,10 +6735,13 @@ namespace Google.Apis.YouTube.v3
             /// <summary>Filter on the definition of the videos.</summary>
             public enum VideoDefinitionEnum
             {
+                /// <summary>Return all videos, regardless of their resolution.</summary>
                 [Google.Apis.Util.StringValueAttribute("any")]
                 Any,
+                /// <summary>Only retrieve videos in standard definition.</summary>
                 [Google.Apis.Util.StringValueAttribute("standard")]
                 Standard,
+                /// <summary>Only retrieve HD videos.</summary>
                 [Google.Apis.Util.StringValueAttribute("high")]
                 High,
             }
@@ -6703,10 +6755,10 @@ namespace Google.Apis.YouTube.v3
             {
                 [Google.Apis.Util.StringValueAttribute("any")]
                 Any,
-                /// <summary>2d</summary>
+                /// <summary>Restrict search results to exclude 3D videos.</summary>
                 [Google.Apis.Util.StringValueAttribute("2d")]
                 Value2d,
-                /// <summary>3d</summary>
+                /// <summary>Restrict search results to only include 3D videos.</summary>
                 [Google.Apis.Util.StringValueAttribute("3d")]
                 Value3d,
             }
@@ -6720,12 +6772,17 @@ namespace Google.Apis.YouTube.v3
             {
                 [Google.Apis.Util.StringValueAttribute("videoDurationUnspecified")]
                 VideoDurationUnspecified,
+                /// <summary>Do not filter video search results based on their duration. This is the default
+                /// value.</summary>
                 [Google.Apis.Util.StringValueAttribute("any")]
                 Any,
+                /// <summary>Only include videos that are less than four minutes long.</summary>
                 [Google.Apis.Util.StringValueAttribute("short")]
                 Short__,
+                /// <summary>Only include videos that are between four and 20 minutes long (inclusive).</summary>
                 [Google.Apis.Util.StringValueAttribute("medium")]
                 Medium,
+                /// <summary>Only include videos longer than 20 minutes.</summary>
                 [Google.Apis.Util.StringValueAttribute("long")]
                 Long__,
             }
@@ -6739,8 +6796,10 @@ namespace Google.Apis.YouTube.v3
             {
                 [Google.Apis.Util.StringValueAttribute("videoEmbeddableUnspecified")]
                 VideoEmbeddableUnspecified,
+                /// <summary>Return all videos, embeddable or not.</summary>
                 [Google.Apis.Util.StringValueAttribute("any")]
                 Any,
+                /// <summary>Only retrieve embeddable videos.</summary>
                 [Google.Apis.Util.StringValueAttribute("true")]
                 True__,
             }
@@ -6752,10 +6811,15 @@ namespace Google.Apis.YouTube.v3
             /// <summary>Filter on the license of the videos.</summary>
             public enum VideoLicenseEnum
             {
+                /// <summary>Return all videos, regardless of which license they have, that match the query
+                /// parameters.</summary>
                 [Google.Apis.Util.StringValueAttribute("any")]
                 Any,
+                /// <summary>Only return videos that have the standard YouTube license.</summary>
                 [Google.Apis.Util.StringValueAttribute("youtube")]
                 Youtube,
+                /// <summary>Only return videos that have a Creative Commons license. Users can reuse videos with this
+                /// license in other videos that they create. Learn more.</summary>
                 [Google.Apis.Util.StringValueAttribute("creativeCommon")]
                 CreativeCommon,
             }
@@ -6769,8 +6833,10 @@ namespace Google.Apis.YouTube.v3
             {
                 [Google.Apis.Util.StringValueAttribute("videoSyndicatedUnspecified")]
                 VideoSyndicatedUnspecified,
+                /// <summary>Return all videos, syndicated or not.</summary>
                 [Google.Apis.Util.StringValueAttribute("any")]
                 Any,
+                /// <summary>Only retrieve syndicated videos.</summary>
                 [Google.Apis.Util.StringValueAttribute("true")]
                 True__,
             }
@@ -6784,10 +6850,13 @@ namespace Google.Apis.YouTube.v3
             {
                 [Google.Apis.Util.StringValueAttribute("videoTypeUnspecified")]
                 VideoTypeUnspecified,
+                /// <summary>Return all videos.</summary>
                 [Google.Apis.Util.StringValueAttribute("any")]
                 Any,
+                /// <summary>Only retrieve movies.</summary>
                 [Google.Apis.Util.StringValueAttribute("movie")]
                 Movie,
+                /// <summary>Only retrieve episodes of shows.</summary>
                 [Google.Apis.Util.StringValueAttribute("episode")]
                 Episode,
             }
@@ -7109,8 +7178,10 @@ namespace Google.Apis.YouTube.v3
             {
                 [Google.Apis.Util.StringValueAttribute("sponsorFilterUnknown")]
                 SponsorFilterUnknown,
+                /// <summary>Return the most recent sponsors, from newest to oldest.</summary>
                 [Google.Apis.Util.StringValueAttribute("newest")]
                 Newest,
+                /// <summary>Return all sponsors, from newest to oldest.</summary>
                 [Google.Apis.Util.StringValueAttribute("all")]
                 All,
             }
@@ -7395,10 +7466,13 @@ namespace Google.Apis.YouTube.v3
             {
                 [Google.Apis.Util.StringValueAttribute("subscriptionOrderUnspecified")]
                 SubscriptionOrderUnspecified,
+                /// <summary>Sort by relevance.</summary>
                 [Google.Apis.Util.StringValueAttribute("relevance")]
                 Relevance,
+                /// <summary>Sort by order of activity.</summary>
                 [Google.Apis.Util.StringValueAttribute("unread")]
                 Unread,
+                /// <summary>Sort alphabetically.</summary>
                 [Google.Apis.Util.StringValueAttribute("alphabetical")]
                 Alphabetical,
             }
@@ -8940,6 +9014,8 @@ namespace Google.Apis.YouTube.v3
             {
                 [Google.Apis.Util.StringValueAttribute("chartUnspecified")]
                 ChartUnspecified,
+                /// <summary>Return the most popular videos for the specified content region and video
+                /// category.</summary>
                 [Google.Apis.Util.StringValueAttribute("mostPopular")]
                 MostPopular,
             }
@@ -8984,8 +9060,10 @@ namespace Google.Apis.YouTube.v3
             {
                 [Google.Apis.Util.StringValueAttribute("none")]
                 None,
+                /// <summary>The entity is liked.</summary>
                 [Google.Apis.Util.StringValueAttribute("like")]
                 Like,
+                /// <summary>The entity is disliked.</summary>
                 [Google.Apis.Util.StringValueAttribute("dislike")]
                 Dislike,
             }
@@ -9171,8 +9249,10 @@ namespace Google.Apis.YouTube.v3
             {
                 [Google.Apis.Util.StringValueAttribute("none")]
                 None,
+                /// <summary>The entity is liked.</summary>
                 [Google.Apis.Util.StringValueAttribute("like")]
                 Like,
+                /// <summary>The entity is disliked.</summary>
                 [Google.Apis.Util.StringValueAttribute("dislike")]
                 Dislike,
             }
