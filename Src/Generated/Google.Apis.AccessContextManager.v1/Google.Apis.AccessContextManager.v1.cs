@@ -31,6 +31,7 @@ namespace Google.Apis.AccessContextManager.v1
         {
             AccessPolicies = new AccessPoliciesResource(this);
             Operations = new OperationsResource(this);
+            Organizations = new OrganizationsResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -81,6 +82,9 @@ namespace Google.Apis.AccessContextManager.v1
 
         /// <summary>Gets the Operations resource.</summary>
         public virtual OperationsResource Operations { get; }
+
+        /// <summary>Gets the Organizations resource.</summary>
+        public virtual OrganizationsResource Organizations { get; }
     }
 
     /// <summary>A base abstract class for AccessContextManager requests.</summary>
@@ -1816,6 +1820,364 @@ namespace Google.Apis.AccessContextManager.v1
 
         }
     }
+
+    /// <summary>The "organizations" collection of methods.</summary>
+    public class OrganizationsResource
+    {
+        private const string Resource = "organizations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OrganizationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            GcpUserAccessBindings = new GcpUserAccessBindingsResource(service);
+
+        }
+
+        /// <summary>Gets the GcpUserAccessBindings resource.</summary>
+        public virtual GcpUserAccessBindingsResource GcpUserAccessBindings { get; }
+
+        /// <summary>The "gcpUserAccessBindings" collection of methods.</summary>
+        public class GcpUserAccessBindingsResource
+        {
+            private const string Resource = "gcpUserAccessBindings";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public GcpUserAccessBindingsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Creates a GcpUserAccessBinding. If the client specifies a name, the server will ignore it.
+            /// Fails if a resource already exists with the same group_key. Completion of this long-running operation
+            /// does not necessarily signify that the new binding is deployed onto all affected users, which may take
+            /// more time.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. Example: "organizations/256"</param>
+            public virtual CreateRequest Create(Google.Apis.AccessContextManager.v1.Data.GcpUserAccessBinding body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a GcpUserAccessBinding. If the client specifies a name, the server will ignore it.
+            /// Fails if a resource already exists with the same group_key. Completion of this long-running operation
+            /// does not necessarily signify that the new binding is deployed onto all affected users, which may take
+            /// more time.</summary>
+            public class CreateRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AccessContextManager.v1.Data.GcpUserAccessBinding body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Example: "organizations/256"</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AccessContextManager.v1.Data.GcpUserAccessBinding Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/gcpUserAccessBindings";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                }
+
+            }
+
+            /// <summary>Deletes a GcpUserAccessBinding. Completion of this long-running operation does not necessarily
+            /// signify that the binding deletion is deployed onto all affected users, which may take more
+            /// time.</summary>
+            /// <param name="name">Required. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes a GcpUserAccessBinding. Completion of this long-running operation does not necessarily
+            /// signify that the binding deletion is deployed onto all affected users, which may take more
+            /// time.</summary>
+            public class DeleteRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/gcpUserAccessBindings/[^/]+$",
+                    });
+                }
+
+            }
+
+            /// <summary>Gets the GcpUserAccessBinding with the given name.</summary>
+            /// <param name="name">Required. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets the GcpUserAccessBinding with the given name.</summary>
+            public class GetRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.GcpUserAccessBinding>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/gcpUserAccessBindings/[^/]+$",
+                    });
+                }
+
+            }
+
+            /// <summary>Lists all GcpUserAccessBindings for a Google Cloud organization.</summary>
+            /// <param name="parent">Required. Example: "organizations/256"</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists all GcpUserAccessBindings for a Google Cloud organization.</summary>
+            public class ListRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.ListGcpUserAccessBindingsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Example: "organizations/256"</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Optional. Maximum number of items to return. The server may return fewer items. If left
+                /// blank, the server may return any number of items.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. If left blank, returns the first page. To enumerate all items, use the
+                /// next_page_token from your previous list operation.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/gcpUserAccessBindings";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+
+            }
+
+            /// <summary>Updates a GcpUserAccessBinding. Completion of this long-running operation does not necessarily
+            /// signify that the changed binding is deployed onto all affected users, which may take more
+            /// time.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Immutable. Assigned by the server during creation. The last segment has an arbitrary length and
+            /// has only URI unreserved characters (as defined by [RFC 3986 Section
+            /// 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during creation.
+            /// Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"</param>
+            public virtual PatchRequest Patch(Google.Apis.AccessContextManager.v1.Data.GcpUserAccessBinding body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates a GcpUserAccessBinding. Completion of this long-running operation does not necessarily
+            /// signify that the changed binding is deployed onto all affected users, which may take more
+            /// time.</summary>
+            public class PatchRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AccessContextManager.v1.Data.GcpUserAccessBinding body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Immutable. Assigned by the server during creation. The last segment has an arbitrary length
+                /// and has only URI unreserved characters (as defined by [RFC 3986 Section
+                /// 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during
+                /// creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Required. Only the fields specified in this mask are updated. Because name and group_key
+                /// cannot be changed, update_mask is required and must always be: update_mask { paths: "access_levels"
+                /// }</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AccessContextManager.v1.Data.GcpUserAccessBinding Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/gcpUserAccessBindings/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+
+            }
+        }
+    }
 }
 
 namespace Google.Apis.AccessContextManager.v1.Data
@@ -2069,6 +2431,35 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Restricts access to Cloud Console and Google Cloud APIs for a set of users using Context-Aware
+    /// Access.</summary>
+    public class GcpUserAccessBinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Access level that a user must have to be granted access. Only one access level is
+        /// supported, not multiple. This repeated field must have exactly one element. Example:
+        /// "accessPolicies/9522/accessLevels/device_trusted"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessLevels")]
+        public virtual System.Collections.Generic.IList<string> AccessLevels { get; set; }
+
+        /// <summary>Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See
+        /// "id" in the [G Suite Directory API's Groups resource] (https://developers.google.com/admin-
+        /// sdk/directory/v1/reference/groups#resource). If a group's email address/alias is changed, this resource will
+        /// continue to point at the changed group. This field does not accept group email addresses or aliases.
+        /// Example: "01d520gv4vjcrht"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupKey")]
+        public virtual string GroupKey { get; set; }
+
+        /// <summary>Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has
+        /// only URI unreserved characters (as defined by [RFC 3986 Section
+        /// 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during
+        /// creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A response to `ListAccessLevelsRequest`.</summary>
     public class ListAccessLevelsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2094,6 +2485,21 @@ namespace Google.Apis.AccessContextManager.v1.Data
 
         /// <summary>The pagination token to retrieve the next page of results. If the value is empty, no further
         /// results remain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response of ListGcpUserAccessBindings.</summary>
+    public class ListGcpUserAccessBindingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>GcpUserAccessBinding</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpUserAccessBindings")]
+        public virtual System.Collections.Generic.IList<GcpUserAccessBinding> GcpUserAccessBindings { get; set; }
+
+        /// <summary>Token to get the next page of items. If blank, there are no more items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 

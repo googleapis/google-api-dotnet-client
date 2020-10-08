@@ -5008,6 +5008,9 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("longValue")]
         public virtual System.Nullable<long> LongValue { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("requestPlatformTargetingValue")]
+        public virtual TargetingValueRequestPlatformTargeting RequestPlatformTargetingValue { get; set; }
+
         /// <summary>The string value to exclude/include.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual string StringValue { get; set; }
@@ -5093,6 +5096,15 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("demogGenderCriteriaIds")]
         public virtual System.Collections.Generic.IList<string> DemogGenderCriteriaIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TargetingValueRequestPlatformTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("requestPlatforms")]
+        public virtual System.Collections.Generic.IList<string> RequestPlatforms { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

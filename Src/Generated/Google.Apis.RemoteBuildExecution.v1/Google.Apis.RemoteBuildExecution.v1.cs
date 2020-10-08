@@ -1674,6 +1674,10 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dockerCacheHit")]
         public virtual System.Nullable<bool> DockerCacheHit { get; set; }
 
+        /// <summary>Docker Image name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dockerImageName")]
+        public virtual string DockerImageName { get; set; }
+
         /// <summary>The input cache miss ratio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputCacheMiss")]
         public virtual System.Nullable<float> InputCacheMiss { get; set; }

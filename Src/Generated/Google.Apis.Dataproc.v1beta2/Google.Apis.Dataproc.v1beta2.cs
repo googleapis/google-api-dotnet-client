@@ -6737,7 +6737,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>Node Group Affinity for clusters using sole-tenant node groups.</summary>
     public class NodeGroupAffinity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The name of a single node group
+        /// <summary>Required. The name of a single node group
         /// (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) a cluster will be created on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeGroupUri")]
         public virtual string NodeGroupUri { get; set; }

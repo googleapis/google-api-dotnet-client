@@ -398,7 +398,7 @@ namespace Google.Apis.Storagetransfer.v1
         }
 
         /// <summary>Gets a transfer job.</summary>
-        /// <param name="jobName">" Required. The job to get.</param>
+        /// <param name="jobName">Required. " The job to get.</param>
         public virtual GetRequest Get(string jobName)
         {
             return new GetRequest(service, jobName);
@@ -415,7 +415,7 @@ namespace Google.Apis.Storagetransfer.v1
             }
 
 
-            /// <summary>" Required. The job to get.</summary>
+            /// <summary>Required. " The job to get.</summary>
             [Google.Apis.Util.RequestParameterAttribute("jobName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string JobName { get; private set; }
 
@@ -624,10 +624,11 @@ namespace Google.Apis.Storagetransfer.v1
         /// inconsistent state. For instance, if you run a job every day, and today's job found 10 new files and
         /// transferred five files before you canceled the job, tomorrow's transfer operation will compute a new delta
         /// with the five files that were not copied today plus any new files discovered tomorrow.</summary>
+        /// <param name="body">The body of the request.</param>
         /// <param name="name">The name of the operation resource to be cancelled.</param>
-        public virtual CancelRequest Cancel(string name)
+        public virtual CancelRequest Cancel(Google.Apis.Storagetransfer.v1.Data.CancelOperationRequest body, string name)
         {
-            return new CancelRequest(service, name);
+            return new CancelRequest(service, body, name);
         }
 
         /// <summary>Cancels a transfer. Use the transferOperations.get method to check if the cancellation succeeded or
@@ -645,9 +646,10 @@ namespace Google.Apis.Storagetransfer.v1
         public class CancelRequest : StoragetransferBaseServiceRequest<Google.Apis.Storagetransfer.v1.Data.Empty>
         {
             /// <summary>Constructs a new Cancel request.</summary>
-            public CancelRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Storagetransfer.v1.Data.CancelOperationRequest body, string name) : base(service)
             {
                 Name = name;
+                Body = body;
                 InitParameters();
             }
 
@@ -656,6 +658,12 @@ namespace Google.Apis.Storagetransfer.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Storagetransfer.v1.Data.CancelOperationRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "cancel";
@@ -964,8 +972,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// name is the S3 object's key name.</summary>
     public class AwsS3Data : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the
-        /// bucket must be granted to the access ID of the AWS access key.</summary>
+        /// <summary>Required. Input only. AWS access key used to sign the API requests to the AWS S3 bucket.
+        /// Permissions on the bucket must be granted to the access ID of the AWS access key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsAccessKey")]
         public virtual AwsAccessKey AwsAccessKey { get; set; }
 
@@ -986,7 +994,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// metadata#blob-names).</summary>
     public class AzureBlobStorageData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Credentials used to authenticate API requests to Azure.</summary>
+        /// <summary>Required. Input only. Credentials used to authenticate API requests to Azure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("azureCredentials")]
         public virtual AzureCredentials AzureCredentials { get; set; }
 
@@ -1011,6 +1019,13 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sasToken")]
         public virtual string SasToken { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request message for Operations.CancelOperation.</summary>
+    public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1621,8 +1636,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("objectConditions")]
         public virtual ObjectConditions ObjectConditions { get; set; }
 
-        /// <summary>If the option delete_objects_unique_in_sink is `true`, object conditions based on objects' "last
-        /// modification time" are ignored and do not exclude objects in a data source or a data sink.</summary>
+        /// <summary>If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as
+        /// 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferOptions")]
         public virtual TransferOptions TransferOptions { get; set; }
 

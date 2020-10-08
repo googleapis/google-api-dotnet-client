@@ -1409,31 +1409,6 @@ namespace Google.Apis.RealTimeBidding.v1
 namespace Google.Apis.RealTimeBidding.v1.Data
 {    
 
-    /// <summary>Detected ad technology provider information.</summary>
-    public class AdTechnologyProviders : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The detected ad technology provider IDs for this creative. See https://storage.googleapis.com/adx-
-        /// rtb-dictionaries/providers.csv for mapping of provider ID to provided name, a privacy policy URL, and a list
-        /// of domains which can be attributed to the provider. If the creative contains provider IDs that are outside
-        /// of those listed in the `BidRequest.adslot.consented_providers_settings.consented_providers` field on the
-        /// [Google bid protocol](https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto)
-        /// and the `BidRequest.user.ext.consented_providers_settings.consented_providers` field on the [OpenRTB
-        /// protocol](https://developers.google.com/authorized-buyers/rtb/downloads/openrtb-adx-proto), and a bid is
-        /// submitted with that creative for an impression that will serve to an EEA user, the bid will be filtered
-        /// before the auction.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("detectedProviderIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> DetectedProviderIds { get; set; }
-
-        /// <summary>Whether the creative contains an unidentified ad technology provider. If true for a given creative,
-        /// any bid submitted with that creative for an impression that will serve to an EEA user will be filtered
-        /// before the auction.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hasUnidentifiedProvider")]
-        public virtual System.Nullable<bool> HasUnidentifiedProvider { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Detected advertiser and brand information.</summary>
     public class AdvertiserAndBrand : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1576,10 +1551,6 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     /// <summary>Top level status and detected attributes of a creative.</summary>
     public class CreativeServingDecision : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The detected ad technology providers.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("adTechnologyProviders")]
-        public virtual AdTechnologyProviders AdTechnologyProviders { get; set; }
-
         /// <summary>The serving status of this creative in China. When approved or disapproved, this status applies to
         /// both deals and open auction in China. When pending review, this creative is allowed to serve for deals but
         /// not for open auction.</summary>
