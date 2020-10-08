@@ -116,7 +116,7 @@
    }
   }
  }, 
- "revision": "20201001", 
+ "revision": "20201006", 
  "rootUrl": "https://chromeuxreport.googleapis.com/", 
  "schemas": {
   "Bin": {

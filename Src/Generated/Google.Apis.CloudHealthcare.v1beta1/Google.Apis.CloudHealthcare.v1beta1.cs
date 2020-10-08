@@ -837,11 +837,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// OperationMetadata. Errors are logged to Cloud Logging (see [Viewing logs](/healthcare/docs/how-
                     /// tos/logging)).</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="evalStore">The Annotation store to compare against `golden_store`, in the format of `projects/{project_
-                    /// id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.</param>
-                    public virtual EvaluateRequest Evaluate(Google.Apis.CloudHealthcare.v1beta1.Data.EvaluateAnnotationStoreRequest body, string evalStore)
+                    /// <param name="name">The Annotation store to compare against `golden_store`, in the format of `projects/{project_id}/l
+                    /// ocations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.</param>
+                    public virtual EvaluateRequest Evaluate(Google.Apis.CloudHealthcare.v1beta1.Data.EvaluateAnnotationStoreRequest body, string name)
                     {
-                        return new EvaluateRequest(service, body, evalStore);
+                        return new EvaluateRequest(service, body, name);
                     }
 
                     /// <summary>Evaluate an Annotation store against a ground truth Annotation store. When the
@@ -852,9 +852,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     public class EvaluateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                     {
                         /// <summary>Constructs a new Evaluate request.</summary>
-                        public EvaluateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.EvaluateAnnotationStoreRequest body, string evalStore) : base(service)
+                        public EvaluateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.EvaluateAnnotationStoreRequest body, string name) : base(service)
                         {
-                            EvalStore = evalStore;
+                            Name = name;
                             Body = body;
                             InitParameters();
                         }
@@ -863,8 +863,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <summary>The Annotation store to compare against `golden_store`, in the format of `projects/
                         /// {project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_stor
                         /// e_id}`.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("evalStore", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string EvalStore { get; private set; }
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
 
 
                         /// <summary>Gets or sets the body of this request.</summary>
@@ -880,16 +880,16 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         public override string HttpMethod => "POST";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta1/{+evalStore}:evaluate";
+                        public override string RestPath => "v1beta1/{+name}:evaluate";
 
                         /// <summary>Initializes Evaluate parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add("evalStore", new Google.Apis.Discovery.Parameter
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "evalStore",
+                                Name = "name",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -904,11 +904,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// operation finishes. The metadata field type is OperationMetadata. Errors are logged to Cloud
                     /// Logging (see [Viewing logs](/healthcare/docs/how-tos/logging)).</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="annotationStore">The name of the Annotation store to export annotations to, in the format of `projects/
-                    /// {project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.</param>
-                    public virtual ExportRequest Export(Google.Apis.CloudHealthcare.v1beta1.Data.ExportAnnotationsRequest body, string annotationStore)
+                    /// <param name="name">The name of the Annotation store to export annotations to, in the format of `projects/{project_id
+                    /// }/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.</param>
+                    public virtual ExportRequest Export(Google.Apis.CloudHealthcare.v1beta1.Data.ExportAnnotationsRequest body, string name)
                     {
-                        return new ExportRequest(service, body, annotationStore);
+                        return new ExportRequest(service, body, name);
                     }
 
                     /// <summary>Export Annotations from the Annotation store. If the request is successful, a detailed
@@ -918,9 +918,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     public class ExportRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                     {
                         /// <summary>Constructs a new Export request.</summary>
-                        public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.ExportAnnotationsRequest body, string annotationStore) : base(service)
+                        public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.ExportAnnotationsRequest body, string name) : base(service)
                         {
-                            AnnotationStore = annotationStore;
+                            Name = name;
                             Body = body;
                             InitParameters();
                         }
@@ -929,8 +929,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <summary>The name of the Annotation store to export annotations to, in the format of `projec
                         /// ts/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_s
                         /// tore_id}`.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("annotationStore", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string AnnotationStore { get; private set; }
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
 
 
                         /// <summary>Gets or sets the body of this request.</summary>
@@ -946,16 +946,16 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         public override string HttpMethod => "POST";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta1/{+annotationStore}:export";
+                        public override string RestPath => "v1beta1/{+name}:export";
 
                         /// <summary>Initializes Export parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add("annotationStore", new Google.Apis.Discovery.Parameter
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "annotationStore",
+                                Name = "name",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -1092,12 +1092,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// metadata field type is OperationMetadata. Errors are logged to Cloud Logging (see [Viewing
                     /// logs](/healthcare/docs/how-tos/logging)).</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="annotationStore">The name of the Annotation store to which the server imports annotations, in the
-                    /// format `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
-                    /// </param>
-                    public virtual ImportRequest Import(Google.Apis.CloudHealthcare.v1beta1.Data.ImportAnnotationsRequest body, string annotationStore)
+                    /// <param name="name">The name of the Annotation store to which the server imports annotations, in the format `projects
+                    /// /{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.</param>
+                    public virtual ImportRequest Import(Google.Apis.CloudHealthcare.v1beta1.Data.ImportAnnotationsRequest body, string name)
                     {
-                        return new ImportRequest(service, body, annotationStore);
+                        return new ImportRequest(service, body, name);
                     }
 
                     /// <summary>Import Annotations to the Annotation store by loading data from the specified sources.
@@ -1108,9 +1107,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     public class ImportRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                     {
                         /// <summary>Constructs a new Import request.</summary>
-                        public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.ImportAnnotationsRequest body, string annotationStore) : base(service)
+                        public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.ImportAnnotationsRequest body, string name) : base(service)
                         {
-                            AnnotationStore = annotationStore;
+                            Name = name;
                             Body = body;
                             InitParameters();
                         }
@@ -1119,8 +1118,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <summary>The name of the Annotation store to which the server imports annotations, in the
                         /// format `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores
                         /// /{annotation_store_id}`.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("annotationStore", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string AnnotationStore { get; private set; }
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
 
 
                         /// <summary>Gets or sets the body of this request.</summary>
@@ -1136,16 +1135,16 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         public override string HttpMethod => "POST";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta1/{+annotationStore}:import";
+                        public override string RestPath => "v1beta1/{+name}:import";
 
                         /// <summary>Initializes Import parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
 
-                            RequestParameters.Add("annotationStore", new Google.Apis.Discovery.Parameter
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "annotationStore",
+                                Name = "name",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -1777,10 +1776,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                             /// <summary>The update mask that applies to the resource. For the `FieldMask` definition,
                             /// see https://developers.google.com/protocol-
-                            /// buffers/docs/reference/google.protobuf#fieldmask. The `description`, `possible_values`,
+                            /// buffers/docs/reference/google.protobuf#fieldmask. The `description`, `allowed_values`,
                             /// `consent_default_values`, and `data_mapping_default_value` fields are allowed to be
-                            /// updated. The updated `possible_values` must contain all values from the previous
-                            /// `possible_values`.</summary>
+                            /// updated. The updated `allowed_values` must contain all values from the previous
+                            /// `allowed_values`.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual object UpdateMask { get; set; }
 
@@ -2437,7 +2436,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// <summary>Restricts the consents returned to those matching a filter. Syntax:
                             /// https://cloud.google.com/appengine/docs/standard/python/search/query_strings The fields
                             /// available for filtering are: - user_id - consent_artifact - state -
-                            /// state_change_time</summary>
+                            /// revision_create_time</summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
 
@@ -4557,11 +4556,12 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 }
                             }
 
-                            /// <summary>DeleteSeries deletes all instances within the given study and series. Delete
-                            /// requests are equivalent to the GET requests specified in the Retrieve transaction. For
-                            /// samples that show how to call DeleteSeries, see [Deleting a study, series, or
-                            /// instance](https://cloud.google.com/healthcare/docs/how-
-                            /// tos/dicomweb#deleting_a_study_series_or_instance).</summary>
+                            /// <summary>DeleteSeriesAsync deletes all instances within the given study and series using
+                            /// an operation. Delete requests are equivalent to the GET requests specified in the
+                            /// Retrieve transaction. The method returns an Operation which will be marked successful
+                            /// when the deletion is complete. Warning: Inserting instances into a series while a delete
+                            /// operation is running for that series could result in the new instances not appearing in
+                            /// search results until the deletion operation finishes.</summary>
                             /// <param name="parent">The name of the DICOM store that is being accessed. For example,
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</param>
                             ///
@@ -4572,12 +4572,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 return new DeleteRequest(service, parent, dicomWebPath);
                             }
 
-                            /// <summary>DeleteSeries deletes all instances within the given study and series. Delete
-                            /// requests are equivalent to the GET requests specified in the Retrieve transaction. For
-                            /// samples that show how to call DeleteSeries, see [Deleting a study, series, or
-                            /// instance](https://cloud.google.com/healthcare/docs/how-
-                            /// tos/dicomweb#deleting_a_study_series_or_instance).</summary>
-                            public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Empty>
+                            /// <summary>DeleteSeriesAsync deletes all instances within the given study and series using
+                            /// an operation. Delete requests are equivalent to the GET requests specified in the
+                            /// Retrieve transaction. The method returns an Operation which will be marked successful
+                            /// when the deletion is complete. Warning: Inserting instances into a series while a delete
+                            /// operation is running for that series could result in the new instances not appearing in
+                            /// search results until the deletion operation finishes.</summary>
+                            public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                             {
                                 /// <summary>Constructs a new Delete request.</summary>
                                 public DeleteRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath) : base(service)
@@ -4885,11 +4886,12 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
                         }
 
-                        /// <summary>DeleteStudy deletes all instances within the given study. Delete requests are
-                        /// equivalent to the GET requests specified in the Retrieve transaction. For samples that show
-                        /// how to call DeleteStudy, see [Deleting a study, series, or
-                        /// instance](https://cloud.google.com/healthcare/docs/how-
-                        /// tos/dicomweb#deleting_a_study_series_or_instance).</summary>
+                        /// <summary>DeleteStudyAsync deletes all instances within the given study using an operation.
+                        /// Delete requests are equivalent to the GET requests specified in the Retrieve transaction.
+                        /// The method returns an Operation which will be marked successful when the deletion is
+                        /// complete. Warning: Inserting instances into a study while a delete operation is running for
+                        /// that study could result in the new instances not appearing in search results until the
+                        /// deletion operation finishes.</summary>
                         /// <param name="parent"></param>
                         /// <param name="dicomWebPath">The path of the DeleteStudy request. For example,
                         /// `studies/{study_uid}`.</param>
@@ -4898,12 +4900,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             return new DeleteRequest(service, parent, dicomWebPath);
                         }
 
-                        /// <summary>DeleteStudy deletes all instances within the given study. Delete requests are
-                        /// equivalent to the GET requests specified in the Retrieve transaction. For samples that show
-                        /// how to call DeleteStudy, see [Deleting a study, series, or
-                        /// instance](https://cloud.google.com/healthcare/docs/how-
-                        /// tos/dicomweb#deleting_a_study_series_or_instance).</summary>
-                        public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Empty>
+                        /// <summary>DeleteStudyAsync deletes all instances within the given study using an operation.
+                        /// Delete requests are equivalent to the GET requests specified in the Retrieve transaction.
+                        /// The method returns an Operation which will be marked successful when the deletion is
+                        /// complete. Warning: Inserting instances into a study while a delete operation is running for
+                        /// that study could result in the new instances not appearing in search results until the
+                        /// deletion operation finishes.</summary>
+                        public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                         {
                             /// <summary>Constructs a new Delete request.</summary>
                             public DeleteRequest(Google.Apis.Services.IClientService service, string parent, string dicomWebPath) : base(service)
@@ -8490,12 +8493,12 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                     }
 
-                    /// <summary> Export resources from the FHIR store to the specified destination. This method returns
+                    /// <summary>Export resources from the FHIR store to the specified destination. This method returns
                     /// an Operation that can be used to track the status of the export by calling GetOperation.
                     /// Immediate fatal errors appear in the error field, errors are also logged to Cloud Logging (see
-                    /// [Viewing logs](/healthcare/docs/how-tos/logging)). Otherwise, when the operation finishes, a
-                    /// detailed response of type ExportResourcesResponse is returned in the response field. The
-                    /// metadata field type for this operation is OperationMetadata.</summary>
+                    /// [Viewing error logs in Cloud Logging](/healthcare/docs/how-tos/logging)). Otherwise, when the
+                    /// operation finishes, a detailed response of type ExportResourcesResponse is returned in the
+                    /// response field. The metadata field type for this operation is OperationMetadata.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">The name of the FHIR store to export resource from, in the format of
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.</param>
@@ -8504,12 +8507,12 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         return new ExportRequest(service, body, name);
                     }
 
-                    /// <summary> Export resources from the FHIR store to the specified destination. This method returns
+                    /// <summary>Export resources from the FHIR store to the specified destination. This method returns
                     /// an Operation that can be used to track the status of the export by calling GetOperation.
                     /// Immediate fatal errors appear in the error field, errors are also logged to Cloud Logging (see
-                    /// [Viewing logs](/healthcare/docs/how-tos/logging)). Otherwise, when the operation finishes, a
-                    /// detailed response of type ExportResourcesResponse is returned in the response field. The
-                    /// metadata field type for this operation is OperationMetadata.</summary>
+                    /// [Viewing error logs in Cloud Logging](/healthcare/docs/how-tos/logging)). Otherwise, when the
+                    /// operation finishes, a detailed response of type ExportResourcesResponse is returned in the
+                    /// response field. The metadata field type for this operation is OperationMetadata.</summary>
                     public class ExportRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                     {
                         /// <summary>Constructs a new Export request.</summary>
@@ -8679,7 +8682,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                     }
 
-                    /// <summary> Import resources to the FHIR store by loading data from the specified sources. This
+                    /// <summary>Import resources to the FHIR store by loading data from the specified sources. This
                     /// method is optimized to load large quantities of data using import semantics that ignore some
                     /// FHIR store configuration options and are not suitable for all use cases. It is primarily
                     /// intended to load data into an empty FHIR store that is not being used by other clients. In cases
@@ -8690,7 +8693,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// FHIR store. This allows the import of resources with arbitrary interdependencies without
                     /// considering grouping or ordering, but if the input data contains invalid references or if some
                     /// resources fail to be imported, the FHIR store might be left in a state that violates referential
-                    /// integrity. The import process does not trigger Cloud Pub/Sub notification or BigQuery streaming
+                    /// integrity. The import process does not trigger Pub/Sub notification or BigQuery streaming
                     /// update, regardless of how those are configured on the FHIR store. If a resource with the
                     /// specified ID already exists, the most recent version of the resource is overwritten without
                     /// creating a new historical version, regardless of the disable_resource_versioning setting on the
@@ -8705,19 +8708,19 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// everything where each bundle contains its own copy of a resource such as Practitioner that might
                     /// be referred to by many patients. If some resources fail to import, for example due to parsing
                     /// errors, successfully imported resources are not rolled back. The location and format of the
-                    /// input data is specified by the parameters below. Note that if no format is specified, this
-                    /// method assumes the `BUNDLE` format. When using the `BUNDLE` format this method ignores the
-                    /// `Bundle.type` field, except that `history` bundles are rejected, and does not apply any of the
-                    /// bundle processing semantics for batch or transaction bundles. Unlike in ExecuteBundle,
-                    /// transaction bundles are not executed as a single transaction and bundle-internal references are
-                    /// not rewritten. The bundle is treated as a collection of resources to be written as provided in
-                    /// `Bundle.entry.resource`, ignoring `Bundle.entry.request`. As an example, this allows the import
-                    /// of `searchset` bundles produced by a FHIR search or Patient-everything operation. This method
-                    /// returns an Operation that can be used to track the status of the import by calling GetOperation.
-                    /// Immediate fatal errors appear in the error field, errors are also logged to Cloud Logging (see
-                    /// [Viewing logs](/healthcare/docs/how-tos/logging)). Otherwise, when the operation finishes, a
-                    /// detailed response of type ImportResourcesResponse is returned in the response field. The
-                    /// metadata field type for this operation is OperationMetadata.</summary>
+                    /// input data are specified by the parameters in ImportResourcesRequest. Note that if no format is
+                    /// specified, this method assumes the `BUNDLE` format. When using the `BUNDLE` format this method
+                    /// ignores the `Bundle.type` field, except that `history` bundles are rejected, and does not apply
+                    /// any of the bundle processing semantics for batch or transaction bundles. Unlike in
+                    /// ExecuteBundle, transaction bundles are not executed as a single transaction and bundle-internal
+                    /// references are not rewritten. The bundle is treated as a collection of resources to be written
+                    /// as provided in `Bundle.entry.resource`, ignoring `Bundle.entry.request`. As an example, this
+                    /// allows the import of `searchset` bundles produced by a FHIR search or Patient-everything
+                    /// operation. This method returns an Operation that can be used to track the status of the import
+                    /// by calling GetOperation. Immediate fatal errors appear in the error field, errors are also
+                    /// logged to Cloud Logging (see [Viewing logs](/healthcare/docs/how-tos/logging)). Otherwise, when
+                    /// the operation finishes, a detailed response of type ImportResourcesResponse is returned in the
+                    /// response field. The metadata field type for this operation is OperationMetadata.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">The name of the FHIR store to import FHIR resources to, in the format of
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.</param>
@@ -8726,7 +8729,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         return new ImportRequest(service, body, name);
                     }
 
-                    /// <summary> Import resources to the FHIR store by loading data from the specified sources. This
+                    /// <summary>Import resources to the FHIR store by loading data from the specified sources. This
                     /// method is optimized to load large quantities of data using import semantics that ignore some
                     /// FHIR store configuration options and are not suitable for all use cases. It is primarily
                     /// intended to load data into an empty FHIR store that is not being used by other clients. In cases
@@ -8737,7 +8740,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// FHIR store. This allows the import of resources with arbitrary interdependencies without
                     /// considering grouping or ordering, but if the input data contains invalid references or if some
                     /// resources fail to be imported, the FHIR store might be left in a state that violates referential
-                    /// integrity. The import process does not trigger Cloud Pub/Sub notification or BigQuery streaming
+                    /// integrity. The import process does not trigger Pub/Sub notification or BigQuery streaming
                     /// update, regardless of how those are configured on the FHIR store. If a resource with the
                     /// specified ID already exists, the most recent version of the resource is overwritten without
                     /// creating a new historical version, regardless of the disable_resource_versioning setting on the
@@ -8752,19 +8755,19 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// everything where each bundle contains its own copy of a resource such as Practitioner that might
                     /// be referred to by many patients. If some resources fail to import, for example due to parsing
                     /// errors, successfully imported resources are not rolled back. The location and format of the
-                    /// input data is specified by the parameters below. Note that if no format is specified, this
-                    /// method assumes the `BUNDLE` format. When using the `BUNDLE` format this method ignores the
-                    /// `Bundle.type` field, except that `history` bundles are rejected, and does not apply any of the
-                    /// bundle processing semantics for batch or transaction bundles. Unlike in ExecuteBundle,
-                    /// transaction bundles are not executed as a single transaction and bundle-internal references are
-                    /// not rewritten. The bundle is treated as a collection of resources to be written as provided in
-                    /// `Bundle.entry.resource`, ignoring `Bundle.entry.request`. As an example, this allows the import
-                    /// of `searchset` bundles produced by a FHIR search or Patient-everything operation. This method
-                    /// returns an Operation that can be used to track the status of the import by calling GetOperation.
-                    /// Immediate fatal errors appear in the error field, errors are also logged to Cloud Logging (see
-                    /// [Viewing logs](/healthcare/docs/how-tos/logging)). Otherwise, when the operation finishes, a
-                    /// detailed response of type ImportResourcesResponse is returned in the response field. The
-                    /// metadata field type for this operation is OperationMetadata.</summary>
+                    /// input data are specified by the parameters in ImportResourcesRequest. Note that if no format is
+                    /// specified, this method assumes the `BUNDLE` format. When using the `BUNDLE` format this method
+                    /// ignores the `Bundle.type` field, except that `history` bundles are rejected, and does not apply
+                    /// any of the bundle processing semantics for batch or transaction bundles. Unlike in
+                    /// ExecuteBundle, transaction bundles are not executed as a single transaction and bundle-internal
+                    /// references are not rewritten. The bundle is treated as a collection of resources to be written
+                    /// as provided in `Bundle.entry.resource`, ignoring `Bundle.entry.request`. As an example, this
+                    /// allows the import of `searchset` bundles produced by a FHIR search or Patient-everything
+                    /// operation. This method returns an Operation that can be used to track the status of the import
+                    /// by calling GetOperation. Immediate fatal errors appear in the error field, errors are also
+                    /// logged to Cloud Logging (see [Viewing logs](/healthcare/docs/how-tos/logging)). Otherwise, when
+                    /// the operation finishes, a detailed response of type ImportResourcesResponse is returned in the
+                    /// response field. The metadata field type for this operation is OperationMetadata.</summary>
                     public class ImportRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                     {
                         /// <summary>Constructs a new Import request.</summary>
@@ -11879,29 +11882,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Deprecated. Contains the status of the Deidentify operation.</summary>
-    public class DeidentifyErrorDetails : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Number of resources that failed to process.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("failureResourceCount")]
-        public virtual System.Nullable<long> FailureResourceCount { get; set; }
-
-        /// <summary>Number of stores that failed to process.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("failureStoreCount")]
-        public virtual System.Nullable<long> FailureStoreCount { get; set; }
-
-        /// <summary>Number of resources successfully processed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("successResourceCount")]
-        public virtual System.Nullable<long> SuccessResourceCount { get; set; }
-
-        /// <summary>Number of stores successfully processed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("successStoreCount")]
-        public virtual System.Nullable<long> SuccessStoreCount { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Creates a new FHIR store with sensitive information de-identified.</summary>
     public class DeidentifyFhirStoreRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11930,19 +11910,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// <summary>Contains a detailed summary of the Deidentify operation.</summary>
     public class DeidentifySummary : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Number of resources that failed to process. The failures might be caused by: * Invalid user input
-        /// data * Transient errors that could be skipped</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("failureResourceCount")]
-        public virtual System.Nullable<long> FailureResourceCount { get; set; }
-
-        /// <summary>Number of resources successfully processed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("successResourceCount")]
-        public virtual System.Nullable<long> SuccessResourceCount { get; set; }
-
-        /// <summary>Number of stores successfully processed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("successStoreCount")]
-        public virtual System.Nullable<long> SuccessStoreCount { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -12086,11 +12053,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("infoTypeConfig")]
         public virtual InfoTypeConfig InfoTypeConfig { get; set; }
 
-        /// <summary>The Annotation store to compare against `golden_store`, in the format of `projects/{project_id}/loc
-        /// ations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -12099,26 +12061,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// response upon operation completion.</summary>
     public class EvaluateAnnotationStoreResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The evaluated Annotation store, in the format of `projects/{project_id}/locations/{location_id}/dat
-        /// asets/{dataset_id}/annotationStores/{annotation_store_id}`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("evalStore")]
-        public virtual string EvalStore { get; set; }
-
-        /// <summary>The number of Annotations in the ground truth Annotation store successfully processed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("goldenCount")]
-        public virtual System.Nullable<long> GoldenCount { get; set; }
-
-        /// <summary>The ground truth Annotation store, in the format of `projects/{project_id}/locations/{location_id}/
-        /// datasets/{dataset_id}/annotationStores/{annotation_store_id}`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("goldenStore")]
-        public virtual string GoldenStore { get; set; }
-
-        /// <summary>The number of Annotations in the eval store that match with corresponding annotations in the ground
-        /// truth Annotation store. Two matched annotations both annotate the same resource defined in
-        /// AnnotationSource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("matchedCount")]
-        public virtual System.Nullable<long> MatchedCount { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -12179,27 +12121,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Deprecated. Response for failed annotation export operations. This structure is included in error
-    /// details upon operation completion.</summary>
-    public class ExportAnnotationsErrorDetails : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The annotation_store used for the export operation, in the format of `projects/{project_id}/locatio
-        /// ns/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("annotationStore")]
-        public virtual string AnnotationStore { get; set; }
-
-        /// <summary>The number of annotations that had error.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errorCount")]
-        public virtual System.Nullable<long> ErrorCount { get; set; }
-
-        /// <summary>The number of annotations successfully exported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
-        public virtual System.Nullable<long> SuccessCount { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Request to export Annotations. The export operation is not atomic. If a failure occurs, any annotations
     /// already exported are not removed.</summary>
     public class ExportAnnotationsRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -12214,11 +12135,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
         public virtual GoogleCloudHealthcareV1beta1AnnotationGcsDestination GcsDestination { get; set; }
 
-        /// <summary>The name of the Annotation store to export annotations to, in the format of `projects/{project_id}/
-        /// locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -12227,15 +12143,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// operation completion.</summary>
     public class ExportAnnotationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The annotation_store used for the export operation, in the format of `projects/{project_id}/locatio
-        /// ns/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("annotationStore")]
-        public virtual string AnnotationStore { get; set; }
-
-        /// <summary>The total number of annotations successfully exported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
-        public virtual System.Nullable<long> SuccessCount { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -12267,7 +12174,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary> Request to export resources.</summary>
+    /// <summary>Request to export resources.</summary>
     public class ExportResourcesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The BigQuery output destination. The BigQuery location requires two IAM roles:
@@ -12281,7 +12188,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// server creates one object per resource type. Each object contains newline delimited JSON, and each line is a
         /// FHIR resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
-        public virtual GoogleCloudHealthcareV1beta1FhirRestGcsDestination GcsDestination { get; set; }
+        public virtual GoogleCloudHealthcareV1beta1FhirGcsDestination GcsDestination { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12535,9 +12442,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// <summary>The BigQuery table for export.</summary>
     public class GoogleCloudHealthcareV1beta1AnnotationBigQueryDestination : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the destination table already exists and this flag is `TRUE`, the table is overwritten by the
-        /// contents of the input store. If the flag is not set and the destination table already exists, the export
-        /// call returns an error.</summary>
+        /// <summary>Use `write_disposition` instead. If `write_disposition` is specified, this parameter is ignored.
+        /// force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to
+        /// write_disposition=WRITE_TRUNCATE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("force")]
         public virtual System.Nullable<bool> Force { get; set; }
 
@@ -12549,6 +12456,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// bq://projectId.bqDatasetId.tableId.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableUri")]
         public virtual string TableUri { get; set; }
+
+        /// <summary>Determines whether existing tables in the destination dataset are overwritten or appended to. If a
+        /// write_disposition is specified, the `force` parameter is ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeDisposition")]
+        public virtual string WriteDisposition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12621,14 +12533,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// <summary>Contains a summary of the DeidentifyDicomStore operation.</summary>
     public class GoogleCloudHealthcareV1beta1DeidentifyDeidentifyDicomStoreSummary : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Number of objects that processing failed for.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("failureResourceCount")]
-        public virtual System.Nullable<long> FailureResourceCount { get; set; }
-
-        /// <summary>Number of objects successfully processed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("successResourceCount")]
-        public virtual System.Nullable<long> SuccessResourceCount { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -12636,10 +12540,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// <summary>Contains a summary of the DeidentifyFhirStore operation.</summary>
     public class GoogleCloudHealthcareV1beta1DeidentifyDeidentifyFhirStoreSummary : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Number of resources successfully processed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("successResourceCount")]
-        public virtual System.Nullable<long> SuccessResourceCount { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -12647,9 +12547,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// <summary>The BigQuery table where the server writes output.</summary>
     public class GoogleCloudHealthcareV1beta1DicomBigQueryDestination : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the destination table already exists and this flag is `TRUE`, the table is overwritten by the
-        /// contents of the DICOM store. If the flag is not set and the destination table already exists, the export
-        /// call returns an error.</summary>
+        /// <summary>Use `write_disposition` instead. If `write_disposition` is specified, this parameter is ignored.
+        /// force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to
+        /// write_disposition=WRITE_TRUNCATE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("force")]
         public virtual System.Nullable<bool> Force { get; set; }
 
@@ -12657,6 +12557,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// `bq://projectId.bqDatasetId.tableId`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableUri")]
         public virtual string TableUri { get; set; }
+
+        /// <summary>Determines whether the existing table in the destination is to be overwritten or appended to. If a
+        /// write_disposition is specified, the `force` parameter is ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeDisposition")]
+        public virtual string WriteDisposition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12745,9 +12650,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("datasetUri")]
         public virtual string DatasetUri { get; set; }
 
-        /// <summary>If this flag is `TRUE`, all tables will be deleted from the dataset before the new exported tables
-        /// are written. If the flag is not set and the destination dataset contains tables, the export call returns an
-        /// error. This option is not used for the streaming export.</summary>
+        /// <summary>Use `write_disposition` instead. If `write_disposition` is specified, this parameter is ignored.
+        /// force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to
+        /// write_disposition=WRITE_TRUNCATE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("force")]
         public virtual System.Nullable<bool> Force { get; set; }
 
@@ -12755,6 +12660,59 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schemaConfig")]
         public virtual SchemaConfig SchemaConfig { get; set; }
 
+        /// <summary>Determines whether existing tables in the destination dataset are overwritten or appended to. If a
+        /// write_disposition is specified, the `force` parameter is ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeDisposition")]
+        public virtual string WriteDisposition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response when all resources export successfully. This structure is included in the response to describe
+    /// the detailed outcome after the operation finishes successfully.</summary>
+    public class GoogleCloudHealthcareV1beta1FhirExportResourcesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The configuration for exporting to Cloud Storage.</summary>
+    public class GoogleCloudHealthcareV1beta1FhirGcsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URI for a Cloud Storage directory where result files should be written (in the format `gs
+        /// ://{bucket-id}/{path/to/destination/dir}`). If there is no trailing slash, the service appends one when
+        /// composing the object path. The Cloud Storage bucket referenced in `uri_prefix` must exist or an error
+        /// occurs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uriPrefix")]
+        public virtual string UriPrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Specifies the configuration for importing data from Cloud Storage.</summary>
+    public class GoogleCloudHealthcareV1beta1FhirGcsSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Points to a Cloud Storage URI containing file(s) to import. The URI must be in the following
+        /// format: `gs://{bucket_id}/{object_id}`. The URI can include wildcards in `object_id` and thus identify
+        /// multiple files. Supported wildcards: * `*` to match 0 or more non-separator characters * `**` to match 0 or
+        /// more characters (including separators). Must be used at the end of a path and with no other wildcards in the
+        /// path. Can also be used with a file extension (such as .ndjson), which imports all files with the extension
+        /// in the specified directory and its sub-directories. For example, `gs://my-bucket/my-directory*.ndjson`
+        /// imports all files with `.ndjson` extensions in `my-directory/` and its sub-directories. * `?` to match 1
+        /// character Files matching the wildcard are expected to contain content only, no metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Final response of importing resources. This structure is included in the response to describe the
+    /// detailed outcome after the operation finishes successfully.</summary>
+    public class GoogleCloudHealthcareV1beta1FhirImportResourcesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -12797,38 +12755,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>The total number of resources exported from the requested FHIR store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceCount")]
         public virtual System.Nullable<long> ResourceCount { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary> The configuration for exporting to Cloud Storage.</summary>
-    public class GoogleCloudHealthcareV1beta1FhirRestGcsDestination : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>URI for a Cloud Storage directory where result files should be written (in the format `gs
-        /// ://{bucket-id}/{path/to/destination/dir}`). If there is no trailing slash, the service appends one when
-        /// composing the object path. The user is responsible for creating the Cloud Storage bucket referenced in
-        /// `uri_prefix`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uriPrefix")]
-        public virtual string UriPrefix { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary> Specifies the configuration for importing data from Cloud Storage.</summary>
-    public class GoogleCloudHealthcareV1beta1FhirRestGcsSource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Points to a Cloud Storage URI containing file(s) to import. The URI must be in the following
-        /// format: `gs://{bucket_id}/{object_id}`. The URI can include wildcards in `object_id` and thus identify
-        /// multiple files. Supported wildcards: * `*` to match 0 or more non-separator characters * `**` to match 0 or
-        /// more characters (including separators). Must be used at the end of a path and with no other wildcards in the
-        /// path. Can also be used with a file extension (such as .ndjson), which imports all files with the extension
-        /// in the specified directory and its sub-directories. For example, `gs://my-bucket/my-directory*.ndjson`
-        /// imports all files with `.ndjson` extensions in `my-directory/` and its sub-directories. * `?` to match 1
-        /// character Files matching the wildcard are expected to contain content only, no metadata.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13081,27 +13007,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Deprecated. Final response of importing Annotations in partial or total failure case. This structure is
-    /// included in the error details. It is only included when the operation finishes.</summary>
-    public class ImportAnnotationsErrorDetails : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The annotation_store that the annotations were imported to. The name is in the format `projects/{pr
-        /// oject_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("annotationStore")]
-        public virtual string AnnotationStore { get; set; }
-
-        /// <summary>The number of annotations that had errors.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errorCount")]
-        public virtual System.Nullable<long> ErrorCount { get; set; }
-
-        /// <summary>The number of annotations that have been imported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
-        public virtual System.Nullable<long> SuccessCount { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Request to import Annotations. The Annotations to be imported must have client-supplied resource names
     /// which indicate the annotation resource. The import operation is not atomic. If a failure occurs, any annotations
     /// already imported are not removed.</summary>
@@ -13109,11 +13014,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GoogleCloudHealthcareV1beta1AnnotationGcsSource GcsSource { get; set; }
-
-        /// <summary>The name of the Annotation store to which the server imports annotations, in the format `projects/{
-        /// project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13123,15 +13023,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// It is only included when the operation finishes.</summary>
     public class ImportAnnotationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The annotation_store that the annotations were imported to, in the format `projects/{project_id}/lo
-        /// cations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("annotationStore")]
-        public virtual string AnnotationStore { get; set; }
-
-        /// <summary>The number of the input annotations. All input have been imported successfully.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
-        public virtual System.Nullable<long> SuccessCount { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -13190,7 +13081,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary> Request to import resources.</summary>
+    /// <summary>Request to import resources.</summary>
     public class ImportResourcesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The content structure in the source location. If not specified, the server treats the input source
@@ -13199,10 +13090,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ContentStructure { get; set; }
 
         /// <summary>Cloud Storage source data location and import configuration. The Cloud Storage location requires
-        /// the `roles/storage.objectViewer` Cloud IAM role. Each Cloud Storage object should be a text file that
-        /// contains the format specified in ContentStructure.</summary>
+        /// the `roles/storage.objectViewer` Cloud IAM role. The Healthcare Service Agent Each Cloud Storage object
+        /// should be a text file that contains the format specified in ContentStructure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
-        public virtual GoogleCloudHealthcareV1beta1FhirRestGcsSource GcsSource { get; set; }
+        public virtual GoogleCloudHealthcareV1beta1FhirGcsSource GcsSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

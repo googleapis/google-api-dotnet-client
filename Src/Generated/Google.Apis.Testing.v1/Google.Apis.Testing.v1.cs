@@ -1417,6 +1417,26 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A file or directory to install on the device before the test starts.</summary>
+    public class IosDeviceFile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The bundle id of the app where this file lives. iOS apps sandbox their own filesystem, so app files
+        /// must specify which app installed on the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bundleId")]
+        public virtual string BundleId { get; set; }
+
+        /// <summary>The source file</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual FileReference Content { get; set; }
+
+        /// <summary>Location of the file on the device, inside the app's sandboxed filesystem</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("devicePath")]
+        public virtual string DevicePath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A list of iOS device configurations in which the test is to be executed.</summary>
     public class IosDeviceList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1522,6 +1542,16 @@ namespace Google.Apis.Testing.v1.Data
         /// TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkProfile")]
         public virtual string NetworkProfile { get; set; }
+
+        /// <summary>List of directories on the device to upload to Cloud Storage at the end of the test. Directories
+        /// should either be in a shared directory (e.g. /private/var/mobile/Media) or within an accessible directory
+        /// inside the app's filesystem (e.g. /Documents) by specifying the bundle id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pullDirectories")]
+        public virtual System.Collections.Generic.IList<IosDeviceFile> PullDirectories { get; set; }
+
+        /// <summary>List of files to push to the device before starting the test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pushFiles")]
+        public virtual System.Collections.Generic.IList<IosDeviceFile> PushFiles { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

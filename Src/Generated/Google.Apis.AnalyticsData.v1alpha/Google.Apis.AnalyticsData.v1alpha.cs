@@ -29,6 +29,7 @@ namespace Google.Apis.AnalyticsData.v1alpha
         /// <param name="initializer">The service initializer.</param>
         public AnalyticsDataService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Properties = new PropertiesResource(this);
             V1alpha = new V1alphaResource(this);
         }
 
@@ -80,6 +81,9 @@ namespace Google.Apis.AnalyticsData.v1alpha
         }
 
 
+
+        /// <summary>Gets the Properties resource.</summary>
+        public virtual PropertiesResource Properties { get; }
 
         /// <summary>Gets the V1alpha resource.</summary>
         public virtual V1alphaResource V1alpha { get; }
@@ -257,6 +261,86 @@ namespace Google.Apis.AnalyticsData.v1alpha
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "properties" collection of methods.</summary>
+    public class PropertiesResource
+    {
+        private const string Resource = "properties";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public PropertiesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Returns metadata for dimensions and metrics available in reporting methods. Used to explore the
+        /// dimensions and metrics. In this method, a Google Analytics App + Web Property Identifier is specified in the
+        /// request, and the metadata response includes Custom dimensions and metrics as well as Universal metadata. For
+        /// example if a custom metric with parameter name `levels_unlocked` is registered to a property, the Metadata
+        /// response will contain `customEvent:levels_unlocked`. Universal metadata are dimensions and metrics
+        /// applicable to any property such as `country` and `totalUsers`.</summary>
+        /// <param name="name">Required. The resource name of the metadata to retrieve. This name field is specified in the URL
+        /// path and not URL parameters. Property is a numeric Google Analytics App + Web Property identifier. Example:
+        /// properties/1234/metadata</param>
+        public virtual GetMetadataRequest GetMetadata(string name)
+        {
+            return new GetMetadataRequest(service, name);
+        }
+
+        /// <summary>Returns metadata for dimensions and metrics available in reporting methods. Used to explore the
+        /// dimensions and metrics. In this method, a Google Analytics App + Web Property Identifier is specified in the
+        /// request, and the metadata response includes Custom dimensions and metrics as well as Universal metadata. For
+        /// example if a custom metric with parameter name `levels_unlocked` is registered to a property, the Metadata
+        /// response will contain `customEvent:levels_unlocked`. Universal metadata are dimensions and metrics
+        /// applicable to any property such as `country` and `totalUsers`.</summary>
+        public class GetMetadataRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1alpha.Data.Metadata>
+        {
+            /// <summary>Constructs a new GetMetadata request.</summary>
+            public GetMetadataRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The resource name of the metadata to retrieve. This name field is specified in the
+            /// URL path and not URL parameters. Property is a numeric Google Analytics App + Web Property identifier.
+            /// Example: properties/1234/metadata</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getMetadata";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/{+name}";
+
+            /// <summary>Initializes GetMetadata parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^properties/[^/]+/metadata$",
+                });
+            }
+
         }
     }
 
@@ -907,6 +991,25 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         /// <summary>The list of string values. Must be non-empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The dimensions and metrics currently accepted in reporting methods.</summary>
+    public class Metadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The dimensions descriptions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<DimensionMetadata> Dimensions { get; set; }
+
+        /// <summary>The metric descriptions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<MetricMetadata> Metrics { get; set; }
+
+        /// <summary>Resource name of this metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

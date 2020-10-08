@@ -1388,8 +1388,7 @@ namespace Google.Apis.CloudComposer.v1.Data
         /// property names must not contain a period ("."). Apache Airflow configuration property names must be written
         /// in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and
         /// can be written in any lower/upper case format. Certain Apache Airflow configuration property values are
-        /// [blacklisted](/composer/docs/how-to/managing/setting-airflow-
-        /// configurations#airflow_configuration_blacklists), and cannot be overridden.</summary>
+        /// [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("airflowConfigOverrides")]
         public virtual System.Collections.Generic.IDictionary<string, string> AirflowConfigOverrides { get; set; }
 

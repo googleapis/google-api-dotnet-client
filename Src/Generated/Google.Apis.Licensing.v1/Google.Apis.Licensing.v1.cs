@@ -41,9 +41,9 @@ namespace Google.Apis.Licensing.v1
         /// <summary>Gets the service base URI.</summary>
         public override string BaseUri =>
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://www.googleapis.com/";
+            BaseUriOverride ?? "https://licensing.googleapis.com/";
         #else
-            "https://www.googleapis.com/";
+            "https://licensing.googleapis.com/";
         #endif
 
         /// <summary>Gets the service base path.</summary>
@@ -51,10 +51,10 @@ namespace Google.Apis.Licensing.v1
 
         #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://www.googleapis.com/batch/licensing/v1";
+        public override string BatchUri => "https://licensing.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
-        public override string BatchPath => "batch/licensing/v1";
+        public override string BatchPath => "batch";
         #endif
 
         /// <summary>Available OAuth 2.0 scopes for use with the Enterprise License Manager API.</summary>

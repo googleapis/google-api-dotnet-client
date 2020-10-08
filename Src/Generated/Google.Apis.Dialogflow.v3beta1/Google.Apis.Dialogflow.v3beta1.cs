@@ -1125,7 +1125,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                         /// `projects//locations//agents//sessions/` or `projects//locations//agents//environments//sessions/`. If `Environment
                         /// ID` is not specified, we assume default 'draft' environment. It's up to the API caller to choose an appropriate
                         /// `Session ID`. It can be a random number or some type of session identifiers (preferably hashed). The length of the
-                        /// `Session ID` must not exceed 36 characters.</param>
+                        /// `Session ID` must not exceed 36 characters. For more information, see the [sessions
+                        /// guide](https://cloud.google.com/dialogflow/cx/docs/concept/session).</param>
                         public virtual DetectIntentRequest DetectIntent(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1DetectIntentRequest body, string session)
                         {
                             return new DetectIntentRequest(service, body, session);
@@ -1150,8 +1151,9 @@ namespace Google.Apis.Dialogflow.v3beta1
                             /// `projects//locations//agents//environments//sessions/`. If `Environment ID` is not
                             /// specified, we assume default 'draft' environment. It's up to the API caller to choose an
                             /// appropriate `Session ID`. It can be a random number or some type of session identifiers
-                            /// (preferably hashed). The length of the `Session ID` must not exceed 36
-                            /// characters.</summary>
+                            /// (preferably hashed). The length of the `Session ID` must not exceed 36 characters. For
+                            /// more information, see the [sessions
+                            /// guide](https://cloud.google.com/dialogflow/cx/docs/concept/session).</summary>
                             [Google.Apis.Util.RequestParameterAttribute("session", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Session { get; private set; }
 
@@ -1196,7 +1198,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                         /// `projects//locations//agents//sessions/` or `projects//locations//agents//environments//sessions/`. If `Environment
                         /// ID` is not specified, we assume default 'draft' environment. It's up to the API caller to choose an appropriate
                         /// `Session ID`. It can be a random number or some type of session identifiers (preferably hashed). The length of the
-                        /// `Session ID` must not exceed 36 characters.</param>
+                        /// `Session ID` must not exceed 36 characters. For more information, see the [sessions
+                        /// guide](https://cloud.google.com/dialogflow/cx/docs/concept/session).</param>
                         public virtual FulfillIntentRequest FulfillIntent(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1FulfillIntentRequest body, string session)
                         {
                             return new FulfillIntentRequest(service, body, session);
@@ -1221,8 +1224,9 @@ namespace Google.Apis.Dialogflow.v3beta1
                             /// `projects//locations//agents//environments//sessions/`. If `Environment ID` is not
                             /// specified, we assume default 'draft' environment. It's up to the API caller to choose an
                             /// appropriate `Session ID`. It can be a random number or some type of session identifiers
-                            /// (preferably hashed). The length of the `Session ID` must not exceed 36
-                            /// characters.</summary>
+                            /// (preferably hashed). The length of the `Session ID` must not exceed 36 characters. For
+                            /// more information, see the [sessions
+                            /// guide](https://cloud.google.com/dialogflow/cx/docs/concept/session).</summary>
                             [Google.Apis.Util.RequestParameterAttribute("session", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Session { get; private set; }
 
@@ -1266,7 +1270,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                         /// `projects//locations//agents//sessions/` or `projects//locations//agents//environments//sessions/`. If `Environment
                         /// ID` is not specified, we assume default 'draft' environment. It's up to the API caller to choose an appropriate
                         /// `Session ID`. It can be a random number or some type of session identifiers (preferably hashed). The length of the
-                        /// `Session ID` must not exceed 36 characters.</param>
+                        /// `Session ID` must not exceed 36 characters. For more information, see the [sessions
+                        /// guide](https://cloud.google.com/dialogflow/cx/docs/concept/session).</param>
                         public virtual MatchIntentRequest MatchIntent(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1MatchIntentRequest body, string session)
                         {
                             return new MatchIntentRequest(service, body, session);
@@ -1290,8 +1295,9 @@ namespace Google.Apis.Dialogflow.v3beta1
                             /// `projects//locations//agents//environments//sessions/`. If `Environment ID` is not
                             /// specified, we assume default 'draft' environment. It's up to the API caller to choose an
                             /// appropriate `Session ID`. It can be a random number or some type of session identifiers
-                            /// (preferably hashed). The length of the `Session ID` must not exceed 36
-                            /// characters.</summary>
+                            /// (preferably hashed). The length of the `Session ID` must not exceed 36 characters. For
+                            /// more information, see the [sessions
+                            /// guide](https://cloud.google.com/dialogflow/cx/docs/concept/session).</summary>
                             [Google.Apis.Util.RequestParameterAttribute("session", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Session { get; private set; }
 
@@ -4196,7 +4202,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                     /// `projects//locations//agents//sessions/` or `projects//locations//agents//environments//sessions/`. If `Environment
                     /// ID` is not specified, we assume default 'draft' environment. It's up to the API caller to choose an appropriate
                     /// `Session ID`. It can be a random number or some type of session identifiers (preferably hashed). The length of the
-                    /// `Session ID` must not exceed 36 characters.</param>
+                    /// `Session ID` must not exceed 36 characters. For more information, see the [sessions
+                    /// guide](https://cloud.google.com/dialogflow/cx/docs/concept/session).</param>
                     public virtual DetectIntentRequest DetectIntent(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1DetectIntentRequest body, string session)
                     {
                         return new DetectIntentRequest(service, body, session);
@@ -4221,7 +4228,9 @@ namespace Google.Apis.Dialogflow.v3beta1
                         /// `projects//locations//agents//environments//sessions/`. If `Environment ID` is not
                         /// specified, we assume default 'draft' environment. It's up to the API caller to choose an
                         /// appropriate `Session ID`. It can be a random number or some type of session identifiers
-                        /// (preferably hashed). The length of the `Session ID` must not exceed 36 characters.</summary>
+                        /// (preferably hashed). The length of the `Session ID` must not exceed 36 characters. For more
+                        /// information, see the [sessions
+                        /// guide](https://cloud.google.com/dialogflow/cx/docs/concept/session).</summary>
                         [Google.Apis.Util.RequestParameterAttribute("session", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Session { get; private set; }
 
@@ -4265,7 +4274,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                     /// `projects//locations//agents//sessions/` or `projects//locations//agents//environments//sessions/`. If `Environment
                     /// ID` is not specified, we assume default 'draft' environment. It's up to the API caller to choose an appropriate
                     /// `Session ID`. It can be a random number or some type of session identifiers (preferably hashed). The length of the
-                    /// `Session ID` must not exceed 36 characters.</param>
+                    /// `Session ID` must not exceed 36 characters. For more information, see the [sessions
+                    /// guide](https://cloud.google.com/dialogflow/cx/docs/concept/session).</param>
                     public virtual FulfillIntentRequest FulfillIntent(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1FulfillIntentRequest body, string session)
                     {
                         return new FulfillIntentRequest(service, body, session);
@@ -4289,7 +4299,9 @@ namespace Google.Apis.Dialogflow.v3beta1
                         /// `projects//locations//agents//environments//sessions/`. If `Environment ID` is not
                         /// specified, we assume default 'draft' environment. It's up to the API caller to choose an
                         /// appropriate `Session ID`. It can be a random number or some type of session identifiers
-                        /// (preferably hashed). The length of the `Session ID` must not exceed 36 characters.</summary>
+                        /// (preferably hashed). The length of the `Session ID` must not exceed 36 characters. For more
+                        /// information, see the [sessions
+                        /// guide](https://cloud.google.com/dialogflow/cx/docs/concept/session).</summary>
                         [Google.Apis.Util.RequestParameterAttribute("session", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Session { get; private set; }
 
@@ -4332,7 +4344,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                     /// `projects//locations//agents//sessions/` or `projects//locations//agents//environments//sessions/`. If `Environment
                     /// ID` is not specified, we assume default 'draft' environment. It's up to the API caller to choose an appropriate
                     /// `Session ID`. It can be a random number or some type of session identifiers (preferably hashed). The length of the
-                    /// `Session ID` must not exceed 36 characters.</param>
+                    /// `Session ID` must not exceed 36 characters. For more information, see the [sessions
+                    /// guide](https://cloud.google.com/dialogflow/cx/docs/concept/session).</param>
                     public virtual MatchIntentRequest MatchIntent(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1MatchIntentRequest body, string session)
                     {
                         return new MatchIntentRequest(service, body, session);
@@ -4355,7 +4368,9 @@ namespace Google.Apis.Dialogflow.v3beta1
                         /// `projects//locations//agents//environments//sessions/`. If `Environment ID` is not
                         /// specified, we assume default 'draft' environment. It's up to the API caller to choose an
                         /// appropriate `Session ID`. It can be a random number or some type of session identifiers
-                        /// (preferably hashed). The length of the `Session ID` must not exceed 36 characters.</summary>
+                        /// (preferably hashed). The length of the `Session ID` must not exceed 36 characters. For more
+                        /// information, see the [sessions
+                        /// guide](https://cloud.google.com/dialogflow/cx/docs/concept/session).</summary>
                         [Google.Apis.Util.RequestParameterAttribute("session", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Session { get; private set; }
 
@@ -4845,7 +4860,7 @@ namespace Google.Apis.Dialogflow.v3beta1
 
                 }
 
-                /// <summary>Exports the specified agent to a ZIP file.</summary>
+                /// <summary>Exports the specified agent to a binary file.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The name of the agent to export. Format: `projects//locations//agents/`.</param>
                 public virtual ExportRequest Export(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ExportAgentRequest body, string name)
@@ -4853,7 +4868,7 @@ namespace Google.Apis.Dialogflow.v3beta1
                     return new ExportRequest(service, body, name);
                 }
 
-                /// <summary>Exports the specified agent to a ZIP file.</summary>
+                /// <summary>Exports the specified agent to a binary file.</summary>
                 public class ExportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Export request.</summary>
@@ -5100,8 +5115,9 @@ namespace Google.Apis.Dialogflow.v3beta1
 
                 }
 
-                /// <summary>Restores the specified agent from a ZIP file. Note that all existing intents, intent
-                /// routes, entity types, pages and webhooks in the agent will be deleted.</summary>
+                /// <summary>Restores the specified agent from a bianry file. Replaces the current agent with a new one.
+                /// Note that all existing resources in agent (e.g. intents, entity types, flows) will be
+                /// removed.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The name of the agent to restore into. Format:
                 /// `projects//locations//agents/`.</param>
@@ -5110,8 +5126,9 @@ namespace Google.Apis.Dialogflow.v3beta1
                     return new RestoreRequest(service, body, name);
                 }
 
-                /// <summary>Restores the specified agent from a ZIP file. Note that all existing intents, intent
-                /// routes, entity types, pages and webhooks in the agent will be deleted.</summary>
+                /// <summary>Restores the specified agent from a bianry file. Replaces the current agent with a new one.
+                /// Note that all existing resources in agent (e.g. intents, entity types, flows) will be
+                /// removed.</summary>
                 public class RestoreRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Restore request.</summary>
@@ -6695,6 +6712,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
         public virtual string Transcript { get; set; }
 
+        /// <summary>If an event was provided as input, this field will contain a copy of the event name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerEvent")]
+        public virtual string TriggerEvent { get; set; }
+
         /// <summary>If an intent was provided as input, this field will contain a copy of the intent
         /// identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerIntent")]
@@ -6864,8 +6885,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents the query input. It can contain either: 1. A conversational query in the form of text. 2. An
-    /// intent query that specifies which intent to trigger.</summary>
+    /// <summary>Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An
+    /// intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An
+    /// event to be triggered. </summary>
     public class GoogleCloudDialogflowCxV3beta1QueryInput : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The natural language speech audio to be processed.</summary>
@@ -7875,6 +7897,17 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response message for Documents.ImportDocuments.</summary>
+    public class GoogleCloudDialogflowV2ImportDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Includes details about skipped documents or any other warnings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>An intent categorizes an end-user's intention for one conversation turn. For each agent, you define
     /// many intents, where your combined intents can handle a complete conversation. When an end-user writes or says
     /// something, referred to as an end-user expression or end-user input, Dialogflow matches the end-user input to the
@@ -8832,9 +8865,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
     /// <summary>The result of sentiment analysis. Sentiment analysis inspects user input and identifies the prevailing
     /// subjective opinion, especially to determine a user's attitude as positive, negative, or neutral. For
-    /// Participants.AnalyzeContent, it needs to be configured in DetectIntentRequest.query_params. For
-    /// Participants.StreamingAnalyzeContent, it needs to be configured in StreamingDetectIntentRequest.query_params.
-    /// And for Participants.AnalyzeContent and Participants.StreamingAnalyzeContent, it needs to be configured in
+    /// Participants.DetectIntent, it needs to be configured in DetectIntentRequest.query_params. For
+    /// Participants.StreamingDetectIntent, it needs to be configured in StreamingDetectIntentRequest.query_params. And
+    /// for Participants.AnalyzeContent and Participants.StreamingAnalyzeContent, it needs to be configured in
     /// ConversationProfile.human_agent_assistant_config</summary>
     public class GoogleCloudDialogflowV2SentimentAnalysisResult : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9192,6 +9225,17 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// specified in `ExportAgentRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for Documents.ImportDocuments.</summary>
+    public class GoogleCloudDialogflowV2beta1ImportDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Includes details about skipped documents or any other warnings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10469,9 +10513,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
     /// <summary>The result of sentiment analysis. Sentiment analysis inspects user input and identifies the prevailing
     /// subjective opinion, especially to determine a user's attitude as positive, negative, or neutral. For
-    /// Participants.AnalyzeContent, it needs to be configured in DetectIntentRequest.query_params. For
-    /// Participants.StreamingAnalyzeContent, it needs to be configured in StreamingDetectIntentRequest.query_params.
-    /// And for Participants.AnalyzeContent and Participants.StreamingAnalyzeContent, it needs to be configured in
+    /// Participants.DetectIntent, it needs to be configured in DetectIntentRequest.query_params. For
+    /// Participants.StreamingDetectIntent, it needs to be configured in StreamingDetectIntentRequest.query_params. And
+    /// for Participants.AnalyzeContent and Participants.StreamingAnalyzeContent, it needs to be configured in
     /// ConversationProfile.human_agent_assistant_config</summary>
     public class GoogleCloudDialogflowV2beta1SentimentAnalysisResult : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10645,17 +10689,6 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Metadata associated with the long running operation for Versions.CreateVersion.</summary>
-    public class GoogleCloudDialogflowV3alpha1CreateVersionOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Name of the created version. Format: `projects//locations//agents//flows//versions/`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

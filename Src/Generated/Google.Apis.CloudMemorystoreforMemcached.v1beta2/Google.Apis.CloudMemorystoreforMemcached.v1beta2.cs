@@ -1333,8 +1333,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicyNames")]
         public virtual System.Collections.Generic.IDictionary<string, string> MaintenancePolicyNames { get; set; }
 
-        /// <summary>The MaintenanceSchedule contains the scheduling information of published maintenance
-        /// schedule.</summary>
+        /// <summary>The MaintenanceSchedule contains the scheduling information of published maintenance schedule with
+        /// same key as software_versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedules")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule> MaintenanceSchedules { get; set; }
 

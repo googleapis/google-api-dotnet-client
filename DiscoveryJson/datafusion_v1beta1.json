@@ -665,7 +665,7 @@
    }
   }
  }, 
- "revision": "20200928", 
+ "revision": "20201001", 
  "rootUrl": "https://datafusion.googleapis.com/", 
  "schemas": {
   "Accelerator": {

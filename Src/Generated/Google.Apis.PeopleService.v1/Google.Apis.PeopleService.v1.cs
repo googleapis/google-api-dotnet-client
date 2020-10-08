@@ -1060,9 +1060,10 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object RequestMaskIncludeField { get; set; }
 
-                /// <summary>Optional. Whether the response should include `next_sync_token`, which can be used to get
-                /// all changes since the last request. For subsequent sync requests use the `sync_token` param instead.
-                /// Initial sync requests that specify `request_sync_token` have an additional rate limit.</summary>
+                /// <summary>Optional. Whether the response should include `next_sync_token` on the last page, which can
+                /// be used to get all changes since the last request. For subsequent sync requests use the `sync_token`
+                /// param instead. Initial sync requests that specify `request_sync_token` have an additional rate
+                /// limit.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestSyncToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> RequestSyncToken { get; set; }
 
@@ -2809,7 +2810,8 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string NextPageToken { get; set; }
 
         /// <summary>A token, which can be sent as `sync_token` to retrieve changes since the last request. Request must
-        /// set `request_sync_token` to return the sync token.</summary>
+        /// set `request_sync_token` to return the sync token. When the response is paginated, only the last page will
+        /// contain `nextSyncToken`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextSyncToken")]
         public virtual string NextSyncToken { get; set; }
 
@@ -3767,7 +3769,7 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual FieldMetadata Metadata { get; set; }
 
         /// <summary>The type of the URL. The type can be custom or one of these predefined values: * `home` * `work` *
-        /// `blog` * `profile` * `homePage` * `ftp` * `reservations` * `appInstallPage`: website for a Google+
+        /// `blog` * `profile` * `homePage` * `ftp` * `reservations` * `appInstallPage`: website for a Currents
         /// application. * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }

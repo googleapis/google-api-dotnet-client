@@ -305,6 +305,10 @@ namespace Google.Apis.AdSense.v1_4
                 [Google.Apis.Util.RequestParameterAttribute("adClientId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AdClientId { get; private set; }
 
+                /// <summary>Tag partner to include in the ad code snippet.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("tagPartner", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string TagPartner { get; set; }
+
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getAdCode";
@@ -333,6 +337,14 @@ namespace Google.Apis.AdSense.v1_4
                         Name = "adClientId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("tagPartner", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "tagPartner",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });

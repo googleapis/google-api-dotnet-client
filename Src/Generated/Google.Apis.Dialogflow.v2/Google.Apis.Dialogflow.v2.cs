@@ -5701,6 +5701,17 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response message for Documents.ImportDocuments.</summary>
+    public class GoogleCloudDialogflowV2ImportDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Includes details about skipped documents or any other warnings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Instructs the speech recognizer how to process the audio content.</summary>
     public class GoogleCloudDialogflowV2InputAudioConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6949,9 +6960,9 @@ namespace Google.Apis.Dialogflow.v2.Data
 
     /// <summary>The result of sentiment analysis. Sentiment analysis inspects user input and identifies the prevailing
     /// subjective opinion, especially to determine a user's attitude as positive, negative, or neutral. For
-    /// Participants.AnalyzeContent, it needs to be configured in DetectIntentRequest.query_params. For
-    /// Participants.StreamingAnalyzeContent, it needs to be configured in StreamingDetectIntentRequest.query_params.
-    /// And for Participants.AnalyzeContent and Participants.StreamingAnalyzeContent, it needs to be configured in
+    /// Participants.DetectIntent, it needs to be configured in DetectIntentRequest.query_params. For
+    /// Participants.StreamingDetectIntent, it needs to be configured in StreamingDetectIntentRequest.query_params. And
+    /// for Participants.AnalyzeContent and Participants.StreamingAnalyzeContent, it needs to be configured in
     /// ConversationProfile.human_agent_assistant_config</summary>
     public class GoogleCloudDialogflowV2SentimentAnalysisResult : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7448,6 +7459,17 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// specified in `ExportAgentRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for Documents.ImportDocuments.</summary>
+    public class GoogleCloudDialogflowV2beta1ImportDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Includes details about skipped documents or any other warnings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8725,9 +8747,9 @@ namespace Google.Apis.Dialogflow.v2.Data
 
     /// <summary>The result of sentiment analysis. Sentiment analysis inspects user input and identifies the prevailing
     /// subjective opinion, especially to determine a user's attitude as positive, negative, or neutral. For
-    /// Participants.AnalyzeContent, it needs to be configured in DetectIntentRequest.query_params. For
-    /// Participants.StreamingAnalyzeContent, it needs to be configured in StreamingDetectIntentRequest.query_params.
-    /// And for Participants.AnalyzeContent and Participants.StreamingAnalyzeContent, it needs to be configured in
+    /// Participants.DetectIntent, it needs to be configured in DetectIntentRequest.query_params. For
+    /// Participants.StreamingDetectIntent, it needs to be configured in StreamingDetectIntentRequest.query_params. And
+    /// for Participants.AnalyzeContent and Participants.StreamingAnalyzeContent, it needs to be configured in
     /// ConversationProfile.human_agent_assistant_config</summary>
     public class GoogleCloudDialogflowV2beta1SentimentAnalysisResult : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8901,17 +8923,6 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Metadata associated with the long running operation for Versions.CreateVersion.</summary>
-    public class GoogleCloudDialogflowV3alpha1CreateVersionOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Name of the created version. Format: `projects//locations//agents//flows//versions/`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

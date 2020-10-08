@@ -6721,7 +6721,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual System.Collections.Generic.IList<FacetOptions> FacetOptions { get; set; }
 
         /// <summary>Maximum number of search results to return in one page. Valid values are between 1 and 100,
-        /// inclusive. Default value is 10.</summary>
+        /// inclusive. Default value is 10. Minimum value is 50 when results beyond 2000 are requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
 

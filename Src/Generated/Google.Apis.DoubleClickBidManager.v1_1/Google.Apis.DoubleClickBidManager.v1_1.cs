@@ -1100,7 +1100,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Dimension Filter for a Path Filter.</summary>
+    /// <summary>Dimension Filter on path events.</summary>
     public class PathQueryOptionsFilter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Dimension the filter is applied to.</summary>
