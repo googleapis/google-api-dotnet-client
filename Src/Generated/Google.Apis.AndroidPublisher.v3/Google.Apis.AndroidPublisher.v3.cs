@@ -5560,11 +5560,13 @@ namespace Google.Apis.AndroidPublisher.v3
             /// time.</summary>
             /// <param name="packageName">The package name of the application for which this subscription was purchased (for
             /// example, 'com.some.thing').</param>
-            /// <param name="token">The token provided to the user's device when the
-            /// subscription was purchased.</param>
-            public virtual CancelRequest Cancel(string packageName, string token)
+            /// <param name="subscriptionId">The purchased subscription ID (for example,
+            /// 'monthly001').</param>
+            /// <param name="token">The token provided to the user's device when the subscription was
+            /// purchased.</param>
+            public virtual CancelRequest Cancel(string packageName, string subscriptionId, string token)
             {
-                return new CancelRequest(service, packageName, token);
+                return new CancelRequest(service, packageName, subscriptionId, token);
             }
 
             /// <summary>Cancels a user's subscription purchase. The subscription remains valid until its expiration
@@ -5572,9 +5574,10 @@ namespace Google.Apis.AndroidPublisher.v3
             public class CancelRequest : AndroidPublisherBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Cancel request.</summary>
-                public CancelRequest(Google.Apis.Services.IClientService service, string packageName, string token) : base(service)
+                public CancelRequest(Google.Apis.Services.IClientService service, string packageName, string subscriptionId, string token) : base(service)
                 {
                     PackageName = packageName;
+                    SubscriptionId = subscriptionId;
                     Token = token;
                     InitParameters();
                 }
@@ -5584,6 +5587,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// 'com.some.thing').</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
+
+                /// <summary>The purchased subscription ID (for example, 'monthly001').</summary>
+                [Google.Apis.Util.RequestParameterAttribute("subscriptionId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string SubscriptionId { get; private set; }
 
                 /// <summary>The token provided to the user's device when the subscription was purchased.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Path)]
@@ -5597,7 +5604,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/tokens/{token}:cancel";
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:cancel";
 
                 /// <summary>Initializes Cancel parameter list.</summary>
                 protected override void InitParameters()
@@ -5607,6 +5614,14 @@ namespace Google.Apis.AndroidPublisher.v3
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("subscriptionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "subscriptionId",
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,

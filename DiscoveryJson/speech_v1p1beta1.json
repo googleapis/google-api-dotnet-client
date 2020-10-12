@@ -290,7 +290,7 @@
    }
   }
  }, 
- "revision": "20200923", 
+ "revision": "20201001", 
  "rootUrl": "https://speech.googleapis.com/", 
  "schemas": {
   "ClassItem": {

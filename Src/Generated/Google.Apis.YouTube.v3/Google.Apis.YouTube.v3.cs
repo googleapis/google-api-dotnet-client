@@ -10859,7 +10859,8 @@ namespace Google.Apis.YouTube.v3.Data
         /// are returned in API responses. For example, your application should not use the http domain instead of the
         /// https domain in a URL returned in an API response. Beginning in July 2018, channel thumbnail URLs will only
         /// be available in the https domain, which is how the URLs appear in API responses. After that time, you might
-        /// see broken images in your application if it tries to load YouTube images from the http domain.</summary>
+        /// see broken images in your application if it tries to load YouTube images from the http domain. Thumbnail
+        /// images might be empty for newly created channels and might take up to one day to populate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnails")]
         public virtual ThumbnailDetails Thumbnails { get; set; }
 

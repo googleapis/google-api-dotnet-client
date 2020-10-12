@@ -317,7 +317,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param
         /// name="managedZone">Identifies the managed zone addressed by this request. Can be the managed zone name or
-        /// id.</param>
+        /// ID.</param>
         public virtual CreateRequest Create(Google.Apis.Dns.v1.Data.Change body, string project, string managedZone)
         {
             return new CreateRequest(service, body, project, managedZone);
@@ -341,7 +341,7 @@ namespace Google.Apis.Dns.v1
             public virtual string Project { get; private set; }
 
             /// <summary>Identifies the managed zone addressed by this request. Can be the managed zone name or
-            /// id.</summary>
+            /// ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ManagedZone { get; private set; }
 
@@ -403,7 +403,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param
         /// name="managedZone">Identifies the managed zone addressed by this request. Can be the managed zone name or
-        /// id.</param>
+        /// ID.</param>
         /// <param name="changeId">The identifier of the requested change, from a previous
         /// ResourceRecordSetsChangeResponse.</param>
         public virtual GetRequest Get(string project, string managedZone, string changeId)
@@ -429,7 +429,7 @@ namespace Google.Apis.Dns.v1
             public virtual string Project { get; private set; }
 
             /// <summary>Identifies the managed zone addressed by this request. Can be the managed zone name or
-            /// id.</summary>
+            /// ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ManagedZone { get; private set; }
 
@@ -498,7 +498,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param
         /// name="managedZone">Identifies the managed zone addressed by this request. Can be the managed zone name or
-        /// id.</param>
+        /// ID.</param>
         public virtual ListRequest List(string project, string managedZone)
         {
             return new ListRequest(service, project, managedZone);
@@ -521,7 +521,7 @@ namespace Google.Apis.Dns.v1
             public virtual string Project { get; private set; }
 
             /// <summary>Identifies the managed zone addressed by this request. Can be the managed zone name or
-            /// id.</summary>
+            /// ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ManagedZone { get; private set; }
 
@@ -638,7 +638,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param
         /// name="managedZone">Identifies the managed zone addressed by this request. Can be the managed zone name or
-        /// id.</param>
+        /// ID.</param>
         /// <param name="dnsKeyId">The identifier of the requested DnsKey.</param>
         public virtual GetRequest Get(string project, string managedZone, string dnsKeyId)
         {
@@ -663,7 +663,7 @@ namespace Google.Apis.Dns.v1
             public virtual string Project { get; private set; }
 
             /// <summary>Identifies the managed zone addressed by this request. Can be the managed zone name or
-            /// id.</summary>
+            /// ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ManagedZone { get; private set; }
 
@@ -744,7 +744,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param
         /// name="managedZone">Identifies the managed zone addressed by this request. Can be the managed zone name or
-        /// id.</param>
+        /// ID.</param>
         public virtual ListRequest List(string project, string managedZone)
         {
             return new ListRequest(service, project, managedZone);
@@ -767,7 +767,7 @@ namespace Google.Apis.Dns.v1
             public virtual string Project { get; private set; }
 
             /// <summary>Identifies the managed zone addressed by this request. Can be the managed zone name or
-            /// id.</summary>
+            /// ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ManagedZone { get; private set; }
 
@@ -1156,7 +1156,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param
         /// name="managedZone">Identifies the managed zone addressed by this request. Can be the managed zone name or
-        /// id.</param>
+        /// ID.</param>
         public virtual DeleteRequest Delete(string project, string managedZone)
         {
             return new DeleteRequest(service, project, managedZone);
@@ -1179,7 +1179,7 @@ namespace Google.Apis.Dns.v1
             public virtual string Project { get; private set; }
 
             /// <summary>Identifies the managed zone addressed by this request. Can be the managed zone name or
-            /// id.</summary>
+            /// ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ManagedZone { get; private set; }
 
@@ -1235,7 +1235,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param
         /// name="managedZone">Identifies the managed zone addressed by this request. Can be the managed zone name or
-        /// id.</param>
+        /// ID.</param>
         public virtual GetRequest Get(string project, string managedZone)
         {
             return new GetRequest(service, project, managedZone);
@@ -1258,7 +1258,7 @@ namespace Google.Apis.Dns.v1
             public virtual string Project { get; private set; }
 
             /// <summary>Identifies the managed zone addressed by this request. Can be the managed zone name or
-            /// id.</summary>
+            /// ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ManagedZone { get; private set; }
 
@@ -1402,7 +1402,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param
         /// name="managedZone">Identifies the managed zone addressed by this request. Can be the managed zone name or
-        /// id.</param>
+        /// ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dns.v1.Data.ManagedZone body, string project, string managedZone)
         {
             return new PatchRequest(service, body, project, managedZone);
@@ -1426,7 +1426,7 @@ namespace Google.Apis.Dns.v1
             public virtual string Project { get; private set; }
 
             /// <summary>Identifies the managed zone addressed by this request. Can be the managed zone name or
-            /// id.</summary>
+            /// ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ManagedZone { get; private set; }
 
@@ -1489,7 +1489,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param
         /// name="managedZone">Identifies the managed zone addressed by this request. Can be the managed zone name or
-        /// id.</param>
+        /// ID.</param>
         public virtual UpdateRequest Update(Google.Apis.Dns.v1.Data.ManagedZone body, string project, string managedZone)
         {
             return new UpdateRequest(service, body, project, managedZone);
@@ -1513,7 +1513,7 @@ namespace Google.Apis.Dns.v1
             public virtual string Project { get; private set; }
 
             /// <summary>Identifies the managed zone addressed by this request. Can be the managed zone name or
-            /// id.</summary>
+            /// ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ManagedZone { get; private set; }
 
@@ -2159,7 +2159,7 @@ namespace Google.Apis.Dns.v1
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param
         /// name="managedZone">Identifies the managed zone addressed by this request. Can be the managed zone name or
-        /// id.</param>
+        /// ID.</param>
         public virtual ListRequest List(string project, string managedZone)
         {
             return new ListRequest(service, project, managedZone);
@@ -2182,7 +2182,7 @@ namespace Google.Apis.Dns.v1
             public virtual string Project { get; private set; }
 
             /// <summary>Identifies the managed zone addressed by this request. Can be the managed zone name or
-            /// id.</summary>
+            /// ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ManagedZone { get; private set; }
 

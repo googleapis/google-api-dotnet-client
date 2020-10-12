@@ -1551,15 +1551,16 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     /// <summary>Top level status and detected attributes of a creative.</summary>
     public class CreativeServingDecision : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The serving status of this creative in China. When approved or disapproved, this status applies to
-        /// both deals and open auction in China. When pending review, this creative is allowed to serve for deals but
-        /// not for open auction.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("chinaServingStatus")]
-        public virtual ServingStatus ChinaServingStatus { get; set; }
+        /// <summary>The policy compliance of this creative in China. When approved or disapproved, this applies to both
+        /// deals and open auction in China. When pending review, this creative is allowed to serve for deals but not
+        /// for open auction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chinaPolicyCompliance")]
+        public virtual PolicyCompliance ChinaPolicyCompliance { get; set; }
 
-        /// <summary>Status of this creative when bidding on PG and PD deals (outside of Russia and China).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dealsServingStatus")]
-        public virtual ServingStatus DealsServingStatus { get; set; }
+        /// <summary>Policy compliance of this creative when bidding on Programmatic Guaranteed and Preferred Deals
+        /// (outside of Russia and China).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dealsPolicyCompliance")]
+        public virtual PolicyCompliance DealsPolicyCompliance { get; set; }
 
         /// <summary>Detected advertisers and brands.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedAdvertisers")]
@@ -1614,16 +1615,21 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastStatusUpdate")]
         public virtual object LastStatusUpdate { get; set; }
 
-        /// <summary>Status of this creative when bidding in open auction, private auction, or auction packages (outside
-        /// of Russia and China).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("openAuctionServingStatus")]
-        public virtual ServingStatus OpenAuctionServingStatus { get; set; }
+        /// <summary>Policy compliance of this creative when bidding in open auction, private auction, or auction
+        /// packages (outside of Russia and China).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkPolicyCompliance")]
+        public virtual PolicyCompliance NetworkPolicyCompliance { get; set; }
 
-        /// <summary>The serving status of this creative in Russia. When approved or disapproved, this status applies to
+        /// <summary>Policy compliance of this creative when bidding in Open Bidding (outside of Russia and China). For
+        /// the list of platform policies, see: https://support.google.com/platformspolicy/answer/3013851.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platformPolicyCompliance")]
+        public virtual PolicyCompliance PlatformPolicyCompliance { get; set; }
+
+        /// <summary>The policy compliance of this creative in Russia. When approved or disapproved, this applies to
         /// both deals and open auction in Russia. When pending review, this creative is allowed to serve for deals but
         /// not for open auction.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("russiaServingStatus")]
-        public virtual ServingStatus RussiaServingStatus { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("russiaPolicyCompliance")]
+        public virtual PolicyCompliance RussiaPolicyCompliance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1967,6 +1973,23 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Policy compliance of the creative for a transaction type or a region.</summary>
+    public class PolicyCompliance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Serving status for the given transaction type (e.g., open auction, deals) or region (e.g., China,
+        /// Russia). Can be used to filter the response of the creatives.list method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>Topics related to the policy compliance for this transaction type (e.g., open auction, deals) or
+        /// region (e.g., China, Russia). Topics may be present only if status is DISAPPROVED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topics")]
+        public virtual System.Collections.Generic.IList<PolicyTopicEntry> Topics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Each policy topic entry will represent a violation of a policy topic for a creative, with the policy
     /// topic information and optional evidence for the policy violation.</summary>
     public class PolicyTopicEntry : Google.Apis.Requests.IDirectResponseSchema
@@ -2019,23 +2042,6 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// <summary>Evidence for HTTP cookie-related policy violations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpCookie")]
         public virtual HttpCookieEvidence HttpCookie { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Serving status of the creative for a transaction type or a region.</summary>
-    public class ServingStatus : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Serving status for the given transaction type (e.g., open auction, deals) or region (e.g., China,
-        /// Russia). Can be used to filter the response of the creatives.list method.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; }
-
-        /// <summary>Policy topics related to the serving decision for this transaction type (e.g., open auction, deals)
-        /// or region (e.g., China, Russia). Topics may be present only if status is DISAPPROVED.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("topics")]
-        public virtual System.Collections.Generic.IList<PolicyTopicEntry> Topics { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

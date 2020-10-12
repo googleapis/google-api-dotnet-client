@@ -257,7 +257,8 @@ namespace Google.Apis.CloudSecurityToken.v1beta
 
 
         /// <summary>Exchanges a credential for a Google OAuth 2.0 access token. The token asserts an external identity
-        /// within a WorkloadIdentityPool, or applies an Access Boundary on a Google access token.</summary>
+        /// within a workload identity pool, or it applies a Credential Access Boundary to a Google access
+        /// token.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual TokenRequest Token(Google.Apis.CloudSecurityToken.v1beta.Data.GoogleIdentityStsV1betaExchangeTokenRequest body)
         {
@@ -265,7 +266,8 @@ namespace Google.Apis.CloudSecurityToken.v1beta
         }
 
         /// <summary>Exchanges a credential for a Google OAuth 2.0 access token. The token asserts an external identity
-        /// within a WorkloadIdentityPool, or applies an Access Boundary on a Google access token.</summary>
+        /// within a workload identity pool, or it applies a Credential Access Boundary to a Google access
+        /// token.</summary>
         public class TokenRequest : CloudSecurityTokenBaseServiceRequest<Google.Apis.CloudSecurityToken.v1beta.Data.GoogleIdentityStsV1betaExchangeTokenResponse>
         {
             /// <summary>Constructs a new Token request.</summary>
@@ -309,14 +311,14 @@ namespace Google.Apis.CloudSecurityToken.v1beta.Data
     /// <summary>Request message for ExchangeToken.</summary>
     public class GoogleIdentityStsV1betaExchangeTokenRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The full resource name of the identity provider; for example:
-        /// `https://iam.googleapis.com/projects/{PROJECT_ID}/workloadIdentityPools/{POOL_ID}/providers/{PROVIDER_ID}`.
-        /// Required when exchanging an external credential for a Google access token.</summary>
+        /// <summary>The full resource name of the identity provider. For example,
+        /// `//iam.googleapis.com/projects//workloadIdentityPools//providers/`. Required when exchanging an external
+        /// credential for a Google access token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audience")]
         public virtual string Audience { get; set; }
 
         /// <summary>Required. The grant type. Must be `urn:ietf:params:oauth:grant-type:token-exchange`, which
-        /// indicates a token exchange is requested.</summary>
+        /// indicates a token exchange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("grantType")]
         public virtual string GrantType { get; set; }
 
@@ -325,8 +327,8 @@ namespace Google.Apis.CloudSecurityToken.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual string Options { get; set; }
 
-        /// <summary>Required. An identifier for the type of requested security token. Must be `urn:ietf:params:oauth
-        /// :token-type:access_token`.</summary>
+        /// <summary>Required. The type of security token. Must be `urn:ietf:params:oauth:token-type:access_token`,
+        /// which indicates an OAuth 2.0 access token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedTokenType")]
         public virtual string RequestedTokenType { get; set; }
 
@@ -336,56 +338,54 @@ namespace Google.Apis.CloudSecurityToken.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual string Scope { get; set; }
 
-        /// <summary>Required. The input token. This is a either an external credential issued by a
-        /// WorkloadIdentityPoolProvider, or a short-lived access token issued by Google. If the token is an OIDC JWT,
-        /// it must use the JWT format defined in [RFC 7523](https://tools.ietf.org/html/rfc7523), and
-        /// `subject_token_type` must be `urn:ietf:params:oauth:token-type:jwt`. The following headers are required: -
-        /// **`kid`**: The identifier of the signing key securing the JWT. - **`alg`**: The cryptographic algorithm
-        /// securing the JWT. Must be `RS256`. The following payload fields are required. For more information, see [RFC
-        /// 7523, Section 3](https://tools.ietf.org/html/rfc7523#section-3). - **`iss`**: The issuer of the token. The
-        /// issuer must provide a discovery document at `/.well-known/openid-configuration`, formatted according to
-        /// section 4.2 of the [OIDC 1.0 Discovery specification](https://openid.net/specs/openid-connect-discovery-
-        /// 1_0.html#ProviderConfigurationResponse). - **`iat`**: The issue time, in seconds, since epoch. Must be in
-        /// the past. - **`exp`**: The expiration time, in seconds, since epoch. Must be fewer than 48 hours after
-        /// `iat`. Shorter expiration times are more. secure. If possible, we recommend setting an expiration time fewer
-        /// than 6 hours. - **`sub`**: The identity asserted in the JWT. - **`aud`**: Configured by the mapper policy.
-        /// The default value is the service account's unique ID. Example header: ``` { "alg": "RS256", "kid": "us-
-        /// east-11" } ``` Example payload: ``` { "iss": "https://accounts.google.com", "iat": 1517963104, "exp":
-        /// 1517966704, "aud": "113475438248934895348", "sub": "113475438248934895348", "my_claims": {
-        /// "additional_claim": "value" } } ``` If `subject_token` is an AWS token, it must be a serialized,
+        /// <summary>Required. The input token. This token is a either an external credential issued by a workload
+        /// identity pool provider, or a short-lived access token issued by Google. If the token is an OIDC JWT, it must
+        /// use the JWT format defined in [RFC 7523](https://tools.ietf.org/html/rfc7523), and the `subject_token_type`
+        /// must be `urn:ietf:params:oauth:token-type:jwt`. The following headers are required: - `kid`: The identifier
+        /// of the signing key securing the JWT. - `alg`: The cryptographic algorithm securing the JWT. Must be `RS256`.
+        /// The following payload fields are required. For more information, see [RFC 7523, Section
+        /// 3](https://tools.ietf.org/html/rfc7523#section-3): - `iss`: The issuer of the token. The issuer must provide
+        /// a discovery document at `/.well-known/openid-configuration`, formatted according to section 4.2 of the [OIDC
+        /// 1.0 Discovery specification](https://openid.net/specs/openid-connect-discovery-
+        /// 1_0.html#ProviderConfigurationResponse). - `iat`: The issue time, in seconds, since the Unix epoch. Must be
+        /// in the past. - `exp`: The expiration time, in seconds, since the Unix epoch. Must be less than 48 hours
+        /// after `iat`. Shorter expiration times are more secure. If possible, we recommend setting an expiration time
+        /// less than 6 hours. - `sub`: The identity asserted in the JWT. - `aud`: Configured by the mapper policy. The
+        /// default value is the service account's unique ID. Example header: ``` { "alg": "RS256", "kid": "us-east-11"
+        /// } ``` Example payload: ``` { "iss": "https://accounts.google.com", "iat": 1517963104, "exp": 1517966704,
+        /// "aud": "113475438248934895348", "sub": "113475438248934895348", "my_claims": { "additional_claim": "value" }
+        /// } ``` If `subject_token` is an AWS token, it must be a serialized,
         /// [signed](https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html) request to the AWS
         /// [`GetCallerIdentity()`](https://docs.aws.amazon.com/STS/latest/APIReference/API_GetCallerIdentity) method.
         /// Format the request as URL-encoded JSON, and set the `subject_token_type` parameter to `urn:ietf:params:aws
-        /// :token-type:aws4_request`. The following parameters are required: - **`url`**: The URL of the AWS STS
-        /// endpoint for `GetCallerIdentity()`, such as `https://sts.amazonaws.com?Action=GetCallerIdentity=2011-06-15`.
-        /// Regional endpoints are also supported. - **`method`:** The HTTP request method: `POST`. - **`headers`**: The
-        /// HTTP request headers, which must include: - **`Authorization`**: The request signature. - **`x-amz-date`**`:
-        /// The time you will send the request, formatted as an [ISO8601
+        /// :token-type:aws4_request`. The following parameters are required: - `url`: The URL of the AWS STS endpoint
+        /// for `GetCallerIdentity()`, such as `https://sts.amazonaws.com?Action=GetCallerIdentity=2011-06-15`. Regional
+        /// endpoints are also supported. - `method`: The HTTP request method: `POST`. - `headers`: The HTTP request
+        /// headers, which must include: - `Authorization`: The request signature. - `x-amz-date`: The time you will
+        /// send the request, formatted as an [ISO8601
         /// Basic](https://docs.aws.amazon.com/general/latest/gr/sigv4_elements.html#sigv4_elements_date) string. This
-        /// is typically set to the current time, and used to prevent replay attacks. - **`host`**: The hostname of the
-        /// `url` field; for example, `sts.amazonaws.com`. - **`x-goog-cloud-target-resource`**: The full, canonical
-        /// resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For example: ```
+        /// is typically set to the current time and used to prevent replay attacks. - `host`: The hostname of the `url`
+        /// field; for example, `sts.amazonaws.com`. - `x-goog-cloud-target-resource`: The full, canonical resource name
+        /// of the workload identity pool provider, with or without an `https:` prefix. To help ensure data integrity,
+        /// we recommend including this header in the `SignedHeaders` field of the signed request. For example:
         /// //iam.googleapis.com/projects//locations//workloadIdentityPools//providers/
-        /// https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ ``` Signing this header as
-        /// part of the signature is recommended to ensure data integrity. If you are using temporary security
-        /// credentials provided by AWS, you must also include the header `x-amz-security-token`, with the value
-        /// `[SESSION_TOKEN]`. The following is an example of a signed, serialized request: ``` { "headers":[ {"key": "x
-        /// -amz-date", "value": "20200815T015049Z"}, {"key": "Authorization", "value": "AWS4-HMAC-
+        /// https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ If you are using temporary
+        /// security credentials provided by AWS, you must also include the header `x-amz-security-token`, with the
+        /// value ``. The following example shows a signed, serialized request: ``` { "headers":[ {"key": "x-amz-date",
+        /// "value": "20200815T015049Z"}, {"key": "Authorization", "value": "AWS4-HMAC-
         /// SHA256+Credential=$credential,+SignedHeaders=host;x-amz-date;x-goog-cloud-target-
         /// resource,+Signature=$signature"}, {"key": "x-goog-cloud-target-resource", "value":
         /// "//iam.googleapis.com/projects//locations//workloadIdentityPools//providers/"}, {"key": "host", "value":
         /// "sts.amazonaws.com"} . ], "method":"POST",
         /// "url":"https://sts.amazonaws.com?Action=GetCallerIdentity=2011-06-15" } ``` You can also use a Google-issued
         /// OAuth 2.0 access token with this field to obtain an access token with new security attributes applied, such
-        /// as an AccessBoundary. In this case, set `subject_token_type` to `urn:ietf:params:oauth:token-
-        /// type:access_token`. Applying additional security attributes on access tokens that already contain security
-        /// attributes is not allowed.</summary>
+        /// as a Credential Access Boundary. In this case, set `subject_token_type` to `urn:ietf:params:oauth:token-
+        /// type:access_token`. If an access token already contains security attributes, you cannot apply additional
+        /// security attributes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subjectToken")]
         public virtual string SubjectToken { get; set; }
 
-        /// <summary>Required. An identifier that indicates the type of the security token in the `subject_token`
-        /// parameter. Supported values are `urn:ietf:params:oauth:token-type:jwt`, `urn:ietf:params:aws:token-
-        /// type:aws4_request` and `urn:ietf:params:oauth:token-type:access_token`.</summary>
+        /// <summary>Required. `urn:ietf:params:oauth:token-type:access_token`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subjectTokenType")]
         public virtual string SubjectTokenType { get; set; }
 
@@ -397,15 +397,15 @@ namespace Google.Apis.CloudSecurityToken.v1beta.Data
     public class GoogleIdentityStsV1betaExchangeTokenResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An OAuth 2.0 security token, issued by Google, in response to the token exchange request. Tokens
-        /// can vary in size (mainly depending on the size of mapped claims), currently up to the 12288 bytes (12 KB)
-        /// size limit. Google reserves the right to change token size, including increasing these limits. Your
-        /// application must support variable token sizes accordingly.</summary>
+        /// can vary in size, depending in part on the size of mapped claims, up to a maximum of 12288 bytes (12 KB).
+        /// Google reserves the right to change the token size and the maximum length at any time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access_token")]
         public virtual string AccessToken { get; set; }
 
-        /// <summary>The expiration time of `access_token`, in seconds, from the time of issuance. This field is absent
-        /// when the `subject_token` in the request is a Google-issued, short-lived access token. In this case, the
-        /// expiration time of the `access_token` is the same as the `subject_token`.</summary>
+        /// <summary>The amount of time, in seconds, between the time when the `access_token` was issued and the time
+        /// when the `access_token` will expire. This field is absent when the `subject_token` in the request is a
+        /// Google-issued, short-lived access token. In this case, the `access_token` has the same expiration time as
+        /// the `subject_token`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expires_in")]
         public virtual System.Nullable<int> ExpiresIn { get; set; }
 

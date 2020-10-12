@@ -3994,6 +3994,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>Database instance backup configuration.</summary>
     public class BackupConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Backup retention settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupRetentionSettings")]
+        public virtual BackupRetentionSettings BackupRetentionSettings { get; set; }
+
         /// <summary>(MySQL only) Whether binary log is enabled. If backup configuration is disabled, binarylog must be
         /// disabled as well.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binaryLogEnabled")]
@@ -4023,6 +4027,27 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// *HH:MM*.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTime { get; set; }
+
+        /// <summary>The number of days of transaction logs we retain for point in time restore, from 1-7.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionLogRetentionDays")]
+        public virtual System.Nullable<int> TransactionLogRetentionDays { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>We currently only support backup retention by specifying the number of backups we will
+    /// retain.</summary>
+    public class BackupRetentionSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Depending on the value of retention_unit, this is used to determine if a backup needs to be
+        /// deleted. If retention_unit is 'COUNT', we will retain this many backups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retainedBackups")]
+        public virtual System.Nullable<int> RetainedBackups { get; set; }
+
+        /// <summary>The unit that 'retained_backups' represents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionUnit")]
+        public virtual string RetentionUnit { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4365,11 +4390,12 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("settings")]
         public virtual Settings Settings { get; set; }
 
-        /// <summary>The current serving state of the Cloud SQL instance. This can be one of the following. *RUNNABLE*:
-        /// The instance is running, or is ready to run when accessed. *SUSPENDED*: The instance is not available, for
-        /// example due to problems with billing. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The
-        /// instance is down for maintenance. *FAILED*: The instance creation failed. *UNKNOWN_STATE*: The state of the
-        /// instance is unknown.</summary>
+        /// <summary>The current serving state of the Cloud SQL instance. This can be one of the following.
+        /// *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance has been
+        /// stopped by owner. It is not currently running, but it's ready to be restarted. *SUSPENDED*: The instance is
+        /// not available, for example due to problems with billing. for example due to problems with billing.
+        /// *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created.
+        /// *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
