@@ -434,26 +434,6 @@ namespace Google.Apis.SmartDeviceManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Additional details that need to be provided for the device.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<ViewEnum> View { get; set; }
-
-                /// <summary>Additional details that need to be provided for the device.</summary>
-                public enum ViewEnum
-                {
-                    /// <summary>Default option this would return basic details for both Get and Listd Devices.
-                    /// Currently this view is supported only for device types, SPEAKER, DISPLAY,</summary>
-                    [Google.Apis.Util.StringValueAttribute("DEVICE_DETAILS_VIEW_UNSPECIFIED")]
-                    DEVICEDETAILSVIEWUNSPECIFIED,
-                    /// <summary>Selecting this option would return the structureId and structure name to which the
-                    /// device is assigned alongwith other basic details. Currently this view is supported only for
-                    /// device types -- sdm.devices.types.SPEAKER -- sdm.devices.types.CHROMECAST --
-                    /// sdm.devices.types.DISPLAY -- sdm.devices.types.CAMERA Any other device type would only return a
-                    /// basic view during ListDevices invocation.</summary>
-                    [Google.Apis.Util.StringValueAttribute("DEVICE_CONSOLE_VIEW")]
-                    DEVICECONSOLEVIEW,
-                }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -496,14 +476,6 @@ namespace Google.Apis.SmartDeviceManagement.v1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -826,11 +798,6 @@ namespace Google.Apis.SmartDeviceManagement.v1.Data
     /// <summary>Device resource represents an instance of enterprise managed device in the property.</summary>
     public class GoogleHomeEnterpriseSdmV1Device : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The name of the structure/room where the device is assigned to. For example:
-        /// "enterprises/XYZ/structures/ABC" or "enterprises/XYZ/structures/ABC/rooms/123"</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("assignee")]
-        public virtual string Assignee { get; set; }
-
         /// <summary>Required. The resource name of the device. For example: "enterprises/XYZ/devices/123".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -897,7 +864,8 @@ namespace Google.Apis.SmartDeviceManagement.v1.Data
     /// <summary>Response message for SmartDeviceManagementService.ListRooms</summary>
     public class GoogleHomeEnterpriseSdmV1ListRoomsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The pagination token to retrieve the next page of results.</summary>
+        /// <summary>The pagination token to retrieve the next page of results. If this field is omitted, there are no
+        /// subsequent pages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -912,7 +880,8 @@ namespace Google.Apis.SmartDeviceManagement.v1.Data
     /// <summary>Response message for SmartDeviceManagementService.ListStructures</summary>
     public class GoogleHomeEnterpriseSdmV1ListStructuresResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The pagination token to retrieve the next page of results.</summary>
+        /// <summary>The pagination token to retrieve the next page of results. If this field is omitted, there are no
+        /// subsequent pages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 

@@ -4715,6 +4715,10 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conditionAbsent")]
         public virtual MetricAbsence ConditionAbsent { get; set; }
 
+        /// <summary>A condition that uses the Monitoring Query Language to define alerts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditionMonitoringQueryLanguage")]
+        public virtual MonitoringQueryLanguageCondition ConditionMonitoringQueryLanguage { get; set; }
+
         /// <summary>A condition that compares a time series against a threshold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditionThreshold")]
         public virtual MetricThreshold ConditionThreshold { get; set; }
@@ -5961,6 +5965,33 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>Output only. A map of user-defined metadata labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
         public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A condition type that allows alert policies to be defined using Monitoring Query Language.</summary>
+    public class MonitoringQueryLanguageCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The amount of time that a time series must violate the threshold to be considered failing.
+        /// Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If
+        /// an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind
+        /// the frequency of the underlying time series data (which may also be affected by any alignments specified in
+        /// the aggregations field); a good duration is long enough so that a single outlier does not generate spurious
+        /// alerts, but short enough that unhealthy states are detected and alerted on quickly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        /// <summary>Monitoring Query Language query that outputs a boolean stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>The number/percent of time series for which the comparison must hold in order for the condition to
+        /// trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time
+        /// series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and
+        /// denominator_aggregations are specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trigger")]
+        public virtual Trigger Trigger { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -3704,6 +3704,64 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         }
 
+        /// <summary>Create return in your Merchant Center account.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        public virtual CreateorderreturnRequest Createorderreturn(Google.Apis.ShoppingContent.v2_1.Data.OrderreturnsCreateOrderReturnRequest body, ulong merchantId)
+        {
+            return new CreateorderreturnRequest(service, body, merchantId);
+        }
+
+        /// <summary>Create return in your Merchant Center account.</summary>
+        public class CreateorderreturnRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrderreturnsCreateOrderReturnResponse>
+        {
+            /// <summary>Constructs a new Createorderreturn request.</summary>
+            public CreateorderreturnRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrderreturnsCreateOrderReturnRequest body, ulong merchantId) : base(service)
+            {
+                MerchantId = merchantId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.OrderreturnsCreateOrderReturnRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "createorderreturn";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/orderreturns/createOrderReturn";
+
+            /// <summary>Initializes Createorderreturn parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+        }
+
         /// <summary>Retrieves an order return from your Merchant Center account.</summary>
         /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
         /// account.</param>
@@ -11992,6 +12050,63 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "content#orderreturnsAcknowledgeResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderreturnsCreateOrderReturnRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of line items to return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
+        public virtual System.Collections.Generic.IList<OrderreturnsLineItem> LineItems { get; set; }
+
+        /// <summary>The ID of the operation. Unique across all operations for a given order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
+        public virtual string OperationId { get; set; }
+
+        /// <summary>The ID of the order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
+        public virtual string OrderId { get; set; }
+
+        /// <summary>The way of the package being returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnMethodType")]
+        public virtual string ReturnMethodType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderreturnsCreateOrderReturnResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status of the execution.
+        ///
+        /// Acceptable values are: - "`duplicate`" - "`executed`"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
+        public virtual string ExecutionStatus { get; set; }
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#orderreturnsCreateOrderReturnResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>Created order return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderReturn")]
+        public virtual MerchantOrderReturn OrderReturn { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderreturnsLineItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the line item. This value is assigned by Google when an order is created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
+        public virtual string LineItemId { get; set; }
+
+        /// <summary>The quantity of this line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
+        public virtual System.Nullable<long> Quantity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
