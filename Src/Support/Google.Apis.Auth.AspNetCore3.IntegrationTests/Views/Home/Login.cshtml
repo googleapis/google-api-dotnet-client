@@ -1,0 +1,20 @@
+﻿@using System.Security.Claims;
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Google.Apis.Auth.AspNetCore3 sample - Login</title>
+</head>
+<body>
+    <h2>Google.Apis.Auth.AspNetCore3 sample - Login</h2>
+    <p>Hello @User.FindFirst(ClaimTypes.GivenName)?.Value! You have successfully logged in.</p>
+    <p><a asp-controller="home" asp-action="index">Index</a></p>
+</body>
+</html>

@@ -1,4 +1,6 @@
-﻿@model IReadOnlyList<string>
+﻿@using System.Security.Claims;
+
+@model IReadOnlyList<string>
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = null;
@@ -9,23 +11,24 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Integreation tests - Storage Bucket Listing</title>
+    <title>Google.Apis.Auth.AspNetCore3 sample - Storage bucket list</title>
 </head>
 <body>
-    <h1>Integration tests - Storage Bucket Listing</h1>
-    <ul>
-        @foreach (var bucketName in @Model)
-        {
-            <li>@bucketName</li>
-        }
-    </ul>
+    <h2>Google.Apis.Auth.AspNetCore3 sample - Storage bucket list</h2>
+    <p>You are logged in as @User.FindFirst(ClaimTypes.GivenName)?.Value.</p>
     @if (@Model.Count > 0)
     {
-        <p>Test passed</p>
+        <p>These are the Storage buckets you have access to on this app's GCP project.</p>
+        <ul>
+            @foreach (var bucketName in @Model)
+            {
+                <li>@bucketName</li>
+            }
+        </ul>
     }
     else
     {
-        <p>Test failed</p>
+        <p>It seems you don't have access to any Storage bucket on this app's GCP project.</p>
     }
     <p><a asp-controller="home" asp-action="index">Index</a></p>
 </body>

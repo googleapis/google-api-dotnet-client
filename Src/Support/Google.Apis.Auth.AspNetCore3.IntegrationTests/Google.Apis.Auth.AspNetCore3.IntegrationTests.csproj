@@ -10,11 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Google.Apis.Auth.AspNetCore3\Google.Apis.Auth.AspNetCore3.csproj" />
   </ItemGroup>
 
