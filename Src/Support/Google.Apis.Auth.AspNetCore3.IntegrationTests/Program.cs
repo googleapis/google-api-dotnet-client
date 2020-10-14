@@ -32,7 +32,6 @@ namespace Google.Apis.Auth.AspNetCore3.IntegrationTests
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.ConfigureServices(services => services.AddSingleton(ClientInfo.Load()));
                 });
     }
 }
