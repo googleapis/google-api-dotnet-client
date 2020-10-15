@@ -765,11 +765,6 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("electionAdministrationBody")]
         public virtual AdministrativeBody ElectionAdministrationBody { get; set; }
 
-        /// <summary>An ID for this object. IDs may change in future requests and should not be cached. Access to this
-        /// field requires special access that can be requested from the Request more link on the Quotas page.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
-
         /// <summary>The city or county that provides election information for this voter. This object can have the same
         /// elements as state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("local_jurisdiction")]
@@ -936,11 +931,6 @@ namespace Google.Apis.CivicInfo.v2.Data
         /// <summary>A description of any additional eligibility requirements for voting in this contest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("electorateSpecifications")]
         public virtual string ElectorateSpecifications { get; set; }
-
-        /// <summary>An ID for this object. IDs may change in future requests and should not be cached. Access to this
-        /// field requires special access that can be requested from the Request more link on the Quotas page.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
 
         /// <summary>The levels of government of the office for this contest. There may be more than one in cases where
         /// a jurisdiction effectively acts at two different levels of government; for example, the mayor of the
@@ -1285,11 +1275,6 @@ namespace Google.Apis.CivicInfo.v2.Data
         /// populated for polling locations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
         public virtual string EndDate { get; set; }
-
-        /// <summary>An ID for this object. IDs may change in future requests and should not be cached. Access to this
-        /// field requires special access that can be requested from the Request more link on the Quotas page.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
 
         /// <summary>Latitude of the location, in degrees north of the equator. Note this field may not be available for
         /// some locations.</summary>

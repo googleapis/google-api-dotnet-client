@@ -281,13 +281,13 @@ namespace Google.Apis.AnalyticsData.v1alpha
 
 
         /// <summary>Returns metadata for dimensions and metrics available in reporting methods. Used to explore the
-        /// dimensions and metrics. In this method, a Google Analytics App + Web Property Identifier is specified in the
+        /// dimensions and metrics. In this method, a Google Analytics GA4 Property Identifier is specified in the
         /// request, and the metadata response includes Custom dimensions and metrics as well as Universal metadata. For
         /// example if a custom metric with parameter name `levels_unlocked` is registered to a property, the Metadata
         /// response will contain `customEvent:levels_unlocked`. Universal metadata are dimensions and metrics
         /// applicable to any property such as `country` and `totalUsers`.</summary>
         /// <param name="name">Required. The resource name of the metadata to retrieve. This name field is specified in the URL
-        /// path and not URL parameters. Property is a numeric Google Analytics App + Web Property identifier. Example:
+        /// path and not URL parameters. Property is a numeric Google Analytics GA4 Property identifier. Example:
         /// properties/1234/metadata</param>
         public virtual GetMetadataRequest GetMetadata(string name)
         {
@@ -295,7 +295,7 @@ namespace Google.Apis.AnalyticsData.v1alpha
         }
 
         /// <summary>Returns metadata for dimensions and metrics available in reporting methods. Used to explore the
-        /// dimensions and metrics. In this method, a Google Analytics App + Web Property Identifier is specified in the
+        /// dimensions and metrics. In this method, a Google Analytics GA4 Property Identifier is specified in the
         /// request, and the metadata response includes Custom dimensions and metrics as well as Universal metadata. For
         /// example if a custom metric with parameter name `levels_unlocked` is registered to a property, the Metadata
         /// response will contain `customEvent:levels_unlocked`. Universal metadata are dimensions and metrics
@@ -311,7 +311,7 @@ namespace Google.Apis.AnalyticsData.v1alpha
 
 
             /// <summary>Required. The resource name of the metadata to retrieve. This name field is specified in the
-            /// URL path and not URL parameters. Property is a numeric Google Analytics App + Web Property identifier.
+            /// URL path and not URL parameters. Property is a numeric Google Analytics GA4 Property identifier.
             /// Example: properties/1234/metadata</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -906,7 +906,7 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
     /// <summary>The unique identifier of the property whose events are tracked.</summary>
     public class Entity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A Google Analytics App + Web property id.</summary>
+        /// <summary>A Google Analytics GA4 property id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyId")]
         public virtual string PropertyId { get; set; }
 

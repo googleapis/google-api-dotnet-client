@@ -10590,7 +10590,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     /// specification.</summary>
     public class LocalInventory : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Availability of the product.</summary>
+        /// <summary>Availability of the product. For accepted attribute values, see the local product inventory feed
+        /// specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availability")]
         public virtual string Availability { get; set; }
 
@@ -10604,12 +10605,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string Kind { get; set; }
 
         /// <summary>Supported pickup method for this offer. Unless the value is "not supported", this field must be
-        /// submitted together with `pickupSla`.</summary>
+        /// submitted together with `pickupSla`. For accepted attribute values, see the local product inventory feed
+        /// specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickupMethod")]
         public virtual string PickupMethod { get; set; }
 
         /// <summary>Expected date that an order will be ready for pickup relative to the order date. Must be submitted
-        /// together with `pickupMethod`.</summary>
+        /// together with `pickupMethod`. For accepted attribute values, see the local product inventory feed
+        /// specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pickupSla")]
         public virtual string PickupSla { get; set; }
 

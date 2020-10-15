@@ -6033,7 +6033,8 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string TeamDriveId { get; set; }
 
         /// <summary>A short-lived link to the file's thumbnail, if available. Typically lasts on the order of hours.
-        /// Only populated when the requesting app can access the file's content.</summary>
+        /// Only populated when the requesting app can access the file's content. If the file isn't shared publicly, the
+        /// URL returned in Files.thumbnailLink must be fetched using a credentialed request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailLink")]
         public virtual string ThumbnailLink { get; set; }
 
@@ -6796,7 +6797,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("published")]
         public virtual System.Nullable<bool> Published { get; set; }
 
-        /// <summary>A link to the published revision.</summary>
+        /// <summary>A link to the published revision. This is only populated for Google Sites files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedLink")]
         public virtual string PublishedLink { get; set; }
 
