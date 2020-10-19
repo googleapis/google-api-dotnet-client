@@ -8,11 +8,11 @@
 
   <!-- nupkg information -->
   <PropertyGroup>
-    <Title>Google APIs ASP.NET Core Auth Extensions</Title>
+    <Title>Google APIs ASP.NET Core 3 Auth Extensions</Title>
     <Description>
 The Google APIs Client Library is a runtime client for working with Google Services.
 
-The ASP.NET Core Auth extension library contains a Google-specific OpenIdConnect auth handler.
+The ASP.NET Core 3 Auth extension library contains a Google-specific OpenIdConnect auth handler.
 Supports incremental auth, and an injectable IGoogleAuthProvider to supply Google credentials.
 
 Supported Platforms:
@@ -27,8 +27,6 @@ Supported Platforms:
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="3.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <ProjectReference Include="..\Google.Apis.Auth\Google.Apis.Auth.csproj" />
 
     <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.0" PrivateAssets="All" />
