@@ -412,6 +412,10 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 /// of the WebProtect features of BeyondCorp.</summary>
                 [Google.Apis.Util.StringValueAttribute("chrome")]
                 Chrome,
+                /// <summary>The Data Studio activity reports return information about various types of Data Studio
+                /// activity events.</summary>
+                [Google.Apis.Util.StringValueAttribute("data_studio")]
+                DataStudio,
             }
 
             /// <summary>The Internet Protocol (IP) Address of host where the event was performed. This is an additional
@@ -724,6 +728,10 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 /// of the WebProtect features of BeyondCorp.</summary>
                 [Google.Apis.Util.StringValueAttribute("chrome")]
                 Chrome,
+                /// <summary>The Data Studio activity reports return information about various types of Data Studio
+                /// activity events.</summary>
+                [Google.Apis.Util.StringValueAttribute("data_studio")]
+                DataStudio,
             }
 
             /// <summary>The Internet Protocol (IP) Address of host where the event was performed. This is an additional

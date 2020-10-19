@@ -1462,8 +1462,8 @@ namespace Google.Apis.ServiceNetworking.v1
 
 
             /// <summary>Service producers can use this method to add roles in the shared VPC host project. Each role is
-            /// bound to the provided member. Each role must be selected from within a whitelisted set of roles. Each
-            /// role is applied at only the granularity specified in the whitelist.</summary>
+            /// bound to the provided member. Each role must be selected from within an allowlisted set of roles. Each
+            /// role is applied at only the granularity specified in the allowlist.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. This is in a form services/{service} where {service} is the name of the private
             /// access management service. For example 'service-peering.example.com'.</param>
@@ -1473,8 +1473,8 @@ namespace Google.Apis.ServiceNetworking.v1
             }
 
             /// <summary>Service producers can use this method to add roles in the shared VPC host project. Each role is
-            /// bound to the provided member. Each role must be selected from within a whitelisted set of roles. Each
-            /// role is applied at only the granularity specified in the whitelist.</summary>
+            /// bound to the provided member. Each role must be selected from within an allowlisted set of roles. Each
+            /// role is applied at only the granularity specified in the allowlist.</summary>
             public class AddRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Add request.</summary>
@@ -2170,7 +2170,8 @@ namespace Google.Apis.ServiceNetworking.v1.Data
     /// credentials will be ignored.</summary>
     public class AuthenticationRule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If true, the service accepts API keys without any other credential.</summary>
+        /// <summary>If true, the service accepts API keys without any other credential. This flag only applies to HTTP
+        /// and gRPC requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowWithoutCredential")]
         public virtual System.Nullable<bool> AllowWithoutCredential { get; set; }
 
@@ -2342,6 +2343,64 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Configuration information for a private service access connection.</summary>
+    public class ConsumerConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Export custom routes flag value for peering from consumer to producer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerExportCustomRoutes")]
+        public virtual System.Nullable<bool> ConsumerExportCustomRoutes { get; set; }
+
+        /// <summary>Export subnet routes with public ip flag value for peering from consumer to producer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerExportSubnetRoutesWithPublicIp")]
+        public virtual System.Nullable<bool> ConsumerExportSubnetRoutesWithPublicIp { get; set; }
+
+        /// <summary>Import custom routes flag value for peering from consumer to producer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerImportCustomRoutes")]
+        public virtual System.Nullable<bool> ConsumerImportCustomRoutes { get; set; }
+
+        /// <summary>Import subnet routes with public ip flag value for peering from consumer to producer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerImportSubnetRoutesWithPublicIp")]
+        public virtual System.Nullable<bool> ConsumerImportSubnetRoutesWithPublicIp { get; set; }
+
+        /// <summary>Export custom routes flag value for peering from producer to consumer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerExportCustomRoutes")]
+        public virtual System.Nullable<bool> ProducerExportCustomRoutes { get; set; }
+
+        /// <summary>Export subnet routes with public ip flag value for peering from producer to consumer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerExportSubnetRoutesWithPublicIp")]
+        public virtual System.Nullable<bool> ProducerExportSubnetRoutesWithPublicIp { get; set; }
+
+        /// <summary>Import custom routes flag value for peering from producer to consumer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerImportCustomRoutes")]
+        public virtual System.Nullable<bool> ProducerImportCustomRoutes { get; set; }
+
+        /// <summary>Import subnet routes with public ip flag value for peering from producer to consumer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerImportSubnetRoutesWithPublicIp")]
+        public virtual System.Nullable<bool> ProducerImportSubnetRoutesWithPublicIp { get; set; }
+
+        /// <summary>Output only. The VPC host network that is used to host managed service instances. In the format,
+        /// projects/{project}/global/networks/{network} where {project} is the project number e.g. '12345' and
+        /// {network} is the network name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerNetwork")]
+        public virtual string ProducerNetwork { get; set; }
+
+        /// <summary>Output only. The name of the allocated IP address ranges for this private service access
+        /// connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservedRanges")]
+        public virtual System.Collections.Generic.IList<string> ReservedRanges { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata provided through GetOperation request for the LRO generated by UpdateConsumerConfig
+    /// API.</summary>
+    public class ConsumerConfigMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents a consumer project.</summary>
     public class ConsumerProject : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2358,7 +2417,7 @@ namespace Google.Apis.ServiceNetworking.v1.Data
     /// <summary>`Context` defines which contexts an API requests. Example: context: rules: - selector: "*" requested: -
     /// google.rpc.context.ProjectContext - google.rpc.context.OriginContext The above specifies that all methods in the
     /// API request `google.rpc.context.ProjectContext` and `google.rpc.context.OriginContext`. Available context types
-    /// are defined in package `google.rpc.context`. This also provides mechanism to whitelist any protobuf message
+    /// are defined in package `google.rpc.context`. This also provides mechanism to allowlist any protobuf message
     /// extension that can be sent in grpc metadata using “x-goog-ext--bin” and “x-goog-ext--jspb” format. For example,
     /// list any service specific protobuf types that can appear in grpc metadata as follows in your yaml file: Example:
     /// context: rules: - selector: "google.example.library.v1.LibraryService.CreateBook" allowed_request_extensions: -
@@ -3548,7 +3607,7 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("member")]
         public virtual string Member { get; set; }
 
-        /// <summary>Required. Role to apply. Only whitelisted roles can be used at the specified granularity. The role
+        /// <summary>Required. Role to apply. Only allowlisted roles can be used at the specified granularity. The role
         /// must be one of the following: - 'roles/container.hostServiceAgentUser' applied on the shared VPC host
         /// project - 'roles/compute.securityAdmin' applied on the shared VPC host project</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]

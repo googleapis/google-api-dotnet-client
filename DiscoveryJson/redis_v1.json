@@ -571,7 +571,7 @@
    }
   }
  }, 
- "revision": "20200928", 
+ "revision": "20201015", 
  "rootUrl": "https://redis.googleapis.com/", 
  "schemas": {
   "Empty": {

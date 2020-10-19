@@ -351,7 +351,7 @@
    }
   }
  }, 
- "revision": "20201005", 
+ "revision": "20201012", 
  "rootUrl": "https://assuredworkloads.googleapis.com/", 
  "schemas": {
   "GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata": {

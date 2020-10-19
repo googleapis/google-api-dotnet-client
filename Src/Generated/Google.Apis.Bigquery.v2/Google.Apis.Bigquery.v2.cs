@@ -34,6 +34,7 @@ namespace Google.Apis.Bigquery.v2
             Models = new ModelsResource(this);
             Projects = new ProjectsResource(this);
             Routines = new RoutinesResource(this);
+            RowAccessPolicies = new RowAccessPoliciesResource(this);
             Tabledata = new TabledataResource(this);
             Tables = new TablesResource(this);
         }
@@ -137,6 +138,9 @@ namespace Google.Apis.Bigquery.v2
 
         /// <summary>Gets the Routines resource.</summary>
         public virtual RoutinesResource Routines { get; }
+
+        /// <summary>Gets the RowAccessPolicies resource.</summary>
+        public virtual RowAccessPoliciesResource RowAccessPolicies { get; }
 
         /// <summary>Gets the Tabledata resource.</summary>
         public virtual TabledataResource Tabledata { get; }
@@ -2361,6 +2365,127 @@ namespace Google.Apis.Bigquery.v2
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^[^/]+$",
+                });
+            }
+
+        }
+    }
+
+    /// <summary>The "rowAccessPolicies" collection of methods.</summary>
+    public class RowAccessPoliciesResource
+    {
+        private const string Resource = "rowAccessPolicies";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public RowAccessPoliciesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Lists all row access policies on the specified table.</summary>
+        /// <param name="projectId">Required. Project ID of the row access policies to list.</param>
+        /// <param
+        /// name="datasetId">Required. Dataset ID of row access policies to list.</param>
+        /// <param
+        /// name="tableId">Required. Table ID of the table to list row access policies.</param>
+        public virtual ListRequest List(string projectId, string datasetId, string tableId)
+        {
+            return new ListRequest(service, projectId, datasetId, tableId);
+        }
+
+        /// <summary>Lists all row access policies on the specified table.</summary>
+        public class ListRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.ListRowAccessPoliciesResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId, string tableId) : base(service)
+            {
+                ProjectId = projectId;
+                DatasetId = datasetId;
+                TableId = tableId;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. Project ID of the row access policies to list.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>Required. Dataset ID of row access policies to list.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DatasetId { get; private set; }
+
+            /// <summary>Required. Table ID of the table to list row access policies.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("tableId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string TableId { get; private set; }
+
+            /// <summary>The maximum number of results to return in a single response page. Leverage the page tokens to
+            /// iterate through the entire collection.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Page token, returned by a previous call, to request the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("datasetId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "datasetId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("tableId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "tableId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
 
@@ -5842,6 +5967,21 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response message for the ListRowAccessPolicies method.</summary>
+    public class ListRowAccessPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token to request the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Row access policies on the requested table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowAccessPolicies")]
+        public virtual System.Collections.Generic.IList<RowAccessPolicy> RowAccessPolicies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>BigQuery-specific metadata about a location. This will be set on
     /// google.cloud.location.Location.metadata in Cloud Location API responses.</summary>
     public class LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -6594,6 +6734,37 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents access on a subset of rows on the specified table, defined by its filter predicate. Access
+    /// to the subset of rows is controlled by its IAM policy.</summary>
+    public class RowAccessPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time when this row access policy was created, in milliseconds since the
+        /// epoch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual object CreationTime { get; set; }
+
+        /// <summary>Output only. A hash of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Required. A SQL boolean expression that represents the rows defined by this row access policy,
+        /// similar to the boolean expression in a WHERE clause of a SELECT query on a table. References to other
+        /// tables, routines, and temporary functions are not supported. Examples: region="EU" date_field =
+        /// CAST('2019-9-27' as DATE) nullable_field is not NULL numeric_field BETWEEN 1.0 AND 5.0</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterPredicate")]
+        public virtual string FilterPredicate { get; set; }
+
+        /// <summary>Output only. The time when this row access policy was last modified, in milliseconds since the
+        /// epoch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
+        public virtual object LastModifiedTime { get; set; }
+
+        /// <summary>Required. Reference describing the ID of this row access policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowAccessPolicyReference")]
+        public virtual RowAccessPolicyReference RowAccessPolicyReference { get; set; }
+
+    }    
+
     public class RowAccessPolicyReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Required] The ID of the dataset containing this row access policy.</summary>
@@ -6915,10 +7086,10 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual TimePartitioning TimePartitioning { get; set; }
 
         /// <summary>[Output-only] Describes the table type. The following values are supported: TABLE: A normal
-        /// BigQuery table. VIEW: A virtual table defined by a SQL query. [TrustedTester] SNAPSHOT: An immutable, read-
-        /// only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is
-        /// persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud
-        /// Storage. The default value is TABLE.</summary>
+        /// BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that
+        /// is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted.
+        /// EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage.
+        /// The default value is TABLE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 

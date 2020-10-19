@@ -2240,6 +2240,10 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uris")]
         public virtual System.Collections.Generic.IList<string> Uris { get; set; }
 
+        /// <summary>Supports URI wildcards for matching multiple objects from a single URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useWildcards")]
+        public virtual System.Nullable<bool> UseWildcards { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

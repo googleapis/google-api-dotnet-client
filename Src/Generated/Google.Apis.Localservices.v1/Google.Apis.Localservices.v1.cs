@@ -280,17 +280,17 @@ namespace Google.Apis.Localservices.v1
             }
 
 
-            /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year
-            /// by itself or a year and month where the day is not significant.</summary>
+            /// <summary>Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year
+            /// by itself or a year and month where the day isn't significant.</summary>
             [Google.Apis.Util.RequestParameterAttribute("endDate.day", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> EndDateDay { get; set; }
 
-            /// <summary>Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and
+            /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and
             /// day.</summary>
             [Google.Apis.Util.RequestParameterAttribute("endDate.month", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> EndDateMonth { get; set; }
 
-            /// <summary>Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.</summary>
+            /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
             [Google.Apis.Util.RequestParameterAttribute("endDate.year", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> EndDateYear { get; set; }
 
@@ -312,17 +312,17 @@ namespace Google.Apis.Localservices.v1
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
-            /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year
-            /// by itself or a year and month where the day is not significant.</summary>
+            /// <summary>Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year
+            /// by itself or a year and month where the day isn't significant.</summary>
             [Google.Apis.Util.RequestParameterAttribute("startDate.day", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> StartDateDay { get; set; }
 
-            /// <summary>Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and
+            /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and
             /// day.</summary>
             [Google.Apis.Util.RequestParameterAttribute("startDate.month", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> StartDateMonth { get; set; }
 
-            /// <summary>Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.</summary>
+            /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
             [Google.Apis.Util.RequestParameterAttribute("startDate.year", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> StartDateYear { get; set; }
 
@@ -454,17 +454,17 @@ namespace Google.Apis.Localservices.v1
             }
 
 
-            /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year
-            /// by itself or a year and month where the day is not significant.</summary>
+            /// <summary>Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year
+            /// by itself or a year and month where the day isn't significant.</summary>
             [Google.Apis.Util.RequestParameterAttribute("endDate.day", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> EndDateDay { get; set; }
 
-            /// <summary>Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and
+            /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and
             /// day.</summary>
             [Google.Apis.Util.RequestParameterAttribute("endDate.month", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> EndDateMonth { get; set; }
 
-            /// <summary>Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.</summary>
+            /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
             [Google.Apis.Util.RequestParameterAttribute("endDate.year", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> EndDateYear { get; set; }
 
@@ -486,17 +486,17 @@ namespace Google.Apis.Localservices.v1
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
-            /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year
-            /// by itself or a year and month where the day is not significant.</summary>
+            /// <summary>Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year
+            /// by itself or a year and month where the day isn't significant.</summary>
             [Google.Apis.Util.RequestParameterAttribute("startDate.day", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> StartDateDay { get; set; }
 
-            /// <summary>Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and
+            /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and
             /// day.</summary>
             [Google.Apis.Util.RequestParameterAttribute("startDate.month", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> StartDateMonth { get; set; }
 
-            /// <summary>Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.</summary>
+            /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
             [Google.Apis.Util.RequestParameterAttribute("startDate.year", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> StartDateYear { get; set; }
 
