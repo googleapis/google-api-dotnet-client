@@ -741,8 +741,9 @@ namespace Google.Apis.Fitness.v1
                     public virtual string DatasetId { get; private set; }
 
                     /// <summary>If specified, no more than this many data points will be included in the dataset. If
-                    /// there are more data points in the dataset, nextPageToken will be set in the dataset
-                    /// response.</summary>
+                    /// there are more data points in the dataset, nextPageToken will be set in the dataset response.
+                    /// The limit is applied from the end of the time range. That is, if pageToken is absent, the limit
+                    /// most recent data points will be returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> Limit { get; set; }
 

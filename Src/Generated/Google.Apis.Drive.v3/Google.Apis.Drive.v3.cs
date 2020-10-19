@@ -6796,7 +6796,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("published")]
         public virtual System.Nullable<bool> Published { get; set; }
 
-        /// <summary>A link to the published revision.</summary>
+        /// <summary>A link to the published revision. This is only populated for Google Sites files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedLink")]
         public virtual string PublishedLink { get; set; }
 

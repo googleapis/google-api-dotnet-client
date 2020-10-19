@@ -1750,6 +1750,65 @@ namespace Google.Apis.Vault.v1
 
         }
 
+        /// <summary>Counts the artifacts within the context of a matter and returns a detailed breakdown of
+        /// metrics.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="matterId">The matter ID.</param>
+        public virtual CountRequest Count(Google.Apis.Vault.v1.Data.CountArtifactsRequest body, string matterId)
+        {
+            return new CountRequest(service, body, matterId);
+        }
+
+        /// <summary>Counts the artifacts within the context of a matter and returns a detailed breakdown of
+        /// metrics.</summary>
+        public class CountRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Count request.</summary>
+            public CountRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.CountArtifactsRequest body, string matterId) : base(service)
+            {
+                MatterId = matterId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The matter ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string MatterId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Vault.v1.Data.CountArtifactsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "count";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/matters/{matterId}:count";
+
+            /// <summary>Initializes Count parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "matterId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+        }
+
         /// <summary>Creates a new matter with the given name and description. The initial state is open, and the owner
         /// is the method caller. Returns the created matter with default view.</summary>
         /// <param name="body">The body of the request.</param>
@@ -2284,6 +2343,73 @@ namespace Google.Apis.Vault.v1
         }
 
 
+        /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+        /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
+        /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
+        /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
+        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">The name of the operation resource to be cancelled.</param>
+        public virtual CancelRequest Cancel(Google.Apis.Vault.v1.Data.CancelOperationRequest body, string name)
+        {
+            return new CancelRequest(service, body, name);
+        }
+
+        /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+        /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
+        /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
+        /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
+        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
+        public class CancelRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Empty>
+        {
+            /// <summary>Constructs a new Cancel request.</summary>
+            public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Vault.v1.Data.CancelOperationRequest body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The name of the operation resource to be cancelled.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Vault.v1.Data.CancelOperationRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "cancel";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}:cancel";
+
+            /// <summary>Initializes Cancel parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^operations/.*$",
+                });
+            }
+
+        }
+
         /// <summary>Deletes a long-running operation. This method indicates that the client is no longer interested in
         /// the operation result. It does not cancel the operation. If the server doesn't support this method, it
         /// returns `google.rpc.Code.UNIMPLEMENTED`.</summary>
@@ -2336,11 +2462,187 @@ namespace Google.Apis.Vault.v1
             }
 
         }
+
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
+        /// operation result at intervals as recommended by the API service.</summary>
+        /// <param name="name">The name of the operation resource.</param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(service, name);
+        }
+
+        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
+        /// operation result at intervals as recommended by the API service.</summary>
+        public class GetRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+
+            /// <summary>The name of the operation resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^operations/.*$",
+                });
+            }
+
+        }
+
+        /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support this
+        /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to
+        /// use different resource name schemes, such as `users/operations`. To override the binding, API services can
+        /// add a binding such as `"/v1/{name=users}/operations"` to their service configuration. For backwards
+        /// compatibility, the default name includes the operations collection id, however overriding users must ensure
+        /// the name binding is the parent resource, without the operations collection id.</summary>
+        /// <param name="name">The name of the operation's parent resource.</param>
+        public virtual ListRequest List(string name)
+        {
+            return new ListRequest(service, name);
+        }
+
+        /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support this
+        /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to
+        /// use different resource name schemes, such as `users/operations`. To override the binding, API services can
+        /// add a binding such as `"/v1/{name=users}/operations"` to their service configuration. For backwards
+        /// compatibility, the default name includes the operations collection id, however overriding users must ensure
+        /// the name binding is the parent resource, without the operations collection id.</summary>
+        public class ListRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.ListOperationsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+
+            /// <summary>The name of the operation's parent resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The standard list page size.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The standard list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^operations$",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+        }
     }
 }
 
 namespace Google.Apis.Vault.v1.Data
 {    
+
+    /// <summary>Count number for each account.</summary>
+    public class AccountCount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Account owner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("account")]
+        public virtual UserInfo Account { get; set; }
+
+        /// <summary>The number of artifacts found for this account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An error that occurred when querying a specific account</summary>
+    public class AccountCountError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Account owner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("account")]
+        public virtual UserInfo Account { get; set; }
+
+        /// <summary>Account query error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorType")]
+        public virtual string ErrorType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
 
     /// <summary>Accounts to search</summary>
     public class AccountInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -2418,6 +2720,13 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The request message for Operations.CancelOperation.</summary>
+    public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Close a matter by ID.</summary>
     public class CloseMatterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2490,6 +2799,63 @@ namespace Google.Apis.Vault.v1.Data
         /// <summary>Details pertaining to mail holds. If set, corpus must be mail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mailQuery")]
         public virtual HeldMailQuery MailQuery { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Long running operation metadata for CountArtifacts.</summary>
+    public class CountArtifactsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>End time of count operation. Available when operation is done.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>The matter ID of the associated matter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matterId")]
+        public virtual string MatterId { get; set; }
+
+        /// <summary>The search query from the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual Query Query { get; set; }
+
+        /// <summary>Creation time of count operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Count artifacts request.</summary>
+    public class CountArtifactsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The search query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual Query Query { get; set; }
+
+        /// <summary>Specifies the granularity of the count result returned in response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("view")]
+        public virtual string View { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Definition of the response for method CountArtifacts.</summary>
+    public class CountArtifactsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Count metrics of Groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupsCountResult")]
+        public virtual GroupsCountResult GroupsCountResult { get; set; }
+
+        /// <summary>Count metrics of Mail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mailCountResult")]
+        public virtual MailCountResult MailCountResult { get; set; }
+
+        /// <summary>Total count of artifacts. For mail and groups, artifacts refers to messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCount")]
+        public virtual System.Nullable<long> TotalCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2624,6 +2990,34 @@ namespace Google.Apis.Vault.v1.Data
         /// <summary>The number of documents to be exported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalArtifactCount")]
         public virtual System.Nullable<long> TotalArtifactCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Groups specific count metrics.</summary>
+    public class GroupsCountResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Error occurred when querying these accounts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountCountErrors")]
+        public virtual System.Collections.Generic.IList<AccountCountError> AccountCountErrors { get; set; }
+
+        /// <summary>Subtotal count per matching account that have more than zero messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountCounts")]
+        public virtual System.Collections.Generic.IList<AccountCount> AccountCounts { get; set; }
+
+        /// <summary>Total number of accounts that can be queried and have more than zero messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchingAccountsCount")]
+        public virtual System.Nullable<long> MatchingAccountsCount { get; set; }
+
+        /// <summary>When data scope is HELD_DATA in the request Query, these accounts in the request are not queried
+        /// because they are not on hold. For other data scope, this field is not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonQueryableAccounts")]
+        public virtual System.Collections.Generic.IList<string> NonQueryableAccounts { get; set; }
+
+        /// <summary>Total number of accounts involved in this count operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queriedAccountsCount")]
+        public virtual System.Nullable<long> QueriedAccountsCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2880,6 +3274,21 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response message for Operations.ListOperations.</summary>
+    public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of operations that matches the specified filter in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Definition of the response for method ListSaveQuery.</summary>
     public class ListSavedQueriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2891,6 +3300,34 @@ namespace Google.Apis.Vault.v1.Data
         /// <summary>List of output saved queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("savedQueries")]
         public virtual System.Collections.Generic.IList<SavedQuery> SavedQueries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Mail specific count metrics.</summary>
+    public class MailCountResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Error occurred when querying these accounts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountCountErrors")]
+        public virtual System.Collections.Generic.IList<AccountCountError> AccountCountErrors { get; set; }
+
+        /// <summary>Subtotal count per matching account that have more than zero messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountCounts")]
+        public virtual System.Collections.Generic.IList<AccountCount> AccountCounts { get; set; }
+
+        /// <summary>Total number of accounts that can be queried and have more than zero messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchingAccountsCount")]
+        public virtual System.Nullable<long> MatchingAccountsCount { get; set; }
+
+        /// <summary>When data scope is HELD_DATA in the request Query, these accounts in the request are not queried
+        /// because they are not on hold. For other data scope, this field is not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonQueryableAccounts")]
+        public virtual System.Collections.Generic.IList<string> NonQueryableAccounts { get; set; }
+
+        /// <summary>Total number of accounts involved in this count operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queriedAccountsCount")]
+        public virtual System.Nullable<long> QueriedAccountsCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2962,6 +3399,42 @@ namespace Google.Apis.Vault.v1.Data
         /// <summary>The user's role in this matter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
+    public class Operation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
+        /// completed, and either `error` or `response` is available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("done")]
+        public virtual System.Nullable<bool> Done { get; set; }
+
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
+        /// If you use the default HTTP mapping, the `name` should be a resource name ending with
+        /// `operations/{unique_id}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

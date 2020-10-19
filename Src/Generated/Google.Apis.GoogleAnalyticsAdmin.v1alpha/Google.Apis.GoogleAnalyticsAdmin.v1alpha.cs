@@ -1180,16 +1180,16 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         }
 
         /// <summary>Returns all accounts accessible by the caller. Note that these accounts might not currently have
-        /// App+Web properties. Soft-deleted (ie: "trashed") accounts are excluded by default. Returns an empty list if
-        /// no relevant accounts are found.</summary>
+        /// GA4 properties. Soft-deleted (ie: "trashed") accounts are excluded by default. Returns an empty list if no
+        /// relevant accounts are found.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
         /// <summary>Returns all accounts accessible by the caller. Note that these accounts might not currently have
-        /// App+Web properties. Soft-deleted (ie: "trashed") accounts are excluded by default. Returns an empty list if
-        /// no relevant accounts are found.</summary>
+        /// GA4 properties. Soft-deleted (ie: "trashed") accounts are excluded by default. Returns an empty list if no
+        /// relevant accounts are found.</summary>
         public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListAccountsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -3755,14 +3755,14 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
         }
 
-        /// <summary>Creates an "App+Web" property with the specified location and attributes.</summary>
+        /// <summary>Creates an "GA4" property with the specified location and attributes.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaProperty body)
         {
             return new CreateRequest(service, body);
         }
 
-        /// <summary>Creates an "App+Web" property with the specified location and attributes.</summary>
+        /// <summary>Creates an "GA4" property with the specified location and attributes.</summary>
         public class CreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaProperty>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -3803,7 +3803,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// properties are not restored before the expiration time, the Property and all child resources (eg:
         /// GoogleAdsLinks, Streams, UserLinks) will be permanently purged.
         /// https://support.google.com/analytics/answer/6154772 Returns an error if the target is not found, or is not
-        /// an App+Web Property.</summary>
+        /// an GA4 Property.</summary>
         /// <param name="name">Required. The name of the Property to soft-delete. Format: properties/{property_id} Example:
         /// "properties/1000"</param>
         public virtual DeleteRequest Delete(string name)
@@ -3816,7 +3816,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// properties are not restored before the expiration time, the Property and all child resources (eg:
         /// GoogleAdsLinks, Streams, UserLinks) will be permanently purged.
         /// https://support.google.com/analytics/answer/6154772 Returns an error if the target is not found, or is not
-        /// an App+Web Property.</summary>
+        /// an GA4 Property.</summary>
         public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleProtobufEmpty>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -3859,8 +3859,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
 
         }
 
-        /// <summary>Lookup for a single "App+Web" Property. Throws "Target not found" if no such property found, if
-        /// property is not of the type "App+Web", or if caller does not have permissions to access it.</summary>
+        /// <summary>Lookup for a single "GA4" Property. Throws "Target not found" if no such property found, if
+        /// property is not of the type "GA4", or if caller does not have permissions to access it.</summary>
         /// <param name="name">Required. The name of the property to lookup. Format: properties/{property_id} Example:
         /// "properties/1000"</param>
         public virtual GetRequest Get(string name)
@@ -3868,8 +3868,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             return new GetRequest(service, name);
         }
 
-        /// <summary>Lookup for a single "App+Web" Property. Throws "Target not found" if no such property found, if
-        /// property is not of the type "App+Web", or if caller does not have permissions to access it.</summary>
+        /// <summary>Lookup for a single "GA4" Property. Throws "Target not found" if no such property found, if
+        /// property is not of the type "GA4", or if caller does not have permissions to access it.</summary>
         public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaProperty>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -3912,7 +3912,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
 
         }
 
-        /// <summary>Returns child Properties under the specified parent Account. Only "App+Web" properties will be
+        /// <summary>Returns child Properties under the specified parent Account. Only "GA4" properties will be
         /// returned. Properties will be excluded if the caller does not have access. Soft-deleted (ie: "trashed")
         /// properties are excluded by default. Returns an empty list if no relevant properties are found.</summary>
         public virtual ListRequest List()
@@ -3920,7 +3920,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             return new ListRequest(service);
         }
 
-        /// <summary>Returns child Properties under the specified parent Account. Only "App+Web" properties will be
+        /// <summary>Returns child Properties under the specified parent Account. Only "GA4" properties will be
         /// returned. Properties will be excluded if the caller does not have access. Soft-deleted (ie: "trashed")
         /// properties are excluded by default. Returns an empty list if no relevant properties are found.</summary>
         public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListPropertiesResponse>
@@ -4119,8 +4119,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A virtual resource representing an overview of an account and all its child App+Web
-    /// properties.</summary>
+    /// <summary>A virtual resource representing an overview of an account and all its child GA4 properties.</summary>
     public class GoogleAnalyticsAdminV1alphaAccountSummary : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Resource name of account referred to by this account summary Format: accounts/{account_id} Example:
@@ -4480,15 +4479,14 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A link between an App+Web property and a Firebase project.</summary>
+    /// <summary>A link between an GA4 property and a Firebase project.</summary>
     public class GoogleAnalyticsAdminV1alphaFirebaseLink : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Time when this FirebaseLink was originally created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Maximum user access to the App + Web property allowed to admins of the linked Firebase
-        /// project.</summary>
+        /// <summary>Maximum user access to the GA4 property allowed to admins of the linked Firebase project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumUserAccess")]
         public virtual string MaximumUserAccess { get; set; }
 
@@ -4519,7 +4517,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A link between an App+Web property and a Google Ads account.</summary>
+    /// <summary>A link between an GA4 property and a Google Ads account.</summary>
     public class GoogleAnalyticsAdminV1alphaGoogleAdsLink : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Enable personalized advertising features with this integration. Automatically publish my Google
@@ -4737,7 +4735,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A resource message representing a Google Analytics App+Web property.</summary>
+    /// <summary>A resource message representing a Google Analytics GA4 property.</summary>
     public class GoogleAnalyticsAdminV1alphaProperty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Time when the entity was originally created.</summary>
@@ -4788,7 +4786,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A virtual resource representing metadata for an App+Web property.</summary>
+    /// <summary>A virtual resource representing metadata for an GA4 property.</summary>
     public class GoogleAnalyticsAdminV1alphaPropertySummary : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Display name for the property referred to in this account summary.</summary>

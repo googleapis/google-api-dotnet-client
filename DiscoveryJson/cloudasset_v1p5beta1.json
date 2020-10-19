@@ -177,7 +177,7 @@
    }
   }
  }, 
- "revision": "20201003", 
+ "revision": "20201012", 
  "rootUrl": "https://cloudasset.googleapis.com/", 
  "schemas": {
   "Asset": {

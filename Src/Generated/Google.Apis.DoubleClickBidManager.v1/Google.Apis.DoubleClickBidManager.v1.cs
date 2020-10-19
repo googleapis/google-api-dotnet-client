@@ -807,7 +807,7 @@ namespace Google.Apis.DoubleClickBidManager.v1.Data
         public virtual string FilterType { get; set; }
 
         /// <summary>SDF Version (column names, types, order) in which the entities will be returned. Default to
-        /// 5.</summary>
+        /// 5.2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 

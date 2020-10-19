@@ -399,18 +399,21 @@ namespace Google.Apis.Storagetransfer.v1
 
         /// <summary>Gets a transfer job.</summary>
         /// <param name="jobName">Required. " The job to get.</param>
-        public virtual GetRequest Get(string jobName)
+        /// <param name="projectId">Required. The ID of the
+        /// Google Cloud Platform Console project that owns the job.</param>
+        public virtual GetRequest Get(string jobName, string projectId)
         {
-            return new GetRequest(service, jobName);
+            return new GetRequest(service, jobName, projectId);
         }
 
         /// <summary>Gets a transfer job.</summary>
         public class GetRequest : StoragetransferBaseServiceRequest<Google.Apis.Storagetransfer.v1.Data.TransferJob>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string jobName) : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string jobName, string projectId) : base(service)
             {
                 JobName = jobName;
+                ProjectId = projectId;
                 InitParameters();
             }
 
@@ -421,7 +424,7 @@ namespace Google.Apis.Storagetransfer.v1
 
             /// <summary>Required. The ID of the Google Cloud Platform Console project that owns the job.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ProjectId { get; set; }
+            public virtual string ProjectId { get; private set; }
 
 
             /// <summary>Gets the method name.</summary>
@@ -449,7 +452,7 @@ namespace Google.Apis.Storagetransfer.v1
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -459,29 +462,35 @@ namespace Google.Apis.Storagetransfer.v1
         }
 
         /// <summary>Lists transfer jobs.</summary>
-        public virtual ListRequest List()
+        /// <param name="filter">Required. A list of query parameters specified as JSON text in the form of:
+        /// `{"projectId":"my_project_id", "jobNames":["jobid1","jobid2",...], "jobStatuses":["status1","status2",...]}` Since
+        /// `jobNames` and `jobStatuses` support multiple values, their values must be specified with array notation.
+        /// `projectId` is required. `jobNames` and `jobStatuses` are optional. The valid values for `jobStatuses` are case-
+        /// insensitive: ENABLED, DISABLED, and DELETED.</param>
+        public virtual ListRequest List(string filter)
         {
-            return new ListRequest(service);
+            return new ListRequest(service, filter);
         }
 
         /// <summary>Lists transfer jobs.</summary>
         public class ListRequest : StoragetransferBaseServiceRequest<Google.Apis.Storagetransfer.v1.Data.ListTransferJobsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string filter) : base(service)
             {
+                Filter = filter;
                 InitParameters();
             }
 
 
             /// <summary>Required. A list of query parameters specified as JSON text in the form of:
-            /// {"project_id":"my_project_id", "job_names":["jobid1","jobid2",...],
-            /// "job_statuses":["status1","status2",...]}. Since `job_names` and `job_statuses` support multiple values,
-            /// their values must be specified with array notation. `project``_``id` is required. `job_names` and
-            /// `job_statuses` are optional. The valid values for `job_statuses` are case-insensitive: ENABLED,
-            /// DISABLED, and DELETED.</summary>
+            /// `{"projectId":"my_project_id", "jobNames":["jobid1","jobid2",...],
+            /// "jobStatuses":["status1","status2",...]}` Since `jobNames` and `jobStatuses` support multiple values,
+            /// their values must be specified with array notation. `projectId` is required. `jobNames` and
+            /// `jobStatuses` are optional. The valid values for `jobStatuses` are case-insensitive: ENABLED, DISABLED,
+            /// and DELETED.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
+            public virtual string Filter { get; private set; }
 
             /// <summary>The list page size. The max allowed value is 256.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -509,7 +518,7 @@ namespace Google.Apis.Storagetransfer.v1
                 RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                 {
                     Name = "filter",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -744,18 +753,26 @@ namespace Google.Apis.Storagetransfer.v1
 
         /// <summary>Lists transfer operations.</summary>
         /// <param name="name">Required. The value `transferOperations`.</param>
-        public virtual ListRequest List(string name)
+        /// <param name="filter">Required. A list
+        /// of query parameters specified as JSON text in the form of: `{"projectId":"my_project_id",
+        /// "jobNames":["jobid1","jobid2",...], "operationNames":["opid1","opid2",...],
+        /// "transferStatuses":["status1","status2",...]}` Since `jobNames`, `operationNames`, and `transferStatuses` support
+        /// multiple values, they must be specified with array notation. `projectId` is required. `jobNames`, `operationNames`,
+        /// and `transferStatuses` are optional. The valid values for `transferStatuses` are case-insensitive: IN_PROGRESS,
+        /// PAUSED, SUCCESS, FAILED, and ABORTED.</param>
+        public virtual ListRequest List(string name, string filter)
         {
-            return new ListRequest(service, name);
+            return new ListRequest(service, name, filter);
         }
 
         /// <summary>Lists transfer operations.</summary>
         public class ListRequest : StoragetransferBaseServiceRequest<Google.Apis.Storagetransfer.v1.Data.ListOperationsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string name, string filter) : base(service)
             {
                 Name = name;
+                Filter = filter;
                 InitParameters();
             }
 
@@ -765,14 +782,14 @@ namespace Google.Apis.Storagetransfer.v1
             public virtual string Name { get; private set; }
 
             /// <summary>Required. A list of query parameters specified as JSON text in the form of:
-            /// {"project_id":"my_project_id", "job_names":["jobid1","jobid2",...],
-            /// "operation_names":["opid1","opid2",...], "transfer_statuses":["status1","status2",...]}. Since
-            /// `job_names`, `operation_names`, and `transfer_statuses` support multiple values, they must be specified
-            /// with array notation. `project``_``id` is required. `job_names`, `operation_names`, and
-            /// `transfer_statuses` are optional. The valid values for `transfer_statuses` are case-insensitive:
-            /// IN_PROGRESS, PAUSED, SUCCESS, FAILED, and ABORTED.</summary>
+            /// `{"projectId":"my_project_id", "jobNames":["jobid1","jobid2",...],
+            /// "operationNames":["opid1","opid2",...], "transferStatuses":["status1","status2",...]}` Since `jobNames`,
+            /// `operationNames`, and `transferStatuses` support multiple values, they must be specified with array
+            /// notation. `projectId` is required. `jobNames`, `operationNames`, and `transferStatuses` are optional.
+            /// The valid values for `transferStatuses` are case-insensitive: IN_PROGRESS, PAUSED, SUCCESS, FAILED, and
+            /// ABORTED.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
+            public virtual string Filter { get; private set; }
 
             /// <summary>The list page size. The max allowed value is 256.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -808,7 +825,7 @@ namespace Google.Apis.Storagetransfer.v1
                 RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                 {
                     Name = "filter",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -1501,6 +1518,11 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// <summary>Output only. The time that the transfer job was last modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModificationTime")]
         public virtual object LastModificationTime { get; set; }
+
+        /// <summary>The name of the most recently started TransferOperation of this JobConfig. Present if and only if
+        /// at least one TransferOperation has been created for this JobConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestOperationName")]
+        public virtual string LatestOperationName { get; set; }
 
         /// <summary>A unique name (within the transfer project) assigned when the job is created. If this field is
         /// empty in a CreateTransferJobRequest, Storage Transfer Service will assign a unique name. Otherwise, the

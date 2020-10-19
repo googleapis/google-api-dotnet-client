@@ -357,12 +357,16 @@ namespace Google.Apis.PolyService.v1
             /// a request for MEDIUM assets also includes SIMPLE assets.</summary>
             public enum MaxComplexityEnum
             {
+                /// <summary>No complexity specified. This is equivalent to omitting the filter.</summary>
                 [Google.Apis.Util.StringValueAttribute("COMPLEXITY_UNSPECIFIED")]
                 COMPLEXITYUNSPECIFIED,
+                /// <summary>Highly-complex.</summary>
                 [Google.Apis.Util.StringValueAttribute("COMPLEX")]
                 COMPLEX,
+                /// <summary>Averagely-complex.</summary>
                 [Google.Apis.Util.StringValueAttribute("MEDIUM")]
                 MEDIUM,
+                /// <summary>Simple.</summary>
                 [Google.Apis.Util.StringValueAttribute("SIMPLE")]
                 SIMPLE,
             }
@@ -563,10 +567,13 @@ namespace Google.Apis.PolyService.v1
                 /// returns all assets.</summary>
                 public enum VisibilityEnum
                 {
+                    /// <summary>No visibility specified. Returns all assets.</summary>
                     [Google.Apis.Util.StringValueAttribute("VISIBILITY_UNSPECIFIED")]
                     VISIBILITYUNSPECIFIED,
+                    /// <summary>Returns only published assets.</summary>
                     [Google.Apis.Util.StringValueAttribute("PUBLISHED")]
                     PUBLISHED,
+                    /// <summary>Returns only private assets.</summary>
                     [Google.Apis.Util.StringValueAttribute("PRIVATE")]
                     PRIVATE__,
                 }
@@ -908,10 +915,8 @@ namespace Google.Apis.PolyService.v1.Data
         public virtual System.Collections.Generic.IList<File> Resources { get; set; }
 
         /// <summary>The root of the file hierarchy. This will always be populated. For some format_types - such as
-        /// `TILT`, which are self-contained - this is all of the data.
-        ///
-        /// Other types - such as `OBJ` - often reference other data elements. These are contained in the resources
-        /// field.</summary>
+        /// `TILT`, which are self-contained - this is all of the data. Other types - such as `OBJ` - often reference
+        /// other data elements. These are contained in the resources field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("root")]
         public virtual File Root { get; set; }
 
@@ -1048,7 +1053,6 @@ namespace Google.Apis.PolyService.v1.Data
     {
         /// <summary>A background color which could be used for displaying the 3D asset in a 'thumbnail' or 'palette'
         /// style view. Authors have the option to set this background color when publishing or editing their asset.
-        ///
         /// This is represented as a six-digit hexademical triplet specifying the RGB components of the background
         /// color, e.g. #FF0000 for Red.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
@@ -1065,12 +1069,9 @@ namespace Google.Apis.PolyService.v1.Data
         /// Eiffel Tower, in its local coordinate system the object might be laid out such that the base of the tower is
         /// on the YZ plane and the tip of the tower is towards positive X. In this case this quaternion would specify a
         /// rotation (of 90 degrees about the Z axis) such that in the presentation space the base of the tower is
-        /// aligned with the XZ plane, and the tip of the tower lies towards +Y.
-        ///
-        /// This rotation is unrelated to the object's pose in the web preview, which is just a camera position setting
-        /// and is *not* reflected in this rotation.
-        ///
-        /// Please note: this is applicable only to the gLTF.</summary>
+        /// aligned with the XZ plane, and the tip of the tower lies towards +Y. This rotation is unrelated to the
+        /// object's pose in the web preview, which is just a camera position setting and is *not* reflected in this
+        /// rotation. Please note: this is applicable only to the gLTF.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orientingRotation")]
         public virtual Quaternion OrientingRotation { get; set; }
 

@@ -324,9 +324,185 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
                     public DomainsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                        SqlIntegrations = new SqlIntegrationsResource(service);
 
                     }
 
+                    /// <summary>Gets the SqlIntegrations resource.</summary>
+                    public virtual SqlIntegrationsResource SqlIntegrations { get; }
+
+                    /// <summary>The "sqlIntegrations" collection of methods.</summary>
+                    public class SqlIntegrationsResource
+                    {
+                        private const string Resource = "sqlIntegrations";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public SqlIntegrationsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+
+                        }
+
+
+                        /// <summary>Gets details of a single sqlIntegration.</summary>
+                        /// <param name="name">Required. SQLIntegration resource name using the form:
+                        /// `projects/{project_id}/locations/global/domains/sqlIntegrations/{name}`</param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>Gets details of a single sqlIntegration.</summary>
+                        public class GetRequest : ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1beta1.Data.SQLIntegration>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. SQLIntegration resource name using the form:
+                            /// `projects/{project_id}/locations/global/domains/sqlIntegrations/{name}`</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/global/domains/[^/]+/sqlIntegrations/[^/]+$",
+                                });
+                            }
+
+                        }
+
+                        /// <summary>Lists SQLIntegrations in a given domain.</summary>
+                        /// <param name="parent">Required. The resource name of the SQLIntegrations using the form:
+                        /// `projects/{project_id}/locations/global/domains`</param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>Lists SQLIntegrations in a given domain.</summary>
+                        public class ListRequest : ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1beta1.Data.ListSQLIntegrationsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. The resource name of the SQLIntegrations using the form:
+                            /// `projects/{project_id}/locations/global/domains`</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Optional. Filter specifying constraints of a list operation. For example,
+                            /// `SQLIntegration.name="sql"`.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>Optional. Specifies the ordering of results following syntax at
+                            /// https://cloud.google.com/apis/design/design_patterns#sorting_order.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string OrderBy { get; set; }
+
+                            /// <summary>Optional. The maximum number of items to return. If not specified, a default
+                            /// value of 1000 will be used by the service. Regardless of the page_size value, the
+                            /// response may include a partial list and a caller should only rely on response'ANIZATIONs
+                            /// next_page_token to determine if there are more instances left to be queried.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>Optional. The next_page_token value returned from a previous List request, if
+                            /// any.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta1/{+parent}/sqlIntegrations";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/global/domains/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "orderBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+
+                        }
+                    }
 
                     /// <summary>Adds an AD trust to a domain.</summary>
                     /// <param name="body">The body of the request.</param>
@@ -828,7 +1004,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
 
                         /// <summary>Required. Mask of fields to update. At least one path must be supplied in this
                         /// field. The elements of the repeated paths field may only include fields from Domain: *
-                        /// `labels` * `locations` * `authorized_networks`</summary>
+                        /// `labels` * `locations` * `authorized_networks` * `audit_logs_enabled`</summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
 
@@ -1544,10 +1720,6 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>If true, the returned list will include locations which are not yet revealed.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("includeUnrevealedLocations", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IncludeUnrevealedLocations { get; set; }
-
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -1582,14 +1754,6 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("includeUnrevealedLocations", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeUnrevealedLocations",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1704,11 +1868,6 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// If not specified, `setupadmin` will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("admin")]
         public virtual string Admin { get; set; }
-
-        /// <summary>Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is
-        /// audit logs disabled.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("auditLogsEnabled")]
-        public virtual System.Nullable<bool> AuditLogsEnabled { get; set; }
 
         /// <summary>Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-
         /// firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The
@@ -1937,8 +2096,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicyNames")]
         public virtual System.Collections.Generic.IDictionary<string, string> MaintenancePolicyNames { get; set; }
 
-        /// <summary>The MaintenanceSchedule contains the scheduling information of published maintenance
-        /// schedule.</summary>
+        /// <summary>The MaintenanceSchedule contains the scheduling information of published maintenance schedule with
+        /// same key as software_versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedules")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule> MaintenanceSchedules { get; set; }
 
@@ -2206,6 +2365,26 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>ListSQLIntegrationsResponse is the response message for ListSQLIntegrations method.</summary>
+    public class ListSQLIntegrationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of SQLIntegrations of a domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlIntegrations")]
+        public virtual System.Collections.Generic.IList<SQLIntegration> SqlIntegrations { get; set; }
+
+        /// <summary>A list of locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A resource that represents Google Cloud Platform location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2392,6 +2571,37 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// <summary>A random password. See admin for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the SQL instance integrated with AD.</summary>
+    public class SQLIntegration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time sql integration was created. Synthetic field is populated automatically by
+        /// CCFE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The unique name of the sql integration in the form of
+        /// `projects/{project_id}/locations/global/domains/{domain_name}/sqlIntegrations/{sql_integration}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The full resource name of an integrated sql instance TODO(b/161918255) Add resource type annotation
+        /// post CloudSQL API fix.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlInstance")]
+        public virtual string SqlInstance { get; set; }
+
+        /// <summary>Output only. The current state of the sql integration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. The time sql integration was updated. Synthetic field is populated automatically by
+        /// CCFE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

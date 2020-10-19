@@ -1544,10 +1544,6 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>If true, the returned list will include locations which are not yet revealed.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("includeUnrevealedLocations", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IncludeUnrevealedLocations { get; set; }
-
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -1582,14 +1578,6 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("includeUnrevealedLocations", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeUnrevealedLocations",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1932,8 +1920,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicyNames")]
         public virtual System.Collections.Generic.IDictionary<string, string> MaintenancePolicyNames { get; set; }
 
-        /// <summary>The MaintenanceSchedule contains the scheduling information of published maintenance
-        /// schedule.</summary>
+        /// <summary>The MaintenanceSchedule contains the scheduling information of published maintenance schedule with
+        /// same key as software_versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedules")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule> MaintenanceSchedules { get; set; }
 

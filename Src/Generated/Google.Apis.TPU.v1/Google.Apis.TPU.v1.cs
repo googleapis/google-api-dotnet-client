@@ -312,7 +312,7 @@ namespace Google.Apis.TPU.v1
 
 
                 /// <summary>Gets AcceleratorType.</summary>
-                /// <param name="name">The resource name.</param>
+                /// <param name="name">Required. The resource name.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -329,7 +329,7 @@ namespace Google.Apis.TPU.v1
                     }
 
 
-                    /// <summary>The resource name.</summary>
+                    /// <summary>Required. The resource name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -361,7 +361,7 @@ namespace Google.Apis.TPU.v1
                 }
 
                 /// <summary>Lists accelerator types supported by this API.</summary>
-                /// <param name="parent">The parent resource name.</param>
+                /// <param name="parent">Required. The parent resource name.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -378,7 +378,7 @@ namespace Google.Apis.TPU.v1
                     }
 
 
-                    /// <summary>The parent resource name.</summary>
+                    /// <summary>Required. The parent resource name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -478,7 +478,7 @@ namespace Google.Apis.TPU.v1
 
                 /// <summary>Creates a node.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">The parent resource name.</param>
+                /// <param name="parent">Required. The parent resource name.</param>
                 public virtual CreateRequest Create(Google.Apis.TPU.v1.Data.Node body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -496,7 +496,7 @@ namespace Google.Apis.TPU.v1
                     }
 
 
-                    /// <summary>The parent resource name.</summary>
+                    /// <summary>Required. The parent resource name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -546,7 +546,7 @@ namespace Google.Apis.TPU.v1
                 }
 
                 /// <summary>Deletes a node.</summary>
-                /// <param name="name">The resource name.</param>
+                /// <param name="name">Required. The resource name.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -563,7 +563,7 @@ namespace Google.Apis.TPU.v1
                     }
 
 
-                    /// <summary>The resource name.</summary>
+                    /// <summary>Required. The resource name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -595,7 +595,7 @@ namespace Google.Apis.TPU.v1
                 }
 
                 /// <summary>Gets the details of a node.</summary>
-                /// <param name="name">The resource name.</param>
+                /// <param name="name">Required. The resource name.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -612,7 +612,7 @@ namespace Google.Apis.TPU.v1
                     }
 
 
-                    /// <summary>The resource name.</summary>
+                    /// <summary>Required. The resource name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -644,7 +644,7 @@ namespace Google.Apis.TPU.v1
                 }
 
                 /// <summary>Lists nodes.</summary>
-                /// <param name="parent">The parent resource name.</param>
+                /// <param name="parent">Required. The parent resource name.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -661,7 +661,7 @@ namespace Google.Apis.TPU.v1
                     }
 
 
-                    /// <summary>The parent resource name.</summary>
+                    /// <summary>Required. The parent resource name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1188,7 +1188,7 @@ namespace Google.Apis.TPU.v1
 
 
                 /// <summary>Gets TensorFlow Version.</summary>
-                /// <param name="name">The resource name.</param>
+                /// <param name="name">Required. The resource name.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -1205,7 +1205,7 @@ namespace Google.Apis.TPU.v1
                     }
 
 
-                    /// <summary>The resource name.</summary>
+                    /// <summary>Required. The resource name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1237,7 +1237,7 @@ namespace Google.Apis.TPU.v1
                 }
 
                 /// <summary>List TensorFlow versions supported by this API.</summary>
-                /// <param name="parent">The parent resource name.</param>
+                /// <param name="parent">Required. The parent resource name.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -1254,7 +1254,7 @@ namespace Google.Apis.TPU.v1
                     }
 
 
-                    /// <summary>The parent resource name.</summary>
+                    /// <summary>Required. The parent resource name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1633,7 +1633,7 @@ namespace Google.Apis.TPU.v1.Data
     /// <summary>A TPU instance.</summary>
     public class Node : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The type of hardware accelerators associated with this node. Required.</summary>
+        /// <summary>Required. The type of hardware accelerators associated with this node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
         public virtual string AcceleratorType { get; set; }
 
@@ -1671,7 +1671,7 @@ namespace Google.Apis.TPU.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Output only. The immutable name of the TPU</summary>
+        /// <summary>Output only. Immutable. The name of the TPU</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1691,6 +1691,7 @@ namespace Google.Apis.TPU.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual string Port { get; set; }
 
+        /// <summary>The scheduling options for this node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedulingConfig")]
         public virtual SchedulingConfig SchedulingConfig { get; set; }
 
@@ -1708,7 +1709,7 @@ namespace Google.Apis.TPU.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("symptoms")]
         public virtual System.Collections.Generic.IList<Symptom> Symptoms { get; set; }
 
-        /// <summary>The version of Tensorflow running in the Node. Required.</summary>
+        /// <summary>Required. The version of Tensorflow running in the Node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tensorflowVersion")]
         public virtual string TensorflowVersion { get; set; }
 

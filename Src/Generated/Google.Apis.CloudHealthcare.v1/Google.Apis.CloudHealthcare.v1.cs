@@ -7193,13 +7193,13 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     public class ExportDicomDataRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The BigQuery output destination. You can only export to a BigQuery dataset that's in the same
-        /// project as the DICOM store you're exporting from. The BigQuery location requires two IAM roles:
-        /// `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`.</summary>
+        /// project as the DICOM store you're exporting from. The Cloud Healthcare Service Agent requires two IAM roles
+        /// on the BigQuery location: `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
         public virtual GoogleCloudHealthcareV1DicomBigQueryDestination BigqueryDestination { get; set; }
 
-        /// <summary>The Cloud Storage output destination. The Cloud Storage location requires the
-        /// `roles/storage.objectAdmin` Cloud IAM role.</summary>
+        /// <summary>The Cloud Storage output destination. The Cloud Healthcare Service Agent requires the
+        /// `roles/storage.objectAdmin` Cloud IAM roles on the Cloud Storage location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
         public virtual GoogleCloudHealthcareV1DicomGcsDestination GcsDestination { get; set; }
 
@@ -7217,9 +7217,9 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     /// <summary>Request to export resources.</summary>
     public class ExportResourcesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The BigQuery output destination. The BigQuery location requires two IAM roles:
-        /// `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`. The output is one BigQuery table per resource
-        /// type.</summary>
+        /// <summary>The BigQuery output destination. The Cloud Healthcare Service Agent requires two IAM roles on the
+        /// BigQuery location: `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`. The output is one BigQuery
+        /// table per resource type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
         public virtual GoogleCloudHealthcareV1FhirBigQueryDestination BigqueryDestination { get; set; }
 
@@ -7326,9 +7326,9 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// /capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate). This determines if
         /// the client can use an Update operation to create a new resource with a client-specified ID. If false, all
         /// IDs are server-assigned through the Create operation and attempts to update a non-existent resource return
-        /// errors. Please treat the audit logs with appropriate levels of care if client-specified resource IDs contain
-        /// sensitive data such as patient identifiers, those IDs are part of the FHIR resource path recorded in Cloud
-        /// audit logs and Cloud Pub/Sub notifications.</summary>
+        /// errors. Be careful with the audit logs if client-specified resource IDs contain sensitive data such as
+        /// patient identifiers, those IDs are part of the FHIR resource path recorded in Cloud audit logs and Cloud
+        /// Pub/Sub notifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableUpdateCreate")]
         public virtual System.Nullable<bool> EnableUpdateCreate { get; set; }
 
@@ -7649,8 +7649,8 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     /// overwrite.</summary>
     public class ImportDicomDataRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Cloud Storage source data location and import configuration. The Cloud Storage location requires
-        /// the `roles/storage.objectViewer` Cloud IAM role.</summary>
+        /// <summary>Cloud Storage source data location and import configuration. The Cloud Healthcare Service Agent
+        /// requires the `roles/storage.objectViewer` Cloud IAM roles on the Cloud Storage location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GoogleCloudHealthcareV1DicomGcsSource GcsSource { get; set; }
 

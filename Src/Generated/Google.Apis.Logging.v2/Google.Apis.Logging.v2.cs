@@ -353,9 +353,82 @@ namespace Google.Apis.Logging.v2
             public BucketsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                Views = new ViewsResource(service);
 
             }
 
+            /// <summary>Gets the Views resource.</summary>
+            public virtual ViewsResource Views { get; }
+
+            /// <summary>The "views" collection of methods.</summary>
+            public class ViewsResource
+            {
+                private const string Resource = "views";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ViewsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Gets a view.</summary>
+                /// <param name="name">Required. The resource name of the policy:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "projects/my-project-
+                /// id/locations/my-location/buckets/my-bucket-id/views/my-view-id".</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets a view.</summary>
+                public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The resource name of the policy:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
+                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^billingAccounts/[^/]+/buckets/[^/]+/views/[^/]+$",
+                        });
+                    }
+
+                }
+            }
 
             /// <summary>Gets a bucket (Beta).</summary>
             /// <param name="name">Required. The resource name of the bucket:
@@ -807,9 +880,318 @@ namespace Google.Apis.Logging.v2
                 public BucketsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Views = new ViewsResource(service);
 
                 }
 
+                /// <summary>Gets the Views resource.</summary>
+                public virtual ViewsResource Views { get; }
+
+                /// <summary>The "views" collection of methods.</summary>
+                public class ViewsResource
+                {
+                    private const string Resource = "views";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ViewsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Creates a view over logs in a bucket. A bucket may contain a maximum of 50
+                    /// views.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. The bucket in which to create the view
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-logging-project/locations
+                    /// /my-location/buckets/my-bucket"</param>
+                    public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogView body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a view over logs in a bucket. A bucket may contain a maximum of 50
+                    /// views.</summary>
+                    public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogView body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The bucket in which to create the view
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-
+                        /// logging-project/locations/my-location/buckets/my-bucket"</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Required. The id to use for this view.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("viewId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ViewId { get; set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Logging.v2.Data.LogView Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/views";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                            });
+                            RequestParameters.Add("viewId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "viewId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Deletes a view from a bucket.</summary>
+                    /// <param name="name">Required. The full resource name of the view to delete:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "projects/my-project-
+                    /// id/locations/my-location/buckets/my-bucket-id/views/my-view-id".</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes a view from a bucket.</summary>
+                    public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The full resource name of the view to delete:
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
+                        /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-
+                        /// id".</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$",
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Lists views on a bucket..</summary>
+                    /// <param name="parent">Required. The bucket whose views are to be listed:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists views on a bucket..</summary>
+                    public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListViewsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The bucket whose views are to be listed:
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. The maximum number of results to return from this request. Non-positive
+                        /// values are ignored. The presence of nextPageToken in the response indicates that more
+                        /// results might be available.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. If present, then retrieve the next batch of results from the preceding
+                        /// call to this method. pageToken must be the value of nextPageToken from the previous
+                        /// response. The values of other method parameters should be identical to those in the previous
+                        /// call.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/views";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Updates a view. This method replaces the following fields in the existing view with
+                    /// values from the new view: filter.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The full resource name of the view to update
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "projects/my-project-
+                    /// id/locations/my-location/buckets/my-bucket-id/views/my-view-id".</param>
+                    public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogView body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates a view. This method replaces the following fields in the existing view with
+                    /// values from the new view: filter.</summary>
+                    public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogView body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The full resource name of the view to update
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
+                        /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-
+                        /// id".</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Optional. Field mask that specifies the fields in view that need an update. A field
+                        /// will be overwritten if, and only if, it is in the update mask. name and output only fields
+                        /// cannot be updated.For a detailed FieldMask definition, see https://developers.google.com
+                        /// /protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
+                        /// updateMask=filter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Logging.v2.Data.LogView Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+
+                    }
+                }
 
                 /// <summary>Creates a bucket that can be used to store log entries. Once a bucket has been created, the
                 /// region cannot be changed.</summary>
@@ -2741,9 +3123,372 @@ namespace Google.Apis.Logging.v2
                 public BucketsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Views = new ViewsResource(service);
 
                 }
 
+                /// <summary>Gets the Views resource.</summary>
+                public virtual ViewsResource Views { get; }
+
+                /// <summary>The "views" collection of methods.</summary>
+                public class ViewsResource
+                {
+                    private const string Resource = "views";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ViewsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Creates a view over logs in a bucket. A bucket may contain a maximum of 50
+                    /// views.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. The bucket in which to create the view
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-logging-project/locations
+                    /// /my-location/buckets/my-bucket"</param>
+                    public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogView body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a view over logs in a bucket. A bucket may contain a maximum of 50
+                    /// views.</summary>
+                    public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogView body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The bucket in which to create the view
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-
+                        /// logging-project/locations/my-location/buckets/my-bucket"</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Required. The id to use for this view.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("viewId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ViewId { get; set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Logging.v2.Data.LogView Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/views";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^folders/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                            });
+                            RequestParameters.Add("viewId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "viewId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Deletes a view from a bucket.</summary>
+                    /// <param name="name">Required. The full resource name of the view to delete:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "projects/my-project-
+                    /// id/locations/my-location/buckets/my-bucket-id/views/my-view-id".</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes a view from a bucket.</summary>
+                    public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The full resource name of the view to delete:
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
+                        /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-
+                        /// id".</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^folders/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$",
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Gets a view.</summary>
+                    /// <param name="name">Required. The resource name of the policy:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "projects/my-project-
+                    /// id/locations/my-location/buckets/my-bucket-id/views/my-view-id".</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets a view.</summary>
+                    public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The resource name of the policy:
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
+                        /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-
+                        /// id".</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^folders/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$",
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Lists views on a bucket..</summary>
+                    /// <param name="parent">Required. The bucket whose views are to be listed:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists views on a bucket..</summary>
+                    public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListViewsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The bucket whose views are to be listed:
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. The maximum number of results to return from this request. Non-positive
+                        /// values are ignored. The presence of nextPageToken in the response indicates that more
+                        /// results might be available.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. If present, then retrieve the next batch of results from the preceding
+                        /// call to this method. pageToken must be the value of nextPageToken from the previous
+                        /// response. The values of other method parameters should be identical to those in the previous
+                        /// call.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/views";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^folders/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Updates a view. This method replaces the following fields in the existing view with
+                    /// values from the new view: filter.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The full resource name of the view to update
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "projects/my-project-
+                    /// id/locations/my-location/buckets/my-bucket-id/views/my-view-id".</param>
+                    public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogView body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates a view. This method replaces the following fields in the existing view with
+                    /// values from the new view: filter.</summary>
+                    public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogView body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The full resource name of the view to update
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
+                        /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-
+                        /// id".</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Optional. Field mask that specifies the fields in view that need an update. A field
+                        /// will be overwritten if, and only if, it is in the update mask. name and output only fields
+                        /// cannot be updated.For a detailed FieldMask definition, see https://developers.google.com
+                        /// /protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
+                        /// updateMask=filter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Logging.v2.Data.LogView Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^folders/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+
+                    }
+                }
 
                 /// <summary>Creates a bucket that can be used to store log entries. Once a bucket has been created, the
                 /// region cannot be changed.</summary>
@@ -3888,9 +4633,366 @@ namespace Google.Apis.Logging.v2
             public BucketsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                Views = new ViewsResource(service);
 
             }
 
+            /// <summary>Gets the Views resource.</summary>
+            public virtual ViewsResource Views { get; }
+
+            /// <summary>The "views" collection of methods.</summary>
+            public class ViewsResource
+            {
+                private const string Resource = "views";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ViewsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The bucket in which to create the view
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-logging-project/locations
+                /// /my-location/buckets/my-bucket"</param>
+                public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogView body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.</summary>
+                public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogView body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The bucket in which to create the view
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-
+                    /// logging-project/locations/my-location/buckets/my-bucket"</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. The id to use for this view.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("viewId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ViewId { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.LogView Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/views";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
+                        RequestParameters.Add("viewId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "viewId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+
+                }
+
+                /// <summary>Deletes a view from a bucket.</summary>
+                /// <param name="name">Required. The full resource name of the view to delete:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "projects/my-project-
+                /// id/locations/my-location/buckets/my-bucket-id/views/my-view-id".</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a view from a bucket.</summary>
+                public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The full resource name of the view to delete:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
+                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$",
+                        });
+                    }
+
+                }
+
+                /// <summary>Gets a view.</summary>
+                /// <param name="name">Required. The resource name of the policy:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "projects/my-project-
+                /// id/locations/my-location/buckets/my-bucket-id/views/my-view-id".</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets a view.</summary>
+                public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The resource name of the policy:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
+                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$",
+                        });
+                    }
+
+                }
+
+                /// <summary>Lists views on a bucket..</summary>
+                /// <param name="parent">Required. The bucket whose views are to be listed:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists views on a bucket..</summary>
+                public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListViewsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The bucket whose views are to be listed:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. The maximum number of results to return from this request. Non-positive
+                    /// values are ignored. The presence of nextPageToken in the response indicates that more results
+                    /// might be available.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call
+                    /// to this method. pageToken must be the value of nextPageToken from the previous response. The
+                    /// values of other method parameters should be identical to those in the previous call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/views";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+
+                }
+
+                /// <summary>Updates a view. This method replaces the following fields in the existing view with values
+                /// from the new view: filter.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The full resource name of the view to update
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "projects/my-project-
+                /// id/locations/my-location/buckets/my-bucket-id/views/my-view-id".</param>
+                public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogView body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates a view. This method replaces the following fields in the existing view with values
+                /// from the new view: filter.</summary>
+                public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogView body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The full resource name of the view to update
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
+                    /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. Field mask that specifies the fields in view that need an update. A field
+                    /// will be overwritten if, and only if, it is in the update mask. name and output only fields
+                    /// cannot be updated.For a detailed FieldMask definition, see https://developers.google.com
+                    /// /protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
+                    /// updateMask=filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.LogView Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+
+                }
+            }
 
             /// <summary>Creates a bucket that can be used to store log entries. Once a bucket has been created, the
             /// region cannot be changed.</summary>
@@ -4987,9 +6089,372 @@ namespace Google.Apis.Logging.v2
                 public BucketsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Views = new ViewsResource(service);
 
                 }
 
+                /// <summary>Gets the Views resource.</summary>
+                public virtual ViewsResource Views { get; }
+
+                /// <summary>The "views" collection of methods.</summary>
+                public class ViewsResource
+                {
+                    private const string Resource = "views";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ViewsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Creates a view over logs in a bucket. A bucket may contain a maximum of 50
+                    /// views.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. The bucket in which to create the view
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-logging-project/locations
+                    /// /my-location/buckets/my-bucket"</param>
+                    public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogView body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a view over logs in a bucket. A bucket may contain a maximum of 50
+                    /// views.</summary>
+                    public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogView body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The bucket in which to create the view
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-
+                        /// logging-project/locations/my-location/buckets/my-bucket"</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Required. The id to use for this view.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("viewId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ViewId { get; set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Logging.v2.Data.LogView Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/views";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                            });
+                            RequestParameters.Add("viewId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "viewId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Deletes a view from a bucket.</summary>
+                    /// <param name="name">Required. The full resource name of the view to delete:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "projects/my-project-
+                    /// id/locations/my-location/buckets/my-bucket-id/views/my-view-id".</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes a view from a bucket.</summary>
+                    public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The full resource name of the view to delete:
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
+                        /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-
+                        /// id".</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$",
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Gets a view.</summary>
+                    /// <param name="name">Required. The resource name of the policy:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "projects/my-project-
+                    /// id/locations/my-location/buckets/my-bucket-id/views/my-view-id".</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets a view.</summary>
+                    public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The resource name of the policy:
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
+                        /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-
+                        /// id".</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$",
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Lists views on a bucket..</summary>
+                    /// <param name="parent">Required. The bucket whose views are to be listed:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists views on a bucket..</summary>
+                    public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListViewsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The bucket whose views are to be listed:
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. The maximum number of results to return from this request. Non-positive
+                        /// values are ignored. The presence of nextPageToken in the response indicates that more
+                        /// results might be available.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. If present, then retrieve the next batch of results from the preceding
+                        /// call to this method. pageToken must be the value of nextPageToken from the previous
+                        /// response. The values of other method parameters should be identical to those in the previous
+                        /// call.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/views";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Updates a view. This method replaces the following fields in the existing view with
+                    /// values from the new view: filter.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The full resource name of the view to update
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "projects/my-project-
+                    /// id/locations/my-location/buckets/my-bucket-id/views/my-view-id".</param>
+                    public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogView body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates a view. This method replaces the following fields in the existing view with
+                    /// values from the new view: filter.</summary>
+                    public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogView body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The full resource name of the view to update
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
+                        /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-
+                        /// id".</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Optional. Field mask that specifies the fields in view that need an update. A field
+                        /// will be overwritten if, and only if, it is in the update mask. name and output only fields
+                        /// cannot be updated.For a detailed FieldMask definition, see https://developers.google.com
+                        /// /protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
+                        /// updateMask=filter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Logging.v2.Data.LogView Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+
+                    }
+                }
 
                 /// <summary>Creates a bucket that can be used to store log entries. Once a bucket has been created, the
                 /// region cannot be changed.</summary>
@@ -6668,9 +8133,372 @@ namespace Google.Apis.Logging.v2
                 public BucketsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Views = new ViewsResource(service);
 
                 }
 
+                /// <summary>Gets the Views resource.</summary>
+                public virtual ViewsResource Views { get; }
+
+                /// <summary>The "views" collection of methods.</summary>
+                public class ViewsResource
+                {
+                    private const string Resource = "views";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ViewsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Creates a view over logs in a bucket. A bucket may contain a maximum of 50
+                    /// views.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. The bucket in which to create the view
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-logging-project/locations
+                    /// /my-location/buckets/my-bucket"</param>
+                    public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogView body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a view over logs in a bucket. A bucket may contain a maximum of 50
+                    /// views.</summary>
+                    public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogView body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The bucket in which to create the view
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-
+                        /// logging-project/locations/my-location/buckets/my-bucket"</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Required. The id to use for this view.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("viewId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ViewId { get; set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Logging.v2.Data.LogView Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/views";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                            });
+                            RequestParameters.Add("viewId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "viewId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Deletes a view from a bucket.</summary>
+                    /// <param name="name">Required. The full resource name of the view to delete:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "projects/my-project-
+                    /// id/locations/my-location/buckets/my-bucket-id/views/my-view-id".</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes a view from a bucket.</summary>
+                    public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The full resource name of the view to delete:
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
+                        /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-
+                        /// id".</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$",
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Gets a view.</summary>
+                    /// <param name="name">Required. The resource name of the policy:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "projects/my-project-
+                    /// id/locations/my-location/buckets/my-bucket-id/views/my-view-id".</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets a view.</summary>
+                    public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The resource name of the policy:
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
+                        /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-
+                        /// id".</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$",
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Lists views on a bucket..</summary>
+                    /// <param name="parent">Required. The bucket whose views are to be listed:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists views on a bucket..</summary>
+                    public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListViewsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The bucket whose views are to be listed:
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. The maximum number of results to return from this request. Non-positive
+                        /// values are ignored. The presence of nextPageToken in the response indicates that more
+                        /// results might be available.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. If present, then retrieve the next batch of results from the preceding
+                        /// call to this method. pageToken must be the value of nextPageToken from the previous
+                        /// response. The values of other method parameters should be identical to those in the previous
+                        /// call.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/views";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Updates a view. This method replaces the following fields in the existing view with
+                    /// values from the new view: filter.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The full resource name of the view to update
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "projects/my-project-
+                    /// id/locations/my-location/buckets/my-bucket-id/views/my-view-id".</param>
+                    public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogView body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates a view. This method replaces the following fields in the existing view with
+                    /// values from the new view: filter.</summary>
+                    public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogView body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The full resource name of the view to update
+                        /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example:
+                        /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view-
+                        /// id".</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Optional. Field mask that specifies the fields in view that need an update. A field
+                        /// will be overwritten if, and only if, it is in the update mask. name and output only fields
+                        /// cannot be updated.For a detailed FieldMask definition, see https://developers.google.com
+                        /// /protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
+                        /// updateMask=filter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Logging.v2.Data.LogView Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/buckets/[^/]+/views/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+
+                    }
+                }
 
                 /// <summary>Creates a bucket that can be used to store log entries. Once a bucket has been created, the
                 /// region cannot be changed.</summary>
@@ -8991,7 +10819,12 @@ namespace Google.Apis.Logging.v2.Data
 
         /// <summary>Required. Names of one or more parent resources from which to retrieve log entries:
         /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]"
-        /// "folders/[FOLDER_ID]" Projects listed in the project_ids field are added to this list.</summary>
+        /// "folders/[FOLDER_ID]" May alternatively be one or more views
+        /// projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
+        /// organization/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
+        /// billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID
+        /// folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_IDProjects listed in the project_ids
+        /// field are added to this list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceNames")]
         public virtual System.Collections.Generic.IList<string> ResourceNames { get; set; }
 
@@ -9083,6 +10916,22 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>A list of sinks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sinks")]
         public virtual System.Collections.Generic.IList<LogSink> Sinks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response from ListViews.</summary>
+    public class ListViewsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If there might be more results than appear in this response, then nextPageToken is included. To get
+        /// the next set of results, call the same method again using the value of nextPageToken as pageToken.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of views.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("views")]
+        public virtual System.Collections.Generic.IList<LogView> Views { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9536,13 +11385,38 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Describes a view over logs in a bucket.</summary>
+    public class LogView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The creation timestamp of the view.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Describes this view.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Filter that restricts which log entries in a bucket are visible in this view. Filters are
+        /// restricted to be a logical AND of ==/!= of any of the following: originating
+        /// project/folder/organization/billing account. resource type log id</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>The resource name of the view. For example "projects/my-project-id/locations/my-location/buckets
+        /// /my-bucket-id/views/my-view</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The last update timestamp of the view.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it
-    /// stops data collection and makes the metric type's existing data unusable.The following are specific rules for
-    /// service defined Monitoring metric descriptors: type, metric_kind, value_type and description fields are all
-    /// required. The unit field must be specified if the value_type is any of DOUBLE, INT64, DISTRIBUTION. Maximum of
-    /// default 500 metric descriptors per service is allowed. Maximum of default 10 labels per metric descriptor is
-    /// allowed.The default maximum limit can be overridden. Please follow
-    /// https://cloud.google.com/monitoring/quotas</summary>
+    /// stops data collection and makes the metric type's existing data unusable.</summary>
     public class MetricDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A detailed description of the metric, which can be used in documentation.</summary>
@@ -9555,12 +11429,10 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>The set of labels that can be used to describe a specific instance of this metric type.The label
-        /// key name must follow: Only upper and lower-case letters, digits and underscores (_) are allowed. Label name
-        /// must start with a letter or digit. The maximum length of a label name is 100 characters.For example, the
-        /// appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code,
-        /// response_code, so you can look at latencies for successful responses or just for responses that
-        /// failed.</summary>
+        /// <summary>The set of labels that can be used to describe a specific instance of this metric type. For
+        /// example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP
+        /// response code, response_code, so you can look at latencies for successful responses or just for responses
+        /// that failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; }
 
@@ -9587,14 +11459,10 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The metric type, including its DNS name prefix. The type is not URL-encoded.All service defined
-        /// metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such
-        /// as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must follow: Only upper and
-        /// lower-case letters, digits, '/' and underscores '_' are allowed. The maximum number of characters allowed
-        /// for the relative_metric_name is 100.All user-defined metric types have the DNS name custom.googleapis.com,
-        /// external.googleapis.com, or logging.googleapis.com/user/.Metric types should use a natural hierarchical
-        /// grouping. For example: "custom.googleapis.com/invoice/paid/amount" "external.googleapis.com/prometheus/up"
-        /// "appengine.googleapis.com/http/server/response_latencies" </summary>
+        /// <summary>The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined
+        /// metric types have the DNS name custom.googleapis.com or external.googleapis.com. Metric types should use a
+        /// natural hierarchical grouping. For example: "custom.googleapis.com/invoice/paid/amount"
+        /// "external.googleapis.com/prometheus/up" "appengine.googleapis.com/http/server/response_latencies" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -9690,13 +11558,8 @@ namespace Google.Apis.Logging.v2.Data
     /// <summary>An object that describes the schema of a MonitoredResource object using a type name and a set of
     /// labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of
     /// "gce_instance" and specifies the use of the labels "instance_id" and "zone" to identify particular VM
-    /// instances.Different services can support different monitored resource types.The following are specific rules to
-    /// service defined monitored resources for Monitoring and Logging: The type, display_name, description, labels and
-    /// launch_stage fields are all required. The first label of the monitored resource descriptor must be
-    /// resource_container. There are legacy monitored resource descritptors start with project_id. It must include a
-    /// location label. Maximum of default 5 service defined monitored resource descriptors is allowed per service.
-    /// Maximum of default 10 labels per monitored resource is allowed.The default maximum limit can be overridden.
-    /// Please follow https://cloud.google.com/monitoring/quotas</summary>
+    /// instances.Different APIs can support different monitored resource types. APIs generally provide a list method
+    /// that returns the monitored resource descriptors used by the API.</summary>
     public class MonitoredResourceDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. A detailed description of the monitored resource type that might be used in
@@ -9710,11 +11573,9 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Required. A set of labels used to describe instances of this monitored resource type. The label key
-        /// name must follow: Only upper and lower-case letters, digits and underscores (_) are allowed. Label name must
-        /// start with a letter or digit. The maximum length of a label name is 100 characters.For example, an
-        /// individual Google Cloud SQL database is identified by values for the labels database_id and
-        /// location.</summary>
+        /// <summary>Required. A set of labels used to describe instances of this monitored resource type. For example,
+        /// an individual Google Cloud SQL database is identified by values for the labels "database_id" and
+        /// "zone".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; }
 
@@ -9730,12 +11591,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. The monitored resource type. For example, the type cloudsql_database represents databases
-        /// in Google Cloud SQL.All service defined monitored resource types must be prefixed with the service name, in
-        /// the format of {service name}/{relative resource name}. The relative resource name must follow: Only upper
-        /// and lower-case letters and digits are allowed. It must start with upper case character and is recommended to
-        /// use Upper Camel Case style. The maximum number of characters allowed for the relative_resource_name is
-        /// 100.Note there are legacy service monitored resources not following this rule.</summary>
+        /// <summary>Required. The monitored resource type. For example, the type "cloudsql_database" represents
+        /// databases in Google Cloud SQL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 

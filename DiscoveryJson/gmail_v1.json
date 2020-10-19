@@ -2682,7 +2682,7 @@
    }
   }
  }, 
- "revision": "20200919", 
+ "revision": "20201012", 
  "rootUrl": "https://gmail.googleapis.com/", 
  "schemas": {
   "AutoForwarding": {

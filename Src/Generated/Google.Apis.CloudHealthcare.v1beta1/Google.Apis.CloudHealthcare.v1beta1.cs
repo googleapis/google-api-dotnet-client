@@ -11403,8 +11403,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// <summary>A client-defined consent attribute.</summary>
     public class AttributeDefinition : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Possible values for the attribute. An empty list is invalid. The list can only be
-        /// expanded after creation.</summary>
+        /// <summary>Required. Possible values for the attribute. The number of allowed values must not exceed 100. An
+        /// empty list is invalid. The list can only be expanded after creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedValues")]
         public virtual System.Collections.Generic.IList<string> AllowedValues { get; set; }
 
@@ -12153,13 +12153,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     public class ExportDicomDataRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The BigQuery output destination. You can only export to a BigQuery dataset that's in the same
-        /// project as the DICOM store you're exporting from. The BigQuery location requires two IAM roles:
-        /// `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`.</summary>
+        /// project as the DICOM store you're exporting from. The Cloud Healthcare Service Agent requires two IAM roles
+        /// on the BigQuery location: `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
         public virtual GoogleCloudHealthcareV1beta1DicomBigQueryDestination BigqueryDestination { get; set; }
 
-        /// <summary>The Cloud Storage output destination. The Cloud Storage location requires the
-        /// `roles/storage.objectAdmin` Cloud IAM role.</summary>
+        /// <summary>The Cloud Storage output destination. The Cloud Healthcare Service Agent requires the
+        /// `roles/storage.objectAdmin` Cloud IAM roles on the Cloud Storage location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
         public virtual GoogleCloudHealthcareV1beta1DicomGcsDestination GcsDestination { get; set; }
 
@@ -12177,16 +12177,16 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// <summary>Request to export resources.</summary>
     public class ExportResourcesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The BigQuery output destination. The BigQuery location requires two IAM roles:
-        /// `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`. The output is one BigQuery table per resource
-        /// type.</summary>
+        /// <summary>The BigQuery output destination. The Cloud Healthcare Service Agent requires two IAM roles on the
+        /// BigQuery location: `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`. The output is one BigQuery
+        /// table per resource type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
         public virtual GoogleCloudHealthcareV1beta1FhirBigQueryDestination BigqueryDestination { get; set; }
 
-        /// <summary>The Cloud Storage output destination. The Cloud Storage location requires the
-        /// `roles/storage.objectAdmin` Cloud IAM role. The exported outputs are organized by FHIR resource types. The
-        /// server creates one object per resource type. Each object contains newline delimited JSON, and each line is a
-        /// FHIR resource.</summary>
+        /// <summary>The Cloud Storage output destination. The Cloud Healthcare Service Agent requires the
+        /// `roles/storage.objectAdmin` Cloud IAM roles on the Cloud Storage location. The exported outputs are
+        /// organized by FHIR resource types. The server creates one object per resource type. Each object contains
+        /// newline delimited JSON, and each line is a FHIR resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
         public virtual GoogleCloudHealthcareV1beta1FhirGcsDestination GcsDestination { get; set; }
 
@@ -12287,9 +12287,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// /capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate). This determines if
         /// the client can use an Update operation to create a new resource with a client-specified ID. If false, all
         /// IDs are server-assigned through the Create operation and attempts to update a non-existent resource return
-        /// errors. Please treat the audit logs with appropriate levels of care if client-specified resource IDs contain
-        /// sensitive data such as patient identifiers, those IDs are part of the FHIR resource path recorded in Cloud
-        /// audit logs and Cloud Pub/Sub notifications.</summary>
+        /// errors. Be careful with the audit logs if client-specified resource IDs contain sensitive data such as
+        /// patient identifiers, those IDs are part of the FHIR resource path recorded in Cloud audit logs and Cloud
+        /// Pub/Sub notifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableUpdateCreate")]
         public virtual System.Nullable<bool> EnableUpdateCreate { get; set; }
 
@@ -12517,7 +12517,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// conditions.</summary>
     public class GoogleCloudHealthcareV1beta1ConsentPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The request conditions to meet to grant access.</summary>
+        /// <summary>The request conditions to meet to grant access. In addition to any supported comparison operators,
+        /// authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND`
+        /// (`&&`), `OR` (`||`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizationRule")]
         public virtual Expr AuthorizationRule { get; set; }
 
@@ -13045,8 +13047,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// overwrite.</summary>
     public class ImportDicomDataRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Cloud Storage source data location and import configuration. The Cloud Storage location requires
-        /// the `roles/storage.objectViewer` Cloud IAM role.</summary>
+        /// <summary>Cloud Storage source data location and import configuration. The Cloud Healthcare Service Agent
+        /// requires the `roles/storage.objectViewer` Cloud IAM roles on the Cloud Storage location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GoogleCloudHealthcareV1beta1DicomGcsSource GcsSource { get; set; }
 
@@ -13064,8 +13066,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// <summary>Request to import messages.</summary>
     public class ImportMessagesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Cloud Storage source data location and import configuration. The Cloud Storage location requires
-        /// the `roles/storage.objectViewer` Cloud IAM role.</summary>
+        /// <summary>Cloud Storage source data location and import configuration. The Cloud Healthcare Service Agent
+        /// requires the `roles/storage.objectViewer` Cloud IAM roles on the Cloud Storage location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GcsSource GcsSource { get; set; }
 
@@ -13089,9 +13091,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contentStructure")]
         public virtual string ContentStructure { get; set; }
 
-        /// <summary>Cloud Storage source data location and import configuration. The Cloud Storage location requires
-        /// the `roles/storage.objectViewer` Cloud IAM role. The Healthcare Service Agent Each Cloud Storage object
-        /// should be a text file that contains the format specified in ContentStructure.</summary>
+        /// <summary>Cloud Storage source data location and import configuration. The Cloud Healthcare Service Agent
+        /// requires the `roles/storage.objectViewer` Cloud IAM roles on the Cloud Storage location. The Healthcare
+        /// Service Agent Each Cloud Storage object should be a text file that contains the format specified in
+        /// ContentStructure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GoogleCloudHealthcareV1beta1FhirGcsSource GcsSource { get; set; }
 

@@ -216,7 +216,7 @@
    }
   }
  }, 
- "revision": "20201002", 
+ "revision": "20201014", 
  "rootUrl": "https://homegraph.googleapis.com/", 
  "schemas": {
   "AgentDeviceId": {
