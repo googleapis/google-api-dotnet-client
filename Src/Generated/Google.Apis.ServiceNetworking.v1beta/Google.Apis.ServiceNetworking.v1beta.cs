@@ -1723,11 +1723,6 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalBindings")]
         public virtual System.Collections.Generic.IList<HttpRule> AdditionalBindings { get; set; }
 
-        /// <summary>When this flag is set to true, HTTP requests will be allowed to invoke a half-duplex streaming
-        /// method.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allowHalfDuplex")]
-        public virtual System.Nullable<bool> AllowHalfDuplex { get; set; }
-
         /// <summary>The name of the request field whose value is mapped to the HTTP request body, or `*` for mapping
         /// all request fields not captured by the path pattern to the HTTP body, or omitted for not having any HTTP
         /// request body. NOTE: the referred field must be present at the top-level of the request message
@@ -2575,9 +2570,7 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("billing")]
         public virtual Billing Billing { get; set; }
 
-        /// <summary>The semantic version of the service configuration. The config version affects the interpretation of
-        /// the service configuration. For example, certain features are enabled by default for certain config versions.
-        /// The latest config version is `3`.</summary>
+        /// <summary>This field is obsolete. Its value must be set to `3`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configVersion")]
         public virtual System.Nullable<long> ConfigVersion { get; set; }
 
@@ -2682,31 +2675,6 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         /// <summary>Configuration controlling usage of this service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usage")]
         public virtual Usage Usage { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The per-product per-project service identity for a service. Use this field to configure per-product
-    /// per-project service identity. Example of a service identity configuration. usage: service_identity: -
-    /// service_account_parent: "projects/123456789" display_name: "Cloud XXX Service Agent" description: "Used as the
-    /// identity of Cloud XXX to access resources"</summary>
-    public class ServiceIdentity : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. A user-specified opaque description of the service account. Must be less than or equal to
-        /// 256 UTF-8 bytes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Optional. A user-specified name for the service account. Must be less than or equal to 100 UTF-8
-        /// bytes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>A service account project that hosts the service accounts. An example name would be:
-        /// `projects/123456789`</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountParent")]
-        public virtual string ServiceAccountParent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2901,10 +2869,6 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         /// rules follow "last one wins" order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
         public virtual System.Collections.Generic.IList<UsageRule> Rules { get; set; }
-
-        /// <summary>The configuration of a per-product per-project service identity.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serviceIdentity")]
-        public virtual ServiceIdentity ServiceIdentity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

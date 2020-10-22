@@ -1515,7 +1515,7 @@ namespace Google.Apis.Cloudbilling.v1.Data
     /// <summary>Represents an amount of money with its currency type.</summary>
     public class Money : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The 3-letter currency code defined in ISO 4217.</summary>
+        /// <summary>The three-letter currency code defined in ISO 4217.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
         public virtual string CurrencyCode { get; set; }
 

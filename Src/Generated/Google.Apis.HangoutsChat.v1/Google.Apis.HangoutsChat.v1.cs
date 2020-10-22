@@ -1639,6 +1639,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domainId")]
         public virtual string DomainId { get; set; }
 
+        /// <summary>Set to true if none of the depending services (Gaia, PeopleApi) returns any info for this
+        /// user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isAnonymous")]
+        public virtual System.Nullable<bool> IsAnonymous { get; set; }
+
         /// <summary>Resource name, in the format "users".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

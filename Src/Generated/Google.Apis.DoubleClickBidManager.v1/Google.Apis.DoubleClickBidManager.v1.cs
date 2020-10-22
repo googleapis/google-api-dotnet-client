@@ -807,7 +807,7 @@ namespace Google.Apis.DoubleClickBidManager.v1.Data
         public virtual string FilterType { get; set; }
 
         /// <summary>SDF Version (column names, types, order) in which the entities will be returned. Default to
-        /// 5.2.</summary>
+        /// 5.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
@@ -1027,7 +1027,8 @@ namespace Google.Apis.DoubleClickBidManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("frequency")]
         public virtual string Frequency { get; set; }
 
-        /// <summary>Deprecated. This field has no effect.</summary>
+        /// <summary>Time of day at which a new report will be generated, represented as minutes past midnight. Range is
+        /// 0 to 1439. Only applies to scheduled reports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextRunMinuteOfDay")]
         public virtual System.Nullable<int> NextRunMinuteOfDay { get; set; }
 
