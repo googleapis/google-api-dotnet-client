@@ -604,6 +604,10 @@ namespace Google.Apis.Localservices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual System.Nullable<long> AccountId { get; set; }
 
+        /// <summary>Aggregator specific information related to the account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregatorInfo")]
+        public virtual GoogleAdsHomeservicesLocalservicesV1AggregatorInfo AggregatorInfo { get; set; }
+
         /// <summary>Average review rating score from 1-5 stars.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageFiveStarRating")]
         public virtual System.Nullable<double> AverageFiveStarRating { get; set; }

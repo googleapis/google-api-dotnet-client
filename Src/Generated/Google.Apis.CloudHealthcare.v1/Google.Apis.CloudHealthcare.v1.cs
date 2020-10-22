@@ -3484,7 +3484,8 @@ namespace Google.Apis.CloudHealthcare.v1
                             [Google.Apis.Util.RequestParameterAttribute("_at", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string At { get; set; }
 
-                            /// <summary>The maximum number of search results on a page. Defaults to 1000.</summary>
+                            /// <summary>The maximum number of search results on a page. Default value is 100. Maximum
+                            /// value is 1,000.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("_count", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> Count { get; set; }
 

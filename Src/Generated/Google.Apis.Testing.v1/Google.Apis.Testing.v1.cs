@@ -436,10 +436,10 @@ namespace Google.Apis.Testing.v1
             }
 
             /// <summary>Creates and runs a matrix of tests according to the given specifications. Unsupported
-            /// environments will be returned in the state UNSUPPORTED. Matrices are limited to at most 200 supported
-            /// executions. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is
-            /// not authorized to write to project - INVALID_ARGUMENT - if the request is malformed or if the matrix
-            /// expands to more than 200 supported executions</summary>
+            /// environments will be returned in the state UNSUPPORTED. A test matrix is limited to use at most 2000
+            /// devices in parallel. May return any of the following canonical error codes: - PERMISSION_DENIED - if the
+            /// user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed or if the
+            /// matrix tries to use too many simultaneous devices.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">The GCE project under which this job will run.</param>
             public virtual CreateRequest Create(Google.Apis.Testing.v1.Data.TestMatrix body, string projectId)
@@ -448,10 +448,10 @@ namespace Google.Apis.Testing.v1
             }
 
             /// <summary>Creates and runs a matrix of tests according to the given specifications. Unsupported
-            /// environments will be returned in the state UNSUPPORTED. Matrices are limited to at most 200 supported
-            /// executions. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is
-            /// not authorized to write to project - INVALID_ARGUMENT - if the request is malformed or if the matrix
-            /// expands to more than 200 supported executions</summary>
+            /// environments will be returned in the state UNSUPPORTED. A test matrix is limited to use at most 2000
+            /// devices in parallel. May return any of the following canonical error codes: - PERMISSION_DENIED - if the
+            /// user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed or if the
+            /// matrix tries to use too many simultaneous devices.</summary>
             public class CreateRequest : TestingBaseServiceRequest<Google.Apis.Testing.v1.Data.TestMatrix>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -922,7 +922,7 @@ namespace Google.Apis.Testing.v1.Data
     }    
 
     /// <summary>A test of an android application that explores the application on a virtual or physical Android Device,
-    /// finding culprits and crashes as it goes. Next tag: 29</summary>
+    /// finding culprits and crashes as it goes. Next tag: 30</summary>
     public class AndroidRoboTest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The APK for the application under test.</summary>
@@ -1167,24 +1167,24 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a whole or partial calendar date, e.g. a birthday. The time of day and time zone are either
-    /// specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. This can
-    /// represent: * A full date, with non-zero year, month and day values * A month and day value, with a zero year,
-    /// e.g. an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero
-    /// day, e.g. a credit card expiration date Related types are google.type.TimeOfDay and
+    /// <summary>Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are
+    /// either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can
+    /// represent one of the following: * A full date, with non-zero year, month, and day values * A month and day
+    /// value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and
+    /// month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and
     /// `google.protobuf.Timestamp`.</summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by
-        /// itself or a year and month where the day is not significant.</summary>
+        /// <summary>Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by
+        /// itself or a year and month where the day isn't significant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
         public virtual System.Nullable<int> Day { get; set; }
 
-        /// <summary>Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.</summary>
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("month")]
         public virtual System.Nullable<int> Month { get; set; }
 
-        /// <summary>Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.</summary>
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("year")]
         public virtual System.Nullable<int> Year { get; set; }
 
@@ -1658,7 +1658,7 @@ namespace Google.Apis.Testing.v1.Data
     {
         /// <summary>Required. Group of packages, classes, and/or test methods to be run for each shard. When any
         /// physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical
-        /// devices are selected, the number must be >= 1 and <= 250.</summary>
+        /// devices are selected, the number must be >= 1 and <= 500.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTargetsForShard")]
         public virtual System.Collections.Generic.IList<TestTargetsForShard> TestTargetsForShard { get; set; }
 
@@ -1996,6 +1996,14 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("environmentMatrix")]
         public virtual EnvironmentMatrix EnvironmentMatrix { get; set; }
 
+        /// <summary>If true, only a single attempt at most will be made to run each execution/shard in the matrix.
+        /// Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure
+        /// issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may
+        /// be significantly greater for fail-fast matrices and support is more limited because of that
+        /// expectation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failFast")]
+        public virtual System.Nullable<bool> FailFast { get; set; }
+
         /// <summary>The number of times a TestExecution should be re-attempted if one or more of its test cases fail
         /// for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flakyTestAttempts")]
@@ -2241,7 +2249,7 @@ namespace Google.Apis.Testing.v1.Data
     public class UniformSharding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Total number of shards. When any physical devices are selected, the number must be >= 1
-        /// and <= 50. When no physical devices are selected, the number must be >= 1 and <= 250.</summary>
+        /// and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numShards")]
         public virtual System.Nullable<int> NumShards { get; set; }
 

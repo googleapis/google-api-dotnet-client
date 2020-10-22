@@ -477,6 +477,12 @@ namespace Google.Apis.Admin.Reports.reports_v1
             [Google.Apis.Util.RequestParameterAttribute("filters", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filters { get; set; }
 
+            /// <summary>Comma separated group ids (obfuscated) on which user activities are filtered, i.e, the response
+            /// will contain activities for only those users that are a part of at least one of the group ids mentioned
+            /// here. Format: "id:abc123,id:xyz456"</summary>
+            [Google.Apis.Util.RequestParameterAttribute("groupIdFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string GroupIdFilter { get; set; }
+
             /// <summary>Determines how many activity records are shown on each response page. For example, if the
             /// request sets maxResults=1 and the report has two activities, the report has two pages. The response's
             /// nextPageToken property has the token to the second page. The maxResults query string is optional in the
@@ -573,6 +579,14 @@ namespace Google.Apis.Admin.Reports.reports_v1
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = @"(.+[<,<=,==,>=,>,<>].+,)*(.+[<,<=,==,>=,>,<>].+)",
+                });
+                RequestParameters.Add("groupIdFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "groupIdFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"(id:[a-z0-9]+(,id:[a-z0-9]+)*)",
                 });
                 RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
                 {
@@ -793,6 +807,12 @@ namespace Google.Apis.Admin.Reports.reports_v1
             [Google.Apis.Util.RequestParameterAttribute("filters", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filters { get; set; }
 
+            /// <summary>Comma separated group ids (obfuscated) on which user activities are filtered, i.e, the response
+            /// will contain activities for only those users that are a part of at least one of the group ids mentioned
+            /// here. Format: "id:abc123,id:xyz456"</summary>
+            [Google.Apis.Util.RequestParameterAttribute("groupIdFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string GroupIdFilter { get; set; }
+
             /// <summary>Determines how many activity records are shown on each response page. For example, if the
             /// request sets maxResults=1 and the report has two activities, the report has two pages. The response's
             /// nextPageToken property has the token to the second page. The maxResults query string is optional in the
@@ -895,6 +915,14 @@ namespace Google.Apis.Admin.Reports.reports_v1
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = @"(.+[<,<=,==,>=,>,<>].+,)*(.+[<,<=,==,>=,>,<>].+)",
+                });
+                RequestParameters.Add("groupIdFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "groupIdFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"(id:[a-z0-9]+(,id:[a-z0-9]+)*)",
                 });
                 RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
                 {
@@ -1393,6 +1421,12 @@ namespace Google.Apis.Admin.Reports.reports_v1
             [Google.Apis.Util.RequestParameterAttribute("filters", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filters { get; set; }
 
+            /// <summary>Comma separated group ids (obfuscated) on which user activities are filtered, i.e, the response
+            /// will contain activities for only those users that are a part of at least one of the group ids mentioned
+            /// here. Format: "id:abc123,id:xyz456"</summary>
+            [Google.Apis.Util.RequestParameterAttribute("groupIdFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string GroupIdFilter { get; set; }
+
             /// <summary>Determines how many activity records are shown on each response page. For example, if the
             /// request sets maxResults=1 and the report has two activities, the report has two pages. The response's
             /// nextPageToken property has the token to the second page. The maxResults query string is
@@ -1471,6 +1505,14 @@ namespace Google.Apis.Admin.Reports.reports_v1
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = @"(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+,)*(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+)",
+                });
+                RequestParameters.Add("groupIdFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "groupIdFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"(id:[a-z0-9]+(,id:[a-z0-9]+)*)",
                 });
                 RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
                 {

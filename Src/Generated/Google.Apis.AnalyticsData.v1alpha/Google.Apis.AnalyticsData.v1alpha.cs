@@ -999,7 +999,7 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
     /// <summary>The dimensions and metrics currently accepted in reporting methods.</summary>
     public class Metadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The dimensions descriptions.</summary>
+        /// <summary>The dimension descriptions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
         public virtual System.Collections.Generic.IList<DimensionMetadata> Dimensions { get; set; }
 

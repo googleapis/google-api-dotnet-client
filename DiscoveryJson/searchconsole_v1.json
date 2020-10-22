@@ -373,7 +373,7 @@
    }
   }
  }, 
- "revision": "20201014", 
+ "revision": "20201020", 
  "rootUrl": "https://searchconsole.googleapis.com/", 
  "schemas": {
   "ApiDataRow": {

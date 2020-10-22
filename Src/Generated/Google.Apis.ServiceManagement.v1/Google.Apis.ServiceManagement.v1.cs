@@ -2139,7 +2139,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// credentials will be ignored.</summary>
     public class AuthenticationRule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If true, the service accepts API keys without any other credential.</summary>
+        /// <summary>If true, the service accepts API keys without any other credential. This flag only applies to HTTP
+        /// and gRPC requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowWithoutCredential")]
         public virtual System.Nullable<bool> AllowWithoutCredential { get; set; }
 
@@ -2416,7 +2417,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>`Context` defines which contexts an API requests. Example: context: rules: - selector: "*" requested: -
     /// google.rpc.context.ProjectContext - google.rpc.context.OriginContext The above specifies that all methods in the
     /// API request `google.rpc.context.ProjectContext` and `google.rpc.context.OriginContext`. Available context types
-    /// are defined in package `google.rpc.context`. This also provides mechanism to whitelist any protobuf message
+    /// are defined in package `google.rpc.context`. This also provides mechanism to allowlist any protobuf message
     /// extension that can be sent in grpc metadata using “x-goog-ext--bin” and “x-goog-ext--jspb” format. For example,
     /// list any service specific protobuf types that can appear in grpc metadata as follows in your yaml file: Example:
     /// context: rules: - selector: "google.example.library.v1.LibraryService.CreateBook" allowed_request_extensions: -
