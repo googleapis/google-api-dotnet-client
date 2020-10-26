@@ -2007,6 +2007,10 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestedAddress")]
         public virtual string RequestedAddress { get; set; }
 
+        /// <summary>Optional. A list of secondary IP ranges to be created within the new subnetwork.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryIpRangeSpecs")]
+        public virtual System.Collections.Generic.IList<SecondaryIpRangeSpec> SecondaryIpRangeSpecs { get; set; }
+
         /// <summary>Required. A name for the new subnet. For information about the naming requirements, see
         /// [subnetwork](/compute/docs/reference/rest/v1/subnetworks) in the Compute API documentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
@@ -3864,6 +3868,44 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class SecondaryIpRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Secondary IP CIDR range in `x.x.x.x/y` format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
+        public virtual string IpCidrRange { get; set; }
+
+        /// <summary>Name of the secondary IP range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rangeName")]
+        public virtual string RangeName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class SecondaryIpRangeSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The prefix length of the secondary IP range. Use CIDR range notation, such as `30` to
+        /// provision a secondary IP range with an `x.x.x.x/30` CIDR range. The IP address range is drawn from a pool of
+        /// available ranges in the service consumer's allocated range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipPrefixLength")]
+        public virtual System.Nullable<int> IpPrefixLength { get; set; }
+
+        /// <summary>Required. A name for the secondary IP range. The name must be 1-63 characters long, and comply with
+        /// RFC1035. The name must be unique within the subnetwork.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rangeName")]
+        public virtual string RangeName { get; set; }
+
+        /// <summary>Optional. The starting address of a range. The address must be a valid IPv4 address in the x.x.x.x
+        /// format. This value combined with the IP prefix range is the CIDR range for the secondary IP range. The range
+        /// must be within the allocated range that is assigned to the private connection. If the CIDR range isn't
+        /// available, the call fails.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedAddress")]
+        public virtual string RequestedAddress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>`Service` is the root object of Google service configuration schema. It describes basic information
     /// about a service, such as the name and the title, and delegates other aspects to sub-sections. Each sub-section
     /// is either a proto message or a repeated proto message that configures a specific aspect, such as auth. See each
@@ -4070,6 +4112,10 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         /// <summary>This is a discovered subnet that is not within the current consumer allocated ranges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outsideAllocation")]
         public virtual System.Nullable<bool> OutsideAllocation { get; set; }
+
+        /// <summary>List of secondary IP ranges in this subnetwork.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryIpRanges")]
+        public virtual System.Collections.Generic.IList<SecondaryIpRange> SecondaryIpRanges { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

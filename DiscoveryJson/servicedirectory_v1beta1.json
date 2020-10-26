@@ -883,7 +883,7 @@
    }
   }
  }, 
- "revision": "20201006", 
+ "revision": "20201016", 
  "rootUrl": "https://servicedirectory.googleapis.com/", 
  "schemas": {
   "Binding": {

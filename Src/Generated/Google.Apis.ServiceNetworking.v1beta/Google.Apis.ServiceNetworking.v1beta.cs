@@ -2542,6 +2542,20 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class SecondaryIpRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Secondary IP CIDR range in `x.x.x.x/y` format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
+        public virtual string IpCidrRange { get; set; }
+
+        /// <summary>Name of the secondary IP range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rangeName")]
+        public virtual string RangeName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>`Service` is the root object of Google service configuration schema. It describes basic information
     /// about a service, such as the name and the title, and delegates other aspects to sub-sections. Each sub-section
     /// is either a proto message or a repeated proto message that configures a specific aspect, such as auth. See each
@@ -2748,6 +2762,10 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         /// <summary>This is a discovered subnet that is not within the current consumer allocated ranges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outsideAllocation")]
         public virtual System.Nullable<bool> OutsideAllocation { get; set; }
+
+        /// <summary>List of secondary IP ranges in this subnetwork.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryIpRanges")]
+        public virtual System.Collections.Generic.IList<SecondaryIpRange> SecondaryIpRanges { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

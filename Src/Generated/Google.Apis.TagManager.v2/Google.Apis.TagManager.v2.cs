@@ -6383,6 +6383,10 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Number of clients in the container version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numClients")]
+        public virtual string NumClients { get; set; }
+
         /// <summary>Number of custom templates in the container version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numCustomTemplates")]
         public virtual string NumCustomTemplates { get; set; }
@@ -6525,7 +6529,11 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("changeStatus")]
         public virtual string ChangeStatus { get; set; }
 
-        /// <summary>The Folder being represented by the entity.</summary>
+        /// <summary>The client being represented by the entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("client")]
+        public virtual Client Client { get; set; }
+
+        /// <summary>The folder being represented by the entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("folder")]
         public virtual Folder Folder { get; set; }
 
