@@ -688,24 +688,26 @@ namespace Google.Apis.Books.v1
         }
 
         /// <summary>Remove the book and its contents</summary>
-        public virtual DeleteBookRequest DeleteBook()
+        /// <param name="volumeId">The id of the book to be removed.</param>
+        public virtual DeleteBookRequest DeleteBook(string volumeId)
         {
-            return new DeleteBookRequest(service);
+            return new DeleteBookRequest(service, volumeId);
         }
 
         /// <summary>Remove the book and its contents</summary>
         public class DeleteBookRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Empty>
         {
             /// <summary>Constructs a new DeleteBook request.</summary>
-            public DeleteBookRequest(Google.Apis.Services.IClientService service) : base(service)
+            public DeleteBookRequest(Google.Apis.Services.IClientService service, string volumeId) : base(service)
             {
+                VolumeId = volumeId;
                 InitParameters();
             }
 
 
             /// <summary>The id of the book to be removed.</summary>
             [Google.Apis.Util.RequestParameterAttribute("volumeId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string VolumeId { get; set; }
+            public virtual string VolumeId { get; private set; }
 
 
             /// <summary>Gets the method name.</summary>
@@ -725,7 +727,7 @@ namespace Google.Apis.Books.v1
                 RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "volumeId",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -795,24 +797,26 @@ namespace Google.Apis.Books.v1
 
 
         /// <summary>Returns a list of offline dictionary metadata available</summary>
-        public virtual ListOfflineMetadataRequest ListOfflineMetadata()
+        /// <param name="cpksver">The device/version ID from which to request the data.</param>
+        public virtual ListOfflineMetadataRequest ListOfflineMetadata(string cpksver)
         {
-            return new ListOfflineMetadataRequest(service);
+            return new ListOfflineMetadataRequest(service, cpksver);
         }
 
         /// <summary>Returns a list of offline dictionary metadata available</summary>
         public class ListOfflineMetadataRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Metadata>
         {
             /// <summary>Constructs a new ListOfflineMetadata request.</summary>
-            public ListOfflineMetadataRequest(Google.Apis.Services.IClientService service) : base(service)
+            public ListOfflineMetadataRequest(Google.Apis.Services.IClientService service, string cpksver) : base(service)
             {
+                Cpksver = cpksver;
                 InitParameters();
             }
 
 
             /// <summary>The device/version ID from which to request the data.</summary>
             [Google.Apis.Util.RequestParameterAttribute("cpksver", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Cpksver { get; set; }
+            public virtual string Cpksver { get; private set; }
 
 
             /// <summary>Gets the method name.</summary>
@@ -832,7 +836,7 @@ namespace Google.Apis.Books.v1
                 RequestParameters.Add("cpksver", new Google.Apis.Discovery.Parameter
                 {
                     Name = "cpksver",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -1094,20 +1098,23 @@ namespace Google.Apis.Books.v1
             /// layer to get the annotations.</param>
             /// <param name="annotationDataId">The ID of the annotation data to
             /// retrieve.</param>
-            public virtual GetRequest Get(string volumeId, string layerId, string annotationDataId)
+            /// <param name="contentVersion">The content version for the volume you are trying to
+            /// retrieve.</param>
+            public virtual GetRequest Get(string volumeId, string layerId, string annotationDataId, string contentVersion)
             {
-                return new GetRequest(service, volumeId, layerId, annotationDataId);
+                return new GetRequest(service, volumeId, layerId, annotationDataId, contentVersion);
             }
 
             /// <summary>Gets the annotation data.</summary>
             public class GetRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.DictionaryAnnotationdata>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string volumeId, string layerId, string annotationDataId) : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string volumeId, string layerId, string annotationDataId, string contentVersion) : base(service)
                 {
                     VolumeId = volumeId;
                     LayerId = layerId;
                     AnnotationDataId = annotationDataId;
+                    ContentVersion = contentVersion;
                     InitParameters();
                 }
 
@@ -1124,13 +1131,13 @@ namespace Google.Apis.Books.v1
                 [Google.Apis.Util.RequestParameterAttribute("annotationDataId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AnnotationDataId { get; private set; }
 
+                /// <summary>The content version for the volume you are trying to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("contentVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ContentVersion { get; private set; }
+
                 /// <summary>For the dictionary layer. Whether or not to allow web definitions.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("allowWebDefinitions", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> AllowWebDefinitions { get; set; }
-
-                /// <summary>The content version for the volume you are trying to retrieve.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("contentVersion", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ContentVersion { get; set; }
 
                 /// <summary>The requested pixel height for any images. If height is provided width must also be
                 /// provided.</summary>
@@ -1194,17 +1201,17 @@ namespace Google.Apis.Books.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
-                    RequestParameters.Add("allowWebDefinitions", new Google.Apis.Discovery.Parameter
+                    RequestParameters.Add("contentVersion", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "allowWebDefinitions",
-                        IsRequired = false,
+                        Name = "contentVersion",
+                        IsRequired = true,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
-                    RequestParameters.Add("contentVersion", new Google.Apis.Discovery.Parameter
+                    RequestParameters.Add("allowWebDefinitions", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "contentVersion",
+                        Name = "allowWebDefinitions",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1258,19 +1265,22 @@ namespace Google.Apis.Books.v1
             /// <param name="volumeId">The volume to retrieve annotation data for.</param>
             /// <param name="layerId">The ID for
             /// the layer to get the annotation data.</param>
-            public virtual ListRequest List(string volumeId, string layerId)
+            /// <param name="contentVersion">The content version for the
+            /// requested volume.</param>
+            public virtual ListRequest List(string volumeId, string layerId, string contentVersion)
             {
-                return new ListRequest(service, volumeId, layerId);
+                return new ListRequest(service, volumeId, layerId, contentVersion);
             }
 
             /// <summary>Gets the annotation data for a volume and layer.</summary>
             public class ListRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Annotationsdata>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string volumeId, string layerId) : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string volumeId, string layerId, string contentVersion) : base(service)
                 {
                     VolumeId = volumeId;
                     LayerId = layerId;
+                    ContentVersion = contentVersion;
                     InitParameters();
                 }
 
@@ -1283,14 +1293,14 @@ namespace Google.Apis.Books.v1
                 [Google.Apis.Util.RequestParameterAttribute("layerId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string LayerId { get; private set; }
 
+                /// <summary>The content version for the requested volume.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("contentVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ContentVersion { get; private set; }
+
                 /// <summary>The list of Annotation Data Ids to retrieve. Pagination is ignored if this is
                 /// set.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("annotationDataId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> AnnotationDataId { get; set; }
-
-                /// <summary>The content version for the requested volume.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("contentVersion", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ContentVersion { get; set; }
 
                 /// <summary>The requested pixel height for any images. If height is provided width must also be
                 /// provided.</summary>
@@ -1363,17 +1373,17 @@ namespace Google.Apis.Books.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
-                    RequestParameters.Add("annotationDataId", new Google.Apis.Discovery.Parameter
+                    RequestParameters.Add("contentVersion", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "annotationDataId",
-                        IsRequired = false,
+                        Name = "contentVersion",
+                        IsRequired = true,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
-                    RequestParameters.Add("contentVersion", new Google.Apis.Discovery.Parameter
+                    RequestParameters.Add("annotationDataId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "contentVersion",
+                        Name = "annotationDataId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1582,19 +1592,22 @@ namespace Google.Apis.Books.v1
             /// <param name="volumeId">The volume to retrieve annotations for.</param>
             /// <param name="layerId">The ID for the
             /// layer to get the annotations.</param>
-            public virtual ListRequest List(string volumeId, string layerId)
+            /// <param name="contentVersion">The content version for the requested
+            /// volume.</param>
+            public virtual ListRequest List(string volumeId, string layerId, string contentVersion)
             {
-                return new ListRequest(service, volumeId, layerId);
+                return new ListRequest(service, volumeId, layerId, contentVersion);
             }
 
             /// <summary>Gets the volume annotations for a volume and layer.</summary>
             public class ListRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Volumeannotations>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string volumeId, string layerId) : base(service)
+                public ListRequest(Google.Apis.Services.IClientService service, string volumeId, string layerId, string contentVersion) : base(service)
                 {
                     VolumeId = volumeId;
                     LayerId = layerId;
+                    ContentVersion = contentVersion;
                     InitParameters();
                 }
 
@@ -1609,7 +1622,7 @@ namespace Google.Apis.Books.v1
 
                 /// <summary>The content version for the requested volume.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("contentVersion", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ContentVersion { get; set; }
+                public virtual string ContentVersion { get; private set; }
 
                 /// <summary>The end offset to end retrieving data from.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("endOffset", Google.Apis.Util.RequestParameterType.Query)]
@@ -1696,7 +1709,7 @@ namespace Google.Apis.Books.v1
                     RequestParameters.Add("contentVersion", new Google.Apis.Discovery.Parameter
                     {
                         Name = "contentVersion",
-                        IsRequired = false,
+                        IsRequired = true,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -2052,24 +2065,33 @@ namespace Google.Apis.Books.v1
         }
 
         /// <summary>Release downloaded content access restriction.</summary>
-        public virtual ReleaseDownloadAccessRequest ReleaseDownloadAccess()
+        /// <param name="cpksver">The device/version ID from which to release the restriction.</param>
+        /// <param
+        /// name="volumeIds">The volume(s) to release restrictions for.</param>
+        public virtual ReleaseDownloadAccessRequest ReleaseDownloadAccess(string cpksver, Google.Apis.Util.Repeatable<string> volumeIds)
         {
-            return new ReleaseDownloadAccessRequest(service);
+            return new ReleaseDownloadAccessRequest(service, cpksver, volumeIds);
         }
 
         /// <summary>Release downloaded content access restriction.</summary>
         public class ReleaseDownloadAccessRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.DownloadAccesses>
         {
             /// <summary>Constructs a new ReleaseDownloadAccess request.</summary>
-            public ReleaseDownloadAccessRequest(Google.Apis.Services.IClientService service) : base(service)
+            public ReleaseDownloadAccessRequest(Google.Apis.Services.IClientService service, string cpksver, Google.Apis.Util.Repeatable<string> volumeIds) : base(service)
             {
+                Cpksver = cpksver;
+                VolumeIds = volumeIds;
                 InitParameters();
             }
 
 
             /// <summary>The device/version ID from which to release the restriction.</summary>
             [Google.Apis.Util.RequestParameterAttribute("cpksver", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Cpksver { get; set; }
+            public virtual string Cpksver { get; private set; }
+
+            /// <summary>The volume(s) to release restrictions for.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("volumeIds", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> VolumeIds { get; private set; }
 
             /// <summary>ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.</summary>
             [Google.Apis.Util.RequestParameterAttribute("locale", Google.Apis.Util.RequestParameterType.Query)]
@@ -2078,10 +2100,6 @@ namespace Google.Apis.Books.v1
             /// <summary>String to identify the originator of this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Source { get; set; }
-
-            /// <summary>The volume(s) to release restrictions for.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("volumeIds", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> VolumeIds { get; set; }
 
 
             /// <summary>Gets the method name.</summary>
@@ -2101,7 +2119,15 @@ namespace Google.Apis.Books.v1
                 RequestParameters.Add("cpksver", new Google.Apis.Discovery.Parameter
                 {
                     Name = "cpksver",
-                    IsRequired = false,
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("volumeIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "volumeIds",
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -2122,37 +2148,52 @@ namespace Google.Apis.Books.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("volumeIds", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "volumeIds",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
 
         }
 
         /// <summary>Request concurrent and download access restrictions.</summary>
-        public virtual RequestAccessRequest RequestAccess()
+        /// <param name="cpksver">The device/version ID from which to request the restrictions.</param>
+        /// <param
+        /// name="nonce">The client nonce value.</param>
+        /// <param name="source">String to identify the originator of this
+        /// request.</param>
+        /// <param name="volumeId">The volume to request concurrent/download restrictions
+        /// for.</param>
+        public virtual RequestAccessRequest RequestAccess(string cpksver, string nonce, string source, string volumeId)
         {
-            return new RequestAccessRequest(service);
+            return new RequestAccessRequest(service, cpksver, nonce, source, volumeId);
         }
 
         /// <summary>Request concurrent and download access restrictions.</summary>
         public class RequestAccessRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.RequestAccessData>
         {
             /// <summary>Constructs a new RequestAccess request.</summary>
-            public RequestAccessRequest(Google.Apis.Services.IClientService service) : base(service)
+            public RequestAccessRequest(Google.Apis.Services.IClientService service, string cpksver, string nonce, string source, string volumeId) : base(service)
             {
+                Cpksver = cpksver;
+                Nonce = nonce;
+                Source = source;
+                VolumeId = volumeId;
                 InitParameters();
             }
 
 
             /// <summary>The device/version ID from which to request the restrictions.</summary>
             [Google.Apis.Util.RequestParameterAttribute("cpksver", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Cpksver { get; set; }
+            public virtual string Cpksver { get; private set; }
+
+            /// <summary>The client nonce value.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("nonce", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Nonce { get; private set; }
+
+            /// <summary>String to identify the originator of this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Source { get; private set; }
+
+            /// <summary>The volume to request concurrent/download restrictions for.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("volumeId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string VolumeId { get; private set; }
 
             /// <summary>The type of access license to request. If not specified, the default is BOTH.</summary>
             [Google.Apis.Util.RequestParameterAttribute("licenseTypes", Google.Apis.Util.RequestParameterType.Query)]
@@ -2178,18 +2219,6 @@ namespace Google.Apis.Books.v1
             [Google.Apis.Util.RequestParameterAttribute("locale", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Locale { get; set; }
 
-            /// <summary>The client nonce value.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("nonce", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Nonce { get; set; }
-
-            /// <summary>String to identify the originator of this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Source { get; set; }
-
-            /// <summary>The volume to request concurrent/download restrictions for.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("volumeId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string VolumeId { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "requestAccess";
@@ -2208,7 +2237,31 @@ namespace Google.Apis.Books.v1
                 RequestParameters.Add("cpksver", new Google.Apis.Discovery.Parameter
                 {
                     Name = "cpksver",
-                    IsRequired = false,
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("nonce", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "nonce",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "source",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "volumeId",
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -2229,53 +2282,45 @@ namespace Google.Apis.Books.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("nonce", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "nonce",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "source",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "volumeId",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
 
         }
 
         /// <summary>Request downloaded content access for specified volumes on the My eBooks shelf.</summary>
-        public virtual SyncVolumeLicensesRequest SyncVolumeLicenses()
+        /// <param name="cpksver">The device/version ID from which to release the restriction.</param>
+        /// <param
+        /// name="nonce">The client nonce value.</param>
+        /// <param name="source">String to identify the originator of this
+        /// request.</param>
+        public virtual SyncVolumeLicensesRequest SyncVolumeLicenses(string cpksver, string nonce, string source)
         {
-            return new SyncVolumeLicensesRequest(service);
+            return new SyncVolumeLicensesRequest(service, cpksver, nonce, source);
         }
 
         /// <summary>Request downloaded content access for specified volumes on the My eBooks shelf.</summary>
         public class SyncVolumeLicensesRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Volumes>
         {
             /// <summary>Constructs a new SyncVolumeLicenses request.</summary>
-            public SyncVolumeLicensesRequest(Google.Apis.Services.IClientService service) : base(service)
+            public SyncVolumeLicensesRequest(Google.Apis.Services.IClientService service, string cpksver, string nonce, string source) : base(service)
             {
+                Cpksver = cpksver;
+                Nonce = nonce;
+                Source = source;
                 InitParameters();
             }
 
 
             /// <summary>The device/version ID from which to release the restriction.</summary>
             [Google.Apis.Util.RequestParameterAttribute("cpksver", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Cpksver { get; set; }
+            public virtual string Cpksver { get; private set; }
+
+            /// <summary>The client nonce value.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("nonce", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Nonce { get; private set; }
+
+            /// <summary>String to identify the originator of this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Source { get; private set; }
 
             /// <summary>List of features supported by the client, i.e., 'RENTALS'</summary>
             [Google.Apis.Util.RequestParameterAttribute("features", Google.Apis.Util.RequestParameterType.Query)]
@@ -2299,17 +2344,9 @@ namespace Google.Apis.Books.v1
             [Google.Apis.Util.RequestParameterAttribute("locale", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Locale { get; set; }
 
-            /// <summary>The client nonce value.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("nonce", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Nonce { get; set; }
-
             /// <summary>Set to true to show pre-ordered books. Defaults to false.</summary>
             [Google.Apis.Util.RequestParameterAttribute("showPreorders", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ShowPreorders { get; set; }
-
-            /// <summary>String to identify the originator of this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Source { get; set; }
 
             /// <summary>The volume(s) to request download restrictions for.</summary>
             [Google.Apis.Util.RequestParameterAttribute("volumeIds", Google.Apis.Util.RequestParameterType.Query)]
@@ -2333,7 +2370,23 @@ namespace Google.Apis.Books.v1
                 RequestParameters.Add("cpksver", new Google.Apis.Discovery.Parameter
                 {
                     Name = "cpksver",
-                    IsRequired = false,
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("nonce", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "nonce",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "source",
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -2362,25 +2415,9 @@ namespace Google.Apis.Books.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("nonce", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "nonce",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("showPreorders", new Google.Apis.Discovery.Parameter
                 {
                     Name = "showPreorders",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "source",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -2792,28 +2829,33 @@ namespace Google.Apis.Books.v1
             }
 
             /// <summary>Gets the summary of specified layers.</summary>
-            public virtual SummaryRequest Summary()
+            /// <param name="layerIds">Array of layer IDs to get the summary for.</param>
+            /// <param name="volumeId">Volume id
+            /// to get the summary for.</param>
+            public virtual SummaryRequest Summary(Google.Apis.Util.Repeatable<string> layerIds, string volumeId)
             {
-                return new SummaryRequest(service);
+                return new SummaryRequest(service, layerIds, volumeId);
             }
 
             /// <summary>Gets the summary of specified layers.</summary>
             public class SummaryRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.AnnotationsSummary>
             {
                 /// <summary>Constructs a new Summary request.</summary>
-                public SummaryRequest(Google.Apis.Services.IClientService service) : base(service)
+                public SummaryRequest(Google.Apis.Services.IClientService service, Google.Apis.Util.Repeatable<string> layerIds, string volumeId) : base(service)
                 {
+                    LayerIds = layerIds;
+                    VolumeId = volumeId;
                     InitParameters();
                 }
 
 
                 /// <summary>Array of layer IDs to get the summary for.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("layerIds", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> LayerIds { get; set; }
+                public virtual Google.Apis.Util.Repeatable<string> LayerIds { get; private set; }
 
                 /// <summary>Volume id to get the summary for.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("volumeId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string VolumeId { get; set; }
+                public virtual string VolumeId { get; private set; }
 
 
                 /// <summary>Gets the method name.</summary>
@@ -2833,7 +2875,7 @@ namespace Google.Apis.Books.v1
                     RequestParameters.Add("layerIds", new Google.Apis.Discovery.Parameter
                     {
                         Name = "layerIds",
-                        IsRequired = false,
+                        IsRequired = true,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -2841,7 +2883,7 @@ namespace Google.Apis.Books.v1
                     RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "volumeId",
-                        IsRequired = false,
+                        IsRequired = true,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -3106,18 +3148,21 @@ namespace Google.Apis.Books.v1
 
             /// <summary>Adds a volume to a bookshelf.</summary>
             /// <param name="shelf">ID of bookshelf to which to add a volume.</param>
-            public virtual AddVolumeRequest AddVolume(string shelf)
+            /// <param name="volumeId">ID of volume to
+            /// add.</param>
+            public virtual AddVolumeRequest AddVolume(string shelf, string volumeId)
             {
-                return new AddVolumeRequest(service, shelf);
+                return new AddVolumeRequest(service, shelf, volumeId);
             }
 
             /// <summary>Adds a volume to a bookshelf.</summary>
             public class AddVolumeRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Empty>
             {
                 /// <summary>Constructs a new AddVolume request.</summary>
-                public AddVolumeRequest(Google.Apis.Services.IClientService service, string shelf) : base(service)
+                public AddVolumeRequest(Google.Apis.Services.IClientService service, string shelf, string volumeId) : base(service)
                 {
                     Shelf = shelf;
+                    VolumeId = volumeId;
                     InitParameters();
                 }
 
@@ -3125,6 +3170,10 @@ namespace Google.Apis.Books.v1
                 /// <summary>ID of bookshelf to which to add a volume.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("shelf", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Shelf { get; private set; }
+
+                /// <summary>ID of volume to add.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("volumeId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string VolumeId { get; private set; }
 
                 /// <summary>The reason for which the book is added to the library.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("reason", Google.Apis.Util.RequestParameterType.Query)]
@@ -3150,10 +3199,6 @@ namespace Google.Apis.Books.v1
                 [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Source { get; set; }
 
-                /// <summary>ID of volume to add.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("volumeId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string VolumeId { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "addVolume";
@@ -3177,6 +3222,14 @@ namespace Google.Apis.Books.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
+                    RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "volumeId",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                     RequestParameters.Add("reason", new Google.Apis.Discovery.Parameter
                     {
                         Name = "reason",
@@ -3188,14 +3241,6 @@ namespace Google.Apis.Books.v1
                     RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
                     {
                         Name = "source",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "volumeId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3376,18 +3421,24 @@ namespace Google.Apis.Books.v1
 
             /// <summary>Moves a volume within a bookshelf.</summary>
             /// <param name="shelf">ID of bookshelf with the volume.</param>
-            public virtual MoveVolumeRequest MoveVolume(string shelf)
+            /// <param name="volumeId">ID of volume to
+            /// move.</param>
+            /// <param name="volumePosition">Position on shelf to move the item (0 puts the item before the
+            /// current first item, 1 puts it between the first and the second and so on.)</param>
+            public virtual MoveVolumeRequest MoveVolume(string shelf, string volumeId, int volumePosition)
             {
-                return new MoveVolumeRequest(service, shelf);
+                return new MoveVolumeRequest(service, shelf, volumeId, volumePosition);
             }
 
             /// <summary>Moves a volume within a bookshelf.</summary>
             public class MoveVolumeRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Empty>
             {
                 /// <summary>Constructs a new MoveVolume request.</summary>
-                public MoveVolumeRequest(Google.Apis.Services.IClientService service, string shelf) : base(service)
+                public MoveVolumeRequest(Google.Apis.Services.IClientService service, string shelf, string volumeId, int volumePosition) : base(service)
                 {
                     Shelf = shelf;
+                    VolumeId = volumeId;
+                    VolumePosition = volumePosition;
                     InitParameters();
                 }
 
@@ -3396,18 +3447,18 @@ namespace Google.Apis.Books.v1
                 [Google.Apis.Util.RequestParameterAttribute("shelf", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Shelf { get; private set; }
 
-                /// <summary>String to identify the originator of this request.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Source { get; set; }
-
                 /// <summary>ID of volume to move.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("volumeId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string VolumeId { get; set; }
+                public virtual string VolumeId { get; private set; }
 
                 /// <summary>Position on shelf to move the item (0 puts the item before the current first item, 1 puts
                 /// it between the first and the second and so on.)</summary>
                 [Google.Apis.Util.RequestParameterAttribute("volumePosition", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> VolumePosition { get; set; }
+                public virtual int VolumePosition { get; private set; }
+
+                /// <summary>String to identify the originator of this request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Source { get; set; }
 
 
                 /// <summary>Gets the method name.</summary>
@@ -3432,18 +3483,10 @@ namespace Google.Apis.Books.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
-                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "source",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                     RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "volumeId",
-                        IsRequired = false,
+                        IsRequired = true,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -3451,6 +3494,14 @@ namespace Google.Apis.Books.v1
                     RequestParameters.Add("volumePosition", new Google.Apis.Discovery.Parameter
                     {
                         Name = "volumePosition",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3462,18 +3513,21 @@ namespace Google.Apis.Books.v1
 
             /// <summary>Removes a volume from a bookshelf.</summary>
             /// <param name="shelf">ID of bookshelf from which to remove a volume.</param>
-            public virtual RemoveVolumeRequest RemoveVolume(string shelf)
+            /// <param name="volumeId">ID of
+            /// volume to remove.</param>
+            public virtual RemoveVolumeRequest RemoveVolume(string shelf, string volumeId)
             {
-                return new RemoveVolumeRequest(service, shelf);
+                return new RemoveVolumeRequest(service, shelf, volumeId);
             }
 
             /// <summary>Removes a volume from a bookshelf.</summary>
             public class RemoveVolumeRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Empty>
             {
                 /// <summary>Constructs a new RemoveVolume request.</summary>
-                public RemoveVolumeRequest(Google.Apis.Services.IClientService service, string shelf) : base(service)
+                public RemoveVolumeRequest(Google.Apis.Services.IClientService service, string shelf, string volumeId) : base(service)
                 {
                     Shelf = shelf;
+                    VolumeId = volumeId;
                     InitParameters();
                 }
 
@@ -3481,6 +3535,10 @@ namespace Google.Apis.Books.v1
                 /// <summary>ID of bookshelf from which to remove a volume.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("shelf", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Shelf { get; private set; }
+
+                /// <summary>ID of volume to remove.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("volumeId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string VolumeId { get; private set; }
 
                 /// <summary>The reason for which the book is removed from the library.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("reason", Google.Apis.Util.RequestParameterType.Query)]
@@ -3499,10 +3557,6 @@ namespace Google.Apis.Books.v1
                 /// <summary>String to identify the originator of this request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Source { get; set; }
-
-                /// <summary>ID of volume to remove.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("volumeId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string VolumeId { get; set; }
 
 
                 /// <summary>Gets the method name.</summary>
@@ -3527,6 +3581,14 @@ namespace Google.Apis.Books.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
+                    RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "volumeId",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                     RequestParameters.Add("reason", new Google.Apis.Discovery.Parameter
                     {
                         Name = "reason",
@@ -3538,14 +3600,6 @@ namespace Google.Apis.Books.v1
                     RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
                     {
                         Name = "source",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "volumeId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3649,18 +3703,24 @@ namespace Google.Apis.Books.v1
 
             /// <summary>Sets my reading position information for a volume.</summary>
             /// <param name="volumeId">ID of volume for which to update the reading position.</param>
-            public virtual SetPositionRequest SetPosition(string volumeId)
+            /// <param
+            /// name="position">Position string for the new volume reading position.</param>
+            /// <param name="timestamp">RFC
+            /// 3339 UTC format timestamp associated with this reading position.</param>
+            public virtual SetPositionRequest SetPosition(string volumeId, string position, string timestamp)
             {
-                return new SetPositionRequest(service, volumeId);
+                return new SetPositionRequest(service, volumeId, position, timestamp);
             }
 
             /// <summary>Sets my reading position information for a volume.</summary>
             public class SetPositionRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Empty>
             {
                 /// <summary>Constructs a new SetPosition request.</summary>
-                public SetPositionRequest(Google.Apis.Services.IClientService service, string volumeId) : base(service)
+                public SetPositionRequest(Google.Apis.Services.IClientService service, string volumeId, string position, string timestamp) : base(service)
                 {
                     VolumeId = volumeId;
+                    Position = position;
+                    Timestamp = timestamp;
                     InitParameters();
                 }
 
@@ -3668,6 +3728,14 @@ namespace Google.Apis.Books.v1
                 /// <summary>ID of volume for which to update the reading position.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("volumeId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string VolumeId { get; private set; }
+
+                /// <summary>Position string for the new volume reading position.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("position", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Position { get; private set; }
+
+                /// <summary>RFC 3339 UTC format timestamp associated with this reading position.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("timestamp", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Timestamp { get; private set; }
 
                 /// <summary>Action that caused this reading position to be set.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("action", Google.Apis.Util.RequestParameterType.Query)]
@@ -3706,17 +3774,9 @@ namespace Google.Apis.Books.v1
                 [Google.Apis.Util.RequestParameterAttribute("deviceCookie", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DeviceCookie { get; set; }
 
-                /// <summary>Position string for the new volume reading position.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("position", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Position { get; set; }
-
                 /// <summary>String to identify the originator of this request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Source { get; set; }
-
-                /// <summary>RFC 3339 UTC format timestamp associated with this reading position.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("timestamp", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Timestamp { get; set; }
 
 
                 /// <summary>Gets the method name.</summary>
@@ -3738,6 +3798,22 @@ namespace Google.Apis.Books.v1
                         Name = "volumeId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("position", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "position",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("timestamp", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "timestamp",
+                        IsRequired = true,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -3765,25 +3841,9 @@ namespace Google.Apis.Books.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
-                    RequestParameters.Add("position", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "position",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                     RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
                     {
                         Name = "source",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("timestamp", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "timestamp",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3812,29 +3872,31 @@ namespace Google.Apis.Books.v1
 
 
         /// <summary>Returns notification details for a given notification id.</summary>
-        public virtual GetRequest Get()
+        /// <param name="notificationId">String to identify the notification.</param>
+        public virtual GetRequest Get(string notificationId)
         {
-            return new GetRequest(service);
+            return new GetRequest(service, notificationId);
         }
 
         /// <summary>Returns notification details for a given notification id.</summary>
         public class GetRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Notification>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service) : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, string notificationId) : base(service)
             {
+                NotificationId = notificationId;
                 InitParameters();
             }
 
+
+            /// <summary>String to identify the notification.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("notification_id", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string NotificationId { get; private set; }
 
             /// <summary>ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating notification
             /// title and body.</summary>
             [Google.Apis.Util.RequestParameterAttribute("locale", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Locale { get; set; }
-
-            /// <summary>String to identify the notification.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("notification_id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string NotificationId { get; set; }
 
             /// <summary>String to identify the originator of this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
@@ -3855,17 +3917,17 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
+                RequestParameters.Add("notification_id", new Google.Apis.Discovery.Parameter
                 {
-                    Name = "locale",
-                    IsRequired = false,
+                    Name = "notification_id",
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("notification_id", new Google.Apis.Discovery.Parameter
+                RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
                 {
-                    Name = "notification_id",
+                    Name = "locale",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -4572,20 +4634,26 @@ namespace Google.Apis.Books.v1
 
 
             /// <summary>Returns Series membership data given the series id.</summary>
-            public virtual GetRequest Get()
+            /// <param name="seriesId">String that identifies the series</param>
+            public virtual GetRequest Get(string seriesId)
             {
-                return new GetRequest(service);
+                return new GetRequest(service, seriesId);
             }
 
             /// <summary>Returns Series membership data given the series id.</summary>
             public class GetRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Seriesmembership>
             {
                 /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service) : base(service)
+                public GetRequest(Google.Apis.Services.IClientService service, string seriesId) : base(service)
                 {
+                    SeriesId = seriesId;
                     InitParameters();
                 }
 
+
+                /// <summary>String that identifies the series</summary>
+                [Google.Apis.Util.RequestParameterAttribute("series_id", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string SeriesId { get; private set; }
 
                 /// <summary>Number of maximum results per page to be included in the response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("page_size", Google.Apis.Util.RequestParameterType.Query)]
@@ -4594,10 +4662,6 @@ namespace Google.Apis.Books.v1
                 /// <summary>The value of the nextToken from the previous page.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("page_token", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>String that identifies the series</summary>
-                [Google.Apis.Util.RequestParameterAttribute("series_id", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string SeriesId { get; set; }
 
 
                 /// <summary>Gets the method name.</summary>
@@ -4614,6 +4678,14 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
+                    RequestParameters.Add("series_id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "series_id",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                     RequestParameters.Add("page_size", new Google.Apis.Discovery.Parameter
                     {
                         Name = "page_size",
@@ -4630,38 +4702,32 @@ namespace Google.Apis.Books.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
-                    RequestParameters.Add("series_id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "series_id",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 }
 
             }
         }
 
         /// <summary>Returns Series metadata for the given series ids.</summary>
-        public virtual GetRequest Get()
+        /// <param name="seriesId">String that identifies the series</param>
+        public virtual GetRequest Get(Google.Apis.Util.Repeatable<string> seriesId)
         {
-            return new GetRequest(service);
+            return new GetRequest(service, seriesId);
         }
 
         /// <summary>Returns Series metadata for the given series ids.</summary>
         public class GetRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Series>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service) : base(service)
+            public GetRequest(Google.Apis.Services.IClientService service, Google.Apis.Util.Repeatable<string> seriesId) : base(service)
             {
+                SeriesId = seriesId;
                 InitParameters();
             }
 
 
             /// <summary>String that identifies the series</summary>
             [Google.Apis.Util.RequestParameterAttribute("series_id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> SeriesId { get; set; }
+            public virtual Google.Apis.Util.Repeatable<string> SeriesId { get; private set; }
 
 
             /// <summary>Gets the method name.</summary>
@@ -4681,7 +4747,7 @@ namespace Google.Apis.Books.v1
                 RequestParameters.Add("series_id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "series_id",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -5153,29 +5219,29 @@ namespace Google.Apis.Books.v1
             }
 
             /// <summary>Rate a recommended book for the current user.</summary>
-            public virtual RateRequest Rate()
+            /// <param name="rating">Rating to be given to the volume.</param>
+            /// <param name="volumeId">ID of the source
+            /// volume.</param>
+            public virtual RateRequest Rate(RateRequest.RatingEnum rating, string volumeId)
             {
-                return new RateRequest(service);
+                return new RateRequest(service, rating, volumeId);
             }
 
             /// <summary>Rate a recommended book for the current user.</summary>
             public class RateRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.BooksVolumesRecommendedRateResponse>
             {
                 /// <summary>Constructs a new Rate request.</summary>
-                public RateRequest(Google.Apis.Services.IClientService service) : base(service)
+                public RateRequest(Google.Apis.Services.IClientService service, RatingEnum rating, string volumeId) : base(service)
                 {
+                    Rating = rating;
+                    VolumeId = volumeId;
                     InitParameters();
                 }
 
 
-                /// <summary>ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating
-                /// recommendations.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("locale", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Locale { get; set; }
-
                 /// <summary>Rating to be given to the volume.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("rating", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<RatingEnum> Rating { get; set; }
+                public virtual RatingEnum Rating { get; private set; }
 
                 /// <summary>Rating to be given to the volume.</summary>
                 public enum RatingEnum
@@ -5190,13 +5256,18 @@ namespace Google.Apis.Books.v1
                     NOTINTERESTED,
                 }
 
+                /// <summary>ID of the source volume.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("volumeId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string VolumeId { get; private set; }
+
+                /// <summary>ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating
+                /// recommendations.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("locale", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Locale { get; set; }
+
                 /// <summary>String to identify the originator of this request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Source { get; set; }
-
-                /// <summary>ID of the source volume.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("volumeId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string VolumeId { get; set; }
 
 
                 /// <summary>Gets the method name.</summary>
@@ -5213,6 +5284,22 @@ namespace Google.Apis.Books.v1
                 {
                     base.InitParameters();
 
+                    RequestParameters.Add("rating", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "rating",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "volumeId",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                     RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
                     {
                         Name = "locale",
@@ -5221,25 +5308,9 @@ namespace Google.Apis.Books.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
-                    RequestParameters.Add("rating", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "rating",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                     RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
                     {
                         Name = "source",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "volumeId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -5529,20 +5600,26 @@ namespace Google.Apis.Books.v1
         }
 
         /// <summary>Performs a book search.</summary>
-        public virtual ListRequest List()
+        /// <param name="q">Full-text search query string.</param>
+        public virtual ListRequest List(string q)
         {
-            return new ListRequest(service);
+            return new ListRequest(service, q);
         }
 
         /// <summary>Performs a book search.</summary>
         public class ListRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.Volumes>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, string q) : base(service)
             {
+                Q = q;
                 InitParameters();
             }
 
+
+            /// <summary>Full-text search query string.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Q { get; private set; }
 
             /// <summary>Restrict to volumes by download availability.</summary>
             [Google.Apis.Util.RequestParameterAttribute("download", Google.Apis.Util.RequestParameterType.Query)]
@@ -5686,10 +5763,6 @@ namespace Google.Apis.Books.v1
                 LITE,
             }
 
-            /// <summary>Full-text search query string.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Q { get; set; }
-
             /// <summary>Set to true to show books available for preorder. Defaults to false.</summary>
             [Google.Apis.Util.RequestParameterAttribute("showPreorders", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ShowPreorders { get; set; }
@@ -5717,6 +5790,14 @@ namespace Google.Apis.Books.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add("q", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "q",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("download", new Google.Apis.Discovery.Parameter
                 {
                     Name = "download",
@@ -5792,14 +5873,6 @@ namespace Google.Apis.Books.v1
                 RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projection",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("q", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "q",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,

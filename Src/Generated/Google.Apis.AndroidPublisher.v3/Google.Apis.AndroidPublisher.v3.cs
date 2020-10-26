@@ -7794,7 +7794,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string OrderId { get; set; }
 
         /// <summary>The payment state of the subscription. Possible values are: 0. Payment pending 1. Payment received
-        /// 2. Free trial 3. Pending deferred upgrade/downgrade</summary>
+        /// 2. Free trial 3. Pending deferred upgrade/downgrade Not present for canceled, expired
+        /// subscriptions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paymentState")]
         public virtual System.Nullable<int> PaymentState { get; set; }
 

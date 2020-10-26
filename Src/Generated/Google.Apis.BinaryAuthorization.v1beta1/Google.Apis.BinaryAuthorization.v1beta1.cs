@@ -1225,7 +1225,7 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
     /// <summary>An admission whitelist pattern exempts images from checks by admission rules.</summary>
     public class AdmissionWhitelistPattern : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An image name pattern to whitelist, in the form `registry/path/to/image`. This supports a trailing
+        /// <summary>An image name pattern to allowlist, in the form `registry/path/to/image`. This supports a trailing
         /// `*` as a wildcard, but this is allowed only in text after the `registry/` part.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namePattern")]
         public virtual string NamePattern { get; set; }
@@ -1518,7 +1518,7 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
     /// <summary>A policy for container image binary authorization.</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Admission policy whitelisting. A matching admission request will always be permitted.
+        /// <summary>Optional. Admission policy allowlisting. A matching admission request will always be permitted.
         /// This feature is typically used to exclude Google or third-party infrastructure images from Binary
         /// Authorization policies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("admissionWhitelistPatterns")]

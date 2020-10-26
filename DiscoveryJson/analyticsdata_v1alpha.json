@@ -235,7 +235,7 @@
    }
   }
  }, 
- "revision": "20201017", 
+ "revision": "20201020", 
  "rootUrl": "https://analyticsdata.googleapis.com/", 
  "schemas": {
   "BatchRunPivotReportsRequest": {

@@ -966,7 +966,7 @@
    }
   }
  }, 
- "revision": "20201009", 
+ "revision": "20201018", 
  "rootUrl": "https://artifactregistry.googleapis.com/", 
  "schemas": {
   "Binding": {

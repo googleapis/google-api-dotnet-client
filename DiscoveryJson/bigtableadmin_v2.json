@@ -1760,7 +1760,7 @@
    }
   }
  }, 
- "revision": "20200916", 
+ "revision": "20200928", 
  "rootUrl": "https://bigtableadmin.googleapis.com/", 
  "schemas": {
   "AppProfile": {

@@ -4362,6 +4362,13 @@ namespace Google.Apis.Bigquery.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("role")]
             public virtual string Role { get; set; }
 
+            /// <summary>[Pick one] A routine from a different dataset to grant access to. Queries executed against that
+            /// routine will have read access to views/tables/routines in this dataset. Only UDF is supported for now.
+            /// The role field is not required when this field is set. If that routine is updated by any user, access to
+            /// the routine needs to be granted again via an update operation.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("routine")]
+            public virtual RoutineReference Routine { get; set; }
+
             /// <summary>[Pick one] A special group to grant access to. Possible values include: projectOwners: Owners
             /// of the enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of
             /// the enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named
@@ -4700,6 +4707,22 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Explanation for a single feature.</summary>
+    public class Explanation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Attribution of feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attribution")]
+        public virtual System.Nullable<double> Attribution { get; set; }
+
+        /// <summary>Full name of the feature. For non-numerical features, will be formatted like .. Overall size of
+        /// feature name will always be truncated to first 120 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureName")]
+        public virtual string FeatureName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
     /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
     /// Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
@@ -4926,6 +4949,23 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>The resource type of the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Global explanations containing the top most important features after training.</summary>
+    public class GlobalExplanation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Class label for this set of global explanations. Will be empty/null for binary logistic and linear
+        /// regression models. Sorted alphabetically in descending order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classLabel")]
+        public virtual string ClassLabel { get; set; }
+
+        /// <summary>A list of the top global explanations. Sorted by absolute value of attribution in descending
+        /// order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explanations")]
+        public virtual System.Collections.Generic.IList<Explanation> Explanations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7650,6 +7690,11 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>The evaluation metrics over training/eval data that were computed at the end of training.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationMetrics")]
         public virtual EvaluationMetrics EvaluationMetrics { get; set; }
+
+        /// <summary>Global explanations for important features of the model. For multi-class models, there is one entry
+        /// for each label class. For other models, there is only one entry in the list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("globalExplanations")]
+        public virtual System.Collections.Generic.IList<GlobalExplanation> GlobalExplanations { get; set; }
 
         /// <summary>Output of each iteration run, results.size() <= max_iterations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]

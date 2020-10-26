@@ -6152,6 +6152,11 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxFailuresPerHour")]
         public virtual System.Nullable<int> MaxFailuresPerHour { get; set; }
 
+        /// <summary>Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting
+        /// with non-zero code before job is reported failed. Maximum value is 240</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxFailuresTotal")]
+        public virtual System.Nullable<int> MaxFailuresTotal { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -6276,7 +6281,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual object AutoDeleteTtl { get; set; }
 
         /// <summary>Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing
-        /// this threshold will cause the cluster to be deleted. Minimum value is 10 minutes; maximum value is 14 days
+        /// this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days
         /// (see JSON representation of Duration (https://developers.google.com/protocol-
         /// buffers/docs/proto3#json).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idleDeleteTtl")]
@@ -6425,8 +6430,11 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Node Group Affinity for clusters using sole-tenant node groups.</summary>
     public class NodeGroupAffinity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The name of a single node group
-        /// (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) a cluster will be created on.</summary>
+        /// <summary>Required. The URI of a sole-tenant node group resource
+        /// (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A
+        /// full URL, partial URI, or node group name are valid. Examples:
+        /// https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1
+        /// projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeGroupUri")]
         public virtual string NodeGroupUri { get; set; }
 
