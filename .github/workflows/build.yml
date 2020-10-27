@@ -1,0 +1,38 @@
+name: Build and test
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    env:	
+      DOTNET_NOLOGO: true
+
+    steps:	
+    - uses: actions/checkout@v2	
+      with:	
+        submodules: true	
+
+    # We build with .NET Core 3.1 SDK
+    - name: Setup .NET Core 3.1	
+      uses: actions/setup-dotnet@v1	
+      with:	
+        dotnet-version: 3.1.x
+
+    # We use the .NET Core 1.1, 2.0 and 2.1 runtimes for additional testing
+    - name: Setup .NET Core 1.1	
+      uses: actions/setup-dotnet@v1	
+      with:	
+        dotnet-version: 1.1.x	
+    - name: Setup .NET Core 2.0	
+      uses: actions/setup-dotnet@v1	
+      with:	
+        dotnet-version: 2.0.x
+    - name: Setup .NET Core 2.1	
+      uses: actions/setup-dotnet@v1	
+      with:	
+        dotnet-version: 2.1.x	
+
+    - name: Build and test	
+      run: |
+        ./BuildSupport.sh
+        dotnet test Src/Support/Google.Apis.Tests/Google.Apis.Tests.csproj --no-build -c Release
+        dotnet test Src/Support/Google.Apis.Auth.Tests/Google.Apis.Auth.Tests.csproj --no-build -c Release
