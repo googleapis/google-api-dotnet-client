@@ -1220,7 +1220,7 @@
    }
   }
  }, 
- "revision": "20201015", 
+ "revision": "20201105", 
  "rootUrl": "https://games.googleapis.com/", 
  "schemas": {
   "AchievementDefinition": {

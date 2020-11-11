@@ -1473,6 +1473,9 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
+        public virtual string BindingId { get; set; }
+
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
         /// apply to the current request. However, a different role binding might grant the same role to one or more of
@@ -1937,6 +1940,33 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Describes measured latency distribution.</summary>
+    public class LatencyDistribution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Representative latency percentiles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyPercentiles")]
+        public virtual System.Collections.Generic.IList<LatencyPercentile> LatencyPercentiles { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Latency percentile rank and value.</summary>
+    public class LatencyPercentile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>percent-th percentile of latency observed, in microseconds. Fraction of percent/100 of samples have
+        /// latency lower or equal to the value of this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyMicros")]
+        public virtual System.Nullable<long> LatencyMicros { get; set; }
+
+        /// <summary>Percentage of samples this data point applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percent")]
+        public virtual System.Nullable<int> Percent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response for the `ListConnectivityTests` method.</summary>
     public class ListConnectivityTestsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2233,6 +2263,11 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// <summary>The details of an internal failure or a cancellation of reachability analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; }
+
+        /// <summary>One way probing latency distribution. The latency is measured as duration of packet traversal of
+        /// Google Cloud network, from source to destination endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("probingLatency")]
+        public virtual LatencyDistribution ProbingLatency { get; set; }
 
         /// <summary>The overall reachability result of the test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]

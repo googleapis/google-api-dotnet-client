@@ -9165,13 +9165,6 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Metadata returned for the TestCases.RunTestCase long running operation.</summary>
-    public class GoogleCloudDialogflowV3alpha1RunTestCaseMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>The response message for Operations.ListOperations.</summary>
     public class GoogleLongrunningListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {

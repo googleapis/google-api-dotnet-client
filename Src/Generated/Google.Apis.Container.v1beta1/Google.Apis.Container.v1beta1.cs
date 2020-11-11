@@ -6761,6 +6761,18 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>EphemeralStorageConfig contains configuration for the ephemeral storage filesystem.</summary>
+    public class EphemeralStorageConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375
+        /// GB in size. If zero, it means to disable using local SSDs as ephemeral storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localSsdCount")]
+        public virtual System.Nullable<int> LocalSsdCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Configuration for the Compute Engine PD CSI driver. This option can only be enabled at cluster creation
     /// time.</summary>
     public class GcePersistentDiskCsiDriverConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -7418,6 +7430,11 @@ namespace Google.Apis.Container.v1beta1.Data
         /// disk type is 'pd-standard'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
+
+        /// <summary>Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the
+        /// boot disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ephemeralStorageConfig")]
+        public virtual EphemeralStorageConfig EphemeralStorageConfig { get; set; }
 
         /// <summary>The image type to use for this node. Note that for a given image type, the latest version of it
         /// will be used.</summary>

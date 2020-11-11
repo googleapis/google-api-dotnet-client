@@ -1056,7 +1056,7 @@
    }
   }
  }, 
- "revision": "20201016", 
+ "revision": "20201106", 
  "rootUrl": "https://securitycenter.googleapis.com/", 
  "schemas": {
   "Asset": {

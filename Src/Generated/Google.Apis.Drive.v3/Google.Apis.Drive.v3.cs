@@ -5841,7 +5841,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("explicitlyTrashed")]
         public virtual System.Nullable<bool> ExplicitlyTrashed { get; set; }
 
-        /// <summary>Links for exporting Google Docs to specific formats.</summary>
+        /// <summary>Links for exporting Docs Editors files to specific formats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportLinks")]
         public virtual System.Collections.Generic.IDictionary<string, string> ExportLinks { get; set; }
 
@@ -6740,7 +6740,7 @@ namespace Google.Apis.Drive.v3.Data
     /// <summary>The metadata for a revision to a file.</summary>
     public class Revision : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Links for exporting Google Docs to specific formats.</summary>
+        /// <summary>Links for exporting Docs Editors files to specific formats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportLinks")]
         public virtual System.Collections.Generic.IDictionary<string, string> ExportLinks { get; set; }
 
@@ -6788,12 +6788,12 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("originalFilename")]
         public virtual string OriginalFilename { get; set; }
 
-        /// <summary>Whether subsequent revisions will be automatically republished. This is only applicable to Google
-        /// Docs.</summary>
+        /// <summary>Whether subsequent revisions will be automatically republished. This is only applicable to Docs
+        /// Editors files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishAuto")]
         public virtual System.Nullable<bool> PublishAuto { get; set; }
 
-        /// <summary>Whether this revision is published. This is only applicable to Google Docs.</summary>
+        /// <summary>Whether this revision is published. This is only applicable to Docs Editors files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("published")]
         public virtual System.Nullable<bool> Published { get; set; }
 
@@ -6801,8 +6801,8 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publishedLink")]
         public virtual string PublishedLink { get; set; }
 
-        /// <summary>Whether this revision is published outside the domain. This is only applicable to Google
-        /// Docs.</summary>
+        /// <summary>Whether this revision is published outside the domain. This is only applicable to Docs Editors
+        /// files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedOutsideDomain")]
         public virtual System.Nullable<bool> PublishedOutsideDomain { get; set; }
 

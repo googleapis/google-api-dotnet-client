@@ -41,6 +41,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             Orderreports = new OrderreportsResource(this);
             Orderreturns = new OrderreturnsResource(this);
             Orders = new OrdersResource(this);
+            Ordertrackingsignals = new OrdertrackingsignalsResource(this);
             Pos = new PosResource(this);
             Products = new ProductsResource(this);
             Productstatuses = new ProductstatusesResource(this);
@@ -132,6 +133,9 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>Gets the Orders resource.</summary>
         public virtual OrdersResource Orders { get; }
+
+        /// <summary>Gets the Ordertrackingsignals resource.</summary>
+        public virtual OrdertrackingsignalsResource Ordertrackingsignals { get; }
 
         /// <summary>Gets the Pos resource.</summary>
         public virtual PosResource Pos { get; }
@@ -2323,7 +2327,8 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         }
 
-        /// <summary>Invokes a fetch for the datafeed in your Merchant Center account.</summary>
+        /// <summary>Invokes a fetch for the datafeed in your Merchant Center account. If you need to call this method
+        /// more than once per day, we recommend you use the Products service to update your product data.</summary>
         /// <param name="merchantId">The ID of the account that manages the datafeed. This account cannot be a multi-client
         /// account.</param>
         /// <param name="datafeedId">The ID of the datafeed to be fetched.</param>
@@ -2332,7 +2337,8 @@ namespace Google.Apis.ShoppingContent.v2_1
             return new FetchnowRequest(service, merchantId, datafeedId);
         }
 
-        /// <summary>Invokes a fetch for the datafeed in your Merchant Center account.</summary>
+        /// <summary>Invokes a fetch for the datafeed in your Merchant Center account. If you need to call this method
+        /// more than once per day, we recommend you use the Products service to update your product data.</summary>
         public class FetchnowRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.DatafeedsFetchNowResponse>
         {
             /// <summary>Constructs a new Fetchnow request.</summary>
@@ -3202,19 +3208,21 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// account.</param>
         /// <param name="accountId">The ID of the account for which GMB access is
         /// requested.</param>
-        public virtual RequestgmbaccessRequest Requestgmbaccess(ulong merchantId, ulong accountId)
+        /// <param name="gmbEmail">The email of the Google My Business account.</param>
+        public virtual RequestgmbaccessRequest Requestgmbaccess(ulong merchantId, ulong accountId, string gmbEmail)
         {
-            return new RequestgmbaccessRequest(service, merchantId, accountId);
+            return new RequestgmbaccessRequest(service, merchantId, accountId, gmbEmail);
         }
 
         /// <summary>Requests access to a specified Google My Business account.</summary>
         public class RequestgmbaccessRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.LiasettingsRequestGmbAccessResponse>
         {
             /// <summary>Constructs a new Requestgmbaccess request.</summary>
-            public RequestgmbaccessRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId) : base(service)
+            public RequestgmbaccessRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId, string gmbEmail) : base(service)
             {
                 MerchantId = merchantId;
                 AccountId = accountId;
+                GmbEmail = gmbEmail;
                 InitParameters();
             }
 
@@ -3231,7 +3239,7 @@ namespace Google.Apis.ShoppingContent.v2_1
 
             /// <summary>The email of the Google My Business account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("gmbEmail", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string GmbEmail { get; set; }
+            public virtual string GmbEmail { get; private set; }
 
 
             /// <summary>Gets the method name.</summary>
@@ -3267,7 +3275,7 @@ namespace Google.Apis.ShoppingContent.v2_1
                 RequestParameters.Add("gmbEmail", new Google.Apis.Discovery.Parameter
                 {
                     Name = "gmbEmail",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -3365,19 +3373,30 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// account.</param>
         /// <param name="accountId">The ID of the account that manages the order. This cannot be a
         /// multi-client account.</param>
-        public virtual SetinventoryverificationcontactRequest Setinventoryverificationcontact(ulong merchantId, ulong accountId)
+        /// <param name="country">The country for which inventory verification is
+        /// requested.</param>
+        /// <param name="language">The language for which inventory verification is
+        /// requested.</param>
+        /// <param name="contactName">The name of the inventory verification contact.</param>
+        ///
+        /// <param name="contactEmail">The email of the inventory verification contact.</param>
+        public virtual SetinventoryverificationcontactRequest Setinventoryverificationcontact(ulong merchantId, ulong accountId, string country, string language, string contactName, string contactEmail)
         {
-            return new SetinventoryverificationcontactRequest(service, merchantId, accountId);
+            return new SetinventoryverificationcontactRequest(service, merchantId, accountId, country, language, contactName, contactEmail);
         }
 
         /// <summary>Sets the inventory verification contract for the specified country.</summary>
         public class SetinventoryverificationcontactRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.LiasettingsSetInventoryVerificationContactResponse>
         {
             /// <summary>Constructs a new Setinventoryverificationcontact request.</summary>
-            public SetinventoryverificationcontactRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId) : base(service)
+            public SetinventoryverificationcontactRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId, string country, string language, string contactName, string contactEmail) : base(service)
             {
                 MerchantId = merchantId;
                 AccountId = accountId;
+                Country = country;
+                Language = language;
+                ContactName = contactName;
+                ContactEmail = contactEmail;
                 InitParameters();
             }
 
@@ -3392,21 +3411,21 @@ namespace Google.Apis.ShoppingContent.v2_1
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
-            /// <summary>The email of the inventory verification contact.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("contactEmail", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ContactEmail { get; set; }
-
-            /// <summary>The name of the inventory verification contact.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("contactName", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ContactName { get; set; }
-
             /// <summary>The country for which inventory verification is requested.</summary>
             [Google.Apis.Util.RequestParameterAttribute("country", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Country { get; set; }
+            public virtual string Country { get; private set; }
 
             /// <summary>The language for which inventory verification is requested.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Language { get; set; }
+            public virtual string Language { get; private set; }
+
+            /// <summary>The name of the inventory verification contact.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("contactName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ContactName { get; private set; }
+
+            /// <summary>The email of the inventory verification contact.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("contactEmail", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ContactEmail { get; private set; }
 
 
             /// <summary>Gets the method name.</summary>
@@ -3439,26 +3458,10 @@ namespace Google.Apis.ShoppingContent.v2_1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("contactEmail", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "contactEmail",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("contactName", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "contactName",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("country", new Google.Apis.Discovery.Parameter
                 {
                     Name = "country",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -3466,7 +3469,23 @@ namespace Google.Apis.ShoppingContent.v2_1
                 RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
                 {
                     Name = "language",
-                    IsRequired = false,
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("contactName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "contactName",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("contactEmail", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "contactEmail",
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -3481,19 +3500,22 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// account.</param>
         /// <param name="accountId">The ID of the account for which to retrieve accessible Google My
         /// Business accounts.</param>
-        public virtual SetposdataproviderRequest Setposdataprovider(ulong merchantId, ulong accountId)
+        /// <param name="country">The country for which the POS data provider is
+        /// selected.</param>
+        public virtual SetposdataproviderRequest Setposdataprovider(ulong merchantId, ulong accountId, string country)
         {
-            return new SetposdataproviderRequest(service, merchantId, accountId);
+            return new SetposdataproviderRequest(service, merchantId, accountId, country);
         }
 
         /// <summary>Sets the POS data provider for the specified country.</summary>
         public class SetposdataproviderRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.LiasettingsSetPosDataProviderResponse>
         {
             /// <summary>Constructs a new Setposdataprovider request.</summary>
-            public SetposdataproviderRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId) : base(service)
+            public SetposdataproviderRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId, string country) : base(service)
             {
                 MerchantId = merchantId;
                 AccountId = accountId;
+                Country = country;
                 InitParameters();
             }
 
@@ -3510,7 +3532,7 @@ namespace Google.Apis.ShoppingContent.v2_1
 
             /// <summary>The country for which the POS data provider is selected.</summary>
             [Google.Apis.Util.RequestParameterAttribute("country", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Country { get; set; }
+            public virtual string Country { get; private set; }
 
             /// <summary>The ID of POS data provider.</summary>
             [Google.Apis.Util.RequestParameterAttribute("posDataProviderId", Google.Apis.Util.RequestParameterType.Query)]
@@ -3554,7 +3576,7 @@ namespace Google.Apis.ShoppingContent.v2_1
                 RequestParameters.Add("country", new Google.Apis.Discovery.Parameter
                 {
                     Name = "country",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -6349,6 +6371,80 @@ namespace Google.Apis.ShoppingContent.v2_1
                 RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "orderId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+        }
+    }
+
+    /// <summary>The "ordertrackingsignals" collection of methods.</summary>
+    public class OrdertrackingsignalsResource
+    {
+        private const string Resource = "ordertrackingsignals";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OrdertrackingsignalsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Creates new order tracking signal.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">The ID of the merchant for which the order signal is created.</param>
+        public virtual CreateRequest Create(Google.Apis.ShoppingContent.v2_1.Data.OrderTrackingSignal body, long merchantId)
+        {
+            return new CreateRequest(service, body, merchantId);
+        }
+
+        /// <summary>Creates new order tracking signal.</summary>
+        public class CreateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.OrderTrackingSignal>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OrderTrackingSignal body, long merchantId) : base(service)
+            {
+                MerchantId = merchantId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the merchant for which the order signal is created.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.OrderTrackingSignal Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "content/v2.1/{merchantId}/ordertrackingsignals";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
@@ -10937,6 +11033,62 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents civil time (or occasionally physical time). This type can represent a civil time in one of a
+    /// few possible ways: * When utc_offset is set and time_zone is unset: a civil time on a calendar day with a
+    /// particular offset from UTC. * When time_zone is set and utc_offset is unset: a civil time on a calendar day in a
+    /// particular time zone. * When neither time_zone nor utc_offset is set: a civil time on a calendar day in local
+    /// time. The date is relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is considered not to
+    /// have a specific year. month and day must have valid, non-zero values. This type may also be used to represent a
+    /// physical time if all the date and time fields are set and either case of the `time_offset` oneof is set.
+    /// Consider using `Timestamp` message for physical time instead. If your use case also would like to store the
+    /// user's timezone, that can be done in another field. This type is more flexible than some applications may want.
+    /// Make sure to document and validate your application's limitations.</summary>
+    public class DateTime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Required. Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the
+        /// value "24:00:00" for scenarios like business closing time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hours")]
+        public virtual System.Nullable<int> Hours { get; set; }
+
+        /// <summary>Required. Minutes of hour of day. Must be from 0 to 59.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
+        public virtual System.Nullable<int> Minutes { get; set; }
+
+        /// <summary>Required. Month of year. Must be from 1 to 12.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Required. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; }
+
+        /// <summary>Required. Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value
+        /// 60 if it allows leap-seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
+        public virtual System.Nullable<int> Seconds { get; set; }
+
+        /// <summary>Time zone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual TimeZone TimeZone { get; set; }
+
+        /// <summary>UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of
+        /// -4:00 would be represented as { seconds: -14400 }.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utcOffset")]
+        public virtual object UtcOffset { get; set; }
+
+        /// <summary>Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a
+        /// year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class DeliveryTime : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Business days cutoff time definition. If not configured the cutoff time will be defaulted to 8AM
@@ -12862,6 +13014,167 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents a merchant trade from which signals are extracted, e.g. shipping.</summary>
+    public class OrderTrackingSignal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The shipping fee of the order; this value should be set to zero in the case of free
+        /// shipping.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerShippingFee")]
+        public virtual PriceAmount CustomerShippingFee { get; set; }
+
+        /// <summary>Required. The delivery postal code, as a continuous string without spaces or dashes, e.g.
+        /// "95016".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deliveryPostalCode")]
+        public virtual string DeliveryPostalCode { get; set; }
+
+        /// <summary>Required. The [CLDR territory code]
+        /// (http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) for the shipping destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deliveryRegionCode")]
+        public virtual string DeliveryRegionCode { get; set; }
+
+        /// <summary>Information about line items in the order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
+        public virtual System.Collections.Generic.IList<OrderTrackingSignalLineItemDetails> LineItems { get; set; }
+
+        /// <summary>The Google merchant ID of this order tracking signal. This value is optional. If left unset, the
+        /// caller's merchant ID is used. You must request access in order to provide data on behalf of another
+        /// merchant. For more information, see [Submitting Order Tracking Signals](/shopping-content/guides/order-
+        /// tracking-signals).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
+        public virtual System.Nullable<long> MerchantId { get; set; }
+
+        /// <summary>Required. The time when the order was created on the merchant side. Include the year and timezone
+        /// string, if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderCreatedTime")]
+        public virtual DateTime OrderCreatedTime { get; set; }
+
+        /// <summary>Required. The ID of the order on the merchant side.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
+        public virtual string OrderId { get; set; }
+
+        /// <summary>Output only. The ID that uniquely identifies this order tracking signal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderTrackingSignalId")]
+        public virtual System.Nullable<long> OrderTrackingSignalId { get; set; }
+
+        /// <summary>The mapping of the line items to the shipment information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shipmentLineItemMapping")]
+        public virtual System.Collections.Generic.IList<OrderTrackingSignalShipmentLineItemMapping> ShipmentLineItemMapping { get; set; }
+
+        /// <summary>The shipping information for the order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shippingInfo")]
+        public virtual System.Collections.Generic.IList<OrderTrackingSignalShippingInfo> ShippingInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The line items of the order.</summary>
+    public class OrderTrackingSignalLineItemDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Global Trade Item Number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
+        public virtual string Gtin { get; set; }
+
+        /// <summary>Required. The ID for this line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
+        public virtual string LineItemId { get; set; }
+
+        /// <summary>The manufacturer part number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mpn")]
+        public virtual string Mpn { get; set; }
+
+        /// <summary>Required. The Content API REST ID of the product, in the form
+        /// channel:contentLanguage:targetCountry:offerId.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>Required. The quantity of the line item in the order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
+        public virtual System.Nullable<long> Quantity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents how many items are in the shipment for the given shipment_id and line_item_id.</summary>
+    public class OrderTrackingSignalShipmentLineItemMapping : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The line item ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
+        public virtual string LineItemId { get; set; }
+
+        /// <summary>Required. The line item quantity in the shipment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
+        public virtual System.Nullable<long> Quantity { get; set; }
+
+        /// <summary>Required. The shipment ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shipmentId")]
+        public virtual string ShipmentId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The shipping information for the order.</summary>
+    public class OrderTrackingSignalShippingInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time when the shipment was actually delivered. Include the year and timezone string, if
+        /// available. This field is required, if one of the following fields is absent: tracking_id or
+        /// carrier_name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actualDeliveryTime")]
+        public virtual DateTime ActualDeliveryTime { get; set; }
+
+        /// <summary>The name of the shipping carrier for the delivery. This field is required if one of the following
+        /// fields is absent: earliest_delivery_promise_time, latest_delivery_promise_time, and
+        /// actual_delivery_time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierName")]
+        public virtual string CarrierName { get; set; }
+
+        /// <summary>The service type for fulfillment, e.g., GROUND, FIRST_CLASS, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierServiceName")]
+        public virtual string CarrierServiceName { get; set; }
+
+        /// <summary>The earliest delivery promised time. Include the year and timezone string, if available. This field
+        /// is required, if one of the following fields is absent: tracking_id or carrier_name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("earliestDeliveryPromiseTime")]
+        public virtual DateTime EarliestDeliveryPromiseTime { get; set; }
+
+        /// <summary>The latest delivery promised time. Include the year and timezone string, if available. This field
+        /// is required, if one of the following fields is absent: tracking_id or carrier_name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestDeliveryPromiseTime")]
+        public virtual DateTime LatestDeliveryPromiseTime { get; set; }
+
+        /// <summary>The origin postal code, as a continuous string without spaces or dashes, e.g. "95016".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originPostalCode")]
+        public virtual string OriginPostalCode { get; set; }
+
+        /// <summary>The [CLDR territory code] (http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) for
+        /// the shipping origin.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originRegionCode")]
+        public virtual string OriginRegionCode { get; set; }
+
+        /// <summary>Required. The shipment ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shipmentId")]
+        public virtual string ShipmentId { get; set; }
+
+        /// <summary>The time when the shipment was shipped. Include the year and timezone string, if
+        /// available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shippedTime")]
+        public virtual DateTime ShippedTime { get; set; }
+
+        /// <summary>The status of the shipment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shippingStatus")]
+        public virtual string ShippingStatus { get; set; }
+
+        /// <summary>The tracking ID of the shipment. This field is required if one of the following fields is absent:
+        /// earliest_delivery_promise_time, latest_delivery_promise_time, and actual_delivery_time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackingId")]
+        public virtual string TrackingId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class OrderinvoicesCreateChargeInvoiceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[required] The ID of the invoice.</summary>
@@ -14090,7 +14403,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
         public virtual System.Nullable<long> BatchId { get; set; }
 
-        /// <summary>The inventory to submit. Set this only if the method is `inventory`.</summary>
+        /// <summary>The inventory to submit. This should be set only if the method is `inventory`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventory")]
         public virtual PosInventory Inventory { get; set; }
 
@@ -14103,15 +14416,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; }
 
-        /// <summary>The sale information to submit. Set this only if the method is `sale`.</summary>
+        /// <summary>The sale information to submit. This should be set only if the method is `sale`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sale")]
         public virtual PosSale Sale { get; set; }
 
-        /// <summary>The store information to submit. Set this only if the method is `insert`.</summary>
+        /// <summary>The store information to submit. This should be set only if the method is `insert`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("store")]
         public virtual PosStore Store { get; set; }
 
-        /// <summary>The store code. Set this only if the method is `delete` or `get`.</summary>
+        /// <summary>The store code. This should be set only if the method is `delete` or `get`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; }
 
@@ -14552,6 +14865,21 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The price represented as a number and currency.</summary>
+    public class PriceAmount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The currency of the price.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currency")]
+        public virtual string Currency { get; set; }
+
+        /// <summary>The price represented as a number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary> Required product attributes are primarily defined by the products data specification. See the Products
     /// Data Specification Help Center article for information. Some attributes are country-specific, so make sure you
     /// select the appropriate country in the drop-down selector at the top of the page. Product data. After inserting,
@@ -14575,7 +14903,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adsRedirect")]
         public virtual string AdsRedirect { get; set; }
 
-        /// <summary>Set to true if the item is targeted towards adults.</summary>
+        /// <summary>Should be set to true if the item is targeted towards adults.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adult")]
         public virtual System.Nullable<bool> Adult { get; set; }
 
@@ -15161,7 +15489,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
 
-        /// <summary>Set to true if tax is charged on shipping.</summary>
+        /// <summary>Should be set to true if tax is charged on shipping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxShip")]
         public virtual System.Nullable<bool> TaxShip { get; set; }
 
@@ -15737,14 +16065,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class RepricingRuleRestrictionBoundary : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The percentage delta relative to the offer selling price. This field is signed. It must be negative
-        /// in floor. When it is used in floor, it should be > -100. If an offer is selling at $10 and this field is -30
-        /// in floor, the repricing rule only applies if the calculated new price is >= $7.</summary>
+        /// in floor. When it is used in floor, it should be > -100. For example, if an offer is selling at $10 and this
+        /// field is -30 in floor, the repricing rule only applies if the calculated new price is >= $7.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percentageDelta")]
         public virtual System.Nullable<int> PercentageDelta { get; set; }
 
         /// <summary>The price micros relative to the offer selling price. This field is signed. It must be negative in
-        /// floor. If an offer is selling at $10 and this field is -$2 in floor, the repricing rule only applies if the
-        /// calculated new price is >= $8.</summary>
+        /// floor. For example, if an offer is selling at $10 and this field is -$2 in floor, the repricing rule only
+        /// applies if the calculated new price is >= $8.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceDelta")]
         public virtual string PriceDelta { get; set; }
 
@@ -16001,11 +16329,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; }
 
-        /// <summary>The return address to submit. Set this only if the method is `insert`.</summary>
+        /// <summary>The return address to submit. This should be set only if the method is `insert`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnAddress")]
         public virtual ReturnAddress ReturnAddress { get; set; }
 
-        /// <summary>The return address ID. Set this only if the method is `delete` or `get`.</summary>
+        /// <summary>The return address ID. This should be set only if the method is `delete` or `get`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnAddressId")]
         public virtual string ReturnAddressId { get; set; }
 
@@ -16094,11 +16422,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; }
 
-        /// <summary>The return policy to submit. Set this only if the method is `insert`.</summary>
+        /// <summary>The return policy to submit. This should be set only if the method is `insert`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnPolicy")]
         public virtual ReturnPolicy ReturnPolicy { get; set; }
 
-        /// <summary>The return policy ID. Set this only if the method is `delete` or `get`.</summary>
+        /// <summary>The return policy ID. This should be set only if the method is `delete` or `get`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnPolicyId")]
         public virtual string ReturnPolicyId { get; set; }
 
@@ -16913,6 +17241,21 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Required. The phone number of the person picking up the items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
         public virtual string PhoneNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).</summary>
+    public class TimeZone : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>IANA Time Zone Database time zone, e.g. "America/New_York".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Optional. IANA Time Zone Database version number, e.g. "2019a".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

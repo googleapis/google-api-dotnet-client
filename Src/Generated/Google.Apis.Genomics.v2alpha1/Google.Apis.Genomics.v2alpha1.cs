@@ -1197,6 +1197,17 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Configuration for an `NFSMount` to be attached to the VM.</summary>
+    public class NFSMount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A target NFS mount. The target must be specified as `address:/mount".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>VM networking options.</summary>
     public class Network : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1644,6 +1655,10 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         /// <summary>Configuration for a existing disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("existingDisk")]
         public virtual ExistingDisk ExistingDisk { get; set; }
+
+        /// <summary>Configuration for an NFS mount.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nfsMount")]
+        public virtual NFSMount NfsMount { get; set; }
 
         /// <summary>Configuration for a persistent disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("persistentDisk")]

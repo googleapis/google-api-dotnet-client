@@ -374,7 +374,7 @@
    }
   }
  }, 
- "revision": "20201016", 
+ "revision": "20201107", 
  "rootUrl": "https://recommender.googleapis.com/", 
  "schemas": {
   "GoogleCloudRecommenderV1beta1CostProjection": {

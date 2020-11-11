@@ -1090,13 +1090,13 @@ namespace Google.Apis.PeopleService.v1
                     LASTNAMEASCENDING,
                 }
 
-                /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
-                /// ReadSourceType.PROFILE if not set.</summary>
+                /// <summary>Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
+                /// READ_SOURCE_TYPE_PROFILE if not set.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<SourcesEnum> Sources { get; set; }
 
-                /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
-                /// ReadSourceType.PROFILE if not set.</summary>
+                /// <summary>Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
+                /// READ_SOURCE_TYPE_PROFILE if not set.</summary>
                 public enum SourcesEnum
                 {
                     /// <summary>Unspecified.</summary>
@@ -1244,13 +1244,13 @@ namespace Google.Apis.PeopleService.v1
             [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object PersonFields { get; set; }
 
-            /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
-            /// ReadSourceType.PROFILE if not set.</summary>
+            /// <summary>Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
+            /// READ_SOURCE_TYPE_PROFILE if not set.</summary>
             [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SourcesEnum> Sources { get; set; }
 
-            /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
-            /// ReadSourceType.PROFILE if not set.</summary>
+            /// <summary>Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
+            /// READ_SOURCE_TYPE_PROFILE if not set.</summary>
             public enum SourcesEnum
             {
                 /// <summary>Unspecified.</summary>
@@ -1388,13 +1388,13 @@ namespace Google.Apis.PeopleService.v1
             [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object PersonFields { get; set; }
 
-            /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
-            /// ReadSourceType.PROFILE if not set.</summary>
+            /// <summary>Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
+            /// READ_SOURCE_TYPE_PROFILE if not set.</summary>
             [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SourcesEnum> Sources { get; set; }
 
-            /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
-            /// ReadSourceType.PROFILE if not set.</summary>
+            /// <summary>Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
+            /// READ_SOURCE_TYPE_PROFILE if not set.</summary>
             public enum SourcesEnum
             {
                 /// <summary>Unspecified.</summary>
@@ -1499,13 +1499,13 @@ namespace Google.Apis.PeopleService.v1
             [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object RequestMaskIncludeField { get; set; }
 
-            /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.PROFILE and
-            /// ReadSourceType.CONTACT if not set.</summary>
+            /// <summary>Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_PROFILE and
+            /// READ_SOURCE_TYPE_CONTACT if not set.</summary>
             [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SourcesEnum> Sources { get; set; }
 
-            /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.PROFILE and
-            /// ReadSourceType.CONTACT if not set.</summary>
+            /// <summary>Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_PROFILE and
+            /// READ_SOURCE_TYPE_CONTACT if not set.</summary>
             public enum SourcesEnum
             {
                 /// <summary>Unspecified.</summary>
@@ -1616,13 +1616,13 @@ namespace Google.Apis.PeopleService.v1
             [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
-            /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
-            /// ReadSourceType.PROFILE if not set.</summary>
+            /// <summary>Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
+            /// READ_SOURCE_TYPE_PROFILE if not set.</summary>
             [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SourcesEnum> Sources { get; set; }
 
-            /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
-            /// ReadSourceType.PROFILE if not set.</summary>
+            /// <summary>Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
+            /// READ_SOURCE_TYPE_PROFILE if not set.</summary>
             public enum SourcesEnum
             {
                 /// <summary>Unspecified.</summary>
@@ -2048,13 +2048,13 @@ namespace Google.Apis.PeopleService.v1
             [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object PersonFields { get; set; }
 
-            /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
-            /// ReadSourceType.PROFILE if not set.</summary>
+            /// <summary>Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
+            /// READ_SOURCE_TYPE_PROFILE if not set.</summary>
             [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SourcesEnum> Sources { get; set; }
 
-            /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
-            /// ReadSourceType.PROFILE if not set.</summary>
+            /// <summary>Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
+            /// READ_SOURCE_TYPE_PROFILE if not set.</summary>
             public enum SourcesEnum
             {
                 /// <summary>Unspecified.</summary>
@@ -2496,8 +2496,8 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("readMask")]
         public virtual object ReadMask { get; set; }
 
-        /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
-        /// ReadSourceType.PROFILE if not set.</summary>
+        /// <summary>Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
+        /// READ_SOURCE_TYPE_PROFILE if not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
         public virtual System.Collections.Generic.IList<string> Sources { get; set; }
 
@@ -3735,8 +3735,8 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("photoBytes")]
         public virtual string PhotoBytes { get; set; }
 
-        /// <summary>Optional. A mask of what source types to return. Defaults to ReadSourceType.CONTACT and
-        /// ReadSourceType.PROFILE if not set.</summary>
+        /// <summary>Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
+        /// READ_SOURCE_TYPE_PROFILE if not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
         public virtual System.Collections.Generic.IList<string> Sources { get; set; }
 

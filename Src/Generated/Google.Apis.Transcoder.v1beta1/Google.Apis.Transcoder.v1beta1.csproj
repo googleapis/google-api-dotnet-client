@@ -2,8 +2,8 @@
 
   <!-- nupkg information -->
   <PropertyGroup>
-    <Title>Google.Apis.DisplayVideo.v1beta2 Client Library</Title>
-    <Version>1.49.0.2121</Version>
+    <Title>Google.Apis.Transcoder.v1beta1 Client Library</Title>
+    <Version>1.49.0.2141</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>
@@ -13,7 +13,7 @@
     <RepositoryUrl>https://github.com/google/google-api-dotnet-client</RepositoryUrl>
     <PackageIconUrl>https://www.gstatic.com/images/branding/product/1x/google_developers_64dp.png</PackageIconUrl>
     <Description>
-      Google APIs Client Library for working with Displayvideo v1beta2.
+      Google APIs Client Library for working with Transcoder v1beta1.
 
       Supported Platforms:
       - .NET Framework 4.5+
@@ -32,7 +32,7 @@
       - Xamarin
 
       More documentation on the API is available at:
-      https://developers.google.com/api-client-library/dotnet/apis/displayvideo/v1beta2
+      https://developers.google.com/api-client-library/dotnet/apis/transcoder/v1beta1
 
       The package source code is available at:
       https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated

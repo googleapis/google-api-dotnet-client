@@ -6716,6 +6716,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// examples of user input) to your intent.</summary>
     public class GoogleCloudDialogflowCxV3beta1Intent : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Human readable description for better understanding an intent like its scope, content,
+        /// result etc. Maximum character limit: 140 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
         /// <summary>Required. The human-readable name of the intent, unique within the agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -6726,6 +6731,15 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// negative examples that triggers no-match event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isFallback")]
         public virtual System.Nullable<bool> IsFallback { get; set; }
+
+        /// <summary>Optional. The key/value metadata to label an intent. Labels can contain lowercase letters, digits
+        /// and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets.
+        /// Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128
+        /// bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels
+        /// include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a
+        /// head intent. "sys-contextual" means the intent is a contextual intent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The unique identifier of the intent. Required for the Intents.UpdateIntent method.
         /// Intents.CreateIntent populates the name automatically. Format:
@@ -7047,6 +7061,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// model retraining or change in implementation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>The event that matched the query. Only filled for `EVENT` match type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("event")]
+        public virtual string Event__ { get; set; }
 
         /// <summary>The Intent that matched the query. Some, not all fields are filled in this message, including but
         /// not limited to: `name` and `display_name`. Only filled for `INTENT` match type.</summary>
@@ -10946,13 +10964,6 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Metadata returned for the TestCases.RunTestCase long running operation.</summary>
-    public class GoogleCloudDialogflowV3alpha1RunTestCaseMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

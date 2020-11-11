@@ -1328,6 +1328,67 @@ namespace Google.Apis.ServiceUsage.v1beta1
 
             }
 
+            /// <summary>Create or update multiple admin overrides atomically, all on the same consumer, but on many
+            /// different metrics or limits. The name field in the quota override message should not be set.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">The resource name of the consumer. An example name would be:
+            /// `projects/123/services/compute.googleapis.com`</param>
+            public virtual ImportAdminOverridesRequest ImportAdminOverrides(Google.Apis.ServiceUsage.v1beta1.Data.ImportAdminOverridesRequest body, string parent)
+            {
+                return new ImportAdminOverridesRequest(service, body, parent);
+            }
+
+            /// <summary>Create or update multiple admin overrides atomically, all on the same consumer, but on many
+            /// different metrics or limits. The name field in the quota override message should not be set.</summary>
+            public class ImportAdminOverridesRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.Operation>
+            {
+                /// <summary>Constructs a new ImportAdminOverrides request.</summary>
+                public ImportAdminOverridesRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceUsage.v1beta1.Data.ImportAdminOverridesRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The resource name of the consumer. An example name would be:
+                /// `projects/123/services/compute.googleapis.com`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ServiceUsage.v1beta1.Data.ImportAdminOverridesRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "importAdminOverrides";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+parent}/consumerQuotaMetrics:importAdminOverrides";
+
+                /// <summary>Initializes ImportAdminOverrides parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+/[^/]+/services/[^/]+$",
+                    });
+                }
+
+            }
+
             /// <summary>Create or update multiple consumer overrides atomically, all on the same consumer, but on many
             /// different metrics or limits. The name field in the quota override message should not be set.</summary>
             /// <param name="body">The body of the request.</param>
@@ -2034,7 +2095,7 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         /// <summary>URL of the provider's public key set to validate signature of the JWT. See [OpenID
         /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). Optional if the key
         /// set document: - can be retrieved from [OpenID Discovery](https://openid.net/specs/openid-connect-discovery-
-        /// 1_0.html of the issuer. - can be inferred from the email domain of the issuer (e.g. a Google service
+        /// 1_0.html) of the issuer. - can be inferred from the email domain of the issuer (e.g. a Google service
         /// account). Example: https://www.googleapis.com/oauth2/v1/certs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jwksUri")]
         public virtual string JwksUri { get; set; }
@@ -3174,6 +3235,24 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         /// <summary>Selects a method to which this rule applies. Refer to selector for syntax details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selector")]
         public virtual string Selector { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for ImportAdminOverrides</summary>
+    public class ImportAdminOverridesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether to force the creation of the quota overrides. If creating an override would cause the
+        /// effective quota for the consumer to decrease by more than 10 percent, the call is rejected, as a safety
+        /// measure to avoid accidentally decreasing quota too quickly. Setting the force parameter to true ignores this
+        /// restriction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; }
+
+        /// <summary>The import data is specified in the request message itself</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineSource")]
+        public virtual OverrideInlineSource InlineSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

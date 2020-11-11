@@ -273,6 +273,7 @@ namespace Google.Apis.RealTimeBidding.v1
         {
             this.service = service;
             Creatives = new CreativesResource(service);
+            PretargetingConfigs = new PretargetingConfigsResource(service);
 
         }
 
@@ -492,6 +493,814 @@ namespace Google.Apis.RealTimeBidding.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^bidders/[^/]+$",
+                    });
+                }
+
+            }
+        }
+        /// <summary>Gets the PretargetingConfigs resource.</summary>
+        public virtual PretargetingConfigsResource PretargetingConfigs { get; }
+
+        /// <summary>The "pretargetingConfigs" collection of methods.</summary>
+        public class PretargetingConfigsResource
+        {
+            private const string Resource = "pretargetingConfigs";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public PretargetingConfigsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Activates a pretargeting configuration.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The name of the pretargeting configuration. Format:
+            /// bidders/{bidderAccountId}/pretargetingConfig/{configId}</param>
+            public virtual ActivateRequest Activate(Google.Apis.RealTimeBidding.v1.Data.ActivatePretargetingConfigRequest body, string name)
+            {
+                return new ActivateRequest(service, body, name);
+            }
+
+            /// <summary>Activates a pretargeting configuration.</summary>
+            public class ActivateRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.PretargetingConfig>
+            {
+                /// <summary>Constructs a new Activate request.</summary>
+                public ActivateRequest(Google.Apis.Services.IClientService service, Google.Apis.RealTimeBidding.v1.Data.ActivatePretargetingConfigRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The name of the pretargeting configuration. Format:
+                /// bidders/{bidderAccountId}/pretargetingConfig/{configId}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.RealTimeBidding.v1.Data.ActivatePretargetingConfigRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "activate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:activate";
+
+                /// <summary>Initializes Activate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+/pretargetingConfigs/[^/]+$",
+                    });
+                }
+
+            }
+
+            /// <summary>Adds targeted apps to the pretargeting configuration.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="pretargetingConfig">Required. The name of the pretargeting configuration. Format:
+            /// bidders/{bidderAccountId}/pretargetingConfig/{configId}</param>
+            public virtual AddTargetedAppsRequest AddTargetedApps(Google.Apis.RealTimeBidding.v1.Data.AddTargetedAppsRequest body, string pretargetingConfig)
+            {
+                return new AddTargetedAppsRequest(service, body, pretargetingConfig);
+            }
+
+            /// <summary>Adds targeted apps to the pretargeting configuration.</summary>
+            public class AddTargetedAppsRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.PretargetingConfig>
+            {
+                /// <summary>Constructs a new AddTargetedApps request.</summary>
+                public AddTargetedAppsRequest(Google.Apis.Services.IClientService service, Google.Apis.RealTimeBidding.v1.Data.AddTargetedAppsRequest body, string pretargetingConfig) : base(service)
+                {
+                    PretargetingConfig = pretargetingConfig;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The name of the pretargeting configuration. Format:
+                /// bidders/{bidderAccountId}/pretargetingConfig/{configId}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pretargetingConfig", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PretargetingConfig { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.RealTimeBidding.v1.Data.AddTargetedAppsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "addTargetedApps";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+pretargetingConfig}:addTargetedApps";
+
+                /// <summary>Initializes AddTargetedApps parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("pretargetingConfig", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pretargetingConfig",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+/pretargetingConfigs/[^/]+$",
+                    });
+                }
+
+            }
+
+            /// <summary>Adds targeted publishers to the pretargeting config.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="pretargetingConfig">Required. The name of the pretargeting configuration. Format:
+            /// bidders/{bidderAccountId}/pretargetingConfig/{configId}</param>
+            public virtual AddTargetedPublishersRequest AddTargetedPublishers(Google.Apis.RealTimeBidding.v1.Data.AddTargetedPublishersRequest body, string pretargetingConfig)
+            {
+                return new AddTargetedPublishersRequest(service, body, pretargetingConfig);
+            }
+
+            /// <summary>Adds targeted publishers to the pretargeting config.</summary>
+            public class AddTargetedPublishersRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.PretargetingConfig>
+            {
+                /// <summary>Constructs a new AddTargetedPublishers request.</summary>
+                public AddTargetedPublishersRequest(Google.Apis.Services.IClientService service, Google.Apis.RealTimeBidding.v1.Data.AddTargetedPublishersRequest body, string pretargetingConfig) : base(service)
+                {
+                    PretargetingConfig = pretargetingConfig;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The name of the pretargeting configuration. Format:
+                /// bidders/{bidderAccountId}/pretargetingConfig/{configId}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pretargetingConfig", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PretargetingConfig { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.RealTimeBidding.v1.Data.AddTargetedPublishersRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "addTargetedPublishers";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+pretargetingConfig}:addTargetedPublishers";
+
+                /// <summary>Initializes AddTargetedPublishers parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("pretargetingConfig", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pretargetingConfig",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+/pretargetingConfigs/[^/]+$",
+                    });
+                }
+
+            }
+
+            /// <summary>Adds targeted sites to the pretargeting configuration.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="pretargetingConfig">Required. The name of the pretargeting configuration. Format:
+            /// bidders/{bidderAccountId}/pretargetingConfig/{configId}</param>
+            public virtual AddTargetedSitesRequest AddTargetedSites(Google.Apis.RealTimeBidding.v1.Data.AddTargetedSitesRequest body, string pretargetingConfig)
+            {
+                return new AddTargetedSitesRequest(service, body, pretargetingConfig);
+            }
+
+            /// <summary>Adds targeted sites to the pretargeting configuration.</summary>
+            public class AddTargetedSitesRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.PretargetingConfig>
+            {
+                /// <summary>Constructs a new AddTargetedSites request.</summary>
+                public AddTargetedSitesRequest(Google.Apis.Services.IClientService service, Google.Apis.RealTimeBidding.v1.Data.AddTargetedSitesRequest body, string pretargetingConfig) : base(service)
+                {
+                    PretargetingConfig = pretargetingConfig;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The name of the pretargeting configuration. Format:
+                /// bidders/{bidderAccountId}/pretargetingConfig/{configId}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pretargetingConfig", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PretargetingConfig { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.RealTimeBidding.v1.Data.AddTargetedSitesRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "addTargetedSites";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+pretargetingConfig}:addTargetedSites";
+
+                /// <summary>Initializes AddTargetedSites parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("pretargetingConfig", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pretargetingConfig",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+/pretargetingConfigs/[^/]+$",
+                    });
+                }
+
+            }
+
+            /// <summary>Creates a pretargeting configuration. A pretargeting configuration's state
+            /// (PretargetingConfig.state) is active upon creation, and it will start to affect traffic shortly after. A
+            /// bidder may create a maximum of 10 pretargeting configurations. Attempts to exceed this maximum results
+            /// in a 400 bad request error.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. Name of the bidder to create the pretargeting configuration for. Format:
+            /// bidders/{bidderAccountId}</param>
+            public virtual CreateRequest Create(Google.Apis.RealTimeBidding.v1.Data.PretargetingConfig body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a pretargeting configuration. A pretargeting configuration's state
+            /// (PretargetingConfig.state) is active upon creation, and it will start to affect traffic shortly after. A
+            /// bidder may create a maximum of 10 pretargeting configurations. Attempts to exceed this maximum results
+            /// in a 400 bad request error.</summary>
+            public class CreateRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.PretargetingConfig>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.RealTimeBidding.v1.Data.PretargetingConfig body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Name of the bidder to create the pretargeting configuration for. Format:
+                /// bidders/{bidderAccountId}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.RealTimeBidding.v1.Data.PretargetingConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/pretargetingConfigs";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+$",
+                    });
+                }
+
+            }
+
+            /// <summary>Deletes a pretargeting configuration.</summary>
+            /// <param name="name">Required. The name of the pretargeting configuration to delete. Format:
+            /// bidders/{bidderAccountId}/pretargetingConfig/{configId}</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes a pretargeting configuration.</summary>
+            public class DeleteRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The name of the pretargeting configuration to delete. Format:
+                /// bidders/{bidderAccountId}/pretargetingConfig/{configId}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+/pretargetingConfigs/[^/]+$",
+                    });
+                }
+
+            }
+
+            /// <summary>Gets a pretargeting configuration.</summary>
+            /// <param name="name">Required. Name of the pretargeting configuration to get. Format:
+            /// bidders/{bidderAccountId}/pretargetingConfig/{configId}</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets a pretargeting configuration.</summary>
+            public class GetRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.PretargetingConfig>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Name of the pretargeting configuration to get. Format:
+                /// bidders/{bidderAccountId}/pretargetingConfig/{configId}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+/pretargetingConfigs/[^/]+$",
+                    });
+                }
+
+            }
+
+            /// <summary>Lists all pretargeting configurations for a single bidder.</summary>
+            /// <param name="parent">Required. Name of the bidder whose pretargeting configurations will be listed. Format:
+            /// bidders/{bidderAccountId}</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists all pretargeting configurations for a single bidder.</summary>
+            public class ListRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.ListPretargetingConfigsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Name of the bidder whose pretargeting configurations will be listed. Format:
+                /// bidders/{bidderAccountId}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>The maximum number of pretargeting configurations to return. If unspecified, at most 10
+                /// pretargeting configurations will be returned. The maximum value is 100; values above 100 will be
+                /// coerced to 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>A token identifying a page of results the server should return. This value is received from
+                /// a previous `ListPretargetingConfigs` call in
+                /// ListPretargetingConfigsResponse.nextPageToken.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/pretargetingConfigs";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+
+            }
+
+            /// <summary>Updates a pretargeting configuration.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Output only. Name of the pretargeting configuration that must follow the pattern
+            /// `bidders/{bidder_account_id}/pretargetingConfigs/{config_id}`</param>
+            public virtual PatchRequest Patch(Google.Apis.RealTimeBidding.v1.Data.PretargetingConfig body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates a pretargeting configuration.</summary>
+            public class PatchRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.PretargetingConfig>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.RealTimeBidding.v1.Data.PretargetingConfig body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Output only. Name of the pretargeting configuration that must follow the pattern
+                /// `bidders/{bidder_account_id}/pretargetingConfigs/{config_id}`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Field mask to use for partial in-place updates.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.RealTimeBidding.v1.Data.PretargetingConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+/pretargetingConfigs/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+
+            }
+
+            /// <summary>Removes targeted apps from the pretargeting configuration.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="pretargetingConfig">Required. The name of the pretargeting configuration. Format:
+            /// bidders/{bidderAccountId}/pretargetingConfig/{configId}</param>
+            public virtual RemoveTargetedAppsRequest RemoveTargetedApps(Google.Apis.RealTimeBidding.v1.Data.RemoveTargetedAppsRequest body, string pretargetingConfig)
+            {
+                return new RemoveTargetedAppsRequest(service, body, pretargetingConfig);
+            }
+
+            /// <summary>Removes targeted apps from the pretargeting configuration.</summary>
+            public class RemoveTargetedAppsRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.PretargetingConfig>
+            {
+                /// <summary>Constructs a new RemoveTargetedApps request.</summary>
+                public RemoveTargetedAppsRequest(Google.Apis.Services.IClientService service, Google.Apis.RealTimeBidding.v1.Data.RemoveTargetedAppsRequest body, string pretargetingConfig) : base(service)
+                {
+                    PretargetingConfig = pretargetingConfig;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The name of the pretargeting configuration. Format:
+                /// bidders/{bidderAccountId}/pretargetingConfig/{configId}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pretargetingConfig", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PretargetingConfig { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.RealTimeBidding.v1.Data.RemoveTargetedAppsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "removeTargetedApps";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+pretargetingConfig}:removeTargetedApps";
+
+                /// <summary>Initializes RemoveTargetedApps parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("pretargetingConfig", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pretargetingConfig",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+/pretargetingConfigs/[^/]+$",
+                    });
+                }
+
+            }
+
+            /// <summary>Removes targeted publishers from the pretargeting config.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="pretargetingConfig">Required. The name of the pretargeting configuration. Format:
+            /// bidders/{bidderAccountId}/pretargetingConfig/{configId}</param>
+            public virtual RemoveTargetedPublishersRequest RemoveTargetedPublishers(Google.Apis.RealTimeBidding.v1.Data.RemoveTargetedPublishersRequest body, string pretargetingConfig)
+            {
+                return new RemoveTargetedPublishersRequest(service, body, pretargetingConfig);
+            }
+
+            /// <summary>Removes targeted publishers from the pretargeting config.</summary>
+            public class RemoveTargetedPublishersRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.PretargetingConfig>
+            {
+                /// <summary>Constructs a new RemoveTargetedPublishers request.</summary>
+                public RemoveTargetedPublishersRequest(Google.Apis.Services.IClientService service, Google.Apis.RealTimeBidding.v1.Data.RemoveTargetedPublishersRequest body, string pretargetingConfig) : base(service)
+                {
+                    PretargetingConfig = pretargetingConfig;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The name of the pretargeting configuration. Format:
+                /// bidders/{bidderAccountId}/pretargetingConfig/{configId}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pretargetingConfig", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PretargetingConfig { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.RealTimeBidding.v1.Data.RemoveTargetedPublishersRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "removeTargetedPublishers";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+pretargetingConfig}:removeTargetedPublishers";
+
+                /// <summary>Initializes RemoveTargetedPublishers parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("pretargetingConfig", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pretargetingConfig",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+/pretargetingConfigs/[^/]+$",
+                    });
+                }
+
+            }
+
+            /// <summary>Removes targeted sites from the pretargeting configuration.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="pretargetingConfig">Required. The name of the pretargeting configuration. Format:
+            /// bidders/{bidderAccountId}/pretargetingConfig/{configId}</param>
+            public virtual RemoveTargetedSitesRequest RemoveTargetedSites(Google.Apis.RealTimeBidding.v1.Data.RemoveTargetedSitesRequest body, string pretargetingConfig)
+            {
+                return new RemoveTargetedSitesRequest(service, body, pretargetingConfig);
+            }
+
+            /// <summary>Removes targeted sites from the pretargeting configuration.</summary>
+            public class RemoveTargetedSitesRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.PretargetingConfig>
+            {
+                /// <summary>Constructs a new RemoveTargetedSites request.</summary>
+                public RemoveTargetedSitesRequest(Google.Apis.Services.IClientService service, Google.Apis.RealTimeBidding.v1.Data.RemoveTargetedSitesRequest body, string pretargetingConfig) : base(service)
+                {
+                    PretargetingConfig = pretargetingConfig;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The name of the pretargeting configuration. Format:
+                /// bidders/{bidderAccountId}/pretargetingConfig/{configId}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pretargetingConfig", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PretargetingConfig { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.RealTimeBidding.v1.Data.RemoveTargetedSitesRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "removeTargetedSites";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+pretargetingConfig}:removeTargetedSites";
+
+                /// <summary>Initializes RemoveTargetedSites parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("pretargetingConfig", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pretargetingConfig",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+/pretargetingConfigs/[^/]+$",
+                    });
+                }
+
+            }
+
+            /// <summary>Suspends a pretargeting configuration.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The name of the pretargeting configuration. Format:
+            /// bidders/{bidderAccountId}/pretargetingConfig/{configId}</param>
+            public virtual SuspendRequest Suspend(Google.Apis.RealTimeBidding.v1.Data.SuspendPretargetingConfigRequest body, string name)
+            {
+                return new SuspendRequest(service, body, name);
+            }
+
+            /// <summary>Suspends a pretargeting configuration.</summary>
+            public class SuspendRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.PretargetingConfig>
+            {
+                /// <summary>Constructs a new Suspend request.</summary>
+                public SuspendRequest(Google.Apis.Services.IClientService service, Google.Apis.RealTimeBidding.v1.Data.SuspendPretargetingConfigRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The name of the pretargeting configuration. Format:
+                /// bidders/{bidderAccountId}/pretargetingConfig/{configId}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.RealTimeBidding.v1.Data.SuspendPretargetingConfigRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "suspend";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:suspend";
+
+                /// <summary>Initializes Suspend parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+/pretargetingConfigs/[^/]+$",
                     });
                 }
 
@@ -1410,6 +2219,76 @@ namespace Google.Apis.RealTimeBidding.v1
 namespace Google.Apis.RealTimeBidding.v1.Data
 {    
 
+    /// <summary>A request to activate a pretargeting configuration. Sets the configuration's state to ACTIVE.</summary>
+    public class ActivatePretargetingConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request to start targeting the provided app IDs in a specific pretargeting configuration. The
+    /// pretargeting configuration itself specifies how these apps are targeted. in
+    /// PretargetingConfig.appTargeting.mobileAppTargeting.</summary>
+    public class AddTargetedAppsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of app IDs to target in the pretargeting configuration. These values will be added to the
+        /// list of targeted app IDs in PretargetingConfig.appTargeting.mobileAppTargeting.values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appIds")]
+        public virtual System.Collections.Generic.IList<string> AppIds { get; set; }
+
+        /// <summary>Required. The targeting mode that should be applied to the list of app IDs. If there are existing
+        /// targeted app IDs, must be equal to the existing
+        /// PretargetingConfig.appTargeting.mobileAppTargeting.targetingMode or a 400 bad request error will be
+        /// returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetingMode")]
+        public virtual string TargetingMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request to start targeting the provided publishers in a specific pretargeting configuration. The
+    /// pretargeting configuration itself specifies how these publishers are targeted in
+    /// PretargetingConfig.publisherTargeting.</summary>
+    public class AddTargetedPublishersRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of publisher IDs to target in the pretargeting configuration. These values will be added to
+        /// the list of targeted publisher IDs in PretargetingConfig.publisherTargeting.values. Publishers are
+        /// identified by their publisher ID from ads.txt / app-ads.txt. See https://iabtechlab.com/ads-txt/ and
+        /// https://iabtechlab.com/app-ads-txt/ for more details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisherIds")]
+        public virtual System.Collections.Generic.IList<string> PublisherIds { get; set; }
+
+        /// <summary>Required. The targeting mode that should be applied to the list of publisher IDs. If are existing
+        /// publisher IDs, must be equal to the existing PretargetingConfig.publisherTargeting.targetingMode or a 400
+        /// bad request error will be returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetingMode")]
+        public virtual string TargetingMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request to start targeting the provided sites in a specific pretargeting configuration. The
+    /// pretargeting configuration itself specifies how these sites are targeted in
+    /// PretargetingConfig.webTargeting.</summary>
+    public class AddTargetedSitesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of site URLs to target in the pretargeting configuration. These values will be added to the
+        /// list of targeted URLs in PretargetingConfig.webTargeting.values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sites")]
+        public virtual System.Collections.Generic.IList<string> Sites { get; set; }
+
+        /// <summary>Required. The targeting mode that should be applied to the list of site URLs. If there are existing
+        /// targeted sites, must be equal to the existing PretargetingConfig.webTargeting.targetingMode or a 400 bad
+        /// request error will be returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetingMode")]
+        public virtual string TargetingMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Detected advertiser and brand information.</summary>
     public class AdvertiserAndBrand : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1431,6 +2310,24 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// <summary>Brand name. Can be used to filter the response of the creatives.list method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brandName")]
         public virtual string BrandName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A subset of app inventory to target. Bid requests that match criteria in at least one of the specified
+    /// dimensions will be sent.</summary>
+    public class AppTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Lists of included and excluded mobile app categories as defined in
+        /// https://developers.google.com/adwords/api/docs/appendix/mobileappcategories.csv.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mobileAppCategoryTargeting")]
+        public virtual NumericTargetingDimension MobileAppCategoryTargeting { get; set; }
+
+        /// <summary>Targeted app IDs. App IDs can refer to those found in an app store or ones that are not published
+        /// in an app store. A maximum of 30,000 app IDs can be targeted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mobileAppTargeting")]
+        public virtual StringTargetingDimension MobileAppTargeting { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1544,6 +2441,21 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// <summary>A video creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("video")]
         public virtual VideoContent Video { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The dimensions of a creative. This applies to only HTML and Native creatives.</summary>
+    public class CreativeDimensions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The height of the creative in pixels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("height")]
+        public virtual System.Nullable<long> Height { get; set; }
+
+        /// <summary>The width of the creative in pixels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("width")]
+        public virtual System.Nullable<long> Width { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1778,6 +2690,16 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response for a request to get remarketing tag.</summary>
     public class GetRemarketingTagResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1878,6 +2800,22 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A response containing pretargeting configurations.</summary>
+    public class ListPretargetingConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token which can be passed to a subsequent call to the `ListPretargetingConfigs` method to
+        /// retrieve the next page of results in ListPretargetingConfigsRequest.pageToken.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of pretargeting configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pretargetingConfigs")]
+        public virtual System.Collections.Generic.IList<PretargetingConfig> PretargetingConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The list user list response.</summary>
     public class ListUserListsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1967,6 +2905,22 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Generic targeting used for targeting dimensions that contain a list of included and excluded numeric
+    /// IDs used in app, user list, geo, and vertical id targeting.</summary>
+    public class NumericTargetingDimension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The IDs excluded in a configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> ExcludedIds { get; set; }
+
+        /// <summary>The IDs included in a configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includedIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> IncludedIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A request to open a specified user list.</summary>
     public class OpenUserListRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2044,6 +2998,214 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("httpCookie")]
         public virtual HttpCookieEvidence HttpCookie { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Pretargeting configuration: a set of targeting dimensions applied at the pretargeting stage of the RTB
+    /// funnel. These control which inventory a bidder will receive bid requests for.</summary>
+    public class PretargetingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Targeting modes included by this configuration. A bid request must allow all the specified
+        /// targeting modes. An unset value allows all bid requests to be sent, regardless of which targeting modes they
+        /// allow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedUserTargetingModes")]
+        public virtual System.Collections.Generic.IList<string> AllowedUserTargetingModes { get; set; }
+
+        /// <summary>Targeting on a subset of app inventory. If APP is listed in targeted_environments, the specified
+        /// targeting is applied. A maximum of 30,000 app IDs can be targeted. An unset value for targeting allows all
+        /// app-based bid requests to be sent. Apps can either be targeting positively (bid requests will be sent only
+        /// if the destination app is listed in the targeting dimension) or negatively (bid requests will be sent only
+        /// if the destination app is not listed in the targeting dimension).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appTargeting")]
+        public virtual AppTargeting AppTargeting { get; set; }
+
+        /// <summary>Output only. The identifier that corresponds to this pretargeting configuration that helps buyers
+        /// track and attribute their spend across their own arbitrary divisions. If a bid request matches more than one
+        /// configuration, the buyer chooses which billing_id to attribute each of their bids.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingId")]
+        public virtual System.Nullable<long> BillingId { get; set; }
+
+        /// <summary>The diplay name associated with this configuration. This name must be unique among all the
+        /// pretargeting configurations a bidder has.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The sensitive content category label IDs excluded in this configuration. Bid requests for inventory
+        /// with any of the specified content label IDs will not be sent. Refer to this file
+        /// https://storage.googleapis.com/adx-rtb-dictionaries/content-labels.txt for category IDs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedContentLabelIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> ExcludedContentLabelIds { get; set; }
+
+        /// <summary>The geos included or excluded in this configuration defined in https://storage.googleapis.com/adx-
+        /// rtb-dictionaries/geo-table.csv</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geoTargeting")]
+        public virtual NumericTargetingDimension GeoTargeting { get; set; }
+
+        /// <summary>Creative dimensions included by this configuration. Only bid requests eligible for at least one of
+        /// the specified creative dimensions will be sent. An unset value allows all bid requests to be sent,
+        /// regardless of creative dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includedCreativeDimensions")]
+        public virtual System.Collections.Generic.IList<CreativeDimensions> IncludedCreativeDimensions { get; set; }
+
+        /// <summary>Environments that are being included. Bid requests will not be sent for a given environment if it
+        /// is not included. Further restrictions can be applied to included environments to target only a subset of its
+        /// inventory. An unset value includes all environments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includedEnvironments")]
+        public virtual System.Collections.Generic.IList<string> IncludedEnvironments { get; set; }
+
+        /// <summary>Creative formats included by this configuration. Only bid requests eligible for at least one of the
+        /// specified creative formats will be sent. An unset value will allow all bid requests to be sent, regardless
+        /// of format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includedFormats")]
+        public virtual System.Collections.Generic.IList<string> IncludedFormats { get; set; }
+
+        /// <summary>The languages included in this configuration, represented by their language code. See
+        /// https://developers.google.com/adwords/api/docs/appendix/languagecodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includedLanguages")]
+        public virtual System.Collections.Generic.IList<string> IncludedLanguages { get; set; }
+
+        /// <summary>The mobile operating systems included in this configuration as defined in
+        /// https://storage.googleapis.com/adx-rtb-dictionaries/mobile-os.csv</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includedMobileOperatingSystemIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> IncludedMobileOperatingSystemIds { get; set; }
+
+        /// <summary>The platforms included by this configration. Bid requests for devices with the specified platform
+        /// types will be sent. An unset value allows all bid requests to be sent, regardless of platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includedPlatforms")]
+        public virtual System.Collections.Generic.IList<string> IncludedPlatforms { get; set; }
+
+        /// <summary>User identifier types included in this configuration. At least one of the user identifier types
+        /// specified in this list must be available for the bid request to be sent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includedUserIdTypes")]
+        public virtual System.Collections.Generic.IList<string> IncludedUserIdTypes { get; set; }
+
+        /// <summary>The interstitial targeting specified for this configuration. The unset value will allow bid
+        /// requests to be sent regardless of whether they are for interstitials or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interstitialTargeting")]
+        public virtual string InterstitialTargeting { get; set; }
+
+        /// <summary>Output only. Existing included or excluded geos that are invalid. Previously targeted geos may
+        /// become invalid due to privacy restrictions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invalidGeoIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> InvalidGeoIds { get; set; }
+
+        /// <summary>The maximum QPS threshold for this configuration. The bidder should receive no more than this
+        /// number of bid requests matching this configuration per second across all their bidding endpoints among all
+        /// trading locations. Further information available at https://developers.google.com/authorized-buyers/rtb
+        /// /peer-guide</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximumQps")]
+        public virtual System.Nullable<long> MaximumQps { get; set; }
+
+        /// <summary>The targeted minimum viewability decile, ranging in values [0, 10]. A value of 5 means that the
+        /// configuration will only match adslots for which we predict at least 50% viewability. Values > 10 will be
+        /// rounded down to 10. An unset value or a value of 0 indicates that bid requests will be sent regardless of
+        /// viewability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumViewabilityDecile")]
+        public virtual System.Nullable<int> MinimumViewabilityDecile { get; set; }
+
+        /// <summary>Output only. Name of the pretargeting configuration that must follow the pattern
+        /// `bidders/{bidder_account_id}/pretargetingConfigs/{config_id}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Targeting on a subset of publisher inventory. Publishers can either be targeted positively (bid
+        /// requests will be sent only if the publisher is listed in the targeting dimension) or negatively (bid
+        /// requests will be sent only if the publisher is not listed in the targeting dimension). A maximum of 10,000
+        /// publisher IDs can be targeted. Publisher IDs are found in [ads.txt](https://iabtechlab.com/ads-txt/) / [app-
+        /// ads.txt](https://iabtechlab.com/app-ads-txt/) and in bid requests in the `BidRequest.publisher_id` field on
+        /// the [Google RTB protocol](https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-
+        /// proto) or the `BidRequest.site.publisher.id` / `BidRequest.app.publisher.id` field on the [OpenRTB
+        /// protocol](https://developers.google.com/authorized-buyers/rtb/downloads/openrtb-adx-proto).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisherTargeting")]
+        public virtual StringTargetingDimension PublisherTargeting { get; set; }
+
+        /// <summary>Output only. The state of this pretargeting configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The remarketing lists included or excluded in this configuration as defined in UserList.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userListTargeting")]
+        public virtual NumericTargetingDimension UserListTargeting { get; set; }
+
+        /// <summary>The verticals included or excluded in this configuration as defined in
+        /// https://developers.google.com/authorized-buyers/rtb/downloads/publisher-verticals</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verticalTargeting")]
+        public virtual NumericTargetingDimension VerticalTargeting { get; set; }
+
+        /// <summary>Targeting on a subset of site inventory. If WEB is listed in included_environments, the specified
+        /// targeting is applied. A maximum of 50,000 site URLs can be targeted. An unset value for targeting allows all
+        /// web-based bid requests to be sent. Sites can either be targeting positively (bid requests will be sent only
+        /// if the destination site is listed in the targeting dimension) or negatively (bid requests will be sent only
+        /// if the destination site is not listed in the pretargeting configuration).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webTargeting")]
+        public virtual StringTargetingDimension WebTargeting { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request to stop targeting the provided apps in a specific pretargeting configuration. The
+    /// pretargeting configuration itself specifies how these apps are targeted. in
+    /// PretargetingConfig.appTargeting.mobileAppTargeting.</summary>
+    public class RemoveTargetedAppsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of app IDs to stop targeting in the pretargeting configuration. These values will be removed
+        /// from the list of targeted app IDs in PretargetingConfig.appTargeting.mobileAppTargeting.values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appIds")]
+        public virtual System.Collections.Generic.IList<string> AppIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request to stop targeting publishers in a specific configuration. The pretargeting configuration
+    /// itself specifies how these publishers are targeted in PretargetingConfig.publisherTargeting.</summary>
+    public class RemoveTargetedPublishersRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of publisher IDs to stop targeting in the pretargeting configuration. These values will be
+        /// removed from the list of targeted publisher IDs in PretargetingConfig.publisherTargeting.values. Publishers
+        /// are identified by their publisher ID from ads.txt / app-ads.txt. See https://iabtechlab.com/ads-txt/ and
+        /// https://iabtechlab.com/app-ads-txt/ for more details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisherIds")]
+        public virtual System.Collections.Generic.IList<string> PublisherIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request to stop targeting sites in a specific pretargeting configuration. The pretargeting
+    /// configuration itself specifies how these sites are targeted in PretargetingConfig.webTargeting.</summary>
+    public class RemoveTargetedSitesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of site URLs to stop targeting in the pretargeting configuration. These values will be
+        /// removed from the list of targeted URLs in PretargetingConfig.webTargeting.values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sites")]
+        public virtual System.Collections.Generic.IList<string> Sites { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Generic targeting with string values used in app, website and publisher targeting.</summary>
+    public class StringTargetingDimension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>How the items in this list should be targeted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetingMode")]
+        public virtual string TargetingMode { get; set; }
+
+        /// <summary>The values specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request to suspend a pretargeting configuration. Sets the configuration's state to
+    /// SUSPENDED.</summary>
+    public class SuspendPretargetingConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

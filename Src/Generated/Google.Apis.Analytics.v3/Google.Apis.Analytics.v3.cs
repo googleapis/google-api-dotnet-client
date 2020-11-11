@@ -45,9 +45,9 @@ namespace Google.Apis.Analytics.v3
         /// <summary>Gets the service base URI.</summary>
         public override string BaseUri =>
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://analytics.googleapis.com/analytics/v3/";
+            BaseUriOverride ?? "https://www.googleapis.com/analytics/v3/";
         #else
-            "https://analytics.googleapis.com/analytics/v3/";
+            "https://www.googleapis.com/analytics/v3/";
         #endif
 
         /// <summary>Gets the service base path.</summary>
@@ -55,7 +55,7 @@ namespace Google.Apis.Analytics.v3
 
         #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://analytics.googleapis.com/batch/analytics/v3";
+        public override string BatchUri => "https://www.googleapis.com/batch/analytics/v3";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch/analytics/v3";

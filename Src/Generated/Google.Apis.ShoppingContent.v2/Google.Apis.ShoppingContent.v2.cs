@@ -1650,7 +1650,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Invokes a fetch for the datafeed in your Merchant Center account.</summary>
+        /// <summary>Invokes a fetch for the datafeed in your Merchant Center account. If you need to call this method
+        /// more than once per day, we recommend you use the Products service to update your product data.</summary>
         /// <param name="merchantId">The ID of the account that manages the datafeed. This account cannot be a multi-client
         /// account.</param>
         /// <param name="datafeedId">The ID of the datafeed to be fetched.</param>
@@ -1659,7 +1660,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new FetchnowRequest(service, merchantId, datafeedId);
         }
 
-        /// <summary>Invokes a fetch for the datafeed in your Merchant Center account.</summary>
+        /// <summary>Invokes a fetch for the datafeed in your Merchant Center account. If you need to call this method
+        /// more than once per day, we recommend you use the Products service to update your product data.</summary>
         public class FetchnowRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.DatafeedsFetchNowResponse>
         {
             /// <summary>Constructs a new Fetchnow request.</summary>
@@ -2759,19 +2761,21 @@ namespace Google.Apis.ShoppingContent.v2
         /// account.</param>
         /// <param name="accountId">The ID of the account for which GMB access is
         /// requested.</param>
-        public virtual RequestgmbaccessRequest Requestgmbaccess(ulong merchantId, ulong accountId)
+        /// <param name="gmbEmail">The email of the Google My Business account.</param>
+        public virtual RequestgmbaccessRequest Requestgmbaccess(ulong merchantId, ulong accountId, string gmbEmail)
         {
-            return new RequestgmbaccessRequest(service, merchantId, accountId);
+            return new RequestgmbaccessRequest(service, merchantId, accountId, gmbEmail);
         }
 
         /// <summary>Requests access to a specified Google My Business account.</summary>
         public class RequestgmbaccessRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.LiasettingsRequestGmbAccessResponse>
         {
             /// <summary>Constructs a new Requestgmbaccess request.</summary>
-            public RequestgmbaccessRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId) : base(service)
+            public RequestgmbaccessRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId, string gmbEmail) : base(service)
             {
                 MerchantId = merchantId;
                 AccountId = accountId;
+                GmbEmail = gmbEmail;
                 InitParameters();
             }
 
@@ -2788,7 +2792,7 @@ namespace Google.Apis.ShoppingContent.v2
 
             /// <summary>The email of the Google My Business account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("gmbEmail", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string GmbEmail { get; set; }
+            public virtual string GmbEmail { get; private set; }
 
 
             /// <summary>Gets the method name.</summary>
@@ -2824,7 +2828,7 @@ namespace Google.Apis.ShoppingContent.v2
                 RequestParameters.Add("gmbEmail", new Google.Apis.Discovery.Parameter
                 {
                     Name = "gmbEmail",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -2922,19 +2926,30 @@ namespace Google.Apis.ShoppingContent.v2
         /// account.</param>
         /// <param name="accountId">The ID of the account that manages the order. This cannot be a
         /// multi-client account.</param>
-        public virtual SetinventoryverificationcontactRequest Setinventoryverificationcontact(ulong merchantId, ulong accountId)
+        /// <param name="country">The country for which inventory verification is
+        /// requested.</param>
+        /// <param name="language">The language for which inventory verification is
+        /// requested.</param>
+        /// <param name="contactName">The name of the inventory verification contact.</param>
+        ///
+        /// <param name="contactEmail">The email of the inventory verification contact.</param>
+        public virtual SetinventoryverificationcontactRequest Setinventoryverificationcontact(ulong merchantId, ulong accountId, string country, string language, string contactName, string contactEmail)
         {
-            return new SetinventoryverificationcontactRequest(service, merchantId, accountId);
+            return new SetinventoryverificationcontactRequest(service, merchantId, accountId, country, language, contactName, contactEmail);
         }
 
         /// <summary>Sets the inventory verification contract for the specified country.</summary>
         public class SetinventoryverificationcontactRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.LiasettingsSetInventoryVerificationContactResponse>
         {
             /// <summary>Constructs a new Setinventoryverificationcontact request.</summary>
-            public SetinventoryverificationcontactRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId) : base(service)
+            public SetinventoryverificationcontactRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId, string country, string language, string contactName, string contactEmail) : base(service)
             {
                 MerchantId = merchantId;
                 AccountId = accountId;
+                Country = country;
+                Language = language;
+                ContactName = contactName;
+                ContactEmail = contactEmail;
                 InitParameters();
             }
 
@@ -2949,21 +2964,21 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
-            /// <summary>The email of the inventory verification contact.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("contactEmail", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ContactEmail { get; set; }
-
-            /// <summary>The name of the inventory verification contact.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("contactName", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ContactName { get; set; }
-
             /// <summary>The country for which inventory verification is requested.</summary>
             [Google.Apis.Util.RequestParameterAttribute("country", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Country { get; set; }
+            public virtual string Country { get; private set; }
 
             /// <summary>The language for which inventory verification is requested.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Language { get; set; }
+            public virtual string Language { get; private set; }
+
+            /// <summary>The name of the inventory verification contact.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("contactName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ContactName { get; private set; }
+
+            /// <summary>The email of the inventory verification contact.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("contactEmail", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ContactEmail { get; private set; }
 
 
             /// <summary>Gets the method name.</summary>
@@ -2996,26 +3011,10 @@ namespace Google.Apis.ShoppingContent.v2
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("contactEmail", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "contactEmail",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("contactName", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "contactName",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("country", new Google.Apis.Discovery.Parameter
                 {
                     Name = "country",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -3023,7 +3022,23 @@ namespace Google.Apis.ShoppingContent.v2
                 RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
                 {
                     Name = "language",
-                    IsRequired = false,
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("contactName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "contactName",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("contactEmail", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "contactEmail",
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -3038,19 +3053,22 @@ namespace Google.Apis.ShoppingContent.v2
         /// account.</param>
         /// <param name="accountId">The ID of the account for which to retrieve accessible Google My
         /// Business accounts.</param>
-        public virtual SetposdataproviderRequest Setposdataprovider(ulong merchantId, ulong accountId)
+        /// <param name="country">The country for which the POS data provider is
+        /// selected.</param>
+        public virtual SetposdataproviderRequest Setposdataprovider(ulong merchantId, ulong accountId, string country)
         {
-            return new SetposdataproviderRequest(service, merchantId, accountId);
+            return new SetposdataproviderRequest(service, merchantId, accountId, country);
         }
 
         /// <summary>Sets the POS data provider for the specified country.</summary>
         public class SetposdataproviderRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.LiasettingsSetPosDataProviderResponse>
         {
             /// <summary>Constructs a new Setposdataprovider request.</summary>
-            public SetposdataproviderRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId) : base(service)
+            public SetposdataproviderRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId, string country) : base(service)
             {
                 MerchantId = merchantId;
                 AccountId = accountId;
+                Country = country;
                 InitParameters();
             }
 
@@ -3067,7 +3085,7 @@ namespace Google.Apis.ShoppingContent.v2
 
             /// <summary>The country for which the POS data provider is selected.</summary>
             [Google.Apis.Util.RequestParameterAttribute("country", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Country { get; set; }
+            public virtual string Country { get; private set; }
 
             /// <summary>The ID of POS data provider.</summary>
             [Google.Apis.Util.RequestParameterAttribute("posDataProviderId", Google.Apis.Util.RequestParameterType.Query)]
@@ -3111,7 +3129,7 @@ namespace Google.Apis.ShoppingContent.v2
                 RequestParameters.Add("country", new Google.Apis.Discovery.Parameter
                 {
                     Name = "country",
-                    IsRequired = false,
+                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -12028,7 +12046,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
         public virtual System.Nullable<long> BatchId { get; set; }
 
-        /// <summary>The inventory to submit. Set this only if the method is `inventory`.</summary>
+        /// <summary>The inventory to submit. This should be set only if the method is `inventory`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventory")]
         public virtual PosInventory Inventory { get; set; }
 
@@ -12041,15 +12059,15 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; }
 
-        /// <summary>The sale information to submit. Set this only if the method is `sale`.</summary>
+        /// <summary>The sale information to submit. This should be set only if the method is `sale`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sale")]
         public virtual PosSale Sale { get; set; }
 
-        /// <summary>The store information to submit. Set this only if the method is `insert`.</summary>
+        /// <summary>The store information to submit. This should be set only if the method is `insert`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("store")]
         public virtual PosStore Store { get; set; }
 
-        /// <summary>The store code. Set this only if the method is `delete` or `get`.</summary>
+        /// <summary>The store code. This should be set only if the method is `delete` or `get`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; }
 
@@ -12504,7 +12522,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalProductTypes")]
         public virtual System.Collections.Generic.IList<string> AdditionalProductTypes { get; set; }
 
-        /// <summary>Set to true if the item is targeted towards adults.</summary>
+        /// <summary>Should be set to true if the item is targeted towards adults.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adult")]
         public virtual System.Nullable<bool> Adult { get; set; }
 
@@ -13128,7 +13146,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
 
-        /// <summary>Set to true if tax is charged on shipping.</summary>
+        /// <summary>Should be set to true if tax is charged on shipping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxShip")]
         public virtual System.Nullable<bool> TaxShip { get; set; }
 

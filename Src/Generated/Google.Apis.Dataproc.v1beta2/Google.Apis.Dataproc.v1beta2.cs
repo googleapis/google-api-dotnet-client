@@ -5483,8 +5483,6 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>Associates members with a role.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
-        /// bindings-by-ID API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
         public virtual string BindingId { get; set; }
 
@@ -6517,7 +6515,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("keystoreUri")]
         public virtual string KeystoreUri { get; set; }
 
-        /// <summary>Required. The uri of the KMS key used to encrypt various sensitive files.</summary>
+        /// <summary>Optional. The uri of the KMS key used to encrypt various sensitive files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyUri")]
         public virtual string KmsKeyUri { get; set; }
 
@@ -6526,7 +6524,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("realm")]
         public virtual string Realm { get; set; }
 
-        /// <summary>Required. The Cloud Storage URI of a KMS encrypted file containing the root principal
+        /// <summary>Optional. The Cloud Storage URI of a KMS encrypted file containing the root principal
         /// password.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootPrincipalPasswordUri")]
         public virtual string RootPrincipalPasswordUri { get; set; }

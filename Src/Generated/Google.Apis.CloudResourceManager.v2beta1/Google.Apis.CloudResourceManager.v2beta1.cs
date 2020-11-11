@@ -283,9 +283,9 @@ namespace Google.Apis.CloudResourceManager.v2beta1
         /// <summary>Creates a Folder in the resource hierarchy. Returns an Operation which can be used to track the
         /// progress of the folder creation workflow. Upon success the Operation.response field will be populated with
         /// the created Folder. In order to succeed, the addition of this new Folder must not violate the Folder naming,
-        /// height or fanout constraints. + The Folder's display_name must be distinct from all other Folder's that
-        /// share its parent. + The addition of the Folder must not cause the active Folder hierarchy to exceed a height
-        /// of 10. Note, the full active + deleted Folder hierarchy is allowed to reach a height of 20; this provides
+        /// height or fanout constraints. + The Folder's display_name must be distinct from all other Folders that share
+        /// its parent. + The addition of the Folder must not cause the active Folder hierarchy to exceed a height of
+        /// 10. Note, the full active + deleted Folder hierarchy is allowed to reach a height of 20; this provides
         /// additional headroom when moving folders that contain deleted folders. + The addition of the Folder must not
         /// cause the total number of Folders under its parent to exceed 300. If the operation fails due to a folder
         /// constraint violation, some errors may be returned by the CreateFolder request, with status code
@@ -301,9 +301,9 @@ namespace Google.Apis.CloudResourceManager.v2beta1
         /// <summary>Creates a Folder in the resource hierarchy. Returns an Operation which can be used to track the
         /// progress of the folder creation workflow. Upon success the Operation.response field will be populated with
         /// the created Folder. In order to succeed, the addition of this new Folder must not violate the Folder naming,
-        /// height or fanout constraints. + The Folder's display_name must be distinct from all other Folder's that
-        /// share its parent. + The addition of the Folder must not cause the active Folder hierarchy to exceed a height
-        /// of 10. Note, the full active + deleted Folder hierarchy is allowed to reach a height of 20; this provides
+        /// height or fanout constraints. + The Folder's display_name must be distinct from all other Folders that share
+        /// its parent. + The addition of the Folder must not cause the active Folder hierarchy to exceed a height of
+        /// 10. Note, the full active + deleted Folder hierarchy is allowed to reach a height of 20; this provides
         /// additional headroom when moving folders that contain deleted folders. + The addition of the Folder must not
         /// cause the total number of Folders under its parent to exceed 300. If the operation fails due to a folder
         /// constraint violation, some errors may be returned by the CreateFolder request, with status code
@@ -705,7 +705,7 @@ namespace Google.Apis.CloudResourceManager.v2beta1
         /// they violate either the display_name formatting rules or naming constraints described in the CreateFolder
         /// documentation. The Folder's display name must start and end with a letter or digit, may contain letters,
         /// digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the
-        /// regular expression: [\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?. The caller must have
+        /// regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`. The caller must have
         /// `resourcemanager.folders.update` permission on the identified folder. If the update fails due to the unique
         /// name constraint then a PreconditionFailure explaining this violation will be returned in the Status.details
         /// field.</summary>
@@ -721,7 +721,7 @@ namespace Google.Apis.CloudResourceManager.v2beta1
         /// they violate either the display_name formatting rules or naming constraints described in the CreateFolder
         /// documentation. The Folder's display name must start and end with a letter or digit, may contain letters,
         /// digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the
-        /// regular expression: [\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?. The caller must have
+        /// regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`. The caller must have
         /// `resourcemanager.folders.update` permission on the identified folder. If the update fails due to the unique
         /// name constraint then a PreconditionFailure explaining this violation will be returned in the Status.details
         /// field.</summary>
@@ -1147,8 +1147,6 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
-        /// bindings-by-ID API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
         public virtual string BindingId { get; set; }
 
@@ -1186,6 +1184,56 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata describing a long running folder operation</summary>
+    public class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the folder or organization we are either creating the folder under or moving
+        /// the folder to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationParent")]
+        public virtual string DestinationParent { get; set; }
+
+        /// <summary>The display name of the folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The type of this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
+        public virtual string OperationType { get; set; }
+
+        /// <summary>The resource name of the folder's parent. Only applicable when the operation_type is
+        /// MOVE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceParent")]
+        public virtual string SourceParent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata describing a long running folder operation</summary>
+    public class CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the folder or organization we are either creating the folder under or moving
+        /// the folder to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationParent")]
+        public virtual string DestinationParent { get; set; }
+
+        /// <summary>The display name of the folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The type of this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
+        public virtual string OperationType { get; set; }
+
+        /// <summary>The resource name of the folder's parent. Only applicable when the operation_type is
+        /// MOVE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceParent")]
+        public virtual string SourceParent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1235,11 +1283,11 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>The folder’s display name. A folder’s display name must be unique amongst its siblings, e.g. no two
+        /// <summary>The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two
         /// folders with the same parent can share the same display name. The display name must start and end with a
         /// letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30
-        /// characters. This is captured by the regular expression: [\p{L}\p{N}]([\p{L}\p{N}_-
-        /// ]{0,28}[\p{L}\p{N}])?.</summary>
+        /// characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_-
+        /// ]{0,28}[\p{L}\p{N}])?`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -1253,7 +1301,7 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. The Folder’s parent's resource name. Updates to the folder's parent must be performed via
+        /// <summary>Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via
         /// MoveFolder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }

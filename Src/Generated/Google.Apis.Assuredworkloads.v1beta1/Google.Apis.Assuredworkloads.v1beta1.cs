@@ -921,6 +921,13 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Input only. The parent resource for the resources managed by this Assured Workload. May be either
+        /// an organization or a folder. Must be the same or a child of the Workload parent. If not specified all
+        /// resources are created under the Workload parent. Formats: folders/{folder_id}
+        /// organizations/{organization_id}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisionedResourcesParent")]
+        public virtual string ProvisionedResourcesParent { get; set; }
+
         /// <summary>Output only. The resources associated with this workload. These resources will be created when
         /// creating the workload. If any of the projects already exist, the workload creation will fail. Always read
         /// only.</summary>
@@ -1100,6 +1107,13 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         /// organizations/{organization}/locations/{location}/workloads/{workload} Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Input only. The parent resource for the resources managed by this Assured Workload. May be either
+        /// an organization or a folder. Must be the same or a child of the Workload parent. If not specified all
+        /// resources are created under the Workload parent. Formats: folders/{folder_id}
+        /// organizations/{organization_id}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisionedResourcesParent")]
+        public virtual string ProvisionedResourcesParent { get; set; }
 
         /// <summary>Output only. The resources associated with this workload. These resources will be created when
         /// creating the workload. If any of the projects already exist, the workload creation will fail. Always read

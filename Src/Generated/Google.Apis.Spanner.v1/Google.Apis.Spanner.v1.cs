@@ -4539,8 +4539,6 @@ namespace Google.Apis.Spanner.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
-        /// bindings-by-ID API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
         public virtual string BindingId { get; set; }
 
@@ -4971,7 +4969,7 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>The name of the field. For reads, this is the column name. For SQL queries, it is the column alias
         /// (e.g., `"Word"` in the query `"SELECT 'hello' AS Word"`), or the column name (e.g., `"ColName"` in the query
-        /// `"SELECT ColName FROM Table"`). Some columns might have an empty name (e.g., !"SELECT UPPER(ColName)"`).
+        /// `"SELECT ColName FROM Table"`). Some columns might have an empty name (e.g., `"SELECT UPPER(ColName)"`).
         /// Note that a query result can contain multiple fields with the same name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

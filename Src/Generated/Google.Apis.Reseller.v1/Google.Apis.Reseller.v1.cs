@@ -59,7 +59,7 @@ namespace Google.Apis.Reseller.v1
         public override string BatchPath => "batch/reseller/v1";
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Enterprise Apps Reseller API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Workspace Reseller API.</summary>
         public class Scope
         {
             /// <summary>Manage users on your domain</summary>
@@ -70,7 +70,7 @@ namespace Google.Apis.Reseller.v1
 
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Enterprise Apps Reseller API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Workspace Reseller API.</summary>
         public static class ScopeConstants
         {
             /// <summary>Manage users on your domain</summary>

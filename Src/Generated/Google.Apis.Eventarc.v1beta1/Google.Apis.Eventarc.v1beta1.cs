@@ -1326,6 +1326,9 @@ namespace Google.Apis.Eventarc.v1beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
+        public virtual string BindingId { get; set; }
+
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
         /// apply to the current request. However, a different role binding might grant the same role to one or more of
@@ -1381,8 +1384,7 @@ namespace Google.Apis.Eventarc.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
-        /// <summary>Optional. The region the Cloud Run service is deployed in. If not set, the location of the trigger
-        /// is used. For triggers in the "global" location, setting this field is mandatory.</summary>
+        /// <summary>Required. The region the Cloud Run service is deployed in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
 

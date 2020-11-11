@@ -737,8 +737,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. If notify_new_user is set, then email new user that they've been given
-                /// permissions on the resource.</summary>
+                /// <summary>Optional. If set, then email the new user notifying them that they've been granted
+                /// permissions to the resource.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("notifyNewUser", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> NotifyNewUser { get; set; }
 
@@ -2953,8 +2953,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. If notify_new_user is set, then email new user that they've been given
-                /// permissions on the resource.</summary>
+                /// <summary>Optional. If set, then email the new user notifying them that they've been granted
+                /// permissions to the resource.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("notifyNewUser", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> NotifyNewUser { get; set; }
 
@@ -4088,8 +4088,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     /// <summary>A resource message representing a Google Analytics account.</summary>
     public class GoogleAnalyticsAdminV1alphaAccount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Country of business. Must be a non-deprecated code for a UN M.49 region.
-        /// https://unicode.org/cldr/charts/latest/supplemental/territory_containment_un_m_49.html</summary>
+        /// <summary>Country of business. Must be a non-deprecated code for a UN M.49 region. https:
+        /// //unicode.org/cldr/charts/latest/supplem // ental/territory_containment_un_m_49.html</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
         public virtual string CountryCode { get; set; }
 
@@ -4243,13 +4243,14 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     /// <summary>Request message for BatchCreateUserLinks RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. If notify_new_users is set, then email new users that they've been given permissions on
-        /// the resource.</summary>
+        /// <summary>Optional. If set, then email the new users notifying them that they've been granted permissions to
+        /// the resource. Regardless of whether this is set or not, notify_new_user field inside each individual request
+        /// is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notifyNewUsers")]
         public virtual System.Nullable<bool> NotifyNewUsers { get; set; }
 
-        /// <summary>The requests specifying the user links to create. A maximum of 1000 user links can be created in a
-        /// batch.</summary>
+        /// <summary>Required. The requests specifying the user links to create. A maximum of 1000 user links can be
+        /// created in a batch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaCreateUserLinkRequest> Requests { get; set; }
 
@@ -4271,8 +4272,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     /// <summary>Request message for BatchDeleteUserLinks RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The requests specifying the user links to update. A maximum of 1000 user links can be updated in a
-        /// batch.</summary>
+        /// <summary>Required. The requests specifying the user links to update. A maximum of 1000 user links can be
+        /// updated in a batch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest> Requests { get; set; }
 
@@ -4294,8 +4295,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     /// <summary>Request message for BatchUpdateUserLinks RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The requests specifying the user links to update. A maximum of 1000 user links can be updated in a
-        /// batch.</summary>
+        /// <summary>Required. The requests specifying the user links to update. A maximum of 1000 user links can be
+        /// updated in a batch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest> Requests { get; set; }
 
@@ -4321,8 +4322,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     /// differ.</summary>
     public class GoogleAnalyticsAdminV1alphaCreateUserLinkRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. If notify_new_user is set, then email new user that they've been given permissions on the
-        /// resource.</summary>
+        /// <summary>Optional. If set, then email the new user notifying them that they've been granted permissions to
+        /// the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notifyNewUser")]
         public virtual System.Nullable<bool> NotifyNewUser { get; set; }
 

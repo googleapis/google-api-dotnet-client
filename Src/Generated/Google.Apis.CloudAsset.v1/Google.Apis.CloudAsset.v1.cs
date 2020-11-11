@@ -647,6 +647,318 @@ namespace Google.Apis.CloudAsset.v1
         }
 
 
+        /// <summary>Analyzes IAM policies to answer which identities have what accesses on which resources.</summary>
+        /// <param name="scope">Required. The relative name of the root asset. Only resources and IAM policies within the scope
+        /// will be analyzed. This can only be an organization number (such as "organizations/123"), a folder number (such as
+        /// "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as "projects/12345"). To
+        /// know how to get organization id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-
+        /// organization#retrieving_your_organization_id). To know how to get folder or project id, visit [here
+        /// ](https://cloud.google.com/resource-manager/docs/creating-managing-
+        /// folders#viewing_or_listing_folders_and_projects).</param>
+        public virtual AnalyzeIamPolicyRequest AnalyzeIamPolicy(string scope)
+        {
+            return new AnalyzeIamPolicyRequest(service, scope);
+        }
+
+        /// <summary>Analyzes IAM policies to answer which identities have what accesses on which resources.</summary>
+        public class AnalyzeIamPolicyRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.AnalyzeIamPolicyResponse>
+        {
+            /// <summary>Constructs a new AnalyzeIamPolicy request.</summary>
+            public AnalyzeIamPolicyRequest(Google.Apis.Services.IClientService service, string scope) : base(service)
+            {
+                Scope = scope;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The relative name of the root asset. Only resources and IAM policies within the scope
+            /// will be analyzed. This can only be an organization number (such as "organizations/123"), a folder number
+            /// (such as "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as
+            /// "projects/12345"). To know how to get organization id, visit [here ](https://cloud.google.com/resource-
+            /// manager/docs/creating-managing-organization#retrieving_your_organization_id). To know how to get folder
+            /// or project id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-
+            /// folders#viewing_or_listing_folders_and_projects).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Scope { get; private set; }
+
+            /// <summary>Optional. The permissions to appear in result.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("analysisQuery.accessSelector.permissions", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> AnalysisQueryAccessSelectorPermissions { get; set; }
+
+            /// <summary>Optional. The roles to appear in result.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("analysisQuery.accessSelector.roles", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> AnalysisQueryAccessSelectorRoles { get; set; }
+
+            /// <summary>Required. The identity appear in the form of members in [IAM policy
+            /// binding](https://cloud.google.com/iam/reference/rest/v1/Binding). The examples of supported forms are:
+            /// "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-
+            /// id@appspot.gserviceaccount.com". Notice that wildcard characters (such as * and ?) are not supported.
+            /// You must give a specific identity.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("analysisQuery.identitySelector.identity", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string AnalysisQueryIdentitySelectorIdentity { get; set; }
+
+            /// <summary>Optional. If true, the response will include access analysis from identities to resources via
+            /// service account impersonation. This is a very expensive operation, because many derived queries will be
+            /// executed. We highly recommend you use AssetService.AnalyzeIamPolicyLongrunning rpc instead. For example,
+            /// if the request analyzes for which resources user A has permission P, and there's an IAM policy states
+            /// user A has iam.serviceAccounts.getAccessToken permission to a service account SA, and there's another
+            /// IAM policy states service account SA has permission P to a GCP folder F, then user A potentially has
+            /// access to the GCP folder F. And those advanced analysis results will be included in
+            /// AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Another example, if the request
+            /// analyzes for who has permission P to a GCP folder F, and there's an IAM policy states user A has
+            /// iam.serviceAccounts.actAs permission to a service account SA, and there's another IAM policy states
+            /// service account SA has permission P to the GCP folder F, then user A potentially has access to the GCP
+            /// folder F. And those advanced analysis results will be included in
+            /// AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Default is false.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("analysisQuery.options.analyzeServiceAccountImpersonation", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> AnalysisQueryOptionsAnalyzeServiceAccountImpersonation { get; set; }
+
+            /// <summary>Optional. If true, the identities section of the result will expand any Google groups appearing
+            /// in an IAM policy binding. If IamPolicyAnalysisQuery.identity_selector is specified, the identity in the
+            /// result will be determined by the selector, and this flag is not allowed to set. Default is
+            /// false.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("analysisQuery.options.expandGroups", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> AnalysisQueryOptionsExpandGroups { get; set; }
+
+            /// <summary>Optional. If true and IamPolicyAnalysisQuery.resource_selector is not specified, the resource
+            /// section of the result will expand any resource attached to an IAM policy to include resources lower in
+            /// the resource hierarchy. For example, if the request analyzes for which resources user A has permission
+            /// P, and the results include an IAM policy with P on a GCP folder, the results will also include resources
+            /// in that folder with permission P. If true and IamPolicyAnalysisQuery.resource_selector is specified, the
+            /// resource section of the result will expand the specified resource to include resources lower in the
+            /// resource hierarchy. Only project or lower resources are supported. Folder and organization resource
+            /// cannot be used together with this option. For example, if the request analyzes for which users have
+            /// permission P on a GCP project with this option enabled, the results will include all users who have
+            /// permission P on that project or any lower resource. Default is false.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("analysisQuery.options.expandResources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> AnalysisQueryOptionsExpandResources { get; set; }
+
+            /// <summary>Optional. If true, the access section of result will expand any roles appearing in IAM policy
+            /// bindings to include their permissions. If IamPolicyAnalysisQuery.access_selector is specified, the
+            /// access section of the result will be determined by the selector, and this flag is not allowed to set.
+            /// Default is false.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("analysisQuery.options.expandRoles", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> AnalysisQueryOptionsExpandRoles { get; set; }
+
+            /// <summary>Optional. If true, the result will output group identity edges, starting from the binding's
+            /// group members, to any expanded identities. Default is false.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("analysisQuery.options.outputGroupEdges", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> AnalysisQueryOptionsOutputGroupEdges { get; set; }
+
+            /// <summary>Optional. If true, the result will output resource edges, starting from the policy attached
+            /// resource, to any expanded resources. Default is false.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("analysisQuery.options.outputResourceEdges", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> AnalysisQueryOptionsOutputResourceEdges { get; set; }
+
+            /// <summary>Required. The [full resource name] (https://cloud.google.com/asset-inventory/docs/resource-
+            /// name-format) of a resource of [supported resource types](https://cloud.google.com/asset-inventory/docs
+            /// /supported-asset-types#analyzable_asset_types).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("analysisQuery.resourceSelector.fullResourceName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string AnalysisQueryResourceSelectorFullResourceName { get; set; }
+
+            /// <summary>Optional. Amount of time executable has to complete. See JSON representation of
+            /// [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json). If this field is set with a
+            /// value less than the RPC deadline, and the execution of your query hasn't finished in the specified
+            /// execution timeout, you will get a response with partial result. Otherwise, your query's execution will
+            /// continue until the RPC deadline. If it's not finished until then, you will get a DEADLINE_EXCEEDED
+            /// error. Default is empty.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("executionTimeout", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object ExecutionTimeout { get; set; }
+
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "analyzeIamPolicy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+scope}:analyzeIamPolicy";
+
+            /// <summary>Initializes AnalyzeIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add("scope", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "scope",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
+                RequestParameters.Add("analysisQuery.accessSelector.permissions", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "analysisQuery.accessSelector.permissions",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("analysisQuery.accessSelector.roles", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "analysisQuery.accessSelector.roles",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("analysisQuery.identitySelector.identity", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "analysisQuery.identitySelector.identity",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("analysisQuery.options.analyzeServiceAccountImpersonation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "analysisQuery.options.analyzeServiceAccountImpersonation",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("analysisQuery.options.expandGroups", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "analysisQuery.options.expandGroups",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("analysisQuery.options.expandResources", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "analysisQuery.options.expandResources",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("analysisQuery.options.expandRoles", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "analysisQuery.options.expandRoles",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("analysisQuery.options.outputGroupEdges", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "analysisQuery.options.outputGroupEdges",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("analysisQuery.options.outputResourceEdges", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "analysisQuery.options.outputResourceEdges",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("analysisQuery.resourceSelector.fullResourceName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "analysisQuery.resourceSelector.fullResourceName",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("executionTimeout", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "executionTimeout",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+        }
+
+        /// <summary>Analyzes IAM policies asynchronously to answer which identities have what accesses on which
+        /// resources, and writes the analysis results to a Google Cloud Storage or a BigQuery destination. For Cloud
+        /// Storage destination, the output format is the JSON format that represents a AnalyzeIamPolicyResponse. This
+        /// method implements the google.longrunning.Operation, which allows you to track the operation status. We
+        /// recommend intervals of at least 2 seconds with exponential backoff retry to poll the operation result. The
+        /// metadata contains the request to help callers to map responses to requests.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="scope">Required. The relative name of the root asset. Only resources and IAM policies within the scope
+        /// will be analyzed. This can only be an organization number (such as "organizations/123"), a folder number (such as
+        /// "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as "projects/12345"). To
+        /// know how to get organization id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-
+        /// organization#retrieving_your_organization_id). To know how to get folder or project id, visit [here
+        /// ](https://cloud.google.com/resource-manager/docs/creating-managing-
+        /// folders#viewing_or_listing_folders_and_projects).</param>
+        public virtual AnalyzeIamPolicyLongrunningRequest AnalyzeIamPolicyLongrunning(Google.Apis.CloudAsset.v1.Data.AnalyzeIamPolicyLongrunningRequest body, string scope)
+        {
+            return new AnalyzeIamPolicyLongrunningRequest(service, body, scope);
+        }
+
+        /// <summary>Analyzes IAM policies asynchronously to answer which identities have what accesses on which
+        /// resources, and writes the analysis results to a Google Cloud Storage or a BigQuery destination. For Cloud
+        /// Storage destination, the output format is the JSON format that represents a AnalyzeIamPolicyResponse. This
+        /// method implements the google.longrunning.Operation, which allows you to track the operation status. We
+        /// recommend intervals of at least 2 seconds with exponential backoff retry to poll the operation result. The
+        /// metadata contains the request to help callers to map responses to requests.</summary>
+        public class AnalyzeIamPolicyLongrunningRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new AnalyzeIamPolicyLongrunning request.</summary>
+            public AnalyzeIamPolicyLongrunningRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAsset.v1.Data.AnalyzeIamPolicyLongrunningRequest body, string scope) : base(service)
+            {
+                Scope = scope;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The relative name of the root asset. Only resources and IAM policies within the scope
+            /// will be analyzed. This can only be an organization number (such as "organizations/123"), a folder number
+            /// (such as "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as
+            /// "projects/12345"). To know how to get organization id, visit [here ](https://cloud.google.com/resource-
+            /// manager/docs/creating-managing-organization#retrieving_your_organization_id). To know how to get folder
+            /// or project id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-
+            /// folders#viewing_or_listing_folders_and_projects).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Scope { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudAsset.v1.Data.AnalyzeIamPolicyLongrunningRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "analyzeIamPolicyLongrunning";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+scope}:analyzeIamPolicyLongrunning";
+
+            /// <summary>Initializes AnalyzeIamPolicyLongrunning parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add("scope", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "scope",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
+            }
+
+        }
+
         /// <summary>Batch gets the update history of assets that overlap a time window. For IAM_POLICY content, this
         /// API outputs history when the asset and its attached IAM POLICY both exist. This can create gaps in the
         /// output history. Otherwise, this API outputs history with asset in both non-delete or deleted status. If a
@@ -709,6 +1021,9 @@ namespace Google.Apis.CloudAsset.v1
                 /// <summary>The Cloud Access context manager Policy set on an asset.</summary>
                 [Google.Apis.Util.StringValueAttribute("ACCESS_POLICY")]
                 ACCESSPOLICY,
+                /// <summary>The runtime OS Inventory information.</summary>
+                [Google.Apis.Util.StringValueAttribute("OS_INVENTORY")]
+                OSINVENTORY,
             }
 
             /// <summary>End time of the time window (inclusive). If not specified, the current timestamp is used
@@ -1128,6 +1443,59 @@ namespace Google.Apis.CloudAsset.v1
 namespace Google.Apis.CloudAsset.v1.Data
 {    
 
+    /// <summary>Specifies roles and/or permissions to analyze, to determine both the identities possessing them and the
+    /// resources they control. If multiple values are specified, results will include roles or permissions matching any
+    /// of them. The total number of roles and permissions should be equal or less than 10.</summary>
+    public class AccessSelector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The permissions to appear in result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>Optional. The roles to appear in result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roles")]
+        public virtual System.Collections.Generic.IList<string> Roles { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request message for AssetService.AnalyzeIamPolicyLongrunning.</summary>
+    public class AnalyzeIamPolicyLongrunningRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The request query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisQuery")]
+        public virtual IamPolicyAnalysisQuery AnalysisQuery { get; set; }
+
+        /// <summary>Required. Output configuration indicating where the results will be output to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
+        public virtual IamPolicyAnalysisOutputConfig OutputConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A response message for AssetService.AnalyzeIamPolicy.</summary>
+    public class AnalyzeIamPolicyResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Represents whether all entries in the main_analysis and service_account_impersonation_analysis have
+        /// been fully explored to answer the query in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullyExplored")]
+        public virtual System.Nullable<bool> FullyExplored { get; set; }
+
+        /// <summary>The main analysis that matches the original request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mainAnalysis")]
+        public virtual IamPolicyAnalysis MainAnalysis { get; set; }
+
+        /// <summary>The service account impersonation analysis if
+        /// AnalyzeIamPolicyRequest.analyze_service_account_impersonation is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountImpersonationAnalysis")]
+        public virtual System.Collections.Generic.IList<IamPolicyAnalysis> ServiceAccountImpersonationAnalysis { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>An asset in Google Cloud. An asset can be any resource in the Google Cloud [resource
     /// hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), a resource outside
     /// the Google Cloud resource hierarchy (such as Google Kubernetes Engine clusters and objects), or a policy (e.g.
@@ -1179,6 +1547,12 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// different constraints set on a given resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgPolicy")]
         public virtual System.Collections.Generic.IList<GoogleCloudOrgpolicyV1Policy> OrgPolicy { get; set; }
+
+        /// <summary>A representation of runtime OS Inventory information. See [this
+        /// topic](https://cloud.google.com/compute/docs/instances/os-inventory-management) for more
+        /// information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osInventory")]
+        public virtual Inventory OsInventory { get; set; }
 
         /// <summary>A representation of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
@@ -1542,6 +1916,174 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// the same name "gs://bucket_name/object_name_prefix" already exists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uriPrefix")]
         public virtual string UriPrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An IAM role or permission under analysis.</summary>
+    public class GoogleCloudAssetV1Access : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The analysis state of this access.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisState")]
+        public virtual IamPolicyAnalysisState AnalysisState { get; set; }
+
+        /// <summary>The permission.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permission")]
+        public virtual string Permission { get; set; }
+
+        /// <summary>The role.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An access control list, derived from the above IAM policy binding, which contains a set of resources
+    /// and accesses. May include one item from each set to compose an access control entry. NOTICE that there could be
+    /// multiple access control lists for one IAM policy binding. The access control lists are created based on resource
+    /// and access combinations. For example, assume we have the following cases in one IAM policy binding: - Permission
+    /// P1 and P2 apply to resource R1 and R2; - Permission P3 applies to resource R2 and R3; This will result in the
+    /// following access control lists: - AccessControlList 1: [R1, R2], [P1, P2] - AccessControlList 2: [R2, R3],
+    /// [P3]</summary>
+    public class GoogleCloudAssetV1AccessControlList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The accesses that match one of the following conditions: - The access_selector, if it is specified
+        /// in request; - Otherwise, access specifiers reachable from the policy binding's role.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accesses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1Access> Accesses { get; set; }
+
+        /// <summary>Resource edges of the graph starting from the policy attached resource to any descendant resources.
+        /// The Edge.source_node contains the full resource name of a parent resource and Edge.target_node contains the
+        /// full resource name of a child resource. This field is present only if the output_resource_edges option is
+        /// enabled in request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceEdges")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1Edge> ResourceEdges { get; set; }
+
+        /// <summary>The resources that match one of the following conditions: - The resource_selector, if it is
+        /// specified in request; - Otherwise, resources reachable from the policy attached resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1Resource> Resources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A BigQuery destination.</summary>
+    public class GoogleCloudAssetV1BigQueryDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The BigQuery dataset in format "projects/projectId/datasets/datasetId", to which the
+        /// analysis results should be exported. If this dataset does not exist, the export call will return an
+        /// INVALID_ARGUMENT error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
+        public virtual string Dataset { get; set; }
+
+        /// <summary>The partition key for BigQuery partitioned table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionKey")]
+        public virtual string PartitionKey { get; set; }
+
+        /// <summary>Required. The prefix of the BigQuery tables to which the analysis results will be written. Tables
+        /// will be created based on this table_prefix if not exist: * _analysis table will contain export operation's
+        /// metadata. * _analysis_result will contain all the IamPolicyAnalysisResult. When [partition_key] is
+        /// specified, both tables will be partitioned based on the [partition_key].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tablePrefix")]
+        public virtual string TablePrefix { get; set; }
+
+        /// <summary>Optional. Specifies the action that occurs if the destination table or partition already exists.
+        /// The following values are supported: * WRITE_TRUNCATE: If the table or partition already exists, BigQuery
+        /// overwrites the entire table or all the partitions data. * WRITE_APPEND: If the table or partition already
+        /// exists, BigQuery appends the data to the table or the latest partition. * WRITE_EMPTY: If the table already
+        /// exists and contains data, an error is returned. The default value is WRITE_APPEND. Each action is atomic and
+        /// only occurs if BigQuery is able to complete the job successfully. Details are at
+        /// https://cloud.google.com/bigquery/docs/loading-data-
+        /// local#appending_to_or_overwriting_a_table_using_a_local_file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeDisposition")]
+        public virtual string WriteDisposition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A directional edge.</summary>
+    public class GoogleCloudAssetV1Edge : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The source node of the edge. For example, it could be a full resource name for a resource node or
+        /// an email of an identity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceNode")]
+        public virtual string SourceNode { get; set; }
+
+        /// <summary>The target node of the edge. For example, it could be a full resource name for a resource node or
+        /// an email of an identity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetNode")]
+        public virtual string TargetNode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Cloud Storage location.</summary>
+    public class GoogleCloudAssetV1GcsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The uri of the Cloud Storage object. It's the same uri that is used by gsutil. For
+        /// example: "gs://bucket_name/object_name". See [Quickstart: Using the gsutil tool]
+        /// (https://cloud.google.com/storage/docs/quickstart-gsutil) for examples.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An identity under analysis.</summary>
+    public class GoogleCloudAssetV1Identity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The analysis state of this identity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisState")]
+        public virtual IamPolicyAnalysisState AnalysisState { get; set; }
+
+        /// <summary>The identity name in any form of members appear in [IAM policy
+        /// binding](https://cloud.google.com/iam/reference/rest/v1/Binding), such as: - user:foo@google.com -
+        /// group:group1@google.com - serviceAccount:s1@prj1.iam.gserviceaccount.com - projectOwner:some_project_id -
+        /// domain:google.com - allUsers - etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The identities and group edges.</summary>
+    public class GoogleCloudAssetV1IdentityList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Group identity edges of the graph starting from the binding's group members to any node of the
+        /// identities. The Edge.source_node contains a group, such as `group:parent@google.com`. The Edge.target_node
+        /// contains a member of the group, such as `group:child@google.com` or `user:foo@google.com`. This field is
+        /// present only if the output_group_edges option is enabled in request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupEdges")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1Edge> GroupEdges { get; set; }
+
+        /// <summary>Only the identities that match one of the following conditions will be presented: - The
+        /// identity_selector, if it is specified in request; - Otherwise, identities reachable from the policy
+        /// binding's members.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identities")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1Identity> Identities { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Google Cloud resource under analysis.</summary>
+    public class GoogleCloudAssetV1Resource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The analysis state of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisState")]
+        public virtual IamPolicyAnalysisState AnalysisState { get; set; }
+
+        /// <summary>The [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-
+        /// format)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
+        public virtual string FullResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2009,6 +2551,128 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>An analysis message to group the query and results.</summary>
+    public class IamPolicyAnalysis : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The analysis query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisQuery")]
+        public virtual IamPolicyAnalysisQuery AnalysisQuery { get; set; }
+
+        /// <summary>A list of IamPolicyAnalysisResult that matches the analysis query, or empty if no result is
+        /// found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisResults")]
+        public virtual System.Collections.Generic.IList<IamPolicyAnalysisResult> AnalysisResults { get; set; }
+
+        /// <summary>Represents whether all entries in the analysis_results have been fully explored to answer the
+        /// query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullyExplored")]
+        public virtual System.Nullable<bool> FullyExplored { get; set; }
+
+        /// <summary>A list of non-critical errors happened during the query handling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonCriticalErrors")]
+        public virtual System.Collections.Generic.IList<IamPolicyAnalysisState> NonCriticalErrors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Output configuration for export IAM policy analysis destination.</summary>
+    public class IamPolicyAnalysisOutputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Destination on BigQuery.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
+        public virtual GoogleCloudAssetV1BigQueryDestination BigqueryDestination { get; set; }
+
+        /// <summary>Destination on Cloud Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
+        public virtual GoogleCloudAssetV1GcsDestination GcsDestination { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>IAM policy analysis query message.</summary>
+    public class IamPolicyAnalysisQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specifies roles or permissions for analysis. This is optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessSelector")]
+        public virtual AccessSelector AccessSelector { get; set; }
+
+        /// <summary>Optional. Specifies an identity for analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identitySelector")]
+        public virtual IdentitySelector IdentitySelector { get; set; }
+
+        /// <summary>Optional. The query options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("options")]
+        public virtual Options Options { get; set; }
+
+        /// <summary>Optional. Specifies a resource for analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceSelector")]
+        public virtual ResourceSelector ResourceSelector { get; set; }
+
+        /// <summary>Required. The relative name of the root asset. Only resources and IAM policies within the scope
+        /// will be analyzed. This can only be an organization number (such as "organizations/123"), a folder number
+        /// (such as "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as
+        /// "projects/12345"). To know how to get organization id, visit [here ](https://cloud.google.com/resource-
+        /// manager/docs/creating-managing-organization#retrieving_your_organization_id). To know how to get folder or
+        /// project id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-
+        /// folders#viewing_or_listing_folders_and_projects).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>IAM Policy analysis result, consisting of one IAM policy binding and derived access control
+    /// lists.</summary>
+    public class IamPolicyAnalysisResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The access control lists derived from the iam_binding that match or potentially match resource and
+        /// access selectors specified in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessControlLists")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1AccessControlList> AccessControlLists { get; set; }
+
+        /// <summary>The [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format) of the
+        /// resource to which the iam_binding policy attaches.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachedResourceFullName")]
+        public virtual string AttachedResourceFullName { get; set; }
+
+        /// <summary>Represents whether all analyses on the iam_binding have successfully finished.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullyExplored")]
+        public virtual System.Nullable<bool> FullyExplored { get; set; }
+
+        /// <summary>The Cloud IAM policy binding under analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iamBinding")]
+        public virtual Binding IamBinding { get; set; }
+
+        /// <summary>The identity list derived from members of the iam_binding that match or potentially match identity
+        /// selector specified in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityList")]
+        public virtual GoogleCloudAssetV1IdentityList IdentityList { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the detailed state of an entity under analysis, such as a resource, an identity or an
+    /// access.</summary>
+    public class IamPolicyAnalysisState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The human-readable description of the cause of failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cause")]
+        public virtual string Cause { get; set; }
+
+        /// <summary>The Google standard error code that best describes the state. For example: - OK means the analysis
+        /// on this entity has been successfully finished; - PERMISSION_DENIED means an access denied error is
+        /// encountered; - DEADLINE_EXCEEDED means the analysis on this entity hasn't been started in time;</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A result of IAM Policy search, containing information of an IAM policy.</summary>
     public class IamPolicySearchResult : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2042,6 +2706,74 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// `resource:organizations/123`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Specifies an identity for which to determine resource access, based on roles assigned either directly
+    /// to them or to the groups they belong to, directly or indirectly.</summary>
+    public class IdentitySelector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The identity appear in the form of members in [IAM policy
+        /// binding](https://cloud.google.com/iam/reference/rest/v1/Binding). The examples of supported forms are:
+        /// "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-
+        /// id@appspot.gserviceaccount.com". Notice that wildcard characters (such as * and ?) are not supported. You
+        /// must give a specific identity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identity")]
+        public virtual string Identity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The inventory details of a VM.</summary>
+    public class Inventory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Inventory items related to the VM keyed by an opaque unique identifier for each inventory item. The
+        /// identifier is unique to each distinct and addressable inventory item and will change, when there is a new
+        /// package version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IDictionary<string, Item> Items { get; set; }
+
+        /// <summary>Base level operating system information for the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osInfo")]
+        public virtual OsInfo OsInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A single piece of inventory on a VM.</summary>
+    public class Item : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Software package available to be installed on the VM instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availablePackage")]
+        public virtual SoftwarePackage AvailablePackage { get; set; }
+
+        /// <summary>When this inventory item was first detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Identifier for this item, unique across items for this VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Software package present on the VM instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installedPackage")]
+        public virtual SoftwarePackage InstalledPackage { get; set; }
+
+        /// <summary>The origin of this inventory item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originType")]
+        public virtual string OriginType { get; set; }
+
+        /// <summary>The specific type of inventory, correlating to its specific details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>When this inventory item was last modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2088,6 +2820,105 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains query options.</summary>
+    public class Options : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. If true, the response will include access analysis from identities to resources via
+        /// service account impersonation. This is a very expensive operation, because many derived queries will be
+        /// executed. We highly recommend you use AssetService.AnalyzeIamPolicyLongrunning rpc instead. For example, if
+        /// the request analyzes for which resources user A has permission P, and there's an IAM policy states user A
+        /// has iam.serviceAccounts.getAccessToken permission to a service account SA, and there's another IAM policy
+        /// states service account SA has permission P to a GCP folder F, then user A potentially has access to the GCP
+        /// folder F. And those advanced analysis results will be included in
+        /// AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Another example, if the request analyzes
+        /// for who has permission P to a GCP folder F, and there's an IAM policy states user A has
+        /// iam.serviceAccounts.actAs permission to a service account SA, and there's another IAM policy states service
+        /// account SA has permission P to the GCP folder F, then user A potentially has access to the GCP folder F. And
+        /// those advanced analysis results will be included in
+        /// AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Default is false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analyzeServiceAccountImpersonation")]
+        public virtual System.Nullable<bool> AnalyzeServiceAccountImpersonation { get; set; }
+
+        /// <summary>Optional. If true, the identities section of the result will expand any Google groups appearing in
+        /// an IAM policy binding. If IamPolicyAnalysisQuery.identity_selector is specified, the identity in the result
+        /// will be determined by the selector, and this flag is not allowed to set. Default is false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expandGroups")]
+        public virtual System.Nullable<bool> ExpandGroups { get; set; }
+
+        /// <summary>Optional. If true and IamPolicyAnalysisQuery.resource_selector is not specified, the resource
+        /// section of the result will expand any resource attached to an IAM policy to include resources lower in the
+        /// resource hierarchy. For example, if the request analyzes for which resources user A has permission P, and
+        /// the results include an IAM policy with P on a GCP folder, the results will also include resources in that
+        /// folder with permission P. If true and IamPolicyAnalysisQuery.resource_selector is specified, the resource
+        /// section of the result will expand the specified resource to include resources lower in the resource
+        /// hierarchy. Only project or lower resources are supported. Folder and organization resource cannot be used
+        /// together with this option. For example, if the request analyzes for which users have permission P on a GCP
+        /// project with this option enabled, the results will include all users who have permission P on that project
+        /// or any lower resource. Default is false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expandResources")]
+        public virtual System.Nullable<bool> ExpandResources { get; set; }
+
+        /// <summary>Optional. If true, the access section of result will expand any roles appearing in IAM policy
+        /// bindings to include their permissions. If IamPolicyAnalysisQuery.access_selector is specified, the access
+        /// section of the result will be determined by the selector, and this flag is not allowed to set. Default is
+        /// false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expandRoles")]
+        public virtual System.Nullable<bool> ExpandRoles { get; set; }
+
+        /// <summary>Optional. If true, the result will output group identity edges, starting from the binding's group
+        /// members, to any expanded identities. Default is false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputGroupEdges")]
+        public virtual System.Nullable<bool> OutputGroupEdges { get; set; }
+
+        /// <summary>Optional. If true, the result will output resource edges, starting from the policy attached
+        /// resource, to any expanded resources. Default is false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputResourceEdges")]
+        public virtual System.Nullable<bool> OutputResourceEdges { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Operating system information for the VM.</summary>
+    public class OsInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The system architecture of the operating system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
+        public virtual string Architecture { get; set; }
+
+        /// <summary>The VM hostname.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; }
+
+        /// <summary>The kernel release of the operating system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kernelRelease")]
+        public virtual string KernelRelease { get; set; }
+
+        /// <summary>The kernel version of the operating system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kernelVersion")]
+        public virtual string KernelVersion { get; set; }
+
+        /// <summary>The operating system long name. For example 'Debian GNU/Linux 9' or 'Microsoft Window Server 2019
+        /// Datacenter'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longName")]
+        public virtual string LongName { get; set; }
+
+        /// <summary>The current version of the OS Config agent running on the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osconfigAgentVersion")]
+        public virtual string OsconfigAgentVersion { get; set; }
+
+        /// <summary>The operating system short name. For example, 'windows' or 'debian'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shortName")]
+        public virtual string ShortName { get; set; }
+
+        /// <summary>The version of the operating system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2319,6 +3150,20 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Specifies the resource to analyze for access policies, which may be set directly on the resource, or on
+    /// ancestors such as organizations, folders or projects.</summary>
+    public class ResourceSelector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The [full resource name] (https://cloud.google.com/asset-inventory/docs/resource-name-
+        /// format) of a resource of [supported resource types](https://cloud.google.com/asset-inventory/docs/supported-
+        /// asset-types#analyzable_asset_types).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
+        public virtual string FullResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Search all IAM policies response.</summary>
     public class SearchAllIamPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2349,6 +3194,53 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<ResourceSearchResult> Results { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Software package information of the operating system.</summary>
+    public class SoftwarePackage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details of an APT package. For details about the apt package manager, see
+        /// https://wiki.debian.org/Apt.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aptPackage")]
+        public virtual VersionedPackage AptPackage { get; set; }
+
+        /// <summary>Details of a COS package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cosPackage")]
+        public virtual VersionedPackage CosPackage { get; set; }
+
+        /// <summary>Details of a Googet package. For details about the googet package manager, see
+        /// https://github.com/google/googet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googetPackage")]
+        public virtual VersionedPackage GoogetPackage { get; set; }
+
+        /// <summary>Details of a Windows Quick Fix engineering package. See https://docs.microsoft.com/en-
+        /// us/windows/win32/cimwin32prov/win32-quickfixengineering for info in Windows Quick Fix Engineering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qfePackage")]
+        public virtual WindowsQuickFixEngineeringPackage QfePackage { get; set; }
+
+        /// <summary>Details of a Windows Update package. See https://docs.microsoft.com/en-us/windows/win32/api/_wua/
+        /// for information about Windows Update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wuaPackage")]
+        public virtual WindowsUpdatePackage WuaPackage { get; set; }
+
+        /// <summary>Yum package info. For details about the yum package manager, see
+        /// https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/ch-
+        /// yum.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yumPackage")]
+        public virtual VersionedPackage YumPackage { get; set; }
+
+        /// <summary>Details of a Zypper package. For details about the Zypper package manager, see
+        /// https://en.opensuse.org/SDB:Zypper_manual.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zypperPackage")]
+        public virtual VersionedPackage ZypperPackage { get; set; }
+
+        /// <summary>Details of a Zypper patch. For details about the Zypper package manager, see
+        /// https://en.opensuse.org/SDB:Zypper_manual.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zypperPatch")]
+        public virtual ZypperPatch ZypperPatch { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2437,6 +3329,135 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// and it must not contain fields that are immutable or only set by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information related to the a standard versioned package. This includes package info for APT, Yum,
+    /// Zypper, and Googet package managers.</summary>
+    public class VersionedPackage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The system architecture this package is intended for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
+        public virtual string Architecture { get; set; }
+
+        /// <summary>The name of the package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>The version of the package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information related to a Quick Fix Engineering package. Fields are taken from Windows
+    /// QuickFixEngineering Interface and match the source names: https://docs.microsoft.com/en-
+    /// us/windows/win32/cimwin32prov/win32-quickfixengineering</summary>
+    public class WindowsQuickFixEngineeringPackage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A short textual description of the QFE update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caption")]
+        public virtual string Caption { get; set; }
+
+        /// <summary>A textual description of the QFE update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Unique identifier associated with a particular QFE update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hotFixId")]
+        public virtual string HotFixId { get; set; }
+
+        /// <summary>Date that the QFE update was installed. Mapped from installed_on field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installTime")]
+        public virtual object InstallTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Categories specified by the Windows Update.</summary>
+    public class WindowsUpdateCategory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The identifier of the windows update category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The name of the windows update category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Details related to a Windows Update package. Field data and names are taken from Windows Update API
+    /// IUpdate Interface: https://docs.microsoft.com/en-us/windows/win32/api/_wua/ Descriptive fields like title, and
+    /// description are localized based on the locale of the VM being updated.</summary>
+    public class WindowsUpdatePackage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The categories that are associated with this update package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categories")]
+        public virtual System.Collections.Generic.IList<WindowsUpdateCategory> Categories { get; set; }
+
+        /// <summary>The localized description of the update package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>A collection of Microsoft Knowledge Base article IDs that are associated with the update
+        /// package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kbArticleIds")]
+        public virtual System.Collections.Generic.IList<string> KbArticleIds { get; set; }
+
+        /// <summary>The last published date of the update, in (UTC) date and time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastDeploymentChangeTime")]
+        public virtual object LastDeploymentChangeTime { get; set; }
+
+        /// <summary>A collection of URLs that provide more information about the update package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("moreInfoUrls")]
+        public virtual System.Collections.Generic.IList<string> MoreInfoUrls { get; set; }
+
+        /// <summary>The revision number of this update package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionNumber")]
+        public virtual System.Nullable<int> RevisionNumber { get; set; }
+
+        /// <summary>A hyperlink to the language-specific support information for the update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportUrl")]
+        public virtual string SupportUrl { get; set; }
+
+        /// <summary>The localized title of the update package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>Gets the identifier of an update package. Stays the same across revisions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateId")]
+        public virtual string UpdateId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Details related to a Zypper Patch.</summary>
+    public class ZypperPatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The category of the patch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>The name of the patch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("patchName")]
+        public virtual string PatchName { get; set; }
+
+        /// <summary>The severity specified for this patch</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>Any summary information provided about this patch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
+        public virtual string Summary { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

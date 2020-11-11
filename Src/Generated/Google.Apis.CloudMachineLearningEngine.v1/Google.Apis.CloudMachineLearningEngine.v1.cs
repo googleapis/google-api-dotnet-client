@@ -1396,6 +1396,67 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
 
                     }
 
+                    /// <summary>Lists the pareto-optimal trials for multi-objective study or the optimal trials for
+                    /// single-objective study. The definition of pareto-optimal can be checked in wiki page.
+                    /// https://en.wikipedia.org/wiki/Pareto_efficiency</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. The name of the study that the pareto-optimal trial belongs to.</param>
+                    public virtual ListOptimalTrialsRequest ListOptimalTrials(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListOptimalTrialsRequest body, string parent)
+                    {
+                        return new ListOptimalTrialsRequest(service, body, parent);
+                    }
+
+                    /// <summary>Lists the pareto-optimal trials for multi-objective study or the optimal trials for
+                    /// single-objective study. The definition of pareto-optimal can be checked in wiki page.
+                    /// https://en.wikipedia.org/wiki/Pareto_efficiency</summary>
+                    public class ListOptimalTrialsRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListOptimalTrialsResponse>
+                    {
+                        /// <summary>Constructs a new ListOptimalTrials request.</summary>
+                        public ListOptimalTrialsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListOptimalTrialsRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The name of the study that the pareto-optimal trial belongs to.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListOptimalTrialsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "listOptimalTrials";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/trials:listOptimalTrials";
+
+                        /// <summary>Initializes ListOptimalTrials parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/studies/[^/]+$",
+                            });
+                        }
+
+                    }
+
                     /// <summary>Stops a trial.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. The trial name.</param>
@@ -3942,6 +4003,26 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The request message for the ListTrials service method.</summary>
+    public class GoogleCloudMlV1ListOptimalTrialsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for the ListOptimalTrials method.</summary>
+    public class GoogleCloudMlV1ListOptimalTrialsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The pareto-optimal trials for multiple objective study or the optimal trial for single objective
+        /// study. The definition of pareto-optimal can be checked in wiki page.
+        /// https://en.wikipedia.org/wiki/Pareto_efficiency</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trials")]
+        public virtual System.Collections.Generic.IList<GoogleCloudMlV1Trial> Trials { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class GoogleCloudMlV1ListStudiesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The studies associated with the project.</summary>
@@ -5294,8 +5375,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class GoogleIamV1Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
-        /// bindings-by-ID API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
         public virtual string BindingId { get; set; }
 

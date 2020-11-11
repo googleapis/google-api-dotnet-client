@@ -1439,6 +1439,136 @@ namespace Google.Apis.ServiceNetworking.v1
 
                         }
                     }
+
+                    /// <summary>Service producers use this method to get the configuration of their connection
+                    /// including the import/export of custom routes and subnetwork routes with public IP.</summary>
+                    /// <param name="name">Required. Name of the consumer config to retrieve in the format:
+                    /// `services/{service}/projects/{project}/global/networks/{network}`. {service} is the peering service that is managing
+                    /// connectivity for the service producer's organization. For Google services that support this functionality, this
+                    /// value is `servicenetworking.googleapis.com`. {project} is a project number e.g. `12345` that contains the service
+                    /// consumer's VPC network. {network} is the name of the service consumer's VPC network.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Service producers use this method to get the configuration of their connection
+                    /// including the import/export of custom routes and subnetwork routes with public IP.</summary>
+                    public class GetRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.ConsumerConfig>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. Name of the consumer config to retrieve in the format:
+                        /// `services/{service}/projects/{project}/global/networks/{network}`. {service} is the peering
+                        /// service that is managing connectivity for the service producer's organization. For Google
+                        /// services that support this functionality, this value is `servicenetworking.googleapis.com`.
+                        /// {project} is a project number e.g. `12345` that contains the service consumer's VPC network.
+                        /// {network} is the name of the service consumer's VPC network.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^services/[^/]+/projects/[^/]+/global/networks/[^/]+$",
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Service producers use this method to update the configuration of their connection
+                    /// including the import/export of custom routes and subnetwork routes with public IP.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. Parent resource identifying the connection for which the consumer config is being
+                    /// updated in the format: `services/{service}/projects/{project}/global/networks/{network}` {service} is the peering
+                    /// service that is managing connectivity for the service producer's organization. For Google services that support this
+                    /// functionality, this value is `servicenetworking.googleapis.com`. {project} is the number of the project that
+                    /// contains the service consumer's VPC network e.g. `12345`. {network} is the name of the service consumer's VPC
+                    /// network.</param>
+                    public virtual UpdateConsumerConfigRequest UpdateConsumerConfig(Google.Apis.ServiceNetworking.v1.Data.UpdateConsumerConfigRequest body, string parent)
+                    {
+                        return new UpdateConsumerConfigRequest(service, body, parent);
+                    }
+
+                    /// <summary>Service producers use this method to update the configuration of their connection
+                    /// including the import/export of custom routes and subnetwork routes with public IP.</summary>
+                    public class UpdateConsumerConfigRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new UpdateConsumerConfig request.</summary>
+                        public UpdateConsumerConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceNetworking.v1.Data.UpdateConsumerConfigRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. Parent resource identifying the connection for which the consumer config
+                        /// is being updated in the format:
+                        /// `services/{service}/projects/{project}/global/networks/{network}` {service} is the peering
+                        /// service that is managing connectivity for the service producer's organization. For Google
+                        /// services that support this functionality, this value is `servicenetworking.googleapis.com`.
+                        /// {project} is the number of the project that contains the service consumer's VPC network e.g.
+                        /// `12345`. {network} is the name of the service consumer's VPC network.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ServiceNetworking.v1.Data.UpdateConsumerConfigRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "updateConsumerConfig";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}:updateConsumerConfig";
+
+                        /// <summary>Initializes UpdateConsumerConfig parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^services/[^/]+/projects/[^/]+/global/networks/[^/]+$",
+                            });
+                        }
+
+                    }
                 }
             }
         }
@@ -2108,7 +2238,7 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         /// <summary>URL of the provider's public key set to validate signature of the JWT. See [OpenID
         /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). Optional if the key
         /// set document: - can be retrieved from [OpenID Discovery](https://openid.net/specs/openid-connect-discovery-
-        /// 1_0.html of the issuer. - can be inferred from the email domain of the issuer (e.g. a Google service
+        /// 1_0.html) of the issuer. - can be inferred from the email domain of the issuer (e.g. a Google service
         /// account). Example: https://www.googleapis.com/oauth2/v1/certs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jwksUri")]
         public virtual string JwksUri { get; set; }
@@ -4204,6 +4334,18 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         /// <summary>The source syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syntax")]
         public virtual string Syntax { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request to update the configuration of a service networking connection including the import/export of
+    /// custom routes and subnetwork routes with public IP.</summary>
+    public class UpdateConsumerConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The updated peering config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerConfig")]
+        public virtual ConsumerConfig ConsumerConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

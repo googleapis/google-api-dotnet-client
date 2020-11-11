@@ -1435,8 +1435,6 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
-        /// bindings-by-ID API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
         public virtual string BindingId { get; set; }
 
@@ -1474,6 +1472,56 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata describing a long running folder operation</summary>
+    public class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the folder or organization we are either creating the folder under or moving
+        /// the folder to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationParent")]
+        public virtual string DestinationParent { get; set; }
+
+        /// <summary>The display name of the folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The type of this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
+        public virtual string OperationType { get; set; }
+
+        /// <summary>The resource name of the folder's parent. Only applicable when the operation_type is
+        /// MOVE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceParent")]
+        public virtual string SourceParent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata describing a long running folder operation</summary>
+    public class CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the folder or organization we are either creating the folder under or moving
+        /// the folder to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationParent")]
+        public virtual string DestinationParent { get; set; }
+
+        /// <summary>The display name of the folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The type of this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
+        public virtual string OperationType { get; set; }
+
+        /// <summary>The resource name of the folder's parent. Only applicable when the operation_type is
+        /// MOVE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceParent")]
+        public virtual string SourceParent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -132,7 +132,7 @@
    }
   }
  }, 
- "revision": "20201019", 
+ "revision": "20201107", 
  "rootUrl": "https://driveactivity.googleapis.com/", 
  "schemas": {
   "Action": {

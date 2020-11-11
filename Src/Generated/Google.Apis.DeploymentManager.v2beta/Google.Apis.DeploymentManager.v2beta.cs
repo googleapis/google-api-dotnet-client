@@ -9,25 +9,25 @@
 
 // Generated code. DO NOT EDIT!
 
-namespace Google.Apis.DeploymentManagerAlpha.alpha
+namespace Google.Apis.DeploymentManager.v2beta
 {
-    /// <summary>The DeploymentManagerAlpha Service.</summary>
-    public class DeploymentManagerAlphaService : Google.Apis.Services.BaseClientService
+    /// <summary>The DeploymentManager Service.</summary>
+    public class DeploymentManagerService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
-        public const string Version = "alpha";
+        public const string Version = "v2beta";
 
         /// <summary>The discovery version used to generate this service.</summary>
         public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public DeploymentManagerAlphaService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        public DeploymentManagerService() : this(new Google.Apis.Services.BaseClientService.Initializer())
         {
         }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public DeploymentManagerAlphaService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
+        public DeploymentManagerService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             CompositeTypes = new CompositeTypesResource(this);
             Deployments = new DeploymentsResource(this);
@@ -47,23 +47,23 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         /// <summary>Gets the service base URI.</summary>
         public override string BaseUri =>
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://www.googleapis.com/deploymentmanager/alpha/projects/";
+            BaseUriOverride ?? "https://deploymentmanager.googleapis.com/";
         #else
-            "https://www.googleapis.com/deploymentmanager/alpha/projects/";
+            "https://deploymentmanager.googleapis.com/";
         #endif
 
         /// <summary>Gets the service base path.</summary>
-        public override string BasePath => "deploymentmanager/alpha/projects/";
+        public override string BasePath => "";
 
         #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://www.googleapis.com/batch/deploymentmanager/alpha";
+        public override string BatchUri => "https://deploymentmanager.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
-        public override string BatchPath => "batch/deploymentmanager/alpha";
+        public override string BatchPath => "batch";
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Deployment Manager Alpha API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Deployment Manager V2 API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -82,7 +82,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Google Cloud Deployment Manager Alpha API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Deployment Manager V2 API.</summary>
         public static class ScopeConstants
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -125,25 +125,54 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         public virtual TypesResource Types { get; }
     }
 
-    /// <summary>A base abstract class for DeploymentManagerAlpha requests.</summary>
-    public abstract class DeploymentManagerAlphaBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
+    /// <summary>A base abstract class for DeploymentManager requests.</summary>
+    public abstract class DeploymentManagerBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        /// <summary>Constructs a new DeploymentManagerAlphaBaseServiceRequest instance.</summary>
-        protected DeploymentManagerAlphaBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
+        /// <summary>Constructs a new DeploymentManagerBaseServiceRequest instance.</summary>
+        protected DeploymentManagerBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>V1 error format.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
+
+        /// <summary>OAuth access token.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string AccessToken { get; set; }
+
+        /// <summary>Data format for response.</summary>
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>Data format for response.</summary>
         public enum AltEnum
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
         }
+
+        /// <summary>JSONP</summary>
+        [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string Callback { get; set; }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
@@ -162,26 +191,54 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-        /// characters.</summary>
+        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
+        /// assigned to a user, but should not exceed 40 characters.</summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
-        /// <summary>Deprecated. Please use quotaUser instead.</summary>
-        [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string UserIp { get; set; }
+        /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadType { get; set; }
 
-        /// <summary>Initializes DeploymentManagerAlpha parameter list.</summary>
+        /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadProtocol { get; set; }
+
+        /// <summary>Initializes DeploymentManager parameter list.</summary>
         protected override void InitParameters()
         {
             base.InitParameters();
 
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
             RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
             {
                 Name = "alt",
                 IsRequired = false,
                 ParameterType = "query",
                 DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
                 Pattern = null,
             });
             RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
@@ -224,9 +281,17 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
                 DefaultValue = null,
                 Pattern = null,
             });
-            RequestParameters.Add("userIp", new Google.Apis.Discovery.Parameter
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
             {
-                Name = "userIp",
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
                 IsRequired = false,
                 ParameterType = "query",
                 DefaultValue = null,
@@ -261,7 +326,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         }
 
         /// <summary>Deletes a composite type.</summary>
-        public class DeleteRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.Operation>
+        public class DeleteRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
             public DeleteRequest(Google.Apis.Services.IClientService service, string project, string compositeType) : base(service)
@@ -288,7 +353,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/compositeTypes/{compositeType}";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/compositeTypes/{compositeType}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -325,7 +390,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         }
 
         /// <summary>Gets information about a specific composite type.</summary>
-        public class GetRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.CompositeType>
+        public class GetRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.CompositeType>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string project, string compositeType) : base(service)
@@ -352,7 +417,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/compositeTypes/{compositeType}";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/compositeTypes/{compositeType}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -382,16 +447,16 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         /// <summary>Creates a composite type.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">The project ID for this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.DeploymentManagerAlpha.alpha.Data.CompositeType body, string project)
+        public virtual InsertRequest Insert(Google.Apis.DeploymentManager.v2beta.Data.CompositeType body, string project)
         {
             return new InsertRequest(service, body, project);
         }
 
         /// <summary>Creates a composite type.</summary>
-        public class InsertRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.Operation>
+        public class InsertRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerAlpha.alpha.Data.CompositeType body, string project) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManager.v2beta.Data.CompositeType body, string project) : base(service)
             {
                 Project = project;
                 Body = body;
@@ -405,7 +470,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DeploymentManagerAlpha.alpha.Data.CompositeType Body { get; set; }
+            Google.Apis.DeploymentManager.v2beta.Data.CompositeType Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -417,7 +482,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/compositeTypes";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/compositeTypes";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -444,7 +509,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         }
 
         /// <summary>Lists all composite types for Deployment Manager.</summary>
-        public class ListRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.CompositeTypesListResponse>
+        public class ListRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.CompositeTypesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string project) : base(service)
@@ -460,16 +525,12 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
-            ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
-            /// instance` by specifying `name != example-instance`.
-            ///
-            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
-            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
-            /// nested fields to filter based on resource labels.
-            ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
+            /// example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`. You can also filter nested fields. For example, you
+            /// could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled
+            /// for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To
+            /// filter on multiple expressions, provide each separate expression within parentheses. For example: ```
             /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
             /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
             /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
@@ -485,14 +546,11 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public virtual System.Nullable<long> MaxResults { get; set; }
 
             /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
-            /// based on the resource name.
-            ///
-            /// You can also sort results in descending order based on the creation timestamp using
-            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
-            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
-            /// operation is returned first.
-            ///
-            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
+            /// based on the resource name. You can also sort results in descending order based on the creation
+            /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
+            /// field in reverse chronological order (newest result first). Use this to sort resources like operations
+            /// so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp
+            /// desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
@@ -514,7 +572,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/compositeTypes";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/compositeTypes";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -578,16 +636,16 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         /// <param name="project">The project ID for this request.</param>
         /// <param name="compositeType">The name of the
         /// composite type for this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.DeploymentManagerAlpha.alpha.Data.CompositeType body, string project, string compositeType)
+        public virtual PatchRequest Patch(Google.Apis.DeploymentManager.v2beta.Data.CompositeType body, string project, string compositeType)
         {
             return new PatchRequest(service, body, project, compositeType);
         }
 
         /// <summary>Patches a composite type.</summary>
-        public class PatchRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.Operation>
+        public class PatchRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerAlpha.alpha.Data.CompositeType body, string project, string compositeType) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManager.v2beta.Data.CompositeType body, string project, string compositeType) : base(service)
             {
                 Project = project;
                 CompositeType = compositeType;
@@ -606,7 +664,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DeploymentManagerAlpha.alpha.Data.CompositeType Body { get; set; }
+            Google.Apis.DeploymentManager.v2beta.Data.CompositeType Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -618,7 +676,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/compositeTypes/{compositeType}";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/compositeTypes/{compositeType}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -650,16 +708,16 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         /// <param name="project">The project ID for this request.</param>
         /// <param name="compositeType">The name of the
         /// composite type for this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.DeploymentManagerAlpha.alpha.Data.CompositeType body, string project, string compositeType)
+        public virtual UpdateRequest Update(Google.Apis.DeploymentManager.v2beta.Data.CompositeType body, string project, string compositeType)
         {
             return new UpdateRequest(service, body, project, compositeType);
         }
 
         /// <summary>Updates a composite type.</summary>
-        public class UpdateRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.Operation>
+        public class UpdateRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerAlpha.alpha.Data.CompositeType body, string project, string compositeType) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManager.v2beta.Data.CompositeType body, string project, string compositeType) : base(service)
             {
                 Project = project;
                 CompositeType = compositeType;
@@ -678,7 +736,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DeploymentManagerAlpha.alpha.Data.CompositeType Body { get; set; }
+            Google.Apis.DeploymentManager.v2beta.Data.CompositeType Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -690,7 +748,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/compositeTypes/{compositeType}";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/compositeTypes/{compositeType}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -739,16 +797,16 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         /// <param name="project">The project ID for this request.</param>
         /// <param name="deployment">The name of the
         /// deployment for this request.</param>
-        public virtual CancelPreviewRequest CancelPreview(Google.Apis.DeploymentManagerAlpha.alpha.Data.DeploymentsCancelPreviewRequest body, string project, string deployment)
+        public virtual CancelPreviewRequest CancelPreview(Google.Apis.DeploymentManager.v2beta.Data.DeploymentsCancelPreviewRequest body, string project, string deployment)
         {
             return new CancelPreviewRequest(service, body, project, deployment);
         }
 
         /// <summary>Cancels and removes the preview currently associated with the deployment.</summary>
-        public class CancelPreviewRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.Operation>
+        public class CancelPreviewRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new CancelPreview request.</summary>
-            public CancelPreviewRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerAlpha.alpha.Data.DeploymentsCancelPreviewRequest body, string project, string deployment) : base(service)
+            public CancelPreviewRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManager.v2beta.Data.DeploymentsCancelPreviewRequest body, string project, string deployment) : base(service)
             {
                 Project = project;
                 Deployment = deployment;
@@ -767,7 +825,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DeploymentManagerAlpha.alpha.Data.DeploymentsCancelPreviewRequest Body { get; set; }
+            Google.Apis.DeploymentManager.v2beta.Data.DeploymentsCancelPreviewRequest Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -779,7 +837,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/deployments/{deployment}/cancelPreview";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}/cancelPreview";
 
             /// <summary>Initializes CancelPreview parameter list.</summary>
             protected override void InitParameters()
@@ -816,7 +874,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         }
 
         /// <summary>Deletes a deployment and all of the resources in the deployment.</summary>
-        public class DeleteRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.Operation>
+        public class DeleteRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
             public DeleteRequest(Google.Apis.Services.IClientService service, string project, string deployment) : base(service)
@@ -842,10 +900,10 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             /// <summary>Sets the policy to use for deleting resources.</summary>
             public enum DeletePolicyEnum
             {
-                [Google.Apis.Util.StringValueAttribute("ABANDON")]
-                ABANDON,
                 [Google.Apis.Util.StringValueAttribute("DELETE")]
                 DELETE,
+                [Google.Apis.Util.StringValueAttribute("ABANDON")]
+                ABANDON,
             }
 
 
@@ -856,7 +914,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/deployments/{deployment}";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -901,7 +959,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         }
 
         /// <summary>Gets information about a specific deployment.</summary>
-        public class GetRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.Deployment>
+        public class GetRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.Deployment>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string project, string deployment) : base(service)
@@ -928,7 +986,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/deployments/{deployment}";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -967,7 +1025,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 
         /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
         /// exists.</summary>
-        public class GetIamPolicyRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.Policy>
+        public class GetIamPolicyRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
             public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string project, string resource) : base(service)
@@ -998,7 +1056,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/deployments/{resource}/getIamPolicy";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/deployments/{resource}/getIamPolicy";
 
             /// <summary>Initializes GetIamPolicy parameter list.</summary>
             protected override void InitParameters()
@@ -1036,16 +1094,16 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         /// <summary>Creates a deployment and all of the resources described by the deployment manifest.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">The project ID for this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.DeploymentManagerAlpha.alpha.Data.Deployment body, string project)
+        public virtual InsertRequest Insert(Google.Apis.DeploymentManager.v2beta.Data.Deployment body, string project)
         {
             return new InsertRequest(service, body, project);
         }
 
         /// <summary>Creates a deployment and all of the resources described by the deployment manifest.</summary>
-        public class InsertRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.Operation>
+        public class InsertRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerAlpha.alpha.Data.Deployment body, string project) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManager.v2beta.Data.Deployment body, string project) : base(service)
             {
                 Project = project;
                 Body = body;
@@ -1064,12 +1122,12 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             /// <summary>Sets the policy to use for creating new resources.</summary>
             public enum CreatePolicyEnum
             {
+                [Google.Apis.Util.StringValueAttribute("CREATE_OR_ACQUIRE")]
+                CREATEORACQUIRE,
                 [Google.Apis.Util.StringValueAttribute("ACQUIRE")]
                 ACQUIRE,
                 [Google.Apis.Util.StringValueAttribute("CREATE")]
                 CREATE,
-                [Google.Apis.Util.StringValueAttribute("CREATE_OR_ACQUIRE")]
-                CREATEORACQUIRE,
             }
 
             /// <summary>If set to true, creates a deployment and creates "shell" resources but does not actually
@@ -1083,7 +1141,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DeploymentManagerAlpha.alpha.Data.Deployment Body { get; set; }
+            Google.Apis.DeploymentManager.v2beta.Data.Deployment Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -1095,7 +1153,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/deployments";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/deployments";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -1138,7 +1196,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         }
 
         /// <summary>Lists all deployments for a given project.</summary>
-        public class ListRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.DeploymentsListResponse>
+        public class ListRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.DeploymentsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string project) : base(service)
@@ -1154,16 +1212,12 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
-            ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
-            /// instance` by specifying `name != example-instance`.
-            ///
-            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
-            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
-            /// nested fields to filter based on resource labels.
-            ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
+            /// example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`. You can also filter nested fields. For example, you
+            /// could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled
+            /// for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To
+            /// filter on multiple expressions, provide each separate expression within parentheses. For example: ```
             /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
             /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
             /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
@@ -1179,14 +1233,11 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public virtual System.Nullable<long> MaxResults { get; set; }
 
             /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
-            /// based on the resource name.
-            ///
-            /// You can also sort results in descending order based on the creation timestamp using
-            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
-            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
-            /// operation is returned first.
-            ///
-            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
+            /// based on the resource name. You can also sort results in descending order based on the creation
+            /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
+            /// field in reverse chronological order (newest result first). Use this to sort resources like operations
+            /// so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp
+            /// desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
@@ -1208,7 +1259,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/deployments";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/deployments";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -1272,16 +1323,16 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         /// <param name="project">The project ID for this request.</param>
         /// <param name="deployment">The name of the
         /// deployment for this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.DeploymentManagerAlpha.alpha.Data.Deployment body, string project, string deployment)
+        public virtual PatchRequest Patch(Google.Apis.DeploymentManager.v2beta.Data.Deployment body, string project, string deployment)
         {
             return new PatchRequest(service, body, project, deployment);
         }
 
         /// <summary>Patches a deployment and all of the resources described by the deployment manifest.</summary>
-        public class PatchRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.Operation>
+        public class PatchRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerAlpha.alpha.Data.Deployment body, string project, string deployment) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManager.v2beta.Data.Deployment body, string project, string deployment) : base(service)
             {
                 Project = project;
                 Deployment = deployment;
@@ -1305,12 +1356,12 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             /// <summary>Sets the policy to use for creating new resources.</summary>
             public enum CreatePolicyEnum
             {
+                [Google.Apis.Util.StringValueAttribute("CREATE_OR_ACQUIRE")]
+                CREATEORACQUIRE,
                 [Google.Apis.Util.StringValueAttribute("ACQUIRE")]
                 ACQUIRE,
                 [Google.Apis.Util.StringValueAttribute("CREATE")]
                 CREATE,
-                [Google.Apis.Util.StringValueAttribute("CREATE_OR_ACQUIRE")]
-                CREATEORACQUIRE,
             }
 
             /// <summary>Sets the policy to use for deleting resources.</summary>
@@ -1320,10 +1371,10 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             /// <summary>Sets the policy to use for deleting resources.</summary>
             public enum DeletePolicyEnum
             {
-                [Google.Apis.Util.StringValueAttribute("ABANDON")]
-                ABANDON,
                 [Google.Apis.Util.StringValueAttribute("DELETE")]
                 DELETE,
+                [Google.Apis.Util.StringValueAttribute("ABANDON")]
+                ABANDON,
             }
 
             /// <summary>If set to true, updates the deployment and creates and updates the "shell" resources but does
@@ -1338,7 +1389,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DeploymentManagerAlpha.alpha.Data.Deployment Body { get; set; }
+            Google.Apis.DeploymentManager.v2beta.Data.Deployment Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -1350,7 +1401,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/deployments/{deployment}";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -1406,16 +1457,16 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name or id of the resource
         /// for this request.</param>
-        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DeploymentManagerAlpha.alpha.Data.GlobalSetPolicyRequest body, string project, string resource)
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DeploymentManager.v2beta.Data.GlobalSetPolicyRequest body, string project, string resource)
         {
             return new SetIamPolicyRequest(service, body, project, resource);
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
-        public class SetIamPolicyRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.Policy>
+        public class SetIamPolicyRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
-            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerAlpha.alpha.Data.GlobalSetPolicyRequest body, string project, string resource) : base(service)
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManager.v2beta.Data.GlobalSetPolicyRequest body, string project, string resource) : base(service)
             {
                 Project = project;
                 Resource = resource;
@@ -1434,7 +1485,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DeploymentManagerAlpha.alpha.Data.GlobalSetPolicyRequest Body { get; set; }
+            Google.Apis.DeploymentManager.v2beta.Data.GlobalSetPolicyRequest Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -1446,7 +1497,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/deployments/{resource}/setIamPolicy";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/deployments/{resource}/setIamPolicy";
 
             /// <summary>Initializes SetIamPolicy parameter list.</summary>
             protected override void InitParameters()
@@ -1479,17 +1530,17 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         /// <param name="project">The project ID for this request.</param>
         /// <param name="deployment">The name of the
         /// deployment for this request.</param>
-        public virtual StopRequest Stop(Google.Apis.DeploymentManagerAlpha.alpha.Data.DeploymentsStopRequest body, string project, string deployment)
+        public virtual StopRequest Stop(Google.Apis.DeploymentManager.v2beta.Data.DeploymentsStopRequest body, string project, string deployment)
         {
             return new StopRequest(service, body, project, deployment);
         }
 
         /// <summary>Stops an ongoing operation. This does not roll back any work that has already been completed, but
         /// prevents any new work from being started.</summary>
-        public class StopRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.Operation>
+        public class StopRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Stop request.</summary>
-            public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerAlpha.alpha.Data.DeploymentsStopRequest body, string project, string deployment) : base(service)
+            public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManager.v2beta.Data.DeploymentsStopRequest body, string project, string deployment) : base(service)
             {
                 Project = project;
                 Deployment = deployment;
@@ -1508,7 +1559,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DeploymentManagerAlpha.alpha.Data.DeploymentsStopRequest Body { get; set; }
+            Google.Apis.DeploymentManager.v2beta.Data.DeploymentsStopRequest Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -1520,7 +1571,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/deployments/{deployment}/stop";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}/stop";
 
             /// <summary>Initializes Stop parameter list.</summary>
             protected override void InitParameters()
@@ -1552,16 +1603,16 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name or id of the resource
         /// for this request.</param>
-        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.DeploymentManagerAlpha.alpha.Data.TestPermissionsRequest body, string project, string resource)
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.DeploymentManager.v2beta.Data.TestPermissionsRequest body, string project, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, resource);
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
-        public class TestIamPermissionsRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.TestPermissionsResponse>
+        public class TestIamPermissionsRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.TestPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
-            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerAlpha.alpha.Data.TestPermissionsRequest body, string project, string resource) : base(service)
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManager.v2beta.Data.TestPermissionsRequest body, string project, string resource) : base(service)
             {
                 Project = project;
                 Resource = resource;
@@ -1580,7 +1631,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DeploymentManagerAlpha.alpha.Data.TestPermissionsRequest Body { get; set; }
+            Google.Apis.DeploymentManager.v2beta.Data.TestPermissionsRequest Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -1592,7 +1643,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/deployments/{resource}/testIamPermissions";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/deployments/{resource}/testIamPermissions";
 
             /// <summary>Initializes TestIamPermissions parameter list.</summary>
             protected override void InitParameters()
@@ -1624,16 +1675,16 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         /// <param name="project">The project ID for this request.</param>
         /// <param name="deployment">The name of the
         /// deployment for this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.DeploymentManagerAlpha.alpha.Data.Deployment body, string project, string deployment)
+        public virtual UpdateRequest Update(Google.Apis.DeploymentManager.v2beta.Data.Deployment body, string project, string deployment)
         {
             return new UpdateRequest(service, body, project, deployment);
         }
 
         /// <summary>Updates a deployment and all of the resources described by the deployment manifest.</summary>
-        public class UpdateRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.Operation>
+        public class UpdateRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerAlpha.alpha.Data.Deployment body, string project, string deployment) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManager.v2beta.Data.Deployment body, string project, string deployment) : base(service)
             {
                 Project = project;
                 Deployment = deployment;
@@ -1657,12 +1708,12 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             /// <summary>Sets the policy to use for creating new resources.</summary>
             public enum CreatePolicyEnum
             {
+                [Google.Apis.Util.StringValueAttribute("CREATE_OR_ACQUIRE")]
+                CREATEORACQUIRE,
                 [Google.Apis.Util.StringValueAttribute("ACQUIRE")]
                 ACQUIRE,
                 [Google.Apis.Util.StringValueAttribute("CREATE")]
                 CREATE,
-                [Google.Apis.Util.StringValueAttribute("CREATE_OR_ACQUIRE")]
-                CREATEORACQUIRE,
             }
 
             /// <summary>Sets the policy to use for deleting resources.</summary>
@@ -1672,10 +1723,10 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             /// <summary>Sets the policy to use for deleting resources.</summary>
             public enum DeletePolicyEnum
             {
-                [Google.Apis.Util.StringValueAttribute("ABANDON")]
-                ABANDON,
                 [Google.Apis.Util.StringValueAttribute("DELETE")]
                 DELETE,
+                [Google.Apis.Util.StringValueAttribute("ABANDON")]
+                ABANDON,
             }
 
             /// <summary>If set to true, updates the deployment and creates and updates the "shell" resources but does
@@ -1690,7 +1741,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DeploymentManagerAlpha.alpha.Data.Deployment Body { get; set; }
+            Google.Apis.DeploymentManager.v2beta.Data.Deployment Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -1702,7 +1753,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/deployments/{deployment}";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -1782,7 +1833,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         }
 
         /// <summary>Gets information about a specific manifest.</summary>
-        public class GetRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.Manifest>
+        public class GetRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.Manifest>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string project, string deployment, string manifest) : base(service)
@@ -1814,7 +1865,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/deployments/{deployment}/manifests/{manifest}";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}/manifests/{manifest}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -1859,7 +1910,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         }
 
         /// <summary>Lists all manifests for a given deployment.</summary>
-        public class ListRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.ManifestsListResponse>
+        public class ListRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.ManifestsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string project, string deployment) : base(service)
@@ -1880,16 +1931,12 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
-            ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
-            /// instance` by specifying `name != example-instance`.
-            ///
-            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
-            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
-            /// nested fields to filter based on resource labels.
-            ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
+            /// example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`. You can also filter nested fields. For example, you
+            /// could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled
+            /// for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To
+            /// filter on multiple expressions, provide each separate expression within parentheses. For example: ```
             /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
             /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
             /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
@@ -1905,14 +1952,11 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public virtual System.Nullable<long> MaxResults { get; set; }
 
             /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
-            /// based on the resource name.
-            ///
-            /// You can also sort results in descending order based on the creation timestamp using
-            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
-            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
-            /// operation is returned first.
-            ///
-            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
+            /// based on the resource name. You can also sort results in descending order based on the creation
+            /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
+            /// field in reverse chronological order (newest result first). Use this to sort resources like operations
+            /// so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp
+            /// desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
@@ -1934,7 +1978,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/deployments/{deployment}/manifests";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}/manifests";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -2028,7 +2072,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         }
 
         /// <summary>Gets information about a specific operation.</summary>
-        public class GetRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.Operation>
+        public class GetRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string project, string operation) : base(service)
@@ -2055,7 +2099,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/operations/{operation}";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/operations/{operation}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -2090,7 +2134,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         }
 
         /// <summary>Lists all operations for a project.</summary>
-        public class ListRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.OperationsListResponse>
+        public class ListRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.OperationsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string project) : base(service)
@@ -2106,16 +2150,12 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
-            ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
-            /// instance` by specifying `name != example-instance`.
-            ///
-            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
-            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
-            /// nested fields to filter based on resource labels.
-            ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
+            /// example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`. You can also filter nested fields. For example, you
+            /// could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled
+            /// for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To
+            /// filter on multiple expressions, provide each separate expression within parentheses. For example: ```
             /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
             /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
             /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
@@ -2131,14 +2171,11 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public virtual System.Nullable<long> MaxResults { get; set; }
 
             /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
-            /// based on the resource name.
-            ///
-            /// You can also sort results in descending order based on the creation timestamp using
-            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
-            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
-            /// operation is returned first.
-            ///
-            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
+            /// based on the resource name. You can also sort results in descending order based on the creation
+            /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
+            /// field in reverse chronological order (newest result first). Use this to sort resources like operations
+            /// so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp
+            /// desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
@@ -2160,7 +2197,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/operations";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/operations";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -2248,7 +2285,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         }
 
         /// <summary>Gets information about a single resource.</summary>
-        public class GetRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.Resource>
+        public class GetRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.Resource>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string project, string deployment, string resource) : base(service)
@@ -2280,7 +2317,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/deployments/{deployment}/resources/{resource}";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}/resources/{resource}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -2325,7 +2362,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         }
 
         /// <summary>Lists all resources in a given deployment.</summary>
-        public class ListRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.ResourcesListResponse>
+        public class ListRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.ResourcesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string project, string deployment) : base(service)
@@ -2346,16 +2383,12 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
-            ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
-            /// instance` by specifying `name != example-instance`.
-            ///
-            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
-            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
-            /// nested fields to filter based on resource labels.
-            ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
+            /// example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`. You can also filter nested fields. For example, you
+            /// could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled
+            /// for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To
+            /// filter on multiple expressions, provide each separate expression within parentheses. For example: ```
             /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
             /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
             /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
@@ -2371,14 +2404,11 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public virtual System.Nullable<long> MaxResults { get; set; }
 
             /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
-            /// based on the resource name.
-            ///
-            /// You can also sort results in descending order based on the creation timestamp using
-            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
-            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
-            /// operation is returned first.
-            ///
-            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
+            /// based on the resource name. You can also sort results in descending order based on the creation
+            /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
+            /// field in reverse chronological order (newest result first). Use this to sort resources like operations
+            /// so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp
+            /// desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
@@ -2400,7 +2430,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/deployments/{deployment}/resources";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}/resources";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -2494,7 +2524,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         }
 
         /// <summary>Deletes a type provider.</summary>
-        public class DeleteRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.Operation>
+        public class DeleteRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
             public DeleteRequest(Google.Apis.Services.IClientService service, string project, string typeProvider) : base(service)
@@ -2521,7 +2551,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/typeProviders/{typeProvider}";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -2558,7 +2588,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         }
 
         /// <summary>Gets information about a specific type provider.</summary>
-        public class GetRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.TypeProvider>
+        public class GetRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.TypeProvider>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string project, string typeProvider) : base(service)
@@ -2585,7 +2615,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/typeProviders/{typeProvider}";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -2624,7 +2654,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         }
 
         /// <summary>Gets a type info for a type provided by a TypeProvider.</summary>
-        public class GetTypeRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.TypeInfo>
+        public class GetTypeRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.TypeInfo>
         {
             /// <summary>Constructs a new GetType request.</summary>
             public GetTypeRequest(Google.Apis.Services.IClientService service, string project, string typeProvider, string type) : base(service)
@@ -2656,7 +2686,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/typeProviders/{typeProvider}/types/{type}";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}/types/{type}";
 
             /// <summary>Initializes GetType parameter list.</summary>
             protected override void InitParameters()
@@ -2694,16 +2724,16 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         /// <summary>Creates a type provider.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">The project ID for this request.</param>
-        public virtual InsertRequest Insert(Google.Apis.DeploymentManagerAlpha.alpha.Data.TypeProvider body, string project)
+        public virtual InsertRequest Insert(Google.Apis.DeploymentManager.v2beta.Data.TypeProvider body, string project)
         {
             return new InsertRequest(service, body, project);
         }
 
         /// <summary>Creates a type provider.</summary>
-        public class InsertRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.Operation>
+        public class InsertRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerAlpha.alpha.Data.TypeProvider body, string project) : base(service)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManager.v2beta.Data.TypeProvider body, string project) : base(service)
             {
                 Project = project;
                 Body = body;
@@ -2717,7 +2747,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DeploymentManagerAlpha.alpha.Data.TypeProvider Body { get; set; }
+            Google.Apis.DeploymentManager.v2beta.Data.TypeProvider Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -2729,7 +2759,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/typeProviders";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/typeProviders";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -2756,7 +2786,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         }
 
         /// <summary>Lists all resource type providers for Deployment Manager.</summary>
-        public class ListRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.TypeProvidersListResponse>
+        public class ListRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.TypeProvidersListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string project) : base(service)
@@ -2772,16 +2802,12 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
-            ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
-            /// instance` by specifying `name != example-instance`.
-            ///
-            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
-            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
-            /// nested fields to filter based on resource labels.
-            ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
+            /// example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`. You can also filter nested fields. For example, you
+            /// could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled
+            /// for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To
+            /// filter on multiple expressions, provide each separate expression within parentheses. For example: ```
             /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
             /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
             /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
@@ -2797,14 +2823,11 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public virtual System.Nullable<long> MaxResults { get; set; }
 
             /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
-            /// based on the resource name.
-            ///
-            /// You can also sort results in descending order based on the creation timestamp using
-            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
-            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
-            /// operation is returned first.
-            ///
-            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
+            /// based on the resource name. You can also sort results in descending order based on the creation
+            /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
+            /// field in reverse chronological order (newest result first). Use this to sort resources like operations
+            /// so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp
+            /// desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
@@ -2826,7 +2849,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/typeProviders";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/typeProviders";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -2895,7 +2918,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         }
 
         /// <summary>Lists all the type info for a TypeProvider.</summary>
-        public class ListTypesRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.TypeProvidersListTypesResponse>
+        public class ListTypesRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.TypeProvidersListTypesResponse>
         {
             /// <summary>Constructs a new ListTypes request.</summary>
             public ListTypesRequest(Google.Apis.Services.IClientService service, string project, string typeProvider) : base(service)
@@ -2916,16 +2939,12 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
-            ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
-            /// instance` by specifying `name != example-instance`.
-            ///
-            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
-            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
-            /// nested fields to filter based on resource labels.
-            ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
+            /// example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`. You can also filter nested fields. For example, you
+            /// could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled
+            /// for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To
+            /// filter on multiple expressions, provide each separate expression within parentheses. For example: ```
             /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
             /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
             /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
@@ -2941,14 +2960,11 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public virtual System.Nullable<long> MaxResults { get; set; }
 
             /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
-            /// based on the resource name.
-            ///
-            /// You can also sort results in descending order based on the creation timestamp using
-            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
-            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
-            /// operation is returned first.
-            ///
-            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
+            /// based on the resource name. You can also sort results in descending order based on the creation
+            /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
+            /// field in reverse chronological order (newest result first). Use this to sort resources like operations
+            /// so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp
+            /// desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
@@ -2970,7 +2986,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/typeProviders/{typeProvider}/types";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}/types";
 
             /// <summary>Initializes ListTypes parameter list.</summary>
             protected override void InitParameters()
@@ -3042,16 +3058,16 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         /// <param name="project">The project ID for this request.</param>
         /// <param name="typeProvider">The name of the
         /// type provider for this request.</param>
-        public virtual PatchRequest Patch(Google.Apis.DeploymentManagerAlpha.alpha.Data.TypeProvider body, string project, string typeProvider)
+        public virtual PatchRequest Patch(Google.Apis.DeploymentManager.v2beta.Data.TypeProvider body, string project, string typeProvider)
         {
             return new PatchRequest(service, body, project, typeProvider);
         }
 
         /// <summary>Patches a type provider.</summary>
-        public class PatchRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.Operation>
+        public class PatchRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerAlpha.alpha.Data.TypeProvider body, string project, string typeProvider) : base(service)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManager.v2beta.Data.TypeProvider body, string project, string typeProvider) : base(service)
             {
                 Project = project;
                 TypeProvider = typeProvider;
@@ -3070,7 +3086,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DeploymentManagerAlpha.alpha.Data.TypeProvider Body { get; set; }
+            Google.Apis.DeploymentManager.v2beta.Data.TypeProvider Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -3082,7 +3098,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/typeProviders/{typeProvider}";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -3114,16 +3130,16 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         /// <param name="project">The project ID for this request.</param>
         /// <param name="typeProvider">The name of the
         /// type provider for this request.</param>
-        public virtual UpdateRequest Update(Google.Apis.DeploymentManagerAlpha.alpha.Data.TypeProvider body, string project, string typeProvider)
+        public virtual UpdateRequest Update(Google.Apis.DeploymentManager.v2beta.Data.TypeProvider body, string project, string typeProvider)
         {
             return new UpdateRequest(service, body, project, typeProvider);
         }
 
         /// <summary>Updates a type provider.</summary>
-        public class UpdateRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.Operation>
+        public class UpdateRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManagerAlpha.alpha.Data.TypeProvider body, string project, string typeProvider) : base(service)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManager.v2beta.Data.TypeProvider body, string project, string typeProvider) : base(service)
             {
                 Project = project;
                 TypeProvider = typeProvider;
@@ -3142,7 +3158,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DeploymentManagerAlpha.alpha.Data.TypeProvider Body { get; set; }
+            Google.Apis.DeploymentManager.v2beta.Data.TypeProvider Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -3154,7 +3170,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/typeProviders/{typeProvider}";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -3198,70 +3214,6 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         }
 
 
-        /// <summary>Gets information about a specific type.</summary>
-        /// <param name="project">The project ID for this request.</param>
-        /// <param name="type">The name of the type for
-        /// this request.</param>
-        public virtual GetRequest Get(string project, string type)
-        {
-            return new GetRequest(service, project, type);
-        }
-
-        /// <summary>Gets information about a specific type.</summary>
-        public class GetRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.Type>
-        {
-            /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string project, string type) : base(service)
-            {
-                Project = project;
-                Type = type;
-                InitParameters();
-            }
-
-
-            /// <summary>The project ID for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Project { get; private set; }
-
-            /// <summary>The name of the type for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Type { get; private set; }
-
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "get";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/types/{type}";
-
-            /// <summary>Initializes Get parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "project",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                });
-                RequestParameters.Add("type", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "type",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                });
-            }
-
-        }
-
         /// <summary>Lists all resource types for Deployment Manager.</summary>
         /// <param name="project">The project ID for this request.</param>
         public virtual ListRequest List(string project)
@@ -3270,7 +3222,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         }
 
         /// <summary>Lists all resource types for Deployment Manager.</summary>
-        public class ListRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.TypesListResponse>
+        public class ListRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2beta.Data.TypesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service, string project) : base(service)
@@ -3286,16 +3238,12 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 
             /// <summary>A filter expression that filters resources listed in the response. The expression must specify
             /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
-            ///
-            /// For example, if you are filtering Compute Engine instances, you can exclude instances named `example-
-            /// instance` by specifying `name != example-instance`.
-            ///
-            /// You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false`
-            /// to include instances only if they are not scheduled for automatic restarts. You can use filtering on
-            /// nested fields to filter based on resource labels.
-            ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example: ```
+            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
+            /// example, if you are filtering Compute Engine instances, you can exclude instances named `example-
+            /// instance` by specifying `name != example-instance`. You can also filter nested fields. For example, you
+            /// could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled
+            /// for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To
+            /// filter on multiple expressions, provide each separate expression within parentheses. For example: ```
             /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
             /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
             /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
@@ -3311,14 +3259,11 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public virtual System.Nullable<long> MaxResults { get; set; }
 
             /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
-            /// based on the resource name.
-            ///
-            /// You can also sort results in descending order based on the creation timestamp using
-            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
-            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
-            /// operation is returned first.
-            ///
-            /// Currently, only sorting by `name` or `creationTimestamp desc` is supported.</summary>
+            /// based on the resource name. You can also sort results in descending order based on the creation
+            /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
+            /// field in reverse chronological order (newest result first). Use this to sort resources like operations
+            /// so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp
+            /// desc` is supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
@@ -3340,7 +3285,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{project}/global/types";
+            public override string RestPath => "deploymentmanager/v2beta/projects/{project}/global/types";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -3401,7 +3346,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
     }
 }
 
-namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
+namespace Google.Apis.DeploymentManager.v2beta.Data
 {    
 
     /// <summary>Async options that determine when a resource should finish.</summary>
@@ -3422,29 +3367,20 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
 
     /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
     /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
-    /// AuditLogConfigs.
-    ///
-    /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
-    /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
-    /// AuditLogConfig are exempted.
-    ///
-    /// Example Policy with multiple AuditConfigs:
-    ///
-    /// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ { "log_type": "DATA_READ",
-    /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", }
-    /// ] }, { "service": "sampleservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, {
-    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] }
-    ///
-    /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts
-    /// jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.</summary>
+    /// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two
+    /// AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the
+    /// exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: {
+    /// "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
+    /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ]
+    /// }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, {
+    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this
+    /// policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ
+    /// logging, and aliya@example.com from DATA_WRITE logging.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
         public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
-        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
 
         /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
         /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
@@ -3455,22 +3391,16 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Provides the configuration for logging a type of permissions. Example:
-    ///
-    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, {
-    /// "log_type": "DATA_WRITE", } ] }
-    ///
+    /// <summary>Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ {
+    /// "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] }
     /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
     /// logging.</summary>
     public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
-        /// format of [Binding.members][].</summary>
+        /// format of Binding.members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
         public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("ignoreChildExemptions")]
-        public virtual System.Nullable<bool> IgnoreChildExemptions { get; set; }
 
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
@@ -3480,12 +3410,24 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Authorization-related information used by Cloud Audit Logging.</summary>
-    public class AuthorizationLoggingOptions : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>BaseType that describes a service-backed Type.</summary>
+    public class BaseType : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The type of the permission that was checked.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("permissionType")]
-        public virtual string PermissionType { get; set; }
+        /// <summary>Allows resource handling overrides for specific collections</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collectionOverrides")]
+        public virtual System.Collections.Generic.IList<CollectionOverride> CollectionOverrides { get; set; }
+
+        /// <summary>Credential used when interacting with this type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("credential")]
+        public virtual Credential Credential { get; set; }
+
+        /// <summary>Descriptor Url for the this type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("descriptorUrl")]
+        public virtual string DescriptorUrl { get; set; }
+
+        /// <summary>Options to apply when handling any resources in this service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("options")]
+        public virtual Options Options { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3507,51 +3449,36 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding.
-        ///
-        /// If the condition evaluates to `true`, then this binding applies to the current request.
-        ///
-        /// If the condition evaluates to `false`, then this binding does not apply to the current request. However, a
-        /// different role binding might grant the same role to one or more of the members in this binding.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
+        public virtual string BindingId { get; set; }
+
+        /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
+        /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
+        /// apply to the current request. However, a different role binding might grant the same role to one or more of
+        /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; }
 
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
-        /// following values:
-        ///
-        /// * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google
-        /// account.
-        ///
-        /// * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google
-        /// account or a service account.
-        ///
-        /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@example.com` .
-        ///
-        /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
-        /// app@appspot.gserviceaccount.com`.
-        ///
-        /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
-        ///
-        /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user
-        /// that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding.
-        ///
-        /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
-        /// a service account that has been recently deleted. For example, `my-other-
+        /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
+        /// without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is
+        /// authenticated with a Google account or a service account. * `user:{emailid}`: An email address that
+        /// represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An
+        /// email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
+        /// service account that has been recently deleted. For example, `my-other-
         /// app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value
-        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding.
-        ///
-        /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
+        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. *
+        /// `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
         /// group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the
         /// group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the
-        /// binding.
-        ///
-        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
-        /// `google.com` or `example.com`.</summary>
+        /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
+        /// example, `google.com` or `example.com`. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
@@ -3571,10 +3498,6 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         /// <summary>The collection that identifies this resource within its service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collection")]
         public virtual string Collection { get; set; }
-
-        /// <summary>Custom verb method mappings to support unordered list API mappings.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("methodMap")]
-        public virtual MethodMap MethodMap { get; set; }
 
         /// <summary>The options to apply to this resource-level override</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
@@ -3631,11 +3554,14 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Label object for CompositeTypes</summary>
     public class CompositeTypeLabelEntry : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Key of the label</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
+        /// <summary>Value of the label</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
@@ -3658,62 +3584,11 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A condition to be met.</summary>
-    public class Condition : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Trusted attributes supplied by the IAM system.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("iam")]
-        public virtual string Iam { get; set; }
-
-        /// <summary>An operator to apply the subject with.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("op")]
-        public virtual string Op { get; set; }
-
-        /// <summary>Trusted attributes discharged by the service.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("svc")]
-        public virtual string Svc { get; set; }
-
-        /// <summary>Trusted attributes supplied by any service that owns resources and uses the IAM system for access
-        /// control.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sys")]
-        public virtual string Sys { get; set; }
-
-        /// <summary>The objects of the condition.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<string> Values { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     public class ConfigFile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The contents of the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>BaseType that describes a service-backed Type.</summary>
-    public class ConfigurableService : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Allows resource handling overrides for specific collections</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("collectionOverrides")]
-        public virtual System.Collections.Generic.IList<CollectionOverride> CollectionOverrides { get; set; }
-
-        /// <summary>Credential used when interacting with this type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("credential")]
-        public virtual Credential Credential { get; set; }
-
-        /// <summary>Descriptor Url for the this type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("descriptorUrl")]
-        public virtual string DescriptorUrl { get; set; }
-
-        /// <summary>Options to apply when handling any resources in this service.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("options")]
-        public virtual Options Options { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3741,10 +3616,6 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
 
     public class Deployment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>User provided default credential for the deployment.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("credential")]
-        public virtual Credential Credential { get; set; }
-
         /// <summary>An optional user-provided description of the deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -3752,10 +3623,9 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         /// <summary>Provides a fingerprint to use in requests to modify a deployment, such as `update()`, `stop()`, and
         /// `cancelPreview()` requests. A fingerprint is a randomly generated value that must be provided with
         /// `update()`, `stop()`, and `cancelPreview()` requests to perform optimistic locking. This ensures optimistic
-        /// concurrency so that only one request happens at a time.
-        ///
-        /// The fingerprint is initially generated by Deployment Manager and changes after every request to modify data.
-        /// To get the latest fingerprint value, perform a `get()` request to a deployment.</summary>
+        /// concurrency so that only one request happens at a time. The fingerprint is initially generated by Deployment
+        /// Manager and changes after every request to modify data. To get the latest fingerprint value, perform a
+        /// `get()` request to a deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
@@ -3766,10 +3636,10 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; }
 
-        /// <summary>Map of labels; provided by the client when the resource is created or updated. Specifically: Label
-        /// keys must be between 1 and 63 characters long and must conform to the following regular expression:
-        /// `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the
-        /// regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.</summary>
+        /// <summary>Map of One Platform labels; provided by the client when the resource is created or updated.
+        /// Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular
+        /// expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must
+        /// conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<DeploymentLabelEntry> Labels { get; set; }
 
@@ -3790,10 +3660,6 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         /// deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
         public virtual Operation Operation { get; set; }
-
-        /// <summary>Output only. List of outputs from the last manifest that deployed successfully.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("outputs")]
-        public virtual System.Collections.Generic.IList<DeploymentOutputEntry> Outputs { get; set; }
 
         /// <summary>Output only. Server defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
@@ -3817,22 +3683,10 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Label object for Deployments</summary>
     public class DeploymentLabelEntry : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Output object for Deployments</summary>
-    public class DeploymentOutputEntry : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Key of the output</summary>
+        /// <summary>Key of the label</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
@@ -3846,16 +3700,12 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
 
     public class DeploymentUpdate : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The user-provided default credential to use when deploying this preview.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("credential")]
-        public virtual Credential Credential { get; set; }
-
         /// <summary>Output only. An optional user-provided description of the deployment after the current update has
         /// been applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Output only. Map of labels; provided by the client when the resource is created or updated.
+        /// <summary>Map of One Platform labels; provided by the client when the resource is created or updated.
         /// Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular
         /// expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must
         /// conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.</summary>
@@ -3871,11 +3721,14 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Label object for DeploymentUpdate</summary>
     public class DeploymentUpdateLabelEntry : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Key of the label</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
+        /// <summary>Value of the label</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
@@ -3889,7 +3742,6 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         /// that must be provided in `cancelPreview()` requests to perform optimistic locking. This ensures optimistic
         /// concurrency so that the deployment does not have conflicting requests (e.g. if someone attempts to make a
         /// new update request while another user attempts to cancel a preview, this would prevent one of the requests).
-        ///
         /// The fingerprint is initially generated by Deployment Manager and changes after every request to modify a
         /// deployment. To get the latest fingerprint value, perform a `get()` request on the deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
@@ -3920,9 +3772,8 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         /// <summary>Specifies a fingerprint for `stop()` requests. A fingerprint is a randomly generated value that
         /// must be provided in `stop()` requests to perform optimistic locking. This ensures optimistic concurrency so
         /// that the deployment does not have conflicting requests (e.g. if someone attempts to make a new update
-        /// request while another user attempts to stop an ongoing update request, this would prevent a collision).
-        ///
-        /// The fingerprint is initially generated by Deployment Manager and changes after every request to modify a
+        /// request while another user attempts to stop an ongoing update request, this would prevent a collision). The
+        /// fingerprint is initially generated by Deployment Manager and changes after every request to modify a
         /// deployment. To get the latest fingerprint value, perform a `get()` request on the deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
@@ -3948,29 +3799,15 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
 
     /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
     /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
-    ///
-    /// Example (Comparison):
-    ///
-    /// title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression:
-    /// "document.summary.size() < 100"
-    ///
-    /// Example (Equality):
-    ///
-    /// title: "Requestor is owner" description: "Determines if requestor is the document owner" expression:
-    /// "document.owner == request.auth.claims.email"
-    ///
-    /// Example (Logic):
-    ///
-    /// title: "Public documents" description: "Determine whether the document should be publicly visible" expression:
-    /// "document.type != 'private' && document.type != 'internal'"
-    ///
-    /// Example (Data Manipulation):
-    ///
+    /// Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description:
+    /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
+    /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
+    /// visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation):
     /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
-    /// message received at ' + string(document.create_time)"
-    ///
-    /// The exact variables and functions that may be referenced within an expression are determined by the service that
-    /// evaluates it. See the service documentation for additional information.</summary>
+    /// message received at ' + string(document.create_time)" The exact variables and functions that may be referenced
+    /// within an expression are determined by the service that evaluates it. See the service documentation for
+    /// additional information.</summary>
     public class Expr : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
@@ -4054,99 +3891,6 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Specifies what kind of log the caller must write</summary>
-    public class LogConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Cloud audit options.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cloudAudit")]
-        public virtual LogConfigCloudAuditOptions CloudAudit { get; set; }
-
-        /// <summary>Counter options.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("counter")]
-        public virtual LogConfigCounterOptions Counter { get; set; }
-
-        /// <summary>Data access options.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataAccess")]
-        public virtual LogConfigDataAccessOptions DataAccess { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Write a Cloud Audit log</summary>
-    public class LogConfigCloudAuditOptions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Information used by the Cloud Audit Logging pipeline.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("authorizationLoggingOptions")]
-        public virtual AuthorizationLoggingOptions AuthorizationLoggingOptions { get; set; }
-
-        /// <summary>The log_name to populate in the Cloud Audit Record.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("logName")]
-        public virtual string LogName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Increment a streamz counter with the specified metric and field names.
-    ///
-    /// Metric names should start with a '/', generally be lowercase-only, and end in "_count". Field names should not
-    /// contain an initial slash. The actual exported metric names will have "/iam/policy" prepended.
-    ///
-    /// Field names correspond to IAM request parameters and field values are their respective values.
-    ///
-    /// Supported field names: - "authority", which is "[token]" if IAMContext.token is present, otherwise the value of
-    /// IAMContext.authority_selector if present, and otherwise a representation of IAMContext.principal; or -
-    /// "iam_principal", a representation of IAMContext.principal even if a token or authority selector is present; or -
-    /// "" (empty string), resulting in a counter with no fields.
-    ///
-    /// Examples: counter { metric: "/debug_access_count" field: "iam_principal" } ==> increment counter
-    /// /iam/policy/debug_access_count {iam_principal=[value of IAMContext.principal]}</summary>
-    public class LogConfigCounterOptions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Custom fields.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("customFields")]
-        public virtual System.Collections.Generic.IList<LogConfigCounterOptionsCustomField> CustomFields { get; set; }
-
-        /// <summary>The field value to attribute.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual string Field { get; set; }
-
-        /// <summary>The metric to update.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
-        public virtual string Metric { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Custom fields. These can be used to create a counter with arbitrary field/value pairs. See: go/rpcsp-
-    /// custom-fields.</summary>
-    public class LogConfigCounterOptionsCustomField : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Name is the field name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Value is the field value. It is important that in contrast to the CounterOptions.field, the value
-        /// here is a constant that is not derived from the IAMContext.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Write a Data Access (Gin) log</summary>
-    public class LogConfigDataAccessOptions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("logMode")]
-        public virtual string LogMode { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     public class Manifest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The YAML configuration for this manifest.</summary>
@@ -4173,9 +3917,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("layout")]
         public virtual string Layout { get; set; }
 
-        /// <summary>Output only.
-        ///
-        /// The name of the manifest.</summary>
+        /// <summary>Output only. The name of the manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4203,52 +3945,14 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Deployment Manager will call these methods during the events of
-    /// creation/deletion/update/get/setIamPolicy</summary>
-    public class MethodMap : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The action identifier for the create method to be used for this collection</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("create")]
-        public virtual string Create { get; set; }
-
-        /// <summary>The action identifier for the delete method to be used for this collection</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("delete")]
-        public virtual string Delete { get; set; }
-
-        /// <summary>The action identifier for the get method to be used for this collection</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("get")]
-        public virtual string Get { get; set; }
-
-        /// <summary>The action identifier for the setIamPolicy method to be used for this collection</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("setIamPolicy")]
-        public virtual string SetIamPolicy { get; set; }
-
-        /// <summary>The action identifier for the update method to be used for this collection</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("update")]
-        public virtual string Update { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Represents an Operation resource.
-    ///
-    /// Google Compute Engine has three Operation resources:
-    ///
-    /// * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) *
+    /// <summary>Represents an Operation resource. Google Compute Engine has three Operation resources: *
+    /// [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) *
     /// [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) *
-    /// [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations)
-    ///
-    /// You can use an operation resource to manage asynchronous API requests. For more information, read Handling API
-    /// responses.
-    ///
-    /// Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For
-    /// regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations`
-    /// resource.
-    ///
-    /// For more information, read  Global, Regional, and Zonal Resources. (== resource_for
-    /// {$api_version}.globalOperations ==) (== resource_for {$api_version}.regionOperations ==) (== resource_for
-    /// {$api_version}.zoneOperations ==)</summary>
+    /// [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage
+    /// asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional
+    /// or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the
+    /// `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information,
+    /// read Global, Regional, and Zonal Resources.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The value of `requestId` if you provided it in the request. Not present
@@ -4321,10 +4025,6 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
-
-        /// <summary>[Output Only] Server-defined URL for this resource with the resource id.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("selfLinkWithId")]
-        public virtual string SelfLinkWithId { get; set; }
 
         /// <summary>[Output Only] The time that this operation was started by the server. This value is in RFC3339 text
         /// format.</summary>
@@ -4404,7 +4104,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
             public virtual string Code { get; set; }
 
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
-            /// "scope", "value": "zones/us-east1-d" }</summary>
+            /// "scope", "value": "zones/us-east1-d" } </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
             public virtual System.Collections.Generic.IList<DataData> Data { get; set; }
 
@@ -4460,49 +4160,41 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inputMappings")]
         public virtual System.Collections.Generic.IList<InputMapping> InputMappings { get; set; }
 
-        /// <summary>The json path to the field in the resource JSON body into which the resource name should be mapped.
-        /// Leaving this empty indicates that there should be no mapping performed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nameProperty")]
-        public virtual string NameProperty { get; set; }
-
         /// <summary>Options for how to validate and process properties on a resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validationOptions")]
         public virtual ValidationOptions ValidationOptions { get; set; }
+
+        /// <summary>Additional properties block described as a jsonSchema, these properties will never be part of the
+        /// json payload, but they can be consumed by InputMappings, this must be a valid json schema draft-04. The
+        /// properties specified here will be decouple in a different section. This schema will be merged to the schema
+        /// validation, and properties here will be extracted From the payload and consumed explicitly by InputMappings.
+        /// ex: field1: type: string field2: type: number</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("virtualProperties")]
+        public virtual string VirtualProperties { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
     /// <summary>An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud
-    /// resources.
-    ///
-    /// A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members
-    /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
-    /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
-    ///
-    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
-    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
-    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
-    /// conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
-    /// /resource-policies).
-    ///
-    /// **JSON example:**
-    ///
-    /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
-    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
-    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
-    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
-    ///
-    /// **YAML example:**
-    ///
-    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
-    /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
-    /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
-    /// description: Does not grant access after Sep 2020 expression: request.time <
-    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
-    ///
-    /// For a description of IAM and its features, see the [IAM
+    /// resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`.
+    /// Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a
+    /// named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some
+    /// types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that
+    /// allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on
+    /// attributes of the request, the resource, or both. To learn which resources support conditions in their IAM
+    /// policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON
+    /// example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [
+    /// "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-
+    /// id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [
+    /// "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access
+    /// after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+    /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com -
+    /// group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role:
+    /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+    /// roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access
+    /// after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version:
+    /// 3 For a description of IAM and its features, see the [IAM
     /// documentation](https://cloud.google.com/iam/docs/).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4519,44 +4211,23 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
         /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
-        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
-        ///
-        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
-        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.</summary>
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:**
+        /// If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit
+        /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        [Newtonsoft.Json.JsonPropertyAttribute("iamOwned")]
-        public virtual System.Nullable<bool> IamOwned { get; set; }
-
-        /// <summary>If more than one rule is specified, the rules are applied in the following manner: - All matching
-        /// LOG rules are always applied. - If any DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will
-        /// be applied if one or more matching rule requires logging. - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule
-        /// matches, permission is granted. Logging will be applied if one or more matching rule requires logging. -
-        /// Otherwise, if no rule applies, permission is denied.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
-        public virtual System.Collections.Generic.IList<Rule> Rules { get; set; }
-
-        /// <summary>Specifies the format of the policy.
-        ///
-        /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected.
-        ///
-        /// Any operation that affects conditional role bindings must specify version `3`. This requirement applies to
-        /// the following operations:
-        ///
-        /// * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy
-        /// * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition,
-        /// from a policy that includes conditions
-        ///
+        /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
+        /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
+        /// This requirement applies to the following operations: * Getting a policy that includes a conditional role
+        /// binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy *
+        /// Removing any role binding, with or without a condition, from a policy that includes conditions
         /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
         /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost.
-        ///
-        /// If a policy does not include any conditions, operations on that policy may specify any valid version or
-        /// leave the field unset.
-        ///
-        /// To learn which resources support conditions in their IAM policies, see the [IAM
+        /// `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any
+        /// conditions, operations on that policy may specify any valid version or leave the field unset. To learn which
+        /// resources support conditions in their IAM policies, see the [IAM
         /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
@@ -4608,10 +4279,6 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; }
 
-        /// <summary>Output only. The last used credential that successfully created/updated the resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastUsedCredential")]
-        public virtual Credential LastUsedCredential { get; set; }
-
         /// <summary>Output only. URL of the manifest representing the current configuration of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manifest")]
         public virtual string Manifest { get; set; }
@@ -4624,11 +4291,6 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         /// Returned as serialized YAML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual string Properties { get; set; }
-
-        /// <summary>Output only. In case this is an action, it will show the runtimePolicies on which this action will
-        /// run in the deployment</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("runtimePolicies")]
-        public virtual System.Collections.Generic.IList<string> RuntimePolicies { get; set; }
 
         /// <summary>Output only. The type of the resource, for example `compute.v1.instance`, or
         /// `cloudfunctions.v1beta1.function`.</summary>
@@ -4665,7 +4327,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
             public virtual string Code { get; set; }
 
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
-            /// "scope", "value": "zones/us-east1-d" }</summary>
+            /// "scope", "value": "zones/us-east1-d" } </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
             public virtual System.Collections.Generic.IList<DataData> Data { get; set; }
 
@@ -4711,10 +4373,6 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessControl")]
         public virtual ResourceAccessControl AccessControl { get; set; }
 
-        /// <summary>Output only. The credential that will be used creating/updating this resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("credential")]
-        public virtual Credential Credential { get; set; }
-
         /// <summary>Output only. If errors are generated during update of the resource, this field will be
         /// populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
@@ -4737,11 +4395,6 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         /// Returned as serialized YAML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual string Properties { get; set; }
-
-        /// <summary>Output only. In case this is an action, it will show the runtimePolicies that this action will have
-        /// after updating the deployment.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("runtimePolicies")]
-        public virtual System.Collections.Generic.IList<string> RuntimePolicies { get; set; }
 
         /// <summary>Output only. The state of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -4792,7 +4445,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
             public virtual string Code { get; set; }
 
             /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
-            /// "scope", "value": "zones/us-east1-d" }</summary>
+            /// "scope", "value": "zones/us-east1-d" } </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
             public virtual System.Collections.Generic.IList<DataData> Data { get; set; }
 
@@ -4832,45 +4485,6 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         /// <summary>Resources contained in this list response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<Resource> Resources { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A rule to be applied in a Policy.</summary>
-    public class Rule : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual string Action { get; set; }
-
-        /// <summary>Additional restrictions that must be met. All conditions must pass for the rule to match.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
-        public virtual System.Collections.Generic.IList<Condition> Conditions { get; set; }
-
-        /// <summary>Human-readable description of the rule.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is
-        /// in at least one of these entries.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ins")]
-        public virtual System.Collections.Generic.IList<string> Ins { get; set; }
-
-        /// <summary>The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG
-        /// action.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("logConfigs")]
-        public virtual System.Collections.Generic.IList<LogConfig> LogConfigs { get; set; }
-
-        /// <summary>If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR
-        /// is in none of the entries.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notIns")]
-        public virtual System.Collections.Generic.IList<string> NotIns { get; set; }
-
-        /// <summary>A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value of '*' matches all
-        /// permissions, and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4954,8 +4568,8 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
     public class Type : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Base Type (configurable service) that backs this Type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("configurableService")]
-        public virtual ConfigurableService ConfigurableService { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("base")]
+        public virtual BaseType Base__ { get; set; }
 
         /// <summary>An optional textual description of the resource; provided by the client when the resource is
         /// created.</summary>
@@ -4969,10 +4583,10 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; }
 
-        /// <summary>Map of labels; provided by the client when the resource is created or updated. Specifically: Label
-        /// keys must be between 1 and 63 characters long and must conform to the following regular expression:
-        /// `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the
-        /// regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.</summary>
+        /// <summary>Map of One Platform labels; provided by the client when the resource is created or updated.
+        /// Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular
+        /// expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must
+        /// conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<TypeLabelEntry> Labels { get; set; }
 
@@ -5046,11 +4660,14 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Label object for Types</summary>
     public class TypeLabelEntry : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Key of the label</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
+        /// <summary>Value of the label</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
@@ -5094,10 +4711,10 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; }
 
-        /// <summary>Map of labels; provided by the client when the resource is created or updated. Specifically: Label
-        /// keys must be between 1 and 63 characters long and must conform to the following regular expression:
-        /// `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the
-        /// regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.</summary>
+        /// <summary>Map of One Platform labels; provided by the client when the resource is created or updated.
+        /// Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular
+        /// expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must
+        /// conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<TypeProviderLabelEntry> Labels { get; set; }
 
@@ -5126,11 +4743,14 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Label object for TypeProviders</summary>
     public class TypeProviderLabelEntry : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Key of the label</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
+        /// <summary>Value of the label</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 

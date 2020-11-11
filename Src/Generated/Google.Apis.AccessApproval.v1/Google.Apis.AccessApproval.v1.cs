@@ -499,8 +499,9 @@ namespace Google.Apis.AccessApproval.v1
                 /// <summary>A filter on the type of approval requests to retrieve. Must be one of the following values:
                 /// * [not set]: Requests that are pending or have active approvals. * ALL: All requests. * PENDING:
                 /// Only pending requests. * ACTIVE: Only active (i.e. currently approved) requests. * DISMISSED: Only
-                /// dismissed (including expired) requests. * HISTORY: Active and dismissed (including expired)
-                /// requests.</summary>
+                /// requests that have been dismissed, or requests that . are not approved and past expiration. *
+                /// EXPIRED: Only requests that have been approved, and the approval has expired. * HISTORY: Active,
+                /// dismissed and expired requests.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -986,8 +987,9 @@ namespace Google.Apis.AccessApproval.v1
                 /// <summary>A filter on the type of approval requests to retrieve. Must be one of the following values:
                 /// * [not set]: Requests that are pending or have active approvals. * ALL: All requests. * PENDING:
                 /// Only pending requests. * ACTIVE: Only active (i.e. currently approved) requests. * DISMISSED: Only
-                /// dismissed (including expired) requests. * HISTORY: Active and dismissed (including expired)
-                /// requests.</summary>
+                /// requests that have been dismissed, or requests that . are not approved and past expiration. *
+                /// EXPIRED: Only requests that have been approved, and the approval has expired. * HISTORY: Active,
+                /// dismissed and expired requests.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -1473,8 +1475,9 @@ namespace Google.Apis.AccessApproval.v1
                 /// <summary>A filter on the type of approval requests to retrieve. Must be one of the following values:
                 /// * [not set]: Requests that are pending or have active approvals. * ALL: All requests. * PENDING:
                 /// Only pending requests. * ACTIVE: Only active (i.e. currently approved) requests. * DISMISSED: Only
-                /// dismissed (including expired) requests. * HISTORY: Active and dismissed (including expired)
-                /// requests.</summary>
+                /// requests that have been dismissed, or requests that . are not approved and past expiration. *
+                /// EXPIRED: Only requests that have been approved, and the approval has expired. * HISTORY: Active,
+                /// dismissed and expired requests.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 

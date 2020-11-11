@@ -194,7 +194,7 @@
    }
   }
  }, 
- "revision": "20201017", 
+ "revision": "20201106", 
  "rootUrl": "https://iap.googleapis.com/", 
  "schemas": {
   "Binding": {
@@ -202,7 +202,6 @@
    "id": "Binding", 
    "properties": {
     "bindingId": {
-     "description": "A client-specified ID for this binding. Expected to be globally unique to support the internal bindings-by-ID API.", 
      "type": "string"
     }, 
     "condition": {

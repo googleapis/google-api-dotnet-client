@@ -4177,7 +4177,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     }    
 
     /// <summary>Version preview configuration. If active and unexpired, this version will be accessible via a custom
-    /// URL even if it is not the currently released version.</summary>
+    /// URL even if it is not the currently released version. Deprecated in favor of site channels.</summary>
     public class PreviewConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If true, preview URLs are enabled for this version.</summary>
@@ -4427,9 +4427,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Version preview configuration for the site version. This configuration specfies whether previewing
-        /// is enabled for this site version. Version previews allow you to preview your site at a custom URL before
-        /// releasing it as the live version.</summary>
+        /// <summary>Deprecated in favor of site channels. Version preview configuration for the site version. This
+        /// configuration specifies whether previewing is enabled for this site version. Version previews allow you to
+        /// preview your site at a custom URL before releasing it as the live version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preview")]
         public virtual PreviewConfig Preview { get; set; }
 
