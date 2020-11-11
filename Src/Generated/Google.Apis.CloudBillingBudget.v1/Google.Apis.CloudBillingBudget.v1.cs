@@ -687,6 +687,14 @@ namespace Google.Apis.CloudBillingBudget.v1.Data
     /// <summary>A filter for a budget, limiting the scope of the cost to calculate.</summary>
     public class GoogleCloudBillingBudgetsV1Filter : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS, this is a list of credit
+        /// types to be subtracted from gross cost to determine the spend for threshold calculations. If
+        /// Filter.credit_types_treatment is **not** INCLUDE_SPECIFIED_CREDITS, this field must be empty. See [a list of
+        /// acceptable credit type values](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables
+        /// #credits-type).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creditTypes")]
+        public virtual System.Collections.Generic.IList<string> CreditTypes { get; set; }
+
         /// <summary>Optional. If not set, default behavior is `INCLUDE_ALL_CREDITS`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creditTypesTreatment")]
         public virtual string CreditTypesTreatment { get; set; }

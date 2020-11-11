@@ -20,6 +20,7 @@
  "basePath": "", 
  "baseUrl": "https://dataflow.googleapis.com/", 
  "batchPath": "batch", 
+ "canonicalName": "Dataflow", 
  "description": "Manages Google Cloud Dataflow projects on Google Cloud Platform.", 
  "discoveryVersion": "v1", 
  "documentationLink": "https://cloud.google.com/dataflow", 
@@ -2442,7 +2443,7 @@
    }
   }
  }, 
- "revision": "20201003", 
+ "revision": "20201023", 
  "rootUrl": "https://dataflow.googleapis.com/", 
  "schemas": {
   "ApproximateProgress": {
@@ -2780,6 +2781,10 @@
    "description": "Container Spec.", 
    "id": "ContainerSpec", 
    "properties": {
+    "defaultEnvironment": {
+     "$ref": "FlexTemplateRuntimeEnvironment", 
+     "description": "Default runtime environment for the job."
+    }, 
     "image": {
      "description": "Name of the docker container image. E.g., gcr.io/project/some-image", 
      "type": "string"
@@ -3468,6 +3473,13 @@
      "description": "Output sources for this stage.", 
      "items": {
       "$ref": "StageSource"
+     }, 
+     "type": "array"
+    }, 
+    "prerequisiteStage": {
+     "description": "Other stages that must complete before this stage can run.", 
+     "items": {
+      "type": "string"
      }, 
      "type": "array"
     }

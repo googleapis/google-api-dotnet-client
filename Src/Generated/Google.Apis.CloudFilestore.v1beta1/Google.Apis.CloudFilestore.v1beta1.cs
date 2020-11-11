@@ -683,7 +683,9 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 }
 
 
-                /// <summary>Creates an instance.</summary>
+                /// <summary>Creates an instance. When creating from a backup, the capacity of the new instance needs to
+                /// be equal to or larger than the capacity of the backup (and also equal to or larger than the minimum
+                /// capacity of the tier).</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The instance's project and location, in the format
                 /// projects/{project_id}/locations/{location}. In Cloud Filestore, locations map to GCP zones, for example **us-
@@ -693,7 +695,9 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Creates an instance.</summary>
+                /// <summary>Creates an instance. When creating from a backup, the capacity of the new instance needs to
+                /// be equal to or larger than the capacity of the backup (and also equal to or larger than the minimum
+                /// capacity of the tier).</summary>
                 public class CreateRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -1038,7 +1042,9 @@ namespace Google.Apis.CloudFilestore.v1beta1
 
                 }
 
-                /// <summary>Restores an existing instance's file share from a snapshot or backup.</summary>
+                /// <summary>Restores an existing instance's file share from a backup. The instance's file share
+                /// capacity will be set to the backup's capacity or the minimum capacity of the tier, whichever is
+                /// larger.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The resource name of the instance, in the format
                 /// projects/{project_id}/locations/{location_id}/instances/{instance_id}.</param>
@@ -1047,7 +1053,9 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     return new RestoreRequest(service, body, name);
                 }
 
-                /// <summary>Restores an existing instance's file share from a snapshot or backup.</summary>
+                /// <summary>Restores an existing instance's file share from a backup. The instance's file share
+                /// capacity will be set to the backup's capacity or the minimum capacity of the tier, whichever is
+                /// larger.</summary>
                 public class RestoreRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Restore request.</summary>
@@ -1542,8 +1550,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     /// <summary>A Cloud Filestore backup.</summary>
     public class Backup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Capacity of the backup. This would be the size of the file share when the backup is
-        /// restored.</summary>
+        /// <summary>Output only. Capacity of the source file share when the backup was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capacityGb")]
         public virtual System.Nullable<long> CapacityGb { get; set; }
 
@@ -1604,6 +1611,71 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Time window specified for daily operations.</summary>
+    public class DailyCycle : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Duration of the time window, set by service producer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        /// <summary>Time within the day to start the operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual TimeOfDay StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are
+    /// either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can
+    /// represent one of the following: * A full date, with non-zero year, month, and day values * A month and day
+    /// value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and
+    /// month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and
+    /// `google.protobuf.Timestamp`.</summary>
+    public class Date : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by
+        /// itself or a year and month where the day isn't significant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>DenyMaintenancePeriod definition. Maintenance is forbidden within the deny period. The start_date must
+    /// be less than the end_date.</summary>
+    public class DenyMaintenancePeriod : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Deny period end date. This can be: * A full date, with non-zero year, month and day values. * A
+        /// month and day value, with a zero year. Allows recurring deny periods each year. Date matching this period
+        /// will have to be before the end.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+        public virtual Date EndDate { get; set; }
+
+        /// <summary>Deny period start date. This can be: * A full date, with non-zero year, month and day values. * A
+        /// month and day value, with a zero year. Allows recurring deny periods each year. Date matching this period
+        /// will have to be the same or after the start.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual Date StartDate { get; set; }
+
+        /// <summary>Time in UTC when the Blackout period starts on start_date and ends on end_date. This can be: * Full
+        /// time. * All zeros for 00:00:00 UTC</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("time")]
+        public virtual TimeOfDay Time { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
     /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
@@ -1657,9 +1729,9 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>The MaintenancePolicies that have been attached to the instance. The key must be of the type name
-        /// of the oneof policy name defined in MaintenancePolicy, and the referenced policy must define the same policy
-        /// type. For complete details of MaintenancePolicy, please refer to go/cloud-saas-mw-ug.</summary>
+        /// <summary>Deprecated. The MaintenancePolicies that have been attached to the instance. The key must be of the
+        /// type name of the oneof policy name defined in MaintenancePolicy, and the referenced policy must define the
+        /// same policy type. For complete details of MaintenancePolicy, please refer to go/cloud-saas-mw-ug.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicyNames")]
         public virtual System.Collections.Generic.IDictionary<string, string> MaintenancePolicyNames { get; set; }
 
@@ -1755,6 +1827,14 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// attempted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclude")]
         public virtual System.Nullable<bool> Exclude { get; set; }
+
+        /// <summary>Optional. The MaintenancePolicies that have been attached to the instance. The key must be of the
+        /// type name of the oneof policy name defined in MaintenancePolicy, and the embedded policy must define the
+        /// same policy type. For complete details of MaintenancePolicy, please refer to go/cloud-saas-mw-ug. If only
+        /// the name is needed (like in the deprecated Instance.maintenance_policy_names field) then only populate
+        /// MaintenancePolicy.name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicies")]
+        public virtual System.Collections.Generic.IDictionary<string, MaintenancePolicy> MaintenancePolicies { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2036,6 +2116,62 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Defines policies to service maintenance events.</summary>
+    public class MaintenancePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if
+        /// the length is greater than 512.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. Resource labels to represent user provided metadata. Each label is a key-value pair,
+        /// where both the key and the value are arbitrary strings provided by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Required. MaintenancePolicy name using the form:
+        /// `projects/{project_id}/locations/{location_id}/maintenancePolicies/{maintenance_policy_id}` where
+        /// {project_id} refers to a GCP consumer project ID, {location_id} refers to a GCP region/zone,
+        /// {maintenance_policy_id} must be 1-63 characters long and match the regular expression
+        /// `[a-z0-9]([-a-z0-9]*[a-z0-9])?`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. The state of the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Maintenance policy applicable to instance update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updatePolicy")]
+        public virtual UpdatePolicy UpdatePolicy { get; set; }
+
+        /// <summary>Output only. The time when the resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>MaintenanceWindow definition.</summary>
+    public class MaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Daily cycle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dailyCycle")]
+        public virtual DailyCycle DailyCycle { get; set; }
+
+        /// <summary>Weekly cycle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weeklyCycle")]
+        public virtual WeeklyCycle WeeklyCycle { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Network configuration for the instance.</summary>
     public class NetworkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2197,6 +2333,25 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Configure the schedule.</summary>
+    public class Schedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Allows to define schedule that runs specified day of the week.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual string Day { get; set; }
+
+        /// <summary>Output only. Duration of the time window, set by service producer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        /// <summary>Time within the window to start the operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual TimeOfDay StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
     /// message contains three pieces of data: error code, error message, and error details. You can find out more about
@@ -2217,6 +2372,65 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a time of day. The date and time zone are either not significant or are specified elsewhere.
+    /// An API may choose to allow leap seconds. Related types are google.type.Date and
+    /// `google.protobuf.Timestamp`.</summary>
+    public class TimeOfDay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value
+        /// "24:00:00" for scenarios like business closing time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hours")]
+        public virtual System.Nullable<int> Hours { get; set; }
+
+        /// <summary>Minutes of hour of day. Must be from 0 to 59.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
+        public virtual System.Nullable<int> Minutes { get; set; }
+
+        /// <summary>Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; }
+
+        /// <summary>Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it
+        /// allows leap-seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
+        public virtual System.Nullable<int> Seconds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Maintenance policy applicable to instance updates.</summary>
+    public class UpdatePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Relative scheduling channel applied to resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channel")]
+        public virtual string Channel { get; set; }
+
+        /// <summary>Deny Maintenance Period that is applied to resource to indicate when maintenance is forbidden. User
+        /// can specify zero or more non-overlapping deny periods. For V1, Maximum number of deny_maintenance_periods is
+        /// expected to be one.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("denyMaintenancePeriods")]
+        public virtual System.Collections.Generic.IList<DenyMaintenancePeriod> DenyMaintenancePeriods { get; set; }
+
+        /// <summary>Optional. Maintenance window that is applied to resources covered by this policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("window")]
+        public virtual MaintenanceWindow Window { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Time window specified for weekly operations.</summary>
+    public class WeeklyCycle : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>User can specify multiple windows in a week. Minimum of 1 window.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
+        public virtual System.Collections.Generic.IList<Schedule> Schedule { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

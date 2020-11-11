@@ -61,6 +61,9 @@ namespace Google.Apis.AdMob.v1
         public class Scope
         {
             /// <summary>See your AdMob data</summary>
+            public static string AdmobReadonly = "https://www.googleapis.com/auth/admob.readonly";
+
+            /// <summary>See your AdMob data</summary>
             public static string AdmobReport = "https://www.googleapis.com/auth/admob.report";
 
         }
@@ -68,6 +71,9 @@ namespace Google.Apis.AdMob.v1
         /// <summary>Available OAuth 2.0 scope constants for use with the AdMob API.</summary>
         public static class ScopeConstants
         {
+            /// <summary>See your AdMob data</summary>
+            public const string AdmobReadonly = "https://www.googleapis.com/auth/admob.readonly";
+
             /// <summary>See your AdMob data</summary>
             public const string AdmobReport = "https://www.googleapis.com/auth/admob.report";
 
@@ -290,7 +296,8 @@ namespace Google.Apis.AdMob.v1
             }
 
 
-            /// <summary>Generates an AdMob Mediation report based on the provided report specification.</summary>
+            /// <summary>Generates an AdMob Mediation report based on the provided report specification. Returns result
+            /// of a server-side streaming RPC. The result is returned in a sequence of responses.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Resource name of the account to generate the report for. Example:
             /// accounts/pub-9876543210987654</param>
@@ -299,7 +306,8 @@ namespace Google.Apis.AdMob.v1
                 return new GenerateRequest(service, body, parent);
             }
 
-            /// <summary>Generates an AdMob Mediation report based on the provided report specification.</summary>
+            /// <summary>Generates an AdMob Mediation report based on the provided report specification. Returns result
+            /// of a server-side streaming RPC. The result is returned in a sequence of responses.</summary>
             public class GenerateRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1.Data.GenerateMediationReportResponse[]>
             {
                 /// <summary>Constructs a new Generate request.</summary>
@@ -368,7 +376,8 @@ namespace Google.Apis.AdMob.v1
             }
 
 
-            /// <summary>Generates an AdMob Network report based on the provided report specification.</summary>
+            /// <summary>Generates an AdMob Network report based on the provided report specification. Returns result of
+            /// a server-side streaming RPC. The result is returned in a sequence of responses.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Resource name of the account to generate the report for. Example:
             /// accounts/pub-9876543210987654</param>
@@ -377,7 +386,8 @@ namespace Google.Apis.AdMob.v1
                 return new GenerateRequest(service, body, parent);
             }
 
-            /// <summary>Generates an AdMob Network report based on the provided report specification.</summary>
+            /// <summary>Generates an AdMob Network report based on the provided report specification. Returns result of
+            /// a server-side streaming RPC. The result is returned in a sequence of responses.</summary>
             public class GenerateRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1.Data.GenerateNetworkReportResponse[]>
             {
                 /// <summary>Constructs a new Generate request.</summary>

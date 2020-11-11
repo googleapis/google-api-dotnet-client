@@ -338,7 +338,10 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 /// <param name="name">Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the ClientState
                 /// in format: `devices/{device_id}/deviceUsers/{device_user_id}/clientStates/{partner_id}`, where device_id is the
                 /// unique ID assigned to the Device, device_user_id is the unique ID assigned to the User and partner_id identifies the
-                /// partner storing the data.</param>
+                /// partner storing the data. To get the client state for devices belonging to your own organization, the `partnerId` is
+                /// in the format: `customerId-*anystring*`. Where the `customerId` is your organization's customer ID and `anystring`
+                /// is any suffix. This suffix is used in setting up Custom Access Levels in Context-Aware Access. You may use
+                /// `my_customer` instead of the customer ID for devices managed by your own organization.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -359,7 +362,11 @@ namespace Google.Apis.CloudIdentity.v1beta1
                     /// ClientState in format:
                     /// `devices/{device_id}/deviceUsers/{device_user_id}/clientStates/{partner_id}`, where device_id is
                     /// the unique ID assigned to the Device, device_user_id is the unique ID assigned to the User and
-                    /// partner_id identifies the partner storing the data.</summary>
+                    /// partner_id identifies the partner storing the data. To get the client state for devices
+                    /// belonging to your own organization, the `partnerId` is in the format: `customerId-*anystring*`.
+                    /// Where the `customerId` is your organization's customer ID and `anystring` is any suffix. This
+                    /// suffix is used in setting up Custom Access Levels in Context-Aware Access. You may use
+                    /// `my_customer` instead of the customer ID for devices managed by your own organization.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1598,9 +1605,11 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
 
 
-            /// <summary>Check a potential member for membership in a group. A member has membership to a group as long
-            /// as there is a single viewable transitive membership between the group and the member. The actor must
-            /// have view permissions to at least one transitive membership between the member and group.</summary>
+            /// <summary>Check a potential member for membership in a group. **Note:** This feature is only available to
+            /// Google Workspace Enterprise Standard, Enterprise Plus, and Enterprise for Education; and Cloud Identity
+            /// Premium accounts. A member has membership to a group as long as there is a single viewable transitive
+            /// membership between the group and the member. The actor must have view permissions to at least one
+            /// transitive membership between the member and group.</summary>
             /// <param name="parent">[Resource name](https://cloud.google.com/apis/design/resource_names) of the group to check the
             /// transitive membership in. Format: `groups/{group_id}`, where `group_id` is the unique id assigned to the Group to
             /// which the Membership belongs to.</param>
@@ -1609,9 +1618,11 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 return new CheckTransitiveMembershipRequest(service, parent);
             }
 
-            /// <summary>Check a potential member for membership in a group. A member has membership to a group as long
-            /// as there is a single viewable transitive membership between the group and the member. The actor must
-            /// have view permissions to at least one transitive membership between the member and group.</summary>
+            /// <summary>Check a potential member for membership in a group. **Note:** This feature is only available to
+            /// Google Workspace Enterprise Standard, Enterprise Plus, and Enterprise for Education; and Cloud Identity
+            /// Premium accounts. A member has membership to a group as long as there is a single viewable transitive
+            /// membership between the group and the member. The actor must have view permissions to at least one
+            /// transitive membership between the member and group.</summary>
             public class CheckTransitiveMembershipRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.CheckTransitiveMembershipResponse>
             {
                 /// <summary>Constructs a new CheckTransitiveMembership request.</summary>
@@ -1833,9 +1844,11 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
             }
 
-            /// <summary>Get a membership graph of just a member or both a member and a group. Given a member, the
-            /// response will contain all membership paths from the member. Given both a group and a member, the
-            /// response will contain all membership paths between the group and the member.</summary>
+            /// <summary>Get a membership graph of just a member or both a member and a group. **Note:** This feature is
+            /// only available to Google Workspace Enterprise Standard, Enterprise Plus, and Enterprise for Education;
+            /// and Cloud Identity Premium accounts. Given a member, the response will contain all membership paths from
+            /// the member. Given both a group and a member, the response will contain all membership paths between the
+            /// group and the member.</summary>
             /// <param name="parent">Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the group to
             /// search transitive memberships in. Format: `groups/{group_id}`, where `group_id` is the unique ID assigned to the
             /// Group to which the Membership belongs to. group_id can be a wildcard collection id "-". When a group_id is
@@ -1847,9 +1860,11 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 return new GetMembershipGraphRequest(service, parent);
             }
 
-            /// <summary>Get a membership graph of just a member or both a member and a group. Given a member, the
-            /// response will contain all membership paths from the member. Given both a group and a member, the
-            /// response will contain all membership paths between the group and the member.</summary>
+            /// <summary>Get a membership graph of just a member or both a member and a group. **Note:** This feature is
+            /// only available to Google Workspace Enterprise Standard, Enterprise Plus, and Enterprise for Education;
+            /// and Cloud Identity Premium accounts. Given a member, the response will contain all membership paths from
+            /// the member. Given both a group and a member, the response will contain all membership paths between the
+            /// group and the member.</summary>
             public class GetMembershipGraphRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
             {
                 /// <summary>Constructs a new GetMembershipGraph request.</summary>
@@ -2158,8 +2173,10 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
             }
 
-            /// <summary>Search transitive groups of a member. A transitive group is any group that has a direct or
-            /// indirect membership to the member. Actor must have view permissions all transitive groups.</summary>
+            /// <summary>Search transitive groups of a member. **Note:** This feature is only available to Google
+            /// Workspace Enterprise Standard, Enterprise Plus, and Enterprise for Education; and Cloud Identity Premium
+            /// accounts. A transitive group is any group that has a direct or indirect membership to the member. Actor
+            /// must have view permissions all transitive groups.</summary>
             /// <param name="parent">[Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search
             /// transitive memberships in. Format: `groups/{group_id}`, where `group_id` is always '-' as this API will search
             /// across all groups for a given member.</param>
@@ -2168,8 +2185,10 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 return new SearchTransitiveGroupsRequest(service, parent);
             }
 
-            /// <summary>Search transitive groups of a member. A transitive group is any group that has a direct or
-            /// indirect membership to the member. Actor must have view permissions all transitive groups.</summary>
+            /// <summary>Search transitive groups of a member. **Note:** This feature is only available to Google
+            /// Workspace Enterprise Standard, Enterprise Plus, and Enterprise for Education; and Cloud Identity Premium
+            /// accounts. A transitive group is any group that has a direct or indirect membership to the member. Actor
+            /// must have view permissions all transitive groups.</summary>
             public class SearchTransitiveGroupsRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.SearchTransitiveGroupsResponse>
             {
                 /// <summary>Constructs a new SearchTransitiveGroups request.</summary>
@@ -2253,8 +2272,10 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
             }
 
-            /// <summary>Search transitive memberships of a group. A transitive membership is any direct or indirect
-            /// membership of a group. Actor must have view permissions to all transitive memberships.</summary>
+            /// <summary>Search transitive memberships of a group. **Note:** This feature is only available to Google
+            /// Workspace Enterprise Standard, Enterprise Plus, and Enterprise for Education; and Cloud Identity Premium
+            /// accounts. A transitive membership is any direct or indirect membership of a group. Actor must have view
+            /// permissions to all transitive memberships.</summary>
             /// <param name="parent">[Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search
             /// transitive memberships in. Format: `groups/{group_id}`, where `group_id` is the unique ID assigned to the
             /// Group.</param>
@@ -2263,8 +2284,10 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 return new SearchTransitiveMembershipsRequest(service, parent);
             }
 
-            /// <summary>Search transitive memberships of a group. A transitive membership is any direct or indirect
-            /// membership of a group. Actor must have view permissions to all transitive memberships.</summary>
+            /// <summary>Search transitive memberships of a group. **Note:** This feature is only available to Google
+            /// Workspace Enterprise Standard, Enterprise Plus, and Enterprise for Education; and Cloud Identity Premium
+            /// accounts. A transitive membership is any direct or indirect membership of a group. Actor must have view
+            /// permissions to all transitive memberships.</summary>
             public class SearchTransitiveMembershipsRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.SearchTransitiveMembershipsResponse>
             {
                 /// <summary>Constructs a new SearchTransitiveMemberships request.</summary>

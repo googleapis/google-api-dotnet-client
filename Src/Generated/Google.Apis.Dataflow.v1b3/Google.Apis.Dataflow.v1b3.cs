@@ -5606,6 +5606,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>Container Spec.</summary>
     public class ContainerSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Default runtime environment for the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultEnvironment")]
+        public virtual FlexTemplateRuntimeEnvironment DefaultEnvironment { get; set; }
+
         /// <summary>Name of the docker container image. E.g., gcr.io/project/some-image</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual string Image { get; set; }
@@ -6173,6 +6177,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>Output sources for this stage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputSource")]
         public virtual System.Collections.Generic.IList<StageSource> OutputSource { get; set; }
+
+        /// <summary>Other stages that must complete before this stage can run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prerequisiteStage")]
+        public virtual System.Collections.Generic.IList<string> PrerequisiteStage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

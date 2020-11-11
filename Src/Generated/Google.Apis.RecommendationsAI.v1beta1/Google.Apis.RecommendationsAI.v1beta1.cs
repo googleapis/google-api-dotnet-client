@@ -3008,6 +3008,13 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Metadata for RejoinUserEvents method.</summary>
+    public class GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request message for CatalogRejoin method.</summary>
     public class GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3015,6 +3022,17 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
         /// rejoined with catalog items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEventRejoinScope")]
         public virtual string UserEventRejoinScope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for RejoinUserEvents method.</summary>
+    public class GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of user events that were joined with latest catalog items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rejoinedUserEventsCount")]
+        public virtual System.Nullable<long> RejoinedUserEventsCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

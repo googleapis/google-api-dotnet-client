@@ -2458,9 +2458,8 @@ namespace Google.Apis.Apigateway.v1beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An API Configuration is an association of an API Controller Config and a Gateway Config. For APIs with
-    /// a Managed Service API Controller, this resource is associated with one or more Service Configs and a Service
-    /// Rollout. Initially, this resource will extract the Gateway Config from the API Controller Config.</summary>
+    /// <summary>An API Configuration is a combination of settings for both the Managed Service and Gateways serving
+    /// this API Config.</summary>
     public class ApigatewayApiConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Created time.</summary>
@@ -2635,6 +2634,9 @@ namespace Google.Apis.Apigateway.v1beta.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class ApigatewayBinding : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
+        public virtual string BindingId { get; set; }
+
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
         /// apply to the current request. However, a different role binding might grant the same role to one or more of

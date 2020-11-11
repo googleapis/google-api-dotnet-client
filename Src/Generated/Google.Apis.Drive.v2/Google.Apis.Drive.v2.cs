@@ -2512,7 +2512,7 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
-            /// <summary>Whether to convert this file to the corresponding Google Docs format.</summary>
+            /// <summary>Whether to convert this file to the corresponding Docs Editors format.</summary>
             [Google.Apis.Util.RequestParameterAttribute("convert", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Convert { get; set; }
 
@@ -3231,7 +3231,7 @@ namespace Google.Apis.Drive.v2
             }
 
 
-            /// <summary>Whether to convert this file to the corresponding Google Docs format.</summary>
+            /// <summary>Whether to convert this file to the corresponding Docs Editors format.</summary>
             [Google.Apis.Util.RequestParameterAttribute("convert", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Convert { get; set; }
 
@@ -3485,7 +3485,7 @@ namespace Google.Apis.Drive.v2
             public virtual string UserIp { get; set; }
 
 
-            /// <summary>Whether to convert this file to the corresponding Google Docs format.</summary>
+            /// <summary>Whether to convert this file to the corresponding Docs Editors format.</summary>
             [Google.Apis.Util.RequestParameterAttribute("convert", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Convert { get; set; }
 
@@ -8257,7 +8257,7 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("supportsCreate")]
         public virtual System.Nullable<bool> SupportsCreate { get; set; }
 
-        /// <summary>Whether this app supports importing Google Docs.</summary>
+        /// <summary>Whether this app supports importing from Docs Editors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportsImport")]
         public virtual System.Nullable<bool> SupportsImport { get; set; }
 
@@ -9099,7 +9099,7 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string Description { get; set; }
 
         /// <summary>Short lived download URL for the file. This field is only populated for files with content stored
-        /// in Google Drive; it is not populated for Google Docs or shortcut files.</summary>
+        /// in Google Drive; it is not populated for Docs Editors or shortcut files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadUrl")]
         public virtual string DownloadUrl { get; set; }
 
@@ -9123,18 +9123,18 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("explicitlyTrashed")]
         public virtual System.Nullable<bool> ExplicitlyTrashed { get; set; }
 
-        /// <summary>Links for exporting Google Docs to specific formats.</summary>
+        /// <summary>Links for exporting Docs Editors files to specific formats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportLinks")]
         public virtual System.Collections.Generic.IDictionary<string, string> ExportLinks { get; set; }
 
         /// <summary>The final component of fullFileExtension with trailing text that does not appear to be part of the
         /// extension removed. This field is only populated for files with content stored in Google Drive; it is not
-        /// populated for Google Docs or shortcut files.</summary>
+        /// populated for Docs Editors or shortcut files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileExtension")]
         public virtual string FileExtension { get; set; }
 
         /// <summary>The size of the file in bytes. This field is only populated for files with content stored in Google
-        /// Drive; it is not populated for Google Docs or shortcut files.</summary>
+        /// Drive; it is not populated for Docs Editors or shortcut files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileSize")]
         public virtual System.Nullable<long> FileSize { get; set; }
 
@@ -9147,7 +9147,7 @@ namespace Google.Apis.Drive.v2.Data
         /// <summary>The full file extension; extracted from the title. May contain multiple concatenated extensions,
         /// such as "tar.gz". Removing an extension from the title does not clear this field; however, changing the
         /// extension on the title does update this field. This field is only populated for files with content stored in
-        /// Google Drive; it is not populated for Google Docs or shortcut files.</summary>
+        /// Google Drive; it is not populated for Docs Editors or shortcut files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullFileExtension")]
         public virtual string FullFileExtension { get; set; }
 
@@ -9162,7 +9162,7 @@ namespace Google.Apis.Drive.v2.Data
         public virtual System.Nullable<bool> HasThumbnail { get; set; }
 
         /// <summary>The ID of the file's head revision. This field is only populated for files with content stored in
-        /// Google Drive; it is not populated for Google Docs or shortcut files.</summary>
+        /// Google Drive; it is not populated for Docs Editors or shortcut files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headRevisionId")]
         public virtual string HeadRevisionId { get; set; }
 
@@ -9228,7 +9228,7 @@ namespace Google.Apis.Drive.v2.Data
         }
 
         /// <summary>An MD5 checksum for the content of this file. This field is only populated for files with content
-        /// stored in Google Drive; it is not populated for Google Docs or shortcut files.</summary>
+        /// stored in Google Drive; it is not populated for Docs Editors or shortcut files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("md5Checksum")]
         public virtual string Md5Checksum { get; set; }
 
@@ -10154,7 +10154,7 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Links for exporting Google Docs to specific formats.</summary>
+        /// <summary>Links for exporting Docs Editors files to specific formats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportLinks")]
         public virtual System.Collections.Generic.IDictionary<string, string> ExportLinks { get; set; }
 
@@ -10206,7 +10206,7 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string OriginalFilename { get; set; }
 
         /// <summary>Whether this revision is pinned to prevent automatic purging. This will only be populated and can
-        /// only be modified on files with content stored in Drive which are not Google Docs. Revisions can also be
+        /// only be modified on files with content stored in Drive, excluding Docs Editors files. Revisions can also be
         /// pinned when they are created through the drive.files.insert/update/copy by using the pinned query parameter.
         /// Pinned revisions are stored indefinitely using additional storage quota, up to a maximum of 200
         /// revisions.</summary>
@@ -10214,12 +10214,12 @@ namespace Google.Apis.Drive.v2.Data
         public virtual System.Nullable<bool> Pinned { get; set; }
 
         /// <summary>Whether subsequent revisions will be automatically republished. This is only populated and can only
-        /// be modified for Google Docs.</summary>
+        /// be modified for Docs Editors files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishAuto")]
         public virtual System.Nullable<bool> PublishAuto { get; set; }
 
-        /// <summary>Whether this revision is published. This is only populated and can only be modified for Google
-        /// Docs.</summary>
+        /// <summary>Whether this revision is published. This is only populated and can only be modified for Docs
+        /// Editors files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("published")]
         public virtual System.Nullable<bool> Published { get; set; }
 
@@ -10228,7 +10228,7 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string PublishedLink { get; set; }
 
         /// <summary>Whether this revision is published outside the domain. This is only populated and can only be
-        /// modified for Google Docs.</summary>
+        /// modified for Docs Editors files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedOutsideDomain")]
         public virtual System.Nullable<bool> PublishedOutsideDomain { get; set; }
 

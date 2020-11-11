@@ -1781,6 +1781,31 @@ namespace Google.Apis.ServiceControl.v1.Data
     /// provided by the destination service. For example, a file stored on a network storage service.</summary>
     public class Resource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Annotations is an unstructured key-value map stored with a resource that may be set by external
+        /// tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when
+        /// modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>Output only. The timestamp when the resource was created. This may be either the time creation was
+        /// initiated or when it was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. The timestamp when the resource was deleted. If the resource is not deleted, this must
+        /// be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual object DeleteTime { get; set; }
+
+        /// <summary>Mutable. The display name set by clients. Must be <= 63 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. An opaque value that uniquely identifies a version or generation of a resource. It can
+        /// be used to confirm that the client and server agree on the ordering of a resource being written.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
         /// <summary>The labels or tags on the resource, such as AWS resource tags and Kubernetes resource
         /// labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -1813,8 +1838,12 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
+        /// <summary>Output only. The timestamp when the resource was last updated. Any change to the resource made by
+        /// users must refresh this value. Changes to a resource made by the service should refresh this
+        /// value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
     }    
 
     /// <summary>Describes a resource associated with this operation.</summary>

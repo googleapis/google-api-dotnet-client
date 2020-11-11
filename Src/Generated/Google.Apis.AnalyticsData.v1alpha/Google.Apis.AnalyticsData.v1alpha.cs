@@ -287,8 +287,10 @@ namespace Google.Apis.AnalyticsData.v1alpha
         /// response will contain `customEvent:levels_unlocked`. Universal metadata are dimensions and metrics
         /// applicable to any property such as `country` and `totalUsers`.</summary>
         /// <param name="name">Required. The resource name of the metadata to retrieve. This name field is specified in the URL
-        /// path and not URL parameters. Property is a numeric Google Analytics GA4 Property identifier. Example:
-        /// properties/1234/metadata</param>
+        /// path and not URL parameters. Property is a numeric Google Analytics GA4 Property identifier. To learn more, see
+        /// [where to find your Property ID](https://developers.google.com/analytics/trusted-testing/analytics-data/property-
+        /// id). Example: properties/1234/metadata Set the Property ID to 0 for dimensions and metrics common to all properties.
+        /// In this special mode, this method will not return custom dimensions and metrics.</param>
         public virtual GetMetadataRequest GetMetadata(string name)
         {
             return new GetMetadataRequest(service, name);
@@ -311,8 +313,11 @@ namespace Google.Apis.AnalyticsData.v1alpha
 
 
             /// <summary>Required. The resource name of the metadata to retrieve. This name field is specified in the
-            /// URL path and not URL parameters. Property is a numeric Google Analytics GA4 Property identifier.
-            /// Example: properties/1234/metadata</summary>
+            /// URL path and not URL parameters. Property is a numeric Google Analytics GA4 Property identifier. To
+            /// learn more, see [where to find your Property ID](https://developers.google.com/analytics/trusted-testing
+            /// /analytics-data/property-id). Example: properties/1234/metadata Set the Property ID to 0 for dimensions
+            /// and metrics common to all properties. In this special mode, this method will not return custom
+            /// dimensions and metrics.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -338,6 +343,70 @@ namespace Google.Apis.AnalyticsData.v1alpha
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^properties/[^/]+/metadata$",
+                });
+            }
+
+        }
+
+        /// <summary>The Google Analytics Realtime API returns a customized report of realtime event data for your
+        /// property. These reports show events and usage from the last 30 minutes.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="property">A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL
+        /// path and not the body. To learn more, see [where to find your Property ID](https://developers.google.com/analytics
+        /// /trusted-testing/analytics-data/property-id). Example: properties/1234</param>
+        public virtual RunRealtimeReportRequest RunRealtimeReport(Google.Apis.AnalyticsData.v1alpha.Data.RunRealtimeReportRequest body, string property)
+        {
+            return new RunRealtimeReportRequest(service, body, property);
+        }
+
+        /// <summary>The Google Analytics Realtime API returns a customized report of realtime event data for your
+        /// property. These reports show events and usage from the last 30 minutes.</summary>
+        public class RunRealtimeReportRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1alpha.Data.RunRealtimeReportResponse>
+        {
+            /// <summary>Constructs a new RunRealtimeReport request.</summary>
+            public RunRealtimeReportRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsData.v1alpha.Data.RunRealtimeReportRequest body, string property) : base(service)
+            {
+                Property = property;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path
+            /// and not the body. To learn more, see [where to find your Property
+            /// ID](https://developers.google.com/analytics/trusted-testing/analytics-data/property-id). Example:
+            /// properties/1234</summary>
+            [Google.Apis.Util.RequestParameterAttribute("property", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Property { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AnalyticsData.v1alpha.Data.RunRealtimeReportRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "runRealtimeReport";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/{+property}:runRealtimeReport";
+
+            /// <summary>Initializes RunRealtimeReport parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add("property", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "property",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^properties/[^/]+$",
                 });
             }
 
@@ -438,47 +507,6 @@ namespace Google.Apis.AnalyticsData.v1alpha
             public override string RestPath => "v1alpha:batchRunReports";
 
             /// <summary>Initializes BatchRunReports parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-            }
-
-        }
-
-        /// <summary>Returns metadata for dimensions and metrics available in reporting methods. Used to explore the
-        /// dimensions and metrics. Dimensions and metrics will be mostly added over time, but renames and deletions may
-        /// occur. This method returns Universal Metadata. Universal Metadata are dimensions and metrics applicable to
-        /// any property such as `country` and `totalUsers`.</summary>
-        public virtual GetUniversalMetadataRequest GetUniversalMetadata()
-        {
-            return new GetUniversalMetadataRequest(service);
-        }
-
-        /// <summary>Returns metadata for dimensions and metrics available in reporting methods. Used to explore the
-        /// dimensions and metrics. Dimensions and metrics will be mostly added over time, but renames and deletions may
-        /// occur. This method returns Universal Metadata. Universal Metadata are dimensions and metrics applicable to
-        /// any property such as `country` and `totalUsers`.</summary>
-        public class GetUniversalMetadataRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1alpha.Data.UniversalMetadata>
-        {
-            /// <summary>Constructs a new GetUniversalMetadata request.</summary>
-            public GetUniversalMetadataRequest(Google.Apis.Services.IClientService service) : base(service)
-            {
-                InitParameters();
-            }
-
-
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "getUniversalMetadata";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1alpha/universalMetadata";
-
-            /// <summary>Initializes GetUniversalMetadata parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -773,7 +801,7 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
     }    
 
     /// <summary>A contiguous set of days: startDate, startDate + 1, ..., endDate. Requests are allowed up to 4 date
-    /// ranges, and the union of the ranges can cover up to 1 year.</summary>
+    /// ranges.</summary>
     public class DateRange : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The inclusive end date for the query in the format `YYYY-MM-DD`. Cannot be before `start_date`. The
@@ -798,9 +826,9 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Dimensions are attributes of your data. For example, the dimension City indicates the city, for
-    /// example, "Paris" or "New York", from which an event originates. Requests are allowed up to 8
-    /// dimensions.</summary>
+    /// <summary>Dimensions are attributes of your data. For example, the dimension city indicates the city from which
+    /// an event originates. Dimension values in report responses are strings; for example, city could be "Paris" or
+    /// "New York". Requests are allowed up to 8 dimensions.</summary>
     public class Dimension : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>One dimension can be the result of an expression of multiple dimensions. For example, dimension
@@ -808,7 +836,12 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionExpression")]
         public virtual DimensionExpression DimensionExpression { get; set; }
 
-        /// <summary>The name of the dimension.</summary>
+        /// <summary>The name of the dimension. See the [API Dimensions](https://developers.google.com/analytics
+        /// /trusted-testing/analytics-data/api-schema#dimensions) for the list of dimension names. If
+        /// `dimensionExpression` is specified, `name` can be any string that you would like. For example if a
+        /// `dimensionExpression` concatenates `country` and `city`, you could call that dimension `countryAndCity`.
+        /// Dimensions are referenced by `name` in `dimensionFilter`, `orderBys`, `dimensionExpression`, and
+        /// `pivots`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -906,7 +939,8 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
     /// <summary>The unique identifier of the property whose events are tracked.</summary>
     public class Entity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A Google Analytics GA4 property id.</summary>
+        /// <summary>A Google Analytics GA4 property id. To learn more, see [where to find your Property
+        /// ID](https://developers.google.com/analytics/trusted-testing/analytics-data/property-id).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyId")]
         public virtual string PropertyId { get; set; }
 
@@ -929,7 +963,9 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inListFilter")]
         public virtual InListFilter InListFilter { get; set; }
 
-        /// <summary>A filter for null values.</summary>
+        /// <summary>A filter for null values. If True, a null dimension value is matched by this filter. Null filter is
+        /// commonly used inside a NOT filter expression. For example, a NOT expression of a null filter removes rows
+        /// when a dimension is null.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nullFilter")]
         public virtual System.Nullable<bool> NullFilter { get; set; }
 
@@ -1015,21 +1051,26 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The quantitative measurements of a report. For example, the metric eventCount is the total number of
+    /// <summary>The quantitative measurements of a report. For example, the metric `eventCount` is the total number of
     /// events. Requests are allowed up to 10 metrics.</summary>
     public class Metric : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A mathematical expression for derived metrics. For example, the metric Event count per user is
-        /// eventCount/totalUsers.</summary>
+        /// `eventCount/totalUsers`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
         public virtual string Expression { get; set; }
 
-        /// <summary>Indicates if a metric is invisible. If a metric is invisible, the metric is not in the response,
-        /// but can be used in filters, order_bys or being referred to in a metric expression.</summary>
+        /// <summary>Indicates if a metric is invisible in the report response. If a metric is invisible, the metric
+        /// will not produce a column in the response, but can be used in `metricFilter`, `orderBys`, or a metric
+        /// `expression`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invisible")]
         public virtual System.Nullable<bool> Invisible { get; set; }
 
-        /// <summary>The name of the metric.</summary>
+        /// <summary>The name of the metric. See the [API Metrics](https://developers.google.com/analytics/trusted-
+        /// testing/analytics-data/api-schema#metrics) for the list of metric names. If `expression` is specified,
+        /// `name` can be any string that you would like. For example if `expression` is `screenPageViews/sessions`, you
+        /// could call that metric's name = `viewsPerSession`. Metrics are referenced by `name` in `metricFilter`,
+        /// `orderBys`, and metric `expression`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1268,21 +1309,24 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
     /// requests to that property will return Resource Exhausted errors.</summary>
     public class PropertyQuota : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Analytics Properties can send up to 10 concurrent requests.</summary>
+        /// <summary>Standard Analytics Properties can send up to 10 concurrent requests; Analytics 360 Properties can
+        /// use up to 50 concurrent requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("concurrentRequests")]
         public virtual QuotaStatus ConcurrentRequests { get; set; }
 
-        /// <summary>Analytics Properties and cloud project pairs can have up to 10 server errors per hour.</summary>
+        /// <summary>Standard Analytics Properties and cloud project pairs can have up to 10 server errors per hour;
+        /// Analytics 360 Properties and cloud project pairs can have up to 50 server errors per hour.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serverErrorsPerProjectPerHour")]
         public virtual QuotaStatus ServerErrorsPerProjectPerHour { get; set; }
 
-        /// <summary>Analytics Properties can use up to 25,000 tokens per day. Most requests consume fewer than 10
-        /// tokens.</summary>
+        /// <summary>Standard Analytics Properties can use up to 25,000 tokens per day; Analytics 360 Properties can use
+        /// 250,000 tokens per day. Most requests consume fewer than 10 tokens.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokensPerDay")]
         public virtual QuotaStatus TokensPerDay { get; set; }
 
-        /// <summary>Analytics Properties can use up to 5,000 tokens per day. An API request consumes a single number of
-        /// tokens, and that number is deducted from both the hourly and daily quotas.</summary>
+        /// <summary>Standard Analytics Properties can use up to 5,000 tokens per day; Analytics 360 Properties can use
+        /// 50,000 tokens per day. An API request consumes a single number of tokens, and that number is deducted from
+        /// both the hourly and daily quotas.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokensPerHour")]
         public virtual QuotaStatus TokensPerHour { get; set; }
 
@@ -1317,10 +1361,11 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Report data for each row. For example if RunReportRequest contains: ```none dimensions { name:
-    /// "eventName" } dimensions { name: "countryId" } metrics { name: "eventCount" } ``` One row with 'in_app_purchase'
-    /// as the eventName, 'us' as the countryId, and 15 as the eventCount, would be: ```none dimension_values { name:
-    /// 'in_app_purchase' name: 'us' } metric_values { int64_value: 15 } ```</summary>
+    /// <summary>Report data for each row. For example if RunReportRequest contains: ```none "dimensions": [ { "name":
+    /// "eventName" }, { "name": "countryId" } ], "metrics": [ { "name": "eventCount" } ] ``` One row with
+    /// 'in_app_purchase' as the eventName, 'JP' as the countryId, and 15 as the eventCount, would be: ```none
+    /// "dimensionValues": [ { "value": "in_app_purchase" }, { "value": "JP" } ], "metricValues": [ { "value": "15" } ]
+    /// ```</summary>
     public class Row : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of requested dimension values. In a PivotReport, dimension_values are only listed for
@@ -1446,6 +1491,93 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The request to generate a realtime report.</summary>
+    public class RunRealtimeReportRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The filter clause of dimensions. Dimensions must be requested to be used in this filter. Metrics
+        /// cannot be used in this filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilter")]
+        public virtual FilterExpression DimensionFilter { get; set; }
+
+        /// <summary>The dimensions requested and displayed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<Dimension> Dimensions { get; set; }
+
+        /// <summary>The number of rows to return. If unspecified, 10 rows are returned. If -1, all rows are
+        /// returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("limit")]
+        public virtual System.Nullable<long> Limit { get; set; }
+
+        /// <summary>Aggregation of metrics. Aggregated metric values will be shown in rows where the dimension_values
+        /// are set to "RESERVED_(MetricAggregation)".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricAggregations")]
+        public virtual System.Collections.Generic.IList<string> MetricAggregations { get; set; }
+
+        /// <summary>The filter clause of metrics. Applied at post aggregation phase, similar to SQL having-clause.
+        /// Metrics must be requested to be used in this filter. Dimensions cannot be used in this filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricFilter")]
+        public virtual FilterExpression MetricFilter { get; set; }
+
+        /// <summary>The metrics requested and displayed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; }
+
+        /// <summary>Specifies how rows are ordered in the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderBys")]
+        public virtual System.Collections.Generic.IList<OrderBy> OrderBys { get; set; }
+
+        /// <summary>Toggles whether to return the current state of this Analytics Property's Realtime quota. Quota is
+        /// returned in [PropertyQuota](#PropertyQuota).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnPropertyQuota")]
+        public virtual System.Nullable<bool> ReturnPropertyQuota { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response realtime report table corresponding to a request.</summary>
+    public class RunRealtimeReportResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Describes dimension columns. The number of DimensionHeaders and ordering of DimensionHeaders
+        /// matches the dimensions present in rows.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionHeaders")]
+        public virtual System.Collections.Generic.IList<DimensionHeader> DimensionHeaders { get; set; }
+
+        /// <summary>If requested, the maximum values of metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximums")]
+        public virtual System.Collections.Generic.IList<Row> Maximums { get; set; }
+
+        /// <summary>Describes metric columns. The number of MetricHeaders and ordering of MetricHeaders matches the
+        /// metrics present in rows.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricHeaders")]
+        public virtual System.Collections.Generic.IList<MetricHeader> MetricHeaders { get; set; }
+
+        /// <summary>If requested, the minimum values of metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimums")]
+        public virtual System.Collections.Generic.IList<Row> Minimums { get; set; }
+
+        /// <summary>This Analytics Property's Realtime quota state including this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyQuota")]
+        public virtual PropertyQuota PropertyQuota { get; set; }
+
+        /// <summary>The total number of rows in the query result, regardless of the number of rows returned in the
+        /// response. For example if a query returns 175 rows and includes limit = 50 in the API request, the response
+        /// will contain row_count = 175 but only 50 rows.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
+        public virtual System.Nullable<int> RowCount { get; set; }
+
+        /// <summary>Rows of dimension value combinations and metric values in the report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<Row> Rows { get; set; }
+
+        /// <summary>If requested, the totaled values of metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totals")]
+        public virtual System.Collections.Generic.IList<Row> Totals { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The request to generate a report.</summary>
     public class RunReportRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1485,8 +1617,8 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("keepEmptyRows")]
         public virtual System.Nullable<bool> KeepEmptyRows { get; set; }
 
-        /// <summary>The number of rows to return. If unspecified, 10 rows are returned. If -1, all rows are
-        /// returned.</summary>
+        /// <summary>The number of rows to return. If unspecified, 10 rows are returned. If -1, all rows are returned.
+        /// To learn more about this pagination parameter, see [Pagination](basics#pagination).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual System.Nullable<long> Limit { get; set; }
 
@@ -1504,7 +1636,8 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; }
 
-        /// <summary>The row count of the start row. The first row is counted as row 0.</summary>
+        /// <summary>The row count of the start row. The first row is counted as row 0. To learn more about this
+        /// pagination parameter, see [Pagination](basics#pagination).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offset")]
         public virtual System.Nullable<long> Offset { get; set; }
 
@@ -1552,7 +1685,8 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
 
         /// <summary>The total number of rows in the query result, regardless of the number of rows returned in the
         /// response. For example if a query returns 175 rows and includes limit = 50 in the API request, the response
-        /// will contain row_count = 175 but only 50 rows.</summary>
+        /// will contain row_count = 175 but only 50 rows. To learn more about this pagination parameter, see
+        /// [Pagination](basics#pagination).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
         public virtual System.Nullable<int> RowCount { get; set; }
 
@@ -1582,21 +1716,6 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         /// <summary>The string value used for the matching.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The dimensions and metrics currently accepted in reporting methods.</summary>
-    public class UniversalMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The dimensions descriptions.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
-        public virtual System.Collections.Generic.IList<DimensionMetadata> Dimensions { get; set; }
-
-        /// <summary>The metric descriptions.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-        public virtual System.Collections.Generic.IList<MetricMetadata> Metrics { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

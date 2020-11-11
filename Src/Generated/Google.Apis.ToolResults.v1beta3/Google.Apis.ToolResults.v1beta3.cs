@@ -3671,6 +3671,13 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A warning that device ran out of memory</summary>
+    public class DeviceOutOfMemory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary> A Duration represents a signed, fixed-length span of time represented as a count of seconds and
     /// fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts like "day" or
     /// "month". It is related to Timestamp in that the difference between two Timestamp values is a Duration and it can

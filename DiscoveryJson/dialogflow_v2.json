@@ -2065,7 +2065,7 @@
    }
   }
  }, 
- "revision": "20201017", 
+ "revision": "20201109", 
  "rootUrl": "https://dialogflow.googleapis.com/", 
  "schemas": {
   "GoogleCloudDialogflowCxV3PageInfo": {
@@ -6972,12 +6972,6 @@
      "type": "string"
     }
    }, 
-   "type": "object"
-  }, 
-  "GoogleCloudDialogflowV3alpha1RunTestCaseMetadata": {
-   "description": "Metadata returned for the TestCases.RunTestCase long running operation.", 
-   "id": "GoogleCloudDialogflowV3alpha1RunTestCaseMetadata", 
-   "properties": {}, 
    "type": "object"
   }, 
   "GoogleLongrunningListOperationsResponse": {

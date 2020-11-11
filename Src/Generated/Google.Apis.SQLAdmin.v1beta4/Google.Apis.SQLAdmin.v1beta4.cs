@@ -4369,9 +4369,20 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rootPassword")]
         public virtual string RootPassword { get; set; }
 
+        /// <summary>The status indicating if instance satisfies physical zone separation. Reserved for future
+        /// use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>The start time of any upcoming scheduled maintenance for this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledMaintenance")]
         public virtual SqlScheduledMaintenance ScheduledMaintenance { get; set; }
+
+        /// <summary>The Compute Engine zone that the failover instance is currently serving from for a regional
+        /// instance. This value could be different from the zone that was specified when the instance was created if
+        /// the instance has failed over to its secondary/failover zone. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryGceZone")]
+        public virtual string SecondaryGceZone { get; set; }
 
         /// <summary>The URI of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
@@ -5016,6 +5027,11 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
+        /// <summary>The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-
+        /// central1-b, etc.). Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryZone")]
+        public virtual string SecondaryZone { get; set; }
+
         /// <summary>The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
@@ -5361,7 +5377,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("activationPolicy")]
         public virtual string ActivationPolicy { get; set; }
 
-        /// <summary>Active Directory configuration, for now relevant only for SQL Server</summary>
+        /// <summary>Active Directory configuration, relevant only for Cloud SQL for SQL Server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeDirectoryConfig")]
         public virtual SqlActiveDirectoryConfig ActiveDirectoryConfig { get; set; }
 
@@ -5472,14 +5488,14 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Active Directory configuration, for now relevant only for SQL Server</summary>
+    /// <summary>Active Directory configuration, relevant only for Cloud SQL for SQL Server.</summary>
     public class SqlActiveDirectoryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Domain name</summary>
+        /// <summary>The name of the domain (e.g., mydomain.com).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
 
-        /// <summary>This will be always sql#activeDirectoryConfig.</summary>
+        /// <summary>This is always sql#activeDirectoryConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 

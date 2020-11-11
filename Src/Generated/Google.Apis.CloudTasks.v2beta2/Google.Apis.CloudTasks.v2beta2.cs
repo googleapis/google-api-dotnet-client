@@ -1157,8 +1157,10 @@ namespace Google.Apis.CloudTasks.v2beta2
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional. Read mask is used for a more granular control over what the API returns. By
-                    /// it includes all fields in Queue except for stats.</summary>
+                    /// <summary>Optional. Read mask is used for a more granular control over what the API returns. If
+                    /// the mask is not present all fields will be returned except [Queue.stats], if the mask is set to
+                    /// "*" all fields including [Queue.stats] will be returned, otherwise only the fields explicitly
+                    /// specified in the mask will be returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object ReadMask { get; set; }
 
@@ -1308,6 +1310,13 @@ namespace Google.Apis.CloudTasks.v2beta2
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>Optional. Read mask is used for a more granular control over what the API returns. If
+                    /// the mask is not present all fields will be returned except [Queue.stats], if the mask is set to
+                    /// "*" all fields including [Queue.stats] will be returned, otherwise only the fields explicitly
+                    /// specified in the mask will be returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object ReadMask { get; set; }
+
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -1350,6 +1359,14 @@ namespace Google.Apis.CloudTasks.v2beta2
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "readMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2116,8 +2133,6 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
-        /// bindings-by-ID API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
         public virtual string BindingId { get; set; }
 

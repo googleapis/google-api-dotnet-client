@@ -338,7 +338,10 @@ namespace Google.Apis.CloudIdentity.v1
                 /// <param name="name">Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the ClientState
                 /// in format: `devices/{device_id}/deviceUsers/{device_user_id}/clientStates/{partner_id}`, where device_id is the
                 /// unique ID assigned to the Device, device_user_id is the unique ID assigned to the User and partner_id identifies the
-                /// partner storing the data.</param>
+                /// partner storing the data. To get the client state for devices belonging to your own organization, the `partnerId` is
+                /// in the format: `customerId-*anystring*`. Where the `customerId` is your organization's customer ID and `anystring`
+                /// is any suffix. This suffix is used in setting up Custom Access Levels in Context-Aware Access. You may use
+                /// `my_customer` instead of the customer ID for devices managed by your own organization.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -359,7 +362,11 @@ namespace Google.Apis.CloudIdentity.v1
                     /// ClientState in format:
                     /// `devices/{device_id}/deviceUsers/{device_user_id}/clientStates/{partner_id}`, where device_id is
                     /// the unique ID assigned to the Device, device_user_id is the unique ID assigned to the User and
-                    /// partner_id identifies the partner storing the data.</summary>
+                    /// partner_id identifies the partner storing the data. To get the client state for devices
+                    /// belonging to your own organization, the `partnerId` is in the format: `customerId-*anystring*`.
+                    /// Where the `customerId` is your organization's customer ID and `anystring` is any suffix. This
+                    /// suffix is used in setting up Custom Access Levels in Context-Aware Access. You may use
+                    /// `my_customer` instead of the customer ID for devices managed by your own organization.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 

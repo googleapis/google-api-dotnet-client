@@ -687,7 +687,10 @@ namespace Google.Apis.CloudBuild.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>Token to provide to skip to a particular spot in the list.</summary>
+                /// <summary>The page token for the next page of Builds. If unspecified, the first page of results is
+                /// returned. If the token is rejected for any reason, INVALID_ARGUMENT will be thrown. In this case,
+                /// the token should be discarded, and pagination should be restarted from the first page of results.
+                /// See https://google.aip.dev/158 for more.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -1133,7 +1136,10 @@ namespace Google.Apis.CloudBuild.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>Token to provide to skip to a particular spot in the list.</summary>
+                    /// <summary>The page token for the next page of Builds. If unspecified, the first page of results
+                    /// is returned. If the token is rejected for any reason, INVALID_ARGUMENT will be thrown. In this
+                    /// case, the token should be discarded, and pagination should be restarted from the first page of
+                    /// results. See https://google.aip.dev/158 for more.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -2430,7 +2436,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("builds")]
         public virtual System.Collections.Generic.IList<Build> Builds { get; set; }
 
-        /// <summary>Token to receive the next page of results.</summary>
+        /// <summary>Token to receive the next page of results. This will be absent if the end of the response list has
+        /// been reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 

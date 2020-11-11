@@ -418,10 +418,8 @@ namespace Google.Apis.SmartDeviceManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional filter to list devices. Filters can match the exact assignee (could be a structure
-                /// or a room). E.g. 'assignee=enterprises/XYZ/structures/abc' Also could filter by parent (group):
-                /// 'parent=enterprises/XYZ/groups/jkl' or filter by device custom name (substring match):
-                /// 'customName=wing'</summary>
+                /// <summary>Optional filter to list devices. Filters can be done on: Device custom name (substring
+                /// match): 'customName=wing'</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -723,9 +721,7 @@ namespace Google.Apis.SmartDeviceManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional filter to list structures. Filters can match the exact album assigned to the
-                /// structure. E.g. 'album=enterprises/XYZ/albums/abc' It also support filtering by parent (only groups
-                /// for now): E.g. 'parent=enterprises/XYZ/groups/124'</summary>
+                /// <summary>Optional filter to list structures.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -936,31 +932,9 @@ namespace Google.Apis.SmartDeviceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Assignee details of the structure.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parentRelations")]
-        public virtual System.Collections.Generic.IList<GoogleHomeEnterpriseSdmV1StructureParentRelation> ParentRelations { get; set; }
-
         /// <summary>Structure traits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traits")]
         public virtual System.Collections.Generic.IDictionary<string, object> Traits { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Represents structure assignee relationships, for instance, group to which the structure is assigned
-    /// to.</summary>
-    public class GoogleHomeEnterpriseSdmV1StructureParentRelation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The custom name of the relation -- e.g., group, to which the structure is assigned
-        /// to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>Output only. The name of the relation -- e.g., group to which the structure is assigned to. For
-        /// example: "enterprises/XYZ/groups/ABC"</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

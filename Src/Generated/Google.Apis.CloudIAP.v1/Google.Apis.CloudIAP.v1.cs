@@ -1193,8 +1193,6 @@ namespace Google.Apis.CloudIAP.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
-        /// bindings-by-ID API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
         public virtual string BindingId { get; set; }
 
@@ -1447,14 +1445,6 @@ namespace Google.Apis.CloudIAP.v1.Data
     /// <summary>Configuration for OAuth login flow behavior as well as for OAuth Credentials.</summary>
     public class OAuthSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you
-        /// can skip obtaining the OAuth credentials in this step:
-        /// https://developers.google.com/identity/protocols/OAuth2?hl=en_US#1.-obtain-oauth-2.0-credentials-from-the-
-        /// google-api-console. However, this could allow for client sharing. The risks of client sharing are outlined
-        /// here: https://cloud.google.com/iap/docs/sharing-oauth-clients#risks.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
-        public virtual string ClientId { get; set; }
-
         /// <summary>Domain hint to send as hd=? parameter in OAuth request flow. Enables redirect to primary IDP by
         /// skipping Google's login screen. https://developers.google.com/identity/protocols/OpenIDConnect#hd-param
         /// Note: IAP does not verify that the id token's hd claim matches this value since access behavior is managed

@@ -7243,6 +7243,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoInstallPolicy")]
         public virtual AutoInstallPolicy AutoInstallPolicy { get; set; }
 
+        /// <summary>The auto-update mode for the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoUpdateMode")]
+        public virtual string AutoUpdateMode { get; set; }
+
         /// <summary>The managed configuration for the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedConfiguration")]
         public virtual ManagedConfiguration ManagedConfiguration { get; set; }

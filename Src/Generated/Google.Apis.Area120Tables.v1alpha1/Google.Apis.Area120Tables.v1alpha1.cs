@@ -30,6 +30,7 @@ namespace Google.Apis.Area120Tables.v1alpha1
         public Area120TablesService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Tables = new TablesResource(this);
+            Workspaces = new WorkspacesResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -103,6 +104,9 @@ namespace Google.Apis.Area120Tables.v1alpha1
 
         /// <summary>Gets the Tables resource.</summary>
         public virtual TablesResource Tables { get; }
+
+        /// <summary>Gets the Workspaces resource.</summary>
+        public virtual WorkspacesResource Workspaces { get; }
     }
 
     /// <summary>A base abstract class for Area120Tables requests.</summary>
@@ -939,6 +943,135 @@ namespace Google.Apis.Area120Tables.v1alpha1
 
         }
     }
+
+    /// <summary>The "workspaces" collection of methods.</summary>
+    public class WorkspacesResource
+    {
+        private const string Resource = "workspaces";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public WorkspacesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Gets a workspace. Returns NOT_FOUND if the workspace does not exist.</summary>
+        /// <param name="name">Required. The name of the workspace to retrieve. Format: workspaces/{workspace}</param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(service, name);
+        }
+
+        /// <summary>Gets a workspace. Returns NOT_FOUND if the workspace does not exist.</summary>
+        public class GetRequest : Area120TablesBaseServiceRequest<Google.Apis.Area120Tables.v1alpha1.Data.Workspace>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The name of the workspace to retrieve. Format: workspaces/{workspace}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha1/{+name}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^workspaces/[^/]+$",
+                });
+            }
+
+        }
+
+        /// <summary>Lists workspaces for the user.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>Lists workspaces for the user.</summary>
+        public class ListRequest : Area120TablesBaseServiceRequest<Google.Apis.Area120Tables.v1alpha1.Data.ListWorkspacesResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>The maximum number of workspaces to return. The service may return fewer than this value. If
+            /// unspecified, at most 10 workspaces are returned. The maximum value is 25; values above 25 are coerced to
+            /// 25.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>A page token, received from a previous `ListWorkspaces` call. Provide this to retrieve the
+            /// subsequent page. When paginating, all other parameters provided to `ListWorkspaces` must match the call
+            /// that provided the page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha1/workspaces";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+        }
+    }
 }
 
 namespace Google.Apis.Area120Tables.v1alpha1.Data
@@ -1105,6 +1238,22 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response message for TablesService.ListWorkspaces.</summary>
+    public class ListWorkspacesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is empty, there
+        /// are no subsequent pages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of workspaces.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workspaces")]
+        public virtual System.Collections.Generic.IList<Workspace> Workspaces { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Details about a lookup column whose value comes from the associated relationship.</summary>
     public class LookupDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1181,6 +1330,26 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
         /// <summary>Optional. Column key to use for values in the row. Defaults to user entered name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("view")]
         public virtual string View { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A single workspace.</summary>
+    public class Workspace : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The human readable title of the workspace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The resource name of the workspace. Workspace names have the form
+        /// `workspaces/{workspace}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The list of tables in the workspace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tables")]
+        public virtual System.Collections.Generic.IList<Table> Tables { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

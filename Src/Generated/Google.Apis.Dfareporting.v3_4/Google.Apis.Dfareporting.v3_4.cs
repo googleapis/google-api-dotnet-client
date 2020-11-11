@@ -117,7 +117,7 @@ namespace Google.Apis.Dfareporting.v3_4
         public override string BatchPath => "batch";
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the DCM/DFA Reporting And Trafficking API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Campaign Manager 360 API.</summary>
         public class Scope
         {
             /// <summary>Manage DoubleClick Digital Marketing conversions</summary>
@@ -131,7 +131,7 @@ namespace Google.Apis.Dfareporting.v3_4
 
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the DCM/DFA Reporting And Trafficking API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Campaign Manager 360 API.</summary>
         public static class ScopeConstants
         {
             /// <summary>Manage DoubleClick Digital Marketing conversions</summary>
@@ -8256,7 +8256,7 @@ namespace Google.Apis.Dfareporting.v3_4
 
         /// <summary>Retrieves list of report dimension values for a list of filters.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="profileId">The DFA user profile ID.</param>
+        /// <param name="profileId">The Campaign Manager 360 user profile ID.</param>
         public virtual QueryRequest Query(Google.Apis.Dfareporting.v3_4.Data.DimensionValueRequest body, long profileId)
         {
             return new QueryRequest(service, body, profileId);
@@ -8274,7 +8274,7 @@ namespace Google.Apis.Dfareporting.v3_4
             }
 
 
-            /// <summary>The DFA user profile ID.</summary>
+            /// <summary>The Campaign Manager 360 user profile ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
@@ -9659,7 +9659,7 @@ namespace Google.Apis.Dfareporting.v3_4
         }
 
         /// <summary>Lists files for a user profile.</summary>
-        /// <param name="profileId">The DFA profile ID.</param>
+        /// <param name="profileId">The Campaign Manager 360 user profile ID.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
@@ -9676,7 +9676,7 @@ namespace Google.Apis.Dfareporting.v3_4
             }
 
 
-            /// <summary>The DFA profile ID.</summary>
+            /// <summary>The Campaign Manager 360 user profile ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
@@ -15865,7 +15865,7 @@ namespace Google.Apis.Dfareporting.v3_4
             /// <summary>Returns the fields that are compatible to be selected in the respective sections of a report
             /// criteria, given the fields already selected in the input report and user permissions.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="profileId">The DFA user profile ID.</param>
+            /// <param name="profileId">The Campaign Manager 360 user profile ID.</param>
             public virtual QueryRequest Query(Google.Apis.Dfareporting.v3_4.Data.Report body, long profileId)
             {
                 return new QueryRequest(service, body, profileId);
@@ -15884,7 +15884,7 @@ namespace Google.Apis.Dfareporting.v3_4
                 }
 
 
-                /// <summary>The DFA user profile ID.</summary>
+                /// <summary>The Campaign Manager 360 user profile ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long ProfileId { get; private set; }
 
@@ -15942,9 +15942,9 @@ namespace Google.Apis.Dfareporting.v3_4
 
             /// <summary>Retrieves a report file by its report ID and file ID. This method supports media
             /// download.</summary>
-            /// <param name="profileId">The DFA user profile ID.</param>
-            /// <param name="reportId">The ID of the
-            /// report.</param>
+            /// <param name="profileId">The Campaign Manager 360 user profile ID.</param>
+            /// <param name="reportId">The ID of
+            /// the report.</param>
             /// <param name="fileId">The ID of the report file.</param>
             public virtual GetRequest Get(long profileId, long reportId, long fileId)
             {
@@ -15966,7 +15966,7 @@ namespace Google.Apis.Dfareporting.v3_4
                 }
 
 
-                /// <summary>The DFA user profile ID.</summary>
+                /// <summary>The Campaign Manager 360 user profile ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long ProfileId { get; private set; }
 
@@ -16074,9 +16074,9 @@ namespace Google.Apis.Dfareporting.v3_4
             }
 
             /// <summary>Lists files for a report.</summary>
-            /// <param name="profileId">The DFA profile ID.</param>
-            /// <param name="reportId">The ID of the parent
-            /// report.</param>
+            /// <param name="profileId">The Campaign Manager 360 user profile ID.</param>
+            /// <param name="reportId">The ID of
+            /// the parent report.</param>
             public virtual ListRequest List(long profileId, long reportId)
             {
                 return new ListRequest(service, profileId, reportId);
@@ -16094,7 +16094,7 @@ namespace Google.Apis.Dfareporting.v3_4
                 }
 
 
-                /// <summary>The DFA profile ID.</summary>
+                /// <summary>The Campaign Manager 360 user profile ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long ProfileId { get; private set; }
 
@@ -16205,9 +16205,9 @@ namespace Google.Apis.Dfareporting.v3_4
         }
 
         /// <summary>Deletes a report by its ID.</summary>
-        /// <param name="profileId">The DFA user profile ID.</param>
-        /// <param name="reportId">The ID of the
-        /// report.</param>
+        /// <param name="profileId">The Campaign Manager 360 user profile ID.</param>
+        /// <param name="reportId">The ID of
+        /// the report.</param>
         public virtual DeleteRequest Delete(long profileId, long reportId)
         {
             return new DeleteRequest(service, profileId, reportId);
@@ -16225,7 +16225,7 @@ namespace Google.Apis.Dfareporting.v3_4
             }
 
 
-            /// <summary>The DFA user profile ID.</summary>
+            /// <summary>The Campaign Manager 360 user profile ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
@@ -16269,9 +16269,9 @@ namespace Google.Apis.Dfareporting.v3_4
         }
 
         /// <summary>Retrieves a report by its ID.</summary>
-        /// <param name="profileId">The DFA user profile ID.</param>
-        /// <param name="reportId">The ID of the
-        /// report.</param>
+        /// <param name="profileId">The Campaign Manager 360 user profile ID.</param>
+        /// <param name="reportId">The ID of
+        /// the report.</param>
         public virtual GetRequest Get(long profileId, long reportId)
         {
             return new GetRequest(service, profileId, reportId);
@@ -16289,7 +16289,7 @@ namespace Google.Apis.Dfareporting.v3_4
             }
 
 
-            /// <summary>The DFA user profile ID.</summary>
+            /// <summary>The Campaign Manager 360 user profile ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
@@ -16334,7 +16334,7 @@ namespace Google.Apis.Dfareporting.v3_4
 
         /// <summary>Creates a report.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="profileId">The DFA user profile ID.</param>
+        /// <param name="profileId">The Campaign Manager 360 user profile ID.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v3_4.Data.Report body, long profileId)
         {
             return new InsertRequest(service, body, profileId);
@@ -16352,7 +16352,7 @@ namespace Google.Apis.Dfareporting.v3_4
             }
 
 
-            /// <summary>The DFA user profile ID.</summary>
+            /// <summary>The Campaign Manager 360 user profile ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
@@ -16390,7 +16390,7 @@ namespace Google.Apis.Dfareporting.v3_4
         }
 
         /// <summary>Retrieves list of reports.</summary>
-        /// <param name="profileId">The DFA user profile ID.</param>
+        /// <param name="profileId">The Campaign Manager 360 user profile ID.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
@@ -16407,7 +16407,7 @@ namespace Google.Apis.Dfareporting.v3_4
             }
 
 
-            /// <summary>The DFA user profile ID.</summary>
+            /// <summary>The Campaign Manager 360 user profile ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
@@ -16607,9 +16607,9 @@ namespace Google.Apis.Dfareporting.v3_4
         }
 
         /// <summary>Runs a report.</summary>
-        /// <param name="profileId">The DFA profile ID.</param>
-        /// <param name="reportId">The ID of the
-        /// report.</param>
+        /// <param name="profileId">The Campaign Manager 360 user profile ID.</param>
+        /// <param name="reportId">The ID of
+        /// the report.</param>
         public virtual RunRequest Run(long profileId, long reportId)
         {
             return new RunRequest(service, profileId, reportId);
@@ -16627,7 +16627,7 @@ namespace Google.Apis.Dfareporting.v3_4
             }
 
 
-            /// <summary>The DFA profile ID.</summary>
+            /// <summary>The Campaign Manager 360 user profile ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
@@ -16684,9 +16684,9 @@ namespace Google.Apis.Dfareporting.v3_4
 
         /// <summary>Updates a report.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="profileId">The DFA user profile ID.</param>
-        /// <param name="reportId">The ID of the
-        /// report.</param>
+        /// <param name="profileId">The Campaign Manager 360 user profile ID.</param>
+        /// <param name="reportId">The ID of
+        /// the report.</param>
         public virtual UpdateRequest Update(Google.Apis.Dfareporting.v3_4.Data.Report body, long profileId, long reportId)
         {
             return new UpdateRequest(service, body, profileId, reportId);
@@ -16705,7 +16705,7 @@ namespace Google.Apis.Dfareporting.v3_4
             }
 
 
-            /// <summary>The DFA user profile ID.</summary>
+            /// <summary>The Campaign Manager 360 user profile ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
@@ -21001,7 +21001,7 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("companionsDisabled")]
         public virtual System.Nullable<bool> CompanionsDisabled { get; set; }
 
-        /// <summary>Whitelist of companion sizes to be served to this placement. Set this list to null or empty to
+        /// <summary>Allowlist of companion sizes to be served to this placement. Set this list to null or empty to
         /// serve all companion sizes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledSizes")]
         public virtual System.Collections.Generic.IList<Size> EnabledSizes { get; set; }
@@ -25332,7 +25332,7 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lookbackConfiguration")]
         public virtual LookbackConfiguration LookbackConfiguration { get; set; }
 
-        /// <summary>Name of this placement.This is a required field and must be less than 256 characters
+        /// <summary>Name of this placement.This is a required field and must be less than or equal to 256 characters
         /// long.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -26935,7 +26935,7 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("companionsDisabled")]
         public virtual System.Nullable<bool> CompanionsDisabled { get; set; }
 
-        /// <summary>Whitelist of companion sizes to be served via this site template. Set this list to null or empty to
+        /// <summary>Allowlist of companion sizes to be served via this site template. Set this list to null or empty to
         /// serve all companion sizes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledSizes")]
         public virtual System.Collections.Generic.IList<Size> EnabledSizes { get; set; }
@@ -27063,7 +27063,7 @@ namespace Google.Apis.Dfareporting.v3_4.Data
     /// <summary>Transcode Settings</summary>
     public class SiteTranscodeSetting : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whitelist of video formats to be served to this site template. Set this list to null or empty to
+        /// <summary>Allowlist of video formats to be served to this site template. Set this list to null or empty to
         /// serve all video formats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledVideoFormats")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> EnabledVideoFormats { get; set; }
@@ -27608,7 +27608,7 @@ namespace Google.Apis.Dfareporting.v3_4.Data
     /// <summary>Transcode Settings</summary>
     public class TranscodeSetting : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whitelist of video formats to be served to this placement. Set this list to null or empty to serve
+        /// <summary>Allowlist of video formats to be served to this placement. Set this list to null or empty to serve
         /// all video formats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledVideoFormats")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> EnabledVideoFormats { get; set; }

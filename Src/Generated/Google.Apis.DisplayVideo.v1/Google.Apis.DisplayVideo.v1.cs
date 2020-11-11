@@ -345,6 +345,7 @@ namespace Google.Apis.DisplayVideo.v1
             InsertionOrders = new InsertionOrdersResource(service);
             LineItems = new LineItemsResource(service);
             LocationLists = new LocationListsResource(service);
+            ManualTriggers = new ManualTriggersResource(service);
             NegativeKeywordLists = new NegativeKeywordListsResource(service);
             TargetingTypes = new TargetingTypesResource(service);
 
@@ -4020,8 +4021,8 @@ namespace Google.Apis.DisplayVideo.v1
                 /// used on `warningMessages` must be `HAS (:)`. * The operators used on all other fields must be
                 /// `EQUALS (=)`. * Supported fields: - `campaignId` - `displayName` - `insertionOrderId` -
                 /// `entityStatus` - `lineItemId` - `lineItemType` - `flight.dateRange.endDate` (input formatted as
-                /// YYYY-MM-DD) - `warningMessages` Examples: * All line items under an insertion order:
-                /// `insertionOrderId="1234"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` and
+                /// YYYY-MM-DD) - `warningMessages` - `flight.triggerId` Examples: * All line items under an insertion
+                /// order: `insertionOrderId="1234"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` and
                 /// `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser:
                 /// `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED") AND
                 /// lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` * All line items whose flight dates end before March
@@ -4891,6 +4892,489 @@ namespace Google.Apis.DisplayVideo.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+
+            }
+        }
+        /// <summary>Gets the ManualTriggers resource.</summary>
+        public virtual ManualTriggersResource ManualTriggers { get; }
+
+        /// <summary>The "manualTriggers" collection of methods.</summary>
+        public class ManualTriggersResource
+        {
+            private const string Resource = "manualTriggers";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ManualTriggersResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Activates a manual trigger. Each activation of the manual trigger must be at least 5 minutes
+            /// apart, otherwise an error will be returned.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="advertiserId">Required. The ID of the advertiser that the manual trigger belongs.</param>
+            ///
+            /// <param name="triggerId">Required. The ID of the manual trigger to activate.</param>
+            public virtual ActivateRequest Activate(Google.Apis.DisplayVideo.v1.Data.ActivateManualTriggerRequest body, long advertiserId, long triggerId)
+            {
+                return new ActivateRequest(service, body, advertiserId, triggerId);
+            }
+
+            /// <summary>Activates a manual trigger. Each activation of the manual trigger must be at least 5 minutes
+            /// apart, otherwise an error will be returned.</summary>
+            public class ActivateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ManualTrigger>
+            {
+                /// <summary>Constructs a new Activate request.</summary>
+                public ActivateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.ActivateManualTriggerRequest body, long advertiserId, long triggerId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    TriggerId = triggerId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The ID of the advertiser that the manual trigger belongs.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Required. The ID of the manual trigger to activate.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("triggerId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long TriggerId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v1.Data.ActivateManualTriggerRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "activate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/advertisers/{+advertiserId}/manualTriggers/{+triggerId}:activate";
+
+                /// <summary>Initializes Activate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("triggerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "triggerId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                }
+
+            }
+
+            /// <summary>Creates a new manual trigger. Returns the newly created manual trigger if successful.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="advertiserId">Required. Immutable. The unique ID of the advertiser that the manual trigger belongs
+            /// to.</param>
+            public virtual CreateRequest Create(Google.Apis.DisplayVideo.v1.Data.ManualTrigger body, long advertiserId)
+            {
+                return new CreateRequest(service, body, advertiserId);
+            }
+
+            /// <summary>Creates a new manual trigger. Returns the newly created manual trigger if successful.</summary>
+            public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ManualTrigger>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.ManualTrigger body, long advertiserId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Immutable. The unique ID of the advertiser that the manual trigger belongs
+                /// to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v1.Data.ManualTrigger Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/advertisers/{+advertiserId}/manualTriggers";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                }
+
+            }
+
+            /// <summary>Deactivates a manual trigger.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="advertiserId">Required. The ID of the advertiser that the manual trigger belongs.</param>
+            ///
+            /// <param name="triggerId">Required. The ID of the manual trigger to deactivate.</param>
+            public virtual DeactivateRequest Deactivate(Google.Apis.DisplayVideo.v1.Data.DeactivateManualTriggerRequest body, long advertiserId, long triggerId)
+            {
+                return new DeactivateRequest(service, body, advertiserId, triggerId);
+            }
+
+            /// <summary>Deactivates a manual trigger.</summary>
+            public class DeactivateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ManualTrigger>
+            {
+                /// <summary>Constructs a new Deactivate request.</summary>
+                public DeactivateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.DeactivateManualTriggerRequest body, long advertiserId, long triggerId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    TriggerId = triggerId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The ID of the advertiser that the manual trigger belongs.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Required. The ID of the manual trigger to deactivate.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("triggerId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long TriggerId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v1.Data.DeactivateManualTriggerRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "deactivate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/advertisers/{+advertiserId}/manualTriggers/{+triggerId}:deactivate";
+
+                /// <summary>Initializes Deactivate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("triggerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "triggerId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                }
+
+            }
+
+            /// <summary>Gets a manual trigger.</summary>
+            /// <param name="advertiserId">Required. The ID of the advertiser this manual trigger belongs to.</param>
+            /// <param
+            /// name="triggerId">Required. The ID of the manual trigger to fetch.</param>
+            public virtual GetRequest Get(long advertiserId, long triggerId)
+            {
+                return new GetRequest(service, advertiserId, triggerId);
+            }
+
+            /// <summary>Gets a manual trigger.</summary>
+            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ManualTrigger>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, long advertiserId, long triggerId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    TriggerId = triggerId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The ID of the advertiser this manual trigger belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Required. The ID of the manual trigger to fetch.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("triggerId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long TriggerId { get; private set; }
+
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/advertisers/{+advertiserId}/manualTriggers/{+triggerId}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("triggerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "triggerId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                }
+
+            }
+
+            /// <summary>Lists manual triggers that are accessible to the current user for a given advertiser id. The
+            /// order is defined by the order_by parameter. A single advertiser_id is required.</summary>
+            /// <param name="advertiserId">Required. The ID of the advertiser that the fetched manual triggers belong
+            /// to.</param>
+            public virtual ListRequest List(long advertiserId)
+            {
+                return new ListRequest(service, advertiserId);
+            }
+
+            /// <summary>Lists manual triggers that are accessible to the current user for a given advertiser id. The
+            /// order is defined by the order_by parameter. A single advertiser_id is required.</summary>
+            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListManualTriggersResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The ID of the advertiser that the fetched manual triggers belong to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Allows filtering by manual trigger properties. Supported syntax: * Filter expressions are
+                /// made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical
+                /// operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of
+                /// `{field} {operator} {value}`. * The operator must be `EQUALS (=)`. * Supported fields: -
+                /// `displayName` - `state` Examples: * All active manual triggers under an advertiser: `state="ACTIVE"`
+                /// The length of this field should be no more than 500 characters.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>Field by which to sort the list. Acceptable values are: * `displayName` (default) * `state`
+                /// The default sorting order is ascending. To specify descending order for a field, a suffix "desc"
+                /// should be added to the field name. For example, `displayName desc`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>Requested page size. Must be between `1` and `100`. If unspecified will default to
+                /// `100`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>A token identifying a page of results the server should return. Typically, this is the
+                /// value of next_page_token returned from the previous call to `ListManualTriggers` method. If not
+                /// specified, the first page of results will be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/advertisers/{+advertiserId}/manualTriggers";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+
+            }
+
+            /// <summary>Updates a manual trigger. Returns the updated manual trigger if successful.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="advertiserId">Required. Immutable. The unique ID of the advertiser that the manual trigger belongs
+            /// to.</param>
+            /// <param name="triggerId">Output only. The unique ID of the manual trigger.</param>
+            public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v1.Data.ManualTrigger body, long advertiserId, long triggerId)
+            {
+                return new PatchRequest(service, body, advertiserId, triggerId);
+            }
+
+            /// <summary>Updates a manual trigger. Returns the updated manual trigger if successful.</summary>
+            public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ManualTrigger>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v1.Data.ManualTrigger body, long advertiserId, long triggerId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    TriggerId = triggerId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Immutable. The unique ID of the advertiser that the manual trigger belongs
+                /// to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Output only. The unique ID of the manual trigger.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("triggerId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long TriggerId { get; private set; }
+
+                /// <summary>Required. The mask to control which fields to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v1.Data.ManualTrigger Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/advertisers/{+advertiserId}/manualTriggers/{+triggerId}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("triggerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "triggerId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
                     });
                     RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                     {
@@ -12470,6 +12954,13 @@ namespace Google.Apis.DisplayVideo.v1
 namespace Google.Apis.DisplayVideo.v1.Data
 {    
 
+    /// <summary>Request message for ManualTriggerService.ActivateManualTrigger.</summary>
+    public class ActivateManualTriggerRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Configuration for custom Active View video viewability metrics.</summary>
     public class ActiveViewVideoViewabilityMetricConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12578,7 +13069,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Ad server related settings of an advertiser.</summary>
     public class AdvertiserAdServerConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The configuration for advertisers that use both Campaign Manager (CM) and third-party ad
+        /// <summary>The configuration for advertisers that use both Campaign Manager 360 (CM360) and third-party ad
         /// servers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmHybridConfig")]
         public virtual CmHybridConfig CmHybridConfig { get; set; }
@@ -12611,7 +13102,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
         /// <summary>By setting this field to `true`, you, on behalf of your company, authorize Google to use video
         /// creatives associated with this Display & Video 360 advertiser to provide reporting and features related to
-        /// the advertiser's television campaigns. Applicable only when the advertiser has a CM hybrid ad server
+        /// the advertiser's television campaigns. Applicable only when the advertiser has a CM360 hybrid ad server
         /// configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoCreativeDataSharingAuthorized")]
         public virtual System.Nullable<bool> VideoCreativeDataSharingAuthorized { get; set; }
@@ -12655,8 +13146,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string DomainUrl { get; set; }
 
         /// <summary>Output only. The standard TZ database name of the advertiser's time zone. For example,
-        /// `America/New_York`. See more at: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones For CM hybrid
-        /// advertisers, the time zone is the same as that of the associated CM account; for third-party only
+        /// `America/New_York`. See more at: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones For CM360
+        /// hybrid advertisers, the time zone is the same as that of the associated CM360 account; for third-party only
         /// advertisers, the time zone is the same as that of the parent partner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
@@ -13775,15 +14266,16 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Settings for advertisers that use both Campaign Manager (CM) and third-party ad servers.</summary>
+    /// <summary>Settings for advertisers that use both Campaign Manager 360 (CM360) and third-party ad
+    /// servers.</summary>
     public class CmHybridConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Immutable. Account ID of the CM Floodlight configuration linked with the DV360
+        /// <summary>Required. Immutable. Account ID of the CM360 Floodlight configuration linked with the DV360
         /// advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmAccountId")]
         public virtual System.Nullable<long> CmAccountId { get; set; }
 
-        /// <summary>Required. Immutable. ID of the CM Floodlight configuration linked with the DV360
+        /// <summary>Required. Immutable. ID of the CM360 Floodlight configuration linked with the DV360
         /// advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmFloodlightConfigId")]
         public virtual System.Nullable<long> CmFloodlightConfigId { get; set; }
@@ -13794,17 +14286,17 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cmFloodlightLinkingAuthorized")]
         public virtual System.Nullable<bool> CmFloodlightLinkingAuthorized { get; set; }
 
-        /// <summary>A list of CM sites whose placements will be synced to DV360 as creatives. If absent or empty in
-        /// CreateAdvertiser method, the system will automatically create a CM site. Removing sites from this list may
-        /// cause DV360 creatives synced from CM to be deleted. At least one site must be specified.</summary>
+        /// <summary>A list of CM360 sites whose placements will be synced to DV360 as creatives. If absent or empty in
+        /// CreateAdvertiser method, the system will automatically create a CM360 site. Removing sites from this list
+        /// may cause DV360 creatives synced from CM360 to be deleted. At least one site must be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmSyncableSiteIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> CmSyncableSiteIds { get; set; }
 
-        /// <summary>Whether or not to report DV360 cost to CM.</summary>
+        /// <summary>Whether or not to report DV360 cost to CM360.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dv360ToCmCostReportingEnabled")]
         public virtual System.Nullable<bool> Dv360ToCmCostReportingEnabled { get; set; }
 
-        /// <summary>Whether or not to include DV360 data in CM data transfer reports.</summary>
+        /// <summary>Whether or not to include DV360 data in CM360 data transfer reports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dv360ToCmDataSharingEnabled")]
         public virtual System.Nullable<bool> Dv360ToCmDataSharingEnabled { get; set; }
 
@@ -13812,18 +14304,18 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Campaign Manager tracking ad.</summary>
+    /// <summary>A Campaign Manager 360 tracking ad.</summary>
     public class CmTrackingAd : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ad ID of the campaign manager tracking Ad.</summary>
+        /// <summary>The ad ID of the campaign manager 360 tracking Ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmAdId")]
         public virtual System.Nullable<long> CmAdId { get; set; }
 
-        /// <summary>The creative ID of the campaign manager tracking Ad.</summary>
+        /// <summary>The creative ID of the campaign manager 360 tracking Ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmCreativeId")]
         public virtual System.Nullable<long> CmCreativeId { get; set; }
 
-        /// <summary>The placement ID of the campaign manager tracking Ad.</summary>
+        /// <summary>The placement ID of the campaign manager 360 tracking Ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmPlacementId")]
         public virtual System.Nullable<long> CmPlacementId { get; set; }
 
@@ -14072,14 +14564,14 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assets")]
         public virtual System.Collections.Generic.IList<AssetAssociation> Assets { get; set; }
 
-        /// <summary>Output only. The unique ID of the Campaign Manager placement associated with the creative. This
+        /// <summary>Output only. The unique ID of the Campaign Manager 360 placement associated with the creative. This
         /// field is only applicable for creatives that are synced from Campaign Manager.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmPlacementId")]
         public virtual System.Nullable<long> CmPlacementId { get; set; }
 
-        /// <summary>The Campaign Manager tracking ad associated with the creative. Optional for the following
-        /// creative_type when created by an advertiser that uses both Campaign Manager and third-party ad serving: *
-        /// `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
+        /// <summary>The Campaign Manager 360 tracking ad associated with the creative. Optional for the following
+        /// creative_type when created by an advertiser that uses both Campaign Manager 360 and third-party ad serving:
+        /// * `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
         /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` Output only for other cases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmTrackingAd")]
         public virtual CmTrackingAd CmTrackingAd { get; set; }
@@ -14233,9 +14725,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual System.Nullable<bool> RequireMraid { get; set; }
 
         /// <summary>Optional. Indicates that the creative will wait for a return ping for attribution. Only valid when
-        /// using a Campaign Manager tracking ad with a third-party ad server parameter and the ${DC_DBM_TOKEN} macro.
-        /// Optional and only valid for third-party tag creatives or third-party VAST tag creatives. Third-party tag
-        /// creatives are creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with
+        /// using a Campaign Manager 360 tracking ad with a third-party ad server parameter and the ${DC_DBM_TOKEN}
+        /// macro. Optional and only valid for third-party tag creatives or third-party VAST tag creatives. Third-party
+        /// tag creatives are creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with
         /// following creative_type: * `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_EXPANDABLE` Third-party VAST tag
         /// creatives are creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with
         /// following creative_type: * `CREATIVE_TYPE_VIDEO`</summary>
@@ -14492,6 +14984,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request message for ManualTriggerService.DeactivateManualTrigger.</summary>
+    public class DeactivateManualTriggerRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A request listing which assigned targeting options of a given targeting type should be
     /// deleted.</summary>
     public class DeleteAssignedTargetingOptionsRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -14627,6 +15126,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>DV Brand Safety Controls.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brandSafetyCategories")]
         public virtual DoubleVerifyBrandSafetyCategories BrandSafetyCategories { get; set; }
+
+        /// <summary>The custom segment ID provided by DoubleVerify. The ID must start with "51" and consist of eight
+        /// digits. Custom segment id cannot be specified along with any of the following fields: *
+        /// brand_safety_categories * avoided_age_ratings * app_star_rating * fraud_invalid_traffic</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customSegmentId")]
+        public virtual System.Nullable<long> CustomSegmentId { get; set; }
 
         /// <summary>Display viewability settings (applicable to display line items only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayViewability")]
@@ -15398,6 +15903,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Details of Integral Ad Science settings.</summary>
     public class IntegralAdScience : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The custom segment ID provided by Integral Ad Science. The ID must be between `1000001` and
+        /// `1999999`, inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customSegmentId")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> CustomSegmentId { get; set; }
+
         /// <summary>Display Viewability section (applicable to display line items only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayViewability")]
         public virtual string DisplayViewability { get; set; }
@@ -15710,7 +16220,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A single line item.</summary>
+    /// <summary>A single line item. Next id: 24</summary>
     public class LineItem : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The unique ID of the advertiser the line item belongs to.</summary>
@@ -15795,6 +16305,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("partnerRevenueModel")]
         public virtual PartnerRevenueModel PartnerRevenueModel { get; set; }
 
+        /// <summary>The targeting expansion settings of the line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetingExpansion")]
+        public virtual TargetingExpansionConfig TargetingExpansion { get; set; }
+
         /// <summary>Output only. The timestamp when the line item was last updated. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
@@ -15849,6 +16363,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. The type of the line item's flight dates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flightDateType")]
         public virtual string FlightDateType { get; set; }
+
+        /// <summary>The ID of the manual trigger associated with the line item. * Required when flight_date_type is
+        /// `LINE_ITEM_FLIGHT_DATE_TYPE_TRIGGER`. Must not be set otherwise. * A line item's flight dates are inherited
+        /// from its parent insertion order. * Active line items will spend when the selected trigger is activated
+        /// within the parent insertion order's flight dates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerId")]
+        public virtual System.Nullable<long> TriggerId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16134,6 +16655,21 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class ListManualTriggersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of manual triggers. This list will be absent if empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manualTriggers")]
+        public virtual System.Collections.Generic.IList<ManualTrigger> ManualTriggers { get; set; }
+
+        /// <summary>A token to retrieve the next page of results. Pass this value in the page_token field in the
+        /// subsequent call to `ListManualTriggers` method to retrieve the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response message for NegativeKeywordListService.ListNegativeKeywordLists.</summary>
     public class ListNegativeKeywordListsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16290,6 +16826,44 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A single manual trigger in Display & Video 360 (DV360).</summary>
+    public class ManualTrigger : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The maximum duration of each activation in minutes. Must be between 1 and 360 inclusive.
+        /// After this duration, the trigger will be automatically deactivated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activationDurationMinutes")]
+        public virtual System.Nullable<long> ActivationDurationMinutes { get; set; }
+
+        /// <summary>Required. Immutable. The unique ID of the advertiser that the manual trigger belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+        /// <summary>Required. The display name of the manual trigger. Must be UTF-8 encoded with a maximum size of 240
+        /// bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. The timestamp of the trigger's latest activation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestActivationTime")]
+        public virtual object LatestActivationTime { get; set; }
+
+        /// <summary>Output only. The resource name of the manual trigger.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The state of the manual trigger. Will be set to the `INACTIVE` state upon
+        /// creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. The unique ID of the manual trigger.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerId")]
+        public virtual System.Nullable<long> TriggerId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A strategy that automatically adjusts the bid to optimize a specified performance goal while spending
     /// the full budget.</summary>
     public class MaximizeSpendBidStrategy : Google.Apis.Requests.IDirectResponseSchema
@@ -16318,11 +16892,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Measurement settings of a partner.</summary>
     public class MeasurementConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether or not to report DV360 cost to CM.</summary>
+        /// <summary>Whether or not to report DV360 cost to CM360.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dv360ToCmCostReportingEnabled")]
         public virtual System.Nullable<bool> Dv360ToCmCostReportingEnabled { get; set; }
 
-        /// <summary>Whether or not to include DV360 data in CM data transfer reports.</summary>
+        /// <summary>Whether or not to include DV360 data in CM360 data transfer reports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dv360ToCmDataSharingEnabled")]
         public virtual System.Nullable<bool> Dv360ToCmDataSharingEnabled { get; set; }
 
@@ -17085,6 +17659,24 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Output only. The display name of the sub-exchange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Settings that control the targeting expansion of the line item. Targeting expansion allows the line
+    /// item to reach a larger audience based on the original audience list and the targeting expansion level.</summary>
+    public class TargetingExpansionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Whether to exclude first party audiences from targeting. Similar audiences of the
+        /// excluded first party lists will not be excluded. Only applicable when a first-party audience is positively
+        /// targeted (directly or included in a combined audience), otherwise this selection will be ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeFirstPartyAudience")]
+        public virtual System.Nullable<bool> ExcludeFirstPartyAudience { get; set; }
+
+        /// <summary>Required. Magnitude of expansion for applicable targeting under this line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetingExpansionLevel")]
+        public virtual string TargetingExpansionLevel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

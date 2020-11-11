@@ -1325,8 +1325,6 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A client-specified ID for this binding. Expected to be globally unique to support the internal
-        /// bindings-by-ID API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
         public virtual string BindingId { get; set; }
 

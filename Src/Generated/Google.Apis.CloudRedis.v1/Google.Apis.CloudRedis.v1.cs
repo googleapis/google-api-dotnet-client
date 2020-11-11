@@ -630,6 +630,63 @@ namespace Google.Apis.CloudRedis.v1
 
                 }
 
+                /// <summary>Gets the AUTH string for a Redis instance. If AUTH is not enabled for the instance the
+                /// response will be empty. This information is not included in the details returned to
+                /// GetInstance.</summary>
+                /// <param name="name">Required. Redis instance resource name using the form:
+                /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP
+                /// region.</param>
+                public virtual GetAuthStringRequest GetAuthString(string name)
+                {
+                    return new GetAuthStringRequest(service, name);
+                }
+
+                /// <summary>Gets the AUTH string for a Redis instance. If AUTH is not enabled for the instance the
+                /// response will be empty. This information is not included in the details returned to
+                /// GetInstance.</summary>
+                public class GetAuthStringRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.InstanceAuthString>
+                {
+                    /// <summary>Constructs a new GetAuthString request.</summary>
+                    public GetAuthStringRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. Redis instance resource name using the form:
+                    /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id`
+                    /// refers to a GCP region.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getAuthString";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}/authString";
+
+                    /// <summary>Initializes GetAuthString parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+
+                }
+
                 /// <summary>Import a Redis RDB snapshot file from Cloud Storage into a Redis instance. Redis may stop
                 /// serving during this operation. Instance state will be IMPORTING for entire operation. When complete,
                 /// the instance will contain only data from the imported file. The returned operation is automatically
@@ -1497,6 +1554,11 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("alternativeLocationId")]
         public virtual string AlternativeLocationId { get; set; }
 
+        /// <summary>Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is
+        /// enabled on the instance. Default value is "false" meaning AUTH is disabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authEnabled")]
+        public virtual System.Nullable<bool> AuthEnabled { get; set; }
+
         /// <summary>Optional. The full name of the Google Compute Engine
         /// [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified,
         /// the `default` network will be used.</summary>
@@ -1592,6 +1654,17 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Required. The service tier of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
         public virtual string Tier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Instance AUTH string details.</summary>
+    public class InstanceAuthString : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>AUTH string set on the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authString")]
+        public virtual string AuthString { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

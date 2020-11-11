@@ -970,7 +970,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
 {    
 
     /// <summary>AWS access key (see [AWS Security Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-
-    /// security-credentials.html)).</summary>
+    /// security-credentials.html)). For information on our data retention policy for user credentials, see [User
+    /// credentials](data-retention#user-credentials).</summary>
     public class AwsAccessKey : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. AWS access key ID.</summary>
@@ -990,7 +991,9 @@ namespace Google.Apis.Storagetransfer.v1.Data
     public class AwsS3Data : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Input only. AWS access key used to sign the API requests to the AWS S3 bucket.
-        /// Permissions on the bucket must be granted to the access ID of the AWS access key.</summary>
+        /// Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our
+        /// data retention policy for user credentials, see [User credentials](data-retention#user-
+        /// credentials).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsAccessKey")]
         public virtual AwsAccessKey AwsAccessKey { get; set; }
 
@@ -1011,7 +1014,9 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// metadata#blob-names).</summary>
     public class AzureBlobStorageData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Input only. Credentials used to authenticate API requests to Azure.</summary>
+        /// <summary>Required. Input only. Credentials used to authenticate API requests to Azure. For information on
+        /// our data retention policy for user credentials, see [User credentials](data-retention#user-
+        /// credentials).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("azureCredentials")]
         public virtual AzureCredentials AzureCredentials { get; set; }
 
@@ -1027,7 +1032,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Azure credentials</summary>
+    /// <summary>Azure credentials For information on our data retention policy for user credentials, see [User
+    /// credentials](data-retention#user-credentials).</summary>
     public class AzureCredentials : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Azure shared access signature. (see [Grant limited access to Azure Storage resources
@@ -1621,7 +1627,9 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deleteObjectsUniqueInSink")]
         public virtual System.Nullable<bool> DeleteObjectsUniqueInSink { get; set; }
 
-        /// <summary>Whether overwriting objects that already exist in the sink is allowed.</summary>
+        /// <summary>When to overwrite objects that already exist in the sink. The default is that only objects that are
+        /// different from the source are ovewritten. If true, all objects in the sink whose name matches an object in
+        /// the source will be overwritten with the source object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overwriteObjectsAlreadyExistingInSink")]
         public virtual System.Nullable<bool> OverwriteObjectsAlreadyExistingInSink { get; set; }
 

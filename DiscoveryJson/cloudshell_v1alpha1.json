@@ -288,7 +288,7 @@
    }
   }
  }, 
- "revision": "20201017", 
+ "revision": "20201031", 
  "rootUrl": "https://cloudshell.googleapis.com/", 
  "schemas": {
   "AuthorizeEnvironmentRequest": {
