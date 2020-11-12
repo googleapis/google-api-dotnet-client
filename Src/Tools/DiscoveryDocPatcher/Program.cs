@@ -30,6 +30,7 @@ namespace DiscoveryDocPatcher
                 // No longer required as on 2020-07-09. The offending resource is no longer present at all.
                 // PatchGames(discoveryDocPath);
                 PatchDirectory(discoveryDocPath);
+                PatchDataLabeling(discoveryDocPath);
                 return 0;
             }
             catch (Exception e)
@@ -66,7 +67,7 @@ namespace DiscoveryDocPatcher
             patcher.Replace("schemas.User.properties.addresses", "{ 'type': 'any', 'description': 'Addresses of User'}", "{ 'type': 'array', 'items': { '$ref': 'UserAddress' }, 'description': 'Addresses of User' }");
             patcher.Replace("schemas.User.properties.emails", "{ 'type': 'any', 'description': 'Emails of User' }", "{ 'type': 'array', 'items': { '$ref': 'UserEmail' }, 'description': 'Emails of User' }");
             patcher.Replace("schemas.User.properties.externalIds", "{ 'type': 'any', 'description': 'The external Ids of User *' }", "{ 'type': 'array', 'items': { '$ref': 'UserExternalId' }, 'description': 'The external Ids of User *' }");
-            patcher.Replace("schemas.User.properties.ims", "{ 'type': 'any', 'description': 'User_s Instant Messenger' }", "{ 'type': 'array', 'items': { '$ref': 'UserIm' }, 'description': 'User_s Instant Messenger' }");
+            patcher.Replace("schemas.User.properties.ims", "{ 'type': 'any', 'description': 'User&s Instant Messenger' }", "{ 'type': 'array', 'items': { '$ref': 'UserIm' }, 'description': 'User&s Instant Messenger' }");
             patcher.Replace("schemas.User.properties.organizations", "{ 'type': 'any', 'description': 'Organizations of User' }", "{ 'type': 'array', 'items': { '$ref': 'UserOrganization' }, 'description': 'Organizations of User' }");
             patcher.Replace("schemas.User.properties.phones", "{ 'type': 'any', 'description': 'Phone numbers of User' }", "{ 'type': 'array', 'items': { '$ref': 'UserPhone' }, 'description': 'Phone numbers of User' }");
             patcher.Replace("schemas.User.properties.relations", "{ 'type': 'any', 'description': 'The Relations of User *' }", "{ 'type': 'array', 'items': { '$ref': 'UserRelation' }, 'description': 'The Relations of User *' }");
@@ -74,6 +75,23 @@ namespace DiscoveryDocPatcher
             patcher.Replace("schemas.Aliases.properties.aliases.items", "{ 'type': 'any' }", "{ '$ref': 'Alias' }");
             patcher.SaveWithBackup();
 
+        }
+
+        static void PatchDataLabeling(string rootPath)
+        {
+            var patcher = IfFileExists(() => Patcher.Load(Path.Combine(rootPath, "datalabeling_v1beta1.json")));
+            if (patcher is null)
+            {
+                return;
+            }
+            // This just increases the length of one parameter description by adding spaces
+            // so that text wrapping doens't interfere with EOL markers when generating.
+            patcher.Replace(
+                "resources.projects.resources.datasets.resources.annotatedDatasets.resources.feedbackThreads.resources.feedbackMessages.methods.get.parameters.name.description",
+                "'Required. Name of the feedback. Format: &projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessages/{feedback_message_id}&.'",
+                "'Required.   Name of the feedback.   Format:   &projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessages/{feedback_message_id}&.'");
+
+            patcher.SaveWithBackup();
         }
 
         static T IfFileExists<T>(Func<T> fn)
