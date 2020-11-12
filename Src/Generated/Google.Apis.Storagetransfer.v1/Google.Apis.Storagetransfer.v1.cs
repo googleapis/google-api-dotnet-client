@@ -544,8 +544,8 @@ namespace Google.Apis.Storagetransfer.v1
         }
 
         /// <summary>Updates a transfer job. Updating a job's transfer spec does not affect transfer operations that are
-        /// running already. Updating a job's schedule is not allowed. **Note:** The job's status field can be modified
-        /// using this RPC (for example, to set a job's status to DELETED, DISABLED, or ENABLED).</summary>
+        /// running already. **Note:** The job's status field can be modified using this RPC (for example, to set a
+        /// job's status to DELETED, DISABLED, or ENABLED).</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="jobName">Required. The name of job to update.</param>
         public virtual PatchRequest Patch(Google.Apis.Storagetransfer.v1.Data.UpdateTransferJobRequest body, string jobName)
@@ -554,8 +554,8 @@ namespace Google.Apis.Storagetransfer.v1
         }
 
         /// <summary>Updates a transfer job. Updating a job's transfer spec does not affect transfer operations that are
-        /// running already. Updating a job's schedule is not allowed. **Note:** The job's status field can be modified
-        /// using this RPC (for example, to set a job's status to DELETED, DISABLED, or ENABLED).</summary>
+        /// running already. **Note:** The job's status field can be modified using this RPC (for example, to set a
+        /// job's status to DELETED, DISABLED, or ENABLED).</summary>
         public class PatchRequest : StoragetransferBaseServiceRequest<Google.Apis.Storagetransfer.v1.Data.TransferJob>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -1160,11 +1160,11 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match
     /// the actual size of the object fetched, the object will not be transferred. * If the specified MD5 does not match
     /// the MD5 computed from the transferred bytes, the object transfer will fail. For more information, see
-    /// [Generating MD5 hashes](https://cloud.google.com/storage-transfer/docs/create-url-list#md5) * Ensure that each
-    /// URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object publicly]
-    /// (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer
-    /// Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a
-    /// `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to
+    /// [Generating MD5 hashes] (https://cloud.google.com/storage-transfer/docs/create-url-list#md5-checksum) * Ensure
+    /// that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object
+    /// publicly] (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage
+    /// Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to
+    /// return a `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to
     /// transfer.</summary>
     public class HttpData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1345,6 +1345,20 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// <summary>Transfers can be scheduled to recur or to run just once.</summary>
     public class Schedule : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The time in UTC that no further transfer operations are scheduled. Combined with schedule_end_date,
+        /// `end_time_of_day` specifies the end date and time for starting new transfer operations. This field must be
+        /// greater than or equal to the timestamp corresponding to the combintation of schedule_start_date and
+        /// start_time_of_day, and is subject to the following: * If `end_time_of_day` is not set and
+        /// `schedule_end_date` is set, then a default value of `23:59:59` is used for `end_time_of_day`. * If
+        /// `end_time_of_day` is set and `schedule_end_date` is not set, then INVALID_ARGUMENT is returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTimeOfDay")]
+        public virtual TimeOfDay EndTimeOfDay { get; set; }
+
+        /// <summary>Interval between the start of each scheduled TransferOperation. If unspecified, the default value
+        /// is 24 hours. This value may not be less than 1 hour.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repeatInterval")]
+        public virtual object RepeatInterval { get; set; }
+
         /// <summary>The last day a transfer runs. Date boundaries are determined relative to UTC time. A job will run
         /// once per 24 hours within the following guidelines: * If `schedule_end_date` and schedule_start_date are the
         /// same and in the future relative to UTC, the transfer is executed only one time. * If `schedule_end_date` is

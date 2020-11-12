@@ -1168,36 +1168,36 @@ namespace Google.Apis.YouTube.v3
         }
 
         /// <summary>Retrieves a list of resources, possibly filtered.</summary>
+        /// <param name="part">The *part* parameter specifies a comma-separated list of one or more caption resource parts that
+        /// the API response will include. The part names that you can include in the parameter value are id and
+        /// snippet.</param>
         /// <param name="videoId">Returns the captions for the specified video.</param>
-        /// <param name="part">The *part*
-        /// parameter specifies a comma-separated list of one or more caption resource parts that the API response will include.
-        /// The part names that you can include in the parameter value are id and snippet.</param>
-        public virtual ListRequest List(string videoId, Google.Apis.Util.Repeatable<string> part)
+        public virtual ListRequest List(Google.Apis.Util.Repeatable<string> part, string videoId)
         {
-            return new ListRequest(service, videoId, part);
+            return new ListRequest(service, part, videoId);
         }
 
         /// <summary>Retrieves a list of resources, possibly filtered.</summary>
         public class ListRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.CaptionListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string videoId, Google.Apis.Util.Repeatable<string> part) : base(service)
+            public ListRequest(Google.Apis.Services.IClientService service, Google.Apis.Util.Repeatable<string> part, string videoId) : base(service)
             {
-                VideoId = videoId;
                 Part = part;
+                VideoId = videoId;
                 InitParameters();
             }
 
-
-            /// <summary>Returns the captions for the specified video.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("videoId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string VideoId { get; private set; }
 
             /// <summary>The *part* parameter specifies a comma-separated list of one or more caption resource parts
             /// that the API response will include. The part names that you can include in the parameter value are id
             /// and snippet.</summary>
             [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Part { get; private set; }
+
+            /// <summary>Returns the captions for the specified video.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("videoId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string VideoId { get; private set; }
 
             /// <summary>Returns the captions with the given IDs for Stubby or Apiary.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
@@ -1232,17 +1232,17 @@ namespace Google.Apis.YouTube.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add("videoId", new Google.Apis.Discovery.Parameter
+                RequestParameters.Add("part", new Google.Apis.Discovery.Parameter
                 {
-                    Name = "videoId",
+                    Name = "part",
                     IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("part", new Google.Apis.Discovery.Parameter
+                RequestParameters.Add("videoId", new Google.Apis.Discovery.Parameter
                 {
-                    Name = "part",
+                    Name = "videoId",
                     IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -4146,33 +4146,29 @@ namespace Google.Apis.YouTube.v3
         }
 
         /// <summary>Transition a broadcast to a given status.</summary>
-        /// <param name="id">Broadcast to transition.</param>
-        /// <param name="broadcastStatus">The status to which the
-        /// broadcast is going to transition.</param>
+        /// <param name="broadcastStatus">The status to which the broadcast is going to transition.</param>
+        /// <param
+        /// name="id">Broadcast to transition.</param>
         /// <param name="part">The *part* parameter specifies a comma-
         /// separated list of one or more liveBroadcast resource properties that the API response will include. The part names
         /// that you can include in the parameter value are id, snippet, contentDetails, and status.</param>
-        public virtual TransitionRequest Transition(string id, TransitionRequest.BroadcastStatusEnum broadcastStatus, Google.Apis.Util.Repeatable<string> part)
+        public virtual TransitionRequest Transition(TransitionRequest.BroadcastStatusEnum broadcastStatus, string id, Google.Apis.Util.Repeatable<string> part)
         {
-            return new TransitionRequest(service, id, broadcastStatus, part);
+            return new TransitionRequest(service, broadcastStatus, id, part);
         }
 
         /// <summary>Transition a broadcast to a given status.</summary>
         public class TransitionRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.LiveBroadcast>
         {
             /// <summary>Constructs a new Transition request.</summary>
-            public TransitionRequest(Google.Apis.Services.IClientService service, string id, BroadcastStatusEnum broadcastStatus, Google.Apis.Util.Repeatable<string> part) : base(service)
+            public TransitionRequest(Google.Apis.Services.IClientService service, BroadcastStatusEnum broadcastStatus, string id, Google.Apis.Util.Repeatable<string> part) : base(service)
             {
-                Id = id;
                 BroadcastStatus = broadcastStatus;
+                Id = id;
                 Part = part;
                 InitParameters();
             }
 
-
-            /// <summary>Broadcast to transition.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Id { get; private set; }
 
             /// <summary>The status to which the broadcast is going to transition.</summary>
             [Google.Apis.Util.RequestParameterAttribute("broadcastStatus", Google.Apis.Util.RequestParameterType.Query)]
@@ -4195,6 +4191,10 @@ namespace Google.Apis.YouTube.v3
                 [Google.Apis.Util.StringValueAttribute("complete")]
                 Complete,
             }
+
+            /// <summary>Broadcast to transition.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Id { get; private set; }
 
             /// <summary>The *part* parameter specifies a comma-separated list of one or more liveBroadcast resource
             /// properties that the API response will include. The part names that you can include in the parameter
@@ -4241,17 +4241,17 @@ namespace Google.Apis.YouTube.v3
             {
                 base.InitParameters();
 
-                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                RequestParameters.Add("broadcastStatus", new Google.Apis.Discovery.Parameter
                 {
-                    Name = "id",
+                    Name = "broadcastStatus",
                     IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("broadcastStatus", new Google.Apis.Discovery.Parameter
+                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
-                    Name = "broadcastStatus",
+                    Name = "id",
                     IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,

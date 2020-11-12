@@ -9349,10 +9349,6 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>The unique finding id.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("findingId")]
-        public virtual string FindingId { get; set; }
-
         /// <summary>The type of content that might have been found. Provided if `excluded_types` is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
         public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; }

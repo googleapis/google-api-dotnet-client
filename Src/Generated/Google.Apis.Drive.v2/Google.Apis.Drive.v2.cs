@@ -9133,8 +9133,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fileExtension")]
         public virtual string FileExtension { get; set; }
 
-        /// <summary>The size of the file in bytes. This field is only populated for files with content stored in Google
-        /// Drive; it is not populated for Docs Editors or shortcut files.</summary>
+        /// <summary>The size of the file in bytes. This field is populated for files with content stored in Google
+        /// Drive and for files in Docs Editors; it is not populated for shortcut files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileSize")]
         public virtual System.Nullable<long> FileSize { get; set; }
 
