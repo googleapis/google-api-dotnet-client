@@ -943,7 +943,7 @@
    }
   }
  }, 
- "revision": "20201030", 
+ "revision": "20201105", 
  "rootUrl": "https://notebooks.googleapis.com/", 
  "schemas": {
   "AcceleratorConfig": {

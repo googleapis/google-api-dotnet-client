@@ -1312,7 +1312,7 @@
    }
   }
  }, 
- "revision": "20201029", 
+ "revision": "20201105", 
  "rootUrl": "https://gameservices.googleapis.com/", 
  "schemas": {
   "AuditConfig": {
