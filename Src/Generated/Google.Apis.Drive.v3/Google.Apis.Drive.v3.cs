@@ -6014,8 +6014,8 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shortcutDetails")]
         public virtual ShortcutDetailsData ShortcutDetails { get; set; }
 
-        /// <summary>The size of the file's content in bytes. This is only applicable to files with binary content in
-        /// Google Drive.</summary>
+        /// <summary>The size of the file's content in bytes. This is applicable to binary files in Google Drive and
+        /// Google Docs files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<long> Size { get; set; }
 

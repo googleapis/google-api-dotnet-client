@@ -704,11 +704,10 @@ namespace Google.Apis.CloudResourceManager.v2beta1
         /// <summary>Updates a Folder, changing its display_name. Changes to the folder display_name will be rejected if
         /// they violate either the display_name formatting rules or naming constraints described in the CreateFolder
         /// documentation. The Folder's display name must start and end with a letter or digit, may contain letters,
-        /// digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the
-        /// regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`. The caller must have
-        /// `resourcemanager.folders.update` permission on the identified folder. If the update fails due to the unique
-        /// name constraint then a PreconditionFailure explaining this violation will be returned in the Status.details
-        /// field.</summary>
+        /// digits, spaces, hyphens and underscores and can be between 3 and 30 characters. This is captured by the
+        /// regular expression: `\p{L}\p{N}{1,28}[\p{L}\p{N}]`. The caller must have `resourcemanager.folders.update`
+        /// permission on the identified folder. If the update fails due to the unique name constraint then a
+        /// PreconditionFailure explaining this violation will be returned in the Status.details field.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">Output only. The resource name of the Folder. Its format is `folders/{folder_id}`, for example:
         /// "folders/1234".</param>
@@ -720,11 +719,10 @@ namespace Google.Apis.CloudResourceManager.v2beta1
         /// <summary>Updates a Folder, changing its display_name. Changes to the folder display_name will be rejected if
         /// they violate either the display_name formatting rules or naming constraints described in the CreateFolder
         /// documentation. The Folder's display name must start and end with a letter or digit, may contain letters,
-        /// digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the
-        /// regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`. The caller must have
-        /// `resourcemanager.folders.update` permission on the identified folder. If the update fails due to the unique
-        /// name constraint then a PreconditionFailure explaining this violation will be returned in the Status.details
-        /// field.</summary>
+        /// digits, spaces, hyphens and underscores and can be between 3 and 30 characters. This is captured by the
+        /// regular expression: `\p{L}\p{N}{1,28}[\p{L}\p{N}]`. The caller must have `resourcemanager.folders.update`
+        /// permission on the identified folder. If the update fails due to the unique name constraint then a
+        /// PreconditionFailure explaining this violation will be returned in the Status.details field.</summary>
         public class PatchRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v2beta1.Data.Folder>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -1147,9 +1145,6 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; }
-
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
         /// apply to the current request. However, a different role binding might grant the same role to one or more of
@@ -1235,6 +1230,94 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceParent")]
         public virtual string SourceParent { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata pertaining to the Folder creation process.</summary>
+    public class CreateFolderMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The display name of the folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The resource name of the folder or organization we are creating the folder under.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A status object which is used as the `metadata` field for the Operation returned by CreateProject. It
+    /// provides insight for when significant phases of Project creation have completed.</summary>
+    public class CreateProjectMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Creation time of the project creation workflow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>True if the project can be retrieved using GetProject. No other operations on the project are
+        /// guaranteed to work until the project creation is complete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gettable")]
+        public virtual System.Nullable<bool> Gettable { get; set; }
+
+        /// <summary>True if the project creation process is complete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ready")]
+        public virtual System.Nullable<bool> Ready { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Runtime operation information for creating a TagKey.</summary>
+    public class CreateTagKeyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Runtime operation information for creating a TagValue.</summary>
+    public class CreateTagValueMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A status object which is used as the `metadata` field for the Operation returned by
+    /// DeleteFolder.</summary>
+    public class DeleteFolderMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A status object which is used as the `metadata` field for the Operation returned by
+    /// DeleteOrganization.</summary>
+    public class DeleteOrganizationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A status object which is used as the `metadata` field for the Operation returned by
+    /// DeleteProject.</summary>
+    public class DeleteProjectMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Runtime operation information for deleting a TagKey.</summary>
+    public class DeleteTagKeyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Runtime operation information for deleting a TagValue.</summary>
+    public class DeleteTagValueMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1389,6 +1472,25 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Metadata pertaining to the Folder move process.</summary>
+    public class MoveFolderMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the folder or organization to move the folder to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationParent")]
+        public virtual string DestinationParent { get; set; }
+
+        /// <summary>The display name of the folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The resource name of the folder's parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceParent")]
+        public virtual string SourceParent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The MoveFolder request message.</summary>
     public class MoveFolderRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1397,6 +1499,14 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destinationParent")]
         public virtual string DestinationParent { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A status object which is used as the `metadata` field for the Operation returned by
+    /// MoveProject.</summary>
+    public class MoveProjectMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1630,8 +1740,76 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A status object which is used as the `metadata` field for the Operation returned by
+    /// UndeleteFolder.</summary>
+    public class UndeleteFolderMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The UndeleteFolder request message.</summary>
     public class UndeleteFolderRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A status object which is used as the `metadata` field for the Operation returned by
+    /// UndeleteOrganization.</summary>
+    public class UndeleteOrganizationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A status object which is used as the `metadata` field for the Operation returned by
+    /// UndeleteProject.</summary>
+    public class UndeleteProjectMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Runtime operation information for undeleting a TagKey.</summary>
+    public class UndeleteTagKeyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Runtime operation information for deleting a TagValue.</summary>
+    public class UndeleteTagValueMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A status object which is used as the `metadata` field for the Operation returned by
+    /// UpdateFolder.</summary>
+    public class UpdateFolderMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A status object which is used as the `metadata` field for the Operation returned by
+    /// UpdateProject.</summary>
+    public class UpdateProjectMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Runtime operation information for updating a TagKey.</summary>
+    public class UpdateTagKeyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Runtime operation information for updating a TagValue.</summary>
+    public class UpdateTagValueMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

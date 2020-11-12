@@ -591,7 +591,7 @@
    }
   }
  }, 
- "revision": "20201105", 
+ "revision": "20201029", 
  "rootUrl": "https://networkmanagement.googleapis.com/", 
  "schemas": {
   "AbortInfo": {
