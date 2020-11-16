@@ -430,7 +430,7 @@ namespace Google.Apis.Logging.v2
                 }
             }
 
-            /// <summary>Gets a bucket (Beta).</summary>
+            /// <summary>Gets a bucket.</summary>
             /// <param name="name">Required. The resource name of the bucket:
             /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
             /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
@@ -442,7 +442,7 @@ namespace Google.Apis.Logging.v2
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets a bucket (Beta).</summary>
+            /// <summary>Gets a bucket.</summary>
             public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -1032,7 +1032,7 @@ namespace Google.Apis.Logging.v2
 
                     }
 
-                    /// <summary>Lists views on a bucket..</summary>
+                    /// <summary>Lists views on a bucket.</summary>
                     /// <param name="parent">Required. The bucket whose views are to be listed:
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" </param>
                     public virtual ListRequest List(string parent)
@@ -1040,7 +1040,7 @@ namespace Google.Apis.Logging.v2
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Lists views on a bucket..</summary>
+                    /// <summary>Lists views on a bucket.</summary>
                     public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListViewsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -1330,7 +1330,7 @@ namespace Google.Apis.Logging.v2
 
                 }
 
-                /// <summary>Lists buckets (Beta).</summary>
+                /// <summary>Lists buckets.</summary>
                 /// <param name="parent">Required. The parent resource whose buckets are to be listed:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note:
@@ -1341,7 +1341,7 @@ namespace Google.Apis.Logging.v2
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists buckets (Beta).</summary>
+                /// <summary>Lists buckets.</summary>
                 public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListBucketsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1420,8 +1420,8 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Updates a bucket. This method replaces the following fields in the existing bucket with
                 /// values from the new bucket: retention_periodIf the retention period is decreased and the bucket is
                 /// locked, FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-                /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created. This
-                /// method is in Beta.</summary>
+                /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is
+                /// created.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The full resource name of the bucket to update.
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
@@ -1438,8 +1438,8 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Updates a bucket. This method replaces the following fields in the existing bucket with
                 /// values from the new bucket: retention_periodIf the retention period is decreased and the bucket is
                 /// locked, FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-                /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created. This
-                /// method is in Beta.</summary>
+                /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is
+                /// created.</summary>
                 public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -3526,7 +3526,7 @@ namespace Google.Apis.Logging.v2
 
                     }
 
-                    /// <summary>Lists views on a bucket..</summary>
+                    /// <summary>Lists views on a bucket.</summary>
                     /// <param name="parent">Required. The bucket whose views are to be listed:
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" </param>
                     public virtual ListRequest List(string parent)
@@ -3534,7 +3534,7 @@ namespace Google.Apis.Logging.v2
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Lists views on a bucket..</summary>
+                    /// <summary>Lists views on a bucket.</summary>
                     public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListViewsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -3824,7 +3824,7 @@ namespace Google.Apis.Logging.v2
 
                 }
 
-                /// <summary>Gets a bucket (Beta).</summary>
+                /// <summary>Gets a bucket.</summary>
                 /// <param name="name">Required. The resource name of the bucket:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
@@ -3836,7 +3836,7 @@ namespace Google.Apis.Logging.v2
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets a bucket (Beta).</summary>
+                /// <summary>Gets a bucket.</summary>
                 public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -3883,7 +3883,7 @@ namespace Google.Apis.Logging.v2
 
                 }
 
-                /// <summary>Lists buckets (Beta).</summary>
+                /// <summary>Lists buckets.</summary>
                 /// <param name="parent">Required. The parent resource whose buckets are to be listed:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note:
@@ -3894,7 +3894,7 @@ namespace Google.Apis.Logging.v2
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists buckets (Beta).</summary>
+                /// <summary>Lists buckets.</summary>
                 public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListBucketsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -3973,8 +3973,8 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Updates a bucket. This method replaces the following fields in the existing bucket with
                 /// values from the new bucket: retention_periodIf the retention period is decreased and the bucket is
                 /// locked, FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-                /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created. This
-                /// method is in Beta.</summary>
+                /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is
+                /// created.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The full resource name of the bucket to update.
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
@@ -3991,8 +3991,8 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Updates a bucket. This method replaces the following fields in the existing bucket with
                 /// values from the new bucket: retention_periodIf the retention period is decreased and the bucket is
                 /// locked, FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-                /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created. This
-                /// method is in Beta.</summary>
+                /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is
+                /// created.</summary>
                 public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -5184,7 +5184,7 @@ namespace Google.Apis.Logging.v2
 
                 }
 
-                /// <summary>Lists views on a bucket..</summary>
+                /// <summary>Lists views on a bucket.</summary>
                 /// <param name="parent">Required. The bucket whose views are to be listed:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" </param>
                 public virtual ListRequest List(string parent)
@@ -5192,7 +5192,7 @@ namespace Google.Apis.Logging.v2
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists views on a bucket..</summary>
+                /// <summary>Lists views on a bucket.</summary>
                 public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListViewsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -5479,7 +5479,7 @@ namespace Google.Apis.Logging.v2
 
             }
 
-            /// <summary>Gets a bucket (Beta).</summary>
+            /// <summary>Gets a bucket.</summary>
             /// <param name="name">Required. The resource name of the bucket:
             /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
             /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
@@ -5491,7 +5491,7 @@ namespace Google.Apis.Logging.v2
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets a bucket (Beta).</summary>
+            /// <summary>Gets a bucket.</summary>
             public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -5538,7 +5538,7 @@ namespace Google.Apis.Logging.v2
 
             }
 
-            /// <summary>Lists buckets (Beta).</summary>
+            /// <summary>Lists buckets.</summary>
             /// <param name="parent">Required. The parent resource whose buckets are to be listed:
             /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
             /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note:
@@ -5549,7 +5549,7 @@ namespace Google.Apis.Logging.v2
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists buckets (Beta).</summary>
+            /// <summary>Lists buckets.</summary>
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListBucketsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -5627,8 +5627,7 @@ namespace Google.Apis.Logging.v2
             /// <summary>Updates a bucket. This method replaces the following fields in the existing bucket with values
             /// from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
             /// FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-            /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created. This
-            /// method is in Beta.</summary>
+            /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Required. The full resource name of the bucket to update.
             /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
@@ -5645,8 +5644,7 @@ namespace Google.Apis.Logging.v2
             /// <summary>Updates a bucket. This method replaces the following fields in the existing bucket with values
             /// from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked,
             /// FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-            /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created. This
-            /// method is in Beta.</summary>
+            /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created.</summary>
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -6796,7 +6794,7 @@ namespace Google.Apis.Logging.v2
 
                     }
 
-                    /// <summary>Lists views on a bucket..</summary>
+                    /// <summary>Lists views on a bucket.</summary>
                     /// <param name="parent">Required. The bucket whose views are to be listed:
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" </param>
                     public virtual ListRequest List(string parent)
@@ -6804,7 +6802,7 @@ namespace Google.Apis.Logging.v2
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Lists views on a bucket..</summary>
+                    /// <summary>Lists views on a bucket.</summary>
                     public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListViewsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -7094,7 +7092,7 @@ namespace Google.Apis.Logging.v2
 
                 }
 
-                /// <summary>Gets a bucket (Beta).</summary>
+                /// <summary>Gets a bucket.</summary>
                 /// <param name="name">Required. The resource name of the bucket:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
@@ -7106,7 +7104,7 @@ namespace Google.Apis.Logging.v2
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets a bucket (Beta).</summary>
+                /// <summary>Gets a bucket.</summary>
                 public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -7153,7 +7151,7 @@ namespace Google.Apis.Logging.v2
 
                 }
 
-                /// <summary>Lists buckets (Beta).</summary>
+                /// <summary>Lists buckets.</summary>
                 /// <param name="parent">Required. The parent resource whose buckets are to be listed:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note:
@@ -7164,7 +7162,7 @@ namespace Google.Apis.Logging.v2
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists buckets (Beta).</summary>
+                /// <summary>Lists buckets.</summary>
                 public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListBucketsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -7243,8 +7241,8 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Updates a bucket. This method replaces the following fields in the existing bucket with
                 /// values from the new bucket: retention_periodIf the retention period is decreased and the bucket is
                 /// locked, FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-                /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created. This
-                /// method is in Beta.</summary>
+                /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is
+                /// created.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The full resource name of the bucket to update.
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
@@ -7261,8 +7259,8 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Updates a bucket. This method replaces the following fields in the existing bucket with
                 /// values from the new bucket: retention_periodIf the retention period is decreased and the bucket is
                 /// locked, FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-                /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created. This
-                /// method is in Beta.</summary>
+                /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is
+                /// created.</summary>
                 public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -8992,7 +8990,7 @@ namespace Google.Apis.Logging.v2
 
                     }
 
-                    /// <summary>Lists views on a bucket..</summary>
+                    /// <summary>Lists views on a bucket.</summary>
                     /// <param name="parent">Required. The bucket whose views are to be listed:
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" </param>
                     public virtual ListRequest List(string parent)
@@ -9000,7 +8998,7 @@ namespace Google.Apis.Logging.v2
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Lists views on a bucket..</summary>
+                    /// <summary>Lists views on a bucket.</summary>
                     public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListViewsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -9290,7 +9288,7 @@ namespace Google.Apis.Logging.v2
 
                 }
 
-                /// <summary>Gets a bucket (Beta).</summary>
+                /// <summary>Gets a bucket.</summary>
                 /// <param name="name">Required. The resource name of the bucket:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
                 /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
@@ -9302,7 +9300,7 @@ namespace Google.Apis.Logging.v2
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets a bucket (Beta).</summary>
+                /// <summary>Gets a bucket.</summary>
                 public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -9349,7 +9347,7 @@ namespace Google.Apis.Logging.v2
 
                 }
 
-                /// <summary>Lists buckets (Beta).</summary>
+                /// <summary>Lists buckets.</summary>
                 /// <param name="parent">Required. The parent resource whose buckets are to be listed:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
                 /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note:
@@ -9360,7 +9358,7 @@ namespace Google.Apis.Logging.v2
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists buckets (Beta).</summary>
+                /// <summary>Lists buckets.</summary>
                 public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListBucketsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -9439,8 +9437,8 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Updates a bucket. This method replaces the following fields in the existing bucket with
                 /// values from the new bucket: retention_periodIf the retention period is decreased and the bucket is
                 /// locked, FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-                /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created. This
-                /// method is in Beta.</summary>
+                /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is
+                /// created.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The full resource name of the bucket to update.
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
@@ -9457,8 +9455,8 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Updates a bucket. This method replaces the following fields in the existing bucket with
                 /// values from the new bucket: retention_periodIf the retention period is decreased and the bucket is
                 /// locked, FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-                /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created. This
-                /// method is in Beta.</summary>
+                /// FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is
+                /// created.</summary>
                 public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogBucket>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -11556,7 +11554,7 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The response from ListBuckets (Beta).</summary>
+    /// <summary>The response from ListBuckets.</summary>
     public class ListBucketsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of buckets.</summary>
@@ -11787,7 +11785,7 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Describes a repository of logs (Beta).</summary>
+    /// <summary>Describes a repository of logs.</summary>
     public class LogBucket : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The creation timestamp of the bucket. This is not set for any of the default
@@ -12248,7 +12246,8 @@ namespace Google.Apis.Logging.v2.Data
 
         /// <summary>Filter that restricts which log entries in a bucket are visible in this view. Filters are
         /// restricted to be a logical AND of ==/!= of any of the following: originating
-        /// project/folder/organization/billing account. resource type log id</summary>
+        /// project/folder/organization/billing account. resource type log id Example: SOURCE("projects/myproject") AND
+        /// resource.type = "gce_instance" AND LOG_ID("stdout")</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 

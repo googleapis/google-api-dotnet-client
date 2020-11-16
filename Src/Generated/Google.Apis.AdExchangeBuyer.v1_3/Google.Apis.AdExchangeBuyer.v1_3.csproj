@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.AdExchangeBuyer.v1_3 Client Library</Title>
-    <Version>1.49.0.2140</Version>
+    <Version>1.49.0.2141</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>

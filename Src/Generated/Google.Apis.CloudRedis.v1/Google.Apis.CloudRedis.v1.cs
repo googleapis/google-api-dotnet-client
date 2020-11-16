@@ -1642,6 +1642,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reservedIpRange")]
         public virtual string ReservedIpRange { get; set; }
 
+        /// <summary>Output only. List of server CA certificates for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverCaCerts")]
+        public virtual System.Collections.Generic.IList<TlsCertificate> ServerCaCerts { get; set; }
+
         /// <summary>Output only. The current state of this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -1654,6 +1658,11 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Required. The service tier of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
         public virtual string Tier { get; set; }
+
+        /// <summary>Optional. The In-transit encryption mode of Redis instance. If not provided, in-transit encryption
+        /// is disabled for instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transitEncryptionMode")]
+        public virtual string TransitEncryptionMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1826,6 +1835,35 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>TlsCertificate Resource</summary>
+    public class TlsCertificate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>PEM representation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cert")]
+        public virtual string Cert { get; set; }
+
+        /// <summary>Output only. The time when the certificate was created in [RFC
+        /// 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. The time when the certificate expires in [RFC
+        /// 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
+
+        /// <summary>Serial number, as extracted from the certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
+        public virtual string SerialNumber { get; set; }
+
+        /// <summary>Sha1 Fingerprint of the certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sha1Fingerprint")]
+        public virtual string Sha1Fingerprint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

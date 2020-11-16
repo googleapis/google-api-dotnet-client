@@ -5193,7 +5193,7 @@ namespace Google.Apis.DisplayVideo.v1
 
             }
 
-            /// <summary>Lists manual triggers that are accessible to the current user for a given advertiser id. The
+            /// <summary>Lists manual triggers that are accessible to the current user for a given advertiser ID. The
             /// order is defined by the order_by parameter. A single advertiser_id is required.</summary>
             /// <param name="advertiserId">Required. The ID of the advertiser that the fetched manual triggers belong
             /// to.</param>
@@ -5202,7 +5202,7 @@ namespace Google.Apis.DisplayVideo.v1
                 return new ListRequest(service, advertiserId);
             }
 
-            /// <summary>Lists manual triggers that are accessible to the current user for a given advertiser id. The
+            /// <summary>Lists manual triggers that are accessible to the current user for a given advertiser ID. The
             /// order is defined by the order_by parameter. A single advertiser_id is required.</summary>
             public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListManualTriggersResponse>
             {
@@ -15128,7 +15128,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual DoubleVerifyBrandSafetyCategories BrandSafetyCategories { get; set; }
 
         /// <summary>The custom segment ID provided by DoubleVerify. The ID must start with "51" and consist of eight
-        /// digits. Custom segment id cannot be specified along with any of the following fields: *
+        /// digits. Custom segment ID cannot be specified along with any of the following fields: *
         /// brand_safety_categories * avoided_age_ratings * app_star_rating * fraud_invalid_traffic</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customSegmentId")]
         public virtual System.Nullable<long> CustomSegmentId { get; set; }
@@ -15784,7 +15784,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-        /// <summary>Optional. The bidding strategy of the insertion order. By default, fixed_bid is set.</summary>
+        /// <summary>The bidding strategy of the insertion order. By default, fixed_bid is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bidStrategy")]
         public virtual BiddingStrategy BidStrategy { get; set; }
 
@@ -16305,7 +16305,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("partnerRevenueModel")]
         public virtual PartnerRevenueModel PartnerRevenueModel { get; set; }
 
-        /// <summary>The targeting expansion settings of the line item.</summary>
+        /// <summary>The [targeting expansion](https://support.google.com/displayvideo/answer/10191558) settings of the
+        /// line item. This config is only applicable when eligible audience list targeting is assigned to the line
+        /// item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingExpansion")]
         public virtual TargetingExpansionConfig TargetingExpansion { get; set; }
 
@@ -16365,9 +16367,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string FlightDateType { get; set; }
 
         /// <summary>The ID of the manual trigger associated with the line item. * Required when flight_date_type is
-        /// `LINE_ITEM_FLIGHT_DATE_TYPE_TRIGGER`. Must not be set otherwise. * A line item's flight dates are inherited
-        /// from its parent insertion order. * Active line items will spend when the selected trigger is activated
-        /// within the parent insertion order's flight dates.</summary>
+        /// `LINE_ITEM_FLIGHT_DATE_TYPE_TRIGGER`. Must not be set otherwise. * When set, the line item's flight dates
+        /// are inherited from its parent insertion order. * Active line items will spend when the selected trigger is
+        /// activated within the parent insertion order's flight dates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerId")]
         public virtual System.Nullable<long> TriggerId { get; set; }
 
@@ -16826,7 +16828,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A single manual trigger in Display & Video 360 (DV360).</summary>
+    /// <summary>A single manual trigger in Display & Video 360.</summary>
     public class ManualTrigger : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The maximum duration of each activation in minutes. Must be between 1 and 360 inclusive.
