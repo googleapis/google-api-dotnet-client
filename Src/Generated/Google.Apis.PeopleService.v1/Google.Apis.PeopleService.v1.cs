@@ -1010,8 +1010,10 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>Provides a list of the authenticated user's contacts. The request throws a 400 error if
-            /// 'personFields' is not specified.</summary>
+            /// <summary>Provides a list of the authenticated user's contacts. The request returns a 400 error if
+            /// `personFields` is not specified. The request returns a 410 error if `sync_token` is specified and is
+            /// expired. Sync tokens expire after 7 days. A request without `sync_token` should be made and all contacts
+            /// should be synced.</summary>
             /// <param name="resourceName">Required. The resource name to return connections for. Only `people/me` is
             /// valid.</param>
             public virtual ListRequest List(string resourceName)
@@ -1019,8 +1021,10 @@ namespace Google.Apis.PeopleService.v1
                 return new ListRequest(service, resourceName);
             }
 
-            /// <summary>Provides a list of the authenticated user's contacts. The request throws a 400 error if
-            /// 'personFields' is not specified.</summary>
+            /// <summary>Provides a list of the authenticated user's contacts. The request returns a 400 error if
+            /// `personFields` is not specified. The request returns a 410 error if `sync_token` is specified and is
+            /// expired. Sync tokens expire after 7 days. A request without `sync_token` should be made and all contacts
+            /// should be synced.</summary>
             public class ListRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.ListConnectionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1213,7 +1217,7 @@ namespace Google.Apis.PeopleService.v1
             }
         }
 
-        /// <summary>Create a new contact and return the person resource for that contact. The request throws a 400
+        /// <summary>Create a new contact and return the person resource for that contact. The request returns a 400
         /// error if more than one field is specified on a field that is a singleton for contact sources: * biographies
         /// * birthdays * genders * names</summary>
         /// <param name="body">The body of the request.</param>
@@ -1222,7 +1226,7 @@ namespace Google.Apis.PeopleService.v1
             return new CreateContactRequest(service, body);
         }
 
-        /// <summary>Create a new contact and return the person resource for that contact. The request throws a 400
+        /// <summary>Create a new contact and return the person resource for that contact. The request returns a 400
         /// error if more than one field is specified on a field that is a singleton for contact sources: * biographies
         /// * birthdays * genders * names</summary>
         public class CreateContactRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.Person>
@@ -1455,7 +1459,7 @@ namespace Google.Apis.PeopleService.v1
         }
 
         /// <summary>Provides information about a person by specifying a resource name. Use `people/me` to indicate the
-        /// authenticated user. The request throws a 400 error if 'personFields' is not specified.</summary>
+        /// authenticated user. The request returns a 400 error if 'personFields' is not specified.</summary>
         /// <param name="resourceName">Required. The resource name of the person to provide information about. - To get
         /// information about the authenticated user, specify `people/me`. - To get information about a google account, specify
         /// `people/{account_id}`. - To get information about a contact, specify the resource name that identifies the contact
@@ -1466,7 +1470,7 @@ namespace Google.Apis.PeopleService.v1
         }
 
         /// <summary>Provides information about a person by specifying a resource name. Use `people/me` to indicate the
-        /// authenticated user. The request throws a 400 error if 'personFields' is not specified.</summary>
+        /// authenticated user. The request returns a 400 error if 'personFields' is not specified.</summary>
         public class GetRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.Person>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1574,7 +1578,7 @@ namespace Google.Apis.PeopleService.v1
         }
 
         /// <summary>Provides information about a list of specific people by specifying a list of requested resource
-        /// names. Use `people/me` to indicate the authenticated user. The request throws a 400 error if 'personFields'
+        /// names. Use `people/me` to indicate the authenticated user. The request returns a 400 error if 'personFields'
         /// is not specified.</summary>
         public virtual GetBatchGetRequest GetBatchGet()
         {
@@ -1582,7 +1586,7 @@ namespace Google.Apis.PeopleService.v1
         }
 
         /// <summary>Provides information about a list of specific people by specifying a list of requested resource
-        /// names. Use `people/me` to indicate the authenticated user. The request throws a 400 error if 'personFields'
+        /// names. Use `people/me` to indicate the authenticated user. The request returns a 400 error if 'personFields'
         /// is not specified.</summary>
         public class GetBatchGetRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.GetPeopleResponse>
         {

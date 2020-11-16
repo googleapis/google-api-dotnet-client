@@ -1143,8 +1143,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// between the wipe operation returning success and the device being wiped.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in
-        /// format: `devices/{device_id}`, where device_id is the unique ID assigned to the Device, and device_user_id is the
-        /// unique ID assigned to the User.</param>
+        /// format: `devices/{device_id}`, where device_id is the unique ID assigned to the Device.</param>
         public virtual CancelWipeRequest CancelWipe(Google.Apis.CloudIdentity.v1beta1.Data.CancelWipeDeviceRequest body, string name)
         {
             return new CancelWipeRequest(service, body, name);
@@ -1164,8 +1163,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
 
             /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in
-            /// format: `devices/{device_id}`, where device_id is the unique ID assigned to the Device, and
-            /// device_user_id is the unique ID assigned to the User.</summary>
+            /// format: `devices/{device_id}`, where device_id is the unique ID assigned to the Device.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
