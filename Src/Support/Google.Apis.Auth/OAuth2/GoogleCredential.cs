@@ -33,7 +33,7 @@ namespace Google.Apis.Auth.OAuth2
     /// See <see cref="GetApplicationDefaultAsync(CancellationToken)"/> for the credential retrieval logic.
     /// </para>
     /// </summary>
-    public class GoogleCredential : ICredential, ITokenAccessWithHeaders, IOidcTokenProvider
+    public class GoogleCredential : ICredential, ITokenAccessWithHeaders, IOidcTokenProvider, IJwtTokenAccess
     {
         /// <summary>Provider implements the logic for creating the application default credential.</summary>
         private static readonly DefaultCredentialProvider defaultCredentialProvider = new DefaultCredentialProvider();
@@ -300,6 +300,15 @@ namespace Google.Apis.Auth.OAuth2
         /// <returns>A copy of this credential with <see cref="QuotaProject"/> set to <paramref name="quotaProject"/>.</returns>
         public virtual GoogleCredential CreateWithQuotaProject(string quotaProject) =>
             new GoogleCredential(credential.WithQuotaProject(quotaProject));
+
+        /// <inheritdoc/>
+        public void RegisterForJwtEmission(JwtAsAccessTokenOptions options, bool overrideExisting)
+        {
+            if (credential is IJwtTokenAccess jwtEmitter) 
+            {
+                jwtEmitter.RegisterForJwtEmission(options, overrideExisting);
+            }
+        }
 
         void IConfigurableHttpClientInitializer.Initialize(ConfigurableHttpClient httpClient)
         {

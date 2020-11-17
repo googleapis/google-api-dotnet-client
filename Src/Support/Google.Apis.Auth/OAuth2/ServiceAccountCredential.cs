@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
@@ -54,7 +55,7 @@ namespace Google.Apis.Auth.OAuth2
     /// is used and when regular OAuth2 token is used.
     /// </para>
     /// </summary>
-    public class ServiceAccountCredential : ServiceCredential, IOidcTokenProvider, IGoogleCredential
+    public class ServiceAccountCredential : ServiceCredential, IOidcTokenProvider, IGoogleCredential, IJwtTokenAccess
     {
         private const string Sha256Oid = "2.16.840.1.101.3.4.2.1";
         /// <summary>An initializer class for the service account credential. </summary>
@@ -74,8 +75,15 @@ namespace Google.Apis.Auth.OAuth2
             /// </summary>
             public string User { get; set; }
 
-            /// <summary>Gets the scopes which indicate API access your application is requesting.</summary>
+            /// <summary>Gets or sets the scopes which indicate API access your application is requesting.</summary>
             public IEnumerable<string> Scopes { get; set; }
+
+            /// <summary>
+            /// Gets or sets the set of conditions under which a JWT may be emitted as an
+            /// access token.
+            /// May be null, in which case JWTs will never be emitted.
+            /// </summary>
+            public IEnumerable<JwtAsAccessTokenOptions> JwtEmissionConditions { get; set; }
 
             /// <summary>
             /// Gets or sets the key which is used to sign the request, as specified in
@@ -107,6 +115,7 @@ namespace Google.Apis.Auth.OAuth2
                 Scopes = other.Scopes;
                 Key = other.Key;
                 KeyId = other.KeyId;
+                JwtEmissionConditions = other.JwtEmissionConditions;
             }
 
             /// <summary>Extracts the <see cref="Key"/> from the given PKCS8 private key.</summary>
@@ -170,6 +179,13 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary><c>true</c> if this credential has any scopes associated with it.</summary>
         internal bool HasScopes => Scopes?.Any() == true;
 
+        /// <summary>
+        /// Conditions under which this credential can emit a JWT as an access token.
+        /// </summary>
+        /// <remarks>This is a copy of the working condition set.</remarks>
+        internal IEnumerable<JwtAsAccessTokenOptions> JwtEmissionConditions =>
+            _jwtEmissionConditions.Values.Select(options => options.Copy());
+
         /// <summary>Constructs a new service account credential using the given initializer.</summary>
         public ServiceAccountCredential(Initializer initializer) : base(initializer)
         {
@@ -179,6 +195,11 @@ namespace Google.Apis.Auth.OAuth2
             Scopes = initializer.Scopes;
             Key = initializer.Key.ThrowIfNull("initializer.Key");
             KeyId = initializer.KeyId;
+
+            foreach (var options in initializer.JwtEmissionConditions ?? Enumerable.Empty<JwtAsAccessTokenOptions>())
+            {
+                RegisterForJwtEmission(options);
+            }
         }
 
         /// <summary>
@@ -229,23 +250,18 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <summary>
         /// Gets an access token to authorize a request.
-        /// If <paramref name="authUri"/> is set and this credential has no scopes associated
-        /// with it, a locally signed JWT access token for given <paramref name="authUri"/>
+        /// If <paramref name="authUri"/> is set to one of the endpoints registered for JWT, 
+        /// and this credential scopes are a subset of the ones allowed in said registration,
+        /// then a locally signed JWT access token for the registered audience
         /// is returned. Otherwise, an OAuth2 access token obtained from token server will be returned.
         /// A cached token is used if possible and the token is only refreshed once it's close to its expiry.
         /// </summary>
         /// <param name="authUri">The URI the returned token will grant access to.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The access token.</returns>
-        public override async Task<string> GetAccessTokenForRequestAsync(string authUri = null, CancellationToken cancellationToken = default)
-        {
-            // See: https://developers.google.com/identity/protocols/oauth2/service-account#jwt-auth
-            if (!HasScopes && authUri != null)
-            {
-                return await GetOrCreateJwtAccessTokenAsync(authUri).ConfigureAwait(false);
-            }
-            return await base.GetAccessTokenForRequestAsync(authUri, cancellationToken).ConfigureAwait(false);
-        }
+        public override async Task<string> GetAccessTokenForRequestAsync(string authUri = null, CancellationToken cancellationToken = default) =>
+            (await TryGetOrCreateJwtAccessTokenAsync(authUri).ConfigureAwait(false)) ?? 
+            (await base.GetAccessTokenForRequestAsync(authUri, cancellationToken).ConfigureAwait(false));
 
         /// <inheritdoc/>
         public Task<OidcToken> GetOidcTokenAsync(OidcTokenOptions options, CancellationToken cancellationToken = default)
@@ -275,6 +291,16 @@ namespace Google.Apis.Auth.OAuth2
             return true;
         }
 
+        /// <inheritdoc/>
+        public void RegisterForJwtEmission(JwtAsAccessTokenOptions options, bool overrideExisting = false)
+        {
+            var copy = options.ThrowIfNull(nameof(options)).ValidateForRegistrationAndCopy();
+            _jwtEmissionConditions.AddOrUpdate(
+                copy.Endpoint,
+                copy,
+                (endpoint, currentValue) => overrideExisting ? copy : throw new ArgumentException($"Endpoint {copy.Endpoint} is already registered."));
+        }
+
         private class JwtCacheEntry
         {
             public JwtCacheEntry(Task<string> jwtTask, string uri, DateTime expiryUtc)
@@ -296,9 +322,19 @@ namespace Google.Apis.Auth.OAuth2
         private readonly object _jwtLock = new object();
         private LinkedList<JwtCacheEntry> _jwts = null;
         private Dictionary<string, LinkedListNode<JwtCacheEntry>> _jwtCache = null;
+        private ConcurrentDictionary<string, JwtAsAccessTokenOptions> _jwtEmissionConditions = new ConcurrentDictionary<string, JwtAsAccessTokenOptions>();
 
-        private Task<string> GetOrCreateJwtAccessTokenAsync(string authUri)
+        private Task<string> TryGetOrCreateJwtAccessTokenAsync(string endpoint)
         {
+            if (endpoint is null ||
+                !_jwtEmissionConditions.TryGetValue(endpoint, out JwtAsAccessTokenOptions jwtOptions) ||
+                !jwtOptions.ScopesAllowed(Scopes))
+            {
+                return Task.FromResult<string>(null);
+            }
+
+            string audience = jwtOptions.EffectiveAudience;
+
             var nowUtc = Clock.UtcNow;
             lock (_jwtLock)
             {
@@ -308,7 +344,7 @@ namespace Google.Apis.Auth.OAuth2
                     _jwtCache = new Dictionary<string, LinkedListNode<JwtCacheEntry>>();
                     _jwts = new LinkedList<JwtCacheEntry>();
                 }
-                if (_jwtCache.TryGetValue(authUri, out var cachedJwtNode))
+                if (_jwtCache.TryGetValue(audience, out var cachedJwtNode))
                 {
                     var jwtEntry = cachedJwtNode.Value;
                     if (jwtEntry.ExpiryUtc - JwtCacheExpiryWindow > nowUtc)
@@ -317,14 +353,14 @@ namespace Google.Apis.Auth.OAuth2
                         return jwtEntry.JwtTask;
                     }
                     // Cached JWT is expired; remove it.
-                    _jwtCache.Remove(authUri);
+                    _jwtCache.Remove(audience);
                     _jwts.Remove(cachedJwtNode);
                 }
                 // Create a new JWT.
                 var expiryUtc = nowUtc + JwtLifetime;
-                var jwtTask = Task.Run(() => CreateJwtAccessToken(authUri, nowUtc, expiryUtc));
-                var jwtNode = _jwts.AddFirst(new JwtCacheEntry(jwtTask, authUri, expiryUtc));
-                _jwtCache.Add(authUri, jwtNode);
+                var jwtTask = Task.Run(() => CreateJwtAccessToken(audience, nowUtc, expiryUtc));
+                var jwtNode = _jwts.AddFirst(new JwtCacheEntry(jwtTask, audience, expiryUtc));
+                _jwtCache.Add(audience, jwtNode);
                 // If cache is too large, remove oldest JWT (for any uri)
                 if (_jwtCache.Count > JwtCacheMaxSize)
                 {
@@ -339,17 +375,17 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>
         /// Creates a JWT access token than can be used in request headers instead of an OAuth2 token.
         /// This is achieved by signing a special JWT using this service account's private key.
-        /// <param name="authUri">The URI for which the access token will be valid.</param>
+        /// <param name="audience">The audience for which the access token will be valid.</param>
         /// <param name="issueUtc">The issue time of the JWT.</param>
         /// <param name="expiryUtc">The expiry time of the JWT.</param>
         /// </summary>
-        private string CreateJwtAccessToken(string authUri, DateTime issueUtc, DateTime expiryUtc)
+        private string CreateJwtAccessToken(string audience, DateTime issueUtc, DateTime expiryUtc)
         {
             var payload = new JsonWebSignature.Payload()
             {
                 Issuer = Id,
                 Subject = Id,
-                Audience = authUri,
+                Audience = audience,
                 IssuedAtTimeSeconds = (long)(issueUtc - UnixEpoch).TotalSeconds,
                 ExpirationTimeSeconds = (long)(expiryUtc - UnixEpoch).TotalSeconds,
             };
