@@ -79,6 +79,7 @@ Google.Apis.Auth.AspNetCore3.IntegrationTests is a standard ASP.NET Core 3 app.
 [storage-api]: https://cloud.google.com/storage/docs/json_api
 [translate-api]: https://cloud.google.com/translate/docs/reference/api-overview
 [enable-apis]: https://developers.google.com/identity/protocols/oauth2/web-server#enable-apis
+[oauth-creds]: https://developers.google.com/identity/protocols/oauth2/web-server#creatingcred
 [git]: https://git-scm.com/
 [net-core]: https://dotnet.microsoft.com/download/dotnet-core
 [visual-studio]: https://visualstudio.microsoft.com/downloads/
