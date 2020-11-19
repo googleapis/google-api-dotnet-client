@@ -9,13 +9,13 @@
 
 // Generated code. DO NOT EDIT!
 
-namespace Google.Apis.Assuredworkloads.v1beta1
+namespace Google.Apis.Assuredworkloads.v1
 {
     /// <summary>The Assuredworkloads Service.</summary>
     public class AssuredworkloadsService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
-        public const string Version = "v1beta1";
+        public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
         public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
@@ -319,7 +319,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
 
                 /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
                 /// operation result at intervals as recommended by the API service.</summary>
-                public class GetRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleLongrunningOperation>
+                public class GetRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -341,7 +341,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+name}";
+                    public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
                     protected override void InitParameters()
@@ -380,7 +380,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                 /// configuration. For backwards compatibility, the default name includes the operations collection id,
                 /// however overriding users must ensure the name binding is the parent resource, without the operations
                 /// collection id.</summary>
-                public class ListRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleLongrunningListOperationsResponse>
+                public class ListRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleLongrunningListOperationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -414,7 +414,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+name}/operations";
+                    public override string RestPath => "v1/{+name}/operations";
 
                     /// <summary>Initializes List parameter list.</summary>
                     protected override void InitParameters()
@@ -480,16 +480,16 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The resource name of the new Workload's parent. Must be of the form
                 /// `organizations/{org_id}/locations/{location_id}`.</param>
-                public virtual CreateRequest Create(Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1Workload body, string parent)
+                public virtual CreateRequest Create(Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1Workload body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
                 }
 
                 /// <summary>Creates Assured Workload.</summary>
-                public class CreateRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleLongrunningOperation>
+                public class CreateRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1Workload body, string parent) : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1Workload body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -511,7 +511,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1Workload Body { get; set; }
+                    Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1Workload Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -523,7 +523,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     public override string HttpMethod => "POST";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+parent}/workloads";
+                    public override string RestPath => "v1/{+parent}/workloads";
 
                     /// <summary>Initializes Create parameter list.</summary>
                     protected override void InitParameters()
@@ -561,7 +561,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
 
                 /// <summary>Deletes the workload. Make sure that workload's direct children are already in a deleted
                 /// state, otherwise the request will fail with a FAILED_PRECONDITION error.</summary>
-                public class DeleteRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleProtobufEmpty>
+                public class DeleteRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleProtobufEmpty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -589,7 +589,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     public override string HttpMethod => "DELETE";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+name}";
+                    public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
                     protected override void InitParameters()
@@ -626,7 +626,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                 }
 
                 /// <summary>Gets Assured Workload associated with a CRM Node</summary>
-                public class GetRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1Workload>
+                public class GetRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1Workload>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -651,7 +651,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+name}";
+                    public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
                     protected override void InitParameters()
@@ -679,7 +679,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                 }
 
                 /// <summary>Lists Assured Workloads under a CRM Node.</summary>
-                public class ListRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1ListWorkloadsResponse>
+                public class ListRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1ListWorkloadsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
@@ -716,7 +716,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+parent}/workloads";
+                    public override string RestPath => "v1/{+parent}/workloads";
 
                     /// <summary>Initializes List parameter list.</summary>
                     protected override void InitParameters()
@@ -765,7 +765,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Optional. The resource name of the workload. Format:
                 /// organizations/{organization}/locations/{location}/workloads/{workload} Read-only.</param>
-                public virtual PatchRequest Patch(Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1Workload body, string name)
+                public virtual PatchRequest Patch(Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1Workload body, string name)
                 {
                     return new PatchRequest(service, body, name);
                 }
@@ -773,10 +773,10 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                 /// <summary>Updates an existing workload. Currently allows updating of workload display_name and
                 /// labels. For force updates don't set etag field in the Workload. Only one update operation per
                 /// workload can be in progress.</summary>
-                public class PatchRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1Workload>
+                public class PatchRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1Workload>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1Workload body, string name) : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1Workload body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -795,7 +795,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1Workload Body { get; set; }
+                    Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1Workload Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -807,7 +807,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     public override string HttpMethod => "PATCH";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+name}";
+                    public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Patch parameter list.</summary>
                     protected override void InitParameters()
@@ -838,7 +838,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
     }
 }
 
-namespace Google.Apis.Assuredworkloads.v1beta1.Data
+namespace Google.Apis.Assuredworkloads.v1.Data
 {    
 
     /// <summary>Operation metadata to give request details of CreateWorkload.</summary>
@@ -865,6 +865,21 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response of ListWorkloads endpoint.</summary>
+    public class GoogleCloudAssuredworkloadsV1ListWorkloadsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The next page token. Return empty if reached the last page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of Workloads under a given parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloads")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1Workload> Workloads { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>An Workload object for managing highly regulated workloads of cloud customers.</summary>
     public class GoogleCloudAssuredworkloadsV1Workload : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -875,10 +890,6 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         /// `billingAccounts/012345-567890-ABCDEF`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingAccount")]
         public virtual string BillingAccount { get; set; }
-
-        /// <summary>Required. Input only. Immutable. Settings specific to resources needed for CJIS.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cjisSettings")]
-        public virtual GoogleCloudAssuredworkloadsV1WorkloadCJISSettings CjisSettings { get; set; }
 
         /// <summary>Required. Immutable. Compliance Regime associated with this workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("complianceRegime")]
@@ -899,18 +910,10 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Required. Input only. Immutable. Settings specific to resources needed for FedRAMP High.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fedrampHighSettings")]
-        public virtual GoogleCloudAssuredworkloadsV1WorkloadFedrampHighSettings FedrampHighSettings { get; set; }
-
-        /// <summary>Required. Input only. Immutable. Settings specific to resources needed for FedRAMP
-        /// Moderate.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fedrampModerateSettings")]
-        public virtual GoogleCloudAssuredworkloadsV1WorkloadFedrampModerateSettings FedrampModerateSettings { get; set; }
-
-        /// <summary>Required. Input only. Immutable. Settings specific to resources needed for IL4.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("il4Settings")]
-        public virtual GoogleCloudAssuredworkloadsV1WorkloadIL4Settings Il4Settings { get; set; }
+        /// <summary>Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is
+        /// provisioned. This field is mandatory for a subset of Compliance Regimes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
+        public virtual GoogleCloudAssuredworkloadsV1WorkloadKMSSettings KmsSettings { get; set; }
 
         /// <summary>Optional. Labels applied to the workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -934,50 +937,6 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1WorkloadResourceInfo> Resources { get; set; }
 
-    }    
-
-    /// <summary>Settings specific to resources needed for CJIS.</summary>
-    public class GoogleCloudAssuredworkloadsV1WorkloadCJISSettings : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
-        public virtual GoogleCloudAssuredworkloadsV1WorkloadKMSSettings KmsSettings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Settings specific to resources needed for FedRAMP High.</summary>
-    public class GoogleCloudAssuredworkloadsV1WorkloadFedrampHighSettings : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
-        public virtual GoogleCloudAssuredworkloadsV1WorkloadKMSSettings KmsSettings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Settings specific to resources needed for FedRAMP Moderate.</summary>
-    public class GoogleCloudAssuredworkloadsV1WorkloadFedrampModerateSettings : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
-        public virtual GoogleCloudAssuredworkloadsV1WorkloadKMSSettings KmsSettings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Settings specific to resources needed for IL4.</summary>
-    public class GoogleCloudAssuredworkloadsV1WorkloadIL4Settings : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Input only. Immutable. Settings used to create a CMEK crypto key.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
-        public virtual GoogleCloudAssuredworkloadsV1WorkloadKMSSettings KmsSettings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }    
 
     /// <summary>Settings specific to the Key Management Service.</summary>
@@ -1037,21 +996,6 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response of ListWorkloads endpoint.</summary>
-    public class GoogleCloudAssuredworkloadsV1beta1ListWorkloadsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The next page token. Return empty if reached the last page.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>List of Workloads under a given parent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("workloads")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1Workload> Workloads { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>An Workload object for managing highly regulated workloads of cloud customers.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1Workload : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1098,6 +1042,11 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         /// <summary>Required. Input only. Immutable. Settings specific to resources needed for IL4.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("il4Settings")]
         public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings Il4Settings { get; set; }
+
+        /// <summary>Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is
+        /// provisioned. This field is mandatory for a subset of Compliance Regimes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
+        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings KmsSettings { get; set; }
 
         /// <summary>Optional. Labels applied to the workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]

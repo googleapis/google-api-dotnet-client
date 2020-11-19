@@ -2591,7 +2591,8 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>IAM policy analysis query message.</summary>
+    /// <summary>## LINT.IfChange Keep in sync with ## logs/proto/cloud_asset_inventory/iam_policy_analyzer_log.proto
+    /// IAM policy analysis query message.</summary>
     public class IamPolicyAnalysisQuery : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Specifies roles or permissions for analysis. This is optional.</summary>

@@ -623,9 +623,8 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
 namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
 {    
 
-    /// <summary>The JSON template for an Application resource. STEPLADDER: Generated unstable field number for field
-    /// 'kind'. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for field
-    /// 'etag'. (See http://go/stepladder-help#fieldNumber)</summary>
+    /// <summary>Applications resources represent applications installed on the domain that support transferring
+    /// ownership of user data.</summary>
     public class Application : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Etag of the resource.</summary>
@@ -686,9 +685,7 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Template for a collection of Applications. STEPLADDER: Generated unstable field number for field
-    /// 'kind'. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for field
-    /// 'etag'. (See http://go/stepladder-help#fieldNumber)</summary>
+    /// <summary>Template for a collection of Applications.</summary>
     public class ApplicationsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of applications that support data transfer and are also installed for the customer.</summary>
@@ -709,9 +706,7 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
 
     }    
 
-    /// <summary>The JSON template for a DataTransfer resource. STEPLADDER: Generated unstable field number for field
-    /// 'kind'. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for field
-    /// 'etag'. (See http://go/stepladder-help#fieldNumber)</summary>
+    /// <summary>A Transfer resource represents the transfer of the ownership of user data between users.</summary>
     public class DataTransfer : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of per application data transfer resources. It contains data transfer details of the
@@ -758,9 +753,7 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
 
     }    
 
-    /// <summary>Template for a collection of DataTransfer resources. STEPLADDER: Generated unstable field number for
-    /// field 'kind'. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for field
-    /// 'etag'. (See http://go/stepladder-help#fieldNumber)</summary>
+    /// <summary>Template for a collection of DataTransfer resources.</summary>
     public class DataTransfersListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of data transfer requests.</summary>

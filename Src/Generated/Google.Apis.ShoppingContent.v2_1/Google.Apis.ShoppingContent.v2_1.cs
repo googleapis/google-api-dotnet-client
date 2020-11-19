@@ -47,6 +47,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             Productstatuses = new ProductstatusesResource(this);
             Pubsubnotificationsettings = new PubsubnotificationsettingsResource(this);
             Regionalinventory = new RegionalinventoryResource(this);
+            Regions = new RegionsResource(this);
             Repricingrules = new RepricingrulesResource(this);
             Returnaddress = new ReturnaddressResource(this);
             Returnpolicy = new ReturnpolicyResource(this);
@@ -151,6 +152,9 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>Gets the Regionalinventory resource.</summary>
         public virtual RegionalinventoryResource Regionalinventory { get; }
+
+        /// <summary>Gets the Regions resource.</summary>
+        public virtual RegionsResource Regions { get; }
 
         /// <summary>Gets the Repricingrules resource.</summary>
         public virtual RepricingrulesResource Repricingrules { get; }
@@ -7794,6 +7798,381 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
     }
 
+    /// <summary>The "regions" collection of methods.</summary>
+    public class RegionsResource
+    {
+        private const string Resource = "regions";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public RegionsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Creates a region definition in your Merchant Center account.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">Required. The id of the merchant for which to create region definition.</param>
+        public virtual CreateRequest Create(Google.Apis.ShoppingContent.v2_1.Data.Region body, long merchantId)
+        {
+            return new CreateRequest(service, body, merchantId);
+        }
+
+        /// <summary>Creates a region definition in your Merchant Center account.</summary>
+        public class CreateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.Region>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.Region body, long merchantId) : base(service)
+            {
+                MerchantId = merchantId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The id of the merchant for which to create region definition.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Required. The id of the region to create.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("regionId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RegionId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.Region Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "content/v2.1/{merchantId}/regions";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("regionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "regionId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+        }
+
+        /// <summary>Deletes a region definition from your Merchant Center account.</summary>
+        /// <param name="merchantId">Required. The id of the merchant for which to delete region definition.</param>
+        ///
+        /// <param name="regionId">Required. The id of the region to delete.</param>
+        public virtual DeleteRequest Delete(long merchantId, string regionId)
+        {
+            return new DeleteRequest(service, merchantId, regionId);
+        }
+
+        /// <summary>Deletes a region definition from your Merchant Center account.</summary>
+        public class DeleteRequest : ShoppingContentBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, long merchantId, string regionId) : base(service)
+            {
+                MerchantId = merchantId;
+                RegionId = regionId;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The id of the merchant for which to delete region definition.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Required. The id of the region to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("regionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string RegionId { get; private set; }
+
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "content/v2.1/{merchantId}/regions/{regionId}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("regionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "regionId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+        }
+
+        /// <summary>Retrieves a region defined in your Merchant Center account.</summary>
+        /// <param name="merchantId">Required. The id of the merchant for which to retrieve region definition.</param>
+        ///
+        /// <param name="regionId">Required. The id of the region to retrieve.</param>
+        public virtual GetRequest Get(long merchantId, string regionId)
+        {
+            return new GetRequest(service, merchantId, regionId);
+        }
+
+        /// <summary>Retrieves a region defined in your Merchant Center account.</summary>
+        public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.Region>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, long merchantId, string regionId) : base(service)
+            {
+                MerchantId = merchantId;
+                RegionId = regionId;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The id of the merchant for which to retrieve region definition.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Required. The id of the region to retrieve.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("regionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string RegionId { get; private set; }
+
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "content/v2.1/{merchantId}/regions/{regionId}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("regionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "regionId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+        }
+
+        /// <summary>Lists the regions in your Merchant Center account.</summary>
+        /// <param name="merchantId">Required. The id of the merchant for which to list region definitions.</param>
+        public virtual ListRequest List(long merchantId)
+        {
+            return new ListRequest(service, merchantId);
+        }
+
+        /// <summary>Lists the regions in your Merchant Center account.</summary>
+        public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ListRegionsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, long merchantId) : base(service)
+            {
+                MerchantId = merchantId;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The id of the merchant for which to list region definitions.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>The maximum number of regions to return. The service may return fewer than this value. If
+            /// unspecified, at most 50 rules will be returned. The maximum value is 1000; values above 1000 will be
+            /// coerced to 1000.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>A page token, received from a previous `ListRegions` call. Provide this to retrieve the
+            /// subsequent page. When paginating, all other parameters provided to `ListRegions` must match the call
+            /// that provided the page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "content/v2.1/{merchantId}/regions";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+        }
+
+        /// <summary>Updates a region definition in your Merchant Center account.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">Required. The id of the merchant for which to update region definition.</param>
+        ///
+        /// <param name="regionId">Required. The id of the region to update.</param>
+        public virtual PatchRequest Patch(Google.Apis.ShoppingContent.v2_1.Data.Region body, long merchantId, string regionId)
+        {
+            return new PatchRequest(service, body, merchantId, regionId);
+        }
+
+        /// <summary>Updates a region definition in your Merchant Center account.</summary>
+        public class PatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.Region>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.Region body, long merchantId, string regionId) : base(service)
+            {
+                MerchantId = merchantId;
+                RegionId = regionId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The id of the merchant for which to update region definition.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Required. The id of the region to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("regionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string RegionId { get; private set; }
+
+            /// <summary>Optional. The field mask indicating the fields to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.Region Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "content/v2.1/{merchantId}/regions/{regionId}";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("regionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "regionId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+        }
+    }
+
     /// <summary>The "repricingrules" collection of methods.</summary>
     public class RepricingrulesResource
     {
@@ -11764,6 +12143,22 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response message for the `ListRegions` method.</summary>
+    public class ListRegionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
+        /// there are no subsequent pages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The regions from the specified merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regions")]
+        public virtual System.Collections.Generic.IList<Region> Regions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response message for the `ListRepricingRules` method.</summary>
     public class ListRepricingRulesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12254,9 +12649,9 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Nullable<long> Quantity { get; set; }
 
         /// <summary>The reason for the cancellation. Orders that are canceled with a noInventory reason will lead to
-        /// the removal of the product from Shopping Actions until you make an update to that product. This will not
-        /// affect your Shopping ads. Acceptable values are: - "`autoPostInternal`" - "`autoPostInvalidBillingAddress`"
-        /// - "`autoPostNoInventory`" - "`autoPostPriceError`" - "`autoPostUndeliverableShippingAddress`" -
+        /// the removal of the product from Buy on Google until you make an update to that product. This will not affect
+        /// your Shopping ads. Acceptable values are: - "`autoPostInternal`" - "`autoPostInvalidBillingAddress`" -
+        /// "`autoPostNoInventory`" - "`autoPostPriceError`" - "`autoPostUndeliverableShippingAddress`" -
         /// "`couponAbuse`" - "`customerCanceled`" - "`customerInitiatedCancel`" - "`customerSupportRequested`" -
         /// "`failToPushOrderGoogleError`" - "`failToPushOrderMerchantError`" -
         /// "`failToPushOrderMerchantFulfillmentError`" - "`failToPushOrderToMerchant`" -
@@ -12283,7 +12678,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>Email address for the merchant to send value-added tax or invoice documentation of the order. Only
         /// the last document sent is made available to the customer. For more information, see About automated VAT
-        /// invoicing for Shopping Actions.</summary>
+        /// invoicing for Buy on Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invoiceReceivingEmail")]
         public virtual string InvoiceReceivingEmail { get; set; }
 
@@ -14951,7 +15346,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>A list of custom (merchant-provided) attributes. It can also be used for submitting any attribute
         /// of the feed specification in its generic form (e.g., `{ "name": "size type", "value": "regular" }`). This is
         /// useful for submitting attributes not explicitly exposed by the API, such as additional attributes used for
-        /// Shopping Actions.</summary>
+        /// Buy on Google (formerly known as Shopping Actions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customAttributes")]
         public virtual System.Collections.Generic.IList<CustomAttribute> CustomAttributes { get; set; }
 
@@ -15799,6 +16194,94 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "`unsupportedPoBoxAddress`" - "`wrongProductShipped`" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasonCode")]
         public virtual string ReasonCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a geographic region that you can use as a target with both the `RegionalInventory` and
+    /// `ShippingSettings` services. You can define regions as collections of either postal codes or, in some countries,
+    /// using predefined geotargets.</summary>
+    public class Region : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The display name of the region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>A list of geotargets that defines the region area.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geotargetArea")]
+        public virtual RegionGeoTargetArea GeotargetArea { get; set; }
+
+        /// <summary>Output only. Immutable. Merchant that owns the region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
+        public virtual System.Nullable<long> MerchantId { get; set; }
+
+        /// <summary>A list of postal codes that defines the region area.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCodeArea")]
+        public virtual RegionPostalCodeArea PostalCodeArea { get; set; }
+
+        /// <summary>Output only. Immutable. The ID uniquely identifying each region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionId")]
+        public virtual string RegionId { get; set; }
+
+        /// <summary>Output only. Indicates if the region is eligible to use in the Regional Inventory
+        /// configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionalInventoryEligible")]
+        public virtual System.Nullable<bool> RegionalInventoryEligible { get; set; }
+
+        /// <summary>Output only. Indicates if the region is eligible to use in the Shipping Services
+        /// configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shippingEligible")]
+        public virtual System.Nullable<bool> ShippingEligible { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A list of geotargets that defines the region area.</summary>
+    public class RegionGeoTargetArea : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. A non-empty list of [location
+        /// IDs](https://developers.google.com/adwords/api/docs/appendix/geotargeting). They must all be of the same
+        /// location type (e.g., state).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geotargetCriteriaIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> GeotargetCriteriaIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A list of postal codes that defines the region area. Note: All regions defined using postal codes are
+    /// accessible via the account's `ShippingSettings.postalCodeGroups` resource.</summary>
+    public class RegionPostalCodeArea : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. A range of postal codes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCodes")]
+        public virtual System.Collections.Generic.IList<RegionPostalCodeAreaPostalCodeRange> PostalCodes { get; set; }
+
+        /// <summary>Required. CLDR territory code or the country the postal code group applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A range of postal codes that defines the region area.</summary>
+    public class RegionPostalCodeAreaPostalCodeRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. A postal code or a pattern of the form prefix* denoting the inclusive lower bound of the
+        /// range defining the area. Examples values: "94108", "9410*", "9*".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("begin")]
+        public virtual string Begin { get; set; }
+
+        /// <summary>Optional. A postal code or a pattern of the form prefix* denoting the inclusive upper bound of the
+        /// range defining the area. It must have the same length as postalCodeRangeBegin: if postalCodeRangeBegin is a
+        /// postal code then postalCodeRangeEnd must be a postal code too; if postalCodeRangeBegin is a pattern then
+        /// postalCodeRangeEnd must be a pattern with the same prefix length. Optional: if not set, then the area is
+        /// defined as being all the postal codes matching postalCodeRangeBegin.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("end")]
+        public virtual string End { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

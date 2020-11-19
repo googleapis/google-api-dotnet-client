@@ -12599,19 +12599,19 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultSearchHandlingStrict")]
         public virtual System.Nullable<bool> DefaultSearchHandlingStrict { get; set; }
 
-        /// <summary>Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR
-        /// store creation. The default value is false, meaning that the API enforces referential integrity and fails
-        /// the requests that result in inconsistent state in the FHIR store. When this field is set to true, the API
-        /// skips referential integrity checks. Consequently, operations that rely on references, such as
+        /// <summary>Immutable. Whether to disable referential integrity in this FHIR store. This field is immutable
+        /// after FHIR store creation. The default value is false, meaning that the API enforces referential integrity
+        /// and fails the requests that result in inconsistent state in the FHIR store. When this field is set to true,
+        /// the API skips referential integrity checks. Consequently, operations that rely on references, such as
         /// GetPatientEverything, do not return all the results if broken references exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableReferentialIntegrity")]
         public virtual System.Nullable<bool> DisableReferentialIntegrity { get; set; }
 
-        /// <summary>Whether to disable resource versioning for this FHIR store. This field can not be changed after the
-        /// creation of FHIR store. If set to false, which is the default behavior, all write operations cause
-        /// historical versions to be recorded automatically. The historical versions can be fetched through the history
-        /// APIs, but cannot be updated. If set to true, no historical versions are kept. The server sends errors for
-        /// attempts to read the historical versions.</summary>
+        /// <summary>Immutable. Whether to disable resource versioning for this FHIR store. This field can not be
+        /// changed after the creation of FHIR store. If set to false, which is the default behavior, all write
+        /// operations cause historical versions to be recorded automatically. The historical versions can be fetched
+        /// through the history APIs, but cannot be updated. If set to true, no historical versions are kept. The server
+        /// sends errors for attempts to read the historical versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableResourceVersioning")]
         public virtual System.Nullable<bool> DisableResourceVersioning { get; set; }
 
@@ -12655,9 +12655,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("streamConfigs")]
         public virtual System.Collections.Generic.IList<StreamConfig> StreamConfigs { get; set; }
 
-        /// <summary>The FHIR specification version that this FHIR store supports natively. This field is immutable
-        /// after store creation. Requests are rejected if they contain FHIR resources of a different version. Version
-        /// is required for every FHIR store.</summary>
+        /// <summary>Immutable. The FHIR specification version that this FHIR store supports natively. This field is
+        /// immutable after store creation. Requests are rejected if they contain FHIR resources of a different version.
+        /// Version is required for every FHIR store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
