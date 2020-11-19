@@ -7501,6 +7501,11 @@ namespace Google.Apis.Storage.v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("bucketPolicyOnly")]
             public virtual BucketPolicyOnlyData BucketPolicyOnly { get; set; }
 
+            /// <summary>The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced'
+            /// are supported.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("publicAccessPrevention")]
+            public virtual string PublicAccessPrevention { get; set; }
+
             /// <summary>The bucket's uniform bucket-level access configuration.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("uniformBucketLevelAccess")]
             public virtual UniformBucketLevelAccessData UniformBucketLevelAccess { get; set; }

@@ -29,7 +29,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
         /// <param name="initializer">The service initializer.</param>
         public SecurityCommandCenterService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Folders = new FoldersResource(this);
             Organizations = new OrganizationsResource(this);
+            Projects = new ProjectsResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -75,8 +77,14 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
 
 
+        /// <summary>Gets the Folders resource.</summary>
+        public virtual FoldersResource Folders { get; }
+
         /// <summary>Gets the Organizations resource.</summary>
         public virtual OrganizationsResource Organizations { get; }
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects { get; }
     }
 
     /// <summary>A base abstract class for SecurityCommandCenter requests.</summary>
@@ -254,6 +262,983 @@ namespace Google.Apis.SecurityCommandCenter.v1
         }
     }
 
+    /// <summary>The "folders" collection of methods.</summary>
+    public class FoldersResource
+    {
+        private const string Resource = "folders";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public FoldersResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Assets = new AssetsResource(service);
+            Sources = new SourcesResource(service);
+
+        }
+
+        /// <summary>Gets the Assets resource.</summary>
+        public virtual AssetsResource Assets { get; }
+
+        /// <summary>The "assets" collection of methods.</summary>
+        public class AssetsResource
+        {
+            private const string Resource = "assets";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AssetsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Filters an organization's assets and groups them by their specified properties.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. Name of the organization to groupBy. Its format is "organizations/[organization_id],
+            /// folders/[folder_id], or projects/[project_id]".</param>
+            public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupAssetsRequest body, string parent)
+            {
+                return new GroupRequest(service, body, parent);
+            }
+
+            /// <summary>Filters an organization's assets and groups them by their specified properties.</summary>
+            public class GroupRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GroupAssetsResponse>
+            {
+                /// <summary>Constructs a new Group request.</summary>
+                public GroupRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GroupAssetsRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Name of the organization to groupBy. Its format is
+                /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecurityCommandCenter.v1.Data.GroupAssetsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "group";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/assets:group";
+
+                /// <summary>Initializes Group parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+$",
+                    });
+                }
+
+            }
+
+            /// <summary>Lists an organization's assets.</summary>
+            /// <param name="parent">Required. Name of the organization assets should belong to. Its format is
+            /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists an organization's assets.</summary>
+            public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListAssetsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Name of the organization assets should belong to. Its format is
+                /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>When compare_duration is set, the ListAssetsResult's "state_change" attribute is updated to
+                /// indicate whether the asset was added, removed, or remained present during the compare_duration
+                /// period of time that precedes the read_time. This is the time between (read_time - compare_duration)
+                /// and read_time. The state_change value is derived based on the presence of the asset at the two
+                /// points in time. Intermediate state changes between the two times don't affect the result. For
+                /// example, the results aren't affected if the asset is removed and re-created again. Possible
+                /// "state_change" values when compare_duration is specified: * "ADDED": indicates that the asset was
+                /// not present at the start of compare_duration, but present at read_time. * "REMOVED": indicates that
+                /// the asset was present at the start of compare_duration, but not present at read_time. * "ACTIVE":
+                /// indicates that the asset was present at both the start and the end of the time period defined by
+                /// compare_duration and read_time. If compare_duration is not specified, then the only possible
+                /// state_change is "UNUSED", which will be the state_change set for all assets present at
+                /// read_time.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("compareDuration", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object CompareDuration { get; set; }
+
+                /// <summary>A field mask to specify the ListAssetsResult fields to be listed in the response. An empty
+                /// field mask will list all fields.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object FieldMask { get; set; }
+
+                /// <summary>Expression that defines the filter to apply across assets. The expression is a list of zero
+                /// or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and
+                /// `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character
+                /// in front of them to indicate negation. The fields map to those defined in the Asset resource.
+                /// Examples include: * name * security_center_properties.resource_name * resource_properties.a_property
+                /// * security_marks.marks.marka The supported operators are: * `=` for all value types. * `>`, `<`,
+                /// `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value
+                /// types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true`
+                /// and `false` without quotes. The following are the allowed field and operator combinations: * name:
+                /// `=` * update_time: `=`, `>`, `<`, `>=`, `<=` Usage: This should be milliseconds since epoch or an
+                /// RFC3339 string. Examples: `update_time = "2019-06-10T16:07:18-07:00"` `update_time = 1560208038000`
+                /// * create_time: `=`, `>`, `<`, `>=`, `<=` Usage: This should be milliseconds since epoch or an
+                /// RFC3339 string. Examples: `create_time = "2019-06-10T16:07:18-07:00"` `create_time = 1560208038000`
+                /// * iam_policy.policy_blob: `=`, `:` * resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=` *
+                /// security_marks.marks: `=`, `:` * security_center_properties.resource_name: `=`, `:` *
+                /// security_center_properties.resource_display_name: `=`, `:` *
+                /// security_center_properties.resource_type: `=`, `:` * security_center_properties.resource_parent:
+                /// `=`, `:` * security_center_properties.resource_parent_display_name: `=`, `:` *
+                /// security_center_properties.resource_project: `=`, `:` *
+                /// security_center_properties.resource_project_display_name: `=`, `:` *
+                /// security_center_properties.resource_owners: `=`, `:` For example, `resource_properties.size = 100`
+                /// is a valid filter string. Use a partial match on the empty string to filter based on a property
+                /// existing: `resource_properties.my_property : ""` Use a negated partial match on the empty string to
+                /// filter based on a property not existing: `-resource_properties.my_property : ""`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>Expression that defines what fields and order to use for sorting. The string value should
+                /// follow SQL syntax: comma separated list of fields. For example:
+                /// "name,resource_properties.a_property". The default sorting order is ascending. To specify descending
+                /// order for a field, a suffix " desc" should be appended to the field name. For example: "name
+                /// desc,resource_properties.a_property". Redundant space characters in the syntax are insignificant.
+                /// "name desc,resource_properties.a_property" and " name desc , resource_properties.a_property " are
+                /// equivalent. The following fields are supported: name update_time resource_properties
+                /// security_marks.marks security_center_properties.resource_name
+                /// security_center_properties.resource_display_name security_center_properties.resource_parent
+                /// security_center_properties.resource_parent_display_name security_center_properties.resource_project
+                /// security_center_properties.resource_project_display_name
+                /// security_center_properties.resource_type</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>The maximum number of results to return in a single response. Default is 10, minimum is 1,
+                /// maximum is 1000.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The value returned by the last `ListAssetsResponse`; indicates that this is a continuation
+                /// of a prior `ListAssets` call, and that the system should return the next page of data.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Time used as a reference point when filtering assets. The filter is limited to assets
+                /// existing at the supplied time and their values are those at that specific time. Absence of this
+                /// field will default to the API's version of NOW.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object ReadTime { get; set; }
+
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/assets";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+$",
+                    });
+                    RequestParameters.Add("compareDuration", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "compareDuration",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("fieldMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fieldMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("readTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "readTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+
+            }
+
+            /// <summary>Updates security marks.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">The relative resource name of the SecurityMarks. See:
+            /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples:
+            /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
+            /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".</param>
+            public virtual UpdateSecurityMarksRequest UpdateSecurityMarks(Google.Apis.SecurityCommandCenter.v1.Data.SecurityMarks body, string name)
+            {
+                return new UpdateSecurityMarksRequest(service, body, name);
+            }
+
+            /// <summary>Updates security marks.</summary>
+            public class UpdateSecurityMarksRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.SecurityMarks>
+            {
+                /// <summary>Constructs a new UpdateSecurityMarks request.</summary>
+                public UpdateSecurityMarksRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.SecurityMarks body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The relative resource name of the SecurityMarks. See:
+                /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples:
+                /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
+                /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>The time at which the updated SecurityMarks take effect. If not set uses current server
+                /// time. Updates will be applied to the SecurityMarks that are active immediately preceding this
+                /// time.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object StartTime { get; set; }
+
+                /// <summary>The FieldMask to use when updating the security marks resource. The field mask must not
+                /// contain duplicate fields. If empty or set to "marks", all marks will be replaced. Individual marks
+                /// can be updated using "marks.".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecurityCommandCenter.v1.Data.SecurityMarks Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateSecurityMarks";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes UpdateSecurityMarks parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/assets/[^/]+/securityMarks$",
+                    });
+                    RequestParameters.Add("startTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "startTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+
+            }
+        }
+        /// <summary>Gets the Sources resource.</summary>
+        public virtual SourcesResource Sources { get; }
+
+        /// <summary>The "sources" collection of methods.</summary>
+        public class SourcesResource
+        {
+            private const string Resource = "sources";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SourcesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Findings = new FindingsResource(service);
+
+            }
+
+            /// <summary>Gets the Findings resource.</summary>
+            public virtual FindingsResource Findings { get; }
+
+            /// <summary>The "findings" collection of methods.</summary>
+            public class FindingsResource
+            {
+                private const string Resource = "findings";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public FindingsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Filters an organization or source's findings and groups them by their specified properties.
+                /// To group across all sources provide a `-` as the source id. Example:
+                /// /v1/organizations/{organization_id}/sources/-/findings, /v1/folders/{folder_id}/sources/-/findings,
+                /// /v1/projects/{project_id}/sources/-/findings</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Name of the source to groupBy. Its format is
+                /// "organizations/[organization_id]/sources/[source_id]", folders/[folder_id]/sources/[source_id], or
+                /// projects/[project_id]/sources/[source_id]. To groupBy across all sources provide a source_id of `-`. For example:
+                /// organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-, or
+                /// projects/{project_id}/sources/-</param>
+                public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupFindingsRequest body, string parent)
+                {
+                    return new GroupRequest(service, body, parent);
+                }
+
+                /// <summary>Filters an organization or source's findings and groups them by their specified properties.
+                /// To group across all sources provide a `-` as the source id. Example:
+                /// /v1/organizations/{organization_id}/sources/-/findings, /v1/folders/{folder_id}/sources/-/findings,
+                /// /v1/projects/{project_id}/sources/-/findings</summary>
+                public class GroupRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GroupFindingsResponse>
+                {
+                    /// <summary>Constructs a new Group request.</summary>
+                    public GroupRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GroupFindingsRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. Name of the source to groupBy. Its format is
+                    /// "organizations/[organization_id]/sources/[source_id]", folders/[folder_id]/sources/[source_id],
+                    /// or projects/[project_id]/sources/[source_id]. To groupBy across all sources provide a source_id
+                    /// of `-`. For example: organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-,
+                    /// or projects/{project_id}/sources/-</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecurityCommandCenter.v1.Data.GroupFindingsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "group";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/findings:group";
+
+                    /// <summary>Initializes Group parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/sources/[^/]+$",
+                        });
+                    }
+
+                }
+
+                /// <summary>Lists an organization or source's findings. To list across all sources provide a `-` as the
+                /// source id. Example: /v1/organizations/{organization_id}/sources/-/findings</summary>
+                /// <param name="parent">Required. Name of the source the findings belong to. Its format is
+                /// "organizations/[organization_id]/sources/[source_id], folders/[folder_id]/sources/[source_id], or
+                /// projects/[project_id]/sources/[source_id]". To list across all sources provide a source_id of `-`. For example:
+                /// organizations/{organization_id}/sources/-, folders/{folder_id}/sources/- or
+                /// projects/{projects_id}/sources/-</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists an organization or source's findings. To list across all sources provide a `-` as the
+                /// source id. Example: /v1/organizations/{organization_id}/sources/-/findings</summary>
+                public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListFindingsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. Name of the source the findings belong to. Its format is
+                    /// "organizations/[organization_id]/sources/[source_id], folders/[folder_id]/sources/[source_id],
+                    /// or projects/[project_id]/sources/[source_id]". To list across all sources provide a source_id of
+                    /// `-`. For example: organizations/{organization_id}/sources/-, folders/{folder_id}/sources/- or
+                    /// projects/{projects_id}/sources/-</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>When compare_duration is set, the ListFindingsResult's "state_change" attribute is
+                    /// updated to indicate whether the finding had its state changed, the finding's state remained
+                    /// unchanged, or if the finding was added in any state during the compare_duration period of time
+                    /// that precedes the read_time. This is the time between (read_time - compare_duration) and
+                    /// read_time. The state_change value is derived based on the presence and state of the finding at
+                    /// the two points in time. Intermediate state changes between the two times don't affect the
+                    /// result. For example, the results aren't affected if the finding is made inactive and then active
+                    /// again. Possible "state_change" values when compare_duration is specified: * "CHANGED": indicates
+                    /// that the finding was present and matched the given filter at the start of compare_duration, but
+                    /// changed its state at read_time. * "UNCHANGED": indicates that the finding was present and
+                    /// matched the given filter at the start of compare_duration and did not change state at read_time.
+                    /// * "ADDED": indicates that the finding did not match the given filter or was not present at the
+                    /// start of compare_duration, but was present at read_time. * "REMOVED": indicates that the finding
+                    /// was present and matched the filter at the start of compare_duration, but did not match the
+                    /// filter at read_time. If compare_duration is not specified, then the only possible state_change
+                    /// is "UNUSED", which will be the state_change set for all findings present at read_time.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("compareDuration", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object CompareDuration { get; set; }
+
+                    /// <summary>A field mask to specify the Finding fields to be listed in the response. An empty field
+                    /// mask will list all fields.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object FieldMask { get; set; }
+
+                    /// <summary>Expression that defines the filter to apply across findings. The expression is a list
+                    /// of one or more restrictions combined via logical operators `AND` and `OR`. Parentheses are
+                    /// supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may
+                    /// have a `-` character in front of them to indicate negation. Examples include: * name *
+                    /// source_properties.a_property * security_marks.marks.marka The supported operators are: * `=` for
+                    /// all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching,
+                    /// for strings. The supported value types are: * string literals in quotes. * integer literals
+                    /// without quotes. * boolean literals `true` and `false` without quotes. The following field and
+                    /// operator combinations are supported: name: `=` parent: `=`, `:` resource_name: `=`, `:` state:
+                    /// `=`, `:` category: `=`, `:` external_uri: `=`, `:` event_time: `=`, `>`, `<`, `>=`, `<=` Usage:
+                    /// This should be milliseconds since epoch or an RFC3339 string. Examples: `event_time =
+                    /// "2019-06-10T16:07:18-07:00"` `event_time = 1560208038000` security_marks.marks: `=`, `:`
+                    /// source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example, `source_properties.size = 100` is
+                    /// a valid filter string. Use a partial match on the empty string to filter based on a property
+                    /// existing: `source_properties.my_property : ""` Use a negated partial match on the empty string
+                    /// to filter based on a property not existing: `-source_properties.my_property : ""`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Expression that defines what fields and order to use for sorting. The string value
+                    /// should follow SQL syntax: comma separated list of fields. For example:
+                    /// "name,resource_properties.a_property". The default sorting order is ascending. To specify
+                    /// descending order for a field, a suffix " desc" should be appended to the field name. For
+                    /// example: "name desc,source_properties.a_property". Redundant space characters in the syntax are
+                    /// insignificant. "name desc,source_properties.a_property" and " name desc ,
+                    /// source_properties.a_property " are equivalent. The following fields are supported: name parent
+                    /// state category resource_name event_time source_properties security_marks.marks</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>The maximum number of results to return in a single response. Default is 10, minimum is
+                    /// 1, maximum is 1000.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The value returned by the last `ListFindingsResponse`; indicates that this is a
+                    /// continuation of a prior `ListFindings` call, and that the system should return the next page of
+                    /// data.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Time used as a reference point when filtering findings. The filter is limited to
+                    /// findings existing at the supplied time and their values are those at that specific time. Absence
+                    /// of this field will default to the API's version of NOW.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object ReadTime { get; set; }
+
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/findings";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/sources/[^/]+$",
+                        });
+                        RequestParameters.Add("compareDuration", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "compareDuration",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fieldMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fieldMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("readTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "readTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+
+                }
+
+                /// <summary>Creates or updates a finding. The corresponding source must exist for a finding creation to
+                /// succeed.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The relative resource name of this finding. See:
+                /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
+                /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"</param>
+                public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.Finding body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Creates or updates a finding. The corresponding source must exist for a finding creation to
+                /// succeed.</summary>
+                public class PatchRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Finding>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.Finding body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The relative resource name of this finding. See:
+                    /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
+                    /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The FieldMask to use when updating the finding resource. This field should not be
+                    /// specified when creating a finding. When updating a finding, an empty mask is treated as updating
+                    /// all mutable fields and replacing source_properties. Individual source_properties can be
+                    /// added/updated by using "source_properties." in the field mask.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecurityCommandCenter.v1.Data.Finding Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/sources/[^/]+/findings/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+
+                }
+
+                /// <summary>Updates the state of a finding.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The relative resource name of the finding. See:
+                /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
+                /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}".</param>
+                public virtual SetStateRequest SetState(Google.Apis.SecurityCommandCenter.v1.Data.SetFindingStateRequest body, string name)
+                {
+                    return new SetStateRequest(service, body, name);
+                }
+
+                /// <summary>Updates the state of a finding.</summary>
+                public class SetStateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Finding>
+                {
+                    /// <summary>Constructs a new SetState request.</summary>
+                    public SetStateRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.SetFindingStateRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The relative resource name of the finding. See:
+                    /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
+                    /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecurityCommandCenter.v1.Data.SetFindingStateRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setState";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:setState";
+
+                    /// <summary>Initializes SetState parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/sources/[^/]+/findings/[^/]+$",
+                        });
+                    }
+
+                }
+
+                /// <summary>Updates security marks.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The relative resource name of the SecurityMarks. See:
+                /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples:
+                /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
+                /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".</param>
+                public virtual UpdateSecurityMarksRequest UpdateSecurityMarks(Google.Apis.SecurityCommandCenter.v1.Data.SecurityMarks body, string name)
+                {
+                    return new UpdateSecurityMarksRequest(service, body, name);
+                }
+
+                /// <summary>Updates security marks.</summary>
+                public class UpdateSecurityMarksRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.SecurityMarks>
+                {
+                    /// <summary>Constructs a new UpdateSecurityMarks request.</summary>
+                    public UpdateSecurityMarksRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.SecurityMarks body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The relative resource name of the SecurityMarks. See:
+                    /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples:
+                    /// "organizations/{organization_id}/assets/{asset_id}/securityMarks" "organizations/{organization_i
+                    /// d}/sources/{source_id}/findings/{finding_id}/securityMarks".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The time at which the updated SecurityMarks take effect. If not set uses current server
+                    /// time. Updates will be applied to the SecurityMarks that are active immediately preceding this
+                    /// time.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object StartTime { get; set; }
+
+                    /// <summary>The FieldMask to use when updating the security marks resource. The field mask must not
+                    /// contain duplicate fields. If empty or set to "marks", all marks will be replaced. Individual
+                    /// marks can be updated using "marks.".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecurityCommandCenter.v1.Data.SecurityMarks Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateSecurityMarks";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes UpdateSecurityMarks parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/sources/[^/]+/findings/[^/]+/securityMarks$",
+                        });
+                        RequestParameters.Add("startTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "startTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+
+                }
+            }
+
+            /// <summary>Lists all sources belonging to an organization.</summary>
+            /// <param name="parent">Required. Resource name of the parent of sources to list. Its format should be
+            /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists all sources belonging to an organization.</summary>
+            public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListSourcesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Resource name of the parent of sources to list. Its format should be
+                /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>The maximum number of results to return in a single response. Default is 10, minimum is 1,
+                /// maximum is 1000.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The value returned by the last `ListSourcesResponse`; indicates that this is a continuation
+                /// of a prior `ListSources` call, and that the system should return the next page of data.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/sources";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+
+            }
+        }
+    }
+
     /// <summary>The "organizations" collection of methods.</summary>
     public class OrganizationsResource
     {
@@ -294,8 +1279,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
             /// <summary>Filters an organization's assets and groups them by their specified properties.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. Name of the organization to groupBy. Its format is
-            /// "organizations/[organization_id]".</param>
+            /// <param name="parent">Required. Name of the organization to groupBy. Its format is "organizations/[organization_id],
+            /// folders/[folder_id], or projects/[project_id]".</param>
             public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupAssetsRequest body, string parent)
             {
                 return new GroupRequest(service, body, parent);
@@ -314,7 +1299,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
 
                 /// <summary>Required. Name of the organization to groupBy. Its format is
-                /// "organizations/[organization_id]".</summary>
+                /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -353,7 +1338,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
             /// <summary>Lists an organization's assets.</summary>
             /// <param name="parent">Required. Name of the organization assets should belong to. Its format is
-            /// "organizations/[organization_id]".</param>
+            /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -371,7 +1356,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
 
                 /// <summary>Required. Name of the organization assets should belong to. Its format is
-                /// "organizations/[organization_id]".</summary>
+                /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1433,11 +2418,14 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>Filters an organization or source's findings and groups them by their specified properties.
                 /// To group across all sources provide a `-` as the source id. Example:
-                /// /v1/organizations/{organization_id}/sources/-/findings</summary>
+                /// /v1/organizations/{organization_id}/sources/-/findings, /v1/folders/{folder_id}/sources/-/findings,
+                /// /v1/projects/{project_id}/sources/-/findings</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. Name of the source to groupBy. Its format is
-                /// "organizations/[organization_id]/sources/[source_id]". To groupBy across all sources provide a source_id of `-`. For
-                /// example: organizations/{organization_id}/sources/-</param>
+                /// "organizations/[organization_id]/sources/[source_id]", folders/[folder_id]/sources/[source_id], or
+                /// projects/[project_id]/sources/[source_id]. To groupBy across all sources provide a source_id of `-`. For example:
+                /// organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-, or
+                /// projects/{project_id}/sources/-</param>
                 public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupFindingsRequest body, string parent)
                 {
                     return new GroupRequest(service, body, parent);
@@ -1445,7 +2433,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>Filters an organization or source's findings and groups them by their specified properties.
                 /// To group across all sources provide a `-` as the source id. Example:
-                /// /v1/organizations/{organization_id}/sources/-/findings</summary>
+                /// /v1/organizations/{organization_id}/sources/-/findings, /v1/folders/{folder_id}/sources/-/findings,
+                /// /v1/projects/{project_id}/sources/-/findings</summary>
                 public class GroupRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GroupFindingsResponse>
                 {
                     /// <summary>Constructs a new Group request.</summary>
@@ -1458,8 +2447,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
 
                     /// <summary>Required. Name of the source to groupBy. Its format is
-                    /// "organizations/[organization_id]/sources/[source_id]". To groupBy across all sources provide a
-                    /// source_id of `-`. For example: organizations/{organization_id}/sources/-</summary>
+                    /// "organizations/[organization_id]/sources/[source_id]", folders/[folder_id]/sources/[source_id],
+                    /// or projects/[project_id]/sources/[source_id]. To groupBy across all sources provide a source_id
+                    /// of `-`. For example: organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-,
+                    /// or projects/{project_id}/sources/-</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1499,8 +2490,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Lists an organization or source's findings. To list across all sources provide a `-` as the
                 /// source id. Example: /v1/organizations/{organization_id}/sources/-/findings</summary>
                 /// <param name="parent">Required. Name of the source the findings belong to. Its format is
-                /// "organizations/[organization_id]/sources/[source_id]". To list across all sources provide a source_id of `-`. For
-                /// example: organizations/{organization_id}/sources/-</param>
+                /// "organizations/[organization_id]/sources/[source_id], folders/[folder_id]/sources/[source_id], or
+                /// projects/[project_id]/sources/[source_id]". To list across all sources provide a source_id of `-`. For example:
+                /// organizations/{organization_id}/sources/-, folders/{folder_id}/sources/- or
+                /// projects/{projects_id}/sources/-</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -1519,8 +2512,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
 
                     /// <summary>Required. Name of the source the findings belong to. Its format is
-                    /// "organizations/[organization_id]/sources/[source_id]". To list across all sources provide a
-                    /// source_id of `-`. For example: organizations/{organization_id}/sources/-</summary>
+                    /// "organizations/[organization_id]/sources/[source_id], folders/[folder_id]/sources/[source_id],
+                    /// or projects/[project_id]/sources/[source_id]". To list across all sources provide a source_id of
+                    /// `-`. For example: organizations/{organization_id}/sources/-, folders/{folder_id}/sources/- or
+                    /// projects/{projects_id}/sources/-</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -2080,7 +3075,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
             /// <summary>Lists all sources belonging to an organization.</summary>
             /// <param name="parent">Required. Resource name of the parent of sources to list. Its format should be
-            /// "organizations/[organization_id]".</param>
+            /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -2098,7 +3093,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
 
                 /// <summary>Required. Resource name of the parent of sources to list. Its format should be
-                /// "organizations/[organization_id]".</summary>
+                /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -2473,6 +3468,983 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
         }
     }
+
+    /// <summary>The "projects" collection of methods.</summary>
+    public class ProjectsResource
+    {
+        private const string Resource = "projects";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProjectsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Assets = new AssetsResource(service);
+            Sources = new SourcesResource(service);
+
+        }
+
+        /// <summary>Gets the Assets resource.</summary>
+        public virtual AssetsResource Assets { get; }
+
+        /// <summary>The "assets" collection of methods.</summary>
+        public class AssetsResource
+        {
+            private const string Resource = "assets";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AssetsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Filters an organization's assets and groups them by their specified properties.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. Name of the organization to groupBy. Its format is "organizations/[organization_id],
+            /// folders/[folder_id], or projects/[project_id]".</param>
+            public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupAssetsRequest body, string parent)
+            {
+                return new GroupRequest(service, body, parent);
+            }
+
+            /// <summary>Filters an organization's assets and groups them by their specified properties.</summary>
+            public class GroupRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GroupAssetsResponse>
+            {
+                /// <summary>Constructs a new Group request.</summary>
+                public GroupRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GroupAssetsRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Name of the organization to groupBy. Its format is
+                /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecurityCommandCenter.v1.Data.GroupAssetsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "group";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/assets:group";
+
+                /// <summary>Initializes Group parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                }
+
+            }
+
+            /// <summary>Lists an organization's assets.</summary>
+            /// <param name="parent">Required. Name of the organization assets should belong to. Its format is
+            /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists an organization's assets.</summary>
+            public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListAssetsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Name of the organization assets should belong to. Its format is
+                /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>When compare_duration is set, the ListAssetsResult's "state_change" attribute is updated to
+                /// indicate whether the asset was added, removed, or remained present during the compare_duration
+                /// period of time that precedes the read_time. This is the time between (read_time - compare_duration)
+                /// and read_time. The state_change value is derived based on the presence of the asset at the two
+                /// points in time. Intermediate state changes between the two times don't affect the result. For
+                /// example, the results aren't affected if the asset is removed and re-created again. Possible
+                /// "state_change" values when compare_duration is specified: * "ADDED": indicates that the asset was
+                /// not present at the start of compare_duration, but present at read_time. * "REMOVED": indicates that
+                /// the asset was present at the start of compare_duration, but not present at read_time. * "ACTIVE":
+                /// indicates that the asset was present at both the start and the end of the time period defined by
+                /// compare_duration and read_time. If compare_duration is not specified, then the only possible
+                /// state_change is "UNUSED", which will be the state_change set for all assets present at
+                /// read_time.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("compareDuration", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object CompareDuration { get; set; }
+
+                /// <summary>A field mask to specify the ListAssetsResult fields to be listed in the response. An empty
+                /// field mask will list all fields.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object FieldMask { get; set; }
+
+                /// <summary>Expression that defines the filter to apply across assets. The expression is a list of zero
+                /// or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and
+                /// `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character
+                /// in front of them to indicate negation. The fields map to those defined in the Asset resource.
+                /// Examples include: * name * security_center_properties.resource_name * resource_properties.a_property
+                /// * security_marks.marks.marka The supported operators are: * `=` for all value types. * `>`, `<`,
+                /// `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value
+                /// types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true`
+                /// and `false` without quotes. The following are the allowed field and operator combinations: * name:
+                /// `=` * update_time: `=`, `>`, `<`, `>=`, `<=` Usage: This should be milliseconds since epoch or an
+                /// RFC3339 string. Examples: `update_time = "2019-06-10T16:07:18-07:00"` `update_time = 1560208038000`
+                /// * create_time: `=`, `>`, `<`, `>=`, `<=` Usage: This should be milliseconds since epoch or an
+                /// RFC3339 string. Examples: `create_time = "2019-06-10T16:07:18-07:00"` `create_time = 1560208038000`
+                /// * iam_policy.policy_blob: `=`, `:` * resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=` *
+                /// security_marks.marks: `=`, `:` * security_center_properties.resource_name: `=`, `:` *
+                /// security_center_properties.resource_display_name: `=`, `:` *
+                /// security_center_properties.resource_type: `=`, `:` * security_center_properties.resource_parent:
+                /// `=`, `:` * security_center_properties.resource_parent_display_name: `=`, `:` *
+                /// security_center_properties.resource_project: `=`, `:` *
+                /// security_center_properties.resource_project_display_name: `=`, `:` *
+                /// security_center_properties.resource_owners: `=`, `:` For example, `resource_properties.size = 100`
+                /// is a valid filter string. Use a partial match on the empty string to filter based on a property
+                /// existing: `resource_properties.my_property : ""` Use a negated partial match on the empty string to
+                /// filter based on a property not existing: `-resource_properties.my_property : ""`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>Expression that defines what fields and order to use for sorting. The string value should
+                /// follow SQL syntax: comma separated list of fields. For example:
+                /// "name,resource_properties.a_property". The default sorting order is ascending. To specify descending
+                /// order for a field, a suffix " desc" should be appended to the field name. For example: "name
+                /// desc,resource_properties.a_property". Redundant space characters in the syntax are insignificant.
+                /// "name desc,resource_properties.a_property" and " name desc , resource_properties.a_property " are
+                /// equivalent. The following fields are supported: name update_time resource_properties
+                /// security_marks.marks security_center_properties.resource_name
+                /// security_center_properties.resource_display_name security_center_properties.resource_parent
+                /// security_center_properties.resource_parent_display_name security_center_properties.resource_project
+                /// security_center_properties.resource_project_display_name
+                /// security_center_properties.resource_type</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>The maximum number of results to return in a single response. Default is 10, minimum is 1,
+                /// maximum is 1000.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The value returned by the last `ListAssetsResponse`; indicates that this is a continuation
+                /// of a prior `ListAssets` call, and that the system should return the next page of data.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Time used as a reference point when filtering assets. The filter is limited to assets
+                /// existing at the supplied time and their values are those at that specific time. Absence of this
+                /// field will default to the API's version of NOW.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object ReadTime { get; set; }
+
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/assets";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("compareDuration", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "compareDuration",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("fieldMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fieldMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("readTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "readTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+
+            }
+
+            /// <summary>Updates security marks.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">The relative resource name of the SecurityMarks. See:
+            /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples:
+            /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
+            /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".</param>
+            public virtual UpdateSecurityMarksRequest UpdateSecurityMarks(Google.Apis.SecurityCommandCenter.v1.Data.SecurityMarks body, string name)
+            {
+                return new UpdateSecurityMarksRequest(service, body, name);
+            }
+
+            /// <summary>Updates security marks.</summary>
+            public class UpdateSecurityMarksRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.SecurityMarks>
+            {
+                /// <summary>Constructs a new UpdateSecurityMarks request.</summary>
+                public UpdateSecurityMarksRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.SecurityMarks body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The relative resource name of the SecurityMarks. See:
+                /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples:
+                /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
+                /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>The time at which the updated SecurityMarks take effect. If not set uses current server
+                /// time. Updates will be applied to the SecurityMarks that are active immediately preceding this
+                /// time.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object StartTime { get; set; }
+
+                /// <summary>The FieldMask to use when updating the security marks resource. The field mask must not
+                /// contain duplicate fields. If empty or set to "marks", all marks will be replaced. Individual marks
+                /// can be updated using "marks.".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecurityCommandCenter.v1.Data.SecurityMarks Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateSecurityMarks";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes UpdateSecurityMarks parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/assets/[^/]+/securityMarks$",
+                    });
+                    RequestParameters.Add("startTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "startTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+
+            }
+        }
+        /// <summary>Gets the Sources resource.</summary>
+        public virtual SourcesResource Sources { get; }
+
+        /// <summary>The "sources" collection of methods.</summary>
+        public class SourcesResource
+        {
+            private const string Resource = "sources";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SourcesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Findings = new FindingsResource(service);
+
+            }
+
+            /// <summary>Gets the Findings resource.</summary>
+            public virtual FindingsResource Findings { get; }
+
+            /// <summary>The "findings" collection of methods.</summary>
+            public class FindingsResource
+            {
+                private const string Resource = "findings";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public FindingsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Filters an organization or source's findings and groups them by their specified properties.
+                /// To group across all sources provide a `-` as the source id. Example:
+                /// /v1/organizations/{organization_id}/sources/-/findings, /v1/folders/{folder_id}/sources/-/findings,
+                /// /v1/projects/{project_id}/sources/-/findings</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Name of the source to groupBy. Its format is
+                /// "organizations/[organization_id]/sources/[source_id]", folders/[folder_id]/sources/[source_id], or
+                /// projects/[project_id]/sources/[source_id]. To groupBy across all sources provide a source_id of `-`. For example:
+                /// organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-, or
+                /// projects/{project_id}/sources/-</param>
+                public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupFindingsRequest body, string parent)
+                {
+                    return new GroupRequest(service, body, parent);
+                }
+
+                /// <summary>Filters an organization or source's findings and groups them by their specified properties.
+                /// To group across all sources provide a `-` as the source id. Example:
+                /// /v1/organizations/{organization_id}/sources/-/findings, /v1/folders/{folder_id}/sources/-/findings,
+                /// /v1/projects/{project_id}/sources/-/findings</summary>
+                public class GroupRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GroupFindingsResponse>
+                {
+                    /// <summary>Constructs a new Group request.</summary>
+                    public GroupRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GroupFindingsRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. Name of the source to groupBy. Its format is
+                    /// "organizations/[organization_id]/sources/[source_id]", folders/[folder_id]/sources/[source_id],
+                    /// or projects/[project_id]/sources/[source_id]. To groupBy across all sources provide a source_id
+                    /// of `-`. For example: organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-,
+                    /// or projects/{project_id}/sources/-</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecurityCommandCenter.v1.Data.GroupFindingsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "group";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/findings:group";
+
+                    /// <summary>Initializes Group parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/sources/[^/]+$",
+                        });
+                    }
+
+                }
+
+                /// <summary>Lists an organization or source's findings. To list across all sources provide a `-` as the
+                /// source id. Example: /v1/organizations/{organization_id}/sources/-/findings</summary>
+                /// <param name="parent">Required. Name of the source the findings belong to. Its format is
+                /// "organizations/[organization_id]/sources/[source_id], folders/[folder_id]/sources/[source_id], or
+                /// projects/[project_id]/sources/[source_id]". To list across all sources provide a source_id of `-`. For example:
+                /// organizations/{organization_id}/sources/-, folders/{folder_id}/sources/- or
+                /// projects/{projects_id}/sources/-</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists an organization or source's findings. To list across all sources provide a `-` as the
+                /// source id. Example: /v1/organizations/{organization_id}/sources/-/findings</summary>
+                public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListFindingsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. Name of the source the findings belong to. Its format is
+                    /// "organizations/[organization_id]/sources/[source_id], folders/[folder_id]/sources/[source_id],
+                    /// or projects/[project_id]/sources/[source_id]". To list across all sources provide a source_id of
+                    /// `-`. For example: organizations/{organization_id}/sources/-, folders/{folder_id}/sources/- or
+                    /// projects/{projects_id}/sources/-</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>When compare_duration is set, the ListFindingsResult's "state_change" attribute is
+                    /// updated to indicate whether the finding had its state changed, the finding's state remained
+                    /// unchanged, or if the finding was added in any state during the compare_duration period of time
+                    /// that precedes the read_time. This is the time between (read_time - compare_duration) and
+                    /// read_time. The state_change value is derived based on the presence and state of the finding at
+                    /// the two points in time. Intermediate state changes between the two times don't affect the
+                    /// result. For example, the results aren't affected if the finding is made inactive and then active
+                    /// again. Possible "state_change" values when compare_duration is specified: * "CHANGED": indicates
+                    /// that the finding was present and matched the given filter at the start of compare_duration, but
+                    /// changed its state at read_time. * "UNCHANGED": indicates that the finding was present and
+                    /// matched the given filter at the start of compare_duration and did not change state at read_time.
+                    /// * "ADDED": indicates that the finding did not match the given filter or was not present at the
+                    /// start of compare_duration, but was present at read_time. * "REMOVED": indicates that the finding
+                    /// was present and matched the filter at the start of compare_duration, but did not match the
+                    /// filter at read_time. If compare_duration is not specified, then the only possible state_change
+                    /// is "UNUSED", which will be the state_change set for all findings present at read_time.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("compareDuration", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object CompareDuration { get; set; }
+
+                    /// <summary>A field mask to specify the Finding fields to be listed in the response. An empty field
+                    /// mask will list all fields.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object FieldMask { get; set; }
+
+                    /// <summary>Expression that defines the filter to apply across findings. The expression is a list
+                    /// of one or more restrictions combined via logical operators `AND` and `OR`. Parentheses are
+                    /// supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may
+                    /// have a `-` character in front of them to indicate negation. Examples include: * name *
+                    /// source_properties.a_property * security_marks.marks.marka The supported operators are: * `=` for
+                    /// all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching,
+                    /// for strings. The supported value types are: * string literals in quotes. * integer literals
+                    /// without quotes. * boolean literals `true` and `false` without quotes. The following field and
+                    /// operator combinations are supported: name: `=` parent: `=`, `:` resource_name: `=`, `:` state:
+                    /// `=`, `:` category: `=`, `:` external_uri: `=`, `:` event_time: `=`, `>`, `<`, `>=`, `<=` Usage:
+                    /// This should be milliseconds since epoch or an RFC3339 string. Examples: `event_time =
+                    /// "2019-06-10T16:07:18-07:00"` `event_time = 1560208038000` security_marks.marks: `=`, `:`
+                    /// source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example, `source_properties.size = 100` is
+                    /// a valid filter string. Use a partial match on the empty string to filter based on a property
+                    /// existing: `source_properties.my_property : ""` Use a negated partial match on the empty string
+                    /// to filter based on a property not existing: `-source_properties.my_property : ""`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Expression that defines what fields and order to use for sorting. The string value
+                    /// should follow SQL syntax: comma separated list of fields. For example:
+                    /// "name,resource_properties.a_property". The default sorting order is ascending. To specify
+                    /// descending order for a field, a suffix " desc" should be appended to the field name. For
+                    /// example: "name desc,source_properties.a_property". Redundant space characters in the syntax are
+                    /// insignificant. "name desc,source_properties.a_property" and " name desc ,
+                    /// source_properties.a_property " are equivalent. The following fields are supported: name parent
+                    /// state category resource_name event_time source_properties security_marks.marks</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>The maximum number of results to return in a single response. Default is 10, minimum is
+                    /// 1, maximum is 1000.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The value returned by the last `ListFindingsResponse`; indicates that this is a
+                    /// continuation of a prior `ListFindings` call, and that the system should return the next page of
+                    /// data.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Time used as a reference point when filtering findings. The filter is limited to
+                    /// findings existing at the supplied time and their values are those at that specific time. Absence
+                    /// of this field will default to the API's version of NOW.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object ReadTime { get; set; }
+
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/findings";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/sources/[^/]+$",
+                        });
+                        RequestParameters.Add("compareDuration", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "compareDuration",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("fieldMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fieldMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("readTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "readTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+
+                }
+
+                /// <summary>Creates or updates a finding. The corresponding source must exist for a finding creation to
+                /// succeed.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The relative resource name of this finding. See:
+                /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
+                /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"</param>
+                public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.Finding body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Creates or updates a finding. The corresponding source must exist for a finding creation to
+                /// succeed.</summary>
+                public class PatchRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Finding>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.Finding body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The relative resource name of this finding. See:
+                    /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
+                    /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The FieldMask to use when updating the finding resource. This field should not be
+                    /// specified when creating a finding. When updating a finding, an empty mask is treated as updating
+                    /// all mutable fields and replacing source_properties. Individual source_properties can be
+                    /// added/updated by using "source_properties." in the field mask.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecurityCommandCenter.v1.Data.Finding Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/sources/[^/]+/findings/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+
+                }
+
+                /// <summary>Updates the state of a finding.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The relative resource name of the finding. See:
+                /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
+                /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}".</param>
+                public virtual SetStateRequest SetState(Google.Apis.SecurityCommandCenter.v1.Data.SetFindingStateRequest body, string name)
+                {
+                    return new SetStateRequest(service, body, name);
+                }
+
+                /// <summary>Updates the state of a finding.</summary>
+                public class SetStateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Finding>
+                {
+                    /// <summary>Constructs a new SetState request.</summary>
+                    public SetStateRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.SetFindingStateRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The relative resource name of the finding. See:
+                    /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
+                    /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecurityCommandCenter.v1.Data.SetFindingStateRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setState";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:setState";
+
+                    /// <summary>Initializes SetState parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/sources/[^/]+/findings/[^/]+$",
+                        });
+                    }
+
+                }
+
+                /// <summary>Updates security marks.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The relative resource name of the SecurityMarks. See:
+                /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples:
+                /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
+                /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".</param>
+                public virtual UpdateSecurityMarksRequest UpdateSecurityMarks(Google.Apis.SecurityCommandCenter.v1.Data.SecurityMarks body, string name)
+                {
+                    return new UpdateSecurityMarksRequest(service, body, name);
+                }
+
+                /// <summary>Updates security marks.</summary>
+                public class UpdateSecurityMarksRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.SecurityMarks>
+                {
+                    /// <summary>Constructs a new UpdateSecurityMarks request.</summary>
+                    public UpdateSecurityMarksRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.SecurityMarks body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The relative resource name of the SecurityMarks. See:
+                    /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples:
+                    /// "organizations/{organization_id}/assets/{asset_id}/securityMarks" "organizations/{organization_i
+                    /// d}/sources/{source_id}/findings/{finding_id}/securityMarks".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The time at which the updated SecurityMarks take effect. If not set uses current server
+                    /// time. Updates will be applied to the SecurityMarks that are active immediately preceding this
+                    /// time.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object StartTime { get; set; }
+
+                    /// <summary>The FieldMask to use when updating the security marks resource. The field mask must not
+                    /// contain duplicate fields. If empty or set to "marks", all marks will be replaced. Individual
+                    /// marks can be updated using "marks.".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecurityCommandCenter.v1.Data.SecurityMarks Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateSecurityMarks";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes UpdateSecurityMarks parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/sources/[^/]+/findings/[^/]+/securityMarks$",
+                        });
+                        RequestParameters.Add("startTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "startTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+
+                }
+            }
+
+            /// <summary>Lists all sources belonging to an organization.</summary>
+            /// <param name="parent">Required. Resource name of the parent of sources to list. Its format should be
+            /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists all sources belonging to an organization.</summary>
+            public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListSourcesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Resource name of the parent of sources to list. Its format should be
+                /// "organizations/[organization_id], folders/[folder_id], or projects/[project_id]".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>The maximum number of results to return in a single response. Default is 10, minimum is 1,
+                /// maximum is 1000.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The value returned by the last `ListSourcesResponse`; indicates that this is a continuation
+                /// of a prior `ListSources` call, and that the system should return the next page of data.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/sources";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+
+            }
+        }
+    }
 }
 
 namespace Google.Apis.SecurityCommandCenter.v1.Data
@@ -2527,6 +4499,11 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     /// <summary>The configuration used for Asset Discovery runs.</summary>
     public class AssetDiscoveryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The folder ids to use for filtering asset discovery. It consists of only digits, e.g.,
+        /// 756619654966.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folderIds")]
+        public virtual System.Collections.Generic.IList<string> FolderIds { get; set; }
+
         /// <summary>The mode to use for filtering asset discovery.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inclusionMode")]
         public virtual string InclusionMode { get; set; }
@@ -2738,6 +4715,22 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Message that contains the resource name and display name of a folder resource.</summary>
+    public class Folder : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Full resource name of this folder. See:
+        /// https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceFolder")]
+        public virtual string ResourceFolder { get; set; }
+
+        /// <summary>The user defined display name for this folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceFolderDisplayName")]
+        public virtual string ResourceFolderDisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request message for `GetIamPolicy` method.</summary>
     public class GetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2786,6 +4779,11 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     /// <summary>Information related to the Google Cloud resource.</summary>
     public class GoogleCloudSecuritycenterV1Resource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Contains a Folder message for each folder in the assets ancestry. The first folder is
+        /// the deepest nested folder, and the last folder is the folder directly under the Organization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folders")]
+        public virtual System.Collections.Generic.IList<Folder> Folders { get; set; }
+
         /// <summary>The full resource name of the resource. See:
         /// https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -2910,6 +4908,22 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Message that contains the resource name and display name of a folder resource.</summary>
+    public class GoogleCloudSecuritycenterV1p1beta1Folder : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Full resource name of this folder. See:
+        /// https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceFolder")]
+        public virtual string ResourceFolder { get; set; }
+
+        /// <summary>The user defined display name for this folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceFolderDisplayName")]
+        public virtual string ResourceFolderDisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Security Command Center's Notification</summary>
     public class GoogleCloudSecuritycenterV1p1beta1NotificationMessage : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2932,6 +4946,11 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     /// <summary>Information related to the Google Cloud resource.</summary>
     public class GoogleCloudSecuritycenterV1p1beta1Resource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Contains a Folder message for each folder in the assets ancestry. The first folder is
+        /// the deepest nested folder, and the last folder is the folder directly under the Organization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folders")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV1p1beta1Folder> Folders { get; set; }
+
         /// <summary>The full resource name of the resource. See:
         /// https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -3493,6 +5512,11 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     /// LINT.IfChange</summary>
     public class Resource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Contains a Folder message for each folder in the assets ancestry. The first folder is the deepest
+        /// nested folder, and the last folder is the folder directly under the Organization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folders")]
+        public virtual System.Collections.Generic.IList<Folder> Folders { get; set; }
+
         /// <summary>The full resource name of the resource. See:
         /// https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -3529,6 +5553,11 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     /// cannot be modified by the user.</summary>
     public class SecurityCenterProperties : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Contains a Folder message for each folder in the assets ancestry. The first folder is the deepest
+        /// nested folder, and the last folder is the folder directly under the Organization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folders")]
+        public virtual System.Collections.Generic.IList<Folder> Folders { get; set; }
+
         /// <summary>The user defined display name for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceDisplayName")]
         public virtual string ResourceDisplayName { get; set; }

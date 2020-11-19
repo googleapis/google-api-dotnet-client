@@ -3284,6 +3284,22 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Message that contains the resource name and display name of a folder resource.</summary>
+    public class Folder : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Full resource name of this folder. See:
+        /// https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceFolder")]
+        public virtual string ResourceFolder { get; set; }
+
+        /// <summary>The user defined display name for this folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceFolderDisplayName")]
+        public virtual string ResourceFolderDisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Cloud SCC's Notification</summary>
     public class GoogleCloudSecuritycenterV1NotificationMessage : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3306,6 +3322,11 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     /// <summary>Information related to the Google Cloud resource.</summary>
     public class GoogleCloudSecuritycenterV1Resource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Contains a Folder message for each folder in the assets ancestry. The first folder is
+        /// the deepest nested folder, and the last folder is the folder directly under the Organization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folders")]
+        public virtual System.Collections.Generic.IList<Folder> Folders { get; set; }
+
         /// <summary>The full resource name of the resource. See:
         /// https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -3430,6 +3451,22 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Message that contains the resource name and display name of a folder resource.</summary>
+    public class GoogleCloudSecuritycenterV1p1beta1Folder : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Full resource name of this folder. See:
+        /// https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceFolder")]
+        public virtual string ResourceFolder { get; set; }
+
+        /// <summary>The user defined display name for this folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceFolderDisplayName")]
+        public virtual string ResourceFolderDisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Security Command Center's Notification</summary>
     public class GoogleCloudSecuritycenterV1p1beta1NotificationMessage : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3452,6 +3489,11 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     /// <summary>Information related to the Google Cloud resource.</summary>
     public class GoogleCloudSecuritycenterV1p1beta1Resource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Contains a Folder message for each folder in the assets ancestry. The first folder is
+        /// the deepest nested folder, and the last folder is the folder directly under the Organization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folders")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV1p1beta1Folder> Folders { get; set; }
+
         /// <summary>The full resource name of the resource. See:
         /// https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

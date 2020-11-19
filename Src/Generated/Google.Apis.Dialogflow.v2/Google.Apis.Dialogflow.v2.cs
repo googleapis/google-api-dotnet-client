@@ -7171,6 +7171,15 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
 
+        /// <summary>This field can be used to pass HTTP headers for a webhook call. These headers will be sent to
+        /// webhook along with the headers that have been configured through Dialogflow web console. The headers defined
+        /// within this field will overwrite the headers configured through Dialogflow console if there is a conflict.
+        /// Header names are case-insensitive. Google's specified headers are not allowed. Including: "Host", "Content-
+        /// Length", "Connection", "From", "User-Agent", "Accept-Encoding", "If-Modified-Since", "If-None-Match", "X
+        /// -Forwarded-For", etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookHeaders")]
+        public virtual System.Collections.Generic.IDictionary<string, string> WebhookHeaders { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

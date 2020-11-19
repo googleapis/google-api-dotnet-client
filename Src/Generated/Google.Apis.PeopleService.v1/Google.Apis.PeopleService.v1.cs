@@ -3001,13 +3001,15 @@ namespace Google.Apis.PeopleService.v1.Data
     /// they can only be added to a user group or "myContacts" or "starred" system groups.</summary>
     public class ModifyContactGroupMembersRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The resource names of the contact people to add in the form of
-        /// `people/{person_id}`.</summary>
+        /// <summary>Optional. The resource names of the contact people to add in the form of `people/{person_id}`. The
+        /// total number of resource names in `resource_names_to_add` and `resource_names_to_remove` must be less than
+        /// or equal to 1000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceNamesToAdd")]
         public virtual System.Collections.Generic.IList<string> ResourceNamesToAdd { get; set; }
 
-        /// <summary>Optional. The resource names of the contact people to remove in the form of
-        /// `people/{person_id}`.</summary>
+        /// <summary>Optional. The resource names of the contact people to remove in the form of `people/{person_id}`.
+        /// The total number of resource names in `resource_names_to_add` and `resource_names_to_remove` must be less
+        /// than or equal to 1000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceNamesToRemove")]
         public virtual System.Collections.Generic.IList<string> ResourceNamesToRemove { get; set; }
 

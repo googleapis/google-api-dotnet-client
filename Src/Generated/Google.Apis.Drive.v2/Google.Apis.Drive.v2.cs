@@ -1260,9 +1260,8 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("childId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ChildId { get; private set; }
 
-            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
-            /// parameter only takes effect if the item is not in a shared drive. If the item's last parent is removed,
-            /// the item is placed under its owner's root.</summary>
+            /// <summary>Deprecated. If an item is not in a shared drive and its last parent is deleted but the item
+            /// itself is not, the item will be placed under its owner's root.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
@@ -1396,11 +1395,8 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("folderId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FolderId { get; private set; }
 
-            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
-            /// parameter only takes effect if the item is not in a shared drive. If the child's owner makes the
-            /// request, the child is removed from all current folders and placed in the requested folder. Any other
-            /// requests that increase the number of the child's parents fail, except when the canAddMyDriveParent file
-            /// capability is true and a single parent is being added.</summary>
+            /// <summary>Deprecated. Adding files to multiple folders is no longer supported. Use shortcuts
+            /// instead.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
@@ -2516,9 +2512,8 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("convert", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Convert { get; set; }
 
-            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
-            /// parameter only takes effect if the item is not in a shared drive. Requests that specify more than one
-            /// parent fail.</summary>
+            /// <summary>Deprecated. Copying files into multiple folders is no longer supported. Use shortcuts
+            /// instead.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
@@ -2719,9 +2714,8 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
-            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
-            /// parameter will only take effect if the item is not in a shared drive. If an item's last parent is
-            /// deleted but the item itself is not, the item will be placed under its owner's root.</summary>
+            /// <summary>Deprecated. If an item is not in a shared drive and its last parent is deleted but the item
+            /// itself is not, the item will be placed under its owner's root.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
@@ -2800,9 +2794,8 @@ namespace Google.Apis.Drive.v2
             }
 
 
-            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
-            /// parameter will only take effect if the item is not in a shared drive. If an item's last parent is
-            /// deleted but the item itself is not, the item will be placed under its owner's root.</summary>
+            /// <summary>Deprecated. If an item is not in a shared drive and its last parent is deleted but the item
+            /// itself is not, the item will be placed under its owner's root.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
@@ -3235,9 +3228,7 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("convert", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Convert { get; set; }
 
-            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
-            /// parameter only takes effect if the item is not in a shared drive. Requests that specify more than one
-            /// parent fail.</summary>
+            /// <summary>Deprecated. Creating files in multiple folders is no longer supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
@@ -3489,9 +3480,7 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("convert", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Convert { get; set; }
 
-            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
-            /// parameter only takes effect if the item is not in a shared drive. Requests that specify more than one
-            /// parent fail.</summary>
+            /// <summary>Deprecated. Creating files in multiple folders is no longer supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
@@ -3857,11 +3846,8 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("convert", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Convert { get; set; }
 
-            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
-            /// parameter only takes effect if the item is not in a shared drive. If the item's owner makes a request to
-            /// add a single parent, the item is removed from all current folders and placed in the requested folder.
-            /// Other requests that increase the number of parents fail, except when the canAddMyDriveParent file
-            /// capability is true and a single parent is being added.</summary>
+            /// <summary>Deprecated. Adding files to multiple folders is no longer supported. Use shortcuts
+            /// instead.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
@@ -4428,11 +4414,8 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("convert", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Convert { get; set; }
 
-            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
-            /// parameter only takes effect if the item is not in a shared drive. If the item's owner makes a request to
-            /// add a single parent, the item is removed from all current folders and placed in the requested folder.
-            /// Other requests that increase the number of parents fail, except when the canAddMyDriveParent file
-            /// capability is true and a single parent is being added.</summary>
+            /// <summary>Deprecated. Adding files to multiple folders is no longer supported. Use shortcuts
+            /// instead.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
@@ -4781,11 +4764,8 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("convert", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Convert { get; set; }
 
-            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
-            /// parameter only takes effect if the item is not in a shared drive. If the item's owner makes a request to
-            /// add a single parent, the item is removed from all current folders and placed in the requested folder.
-            /// Other requests that increase the number of parents fail, except when the canAddMyDriveParent file
-            /// capability is true and a single parent is being added.</summary>
+            /// <summary>Deprecated. Adding files to multiple folders is no longer supported. Use shortcuts
+            /// instead.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
@@ -5163,9 +5143,8 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("parentId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ParentId { get; private set; }
 
-            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
-            /// parameter only takes effect if the item is not in a shared drive. If the item's last parent is removed,
-            /// the item is placed under its owner's root.</summary>
+            /// <summary>Deprecated. If an item is not in a shared drive and its last parent is deleted but the item
+            /// itself is not, the item will be placed under its owner's root.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
@@ -5299,11 +5278,8 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
-            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
-            /// parameter only takes effect if the item is not in a shared drive. If the child's owner makes the
-            /// request, the child is removed from all current folders and placed in the requested folder. Any other
-            /// requests that increase the number of the child's parents fail, except when the canAddMyDriveParent file
-            /// capability is true and a single parent is being added.</summary>
+            /// <summary>Deprecated. Adding files to multiple folders is no longer supported. Use shortcuts
+            /// instead.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
@@ -5719,18 +5695,14 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("emailMessage", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string EmailMessage { get; set; }
 
-            /// <summary>Set to true to opt in to API behavior that aims for all items to have exactly one parent. This
-            /// parameter only takes effect if the item is not in a shared drive. See moveToNewOwnersRoot for
-            /// details.</summary>
+            /// <summary>Deprecated. See moveToNewOwnersRoot for details.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enforceSingleParent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnforceSingleParent { get; set; }
 
-            /// <summary>This parameter only takes effect if the item is not in a shared drive and the request is
-            /// attempting to transfer the ownership of the item. When set to true, the item will be moved to the new
-            /// owner's My Drive root folder and all prior parents removed. If set to false, when
-            /// enforceSingleParent=true, parents are not changed. If set to false, when enforceSingleParent=false,
-            /// existing parents are not changed; however, the file will be added to the new owner's My Drive root
-            /// folder, unless it is already in the new owner's My Drive.</summary>
+            /// <summary>This parameter will only take effect if the item is not in a shared drive and the request is
+            /// attempting to transfer the ownership of the item. If set to true, the item will be moved to the new
+            /// owner's My Drive root folder and all prior parents removed. If set to false, parents are not
+            /// changed.</summary>
             [Google.Apis.Util.RequestParameterAttribute("moveToNewOwnersRoot", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> MoveToNewOwnersRoot { get; set; }
 

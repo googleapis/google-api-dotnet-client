@@ -2518,10 +2518,9 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("producerNetwork")]
         public virtual string ProducerNetwork { get; set; }
 
-        /// <summary>Output only. The name of the allocated IP address ranges for this private service access
-        /// connection.</summary>
+        /// <summary>Output only. The reserved ranges associated with this private service access connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservedRanges")]
-        public virtual System.Collections.Generic.IList<string> ReservedRanges { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudServicenetworkingV1ConsumerConfigReservedRange> ReservedRanges { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2946,6 +2945,26 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         /// `"type.googleapis.com/google.protobuf.Timestamp"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("typeUrl")]
         public virtual string TypeUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Allocated IP address ranges for this private service access connection.</summary>
+    public class GoogleCloudServicenetworkingV1ConsumerConfigReservedRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The starting address of the reserved range. The address must be a valid IPv4 address in the x.x.x.x
+        /// format. This value combined with the IP prefix length is the CIDR range for the reserved range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("address")]
+        public virtual string Address { get; set; }
+
+        /// <summary>The prefix length of the reserved range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipPrefixLength")]
+        public virtual System.Nullable<int> IpPrefixLength { get; set; }
+
+        /// <summary>The name of the reserved range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

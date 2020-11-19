@@ -8110,6 +8110,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mediaKitUrl")]
         public virtual string MediaKitUrl { get; set; }
 
+        /// <summary>The list of apps represented in this publisher profile. Empty if this is a parent
+        /// profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mobileApps")]
+        public virtual System.Collections.Generic.IList<PublisherProfileMobileApplication> MobileApps { get; set; }
+
         /// <summary>Overview of the publisher.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overview")]
         public virtual string Overview { get; set; }
@@ -8139,6 +8144,25 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// 20 Straight Months".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topHeadlines")]
         public virtual System.Collections.Generic.IList<string> TopHeadlines { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A mobile application that contains a external app ID, name, and app store.</summary>
+    public class PublisherProfileMobileApplication : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The app store the app belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appStore")]
+        public virtual string AppStore { get; set; }
+
+        /// <summary>The external ID for the app from its app store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalAppId")]
+        public virtual string ExternalAppId { get; set; }
+
+        /// <summary>The name of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

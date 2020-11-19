@@ -1827,7 +1827,7 @@
    }
   }
  }, 
- "revision": "20201112", 
+ "revision": "20201118", 
  "rootUrl": "https://analyticsadmin.googleapis.com/", 
  "schemas": {
   "GoogleAnalyticsAdminV1alphaAccount": {

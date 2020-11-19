@@ -891,6 +891,10 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apiName")]
         public virtual string ApiName { get; set; }
 
+        /// <summary>True if the dimension is a custom dimension for this property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customDefinition")]
+        public virtual System.Nullable<bool> CustomDefinition { get; set; }
+
         /// <summary>Still usable but deprecated names for this dimension. If populated, this dimension is available by
         /// either `apiName` or one of `deprecatedApiNames` for a period of time. After the deprecation period, the
         /// dimension will be available only by `apiName`.</summary>
@@ -1101,6 +1105,10 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         /// <summary>A metric name. Useable in [Metric](#Metric)'s `name`. For example, `eventCount`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiName")]
         public virtual string ApiName { get; set; }
+
+        /// <summary>True if the metric is a custom metric for this property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customDefinition")]
+        public virtual System.Nullable<bool> CustomDefinition { get; set; }
 
         /// <summary>Still usable but deprecated names for this metric. If populated, this metric is available by either
         /// `apiName` or one of `deprecatedApiNames` for a period of time. After the deprecation period, the metric will
@@ -1618,7 +1626,8 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         public virtual System.Nullable<bool> KeepEmptyRows { get; set; }
 
         /// <summary>The number of rows to return. If unspecified, 10 rows are returned. If -1, all rows are returned.
-        /// To learn more about this pagination parameter, see [Pagination](basics#pagination).</summary>
+        /// To learn more about this pagination parameter, see [Pagination](https://developers.google.com/analytics/devg
+        /// uides/reporting/data/v1/basics#pagination).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual System.Nullable<long> Limit { get; set; }
 
@@ -1637,7 +1646,8 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; }
 
         /// <summary>The row count of the start row. The first row is counted as row 0. To learn more about this
-        /// pagination parameter, see [Pagination](basics#pagination).</summary>
+        /// pagination parameter, see [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/b
+        /// asics#pagination).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offset")]
         public virtual System.Nullable<long> Offset { get; set; }
 
@@ -1685,8 +1695,8 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
 
         /// <summary>The total number of rows in the query result, regardless of the number of rows returned in the
         /// response. For example if a query returns 175 rows and includes limit = 50 in the API request, the response
-        /// will contain row_count = 175 but only 50 rows. To learn more about this pagination parameter, see
-        /// [Pagination](basics#pagination).</summary>
+        /// will contain row_count = 175 but only 50 rows. To learn more about this pagination parameter, see [Paginatio
+        /// n](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
         public virtual System.Nullable<int> RowCount { get; set; }
 

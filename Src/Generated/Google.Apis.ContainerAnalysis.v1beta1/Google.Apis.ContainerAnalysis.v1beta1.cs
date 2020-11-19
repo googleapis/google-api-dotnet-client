@@ -2040,7 +2040,8 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
     /// <summary>Request to create notes in batch.</summary>
     public class BatchCreateNotesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The notes to create. Max allowed length is 1000.</summary>
+        /// <summary>Required. The notes to create, the key is expected to be the note ID. Max allowed length is
+        /// 1000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual System.Collections.Generic.IDictionary<string, Note> Notes { get; set; }
 
@@ -2084,9 +2085,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; }
-
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
         /// apply to the current request. However, a different role binding might grant the same role to one or more of

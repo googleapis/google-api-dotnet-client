@@ -330,101 +330,6 @@ namespace Google.Apis.CertificateAuthorityService.v1beta1
                     }
 
 
-                    /// <summary>Create a new CertificateRevocationList in a given Project, Location for a particular
-                    /// CertificateAuthority.</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">Required. The resource name of the location and CertificateAuthority associated with the
-                    /// CertificateRevocationList, in the format `projects/locations/certificateAuthorities`.</param>
-                    public virtual CreateRequest Create(Google.Apis.CertificateAuthorityService.v1beta1.Data.CertificateRevocationList body, string parent)
-                    {
-                        return new CreateRequest(service, body, parent);
-                    }
-
-                    /// <summary>Create a new CertificateRevocationList in a given Project, Location for a particular
-                    /// CertificateAuthority.</summary>
-                    public class CreateRequest : CertificateAuthorityServiceBaseServiceRequest<Google.Apis.CertificateAuthorityService.v1beta1.Data.Operation>
-                    {
-                        /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CertificateAuthorityService.v1beta1.Data.CertificateRevocationList body, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            Body = body;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>Required. The resource name of the location and CertificateAuthority associated
-                        /// with the CertificateRevocationList, in the format
-                        /// `projects/locations/certificateAuthorities`.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>Required. It must be unique within a location and match the regular expression
-                        /// `[a-zA-Z0-9_-]{1,63}`</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("certificateRevocationListId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string CertificateRevocationListId { get; set; }
-
-                        /// <summary>Optional. An ID to identify requests. Specify a unique request ID so that if you
-                        /// must retry your request, the server will know to ignore the request if it has already been
-                        /// completed. The server will guarantee that for at least 60 minutes since the first request.
-                        /// For example, consider a situation where you make an initial request and t he request times
-                        /// out. If you make the request again with the same request ID, the server can check if
-                        /// original operation with the same request ID was received, and if so, will ignore the second
-                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
-                        /// ID must be a valid UUID with the exception that zero UUID is not supported
-                        /// (00000000-0000-0000-0000-000000000000).</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string RequestId { get; set; }
-
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.CertificateAuthorityService.v1beta1.Data.CertificateRevocationList Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "create";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta1/{+parent}/certificateRevocationLists";
-
-                        /// <summary>Initializes Create parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/certificateAuthorities/[^/]+$",
-                            });
-                            RequestParameters.Add("certificateRevocationListId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "certificateRevocationListId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "requestId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-
-                    }
-
                     /// <summary>Returns a CertificateRevocationList.</summary>
                     /// <param name="name">Required. The name of the CertificateRevocationList to get.</param>
                     public virtual GetRequest Get(string name)
@@ -3118,9 +3023,6 @@ namespace Google.Apis.CertificateAuthorityService.v1beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; }
-
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
         /// apply to the current request. However, a different role binding might grant the same role to one or more of
