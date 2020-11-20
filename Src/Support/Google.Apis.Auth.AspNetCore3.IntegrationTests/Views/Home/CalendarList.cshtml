@@ -1,0 +1,35 @@
+﻿@using System.Security.Claims;
+
+@model IReadOnlyList<string>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Google.Apis.Auth.AspNetCore3 sample - Calendar list</title>
+</head>
+<body>
+    <h2>Google.Apis.Auth.AspNetCore3 sample - Calendar list</h2>
+    <p>You are logged in as @User.FindFirst(ClaimTypes.GivenName)?.Value.</p>
+    @if (@Model.Count > 0)
+    {
+        <p>These are the IDs of some of your Calendars.</p>
+        <ul>
+            @foreach (var calendarId in @Model)
+            {
+                <li>@calendarId</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>It seems you don't have any Calendars.</p>
+    }
+    <p><a asp-controller="home" asp-action="index">Index</a></p>
+</body>
+</html>
