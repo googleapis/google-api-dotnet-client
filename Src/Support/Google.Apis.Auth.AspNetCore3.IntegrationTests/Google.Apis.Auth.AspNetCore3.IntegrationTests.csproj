@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\Generated\Google.Apis.Storage.v1\Google.Apis.Storage.v1.cs" Link="Services\Google.Apis.Storage.v1.cs" />
-    <Compile Include="..\..\Generated\Google.Apis.Translate.v2\Google.Apis.Translate.v2.cs" Link="Services\Google.Apis.Translate.v2.cs" />
+    <Compile Include="..\..\Generated\Google.Apis.Calendar.v3\Google.Apis.Calendar.v3.cs" Link="Services\Google.Apis.Calendar.v3.cs" />
+    <Compile Include="..\..\Generated\Google.Apis.Drive.v3\Google.Apis.Drive.v3.cs" Link="Services\Google.Apis.Drive.v3.cs" />
   </ItemGroup>
 
   <ItemGroup>

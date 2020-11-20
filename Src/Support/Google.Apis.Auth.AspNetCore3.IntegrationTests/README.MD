@@ -19,7 +19,7 @@ the app is identified with.
 
 ### Enabling APIs used by this app
 
-The app uses the [Storage][storage-api] and [Translate][translate-api] APIs.
+The app uses the [Google Drive][drive-api] and [Calendar][calendar-api] APIs.
 These need to be enabled in your GCP project. To enable the APIs, follow
 [these instructions][enable-apis].
 
@@ -37,14 +37,6 @@ the client_secrets.json file. Two highlights:
 
 - Set `TEST_WEB_CLIENT_SECRET_FILENAME` to the path of the client_secrets.json
   file you downloaded on the previous step.
-- Set `GOOGLE_PROJECT_ID` to the GCP Project ID of the GCP project you are using.
-  - As part of this app, we'll list the Storage buckets that the authenticated user
-    has access to on the GCP project with ID in `GOOGLE_PROJECT_ID`. This project doesn't
-    have to be the same as the project you created the credentials in. For instance,
-    for a real world app, you may have a GCP project that only your organization can access,
-    and that's were you'd create the credentials for the app. You then could have a second
-    GCP project that users of your app can access, and there they would create their Storage
-    buckets or other resources, either through your app or directly throught the Google Cloud Console.
 
 ## Run the app
 
@@ -76,8 +68,8 @@ Google.Apis.Auth.AspNetCore3.IntegrationTests is a standard ASP.NET Core 3 app.
 
 [package]: https://www.nuget.org/packages/Google.Apis.Auth.AspNetCore3/
 [new-gcp-project]: https://cloud.google.com/resource-manager/docs/creating-managing-projects
-[storage-api]: https://cloud.google.com/storage/docs/json_api
-[translate-api]: https://cloud.google.com/translate/docs/reference/api-overview
+[drive-api]: https://developers.google.com/drive
+[calendar-api]: https://developers.google.com/calendar
 [enable-apis]: https://developers.google.com/identity/protocols/oauth2/web-server#enable-apis
 [oauth-creds]: https://developers.google.com/identity/protocols/oauth2/web-server#creatingcred
 [git]: https://git-scm.com/

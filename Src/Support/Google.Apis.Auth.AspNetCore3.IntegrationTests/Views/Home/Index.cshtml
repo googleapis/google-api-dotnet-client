@@ -33,8 +33,8 @@
         </ul>
     </p>
     <p>
-        <a asp-controller="home" asp-action="storagebucketlisting">List Storage buckets</a> - Use the Storage API to list all Storage buckets
-        that the logged account has access to on this app's GCP project.
+        <a asp-controller="home" asp-action="drivefilelist">List Google Drive files</a> - Use the Google Drive API to list some of the files
+        that the logged user owns.
         <ul>
             <li>Authentication will trigger if there's no authenticated user.</li>
             <li>If a user is already authenticated but hasn't granted the required scopes, incremental authorization will trigger.</li>
@@ -42,8 +42,8 @@
         </ul>
     </p>
     <p>
-        <a asp-controller="home" asp-action="translate">Translate some text</a> - Use the Translate API to translate
-        "The cold weather will soon be over" to French.
+        <a asp-controller="home" asp-action="calendarlist">List Calendars</a> - Use the Calendar API to list some of the calendars
+        that the logged user has access to.
         <ul>
             <li>Authentication will trigger if there's no authenticated user.</li>
             <li>If a user is already authenticated but hasn't granted the required scopes, incremental authorization will trigger.</li>

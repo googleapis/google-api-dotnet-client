@@ -15,10 +15,9 @@ limitations under the License.
 */
 
 using Google.Apis.Auth.OAuth2;
+using Google.Apis.Calendar.v3;
+using Google.Apis.Drive.v3;
 using Google.Apis.Services;
-using Google.Apis.Storage.v1;
-using Google.Apis.Translate.v2;
-using Google.Apis.Translate.v2.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
@@ -33,8 +32,6 @@ namespace Google.Apis.Auth.AspNetCore3.IntegrationTests.Controllers
 {
     public class HomeController : Controller
     {
-        private const string GoogleProjectIdEnvVar = "GOOGLE_PROJECT_ID";
-
         /// <summary>
         /// Public home page.
         /// No authorization required. User doesn't need to login to see this.
@@ -83,40 +80,28 @@ namespace Google.Apis.Auth.AspNetCore3.IntegrationTests.Controllers
         }
 
         /// <summary>
-        /// List the Storage buckets the authenticated user has access to on this app's GCP project.
+        /// Lists the authenticated user's Google Drive files.
         /// Specifying the <see cref="GoogleScopedAuthorizeAttribute"> will guarantee that the code
         /// executes only if the user is authenticated and has granted the scope specified in the attribute
-        ///  to this application.
+        /// to this application.
         /// </summary>
         /// <param name="auth">The Google authorization provider.
         /// This can also be injected on the controller constructor.</param>
-        [GoogleScopedAuthorize(StorageService.ScopeConstants.CloudPlatformReadOnly)]
-        public async Task<IActionResult> StorageBucketListing([FromServices] IGoogleAuthProvider auth)
+        [GoogleScopedAuthorize(DriveService.ScopeConstants.DriveReadonly)]
+        public async Task<IActionResult> DriveFileList([FromServices] IGoogleAuthProvider auth)
         {
-            // Read the project ID to use to list Storage buckets.
-            // For demonstration purposes we are reading the project ID from the
-            // GOOGLE_PROJECT_ID environment variable.
-            // The project ID used here does not have to be the same associated to the OAuth2 Client ID
-            // used by your app.
-            string projectId = Environment.GetEnvironmentVariable(GoogleProjectIdEnvVar);
-            if (string.IsNullOrEmpty(projectId))
-            {
-                throw new InvalidOperationException(
-                    $"Please set the {GoogleProjectIdEnvVar} value a Google project ID to list Storage buckets from.");
-            }
-
             GoogleCredential cred = await auth.GetCredentialAsync();
-            var service = new StorageService(new BaseClientService.Initializer
+            var service = new DriveService(new BaseClientService.Initializer
             {
                 HttpClientInitializer = cred
             });
-            var buckets = await service.Buckets.List(projectId).ExecuteAsync();
-            var bucketNames = buckets.Items.Select(x => x.Name).ToList();
-            return View(bucketNames);
+            var files = await service.Files.List().ExecuteAsync();
+            var fileNames = files.Files.Select(x => x.Name).ToList();
+            return View(fileNames);
         }
 
         /// <summary>
-        /// Translates some text.
+        /// Lists the authenticated user's Calendars.
         /// Specifying the <see cref="AuthorizeAttribute"/> will guarantee that the code executes only if the
         /// user is authenticated.
         /// No scopes are required via attributes.
@@ -125,10 +110,10 @@ namespace Google.Apis.Auth.AspNetCore3.IntegrationTests.Controllers
         /// <param name="auth">The Google authorization provider.
         /// This can also be injected on the controller constructor.</param>
         [Authorize]
-        public async Task<IActionResult> Translate([FromServices] IGoogleAuthProvider auth)
+        public async Task<IActionResult> CalendarList([FromServices] IGoogleAuthProvider auth)
         {
             // Check if the required scopes have been granted. 
-            if (await auth.RequireScopesAsync(TranslateService.Scope.CloudTranslation) is IActionResult authResult)
+            if (await auth.RequireScopesAsync(CalendarService.ScopeConstants.CalendarReadonly) is IActionResult authResult)
             {
                 // If the required scopes are not granted, then a non-null IActionResult will be returned,
                 // which must be returned from the action. This triggers incremental authorization.
@@ -137,19 +122,13 @@ namespace Google.Apis.Auth.AspNetCore3.IntegrationTests.Controllers
             }
             // The required scopes have now been granted.
             GoogleCredential cred = await auth.GetCredentialAsync();
-            var service = new TranslateService(new BaseClientService.Initializer
+            var service = new CalendarService(new BaseClientService.Initializer
             {
                 HttpClientInitializer = cred
             });
-            var translateRequest = service.Translations.Translate(new TranslateTextRequest
-            {
-                Format = "text",
-                Q = new List<string> { "The cold weather will soon be over" },
-                Source = "en",
-                Target = "fr",
-            });
-            var response = await translateRequest.ExecuteAsync();
-            return View((object)response.Translations.Single().TranslatedText);
+            var calendars = await service.CalendarList.List().ExecuteAsync();
+            var calendarIds = calendars.Items.Select(calendar => calendar.Id).ToList();
+            return View(calendarIds);
         }
 
         /// <summary>

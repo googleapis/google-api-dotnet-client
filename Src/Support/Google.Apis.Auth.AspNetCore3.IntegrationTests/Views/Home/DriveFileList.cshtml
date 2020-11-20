@@ -11,24 +11,24 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Google.Apis.Auth.AspNetCore3 sample - Storage bucket list</title>
+    <title>Google.Apis.Auth.AspNetCore3 sample - Google Drive file list</title>
 </head>
 <body>
-    <h2>Google.Apis.Auth.AspNetCore3 sample - Storage bucket list</h2>
+    <h2>Google.Apis.Auth.AspNetCore3 sample - Google Drive file list</h2>
     <p>You are logged in as @User.FindFirst(ClaimTypes.GivenName)?.Value.</p>
     @if (@Model.Count > 0)
     {
-        <p>These are the Storage buckets you have access to on this app's GCP project.</p>
+        <p>These are some of your Google Drive files.</p>
         <ul>
-            @foreach (var bucketName in @Model)
+            @foreach (var fileName in @Model)
             {
-                <li>@bucketName</li>
+                <li>@fileName</li>
             }
         </ul>
     }
     else
     {
-        <p>It seems you don't have access to any Storage bucket on this app's GCP project.</p>
+        <p>It seems you don't have files stored in Google Drive.</p>
     }
     <p><a asp-controller="home" asp-action="index">Index</a></p>
 </body>
