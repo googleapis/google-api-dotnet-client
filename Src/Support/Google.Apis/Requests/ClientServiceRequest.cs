@@ -379,19 +379,17 @@ namespace Google.Apis.Requests
         {
             foreach (var parameter in inputParameters)
             {
-                IParameter parameterDefinition;
-
-                if (!RequestParameters.TryGetValue(parameter.Key, out parameterDefinition))
+                if (!RequestParameters.TryGetValue(parameter.Key, out IParameter parameterDefinition))
                 {
                     throw new GoogleApiException(Service.Name,
                         String.Format("Invalid parameter \"{0}\" was specified", parameter.Key));
                 }
 
                 string value = parameter.Value;
-                if (!ParameterValidator.ValidateParameter(parameterDefinition, value))
+                if (!ParameterValidator.ValidateParameter(parameterDefinition, value, out string error))
                 {
                     throw new GoogleApiException(Service.Name,
-                        string.Format("Parameter validation failed for \"{0}\"", parameterDefinition.Name));
+                        string.Format("Parameter validation failed for \"{0}\" : {1}", parameterDefinition.Name, error));
                 }
 
                 if (value == null) // If the parameter is null, use the default value.
