@@ -43,7 +43,7 @@ namespace Google.Apis.Requests.Parameters
             }
             else
             {
-                error = string.Format("The value did not match the regex {0}", param.Pattern);
+                error = $"The value did not match the regular expression {param.Pattern}";
                 return false;
             }
         }

@@ -382,14 +382,14 @@ namespace Google.Apis.Requests
                 if (!RequestParameters.TryGetValue(parameter.Key, out IParameter parameterDefinition))
                 {
                     throw new GoogleApiException(Service.Name,
-                        String.Format("Invalid parameter \"{0}\" was specified", parameter.Key));
+                        $"Invalid parameter \"{parameter.Key}\" was specified");
                 }
 
                 string value = parameter.Value;
                 if (!ParameterValidator.ValidateParameter(parameterDefinition, value, out string error))
                 {
                     throw new GoogleApiException(Service.Name,
-                        string.Format("Parameter validation failed for \"{0}\" : {1}", parameterDefinition.Name, error));
+                        $"Parameter validation failed for \"{parameterDefinition.Name}\" : {error}");
                 }
 
                 if (value == null) // If the parameter is null, use the default value.
@@ -411,8 +411,7 @@ namespace Google.Apis.Requests
                         break;
                     default:
                         throw new GoogleApiException(service.Name,
-                            string.Format("Unsupported parameter type \"{0}\" for \"{1}\"",
-                            parameterDefinition.ParameterType, parameterDefinition.Name));
+                            $"Unsupported parameter type \"{parameterDefinition.ParameterType}\" for \"{parameterDefinition.Name}\"");
                 }
             }
 
@@ -422,7 +421,7 @@ namespace Google.Apis.Requests
                 if (parameter.IsRequired && !inputParameters.ContainsKey(parameter.Name))
                 {
                     throw new GoogleApiException(service.Name,
-                        string.Format("Parameter \"{0}\" is missing", parameter.Name));
+                        $"Parameter \"{parameter.Name}\" is missing");
                 }
             }
         }
