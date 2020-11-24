@@ -29,7 +29,12 @@ namespace Google.Apis.Requests.Parameters
     {
         /// <summary>Validates a parameter value against the methods regex.</summary>
         [VisibleForTestOnly]
-        public static bool ValidateRegex(IParameter param, string paramValue, out string error)
+        [Obsolete("Use ValidateParameter instead")]
+        public static bool ValidateRegex(IParameter param, string paramValue) => ValidateRegex(param, paramValue, out _);
+
+        /// <summary>Validates a parameter value against the methods regex.</summary>
+        [VisibleForTestOnly]
+        internal static bool ValidateRegex(IParameter param, string paramValue, out string error)
         {
             if (string.IsNullOrEmpty(param.Pattern) || new Regex(param.Pattern).IsMatch(paramValue))
             {
@@ -42,6 +47,10 @@ namespace Google.Apis.Requests.Parameters
                 return false;
             }
         }
+
+        /// <summary>Validates if a parameter is valid.</summary>
+        [Obsolete("Use the overload with error output instead")]
+        public static bool ValidateParameter(IParameter parameter, string value) => ValidateParameter(parameter, value, out _);
 
         /// <summary>Validates if a parameter is valid.</summary>
         public static bool ValidateParameter(IParameter parameter, string value, out string error)
