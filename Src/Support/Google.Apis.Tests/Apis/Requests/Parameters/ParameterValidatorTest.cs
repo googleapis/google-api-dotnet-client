@@ -28,7 +28,8 @@ namespace Google.Apis.Tests.Apis.Requests.Parameters
         public void ValidateRegexEmptyNeedsDataTest()
         {
             var parameter = new Parameter { Pattern = ".+", Name = "test" };
-            Assert.False(ParameterValidator.ValidateRegex(parameter, ""));
+            Assert.False(ParameterValidator.ValidateRegex(parameter, "", out string error));
+            Assert.Contains(parameter.Pattern, error);
         }
 
         /// <summary>Tests validate regex.</summary>
@@ -36,7 +37,8 @@ namespace Google.Apis.Tests.Apis.Requests.Parameters
         public void ValidateRegexTest()
         {
             var parameter = new Parameter { Pattern = ".+", Name = "test" };
-            Assert.True(ParameterValidator.ValidateRegex(parameter, "Test"));
+            Assert.True(ParameterValidator.ValidateRegex(parameter, "Test", out string error));
+            Assert.Null(error);
         }
     }
 }

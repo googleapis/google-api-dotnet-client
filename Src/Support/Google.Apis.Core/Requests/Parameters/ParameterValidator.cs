@@ -29,22 +29,51 @@ namespace Google.Apis.Requests.Parameters
     {
         /// <summary>Validates a parameter value against the methods regex.</summary>
         [VisibleForTestOnly]
-        public static bool ValidateRegex(IParameter param, string paramValue)
+        [Obsolete("Use ValidateParameter instead")]
+        public static bool ValidateRegex(IParameter param, string paramValue) => ValidateRegex(param, paramValue, out _);
+
+        /// <summary>Validates a parameter value against the methods regex.</summary>
+        [VisibleForTestOnly]
+        internal static bool ValidateRegex(IParameter param, string paramValue, out string error)
         {
-            return string.IsNullOrEmpty(param.Pattern) || new Regex(param.Pattern).IsMatch(paramValue);
+            if (string.IsNullOrEmpty(param.Pattern) || new Regex(param.Pattern).IsMatch(paramValue))
+            {
+                error = null;
+                return true;
+            }
+            else
+            {
+                error = $"The value did not match the regular expression {param.Pattern}";
+                return false;
+            }
         }
 
         /// <summary>Validates if a parameter is valid.</summary>
-        public static bool ValidateParameter(IParameter parameter, string value)
-        {
-            // Fail if a required parameter is not present.
-            if (String.IsNullOrEmpty(value))
-            {
-                return !parameter.IsRequired;
-            }
+        [Obsolete("Use the overload with error output instead")]
+        public static bool ValidateParameter(IParameter parameter, string value) => ValidateParameter(parameter, value, out _);
 
-            // The parameter has value so validate the regex.
-            return ValidateRegex(parameter, value);
+        /// <summary>Validates if a parameter is valid.</summary>
+        public static bool ValidateParameter(IParameter parameter, string value, out string error)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                // Fail if a required parameter is not present.
+                if (parameter.IsRequired)
+                {
+                    error = "The parameter value must be a non-empty string";
+                    return false;
+                }
+                else
+                {
+                    error = null;
+                    return true;
+                }
+            }
+            else
+            {
+                // The parameter has value so validate the regex.
+                return ValidateRegex(parameter, value, out error);
+            }
         }
     }
 }
