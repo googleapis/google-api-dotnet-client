@@ -83,11 +83,11 @@ namespace Google.Apis.Auth.OAuth2
         {
             // 1. First try the environment variable.
             string credentialPath = GetEnvironmentVariable(CredentialEnvironmentVariable);
-            if (!String.IsNullOrWhiteSpace(credentialPath))
+            if (!string.IsNullOrWhiteSpace(credentialPath))
             {
                 try
                 {
-                    return CreateDefaultCredentialFromFile(credentialPath);
+                    return await CreateDefaultCredentialFromFileAsync(credentialPath, default).ConfigureAwait(false);
                 }
                 catch (Exception e)
                 {
@@ -104,11 +104,11 @@ namespace Google.Apis.Auth.OAuth2
             
             // 2. Then try the well known file.
             credentialPath = GetWellKnownCredentialFilePath();
-            if (!String.IsNullOrWhiteSpace(credentialPath))
+            if (!string.IsNullOrWhiteSpace(credentialPath))
             {
                 try
                 {
-                    return CreateDefaultCredentialFromFile(credentialPath);
+                    return await CreateDefaultCredentialFromFileAsync(credentialPath, default).ConfigureAwait(false);
                 }
                 catch (FileNotFoundException)
                 {
@@ -130,7 +130,7 @@ namespace Google.Apis.Auth.OAuth2
                 }
             }
 
-            // 3. Then try the compute engine.     
+            // 3. Then try the compute engine.
             Logger.Debug("Checking whether the application is running on ComputeEngine.");
             if (await ComputeCredential.IsRunningOnComputeEngine().ConfigureAwait(false))
             {
@@ -147,15 +147,12 @@ namespace Google.Apis.Auth.OAuth2
                     HelpPermalink));
         }
 
-        /// <summary>Creates a default credential from a JSON file.</summary>
-        private GoogleCredential CreateDefaultCredentialFromFile(string credentialPath)
+        private async Task<GoogleCredential> CreateDefaultCredentialFromFileAsync(string credentialPath, CancellationToken cancellationToken)
         {
             Logger.Debug("Loading Credential from file {0}", credentialPath);
 
-            using (Stream stream = GetStream(credentialPath))
-            {
-                return CreateDefaultCredentialFromStream(stream);
-            }
+            using Stream stream = GetStream(credentialPath);
+            return await CreateDefaultCredentialFromStreamAsync(stream, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>Creates a default credential from a stream that contains JSON credential data.</summary>
