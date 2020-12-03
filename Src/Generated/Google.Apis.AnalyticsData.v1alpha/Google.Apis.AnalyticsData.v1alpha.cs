@@ -288,9 +288,9 @@ namespace Google.Apis.AnalyticsData.v1alpha
         /// applicable to any property such as `country` and `totalUsers`.</summary>
         /// <param name="name">Required. The resource name of the metadata to retrieve. This name field is specified in the URL
         /// path and not URL parameters. Property is a numeric Google Analytics GA4 Property identifier. To learn more, see
-        /// [where to find your Property ID](https://developers.google.com/analytics/trusted-testing/analytics-data/property-
-        /// id). Example: properties/1234/metadata Set the Property ID to 0 for dimensions and metrics common to all properties.
-        /// In this special mode, this method will not return custom dimensions and metrics.</param>
+        /// [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id).
+        /// Example: properties/1234/metadata Set the Property ID to 0 for dimensions and metrics common to all properties. In
+        /// this special mode, this method will not return custom dimensions and metrics.</param>
         public virtual GetMetadataRequest GetMetadata(string name)
         {
             return new GetMetadataRequest(service, name);
@@ -314,10 +314,10 @@ namespace Google.Apis.AnalyticsData.v1alpha
 
             /// <summary>Required. The resource name of the metadata to retrieve. This name field is specified in the
             /// URL path and not URL parameters. Property is a numeric Google Analytics GA4 Property identifier. To
-            /// learn more, see [where to find your Property ID](https://developers.google.com/analytics/trusted-testing
-            /// /analytics-data/property-id). Example: properties/1234/metadata Set the Property ID to 0 for dimensions
-            /// and metrics common to all properties. In this special mode, this method will not return custom
-            /// dimensions and metrics.</summary>
+            /// learn more, see [where to find your Property
+            /// ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). Example:
+            /// properties/1234/metadata Set the Property ID to 0 for dimensions and metrics common to all properties.
+            /// In this special mode, this method will not return custom dimensions and metrics.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -352,8 +352,9 @@ namespace Google.Apis.AnalyticsData.v1alpha
         /// property. These reports show events and usage from the last 30 minutes.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="property">A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL
-        /// path and not the body. To learn more, see [where to find your Property ID](https://developers.google.com/analytics
-        /// /trusted-testing/analytics-data/property-id). Example: properties/1234</param>
+        /// path and not the body. To learn more, see [where to find your Property
+        /// ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). Example:
+        /// properties/1234</param>
         public virtual RunRealtimeReportRequest RunRealtimeReport(Google.Apis.AnalyticsData.v1alpha.Data.RunRealtimeReportRequest body, string property)
         {
             return new RunRealtimeReportRequest(service, body, property);
@@ -374,7 +375,7 @@ namespace Google.Apis.AnalyticsData.v1alpha
 
             /// <summary>A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path
             /// and not the body. To learn more, see [where to find your Property
-            /// ID](https://developers.google.com/analytics/trusted-testing/analytics-data/property-id). Example:
+            /// ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). Example:
             /// properties/1234</summary>
             [Google.Apis.Util.RequestParameterAttribute("property", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Property { get; private set; }
@@ -701,21 +702,24 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Defines a cohort. A cohort is a group of users who share a common characteristic. For example, all
-    /// users with the same acquisition date belong to the same cohort.</summary>
+    /// <summary>Defines a cohort selection criteria. A cohort is a group of users who share a common characteristic.
+    /// For example, users with the same `firstTouchDate` belong to the same cohort.</summary>
     public class Cohort : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The cohort selects users whose first visit date is between start date and end date defined in the
-        /// `dateRange`. In a cohort request, this `dateRange` is required and the `dateRanges` in the
-        /// `RunReportRequest` or `RunPivotReportRequest` must be unspecified. The date range should be aligned with the
-        /// cohort's granularity. If CohortsRange uses daily granularity, the date range can be aligned to any day. If
-        /// CohortsRange uses weekly granularity, the date range should be aligned to the week boundary, starting at
-        /// Sunday and ending Saturday. If CohortsRange uses monthly granularity, the date range should be aligned to
-        /// the month, starting at the first and ending on the last day of the month.</summary>
+        /// <summary>The cohort selects users whose first touch date is between start date and end date defined in the
+        /// `dateRange`. This `dateRange` does not specify the full date range of event data that is present in a cohort
+        /// report. In a cohort report, this `dateRange` is extended by the granularity and offset present in the
+        /// `cohortsRange`; event data for the extended reporting date range is present in a cohort report. In a cohort
+        /// request, this `dateRange` is required and the `dateRanges` in the `RunReportRequest` or
+        /// `RunPivotReportRequest` must be unspecified. This `dateRange` should generally be aligned with the cohort's
+        /// granularity. If `CohortsRange` uses daily granularity, this `dateRange` can be a single day. If
+        /// `CohortsRange` uses weekly granularity, this `dateRange` can be aligned to a week boundary, starting at
+        /// Sunday and ending Saturday. If `CohortsRange` uses monthly granularity, this `dateRange` can be aligned to a
+        /// month, starting at the first and ending on the last day of the month.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
         public virtual DateRange DateRange { get; set; }
 
-        /// <summary>The dimension used by cohort. Only supports `firstTouchDate` for retention report.</summary>
+        /// <summary>Dimension used by the cohort. Required and only supports `firstTouchDate`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
         public virtual string Dimension { get; set; }
 
@@ -729,10 +733,10 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Settings of a cohort report.</summary>
+    /// <summary>Optional settings of a cohort report.</summary>
     public class CohortReportSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If true, accumulates the result from first visit day to the end day. Not supported in
+        /// <summary>If true, accumulates the result from first touch day to the end day. Not supported in
         /// `RunReportRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accumulate")]
         public virtual System.Nullable<bool> Accumulate { get; set; }
@@ -741,18 +745,28 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Specification for a cohort report.</summary>
+    /// <summary>Specification of cohorts for a cohort report. Cohort reports can be used for example to create a time
+    /// series of user retention for the cohort. For example, you could select the cohort of users that were acquired in
+    /// the first week of September and follow that cohort for the next six weeks. Selecting the users acquired in the
+    /// first week of September cohort is specified in the `cohort` object. Following that cohort for the next six weeks
+    /// is specified in the `cohortsRange` object. The report response could show a weekly time series where say your
+    /// app has retained 60% of this cohort after three weeks and 25% of this cohort after six weeks. These two
+    /// percentages can be calculated by the metric `cohortActiveUsers/cohortTotalUsers` and will be separate rows in
+    /// the report.</summary>
     public class CohortSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Settings of a cohort report.</summary>
+        /// <summary>Optional settings for a cohort report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cohortReportSettings")]
         public virtual CohortReportSettings CohortReportSettings { get; set; }
 
-        /// <summary>The definition for the cohorts.</summary>
+        /// <summary>Defines the selection criteria to group users into cohorts. Most cohort reports define only a
+        /// single cohort. If multiple cohorts are specified, each cohort can be recognized in the report by their
+        /// name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cohorts")]
         public virtual System.Collections.Generic.IList<Cohort> Cohorts { get; set; }
 
-        /// <summary>The data ranges of cohorts.</summary>
+        /// <summary>Cohort reports follow cohorts over an extended reporting date range. This range specifies an offset
+        /// duration to follow the cohorts over.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cohortsRange")]
         public virtual CohortsRange CohortsRange { get; set; }
 
@@ -760,20 +774,32 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Describes date range for a cohort report.</summary>
+    /// <summary>Configures the extended reporting date range for a cohort report. Specifies an offset duration to
+    /// follow the cohorts over.</summary>
     public class CohortsRange : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>For daily cohorts, this will be the end day offset. For weekly cohorts, this will be the week
-        /// offset.</summary>
+        /// <summary>`endOffset` specifies the end date of the extended reporting date range for a cohort report.
+        /// `endOffset` can be any positive integer but is commonly set to 5 to 10 so that reports contain data on the
+        /// cohort for the next several granularity time periods. If `granularity` is `DAILY`, the `endDate` of the
+        /// extended reporting date range is `endDate` of the cohort plus `endOffset` days. If `granularity` is
+        /// `WEEKLY`, the `endDate` of the extended reporting date range is `endDate` of the cohort plus `endOffset * 7`
+        /// days. If `granularity` is `MONTHLY`, the `endDate` of the extended reporting date range is `endDate` of the
+        /// cohort plus `endOffset * 30` days.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endOffset")]
         public virtual System.Nullable<int> EndOffset { get; set; }
 
-        /// <summary>Reporting date range for each cohort is calculated based on these three fields.</summary>
+        /// <summary>The granularity used to interpret the `startOffset` and `endOffset` for the extended reporting date
+        /// range for a cohort report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("granularity")]
         public virtual string Granularity { get; set; }
 
-        /// <summary>For daily cohorts, this will be the start day offset. For weekly cohorts, this will be the week
-        /// offset.</summary>
+        /// <summary>`startOffset` specifies the start date of the extended reporting date range for a cohort report.
+        /// `startOffset` is commonly set to 0 so that reports contain data from the acquisition of the cohort forward.
+        /// If `granularity` is `DAILY`, the `startDate` of the extended reporting date range is `startDate` of the
+        /// cohort plus `startOffset` days. If `granularity` is `WEEKLY`, the `startDate` of the extended reporting date
+        /// range is `startDate` of the cohort plus `startOffset * 7` days. If `granularity` is `MONTHLY`, the
+        /// `startDate` of the extended reporting date range is `startDate` of the cohort plus `startOffset * 30`
+        /// days.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startOffset")]
         public virtual System.Nullable<int> StartOffset { get; set; }
 
@@ -836,12 +862,12 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionExpression")]
         public virtual DimensionExpression DimensionExpression { get; set; }
 
-        /// <summary>The name of the dimension. See the [API Dimensions](https://developers.google.com/analytics
-        /// /trusted-testing/analytics-data/api-schema#dimensions) for the list of dimension names. If
-        /// `dimensionExpression` is specified, `name` can be any string that you would like. For example if a
-        /// `dimensionExpression` concatenates `country` and `city`, you could call that dimension `countryAndCity`.
-        /// Dimensions are referenced by `name` in `dimensionFilter`, `orderBys`, `dimensionExpression`, and
-        /// `pivots`.</summary>
+        /// <summary>The name of the dimension. See the [API
+        /// Dimensions](https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema#dimensions) for
+        /// the list of dimension names. If `dimensionExpression` is specified, `name` can be any string that you would
+        /// like. For example if a `dimensionExpression` concatenates `country` and `city`, you could call that
+        /// dimension `countryAndCity`. Dimensions are referenced by `name` in `dimensionFilter`, `orderBys`,
+        /// `dimensionExpression`, and `pivots`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -944,7 +970,7 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
     public class Entity : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A Google Analytics GA4 property id. To learn more, see [where to find your Property
-        /// ID](https://developers.google.com/analytics/trusted-testing/analytics-data/property-id).</summary>
+        /// ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyId")]
         public virtual string PropertyId { get; set; }
 
@@ -1070,11 +1096,12 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("invisible")]
         public virtual System.Nullable<bool> Invisible { get; set; }
 
-        /// <summary>The name of the metric. See the [API Metrics](https://developers.google.com/analytics/trusted-
-        /// testing/analytics-data/api-schema#metrics) for the list of metric names. If `expression` is specified,
-        /// `name` can be any string that you would like. For example if `expression` is `screenPageViews/sessions`, you
-        /// could call that metric's name = `viewsPerSession`. Metrics are referenced by `name` in `metricFilter`,
-        /// `orderBys`, and metric `expression`.</summary>
+        /// <summary>The name of the metric. See the [API
+        /// Metrics](https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema#metrics) for the
+        /// list of metric names. If `expression` is specified, `name` can be any string that you would like. For
+        /// example if `expression` is `screenPageViews/sessions`, you could call that metric's name =
+        /// `viewsPerSession`. Metrics are referenced by `name` in `metricFilter`, `orderBys`, and metric
+        /// `expression`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

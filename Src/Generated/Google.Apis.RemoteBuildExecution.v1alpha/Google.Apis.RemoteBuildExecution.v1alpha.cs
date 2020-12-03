@@ -2124,21 +2124,6 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>SoleTenancyConfig specifies information required to host a pool on STNs.</summary>
-    public class GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The sole-tenant node type to host the pool's workers on.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nodeType")]
-        public virtual string NodeType { get; set; }
-
-        /// <summary>Zone in which STNs are reserved.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nodesZone")]
-        public virtual string NodesZone { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>The request used for `UpdateInstance`.</summary>
     public class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2240,9 +2225,9 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reserved")]
         public virtual System.Nullable<bool> Reserved { get; set; }
 
-        /// <summary>Sole-tenant node information for pools hosted on STNs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("soleTenancy")]
-        public virtual GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig SoleTenancy { get; set; }
+        /// <summary>The node type name to be used for sole-tenant nodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("soleTenantNodeType")]
+        public virtual string SoleTenantNodeType { get; set; }
 
         /// <summary>The name of the image used by each VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmImage")]

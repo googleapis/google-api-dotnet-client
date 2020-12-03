@@ -2769,7 +2769,7 @@
    }
   }
  }, 
- "revision": "20201110", 
+ "revision": "20201118", 
  "rootUrl": "https://healthcare.googleapis.com/", 
  "schemas": {
   "AuditConfig": {

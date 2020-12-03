@@ -6436,9 +6436,9 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <summary>Creates an APK which is suitable for inclusion in a system image from an already uploaded
             /// Android App Bundle.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="packageName">Unique identifier of the Android app.</param>
-            /// <param name="versionCode">The
-            /// version code of the App Bundle.</param>
+            /// <param name="packageName">Package name of the app.</param>
+            /// <param name="versionCode">The version code of the
+            /// App Bundle.</param>
             public virtual CreateRequest Create(Google.Apis.AndroidPublisher.v3.Data.Variant body, string packageName, long versionCode)
             {
                 return new CreateRequest(service, body, packageName, versionCode);
@@ -6458,7 +6458,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
 
 
-                /// <summary>Unique identifier of the Android app.</summary>
+                /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
 
@@ -6509,11 +6509,10 @@ namespace Google.Apis.AndroidPublisher.v3
 
             /// <summary>Downloads a previously created system APK which is suitable for inclusion in a system
             /// image.</summary>
-            /// <param name="packageName">Unique identifier of the Android app.</param>
-            /// <param name="versionCode">The
-            /// version code of the App Bundle.</param>
-            /// <param name="variantId">The ID of a previously created system APK
-            /// variant.</param>
+            /// <param name="packageName">Package name of the app.</param>
+            /// <param name="versionCode">The version code of the
+            /// App Bundle.</param>
+            /// <param name="variantId">The ID of a previously created system APK variant.</param>
             public virtual DownloadRequest Download(string packageName, long versionCode, long variantId)
             {
                 return new DownloadRequest(service, packageName, versionCode, variantId);
@@ -6534,7 +6533,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
 
 
-                /// <summary>Unique identifier of the Android app.</summary>
+                /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
 
@@ -6642,11 +6641,10 @@ namespace Google.Apis.AndroidPublisher.v3
             }
 
             /// <summary>Returns a previously created system APK variant.</summary>
-            /// <param name="packageName">Unique identifier of the Android app.</param>
-            /// <param name="versionCode">The
-            /// version code of the App Bundle.</param>
-            /// <param name="variantId">The ID of a previously created system APK
-            /// variant.</param>
+            /// <param name="packageName">Package name of the app.</param>
+            /// <param name="versionCode">The version code of the
+            /// App Bundle.</param>
+            /// <param name="variantId">The ID of a previously created system APK variant.</param>
             public virtual GetRequest Get(string packageName, long versionCode, long variantId)
             {
                 return new GetRequest(service, packageName, versionCode, variantId);
@@ -6665,7 +6663,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
 
 
-                /// <summary>Unique identifier of the Android app.</summary>
+                /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
 
@@ -6721,9 +6719,9 @@ namespace Google.Apis.AndroidPublisher.v3
             }
 
             /// <summary>Returns the list of previously created system APK variants.</summary>
-            /// <param name="packageName">Unique identifier of the Android app.</param>
-            /// <param name="versionCode">The
-            /// version code of the App Bundle.</param>
+            /// <param name="packageName">Package name of the app.</param>
+            /// <param name="versionCode">The version code of the
+            /// App Bundle.</param>
             public virtual ListRequest List(string packageName, long versionCode)
             {
                 return new ListRequest(service, packageName, versionCode);
@@ -6741,7 +6739,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
 
 
-                /// <summary>Unique identifier of the Android app.</summary>
+                /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
 

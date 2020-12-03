@@ -5313,6 +5313,10 @@ namespace Google.Apis.Appengine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apiConfig")]
         public virtual ApiConfigHandler ApiConfig { get; set; }
 
+        /// <summary>app_engine_apis allows Second Generation runtimes to access the App Engine APIs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appEngineApis")]
+        public virtual System.Nullable<bool> AppEngineApis { get; set; }
+
         /// <summary>Automatic scaling is based on request rate, response latencies, and other application metrics.
         /// Instances are dynamically created and destroyed as needed in order to handle traffic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("automaticScaling")]

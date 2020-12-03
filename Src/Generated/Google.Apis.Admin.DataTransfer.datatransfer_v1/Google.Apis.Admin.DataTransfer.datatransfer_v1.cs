@@ -58,7 +58,7 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
         public override string BatchPath => "batch";
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Admin SDK.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Admin SDK API.</summary>
         public class Scope
         {
             /// <summary>View and manage data transfers between users in your organization</summary>
@@ -69,7 +69,7 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
 
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Admin SDK.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Admin SDK API.</summary>
         public static class ScopeConstants
         {
             /// <summary>View and manage data transfers between users in your organization</summary>

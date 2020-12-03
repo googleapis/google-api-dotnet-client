@@ -8627,7 +8627,8 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Resource to hold the state and status of a user's domain mapping.</summary>
+    /// <summary>Resource to hold the state and status of a user's domain mapping. NOTE: This resource is currently in
+    /// Beta.</summary>
     public class DomainMapping : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The API version for this call such as "domains.cloudrun.com/v1alpha1".</summary>

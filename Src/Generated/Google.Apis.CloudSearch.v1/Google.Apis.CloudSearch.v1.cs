@@ -4523,8 +4523,9 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// is the prerequisite before items can be indexed into Cloud Search.</summary>
     public class DataSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If true, Indexing API rejects any modification calls to this datasource such as create, update, and
-        /// delete. Disabling this does not imply halting process of previously accepted data.</summary>
+        /// <summary>If true, sets the datasource to read-only mode. In read-only mode, the Indexing API rejects any
+        /// requests to index or delete items in this source. Enabling read-only mode does not stop the processing of
+        /// previously accepted data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableModifications")]
         public virtual System.Nullable<bool> DisableModifications { get; set; }
 
@@ -5426,7 +5427,8 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Content of an item to be indexed and surfaced by Cloud Search.</summary>
+    /// <summary>Content of an item to be indexed and surfaced by Cloud Search. Only UTF-8 encoded strings are allowed
+    /// as inlineContent. If the content is uploaded and not binary, it must be UTF-8 encoded.</summary>
     public class ItemContent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Upload reference ID of a previously uploaded content via write method.</summary>

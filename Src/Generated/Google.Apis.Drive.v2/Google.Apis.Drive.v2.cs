@@ -10087,8 +10087,9 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
-        /// <summary>The visibility of this property. Allowed values are PRIVATE and PUBLIC. (Default:
-        /// PRIVATE)</summary>
+        /// <summary>The visibility of this property. Allowed values are PRIVATE and PUBLIC. (Default: PRIVATE). Private
+        /// properties can only be retrieved using an authenticated request. An authenticated request uses an access
+        /// token obtained with a OAuth 2 client ID. You cannot use an API key to retrieve private properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
         public virtual string Visibility { get; set; }
 

@@ -2137,6 +2137,13 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestedAddress")]
         public virtual string RequestedAddress { get; set; }
 
+        /// <summary>Optional. The name of one or more allocated IP address ranges associated with this private service
+        /// access connection. If no range names are provided all ranges associated with this connection will be
+        /// considered. If a CIDR range with the specified IP prefix length is not available within these ranges, the
+        /// call fails.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedRanges")]
+        public virtual System.Collections.Generic.IList<string> RequestedRanges { get; set; }
+
         /// <summary>Optional. A list of secondary IP ranges to be created within the new subnetwork.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryIpRangeSpecs")]
         public virtual System.Collections.Generic.IList<SecondaryIpRangeSpec> SecondaryIpRangeSpecs { get; set; }
@@ -3891,6 +3898,13 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         /// for a subnet of the requested size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipPrefixLength")]
         public virtual System.Nullable<int> IpPrefixLength { get; set; }
+
+        /// <summary>Optional. The name of one or more allocated IP address ranges associated with this private service
+        /// access connection. If no range names are provided all ranges associated with this connection will be
+        /// considered. If a CIDR range with the specified IP prefix length is not available within these ranges the
+        /// validation fails.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedRanges")]
+        public virtual System.Collections.Generic.IList<string> RequestedRanges { get; set; }
 
         /// <summary>Optional. DO NOT USE - Under development. The size of the desired secondary ranges for the subnet.
         /// Use usual CIDR range notation. For example, '30' to find unused x.x.x.x/30 CIDR range. The goal is to

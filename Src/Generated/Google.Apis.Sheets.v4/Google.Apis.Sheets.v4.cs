@@ -2478,14 +2478,28 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("colorStyle")]
         public virtual ColorStyle ColorStyle { get; set; }
 
+        /// <summary>Information about the data labels for this series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataLabel")]
+        public virtual DataLabel DataLabel { get; set; }
+
         /// <summary>The line style of this series. Valid only if the chartType is AREA, LINE, or SCATTER. COMBO charts
         /// are also supported if the series chart type is AREA or LINE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineStyle")]
         public virtual LineStyle LineStyle { get; set; }
 
+        /// <summary>The style for points associated with this series. Valid only if the chartType is AREA, LINE, or
+        /// SCATTER. COMBO charts are also supported if the series chart type is AREA, LINE, or SCATTER. If empty, a
+        /// default point style is used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pointStyle")]
+        public virtual PointStyle PointStyle { get; set; }
+
         /// <summary>The data being visualized in this chart series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("series")]
         public virtual ChartData Series { get; set; }
+
+        /// <summary>Style override settings for series data points.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("styleOverrides")]
+        public virtual System.Collections.Generic.IList<BasicSeriesDataPointStyleOverride> StyleOverrides { get; set; }
 
         /// <summary>The minor axis that will specify the range of values for this series. For example, if charting
         /// stocks over time, the "Volume" series may want to be pinned to the right with the prices pinned to the left,
@@ -2556,6 +2570,17 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("threeDimensional")]
         public virtual System.Nullable<bool> ThreeDimensional { get; set; }
 
+        /// <summary>Controls whether to display additional data labels on stacked charts which sum the total value of
+        /// all stacked values at each value along the domain axis. These data labels can only be set when chart_type is
+        /// one of AREA, BAR, COLUMN, COMBO or STEPPED_AREA and stacked_type is either STACKED or PERCENT_STACKED. In
+        /// addition, for COMBO, this will only be supported if there is only one type of stackable series type or one
+        /// type has more series than the others and each of the other types have no more than one series. For example,
+        /// if a chart has two stacked bar series and one area series, the total data labels will be supported. If it
+        /// has three bar series and two area series, total data labels are not allowed. Neither CUSTOM nor placement
+        /// can be set on the total_data_label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDataLabel")]
+        public virtual DataLabel TotalDataLabel { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2581,6 +2606,32 @@ namespace Google.Apis.Sheets.v4.Data
         /// specifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sortSpecs")]
         public virtual System.Collections.Generic.IList<SortSpec> SortSpecs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Style override settings for a single series data point.</summary>
+    public class BasicSeriesDataPointStyleOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Color of the series data point. If empty, the series default is used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("color")]
+        public virtual Color Color { get; set; }
+
+        /// <summary>Color of the series data point. If empty, the series default is used. If color is also set, this
+        /// field takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("colorStyle")]
+        public virtual ColorStyle ColorStyle { get; set; }
+
+        /// <summary>Zero based index of the series data point.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<int> Index { get; set; }
+
+        /// <summary>Point style of the series data point. Valid only if the chartType is AREA, LINE, or SCATTER. COMBO
+        /// charts are also supported if the series chart type is AREA, LINE, or SCATTER. If empty, the series default
+        /// is used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pointStyle")]
+        public virtual PointStyle PointStyle { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3814,6 +3865,34 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Settings for one set of data labels. Data labels are annotations that appear next to a set of data,
+    /// such as the points on a line chart, and provide additional information about what the data represents, such as a
+    /// text representation of the value behind that point on the graph.</summary>
+    public class DataLabel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Data to use for custom labels. Only used if type is set to CUSTOM. This data must be the same
+        /// length as the series or other element this data label is applied to. In addition, if the series is split
+        /// into multiple source ranges, this source data must come from the next column in the source data. For
+        /// example, if the series is B2:B4,E6:E8 then this data must come from C2:C4,F6:F8.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customLabelData")]
+        public virtual ChartData CustomLabelData { get; set; }
+
+        /// <summary>The placement of the data label relative to the labeled data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placement")]
+        public virtual string Placement { get; set; }
+
+        /// <summary>The text format used for the data label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textFormat")]
+        public virtual TextFormat TextFormat { get; set; }
+
+        /// <summary>The type of the data label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Information about an external data source in the spreadsheet.</summary>
     public class DataSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4652,6 +4731,10 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>A chart embedded in a sheet.</summary>
     public class EmbeddedChart : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The border of the chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("border")]
+        public virtual EmbeddedObjectBorder Border { get; set; }
+
         /// <summary>The ID of the chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chartId")]
         public virtual System.Nullable<int> ChartId { get; set; }
@@ -4663,6 +4746,21 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The specification of the chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
         public virtual ChartSpec Spec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A border along an embedded object.</summary>
+    public class EmbeddedObjectBorder : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The color of the border.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("color")]
+        public virtual Color Color { get; set; }
+
+        /// <summary>The color of the border. If color is also set, this field takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("colorStyle")]
+        public virtual ColorStyle ColorStyle { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5846,6 +5944,21 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The style of a point on the chart.</summary>
+    public class PointStyle : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The point shape. If empty or unspecified, a default shape is used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shape")]
+        public virtual string Shape { get; set; }
+
+        /// <summary>The point size. If empty, a default size is used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("size")]
+        public virtual System.Nullable<double> Size { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A protected range.</summary>
     public class ProtectedRange : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6217,6 +6330,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>Updates dimensions' properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateDimensionProperties")]
         public virtual UpdateDimensionPropertiesRequest UpdateDimensionProperties { get; set; }
+
+        /// <summary>Updates an embedded object's border.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateEmbeddedObjectBorder")]
+        public virtual UpdateEmbeddedObjectBorderRequest UpdateEmbeddedObjectBorder { get; set; }
 
         /// <summary>Updates an embedded object's (e.g. chart, image) position.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateEmbeddedObjectPosition")]
@@ -7384,6 +7501,27 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Updates an embedded object's border property.</summary>
+    public class UpdateEmbeddedObjectBorderRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The border that applies to the embedded object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("border")]
+        public virtual EmbeddedObjectBorder Border { get; set; }
+
+        /// <summary>The fields that should be updated. At least one field must be specified. The root `border` is
+        /// implied and should not be specified. A single `"*"` can be used as short-hand for listing every
+        /// field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual object Fields { get; set; }
+
+        /// <summary>The ID of the embedded object to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual System.Nullable<int> ObjectId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Update an embedded object's position (such as a moving or resizing a chart or image).</summary>
     public class UpdateEmbeddedObjectPositionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7690,6 +7828,10 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual ChartData Data { get; set; }
 
+        /// <summary>Information about the data labels for this series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataLabel")]
+        public virtual DataLabel DataLabel { get; set; }
+
         /// <summary>True to hide the subtotal column from the end of the series. By default, a subtotal column will
         /// appear at the end of each series. Setting this field to true will hide that subtotal column for this
         /// series.</summary>
@@ -7738,6 +7880,12 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The stacked type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackedType")]
         public virtual string StackedType { get; set; }
+
+        /// <summary>Controls whether to display additional data labels on stacked charts which sum the total value of
+        /// all stacked values at each value along the domain axis. stacked_type must be STACKED and neither CUSTOM nor
+        /// placement can be set on the total_data_label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDataLabel")]
+        public virtual DataLabel TotalDataLabel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

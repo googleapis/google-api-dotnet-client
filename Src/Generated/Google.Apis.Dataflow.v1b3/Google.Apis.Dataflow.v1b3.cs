@@ -6842,7 +6842,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual FlexTemplateRuntimeEnvironment Environment { get; set; }
 
-        /// <summary>Required. The job name to use for the created job.</summary>
+        /// <summary>Required. The job name to use for the created job. For update job request, job name should be same
+        /// as the existing running job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobName")]
         public virtual string JobName { get; set; }
 
@@ -6854,6 +6855,15 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>The parameters for FlexTemplate. Ex. {"num_workers":"5"}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, string> Parameters { get; set; }
+
+        /// <summary>Users need to set transform_name_mappings Ex:{"oldTransformName":"newTransformName",...}'</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transformNameMappings")]
+        public virtual System.Collections.Generic.IDictionary<string, string> TransformNameMappings { get; set; }
+
+        /// <summary>Set this to true if you are sending a request to update a running streaming job. When set, the job
+        /// name should be the same as the running job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("update")]
+        public virtual System.Nullable<bool> Update { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

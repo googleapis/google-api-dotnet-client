@@ -3656,9 +3656,9 @@ namespace Google.Apis.Monitoring.v3
             /// updated via updateMask. Returns the updated configuration.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">A unique resource name for this Uptime check configuration. The format is:
-            /// projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] This field should be omitted when creating the
-            /// Uptime check configuration; on create, the resource name is assigned by the server and included in the
-            /// response.</param>
+            /// projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host
+            /// project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration;
+            /// on create, the resource name is assigned by the server and included in the response.</param>
             public virtual PatchRequest Patch(Google.Apis.Monitoring.v3.Data.UptimeCheckConfig body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -3679,9 +3679,10 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>A unique resource name for this Uptime check configuration. The format is:
-                /// projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] This field should be omitted
-                /// when creating the Uptime check configuration; on create, the resource name is assigned by the server
-                /// and included in the response.</summary>
+                /// projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the
+                /// Workspace host project associated with the Uptime check.This field should be omitted when creating
+                /// the Uptime check configuration; on create, the resource name is assigned by the server and included
+                /// in the response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -7033,9 +7034,10 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual MonitoredResource MonitoredResource { get; set; }
 
         /// <summary>A unique resource name for this Uptime check configuration. The format is:
-        /// projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] This field should be omitted when
-        /// creating the Uptime check configuration; on create, the resource name is assigned by the server and included
-        /// in the response.</summary>
+        /// projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace
+        /// host project associated with the Uptime check.This field should be omitted when creating the Uptime check
+        /// configuration; on create, the resource name is assigned by the server and included in the
+        /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

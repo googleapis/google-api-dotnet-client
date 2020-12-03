@@ -11806,9 +11806,10 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locked")]
         public virtual System.Nullable<bool> Locked { get; set; }
 
-        /// <summary>The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets
-        /// /my-bucket-id The supported locations are: "global"For the location of global it is unspecified where logs
-        /// are actually stored. Once a bucket has been created, the location can not be changed.</summary>
+        /// <summary>Output only. The resource name of the bucket. For example: "projects/my-project-id/locations/my-
+        /// location/buckets/my-bucket-id The supported locations are: "global"For the location of global it is
+        /// unspecified where logs are actually stored. Once a bucket has been created, the location can not be
+        /// changed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
