@@ -684,6 +684,12 @@ namespace Google.Apis.PostmasterTools.v1beta1.Data
     {
         /// <summary>Total number of unique IPs in this reputation category. This metric only pertains to traffic that
         /// passed [SPF](http://www.openspf.org/) or [DKIM](http://www.dkim.org/).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipCount")]
+        public virtual System.Nullable<long> IpCount { get; set; }
+
+        /// <summary>Total number of unique IPs in this reputation category. This metric only pertains to traffic that
+        /// passed [SPF](http://www.openspf.org/) or [DKIM](http://www.dkim.org/). Deprecated to be complied with
+        /// ApiLinter for Quantities. Use ip_count instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numIps")]
         public virtual System.Nullable<long> NumIps { get; set; }
 

@@ -708,7 +708,7 @@
    }
   }
  }, 
- "revision": "20201107", 
+ "revision": "20201114", 
  "rootUrl": "https://appengine.googleapis.com/", 
  "schemas": {
   "AuthorizedCertificate": {

@@ -855,8 +855,9 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Customer { get; set; }
 
-                /// <summary>Optional. Additional restrictions when fetching list of devices. [HC
-                /// article](https://support.google.com/a/answer/7549103)</summary>
+                /// <summary>Optional. Additional restrictions when fetching list of devices. For a list of search
+                /// fields, refer to [Mobile device search fields](https://developers.google.com/admin-sdk/directory/v1
+                /// /search-operators). Multiple search fields are separated by the space character.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -1395,8 +1396,9 @@ namespace Google.Apis.CloudIdentity.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Customer { get; set; }
 
-            /// <summary>Optional. Additional restrictions when fetching list of devices. [HC article
-            /// link](https://support.google.com/a/answer/7549103)</summary>
+            /// <summary>Optional. Additional restrictions when fetching list of devices. For a list of search fields,
+            /// refer to [Mobile device search fields](https://developers.google.com/admin-sdk/directory/v1/search-
+            /// operators). Multiple search fields are separated by the space character.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 

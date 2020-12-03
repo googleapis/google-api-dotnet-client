@@ -11695,8 +11695,8 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundImageUrl")]
         public virtual LocalizedProperty BackgroundImageUrl { get; set; }
 
-        /// <summary>This is used only in update requests; if it's set, we use this URL to generate all of the above
-        /// banner URLs.</summary>
+        /// <summary>This is generated when a ChannelBanner.Insert request has succeeded for the given
+        /// channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bannerExternalUrl")]
         public virtual string BannerExternalUrl { get; set; }
 

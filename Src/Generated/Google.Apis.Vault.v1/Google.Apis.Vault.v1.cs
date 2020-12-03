@@ -2800,6 +2800,10 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mailQuery")]
         public virtual HeldMailQuery MailQuery { get; set; }
 
+        /// <summary>Details pertaining to Voice holds. If set, corpus must be Voice.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("voiceQuery")]
+        public virtual HeldVoiceQuery VoiceQuery { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2971,6 +2975,10 @@ namespace Google.Apis.Vault.v1.Data
         /// <summary>The requested export location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
+
+        /// <summary>Option available for voice export.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("voiceOptions")]
+        public virtual VoiceExportOptions VoiceOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3174,6 +3182,18 @@ namespace Google.Apis.Vault.v1.Data
         /// <summary>The org unit's immutable ID as provided by the Admin SDK.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
         public virtual string OrgUnitId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Query options for Voice holds.</summary>
+    public class HeldVoiceQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Data covered by this rule. Should be non-empty. Order does not matter and duplicates will be
+        /// ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coveredData")]
+        public virtual System.Collections.Generic.IList<string> CoveredData { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3524,6 +3544,10 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
 
+        /// <summary>For voice search, specify more options in this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("voiceOptions")]
+        public virtual VoiceOptions VoiceOptions { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -3671,6 +3695,28 @@ namespace Google.Apis.Vault.v1.Data
         /// <summary>The email address of the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The options for voice export.</summary>
+    public class VoiceExportOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The export format for voice export.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportFormat")]
+        public virtual string ExportFormat { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Voice search options</summary>
+    public class VoiceOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Datatypes to search</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coveredData")]
+        public virtual System.Collections.Generic.IList<string> CoveredData { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

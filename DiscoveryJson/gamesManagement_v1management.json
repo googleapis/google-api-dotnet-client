@@ -471,7 +471,7 @@
    }
   }
  }, 
- "revision": "20201112", 
+ "revision": "20201125", 
  "rootUrl": "https://gamesmanagement.googleapis.com/", 
  "schemas": {
   "AchievementResetAllResponse": {

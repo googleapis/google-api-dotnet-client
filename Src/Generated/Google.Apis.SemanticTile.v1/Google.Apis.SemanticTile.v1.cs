@@ -823,9 +823,17 @@ namespace Google.Apis.SemanticTile.v1
 namespace Google.Apis.SemanticTile.v1.Data
 {    
 
-    /// <summary>Represents an area. Used to represent regions such as water, parks, etc.</summary>
+    /// <summary>Represents an area. Used to represent regions such as water, parks, etc. Next ID: 10</summary>
     public class Area : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The z-order of this geometry when rendered on a flat basemap. Geometry with a lower z-order should
+        /// be rendered beneath geometry with a higher z-order. This z-ordering does not imply anything about the
+        /// altitude of the area relative to the ground, but it can be used to prevent z-fighting. Unlike Area.z_order
+        /// this can be used to compare with Line.basemap_z_order, and in fact may yield more accurate rendering (where
+        /// a line may be rendered beneath an area).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basemapZOrder")]
+        public virtual BasemapZOrder BasemapZOrder { get; set; }
+
         /// <summary>True if the polygon is not entirely internal to the feature that it belongs to: that is, some of
         /// the edges are bordering another feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasExternalEdges")]
@@ -868,9 +876,32 @@ namespace Google.Apis.SemanticTile.v1.Data
         /// higher z-order. This z-ordering does not imply anything about the altitude of the line relative to the
         /// ground, but it can be used to prevent z-fighting during rendering on the client. This z-ordering can only be
         /// used to compare areas, and cannot be compared with the z_order field in the Line message. The z-order may be
-        /// negative or zero.</summary>
+        /// negative or zero. Prefer Area.basemap_z_order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zOrder")]
         public virtual System.Nullable<int> ZOrder { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata necessary to determine the ordering of a particular basemap element relative to others. To
+    /// render the basemap correctly, sort by z-plane, then z-grade, then z-within-grade.</summary>
+    public class BasemapZOrder : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The second most significant component of the ordering of a component to be rendered onto the
+        /// basemap.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zGrade")]
+        public virtual System.Nullable<int> ZGrade { get; set; }
+
+        /// <summary>The most significant component of the ordering of a component to be rendered onto the
+        /// basemap.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zPlane")]
+        public virtual System.Nullable<int> ZPlane { get; set; }
+
+        /// <summary>The least significant component of the ordering of a component to be rendered onto the
+        /// basemap.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zWithinGrade")]
+        public virtual System.Nullable<int> ZWithinGrade { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1024,6 +1055,14 @@ namespace Google.Apis.SemanticTile.v1.Data
     /// <summary>Represents a 2D polyline. Used to represent segments such as roads, train tracks, etc.</summary>
     public class Line : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The z-order of this geometry when rendered on a flat basemap. Geometry with a lower z-order should
+        /// be rendered beneath geometry with a higher z-order. This z-ordering does not imply anything about the
+        /// altitude of the area relative to the ground, but it can be used to prevent z-fighting. Unlike Line.z_order
+        /// this can be used to compare with Area.basemap_z_order, and in fact may yield more accurate rendering (where
+        /// a line may be rendered beneath an area).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basemapZOrder")]
+        public virtual BasemapZOrder BasemapZOrder { get; set; }
+
         /// <summary>The vertices present in the polyline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vertexOffsets")]
         public virtual Vertex2DList VertexOffsets { get; set; }
@@ -1033,7 +1072,7 @@ namespace Google.Apis.SemanticTile.v1.Data
         /// it can be used to prevent z-fighting during rendering on the client. In general, larger and more important
         /// road features will have a higher z-order line associated with them. This z-ordering can only be used to
         /// compare lines, and cannot be compared with the z_order field in the Area message. The z-order may be
-        /// negative or zero.</summary>
+        /// negative or zero. Prefer Line.basemap_z_order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zOrder")]
         public virtual System.Nullable<int> ZOrder { get; set; }
 

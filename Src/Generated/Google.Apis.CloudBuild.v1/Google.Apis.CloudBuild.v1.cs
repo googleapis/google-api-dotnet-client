@@ -893,7 +893,7 @@ namespace Google.Apis.CloudBuild.v1
 
                 /// <summary>Cancels a build in progress.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The name of the `Build` to retrieve. Format:
+                /// <param name="name">The name of the `Build` to cancel. Format:
                 /// `projects/{project}/locations/{location}/builds/{build}`</param>
                 public virtual CancelRequest Cancel(Google.Apis.CloudBuild.v1.Data.CancelBuildRequest body, string name)
                 {
@@ -912,7 +912,7 @@ namespace Google.Apis.CloudBuild.v1
                     }
 
 
-                    /// <summary>The name of the `Build` to retrieve. Format:
+                    /// <summary>The name of the `Build` to cancel. Format:
                     /// `projects/{project}/locations/{location}/builds/{build}`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2316,7 +2316,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>The name of the `Build` to retrieve. Format:
+        /// <summary>The name of the `Build` to cancel. Format:
         /// `projects/{project}/locations/{location}/builds/{build}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

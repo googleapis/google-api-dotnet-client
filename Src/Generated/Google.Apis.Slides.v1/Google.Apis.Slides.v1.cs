@@ -2164,7 +2164,7 @@ namespace Google.Apis.Slides.v1.Data
         /// master contain the default text styles and shape properties of all placeholder shapes on notes pages.
         /// Specifically, a `SLIDE_IMAGE` placeholder shape contains the slide thumbnail, and a `BODY` placeholder shape
         /// contains the speaker notes. - The notes master page properties define the common page properties inherited
-        /// by all notes pages. - Any other shapes on the notes master appears on all notes pages. The notes master is
+        /// by all notes pages. - Any other shapes on the notes master appear on all notes pages. The notes master is
         /// read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notesMaster")]
         public virtual Page NotesMaster { get; set; }

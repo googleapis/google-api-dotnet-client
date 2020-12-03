@@ -2085,6 +2085,15 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// device, we don't recommend overriding any of the default values.</summary>
     public class AdvancedSecurityOverrides : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Controls Common Criteria Mode—security standards defined in the Common Criteria for Information
+        /// Technology Security Evaluation (https://www.commoncriteriaportal.org/) (CC). Enabling Common Criteria Mode
+        /// increases certain security components on a device, including AES-GCM encryption of Bluetooth Long Term Keys,
+        /// and Wi-Fi configuration stores.Warning: Common Criteria Mode enforces a strict security model typically only
+        /// required for IT products used in national security systems and other highly sensitive organizations.
+        /// Standard device use may be affected. Only enabled if required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonCriteriaMode")]
+        public virtual string CommonCriteriaMode { get; set; }
+
         /// <summary>The policy for untrusted apps (apps from unknown sources) enforced on the device. Replaces
         /// install_unknown_sources_allowed (deprecated).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("untrustedAppsPolicy")]
@@ -2210,6 +2219,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// are available in AppTrackInfo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessibleTrackIds")]
         public virtual System.Collections.Generic.IList<string> AccessibleTrackIds { get; set; }
+
+        /// <summary>This feature is not generally available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoUpdateMode")]
+        public virtual string AutoUpdateMode { get; set; }
 
         /// <summary>Controls whether the app can communicate with itself across a device’s work and personal profiles,
         /// subject to user consent.</summary>
@@ -2423,6 +2436,19 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Information about Common Criteria Mode—security standards defined in the Common Criteria for
+    /// Information Technology Security Evaluation (https://www.commoncriteriaportal.org/) (CC).This information is only
+    /// available if statusReportingSettings.commonCriteriaModeEnabled is true in the device's policy.</summary>
+    public class CommonCriteriaModeInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether Common Criteria Mode is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonCriteriaModeStatus")]
+        public virtual string CommonCriteriaModeStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A rule declaring which mitigating actions to take when a device is not compliant with its policy. For
     /// every rule, there is always an implicit mitigating action to set policy_compliant to false for the Device
     /// resource, and display a message on the device indicating that the device is not compliant with its policy. Other
@@ -2503,6 +2529,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>The state currently applied to the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appliedState")]
         public virtual string AppliedState { get; set; }
+
+        /// <summary>Information about Common Criteria Mode—security standards defined in the Common Criteria for
+        /// Information Technology Security Evaluation (https://www.commoncriteriaportal.org/) (CC).This information is
+        /// only available if statusReportingSettings.commonCriteriaModeEnabled is true in the device's
+        /// policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonCriteriaModeInfo")]
+        public virtual CommonCriteriaModeInfo CommonCriteriaModeInfo { get; set; }
 
         /// <summary>Device settings information. This information is only available if deviceSettingsEnabled is true in
         /// the device's policy.</summary>
@@ -3511,7 +3544,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("personalApplications")]
         public virtual System.Collections.Generic.IList<PersonalApplicationPolicy> PersonalApplications { get; set; }
 
-        /// <summary>Used together with personal_applications to control how apps in the personal profile are allowed or
+        /// <summary>Used together with personalApplications to control how apps in the personal profile are allowed or
         /// blocked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("personalPlayStoreMode")]
         public virtual string PersonalPlayStoreMode { get; set; }
@@ -3564,8 +3597,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("applications")]
         public virtual System.Collections.Generic.IList<ApplicationPolicy> Applications { get; set; }
 
-        /// <summary>Whether auto time is required, which prevents the user from manually setting the date and
-        /// time.</summary>
+        /// <summary>Whether auto date, time, and time zone are enabled on a company-owned device. If this is set, then
+        /// autoTimeRequired is ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoDateAndTimeZone")]
+        public virtual string AutoDateAndTimeZone { get; set; }
+
+        /// <summary>Whether auto time is required, which prevents the user from manually setting the date and time. If
+        /// autoDateAndTimeZone is set, this field is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoTimeRequired")]
         public virtual System.Nullable<bool> AutoTimeRequired { get; set; }
 
@@ -3683,8 +3721,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kioskCustomization")]
         public virtual KioskCustomization KioskCustomization { get; set; }
 
-        /// <summary>The degree of location detection enabled. The user may change the value unless the user is
-        /// otherwise blocked from accessing device settings.</summary>
+        /// <summary>The degree of location detection enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationMode")]
         public virtual string LocationMode { get; set; }
 
@@ -4161,6 +4198,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Whether app reports are enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicationReportsEnabled")]
         public virtual System.Nullable<bool> ApplicationReportsEnabled { get; set; }
+
+        /// <summary>Whether Common Criteria Mode reporting is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonCriteriaModeEnabled")]
+        public virtual System.Nullable<bool> CommonCriteriaModeEnabled { get; set; }
 
         /// <summary>Whether device settings reporting is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceSettingsEnabled")]

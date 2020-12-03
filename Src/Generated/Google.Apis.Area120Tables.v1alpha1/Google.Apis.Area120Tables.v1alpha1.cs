@@ -77,6 +77,9 @@ namespace Google.Apis.Area120Tables.v1alpha1
             /// <summary>View your Google Spreadsheets</summary>
             public static string SpreadsheetsReadonly = "https://www.googleapis.com/auth/spreadsheets.readonly";
 
+            /// <summary>See, edit, create, and delete your tables in Tables by Area 120</summary>
+            public static string Tables = "https://www.googleapis.com/auth/tables";
+
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Area120 Tables API.</summary>
@@ -97,6 +100,9 @@ namespace Google.Apis.Area120Tables.v1alpha1
 
             /// <summary>View your Google Spreadsheets</summary>
             public const string SpreadsheetsReadonly = "https://www.googleapis.com/auth/spreadsheets.readonly";
+
+            /// <summary>See, edit, create, and delete your tables in Tables by Area 120</summary>
+            public const string Tables = "https://www.googleapis.com/auth/tables";
 
         }
 

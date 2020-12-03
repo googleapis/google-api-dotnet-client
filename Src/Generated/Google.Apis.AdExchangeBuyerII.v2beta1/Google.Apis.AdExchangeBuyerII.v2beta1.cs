@@ -2246,7 +2246,9 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
             /// <summary>Mark the proposal as accepted at the given revision number. If the number does not match the
             /// server's revision number an `ABORTED` error message will be returned. This call updates the
-            /// proposal_state from `PROPOSED` to `BUYER_ACCEPTED`, or from `SELLER_ACCEPTED` to `FINALIZED`.</summary>
+            /// proposal_state from `PROPOSED` to `BUYER_ACCEPTED`, or from `SELLER_ACCEPTED` to `FINALIZED`. Upon
+            /// calling this endpoint, the buyer implicitly agrees to the terms and conditions optionally set within the
+            /// proposal by the publisher.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="accountId">Account ID of the buyer.</param>
             /// <param name="proposalId">The ID of the proposal to
@@ -2258,7 +2260,9 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
             /// <summary>Mark the proposal as accepted at the given revision number. If the number does not match the
             /// server's revision number an `ABORTED` error message will be returned. This call updates the
-            /// proposal_state from `PROPOSED` to `BUYER_ACCEPTED`, or from `SELLER_ACCEPTED` to `FINALIZED`.</summary>
+            /// proposal_state from `PROPOSED` to `BUYER_ACCEPTED`, or from `SELLER_ACCEPTED` to `FINALIZED`. Upon
+            /// calling this endpoint, the buyer implicitly agrees to the terms and conditions optionally set within the
+            /// proposal by the publisher.</summary>
             public class AcceptRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal>
             {
                 /// <summary>Constructs a new Accept request.</summary>
@@ -6707,7 +6711,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("availableEndTime")]
         public virtual object AvailableEndTime { get; set; }
 
-        /// <summary>Optional proposed flight start time of the deal. This will generally be stored in the granularity
+        /// <summary>Optional. Proposed flight start time of the deal. This will generally be stored in the granularity
         /// of one second since deal serving starts at seconds boundary. Any time specified with more granularity (e.g.,
         /// in milliseconds) will be truncated towards the start of time in seconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableStartTime")]
@@ -6722,10 +6726,10 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createProductId")]
         public virtual string CreateProductId { get; set; }
 
-        /// <summary>Optional revision number of the product that the deal was created from. If present on create, and
-        /// the server `product_revision` has advanced sinced the passed-in `create_product_revision`, an `ABORTED`
-        /// error will be returned. Note: This field may be set only when creating the resource. Modifying this field
-        /// while updating the resource will result in an error.</summary>
+        /// <summary>Optional. Revision number of the product that the deal was created from. If present on create, and
+        /// the server `product_revision` has advanced since the passed-in `create_product_revision`, an `ABORTED` error
+        /// will be returned. Note: This field may be set only when creating the resource. Modifying this field while
+        /// updating the resource will result in an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createProductRevision")]
         public virtual System.Nullable<long> CreateProductRevision { get; set; }
 
@@ -8049,6 +8053,10 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>Output only. Contact information for the seller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sellerContacts")]
         public virtual System.Collections.Generic.IList<ContactInformation> SellerContacts { get; set; }
+
+        /// <summary>Output only. The terms and conditions set by the publisher for this proposal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("termsAndConditions")]
+        public virtual string TermsAndConditions { get; set; }
 
         /// <summary>Output only. The time when the proposal was last revised.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
