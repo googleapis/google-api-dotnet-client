@@ -27,9 +27,15 @@ namespace DiscoveryDocPatcher
             try
             {
                 string discoveryDocPath = args[0];
+
                 // No longer required as on 2020-07-09. The offending resource is no longer present at all.
                 // PatchGames(discoveryDocPath);
-                PatchDirectory(discoveryDocPath);
+
+                // No need to generate (or patch) while an internal issue is being fixed.
+                // We'll need to review patching once we have the new discovery doc produced by that fix.
+                // I've let a comment on the script as well.
+                // PatchDirectory(discoveryDocPath);
+
                 PatchDataLabeling(discoveryDocPath);
                 return 0;
             }
