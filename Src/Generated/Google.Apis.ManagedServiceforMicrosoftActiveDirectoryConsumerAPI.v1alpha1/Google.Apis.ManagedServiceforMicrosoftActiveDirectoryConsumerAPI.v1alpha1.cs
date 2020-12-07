@@ -1797,9 +1797,6 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alp
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; }
-
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
         /// apply to the current request. However, a different role binding might grant the same role to one or more of
@@ -1921,6 +1918,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alp
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>If the domain is being changed, it will be placed into the UPDATING state, which indicates that the
+    /// resource is being reconciled. At this point, Get will reflect an intermediate state.</summary>
     public class Domain : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-
@@ -2829,7 +2828,9 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alp
 
     /// <summary>Represents a relationship between two domains which makes it possible for users in one domain to be
     /// authenticated by a dc in another domain. Refer https://docs.microsoft.com/en-us/previous-versions/windows/it-pro
-    /// /windows-server-2008-R2-and-2008/cc731335(v%3dws.10)</summary>
+    /// /windows-server-2008-R2-and-2008/cc731335(v%3dws.10) If the trust is being changed, it will be placed into the
+    /// UPDATING state, which indicates that the resource is being reconciled. At this point, Get will reflect an
+    /// intermediate state.</summary>
     public class Trust : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The time the instance was created.</summary>

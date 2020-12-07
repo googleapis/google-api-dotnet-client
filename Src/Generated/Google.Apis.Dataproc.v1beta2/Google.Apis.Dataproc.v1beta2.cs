@@ -5483,9 +5483,6 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>Associates members with a role.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; }
-
         /// <summary>The condition that is associated with this binding.If the condition evaluates to true, then this
         /// binding applies to the current request.If the condition evaluates to false, then this binding does not apply
         /// to the current request. However, a different role binding might grant the same role to one or more of the
@@ -5973,6 +5970,10 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountScopes")]
         public virtual System.Collections.Generic.IList<string> ServiceAccountScopes { get; set; }
 
+        /// <summary>Optional. Shielded Instance Config for clusters using shielded VMs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
+        public virtual ShieldedInstanceConfig ShieldedInstanceConfig { get; set; }
+
         /// <summary>Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified
         /// with network_uri.A full URL, partial URI, or short name are valid. Examples:
         /// https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0
@@ -6234,6 +6235,10 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>The user-friendly name of the Compute Engine instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceName")]
         public virtual string InstanceName { get; set; }
+
+        /// <summary>The public key used for sharing data with this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicKey")]
+        public virtual string PublicKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7127,6 +7132,25 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual Policy Policy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Shielded Instance Config for clusters using shielded VMs.</summary>
+    public class ShieldedInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Defines whether instances have integrity monitoring enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableIntegrityMonitoring")]
+        public virtual System.Nullable<bool> EnableIntegrityMonitoring { get; set; }
+
+        /// <summary>Optional. Defines whether instances have Secure Boot enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableSecureBoot")]
+        public virtual System.Nullable<bool> EnableSecureBoot { get; set; }
+
+        /// <summary>Optional. Defines whether instances have the vTPM enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableVtpm")]
+        public virtual System.Nullable<bool> EnableVtpm { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

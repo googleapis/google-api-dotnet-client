@@ -1799,9 +1799,6 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; }
-
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
         /// apply to the current request. However, a different role binding might grant the same role to one or more of
@@ -1924,7 +1921,9 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a managed Microsoft Active Directory domain.</summary>
+    /// <summary>If the domain is being changed, it will be placed into the UPDATING state, which indicates that the
+    /// resource is being reconciled. At this point, Get will reflect an intermediate state. Represents a managed
+    /// Microsoft Active Directory domain.</summary>
     public class Domain : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The name of delegated administrator account used to perform Active Directory operations.

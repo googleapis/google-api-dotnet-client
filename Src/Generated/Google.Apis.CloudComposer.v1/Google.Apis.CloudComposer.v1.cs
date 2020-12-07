@@ -604,13 +604,14 @@ namespace Google.Apis.CloudComposer.v1
                     /// the label, include it in `updateMask` and omit its mapping in `environment.labels`. It is an
                     /// error to provide both a mask of this form and the "labels" mask. config.nodeCount Horizontally
                     /// scale the number of nodes in the environment. An integer greater than or equal to 3 must be
-                    /// provided in the `config.nodeCount` field. config.softwareConfig.airflowConfigOverrides Replace
-                    /// all Apache Airflow config overrides. If a replacement config overrides map is not included in
-                    /// `environment`, all config overrides are cleared. It is an error to provide both this mask and a
-                    /// mask specifying one or more individual config overrides.
-                    /// config.softwareConfig.airflowConfigOverrides.section-name Override the Apache Airflow config
-                    /// property name in the section named section, preserving other properties. To delete the property
-                    /// override, include it in `updateMask` and omit its mapping in
+                    /// provided in the `config.nodeCount` field. config.webServerNetworkAccessControl Replace the
+                    /// environment's current WebServerNetworkAccessControl.
+                    /// config.softwareConfig.airflowConfigOverrides Replace all Apache Airflow config overrides. If a
+                    /// replacement config overrides map is not included in `environment`, all config overrides are
+                    /// cleared. It is an error to provide both this mask and a mask specifying one or more individual
+                    /// config overrides. config.softwareConfig.airflowConfigOverrides.section-name Override the Apache
+                    /// Airflow config property name in the section named section, preserving other properties. To
+                    /// delete the property override, include it in `updateMask` and omit its mapping in
                     /// `environment.config.softwareConfig.airflowConfigOverrides`. It is an error to provide both a
                     /// mask of this form and the "config.softwareConfig.airflowConfigOverrides" mask.
                     /// config.softwareConfig.envVariables Replace all environment variables. If a replacement
@@ -704,6 +705,10 @@ namespace Google.Apis.CloudComposer.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Whether or not image versions from old releases should be included.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("includePastReleases", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IncludePastReleases { get; set; }
+
                     /// <summary>The maximum number of image_versions to return.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -734,6 +739,14 @@ namespace Google.Apis.CloudComposer.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("includePastReleases", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includePastReleases",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -982,6 +995,49 @@ namespace Google.Apis.CloudComposer.v1
 namespace Google.Apis.CloudComposer.v1.Data
 {    
 
+    /// <summary>Allowed IP range with user-provided description.</summary>
+    public class AllowedIpRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. User-provided description. It must contain at most 300 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>IP address or range, defined using CIDR notation, of requests that this rule applies to. Examples:
+        /// `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or `2001:0db8:0000:0042:0000:8a2e:0370:7334`. IP range
+        /// prefixes should be properly truncated. For example, `1.2.3.4/24` should be truncated to `1.2.3.0/24`.
+        /// Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are
+    /// either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can
+    /// represent one of the following: * A full date, with non-zero year, month, and day values * A month and day
+    /// value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and
+    /// month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and
+    /// `google.protobuf.Timestamp`.</summary>
+    public class Date : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by
+        /// itself or a year and month where the day isn't significant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
     /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
@@ -1070,6 +1126,11 @@ namespace Google.Apis.CloudComposer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("softwareConfig")]
         public virtual SoftwareConfig SoftwareConfig { get; set; }
 
+        /// <summary>Optional. The network-level access control policy for the Airflow web server. If unspecified, no
+        /// network-level access restrictions will be applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webServerNetworkAccessControl")]
+        public virtual WebServerNetworkAccessControl WebServerNetworkAccessControl { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1118,6 +1179,10 @@ namespace Google.Apis.CloudComposer.v1.Data
     /// <summary>ImageVersion information</summary>
     public class ImageVersion : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether it is impossible to create an environment with the image version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationDisabled")]
+        public virtual System.Nullable<bool> CreationDisabled { get; set; }
+
         /// <summary>The string identifier of the ImageVersion, in the form: "composer-x.y.z-airflow-a.b(.c)"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageVersionId")]
         public virtual string ImageVersionId { get; set; }
@@ -1127,9 +1192,17 @@ namespace Google.Apis.CloudComposer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
         public virtual System.Nullable<bool> IsDefault { get; set; }
 
+        /// <summary>The date of the version release.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseDate")]
+        public virtual Date ReleaseDate { get; set; }
+
         /// <summary>supported python versions</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedPythonVersions")]
         public virtual System.Collections.Generic.IList<string> SupportedPythonVersions { get; set; }
+
+        /// <summary>Whether it is impossible to upgrade an environment running with the image version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeDisabled")]
+        public virtual System.Nullable<bool> UpgradeDisabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1452,6 +1525,17 @@ namespace Google.Apis.CloudComposer.v1.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Network-level access control policy for the Airflow web server.</summary>
+    public class WebServerNetworkAccessControl : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A collection of allowed IP ranges with descriptions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedIpRanges")]
+        public virtual System.Collections.Generic.IList<AllowedIpRange> AllowedIpRanges { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

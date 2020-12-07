@@ -6364,6 +6364,11 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("statements")]
         public virtual System.Collections.Generic.IList<string> Statements { get; set; }
 
+        /// <summary>Output only. When true, indicates that the operation is throttled e.g due to resource constraints.
+        /// When resources become available the operation will resume and this field will be false again.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("throttled")]
+        public virtual System.Nullable<bool> Throttled { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

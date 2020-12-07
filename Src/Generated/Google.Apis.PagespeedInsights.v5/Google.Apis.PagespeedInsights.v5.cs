@@ -272,9 +272,10 @@ namespace Google.Apis.PagespeedInsights.v5
 
         /// <summary>Runs PageSpeed analysis on the page at the specified URL, and returns PageSpeed scores, a list of
         /// suggestions to make that page faster, and other information.</summary>
-        public virtual RunpagespeedRequest Runpagespeed()
+        /// <param name="url">Required. The URL to fetch and analyze</param>
+        public virtual RunpagespeedRequest Runpagespeed(string url)
         {
-            return new RunpagespeedRequest(service);
+            return new RunpagespeedRequest(service, url);
         }
 
         /// <summary>Runs PageSpeed analysis on the page at the specified URL, and returns PageSpeed scores, a list of
@@ -282,11 +283,16 @@ namespace Google.Apis.PagespeedInsights.v5
         public class RunpagespeedRequest : PagespeedInsightsBaseServiceRequest<Google.Apis.PagespeedInsights.v5.Data.PagespeedApiPagespeedResponseV5>
         {
             /// <summary>Constructs a new Runpagespeed request.</summary>
-            public RunpagespeedRequest(Google.Apis.Services.IClientService service) : base(service)
+            public RunpagespeedRequest(Google.Apis.Services.IClientService service, string url) : base(service)
             {
+                Url = url;
                 InitParameters();
             }
 
+
+            /// <summary>Required. The URL to fetch and analyze</summary>
+            [Google.Apis.Util.RequestParameterAttribute("url", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Url { get; private set; }
 
             /// <summary>The captcha token passed when filling out a captcha.</summary>
             [Google.Apis.Util.RequestParameterAttribute("captchaToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -347,10 +353,6 @@ namespace Google.Apis.PagespeedInsights.v5
                 MOBILE,
             }
 
-            /// <summary>Required. The URL to fetch and analyze</summary>
-            [Google.Apis.Util.RequestParameterAttribute("url", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Url { get; set; }
-
             /// <summary>Campaign name for analytics.</summary>
             [Google.Apis.Util.RequestParameterAttribute("utm_campaign", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UtmCampaign { get; set; }
@@ -374,6 +376,14 @@ namespace Google.Apis.PagespeedInsights.v5
             {
                 base.InitParameters();
 
+                RequestParameters.Add("url", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "url",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"(?i)(url:|origin:)?http(s)?://.*",
+                });
                 RequestParameters.Add("captchaToken", new Google.Apis.Discovery.Parameter
                 {
                     Name = "captchaToken",
@@ -396,19 +406,11 @@ namespace Google.Apis.PagespeedInsights.v5
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"[a-zA-Z]+((_|-)[a-zA-Z]+)?",
                 });
                 RequestParameters.Add("strategy", new Google.Apis.Discovery.Parameter
                 {
                     Name = "strategy",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("url", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "url",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,

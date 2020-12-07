@@ -5229,9 +5229,6 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Associates members with a role.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; }
-
         /// <summary>The condition that is associated with this binding.If the condition evaluates to true, then this
         /// binding applies to the current request.If the condition evaluates to false, then this binding does not apply
         /// to the current request. However, a different role binding might grant the same role to one or more of the
@@ -5709,6 +5706,10 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountScopes")]
         public virtual System.Collections.Generic.IList<string> ServiceAccountScopes { get; set; }
 
+        /// <summary>Optional. Shielded Instance Config for clusters using shielded VMs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
+        public virtual ShieldedInstanceConfig ShieldedInstanceConfig { get; set; }
+
         /// <summary>Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified
         /// with network_uri.A full URL, partial URI, or short name are valid. Examples:
         /// https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0
@@ -5959,6 +5960,10 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>The user-friendly name of the Compute Engine instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceName")]
         public virtual string InstanceName { get; set; }
+
+        /// <summary>The public key used for sharing data with this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicKey")]
+        public virtual string PublicKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6820,6 +6825,25 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Shielded Instance Config for clusters using shielded VMs.</summary>
+    public class ShieldedInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Defines whether instances have integrity monitoring enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableIntegrityMonitoring")]
+        public virtual System.Nullable<bool> EnableIntegrityMonitoring { get; set; }
+
+        /// <summary>Optional. Defines whether instances have Secure Boot enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableSecureBoot")]
+        public virtual System.Nullable<bool> EnableSecureBoot { get; set; }
+
+        /// <summary>Optional. Defines whether instances have the vTPM enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableVtpm")]
+        public virtual System.Nullable<bool> EnableVtpm { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Specifies the selection and config of software inside the cluster.</summary>
     public class SoftwareConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7110,6 +7134,18 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createCluster")]
         public virtual ClusterOperation CreateCluster { get; set; }
 
+        /// <summary>Output only. DAG end time, only set for workflows with dag_timeout when DAG ends.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dagEndTime")]
+        public virtual object DagEndTime { get; set; }
+
+        /// <summary>Output only. DAG start time, only set for workflows with dag_timeout when DAG begins.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dagStartTime")]
+        public virtual object DagStartTime { get; set; }
+
+        /// <summary>Output only. The timeout duration for the DAG of jobs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dagTimeout")]
+        public virtual object DagTimeout { get; set; }
+
         /// <summary>Output only. The delete cluster operation metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteCluster")]
         public virtual ClusterOperation DeleteCluster { get; set; }
@@ -7184,6 +7220,14 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>Output only. The time template was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
+
+        /// <summary>Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for
+        /// second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes
+        /// ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is
+        /// running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if
+        /// the workflow was running on a managed cluster, the cluster is deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dagTimeout")]
+        public virtual object DagTimeout { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
