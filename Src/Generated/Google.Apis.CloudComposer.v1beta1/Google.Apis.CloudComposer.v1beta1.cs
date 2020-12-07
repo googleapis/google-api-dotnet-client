@@ -672,6 +672,65 @@ namespace Google.Apis.CloudComposer.v1beta1
                     }
 
                 }
+
+                /// <summary>Restart Airflow web server.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The resource name of the environment to restart the web server for, in the form:
+                /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"</param>
+                public virtual RestartWebServerRequest RestartWebServer(Google.Apis.CloudComposer.v1beta1.Data.RestartWebServerRequest body, string name)
+                {
+                    return new RestartWebServerRequest(service, body, name);
+                }
+
+                /// <summary>Restart Airflow web server.</summary>
+                public class RestartWebServerRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new RestartWebServer request.</summary>
+                    public RestartWebServerRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudComposer.v1beta1.Data.RestartWebServerRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The resource name of the environment to restart the web server for, in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudComposer.v1beta1.Data.RestartWebServerRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "restartWebServer";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:restartWebServer";
+
+                    /// <summary>Initializes RestartWebServer parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+$",
+                        });
+                    }
+
+                }
             }
             /// <summary>Gets the ImageVersions resource.</summary>
             public virtual ImageVersionsResource ImageVersions { get; }
@@ -716,6 +775,10 @@ namespace Google.Apis.CloudComposer.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Whether or not image versions from old releases should be included.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("includePastReleases", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IncludePastReleases { get; set; }
+
                     /// <summary>The maximum number of image_versions to return.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -746,6 +809,14 @@ namespace Google.Apis.CloudComposer.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("includePastReleases", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includePastReleases",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -1025,12 +1096,49 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are
+    /// either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can
+    /// represent one of the following: * A full date, with non-zero year, month, and day values * A month and day
+    /// value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and
+    /// month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and
+    /// `google.protobuf.Timestamp`.</summary>
+    public class Date : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by
+        /// itself or a year and month where the day isn't significant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
     /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
     /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The encryption options for the Composer environment and its dependencies.</summary>
+    public class EncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot
+        /// be updated. If not specified, Google-managed key will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1096,6 +1204,11 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// software.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseConfig")]
         public virtual DatabaseConfig DatabaseConfig { get; set; }
+
+        /// <summary>Optional. The encryption options for the Composer environment and its dependencies. Cannot be
+        /// updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
+        public virtual EncryptionConfig EncryptionConfig { get; set; }
 
         /// <summary>Output only. The Kubernetes Engine cluster used to run this environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeCluster")]
@@ -1176,6 +1289,10 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
     /// <summary>Image Version information</summary>
     public class ImageVersion : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether it is impossible to create an environment with the image version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationDisabled")]
+        public virtual System.Nullable<bool> CreationDisabled { get; set; }
+
         /// <summary>The string identifier of the ImageVersion, in the form: "composer-x.y.z-airflow-a.b(.c)"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageVersionId")]
         public virtual string ImageVersionId { get; set; }
@@ -1185,9 +1302,17 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
         public virtual System.Nullable<bool> IsDefault { get; set; }
 
+        /// <summary>The date of the version release.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseDate")]
+        public virtual Date ReleaseDate { get; set; }
+
         /// <summary>supported python versions</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedPythonVersions")]
         public virtual System.Collections.Generic.IList<string> SupportedPythonVersions { get; set; }
+
+        /// <summary>Whether it is impossible to upgrade an environment running with the image version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeDisabled")]
+        public virtual System.Nullable<bool> UpgradeDisabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1432,6 +1557,13 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("webServerIpv4ReservedRange")]
         public virtual string WebServerIpv4ReservedRange { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Restart Airflow web server.</summary>
+    public class RestartWebServerRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

@@ -2983,11 +2983,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Instance { get; private set; }
 
-                /// <summary>External sync mode</summary>
+                /// <summary>External sync mode.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("syncMode", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<SyncModeEnum> SyncMode { get; set; }
 
-                /// <summary>External sync mode</summary>
+                /// <summary>External sync mode.</summary>
                 public enum SyncModeEnum
                 {
                     /// <summary>Unknown external sync mode, will be defaulted to ONLINE mode</summary>
@@ -4036,6 +4036,21 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Backup context.</summary>
+    public class BackupContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The identifier of the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupId")]
+        public virtual System.Nullable<long> BackupId { get; set; }
+
+        /// <summary>This is always *sql#backupContext*.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>We currently only support backup retention by specifying the number of backups we will
     /// retain.</summary>
     public class BackupRetentionSettings : Google.Apis.Requests.IDirectResponseSchema
@@ -4587,7 +4602,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>Database instance export context.</summary>
     public class ExportContext : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Options for exporting data as CSV.</summary>
+        /// <summary>Options for exporting data as CSV. *MySQL* and *PostgreSQL* instances only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("csvExportOptions")]
         public virtual CsvExportOptionsData CsvExportOptions { get; set; }
 
@@ -4601,7 +4616,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual System.Collections.Generic.IList<string> Databases { get; set; }
 
         /// <summary>The file type for the specified uri. *SQL*: The file contains SQL statements. *CSV*: The file
-        /// contains CSV data.</summary>
+        /// contains CSV data. *BAK*: The file contains backup data for a SQL Server instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
         public virtual string FileType { get; set; }
 
@@ -4627,7 +4642,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
         
 
-        /// <summary>Options for exporting data as CSV.</summary>
+        /// <summary>Options for exporting data as CSV. *MySQL* and *PostgreSQL* instances only.</summary>
         public class CsvExportOptionsData
         {
             /// <summary>The select query used to extract the data.</summary>
@@ -4658,9 +4673,9 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
             public class MysqlExportOptionsData
             {
                 /// <summary>Option to include SQL statement required to set up replication. If set to *1*, the dump
-                /// file includes a CHANGE MASTER TO statement with the binary log coordinates. If set to *2*, the
-                /// CHANGE MASTER TO statement is written as a SQL comment, and has no effect. All other values are
-                /// ignored.</summary>
+                /// file includes a CHANGE MASTER TO statement with the binary log coordinates, and --set-gtid-purged is
+                /// set to ON. If set to *2*, the CHANGE MASTER TO statement is written as a SQL comment and has no
+                /// effect. If set to any value other than *1*, --set-gtid-purged is set to OFF.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("masterData")]
                 public virtual System.Nullable<int> MasterData { get; set; }
 
@@ -4832,6 +4847,32 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
             public virtual string Table { get; set; }
 
         }
+    }    
+
+    /// <summary>Insights configuration. This specifies when Cloud SQL Insights feature is enabled and optional
+    /// configuration.</summary>
+    public class InsightsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether Query Insights feature is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryInsightsEnabled")]
+        public virtual System.Nullable<bool> QueryInsightsEnabled { get; set; }
+
+        /// <summary>Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query
+        /// length more than this field value will be truncated to this value. When unset, query length will be the
+        /// default value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryStringLength")]
+        public virtual System.Nullable<int> QueryStringLength { get; set; }
+
+        /// <summary>Whether Query Insights will record application tags from query when enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordApplicationTags")]
+        public virtual System.Nullable<bool> RecordApplicationTags { get; set; }
+
+        /// <summary>Whether Query Insights will record client address when enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordClientAddress")]
+        public virtual System.Nullable<bool> RecordClientAddress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>Database instance clone request.</summary>
@@ -5161,9 +5202,13 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     }    
 
     /// <summary>An Operation resource. For successful operations that return an Operation resource, only the fields
-    /// relevant to the operation are populated in the resource.</summary>
+    /// relevant to the operation are populated in the resource. Next field: 18</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The context for backup operation, if applicable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupContext")]
+        public virtual BackupContext BackupContext { get; set; }
+
         /// <summary>The time this operation finished in UTC timezone in RFC 3339 format, for example
         /// *2012-11-15T16:19:00.094Z*.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
@@ -5427,6 +5472,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>Deny maintenance periods</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("denyMaintenancePeriods")]
         public virtual System.Collections.Generic.IList<DenyMaintenancePeriod> DenyMaintenancePeriods { get; set; }
+
+        /// <summary>Insights configuration, for now relevant only for Postgres.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insightsConfig")]
+        public virtual InsightsConfig InsightsConfig { get; set; }
 
         /// <summary>The settings for IP Management. This allows to enable or disable the instance IP and manage which
         /// external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation

@@ -1093,6 +1093,14 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
     /// <summary>Face detection annotation.</summary>
     public class GoogleCloudVideointelligenceV1FaceDetectionAnnotation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The thumbnail of a person's face.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbnail")]
+        public virtual string Thumbnail { get; set; }
+
+        /// <summary>The face tracks with attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tracks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1Track> Tracks { get; set; }
+
         /// <summary>Feature version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
@@ -2033,6 +2041,14 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
     /// <summary>Face detection annotation.</summary>
     public class GoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The thumbnail of a person's face.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbnail")]
+        public virtual string Thumbnail { get; set; }
+
+        /// <summary>The face tracks with attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tracks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta2Track> Tracks { get; set; }
+
         /// <summary>Feature version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
@@ -2730,6 +2746,14 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
     /// <summary>Face detection annotation.</summary>
     public class GoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The thumbnail of a person's face.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbnail")]
+        public virtual string Thumbnail { get; set; }
+
+        /// <summary>The face tracks with attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tracks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p1beta1Track> Tracks { get; set; }
+
         /// <summary>Feature version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
@@ -3427,6 +3451,14 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
     /// <summary>Face detection annotation.</summary>
     public class GoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The thumbnail of a person's face.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbnail")]
+        public virtual string Thumbnail { get; set; }
+
+        /// <summary>The face tracks with attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tracks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1Track> Tracks { get; set; }
+
         /// <summary>Feature version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
@@ -4177,6 +4209,14 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
     /// <summary>Face detection annotation.</summary>
     public class GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The thumbnail of a person's face.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbnail")]
+        public virtual string Thumbnail { get; set; }
+
+        /// <summary>The face tracks with attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tracks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1Track> Tracks { get; set; }
+
         /// <summary>Feature version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }

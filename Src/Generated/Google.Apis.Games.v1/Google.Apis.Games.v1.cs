@@ -932,6 +932,79 @@ namespace Google.Apis.Games.v1
 
         }
 
+        /// <summary>Returns a URL for the requested end point type.</summary>
+        public virtual GetEndPointRequest GetEndPoint()
+        {
+            return new GetEndPointRequest(service);
+        }
+
+        /// <summary>Returns a URL for the requested end point type.</summary>
+        public class GetEndPointRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.EndPoint>
+        {
+            /// <summary>Constructs a new GetEndPoint request.</summary>
+            public GetEndPointRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>The application ID from the Google Play developer console.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("applicationId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ApplicationId { get; set; }
+
+            /// <summary>Type of endpoint being requested.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("endPointType", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<EndPointTypeEnum> EndPointType { get; set; }
+
+            /// <summary>Type of endpoint being requested.</summary>
+            public enum EndPointTypeEnum
+            {
+                /// <summary>Default value. This value is unused.</summary>
+                [Google.Apis.Util.StringValueAttribute("END_POINT_TYPE_UNSPECIFIED")]
+                ENDPOINTTYPEUNSPECIFIED,
+                /// <summary>Request a URL to create a new profile.</summary>
+                [Google.Apis.Util.StringValueAttribute("PROFILE_CREATION")]
+                PROFILECREATION,
+                /// <summary>Request a URL for the Settings view.</summary>
+                [Google.Apis.Util.StringValueAttribute("PROFILE_SETTINGS")]
+                PROFILESETTINGS,
+            }
+
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getEndPoint";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "games/v1/applications/getEndPoint";
+
+            /// <summary>Initializes GetEndPoint parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add("applicationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "applicationId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("endPointType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "endPointType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+        }
+
         /// <summary>Indicate that the currently authenticated user is playing your application.</summary>
         public virtual PlayedRequest Played()
         {
@@ -3179,6 +3252,35 @@ namespace Google.Apis.Games.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Hash-like weak identifier of uploaded content bytes (saved game data blob, or cover image). Consistent
+    /// per player per application per hash version. Within the context of a single player/application, it's guaranteed
+    /// that two identical blobs coming from two different uploads will have the same content hash. It's extremely
+    /// likely, though not guaranteed, that if two content hashes are equal, the blobs are identical.</summary>
+    public class ContentHash : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Hash-like digest of the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("digest")]
+        public virtual string Digest { get; set; }
+
+        /// <summary>Version of the Hash encoding algorithm to hash the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<int> Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Container for a URL end point of the requested type.</summary>
+    public class EndPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A URL suitable for loading in a web browser for the requested endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A batch update failure resource.</summary>
     public class EventBatchRecordFailure : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4345,22 +4447,24 @@ namespace Google.Apis.Games.v1.Data
     public class SnapshotCoverImageResource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Hash-like weak identifier of the uploaded image bytes, consistent per player per
-        /// application. Within the context of a single player/application, it's guaranteed that two identical blobs
-        /// coming from two different uploads will have the same content hash. It's extremely likely, though not
-        /// guaranteed, that if two content hashes are equal, the images are identical.</summary>
+        /// application per hash version. Within the context of a single player/application, it's guaranteed that two
+        /// identical images coming from two different uploads will have the same content hash for the same hash
+        /// algorithm version. It's extremely likely, though not guaranteed, that if two content hashes are equal, the
+        /// images are identical. More than one content hash can be returned if more than one hash versions are
+        /// supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentHash")]
-        public virtual string ContentHash { get; set; }
+        public virtual System.Collections.Generic.IList<ContentHash> ContentHash { get; set; }
 
         /// <summary>Output only. A URL the client can use to download the image. May vary across requests, and only
         /// guaranteed to be valid for a short time after it is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadUrl")]
         public virtual string DownloadUrl { get; set; }
 
-        /// <summary>Output only. The height of the image in pixels.</summary>
+        /// <summary>The height of the image in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
         public virtual System.Nullable<int> Height { get; set; }
 
-        /// <summary>Output only. The MIME type of the image.</summary>
+        /// <summary>The MIME type of the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
 
@@ -4372,7 +4476,7 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual string ResourceId { get; set; }
 
-        /// <summary>Output only. The width of the image in pixels.</summary>
+        /// <summary>The width of the image in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
         public virtual System.Nullable<int> Width { get; set; }
 
@@ -4383,12 +4487,13 @@ namespace Google.Apis.Games.v1.Data
     /// <summary>Identifies a snapshot data resource. The data is provided by the game.</summary>
     public class SnapshotDataResource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Hash-like weak identifier of the uploaded blob, consistent per player per application.
-        /// Within the context of a single player/application, it's guaranteed that two identical blobs coming from two
-        /// different uploads will have the same content hash. It's extremely likely, though not guaranteed, that if two
-        /// content hashes are equal, the blobs are identical.</summary>
+        /// <summary>Output only. Hash-like weak identifier of the uploaded blob, consistent per player per application
+        /// per hash version. Within the context of a single player/application, it's guaranteed that two identical
+        /// blobs coming from two different uploads will have the same content hash for the same hash algorithm version.
+        /// It's extremely likely, though not guaranteed, that if two content hashes are equal, the blobs are identical.
+        /// More than one content hash can be returned if more than one hash versions are supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentHash")]
-        public virtual string ContentHash { get; set; }
+        public virtual System.Collections.Generic.IList<ContentHash> ContentHash { get; set; }
 
         /// <summary>Output only. A URL that the client can use to download the blob. May vary across requests, and only
         /// guaranteed to be valid for a short time after it is returned.</summary>
@@ -4403,7 +4508,7 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual string ResourceId { get; set; }
 
-        /// <summary>Size of the saved game blob in bytes.</summary>
+        /// <summary>Output only. Size of the saved game blob in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<long> Size { get; set; }
 

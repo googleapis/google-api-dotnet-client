@@ -16055,11 +16055,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("insertionOrderId")]
         public virtual System.Nullable<long> InsertionOrderId { get; set; }
 
-        /// <summary>The type of insertion order. If this field is unspecified in creation, the value defaults to
-        /// `RTB`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("insertionOrderType")]
-        public virtual string InsertionOrderType { get; set; }
-
         /// <summary>Additional integration details of the insertion order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integrationDetails")]
         public virtual IntegrationDetails IntegrationDetails { get; set; }

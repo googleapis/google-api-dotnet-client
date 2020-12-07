@@ -1254,7 +1254,7 @@
    }
   }
  }, 
- "revision": "20201112", 
+ "revision": "20201201", 
  "rootUrl": "https://privateca.googleapis.com/", 
  "schemas": {
   "AccessUrls": {
