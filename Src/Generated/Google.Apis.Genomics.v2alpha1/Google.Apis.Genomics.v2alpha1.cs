@@ -844,7 +844,7 @@ namespace Google.Apis.Genomics.v2alpha1.Data
 
         /// <summary>An optional name for the container. The container hostname will be set to this name, making it
         /// useful for inter-container communication. The name must contain only upper and lowercase alphanumeric
-        /// characters and hypens and cannot start with a hyphen.</summary>
+        /// characters and hyphens and cannot start with a hyphen.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1027,11 +1027,11 @@ namespace Google.Apis.Genomics.v2alpha1.Data
 
     /// <summary>Carries information about a disk that can be attached to a VM. See
     /// https://cloud.google.com/compute/docs/disks/performance for more information about disk type, size, and
-    /// performance considerations.</summary>
+    /// performance considerations. Specify either `Volume` or `Disk`, but not both.</summary>
     public class Disk : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A user-supplied name for the disk. Used when mounting the disk into actions. The name must contain
-        /// only upper and lowercase alphanumeric characters and hypens and cannot start with a hyphen.</summary>
+        /// only upper and lowercase alphanumeric characters and hyphens and cannot start with a hyphen.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1590,7 +1590,8 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cpuPlatform")]
         public virtual string CpuPlatform { get; set; }
 
-        /// <summary>The list of disks to create and attach to the VM.</summary>
+        /// <summary>The list of disks to create and attach to the VM. Specify either the `volumes[]` field or the
+        /// `disks[]` field, but not both.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<Disk> Disks { get; set; }
 
@@ -1641,7 +1642,8 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual ServiceAccount ServiceAccount { get; set; }
 
-        /// <summary>The list of disks and other storage to create or attach to the VM.</summary>
+        /// <summary>The list of disks and other storage to create or attach to the VM. Specify either the `volumes[]`
+        /// field or the `disks[]` field, but not both.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
         public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; }
 
@@ -1649,7 +1651,8 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Carries information about storage that can be attached to a VM.</summary>
+    /// <summary>Carries information about storage that can be attached to a VM. Specify either `Volume` or `Disk`, but
+    /// not both.</summary>
     public class Volume : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Configuration for a existing disk.</summary>

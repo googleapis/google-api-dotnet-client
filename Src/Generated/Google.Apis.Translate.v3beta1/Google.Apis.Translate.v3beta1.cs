@@ -1583,7 +1583,7 @@ namespace Google.Apis.Translate.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("glossaries")]
         public virtual System.Collections.Generic.IDictionary<string, TranslateTextGlossaryConfig> Glossaries { get; set; }
 
-        /// <summary>Required. Input configurations. The total number of files matched should be <= 1000. The total
+        /// <summary>Required. Input configurations. The total number of files matched should be <= 100. The total
         /// content size should be <= 100M Unicode codepoints. The files must use UTF-8 encoding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputConfigs")]
         public virtual System.Collections.Generic.IList<InputConfig> InputConfigs { get; set; }

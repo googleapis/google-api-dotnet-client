@@ -2809,7 +2809,7 @@ namespace Google.Apis.CloudKMS.v1.Data
     /// <summary>Request message for KeyManagementService.AsymmetricSign.</summary>
     public class AsymmetricSignRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The digest of the data to sign. The digest must be produced with the same digest
+        /// <summary>Optional. The digest of the data to sign. The digest must be produced with the same digest
         /// algorithm as specified by the key version's algorithm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digest")]
         public virtual Digest Digest { get; set; }
@@ -2913,9 +2913,6 @@ namespace Google.Apis.CloudKMS.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; }
-
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
         /// apply to the current request. However, a different role binding might grant the same role to one or more of

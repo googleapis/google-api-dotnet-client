@@ -631,7 +631,7 @@
    }
   }
  }, 
- "revision": "20201201", 
+ "revision": "20201206", 
  "rootUrl": "https://reseller.googleapis.com/", 
  "schemas": {
   "Address": {

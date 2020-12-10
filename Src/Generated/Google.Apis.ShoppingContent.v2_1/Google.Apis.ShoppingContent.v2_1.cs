@@ -10114,15 +10114,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     /// <summary>Label assigned by CSS domain or CSS group to one of its sub-accounts.</summary>
     public class AccountLabel : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Immutable. The ID of account this label belongs to.</summary>
+        /// <summary>Immutable. The ID of account this label belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual System.Nullable<long> AccountId { get; set; }
 
-        /// <summary>Description for this label.</summary>
+        /// <summary>The description of this label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Output only. Immutable. The ID of the label.</summary>
+        /// <summary>Output only. The ID of the label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelId")]
         public virtual System.Nullable<long> LabelId { get; set; }
 
@@ -10485,7 +10485,9 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("linkedAccountId")]
         public virtual string LinkedAccountId { get; set; }
 
-        /// <summary>List of provided services.</summary>
+        /// <summary>Provided services. Acceptable values are: - "`shoppingAdsProductManagement`" - "`shoppingAdsOther`"
+        /// - "`shoppingActionsProductManagement`" - "`shoppingActionsOrderManagement`" - "`shoppingActionsOther`"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IList<string> Services { get; set; }
 
@@ -11964,7 +11966,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual Errors Errors { get; set; }
 
-        /// <summary>The the list of accessible GMB accounts.</summary>
+        /// <summary>The list of accessible GMB accounts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gmbAccounts")]
         public virtual GmbAccounts GmbAccounts { get; set; }
 
@@ -16504,6 +16506,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("offerIdMatcher")]
         public virtual RepricingRuleEligibleOfferMatcherStringMatcher OfferIdMatcher { get; set; }
 
+        /// <summary>When true, the rule won't be applied to offers with active promotions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipWhenOnPromotion")]
+        public virtual System.Nullable<bool> SkipWhenOnPromotion { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -16761,7 +16767,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string DeliveryDate { get; set; }
 
         /// <summary>Type of the return method. Acceptable values are: - "`byMail`" - "`contactCustomerSupport`" -
-        /// "`returnless`" </summary>
+        /// "`returnless`" - "`inStore`" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnMethodType")]
         public virtual string ReturnMethodType { get; set; }
 
@@ -17122,7 +17128,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "`damagedOrDefectiveItem`" - "`expiredItem`" - "`faultyItem`" - "`incorrectItemReceived`" - "`itemMissing`"
         /// - "`qualityNotExpected`" - "`receivedTooLate`" - "`storePackageMissing`" - "`transitPackageMissing`" -
         /// "`unsuccessfulDeliveryUndeliverable`" - "`wrongChargeInStore`" - "`wrongItem`" - "`returns`" -
-        /// "`undeliverable`" - "`refundFromMerchant`" - "`returnLabelShippingFee`" </summary>
+        /// "`undeliverable`" - "`refundFromMerchant`" - "`returnLabelShippingFee`" - "`pspFee`" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 

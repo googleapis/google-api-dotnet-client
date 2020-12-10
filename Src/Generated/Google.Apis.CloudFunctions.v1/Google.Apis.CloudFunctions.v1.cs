@@ -1796,6 +1796,10 @@ namespace Google.Apis.CloudFunctions.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("request")]
         public virtual System.Collections.Generic.IDictionary<string, object> Request { get; set; }
 
+        /// <summary>A field for Firebase function deployments</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceToken")]
+        public virtual string SourceToken { get; set; }
+
         /// <summary>Target of the operation - for example
         /// projects/project-1/locations/region-1/functions/function-1</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]

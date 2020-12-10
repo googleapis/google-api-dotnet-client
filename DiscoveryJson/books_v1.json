@@ -2671,7 +2671,7 @@
    }
   }
  }, 
- "revision": "20201202", 
+ "revision": "20201207", 
  "rootUrl": "https://books.googleapis.com/", 
  "schemas": {
   "Annotation": {

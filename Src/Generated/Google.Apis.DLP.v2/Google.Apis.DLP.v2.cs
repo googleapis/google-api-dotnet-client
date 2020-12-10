@@ -1307,7 +1307,9 @@ namespace Google.Apis.DLP.v2
             {
                 this.service = service;
                 DeidentifyTemplates = new DeidentifyTemplatesResource(service);
+                DlpJobs = new DlpJobsResource(service);
                 InspectTemplates = new InspectTemplatesResource(service);
+                JobTriggers = new JobTriggersResource(service);
                 StoredInfoTypes = new StoredInfoTypesResource(service);
 
             }
@@ -1701,6 +1703,192 @@ namespace Google.Apis.DLP.v2
 
                 }
             }
+            /// <summary>Gets the DlpJobs resource.</summary>
+            public virtual DlpJobsResource DlpJobs { get; }
+
+            /// <summary>The "dlpJobs" collection of methods.</summary>
+            public class DlpJobsResource
+            {
+                private const string Resource = "dlpJobs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DlpJobsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Lists DlpJobs that match the specified filter in the request. See
+                /// https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-
+                /// risk-analysis to learn more.</summary>
+                /// <param name="parent">Required. Parent resource name. The format of this value varies depending on whether you have
+                /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
+                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
+                /// global): `projects/`PROJECT_ID The following example `parent` string specifies a parent project with the identifier
+                /// `example-project`, and specifies the `europe-west3` location for processing data: parent=projects/example-
+                /// project/locations/europe-west3</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists DlpJobs that match the specified filter in the request. See
+                /// https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-
+                /// risk-analysis to learn more.</summary>
+                public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListDlpJobsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. Parent resource name. The format of this value varies depending on whether
+                    /// you have [specified a processing location](https://cloud.google.com/dlp/docs/specifying-
+                    /// location): + Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID +
+                    /// Projects scope, no location specified (defaults to global): `projects/`PROJECT_ID The following
+                    /// example `parent` string specifies a parent project with the identifier `example-project`, and
+                    /// specifies the `europe-west3` location for processing data: parent=projects/example-
+                    /// project/locations/europe-west3</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Allows filtering. Supported syntax: * Filter expressions are made up of one or more
+                    /// restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of
+                    /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator}
+                    /// {value}`. * Supported fields/values for inspect jobs: - `state` -
+                    /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` -
+                    /// DATASTORE|CLOUD_STORAGE|BIGQUERY - `trigger_name` - The resource name of the trigger that
+                    /// created job. - 'end_time` - Corresponds to time the job finished. - 'start_time` - Corresponds
+                    /// to time the job finished. * Supported fields for risk analysis jobs: - `state` -
+                    /// RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to time the job finished. -
+                    /// 'start_time` - Corresponds to time the job finished. * The operator must be `=` or `!=`.
+                    /// Examples: * inspected_storage = cloud_storage AND state = done * inspected_storage =
+                    /// cloud_storage OR inspected_storage = bigquery * inspected_storage = cloud_storage AND (state =
+                    /// done OR state = canceled) * end_time > \"2017-12-12T00:00:00+00:00\" The length of this field
+                    /// should be no more than 500 characters.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Deprecated. This field has no effect.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LocationId { get; set; }
+
+                    /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
+                    /// list is case-insensitive, default sorting order is ascending, redundant space characters are
+                    /// insignificant. Example: `name asc, end_time asc, create_time desc` Supported fields are: -
+                    /// `create_time`: corresponds to time the job was created. - `end_time`: corresponds to time the
+                    /// job ended. - `name`: corresponds to job's name. - `state`: corresponds to `state`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The standard list page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>The type of job. Defaults to `DlpJobType.INSPECT`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<TypeEnum> Type { get; set; }
+
+                    /// <summary>The type of job. Defaults to `DlpJobType.INSPECT`</summary>
+                    public enum TypeEnum
+                    {
+                        /// <summary>Unused</summary>
+                        [Google.Apis.Util.StringValueAttribute("DLP_JOB_TYPE_UNSPECIFIED")]
+                        DLPJOBTYPEUNSPECIFIED,
+                        /// <summary>The job inspected Google Cloud for sensitive data.</summary>
+                        [Google.Apis.Util.StringValueAttribute("INSPECT_JOB")]
+                        INSPECTJOB,
+                        /// <summary>The job executed a Risk Analysis computation.</summary>
+                        [Google.Apis.Util.StringValueAttribute("RISK_ANALYSIS_JOB")]
+                        RISKANALYSISJOB,
+                    }
+
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/dlpJobs";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("locationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "locationId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("type", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "type",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+
+                }
+            }
             /// <summary>Gets the InspectTemplates resource.</summary>
             public virtual InspectTemplatesResource InspectTemplates { get; }
 
@@ -2082,6 +2270,405 @@ namespace Google.Apis.DLP.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^organizations/[^/]+/locations/[^/]+/inspectTemplates/[^/]+$",
+                        });
+                    }
+
+                }
+            }
+            /// <summary>Gets the JobTriggers resource.</summary>
+            public virtual JobTriggersResource JobTriggers { get; }
+
+            /// <summary>The "jobTriggers" collection of methods.</summary>
+            public class JobTriggersResource
+            {
+                private const string Resource = "jobTriggers";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public JobTriggersResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Creates a job trigger to run DLP actions such as scanning storage for sensitive information
+                /// on a set schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn
+                /// more.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Parent resource name. The format of this value varies depending on whether you have
+                /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
+                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
+                /// global): `projects/`PROJECT_ID The following example `parent` string specifies a parent project with the identifier
+                /// `example-project`, and specifies the `europe-west3` location for processing data: parent=projects/example-
+                /// project/locations/europe-west3</param>
+                public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateJobTriggerRequest body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a job trigger to run DLP actions such as scanning storage for sensitive information
+                /// on a set schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn
+                /// more.</summary>
+                public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2JobTrigger>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateJobTriggerRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. Parent resource name. The format of this value varies depending on whether
+                    /// you have [specified a processing location](https://cloud.google.com/dlp/docs/specifying-
+                    /// location): + Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID +
+                    /// Projects scope, no location specified (defaults to global): `projects/`PROJECT_ID The following
+                    /// example `parent` string specifies a parent project with the identifier `example-project`, and
+                    /// specifies the `europe-west3` location for processing data: parent=projects/example-
+                    /// project/locations/europe-west3</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateJobTriggerRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/jobTriggers";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                    }
+
+                }
+
+                /// <summary>Deletes a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn
+                /// more.</summary>
+                /// <param name="name">Required. Resource name of the project and the triggeredJob, for example `projects/dlp-test-
+                /// project/jobTriggers/53234423`.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn
+                /// more.</summary>
+                public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. Resource name of the project and the triggeredJob, for example `projects/dlp-
+                    /// test-project/jobTriggers/53234423`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/jobTriggers/[^/]+$",
+                        });
+                    }
+
+                }
+
+                /// <summary>Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn
+                /// more.</summary>
+                /// <param name="name">Required. Resource name of the project and the triggeredJob, for example `projects/dlp-test-
+                /// project/jobTriggers/53234423`.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn
+                /// more.</summary>
+                public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2JobTrigger>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. Resource name of the project and the triggeredJob, for example `projects/dlp-
+                    /// test-project/jobTriggers/53234423`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/jobTriggers/[^/]+$",
+                        });
+                    }
+
+                }
+
+                /// <summary>Lists job triggers. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn
+                /// more.</summary>
+                /// <param name="parent">Required. Parent resource name. The format of this value varies depending on whether you have
+                /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
+                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
+                /// global): `projects/`PROJECT_ID The following example `parent` string specifies a parent project with the identifier
+                /// `example-project`, and specifies the `europe-west3` location for processing data: parent=projects/example-
+                /// project/locations/europe-west3</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists job triggers. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn
+                /// more.</summary>
+                public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListJobTriggersResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. Parent resource name. The format of this value varies depending on whether
+                    /// you have [specified a processing location](https://cloud.google.com/dlp/docs/specifying-
+                    /// location): + Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID +
+                    /// Projects scope, no location specified (defaults to global): `projects/`PROJECT_ID The following
+                    /// example `parent` string specifies a parent project with the identifier `example-project`, and
+                    /// specifies the `europe-west3` location for processing data: parent=projects/example-
+                    /// project/locations/europe-west3</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Allows filtering. Supported syntax: * Filter expressions are made up of one or more
+                    /// restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of
+                    /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator}
+                    /// {value}`. * Supported fields/values for inspect jobs: - `status` - HEALTHY|PAUSED|CANCELLED -
+                    /// `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted
+                    /// timestamp, surrounded by quotation marks. Nanoseconds are ignored. - 'error_count' - Number of
+                    /// errors that have occurred while running. * The operator must be `=` or `!=` for status and
+                    /// inspected_storage. Examples: * inspected_storage = cloud_storage AND status = HEALTHY *
+                    /// inspected_storage = cloud_storage OR inspected_storage = bigquery * inspected_storage =
+                    /// cloud_storage AND (state = PAUSED OR state = HEALTHY) * last_run_time >
+                    /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more than 500
+                    /// characters.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Deprecated. This field has no effect.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LocationId { get; set; }
+
+                    /// <summary>Comma separated list of triggeredJob fields to order by, followed by `asc` or `desc`
+                    /// postfix. This list is case-insensitive, default sorting order is ascending, redundant space
+                    /// characters are insignificant. Example: `name asc,update_time, create_time desc` Supported fields
+                    /// are: - `create_time`: corresponds to time the JobTrigger was created. - `update_time`:
+                    /// corresponds to time the JobTrigger was last updated. - `last_run_time`: corresponds to the last
+                    /// time the JobTrigger ran. - `name`: corresponds to JobTrigger's name. - `display_name`:
+                    /// corresponds to JobTrigger's display name. - `status`: corresponds to JobTrigger's
+                    /// status.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>Size of the page, can be limited by a server.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Page token to continue retrieval. Comes from previous call to ListJobTriggers.
+                    /// `order_by` field must not change for subsequent calls.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/jobTriggers";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("locationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "locationId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+
+                }
+
+                /// <summary>Updates a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn
+                /// more.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. Resource name of the project and the triggeredJob, for example `projects/dlp-test-
+                /// project/jobTriggers/53234423`.</param>
+                public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateJobTriggerRequest body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn
+                /// more.</summary>
+                public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2JobTrigger>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateJobTriggerRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. Resource name of the project and the triggeredJob, for example `projects/dlp-
+                    /// test-project/jobTriggers/53234423`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateJobTriggerRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/jobTriggers/[^/]+$",
                         });
                     }
 
@@ -5864,8 +6451,8 @@ namespace Google.Apis.DLP.v2
 
                 }
 
-                /// <summary>Inspect hybrid content and store findings to a job. To review the findings inspect the job.
-                /// Inspection will occur asynchronously. Early access feature is in a pre-release state and might
+                /// <summary>Inspect hybrid content and store findings to a job. To review the findings, inspect the
+                /// job. Inspection will occur asynchronously. Early access feature is in a pre-release state and might
                 /// change or have limited support. For more information, see https://cloud.google.com/products#product-
                 /// launch-stages.</summary>
                 /// <param name="body">The body of the request.</param>
@@ -5876,8 +6463,8 @@ namespace Google.Apis.DLP.v2
                     return new HybridInspectRequest(service, body, name);
                 }
 
-                /// <summary>Inspect hybrid content and store findings to a job. To review the findings inspect the job.
-                /// Inspection will occur asynchronously. Early access feature is in a pre-release state and might
+                /// <summary>Inspect hybrid content and store findings to a job. To review the findings, inspect the
+                /// job. Inspection will occur asynchronously. Early access feature is in a pre-release state and might
                 /// change or have limited support. For more information, see https://cloud.google.com/products#product-
                 /// launch-stages.</summary>
                 public class HybridInspectRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2HybridInspectResponse>
@@ -8549,7 +9136,7 @@ namespace Google.Apis.DLP.v2.Data
     /// metrics or inspecting Google Cloud Storage.</summary>
     public class GooglePrivacyDlpV2CreateDlpJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Set to control what and how to inspect.</summary>
+        /// <summary>An inspection job scans a storage repository for InfoTypes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectJob")]
         public virtual GooglePrivacyDlpV2InspectJobConfig InspectJob { get; set; }
 
@@ -8563,7 +9150,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; }
 
-        /// <summary>Set to choose what metric to calculate.</summary>
+        /// <summary>A risk analysis job calculates re-identification risk metrics for a BigQuery table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("riskJob")]
         public virtual GooglePrivacyDlpV2RiskAnalysisJobConfig RiskJob { get; set; }
 
@@ -9857,7 +10444,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestedOptions")]
         public virtual GooglePrivacyDlpV2RequestedOptions RequestedOptions { get; set; }
 
-        /// <summary>A summary of the outcome of this inspect job.</summary>
+        /// <summary>A summary of the outcome of this inspection job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
         public virtual GooglePrivacyDlpV2Result Result { get; set; }
 

@@ -296,7 +296,7 @@
    }
   }
  }, 
- "revision": "20201203", 
+ "revision": "20201208", 
  "rootUrl": "https://firebaseml.googleapis.com/", 
  "schemas": {
   "Empty": {

@@ -1699,6 +1699,10 @@ namespace Google.Apis.CloudFilestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Nfs Export Options. There is a limit of 10 export options per file share.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nfsExportOptions")]
+        public virtual System.Collections.Generic.IList<NfsExportOptions> NfsExportOptions { get; set; }
+
         /// <summary>The resource name of the backup, in the format
         /// projects/{project_number}/locations/{location_id}/backups/{backup_id}, that this file share has been
         /// restored from.</summary>
@@ -2195,6 +2199,42 @@ namespace Google.Apis.CloudFilestore.v1.Data
         /// selected VPC network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservedIpRange")]
         public virtual string ReservedIpRange { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>NFS export options specifications.</summary>
+    public class NfsExportOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Either READ_ONLY, for allowing only read requests on the exported directory, or READ_WRITE, for
+        /// allowing both read and write requests. The default is READ_WRITE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessMode")]
+        public virtual string AccessMode { get; set; }
+
+        /// <summary>An integer representing the anonymous group id with a default value of 65534. Anon_gid may only be
+        /// set with squash_mode of ROOT_SQUASH. An error will be returned if this field is specified for other
+        /// squash_mode settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("anonGid")]
+        public virtual System.Nullable<long> AnonGid { get; set; }
+
+        /// <summary>An integer representing the anonymous user id with a default value of 65534. Anon_uid may only be
+        /// set with squash_mode of ROOT_SQUASH. An error will be returned if this field is specified for other
+        /// squash_mode settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("anonUid")]
+        public virtual System.Nullable<long> AnonUid { get; set; }
+
+        /// <summary>List of either an IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or CIDR
+        /// ranges in the format {octet 1}.{octet 2}.{octet 3}.{octet 4}/{mask size} which may mount the file share.
+        /// Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
+        /// The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipRanges")]
+        public virtual System.Collections.Generic.IList<string> IpRanges { get; set; }
+
+        /// <summary>Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not
+        /// allowing root access. The default is NO_ROOT_SQUASH.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("squashMode")]
+        public virtual string SquashMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

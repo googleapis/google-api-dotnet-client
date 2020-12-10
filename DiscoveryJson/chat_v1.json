@@ -512,7 +512,7 @@
    }
   }
  }, 
- "revision": "20201127", 
+ "revision": "20201202", 
  "rootUrl": "https://chat.googleapis.com/", 
  "schemas": {
   "ActionParameter": {

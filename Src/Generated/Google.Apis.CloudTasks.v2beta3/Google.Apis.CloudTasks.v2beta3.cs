@@ -889,6 +889,13 @@ namespace Google.Apis.CloudTasks.v2beta3
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>Optional. Read mask is used for a more granular control over what the API returns. If
+                    /// the mask is not present all fields will be returned except [Queue.stats], if the mask is set to
+                    /// "*" all fields including [Queue.stats] will be returned, otherwise only the fields explicitly
+                    /// specified in the mask will be returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object ReadMask { get; set; }
+
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
@@ -911,6 +918,14 @@ namespace Google.Apis.CloudTasks.v2beta3
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
+                        });
+                        RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "readMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
 
@@ -1027,6 +1042,13 @@ namespace Google.Apis.CloudTasks.v2beta3
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>Optional. Read mask is used for a more granular control on the queues that the API
+                    /// returns. If the mask is not present all fields will be returned except [Queue.stats], if the
+                    /// mask is set to "*" all fields including [Queue.stats] will be returned, otherwise only the
+                    /// fields explicitly specified in the mask will be returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object ReadMask { get; set; }
+
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -1069,6 +1091,14 @@ namespace Google.Apis.CloudTasks.v2beta3
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "readMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2195,6 +2225,26 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
 
     }    
 
+    /// <summary>Pull Message. This proto can only be used for tasks in a queue which has PULL type. It currently exists
+    /// for backwards compatibility with the App Engine Task Queue SDK. This message type maybe returned with methods
+    /// list and get, when the response view is FULL.</summary>
+    public class PullMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A data payload consumed by the worker to execute the task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
+        public virtual string Payload { get; set; }
+
+        /// <summary>The tasks's tag. The tag is less than 500 characters. SDK compatibility: Although the SDK allows
+        /// tags to be either string or [bytes](https://cloud.google.com/appengine/docs/standard/java/javadoc/com/google
+        /// /appengine/api/taskqueue/TaskOptions.html#tag-byte:A-), only UTF-8 encoded tags can be used in Cloud Tasks.
+        /// If a tag isn't UTF-8 encoded, the tag will be empty when the task is returned by Cloud Tasks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request message for PurgeQueue.</summary>
     public class PurgeQueueRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2264,11 +2314,50 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>Output only. The realtime, informational statistics for a queue. In order to receive the statistics
+        /// the caller should include this field in the FieldMask.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual QueueStats Stats { get; set; }
+
         /// <summary>Immutable. The type of a queue (push or pull). `Queue.type` is an immutable property of the queue
         /// that is set at the queue creation time. When left unspecified, the default value of `PUSH` is
         /// selected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Statistics for a queue.</summary>
+    public class QueueStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The number of requests that the queue has dispatched but has not received a reply for
+        /// yet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("concurrentDispatchesCount")]
+        public virtual System.Nullable<long> ConcurrentDispatchesCount { get; set; }
+
+        /// <summary>Output only. The current maximum number of tasks per second executed by the queue. The maximum
+        /// value of this variable is controlled by the RateLimits of the Queue. However, this value could be less to
+        /// avoid overloading the endpoints tasks in the queue are targeting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveExecutionRate")]
+        public virtual System.Nullable<double> EffectiveExecutionRate { get; set; }
+
+        /// <summary>Output only. The number of tasks that the queue has dispatched and received a reply for during the
+        /// last minute. This variable counts both successful and non-successful executions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executedLastMinuteCount")]
+        public virtual System.Nullable<long> ExecutedLastMinuteCount { get; set; }
+
+        /// <summary>Output only. An estimation of the nearest time in the future where a task in the queue is scheduled
+        /// to be executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oldestEstimatedArrivalTime")]
+        public virtual object OldestEstimatedArrivalTime { get; set; }
+
+        /// <summary>Output only. An estimation of the number of tasks in the queue, that is, the tasks in the queue
+        /// that haven't been executed, the tasks in the queue which the queue has dispatched but has not yet received a
+        /// reply for, and the failed tasks that the queue is retrying.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tasksCount")]
+        public virtual System.Nullable<long> TasksCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2503,6 +2592,13 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
         /// ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Pull Message contained in a task in a PULL queue type. This payload type cannot be explicitly set
+        /// through Cloud Tasks API. Its purpose, currently is to provide backward compatibility with App Engine Task
+        /// Queue [pull](https://cloud.google.com/appengine/docs/standard/java/taskqueue/pull/) queues to provide a way
+        /// to inspect contents of pull tasks through the CloudTasks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pullMessage")]
+        public virtual PullMessage PullMessage { get; set; }
 
         /// <summary>Output only. The number of attempts which have received a response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseCount")]
