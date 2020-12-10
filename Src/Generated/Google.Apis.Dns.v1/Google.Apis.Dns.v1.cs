@@ -2543,6 +2543,11 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reverseLookupConfig")]
         public virtual ManagedZoneReverseLookupConfig ReverseLookupConfig { get; set; }
 
+        /// <summary>This field links to the associated service directory namespace. This field should not be set for
+        /// public zones or forwarding zones.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceDirectoryConfig")]
+        public virtual ManagedZoneServiceDirectoryConfig ServiceDirectoryConfig { get; set; }
+
         /// <summary>The zone's visibility: public zones are exposed to the Internet, while private zones are visible
         /// only to Virtual Private Cloud resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
@@ -2698,6 +2703,40 @@ namespace Google.Apis.Dns.v1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains information about Service Directory-backed zones.</summary>
+    public class ManagedZoneServiceDirectoryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>Contains information about the namespace associated with the zone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
+        public virtual ManagedZoneServiceDirectoryConfigNamespace Namespace__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ManagedZoneServiceDirectoryConfigNamespace : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time that the namespace backing this zone was deleted, empty string if it still exists. This is
+        /// in RFC3339 text format. Output only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletionTime")]
+        public virtual string DeletionTime { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>The fully qualified URL of the namespace associated with the zone. This should be formatted like ht
+        /// tps://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}</sum
+        /// mary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespaceUrl")]
+        public virtual string NamespaceUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

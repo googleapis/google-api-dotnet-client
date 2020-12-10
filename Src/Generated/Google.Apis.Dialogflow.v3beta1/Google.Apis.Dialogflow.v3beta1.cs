@@ -294,6 +294,7 @@ namespace Google.Apis.Dialogflow.v3beta1
                 this.service = service;
                 Agents = new AgentsResource(service);
                 Operations = new OperationsResource(service);
+                SecuritySettings = new SecuritySettingsResource(service);
 
             }
 
@@ -5420,6 +5421,336 @@ namespace Google.Apis.Dialogflow.v3beta1
 
                 }
             }
+            /// <summary>Gets the SecuritySettings resource.</summary>
+            public virtual SecuritySettingsResource SecuritySettings { get; }
+
+            /// <summary>The "securitySettings" collection of methods.</summary>
+            public class SecuritySettingsResource
+            {
+                private const string Resource = "securitySettings";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SecuritySettingsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Create security settings in the specified location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The location to create an SecuritySettings for. Format:
+                /// `projects//locations/`.</param>
+                public virtual CreateRequest Create(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1SecuritySettings body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Create security settings in the specified location.</summary>
+                public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1SecuritySettings>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1SecuritySettings body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The location to create an SecuritySettings for. Format:
+                    /// `projects//locations/`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1SecuritySettings Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v3beta1/{+parent}/securitySettings";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+
+                }
+
+                /// <summary>Deletes the specified SecuritySettings.</summary>
+                /// <param name="name">Required. The name of the SecuritySettings to delete. Format:
+                /// `projects//locations//securitySettings/`.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes the specified SecuritySettings.</summary>
+                public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The name of the SecuritySettings to delete. Format:
+                    /// `projects//locations//securitySettings/`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v3beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/securitySettings/[^/]+$",
+                        });
+                    }
+
+                }
+
+                /// <summary>Retrieves the specified SecuritySettings. The returned settings may be stale by up to 1
+                /// minute.</summary>
+                /// <param name="name">Required. Resource name of the settings. Format:
+                /// `projects//locations//securitySettings/`.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Retrieves the specified SecuritySettings. The returned settings may be stale by up to 1
+                /// minute.</summary>
+                public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1SecuritySettings>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. Resource name of the settings. Format:
+                    /// `projects//locations//securitySettings/`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v3beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/securitySettings/[^/]+$",
+                        });
+                    }
+
+                }
+
+                /// <summary>Returns the list of all security settings in the specified location.</summary>
+                /// <param name="parent">Required. The location to list all security settings for. Format:
+                /// `projects//locations/`.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Returns the list of all security settings in the specified location.</summary>
+                public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ListSecuritySettingsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The location to list all security settings for. Format:
+                    /// `projects//locations/`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>The maximum number of items to return in a single page. By default 20 and at most
+                    /// 100.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The next_page_token value returned from a previous list request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v3beta1/{+parent}/securitySettings";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+
+                }
+
+                /// <summary>Updates the specified SecuritySettings.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. Resource name of the settings. Format:
+                /// `projects//locations//securitySettings/`.</param>
+                public virtual PatchRequest Patch(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1SecuritySettings body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates the specified SecuritySettings.</summary>
+                public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1SecuritySettings>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1SecuritySettings body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. Resource name of the settings. Format:
+                    /// `projects//locations//securitySettings/`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Required. The mask to control which fields get updated. If the mask is not present, all
+                    /// fields will be updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1SecuritySettings Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v3beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/securitySettings/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+
+                }
+            }
         }
         /// <summary>Gets the Operations resource.</summary>
         public virtual OperationsResource Operations { get; }
@@ -5652,6 +5983,430 @@ namespace Google.Apis.Dialogflow.v3beta1
 
 namespace Google.Apis.Dialogflow.v3beta1.Data
 {    
+
+    /// <summary>Metadata associated with the long running operation for Versions.CreateVersion.</summary>
+    public class GoogleCloudDialogflowCxV3CreateVersionOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the created version. Format: `projects//locations//agents//flows//versions/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for Agents.ExportAgent.</summary>
+    public class GoogleCloudDialogflowCxV3ExportAgentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Uncompressed raw byte content for agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentContent")]
+        public virtual string AgentContent { get; set; }
+
+        /// <summary>The URI to a file containing the exported agent. This field is populated only if `agent_uri` is
+        /// specified in ExportAgentRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
+        public virtual string AgentUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents page information communicated to and from the webhook.</summary>
+    public class GoogleCloudDialogflowCxV3PageInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Always present for WebhookRequest. Ignored for WebhookResponse. The unique identifier of the
+        /// current page. Format: `projects//locations//agents//flows//pages/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentPage")]
+        public virtual string CurrentPage { get; set; }
+
+        /// <summary>Optional for both WebhookRequest and WebhookResponse. Information about the form.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("formInfo")]
+        public virtual GoogleCloudDialogflowCxV3PageInfoFormInfo FormInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents form information.</summary>
+    public class GoogleCloudDialogflowCxV3PageInfoFormInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional for both WebhookRequest and WebhookResponse. The parameters contained in the form. Note
+        /// that the webhook cannot add or remove any form parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterInfo")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo> ParameterInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents parameter information.</summary>
+    public class GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Always present for WebhookRequest. Required for WebhookResponse. The human-readable name of the
+        /// parameter, unique within the form. This field cannot be modified by the webhook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional for WebhookRequest. Ignored for WebhookResponse. Indicates if the parameter value was just
+        /// collected on the last conversation turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("justCollected")]
+        public virtual System.Nullable<bool> JustCollected { get; set; }
+
+        /// <summary>Optional for both WebhookRequest and WebhookResponse. Indicates whether the parameter is required.
+        /// Optional parameters will not trigger prompts; however, they are filled if the user specifies them. Required
+        /// parameters must be filled before form filling concludes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("required")]
+        public virtual System.Nullable<bool> Required { get; set; }
+
+        /// <summary>Always present for WebhookRequest. Required for WebhookResponse. The state of the parameter. This
+        /// field can be set to INVALID by the webhook to invalidate the parameter; other values set by the webhook will
+        /// be ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Optional for both WebhookRequest and WebhookResponse. The value of the parameter. This field can be
+        /// set by the webhook to change the parameter value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual object Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a response message that can be returned by a conversational agent. Response messages are
+    /// also used for output audio synthesis. The approach is as follows: * If at least one OutputAudioText response is
+    /// present, then all OutputAudioText responses are linearly concatenated, and the result is used for output audio
+    /// synthesis. * If the OutputAudioText responses are a mixture of text and SSML, then the concatenated result is
+    /// treated as SSML; otherwise, the result is treated as either text or SSML as appropriate. The agent designer
+    /// should ideally use either text or SSML consistently throughout the bot design. * Otherwise, all Text responses
+    /// are linearly concatenated, and the result is used for output audio synthesis. This approach allows for more
+    /// sophisticated user experience scenarios, where the text displayed to the user may differ from what is
+    /// heard.</summary>
+    public class GoogleCloudDialogflowCxV3ResponseMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates that the conversation succeeded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationSuccess")]
+        public virtual GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess ConversationSuccess { get; set; }
+
+        /// <summary>Output only. A signal that indicates the interaction with the Dialogflow agent has ended. This
+        /// message is generated by Dialogflow only when the conversation reaches `END_SESSION` or `END_PAGE` page. It
+        /// is not supposed to be defined by the user. It's guaranteed that there is at most one such message in each
+        /// response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endInteraction")]
+        public virtual GoogleCloudDialogflowCxV3ResponseMessageEndInteraction EndInteraction { get; set; }
+
+        /// <summary>Hands off conversation to a human agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("liveAgentHandoff")]
+        public virtual GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff LiveAgentHandoff { get; set; }
+
+        /// <summary>Output only. An audio response message composed of both the synthesized Dialogflow agent responses
+        /// and responses defined via play_audio. This message is generated by Dialogflow only and not supposed to be
+        /// defined by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mixedAudio")]
+        public virtual GoogleCloudDialogflowCxV3ResponseMessageMixedAudio MixedAudio { get; set; }
+
+        /// <summary>A text or ssml response that is preferentially used for TTS output audio synthesis, as described in
+        /// the comment on the ResponseMessage message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputAudioText")]
+        public virtual GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText OutputAudioText { get; set; }
+
+        /// <summary>Returns a response containing a custom, platform-specific payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
+
+        /// <summary>Signal that the client should play an audio clip hosted at a client-specific URI. Dialogflow uses
+        /// this to construct mixed_audio. However, Dialogflow itself does not try to read or process the URI in any
+        /// way.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playAudio")]
+        public virtual GoogleCloudDialogflowCxV3ResponseMessagePlayAudio PlayAudio { get; set; }
+
+        /// <summary>Returns a text response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual GoogleCloudDialogflowCxV3ResponseMessageText Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to
+    /// it about. Dialogflow only uses this to determine which conversations should be counted as successful and doesn't
+    /// process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to
+    /// the conversation end page as successful even if they don't return ConversationSuccess. You may set this, for
+    /// example: * In the entry_fulfillment of a Page if entering the page indicates that the conversation succeeded. *
+    /// In a webhook response when you determine that you handled the customer issue.</summary>
+    public class GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Custom metadata. Dialogflow doesn't impose any structure on this.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Indicates that interaction with the Dialogflow agent has ended. This message is generated by Dialogflow
+    /// only and not supposed to be defined by the user.</summary>
+    public class GoogleCloudDialogflowCxV3ResponseMessageEndInteraction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Indicates that the conversation should be handed off to a live agent. Dialogflow only uses this to
+    /// determine which conversations were handed off to a human agent for measurement purposes. What else to do with
+    /// this signal is up to you and your handoff procedures. You may set this, for example: * In the entry_fulfillment
+    /// of a Page if entering the page indicates something went extremely wrong in the conversation. * In a webhook
+    /// response when you determine that the customer issue can only be handled by a human.</summary>
+    public class GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Custom metadata for your handoff procedure. Dialogflow doesn't impose any structure on
+        /// this.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents an audio message that is composed of both segments synthesized from the Dialogflow agent
+    /// prompts and ones hosted externally at the specified URIs. The external URIs are specified via play_audio. This
+    /// message is generated by Dialogflow only and not supposed to be defined by the user.</summary>
+    public class GoogleCloudDialogflowCxV3ResponseMessageMixedAudio : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Segments this audio response is composed of.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment> Segments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents one segment of audio.</summary>
+    public class GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Whether the playback of this segment can be interrupted by the end user's speech and
+        /// the client should then start the next Dialogflow request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowPlaybackInterruption")]
+        public virtual System.Nullable<bool> AllowPlaybackInterruption { get; set; }
+
+        /// <summary>Raw audio synthesized from the Dialogflow agent's response using the output config specified in the
+        /// request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audio")]
+        public virtual string Audio { get; set; }
+
+        /// <summary>Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not
+        /// impose any validation on it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the
+    /// comment on the ResponseMessage message.</summary>
+    public class GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Whether the playback of this message can be interrupted by the end user's speech and
+        /// the client can then starts the next Dialogflow request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowPlaybackInterruption")]
+        public virtual System.Nullable<bool> AllowPlaybackInterruption { get; set; }
+
+        /// <summary>The SSML text to be synthesized. For more information, see [SSML](/speech/text-to-
+        /// speech/docs/ssml).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ssml")]
+        public virtual string Ssml { get; set; }
+
+        /// <summary>The raw text to be synthesized.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Specifies an audio clip to be played by the client as part of the response.</summary>
+    public class GoogleCloudDialogflowCxV3ResponseMessagePlayAudio : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Whether the playback of this message can be interrupted by the end user's speech and
+        /// the client can then starts the next Dialogflow request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowPlaybackInterruption")]
+        public virtual System.Nullable<bool> AllowPlaybackInterruption { get; set; }
+
+        /// <summary>Required. URI of the audio clip. Dialogflow does not impose any validation on this value. It is
+        /// specific to the client that reads it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioUri")]
+        public virtual string AudioUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The text response message.</summary>
+    public class GoogleCloudDialogflowCxV3ResponseMessageText : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Whether the playback of this message can be interrupted by the end user's speech and
+        /// the client can then starts the next Dialogflow request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowPlaybackInterruption")]
+        public virtual System.Nullable<bool> AllowPlaybackInterruption { get; set; }
+
+        /// <summary>Required. A collection of text responses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual System.Collections.Generic.IList<string> Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents session information communicated to and from the webhook.</summary>
+    public class GoogleCloudDialogflowCxV3SessionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional for WebhookRequest. Optional for WebhookResponse. All parameters collected from forms and
+        /// intents during the session. Parameters can be created, updated, or removed by the webhook. To remove a
+        /// parameter from the session, the webhook should explicitly set the parameter value to null in
+        /// WebhookResponse. The map is keyed by parameters' display names.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
+
+        /// <summary>Always present for WebhookRequest. Ignored for WebhookResponse. The unique identifier of the
+        /// session. This field can be used by the webhook to identify a user. Format:
+        /// `projects//locations//agents//sessions/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("session")]
+        public virtual string Session { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request message for a webhook call.</summary>
+    public class GoogleCloudDialogflowCxV3WebhookRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Always present. The unique identifier of the DetectIntentResponse that will be returned to the API
+        /// caller.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectIntentResponseId")]
+        public virtual string DetectIntentResponseId { get; set; }
+
+        /// <summary>Always present. Information about the fulfillment that triggered this webhook call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentInfo")]
+        public virtual GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo FulfillmentInfo { get; set; }
+
+        /// <summary>Information about the last matched intent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentInfo")]
+        public virtual GoogleCloudDialogflowCxV3WebhookRequestIntentInfo IntentInfo { get; set; }
+
+        /// <summary>The list of rich message responses to present to the user. Webhook can choose to append or replace
+        /// this list in WebhookResponse.fulfillment_response;</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3ResponseMessage> Messages { get; set; }
+
+        /// <summary>Information about page status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
+        public virtual GoogleCloudDialogflowCxV3PageInfo PageInfo { get; set; }
+
+        /// <summary>Custom data set in QueryParameters.payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
+
+        /// <summary>Information about session status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionInfo")]
+        public virtual GoogleCloudDialogflowCxV3SessionInfo SessionInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents fulfillment information communicated to the webhook.</summary>
+    public class GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Always present. The tag used to identify which fulfillment is being called.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents intent information communicated to the webhook.</summary>
+    public class GoogleCloudDialogflowCxV3WebhookRequestIntentInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Always present. The unique identifier of the last matched intent. Format:
+        /// `projects//locations//agents//intents/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastMatchedIntent")]
+        public virtual string LastMatchedIntent { get; set; }
+
+        /// <summary>Parameters identified as a result of intent matching. This is a map of the name of the identified
+        /// parameter to the value of the parameter identified from the user's utterance. All parameters defined in the
+        /// matched intent that are identified will be surfaced here.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue> Parameters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a value for an intent parameter.</summary>
+    public class GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Always present. Original text value extracted from user utterance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalValue")]
+        public virtual string OriginalValue { get; set; }
+
+        /// <summary>Always present. Structured value for the parameter extracted from user utterance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedValue")]
+        public virtual object ResolvedValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for a webhook call.</summary>
+    public class GoogleCloudDialogflowCxV3WebhookResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fulfillment response to send to the user. This field can be omitted by the webhook if it does
+        /// not intend to send any response to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fulfillmentResponse")]
+        public virtual GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse FulfillmentResponse { get; set; }
+
+        /// <summary>Information about page status. This field can be omitted by the webhook if it does not intend to
+        /// modify page status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
+        public virtual GoogleCloudDialogflowCxV3PageInfo PageInfo { get; set; }
+
+        /// <summary>Value to append directly to QueryResult.webhook_payloads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
+
+        /// <summary>Information about session status. This field can be omitted by the webhook if it does not intend to
+        /// modify session status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionInfo")]
+        public virtual GoogleCloudDialogflowCxV3SessionInfo SessionInfo { get; set; }
+
+        /// <summary>The target flow to transition to. Format: `projects//locations//agents//flows/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetFlow")]
+        public virtual string TargetFlow { get; set; }
+
+        /// <summary>The target page to transition to. Format: `projects//locations//agents//flows//pages/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetPage")]
+        public virtual string TargetPage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a fulfillment response to the user.</summary>
+    public class GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Merge behavior for `messages`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mergeBehavior")]
+        public virtual string MergeBehavior { get; set; }
+
+        /// <summary>The list of rich message responses to present to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3ResponseMessage> Messages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
 
     /// <summary>Agents are best described as Natural Language Understanding (NLU) modules that transform user requests
     /// into actionable data. You can include agents in your app, product, or service to determine user intent and
@@ -6569,6 +7324,22 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response message for SecuritySettings.ListSecuritySettings.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ListSecuritySettingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of security settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securitySettings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1SecuritySettings> SecuritySettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The response message for SessionEntityTypes.ListSessionEntityTypes.</summary>
     public class GoogleCloudDialogflowCxV3beta1ListSessionEntityTypesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7292,6 +8063,49 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// format of this URI must be `gs:`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the settings related to security issues, such as data redaction and data retention. It may
+    /// take hours for updates on the settings to propagate to all the related components and take effect.</summary>
+    public class GoogleCloudDialogflowCxV3beta1SecuritySettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The human-readable name of the security settings, unique within the location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>DLP inspect template name. Use this template to define inspect base settings. If empty, we use the
+        /// default DLP inspect config. The template name will have one of the following formats:
+        /// `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR
+        /// `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplate")]
+        public virtual string InspectTemplate { get; set; }
+
+        /// <summary>Required. Resource name of the settings. Format:
+        /// `projects//locations//securitySettings/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>List of types of data to remove when retention settings triggers purge.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeDataTypes")]
+        public virtual System.Collections.Generic.IList<string> PurgeDataTypes { get; set; }
+
+        /// <summary>Defines on what data we apply redaction. Note that we don't redact data to which we don't have
+        /// access, e.g., Stackdriver logs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redactionScope")]
+        public virtual string RedactionScope { get; set; }
+
+        /// <summary>Strategy that defines how we do redaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redactionStrategy")]
+        public virtual string RedactionStrategy { get; set; }
+
+        /// <summary>Retains the data for the specified number of days. User must Set a value lower than Dialogflow's
+        /// default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means
+        /// we use Dialogflow's default TTL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionWindowDays")]
+        public virtual System.Nullable<int> RetentionWindowDays { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

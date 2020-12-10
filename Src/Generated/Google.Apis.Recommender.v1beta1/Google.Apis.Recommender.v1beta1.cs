@@ -29,6 +29,7 @@ namespace Google.Apis.Recommender.v1beta1
         /// <param name="initializer">The service initializer.</param>
         public RecommenderService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            BillingAccounts = new BillingAccountsResource(this);
             Projects = new ProjectsResource(this);
         }
 
@@ -74,6 +75,9 @@ namespace Google.Apis.Recommender.v1beta1
         }
 
 
+
+        /// <summary>Gets the BillingAccounts resource.</summary>
+        public virtual BillingAccountsResource BillingAccounts { get; }
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -251,6 +255,688 @@ namespace Google.Apis.Recommender.v1beta1
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "billingAccounts" collection of methods.</summary>
+    public class BillingAccountsResource
+    {
+        private const string Resource = "billingAccounts";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public BillingAccountsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Locations = new LocationsResource(service);
+
+        }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
+
+        /// <summary>The "locations" collection of methods.</summary>
+        public class LocationsResource
+        {
+            private const string Resource = "locations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                InsightTypes = new InsightTypesResource(service);
+                Recommenders = new RecommendersResource(service);
+
+            }
+
+            /// <summary>Gets the InsightTypes resource.</summary>
+            public virtual InsightTypesResource InsightTypes { get; }
+
+            /// <summary>The "insightTypes" collection of methods.</summary>
+            public class InsightTypesResource
+            {
+                private const string Resource = "insightTypes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public InsightTypesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Insights = new InsightsResource(service);
+
+                }
+
+                /// <summary>Gets the Insights resource.</summary>
+                public virtual InsightsResource Insights { get; }
+
+                /// <summary>The "insights" collection of methods.</summary>
+                public class InsightsResource
+                {
+                    private const string Resource = "insights";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public InsightsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Gets the requested insight. Requires the recommender.*.get IAM permission for the
+                    /// specified insight type.</summary>
+                    /// <param name="name">Required. Name of the insight.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets the requested insight. Requires the recommender.*.get IAM permission for the
+                    /// specified insight type.</summary>
+                    public class GetRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1Insight>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. Name of the insight.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/insightTypes/[^/]+/insights/[^/]+$",
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Lists insights for a Cloud project. Requires the recommender.*.list IAM permission for
+                    /// the specified insight type.</summary>
+                    /// <param name="parent">Required. The container resource on which to execute the request. Acceptable formats: 1.
+                    /// "projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]", LOCATION here refers to GCP
+                    /// Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to supported insight types:
+                    /// https://cloud.google.com/recommender/docs/insights/insight-types.</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists insights for a Cloud project. Requires the recommender.*.list IAM permission for
+                    /// the specified insight type.</summary>
+                    public class ListRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1ListInsightsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The container resource on which to execute the request. Acceptable
+                        /// formats: 1. "projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]",
+                        /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/
+                        /// INSIGHT_TYPE_ID refers to supported insight types:
+                        /// https://cloud.google.com/recommender/docs/insights/insight-types.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. Filter expression to restrict the insights returned. Supported filter
+                        /// fields: state Eg: `state:"DISMISSED" or state:"ACTIVE"</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Optional. The maximum number of results to return from this request. Non-positive
+                        /// values are ignored. If not specified, the server will determine the number of results to
+                        /// return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. If present, retrieves the next batch of results from the preceding call
+                        /// to this method. `page_token` must be the value of `next_page_token` from the previous
+                        /// response. The values of other method parameters must be identical to those in the previous
+                        /// call.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/insights";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/insightTypes/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Marks the Insight State as Accepted. Users can use this method to indicate to the
+                    /// Recommender API that they have applied some action based on the insight. This stops the insight
+                    /// content from being updated. MarkInsightAccepted can be applied to insights in ACTIVE state.
+                    /// Requires the recommender.*.update IAM permission for the specified insight.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. Name of the insight.</param>
+                    public virtual MarkAcceptedRequest MarkAccepted(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest body, string name)
+                    {
+                        return new MarkAcceptedRequest(service, body, name);
+                    }
+
+                    /// <summary>Marks the Insight State as Accepted. Users can use this method to indicate to the
+                    /// Recommender API that they have applied some action based on the insight. This stops the insight
+                    /// content from being updated. MarkInsightAccepted can be applied to insights in ACTIVE state.
+                    /// Requires the recommender.*.update IAM permission for the specified insight.</summary>
+                    public class MarkAcceptedRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1Insight>
+                    {
+                        /// <summary>Constructs a new MarkAccepted request.</summary>
+                        public MarkAcceptedRequest(Google.Apis.Services.IClientService service, Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. Name of the insight.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "markAccepted";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:markAccepted";
+
+                        /// <summary>Initializes MarkAccepted parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/insightTypes/[^/]+/insights/[^/]+$",
+                            });
+                        }
+
+                    }
+                }
+            }
+            /// <summary>Gets the Recommenders resource.</summary>
+            public virtual RecommendersResource Recommenders { get; }
+
+            /// <summary>The "recommenders" collection of methods.</summary>
+            public class RecommendersResource
+            {
+                private const string Resource = "recommenders";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public RecommendersResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Recommendations = new RecommendationsResource(service);
+
+                }
+
+                /// <summary>Gets the Recommendations resource.</summary>
+                public virtual RecommendationsResource Recommendations { get; }
+
+                /// <summary>The "recommendations" collection of methods.</summary>
+                public class RecommendationsResource
+                {
+                    private const string Resource = "recommendations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public RecommendationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Gets the requested recommendation. Requires the recommender.*.get IAM permission for
+                    /// the specified recommender.</summary>
+                    /// <param name="name">Required. Name of the recommendation.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets the requested recommendation. Requires the recommender.*.get IAM permission for
+                    /// the specified recommender.</summary>
+                    public class GetRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1Recommendation>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. Name of the recommendation.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Lists recommendations for a Cloud project. Requires the recommender.*.list IAM
+                    /// permission for the specified recommender.</summary>
+                    /// <param name="parent">Required. The container resource on which to execute the request. Acceptable formats: 1.
+                    /// "projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]", LOCATION here refers to GCP
+                    /// Locations: https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to supported recommenders:
+                    /// https://cloud.google.com/recommender/docs/recommenders.</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists recommendations for a Cloud project. Requires the recommender.*.list IAM
+                    /// permission for the specified recommender.</summary>
+                    public class ListRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1ListRecommendationsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The container resource on which to execute the request. Acceptable
+                        /// formats: 1. "projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]",
+                        /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/
+                        /// RECOMMENDER_ID refers to supported recommenders:
+                        /// https://cloud.google.com/recommender/docs/recommenders.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Filter expression to restrict the recommendations returned. Supported filter
+                        /// fields: state_info.state Eg: `state_info.state:"DISMISSED" or
+                        /// state_info.state:"FAILED"</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Optional. The maximum number of results to return from this request. Non-positive
+                        /// values are ignored. If not specified, the server will determine the number of results to
+                        /// return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. If present, retrieves the next batch of results from the preceding call
+                        /// to this method. `page_token` must be the value of `next_page_token` from the previous
+                        /// response. The values of other method parameters must be identical to those in the previous
+                        /// call.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/recommendations";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/recommenders/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Marks the Recommendation State as Claimed. Users can use this method to indicate to the
+                    /// Recommender API that they are starting to apply the recommendation themselves. This stops the
+                    /// recommendation content from being updated. Associated insights are frozen and placed in the
+                    /// ACCEPTED state. MarkRecommendationClaimed can be applied to recommendations in CLAIMED or ACTIVE
+                    /// state. Requires the recommender.*.update IAM permission for the specified recommender.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. Name of the recommendation.</param>
+                    public virtual MarkClaimedRequest MarkClaimed(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest body, string name)
+                    {
+                        return new MarkClaimedRequest(service, body, name);
+                    }
+
+                    /// <summary>Marks the Recommendation State as Claimed. Users can use this method to indicate to the
+                    /// Recommender API that they are starting to apply the recommendation themselves. This stops the
+                    /// recommendation content from being updated. Associated insights are frozen and placed in the
+                    /// ACCEPTED state. MarkRecommendationClaimed can be applied to recommendations in CLAIMED or ACTIVE
+                    /// state. Requires the recommender.*.update IAM permission for the specified recommender.</summary>
+                    public class MarkClaimedRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1Recommendation>
+                    {
+                        /// <summary>Constructs a new MarkClaimed request.</summary>
+                        public MarkClaimedRequest(Google.Apis.Services.IClientService service, Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. Name of the recommendation.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "markClaimed";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:markClaimed";
+
+                        /// <summary>Initializes MarkClaimed parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Marks the Recommendation State as Failed. Users can use this method to indicate to the
+                    /// Recommender API that they have applied the recommendation themselves, and the operation failed.
+                    /// This stops the recommendation content from being updated. Associated insights are frozen and
+                    /// placed in the ACCEPTED state. MarkRecommendationFailed can be applied to recommendations in
+                    /// ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission
+                    /// for the specified recommender.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. Name of the recommendation.</param>
+                    public virtual MarkFailedRequest MarkFailed(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest body, string name)
+                    {
+                        return new MarkFailedRequest(service, body, name);
+                    }
+
+                    /// <summary>Marks the Recommendation State as Failed. Users can use this method to indicate to the
+                    /// Recommender API that they have applied the recommendation themselves, and the operation failed.
+                    /// This stops the recommendation content from being updated. Associated insights are frozen and
+                    /// placed in the ACCEPTED state. MarkRecommendationFailed can be applied to recommendations in
+                    /// ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission
+                    /// for the specified recommender.</summary>
+                    public class MarkFailedRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1Recommendation>
+                    {
+                        /// <summary>Constructs a new MarkFailed request.</summary>
+                        public MarkFailedRequest(Google.Apis.Services.IClientService service, Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. Name of the recommendation.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "markFailed";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:markFailed";
+
+                        /// <summary>Initializes MarkFailed parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Marks the Recommendation State as Succeeded. Users can use this method to indicate to
+                    /// the Recommender API that they have applied the recommendation themselves, and the operation was
+                    /// successful. This stops the recommendation content from being updated. Associated insights are
+                    /// frozen and placed in the ACCEPTED state. MarkRecommendationSucceeded can be applied to
+                    /// recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the
+                    /// recommender.*.update IAM permission for the specified recommender.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. Name of the recommendation.</param>
+                    public virtual MarkSucceededRequest MarkSucceeded(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest body, string name)
+                    {
+                        return new MarkSucceededRequest(service, body, name);
+                    }
+
+                    /// <summary>Marks the Recommendation State as Succeeded. Users can use this method to indicate to
+                    /// the Recommender API that they have applied the recommendation themselves, and the operation was
+                    /// successful. This stops the recommendation content from being updated. Associated insights are
+                    /// frozen and placed in the ACCEPTED state. MarkRecommendationSucceeded can be applied to
+                    /// recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the
+                    /// recommender.*.update IAM permission for the specified recommender.</summary>
+                    public class MarkSucceededRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1Recommendation>
+                    {
+                        /// <summary>Constructs a new MarkSucceeded request.</summary>
+                        public MarkSucceededRequest(Google.Apis.Services.IClientService service, Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. Name of the recommendation.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "markSucceeded";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:markSucceeded";
+
+                        /// <summary>Initializes MarkSucceeded parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
+                            });
+                        }
+
+                    }
+                }
+            }
         }
     }
 

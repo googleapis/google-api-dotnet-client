@@ -391,6 +391,12 @@ namespace Google.Apis.CloudScheduler.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>This field is used to manage the legacy App Engine Cron jobs using the Cloud Scheduler
+                    /// API. If the field is set to true, the job in the __cron queue with the corresponding name will
+                    /// be deleted instead.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("legacyAppEngineCron", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> LegacyAppEngineCron { get; set; }
+
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
@@ -413,6 +419,14 @@ namespace Google.Apis.CloudScheduler.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
+                        });
+                        RequestParameters.Add("legacyAppEngineCron", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "legacyAppEngineCron",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
 
@@ -493,6 +507,11 @@ namespace Google.Apis.CloudScheduler.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>This field is used to manage the legacy App Engine Cron jobs using the Cloud Scheduler
+                    /// API. If the field is set to true, the jobs in the __cron queue will be listed instead.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("legacyAppEngineCron", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> LegacyAppEngineCron { get; set; }
+
                     /// <summary>Requested page size. The maximum page size is 500. If unspecified, the page size will
                     /// be the maximum. Fewer jobs than requested might be returned, even if more jobs exist; use
                     /// next_page_token to determine if more jobs exist.</summary>
@@ -528,6 +547,14 @@ namespace Google.Apis.CloudScheduler.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("legacyAppEngineCron", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "legacyAppEngineCron",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -1153,6 +1180,12 @@ namespace Google.Apis.CloudScheduler.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastAttemptTime")]
         public virtual object LastAttemptTime { get; set; }
 
+        /// <summary>Immutable. This field is used to manage the legacy App Engine Cron jobs using the Cloud Scheduler
+        /// API. If the field is set to true, the job will be considered a legacy job. Note that App Engine Cron jobs
+        /// have fewer features than Cloud Scheduler jobs, e.g., are only limited to App Engine targets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legacyAppEngineCron")]
+        public virtual System.Nullable<bool> LegacyAppEngineCron { get; set; }
+
         /// <summary>Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For
         /// example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters
         /// ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying
@@ -1443,6 +1476,12 @@ namespace Google.Apis.CloudScheduler.v1beta1.Data
     /// <summary>Request message for forcing a job to run now using RunJob.</summary>
     public class RunJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>This field is used to manage the legacy App Engine Cron jobs using the Cloud Scheduler API. If the
+        /// field is set to true, the job in the __cron queue with the corresponding name will be forced to run
+        /// instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legacyAppEngineCron")]
+        public virtual System.Nullable<bool> LegacyAppEngineCron { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

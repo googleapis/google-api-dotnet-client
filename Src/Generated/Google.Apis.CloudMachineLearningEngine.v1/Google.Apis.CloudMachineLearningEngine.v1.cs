@@ -3675,6 +3675,22 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents the config of disk options.</summary>
+    public class GoogleCloudMlV1DiskConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Size in GB of the boot disk (default is 100GB).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootDiskSizeGb")]
+        public virtual System.Nullable<int> BootDiskSizeGb { get; set; }
+
+        /// <summary>Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid
+        /// State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootDiskType")]
+        public virtual string BootDiskType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents a custom encryption key configuration that can be applied to a resource.</summary>
     public class GoogleCloudMlV1EncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4410,6 +4426,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containerCommand")]
         public virtual System.Collections.Generic.IList<string> ContainerCommand { get; set; }
 
+        /// <summary>Represents the configuration of disk options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskConfig")]
+        public virtual GoogleCloudMlV1DiskConfig DiskConfig { get; set; }
+
         /// <summary>The Docker image to run on the replica. This image must be in Container Registry. Learn more about
         /// [configuring custom containers](/ai-platform/training/docs/distributed-training-containers).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
@@ -4468,13 +4488,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// GET requests to this path on the container's IP address and port to check that the container is healthy.
         /// Read more about [health checks](/ai-platform/prediction/docs/custom-container-requirements#checks). For
         /// example, if you set this field to `/bar`, then AI Platform Prediction intermittently sends a GET request to
-        /// the following URL on the container: localhost:PORT/bar PORT refers to the first value of
-        /// Version.container.ports. If you don't specify this field, it defaults to the following value:
-        /// /v1/models/MODEL/versions/VERSION The placeholders in this value are replaced as follows: * MODEL: The name
-        /// of the parent Model. This does not include the "projects/PROJECT_ID/models/" prefix that the API returns in
-        /// output; it is the bare model name, as provided to projects.models.create. * VERSION: The name of the model
-        /// version. This does not include the "projects/PROJECT_ID/models/MODEL/versions/" prefix that the API returns
-        /// in output; it is the bare version name, as provided to projects.models.versions.create.</summary>
+        /// the `/bar` path on the port of your container specified by the first value of Version.container.ports. If
+        /// you don't specify this field, it defaults to the following value: /v1/models/ MODEL/versions/VERSION The
+        /// placeholders in this value are replaced as follows: * MODEL: The name of the parent Model. This does not
+        /// include the "projects/PROJECT_ID/models/" prefix that the API returns in output; it is the bare model name,
+        /// as provided to projects.models.create. * VERSION: The name of the model version. This does not include the
+        /// "projects/PROJECT_ID /models/MODEL/versions/" prefix that the API returns in output; it is the bare version
+        /// name, as provided to projects.models.versions.create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("health")]
         public virtual string Health { get; set; }
 
@@ -4482,14 +4502,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// sent using projects.predict to this path on the container's IP address and port. AI Platform Prediction then
         /// returns the container's response in the API response. For example, if you set this field to `/foo`, then
         /// when AI Platform Prediction receives a prediction request, it forwards the request body in a POST request to
-        /// the following URL on the container: localhost:PORT/foo PORT refers to the first value of
-        /// Version.container.ports. If you don't specify this field, it defaults to the following value:
-        /// /v1/models/MODEL/versions/VERSION:predict The placeholders in this value are replaced as follows: * MODEL:
-        /// The name of the parent Model. This does not include the "projects/PROJECT_ID/models/" prefix that the API
-        /// returns in output; it is the bare model name, as provided to projects.models.create. * VERSION: The name of
-        /// the model version. This does not include the "projects/PROJECT_ID/models/MODEL/versions/" prefix that the
-        /// API returns in output; it is the bare version name, as provided to
-        /// projects.models.versions.create.</summary>
+        /// the `/foo` path on the port of your container specified by the first value of Version.container.ports. If
+        /// you don't specify this field, it defaults to the following value: /v1/models/MODEL/versions/VERSION:predict
+        /// The placeholders in this value are replaced as follows: * MODEL: The name of the parent Model. This does not
+        /// include the "projects/PROJECT_ID/models/" prefix that the API returns in output; it is the bare model name,
+        /// as provided to projects.models.create. * VERSION: The name of the model version. This does not include the
+        /// "projects/PROJECT_ID/models/MODEL/versions/" prefix that the API returns in output; it is the bare version
+        /// name, as provided to projects.models.versions.create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predict")]
         public virtual string Predict { get; set; }
 

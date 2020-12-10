@@ -1448,7 +1448,7 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A description of an iOS device tests may be run on. Next tag: 13</summary>
+    /// <summary>A description of an iOS device tests may be run on.</summary>
     public class IosModel : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Device capabilities. Copied from https://developer.apple.com/library/archive/documentation/DeviceIn

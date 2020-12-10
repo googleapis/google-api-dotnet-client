@@ -2235,8 +2235,8 @@ namespace Google.Apis.CloudHealthcare.v1
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>Limit on the number of DICOM stores to return in a single response. If zero the
-                        /// default page size of 100 is used.</summary>
+                        /// <summary>Limit on the number of DICOM stores to return in a single response. If not
+                        /// specified, 100 is used. May not be larger than 1000.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -2920,7 +2920,8 @@ namespace Google.Apis.CloudHealthcare.v1
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
-                            /// <summary>Maximum number of resources in a page. Defaults to 100.</summary>
+                            /// <summary>Maximum number of resources in a page. If not specified, 100 is used. May not
+                            /// be larger than 1000.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("_count", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> Count { get; set; }
 
@@ -3484,8 +3485,8 @@ namespace Google.Apis.CloudHealthcare.v1
                             [Google.Apis.Util.RequestParameterAttribute("_at", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string At { get; set; }
 
-                            /// <summary>The maximum number of search results on a page. Default value is 100. Maximum
-                            /// value is 1,000.</summary>
+                            /// <summary>The maximum number of search results on a page. If not specified, 100 is used.
+                            /// May not be larger than 1000.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("_count", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> Count { get; set; }
 
@@ -4540,8 +4541,8 @@ namespace Google.Apis.CloudHealthcare.v1
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>Limit on the number of FHIR stores to return in a single response. If zero the
-                        /// default page size of 100 is used.</summary>
+                        /// <summary>Limit on the number of FHIR stores to return in a single response. If not
+                        /// specified, 100 is used. May not be larger than 1000.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -5158,8 +5159,8 @@ namespace Google.Apis.CloudHealthcare.v1
                             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string OrderBy { get; set; }
 
-                            /// <summary>Limit on the number of messages to return in a single response. If zero the
-                            /// default page size of 100 is used.</summary>
+                            /// <summary>Limit on the number of messages to return in a single response. If not
+                            /// specified, 100 is used. May not be larger than 1000.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -5615,8 +5616,8 @@ namespace Google.Apis.CloudHealthcare.v1
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>Limit on the number of HL7v2 stores to return in a single response. If zero the
-                        /// default page size of 100 is used.</summary>
+                        /// <summary>Limit on the number of HL7v2 stores to return in a single response. If not
+                        /// specified, 100 is used. May not be larger than 1000.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -6457,8 +6458,8 @@ namespace Google.Apis.CloudHealthcare.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The maximum number of items to return. Capped to 100 if not specified. May not be
-                    /// larger than 1000.</summary>
+                    /// <summary>The maximum number of items to return. If not specified, 100 is used. May not be larger
+                    /// than 1000.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -6897,9 +6898,6 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; }
-
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
         /// apply to the current request. However, a different role binding might grant the same role to one or more of

@@ -2400,7 +2400,7 @@
    }
   }
  }, 
- "revision": "20201201", 
+ "revision": "20201207", 
  "rootUrl": "https://classroom.googleapis.com/", 
  "schemas": {
   "Announcement": {

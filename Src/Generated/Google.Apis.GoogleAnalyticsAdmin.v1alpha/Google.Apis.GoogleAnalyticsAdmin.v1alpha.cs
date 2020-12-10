@@ -4096,8 +4096,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     /// <summary>A resource message representing a Google Analytics account.</summary>
     public class GoogleAnalyticsAdminV1alphaAccount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Country of business. Must be a non-deprecated code for a UN M.49 region. https:
-        /// //unicode.org/cldr/charts/latest/supplem // ental/territory_containment_un_m_49.html</summary>
+        /// <summary>Country of business. Must be a non-deprecated code for a UN M.49 region.
+        /// https://unicode.org/cldr/charts/latest/supplemental/territory_containment_un_m_49.html</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
         public virtual string CountryCode { get; set; }
 

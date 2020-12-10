@@ -3252,24 +3252,6 @@ namespace Google.Apis.Games.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Hash-like weak identifier of uploaded content bytes (saved game data blob, or cover image). Consistent
-    /// per player per application per hash version. Within the context of a single player/application, it's guaranteed
-    /// that two identical blobs coming from two different uploads will have the same content hash. It's extremely
-    /// likely, though not guaranteed, that if two content hashes are equal, the blobs are identical.</summary>
-    public class ContentHash : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Hash-like digest of the content.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("digest")]
-        public virtual string Digest { get; set; }
-
-        /// <summary>Version of the Hash encoding algorithm to hash the content.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Container for a URL end point of the requested type.</summary>
     public class EndPoint : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4447,13 +4429,11 @@ namespace Google.Apis.Games.v1.Data
     public class SnapshotCoverImageResource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Hash-like weak identifier of the uploaded image bytes, consistent per player per
-        /// application per hash version. Within the context of a single player/application, it's guaranteed that two
-        /// identical images coming from two different uploads will have the same content hash for the same hash
-        /// algorithm version. It's extremely likely, though not guaranteed, that if two content hashes are equal, the
-        /// images are identical. More than one content hash can be returned if more than one hash versions are
-        /// supported.</summary>
+        /// application. The content hash for a given resource will not change if the binary data hasn't changed. Except
+        /// in very rare circumstances, the content_hash for matching binary data will be the same within a given player
+        /// and application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentHash")]
-        public virtual System.Collections.Generic.IList<ContentHash> ContentHash { get; set; }
+        public virtual string ContentHash { get; set; }
 
         /// <summary>Output only. A URL the client can use to download the image. May vary across requests, and only
         /// guaranteed to be valid for a short time after it is returned.</summary>
@@ -4487,13 +4467,12 @@ namespace Google.Apis.Games.v1.Data
     /// <summary>Identifies a snapshot data resource. The data is provided by the game.</summary>
     public class SnapshotDataResource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Hash-like weak identifier of the uploaded blob, consistent per player per application
-        /// per hash version. Within the context of a single player/application, it's guaranteed that two identical
-        /// blobs coming from two different uploads will have the same content hash for the same hash algorithm version.
-        /// It's extremely likely, though not guaranteed, that if two content hashes are equal, the blobs are identical.
-        /// More than one content hash can be returned if more than one hash versions are supported.</summary>
+        /// <summary>Output only. Hash-like weak identifier of the uploaded blob bytes, consistent per player per
+        /// application. The content hash for a given resource will not change if the binary data hasn't changed. Except
+        /// in very rare circumstances, the content_hash for matching binary data will be the same within a given player
+        /// and application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentHash")]
-        public virtual System.Collections.Generic.IList<ContentHash> ContentHash { get; set; }
+        public virtual string ContentHash { get; set; }
 
         /// <summary>Output only. A URL that the client can use to download the blob. May vary across requests, and only
         /// guaranteed to be valid for a short time after it is returned.</summary>
@@ -4516,12 +4495,12 @@ namespace Google.Apis.Games.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A snapshot represents a saved game state referred to using the developer-provided snapshot_id (think of
-    /// it as a file's path). The set of attributes and binary data for a specific state is called a revision. Each
-    /// revision is itself immutable, and referred to by a snapshot_revision_id. At any time, a snapshot has a "head"
-    /// revision, and updates are made against that revision. If a snapshot update is received that isn't against the
-    /// current head revision, then instead of changing the head revision it will result in a conflicting revision that
-    /// must be specifically resolved.</summary>
+    /// <summary>A snapshot represents a saved game state referred to using the developer-provided snapshot_name. The
+    /// set of attributes and binary data for a specific state is called a revision. Each revision is itself immutable,
+    /// and referred to by a snapshot revision id. At any time, a snapshot has a "head" revision, and updates are made
+    /// against that revision. If a snapshot update is received that isn't against the current head revision, then
+    /// instead of changing the head revision it will result in a conflicting revision that must be specifically
+    /// resolved.</summary>
     public class SnapshotExtended : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of conflicting revisions. Only set if explicitly requested (e.g. using a field mask or a
@@ -4540,9 +4519,10 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("headRevision")]
         public virtual SnapshotRevision HeadRevision { get; set; }
 
-        /// <summary>An identifier of the snapshot,developer-specified.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
+        /// <summary>An identifier of the snapshot, developer-specified. It must match the pattern [0-9a-
+        /// zA-Z-._~]{1,100}.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotName")]
+        public virtual string SnapshotName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4611,21 +4591,17 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The duration associated with this snapshot. Values with sub-millisecond precision can be rounded or
         /// trimmed to the closest millisecond.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual object Duration { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("gameplayDuration")]
+        public virtual object GameplayDuration { get; set; }
 
-        /// <summary>The timestamp of the last modification to this snapshot. Values with sub-millisecond precision can
-        /// be rounded or trimmed to the closest millisecond.</summary>
+        /// <summary>The timestamp of the last modification to this snapshot as provided by the client. Values with sub-
+        /// millisecond precision can be rounded or trimmed to the closest millisecond.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifyTime")]
         public virtual object LastModifyTime { get; set; }
 
         /// <summary>The progress value (64-bit integer set by developer) associated with this snapshot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressValue")]
         public virtual System.Nullable<long> ProgressValue { get; set; }
-
-        /// <summary>The title of this snapshot.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

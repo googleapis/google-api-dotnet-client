@@ -2585,6 +2585,45 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>Output only. The realtime, informational statistics for a queue. In order to receive the statistics
+        /// the caller should include this field in the FieldMask.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual QueueStats Stats { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Statistics for a queue.</summary>
+    public class QueueStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The number of requests that the queue has dispatched but has not received a reply for
+        /// yet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("concurrentDispatchesCount")]
+        public virtual System.Nullable<long> ConcurrentDispatchesCount { get; set; }
+
+        /// <summary>Output only. The current maximum number of tasks per second executed by the queue. The maximum
+        /// value of this variable is controlled by the RateLimits of the Queue. However, this value could be less to
+        /// avoid overloading the endpoints tasks in the queue are targeting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveExecutionRate")]
+        public virtual System.Nullable<double> EffectiveExecutionRate { get; set; }
+
+        /// <summary>Output only. The number of tasks that the queue has dispatched and received a reply for during the
+        /// last minute. This variable counts both successful and non-successful executions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executedLastMinuteCount")]
+        public virtual System.Nullable<long> ExecutedLastMinuteCount { get; set; }
+
+        /// <summary>Output only. An estimation of the nearest time in the future where a task in the queue is scheduled
+        /// to be executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oldestEstimatedArrivalTime")]
+        public virtual object OldestEstimatedArrivalTime { get; set; }
+
+        /// <summary>Output only. An estimation of the number of tasks in the queue, that is, the tasks in the queue
+        /// that haven't been executed, the tasks in the queue which the queue has dispatched but has not yet received a
+        /// reply for, and the failed tasks that the queue is retrying.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tasksCount")]
+        public virtual System.Nullable<long> TasksCount { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

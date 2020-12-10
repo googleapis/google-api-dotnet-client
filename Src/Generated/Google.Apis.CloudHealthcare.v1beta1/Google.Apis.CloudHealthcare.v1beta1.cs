@@ -548,8 +548,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
 
-                            /// <summary>Limit on the number of Annotations to return in a single response. If zero the
-                            /// default page size of 100 is used.</summary>
+                            /// <summary>Limit on the number of Annotations to return in a single response. If not
+                            /// specified, 100 is used. May not be larger than 1000.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1183,8 +1183,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>Limit on the number of Annotation stores to return in a single response. If zero
-                        /// the default page size of 100 is used.</summary>
+                        /// <summary>Limit on the number of Annotation stores to return in a single response. If not
+                        /// specified, 100 is used. May not be larger than 1000.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1687,7 +1687,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             public virtual string Filter { get; set; }
 
                             /// <summary>Limit on the number of attribute definitions to return in a single response. If
-                            /// zero the default page size of 100 is used.</summary>
+                            /// not specified, 100 is used. May not be larger than 1000.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -2031,8 +2031,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
 
-                            /// <summary>Limit on the number of consent artifacts to return in a single response. If
-                            /// zero the default page size of 100 is used.</summary>
+                            /// <summary>Limit on the number of consent artifacts to return in a single response. If not
+                            /// specified, 100 is used. May not be larger than 1000.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -2436,13 +2436,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                             /// <summary>Restricts the consents returned to those matching a filter. Syntax:
                             /// https://cloud.google.com/appengine/docs/standard/python/search/query_strings The fields
-                            /// available for filtering are: - user_id - consent_artifact - state -
-                            /// revision_create_time</summary>
+                            /// available for filtering are: - user_id - consent_artifact - state - revision_create_time
+                            /// - metadata. For example, `Metadata("key")="value"` or `HasMetadata("key")`.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
 
-                            /// <summary>Limit on the number of consents to return in a single response. If zero the
-                            /// default page size of 100 is used.</summary>
+                            /// <summary>Limit on the number of consents to return in a single response. If not
+                            /// specified, 100 is used. May not be larger than 1000.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -2531,8 +2531,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
 
-                            /// <summary>Limit on the number of revisions to return in a single response. If zero the
-                            /// default page size of 100 is used.</summary>
+                            /// <summary>Limit on the number of revisions to return in a single response. If not
+                            /// specified, 100 is used. May not be larger than 1000.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -3067,7 +3067,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             public virtual string Filter { get; set; }
 
                             /// <summary>Limit on the number of user data mappings to return in a single response. If
-                            /// zero the default page size of 100 is used.</summary>
+                            /// not specified, 100 is used. May not be larger than 1000.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -3595,8 +3595,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>Limit on the number of Consent stores to return in a single response. If zero the
-                        /// default page size of 100 is used.</summary>
+                        /// <summary>Limit on the number of Consent stores to return in a single response. If not
+                        /// specified, 100 is used. May not be larger than 1000.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -4558,11 +4558,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
 
                             /// <summary>DeleteSeriesAsync deletes all instances within the given study and series using
-                            /// an operation. Delete requests are equivalent to the GET requests specified in the
-                            /// Retrieve transaction. The method returns an Operation which will be marked successful
-                            /// when the deletion is complete. Warning: Inserting instances into a series while a delete
-                            /// operation is running for that series could result in the new instances not appearing in
-                            /// search results until the deletion operation finishes.</summary>
+                            /// a long running operation. The method returns an Operation which will be marked
+                            /// successful when the deletion is complete. Warning: If you insert instances into a series
+                            /// while a delete operation is running for that series, the instances you insert might not
+                            /// appear in search results until after the deletion operation finishes.</summary>
                             /// <param name="parent">The name of the DICOM store that is being accessed. For example,
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.</param>
                             ///
@@ -4574,11 +4573,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
 
                             /// <summary>DeleteSeriesAsync deletes all instances within the given study and series using
-                            /// an operation. Delete requests are equivalent to the GET requests specified in the
-                            /// Retrieve transaction. The method returns an Operation which will be marked successful
-                            /// when the deletion is complete. Warning: Inserting instances into a series while a delete
-                            /// operation is running for that series could result in the new instances not appearing in
-                            /// search results until the deletion operation finishes.</summary>
+                            /// a long running operation. The method returns an Operation which will be marked
+                            /// successful when the deletion is complete. Warning: If you insert instances into a series
+                            /// while a delete operation is running for that series, the instances you insert might not
+                            /// appear in search results until after the deletion operation finishes.</summary>
                             public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                             {
                                 /// <summary>Constructs a new Delete request.</summary>
@@ -4887,12 +4885,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
                         }
 
-                        /// <summary>DeleteStudyAsync deletes all instances within the given study using an operation.
-                        /// Delete requests are equivalent to the GET requests specified in the Retrieve transaction.
-                        /// The method returns an Operation which will be marked successful when the deletion is
-                        /// complete. Warning: Inserting instances into a study while a delete operation is running for
-                        /// that study could result in the new instances not appearing in search results until the
-                        /// deletion operation finishes.</summary>
+                        /// <summary>DeleteStudyAsync deletes all instances within the given study using a long running
+                        /// operation. The method returns an Operation which will be marked successful when the deletion
+                        /// is complete. Warning: If you insert instances into a study while a delete operation is
+                        /// running for that study, the instances you insert might not appear in search results until
+                        /// after the deletion operation finishes.</summary>
                         /// <param name="parent"></param>
                         /// <param name="dicomWebPath">The path of the DeleteStudy request. For example,
                         /// `studies/{study_uid}`.</param>
@@ -4901,12 +4898,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             return new DeleteRequest(service, parent, dicomWebPath);
                         }
 
-                        /// <summary>DeleteStudyAsync deletes all instances within the given study using an operation.
-                        /// Delete requests are equivalent to the GET requests specified in the Retrieve transaction.
-                        /// The method returns an Operation which will be marked successful when the deletion is
-                        /// complete. Warning: Inserting instances into a study while a delete operation is running for
-                        /// that study could result in the new instances not appearing in search results until the
-                        /// deletion operation finishes.</summary>
+                        /// <summary>DeleteStudyAsync deletes all instances within the given study using a long running
+                        /// operation. The method returns an Operation which will be marked successful when the deletion
+                        /// is complete. Warning: If you insert instances into a study while a delete operation is
+                        /// running for that study, the instances you insert might not appear in search results until
+                        /// after the deletion operation finishes.</summary>
                         public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                         {
                             /// <summary>Constructs a new Delete request.</summary>
@@ -5852,8 +5848,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>Limit on the number of DICOM stores to return in a single response. If zero the
-                        /// default page size of 100 is used.</summary>
+                        /// <summary>Limit on the number of DICOM stores to return in a single response. If not
+                        /// specified, 100 is used. May not be larger than 1000.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -6873,7 +6869,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
-                            /// <summary>Maximum number of resources in a page. Defaults to 100.</summary>
+                            /// <summary>Maximum number of resources in a page. If not specified, 100 is used. May not
+                            /// be larger than 1000.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("_count", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> Count { get; set; }
 
@@ -7794,8 +7791,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             [Google.Apis.Util.RequestParameterAttribute("_at", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string At { get; set; }
 
-                            /// <summary>The maximum number of search results on a page. Default value is 100. Maximum
-                            /// value is 1,000.</summary>
+                            /// <summary>The maximum number of search results on a page. If not specified, 100 is used.
+                            /// May not be larger than 1000.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("_count", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> Count { get; set; }
 
@@ -8850,8 +8847,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>Limit on the number of FHIR stores to return in a single response. If zero the
-                        /// default page size of 100 is used.</summary>
+                        /// <summary>Limit on the number of FHIR stores to return in a single response. If not
+                        /// specified, 100 is used. May not be larger than 1000.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -9473,8 +9470,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string OrderBy { get; set; }
 
-                            /// <summary>Limit on the number of messages to return in a single response. If zero the
-                            /// default page size of 100 is used.</summary>
+                            /// <summary>Limit on the number of messages to return in a single response. If not
+                            /// specified, 100 is used. May not be larger than 1000.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -10099,8 +10096,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>Limit on the number of HL7v2 stores to return in a single response. If zero the
-                        /// default page size of 100 is used.</summary>
+                        /// <summary>Limit on the number of HL7v2 stores to return in a single response. If not
+                        /// specified, 100 is used. May not be larger than 1000.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -10939,8 +10936,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The maximum number of items to return. Capped to 100 if not specified. May not be
-                    /// larger than 1000.</summary>
+                    /// <summary>The maximum number of items to return. If not specified, 100 is used. May not be larger
+                    /// than 1000.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -11693,9 +11690,6 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; }
-
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
         /// apply to the current request. However, a different role binding might grant the same role to one or more of
@@ -11774,7 +11768,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     {
         /// <summary>The Consents to evaluate the access request against. They must have the same `user_id` as the data
         /// to check access for, exist in the current `consent_store`, and can have a `state` of either `ACTIVE` or
-        /// `DRAFT`. A maximum of 100 consents can be provided here.</summary>
+        /// `DRAFT`. A maximum of 100 consents can be provided here. If unspecified, all `ACTIVE` unexpired consents in
+        /// the current `consent_store` will be evaluated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consentList")]
         public virtual ConsentList ConsentList { get; set; }
 
@@ -11787,7 +11782,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestAttributes")]
         public virtual System.Collections.Generic.IDictionary<string, string> RequestAttributes { get; set; }
 
-        /// <summary>The view for CheckDataAccessResponse.</summary>
+        /// <summary>The view for CheckDataAccessResponse. If unspecified, defaults to `BASIC` and returns `consented`
+        /// as `TRUE` or `FALSE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseView")]
         public virtual string ResponseView { get; set; }
 
@@ -11834,6 +11830,15 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>Timestamp in UTC of when this consent is considered expired.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual object ExpireTime { get; set; }
+
+        /// <summary>User-supplied key-value pairs used to organize consent resources. Metadata keys must: - be between
+        /// 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up
+        /// to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values
+        /// must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up
+        /// to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64
+        /// metadata entries can be associated with a given consent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{
         /// dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.</summary>
@@ -12354,15 +12359,15 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// <summary>Evaluate an end user's Consents for all matching User data mappings.</summary>
     public class EvaluateUserConsentsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The resource names of the consents to evaluate against. Consents must be in the current
-        /// `consent_store` and belong to the current `user_id`. Consents can be either active or draft. If this field
-        /// is empty, the default behavior is to use all active consents that belong to `user_id`. A maximum of 100
-        /// consents can be provided here.</summary>
+        /// <summary>The Consents to evaluate the access request against. They must have the same `user_id` as the data
+        /// to check access for, exist in the current `consent_store`, and can have a `state` of either `ACTIVE` or
+        /// `DRAFT`. A maximum of 100 consents can be provided here. If unspecified, all `ACTIVE` unexpired consents in
+        /// the current `consent_store` will be evaluated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consentList")]
         public virtual ConsentList ConsentList { get; set; }
 
-        /// <summary>Limit on the number of user data mappings to return in a single response. If zero the default page
-        /// size of 100 is used.</summary>
+        /// <summary>Limit on the number of user data mappings to return in a single response. If not specified, 100 is
+        /// used. May not be larger than 1000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -12379,7 +12384,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceAttributes")]
         public virtual System.Collections.Generic.IDictionary<string, string> ResourceAttributes { get; set; }
 
-        /// <summary>The view for EvaluateUserConsentsResponse.</summary>
+        /// <summary>The view for EvaluateUserConsentsResponse. If unspecified, defaults to `BASIC` and returns
+        /// `consented` as `TRUE` or `FALSE`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseView")]
         public virtual string ResponseView { get; set; }
 
@@ -12494,6 +12500,17 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// <summary>Request to export resources.</summary>
     public class ExportResourcesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If provided, only resources updated after this time are exported. The time uses the format YYYY-MM-
+        /// DDThh:mm:ss.sss+zz:zz. For example, `2015-02-07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`. The time must
+        /// be specified to the second and include a time zone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("_since")]
+        public virtual string Since { get; set; }
+
+        /// <summary>String of comma-delimited FHIR resource types. If provided, only resources of the specified
+        /// resource type(s) are exported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("_type")]
+        public virtual string Type { get; set; }
+
         /// <summary>The BigQuery output destination. The Cloud Healthcare Service Agent requires two IAM roles on the
         /// BigQuery location: `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`. The output is one BigQuery
         /// table per resource type.</summary>
@@ -13317,18 +13334,18 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An image.</summary>
+    /// <summary>Raw bytes representing consent artifact content.</summary>
     public class Image : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Input only. Points to a Cloud Storage URI containing the image. The URI must be in the following
-        /// format: `gs://{bucket_id}/{object_id}`. The Cloud Healthcare API service account must have the
-        /// `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. The image at this URI is copied
-        /// to a Cloud Storage location managed by the Cloud Healthcare API. Responses to image fetching requests return
-        /// the image in raw_bytes.</summary>
+        /// <summary>Input only. Points to a Cloud Storage URI containing the consent artifact content. The URI must be
+        /// in the following format: `gs://{bucket_id}/{object_id}`. The Cloud Healthcare API service account must have
+        /// the `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. The consent artifact
+        /// content at this URI is copied to a Cloud Storage location managed by the Cloud Healthcare API. Responses to
+        /// fetching requests return the consent artifact content in raw_bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
         public virtual string GcsUri { get; set; }
 
-        /// <summary>Image content represented as a stream of bytes. This field is populated when returned in
+        /// <summary>Consent artifact content represented as a stream of bytes. This field is populated when returned in
         /// GetConsentArtifact response, but not included in CreateConsentArtifact and ListConsentArtifact
         /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rawBytes")]

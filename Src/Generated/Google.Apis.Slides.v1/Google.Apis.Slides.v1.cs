@@ -2760,7 +2760,8 @@ namespace Google.Apis.Slides.v1.Data
 
     /// <summary>The properties of a Shape. If the shape is a placeholder shape as determined by the placeholder field,
     /// then these properties may be inherited from a parent placeholder shape. Determining the rendered value of the
-    /// property depends on the corresponding property_state field value.</summary>
+    /// property depends on the corresponding property_state field value. Any text autofit settings on the shape are
+    /// automatically deactivated by requests that can impact how text fits in the shape.</summary>
     public class ShapeProperties : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The alignment of the content in the shape. If unspecified, the alignment is inherited from a parent
