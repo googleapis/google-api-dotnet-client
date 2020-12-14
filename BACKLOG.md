@@ -36,20 +36,20 @@ the request and want to put work into it.
 - Status: Investigation required.
 - Action: Unlikely, this repo is in maintenance mode.
 
-## unable to assign a file name when uploading data by Analytics API
+## Unable to assign a file name when uploading data by Analytics API
 
 - Issue: [#1087](https://github.com/googleapis/google-api-dotnet-client/issues/1087)
 - Status: Investigation required.
 - Action: Unlikely, this repo is in maintenance mode.
 
-# Support / Documentation for limited device authorisation flow
+## Support / Documentation for limited device authorisation flow
 
 - Issue [#1105](https://github.com/googleapis/google-api-dotnet-client/issues/1105)
 - Status: Slightly unclear at the moment whether this is about
   documenting existing features, or implementing a new flow
 - Action: Unlikely, this repo is in maintenance mode.
 
-# Polly integration for HttpClient
+## Polly integration for HttpClient
 
 - Issue [#1414](https://github.com/googleapis/google-api-dotnet-client/issues/1414)
 - Status: workaround feasible with small amounts of customer code
@@ -57,8 +57,17 @@ the request and want to put work into it.
   want to add a Polly dependency just for this, and it doesn't seem
   worth creating a new library.
 
-# Server-Side Blazor and Google OAuth2
+## Server-Side Blazor and Google OAuth2
 
 - Issue [#1427](https://github.com/googleapis/google-api-dotnet-client/issues/1427)
 - Status: unclear right now, but we don't test on Blazor
 - Action: keep an eye; if Blazor becomes very popular or we get multiple requests, we may revisit.
+
+## Multiple Auth related FRs
+
+- Issue [#1548 OIDC support for gRPC credentilas](https://github.com/googleapis/google-api-dotnet-client/issues/1548)
+- Issue [#1447 Support for key rotation](https://github.com/googleapis/google-api-dotnet-client/issues/1447)
+- Issue [#1326 Support for "server-side" OAuth flow](https://github.com/googleapis/google-api-dotnet-client/issues/1326)
+- Issue [#1312 Impersonated credentials](https://github.com/googleapis/google-api-dotnet-client/issues/1312)
+- Status: ongoing internal effort to consolidate and standardize OAuth features across language libraries.
+- Action: bring these issues up for consideration as part of consolidation work.
