@@ -7323,9 +7323,165 @@ namespace Google.Apis.ShoppingContent.v2_1
         public ProductstatusesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Repricingreports = new RepricingreportsResource(service);
 
         }
 
+        /// <summary>Gets the Repricingreports resource.</summary>
+        public virtual RepricingreportsResource Repricingreports { get; }
+
+        /// <summary>The "repricingreports" collection of methods.</summary>
+        public class RepricingreportsResource
+        {
+            private const string Resource = "repricingreports";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public RepricingreportsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Lists the metrics report for a given Repricing product. Reports of the last 3 days may not be
+            /// complete.</summary>
+            /// <param name="merchantId">Required. Id of the merchant who owns the Repricing rule.</param>
+            /// <param
+            /// name="productId">Required. Id of the Repricing product. Also known as the [REST_ID](https://developers.google.com
+            /// /shopping-content/reference/rest/v2.1/products#Product.FIELDS.id)</param>
+            public virtual ListRequest List(long merchantId, string productId)
+            {
+                return new ListRequest(service, merchantId, productId);
+            }
+
+            /// <summary>Lists the metrics report for a given Repricing product. Reports of the last 3 days may not be
+            /// complete.</summary>
+            public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ListRepricingProductReportsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, long merchantId, string productId) : base(service)
+                {
+                    MerchantId = merchantId;
+                    ProductId = productId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Id of the merchant who owns the Repricing rule.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long MerchantId { get; private set; }
+
+                /// <summary>Required. Id of the Repricing product. Also known as the
+                /// [REST_ID](https://developers.google.com/shopping-
+                /// content/reference/rest/v2.1/products#Product.FIELDS.id)</summary>
+                [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProductId { get; private set; }
+
+                /// <summary>Gets Repricing reports on and before this date in the merchant's timezone. You can only
+                /// retrieve data up to 3 days ago (default) or earlier. Format is YYYY-MM-DD.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("endDate", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string EndDate { get; set; }
+
+                /// <summary>Maximum number of days of reports to return. There can be more than one rule report
+                /// returned per day. For example, if 3 rule types got applied to the same product within a 24-hour
+                /// period, then a page_size of 1 will return 3 rule reports. The page size defaults to 50 and values
+                /// above 1000 are coerced to 1000. This service may return fewer days of reports than this value, for
+                /// example, if the time between your start and end date is less than the page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Token (if provided) to retrieve the subsequent page. All other parameters must match the
+                /// original call that provided the page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Id of the Repricing rule. If specified, only gets this rule's reports.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("ruleId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string RuleId { get; set; }
+
+                /// <summary>Gets Repricing reports on and after this date in the merchant's timezone, up to one year
+                /// ago. Do not use a start date later than 3 days ago (default). Format is YYYY-MM-DD.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("startDate", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string StartDate { get; set; }
+
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "content/v2.1/{merchantId}/productstatuses/{productId}/repricingreports";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "productId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("endDate", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "endDate",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("ruleId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "ruleId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("startDate", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "startDate",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+
+            }
+        }
 
         /// <summary>Gets the statuses of multiple products in a single request.</summary>
         /// <param name="body">The body of the request.</param>
@@ -8185,9 +8341,149 @@ namespace Google.Apis.ShoppingContent.v2_1
         public RepricingrulesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Repricingreports = new RepricingreportsResource(service);
 
         }
 
+        /// <summary>Gets the Repricingreports resource.</summary>
+        public virtual RepricingreportsResource Repricingreports { get; }
+
+        /// <summary>The "repricingreports" collection of methods.</summary>
+        public class RepricingreportsResource
+        {
+            private const string Resource = "repricingreports";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public RepricingreportsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Lists the metrics report for a given Repricing rule. Reports of the last 3 days may not be
+            /// complete.</summary>
+            /// <param name="merchantId">Required. Id of the merchant who owns the Repricing rule.</param>
+            /// <param
+            /// name="ruleId">Required. Id of the Repricing rule.</param>
+            public virtual ListRequest List(long merchantId, string ruleId)
+            {
+                return new ListRequest(service, merchantId, ruleId);
+            }
+
+            /// <summary>Lists the metrics report for a given Repricing rule. Reports of the last 3 days may not be
+            /// complete.</summary>
+            public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ListRepricingRuleReportsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, long merchantId, string ruleId) : base(service)
+                {
+                    MerchantId = merchantId;
+                    RuleId = ruleId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. Id of the merchant who owns the Repricing rule.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long MerchantId { get; private set; }
+
+                /// <summary>Required. Id of the Repricing rule.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("ruleId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string RuleId { get; private set; }
+
+                /// <summary>Gets Repricing reports on and before this date in the merchant's timezone. You can only
+                /// retrieve data up to 3 days ago (default) or earlier. Format: YYYY-MM-DD.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("endDate", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string EndDate { get; set; }
+
+                /// <summary>Maximum number of daily reports to return. Each report includes data from a single 24-hour
+                /// period. The page size defaults to 50 and values above 1000 are coerced to 1000. This service may
+                /// return fewer days than this value, for example, if the time between your start and end date is less
+                /// than page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Token (if provided) to retrieve the subsequent page. All other parameters must match the
+                /// original call that provided the page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets Repricing reports on and after this date in the merchant's timezone, up to one year
+                /// ago. Do not use a start date later than 3 days ago (default). Format: YYYY-MM-DD.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("startDate", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string StartDate { get; set; }
+
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "content/v2.1/{merchantId}/repricingrules/{ruleId}/repricingreports";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("ruleId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "ruleId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("endDate", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "endDate",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("startDate", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "startDate",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+
+            }
+        }
 
         /// <summary>Creates a repricing rule for your Merchant Center account.</summary>
         /// <param name="body">The body of the request.</param>
@@ -11414,6 +11710,31 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are
+    /// either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can
+    /// represent one of the following: * A full date, with non-zero year, month, and day values * A month and day
+    /// value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and
+    /// month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and
+    /// `google.protobuf.Timestamp`.</summary>
+    public class Date : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by
+        /// itself or a year and month where the day isn't significant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents civil time (or occasionally physical time). This type can represent a civil time in one of a
     /// few possible ways: * When utc_offset is set and time_zone is unset: a civil time on a calendar day with a
     /// particular offset from UTC. * When time_zone is set and utc_offset is unset: a civil time on a calendar day in a
@@ -11698,6 +12019,21 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// Day`" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Map of inapplicability details.</summary>
+    public class InapplicabilityDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Count of this inapplicable reason code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inapplicableCount")]
+        public virtual System.Nullable<long> InapplicableCount { get; set; }
+
+        /// <summary>Reason code this rule was not applicable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inapplicableReason")]
+        public virtual string InapplicableReason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12156,6 +12492,36 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The regions from the specified merchant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regions")]
         public virtual System.Collections.Generic.IList<Region> Regions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for the ListRepricingProductReports method.</summary>
+    public class ListRepricingProductReportsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token for retrieving the next page. Its absence means there is no subsequent page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Periodic reports for the given Repricing product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repricingProductReports")]
+        public virtual System.Collections.Generic.IList<RepricingProductReport> RepricingProductReports { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for the ListRepricingRuleReports method.</summary>
+    public class ListRepricingRuleReportsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token for retrieving the next page. Its absence means there is no subsequent page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Daily reports for the given Repricing rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repricingRuleReports")]
+        public virtual System.Collections.Generic.IList<RepricingRuleReport> RepricingRuleReports { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14238,6 +14604,22 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>ScheduledDeliveryDetails used to update the scheduled delivery order.</summary>
+    public class OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The phone number of the carrier fulfilling the delivery. The phone number should be formatted as
+        /// the international notation in</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierPhoneNumber")]
+        public virtual string CarrierPhoneNumber { get; set; }
+
+        /// <summary>The date a shipment is scheduled for delivery, in ISO 8601 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduledDate")]
+        public virtual string ScheduledDate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class OrdersGetByMerchantOrderIdResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
@@ -14714,6 +15096,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// provided only if `status` is `ready for pickup`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readyPickupDate")]
         public virtual string ReadyPickupDate { get; set; }
+
+        /// <summary>Delivery details of the shipment if scheduling is needed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduledDeliveryDetails")]
+        public virtual OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails ScheduledDeliveryDetails { get; set; }
 
         /// <summary>The ID of the shipment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentId")]
@@ -16404,10 +16790,82 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Resource that represents a daily Repricing product report. Each report contains stats for a single type
+    /// of Repricing rule for a single product on a given day. If there are multiple rules of the same type for the
+    /// product on that day, the report lists all the rules by rule ids, combines the stats, and paginates the results
+    /// by date. To retrieve the stats of a particular rule, provide the rule_id in the request.</summary>
+    public class RepricingProductReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Total count of Repricer applications. This value captures how many times the rule of this type was
+        /// applied to this product during this reporting period.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationCount")]
+        public virtual System.Nullable<long> ApplicationCount { get; set; }
+
+        /// <summary>Stats specific to buybox winning rules for product report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buyboxWinningProductStats")]
+        public virtual RepricingProductReportBuyboxWinningProductStats BuyboxWinningProductStats { get; set; }
+
+        /// <summary>Date of the stats in this report. The report starts and ends according to the merchant's
+        /// timezone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        public virtual Date Date { get; set; }
+
+        /// <summary>Maximum displayed price after repriced during this reporting period.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("highWatermark")]
+        public virtual PriceAmount HighWatermark { get; set; }
+
+        /// <summary>List of all reasons the rule did not apply to the product during the specified reporting
+        /// period.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inapplicabilityDetails")]
+        public virtual System.Collections.Generic.IList<InapplicabilityDetails> InapplicabilityDetails { get; set; }
+
+        /// <summary>Minimum displayed price after repriced during this reporting period.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lowWatermark")]
+        public virtual PriceAmount LowWatermark { get; set; }
+
+        /// <summary>Total unit count of impacted products ordered while the rule was active on the date of the report.
+        /// This count includes all orders that were started while the rule was active, even if the rule was no longer
+        /// active when the order was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderItemCount")]
+        public virtual System.Nullable<int> OrderItemCount { get; set; }
+
+        /// <summary>Ids of the Repricing rule for this report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleIds")]
+        public virtual System.Collections.Generic.IList<string> RuleIds { get; set; }
+
+        /// <summary>Total GMV generated by impacted products while the rule was active on the date of the report. This
+        /// value includes all orders that were started while the rule was active, even if the rule was no longer active
+        /// when the order was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalGmv")]
+        public virtual PriceAmount TotalGmv { get; set; }
+
+        /// <summary>Type of the rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Stats specific to buybox winning rules for product report.</summary>
+    public class RepricingProductReportBuyboxWinningProductStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of times this product won the buybox with these rules during this time period.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buyboxWinsCount")]
+        public virtual System.Nullable<int> BuyboxWinsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents a repricing rule. A repricing rule is used by shopping serving to adjust transactable offer
     /// prices if conditions are met. Next ID: 24</summary>
     public class RepricingRule : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The rule definition for TYPE_COGS_BASED. Required when the rule type is TYPE_COGS_BASED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cogsBasedRule")]
+        public virtual RepricingRuleCostOfGoodsSaleRule CogsBasedRule { get; set; }
+
         /// <summary>Required. Immutable. CLDR country code (e.g. "US").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
         public virtual string CountryCode { get; set; }
@@ -16443,6 +16901,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ruleId")]
         public virtual string RuleId { get; set; }
 
+        /// <summary>The rule definition for TYPE_STATS_BASED. Required when the rule type is
+        /// TYPE_STATS_BASED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statsBasedRule")]
+        public virtual RepricingRuleStatsBasedRule StatsBasedRule { get; set; }
+
         /// <summary>The title for the rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
@@ -16450,6 +16913,22 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Required. Immutable. The type of the rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A repricing rule that changes the sale price based on cost of goods sale.</summary>
+    public class RepricingRuleCostOfGoodsSaleRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The percent change against the COGS. Ex: 20 would mean to set the adjusted price 1.2X of the COGS
+        /// data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentageDelta")]
+        public virtual System.Nullable<int> PercentageDelta { get; set; }
+
+        /// <summary>The price delta against the COGS. E.g. 2 means $2 more of the COGS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceDelta")]
+        public virtual string PriceDelta { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16527,6 +17006,68 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Resource that represents a daily Repricing rule report. Next ID: 11</summary>
+    public class RepricingRuleReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Stats specific to buybox winning rules for rule report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buyboxWinningRuleStats")]
+        public virtual RepricingRuleReportBuyboxWinningRuleStats BuyboxWinningRuleStats { get; set; }
+
+        /// <summary>Date of the stats in this report. The report starts and ends according to the merchant's
+        /// timezone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        public virtual Date Date { get; set; }
+
+        /// <summary>List of product ids that are impacted by this rule during this reporting period. Out of stock
+        /// products and products not searched for by customers are examples of non-impacted products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impactedProducts")]
+        public virtual System.Collections.Generic.IList<string> ImpactedProducts { get; set; }
+
+        /// <summary>List of all reasons the rule did not apply to the inapplicable products during the specified
+        /// reporting period.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inapplicabilityDetails")]
+        public virtual System.Collections.Generic.IList<InapplicabilityDetails> InapplicabilityDetails { get; set; }
+
+        /// <summary>List of product ids that are inapplicable to this rule during this reporting period. To get the
+        /// inapplicable reason for a specific product, see RepricingProductReport.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inapplicableProducts")]
+        public virtual System.Collections.Generic.IList<string> InapplicableProducts { get; set; }
+
+        /// <summary>Total unit count of impacted products ordered while the rule was active on the date of the report.
+        /// This count includes all orders that were started while the rule was active, even if the rule was no longer
+        /// active when the order was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderItemCount")]
+        public virtual System.Nullable<int> OrderItemCount { get; set; }
+
+        /// <summary>Id of the Repricing rule for this report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleId")]
+        public virtual string RuleId { get; set; }
+
+        /// <summary>Total GMV generated by impacted products while the rule was active on the date of the report. This
+        /// value includes all orders that were started while the rule was active, even if the rule was no longer active
+        /// when the order was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalGmv")]
+        public virtual PriceAmount TotalGmv { get; set; }
+
+        /// <summary>Type of the rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Stats specific to buybox winning rules for rule report.</summary>
+    public class RepricingRuleReportBuyboxWinningRuleStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of unique products that won the buybox with this rule during this period of time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buyboxWonProductCount")]
+        public virtual System.Nullable<int> BuyboxWonProductCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Definition of a rule restriction. At least one of the following needs to be true: (1)
     /// use_auto_pricing_min_price is true (2) floor.price_delta exists (3) floor.percentage_delta exists If
     /// floor.price_delta and floor.percentage_delta are both set on a rule, the highest value will be chosen by the
@@ -16562,6 +17103,23 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The price micros relative to the offer selling price. This field is signed. It must be negative in
         /// floor. For example, if an offer is selling at $10 and this field is -$2 in floor, the repricing rule only
         /// applies if the calculated new price is >= $8.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceDelta")]
+        public virtual string PriceDelta { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Definition of stats based rule.</summary>
+    public class RepricingRuleStatsBasedRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The percent change against the price target. Valid from 0 to 100 inclusively.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentageDelta")]
+        public virtual System.Nullable<int> PercentageDelta { get; set; }
+
+        /// <summary>The price delta against the above price target. A positive value means the price should be adjusted
+        /// to be above statistical measure, and a negative value means below. Currency code must not be
+        /// included.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceDelta")]
         public virtual string PriceDelta { get; set; }
 
@@ -17608,6 +18166,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The delivery address</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual TestOrderAddress Address { get; set; }
+
+        /// <summary>Whether the order is scheduled delivery order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isScheduledDelivery")]
+        public virtual System.Nullable<bool> IsScheduledDelivery { get; set; }
 
         /// <summary>The phone number of the person receiving the delivery.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]

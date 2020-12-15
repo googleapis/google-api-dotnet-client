@@ -4866,7 +4866,8 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Istio service scoped to a single Kubernetes cluster. Learn more at http://istio.io.</summary>
+    /// <summary>Istio service scoped to a single Kubernetes cluster. Learn more at http://istio.io. Clusters running
+    /// OSS Istio will have their services ingested as this type.</summary>
     public class ClusterIstio : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The name of the Kubernetes cluster in which this Istio service is defined. Corresponds to the
@@ -5886,7 +5887,8 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Istio service scoped to an Istio mesh</summary>
+    /// <summary>Istio service scoped to an Istio mesh. Anthos clusters running ASM < 1.6.8 will have their services
+    /// ingested as this type.</summary>
     public class MeshIstio : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Identifier for the mesh in which this Istio service is defined. Corresponds to the mesh_uid metric

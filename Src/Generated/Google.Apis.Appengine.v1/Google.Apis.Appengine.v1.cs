@@ -4372,6 +4372,11 @@ namespace Google.Apis.Appengine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("vmIp")]
         public virtual string VmIp { get; set; }
 
+        /// <summary>Output only. The liveness health check of this instance. Only applicable for instances in App
+        /// Engine flexible environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmLiveness")]
+        public virtual string VmLiveness { get; set; }
+
         /// <summary>Output only. Name of the virtual machine where this instance lives. Only applicable for instances
         /// in App Engine flexible environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmName")]

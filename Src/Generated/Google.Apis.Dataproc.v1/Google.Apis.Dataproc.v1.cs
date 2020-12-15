@@ -2619,6 +2619,96 @@ namespace Google.Apis.Dataproc.v1
 
                 }
 
+                /// <summary>Inject encrypted credentials into all of the VMs in a cluster.The target cluster must be a
+                /// personal auth cluster assigned to the user who is issuing the RPC.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="project">Required. The ID of the Google Cloud Platform project the cluster belongs to, of the form
+                /// projects/.</param>
+                /// <param name="region">Required. The region containing the cluster, of the form
+                /// regions/.</param>
+                /// <param name="cluster">Required. The cluster, in the form clusters/.</param>
+                public virtual InjectCredentialsRequest InjectCredentials(Google.Apis.Dataproc.v1.Data.InjectCredentialsRequest body, string project, string region, string cluster)
+                {
+                    return new InjectCredentialsRequest(service, body, project, region, cluster);
+                }
+
+                /// <summary>Inject encrypted credentials into all of the VMs in a cluster.The target cluster must be a
+                /// personal auth cluster assigned to the user who is issuing the RPC.</summary>
+                public class InjectCredentialsRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new InjectCredentials request.</summary>
+                    public InjectCredentialsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.InjectCredentialsRequest body, string project, string region, string cluster) : base(service)
+                    {
+                        Project = project;
+                        Region = region;
+                        Cluster = cluster;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The ID of the Google Cloud Platform project the cluster belongs to, of the
+                    /// form projects/.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Project { get; private set; }
+
+                    /// <summary>Required. The region containing the cluster, of the form regions/.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Region { get; private set; }
+
+                    /// <summary>Required. The cluster, in the form clusters/.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("cluster", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Cluster { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1.Data.InjectCredentialsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "injectCredentials";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+project}/{+region}/{+cluster}:injectCredentials";
+
+                    /// <summary>Initializes InjectCredentials parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "project",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                        RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "region",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^regions/[^/]+$",
+                        });
+                        RequestParameters.Add("cluster", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "cluster",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^clusters/[^/]+$",
+                        });
+                    }
+
+                }
+
                 /// <summary>Lists all regions/{region}/clusters in a project alphabetically.</summary>
                 /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the cluster belongs
                 /// to.</param>
@@ -5847,6 +5937,23 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A request to inject credentials into a cluster.</summary>
+    public class InjectCredentialsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The cluster UUID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
+        public virtual string ClusterUuid { get; set; }
+
+        /// <summary>Required. The encrypted credentials being injected in to the cluster.The client is responsible for
+        /// encrypting the credentials in a way that is supported by the cluster.A wrapped value is used here so that
+        /// the actual contents of the encrypted credentials are not written to audit logs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("credentialsCiphertext")]
+        public virtual string CredentialsCiphertext { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Configuration for the size bounds of an instance group, including its proportional size to other
     /// groups.</summary>
     public class InstanceGroupAutoscalingPolicyConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -6156,7 +6263,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual System.Nullable<int> MaxFailuresPerHour { get; set; }
 
         /// <summary>Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting
-        /// with non-zero code before job is reported failed. Maximum value is 240</summary>
+        /// with non-zero code before job is reported failed. Maximum value is 240.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxFailuresTotal")]
         public virtual System.Nullable<int> MaxFailuresTotal { get; set; }
 

@@ -345,7 +345,7 @@
    }
   }
  }, 
- "revision": "20201127", 
+ "revision": "20201207", 
  "rootUrl": "https://smartdevicemanagement.googleapis.com/", 
  "schemas": {
   "GoogleHomeEnterpriseSdmV1Device": {

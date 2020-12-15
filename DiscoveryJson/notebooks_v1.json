@@ -937,13 +937,45 @@
          ]
         }
        }
+      }, 
+      "schedules": {
+       "methods": {
+        "trigger": {
+         "description": "Triggers execution of an existing schedule.", 
+         "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/schedules/{schedulesId}:trigger", 
+         "httpMethod": "POST", 
+         "id": "notebooks.projects.locations.schedules.trigger", 
+         "parameterOrder": [
+          "name"
+         ], 
+         "parameters": {
+          "name": {
+           "description": "Required. Format: `parent=projects/{project_id}/locations/{location}/schedules/{schedule_id}`", 
+           "location": "path", 
+           "pattern": "^projects/[^/]+/locations/[^/]+/schedules/[^/]+$", 
+           "required": true, 
+           "type": "string"
+          }
+         }, 
+         "path": "v1/{+name}:trigger", 
+         "request": {
+          "$ref": "TriggerScheduleRequest"
+         }, 
+         "response": {
+          "$ref": "Operation"
+         }, 
+         "scopes": [
+          "https://www.googleapis.com/auth/cloud-platform"
+         ]
+        }
+       }
       }
      }
     }
    }
   }
  }, 
- "revision": "20201110", 
+ "revision": "20201211", 
  "rootUrl": "https://notebooks.googleapis.com/", 
  "schemas": {
   "AcceleratorConfig": {
@@ -1799,6 +1831,12 @@
      "type": "array"
     }
    }, 
+   "type": "object"
+  }, 
+  "TriggerScheduleRequest": {
+   "description": "Request for created scheduled notebooks", 
+   "id": "TriggerScheduleRequest", 
+   "properties": {}, 
    "type": "object"
   }, 
   "UpgradeHistoryEntry": {

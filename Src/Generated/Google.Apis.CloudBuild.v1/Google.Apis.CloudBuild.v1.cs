@@ -1996,7 +1996,7 @@ namespace Google.Apis.CloudBuild.v1.Data
 
         /// <summary>IAM service account whose credentials will be used at build runtime. Must be of the format
         /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service
-        /// account. This field is in alpha and is not publicly available.</summary>
+        /// account. This field is in beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
@@ -2123,7 +2123,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; }
 
         /// <summary>Option to specify a `WorkerPool` for the build. Format:
-        /// projects/{project}/locations/{location}/workerPools/{workerPool} This field is experimental.</summary>
+        /// projects/{project}/locations/{location}/workerPools/{workerPool} This field is in beta and is available only
+        /// to restricted users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
         public virtual string WorkerPool { get; set; }
 

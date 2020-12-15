@@ -412,7 +412,9 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
                 }
 
-                /// <summary>Updates the client state for the device user</summary>
+                /// <summary>Updates the client state for the device user **Note**: This method is available only to
+                /// customers who have one of the following SKUs: Enterprise Standard, Enterprise Plus, Enterprise for
+                /// Education, and Cloud Identity Premium</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
                 /// ClientState in format: `devices/{device_id}/deviceUsers/{device_user_id}/clientState/{partner_id}`, where partner_id
@@ -422,7 +424,9 @@ namespace Google.Apis.CloudIdentity.v1beta1
                     return new PatchRequest(service, body, name);
                 }
 
-                /// <summary>Updates the client state for the device user</summary>
+                /// <summary>Updates the client state for the device user **Note**: This method is available only to
+                /// customers who have one of the following SKUs: Enterprise Standard, Enterprise Plus, Enterprise for
+                /// Education, and Cloud Identity Premium</summary>
                 public class PatchRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -1201,14 +1205,18 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
         }
 
-        /// <summary>Creates a device. Only company-owned device may be created.</summary>
+        /// <summary>Creates a device. Only company-owned device may be created. **Note**: This method is available only
+        /// to customers who have one of the following SKUs: Enterprise Standard, Enterprise Plus, Enterprise for
+        /// Education, and Cloud Identity Premium</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.CloudIdentity.v1beta1.Data.CreateDeviceRequest body)
         {
             return new CreateRequest(service, body);
         }
 
-        /// <summary>Creates a device. Only company-owned device may be created.</summary>
+        /// <summary>Creates a device. Only company-owned device may be created. **Note**: This method is available only
+        /// to customers who have one of the following SKUs: Enterprise Standard, Enterprise Plus, Enterprise for
+        /// Education, and Cloud Identity Premium</summary>
         public class CreateRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
         {
             /// <summary>Constructs a new Create request.</summary>

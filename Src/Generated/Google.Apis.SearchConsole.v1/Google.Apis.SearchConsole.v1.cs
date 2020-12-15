@@ -1076,6 +1076,11 @@ namespace Google.Apis.SearchConsole.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("aggregationType")]
         public virtual string AggregationType { get; set; }
 
+        /// <summary>The data state to be fetched, can be full or all, the latter including full and partial
+        /// data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataState")]
+        public virtual string DataState { get; set; }
+
         /// <summary>[Optional] Zero or more filters to apply to the dimension grouping values; for example, 'query
         /// contains \"buy\"' to see only data where the query string contains the substring \"buy\" (not case-
         /// sensitive). You can filter by a dimension without grouping by it.</summary>

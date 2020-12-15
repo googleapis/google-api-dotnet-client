@@ -3847,7 +3847,7 @@
    }
   }
  }, 
- "revision": "20201208", 
+ "revision": "20201213", 
  "rootUrl": "https://youtube.googleapis.com/", 
  "schemas": {
   "AbuseReport": {

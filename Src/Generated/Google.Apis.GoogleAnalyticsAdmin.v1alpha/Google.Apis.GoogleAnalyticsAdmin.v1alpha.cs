@@ -71,7 +71,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <summary>View Google Analytics user permissions</summary>
             public static string AnalyticsManageUsersReadonly = "https://www.googleapis.com/auth/analytics.manage.users.readonly";
 
-            /// <summary>View your Google Analytics data</summary>
+            /// <summary>See and download your Google Analytics data</summary>
             public static string AnalyticsReadonly = "https://www.googleapis.com/auth/analytics.readonly";
 
         }
@@ -88,7 +88,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <summary>View Google Analytics user permissions</summary>
             public const string AnalyticsManageUsersReadonly = "https://www.googleapis.com/auth/analytics.manage.users.readonly";
 
-            /// <summary>View your Google Analytics data</summary>
+            /// <summary>See and download your Google Analytics data</summary>
             public const string AnalyticsReadonly = "https://www.googleapis.com/auth/analytics.readonly";
 
         }
@@ -1075,8 +1075,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
 
         }
 
-        /// <summary>Lookup for a single Account. Throws "Target not found" if no such account found, or if caller does
-        /// not have permissions to access it.</summary>
+        /// <summary>Lookup for a single Account.</summary>
         /// <param name="name">Required. The name of the account to lookup. Format: accounts/{account} Example:
         /// "accounts/100"</param>
         public virtual GetRequest Get(string name)
@@ -1084,8 +1083,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             return new GetRequest(service, name);
         }
 
-        /// <summary>Lookup for a single Account. Throws "Target not found" if no such account found, or if caller does
-        /// not have permissions to access it.</summary>
+        /// <summary>Lookup for a single Account.</summary>
         public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAccount>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1527,8 +1525,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
 
             }
 
-            /// <summary>Lookup for a single AndroidAppDataStream Throws "Target not found" if no such android app data
-            /// stream found, or if the caller does not have permissions to access it.</summary>
+            /// <summary>Lookup for a single AndroidAppDataStream</summary>
             /// <param name="name">Required. The name of the android app data stream to lookup. Format:
             /// properties/{property_id}/androidAppDataStreams/{stream_id} Example:
             /// "properties/123/androidAppDataStreams/456"</param>
@@ -1537,8 +1534,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Lookup for a single AndroidAppDataStream Throws "Target not found" if no such android app data
-            /// stream found, or if the caller does not have permissions to access it.</summary>
+            /// <summary>Lookup for a single AndroidAppDataStream</summary>
             public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAndroidAppDataStream>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -1887,6 +1883,18 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>The maximum number of resources to return. The service may return fewer than this value,
+                /// even if there are additional pages. If unspecified, at most 50 resources will be returned. The
+                /// maximum value is 200; (higher values will be coerced to the maximum)</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>A page token, received from a previous `ListFirebaseLinks` call. Provide this to retrieve
+                /// the subsequent page. When paginating, all other parameters provided to `ListProperties` must match
+                /// the call that provided the page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -1909,6 +1917,22 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^properties/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
 
@@ -2387,8 +2411,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
 
             }
 
-            /// <summary>Lookup for a single IosAppDataStream Throws "Target not found" if no such iOS app data stream
-            /// found, or if the caller does not have permissions to access it.</summary>
+            /// <summary>Lookup for a single IosAppDataStream</summary>
             /// <param name="name">Required. The name of the iOS app data stream to lookup. Format:
             /// properties/{property_id}/iosAppDataStreams/{stream_id} Example: "properties/123/iosAppDataStreams/456"</param>
             public virtual GetRequest Get(string name)
@@ -2396,8 +2419,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Lookup for a single IosAppDataStream Throws "Target not found" if no such iOS app data stream
-            /// found, or if the caller does not have permissions to access it.</summary>
+            /// <summary>Lookup for a single IosAppDataStream</summary>
             public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaIosAppDataStream>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -3366,8 +3388,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
 
             }
 
-            /// <summary>Lookup for a single WebDataStream Throws "Target not found" if no such web data stream found,
-            /// or if the caller does not have permissions to access it.</summary>
+            /// <summary>Lookup for a single WebDataStream</summary>
             /// <param name="name">Required. The name of the web data stream to lookup. Format:
             /// properties/{property_id}/webDataStreams/{stream_id} Example: "properties/123/webDataStreams/456"</param>
             public virtual GetRequest Get(string name)
@@ -3375,8 +3396,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Lookup for a single WebDataStream Throws "Target not found" if no such web data stream found,
-            /// or if the caller does not have permissions to access it.</summary>
+            /// <summary>Lookup for a single WebDataStream</summary>
             public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaWebDataStream>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -3866,8 +3886,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
 
         }
 
-        /// <summary>Lookup for a single "GA4" Property. Throws "Target not found" if no such property found, if
-        /// property is not of the type "GA4", or if caller does not have permissions to access it.</summary>
+        /// <summary>Lookup for a single "GA4" Property.</summary>
         /// <param name="name">Required. The name of the property to lookup. Format: properties/{property_id} Example:
         /// "properties/1000"</param>
         public virtual GetRequest Get(string name)
@@ -3875,8 +3894,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             return new GetRequest(service, name);
         }
 
-        /// <summary>Lookup for a single "GA4" Property. Throws "Target not found" if no such property found, if
-        /// property is not of the type "GA4", or if caller does not have permissions to access it.</summary>
+        /// <summary>Lookup for a single "GA4" Property.</summary>
         public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaProperty>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -4659,6 +4677,12 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>List of FirebaseLinks. This will have at most one value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firebaseLinks")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaFirebaseLink> FirebaseLinks { get; set; }
+
+        /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
+        /// there are no subsequent pages. Currently, Google Analytics supports only one FirebaseLink per property, so
+        /// this will never be populated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

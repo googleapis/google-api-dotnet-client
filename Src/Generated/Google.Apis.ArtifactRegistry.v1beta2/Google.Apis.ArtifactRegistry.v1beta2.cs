@@ -1192,6 +1192,10 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
+                            /// <summary>Optional. Sorting field and order</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string OrderBy { get; set; }
+
                             /// <summary>The maximum number of versions to return. Maximum page size is
                             /// 10,000.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -1244,6 +1248,14 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+/packages/[^/]+$",
+                                });
+                                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "orderBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                                 RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                                 {
@@ -2229,7 +2241,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Google Cloud Storage location for the input content.</summary>
+    /// <summary>Google Cloud Storage location where the artifacts currently reside.</summary>
     public class GoogleDevtoolsArtifactregistryV1alpha1GcsSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Cloud Storage paths URI (e.g., gs://my_bucket//my_object).</summary>

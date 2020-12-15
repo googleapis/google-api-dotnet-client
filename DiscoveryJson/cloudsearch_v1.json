@@ -1870,7 +1870,7 @@
    }
   }
  }, 
- "revision": "20201123", 
+ "revision": "20201208", 
  "rootUrl": "https://cloudsearch.googleapis.com/", 
  "schemas": {
   "BooleanOperatorOptions": {

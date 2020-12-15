@@ -1771,20 +1771,6 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Runtime operation information for undeleting a TagKey.</summary>
-    public class UndeleteTagKeyMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Runtime operation information for deleting a TagValue.</summary>
-    public class UndeleteTagValueMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>A status object which is used as the `metadata` field for the Operation returned by
     /// UpdateFolder.</summary>
     public class UpdateFolderMetadata : Google.Apis.Requests.IDirectResponseSchema
