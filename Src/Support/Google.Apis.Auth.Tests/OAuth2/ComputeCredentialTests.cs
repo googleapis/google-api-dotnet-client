@@ -35,6 +35,23 @@ namespace Google.Apis.Auth.Tests.OAuth2
         }*/
 
         [Fact]
+        public void GetMetadaSeverPingTimeoutInMilliseconds_UseDefault()
+        {
+            MockEnvironmentVariableProvider provider = new MockEnvironmentVariableProvider();
+            int timeout = ComputeCredential.GetMetadaSeverPingTimeoutInMilliseconds(provider);
+            Assert.Equal(500, timeout);
+        }
+
+        [Fact]
+        public void GetMetadaSeverPingTimeoutInMilliseconds_FromEnvironmentVariable()
+        {
+            MockEnvironmentVariableProvider provider = new MockEnvironmentVariableProvider();
+            provider.SetEnvironmentVariable("GCE_METADATA_TIMEOUT", "10");
+            int timeout = ComputeCredential.GetMetadaSeverPingTimeoutInMilliseconds(provider);
+            Assert.Equal(10000, timeout);
+        }
+
+        [Fact]
         public void IsRunningOnComputeEngine_ResultIsCached()
         {
             // Two subsequent invocations should return the same task.

@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using Google.Apis.Auth.OAuth2.Responses;
+using Google.Apis.Testing;
 using Google.Apis.Util;
 using System;
 using System.Linq;
@@ -50,7 +51,7 @@ namespace Google.Apis.Auth.OAuth2
         /// a retry occasionally failed. We have observed that after a timeout, the next attempt
         /// succeeds very quickly (sub-50ms) which suggests that this should be fine.
         /// </summary>
-        private const int MetadataServerPingTimeoutInMilliseconds = 500;
+        private const int DefaultMetadataServerPingTimeoutInMilliseconds = 500;
 
         private const int MetadataServerPingAttempts = 3;
 
@@ -59,6 +60,22 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <summary>The Metadata header response indicating Google.</summary>
         private const string GoogleMetadataHeader = "Google";
+
+        /// <summary>Timeout in seconds when pinging the GCE metadata server. </summary>
+        private const string TimeoutInSecondsEnvironmentVariable = "GCE_METADATA_TIMEOUT";
+
+        /// <summary>Returns the timeout provided by environment variable or the default one. </summary>
+        [VisibleForTestOnly]
+        internal static int GetMetadaSeverPingTimeoutInMilliseconds(EnvironmentVariableProvider provider) {
+            if (provider == null) {
+                provider = new EnvironmentVariableProvider();
+            }
+            var timeoutInSeconds = provider.GetEnvironmentVariable(TimeoutInSecondsEnvironmentVariable);
+            if (timeoutInSeconds == null) {
+                return DefaultMetadataServerPingTimeoutInMilliseconds;
+            }
+            return int.Parse(timeoutInSeconds) * 1000;
+        }
 
         /// <summary>
         /// Gets the OIDC Token URL.
@@ -174,7 +191,7 @@ namespace Google.Apis.Auth.OAuth2
                 for (int i = 0; i < MetadataServerPingAttempts; i++)
                 {
                     var cts = new CancellationTokenSource();
-                    cts.CancelAfter(MetadataServerPingTimeoutInMilliseconds);
+                    cts.CancelAfter(GetMetadaSeverPingTimeoutInMilliseconds(null));
                     try
                     {
                         var httpRequest = new HttpRequestMessage(HttpMethod.Get, GoogleAuthConsts.EffectiveMetadataServerUrl);
