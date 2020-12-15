@@ -724,7 +724,7 @@
    }
   }
  }, 
- "revision": "20201124", 
+ "revision": "20201201", 
  "rootUrl": "https://pubsub.googleapis.com/", 
  "schemas": {
   "AcknowledgeRequest": {

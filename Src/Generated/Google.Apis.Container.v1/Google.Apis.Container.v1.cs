@@ -1004,7 +1004,8 @@ namespace Google.Apis.Container.v1
 
                     }
 
-                    /// <summary>Sets the size for a specific node pool.</summary>
+                    /// <summary>Sets the size for a specific node pool. The new size will be used for all replicas,
+                    /// including future replicas created by modifying NodePool.locations.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">The name (project, location, cluster, node pool id) of the node pool to set size. Specified in
                     /// the format `projects/locations/clusters/nodePools`.</param>
@@ -1013,7 +1014,8 @@ namespace Google.Apis.Container.v1
                         return new SetSizeRequest(service, body, name);
                     }
 
-                    /// <summary>Sets the size for a specific node pool.</summary>
+                    /// <summary>Sets the size for a specific node pool. The new size will be used for all replicas,
+                    /// including future replicas created by modifying NodePool.locations.</summary>
                     public class SetSizeRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new SetSize request.</summary>
@@ -3515,7 +3517,8 @@ namespace Google.Apis.Container.v1
 
                     }
 
-                    /// <summary>Sets the size for a specific node pool.</summary>
+                    /// <summary>Sets the size for a specific node pool. The new size will be used for all replicas,
+                    /// including future replicas created by modifying NodePool.locations.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the name
@@ -3533,7 +3536,8 @@ namespace Google.Apis.Container.v1
                         return new SetSizeRequest(service, body, projectId, zone, clusterId, nodePoolId);
                     }
 
-                    /// <summary>Sets the size for a specific node pool.</summary>
+                    /// <summary>Sets the size for a specific node pool. The new size will be used for all replicas,
+                    /// including future replicas created by modifying NodePool.locations.</summary>
                     public class SetSizeRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new SetSize request.</summary>
@@ -5779,6 +5783,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dnsCacheConfig")]
         public virtual DnsCacheConfig DnsCacheConfig { get; set; }
 
+        /// <summary>Configuration for the Compute Engine Persistent Disk CSI driver.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcePersistentDiskCsiDriverConfig")]
+        public virtual GcePersistentDiskCsiDriverConfig GcePersistentDiskCsiDriverConfig { get; set; }
+
         /// <summary>Configuration for the horizontal pod autoscaling feature, which increases or decreases the number
         /// of replica pods a replication controller has based on the resource usage of the existing pods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("horizontalPodAutoscaling")]
@@ -5855,8 +5863,8 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<int> DiskSizeGb { get; set; }
 
-        /// <summary>Type of the disk attached to each node (e.g. 'pd-standard' or 'pd-ssd') If unspecified, the default
-        /// disk type is 'pd-standard'</summary>
+        /// <summary>Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If
+        /// unspecified, the default disk type is 'pd-standard'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
 
@@ -6229,8 +6237,8 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
-        /// <summary>[Output only] Additional information about the current status of this cluster, if
-        /// available.</summary>
+        /// <summary>[Output only] Deprecated. Use conditions instead. Additional information about the current status
+        /// of this cluster, if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
         public virtual string StatusMessage { get; set; }
 
@@ -6380,6 +6388,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The desired private cluster configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredPrivateClusterConfig")]
         public virtual PrivateClusterConfig DesiredPrivateClusterConfig { get; set; }
+
+        /// <summary>The desired state of IPv6 connectivity to Google Services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredPrivateIpv6GoogleAccess")]
+        public virtual string DesiredPrivateIpv6GoogleAccess { get; set; }
 
         /// <summary>The desired release channel configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredReleaseChannel")]
@@ -6583,6 +6595,17 @@ namespace Google.Apis.Container.v1.Data
     /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration for the Compute Engine PD CSI driver.</summary>
+    public class GcePersistentDiskCsiDriverConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the Compute Engine PD CSI driver is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -7071,6 +7094,11 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
+        /// <summary>The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or
+        /// from Google Services (all access will be via IPv4)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateIpv6GoogleAccess")]
+        public virtual string PrivateIpv6GoogleAccess { get; set; }
+
         /// <summary>Output only. The relative name of the Google Compute Engine
         /// [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects
         /// /my-project/regions/us-central1/subnetworks/my-subnet</summary>
@@ -7130,8 +7158,8 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<int> DiskSizeGb { get; set; }
 
-        /// <summary>Type of the disk attached to each node (e.g. 'pd-standard' or 'pd-ssd') If unspecified, the default
-        /// disk type is 'pd-standard'</summary>
+        /// <summary>Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If
+        /// unspecified, the default disk type is 'pd-standard'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
 
@@ -7328,8 +7356,8 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
-        /// <summary>[Output only] Additional information about the current status of this node pool instance, if
-        /// available.</summary>
+        /// <summary>[Output only] Deprecated. Use conditions instead. Additional information about the current status
+        /// of this node pool instance, if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
         public virtual string StatusMessage { get; set; }
 
@@ -8129,7 +8157,7 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>SetNodePoolSizeRequest sets the size a node pool.</summary>
+    /// <summary>SetNodePoolSizeRequest sets the size of a node pool.</summary>
     public class SetNodePoolSizeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Deprecated. The name of the cluster to update. This field has been deprecated and replaced by the

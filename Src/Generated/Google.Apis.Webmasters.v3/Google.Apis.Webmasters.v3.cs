@@ -834,6 +834,11 @@ namespace Google.Apis.Webmasters.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("aggregationType")]
         public virtual string AggregationType { get; set; }
 
+        /// <summary>[Optional] If "all" (case-insensitive), data will include fresh data. If "final" (case-insensitive)
+        /// or if this parameter is omitted, the returned data will include only finalized data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataState")]
+        public virtual string DataState { get; set; }
+
         /// <summary>[Optional] Zero or more filters to apply to the dimension grouping values; for example, 'query
         /// contains "buy"' to see only data where the query string contains the substring "buy" (not case-sensitive).
         /// You can filter by a dimension without grouping by it.</summary>

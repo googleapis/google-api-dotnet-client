@@ -2499,7 +2499,7 @@ namespace Google.Apis.Apigateway.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_config
+        /// <summary>Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs
         /// must not be included.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openapiDocuments")]
         public virtual System.Collections.Generic.IList<ApigatewayApiConfigOpenApiDocument> OpenapiDocuments { get; set; }
@@ -2612,7 +2612,7 @@ namespace Google.Apis.Apigateway.v1beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Configuration for a backend.</summary>
+    /// <summary>Configuration for all backends.</summary>
     public class ApigatewayBackendConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication
@@ -2634,9 +2634,6 @@ namespace Google.Apis.Apigateway.v1beta.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class ApigatewayBinding : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; }
-
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
         /// apply to the current request. However, a different role binding might grant the same role to one or more of

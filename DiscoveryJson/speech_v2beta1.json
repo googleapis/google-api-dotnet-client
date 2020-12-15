@@ -184,7 +184,7 @@
    }
   }
  }, 
- "revision": "20201113", 
+ "revision": "20201207", 
  "rootUrl": "https://speech.googleapis.com/", 
  "schemas": {
   "ListOperationsResponse": {

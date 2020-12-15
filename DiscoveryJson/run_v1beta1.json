@@ -296,7 +296,7 @@
    }
   }
  }, 
- "revision": "20201113", 
+ "revision": "20201204", 
  "rootUrl": "https://run.googleapis.com/", 
  "schemas": {
   "CustomResourceColumnDefinition": {

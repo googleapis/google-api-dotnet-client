@@ -1661,8 +1661,8 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
         public virtual string Tier { get; set; }
 
-        /// <summary>Optional. The In-transit encryption mode of Redis instance. If not provided, in-transit encryption
-        /// is disabled for instance.</summary>
+        /// <summary>Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the
+        /// instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitEncryptionMode")]
         public virtual string TransitEncryptionMode { get; set; }
 

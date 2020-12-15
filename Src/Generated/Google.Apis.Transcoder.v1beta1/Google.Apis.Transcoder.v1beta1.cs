@@ -1044,7 +1044,8 @@ namespace Google.Apis.Transcoder.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Video cropping configuration.</summary>
+    /// <summary>Video cropping configuration for the input video. The cropped input video is scaled to match the output
+    /// resolution.</summary>
     public class Crop : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The number of pixels to crop from the bottom. The default is 0.</summary>
@@ -1310,6 +1311,11 @@ namespace Google.Apis.Transcoder.v1beta1.Data
         /// `{job_template_id}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templateId")]
         public virtual string TemplateId { get; set; }
+
+        /// <summary>Job time to live value in days, which will be effective after job completion. Job should be deleted
+        /// automatically after the given TTL. Enter a value between 1 and 90. The default is 30.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttlAfterCompletionDays")]
+        public virtual System.Nullable<int> TtlAfterCompletionDays { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

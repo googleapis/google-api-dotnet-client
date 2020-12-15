@@ -626,6 +626,11 @@ namespace Google.Apis.Eventarc.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("triggerId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string TriggerId { get; set; }
 
+                    /// <summary>Required. If set, validate the request and preview the review, but do not actually post
+                    /// it.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Eventarc.v1beta1.Data.Trigger Body { get; set; }
@@ -663,6 +668,14 @@ namespace Google.Apis.Eventarc.v1beta1
                             DefaultValue = null,
                             Pattern = null,
                         });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
 
                 }
@@ -689,10 +702,20 @@ namespace Google.Apis.Eventarc.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>If set to true, and the trigger is not found, the request will succeed but no action
+                    /// will be taken on the server.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
                     /// <summary>If provided, the trigger will only be deleted if the etag matches the current etag on
                     /// the resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
+
+                    /// <summary>Required. If set, validate the request and preview the review, but do not actually post
+                    /// it.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
 
                     /// <summary>Gets the method name.</summary>
@@ -717,9 +740,25 @@ namespace Google.Apis.Eventarc.v1beta1
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/triggers/[^/]+$",
                         });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                         RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
                         {
                             Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -940,8 +979,8 @@ namespace Google.Apis.Eventarc.v1beta1
 
                 /// <summary>Update a single trigger.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required. The resource name of the trigger. Must be unique within the location on the project.
-                /// Format: projects/{project}/locations/{location}/triggers/{trigger}</param>
+                /// <param name="name">Required. The resource name of the trigger. Must be unique within the location on the project and
+                /// must in `projects/{project}/locations/{location}/triggers/{trigger}` format.</param>
                 public virtual PatchRequest Patch(Google.Apis.Eventarc.v1beta1.Data.Trigger body, string name)
                 {
                     return new PatchRequest(service, body, name);
@@ -960,15 +999,26 @@ namespace Google.Apis.Eventarc.v1beta1
 
 
                     /// <summary>Required. The resource name of the trigger. Must be unique within the location on the
-                    /// project. Format: projects/{project}/locations/{location}/triggers/{trigger}</summary>
+                    /// project and must in `projects/{project}/locations/{location}/triggers/{trigger}`
+                    /// format.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
+
+                    /// <summary>If set to true, and the trigger is not found, a new trigger will be created. In this
+                    /// situation, `update_mask` is ignored.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
 
                     /// <summary>The fields to be updated; only fields explicitly provided will be updated. If no field
                     /// mask is provided, all provided fields in the request will be updated. To update all fields,
                     /// provide a field mask of "*".</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Required. If set, validate the request and preview the review, but do not actually post
+                    /// it.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -999,9 +1049,25 @@ namespace Google.Apis.Eventarc.v1beta1
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/triggers/[^/]+$",
                         });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
                             Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1326,9 +1392,6 @@ namespace Google.Apis.Eventarc.v1beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; }
-
         /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
         /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
         /// apply to the current request. However, a different role binding might grant the same role to one or more of
@@ -1402,7 +1465,7 @@ namespace Google.Apis.Eventarc.v1beta1.Data
     public class Destination : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Cloud Run fully-managed service that receives the events. The service should be running in the same
-        /// project of the trigger.</summary>
+        /// project as the trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudRunService")]
         public virtual CloudRunService CloudRunService { get; set; }
 
@@ -1538,13 +1601,12 @@ namespace Google.Apis.Eventarc.v1beta1.Data
     /// <summary>Matches events based on exact matches on the CloudEvents attributes.</summary>
     public class MatchingCriteria : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The name of a CloudEvents atrribute. Currently, only a subset of attributes can be
-        /// specified. All triggers MUST provide a matching criteria for attribute 'type'. Event types specify what
-        /// event type has attributes are allowed based on</summary>
+        /// <summary>Required. The name of a CloudEvents attribute. Currently, only a subset of attributes can be
+        /// specified. All triggers MUST provide a matching criteria for the 'type' attribute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attribute")]
         public virtual string Attribute { get; set; }
 
-        /// <summary>Required. The value for the attribute</summary>
+        /// <summary>Required. The value for the attribute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
@@ -1688,12 +1750,12 @@ namespace Google.Apis.Eventarc.v1beta1.Data
     {
         /// <summary>The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the
         /// event delivery. The value must be in the form of
-        /// `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}</summary>
+        /// `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
         public virtual string Subscription { get; set; }
 
         /// <summary>The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event
-        /// delivery. The value must be in the form of `projects/{PROJECT_ID}/topics/{TOPIC_NAME}</summary>
+        /// delivery. The value must be in the form of `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topic")]
         public virtual string Topic { get; set; }
 
@@ -1788,8 +1850,7 @@ namespace Google.Apis.Eventarc.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Required. Destinations specify where the events will be sent to. Exactly one destination is
-        /// supported at this time.</summary>
+        /// <summary>Required. Destination specifies where the events should be sent to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual Destination Destination { get; set; }
 
@@ -1798,13 +1859,13 @@ namespace Google.Apis.Eventarc.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Required. The criteria by which events are filtered. Only events that match with this critera will
-        /// be sent to the destinations.</summary>
+        /// <summary>Required. The criteria by which events are filtered. Only events that match with this criteria will
+        /// be sent to the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchingCriteria")]
         public virtual System.Collections.Generic.IList<MatchingCriteria> MatchingCriteria { get; set; }
 
-        /// <summary>Required. The resource name of the trigger. Must be unique within the location on the project.
-        /// Format: projects/{project}/locations/{location}/triggers/{trigger}</summary>
+        /// <summary>Required. The resource name of the trigger. Must be unique within the location on the project and
+        /// must in `projects/{project}/locations/{location}/triggers/{trigger}` format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

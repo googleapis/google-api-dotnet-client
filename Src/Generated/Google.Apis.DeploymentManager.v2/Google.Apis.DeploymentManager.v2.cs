@@ -760,11 +760,6 @@ namespace Google.Apis.DeploymentManager.v2
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Opt-in for partial success behavior which provides partial results in case of failure. The
-            /// default value is false and the logic is the same as today.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -815,14 +810,6 @@ namespace Google.Apis.DeploymentManager.v2
                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageToken",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -1475,11 +1462,6 @@ namespace Google.Apis.DeploymentManager.v2
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Opt-in for partial success behavior which provides partial results in case of failure. The
-            /// default value is false and the logic is the same as today.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -1538,14 +1520,6 @@ namespace Google.Apis.DeploymentManager.v2
                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageToken",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -1694,11 +1668,6 @@ namespace Google.Apis.DeploymentManager.v2
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Opt-in for partial success behavior which provides partial results in case of failure. The
-            /// default value is false and the logic is the same as today.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -1749,14 +1718,6 @@ namespace Google.Apis.DeploymentManager.v2
                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageToken",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -1927,11 +1888,6 @@ namespace Google.Apis.DeploymentManager.v2
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Opt-in for partial success behavior which provides partial results in case of failure. The
-            /// default value is false and the logic is the same as today.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -1990,14 +1946,6 @@ namespace Google.Apis.DeploymentManager.v2
                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageToken",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -2082,11 +2030,6 @@ namespace Google.Apis.DeploymentManager.v2
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Opt-in for partial success behavior which provides partial results in case of failure. The
-            /// default value is false and the logic is the same as today.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -2137,14 +2080,6 @@ namespace Google.Apis.DeploymentManager.v2
                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageToken",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,

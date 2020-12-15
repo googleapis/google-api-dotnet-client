@@ -58,7 +58,21 @@ namespace Google.Apis.Localservices.v1
         public override string BatchPath => "batch";
         #endif
 
+        /// <summary>Available OAuth 2.0 scopes for use with the Local Services API.</summary>
+        public class Scope
+        {
+            /// <summary>Manage your AdWords campaigns</summary>
+            public static string Adwords = "https://www.googleapis.com/auth/adwords";
 
+        }
+
+        /// <summary>Available OAuth 2.0 scope constants for use with the Local Services API.</summary>
+        public static class ScopeConstants
+        {
+            /// <summary>Manage your AdWords campaigns</summary>
+            public const string Adwords = "https://www.googleapis.com/auth/adwords";
+
+        }
 
 
 

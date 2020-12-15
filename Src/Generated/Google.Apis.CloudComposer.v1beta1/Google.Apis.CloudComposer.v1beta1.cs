@@ -1214,6 +1214,15 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gkeCluster")]
         public virtual string GkeCluster { get; set; }
 
+        /// <summary>Optional. The maintenance window is the period when Cloud Composer components may undergo
+        /// maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods.
+        /// The system will not be under maintenance for every occurrence of this window, but when maintenance is
+        /// planned, it will be scheduled during the window. The maintenance window period must encompass at least 12
+        /// hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value
+        /// is omitted, Cloud Composer components may be subject to maintenance at any time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceWindow")]
+        public virtual MaintenanceWindow MaintenanceWindow { get; set; }
+
         /// <summary>The configuration used for the Kubernetes Engine cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeConfig")]
         public virtual NodeConfig NodeConfig { get; set; }
@@ -1363,6 +1372,30 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The configuration settings for Cloud Composer maintenance window. The following example: {
+    /// "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" }
+    /// would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.</summary>
+    public class MaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Maintenance window end time. It is used only to calculate the duration of the maintenance
+        /// window. The value for end_time must be in the future, relative to `start_time`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>Required. Maintenance window recurrence. Format is a subset of
+        /// [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are
+        /// `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recurrence")]
+        public virtual string Recurrence { get; set; }
+
+        /// <summary>Required. Start time of the first recurrence of the maintenance window.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The configuration information for the Kubernetes Engine nodes running the Apache Airflow
     /// software.</summary>
     public class NodeConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -1400,6 +1433,15 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// field is unspecified, the `machineTypeId` defaults to "n1-standard-1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
+
+        /// <summary>Optional. The maximum number of pods per node in the Cloud Composer GKE cluster. The value must be
+        /// between 8 and 110 and it can be set only if the environment is VPC-native. The default value is 32. Values
+        /// of this field will be propagated both to the `default-pool` node pool of the newly created GKE cluster, and
+        /// to the default "Maximum Pods per Node" value which is used for newly created node pools if their value is
+        /// not explicitly set during node pool creation. For more information, see [Optimizing IP address allocation]
+        /// (https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr). Cannot be updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxPodsPerNode")]
+        public virtual System.Nullable<int> MaxPodsPerNode { get; set; }
 
         /// <summary>Optional. The Compute Engine network to be used for machine communications, specified as a
         /// [relative resource name](/apis/design/resource_names#relative_resource_name). For example:

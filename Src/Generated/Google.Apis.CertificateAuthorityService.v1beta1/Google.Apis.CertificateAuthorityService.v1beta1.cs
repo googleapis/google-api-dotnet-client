@@ -3963,7 +3963,8 @@ namespace Google.Apis.CertificateAuthorityService.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
-        /// <summary>Required. The type of public key.</summary>
+        /// <summary>Optional. The type of public key. If specified, it must match the public key used for the`key`
+        /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
