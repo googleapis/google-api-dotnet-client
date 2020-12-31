@@ -382,7 +382,7 @@ namespace Google.Apis.Firestore.v1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/fields/[^/]+$",
+                                Pattern = null
                             });
                         }
 
@@ -455,7 +455,7 @@ namespace Google.Apis.Firestore.v1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$",
+                                Pattern = null
                             });
                             RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                             {
@@ -580,7 +580,7 @@ namespace Google.Apis.Firestore.v1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/fields/[^/]+$",
+                                Pattern = null
                             });
                             RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                             {
@@ -670,7 +670,7 @@ namespace Google.Apis.Firestore.v1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$",
+                                Pattern = null
                             });
                         }
 
@@ -721,7 +721,7 @@ namespace Google.Apis.Firestore.v1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/indexes/[^/]+$",
+                                Pattern = null
                             });
                         }
 
@@ -772,7 +772,7 @@ namespace Google.Apis.Firestore.v1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/indexes/[^/]+$",
+                                Pattern = null
                             });
                         }
 
@@ -836,7 +836,7 @@ namespace Google.Apis.Firestore.v1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$",
+                                Pattern = null
                             });
                             RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                             {
@@ -941,7 +941,7 @@ namespace Google.Apis.Firestore.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                            Pattern = null
                         });
                     }
 
@@ -1008,7 +1008,7 @@ namespace Google.Apis.Firestore.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                            Pattern = null
                         });
                     }
 
@@ -1067,7 +1067,7 @@ namespace Google.Apis.Firestore.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                            Pattern = null
                         });
                     }
 
@@ -1126,7 +1126,7 @@ namespace Google.Apis.Firestore.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                            Pattern = null
                         });
                     }
 
@@ -1206,7 +1206,7 @@ namespace Google.Apis.Firestore.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/databases/[^/]+/documents/.*$",
+                            Pattern = null
                         });
                         RequestParameters.Add("collectionId", new Google.Apis.Discovery.Parameter
                         {
@@ -1291,7 +1291,7 @@ namespace Google.Apis.Firestore.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
+                            Pattern = null
                         });
                         RequestParameters.Add("currentDocument.exists", new Google.Apis.Discovery.Parameter
                         {
@@ -1372,7 +1372,7 @@ namespace Google.Apis.Firestore.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
+                            Pattern = null
                         });
                         RequestParameters.Add("mask.fieldPaths", new Google.Apis.Discovery.Parameter
                         {
@@ -1494,7 +1494,7 @@ namespace Google.Apis.Firestore.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
+                            Pattern = null
                         });
                         RequestParameters.Add("collectionId", new Google.Apis.Discovery.Parameter
                         {
@@ -1619,7 +1619,7 @@ namespace Google.Apis.Firestore.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
+                            Pattern = null
                         });
                     }
 
@@ -1678,7 +1678,7 @@ namespace Google.Apis.Firestore.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                            Pattern = null
                         });
                     }
 
@@ -1743,7 +1743,7 @@ namespace Google.Apis.Firestore.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
+                            Pattern = null
                         });
                     }
 
@@ -1822,7 +1822,7 @@ namespace Google.Apis.Firestore.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
+                            Pattern = null
                         });
                         RequestParameters.Add("currentDocument.exists", new Google.Apis.Discovery.Parameter
                         {
@@ -1913,7 +1913,7 @@ namespace Google.Apis.Firestore.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                            Pattern = null
                         });
                     }
 
@@ -1978,7 +1978,7 @@ namespace Google.Apis.Firestore.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
+                            Pattern = null
                         });
                     }
 
@@ -2038,7 +2038,7 @@ namespace Google.Apis.Firestore.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                            Pattern = null
                         });
                     }
 
@@ -2126,7 +2126,7 @@ namespace Google.Apis.Firestore.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/databases/[^/]+/operations/[^/]+$",
+                            Pattern = null
                         });
                     }
 
@@ -2179,7 +2179,7 @@ namespace Google.Apis.Firestore.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/databases/[^/]+/operations/[^/]+$",
+                            Pattern = null
                         });
                     }
 
@@ -2230,7 +2230,7 @@ namespace Google.Apis.Firestore.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/databases/[^/]+/operations/[^/]+$",
+                            Pattern = null
                         });
                     }
 
@@ -2303,7 +2303,7 @@ namespace Google.Apis.Firestore.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                            Pattern = null
                         });
                         RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                         {
@@ -2397,7 +2397,7 @@ namespace Google.Apis.Firestore.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                        Pattern = null
                     });
                 }
 
@@ -2462,7 +2462,7 @@ namespace Google.Apis.Firestore.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                        Pattern = null
                     });
                 }
 
@@ -2530,7 +2530,7 @@ namespace Google.Apis.Firestore.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        Pattern = null
                     });
                 }
 
@@ -2591,7 +2591,7 @@ namespace Google.Apis.Firestore.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^projects/[^/]+$",
+                        Pattern = null
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
