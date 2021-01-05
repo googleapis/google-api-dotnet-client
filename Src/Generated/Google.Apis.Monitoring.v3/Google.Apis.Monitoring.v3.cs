@@ -4866,7 +4866,7 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Istio service scoped to a single Kubernetes cluster. Learn more at http://istio.io. Clusters running
+    /// <summary>Istio service scoped to a single Kubernetes cluster. Learn more at https://istio.io. Clusters running
     /// OSS Istio will have their services ingested as this type.</summary>
     public class ClusterIstio : Google.Apis.Requests.IDirectResponseSchema
     {

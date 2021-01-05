@@ -928,8 +928,8 @@ namespace Google.Apis.RecommendationsAI.v1beta1
 
 
                         /// <summary>Makes a recommendation prediction. If using API Key based authentication, the API
-                        /// Key must be registered using the PredictionApiKeyRegistry service. [Learn more
-                        /// ](/recommendations-ai/docs/setting-up#register-key).</summary>
+                        /// Key must be registered using the PredictionApiKeyRegistry service. [Learn
+                        /// more](https://cloud.google.com/recommendations-ai/docs/setting-up#register-key).</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">Required. Full resource name of the format:
                         /// {name=projects/locations/global/catalogs/default_catalog/eventStores/default_event_store/placements} The id of the
@@ -951,8 +951,8 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         }
 
                         /// <summary>Makes a recommendation prediction. If using API Key based authentication, the API
-                        /// Key must be registered using the PredictionApiKeyRegistry service. [Learn more
-                        /// ](/recommendations-ai/docs/setting-up#register-key).</summary>
+                        /// Key must be registered using the PredictionApiKeyRegistry service. [Learn
+                        /// more](https://cloud.google.com/recommendations-ai/docs/setting-up#register-key).</summary>
                         public class PredictRequest : RecommendationsAIBaseServiceRequest<Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1PredictResponse>
                         {
                             /// <summary>Constructs a new Predict request.</summary>

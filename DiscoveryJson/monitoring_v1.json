@@ -275,7 +275,7 @@
    }
   }
  }, 
- "revision": "20201208", 
+ "revision": "20201213", 
  "rootUrl": "https://monitoring.googleapis.com/", 
  "schemas": {
   "Aggregation": {

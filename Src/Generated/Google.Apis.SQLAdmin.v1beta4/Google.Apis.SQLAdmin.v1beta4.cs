@@ -2983,6 +2983,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Instance { get; private set; }
 
+                /// <summary>Whether to skip the verification step (VESS).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("skipVerification", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> SkipVerification { get; set; }
+
                 /// <summary>External sync mode.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("syncMode", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<SyncModeEnum> SyncMode { get; set; }
@@ -3030,6 +3034,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Name = "instance",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("skipVerification", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "skipVerification",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -4633,8 +4645,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual SqlExportOptionsData SqlExportOptions { get; set; }
 
         /// <summary>The path to the file in Google Cloud Storage where the export will be stored. The URI is in the
-        /// form *gs: //bucketName/fileName*. If the file already exists, the requests // succeeds, but the operation
-        /// fails. If *fileType* is // *SQL* and the filename ends with .gz, the contents are // compressed.</summary>
+        /// form *gs://bucketName/fileName*. If the file already exists, the request succeeds, but the operation fails.
+        /// If *fileType* is *SQL* and the filename ends with .gz, the contents are compressed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -4796,9 +4808,9 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Path to the import file in Cloud Storage, in the form *gs: //bucketName/fileName*. Compressed gzip
-        /// files (.gz) are supported // when *fileType* is *SQL*. The instance must have // write permissions to the
-        /// bucket and read access to the file.</summary>
+        /// <summary>Path to the import file in Cloud Storage, in the form *gs://bucketName/fileName*. Compressed gzip
+        /// files (.gz) are supported when *fileType* is *SQL*. The instance must have write permissions to the bucket
+        /// and read access to the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 

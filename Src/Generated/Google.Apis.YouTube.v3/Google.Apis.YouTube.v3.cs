@@ -49,7 +49,6 @@ namespace Google.Apis.YouTube.v3
             PlaylistItems = new PlaylistItemsResource(this);
             Playlists = new PlaylistsResource(this);
             Search = new SearchResource(this);
-            Sponsors = new SponsorsResource(this);
             Subscriptions = new SubscriptionsResource(this);
             SuperChatEvents = new SuperChatEventsResource(this);
             Tests = new TestsResource(this);
@@ -203,9 +202,6 @@ namespace Google.Apis.YouTube.v3
 
         /// <summary>Gets the Search resource.</summary>
         public virtual SearchResource Search { get; }
-
-        /// <summary>Gets the Sponsors resource.</summary>
-        public virtual SponsorsResource Sponsors { get; }
 
         /// <summary>Gets the Subscriptions resource.</summary>
         public virtual SubscriptionsResource Subscriptions { get; }
@@ -7129,126 +7125,6 @@ namespace Google.Apis.YouTube.v3
         }
     }
 
-    /// <summary>The "sponsors" collection of methods.</summary>
-    public class SponsorsResource
-    {
-        private const string Resource = "sponsors";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public SponsorsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-
-        }
-
-
-        /// <summary>Retrieves a list of sponsors that match the request criteria for a channel.</summary>
-        /// <param name="part">The *part* parameter specifies the sponsor resource parts that the API response will include.
-        /// Supported values are id and snippet.</param>
-        public virtual ListRequest List(Google.Apis.Util.Repeatable<string> part)
-        {
-            return new ListRequest(service, part);
-        }
-
-        /// <summary>Retrieves a list of sponsors that match the request criteria for a channel.</summary>
-        public class ListRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.SponsorListResponse>
-        {
-            /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, Google.Apis.Util.Repeatable<string> part) : base(service)
-            {
-                Part = part;
-                InitParameters();
-            }
-
-
-            /// <summary>The *part* parameter specifies the sponsor resource parts that the API response will include.
-            /// Supported values are id and snippet.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> Part { get; private set; }
-
-            /// <summary>Parameter that specifies which channel sponsors to return.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<FilterEnum> Filter { get; set; }
-
-            /// <summary>Parameter that specifies which channel sponsors to return.</summary>
-            public enum FilterEnum
-            {
-                [Google.Apis.Util.StringValueAttribute("sponsorFilterUnknown")]
-                SponsorFilterUnknown,
-                /// <summary>Return the most recent sponsors, from newest to oldest.</summary>
-                [Google.Apis.Util.StringValueAttribute("newest")]
-                Newest,
-                /// <summary>Return all sponsors, from newest to oldest.</summary>
-                [Google.Apis.Util.StringValueAttribute("all")]
-                All,
-            }
-
-            /// <summary>The *maxResults* parameter specifies the maximum number of items that should be returned in the
-            /// result set.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> MaxResults { get; set; }
-
-            /// <summary>The *pageToken* parameter identifies a specific page in the result set that should be returned.
-            /// In an API response, the nextPageToken and prevPageToken properties identify other pages that could be
-            /// retrieved.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "list";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "youtube/v3/sponsors";
-
-            /// <summary>Initializes List parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add("part", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "part",
-                    IsRequired = true,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "filter",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "newest",
-                    Pattern = null,
-                });
-                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "maxResults",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "5",
-                    Pattern = null,
-                });
-                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "pageToken",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-
-        }
-    }
-
     /// <summary>The "subscriptions" collection of methods.</summary>
     public class SubscriptionsResource
     {
@@ -8389,7 +8265,7 @@ namespace Google.Apis.YouTube.v3
                     Name = "hl",
                     IsRequired = false,
                     ParameterType = "query",
-                    DefaultValue = "en_US",
+                    DefaultValue = "en-US",
                     Pattern = null,
                 });
             }
@@ -13574,83 +13450,6 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A `__sponsor__` resource represents a sponsor for a YouTube channel. A sponsor provides recurring
-    /// monetary support to a creator and receives special benefits.</summary>
-    public class Sponsor : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Etag of this resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; }
-
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string `"youtube#sponsor"`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; }
-
-        /// <summary>The `snippet` object contains basic details about the sponsor.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual SponsorSnippet Snippet { get; set; }
-
-    }    
-
-    public class SponsorListResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Etag of this resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; }
-
-        /// <summary>Serialized EventId of the request which produced this response.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; }
-
-        /// <summary>A list of sponsors that match the request criteria.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Sponsor> Items { get; set; }
-
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// `"youtube#sponsorListResponse".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; }
-
-        /// <summary>The token that can be used as the value of the `pageToken` parameter to retrieve the next page in
-        /// the result set.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual PageInfo PageInfo { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
-        public virtual TokenPagination TokenPagination { get; set; }
-
-        /// <summary>The `visitorId` identifies the visitor.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; }
-
-    }    
-
-    public class SponsorSnippet : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The id of the channel being sponsored.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
-        public virtual string ChannelId { get; set; }
-
-        /// <summary>The cumulative time a user has been a sponsor in months.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cumulativeDurationMonths")]
-        public virtual System.Nullable<int> CumulativeDurationMonths { get; set; }
-
-        /// <summary>Details about the sponsor.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sponsorDetails")]
-        public virtual ChannelProfileDetails SponsorDetails { get; set; }
-
-        /// <summary>The date and time when the user became a sponsor. The value is specified in ISO 8601 (`YYYY-MM-
-        /// DDThh:mm:ss.sZ`) format.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sponsorSince")]
-        public virtual string SponsorSince { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>A *subscription* resource contains information about a YouTube user subscription. A subscription
     /// notifies a user when new videos are added to a channel or when another user takes one of several actions on
     /// YouTube, such as uploading a video, rating a video, or commenting on a video.</summary>
@@ -14149,7 +13948,13 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("processingDetails")]
         public virtual VideoProcessingDetails ProcessingDetails { get; set; }
 
-        /// <summary>The projectDetails object contains information about the project specific video metadata.</summary>
+        /// <summary>The projectDetails object contains information about the project specific video metadata.
+        /// b/157517979: This part was never populated after it was added. However, it sees non-zero traffic because
+        /// there is generated client code in the wild that refers to it [1]. We keep this field and do NOT remove it
+        /// because otherwise V3 would return an error when this part gets requested [2]. [1]
+        /// https://developers.google.com/resources/api-libraries/documentation/youtube/v3/csharp/latest/classGoogle_1_1
+        /// Apis_1_1YouTube_1_1v3_1_1Data_1_1VideoProjectDetails.html [2]
+        /// http://google3/video/youtube/src/python/servers/data_api/common.py?l=1565-1569=344141677</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectDetails")]
         public virtual VideoProjectDetails ProjectDetails { get; set; }
 
@@ -14794,13 +14599,14 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Project specific details about the content of a YouTube Video.</summary>
+    /// <summary>DEPRECATED. b/157517979: This part was never populated after it was added. However, it sees non-zero
+    /// traffic because there is generated client code in the wild that refers to it [1]. We keep this field and do NOT
+    /// remove it because otherwise V3 would return an error when this part gets requested [2]. [1]
+    /// https://developers.google.com/resources/api-libraries/documentation/youtube/v3/csharp/latest/classGoogle_1_1Apis
+    /// _1_1YouTube_1_1v3_1_1Data_1_1VideoProjectDetails.html [2]
+    /// http://google3/video/youtube/src/python/servers/data_api/common.py?l=1565-1569=344141677</summary>
     public class VideoProjectDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of project tags associated with the video during the upload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
-        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

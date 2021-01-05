@@ -785,6 +785,10 @@ namespace Google.Apis.CloudLifeSciences.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("alwaysRun")]
         public virtual System.Nullable<bool> AlwaysRun { get; set; }
 
+        /// <summary>Prevents the container from accessing the external network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockExternalNetwork")]
+        public virtual System.Nullable<bool> BlockExternalNetwork { get; set; }
+
         /// <summary>If specified, overrides the `CMD` specified in the container. If the container also has an
         /// `ENTRYPOINT` the values are used as entrypoint arguments. Otherwise, they are used as a command and
         /// arguments to run inside the container.</summary>
@@ -987,7 +991,7 @@ namespace Google.Apis.CloudLifeSciences.v2beta.Data
 
     /// <summary>Carries information about a disk that can be attached to a VM. See
     /// https://cloud.google.com/compute/docs/disks/performance for more information about disk type, size, and
-    /// performance considerations.</summary>
+    /// performance considerations. Specify either `Volume` or `Disk`, but not both.</summary>
     public class Disk : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A user-supplied name for the disk. Used when mounting the disk into actions. The name must contain
@@ -1517,7 +1521,8 @@ namespace Google.Apis.CloudLifeSciences.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cpuPlatform")]
         public virtual string CpuPlatform { get; set; }
 
-        /// <summary>The list of disks to create and attach to the VM.</summary>
+        /// <summary>The list of disks to create and attach to the VM. Specify either the `volumes[]` field or the
+        /// `disks[]` field, but not both.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<Disk> Disks { get; set; }
 
@@ -1568,7 +1573,8 @@ namespace Google.Apis.CloudLifeSciences.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual ServiceAccount ServiceAccount { get; set; }
 
-        /// <summary>The list of disks and other storage to create or attach to the VM.</summary>
+        /// <summary>The list of disks and other storage to create or attach to the VM. Specify either the `volumes[]`
+        /// field or the `disks[]` field, but not both.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
         public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; }
 
@@ -1576,7 +1582,8 @@ namespace Google.Apis.CloudLifeSciences.v2beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Carries information about storage that can be attached to a VM.</summary>
+    /// <summary>Carries information about storage that can be attached to a VM. Specify either `Volume` or `Disk`, but
+    /// not both.</summary>
     public class Volume : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Configuration for a existing disk.</summary>

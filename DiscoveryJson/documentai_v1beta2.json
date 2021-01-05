@@ -292,7 +292,7 @@
    }
   }
  }, 
- "revision": "20201212", 
+ "revision": "20201217", 
  "rootUrl": "https://documentai.googleapis.com/", 
  "schemas": {
   "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata": {

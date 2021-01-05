@@ -599,7 +599,7 @@
    }
   }
  }, 
- "revision": "20201204", 
+ "revision": "20201214", 
  "rootUrl": "https://osconfig.googleapis.com/", 
  "schemas": {
   "AptRepository": {

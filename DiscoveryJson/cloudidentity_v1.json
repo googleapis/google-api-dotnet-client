@@ -1273,7 +1273,7 @@
    }
   }
  }, 
- "revision": "20201208", 
+ "revision": "20201213", 
  "rootUrl": "https://cloudidentity.googleapis.com/", 
  "schemas": {
   "CheckTransitiveMembershipResponse": {

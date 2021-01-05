@@ -435,6 +435,80 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
         }
+
+        /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">Required. Space resource name, in the form "spaces". Example: spaces/AAAAMpdlehY</param>
+        public virtual WebhooksRequest Webhooks(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
+        {
+            return new WebhooksRequest(service, body, parent);
+        }
+
+        /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
+        public class WebhooksRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Message>
+        {
+            /// <summary>Constructs a new Webhooks request.</summary>
+            public WebhooksRequest(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.Message body, string parent) : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. Space resource name, in the form "spaces". Example: spaces/AAAAMpdlehY</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>Opaque thread identifier string that can be specified to group messages into a single thread.
+            /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
+            /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
+            /// webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to post
+            /// further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in
+            /// message.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ThreadKey { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.HangoutsChat.v1.Data.Message Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "webhooks";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+parent}/webhooks";
+
+            /// <summary>Initializes Webhooks parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^dms/[^/]+$",
+                });
+                RequestParameters.Add("threadKey", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "threadKey",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+        }
     }
 
     /// <summary>The "media" collection of methods.</summary>
@@ -716,6 +790,80 @@ namespace Google.Apis.HangoutsChat.v1
             public override string RestPath => "v1/{+parent}/messages";
 
             /// <summary>Initializes Messages parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^rooms/[^/]+$",
+                });
+                RequestParameters.Add("threadKey", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "threadKey",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+        }
+
+        /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">Required. Space resource name, in the form "spaces". Example: spaces/AAAAMpdlehY</param>
+        public virtual WebhooksRequest Webhooks(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
+        {
+            return new WebhooksRequest(service, body, parent);
+        }
+
+        /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
+        public class WebhooksRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Message>
+        {
+            /// <summary>Constructs a new Webhooks request.</summary>
+            public WebhooksRequest(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.Message body, string parent) : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. Space resource name, in the form "spaces". Example: spaces/AAAAMpdlehY</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>Opaque thread identifier string that can be specified to group messages into a single thread.
+            /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
+            /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
+            /// webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to post
+            /// further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in
+            /// message.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ThreadKey { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.HangoutsChat.v1.Data.Message Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "webhooks";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+parent}/webhooks";
+
+            /// <summary>Initializes Webhooks parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -1345,6 +1493,80 @@ namespace Google.Apis.HangoutsChat.v1
                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+        }
+
+        /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">Required. Space resource name, in the form "spaces". Example: spaces/AAAAMpdlehY</param>
+        public virtual WebhooksRequest Webhooks(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
+        {
+            return new WebhooksRequest(service, body, parent);
+        }
+
+        /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
+        public class WebhooksRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Message>
+        {
+            /// <summary>Constructs a new Webhooks request.</summary>
+            public WebhooksRequest(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.Message body, string parent) : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. Space resource name, in the form "spaces". Example: spaces/AAAAMpdlehY</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>Opaque thread identifier string that can be specified to group messages into a single thread.
+            /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
+            /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
+            /// webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to post
+            /// further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in
+            /// message.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ThreadKey { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.HangoutsChat.v1.Data.Message Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "webhooks";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+parent}/webhooks";
+
+            /// <summary>Initializes Webhooks parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^spaces/[^/]+$",
+                });
+                RequestParameters.Add("threadKey", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "threadKey",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,

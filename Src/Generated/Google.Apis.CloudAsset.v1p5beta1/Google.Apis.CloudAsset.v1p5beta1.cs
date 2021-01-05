@@ -832,6 +832,25 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
 
     }    
 
+    /// <summary>Identification for an API Operation.</summary>
+    public class GoogleIdentityAccesscontextmanagerV1ApiOperation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>API methods or permissions to allow. Method or permission must belong to the service specified by
+        /// `service_name` field. A single MethodSelector entry with `*` specified for the `method` field will allow all
+        /// methods AND permissions for the service specified in `service_name`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("methodSelectors")]
+        public virtual System.Collections.Generic.IList<GoogleIdentityAccesscontextmanagerV1MethodSelector> MethodSelectors { get; set; }
+
+        /// <summary>The name of the API whose methods or permissions the IngressPolicy or EgressPolicy want to allow. A
+        /// single ApiOperation with `service_name` field set to `*` will allow all methods AND permissions for all
+        /// services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
+        public virtual string ServiceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>`BasicLevel` is an `AccessLevel` using a set of recommended features.</summary>
     public class GoogleIdentityAccesscontextmanagerV1BasicLevel : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -945,6 +964,176 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Defines the conditions under which an EgressPolicy matches a request. Conditions based on information
+    /// about the source of the request. Note that if the destination of the request is protected by a ServicePerimeter,
+    /// then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to
+    /// succeed.</summary>
+    public class GoogleIdentityAccesscontextmanagerV1EgressFrom : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of identities that are allowed access through this [EgressPolicy]. Should be in the format
+        /// of email address. The email address should represent individual user or service account only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identities")]
+        public virtual System.Collections.Generic.IList<string> Identities { get; set; }
+
+        /// <summary>Specifies the type of identities that are allowed access to outside the perimeter. If left
+        /// unspecified, then members of `identities` field will be allowed access.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityType")]
+        public virtual string IdentityType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Policy for egress from perimeter. EgressPolicies match requests based on `egress_from` and `egress_to`
+    /// stanzas. For an EgressPolicy to match, both `egress_from` and `egress_to` stanzas must be matched. If an
+    /// EgressPolicy matches a request, the request is allowed to span the ServicePerimeter boundary. For example, an
+    /// EgressPolicy can be used to allow VMs on networks within the ServicePerimeter to access a defined set of
+    /// projects outside the perimeter in certain contexts (e.g. to read data from a Cloud Storage bucket or query
+    /// against a BigQuery dataset). EgressPolicies are concerned with the *resources* that a request relates as well as
+    /// the API services and API actions being used. They do not related to the direction of data movement. More
+    /// detailed documentation for this concept can be found in the descriptions of EgressFrom and EgressTo.</summary>
+    public class GoogleIdentityAccesscontextmanagerV1EgressPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Defines conditions on the source of a request causing this EgressPolicy to apply.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("egressFrom")]
+        public virtual GoogleIdentityAccesscontextmanagerV1EgressFrom EgressFrom { get; set; }
+
+        /// <summary>Defines the conditions on the ApiOperation and destination resources that cause this EgressPolicy
+        /// to apply.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("egressTo")]
+        public virtual GoogleIdentityAccesscontextmanagerV1EgressTo EgressTo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Defines the conditions under which an EgressPolicy matches a request. Conditions are based on
+    /// information about the ApiOperation intended to be performed on the `resources` specified. Note that if the
+    /// destination of the request is protected by a ServicePerimeter, then that ServicePerimeter must have an
+    /// IngressPolicy which allows access in order for this request to succeed.</summary>
+    public class GoogleIdentityAccesscontextmanagerV1EgressTo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of ApiOperations that this egress rule applies to. A request matches if it contains an
+        /// operation/service in this list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<GoogleIdentityAccesscontextmanagerV1ApiOperation> Operations { get; set; }
+
+        /// <summary>A list of resources, currently only projects in the form `projects/`, that match this to stanza. A
+        /// request matches if it contains a resource in this list. If `*` is specified for resources, then this
+        /// EgressTo rule will authorize access to all resources outside the perimeter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<string> Resources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Defines the conditions under which an IngressPolicy matches a request. Conditions are based on
+    /// information about the source of the request.</summary>
+    public class GoogleIdentityAccesscontextmanagerV1IngressFrom : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of identities that are allowed access through this ingress policy. Should be in the format
+        /// of email address. The email address should represent individual user or service account only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identities")]
+        public virtual System.Collections.Generic.IList<string> Identities { get; set; }
+
+        /// <summary>Specifies the type of identities that are allowed access from outside the perimeter. If left
+        /// unspecified, then members of `identities` field will be allowed access.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityType")]
+        public virtual string IdentityType { get; set; }
+
+        /// <summary>Sources that this IngressPolicy authorizes access from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
+        public virtual System.Collections.Generic.IList<GoogleIdentityAccesscontextmanagerV1IngressSource> Sources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Policy for ingress into ServicePerimeter. IngressPolicies match requests based on `ingress_from` and
+    /// `ingress_to` stanzas. For an ingress policy to match, both the `ingress_from` and `ingress_to` stanzas must be
+    /// matched. If an IngressPolicy matches a request, the request is allowed through the perimeter boundary from
+    /// outside the perimeter. For example, access from the internet can be allowed either based on an AccessLevel or,
+    /// for traffic hosted on Google Cloud, the project of the source network. For access from private networks, using
+    /// the project of the hosting network is required. Individual ingress policies can be limited by restricting which
+    /// services and/or actions they match using the `ingress_to` field.</summary>
+    public class GoogleIdentityAccesscontextmanagerV1IngressPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Defines the conditions on the source of a request causing this IngressPolicy to apply.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingressFrom")]
+        public virtual GoogleIdentityAccesscontextmanagerV1IngressFrom IngressFrom { get; set; }
+
+        /// <summary>Defines the conditions on the ApiOperation and request destination that cause this IngressPolicy to
+        /// apply.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingressTo")]
+        public virtual GoogleIdentityAccesscontextmanagerV1IngressTo IngressTo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The source that IngressPolicy authorizes access from.</summary>
+    public class GoogleIdentityAccesscontextmanagerV1IngressSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from
+        /// the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a
+        /// nonexistent AccessLevel will cause an error. If no AccessLevel names are listed, resources within the
+        /// perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example:
+        /// `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If `*` is specified, then all IngressSources will be
+        /// allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessLevel")]
+        public virtual string AccessLevel { get; set; }
+
+        /// <summary>A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources
+        /// will be allowed to access perimeter data. Currently only projects are allowed. Format:
+        /// `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization
+        /// that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only
+        /// is not supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Defines the conditions under which an IngressPolicy matches a request. Conditions are based on
+    /// information about the ApiOperation intended to be performed on the destination of the request.</summary>
+    public class GoogleIdentityAccesscontextmanagerV1IngressTo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of ApiOperations the sources specified in corresponding IngressFrom are allowed to perform
+        /// in this ServicePerimeter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<GoogleIdentityAccesscontextmanagerV1ApiOperation> Operations { get; set; }
+
+        /// <summary>A list of resources, currently only projects in the form `projects/`, protected by this
+        /// ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. A
+        /// request matches if it contains a resource in this list. If `*` is specified for resources, then this
+        /// IngressTo rule will authorize access to all resources inside the perimeter, provided that the request also
+        /// matches the `operations` field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<string> Resources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An allowed method or permission of a service specified in ApiOperation.</summary>
+    public class GoogleIdentityAccesscontextmanagerV1MethodSelector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Value for `method` should be a valid method name for the corresponding `service_name` in
+        /// ApiOperation. If `*` used as value for `method`, then ALL methods and permissions are allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("method")]
+        public virtual string Method { get; set; }
+
+        /// <summary>Value for `permission` should be a valid Cloud IAM permission for the corresponding `service_name`
+        /// in ApiOperation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permission")]
+        public virtual string Permission { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A restriction on the OS type and version of devices making requests.</summary>
     public class GoogleIdentityAccesscontextmanagerV1OsConstraint : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1034,6 +1223,18 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessLevels")]
         public virtual System.Collections.Generic.IList<string> AccessLevels { get; set; }
+
+        /// <summary>List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies,
+        /// each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a
+        /// perimeter bridge.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("egressPolicies")]
+        public virtual System.Collections.Generic.IList<GoogleIdentityAccesscontextmanagerV1EgressPolicy> EgressPolicies { get; set; }
+
+        /// <summary>List of IngressPolicies to apply to the perimeter. A perimeter may have multiple IngressPolicies,
+        /// each of which is evaluated separately. Access is granted if any Ingress Policy grants it. Must be empty for
+        /// a perimeter bridge.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingressPolicies")]
+        public virtual System.Collections.Generic.IList<GoogleIdentityAccesscontextmanagerV1IngressPolicy> IngressPolicies { get; set; }
 
         /// <summary>A list of Google Cloud resources that are inside of the service perimeter. Currently only projects
         /// are allowed. Format: `projects/{project_number}`</summary>

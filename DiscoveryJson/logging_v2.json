@@ -4934,7 +4934,7 @@
    }
   }
  }, 
- "revision": "20201204", 
+ "revision": "20201209", 
  "rootUrl": "https://logging.googleapis.com/", 
  "schemas": {
   "BigQueryOptions": {

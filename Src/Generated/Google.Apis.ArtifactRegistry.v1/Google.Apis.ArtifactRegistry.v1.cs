@@ -552,82 +552,50 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>DockerImage represents a docker artifact.</summary>
+    public class DockerImage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Calculated size of the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageSizeBytes")]
+        public virtual System.Nullable<long> ImageSizeBytes { get; set; }
+
+        /// <summary>Media type of this image, e.g. "application/vnd.docker.distribution.manifest.v2+json".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaType")]
+        public virtual string MediaType { get; set; }
+
+        /// <summary>Required. registry_location, project_id, repository_name and image id forms a unique image
+        /// name:`projects//locations//repository//dockerimages/`. For example, "projects/test-project/locations/us-
+        /// west4/repositories/test-repo/dockerimages/
+        /// nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf", where "us-west4" is the
+        /// registry_location, "test-project" is the project_id, "test-repo" is the repository_name and
+        /// "nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf" is the image's
+        /// digest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Tags attached to this image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
+        /// <summary>Time the image was uploaded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uploadTime")]
+        public virtual object UploadTime { get; set; }
+
+        /// <summary>Required. URL to access the image. Example: us-west4-docker.pkg.dev/test-project/test-
+        /// repo/nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
     /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
     /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Error information explaining why a package was not imported.</summary>
-    public class GoogleDevtoolsArtifactregistryV1alpha1ErrorInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The detailed error status.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; }
-
-        /// <summary>Google Cloud Storage location requested.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
-        public virtual GoogleDevtoolsArtifactregistryV1alpha1GcsSource GcsSource { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Google Cloud Storage location where the artifacts currently reside.</summary>
-    public class GoogleDevtoolsArtifactregistryV1alpha1GcsSource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Cloud Storage paths URI (e.g., gs://my_bucket//my_object).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uris")]
-        public virtual System.Collections.Generic.IList<string> Uris { get; set; }
-
-        /// <summary>Supports URI wildcards for matching multiple objects from a single URI.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("useWildcards")]
-        public virtual System.Nullable<bool> UseWildcards { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The response message from importing artifacts.</summary>
-    public class GoogleDevtoolsArtifactregistryV1alpha1ImportArtifactsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Detailed error info for packages that were not imported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual System.Collections.Generic.IList<GoogleDevtoolsArtifactregistryV1alpha1ErrorInfo> Errors { get; set; }
-
-        /// <summary>The packages updated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("packages")]
-        public virtual System.Collections.Generic.IList<GoogleDevtoolsArtifactregistryV1alpha1Package> Packages { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Packages are named collections of versions.</summary>
-    public class GoogleDevtoolsArtifactregistryV1alpha1Package : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The time when the package was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>The display name of the package.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>The name of the package, for example: "projects/p1/locations/us-
-        /// central1/repositories/repo1/packages/pkg1".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The time when the package was last updated. This includes publishing a new version of the
-        /// package.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

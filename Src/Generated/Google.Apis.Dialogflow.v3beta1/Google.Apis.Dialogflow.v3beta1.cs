@@ -318,6 +318,7 @@ namespace Google.Apis.Dialogflow.v3beta1
                     Flows = new FlowsResource(service);
                     Intents = new IntentsResource(service);
                     Sessions = new SessionsResource(service);
+                    TestCases = new TestCasesResource(service);
                     Webhooks = new WebhooksResource(service);
 
                 }
@@ -4422,6 +4423,836 @@ namespace Google.Apis.Dialogflow.v3beta1
 
                     }
                 }
+                /// <summary>Gets the TestCases resource.</summary>
+                public virtual TestCasesResource TestCases { get; }
+
+                /// <summary>The "testCases" collection of methods.</summary>
+                public class TestCasesResource
+                {
+                    private const string Resource = "testCases";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public TestCasesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        Results = new ResultsResource(service);
+
+                    }
+
+                    /// <summary>Gets the Results resource.</summary>
+                    public virtual ResultsResource Results { get; }
+
+                    /// <summary>The "results" collection of methods.</summary>
+                    public class ResultsResource
+                    {
+                        private const string Resource = "results";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public ResultsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+
+                        }
+
+
+                        /// <summary>Fetches a list of results for a given test case.</summary>
+                        /// <param name="parent">Required. The test case to list results for. Format: `projects//locations//agents//
+                        /// testCases/`. Specify a `-` as a wildcard for TestCase ID to list results across multiple test cases.</param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>Fetches a list of results for a given test case.</summary>
+                        public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ListTestCaseResultsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. The test case to list results for. Format:
+                            /// `projects//locations//agents// testCases/`. Specify a `-` as a wildcard for TestCase ID
+                            /// to list results across multiple test cases.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>The filter expression used to filter test case results. See [API
+                            /// Filtering](https://aip.dev/160). The expression is case insensitive. Only 'AND' is
+                            /// supported for logical operators. The supported syntax is listed below in detail: [AND ]
+                            /// ... [AND latest] The supported fields and operators are: field operator `environment`
+                            /// `=`, `IN` (Use value `draft` for draft environment) `test_time` `>`, `<` `latest` only
+                            /// returns the latest test result in all results for each test case. Examples: *
+                            /// "environment=draft AND latest" matches the latest test result for each test case in the
+                            /// draft environment. * "environment IN (e1,e2)" matches any test case results with an
+                            /// environment resource name of either "e1" or "e2". * "test_time > 1602540713" matches any
+                            /// test case results with test time later than a unix timestamp in seconds
+                            /// 1602540713.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>The maximum number of items to return in a single page. By default 100 and at
+                            /// most 1000.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>The next_page_token value returned from a previous list request.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v3beta1/{+parent}/results";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/testCases/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+
+                        }
+                    }
+
+                    /// <summary>Batch deletes test cases.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. The agent to delete test cases from. Format:
+                    /// `projects//locations//agents/`.</param>
+                    public virtual BatchDeleteRequest BatchDelete(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1BatchDeleteTestCasesRequest body, string parent)
+                    {
+                        return new BatchDeleteRequest(service, body, parent);
+                    }
+
+                    /// <summary>Batch deletes test cases.</summary>
+                    public class BatchDeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new BatchDelete request.</summary>
+                        public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1BatchDeleteTestCasesRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The agent to delete test cases from. Format:
+                        /// `projects//locations//agents/`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1BatchDeleteTestCasesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchDelete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/{+parent}/testCases:batchDelete";
+
+                        /// <summary>Initializes BatchDelete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+$",
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Kicks off a batch run of test cases.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. Agent name. Format: `projects//locations//agents/ `.</param>
+                    public virtual BatchRunRequest BatchRun(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1BatchRunTestCasesRequest body, string parent)
+                    {
+                        return new BatchRunRequest(service, body, parent);
+                    }
+
+                    /// <summary>Kicks off a batch run of test cases.</summary>
+                    public class BatchRunRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new BatchRun request.</summary>
+                        public BatchRunRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1BatchRunTestCasesRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. Agent name. Format: `projects//locations//agents/ `.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1BatchRunTestCasesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchRun";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/{+parent}/testCases:batchRun";
+
+                        /// <summary>Initializes BatchRun parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+$",
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Calculates the test coverage for an agent.</summary>
+                    /// <param name="agent">Required. The agent to calculate coverage for. Format:
+                    /// `projects//locations//agents/`.</param>
+                    public virtual CalculateCoverageRequest CalculateCoverage(string agent)
+                    {
+                        return new CalculateCoverageRequest(service, agent);
+                    }
+
+                    /// <summary>Calculates the test coverage for an agent.</summary>
+                    public class CalculateCoverageRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1CalculateCoverageResponse>
+                    {
+                        /// <summary>Constructs a new CalculateCoverage request.</summary>
+                        public CalculateCoverageRequest(Google.Apis.Services.IClientService service, string agent) : base(service)
+                        {
+                            Agent = agent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The agent to calculate coverage for. Format:
+                        /// `projects//locations//agents/`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("agent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Agent { get; private set; }
+
+                        /// <summary>Required. The type of coverage requested.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<TypeEnum> Type { get; set; }
+
+                        /// <summary>Required. The type of coverage requested.</summary>
+                        public enum TypeEnum
+                        {
+                            /// <summary>Should never be used.</summary>
+                            [Google.Apis.Util.StringValueAttribute("COVERAGE_TYPE_UNSPECIFIED")]
+                            COVERAGETYPEUNSPECIFIED,
+                            /// <summary>Intent coverage.</summary>
+                            [Google.Apis.Util.StringValueAttribute("INTENT")]
+                            INTENT,
+                            /// <summary>Page transition coverage</summary>
+                            [Google.Apis.Util.StringValueAttribute("PAGE_TRANSITION")]
+                            PAGETRANSITION,
+                        }
+
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "calculateCoverage";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/{+agent}/testCases:calculateCoverage";
+
+                        /// <summary>Initializes CalculateCoverage parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("agent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "agent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+$",
+                            });
+                            RequestParameters.Add("type", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "type",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Creates a test case for the given agent.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. The agent to create the test case for. Format:
+                    /// `projects//locations//agents/`.</param>
+                    public virtual CreateRequest Create(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1TestCase body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a test case for the given agent.</summary>
+                    public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1TestCase>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1TestCase body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The agent to create the test case for. Format:
+                        /// `projects//locations//agents/`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1TestCase Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/{+parent}/testCases";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+$",
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Exports the test cases under the agent to a Cloud Storage bucket or a local file.
+                    /// Filter can be applied to export a subset of test cases.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. The agent where to export test cases from. Format:
+                    /// `projects//locations//agents/`.</param>
+                    public virtual ExportRequest Export(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ExportTestCasesRequest body, string parent)
+                    {
+                        return new ExportRequest(service, body, parent);
+                    }
+
+                    /// <summary>Exports the test cases under the agent to a Cloud Storage bucket or a local file.
+                    /// Filter can be applied to export a subset of test cases.</summary>
+                    public class ExportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Export request.</summary>
+                        public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ExportTestCasesRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The agent where to export test cases from. Format:
+                        /// `projects//locations//agents/`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ExportTestCasesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "export";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/{+parent}/testCases:export";
+
+                        /// <summary>Initializes Export parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+$",
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Gets a test case.</summary>
+                    /// <param name="name">Required. The name of the testcase. Format:
+                    /// `projects//locations//agents//testCases/`.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets a test case.</summary>
+                    public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1TestCase>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The name of the testcase. Format:
+                        /// `projects//locations//agents//testCases/`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/testCases/[^/]+$",
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Imports the test cases from a Cloud Storage bucket or a local file. It always creates
+                    /// new test cases and won't overwite any existing ones. The provided ID in the imported test case
+                    /// is neglected.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. The agent to import test cases to. Format:
+                    /// `projects//locations//agents/`.</param>
+                    public virtual ImportRequest Import(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ImportTestCasesRequest body, string parent)
+                    {
+                        return new ImportRequest(service, body, parent);
+                    }
+
+                    /// <summary>Imports the test cases from a Cloud Storage bucket or a local file. It always creates
+                    /// new test cases and won't overwite any existing ones. The provided ID in the imported test case
+                    /// is neglected.</summary>
+                    public class ImportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Import request.</summary>
+                        public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ImportTestCasesRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The agent to import test cases to. Format:
+                        /// `projects//locations//agents/`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ImportTestCasesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "import";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/{+parent}/testCases:import";
+
+                        /// <summary>Initializes Import parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+$",
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Fetches a list of test cases for a given agent.</summary>
+                    /// <param name="parent">Required. The agent to list all pages for. Format: `projects//locations//agents/`.</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Fetches a list of test cases for a given agent.</summary>
+                    public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ListTestCasesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The agent to list all pages for. Format:
+                        /// `projects//locations//agents/`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>The maximum number of items to return in a single page. By default 20. Note that
+                        /// when TestCaseView = FULL, the maximum page size allowed is 20. When TestCaseView = BASIC,
+                        /// the maximum page size allowed is 500.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>The next_page_token value returned from a previous list request.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Specifies whether response should include all fields or just the
+                        /// metadata.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>Specifies whether response should include all fields or just the
+                        /// metadata.</summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TEST_CASE_VIEW_UNSPECIFIED")]
+                            TESTCASEVIEWUNSPECIFIED,
+                            /// <summary>Include basic metadata about the test case, but not the conversation turns.
+                            /// This is the default value.</summary>
+                            [Google.Apis.Util.StringValueAttribute("BASIC")]
+                            BASIC,
+                            /// <summary>Include everything.</summary>
+                            [Google.Apis.Util.StringValueAttribute("FULL")]
+                            FULL,
+                        }
+
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/{+parent}/testCases";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Updates the specified test case.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">The unique identifier of the test case. TestCases.CreateTestCase will populate the name
+                    /// automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.</param>
+                    public virtual PatchRequest Patch(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1TestCase body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates the specified test case.</summary>
+                    public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1TestCase>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1TestCase body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The unique identifier of the test case. TestCases.CreateTestCase will populate the
+                        /// name automatically. Otherwise use format: `projects//locations//agents/
+                        /// /testCases/`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. The mask to specify which fields should be updated. Only a test case's
+                        /// metadata and replayed_conversation_turns may be updated. The original
+                        /// test_case_conversation_turns may not be updated.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1TestCase Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/testCases/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+
+                    }
+
+                    /// <summary>Kicks off a test case run.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="projectsId"></param>
+                    /// <param name="locationsId"></param>
+                    /// <param
+                    /// name="agentsId"></param>
+                    public virtual RunRequest Run(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1RunTestCaseRequest body, string projectsId, string locationsId, string agentsId)
+                    {
+                        return new RunRequest(service, body, projectsId, locationsId, agentsId);
+                    }
+
+                    /// <summary>Kicks off a test case run.</summary>
+                    public class RunRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Run request.</summary>
+                        public RunRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1RunTestCaseRequest body, string projectsId, string locationsId, string agentsId) : base(service)
+                        {
+                            ProjectsId = projectsId;
+                            LocationsId = locationsId;
+                            AgentsId = agentsId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+
+                        [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectsId { get; private set; }
+
+
+                        [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string LocationsId { get; private set; }
+
+
+                        [Google.Apis.Util.RequestParameterAttribute("agentsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string AgentsId { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1RunTestCaseRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "run";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/projects/{projectsId}/locations/{locationsId}/agents/{agentsId}/testCases:run";
+
+                        /// <summary>Initializes Run parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "locationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("agentsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "agentsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+
+                    }
+                }
                 /// <summary>Gets the Webhooks resource.</summary>
                 public virtual WebhooksResource Webhooks { get; }
 
@@ -5984,12 +6815,207 @@ namespace Google.Apis.Dialogflow.v3beta1
 namespace Google.Apis.Dialogflow.v3beta1.Data
 {    
 
+    /// <summary>Represents the natural speech audio to be processed.</summary>
+    public class GoogleCloudDialogflowCxV3AudioInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The natural language speech audio to be processed. A single request can contain up to 1 minute of
+        /// speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect
+        /// intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be
+        /// provided in the first request and `audio` must be provided in all following requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audio")]
+        public virtual string Audio { get; set; }
+
+        /// <summary>Required. Instructs the speech recognizer how to process the speech audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual GoogleCloudDialogflowCxV3InputAudioConfig Config { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata returned for the TestCases.BatchRunTestCases long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3BatchRunTestCasesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The test errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3TestError> Errors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for TestCases.BatchRunTestCases.</summary>
+    public class GoogleCloudDialogflowCxV3BatchRunTestCasesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The test case results. The detailed conversation turns are empty in this response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3TestCaseResult> Results { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>One interaction between a human and virtual agent. The human provides some input and the virtual agent
+    /// provides a response.</summary>
+    public class GoogleCloudDialogflowCxV3ConversationTurn : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The user input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInput")]
+        public virtual GoogleCloudDialogflowCxV3ConversationTurnUserInput UserInput { get; set; }
+
+        /// <summary>The virtual agent output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("virtualAgentOutput")]
+        public virtual GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput VirtualAgentOutput { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The input from the human user.</summary>
+    public class GoogleCloudDialogflowCxV3ConversationTurnUserInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Parameters that need to be injected into the conversation during intent detection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("injectedParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, object> InjectedParameters { get; set; }
+
+        /// <summary>Supports text input, event input, dtmf input in the test case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("input")]
+        public virtual GoogleCloudDialogflowCxV3QueryInput Input { get; set; }
+
+        /// <summary>If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are
+        /// injected, webhooks should not be enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isWebhookEnabled")]
+        public virtual System.Nullable<bool> IsWebhookEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The output from the virtual agent.</summary>
+    public class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Page on which the utterance was spoken. Only some fields such as name and displayname will be
+        /// set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentPage")]
+        public virtual GoogleCloudDialogflowCxV3Page CurrentPage { get; set; }
+
+        /// <summary>Required. Input only. The diagnostic info output for the turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diagnosticInfo")]
+        public virtual System.Collections.Generic.IDictionary<string, object> DiagnosticInfo { get; set; }
+
+        /// <summary>Output only. If this is part of a result conversation turn, the list of differences between the
+        /// original run and the replay for this output, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("differences")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3TestRunDifference> Differences { get; set; }
+
+        /// <summary>The session parameters available to the bot at this point.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, object> SessionParameters { get; set; }
+
+        /// <summary>Response error from the agent in the test result. If set, other output is empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
+        /// <summary>The text responses from the agent for the turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textResponses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3ResponseMessageText> TextResponses { get; set; }
+
+        /// <summary>The Intent that triggered the response. Only some fields such as name and displayname will be
+        /// set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggeredIntent")]
+        public virtual GoogleCloudDialogflowCxV3Intent TriggeredIntent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for CreateDocument operation.</summary>
+    public class GoogleCloudDialogflowCxV3CreateDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The generic information of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Metadata associated with the long running operation for Versions.CreateVersion.</summary>
     public class GoogleCloudDialogflowCxV3CreateVersionOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Name of the created version. Format: `projects//locations//agents//flows//versions/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for DeleteDocument operation.</summary>
+    public class GoogleCloudDialogflowCxV3DeleteDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The generic information of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the input for dtmf event.</summary>
+    public class GoogleCloudDialogflowCxV3DtmfInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The dtmf digits.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("digits")]
+        public virtual string Digits { get; set; }
+
+        /// <summary>The finish digit (if any).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finishDigit")]
+        public virtual string FinishDigit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An event handler specifies an event that can be handled during a session. When the specified event
+    /// happens, the following actions are taken in order: * If there is a `trigger_fulfillment` associated with the
+    /// event, it will be called. * If there is a `target_page` associated with the event, the session will transition
+    /// into the specified page. * If there is a `target_flow` associated with the event, the session will transition
+    /// into the specified flow.</summary>
+    public class GoogleCloudDialogflowCxV3EventHandler : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the event to handle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("event")]
+        public virtual string Event__ { get; set; }
+
+        /// <summary>Output only. The unique identifier of this event handler.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The target flow to transition to. Format: `projects//locations//agents//flows/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetFlow")]
+        public virtual string TargetFlow { get; set; }
+
+        /// <summary>The target page to transition to. Format: `projects//locations//agents//flows//pages/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetPage")]
+        public virtual string TargetPage { get; set; }
+
+        /// <summary>The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled
+        /// with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling
+        /// webhooks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerFulfillment")]
+        public virtual GoogleCloudDialogflowCxV3Fulfillment TriggerFulfillment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the event to trigger.</summary>
+    public class GoogleCloudDialogflowCxV3EventInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("event")]
+        public virtual string Event__ { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6006,6 +7032,503 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// specified in ExportAgentRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata returned for the TestCases.ExportTestCases long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3ExportTestCasesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for TestCases.ExportTestCases.</summary>
+    public class GoogleCloudDialogflowCxV3ExportTestCasesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Uncompressed raw byte content for test cases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>The URI to a file containing the exported test cases. This field is populated only if `gcs_uri` is
+        /// specified in ExportTestCasesRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
+        public virtual string GcsUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A form is a data model that groups related parameters that can be collected from the user. The process
+    /// in which the agent prompts the user and collects parameter values from the user is called form filling. A form
+    /// can be added to a page. When form filling is done, the filled parameters will be written to the
+    /// session.</summary>
+    public class GoogleCloudDialogflowCxV3Form : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Parameters to collect from the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3FormParameter> Parameters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a form parameter.</summary>
+    public class GoogleCloudDialogflowCxV3FormParameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The default value of an optional parameter. If the parameter is required, the default value will be
+        /// ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
+        public virtual object DefaultValue { get; set; }
+
+        /// <summary>Required. The human-readable name of the parameter, unique within the form.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/`
+        /// for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or
+        /// `projects//locations//agents//entityTypes/` for developer entity types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
+        public virtual string EntityType { get; set; }
+
+        /// <summary>Required. Defines fill behavior for the parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fillBehavior")]
+        public virtual GoogleCloudDialogflowCxV3FormParameterFillBehavior FillBehavior { get; set; }
+
+        /// <summary>Indicates whether the parameter represents a list of values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isList")]
+        public virtual System.Nullable<bool> IsList { get; set; }
+
+        /// <summary>Indicates whether the parameter content is logged in text and audio. If it is set to true, the
+        /// parameter content will be replaced to parameter name in both request and response. The default value is
+        /// false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redact")]
+        public virtual System.Nullable<bool> Redact { get; set; }
+
+        /// <summary>Indicates whether the parameter is required. Optional parameters will not trigger prompts; however,
+        /// they are filled if the user specifies them. Required parameters must be filled before form filling
+        /// concludes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("required")]
+        public virtual System.Nullable<bool> Required { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration for how the filling of a parameter should be handled.</summary>
+    public class GoogleCloudDialogflowCxV3FormParameterFillBehavior : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The fulfillment to provide the initial prompt that the agent can present to the user in
+        /// order to fill the parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initialPromptFulfillment")]
+        public virtual GoogleCloudDialogflowCxV3Fulfillment InitialPromptFulfillment { get; set; }
+
+        /// <summary>The handlers for parameter-level events, used to provide reprompt for the parameter or transition
+        /// to a different page/flow. The supported events are: * `sys.no-match-`, where N can be from 1 to 6 * `sys.no-
+        /// match-default` * `sys.no-input-`, where N can be from 1 to 6 * `sys.no-input-default` * `sys.invalid-
+        /// parameter` `initial_prompt_fulfillment` provides the first prompt for the parameter. If the user's response
+        /// does not fill the parameter, a no-match/no-input event will be triggered, and the fulfillment associated
+        /// with the `sys.no-match-1`/`sys.no-input-1` handler (if defined) will be called to provide a prompt. The `sys
+        /// .no-match-2`/`sys.no-input-2` handler (if defined) will respond to the next no-match/no-input event, and so
+        /// on. A `sys.no-match-default` or `sys.no-input-default` handler will be used to handle all following no-match
+        /// /no-input events after all numbered no-match/no-input handlers for the parameter are consumed. A `sys
+        /// .invalid-parameter` handler can be defined to handle the case where the parameter values have been
+        /// `invalidated` by webhook. For example, if the user's response fill the parameter, however the parameter was
+        /// invalidated by webhook, the fulfillment associated with the `sys.invalid-parameter` handler (if defined)
+        /// will be called to provide a prompt. If the event handler for the corresponding event can't be found on the
+        /// parameter, `initial_prompt_fulfillment` will be re-prompted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repromptEventHandlers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3EventHandler> RepromptEventHandlers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A fulfillment can do one or more of the following actions at the same time: * Generate rich message
+    /// responses. * Set parameter values. * Call the webhook. Fulfillments can be called at various stages in the Page
+    /// or Form lifecycle. For example, when a DetectIntentRequest drives a session to enter a new page, the page's
+    /// entry fulfillment can add a static response to the QueryResult in the returning DetectIntentResponse, call the
+    /// webhook (for example, to load user data from a database), or both.</summary>
+    public class GoogleCloudDialogflowCxV3Fulfillment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Conditional cases for this fulfillment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditionalCases")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3FulfillmentConditionalCases> ConditionalCases { get; set; }
+
+        /// <summary>The list of rich message responses to present to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3ResponseMessage> Messages { get; set; }
+
+        /// <summary>Set parameter values before executing the webhook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setParameterActions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3FulfillmentSetParameterAction> SetParameterActions { get; set; }
+
+        /// <summary>The tag used by the webhook to identify which fulfillment is being called. This field is required
+        /// if `webhook` is specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
+
+        /// <summary>The webhook to call. Format: `projects//locations//agents//webhooks/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhook")]
+        public virtual string Webhook { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching
+    /// condition is selected, all the rest ignored.</summary>
+    public class GoogleCloudDialogflowCxV3FulfillmentConditionalCases : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of cascading if-else conditions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cases")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase> Cases { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Each case has a Boolean condition. When it is evaluated to be True, the corresponding messages will be
+    /// selected and evaluated recursively.</summary>
+    public class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of case content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caseContent")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent> CaseContent { get; set; }
+
+        /// <summary>The condition to activate and select this case. Empty means the condition is always true. The
+        /// condition is evaluated against form parameters or session parameters. See the [conditions
+        /// reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The list of messages or conditional cases to activate for this case.</summary>
+    public class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Additional cases to be evaluated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalCases")]
+        public virtual GoogleCloudDialogflowCxV3FulfillmentConditionalCases AdditionalCases { get; set; }
+
+        /// <summary>Returned message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual GoogleCloudDialogflowCxV3ResponseMessage Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Setting a parameter value.</summary>
+    public class GoogleCloudDialogflowCxV3FulfillmentSetParameterAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Display name of the parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
+        public virtual string Parameter { get; set; }
+
+        /// <summary>The new value of the parameter. A null value clears the parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual object Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata in google::longrunning::Operation for Knowledge operations.</summary>
+    public class GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Output only. The current state of this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for ImportDocuments operation.</summary>
+    public class GoogleCloudDialogflowCxV3ImportDocumentsOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The generic information of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for Documents.ImportDocuments.</summary>
+    public class GoogleCloudDialogflowCxV3ImportDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Includes details about skipped documents or any other warnings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata returned for the TestCases.ImportTestCases long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3ImportTestCasesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Errors for failed test cases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3TestCaseError> Errors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for TestCases.ImportTestCases.</summary>
+    public class GoogleCloudDialogflowCxV3ImportTestCasesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique identifiers of the new test cases. Format:
+        /// `projects//locations//agents//testCases/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Instructs the speech recognizer on how to process the audio content.</summary>
+    public class GoogleCloudDialogflowCxV3InputAudioConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Audio encoding of the audio content to process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioEncoding")]
+        public virtual string AudioEncoding { get; set; }
+
+        /// <summary>Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with
+        /// information about the recognized speech words, e.g. start and end time offsets. If false or unspecified,
+        /// Speech doesn't return any word-level information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableWordInfo")]
+        public virtual System.Nullable<bool> EnableWordInfo { get; set; }
+
+        /// <summary>Optional. Which Speech model to select for the given request. Select the model best suited to your
+        /// domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the
+        /// parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced
+        /// version of the specified model for the language does not exist, then the speech is recognized using the
+        /// standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com
+        /// /speech-to-text/docs/basics#select-model) for more details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
+        /// <summary>Optional. Which variant of the Speech model to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelVariant")]
+        public virtual string ModelVariant { get; set; }
+
+        /// <summary>Optional. A list of strings containing words and phrases that the speech recognizer should
+        /// recognize with higher likelihood. See [the Cloud Speech documentation](https://cloud.google.com/speech-to-
+        /// text/docs/basics#phrase-hints) for more details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phraseHints")]
+        public virtual System.Collections.Generic.IList<string> PhraseHints { get; set; }
+
+        /// <summary>Sample rate (in Hertz) of the audio content sent in the query. Refer to [Cloud Speech API
+        /// documentation](https://cloud.google.com/speech-to-text/docs/basics) for more details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleRateHertz")]
+        public virtual System.Nullable<int> SampleRateHertz { get; set; }
+
+        /// <summary>Optional. If `false` (default), recognition does not cease until the client closes the stream. If
+        /// `true`, the recognizer will detect a single spoken utterance in input audio. Recognition ceases when it
+        /// detects the audio's voice has stopped or paused. In this case, once a detected intent is received, the
+        /// client should close the stream and start a new request with a new stream as needed. Note: This setting is
+        /// relevant only for streaming methods.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleUtterance")]
+        public virtual System.Nullable<bool> SingleUtterance { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An intent represents a user's intent to interact with a conversational agent. You can provide
+    /// information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e.,
+    /// examples of user input) to your intent.</summary>
+    public class GoogleCloudDialogflowCxV3Intent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Human readable description for better understanding an intent like its scope, content,
+        /// result etc. Maximum character limit: 140 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. The human-readable name of the intent, unique within the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in
+        /// the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the
+        /// case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as
+        /// negative examples that triggers no-match event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isFallback")]
+        public virtual System.Nullable<bool> IsFallback { get; set; }
+
+        /// <summary>Optional. The key/value metadata to label an intent. Labels can contain lowercase letters, digits
+        /// and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets.
+        /// Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128
+        /// bytes. Prefix "sys." is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels
+        /// include: * sys.head * sys.contextual The above labels do not require value. "sys.head" means the intent is a
+        /// head intent. "sys.contextual" means the intent is a contextual intent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>The unique identifier of the intent. Required for the Intents.UpdateIntent method.
+        /// Intents.CreateIntent populates the name automatically. Format:
+        /// `projects//locations//agents//intents/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The collection of parameters associated with the intent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3IntentParameter> Parameters { get; set; }
+
+        /// <summary>The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is
+        /// unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in
+        /// the console. - If the supplied value is negative, the intent is ignored in runtime detect intent
+        /// requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual System.Nullable<int> Priority { get; set; }
+
+        /// <summary>The collection of training phrases the agent is trained on to identify the intent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingPhrases")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3IntentTrainingPhrase> TrainingPhrases { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the intent to trigger programmatically rather than as a result of natural language
+    /// processing.</summary>
+    public class GoogleCloudDialogflowCxV3IntentInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The unique identifier of the intent. Format:
+        /// `projects//locations//agents//intents/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intent")]
+        public virtual string Intent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents an intent parameter.</summary>
+    public class GoogleCloudDialogflowCxV3IntentParameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/`
+        /// for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or
+        /// `projects//locations//agents//entityTypes/` for developer entity types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
+        public virtual string EntityType { get; set; }
+
+        /// <summary>Required. The unique identifier of the parameter. This field is used by training phrases to
+        /// annotate their parts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Indicates whether the parameter represents a list of values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isList")]
+        public virtual System.Nullable<bool> IsList { get; set; }
+
+        /// <summary>Indicates whether the parameter content is logged in text and audio. If it is set to true, the
+        /// parameter content will be replaced to parameter id in both request and response. The default value is
+        /// false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redact")]
+        public virtual System.Nullable<bool> Redact { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents an example that the agent is trained on to identify the intent.</summary>
+    public class GoogleCloudDialogflowCxV3IntentTrainingPhrase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The unique identifier of the training phrase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Required. The ordered list of training phrase parts. The parts are concatenated in order to form
+        /// the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow
+        /// Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well
+        /// formatted when the parts are concatenated. If the training phrase does not need to be annotated with
+        /// parameters, you just need a single part with only the Part.text field set. If you want to annotate the
+        /// training phrase, you must create multiple parts, where the fields of each part are populated in one of two
+        /// ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of
+        /// the phrase that you want to annotate, and the `parameter_id` field is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3IntentTrainingPhrasePart> Parts { get; set; }
+
+        /// <summary>Indicates how many times this example was added to the intent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repeatCount")]
+        public virtual System.Nullable<int> RepeatCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a part of a training phrase.</summary>
+    public class GoogleCloudDialogflowCxV3IntentTrainingPhrasePart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The parameter used to annotate this part of the training phrase. This field is required for
+        /// annotated parts of the training phrase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterId")]
+        public virtual string ParameterId { get; set; }
+
+        /// <summary>Required. The text for this part.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Dialogflow CX conversation (session) can be described and visualized as a state machine. The states
+    /// of a CX session are represented by pages. For each flow, you define many pages, where your combined pages can
+    /// handle a complete conversation on the topics the flow is designed for. At any given moment, exactly one page is
+    /// the current page, the current page is considered active, and the flow associated with that page is considered
+    /// active. Every flow has a special start page. When a flow initially becomes active, the start page page becomes
+    /// the current page. For each conversational turn, the current page will either stay the same or transition to
+    /// another page. You configure each page to collect information from the end-user that is relevant for the
+    /// conversational state represented by the page. For more information, see the [Page
+    /// guide](https://cloud.google.com/dialogflow/cx/docs/concept/page).</summary>
+    public class GoogleCloudDialogflowCxV3Page : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The human-readable name of the page, unique within the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The fulfillment to call when the session is entering the page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryFulfillment")]
+        public virtual GoogleCloudDialogflowCxV3Fulfillment EntryFulfillment { get; set; }
+
+        /// <summary>Handlers associated with the page to handle events such as webhook errors, no match or no
+        /// input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventHandlers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3EventHandler> EventHandlers { get; set; }
+
+        /// <summary>The form associated with the page, used for collecting parameters relevant to the page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("form")]
+        public virtual GoogleCloudDialogflowCxV3Form Form { get; set; }
+
+        /// <summary>The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage
+        /// populates the name automatically. Format: `projects//locations//agents//flows//pages/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be
+        /// unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the
+        /// precedence order is: page's transition route -> page's transition route group -> flow's transition routes. *
+        /// If multiple transition route groups within a page contain the same intent, then the first group in the
+        /// ordered list takes precedence.
+        /// Format:`projects//locations//agents//flows//transitionRouteGroups/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transitionRouteGroups")]
+        public virtual System.Collections.Generic.IList<string> TransitionRouteGroups { get; set; }
+
+        /// <summary>A list of transitions for the transition rules of this page. They route the conversation to another
+        /// page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in
+        /// the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes
+        /// defined in the transition route groups. * TransitionRoutes defined in flow with intent specified. *
+        /// TransitionRoutes defined in the page with only condition specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transitionRoutes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3TransitionRoute> TransitionRoutes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6068,6 +7591,53 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// set by the webhook to change the parameter value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual object Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An
+    /// intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An
+    /// event to be triggered. </summary>
+    public class GoogleCloudDialogflowCxV3QueryInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The natural language speech audio to be processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audio")]
+        public virtual GoogleCloudDialogflowCxV3AudioInput Audio { get; set; }
+
+        /// <summary>The DTMF event to be handled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dtmf")]
+        public virtual GoogleCloudDialogflowCxV3DtmfInput Dtmf { get; set; }
+
+        /// <summary>The event to be triggered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("event")]
+        public virtual GoogleCloudDialogflowCxV3EventInput Event__ { get; set; }
+
+        /// <summary>The intent to be triggered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intent")]
+        public virtual GoogleCloudDialogflowCxV3IntentInput Intent { get; set; }
+
+        /// <summary>Required. The language of the input. See [Language
+        /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported
+        /// language codes. Note that queries in the same session do not necessarily need to specify the same
+        /// language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>The natural language text to be processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual GoogleCloudDialogflowCxV3TextInput Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for ReloadDocument operation.</summary>
+    public class GoogleCloudDialogflowCxV3ReloadDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The generic information of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6258,6 +7828,24 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Metadata returned for the TestCases.RunTestCase long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3RunTestCaseMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for TestCases.RunTestCase.</summary>
+    public class GoogleCloudDialogflowCxV3RunTestCaseResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual GoogleCloudDialogflowCxV3TestCaseResult Result { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents session information communicated to and from the webhook.</summary>
     public class GoogleCloudDialogflowCxV3SessionInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6273,6 +7861,209 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// `projects//locations//agents//sessions/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("session")]
         public virtual string Session { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a test case.</summary>
+    public class GoogleCloudDialogflowCxV3TestCase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. When the test was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual object CreationTime { get; set; }
+
+        /// <summary>Required. The human-readable name of the test case, unique within the agent. Limit of 200
+        /// characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The latest test result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastTestResult")]
+        public virtual GoogleCloudDialogflowCxV3TestCaseResult LastTestResult { get; set; }
+
+        /// <summary>The unique identifier of the test case. TestCases.CreateTestCase will populate the name
+        /// automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Additional freeform notes about the test case. Limit of 400 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notes")]
+        public virtual string Notes { get; set; }
+
+        /// <summary>Tags are short descriptions that users may apply to test cases for organizational and filtering
+        /// purposes. Each tag should start with "#" and has a limit of 30 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
+        /// <summary>The conversation turns uttered when the test case was created, in chronological order. These
+        /// include the canonical set of agent utterances that should occur when the agent is working
+        /// properly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testCaseConversationTurns")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3ConversationTurn> TestCaseConversationTurns { get; set; }
+
+        /// <summary>Config for the test case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testConfig")]
+        public virtual GoogleCloudDialogflowCxV3TestConfig TestConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Error info for importing a test.</summary>
+    public class GoogleCloudDialogflowCxV3TestCaseError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status associated with the test case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
+        /// <summary>The test case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testCase")]
+        public virtual GoogleCloudDialogflowCxV3TestCase TestCase { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a result from running a test case in an agent environment.</summary>
+    public class GoogleCloudDialogflowCxV3TestCaseResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The conversation turns uttered during the test case replay in chronological order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationTurns")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3ConversationTurn> ConversationTurns { get; set; }
+
+        /// <summary>Optional. Environment where the test was run. If not set, it indicates the draft
+        /// environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual string Environment { get; set; }
+
+        /// <summary>The resource name for the test case result. Format: `projects//locations//agents//testCases/
+        /// /results/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Whether the test case passed in the agent environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testResult")]
+        public virtual string TestResult { get; set; }
+
+        /// <summary>The time that the test was run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testTime")]
+        public virtual object TestTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents configurations for a test case.</summary>
+    public class GoogleCloudDialogflowCxV3TestConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Flow name. If not set, default start flow is assumed. Format:
+        /// `projects//locations//agents//flows/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flow")]
+        public virtual string Flow { get; set; }
+
+        /// <summary>Session parameters to be compared when calculating differences.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackingParameters")]
+        public virtual System.Collections.Generic.IList<string> TrackingParameters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Error info for running a test.</summary>
+    public class GoogleCloudDialogflowCxV3TestError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status associated with the test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
+        /// <summary>The test case resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testCase")]
+        public virtual string TestCase { get; set; }
+
+        /// <summary>The timestamp when the test was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testTime")]
+        public virtual object TestTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The description of differences between original and replayed agent output.</summary>
+    public class GoogleCloudDialogflowCxV3TestRunDifference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A description of the diff, showing the actual output vs expected output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The type of diff.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the natural language text to be processed.</summary>
+    public class GoogleCloudDialogflowCxV3TextInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The UTF-8 encoded natural language text to be processed. Text length must not exceed 256
+        /// characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A transition route specifies a intent that can be matched and/or a data condition that can be evaluated
+    /// during a session. When a specified transition is matched, the following actions are taken in order: * If there
+    /// is a `trigger_fulfillment` associated with the transition, it will be called. * If there is a `target_page`
+    /// associated with the transition, the session will transition into the specified page. * If there is a
+    /// `target_flow` associated with the transition, the session will transition into the specified flow.</summary>
+    public class GoogleCloudDialogflowCxV3TransitionRoute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The condition to evaluate against form parameters or session parameters. See the [conditions
+        /// reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition). At least one of `intent` or
+        /// `condition` must be specified. When both `intent` and `condition` are specified, the transition can only
+        /// happen when both are fulfilled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>The unique identifier of an Intent. Format: `projects//locations//agents//intents/`. Indicates that
+        /// the transition can only happen when the given intent is matched. At least one of `intent` or `condition`
+        /// must be specified. When both `intent` and `condition` are specified, the transition can only happen when
+        /// both are fulfilled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intent")]
+        public virtual string Intent { get; set; }
+
+        /// <summary>Output only. The unique identifier of this transition route.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The target flow to transition to. Format: `projects//locations//agents//flows/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetFlow")]
+        public virtual string TargetFlow { get; set; }
+
+        /// <summary>The target page to transition to. Format: `projects//locations//agents//flows//pages/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetPage")]
+        public virtual string TargetPage { get; set; }
+
+        /// <summary>The fulfillment to call when the condition is satisfied. At least one of `trigger_fulfillment` and
+        /// `target` must be specified. When both are defined, `trigger_fulfillment` is executed first.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerFulfillment")]
+        public virtual GoogleCloudDialogflowCxV3Fulfillment TriggerFulfillment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for UpdateDocument operation.</summary>
+    public class GoogleCloudDialogflowCxV3UpdateDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The generic information of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6484,12 +8275,176 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The request message for TestCases.BatchDeleteTestCases.</summary>
+    public class GoogleCloudDialogflowCxV3beta1BatchDeleteTestCasesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Format of test case names: `projects//locations/ /agents//testCases/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata returned for the TestCases.BatchRunTestCases long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3beta1BatchRunTestCasesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The test errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TestError> Errors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request message for TestCases.BatchRunTestCases.</summary>
+    public class GoogleCloudDialogflowCxV3beta1BatchRunTestCasesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. If not set, draft environment is assumed. Format:
+        /// `projects//locations//agents//environments/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual string Environment { get; set; }
+
+        /// <summary>Required. Format: `projects//locations//agents//testCases/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testCases")]
+        public virtual System.Collections.Generic.IList<string> TestCases { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for TestCases.BatchRunTestCases.</summary>
+    public class GoogleCloudDialogflowCxV3beta1BatchRunTestCasesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The test case results. The detailed conversation turns are empty in this response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TestCaseResult> Results { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for TestCases.CalculateCoverage.</summary>
+    public class GoogleCloudDialogflowCxV3beta1CalculateCoverageResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The agent to calculate coverage for. Format: `projects//locations//agents/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agent")]
+        public virtual string Agent { get; set; }
+
+        /// <summary>Intent coverage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentCoverage")]
+        public virtual GoogleCloudDialogflowCxV3beta1IntentCoverage IntentCoverage { get; set; }
+
+        /// <summary>Transition coverage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transitionCoverage")]
+        public virtual GoogleCloudDialogflowCxV3beta1TransitionCoverage TransitionCoverage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>One interaction between a human and virtual agent. The human provides some input and the virtual agent
+    /// provides a response.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ConversationTurn : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The user input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInput")]
+        public virtual GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput UserInput { get; set; }
+
+        /// <summary>The virtual agent output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("virtualAgentOutput")]
+        public virtual GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput VirtualAgentOutput { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The input from the human user.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Parameters that need to be injected into the conversation during intent detection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("injectedParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, object> InjectedParameters { get; set; }
+
+        /// <summary>Supports text input, event input, dtmf input in the test case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("input")]
+        public virtual GoogleCloudDialogflowCxV3beta1QueryInput Input { get; set; }
+
+        /// <summary>If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are
+        /// injected, webhooks should not be enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isWebhookEnabled")]
+        public virtual System.Nullable<bool> IsWebhookEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The output from the virtual agent.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Page on which the utterance was spoken. Only some fields such as name and displayname will be
+        /// set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentPage")]
+        public virtual GoogleCloudDialogflowCxV3beta1Page CurrentPage { get; set; }
+
+        /// <summary>Required. Input only. The diagnostic info output for the turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diagnosticInfo")]
+        public virtual System.Collections.Generic.IDictionary<string, object> DiagnosticInfo { get; set; }
+
+        /// <summary>Output only. If this is part of a result conversation turn, the list of differences between the
+        /// original run and the replay for this output, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("differences")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TestRunDifference> Differences { get; set; }
+
+        /// <summary>The session parameters available to the bot at this point.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, object> SessionParameters { get; set; }
+
+        /// <summary>Response error from the agent in the test result. If set, other output is empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
+        /// <summary>The text responses from the agent for the turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textResponses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ResponseMessageText> TextResponses { get; set; }
+
+        /// <summary>The Intent that triggered the response. Only some fields such as name and displayname will be
+        /// set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggeredIntent")]
+        public virtual GoogleCloudDialogflowCxV3beta1Intent TriggeredIntent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for CreateDocument operation.</summary>
+    public class GoogleCloudDialogflowCxV3beta1CreateDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The generic information of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Metadata associated with the long running operation for Versions.CreateVersion.</summary>
     public class GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Name of the created version. Format: `projects//locations//agents//flows//versions/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for DeleteDocument operation.</summary>
+    public class GoogleCloudDialogflowCxV3beta1DeleteDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The generic information of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6754,6 +8709,52 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// specified in ExportAgentRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata returned for the TestCases.ExportTestCases long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request message for TestCases.ExportTestCases.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ExportTestCasesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The data format of the exported test cases. If not specified, `BLOB` is assumed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataFormat")]
+        public virtual string DataFormat { get; set; }
+
+        /// <summary>The filter expression used to filter exported test cases, see [API Filtering](https://aip.dev/160).
+        /// The expression is case insensitive and supports the following syntax: name = [OR name = ] ... For example: *
+        /// "name = t1 OR name = t2" matches the test case with the exact resource name "t1" or "t2".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to export the test cases to.
+        /// The format of this URI must be `gs:`. If unspecified, the serialized test cases is returned
+        /// inline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
+        public virtual string GcsUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for TestCases.ExportTestCases.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ExportTestCasesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Uncompressed raw byte content for test cases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>The URI to a file containing the exported test cases. This field is populated only if `gcs_uri` is
+        /// specified in ExportTestCasesRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
+        public virtual string GcsUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7034,6 +9035,78 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Metadata in google::longrunning::Operation for Knowledge operations.</summary>
+    public class GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Output only. The current state of this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for ImportDocuments operation.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ImportDocumentsOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The generic information of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for Documents.ImportDocuments.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ImportDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Includes details about skipped documents or any other warnings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata returned for the TestCases.ImportTestCases long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ImportTestCasesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Errors for failed test cases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TestCaseError> Errors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request message for TestCases.ImportTestCases.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ImportTestCasesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Uncompressed raw byte content for test cases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to import test cases from.
+        /// The format of this URI must be `gs:`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
+        public virtual string GcsUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for TestCases.ImportTestCases.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ImportTestCasesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique identifiers of the new test cases. Format:
+        /// `projects//locations//agents//testCases/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Instructs the speech recognizer on how to process the audio content.</summary>
     public class GoogleCloudDialogflowCxV3beta1InputAudioConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7133,6 +9206,37 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>The collection of training phrases the agent is trained on to identify the intent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingPhrases")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase> TrainingPhrases { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Intent coverage represents the percentage of all possible intents in the agent that are triggered in
+    /// any of a parent's test cases.</summary>
+    public class GoogleCloudDialogflowCxV3beta1IntentCoverage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The percent of intents in the agent that are covered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coverageScore")]
+        public virtual System.Nullable<float> CoverageScore { get; set; }
+
+        /// <summary>The list of Intents present in the agent</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1IntentCoverageIntent> Intents { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The agent's intent.</summary>
+    public class GoogleCloudDialogflowCxV3beta1IntentCoverageIntent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether or not the intent is covered by at least one of the agent's test cases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("covered")]
+        public virtual System.Nullable<bool> Covered { get; set; }
+
+        /// <summary>The intent full resource name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intent")]
+        public virtual string Intent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7352,6 +9456,39 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// page_size field in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionEntityTypes")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1SessionEntityType> SessionEntityTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for TestCases.ListTestCaseResults.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ListTestCaseResultsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of test case results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testCaseResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TestCaseResult> TestCaseResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for TestCases.ListTestCases.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ListTestCasesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of test cases. There will be a maximum number of items returned based on the page_size
+        /// field in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testCases")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TestCase> TestCases { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7867,6 +10004,17 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Metadata for ReloadDocument operation.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ReloadDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The generic information of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents a response message that can be returned by a conversational agent. Response messages are
     /// also used for output audio synthesis. The approach is as follows: * If at least one OutputAudioText response is
     /// present, then all OutputAudioText responses are linearly concatenated, and the result is used for output audio
@@ -8068,6 +10216,40 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Metadata returned for the TestCases.RunTestCase long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3beta1RunTestCaseMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request message for TestCases.RunTestCase.</summary>
+    public class GoogleCloudDialogflowCxV3beta1RunTestCaseRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Environment name. If not set, draft environment is assumed. Format:
+        /// `projects//locations//agents//environments/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual string Environment { get; set; }
+
+        /// <summary>Required. Format of test case name to run: `projects//locations/ /agents//testCases/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for TestCases.RunTestCase.</summary>
+    public class GoogleCloudDialogflowCxV3beta1RunTestCaseResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual GoogleCloudDialogflowCxV3beta1TestCaseResult Result { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents the settings related to security issues, such as data redaction and data retention. It may
     /// take hours for updates on the settings to propagate to all the related components and take effect.</summary>
     public class GoogleCloudDialogflowCxV3beta1SecuritySettings : Google.Apis.Requests.IDirectResponseSchema
@@ -8223,6 +10405,144 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents a test case.</summary>
+    public class GoogleCloudDialogflowCxV3beta1TestCase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. When the test was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual object CreationTime { get; set; }
+
+        /// <summary>Required. The human-readable name of the test case, unique within the agent. Limit of 200
+        /// characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The latest test result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastTestResult")]
+        public virtual GoogleCloudDialogflowCxV3beta1TestCaseResult LastTestResult { get; set; }
+
+        /// <summary>The unique identifier of the test case. TestCases.CreateTestCase will populate the name
+        /// automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Additional freeform notes about the test case. Limit of 400 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notes")]
+        public virtual string Notes { get; set; }
+
+        /// <summary>Tags are short descriptions that users may apply to test cases for organizational and filtering
+        /// purposes. Each tag should start with "#" and has a limit of 30 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
+        /// <summary>The conversation turns uttered when the test case was created, in chronological order. These
+        /// include the canonical set of agent utterances that should occur when the agent is working
+        /// properly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testCaseConversationTurns")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ConversationTurn> TestCaseConversationTurns { get; set; }
+
+        /// <summary>Config for the test case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testConfig")]
+        public virtual GoogleCloudDialogflowCxV3beta1TestConfig TestConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Error info for importing a test.</summary>
+    public class GoogleCloudDialogflowCxV3beta1TestCaseError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status associated with the test case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
+        /// <summary>The test case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testCase")]
+        public virtual GoogleCloudDialogflowCxV3beta1TestCase TestCase { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a result from running a test case in an agent environment.</summary>
+    public class GoogleCloudDialogflowCxV3beta1TestCaseResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The conversation turns uttered during the test case replay in chronological order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationTurns")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ConversationTurn> ConversationTurns { get; set; }
+
+        /// <summary>Optional. Environment where the test was run. If not set, it indicates the draft
+        /// environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual string Environment { get; set; }
+
+        /// <summary>The resource name for the test case result. Format: `projects//locations//agents//testCases/
+        /// /results/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Whether the test case passed in the agent environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testResult")]
+        public virtual string TestResult { get; set; }
+
+        /// <summary>The time that the test was run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testTime")]
+        public virtual object TestTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents configurations for a test case.</summary>
+    public class GoogleCloudDialogflowCxV3beta1TestConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Flow name. If not set, default start flow is assumed. Format:
+        /// `projects//locations//agents//flows/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flow")]
+        public virtual string Flow { get; set; }
+
+        /// <summary>Session parameters to be compared when calculating differences.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackingParameters")]
+        public virtual System.Collections.Generic.IList<string> TrackingParameters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Error info for running a test.</summary>
+    public class GoogleCloudDialogflowCxV3beta1TestError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status associated with the test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
+        /// <summary>The test case resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testCase")]
+        public virtual string TestCase { get; set; }
+
+        /// <summary>The timestamp when the test was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testTime")]
+        public virtual object TestTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The description of differences between original and replayed agent output.</summary>
+    public class GoogleCloudDialogflowCxV3beta1TestRunDifference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A description of the diff, showing the actual output vs expected output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The type of diff.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents the natural language text to be processed.</summary>
     public class GoogleCloudDialogflowCxV3beta1TextInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8238,6 +10558,70 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// <summary>The request message for Flows.TrainFlow.</summary>
     public class GoogleCloudDialogflowCxV3beta1TrainFlowRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Transition coverage represents the percentage of all possible transitions present within any of a
+    /// parent's test cases.</summary>
+    public class GoogleCloudDialogflowCxV3beta1TransitionCoverage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The percent of transitions in the agent that are covered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coverageScore")]
+        public virtual System.Nullable<float> CoverageScore { get; set; }
+
+        /// <summary>The list of Transitions present in the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transitions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TransitionCoverageTransition> Transitions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A transition in the agent's graph.</summary>
+    public class GoogleCloudDialogflowCxV3beta1TransitionCoverageTransition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether or not the transition is covered by at least one of the agent's test cases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("covered")]
+        public virtual System.Nullable<bool> Covered { get; set; }
+
+        /// <summary>Event handler.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventHandler")]
+        public virtual GoogleCloudDialogflowCxV3beta1EventHandler EventHandler { get; set; }
+
+        /// <summary>The index of a transition in the transition list. Starting from 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<int> Index { get; set; }
+
+        /// <summary>The start node of a transition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual GoogleCloudDialogflowCxV3beta1TransitionCoverageTransitionNode Source { get; set; }
+
+        /// <summary>The end node of a transition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual GoogleCloudDialogflowCxV3beta1TransitionCoverageTransitionNode Target { get; set; }
+
+        /// <summary>Intent route or condition route.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transitionRoute")]
+        public virtual GoogleCloudDialogflowCxV3beta1TransitionRoute TransitionRoute { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The source or target of a transition.</summary>
+    public class GoogleCloudDialogflowCxV3beta1TransitionCoverageTransitionNode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates a transition to a Flow. Only some fields such as name and displayname will be
+        /// set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flow")]
+        public virtual GoogleCloudDialogflowCxV3beta1Flow Flow { get; set; }
+
+        /// <summary>Indicates a transition to a Page. Only some fields such as name and displayname will be
+        /// set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("page")]
+        public virtual GoogleCloudDialogflowCxV3beta1Page Page { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -8303,6 +10687,17 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitionRoutes")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TransitionRoute> TransitionRoutes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for UpdateDocument operation.</summary>
+    public class GoogleCloudDialogflowCxV3beta1UpdateDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The generic information of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11404,6 +13799,83 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for CreateDocument operation.</summary>
+    public class GoogleCloudDialogflowV3alpha1CreateDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The generic information of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for DeleteDocument operation.</summary>
+    public class GoogleCloudDialogflowV3alpha1DeleteDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The generic information of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata in google::longrunning::Operation for Knowledge operations.</summary>
+    public class GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Output only. The current state of this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for ImportDocuments operation.</summary>
+    public class GoogleCloudDialogflowV3alpha1ImportDocumentsOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The generic information of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for Documents.ImportDocuments.</summary>
+    public class GoogleCloudDialogflowV3alpha1ImportDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Includes details about skipped documents or any other warnings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for ReloadDocument operation.</summary>
+    public class GoogleCloudDialogflowV3alpha1ReloadDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The generic information of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for UpdateDocument operation.</summary>
+    public class GoogleCloudDialogflowV3alpha1UpdateDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The generic information of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata GenericMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
