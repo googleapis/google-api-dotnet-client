@@ -288,7 +288,6 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 Environments = new EnvironmentsResource(service);
                 Instances = new InstancesResource(service);
                 Operations = new OperationsResource(service);
-                Schedules = new SchedulesResource(service);
 
             }
 
@@ -1958,84 +1957,6 @@ namespace Google.Apis.AIPlatformNotebooks.v1
 
                 }
             }
-            /// <summary>Gets the Schedules resource.</summary>
-            public virtual SchedulesResource Schedules { get; }
-
-            /// <summary>The "schedules" collection of methods.</summary>
-            public class SchedulesResource
-            {
-                private const string Resource = "schedules";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public SchedulesResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-
-                }
-
-
-                /// <summary>Triggers execution of an existing schedule.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required. Format:
-                /// `parent=projects/{project_id}/locations/{location}/schedules/{schedule_id}`</param>
-                public virtual TriggerRequest Trigger(Google.Apis.AIPlatformNotebooks.v1.Data.TriggerScheduleRequest body, string name)
-                {
-                    return new TriggerRequest(service, body, name);
-                }
-
-                /// <summary>Triggers execution of an existing schedule.</summary>
-                public class TriggerRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Operation>
-                {
-                    /// <summary>Constructs a new Trigger request.</summary>
-                    public TriggerRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v1.Data.TriggerScheduleRequest body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>Required. Format:
-                    /// `parent=projects/{project_id}/locations/{location}/schedules/{schedule_id}`</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.AIPlatformNotebooks.v1.Data.TriggerScheduleRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "trigger";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+name}:trigger";
-
-                    /// <summary>Initializes Trigger parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/schedules/[^/]+$",
-                        });
-                    }
-
-                }
-            }
 
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
@@ -2971,13 +2892,6 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Request for created scheduled notebooks</summary>
-    public class TriggerScheduleRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

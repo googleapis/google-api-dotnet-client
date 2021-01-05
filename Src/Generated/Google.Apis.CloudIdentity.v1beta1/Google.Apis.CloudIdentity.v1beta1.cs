@@ -3301,7 +3301,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     public class DynamicGroupMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Memberships will be the union of all queries. Only one entry with USER resource is currently
-        /// supported.</summary>
+        /// supported. Customers can create up to 100 dynamic groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queries")]
         public virtual System.Collections.Generic.IList<DynamicGroupQuery> Queries { get; set; }
 

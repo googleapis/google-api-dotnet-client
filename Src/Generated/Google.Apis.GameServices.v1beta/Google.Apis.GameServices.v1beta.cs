@@ -1107,8 +1107,8 @@ namespace Google.Apis.GameServices.v1beta
                     public virtual string Name { get; private set; }
 
                     /// <summary>Required. Mask of fields to update. At least one path must be supplied in this field.
-                    /// For the `FieldMask` definition, see https://developers.google.com/protocol-
-                    /// buffers/docs/reference/google.protobuf#fieldmask</summary>
+                    /// For the `FieldMask` definition, see https: //developers.google.com/protocol-buffers //
+                    /// /docs/reference/google.protobuf#fieldmask</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -1190,8 +1190,8 @@ namespace Google.Apis.GameServices.v1beta
                     public virtual object PreviewTime { get; set; }
 
                     /// <summary>Optional. Mask of fields to update. At least one path must be supplied in this field.
-                    /// For the `FieldMask` definition, see https://developers.google.com/protocol-
-                    /// buffers/docs/reference/google.protobuf#fieldmask</summary>
+                    /// For the `FieldMask` definition, see https: //developers.google.com/protocol-buffers //
+                    /// /docs/reference/google.protobuf#fieldmask</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -1408,8 +1408,8 @@ namespace Google.Apis.GameServices.v1beta
                     public virtual string Name { get; private set; }
 
                     /// <summary>Required. Mask of fields to update. At least one path must be supplied in this field.
-                    /// For the `FieldMask` definition, see https://developers.google.com/protocol-
-                    /// buffers/docs/reference/google.protobuf#fieldmask</summary>
+                    /// For the `FieldMask` definition, see https: //developers.google.com/protocol-buffers //
+                    /// /docs/reference/google.protobuf#fieldmask</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -2089,8 +2089,8 @@ namespace Google.Apis.GameServices.v1beta
                         public virtual string Name { get; private set; }
 
                         /// <summary>Required. Mask of fields to update. At least one path must be supplied in this
-                        /// field. For the `FieldMask` definition, see https://developers.google.com/protocol-
-                        /// buffers/docs/reference/google.protobuf#fieldmask</summary>
+                        /// field. For the `FieldMask` definition, see https: //developers.google.com/protocol-buffers
+                        /// // /docs/reference/google.protobuf#fieldmask</summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
 
@@ -2317,8 +2317,8 @@ namespace Google.Apis.GameServices.v1beta
                         public virtual object PreviewTime { get; set; }
 
                         /// <summary>Required. Mask of fields to update. At least one path must be supplied in this
-                        /// field. For the `FieldMask` definition, see https://developers.google.com/protocol-
-                        /// buffers/docs/reference/google.protobuf#fieldmask</summary>
+                        /// field. For the `FieldMask` definition, see https: //developers.google.com/protocol-buffers
+                        /// // /docs/reference/google.protobuf#fieldmask</summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
 
@@ -2677,8 +2677,8 @@ namespace Google.Apis.GameServices.v1beta
                     public virtual string Name { get; private set; }
 
                     /// <summary>Required. The update mask applies to the resource. For the `FieldMask` definition, see
-                    /// https://developers.google.com/protocol-
-                    /// buffers/docs/reference/google.protobuf#fieldmask</summary>
+                    /// https: //developers.google.com/protocol-buffers //
+                    /// /docs/reference/google.protobuf#fieldmask</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -2756,8 +2756,8 @@ namespace Google.Apis.GameServices.v1beta
                     public virtual object PreviewTime { get; set; }
 
                     /// <summary>Required. The update mask applies to the resource. For the `FieldMask` definition, see
-                    /// https://developers.google.com/protocol-
-                    /// buffers/docs/reference/google.protobuf#fieldmask</summary>
+                    /// https: //developers.google.com/protocol-buffers //
+                    /// /docs/reference/google.protobuf#fieldmask</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 

@@ -6278,7 +6278,8 @@ namespace Google.Apis.DataLabeling.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotationSpecSet")]
         public virtual string AnnotationSpecSet { get; set; }
 
-        /// <summary>Optional. Configs for sentiment selection.</summary>
+        /// <summary>Optional. Configs for sentiment selection. We deprecate sentiment analysis in data labeling side as
+        /// it is incompatible with uCAIP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sentimentConfig")]
         public virtual GoogleCloudDatalabelingV1beta1SentimentConfig SentimentConfig { get; set; }
 

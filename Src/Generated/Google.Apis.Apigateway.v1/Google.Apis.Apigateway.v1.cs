@@ -9,13 +9,13 @@
 
 // Generated code. DO NOT EDIT!
 
-namespace Google.Apis.Apigateway.v1beta
+namespace Google.Apis.Apigateway.v1
 {
     /// <summary>The Apigateway Service.</summary>
     public class ApigatewayService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
-        public const string Version = "v1beta";
+        public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
         public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
@@ -333,16 +333,16 @@ namespace Google.Apis.Apigateway.v1beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. Parent resource of the API Config, of the form:
                     /// `projects/locations/global/apis`</param>
-                    public virtual CreateRequest Create(Google.Apis.Apigateway.v1beta.Data.ApigatewayApiConfig body, string parent)
+                    public virtual CreateRequest Create(Google.Apis.Apigateway.v1.Data.ApigatewayApiConfig body, string parent)
                     {
                         return new CreateRequest(service, body, parent);
                     }
 
                     /// <summary>Creates a new ApiConfig in a given project and location.</summary>
-                    public class CreateRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayOperation>
+                    public class CreateRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayOperation>
                     {
                         /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1beta.Data.ApigatewayApiConfig body, string parent) : base(service)
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1.Data.ApigatewayApiConfig body, string parent) : base(service)
                         {
                             Parent = parent;
                             Body = body;
@@ -362,7 +362,7 @@ namespace Google.Apis.Apigateway.v1beta
 
 
                         /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Apigateway.v1beta.Data.ApigatewayApiConfig Body { get; set; }
+                        Google.Apis.Apigateway.v1.Data.ApigatewayApiConfig Body { get; set; }
 
                         /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
@@ -374,7 +374,7 @@ namespace Google.Apis.Apigateway.v1beta
                         public override string HttpMethod => "POST";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta/{+parent}/configs";
+                        public override string RestPath => "v1/{+parent}/configs";
 
                         /// <summary>Initializes Create parameter list.</summary>
                         protected override void InitParameters()
@@ -409,7 +409,7 @@ namespace Google.Apis.Apigateway.v1beta
                     }
 
                     /// <summary>Deletes a single ApiConfig.</summary>
-                    public class DeleteRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayOperation>
+                    public class DeleteRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayOperation>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
                         public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -432,7 +432,7 @@ namespace Google.Apis.Apigateway.v1beta
                         public override string HttpMethod => "DELETE";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta/{+name}";
+                        public override string RestPath => "v1/{+name}";
 
                         /// <summary>Initializes Delete parameter list.</summary>
                         protected override void InitParameters()
@@ -459,7 +459,7 @@ namespace Google.Apis.Apigateway.v1beta
                     }
 
                     /// <summary>Gets details of a single ApiConfig.</summary>
-                    public class GetRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayApiConfig>
+                    public class GetRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayApiConfig>
                     {
                         /// <summary>Constructs a new Get request.</summary>
                         public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -501,7 +501,7 @@ namespace Google.Apis.Apigateway.v1beta
                         public override string HttpMethod => "GET";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta/{+name}";
+                        public override string RestPath => "v1/{+name}";
 
                         /// <summary>Initializes Get parameter list.</summary>
                         protected override void InitParameters()
@@ -539,7 +539,7 @@ namespace Google.Apis.Apigateway.v1beta
 
                     /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource
                     /// exists and does not have a policy set.</summary>
-                    public class GetIamPolicyRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayPolicy>
+                    public class GetIamPolicyRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayPolicy>
                     {
                         /// <summary>Constructs a new GetIamPolicy request.</summary>
                         public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
@@ -571,7 +571,7 @@ namespace Google.Apis.Apigateway.v1beta
                         public override string HttpMethod => "GET";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta/{+resource}:getIamPolicy";
+                        public override string RestPath => "v1/{+resource}:getIamPolicy";
 
                         /// <summary>Initializes GetIamPolicy parameter list.</summary>
                         protected override void InitParameters()
@@ -607,7 +607,7 @@ namespace Google.Apis.Apigateway.v1beta
                     }
 
                     /// <summary>Lists ApiConfigs in a given project and location.</summary>
-                    public class ListRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayListApiConfigsResponse>
+                    public class ListRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayListApiConfigsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
                         public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
@@ -646,7 +646,7 @@ namespace Google.Apis.Apigateway.v1beta
                         public override string HttpMethod => "GET";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta/{+parent}/configs";
+                        public override string RestPath => "v1/{+parent}/configs";
 
                         /// <summary>Initializes List parameter list.</summary>
                         protected override void InitParameters()
@@ -701,16 +701,16 @@ namespace Google.Apis.Apigateway.v1beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Output only. Resource name of the API Config. Format:
                     /// projects/{project}/locations/global/apis/{api}/configs/{api_config}</param>
-                    public virtual PatchRequest Patch(Google.Apis.Apigateway.v1beta.Data.ApigatewayApiConfig body, string name)
+                    public virtual PatchRequest Patch(Google.Apis.Apigateway.v1.Data.ApigatewayApiConfig body, string name)
                     {
                         return new PatchRequest(service, body, name);
                     }
 
                     /// <summary>Updates the parameters of a single ApiConfig.</summary>
-                    public class PatchRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayOperation>
+                    public class PatchRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayOperation>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
-                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1beta.Data.ApigatewayApiConfig body, string name) : base(service)
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1.Data.ApigatewayApiConfig body, string name) : base(service)
                         {
                             Name = name;
                             Body = body;
@@ -732,7 +732,7 @@ namespace Google.Apis.Apigateway.v1beta
 
 
                         /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Apigateway.v1beta.Data.ApigatewayApiConfig Body { get; set; }
+                        Google.Apis.Apigateway.v1.Data.ApigatewayApiConfig Body { get; set; }
 
                         /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
@@ -744,7 +744,7 @@ namespace Google.Apis.Apigateway.v1beta
                         public override string HttpMethod => "PATCH";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta/{+name}";
+                        public override string RestPath => "v1/{+name}";
 
                         /// <summary>Initializes Patch parameter list.</summary>
                         protected override void InitParameters()
@@ -776,17 +776,17 @@ namespace Google.Apis.Apigateway.v1beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                     /// documentation for the appropriate value for this field.</param>
-                    public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Apigateway.v1beta.Data.ApigatewaySetIamPolicyRequest body, string resource)
+                    public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Apigateway.v1.Data.ApigatewaySetIamPolicyRequest body, string resource)
                     {
                         return new SetIamPolicyRequest(service, body, resource);
                     }
 
                     /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
                     /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
-                    public class SetIamPolicyRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayPolicy>
+                    public class SetIamPolicyRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayPolicy>
                     {
                         /// <summary>Constructs a new SetIamPolicy request.</summary>
-                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1beta.Data.ApigatewaySetIamPolicyRequest body, string resource) : base(service)
+                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1.Data.ApigatewaySetIamPolicyRequest body, string resource) : base(service)
                         {
                             Resource = resource;
                             Body = body;
@@ -801,7 +801,7 @@ namespace Google.Apis.Apigateway.v1beta
 
 
                         /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Apigateway.v1beta.Data.ApigatewaySetIamPolicyRequest Body { get; set; }
+                        Google.Apis.Apigateway.v1.Data.ApigatewaySetIamPolicyRequest Body { get; set; }
 
                         /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
@@ -813,7 +813,7 @@ namespace Google.Apis.Apigateway.v1beta
                         public override string HttpMethod => "POST";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta/{+resource}:setIamPolicy";
+                        public override string RestPath => "v1/{+resource}:setIamPolicy";
 
                         /// <summary>Initializes SetIamPolicy parameter list.</summary>
                         protected override void InitParameters()
@@ -839,7 +839,7 @@ namespace Google.Apis.Apigateway.v1beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
                     /// documentation for the appropriate value for this field.</param>
-                    public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Apigateway.v1beta.Data.ApigatewayTestIamPermissionsRequest body, string resource)
+                    public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Apigateway.v1.Data.ApigatewayTestIamPermissionsRequest body, string resource)
                     {
                         return new TestIamPermissionsRequest(service, body, resource);
                     }
@@ -848,10 +848,10 @@ namespace Google.Apis.Apigateway.v1beta
                     /// not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This
                     /// operation is designed to be used for building permission-aware UIs and command-line tools, not
                     /// for authorization checking. This operation may "fail open" without warning.</summary>
-                    public class TestIamPermissionsRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayTestIamPermissionsResponse>
+                    public class TestIamPermissionsRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayTestIamPermissionsResponse>
                     {
                         /// <summary>Constructs a new TestIamPermissions request.</summary>
-                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1beta.Data.ApigatewayTestIamPermissionsRequest body, string resource) : base(service)
+                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1.Data.ApigatewayTestIamPermissionsRequest body, string resource) : base(service)
                         {
                             Resource = resource;
                             Body = body;
@@ -866,7 +866,7 @@ namespace Google.Apis.Apigateway.v1beta
 
 
                         /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Apigateway.v1beta.Data.ApigatewayTestIamPermissionsRequest Body { get; set; }
+                        Google.Apis.Apigateway.v1.Data.ApigatewayTestIamPermissionsRequest Body { get; set; }
 
                         /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
@@ -878,7 +878,7 @@ namespace Google.Apis.Apigateway.v1beta
                         public override string HttpMethod => "POST";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta/{+resource}:testIamPermissions";
+                        public override string RestPath => "v1/{+resource}:testIamPermissions";
 
                         /// <summary>Initializes TestIamPermissions parameter list.</summary>
                         protected override void InitParameters()
@@ -901,16 +901,16 @@ namespace Google.Apis.Apigateway.v1beta
                 /// <summary>Creates a new Api in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. Parent resource of the API, of the form: `projects/locations/global`</param>
-                public virtual CreateRequest Create(Google.Apis.Apigateway.v1beta.Data.ApigatewayApi body, string parent)
+                public virtual CreateRequest Create(Google.Apis.Apigateway.v1.Data.ApigatewayApi body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
                 }
 
                 /// <summary>Creates a new Api in a given project and location.</summary>
-                public class CreateRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayOperation>
+                public class CreateRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayOperation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1beta.Data.ApigatewayApi body, string parent) : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1.Data.ApigatewayApi body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -930,7 +930,7 @@ namespace Google.Apis.Apigateway.v1beta
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Apigateway.v1beta.Data.ApigatewayApi Body { get; set; }
+                    Google.Apis.Apigateway.v1.Data.ApigatewayApi Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -942,7 +942,7 @@ namespace Google.Apis.Apigateway.v1beta
                     public override string HttpMethod => "POST";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+parent}/apis";
+                    public override string RestPath => "v1/{+parent}/apis";
 
                     /// <summary>Initializes Create parameter list.</summary>
                     protected override void InitParameters()
@@ -977,7 +977,7 @@ namespace Google.Apis.Apigateway.v1beta
                 }
 
                 /// <summary>Deletes a single Api.</summary>
-                public class DeleteRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayOperation>
+                public class DeleteRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayOperation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -999,7 +999,7 @@ namespace Google.Apis.Apigateway.v1beta
                     public override string HttpMethod => "DELETE";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+name}";
+                    public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
                     protected override void InitParameters()
@@ -1026,7 +1026,7 @@ namespace Google.Apis.Apigateway.v1beta
                 }
 
                 /// <summary>Gets details of a single Api.</summary>
-                public class GetRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayApi>
+                public class GetRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayApi>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -1048,7 +1048,7 @@ namespace Google.Apis.Apigateway.v1beta
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+name}";
+                    public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
                     protected override void InitParameters()
@@ -1078,7 +1078,7 @@ namespace Google.Apis.Apigateway.v1beta
 
                 /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource
                 /// exists and does not have a policy set.</summary>
-                public class GetIamPolicyRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayPolicy>
+                public class GetIamPolicyRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayPolicy>
                 {
                     /// <summary>Constructs a new GetIamPolicy request.</summary>
                     public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
@@ -1110,7 +1110,7 @@ namespace Google.Apis.Apigateway.v1beta
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+resource}:getIamPolicy";
+                    public override string RestPath => "v1/{+resource}:getIamPolicy";
 
                     /// <summary>Initializes GetIamPolicy parameter list.</summary>
                     protected override void InitParameters()
@@ -1145,7 +1145,7 @@ namespace Google.Apis.Apigateway.v1beta
                 }
 
                 /// <summary>Lists Apis in a given project and location.</summary>
-                public class ListRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayListApisResponse>
+                public class ListRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayListApisResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
@@ -1184,7 +1184,7 @@ namespace Google.Apis.Apigateway.v1beta
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+parent}/apis";
+                    public override string RestPath => "v1/{+parent}/apis";
 
                     /// <summary>Initializes List parameter list.</summary>
                     protected override void InitParameters()
@@ -1239,16 +1239,16 @@ namespace Google.Apis.Apigateway.v1beta
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Output only. Resource name of the API. Format:
                 /// projects/{project}/locations/global/apis/{api}</param>
-                public virtual PatchRequest Patch(Google.Apis.Apigateway.v1beta.Data.ApigatewayApi body, string name)
+                public virtual PatchRequest Patch(Google.Apis.Apigateway.v1.Data.ApigatewayApi body, string name)
                 {
                     return new PatchRequest(service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single Api.</summary>
-                public class PatchRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayOperation>
+                public class PatchRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayOperation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1beta.Data.ApigatewayApi body, string name) : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1.Data.ApigatewayApi body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1270,7 +1270,7 @@ namespace Google.Apis.Apigateway.v1beta
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Apigateway.v1beta.Data.ApigatewayApi Body { get; set; }
+                    Google.Apis.Apigateway.v1.Data.ApigatewayApi Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -1282,7 +1282,7 @@ namespace Google.Apis.Apigateway.v1beta
                     public override string HttpMethod => "PATCH";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+name}";
+                    public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Patch parameter list.</summary>
                     protected override void InitParameters()
@@ -1314,17 +1314,17 @@ namespace Google.Apis.Apigateway.v1beta
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                 /// documentation for the appropriate value for this field.</param>
-                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Apigateway.v1beta.Data.ApigatewaySetIamPolicyRequest body, string resource)
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Apigateway.v1.Data.ApigatewaySetIamPolicyRequest body, string resource)
                 {
                     return new SetIamPolicyRequest(service, body, resource);
                 }
 
                 /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. Can
                 /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
-                public class SetIamPolicyRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayPolicy>
+                public class SetIamPolicyRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayPolicy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
-                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1beta.Data.ApigatewaySetIamPolicyRequest body, string resource) : base(service)
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1.Data.ApigatewaySetIamPolicyRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -1339,7 +1339,7 @@ namespace Google.Apis.Apigateway.v1beta
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Apigateway.v1beta.Data.ApigatewaySetIamPolicyRequest Body { get; set; }
+                    Google.Apis.Apigateway.v1.Data.ApigatewaySetIamPolicyRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -1351,7 +1351,7 @@ namespace Google.Apis.Apigateway.v1beta
                     public override string HttpMethod => "POST";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+resource}:setIamPolicy";
+                    public override string RestPath => "v1/{+resource}:setIamPolicy";
 
                     /// <summary>Initializes SetIamPolicy parameter list.</summary>
                     protected override void InitParameters()
@@ -1377,7 +1377,7 @@ namespace Google.Apis.Apigateway.v1beta
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
                 /// documentation for the appropriate value for this field.</param>
-                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Apigateway.v1beta.Data.ApigatewayTestIamPermissionsRequest body, string resource)
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Apigateway.v1.Data.ApigatewayTestIamPermissionsRequest body, string resource)
                 {
                     return new TestIamPermissionsRequest(service, body, resource);
                 }
@@ -1386,10 +1386,10 @@ namespace Google.Apis.Apigateway.v1beta
                 /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation
                 /// is designed to be used for building permission-aware UIs and command-line tools, not for
                 /// authorization checking. This operation may "fail open" without warning.</summary>
-                public class TestIamPermissionsRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayTestIamPermissionsResponse>
+                public class TestIamPermissionsRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayTestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
-                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1beta.Data.ApigatewayTestIamPermissionsRequest body, string resource) : base(service)
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1.Data.ApigatewayTestIamPermissionsRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -1404,7 +1404,7 @@ namespace Google.Apis.Apigateway.v1beta
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Apigateway.v1beta.Data.ApigatewayTestIamPermissionsRequest Body { get; set; }
+                    Google.Apis.Apigateway.v1.Data.ApigatewayTestIamPermissionsRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -1416,7 +1416,7 @@ namespace Google.Apis.Apigateway.v1beta
                     public override string HttpMethod => "POST";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+resource}:testIamPermissions";
+                    public override string RestPath => "v1/{+resource}:testIamPermissions";
 
                     /// <summary>Initializes TestIamPermissions parameter list.</summary>
                     protected override void InitParameters()
@@ -1457,16 +1457,16 @@ namespace Google.Apis.Apigateway.v1beta
                 /// <summary>Creates a new Gateway in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. Parent resource of the Gateway, of the form: `projects/locations`</param>
-                public virtual CreateRequest Create(Google.Apis.Apigateway.v1beta.Data.ApigatewayGateway body, string parent)
+                public virtual CreateRequest Create(Google.Apis.Apigateway.v1.Data.ApigatewayGateway body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
                 }
 
                 /// <summary>Creates a new Gateway in a given project and location.</summary>
-                public class CreateRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayOperation>
+                public class CreateRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayOperation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1beta.Data.ApigatewayGateway body, string parent) : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1.Data.ApigatewayGateway body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -1485,7 +1485,7 @@ namespace Google.Apis.Apigateway.v1beta
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Apigateway.v1beta.Data.ApigatewayGateway Body { get; set; }
+                    Google.Apis.Apigateway.v1.Data.ApigatewayGateway Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -1497,7 +1497,7 @@ namespace Google.Apis.Apigateway.v1beta
                     public override string HttpMethod => "POST";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+parent}/gateways";
+                    public override string RestPath => "v1/{+parent}/gateways";
 
                     /// <summary>Initializes Create parameter list.</summary>
                     protected override void InitParameters()
@@ -1532,7 +1532,7 @@ namespace Google.Apis.Apigateway.v1beta
                 }
 
                 /// <summary>Deletes a single Gateway.</summary>
-                public class DeleteRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayOperation>
+                public class DeleteRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayOperation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -1554,7 +1554,7 @@ namespace Google.Apis.Apigateway.v1beta
                     public override string HttpMethod => "DELETE";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+name}";
+                    public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
                     protected override void InitParameters()
@@ -1581,7 +1581,7 @@ namespace Google.Apis.Apigateway.v1beta
                 }
 
                 /// <summary>Gets details of a single Gateway.</summary>
-                public class GetRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayGateway>
+                public class GetRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayGateway>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -1603,7 +1603,7 @@ namespace Google.Apis.Apigateway.v1beta
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+name}";
+                    public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
                     protected override void InitParameters()
@@ -1633,7 +1633,7 @@ namespace Google.Apis.Apigateway.v1beta
 
                 /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource
                 /// exists and does not have a policy set.</summary>
-                public class GetIamPolicyRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayPolicy>
+                public class GetIamPolicyRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayPolicy>
                 {
                     /// <summary>Constructs a new GetIamPolicy request.</summary>
                     public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
@@ -1665,7 +1665,7 @@ namespace Google.Apis.Apigateway.v1beta
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+resource}:getIamPolicy";
+                    public override string RestPath => "v1/{+resource}:getIamPolicy";
 
                     /// <summary>Initializes GetIamPolicy parameter list.</summary>
                     protected override void InitParameters()
@@ -1700,7 +1700,7 @@ namespace Google.Apis.Apigateway.v1beta
                 }
 
                 /// <summary>Lists Gateways in a given project and location.</summary>
-                public class ListRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayListGatewaysResponse>
+                public class ListRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayListGatewaysResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
@@ -1738,7 +1738,7 @@ namespace Google.Apis.Apigateway.v1beta
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+parent}/gateways";
+                    public override string RestPath => "v1/{+parent}/gateways";
 
                     /// <summary>Initializes List parameter list.</summary>
                     protected override void InitParameters()
@@ -1793,16 +1793,16 @@ namespace Google.Apis.Apigateway.v1beta
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Output only. Resource name of the Gateway. Format:
                 /// projects/{project}/locations/{location}/gateways/{gateway}</param>
-                public virtual PatchRequest Patch(Google.Apis.Apigateway.v1beta.Data.ApigatewayGateway body, string name)
+                public virtual PatchRequest Patch(Google.Apis.Apigateway.v1.Data.ApigatewayGateway body, string name)
                 {
                     return new PatchRequest(service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single Gateway.</summary>
-                public class PatchRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayOperation>
+                public class PatchRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayOperation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1beta.Data.ApigatewayGateway body, string name) : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1.Data.ApigatewayGateway body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1824,7 +1824,7 @@ namespace Google.Apis.Apigateway.v1beta
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Apigateway.v1beta.Data.ApigatewayGateway Body { get; set; }
+                    Google.Apis.Apigateway.v1.Data.ApigatewayGateway Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -1836,7 +1836,7 @@ namespace Google.Apis.Apigateway.v1beta
                     public override string HttpMethod => "PATCH";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+name}";
+                    public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Patch parameter list.</summary>
                     protected override void InitParameters()
@@ -1868,17 +1868,17 @@ namespace Google.Apis.Apigateway.v1beta
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                 /// documentation for the appropriate value for this field.</param>
-                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Apigateway.v1beta.Data.ApigatewaySetIamPolicyRequest body, string resource)
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Apigateway.v1.Data.ApigatewaySetIamPolicyRequest body, string resource)
                 {
                     return new SetIamPolicyRequest(service, body, resource);
                 }
 
                 /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. Can
                 /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
-                public class SetIamPolicyRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayPolicy>
+                public class SetIamPolicyRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayPolicy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
-                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1beta.Data.ApigatewaySetIamPolicyRequest body, string resource) : base(service)
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1.Data.ApigatewaySetIamPolicyRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -1893,7 +1893,7 @@ namespace Google.Apis.Apigateway.v1beta
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Apigateway.v1beta.Data.ApigatewaySetIamPolicyRequest Body { get; set; }
+                    Google.Apis.Apigateway.v1.Data.ApigatewaySetIamPolicyRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -1905,7 +1905,7 @@ namespace Google.Apis.Apigateway.v1beta
                     public override string HttpMethod => "POST";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+resource}:setIamPolicy";
+                    public override string RestPath => "v1/{+resource}:setIamPolicy";
 
                     /// <summary>Initializes SetIamPolicy parameter list.</summary>
                     protected override void InitParameters()
@@ -1931,7 +1931,7 @@ namespace Google.Apis.Apigateway.v1beta
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
                 /// documentation for the appropriate value for this field.</param>
-                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Apigateway.v1beta.Data.ApigatewayTestIamPermissionsRequest body, string resource)
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Apigateway.v1.Data.ApigatewayTestIamPermissionsRequest body, string resource)
                 {
                     return new TestIamPermissionsRequest(service, body, resource);
                 }
@@ -1940,10 +1940,10 @@ namespace Google.Apis.Apigateway.v1beta
                 /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation
                 /// is designed to be used for building permission-aware UIs and command-line tools, not for
                 /// authorization checking. This operation may "fail open" without warning.</summary>
-                public class TestIamPermissionsRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayTestIamPermissionsResponse>
+                public class TestIamPermissionsRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayTestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
-                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1beta.Data.ApigatewayTestIamPermissionsRequest body, string resource) : base(service)
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1.Data.ApigatewayTestIamPermissionsRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -1958,7 +1958,7 @@ namespace Google.Apis.Apigateway.v1beta
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Apigateway.v1beta.Data.ApigatewayTestIamPermissionsRequest Body { get; set; }
+                    Google.Apis.Apigateway.v1.Data.ApigatewayTestIamPermissionsRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -1970,7 +1970,7 @@ namespace Google.Apis.Apigateway.v1beta
                     public override string HttpMethod => "POST";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+resource}:testIamPermissions";
+                    public override string RestPath => "v1/{+resource}:testIamPermissions";
 
                     /// <summary>Initializes TestIamPermissions parameter list.</summary>
                     protected override void InitParameters()
@@ -2017,7 +2017,7 @@ namespace Google.Apis.Apigateway.v1beta
                 /// `Code.CANCELLED`.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
-                public virtual CancelRequest Cancel(Google.Apis.Apigateway.v1beta.Data.ApigatewayCancelOperationRequest body, string name)
+                public virtual CancelRequest Cancel(Google.Apis.Apigateway.v1.Data.ApigatewayCancelOperationRequest body, string name)
                 {
                     return new CancelRequest(service, body, name);
                 }
@@ -2029,10 +2029,10 @@ namespace Google.Apis.Apigateway.v1beta
                 /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
                 /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
                 /// `Code.CANCELLED`.</summary>
-                public class CancelRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.Empty>
+                public class CancelRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Cancel request.</summary>
-                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1beta.Data.ApigatewayCancelOperationRequest body, string name) : base(service)
+                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Apigateway.v1.Data.ApigatewayCancelOperationRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -2046,7 +2046,7 @@ namespace Google.Apis.Apigateway.v1beta
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Apigateway.v1beta.Data.ApigatewayCancelOperationRequest Body { get; set; }
+                    Google.Apis.Apigateway.v1.Data.ApigatewayCancelOperationRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -2058,7 +2058,7 @@ namespace Google.Apis.Apigateway.v1beta
                     public override string HttpMethod => "POST";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+name}:cancel";
+                    public override string RestPath => "v1/{+name}:cancel";
 
                     /// <summary>Initializes Cancel parameter list.</summary>
                     protected override void InitParameters()
@@ -2089,7 +2089,7 @@ namespace Google.Apis.Apigateway.v1beta
                 /// <summary>Deletes a long-running operation. This method indicates that the client is no longer
                 /// interested in the operation result. It does not cancel the operation. If the server doesn't support
                 /// this method, it returns `google.rpc.Code.UNIMPLEMENTED`.</summary>
-                public class DeleteRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.Empty>
+                public class DeleteRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -2111,7 +2111,7 @@ namespace Google.Apis.Apigateway.v1beta
                     public override string HttpMethod => "DELETE";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+name}";
+                    public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Delete parameter list.</summary>
                     protected override void InitParameters()
@@ -2140,7 +2140,7 @@ namespace Google.Apis.Apigateway.v1beta
 
                 /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
                 /// operation result at intervals as recommended by the API service.</summary>
-                public class GetRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayOperation>
+                public class GetRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayOperation>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -2162,7 +2162,7 @@ namespace Google.Apis.Apigateway.v1beta
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+name}";
+                    public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes Get parameter list.</summary>
                     protected override void InitParameters()
@@ -2201,7 +2201,7 @@ namespace Google.Apis.Apigateway.v1beta
                 /// configuration. For backwards compatibility, the default name includes the operations collection id,
                 /// however overriding users must ensure the name binding is the parent resource, without the operations
                 /// collection id.</summary>
-                public class ListRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayListOperationsResponse>
+                public class ListRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayListOperationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -2235,7 +2235,7 @@ namespace Google.Apis.Apigateway.v1beta
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+name}/operations";
+                    public override string RestPath => "v1/{+name}/operations";
 
                     /// <summary>Initializes List parameter list.</summary>
                     protected override void InitParameters()
@@ -2287,7 +2287,7 @@ namespace Google.Apis.Apigateway.v1beta
             }
 
             /// <summary>Gets information about a location.</summary>
-            public class GetRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayLocation>
+            public class GetRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayLocation>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -2309,7 +2309,7 @@ namespace Google.Apis.Apigateway.v1beta
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1beta/{+name}";
+                public override string RestPath => "v1/{+name}";
 
                 /// <summary>Initializes Get parameter list.</summary>
                 protected override void InitParameters()
@@ -2336,7 +2336,7 @@ namespace Google.Apis.Apigateway.v1beta
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
-            public class ListRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1beta.Data.ApigatewayListLocationsResponse>
+            public class ListRequest : ApigatewayBaseServiceRequest<Google.Apis.Apigateway.v1.Data.ApigatewayListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -2370,7 +2370,7 @@ namespace Google.Apis.Apigateway.v1beta
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1beta/{+name}/locations";
+                public override string RestPath => "v1/{+name}/locations";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -2416,7 +2416,7 @@ namespace Google.Apis.Apigateway.v1beta
     }
 }
 
-namespace Google.Apis.Apigateway.v1beta.Data
+namespace Google.Apis.Apigateway.v1.Data
 {    
 
     /// <summary>An API that can be served by one or more Gateways.</summary>
@@ -2469,10 +2469,6 @@ namespace Google.Apis.Apigateway.v1beta.Data
         /// <summary>Optional. Display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
-
-        /// <summary>Immutable. Gateway specific configuration.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gatewayConfig")]
-        public virtual ApigatewayGatewayConfig GatewayConfig { get; set; }
 
         /// <summary>Immutable. The Google Cloud IAM Service Account that Gateways serving this config should use to
         /// authenticate to other services. This may either be the Service Account's email
@@ -2619,25 +2615,6 @@ namespace Google.Apis.Apigateway.v1beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Configuration for all backends.</summary>
-    public class ApigatewayBackendConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication
-        /// configured (https://cloud.google.com/service-infrastructure/docs/service-
-        /// management/reference/rest/v1/services.configs#backend). This may either be the Service Account's email (i.e.
-        /// "{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com") or its full resource name (i.e.
-        /// "projects/{PROJECT}/accounts/{UNIQUE_ID}"). This is most often used when the backend is a GCP resource such
-        /// as a Cloud Run Service or an IAP-secured service. Note that this token is always sent as an authorization
-        /// header bearer token. The audience of the OIDC token is configured in the associated Service Config in the
-        /// BackendRule option
-        /// (https://github.com/googleapis/googleapis/blob/master/google/api/backend.proto#L125).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("googleServiceAccount")]
-        public virtual string GoogleServiceAccount { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Associates `members` with a `role`.</summary>
     public class ApigatewayBinding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2762,17 +2739,6 @@ namespace Google.Apis.Apigateway.v1beta.Data
         /// <summary>Output only. Updated time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Configuration settings for Gateways.</summary>
-    public class ApigatewayGatewayConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Backend settings that are applied to all backends of the Gateway.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("backendConfig")]
-        public virtual ApigatewayBackendConfig BackendConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
