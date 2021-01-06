@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -71,10 +76,11 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
 
             /// <summary>View all your Firebase data and settings</summary>
             public static string FirebaseReadonly = "https://www.googleapis.com/auth/firebase.readonly";
-
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Firebase Realtime Database Management API.</summary>
+        /// <summary>
+        /// Available OAuth 2.0 scope constants for use with the Firebase Realtime Database Management API.
+        /// </summary>
         public static class ScopeConstants
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -88,10 +94,7 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
 
             /// <summary>View all your Firebase data and settings</summary>
             public const string FirebaseReadonly = "https://www.googleapis.com/auth/firebase.readonly";
-
         }
-
-
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -115,6 +118,7 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -134,9 +138,11 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -150,8 +156,10 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -163,8 +171,10 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -180,7 +190,6 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -285,7 +294,6 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
         {
             this.service = service;
             Locations = new LocationsResource(service);
-
         }
 
         /// <summary>Gets the Locations resource.</summary>
@@ -304,7 +312,6 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
             {
                 this.service = service;
                 Instances = new InstancesResource(service);
-
             }
 
             /// <summary>Gets the Instances resource.</summary>
@@ -322,28 +329,32 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                 public InstancesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
 
-
-                /// <summary>Requests that a new DatabaseInstance be created. The state of a successfully created
+                /// <summary>
+                /// Requests that a new DatabaseInstance be created. The state of a successfully created
                 /// DatabaseInstance is ACTIVE. Only available for projects on the Blaze plan. Projects can be upgraded
                 /// using the Cloud Billing API
                 /// https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo. Note that it might
-                /// take a few minutes for billing enablement state to propagate to Firebase systems.</summary>
+                /// take a few minutes for billing enablement state to propagate to Firebase systems.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">The parent project for which to create a database instance, in the form: `projects/{project-
-                /// number}/locations/{location-id}`.</param>
+                /// <param name="parent">
+                /// The parent project for which to create a database instance, in the form:
+                /// `projects/{project-number}/locations/{location-id}`.
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.FirebaseRealtimeDatabase.v1beta.Data.DatabaseInstance body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Requests that a new DatabaseInstance be created. The state of a successfully created
+                /// <summary>
+                /// Requests that a new DatabaseInstance be created. The state of a successfully created
                 /// DatabaseInstance is ACTIVE. Only available for projects on the Blaze plan. Projects can be upgraded
                 /// using the Cloud Billing API
                 /// https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo. Note that it might
-                /// take a few minutes for billing enablement state to propagate to Firebase systems.</summary>
+                /// take a few minutes for billing enablement state to propagate to Firebase systems.
+                /// </summary>
                 public class CreateRequest : FirebaseRealtimeDatabaseBaseServiceRequest<Google.Apis.FirebaseRealtimeDatabase.v1beta.Data.DatabaseInstance>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -354,9 +365,10 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                         InitParameters();
                     }
 
-
-                    /// <summary>The parent project for which to create a database instance, in the form: `projects
-                    /// /{project-number}/locations/{location-id}`.</summary>
+                    /// <summary>
+                    /// The parent project for which to create a database instance, in the form:
+                    /// `projects/{project-number}/locations/{location-id}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -367,7 +379,6 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                     /// <summary>When set to true, the request will be validated but not submitted.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.FirebaseRealtimeDatabase.v1beta.Data.DatabaseInstance Body { get; set; }
@@ -388,7 +399,6 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -414,22 +424,27 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                             Pattern = null,
                         });
                     }
-
                 }
 
-                /// <summary>Marks a DatabaseInstance to be deleted. The DatabaseInstance will be purged within 30 days.
-                /// The default database cannot be deleted. IDs for deleted database instances may never be recovered or
-                /// re-used. The Database may only be deleted if it is already in a DISABLED state.</summary>
-                /// <param name="name">The fully qualified resource name of the database instance, in the form: `projects/{project-
-                /// number}/locations/{location-id}/instances/{database-id}`</param>
+                /// <summary>
+                /// Marks a DatabaseInstance to be deleted. The DatabaseInstance will be purged within 30 days. The
+                /// default database cannot be deleted. IDs for deleted database instances may never be recovered or
+                /// re-used. The Database may only be deleted if it is already in a DISABLED state.
+                /// </summary>
+                /// <param name="name">
+                /// The fully qualified resource name of the database instance, in the form:
+                /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`
+                /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>Marks a DatabaseInstance to be deleted. The DatabaseInstance will be purged within 30 days.
-                /// The default database cannot be deleted. IDs for deleted database instances may never be recovered or
-                /// re-used. The Database may only be deleted if it is already in a DISABLED state.</summary>
+                /// <summary>
+                /// Marks a DatabaseInstance to be deleted. The DatabaseInstance will be purged within 30 days. The
+                /// default database cannot be deleted. IDs for deleted database instances may never be recovered or
+                /// re-used. The Database may only be deleted if it is already in a DISABLED state.
+                /// </summary>
                 public class DeleteRequest : FirebaseRealtimeDatabaseBaseServiceRequest<Google.Apis.FirebaseRealtimeDatabase.v1beta.Data.DatabaseInstance>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -439,12 +454,12 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                         InitParameters();
                     }
 
-
-                    /// <summary>The fully qualified resource name of the database instance, in the form: `projects
-                    /// /{project-number}/locations/{location-id}/instances/{database-id}`</summary>
+                    /// <summary>
+                    /// The fully qualified resource name of the database instance, in the form:
+                    /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
@@ -459,7 +474,6 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -469,23 +483,28 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                             Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
                         });
                     }
-
                 }
 
-                /// <summary>Disables a DatabaseInstance. The database can be re-enabled later using
-                /// ReenableDatabaseInstance. When a database is disabled, all reads and writes are denied, including
-                /// view access in the Firebase console.</summary>
+                /// <summary>
+                /// Disables a DatabaseInstance. The database can be re-enabled later using ReenableDatabaseInstance.
+                /// When a database is disabled, all reads and writes are denied, including view access in the Firebase
+                /// console.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The fully qualified resource name of the database instance, in the form: `projects/{project-
-                /// number}/locations/{location-id}/instances/{database-id}`</param>
+                /// <param name="name">
+                /// The fully qualified resource name of the database instance, in the form:
+                /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`
+                /// </param>
                 public virtual DisableRequest Disable(Google.Apis.FirebaseRealtimeDatabase.v1beta.Data.DisableDatabaseInstanceRequest body, string name)
                 {
                     return new DisableRequest(service, body, name);
                 }
 
-                /// <summary>Disables a DatabaseInstance. The database can be re-enabled later using
-                /// ReenableDatabaseInstance. When a database is disabled, all reads and writes are denied, including
-                /// view access in the Firebase console.</summary>
+                /// <summary>
+                /// Disables a DatabaseInstance. The database can be re-enabled later using ReenableDatabaseInstance.
+                /// When a database is disabled, all reads and writes are denied, including view access in the Firebase
+                /// console.
+                /// </summary>
                 public class DisableRequest : FirebaseRealtimeDatabaseBaseServiceRequest<Google.Apis.FirebaseRealtimeDatabase.v1beta.Data.DatabaseInstance>
                 {
                     /// <summary>Constructs a new Disable request.</summary>
@@ -496,12 +515,12 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                         InitParameters();
                     }
 
-
-                    /// <summary>The fully qualified resource name of the database instance, in the form: `projects
-                    /// /{project-number}/locations/{location-id}/instances/{database-id}`</summary>
+                    /// <summary>
+                    /// The fully qualified resource name of the database instance, in the form:
+                    /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.FirebaseRealtimeDatabase.v1beta.Data.DisableDatabaseInstanceRequest Body { get; set; }
@@ -522,7 +541,6 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -532,15 +550,17 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                             Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
                         });
                     }
-
                 }
 
                 /// <summary>Gets the DatabaseInstance identified by the specified resource name.</summary>
-                /// <param name="name">The fully qualified resource name of the database instance, in the form: `projects/{project-
-                /// number}/locations/{location-id}/instances/{database-id}`. `database-id` is a globally unique identifier across all
-                /// parent collections. For convenience, this method allows you to supply `-` as a wildcard character in place of
-                /// specific collections under `projects` and `locations`. The resulting wildcarding form of the method is:
-                /// `projects/-/locations/-/instances/{database-id}`.</param>
+                /// <param name="name">
+                /// The fully qualified resource name of the database instance, in the form:
+                /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`. `database-id` is a
+                /// globally unique identifier across all parent collections. For convenience, this method allows you to
+                /// supply `-` as a wildcard character in place of specific collections under `projects` and
+                /// `locations`. The resulting wildcarding form of the method is:
+                /// `projects/-/locations/-/instances/{database-id}`.
+                /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -556,16 +576,16 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                         InitParameters();
                     }
 
-
-                    /// <summary>The fully qualified resource name of the database instance, in the form: `projects
-                    /// /{project-number}/locations/{location-id}/instances/{database-id}`. `database-id` is a globally
-                    /// unique identifier across all parent collections. For convenience, this method allows you to
-                    /// supply `-` as a wildcard character in place of specific collections under `projects` and
-                    /// `locations`. The resulting wildcarding form of the method is: `projects/-/locations/-/instances
-                    /// /{database-id}`.</summary>
+                    /// <summary>
+                    /// The fully qualified resource name of the database instance, in the form:
+                    /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`. `database-id` is a
+                    /// globally unique identifier across all parent collections. For convenience, this method allows
+                    /// you to supply `-` as a wildcard character in place of specific collections under `projects` and
+                    /// `locations`. The resulting wildcarding form of the method is:
+                    /// `projects/-/locations/-/instances/{database-id}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
@@ -580,7 +600,6 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -590,27 +609,30 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                             Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
                         });
                     }
-
                 }
 
-                /// <summary>Lists each DatabaseInstance associated with the specified parent project. The list items
-                /// are returned in no particular order, but will be a consistent view of the database instances when
+                /// <summary>
+                /// Lists each DatabaseInstance associated with the specified parent project. The list items are
+                /// returned in no particular order, but will be a consistent view of the database instances when
                 /// additional requests are made with a `pageToken`. The resulting list contains instances in any STATE.
-                /// The list results may be stale by a few seconds. Use GetDatabaseInstance for consistent
-                /// reads.</summary>
-                /// <param name="parent">The parent project for which to list database instances, in the form: `projects/{project-
-                /// number}/locations/{location-id}` To list across all locations, use a parent in the form: `projects/{project-
-                /// number}/locations/-`</param>
+                /// The list results may be stale by a few seconds. Use GetDatabaseInstance for consistent reads.
+                /// </summary>
+                /// <param name="parent">
+                /// The parent project for which to list database instances, in the form:
+                /// `projects/{project-number}/locations/{location-id}` To list across all locations, use a parent in
+                /// the form: `projects/{project-number}/locations/-`
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists each DatabaseInstance associated with the specified parent project. The list items
-                /// are returned in no particular order, but will be a consistent view of the database instances when
+                /// <summary>
+                /// Lists each DatabaseInstance associated with the specified parent project. The list items are
+                /// returned in no particular order, but will be a consistent view of the database instances when
                 /// additional requests are made with a `pageToken`. The resulting list contains instances in any STATE.
-                /// The list results may be stale by a few seconds. Use GetDatabaseInstance for consistent
-                /// reads.</summary>
+                /// The list results may be stale by a few seconds. Use GetDatabaseInstance for consistent reads.
+                /// </summary>
                 public class ListRequest : FirebaseRealtimeDatabaseBaseServiceRequest<Google.Apis.FirebaseRealtimeDatabase.v1beta.Data.ListDatabaseInstancesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -620,24 +642,28 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                         InitParameters();
                     }
 
-
-                    /// <summary>The parent project for which to list database instances, in the form: `projects
-                    /// /{project-number}/locations/{location-id}` To list across all locations, use a parent in the
-                    /// form: `projects/{project-number}/locations/-`</summary>
+                    /// <summary>
+                    /// The parent project for which to list database instances, in the form:
+                    /// `projects/{project-number}/locations/{location-id}` To list across all locations, use a parent
+                    /// in the form: `projects/{project-number}/locations/-`
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The maximum number of database instances to return in the response. The server may
-                    /// return fewer than this at its discretion. If no value is specified (or too large a value is
-                    /// specified), then the server will impose its own limit.</summary>
+                    /// <summary>
+                    /// The maximum number of database instances to return in the response. The server may return fewer
+                    /// than this at its discretion. If no value is specified (or too large a value is specified), then
+                    /// the server will impose its own limit.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>Token returned from a previous call to `ListDatabaseInstances` indicating where in the
-                    /// set of database instances to resume listing.</summary>
+                    /// <summary>
+                    /// Token returned from a previous call to `ListDatabaseInstances` indicating where in the set of
+                    /// database instances to resume listing.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -652,7 +678,6 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -678,21 +703,26 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                             Pattern = null,
                         });
                     }
-
                 }
 
-                /// <summary>Enables a DatabaseInstance. The database must have been disabled previously using
-                /// DisableDatabaseInstance. The state of a successfully reenabled DatabaseInstance is ACTIVE.</summary>
+                /// <summary>
+                /// Enables a DatabaseInstance. The database must have been disabled previously using
+                /// DisableDatabaseInstance. The state of a successfully reenabled DatabaseInstance is ACTIVE.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The fully qualified resource name of the database instance, in the form: `projects/{project-
-                /// number}/locations/{location-id}/instances/{database-id}`</param>
+                /// <param name="name">
+                /// The fully qualified resource name of the database instance, in the form:
+                /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`
+                /// </param>
                 public virtual ReenableRequest Reenable(Google.Apis.FirebaseRealtimeDatabase.v1beta.Data.ReenableDatabaseInstanceRequest body, string name)
                 {
                     return new ReenableRequest(service, body, name);
                 }
 
-                /// <summary>Enables a DatabaseInstance. The database must have been disabled previously using
-                /// DisableDatabaseInstance. The state of a successfully reenabled DatabaseInstance is ACTIVE.</summary>
+                /// <summary>
+                /// Enables a DatabaseInstance. The database must have been disabled previously using
+                /// DisableDatabaseInstance. The state of a successfully reenabled DatabaseInstance is ACTIVE.
+                /// </summary>
                 public class ReenableRequest : FirebaseRealtimeDatabaseBaseServiceRequest<Google.Apis.FirebaseRealtimeDatabase.v1beta.Data.DatabaseInstance>
                 {
                     /// <summary>Constructs a new Reenable request.</summary>
@@ -703,12 +733,12 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                         InitParameters();
                     }
 
-
-                    /// <summary>The fully qualified resource name of the database instance, in the form: `projects
-                    /// /{project-number}/locations/{location-id}/instances/{database-id}`</summary>
+                    /// <summary>
+                    /// The fully qualified resource name of the database instance, in the form:
+                    /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.FirebaseRealtimeDatabase.v1beta.Data.ReenableDatabaseInstanceRequest Body { get; set; }
@@ -729,7 +759,6 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -739,32 +768,34 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
                             Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
                         });
                     }
-
                 }
             }
         }
     }
 }
-
 namespace Google.Apis.FirebaseRealtimeDatabase.v1beta.Data
-{    
-
-    /// <summary>Representation of a Realtime Database instance. Details on interacting with contents of a
-    /// DatabaseInstance can be found at: https://firebase.google.com/docs/database/rest/start.</summary>
+{
+    /// <summary>
+    /// Representation of a Realtime Database instance. Details on interacting with contents of a DatabaseInstance can
+    /// be found at: https://firebase.google.com/docs/database/rest/start.
+    /// </summary>
     public class DatabaseInstance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Immutable. The globally unique hostname of the database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseUrl")]
         public virtual string DatabaseUrl { get; set; }
 
-        /// <summary>The fully qualified resource name of the database instance, in the form: `projects/{project-
-        /// number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-
-        /// central1'.</summary>
+        /// <summary>
+        /// The fully qualified resource name of the database instance, in the form:
+        /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported
+        /// location is 'us-central1'.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The resource name of the project this instance belongs to. For example: `projects/{project-
-        /// number}`.</summary>
+        /// <summary>
+        /// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
 
@@ -772,21 +803,23 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>The database instance type. On creation only USER_DATABASE is allowed, which is also the default
-        /// when omitted.</summary>
+        /// <summary>
+        /// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when
+        /// omitted.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The request sent to the DisableDatabaseInstance method.</summary>
     public class DisableDatabaseInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The response from the ListDatabaseInstances method.</summary>
     public class ListDatabaseInstancesResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -795,16 +828,18 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<DatabaseInstance> Instances { get; set; }
 
-        /// <summary>If the result list is too large to fit in a single response, then a token is returned. If the
-        /// string is empty, then this response is the last page of results. This token can be used in a subsequent call
-        /// to `ListDatabaseInstances` to find the next group of database instances. Page tokens are short-lived and
-        /// should not be persisted.</summary>
+        /// <summary>
+        /// If the result list is too large to fit in a single response, then a token is returned. If the string is
+        /// empty, then this response is the last page of results. This token can be used in a subsequent call to
+        /// `ListDatabaseInstances` to find the next group of database instances. Page tokens are short-lived and should
+        /// not be persisted.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The request sent to the ReenableDatabaseInstance method.</summary>
     public class ReenableDatabaseInstanceRequest : Google.Apis.Requests.IDirectResponseSchema

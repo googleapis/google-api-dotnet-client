@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -62,7 +67,6 @@ namespace Google.Apis.WebSecurityScanner.v1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Web Security Scanner API.</summary>
@@ -70,10 +74,7 @@ namespace Google.Apis.WebSecurityScanner.v1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
-
-
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -97,6 +98,7 @@ namespace Google.Apis.WebSecurityScanner.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -116,9 +118,11 @@ namespace Google.Apis.WebSecurityScanner.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -132,8 +136,10 @@ namespace Google.Apis.WebSecurityScanner.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -145,8 +151,10 @@ namespace Google.Apis.WebSecurityScanner.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -162,7 +170,6 @@ namespace Google.Apis.WebSecurityScanner.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -267,7 +274,6 @@ namespace Google.Apis.WebSecurityScanner.v1
         {
             this.service = service;
             ScanConfigs = new ScanConfigsResource(service);
-
         }
 
         /// <summary>Gets the ScanConfigs resource.</summary>
@@ -286,7 +292,6 @@ namespace Google.Apis.WebSecurityScanner.v1
             {
                 this.service = service;
                 ScanRuns = new ScanRunsResource(service);
-
             }
 
             /// <summary>Gets the ScanRuns resource.</summary>
@@ -307,7 +312,6 @@ namespace Google.Apis.WebSecurityScanner.v1
                     CrawledUrls = new CrawledUrlsResource(service);
                     FindingTypeStats = new FindingTypeStatsResource(service);
                     Findings = new FindingsResource(service);
-
                 }
 
                 /// <summary>Gets the CrawledUrls resource.</summary>
@@ -325,13 +329,13 @@ namespace Google.Apis.WebSecurityScanner.v1
                     public CrawledUrlsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
-
                     }
 
-
                     /// <summary>List CrawledUrls under a given ScanRun.</summary>
-                    /// <param name="parent">Required. The parent resource name, which should be a scan run resource name in the format
-                    /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.</param>
+                    /// <param name="parent">
+                    /// Required. The parent resource name, which should be a scan run resource name in the format
+                    /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
+                    /// </param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
@@ -347,23 +351,27 @@ namespace Google.Apis.WebSecurityScanner.v1
                             InitParameters();
                         }
 
-
-                        /// <summary>Required. The parent resource name, which should be a scan run resource name in the
-                        /// format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.</summary>
+                        /// <summary>
+                        /// Required. The parent resource name, which should be a scan run resource name in the format
+                        /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>The maximum number of CrawledUrls to return, can be limited by server. If not
-                        /// specified or not positive, the implementation will select a reasonable value.</summary>
+                        /// <summary>
+                        /// The maximum number of CrawledUrls to return, can be limited by server. If not specified or
+                        /// not positive, the implementation will select a reasonable value.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
-                        /// <summary>A token identifying a page of results to be returned. This should be a
-                        /// `next_page_token` value returned from a previous List request. If unspecified, the first
-                        /// page of results is returned.</summary>
+                        /// <summary>
+                        /// A token identifying a page of results to be returned. This should be a `next_page_token`
+                        /// value returned from a previous List request. If unspecified, the first page of results is
+                        /// returned.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
-
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
@@ -378,7 +386,6 @@ namespace Google.Apis.WebSecurityScanner.v1
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "parent",
@@ -404,9 +411,9 @@ namespace Google.Apis.WebSecurityScanner.v1
                                 Pattern = null,
                             });
                         }
-
                     }
                 }
+
                 /// <summary>Gets the FindingTypeStats resource.</summary>
                 public virtual FindingTypeStatsResource FindingTypeStats { get; }
 
@@ -422,13 +429,13 @@ namespace Google.Apis.WebSecurityScanner.v1
                     public FindingTypeStatsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
-
                     }
 
-
                     /// <summary>List all FindingTypeStats under a given ScanRun.</summary>
-                    /// <param name="parent">Required. The parent resource name, which should be a scan run resource name in the format
-                    /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.</param>
+                    /// <param name="parent">
+                    /// Required. The parent resource name, which should be a scan run resource name in the format
+                    /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
+                    /// </param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
@@ -444,12 +451,12 @@ namespace Google.Apis.WebSecurityScanner.v1
                             InitParameters();
                         }
 
-
-                        /// <summary>Required. The parent resource name, which should be a scan run resource name in the
-                        /// format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.</summary>
+                        /// <summary>
+                        /// Required. The parent resource name, which should be a scan run resource name in the format
+                        /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
-
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
@@ -464,7 +471,6 @@ namespace Google.Apis.WebSecurityScanner.v1
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "parent",
@@ -474,9 +480,9 @@ namespace Google.Apis.WebSecurityScanner.v1
                                 Pattern = @"^projects/[^/]+/scanConfigs/[^/]+/scanRuns/[^/]+$",
                             });
                         }
-
                     }
                 }
+
                 /// <summary>Gets the Findings resource.</summary>
                 public virtual FindingsResource Findings { get; }
 
@@ -492,13 +498,13 @@ namespace Google.Apis.WebSecurityScanner.v1
                     public FindingsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
-
                     }
 
-
                     /// <summary>Gets a Finding.</summary>
-                    /// <param name="name">Required. The resource name of the Finding to be returned. The name follows the format of
-                    /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}/findings/{findingId}'.</param>
+                    /// <param name="name">
+                    /// Required. The resource name of the Finding to be returned. The name follows the format of
+                    /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}/findings/{findingId}'.
+                    /// </param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(service, name);
@@ -514,13 +520,12 @@ namespace Google.Apis.WebSecurityScanner.v1
                             InitParameters();
                         }
 
-
-                        /// <summary>Required. The resource name of the Finding to be returned. The name follows the
-                        /// format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}/findings/{fi
-                        /// ndingId}'.</summary>
+                        /// <summary>
+                        /// Required. The resource name of the Finding to be returned. The name follows the format of
+                        /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}/findings/{findingId}'.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
-
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
@@ -535,7 +540,6 @@ namespace Google.Apis.WebSecurityScanner.v1
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "name",
@@ -545,12 +549,13 @@ namespace Google.Apis.WebSecurityScanner.v1
                                 Pattern = @"^projects/[^/]+/scanConfigs/[^/]+/scanRuns/[^/]+/findings/[^/]+$",
                             });
                         }
-
                     }
 
                     /// <summary>List Findings under a given ScanRun.</summary>
-                    /// <param name="parent">Required. The parent resource name, which should be a scan run resource name in the format
-                    /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.</param>
+                    /// <param name="parent">
+                    /// Required. The parent resource name, which should be a scan run resource name in the format
+                    /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
+                    /// </param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
@@ -566,28 +571,34 @@ namespace Google.Apis.WebSecurityScanner.v1
                             InitParameters();
                         }
 
-
-                        /// <summary>Required. The parent resource name, which should be a scan run resource name in the
-                        /// format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.</summary>
+                        /// <summary>
+                        /// Required. The parent resource name, which should be a scan run resource name in the format
+                        /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>The filter expression. The expression must be in the format: . Supported field:
-                        /// 'finding_type'. Supported operator: '='.</summary>
+                        /// <summary>
+                        /// The filter expression. The expression must be in the format: . Supported field:
+                        /// 'finding_type'. Supported operator: '='.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>The maximum number of Findings to return, can be limited by server. If not
-                        /// specified or not positive, the implementation will select a reasonable value.</summary>
+                        /// <summary>
+                        /// The maximum number of Findings to return, can be limited by server. If not specified or not
+                        /// positive, the implementation will select a reasonable value.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
-                        /// <summary>A token identifying a page of results to be returned. This should be a
-                        /// `next_page_token` value returned from a previous List request. If unspecified, the first
-                        /// page of results is returned.</summary>
+                        /// <summary>
+                        /// A token identifying a page of results to be returned. This should be a `next_page_token`
+                        /// value returned from a previous List request. If unspecified, the first page of results is
+                        /// returned.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
-
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
@@ -602,7 +613,6 @@ namespace Google.Apis.WebSecurityScanner.v1
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "parent",
@@ -636,13 +646,14 @@ namespace Google.Apis.WebSecurityScanner.v1
                                 Pattern = null,
                             });
                         }
-
                     }
                 }
 
                 /// <summary>Gets a ScanRun.</summary>
-                /// <param name="name">Required. The resource name of the ScanRun to be returned. The name follows the format of
-                /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.</param>
+                /// <param name="name">
+                /// Required. The resource name of the ScanRun to be returned. The name follows the format of
+                /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
+                /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -658,12 +669,12 @@ namespace Google.Apis.WebSecurityScanner.v1
                         InitParameters();
                     }
 
-
-                    /// <summary>Required. The resource name of the ScanRun to be returned. The name follows the format
-                    /// of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.</summary>
+                    /// <summary>
+                    /// Required. The resource name of the ScanRun to be returned. The name follows the format of
+                    /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
@@ -678,7 +689,6 @@ namespace Google.Apis.WebSecurityScanner.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -688,20 +698,23 @@ namespace Google.Apis.WebSecurityScanner.v1
                             Pattern = @"^projects/[^/]+/scanConfigs/[^/]+/scanRuns/[^/]+$",
                         });
                     }
-
                 }
 
-                /// <summary>Lists ScanRuns under a given ScanConfig, in descending order of ScanRun stop
-                /// time.</summary>
-                /// <param name="parent">Required. The parent resource name, which should be a scan resource name in the format
-                /// 'projects/{projectId}/scanConfigs/{scanConfigId}'.</param>
+                /// <summary>
+                /// Lists ScanRuns under a given ScanConfig, in descending order of ScanRun stop time.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The parent resource name, which should be a scan resource name in the format
+                /// 'projects/{projectId}/scanConfigs/{scanConfigId}'.
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists ScanRuns under a given ScanConfig, in descending order of ScanRun stop
-                /// time.</summary>
+                /// <summary>
+                /// Lists ScanRuns under a given ScanConfig, in descending order of ScanRun stop time.
+                /// </summary>
                 public class ListRequest : WebSecurityScannerBaseServiceRequest<Google.Apis.WebSecurityScanner.v1.Data.ListScanRunsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -711,23 +724,26 @@ namespace Google.Apis.WebSecurityScanner.v1
                         InitParameters();
                     }
 
-
-                    /// <summary>Required. The parent resource name, which should be a scan resource name in the format
-                    /// 'projects/{projectId}/scanConfigs/{scanConfigId}'.</summary>
+                    /// <summary>
+                    /// Required. The parent resource name, which should be a scan resource name in the format
+                    /// 'projects/{projectId}/scanConfigs/{scanConfigId}'.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The maximum number of ScanRuns to return, can be limited by server. If not specified or
-                    /// not positive, the implementation will select a reasonable value.</summary>
+                    /// <summary>
+                    /// The maximum number of ScanRuns to return, can be limited by server. If not specified or not
+                    /// positive, the implementation will select a reasonable value.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>A token identifying a page of results to be returned. This should be a
-                    /// `next_page_token` value returned from a previous List request. If unspecified, the first page of
-                    /// results is returned.</summary>
+                    /// <summary>
+                    /// A token identifying a page of results to be returned. This should be a `next_page_token` value
+                    /// returned from a previous List request. If unspecified, the first page of results is returned.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -742,7 +758,6 @@ namespace Google.Apis.WebSecurityScanner.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -768,13 +783,14 @@ namespace Google.Apis.WebSecurityScanner.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Stops a ScanRun. The stopped ScanRun is returned.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required. The resource name of the ScanRun to be stopped. The name follows the format of
-                /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.</param>
+                /// <param name="name">
+                /// Required. The resource name of the ScanRun to be stopped. The name follows the format of
+                /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
+                /// </param>
                 public virtual StopRequest Stop(Google.Apis.WebSecurityScanner.v1.Data.StopScanRunRequest body, string name)
                 {
                     return new StopRequest(service, body, name);
@@ -791,12 +807,12 @@ namespace Google.Apis.WebSecurityScanner.v1
                         InitParameters();
                     }
 
-
-                    /// <summary>Required. The resource name of the ScanRun to be stopped. The name follows the format
-                    /// of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.</summary>
+                    /// <summary>
+                    /// Required. The resource name of the ScanRun to be stopped. The name follows the format of
+                    /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.WebSecurityScanner.v1.Data.StopScanRunRequest Body { get; set; }
@@ -817,7 +833,6 @@ namespace Google.Apis.WebSecurityScanner.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -827,14 +842,15 @@ namespace Google.Apis.WebSecurityScanner.v1
                             Pattern = @"^projects/[^/]+/scanConfigs/[^/]+/scanRuns/[^/]+$",
                         });
                     }
-
                 }
             }
 
             /// <summary>Creates a new ScanConfig.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The parent resource name where the scan is created, which should be a project
-            /// resource name in the format 'projects/{projectId}'.</param>
+            /// <param name="parent">
+            /// Required. The parent resource name where the scan is created, which should be a project resource name in
+            /// the format 'projects/{projectId}'.
+            /// </param>
             public virtual CreateRequest Create(Google.Apis.WebSecurityScanner.v1.Data.ScanConfig body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -851,12 +867,12 @@ namespace Google.Apis.WebSecurityScanner.v1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The parent resource name where the scan is created, which should be a project
-                /// resource name in the format 'projects/{projectId}'.</summary>
+                /// <summary>
+                /// Required. The parent resource name where the scan is created, which should be a project resource
+                /// name in the format 'projects/{projectId}'.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.WebSecurityScanner.v1.Data.ScanConfig Body { get; set; }
@@ -877,7 +893,6 @@ namespace Google.Apis.WebSecurityScanner.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -887,12 +902,13 @@ namespace Google.Apis.WebSecurityScanner.v1
                         Pattern = @"^projects/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Deletes an existing ScanConfig and its child resources.</summary>
-            /// <param name="name">Required. The resource name of the ScanConfig to be deleted. The name follows the format of
-            /// 'projects/{projectId}/scanConfigs/{scanConfigId}'.</param>
+            /// <param name="name">
+            /// Required. The resource name of the ScanConfig to be deleted. The name follows the format of
+            /// 'projects/{projectId}/scanConfigs/{scanConfigId}'.
+            /// </param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -908,12 +924,12 @@ namespace Google.Apis.WebSecurityScanner.v1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The resource name of the ScanConfig to be deleted. The name follows the format of
-                /// 'projects/{projectId}/scanConfigs/{scanConfigId}'.</summary>
+                /// <summary>
+                /// Required. The resource name of the ScanConfig to be deleted. The name follows the format of
+                /// 'projects/{projectId}/scanConfigs/{scanConfigId}'.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -928,7 +944,6 @@ namespace Google.Apis.WebSecurityScanner.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -938,12 +953,13 @@ namespace Google.Apis.WebSecurityScanner.v1
                         Pattern = @"^projects/[^/]+/scanConfigs/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Gets a ScanConfig.</summary>
-            /// <param name="name">Required. The resource name of the ScanConfig to be returned. The name follows the format of
-            /// 'projects/{projectId}/scanConfigs/{scanConfigId}'.</param>
+            /// <param name="name">
+            /// Required. The resource name of the ScanConfig to be returned. The name follows the format of
+            /// 'projects/{projectId}/scanConfigs/{scanConfigId}'.
+            /// </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -959,12 +975,12 @@ namespace Google.Apis.WebSecurityScanner.v1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The resource name of the ScanConfig to be returned. The name follows the format
-                /// of 'projects/{projectId}/scanConfigs/{scanConfigId}'.</summary>
+                /// <summary>
+                /// Required. The resource name of the ScanConfig to be returned. The name follows the format of
+                /// 'projects/{projectId}/scanConfigs/{scanConfigId}'.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -979,7 +995,6 @@ namespace Google.Apis.WebSecurityScanner.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -989,12 +1004,13 @@ namespace Google.Apis.WebSecurityScanner.v1
                         Pattern = @"^projects/[^/]+/scanConfigs/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Lists ScanConfigs under a given project.</summary>
-            /// <param name="parent">Required. The parent resource name, which should be a project resource name in the format
-            /// 'projects/{projectId}'.</param>
+            /// <param name="parent">
+            /// Required. The parent resource name, which should be a project resource name in the format
+            /// 'projects/{projectId}'.
+            /// </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -1010,23 +1026,26 @@ namespace Google.Apis.WebSecurityScanner.v1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The parent resource name, which should be a project resource name in the format
-                /// 'projects/{projectId}'.</summary>
+                /// <summary>
+                /// Required. The parent resource name, which should be a project resource name in the format
+                /// 'projects/{projectId}'.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The maximum number of ScanConfigs to return, can be limited by server. If not specified or
-                /// not positive, the implementation will select a reasonable value.</summary>
+                /// <summary>
+                /// The maximum number of ScanConfigs to return, can be limited by server. If not specified or not
+                /// positive, the implementation will select a reasonable value.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>A token identifying a page of results to be returned. This should be a `next_page_token`
-                /// value returned from a previous List request. If unspecified, the first page of results is
-                /// returned.</summary>
+                /// <summary>
+                /// A token identifying a page of results to be returned. This should be a `next_page_token` value
+                /// returned from a previous List request. If unspecified, the first page of results is returned.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -1041,7 +1060,6 @@ namespace Google.Apis.WebSecurityScanner.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -1067,13 +1085,14 @@ namespace Google.Apis.WebSecurityScanner.v1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Updates a ScanConfig. This method support partial update of a ScanConfig.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The resource name of the ScanConfig. The name follows the format of
-            /// 'projects/{projectId}/scanConfigs/{scanConfigId}'. The ScanConfig IDs are generated by the system.</param>
+            /// <param name="name">
+            /// The resource name of the ScanConfig. The name follows the format of
+            /// 'projects/{projectId}/scanConfigs/{scanConfigId}'. The ScanConfig IDs are generated by the system.
+            /// </param>
             public virtual PatchRequest Patch(Google.Apis.WebSecurityScanner.v1.Data.ScanConfig body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -1090,18 +1109,19 @@ namespace Google.Apis.WebSecurityScanner.v1
                     InitParameters();
                 }
 
-
-                /// <summary>The resource name of the ScanConfig. The name follows the format of
-                /// 'projects/{projectId}/scanConfigs/{scanConfigId}'. The ScanConfig IDs are generated by the
-                /// system.</summary>
+                /// <summary>
+                /// The resource name of the ScanConfig. The name follows the format of
+                /// 'projects/{projectId}/scanConfigs/{scanConfigId}'. The ScanConfig IDs are generated by the system.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Required. The update mask applies to the resource. For the `FieldMask` definition, see
-                /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask</summary>
+                /// <summary>
+                /// Required. The update mask applies to the resource. For the `FieldMask` definition, see
+                /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.WebSecurityScanner.v1.Data.ScanConfig Body { get; set; }
@@ -1122,7 +1142,6 @@ namespace Google.Apis.WebSecurityScanner.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -1140,13 +1159,14 @@ namespace Google.Apis.WebSecurityScanner.v1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Start a ScanRun according to the given ScanConfig.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. The resource name of the ScanConfig to be used. The name follows the format of
-            /// 'projects/{projectId}/scanConfigs/{scanConfigId}'.</param>
+            /// <param name="name">
+            /// Required. The resource name of the ScanConfig to be used. The name follows the format of
+            /// 'projects/{projectId}/scanConfigs/{scanConfigId}'.
+            /// </param>
             public virtual StartRequest Start(Google.Apis.WebSecurityScanner.v1.Data.StartScanRunRequest body, string name)
             {
                 return new StartRequest(service, body, name);
@@ -1163,12 +1183,12 @@ namespace Google.Apis.WebSecurityScanner.v1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The resource name of the ScanConfig to be used. The name follows the format of
-                /// 'projects/{projectId}/scanConfigs/{scanConfigId}'.</summary>
+                /// <summary>
+                /// Required. The resource name of the ScanConfig to be used. The name follows the format of
+                /// 'projects/{projectId}/scanConfigs/{scanConfigId}'.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.WebSecurityScanner.v1.Data.StartScanRunRequest Body { get; set; }
@@ -1189,7 +1209,6 @@ namespace Google.Apis.WebSecurityScanner.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -1199,15 +1218,12 @@ namespace Google.Apis.WebSecurityScanner.v1
                         Pattern = @"^projects/[^/]+/scanConfigs/[^/]+$",
                     });
                 }
-
             }
         }
     }
 }
-
 namespace Google.Apis.WebSecurityScanner.v1.Data
-{    
-
+{
     /// <summary>Scan authentication configuration.</summary>
     public class Authentication : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1225,11 +1241,12 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A CrawledUrl resource represents a URL that was crawled during a ScanRun. Web Security Scanner Service
-    /// crawls the web applications, following all links within the scope of sites, to find the URLs to test
-    /// against.</summary>
+    /// <summary>
+    /// A CrawledUrl resource represents a URL that was crawled during a ScanRun. Web Security Scanner Service crawls
+    /// the web applications, following all links within the scope of sites, to find the URLs to test against.
+    /// </summary>
     public class CrawledUrl : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The body of the request that was used to visit the URL.</summary>
@@ -1246,7 +1263,7 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Describes authentication configuration that uses a custom account.</summary>
     public class CustomAccount : Google.Apis.Requests.IDirectResponseSchema
@@ -1255,8 +1272,10 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("loginUrl")]
         public virtual string LoginUrl { get; set; }
 
-        /// <summary>Required. Input only. The password of the custom account. The credential is stored encrypted and
-        /// not returned in any response nor included in audit logs.</summary>
+        /// <summary>
+        /// Required. Input only. The password of the custom account. The credential is stored encrypted and not
+        /// returned in any response nor included in audit logs.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; }
 
@@ -1266,17 +1285,19 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+    /// object `{}`.
+    /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A Finding resource represents a vulnerability instance identified during a ScanRun.</summary>
     public class Finding : Google.Apis.Requests.IDirectResponseSchema
@@ -1293,35 +1314,44 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("finalUrl")]
         public virtual string FinalUrl { get; set; }
 
-        /// <summary>Output only. The type of the Finding. Detailed and up-to-date information on findings can be found
-        /// here: https://cloud.google.com/security-command-center/docs/how-to-remediate-web-security-scanner-
-        /// findings</summary>
+        /// <summary>
+        /// Output only. The type of the Finding. Detailed and up-to-date information on findings can be found here:
+        /// https://cloud.google.com/security-command-center/docs/how-to-remediate-web-security-scanner-findings
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findingType")]
         public virtual string FindingType { get; set; }
 
-        /// <summary>Output only. An addon containing information reported for a vulnerability with an HTML form, if
-        /// any.</summary>
+        /// <summary>
+        /// Output only. An addon containing information reported for a vulnerability with an HTML form, if any.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("form")]
         public virtual Form Form { get; set; }
 
-        /// <summary>Output only. If the vulnerability was originated from nested IFrame, the immediate parent IFrame is
-        /// reported.</summary>
+        /// <summary>
+        /// Output only. If the vulnerability was originated from nested IFrame, the immediate parent IFrame is
+        /// reported.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frameUrl")]
         public virtual string FrameUrl { get; set; }
 
-        /// <summary>Output only. The URL produced by the server-side fuzzer and used in the request that triggered the
-        /// vulnerability.</summary>
+        /// <summary>
+        /// Output only. The URL produced by the server-side fuzzer and used in the request that triggered the
+        /// vulnerability.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fuzzedUrl")]
         public virtual string FuzzedUrl { get; set; }
 
-        /// <summary>Output only. The http method of the request that triggered the vulnerability, in
-        /// uppercase.</summary>
+        /// <summary>
+        /// Output only. The http method of the request that triggered the vulnerability, in uppercase.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
         public virtual string HttpMethod { get; set; }
 
-        /// <summary>Output only. The resource name of the Finding. The name follows the format of
+        /// <summary>
+        /// Output only. The resource name of the Finding. The name follows the format of
         /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanruns/{scanRunId}/findings/{findingId}'. The finding IDs
-        /// are generated by the system.</summary>
+        /// are generated by the system.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1329,8 +1359,10 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outdatedLibrary")]
         public virtual OutdatedLibrary OutdatedLibrary { get; set; }
 
-        /// <summary>Output only. The URL containing human-readable payload that user can leverage to reproduce the
-        /// vulnerability.</summary>
+        /// <summary>
+        /// Output only. The URL containing human-readable payload that user can leverage to reproduce the
+        /// vulnerability.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reproductionUrl")]
         public virtual string ReproductionUrl { get; set; }
 
@@ -1338,13 +1370,16 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }
 
-        /// <summary>Output only. The tracking ID uniquely identifies a vulnerability instance across multiple
-        /// ScanRuns.</summary>
+        /// <summary>
+        /// Output only. The tracking ID uniquely identifies a vulnerability instance across multiple ScanRuns.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingId")]
         public virtual string TrackingId { get; set; }
 
-        /// <summary>Output only. An addon containing detailed information regarding any resource causing the
-        /// vulnerability such as JavaScript sources, image, audio files, etc.</summary>
+        /// <summary>
+        /// Output only. An addon containing detailed information regarding any resource causing the vulnerability such
+        /// as JavaScript sources, image, audio files, etc.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violatingResource")]
         public virtual ViolatingResource ViolatingResource { get; set; }
 
@@ -1352,8 +1387,9 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("vulnerableHeaders")]
         public virtual VulnerableHeaders VulnerableHeaders { get; set; }
 
-        /// <summary>Output only. An addon containing information about request parameters which were found to be
-        /// vulnerable.</summary>
+        /// <summary>
+        /// Output only. An addon containing information about request parameters which were found to be vulnerable.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vulnerableParameters")]
         public virtual VulnerableParameters VulnerableParameters { get; set; }
 
@@ -1363,10 +1399,11 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A FindingTypeStats resource represents stats regarding a specific FindingType of Findings under a given
-    /// ScanRun.</summary>
+    /// <summary>
+    /// A FindingTypeStats resource represents stats regarding a specific FindingType of Findings under a given ScanRun.
+    /// </summary>
     public class FindingTypeStats : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The count of findings belonging to this finding type.</summary>
@@ -1379,7 +1416,7 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>! Information about a vulnerability with an HTML.</summary>
     public class Form : Google.Apis.Requests.IDirectResponseSchema
@@ -1394,13 +1431,15 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Describes authentication configuration that uses a Google account.</summary>
     public class GoogleAccount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Input only. The password of the Google account. The credential is stored encrypted and
-        /// not returned in any response nor included in audit logs.</summary>
+        /// <summary>
+        /// Required. Input only. The password of the Google account. The credential is stored encrypted and not
+        /// returned in any response nor included in audit logs.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; }
 
@@ -1410,7 +1449,7 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Describes a HTTP Header.</summary>
     public class Header : Google.Apis.Requests.IDirectResponseSchema
@@ -1425,32 +1464,37 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Describes authentication configuration for Identity-Aware-Proxy (IAP).</summary>
     public class IapCredential : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-
-        /// Proxy (IAP) access policies.</summary>
+        /// <summary>
+        /// Authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy
+        /// (IAP) access policies.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iapTestServiceAccountInfo")]
         public virtual IapTestServiceAccountInfo IapTestServiceAccountInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Describes authentication configuration when Web-Security-Scanner service account is added in Identity-
-    /// Aware-Proxy (IAP) access policies.</summary>
+    /// <summary>
+    /// Describes authentication configuration when Web-Security-Scanner service account is added in
+    /// Identity-Aware-Proxy (IAP) access policies.
+    /// </summary>
     public class IapTestServiceAccountInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Describes OAuth2 client id of resources protected by Identity-Aware-Proxy
-        /// (IAP).</summary>
+        /// <summary>
+        /// Required. Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetAudienceClientId")]
         public virtual string TargetAudienceClientId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for the `ListCrawledUrls` method.</summary>
     public class ListCrawledUrlsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1459,14 +1503,15 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("crawledUrls")]
         public virtual System.Collections.Generic.IList<CrawledUrl> CrawledUrls { get; set; }
 
-        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
-        /// list.</summary>
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for the `ListFindingTypeStats` method.</summary>
     public class ListFindingTypeStatsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1477,7 +1522,7 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for the `ListFindings` method.</summary>
     public class ListFindingsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1486,20 +1531,22 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("findings")]
         public virtual System.Collections.Generic.IList<Finding> Findings { get; set; }
 
-        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
-        /// list.</summary>
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for the `ListScanConfigs` method.</summary>
     public class ListScanConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
-        /// list.</summary>
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -1509,13 +1556,14 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for the `ListScanRuns` method.</summary>
     public class ListScanRunsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
-        /// list.</summary>
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -1525,7 +1573,7 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information reported for an outdated library.</summary>
     public class OutdatedLibrary : Google.Apis.Requests.IDirectResponseSchema
@@ -1544,18 +1592,22 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A ScanConfig resource contains the configurations to launch a scan.</summary>
     public class ScanConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The authentication configuration. If specified, service will use the authentication configuration
-        /// during scanning.</summary>
+        /// <summary>
+        /// The authentication configuration. If specified, service will use the authentication configuration during
+        /// scanning.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authentication")]
         public virtual Authentication Authentication { get; set; }
 
-        /// <summary>The excluded URL patterns as described in https://cloud.google.com/security-command-center/docs
-        /// /how-to-use-web-security-scanner#excluding_urls</summary>
+        /// <summary>
+        /// The excluded URL patterns as described in
+        /// https://cloud.google.com/security-command-center/docs/how-to-use-web-security-scanner#excluding_urls
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blacklistPatterns")]
         public virtual System.Collections.Generic.IList<string> BlacklistPatterns { get; set; }
 
@@ -1571,14 +1623,18 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("managedScan")]
         public virtual System.Nullable<bool> ManagedScan { get; set; }
 
-        /// <summary>The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively. If the field is
-        /// unspecified or its value is set 0, server will default to 15. Other values outside of [5, 20] range will be
-        /// rejected with INVALID_ARGUMENT error.</summary>
+        /// <summary>
+        /// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively. If the field is unspecified
+        /// or its value is set 0, server will default to 15. Other values outside of [5, 20] range will be rejected
+        /// with INVALID_ARGUMENT error.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxQps")]
         public virtual System.Nullable<int> MaxQps { get; set; }
 
-        /// <summary>The resource name of the ScanConfig. The name follows the format of
-        /// 'projects/{projectId}/scanConfigs/{scanConfigId}'. The ScanConfig IDs are generated by the system.</summary>
+        /// <summary>
+        /// The resource name of the ScanConfig. The name follows the format of
+        /// 'projects/{projectId}/scanConfigs/{scanConfigId}'. The ScanConfig IDs are generated by the system.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1594,8 +1650,10 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startingUrls")]
         public virtual System.Collections.Generic.IList<string> StartingUrls { get; set; }
 
-        /// <summary>Whether the scan configuration has enabled static IP address scan feature. If enabled, the scanner
-        /// will access applications from static IP addresses.</summary>
+        /// <summary>
+        /// Whether the scan configuration has enabled static IP address scan feature. If enabled, the scanner will
+        /// access applications from static IP addresses.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("staticIpScan")]
         public virtual System.Nullable<bool> StaticIpScan { get; set; }
 
@@ -1605,37 +1663,45 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Defines a custom error message used by CreateScanConfig and UpdateScanConfig APIs when scan
-    /// configuration validation fails. It is also reported as part of a ScanRunErrorTrace message if scan validation
-    /// fails due to a scan configuration error.</summary>
+    /// <summary>
+    /// Defines a custom error message used by CreateScanConfig and UpdateScanConfig APIs when scan configuration
+    /// validation fails. It is also reported as part of a ScanRunErrorTrace message if scan validation fails due to a
+    /// scan configuration error.
+    /// </summary>
     public class ScanConfigError : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Indicates the reason code for a configuration failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
 
-        /// <summary>Output only. Indicates the full name of the ScanConfig field that triggers this error, for example
+        /// <summary>
+        /// Output only. Indicates the full name of the ScanConfig field that triggers this error, for example
         /// "scan_config.max_qps". This field is provided for troubleshooting purposes only and its actual value can
-        /// change in the future.</summary>
+        /// change in the future.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
         public virtual string FieldName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A ScanRun is a output-only resource representing an actual run of the scan. Next id: 12</summary>
     public class ScanRun : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The time at which the ScanRun reached termination state - that the ScanRun is either
-        /// finished or stopped by user.</summary>
+        /// <summary>
+        /// Output only. The time at which the ScanRun reached termination state - that the ScanRun is either finished
+        /// or stopped by user.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
-        /// <summary>Output only. If result_state is an ERROR, this field provides the primary reason for scan's
-        /// termination and more details, if such are available.</summary>
+        /// <summary>
+        /// Output only. If result_state is an ERROR, this field provides the primary reason for scan's termination and
+        /// more details, if such are available.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorTrace")]
         public virtual ScanRunErrorTrace ErrorTrace { get; set; }
 
@@ -1647,20 +1713,25 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hasVulnerabilities")]
         public virtual System.Nullable<bool> HasVulnerabilities { get; set; }
 
-        /// <summary>Output only. The resource name of the ScanRun. The name follows the format of
+        /// <summary>
+        /// Output only. The resource name of the ScanRun. The name follows the format of
         /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. The ScanRun IDs are generated by the
-        /// system.</summary>
+        /// system.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. The percentage of total completion ranging from 0 to 100. If the scan is in queue, the
-        /// value is 0. If the scan is running, the value ranges from 0 to 100. If the scan is finished, the value is
-        /// 100.</summary>
+        /// <summary>
+        /// Output only. The percentage of total completion ranging from 0 to 100. If the scan is in queue, the value is
+        /// 0. If the scan is running, the value ranges from 0 to 100. If the scan is finished, the value is 100.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
         public virtual System.Nullable<int> ProgressPercent { get; set; }
 
-        /// <summary>Output only. The result state of the ScanRun. This field is only available after the execution
-        /// state reaches "FINISHED".</summary>
+        /// <summary>
+        /// Output only. The result state of the ScanRun. This field is only available after the execution state reaches
+        /// "FINISHED".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultState")]
         public virtual string ResultState { get; set; }
 
@@ -1668,14 +1739,18 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
 
-        /// <summary>Output only. The number of URLs crawled during this ScanRun. If the scan is in progress, the value
-        /// represents the number of URLs crawled up to now.</summary>
+        /// <summary>
+        /// Output only. The number of URLs crawled during this ScanRun. If the scan is in progress, the value
+        /// represents the number of URLs crawled up to now.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlsCrawledCount")]
         public virtual System.Nullable<long> UrlsCrawledCount { get; set; }
 
-        /// <summary>Output only. The number of URLs tested during this ScanRun. If the scan is in progress, the value
-        /// represents the number of URLs tested up to now. The number of URLs tested is usually larger than the number
-        /// URLS crawled because typically a crawled URL is tested with multiple test payloads.</summary>
+        /// <summary>
+        /// Output only. The number of URLs tested during this ScanRun. If the scan is in progress, the value represents
+        /// the number of URLs tested up to now. The number of URLs tested is usually larger than the number URLS
+        /// crawled because typically a crawled URL is tested with multiple test payloads.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlsTestedCount")]
         public virtual System.Nullable<long> UrlsTestedCount { get; set; }
 
@@ -1685,7 +1760,7 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Output only. Defines an error trace message for a ScanRun.</summary>
     public class ScanRunErrorTrace : Google.Apis.Requests.IDirectResponseSchema
@@ -1694,23 +1769,29 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
 
-        /// <summary>Output only. If the scan encounters TOO_MANY_HTTP_ERRORS, this field indicates the most common HTTP
-        /// error code, if such is available. For example, if this code is 404, the scan has encountered too many
-        /// NOT_FOUND responses.</summary>
+        /// <summary>
+        /// Output only. If the scan encounters TOO_MANY_HTTP_ERRORS, this field indicates the most common HTTP error
+        /// code, if such is available. For example, if this code is 404, the scan has encountered too many NOT_FOUND
+        /// responses.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mostCommonHttpErrorCode")]
         public virtual System.Nullable<int> MostCommonHttpErrorCode { get; set; }
 
-        /// <summary>Output only. If the scan encounters SCAN_CONFIG_ISSUE error, this field has the error message
-        /// encountered during scan configuration validation that is performed before each scan run.</summary>
+        /// <summary>
+        /// Output only. If the scan encounters SCAN_CONFIG_ISSUE error, this field has the error message encountered
+        /// during scan configuration validation that is performed before each scan run.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scanConfigError")]
         public virtual ScanConfigError ScanConfigError { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Output only. Defines a warning trace message for ScanRun. Warning traces provide customers with useful
-    /// information that helps make the scanning process more effective.</summary>
+    /// <summary>
+    /// Output only. Defines a warning trace message for ScanRun. Warning traces provide customers with useful
+    /// information that helps make the scanning process more effective.
+    /// </summary>
     public class ScanRunWarningTrace : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Indicates the warning code.</summary>
@@ -1719,7 +1800,7 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Scan schedule configuration.</summary>
     public class Schedule : Google.Apis.Requests.IDirectResponseSchema
@@ -1728,32 +1809,36 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("intervalDurationDays")]
         public virtual System.Nullable<int> IntervalDurationDays { get; set; }
 
-        /// <summary>A timestamp indicates when the next run will be scheduled. The value is refreshed by the server
-        /// after each run. If unspecified, it will default to current server time, which means the scan will be
-        /// scheduled to start immediately.</summary>
+        /// <summary>
+        /// A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each
+        /// run. If unspecified, it will default to current server time, which means the scan will be scheduled to start
+        /// immediately.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
         public virtual object ScheduleTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request for the `StartScanRun` method.</summary>
     public class StartScanRunRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request for the `StopScanRun` method.</summary>
     public class StopScanRunRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Information regarding any resource causing the vulnerability such as JavaScript sources, image, audio
-    /// files, etc.</summary>
+    /// <summary>
+    /// Information regarding any resource causing the vulnerability such as JavaScript sources, image, audio files,
+    /// etc.
+    /// </summary>
     public class ViolatingResource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The MIME type of this resource.</summary>
@@ -1766,7 +1851,7 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about vulnerable or missing HTTP Headers.</summary>
     public class VulnerableHeaders : Google.Apis.Requests.IDirectResponseSchema
@@ -1781,7 +1866,7 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about vulnerable request parameters.</summary>
     public class VulnerableParameters : Google.Apis.Requests.IDirectResponseSchema
@@ -1792,7 +1877,7 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information reported for an XSS.</summary>
     public class Xss : Google.Apis.Requests.IDirectResponseSchema

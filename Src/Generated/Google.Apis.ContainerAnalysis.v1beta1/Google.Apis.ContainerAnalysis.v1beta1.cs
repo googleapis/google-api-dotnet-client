@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -62,7 +67,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Container Analysis API.</summary>
@@ -70,10 +74,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
-
-
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -97,6 +98,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -116,9 +118,11 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -132,8 +136,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -145,8 +151,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -162,7 +170,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -269,7 +276,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
             Notes = new NotesResource(service);
             Occurrences = new OccurrencesResource(service);
             ScanConfigs = new ScanConfigsResource(service);
-
         }
 
         /// <summary>Gets the Notes resource.</summary>
@@ -288,7 +294,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
             {
                 this.service = service;
                 Occurrences = new OccurrencesResource(service);
-
             }
 
             /// <summary>Gets the Occurrences resource.</summary>
@@ -306,21 +311,25 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 public OccurrencesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
 
-
-                /// <summary>Lists occurrences referencing the specified note. Provider projects can use this method to
-                /// get all occurrences across consumer projects referencing the specified note.</summary>
-                /// <param name="name">Required. The name of the note to list occurrences for in the form of
-                /// `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.</param>
+                /// <summary>
+                /// Lists occurrences referencing the specified note. Provider projects can use this method to get all
+                /// occurrences across consumer projects referencing the specified note.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The name of the note to list occurrences for in the form of
+                /// `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
+                /// </param>
                 public virtual ListRequest List(string name)
                 {
                     return new ListRequest(service, name);
                 }
 
-                /// <summary>Lists occurrences referencing the specified note. Provider projects can use this method to
-                /// get all occurrences across consumer projects referencing the specified note.</summary>
+                /// <summary>
+                /// Lists occurrences referencing the specified note. Provider projects can use this method to get all
+                /// occurrences across consumer projects referencing the specified note.
+                /// </summary>
                 public class ListRequest : ContainerAnalysisBaseServiceRequest<Google.Apis.ContainerAnalysis.v1beta1.Data.ListNoteOccurrencesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -330,9 +339,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         InitParameters();
                     }
 
-
-                    /// <summary>Required. The name of the note to list occurrences for in the form of
-                    /// `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.</summary>
+                    /// <summary>
+                    /// Required. The name of the note to list occurrences for in the form of
+                    /// `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -348,7 +358,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -362,7 +371,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -396,14 +404,15 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                             Pattern = null,
                         });
                     }
-
                 }
             }
 
             /// <summary>Creates new notes in batch.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the notes
-            /// are to be created.</param>
+            /// <param name="parent">
+            /// Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the notes are to
+            /// be created.
+            /// </param>
             public virtual BatchCreateRequest BatchCreate(Google.Apis.ContainerAnalysis.v1beta1.Data.BatchCreateNotesRequest body, string parent)
             {
                 return new BatchCreateRequest(service, body, parent);
@@ -420,12 +429,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the
-                /// notes are to be created.</summary>
+                /// <summary>
+                /// Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the notes are
+                /// to be created.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.ContainerAnalysis.v1beta1.Data.BatchCreateNotesRequest Body { get; set; }
@@ -446,7 +455,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -456,13 +464,14 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         Pattern = @"^projects/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Creates a new note.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the note
-            /// is to be created.</param>
+            /// <param name="parent">
+            /// Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the note is to be
+            /// created.
+            /// </param>
             public virtual CreateRequest Create(Google.Apis.ContainerAnalysis.v1beta1.Data.Note body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -479,16 +488,16 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the
-                /// note is to be created.</summary>
+                /// <summary>
+                /// Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the note is to
+                /// be created.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
                 /// <summary>Required. The ID to use for this note.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("noteId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string NoteId { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.ContainerAnalysis.v1beta1.Data.Note Body { get; set; }
@@ -509,7 +518,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -527,12 +535,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Deletes the specified note.</summary>
-            /// <param name="name">Required. The name of the note in the form of
-            /// `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.</param>
+            /// <param name="name">
+            /// Required. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
+            /// </param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -548,12 +556,11 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the note in the form of
-                /// `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.</summary>
+                /// <summary>
+                /// Required. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -568,7 +575,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -578,12 +584,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         Pattern = @"^projects/[^/]+/notes/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Gets the specified note.</summary>
-            /// <param name="name">Required. The name of the note in the form of
-            /// `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.</param>
+            /// <param name="name">
+            /// Required. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
+            /// </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -599,12 +605,11 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the note in the form of
-                /// `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.</summary>
+                /// <summary>
+                /// Required. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -619,7 +624,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -629,27 +633,32 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         Pattern = @"^projects/[^/]+/notes/[^/]+$",
                     });
                 }
-
             }
 
-            /// <summary>Gets the access control policy for a note or an occurrence resource. Requires
+            /// <summary>
+            /// Gets the access control policy for a note or an occurrence resource. Requires
             /// `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the
             /// resource is a note or occurrence, respectively. The resource takes the format
             /// `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and
-            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.</summary>
+            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
-            /// documentation for the appropriate value for this field.</param>
+            /// <param name="resource">
+            /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for the
+            /// appropriate value for this field.
+            /// </param>
             public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.ContainerAnalysis.v1beta1.Data.GetIamPolicyRequest body, string resource)
             {
                 return new GetIamPolicyRequest(service, body, resource);
             }
 
-            /// <summary>Gets the access control policy for a note or an occurrence resource. Requires
+            /// <summary>
+            /// Gets the access control policy for a note or an occurrence resource. Requires
             /// `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the
             /// resource is a note or occurrence, respectively. The resource takes the format
             /// `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and
-            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.</summary>
+            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
+            /// </summary>
             public class GetIamPolicyRequest : ContainerAnalysisBaseServiceRequest<Google.Apis.ContainerAnalysis.v1beta1.Data.Policy>
             {
                 /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -660,12 +669,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation
-                /// documentation for the appropriate value for this field.</summary>
+                /// <summary>
+                /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for
+                /// the appropriate value for this field.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.ContainerAnalysis.v1beta1.Data.GetIamPolicyRequest Body { get; set; }
@@ -686,7 +695,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
                     {
                         Name = "resource",
@@ -696,12 +704,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         Pattern = @"^projects/[^/]+/notes/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Lists notes for the specified project.</summary>
-            /// <param name="parent">Required. The name of the project to list notes for in the form of
-            /// `projects/[PROJECT_ID]`.</param>
+            /// <param name="parent">
+            /// Required. The name of the project to list notes for in the form of `projects/[PROJECT_ID]`.
+            /// </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -717,9 +725,9 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the project to list notes for in the form of
-                /// `projects/[PROJECT_ID]`.</summary>
+                /// <summary>
+                /// Required. The name of the project to list notes for in the form of `projects/[PROJECT_ID]`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -727,15 +735,16 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>Number of notes to return in the list. Must be positive. Max allowed page size is 1000. If
-                /// not specified, page size defaults to 20.</summary>
+                /// <summary>
+                /// Number of notes to return in the list. Must be positive. Max allowed page size is 1000. If not
+                /// specified, page size defaults to 20.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>Token to provide to skip to a particular spot in the list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -750,7 +759,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -784,13 +792,13 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Updates the specified note.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. The name of the note in the form of
-            /// `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.</param>
+            /// <param name="name">
+            /// Required. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
+            /// </param>
             public virtual PatchRequest Patch(Google.Apis.ContainerAnalysis.v1beta1.Data.Note body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -807,16 +815,15 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the note in the form of
-                /// `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.</summary>
+                /// <summary>
+                /// Required. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
                 /// <summary>The fields to update.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.ContainerAnalysis.v1beta1.Data.Note Body { get; set; }
@@ -837,7 +844,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -855,27 +861,32 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Sets the access control policy on the specified note or occurrence. Requires
+            /// <summary>
+            /// Sets the access control policy on the specified note or occurrence. Requires
             /// `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the
             /// resource is a note or an occurrence, respectively. The resource takes the format
             /// `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and
-            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.</summary>
+            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
-            /// documentation for the appropriate value for this field.</param>
+            /// <param name="resource">
+            /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for the
+            /// appropriate value for this field.
+            /// </param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ContainerAnalysis.v1beta1.Data.SetIamPolicyRequest body, string resource)
             {
                 return new SetIamPolicyRequest(service, body, resource);
             }
 
-            /// <summary>Sets the access control policy on the specified note or occurrence. Requires
+            /// <summary>
+            /// Sets the access control policy on the specified note or occurrence. Requires
             /// `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the
             /// resource is a note or an occurrence, respectively. The resource takes the format
             /// `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and
-            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.</summary>
+            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
+            /// </summary>
             public class SetIamPolicyRequest : ContainerAnalysisBaseServiceRequest<Google.Apis.ContainerAnalysis.v1beta1.Data.Policy>
             {
                 /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -886,12 +897,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation
-                /// documentation for the appropriate value for this field.</summary>
+                /// <summary>
+                /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for
+                /// the appropriate value for this field.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.ContainerAnalysis.v1beta1.Data.SetIamPolicyRequest Body { get; set; }
@@ -912,7 +923,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
                     {
                         Name = "resource",
@@ -922,25 +932,30 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         Pattern = @"^projects/[^/]+/notes/[^/]+$",
                     });
                 }
-
             }
 
-            /// <summary>Returns the permissions that a caller has on the specified note or occurrence. Requires list
-            /// permission on the project (for example, `containeranalysis.notes.list`). The resource takes the format
+            /// <summary>
+            /// Returns the permissions that a caller has on the specified note or occurrence. Requires list permission
+            /// on the project (for example, `containeranalysis.notes.list`). The resource takes the format
             /// `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and
-            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.</summary>
+            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
-            /// documentation for the appropriate value for this field.</param>
+            /// <param name="resource">
+            /// REQUIRED: The resource for which the policy detail is being requested. See the operation documentation
+            /// for the appropriate value for this field.
+            /// </param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ContainerAnalysis.v1beta1.Data.TestIamPermissionsRequest body, string resource)
             {
                 return new TestIamPermissionsRequest(service, body, resource);
             }
 
-            /// <summary>Returns the permissions that a caller has on the specified note or occurrence. Requires list
-            /// permission on the project (for example, `containeranalysis.notes.list`). The resource takes the format
+            /// <summary>
+            /// Returns the permissions that a caller has on the specified note or occurrence. Requires list permission
+            /// on the project (for example, `containeranalysis.notes.list`). The resource takes the format
             /// `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and
-            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.</summary>
+            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
+            /// </summary>
             public class TestIamPermissionsRequest : ContainerAnalysisBaseServiceRequest<Google.Apis.ContainerAnalysis.v1beta1.Data.TestIamPermissionsResponse>
             {
                 /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -951,12 +966,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the operation
-                /// documentation for the appropriate value for this field.</summary>
+                /// <summary>
+                /// REQUIRED: The resource for which the policy detail is being requested. See the operation
+                /// documentation for the appropriate value for this field.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.ContainerAnalysis.v1beta1.Data.TestIamPermissionsRequest Body { get; set; }
@@ -977,7 +992,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
                     {
                         Name = "resource",
@@ -987,9 +1001,9 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         Pattern = @"^projects/[^/]+/notes/[^/]+$",
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Occurrences resource.</summary>
         public virtual OccurrencesResource Occurrences { get; }
 
@@ -1005,14 +1019,14 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
             public OccurrencesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Creates new occurrences in batch.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the
-            /// occurrences are to be created.</param>
+            /// <param name="parent">
+            /// Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the occurrences
+            /// are to be created.
+            /// </param>
             public virtual BatchCreateRequest BatchCreate(Google.Apis.ContainerAnalysis.v1beta1.Data.BatchCreateOccurrencesRequest body, string parent)
             {
                 return new BatchCreateRequest(service, body, parent);
@@ -1029,12 +1043,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the
-                /// occurrences are to be created.</summary>
+                /// <summary>
+                /// Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the
+                /// occurrences are to be created.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.ContainerAnalysis.v1beta1.Data.BatchCreateOccurrencesRequest Body { get; set; }
@@ -1055,7 +1069,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -1065,13 +1078,14 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         Pattern = @"^projects/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Creates a new occurrence.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the
-            /// occurrence is to be created.</param>
+            /// <param name="parent">
+            /// Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the occurrence is
+            /// to be created.
+            /// </param>
             public virtual CreateRequest Create(Google.Apis.ContainerAnalysis.v1beta1.Data.Occurrence body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -1088,12 +1102,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the
-                /// occurrence is to be created.</summary>
+                /// <summary>
+                /// Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the occurrence
+                /// is to be created.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.ContainerAnalysis.v1beta1.Data.Occurrence Body { get; set; }
@@ -1114,7 +1128,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -1124,20 +1137,24 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         Pattern = @"^projects/[^/]+$",
                     });
                 }
-
             }
 
-            /// <summary>Deletes the specified occurrence. For example, use this method to delete an occurrence when the
-            /// occurrence is no longer applicable for the given resource.</summary>
-            /// <param name="name">Required. The name of the occurrence in the form of
-            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.</param>
+            /// <summary>
+            /// Deletes the specified occurrence. For example, use this method to delete an occurrence when the
+            /// occurrence is no longer applicable for the given resource.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
+            /// </param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes the specified occurrence. For example, use this method to delete an occurrence when the
-            /// occurrence is no longer applicable for the given resource.</summary>
+            /// <summary>
+            /// Deletes the specified occurrence. For example, use this method to delete an occurrence when the
+            /// occurrence is no longer applicable for the given resource.
+            /// </summary>
             public class DeleteRequest : ContainerAnalysisBaseServiceRequest<Google.Apis.ContainerAnalysis.v1beta1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -1147,12 +1164,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the occurrence in the form of
-                /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.</summary>
+                /// <summary>
+                /// Required. The name of the occurrence in the form of
+                /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -1167,7 +1184,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -1177,12 +1193,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         Pattern = @"^projects/[^/]+/occurrences/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Gets the specified occurrence.</summary>
-            /// <param name="name">Required. The name of the occurrence in the form of
-            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.</param>
+            /// <param name="name">
+            /// Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
+            /// </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -1198,12 +1214,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the occurrence in the form of
-                /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.</summary>
+                /// <summary>
+                /// Required. The name of the occurrence in the form of
+                /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -1218,7 +1234,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -1228,27 +1243,32 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         Pattern = @"^projects/[^/]+/occurrences/[^/]+$",
                     });
                 }
-
             }
 
-            /// <summary>Gets the access control policy for a note or an occurrence resource. Requires
+            /// <summary>
+            /// Gets the access control policy for a note or an occurrence resource. Requires
             /// `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the
             /// resource is a note or occurrence, respectively. The resource takes the format
             /// `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and
-            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.</summary>
+            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
-            /// documentation for the appropriate value for this field.</param>
+            /// <param name="resource">
+            /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for the
+            /// appropriate value for this field.
+            /// </param>
             public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.ContainerAnalysis.v1beta1.Data.GetIamPolicyRequest body, string resource)
             {
                 return new GetIamPolicyRequest(service, body, resource);
             }
 
-            /// <summary>Gets the access control policy for a note or an occurrence resource. Requires
+            /// <summary>
+            /// Gets the access control policy for a note or an occurrence resource. Requires
             /// `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the
             /// resource is a note or occurrence, respectively. The resource takes the format
             /// `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and
-            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.</summary>
+            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
+            /// </summary>
             public class GetIamPolicyRequest : ContainerAnalysisBaseServiceRequest<Google.Apis.ContainerAnalysis.v1beta1.Data.Policy>
             {
                 /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -1259,12 +1279,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation
-                /// documentation for the appropriate value for this field.</summary>
+                /// <summary>
+                /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for
+                /// the appropriate value for this field.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.ContainerAnalysis.v1beta1.Data.GetIamPolicyRequest Body { get; set; }
@@ -1285,7 +1305,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
                     {
                         Name = "resource",
@@ -1295,20 +1314,24 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         Pattern = @"^projects/[^/]+/occurrences/[^/]+$",
                     });
                 }
-
             }
 
-            /// <summary>Gets the note attached to the specified occurrence. Consumer projects can use this method to
-            /// get a note that belongs to a provider project.</summary>
-            /// <param name="name">Required. The name of the occurrence in the form of
-            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.</param>
+            /// <summary>
+            /// Gets the note attached to the specified occurrence. Consumer projects can use this method to get a note
+            /// that belongs to a provider project.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
+            /// </param>
             public virtual GetNotesRequest GetNotes(string name)
             {
                 return new GetNotesRequest(service, name);
             }
 
-            /// <summary>Gets the note attached to the specified occurrence. Consumer projects can use this method to
-            /// get a note that belongs to a provider project.</summary>
+            /// <summary>
+            /// Gets the note attached to the specified occurrence. Consumer projects can use this method to get a note
+            /// that belongs to a provider project.
+            /// </summary>
             public class GetNotesRequest : ContainerAnalysisBaseServiceRequest<Google.Apis.ContainerAnalysis.v1beta1.Data.Note>
             {
                 /// <summary>Constructs a new GetNotes request.</summary>
@@ -1318,12 +1341,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the occurrence in the form of
-                /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.</summary>
+                /// <summary>
+                /// Required. The name of the occurrence in the form of
+                /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getNotes";
@@ -1338,7 +1361,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -1348,12 +1370,13 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         Pattern = @"^projects/[^/]+/occurrences/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Gets a summary of the number and severity of occurrences.</summary>
-            /// <param name="parent">Required. The name of the project to get a vulnerability summary for in the form of
-            /// `projects/[PROJECT_ID]`.</param>
+            /// <param name="parent">
+            /// Required. The name of the project to get a vulnerability summary for in the form of
+            /// `projects/[PROJECT_ID]`.
+            /// </param>
             public virtual GetVulnerabilitySummaryRequest GetVulnerabilitySummary(string parent)
             {
                 return new GetVulnerabilitySummaryRequest(service, parent);
@@ -1369,16 +1392,16 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the project to get a vulnerability summary for in the form of
-                /// `projects/[PROJECT_ID]`.</summary>
+                /// <summary>
+                /// Required. The name of the project to get a vulnerability summary for in the form of
+                /// `projects/[PROJECT_ID]`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
                 /// <summary>The filter expression.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getVulnerabilitySummary";
@@ -1393,7 +1416,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -1411,12 +1433,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Lists occurrences for the specified project.</summary>
-            /// <param name="parent">Required. The name of the project to list occurrences for in the form of
-            /// `projects/[PROJECT_ID]`.</param>
+            /// <param name="parent">
+            /// Required. The name of the project to list occurrences for in the form of `projects/[PROJECT_ID]`.
+            /// </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -1432,9 +1454,9 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the project to list occurrences for in the form of
-                /// `projects/[PROJECT_ID]`.</summary>
+                /// <summary>
+                /// Required. The name of the project to list occurrences for in the form of `projects/[PROJECT_ID]`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1442,15 +1464,16 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>Number of occurrences to return in the list. Must be positive. Max allowed page size is
-                /// 1000. If not specified, page size defaults to 20.</summary>
+                /// <summary>
+                /// Number of occurrences to return in the list. Must be positive. Max allowed page size is 1000. If not
+                /// specified, page size defaults to 20.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>Token to provide to skip to a particular spot in the list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -1465,7 +1488,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -1499,13 +1521,13 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Updates the specified occurrence.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. The name of the occurrence in the form of
-            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.</param>
+            /// <param name="name">
+            /// Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
+            /// </param>
             public virtual PatchRequest Patch(Google.Apis.ContainerAnalysis.v1beta1.Data.Occurrence body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -1522,16 +1544,16 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the occurrence in the form of
-                /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.</summary>
+                /// <summary>
+                /// Required. The name of the occurrence in the form of
+                /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
                 /// <summary>The fields to update.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.ContainerAnalysis.v1beta1.Data.Occurrence Body { get; set; }
@@ -1552,7 +1574,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -1570,27 +1591,32 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Sets the access control policy on the specified note or occurrence. Requires
+            /// <summary>
+            /// Sets the access control policy on the specified note or occurrence. Requires
             /// `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the
             /// resource is a note or an occurrence, respectively. The resource takes the format
             /// `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and
-            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.</summary>
+            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
-            /// documentation for the appropriate value for this field.</param>
+            /// <param name="resource">
+            /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for the
+            /// appropriate value for this field.
+            /// </param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ContainerAnalysis.v1beta1.Data.SetIamPolicyRequest body, string resource)
             {
                 return new SetIamPolicyRequest(service, body, resource);
             }
 
-            /// <summary>Sets the access control policy on the specified note or occurrence. Requires
+            /// <summary>
+            /// Sets the access control policy on the specified note or occurrence. Requires
             /// `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the
             /// resource is a note or an occurrence, respectively. The resource takes the format
             /// `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and
-            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.</summary>
+            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
+            /// </summary>
             public class SetIamPolicyRequest : ContainerAnalysisBaseServiceRequest<Google.Apis.ContainerAnalysis.v1beta1.Data.Policy>
             {
                 /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -1601,12 +1627,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation
-                /// documentation for the appropriate value for this field.</summary>
+                /// <summary>
+                /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for
+                /// the appropriate value for this field.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.ContainerAnalysis.v1beta1.Data.SetIamPolicyRequest Body { get; set; }
@@ -1627,7 +1653,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
                     {
                         Name = "resource",
@@ -1637,25 +1662,30 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         Pattern = @"^projects/[^/]+/occurrences/[^/]+$",
                     });
                 }
-
             }
 
-            /// <summary>Returns the permissions that a caller has on the specified note or occurrence. Requires list
-            /// permission on the project (for example, `containeranalysis.notes.list`). The resource takes the format
+            /// <summary>
+            /// Returns the permissions that a caller has on the specified note or occurrence. Requires list permission
+            /// on the project (for example, `containeranalysis.notes.list`). The resource takes the format
             /// `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and
-            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.</summary>
+            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
-            /// documentation for the appropriate value for this field.</param>
+            /// <param name="resource">
+            /// REQUIRED: The resource for which the policy detail is being requested. See the operation documentation
+            /// for the appropriate value for this field.
+            /// </param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ContainerAnalysis.v1beta1.Data.TestIamPermissionsRequest body, string resource)
             {
                 return new TestIamPermissionsRequest(service, body, resource);
             }
 
-            /// <summary>Returns the permissions that a caller has on the specified note or occurrence. Requires list
-            /// permission on the project (for example, `containeranalysis.notes.list`). The resource takes the format
+            /// <summary>
+            /// Returns the permissions that a caller has on the specified note or occurrence. Requires list permission
+            /// on the project (for example, `containeranalysis.notes.list`). The resource takes the format
             /// `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and
-            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.</summary>
+            /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
+            /// </summary>
             public class TestIamPermissionsRequest : ContainerAnalysisBaseServiceRequest<Google.Apis.ContainerAnalysis.v1beta1.Data.TestIamPermissionsResponse>
             {
                 /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -1666,12 +1696,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the operation
-                /// documentation for the appropriate value for this field.</summary>
+                /// <summary>
+                /// REQUIRED: The resource for which the policy detail is being requested. See the operation
+                /// documentation for the appropriate value for this field.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.ContainerAnalysis.v1beta1.Data.TestIamPermissionsRequest Body { get; set; }
@@ -1692,7 +1722,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
                     {
                         Name = "resource",
@@ -1702,9 +1731,9 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         Pattern = @"^projects/[^/]+/occurrences/[^/]+$",
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the ScanConfigs resource.</summary>
         public virtual ScanConfigsResource ScanConfigs { get; }
 
@@ -1720,13 +1749,13 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
             public ScanConfigsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
             /// <summary>Gets the specified scan configuration.</summary>
-            /// <param name="name">Required. The name of the scan configuration in the form of
-            /// `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.</param>
+            /// <param name="name">
+            /// Required. The name of the scan configuration in the form of
+            /// `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.
+            /// </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -1742,12 +1771,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the scan configuration in the form of
-                /// `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.</summary>
+                /// <summary>
+                /// Required. The name of the scan configuration in the form of
+                /// `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -1762,7 +1791,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -1772,12 +1800,13 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         Pattern = @"^projects/[^/]+/scanConfigs/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Lists scan configurations for the specified project.</summary>
-            /// <param name="parent">Required. The name of the project to list scan configurations for in the form of
-            /// `projects/[PROJECT_ID]`.</param>
+            /// <param name="parent">
+            /// Required. The name of the project to list scan configurations for in the form of
+            /// `projects/[PROJECT_ID]`.
+            /// </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -1793,9 +1822,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the project to list scan configurations for in the form of
-                /// `projects/[PROJECT_ID]`.</summary>
+                /// <summary>
+                /// Required. The name of the project to list scan configurations for in the form of
+                /// `projects/[PROJECT_ID]`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1811,7 +1841,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
@@ -1825,7 +1854,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -1859,13 +1887,14 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Updates the specified scan configuration.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. The name of the scan configuration in the form of
-            /// `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.</param>
+            /// <param name="name">
+            /// Required. The name of the scan configuration in the form of
+            /// `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.
+            /// </param>
             public virtual UpdateRequest Update(Google.Apis.ContainerAnalysis.v1beta1.Data.ScanConfig body, string name)
             {
                 return new UpdateRequest(service, body, name);
@@ -1882,12 +1911,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the scan configuration in the form of
-                /// `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.</summary>
+                /// <summary>
+                /// Required. The name of the scan configuration in the form of
+                /// `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.ContainerAnalysis.v1beta1.Data.ScanConfig Body { get; set; }
@@ -1908,7 +1937,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -1918,15 +1946,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                         Pattern = @"^projects/[^/]+/scanConfigs/[^/]+$",
                     });
                 }
-
             }
         }
     }
 }
-
 namespace Google.Apis.ContainerAnalysis.v1beta1.Data
-{    
-
+{
     /// <summary>An alias to a repo revision.</summary>
     public class AliasContext : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1940,7 +1965,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Artifact describes a build product.</summary>
     public class Artifact : Google.Apis.Requests.IDirectResponseSchema
@@ -1949,21 +1974,24 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("checksum")]
         public virtual string Checksum { get; set; }
 
-        /// <summary>Artifact ID, if any; for container images, this will be a URL by digest like
-        /// `gcr.io/projectID/imagename@sha256:123456`.</summary>
+        /// <summary>
+        /// Artifact ID, if any; for container images, this will be a URL by digest like
+        /// `gcr.io/projectID/imagename@sha256:123456`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Related artifact names. This may be the path to a binary or jar file, or in the case of a container
-        /// build, the name used to push the container image to Google Container Registry, as presented to `docker
-        /// push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one
-        /// image.</summary>
+        /// <summary>
+        /// Related artifact names. This may be the path to a binary or jar file, or in the case of a container build,
+        /// the name used to push the container image to Google Container Registry, as presented to `docker push`. Note
+        /// that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("names")]
         public virtual System.Collections.Generic.IList<string> Names { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Defines a hash object for use in Materials and Products.</summary>
     public class ArtifactHashes : Google.Apis.Requests.IDirectResponseSchema
@@ -1973,7 +2001,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Defines an object to declare an in-toto artifact rule</summary>
     public class ArtifactRule : Google.Apis.Requests.IDirectResponseSchema
@@ -1983,13 +2011,15 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Occurrence that represents a single "attestation". The authenticity of an attestation can be verified
-    /// using the attached signature. If the verifier trusts the public key of the signer, then verifying the signature
-    /// is sufficient to establish trust. In this circumstance, the authority to which this attestation is attached is
+    /// <summary>
+    /// Occurrence that represents a single "attestation". The authenticity of an attestation can be verified using the
+    /// attached signature. If the verifier trusts the public key of the signer, then verifying the signature is
+    /// sufficient to establish trust. In this circumstance, the authority to which this attestation is attached is
     /// primarily useful for look-up (how to find this attestation if you already know the authority and artifact to be
-    /// verified) and intent (which authority was this attestation intended to sign for).</summary>
+    /// verified) and intent (which authority was this attestation intended to sign for).
+    /// </summary>
     public class Attestation : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("genericSignedAttestation")]
@@ -2001,14 +2031,15 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Note kind that represents a logical attestation "role" or "authority". For example, an organization
-    /// might have one `Authority` for "QA" and one for "build". This note is intended to act strictly as a grouping
-    /// mechanism for the attached occurrences (Attestations). This grouping mechanism also provides a security
-    /// boundary, since IAM ACLs gate the ability for a principle to attach an occurrence to a given note. It also
-    /// provides a single point of lookup to find all attached attestation occurrences, even if they don't all live in
-    /// the same project.</summary>
+    /// <summary>
+    /// Note kind that represents a logical attestation "role" or "authority". For example, an organization might have
+    /// one `Authority` for "QA" and one for "build". This note is intended to act strictly as a grouping mechanism for
+    /// the attached occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM
+    /// ACLs gate the ability for a principle to attach an occurrence to a given note. It also provides a single point
+    /// of lookup to find all attached attestation occurrences, even if they don't all live in the same project.
+    /// </summary>
     public class Authority : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Hint hints at the purpose of the attestation authority.</summary>
@@ -2017,37 +2048,41 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Basis describes the base image portion (Note) of the DockerImage relationship. Linked occurrences are
-    /// derived from this or an equivalent image via: FROM Or an equivalent reference, e.g. a tag of the
-    /// resource_url.</summary>
+    /// <summary>
+    /// Basis describes the base image portion (Note) of the DockerImage relationship. Linked occurrences are derived
+    /// from this or an equivalent image via: FROM Or an equivalent reference, e.g. a tag of the resource_url.
+    /// </summary>
     public class Basis : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Immutable. The fingerprint of the base image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual Fingerprint Fingerprint { get; set; }
 
-        /// <summary>Required. Immutable. The resource_url for the resource representing the basis of associated
-        /// occurrence images.</summary>
+        /// <summary>
+        /// Required. Immutable. The resource_url for the resource representing the basis of associated occurrence
+        /// images.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUrl")]
         public virtual string ResourceUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request to create notes in batch.</summary>
     public class BatchCreateNotesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The notes to create, the key is expected to be the note ID. Max allowed length is
-        /// 1000.</summary>
+        /// <summary>
+        /// Required. The notes to create, the key is expected to be the note ID. Max allowed length is 1000.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual System.Collections.Generic.IDictionary<string, Note> Notes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for creating notes in batch.</summary>
     public class BatchCreateNotesResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -2058,7 +2093,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request to create occurrences in batch.</summary>
     public class BatchCreateOccurrencesRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -2069,7 +2104,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for creating occurrences in batch.</summary>
     public class BatchCreateOccurrencesResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -2080,73 +2115,85 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
-        /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
-        /// apply to the current request. However, a different role binding might grant the same role to one or more of
-        /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
-        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
+        /// <summary>
+        /// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding
+        /// applies to the current request. If the condition evaluates to `false`, then this binding does not apply to
+        /// the current request. However, a different role binding might grant the same role to one or more of the
+        /// members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; }
 
-        /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
-        /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
-        /// without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is
-        /// authenticated with a Google account or a service account. * `user:{emailid}`: An email address that
-        /// represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An
-        /// email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
-        /// `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. *
+        /// <summary>
+        /// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following
+        /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
+        /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
+        /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
+        /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+        /// represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`:
+        /// An email address that represents a Google group. For example, `admins@example.com`. *
         /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
         /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
         /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
-        /// service account that has been recently deleted. For example, `my-other-
-        /// app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value
-        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. *
-        /// `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
-        /// group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the
-        /// group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the
-        /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
-        /// example, `google.com` or `example.com`. </summary>
+        /// service account that has been recently deleted. For example,
+        /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
+        /// this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the
+        /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
+        /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
+        /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
+        /// in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that
+        /// domain. For example, `google.com` or `example.com`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
-        /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
-        /// `roles/owner`.</summary>
+        /// <summary>
+        /// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Note holding the version of the provider's builder and the signature of the provenance message in the
-    /// build details occurrence.</summary>
+    /// <summary>
+    /// Note holding the version of the provider's builder and the signature of the provenance message in the build
+    /// details occurrence.
+    /// </summary>
     public class Build : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Immutable. Version of the builder which produced this build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("builderVersion")]
         public virtual string BuilderVersion { get; set; }
 
-        /// <summary>Signature of the build in occurrences pointing to this build note containing build
-        /// details.</summary>
+        /// <summary>
+        /// Signature of the build in occurrences pointing to this build note containing build details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
         public virtual BuildSignature Signature { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Provenance of a build. Contains all information needed to verify the full details about the build from
-    /// source to completion.</summary>
+    /// <summary>
+    /// Provenance of a build. Contains all information needed to verify the full details about the build from source to
+    /// completion.
+    /// </summary>
     public class BuildProvenance : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Special options applied to this build. This is a catch-all field where build providers can enter
-        /// any desired additional details.</summary>
+        /// <summary>
+        /// Special options applied to this build. This is a catch-all field where build providers can enter any desired
+        /// additional details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildOptions")]
         public virtual System.Collections.Generic.IDictionary<string, string> BuildOptions { get; set; }
 
@@ -2166,9 +2213,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>E-mail address of the user who initiated this build. Note that this was the user's e-mail address
-        /// at the time the build was initiated; this address may not represent the same end-user for all
-        /// time.</summary>
+        /// <summary>
+        /// E-mail address of the user who initiated this build. Note that this was the user's e-mail address at the
+        /// time the build was initiated; this address may not represent the same end-user for all time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creator")]
         public virtual string Creator { get; set; }
 
@@ -2202,14 +2250,16 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Message encapsulating the signature of the verified build.</summary>
     public class BuildSignature : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An ID for the key used to sign. This could be either an ID for the key stored in `public_key` (such
-        /// as the ID or fingerprint for a PGP key, or the CN for a cert), or a reference to an external key (such as a
-        /// reference to a key in Cloud Key Management Service).</summary>
+        /// <summary>
+        /// An ID for the key used to sign. This could be either an ID for the key stored in `public_key` (such as the
+        /// ID or fingerprint for a PGP key, or the CN for a cert), or a reference to an external key (such as a
+        /// reference to a key in Cloud Key Management Service).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyId")]
         public virtual string KeyId { get; set; }
 
@@ -2217,13 +2267,15 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("keyType")]
         public virtual string KeyType { get; set; }
 
-        /// <summary>Public key of the builder which can be used to verify that the related findings are valid and
-        /// unchanged. If `key_type` is empty, this defaults to PEM encoded public keys. This field may be empty if
-        /// `key_id` references an external key. For Cloud Build based signatures, this is a PEM encoded public key. To
-        /// verify the Cloud Build signature, place the contents of this field into a file (public.pem). The signature
-        /// field is base64-decoded into its binary representation in signature.bin, and the provenance bytes from
-        /// `BuildDetails` are base64-decoded into a binary representation in signed.bin. OpenSSL can then verify the
-        /// signature: `openssl sha256 -verify public.pem -signature signature.bin signed.bin`</summary>
+        /// <summary>
+        /// Public key of the builder which can be used to verify that the related findings are valid and unchanged. If
+        /// `key_type` is empty, this defaults to PEM encoded public keys. This field may be empty if `key_id`
+        /// references an external key. For Cloud Build based signatures, this is a PEM encoded public key. To verify
+        /// the Cloud Build signature, place the contents of this field into a file (public.pem). The signature field is
+        /// base64-decoded into its binary representation in signature.bin, and the provenance bytes from `BuildDetails`
+        /// are base64-decoded into a binary representation in signed.bin. OpenSSL can then verify the signature:
+        /// `openssl sha256 -verify public.pem -signature signature.bin signed.bin`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicKey")]
         public virtual string PublicKey { get; set; }
 
@@ -2233,10 +2285,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Defines an object for the byproducts field in in-toto links. The suggested fields are "stderr",
-    /// "stdout", and "return-value".</summary>
+    /// <summary>
+    /// Defines an object for the byproducts field in in-toto links. The suggested fields are "stderr", "stdout", and
+    /// "return-value".
+    /// </summary>
     public class ByProducts : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("customValues")]
@@ -2244,17 +2298,21 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss
-    /// /specification-document</summary>
+    /// <summary>
+    /// Common Vulnerability Scoring System version 3. For details, see
+    /// https://www.first.org/cvss/specification-document
+    /// </summary>
     public class CVSSv3 : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("attackComplexity")]
         public virtual string AttackComplexity { get; set; }
 
-        /// <summary>Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over
-        /// time and across user environments.</summary>
+        /// <summary>
+        /// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and
+        /// across user environments.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attackVector")]
         public virtual string AttackVector { get; set; }
 
@@ -2288,7 +2346,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A CloudRepoSourceContext denotes a particular revision in a Google Cloud Source Repo.</summary>
     public class CloudRepoSourceContext : Google.Apis.Requests.IDirectResponseSchema
@@ -2307,7 +2365,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Command describes a step performed as part of the build pipeline.</summary>
     public class Command : Google.Apis.Requests.IDirectResponseSchema
@@ -2324,13 +2382,16 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
         public virtual System.Collections.Generic.IList<string> Env { get; set; }
 
-        /// <summary>Optional unique identifier for this command, used in wait_for to reference this command as a
-        /// dependency.</summary>
+        /// <summary>
+        /// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Required. Name of the command, as presented on the command line, or if the command is packaged as a
-        /// Docker container, as presented to `docker pull`.</summary>
+        /// <summary>
+        /// Required. Name of the command, as presented on the command line, or if the command is packaged as a Docker
+        /// container, as presented to `docker pull`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2340,7 +2401,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An artifact that can be deployed in some runtime.</summary>
     public class Deployable : Google.Apis.Requests.IDirectResponseSchema
@@ -2351,7 +2412,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The period during which some deployable was active in a runtime.</summary>
     public class Deployment : Google.Apis.Requests.IDirectResponseSchema
@@ -2372,8 +2433,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("platform")]
         public virtual string Platform { get; set; }
 
-        /// <summary>Output only. Resource URI for the artifact being deployed taken from the deployable field with the
-        /// same name.</summary>
+        /// <summary>
+        /// Output only. Resource URI for the artifact being deployed taken from the deployable field with the same
+        /// name.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
         public virtual System.Collections.Generic.IList<string> ResourceUri { get; set; }
 
@@ -2387,18 +2450,21 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Derived describes the derived image portion (Occurrence) of the DockerImage relationship. This image
-    /// would be produced from a Dockerfile with FROM .</summary>
+    /// <summary>
+    /// Derived describes the derived image portion (Occurrence) of the DockerImage relationship. This image would be
+    /// produced from a Dockerfile with FROM .
+    /// </summary>
     public class Derived : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. This contains the base image URL for the derived image occurrence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseResourceUrl")]
         public virtual string BaseResourceUrl { get; set; }
 
-        /// <summary>Output only. The number of layers by which this image differs from the associated image
-        /// basis.</summary>
+        /// <summary>
+        /// Output only. The number of layers by which this image differs from the associated image basis.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distance")]
         public virtual System.Nullable<int> Distance { get; set; }
 
@@ -2406,21 +2472,27 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual Fingerprint Fingerprint { get; set; }
 
-        /// <summary>This contains layer-specific metadata, if populated it has length "distance" and is ordered with
-        /// [distance] being the layer immediately following the base image and [1] being the final layer.</summary>
+        /// <summary>
+        /// This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance]
+        /// being the layer immediately following the base image and [1] being the final layer.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layerInfo")]
         public virtual System.Collections.Generic.IList<Layer> LayerInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Identifies all appearances of this vulnerability in the package for a specific distro/location. For
-    /// example: glibc in cpe:/o:debian:debian_linux:8 for versions 2.1 - 2.2</summary>
+    /// <summary>
+    /// Identifies all appearances of this vulnerability in the package for a specific distro/location. For example:
+    /// glibc in cpe:/o:debian:debian_linux:8 for versions 2.1 - 2.2
+    /// </summary>
     public class Detail : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the
-        /// vulnerability manifests. Examples include distro or storage location for vulnerable jar.</summary>
+        /// <summary>
+        /// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability
+        /// manifests. Examples include distro or storage location for vulnerable jar.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpeUri")]
         public virtual string CpeUri { get; set; }
 
@@ -2432,8 +2504,9 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fixedLocation")]
         public virtual VulnerabilityLocation FixedLocation { get; set; }
 
-        /// <summary>Whether this detail is obsolete. Occurrences are expected not to point to obsolete
-        /// details.</summary>
+        /// <summary>
+        /// Whether this detail is obsolete. Occurrences are expected not to point to obsolete details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isObsolete")]
         public virtual System.Nullable<bool> IsObsolete { get; set; }
 
@@ -2457,14 +2530,16 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("severityName")]
         public virtual string SeverityName { get; set; }
 
-        /// <summary>The time this information was last changed at the source. This is an upstream timestamp from the
-        /// underlying information source - e.g. Ubuntu security tracker.</summary>
+        /// <summary>
+        /// The time this information was last changed at the source. This is an upstream timestamp from the underlying
+        /// information source - e.g. Ubuntu security tracker.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceUpdateTime")]
         public virtual object SourceUpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Details of an attestation occurrence.</summary>
     public class Details : Google.Apis.Requests.IDirectResponseSchema
@@ -2475,7 +2550,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Provides information about the analysis status of a discovered resource.</summary>
     public class Discovered : Google.Apis.Requests.IDirectResponseSchema
@@ -2484,8 +2559,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("analysisStatus")]
         public virtual string AnalysisStatus { get; set; }
 
-        /// <summary>When an error is encountered this will contain a LocalizedMessage under details to show to the
-        /// user. The LocalizedMessage is output only and populated by the API.</summary>
+        /// <summary>
+        /// When an error is encountered this will contain a LocalizedMessage under details to show to the user. The
+        /// LocalizedMessage is output only and populated by the API.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analysisStatusError")]
         public virtual Status AnalysisStatusError { get; set; }
 
@@ -2499,10 +2576,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A note that indicates a type of analysis a provider would perform. This note exists in a provider's
-    /// project. A `Discovery` occurrence is created in a consumer's project at the start of analysis.</summary>
+    /// <summary>
+    /// A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A
+    /// `Discovery` occurrence is created in a consumer's project at the start of analysis.
+    /// </summary>
     public class Discovery : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Immutable. The kind of analysis that is handled by this discovery.</summary>
@@ -2511,18 +2590,22 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>This represents a particular channel of distribution for a given package. E.g., Debian's jessie-
-    /// backports dpkg mirror.</summary>
+    /// <summary>
+    /// This represents a particular channel of distribution for a given package. E.g., Debian's jessie-backports dpkg
+    /// mirror.
+    /// </summary>
     public class Distribution : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The CPU architecture for which packages in this distribution channel were built.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
         public virtual string Architecture { get; set; }
 
-        /// <summary>Required. The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package
-        /// manager version distributing a package.</summary>
+        /// <summary>
+        /// Required. The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager
+        /// version distributing a package.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpeUri")]
         public virtual string CpeUri { get; set; }
 
@@ -2544,20 +2627,24 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+    /// object `{}`.
+    /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Defines an object for the environment field in in-toto links. The suggested fields are "variables",
-    /// "filesystem", and "workdir".</summary>
+    /// <summary>
+    /// Defines an object for the environment field in in-toto links. The suggested fields are "variables",
+    /// "filesystem", and "workdir".
+    /// </summary>
     public class Environment : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("customValues")]
@@ -2565,23 +2652,27 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
-    /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
-    /// Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
-    /// expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description:
+    /// <summary>
+    /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
+    /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
+    /// (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() &amp;lt; 100" Example (Equality): title: "Requestor is owner" description:
     /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
     /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
-    /// visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation):
-    /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
-    /// message received at ' + string(document.create_time)" The exact variables and functions that may be referenced
-    /// within an expression are determined by the service that evaluates it. See the service documentation for
-    /// additional information.</summary>
+    /// visible" expression: "document.type != 'private' &amp;amp;&amp;amp; document.type != 'internal'" Example (Data
+    /// Manipulation): title: "Notification string" description: "Create a notification string with a timestamp."
+    /// expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that
+    /// may be referenced within an expression are determined by the service that evaluates it. See the service
+    /// documentation for additional information.
+    /// </summary>
     public class Expr : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
-        /// when hovered over it in a UI.</summary>
+        /// <summary>
+        /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when
+        /// hovered over it in a UI.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -2589,22 +2680,28 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
         public virtual string Expression { get; set; }
 
-        /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
-        /// and a position in the file.</summary>
+        /// <summary>
+        /// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a
+        /// position in the file.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
-        /// e.g. in UIs which allow to enter the expression.</summary>
+        /// <summary>
+        /// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs
+        /// which allow to enter the expression.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Container message for hashes of byte content of files, used in source messages to verify integrity of
-    /// source input to the build.</summary>
+    /// <summary>
+    /// Container message for hashes of byte content of files, used in source messages to verify integrity of source
+    /// input to the build.
+    /// </summary>
     public class FileHashes : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Collection of file hashes.</summary>
@@ -2613,7 +2710,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A set of properties that uniquely identify a given Docker image.</summary>
     public class Fingerprint : Google.Apis.Requests.IDirectResponseSchema
@@ -2626,14 +2723,16 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("v2Blob")]
         public virtual System.Collections.Generic.IList<string> V2Blob { get; set; }
 
-        /// <summary>Output only. The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom :=
-        /// sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept.</summary>
+        /// <summary>
+        /// Output only. The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] +
+        /// " " + v2_name[N+1]) Only the name of the final blob is kept.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("v2Name")]
         public virtual string V2Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Per resource and severity counts of fixable and total vulnerabilities.</summary>
     public class FixableTotalByDigest : Google.Apis.Requests.IDirectResponseSchema
@@ -2656,33 +2755,41 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>An attestation wrapper that uses the Grafeas `Signature` message. This attestation must define the
+    /// <summary>
+    /// An attestation wrapper that uses the Grafeas `Signature` message. This attestation must define the
     /// `serialized_payload` that the `signatures` verify and any metadata necessary to interpret that plaintext. The
-    /// signatures should always be over the `serialized_payload` bytestring.</summary>
+    /// signatures should always be over the `serialized_payload` bytestring.
+    /// </summary>
     public class GenericSignedAttestation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Type (for example schema) of the attestation payload that was signed. The verifier must ensure that
-        /// the provided type is one that the verifier supports, and that the attestation payload is a valid
-        /// instantiation of that type (for example by validating a JSON schema).</summary>
+        /// <summary>
+        /// Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the
+        /// provided type is one that the verifier supports, and that the attestation payload is a valid instantiation
+        /// of that type (for example by validating a JSON schema).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
         public virtual string ContentType { get; set; }
 
-        /// <summary>The serialized payload that is verified by one or more `signatures`. The encoding and semantic
-        /// meaning of this payload must match what is set in `content_type`.</summary>
+        /// <summary>
+        /// The serialized payload that is verified by one or more `signatures`. The encoding and semantic meaning of
+        /// this payload must match what is set in `content_type`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serializedPayload")]
         public virtual string SerializedPayload { get; set; }
 
-        /// <summary>One or more signatures over `serialized_payload`. Verifier implementations should consider this
-        /// attestation message verified if at least one `signature` verifies `serialized_payload`. See `Signature` in
-        /// common.proto for more details on signature structure and verification.</summary>
+        /// <summary>
+        /// One or more signatures over `serialized_payload`. Verifier implementations should consider this attestation
+        /// message verified if at least one `signature` verifies `serialized_payload`. See `Signature` in common.proto
+        /// for more details on signature structure and verification.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatures")]
         public virtual System.Collections.Generic.IList<Signature> Signatures { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A SourceContext referring to a Gerrit project.</summary>
     public class GerritSourceContext : Google.Apis.Requests.IDirectResponseSchema
@@ -2691,8 +2798,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("aliasContext")]
         public virtual AliasContext AliasContext { get; set; }
 
-        /// <summary>The full project name within the host. Projects may be nested, so "project/subproject" is a valid
-        /// project name. The "repo name" is the hostURI/project.</summary>
+        /// <summary>
+        /// The full project name within the host. Projects may be nested, so "project/subproject" is a valid project
+        /// name. The "repo name" is the hostURI/project.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gerritProject")]
         public virtual string GerritProject { get; set; }
 
@@ -2706,7 +2815,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for `GetIamPolicy` method.</summary>
     public class GetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -2717,25 +2826,28 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Encapsulates settings provided to GetIamPolicy.</summary>
     public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
-        /// specifying an invalid value will be rejected. Requests for policies with any conditional bindings must
-        /// specify version 3. Policies without any conditional bindings may specify any valid value or leave the field
-        /// unset. To learn which resources support conditions in their IAM policies, see the [IAM
-        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
+        /// <summary>
+        /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests specifying an
+        /// invalid value will be rejected. Requests for policies with any conditional bindings must specify version 3.
+        /// Policies without any conditional bindings may specify any valid value or leave the field unset. To learn
+        /// which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A GitSourceContext denotes a particular revision in a third party Git repository (e.g.,
-    /// GitHub).</summary>
+    /// <summary>
+    /// A GitSourceContext denotes a particular revision in a third party Git repository (e.g., GitHub).
+    /// </summary>
     public class GitSourceContext : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Git commit hash.</summary>
@@ -2748,10 +2860,11 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Metadata for all operations used and required for all operations that created by Container Analysis
-    /// Providers</summary>
+    /// <summary>
+    /// Metadata for all operations used and required for all operations that created by Container Analysis Providers
+    /// </summary>
     public class GoogleDevtoolsContaineranalysisV1alpha1OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The time this operation was created.</summary>
@@ -2764,7 +2877,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Details of a build occurrence.</summary>
     public class GrafeasV1beta1BuildDetails : Google.Apis.Requests.IDirectResponseSchema
@@ -2773,18 +2886,20 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
         public virtual BuildProvenance Provenance { get; set; }
 
-        /// <summary>Serialized JSON representation of the provenance, used in generating the build signature in the
+        /// <summary>
+        /// Serialized JSON representation of the provenance, used in generating the build signature in the
         /// corresponding build note. After verifying the signature, `provenance_bytes` can be unmarshalled and compared
         /// to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance
         /// bytes is used for the signature in order to interoperate with openssl which expects this format for
         /// signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is
-        /// marshalled to json as well to prevent incompatibilities with future changes.</summary>
+        /// marshalled to json as well to prevent incompatibilities with future changes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provenanceBytes")]
         public virtual string ProvenanceBytes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Details of a deployment occurrence.</summary>
     public class GrafeasV1beta1DeploymentDetails : Google.Apis.Requests.IDirectResponseSchema
@@ -2795,7 +2910,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Details of a discovery occurrence.</summary>
     public class GrafeasV1beta1DiscoveryDetails : Google.Apis.Requests.IDirectResponseSchema
@@ -2806,7 +2921,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Details of an image occurrence.</summary>
     public class GrafeasV1beta1ImageDetails : Google.Apis.Requests.IDirectResponseSchema
@@ -2817,7 +2932,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class GrafeasV1beta1IntotoArtifact : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2829,10 +2944,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>This corresponds to a signed in-toto link - it is made up of one or more signatures and the in-toto
-    /// link itself. This is used for occurrences of a Grafeas in-toto note.</summary>
+    /// <summary>
+    /// This corresponds to a signed in-toto link - it is made up of one or more signatures and the in-toto link itself.
+    /// This is used for occurrences of a Grafeas in-toto note.
+    /// </summary>
     public class GrafeasV1beta1IntotoDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("signatures")]
@@ -2843,7 +2960,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A signature object consists of the KeyID used and the signature itself.</summary>
     public class GrafeasV1beta1IntotoSignature : Google.Apis.Requests.IDirectResponseSchema
@@ -2856,7 +2973,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Details of a package occurrence.</summary>
     public class GrafeasV1beta1PackageDetails : Google.Apis.Requests.IDirectResponseSchema
@@ -2867,18 +2984,22 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Details of a vulnerability Occurrence.</summary>
     public class GrafeasV1beta1VulnerabilityDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0
-        /// indicates low severity and 10 indicates high severity.</summary>
+        /// <summary>
+        /// Output only. The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low
+        /// severity and 10 indicates high severity.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cvssScore")]
         public virtual System.Nullable<float> CvssScore { get; set; }
 
-        /// <summary>The distro assigned severity for this vulnerability when it is available, and note provider
-        /// assigned severity when distro has not yet assigned a severity for this vulnerability.</summary>
+        /// <summary>
+        /// The distro assigned severity for this vulnerability when it is available, and note provider assigned
+        /// severity when distro has not yet assigned a severity for this vulnerability.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveSeverity")]
         public virtual string EffectiveSeverity { get; set; }
 
@@ -2886,8 +3007,9 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("longDescription")]
         public virtual string LongDescription { get; set; }
 
-        /// <summary>Required. The set of affected locations and their fixes (if available) within the associated
-        /// resource.</summary>
+        /// <summary>
+        /// Required. The set of affected locations and their fixes (if available) within the associated resource.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageIssue")]
         public virtual System.Collections.Generic.IList<PackageIssue> PackageIssue { get; set; }
 
@@ -2909,7 +3031,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Container message for hash values.</summary>
     public class Hash : Google.Apis.Requests.IDirectResponseSchema
@@ -2924,13 +3046,15 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>This submessage provides human-readable hints about the purpose of the authority. Because the name of a
-    /// note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might
-    /// be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints
-    /// should not be used to look up authorities in security sensitive contexts, such as when looking up attestations
-    /// to verify.</summary>
+    /// <summary>
+    /// This submessage provides human-readable hints about the purpose of the authority. Because the name of a note
+    /// acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a
+    /// UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should
+    /// not be used to look up authorities in security sensitive contexts, such as when looking up attestations to
+    /// verify.
+    /// </summary>
     public class Hint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The human readable name of this attestation authority, for example "qa".</summary>
@@ -2939,26 +3063,31 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>This contains the fields corresponding to the definition of a software supply chain step in an in-toto
-    /// layout. This information goes into a Grafeas note.</summary>
+    /// <summary>
+    /// This contains the fields corresponding to the definition of a software supply chain step in an in-toto layout.
+    /// This information goes into a Grafeas note.
+    /// </summary>
     public class InToto : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>This field contains the expected command used to perform the step.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expectedCommand")]
         public virtual System.Collections.Generic.IList<string> ExpectedCommand { get; set; }
 
-        /// <summary>The following fields contain in-toto artifact rules identifying the artifacts that enter this
-        /// supply chain step, and exit the supply chain step, i.e. materials and products of the step.</summary>
+        /// <summary>
+        /// The following fields contain in-toto artifact rules identifying the artifacts that enter this supply chain
+        /// step, and exit the supply chain step, i.e. materials and products of the step.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expectedMaterials")]
         public virtual System.Collections.Generic.IList<ArtifactRule> ExpectedMaterials { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("expectedProducts")]
         public virtual System.Collections.Generic.IList<ArtifactRule> ExpectedProducts { get; set; }
 
-        /// <summary>This field contains the public keys that can be used to verify the signatures on the step
-        /// metadata.</summary>
+        /// <summary>
+        /// This field contains the public keys that can be used to verify the signatures on the step metadata.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signingKeys")]
         public virtual System.Collections.Generic.IList<SigningKey> SigningKeys { get; set; }
 
@@ -2966,20 +3095,23 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stepName")]
         public virtual string StepName { get; set; }
 
-        /// <summary>This field contains a value that indicates the minimum number of keys that need to be used to sign
-        /// the step's in-toto link.</summary>
+        /// <summary>
+        /// This field contains a value that indicates the minimum number of keys that need to be used to sign the
+        /// step's in-toto link.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
         public virtual System.Nullable<long> Threshold { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>This represents how a particular software package may be installed on a system.</summary>
     public class Installation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. All of the places within the filesystem versions of this package have been
-        /// found.</summary>
+        /// <summary>
+        /// Required. All of the places within the filesystem versions of this package have been found.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual System.Collections.Generic.IList<Location> Location { get; set; }
 
@@ -2989,7 +3121,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class KnowledgeBase : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2997,14 +3129,15 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>A link to the KB in the Windows update catalog -
-        /// https://www.catalog.update.microsoft.com/</summary>
+        /// <summary>
+        /// A link to the KB in the Windows update catalog - https://www.catalog.update.microsoft.com/
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Layer holds metadata specific to a layer of a Docker image.</summary>
     public class Layer : Google.Apis.Requests.IDirectResponseSchema
@@ -3019,45 +3152,54 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>This corresponds to an in-toto link.</summary>
     public class Link : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>ByProducts are data generated as part of a software supply chain step, but are not the actual
-        /// result of the step.</summary>
+        /// <summary>
+        /// ByProducts are data generated as part of a software supply chain step, but are not the actual result of the
+        /// step.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("byproducts")]
         public virtual ByProducts Byproducts { get; set; }
 
-        /// <summary>This field contains the full command executed for the step. This can also be empty if links are
-        /// generated for operations that aren't directly mapped to a specific command. Each term in the command is an
-        /// independent string in the list. An example of a command in the in-toto metadata field is: "command": ["git",
-        /// "clone", "https://github.com/in-toto/demo-project.git"]</summary>
+        /// <summary>
+        /// This field contains the full command executed for the step. This can also be empty if links are generated
+        /// for operations that aren't directly mapped to a specific command. Each term in the command is an independent
+        /// string in the list. An example of a command in the in-toto metadata field is: "command": ["git", "clone",
+        /// "https://github.com/in-toto/demo-project.git"]
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("command")]
         public virtual System.Collections.Generic.IList<string> Command { get; set; }
 
-        /// <summary>This is a field that can be used to capture information about the environment. It is suggested for
-        /// this field to contain information that details environment variables, filesystem information, and the
-        /// present working directory. The recommended structure of this field is: "environment": { "custom_values": {
-        /// "variables": "", "filesystem": "", "workdir": "", "": "..." } }</summary>
+        /// <summary>
+        /// This is a field that can be used to capture information about the environment. It is suggested for this
+        /// field to contain information that details environment variables, filesystem information, and the present
+        /// working directory. The recommended structure of this field is: "environment": { "custom_values": {
+        /// "variables": "", "filesystem": "", "workdir": "", "": "..." } }
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual Environment Environment { get; set; }
 
-        /// <summary>Materials are the supply chain artifacts that go into the step and are used for the operation
-        /// performed. The key of the map is the path of the artifact and the structure contains the recorded hash
-        /// information. An example is: "materials": [ { "resource_uri": "foo/bar", "hashes": { "sha256": "ebebf...", :
-        /// } } ]</summary>
+        /// <summary>
+        /// Materials are the supply chain artifacts that go into the step and are used for the operation performed. The
+        /// key of the map is the path of the artifact and the structure contains the recorded hash information. An
+        /// example is: "materials": [ { "resource_uri": "foo/bar", "hashes": { "sha256": "ebebf...", : } } ]
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("materials")]
         public virtual System.Collections.Generic.IList<GrafeasV1beta1IntotoArtifact> Materials { get; set; }
 
-        /// <summary>Products are the supply chain artifacts generated as a result of the step. The structure is
-        /// identical to that of materials.</summary>
+        /// <summary>
+        /// Products are the supply chain artifacts generated as a result of the step. The structure is identical to
+        /// that of materials.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("products")]
         public virtual System.Collections.Generic.IList<GrafeasV1beta1IntotoArtifact> Products { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for listing occurrences for a note.</summary>
     public class ListNoteOccurrencesResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -3072,13 +3214,15 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for listing notes.</summary>
     public class ListNotesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The next pagination token in the list response. It should be used as `page_token` for the following
-        /// request. An empty value means no more results.</summary>
+        /// <summary>
+        /// The next pagination token in the list response. It should be used as `page_token` for the following request.
+        /// An empty value means no more results.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -3088,13 +3232,15 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for listing occurrences.</summary>
     public class ListOccurrencesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The next pagination token in the list response. It should be used as `page_token` for the following
-        /// request. An empty value means no more results.</summary>
+        /// <summary>
+        /// The next pagination token in the list response. It should be used as `page_token` for the following request.
+        /// An empty value means no more results.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -3104,13 +3250,15 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for listing scan configurations.</summary>
     public class ListScanConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The next pagination token in the list response. It should be used as `page_token` for the following
-        /// request. An empty value means no more results.</summary>
+        /// <summary>
+        /// The next pagination token in the list response. It should be used as `page_token` for the following request.
+        /// An empty value means no more results.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -3120,14 +3268,18 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>An occurrence of a particular package installation found within a system's filesystem. E.g., glibc was
-    /// found in `/var/lib/dpkg/status`.</summary>
+    /// <summary>
+    /// An occurrence of a particular package installation found within a system's filesystem. E.g., glibc was found in
+    /// `/var/lib/dpkg/status`.
+    /// </summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package
-        /// manager version distributing a package.</summary>
+        /// <summary>
+        /// Required. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager
+        /// version distributing a package.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpeUri")]
         public virtual string CpeUri { get; set; }
 
@@ -3141,7 +3293,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A type of analysis that can be done for a resource.</summary>
     public class Note : Google.Apis.Requests.IDirectResponseSchema
@@ -3158,8 +3310,9 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("build")]
         public virtual Build Build { get; set; }
 
-        /// <summary>Output only. The time this note was created. This field can be used as a filter in list
-        /// requests.</summary>
+        /// <summary>
+        /// Output only. The time this note was created. This field can be used as a filter in list requests.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
@@ -3187,8 +3340,9 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("longDescription")]
         public virtual string LongDescription { get; set; }
 
-        /// <summary>Output only. The name of the note in the form of
-        /// `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.</summary>
+        /// <summary>
+        /// Output only. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3208,8 +3362,9 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shortDescription")]
         public virtual string ShortDescription { get; set; }
 
-        /// <summary>Output only. The time this note was last updated. This field can be used as a filter in list
-        /// requests.</summary>
+        /// <summary>
+        /// Output only. The time this note was last updated. This field can be used as a filter in list requests.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
@@ -3219,7 +3374,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An instance of an analysis type that has been found on a resource.</summary>
     public class Occurrence : Google.Apis.Requests.IDirectResponseSchema
@@ -3256,18 +3411,23 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("intoto")]
         public virtual GrafeasV1beta1IntotoDetails Intoto { get; set; }
 
-        /// <summary>Output only. This explicitly denotes which of the occurrence details are specified. This field can
-        /// be used as a filter in list requests.</summary>
+        /// <summary>
+        /// Output only. This explicitly denotes which of the occurrence details are specified. This field can be used
+        /// as a filter in list requests.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Output only. The name of the occurrence in the form of
-        /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.</summary>
+        /// <summary>
+        /// Output only. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. Immutable. The analysis note associated with this occurrence, in the form of
-        /// `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.</summary>
+        /// <summary>
+        /// Required. Immutable. The analysis note associated with this occurrence, in the form of
+        /// `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noteName")]
         public virtual string NoteName { get; set; }
 
@@ -3289,10 +3449,12 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>This represents a particular package that is distributed over various channels. E.g., glibc (aka libc6)
-    /// is distributed by many, at various versions.</summary>
+    /// <summary>
+    /// This represents a particular package that is distributed over various channels. E.g., glibc (aka libc6) is
+    /// distributed by many, at various versions.
+    /// </summary>
     public class Package : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The various channels by which a package is distributed.</summary>
@@ -3305,10 +3467,11 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>This message wraps a location affected by a vulnerability and its associated fix (if one is
-    /// available).</summary>
+    /// <summary>
+    /// This message wraps a location affected by a vulnerability and its associated fix (if one is available).
+    /// </summary>
     public class PackageIssue : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The location of the vulnerability.</summary>
@@ -3319,27 +3482,33 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fixedLocation")]
         public virtual VulnerabilityLocation FixedLocation { get; set; }
 
-        /// <summary>Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity)
-        /// for this vulnerability.</summary>
+        /// <summary>
+        /// Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this
+        /// vulnerability.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severityName")]
         public virtual string SeverityName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>An attestation wrapper with a PGP-compatible signature. This message only supports `ATTACHED`
-    /// signatures, where the payload that is signed is included alongside the signature itself in the same
-    /// file.</summary>
+    /// <summary>
+    /// An attestation wrapper with a PGP-compatible signature. This message only supports `ATTACHED` signatures, where
+    /// the payload that is signed is included alongside the signature itself in the same file.
+    /// </summary>
     public class PgpSignedAttestation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Type (for example schema) of the attestation payload that was signed. The verifier must ensure that
-        /// the provided type is one that the verifier supports, and that the attestation payload is a valid
-        /// instantiation of that type (for example by validating a JSON schema).</summary>
+        /// <summary>
+        /// Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the
+        /// provided type is one that the verifier supports, and that the attestation payload is a valid instantiation
+        /// of that type (for example by validating a JSON schema).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
         public virtual string ContentType { get; set; }
 
-        /// <summary>The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg
+        /// <summary>
+        /// The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg
         /// --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character
         /// hexidecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may
         /// choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is
@@ -3347,79 +3516,90 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// --list-keys with --with-colons. For example: ``` gpg --with-colons --with-fingerprint --force-v4-certs \
         /// --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:......
         /// fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB: ``` Above, the fingerprint is
-        /// `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.</summary>
+        /// `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pgpKeyId")]
         public virtual string PgpKeyId { get; set; }
 
-        /// <summary>Required. The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent.
-        /// Since this message only supports attached signatures, the payload that was signed must be attached. While
-        /// the signature format supported is dependent on the verification implementation, currently only ASCII-armored
-        /// (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely,
-        /// `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this
-        /// field in `signature.gpg` for the `payload.json` attestation payload.</summary>
+        /// <summary>
+        /// Required. The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this
+        /// message only supports attached signatures, the payload that was signed must be attached. While the signature
+        /// format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to
+        /// gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign
+        /// --armor --output=signature.gpg payload.json` will create the signature content expected in this field in
+        /// `signature.gpg` for the `payload.json` attestation payload.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
         public virtual string Signature { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud
-    /// resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`.
-    /// Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a
-    /// named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some
-    /// types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that
-    /// allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on
-    /// attributes of the request, the resource, or both. To learn which resources support conditions in their IAM
-    /// policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON
-    /// example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [
-    /// "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-
-    /// id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [
-    /// "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access
-    /// after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
-    /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com -
-    /// group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-    /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role:
-    /// roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access
-    /// after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version:
-    /// 3 For a description of IAM and its features, see the [IAM
-    /// documentation](https://cloud.google.com/iam/docs/).</summary>
+    /// <summary>
+    /// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A
+    /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can
+    /// be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of
+    /// permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google
+    /// Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to
+    /// a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of
+    /// the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the
+    /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** {
+    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
+    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:**
+    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
+    /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
+    /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
+    /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
+    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its
+    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
-        /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
+        /// <summary>
+        /// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and
+        /// when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
-        /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
-        /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
+        /// <summary>
+        /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy
+        /// from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
         /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:**
         /// If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
-        /// conditions in the version `3` policy are lost.</summary>
+        /// conditions in the version `3` policy are lost.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
-        /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
-        /// This requirement applies to the following operations: * Getting a policy that includes a conditional role
-        /// binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy *
-        /// Removing any role binding, with or without a condition, from a policy that includes conditions
-        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
-        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any
-        /// conditions, operations on that policy may specify any valid version or leave the field unset. To learn which
-        /// resources support conditions in their IAM policies, see the [IAM
-        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
+        /// <summary>
+        /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid
+        /// value are rejected. Any operation that affects conditional role bindings must specify version `3`. This
+        /// requirement applies to the following operations: * Getting a policy that includes a conditional role binding
+        /// * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing
+        /// any role binding, with or without a condition, from a policy that includes conditions **Important:** If you
+        /// use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this
+        /// field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on
+        /// that policy may specify any valid version or leave the field unset. To learn which resources support
+        /// conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
 
-    }    
-
-    /// <summary>Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31) and a repo name within
-    /// that project.</summary>
+    /// <summary>
+    /// Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31) and a repo name within that
+    /// project.
+    /// </summary>
     public class ProjectRepoId : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ID of the project.</summary>
@@ -3432,7 +3612,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Metadata for any related URL information.</summary>
     public class RelatedUrl : Google.Apis.Requests.IDirectResponseSchema
@@ -3447,7 +3627,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A unique identifier for a Cloud Repo.</summary>
     public class RepoId : Google.Apis.Requests.IDirectResponseSchema
@@ -3462,33 +3642,39 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An entity that can have metadata. For example, a Docker image.</summary>
     public class Resource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker
-        /// digest.</summary>
+        /// <summary>
+        /// Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentHash")]
         public virtual Hash ContentHash { get; set; }
 
-        /// <summary>Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a
-        /// Docker image - "Debian".</summary>
+        /// <summary>
+        /// Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image -
+        /// "Debian".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo`
-        /// for a Docker image.</summary>
+        /// <summary>
+        /// Required. The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a
+        /// Docker image.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A scan configuration specifies whether Cloud components in a project have a particular type of analysis
-    /// being run. For example, it can configure whether vulnerability scanning is being done on Docker images or
-    /// not.</summary>
+    /// <summary>
+    /// A scan configuration specifies whether Cloud components in a project have a particular type of analysis being
+    /// run. For example, it can configure whether vulnerability scanning is being done on Docker images or not.
+    /// </summary>
     public class ScanConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The time this scan config was created.</summary>
@@ -3503,8 +3689,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
-        /// <summary>Output only. The name of the scan configuration in the form of
-        /// `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.</summary>
+        /// <summary>
+        /// Output only. The name of the scan configuration in the form of
+        /// `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3514,62 +3702,72 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for `SetIamPolicy` method.</summary>
     public class SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to
-        /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
-        /// might reject them.</summary>
+        /// <summary>
+        /// REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few
+        /// 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might
+        /// reject them.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual Policy Policy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Verifiers (e.g. Kritis implementations) MUST verify signatures with respect to the trust anchors
-    /// defined in policy (e.g. a Kritis policy). Typically this means that the verifier has been configured with a map
-    /// from `public_key_id` to public key material (and any required parameters, e.g. signing algorithm). In
-    /// particular, verification implementations MUST NOT treat the signature `public_key_id` as anything more than a
-    /// key lookup hint. The `public_key_id` DOES NOT validate or authenticate a public key; it only provides a
-    /// mechanism for quickly selecting a public key ALREADY CONFIGURED on the verifier through a trusted channel.
-    /// Verification implementations MUST reject signatures in any of the following circumstances: * The `public_key_id`
-    /// is not recognized by the verifier. * The public key that `public_key_id` refers to does not verify the signature
-    /// with respect to the payload. The `signature` contents SHOULD NOT be "attached" (where the payload is included
-    /// with the serialized `signature` bytes). Verifiers MUST ignore any "attached" payload and only verify signatures
-    /// with respect to explicitly provided payload (e.g. a `payload` field on the proto message that holds this
-    /// Signature, or the canonical serialization of the proto message that holds this signature).</summary>
+    /// <summary>
+    /// Verifiers (e.g. Kritis implementations) MUST verify signatures with respect to the trust anchors defined in
+    /// policy (e.g. a Kritis policy). Typically this means that the verifier has been configured with a map from
+    /// `public_key_id` to public key material (and any required parameters, e.g. signing algorithm). In particular,
+    /// verification implementations MUST NOT treat the signature `public_key_id` as anything more than a key lookup
+    /// hint. The `public_key_id` DOES NOT validate or authenticate a public key; it only provides a mechanism for
+    /// quickly selecting a public key ALREADY CONFIGURED on the verifier through a trusted channel. Verification
+    /// implementations MUST reject signatures in any of the following circumstances: * The `public_key_id` is not
+    /// recognized by the verifier. * The public key that `public_key_id` refers to does not verify the signature with
+    /// respect to the payload. The `signature` contents SHOULD NOT be "attached" (where the payload is included with
+    /// the serialized `signature` bytes). Verifiers MUST ignore any "attached" payload and only verify signatures with
+    /// respect to explicitly provided payload (e.g. a `payload` field on the proto message that holds this Signature,
+    /// or the canonical serialization of the proto message that holds this signature).
+    /// </summary>
     public class Signature : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The identifier for the public key that verifies this signature. * The `public_key_id` is required.
-        /// * The `public_key_id` SHOULD be an RFC3986 conformant URI. * When possible, the `public_key_id` SHOULD be an
+        /// <summary>
+        /// The identifier for the public key that verifies this signature. * The `public_key_id` is required. * The
+        /// `public_key_id` SHOULD be an RFC3986 conformant URI. * When possible, the `public_key_id` SHOULD be an
         /// immutable reference, such as a cryptographic digest. Examples of valid `public_key_id`s: OpenPGP V4 public
         /// key fingerprint: * "openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA" See
         /// https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr for more details on this scheme. RFC6920
         /// digest-named SubjectPublicKeyInfo (digest of the DER serialization): *
-        /// "ni:sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU" *
-        /// "nih:sha-256;703f68f42aba2c6de30f488a5ea122fef76324679c9bf89791ba95a1271589a5"</summary>
+        /// "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU" *
+        /// "nih:///sha-256;703f68f42aba2c6de30f488a5ea122fef76324679c9bf89791ba95a1271589a5"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicKeyId")]
         public virtual string PublicKeyId { get; set; }
 
-        /// <summary>The content of the signature, an opaque bytestring. The payload that this signature verifies MUST
-        /// be unambiguously provided with the Signature during verification. A wrapper message might provide the
-        /// payload explicitly. Alternatively, a message might have a canonical serialization that can always be
-        /// unambiguously computed to derive the payload.</summary>
+        /// <summary>
+        /// The content of the signature, an opaque bytestring. The payload that this signature verifies MUST be
+        /// unambiguously provided with the Signature during verification. A wrapper message might provide the payload
+        /// explicitly. Alternatively, a message might have a canonical serialization that can always be unambiguously
+        /// computed to derive the payload.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
         public virtual string SignatureValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>This defines the format used to record keys used in the software supply chain. An in-toto link is
-    /// attested using one or more keys defined in the in-toto layout. An example of this is: { "key_id":
-    /// "776a00e29f3559e0141b3b096f696abc6cfb0c657ab40f441132b345b0...", "key_type": "rsa", "public_key_value": "-----
-    /// BEGIN PUBLIC KEY-----\nMIIBojANBgkqhkiG9w0B...", "key_scheme": "rsassa-pss-sha256" } The format for in-toto's
-    /// key definition can be found in section 4.2 of the in-toto specification.</summary>
+    /// <summary>
+    /// This defines the format used to record keys used in the software supply chain. An in-toto link is attested using
+    /// one or more keys defined in the in-toto layout. An example of this is: { "key_id":
+    /// "776a00e29f3559e0141b3b096f696abc6cfb0c657ab40f441132b345b0...", "key_type": "rsa", "public_key_value":
+    /// "-----BEGIN PUBLIC KEY-----\nMIIBojANBgkqhkiG9w0B...", "key_scheme": "rsassa-pss-sha256" } The format for
+    /// in-toto's key definition can be found in section 4.2 of the in-toto specification.
+    /// </summary>
     public class SigningKey : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>key_id is an identifier for the signing key.</summary>
@@ -3590,14 +3788,16 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Source describes the location of the source used for the build.</summary>
     public class Source : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If provided, some of the source code used for the build may be found in these locations, in the
-        /// case where the source repository had multiple remotes or submodules. This list will not include the context
-        /// specified in the context field.</summary>
+        /// <summary>
+        /// If provided, some of the source code used for the build may be found in these locations, in the case where
+        /// the source repository had multiple remotes or submodules. This list will not include the context specified
+        /// in the context field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalContexts")]
         public virtual System.Collections.Generic.IList<SourceContext> AdditionalContexts { get; set; }
 
@@ -3609,19 +3809,23 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
         public virtual SourceContext Context { get; set; }
 
-        /// <summary>Hash(es) of the build source, which can be used to verify that the original source integrity was
-        /// maintained in the build. The keys to this map are file paths used as build source and the values contain the
-        /// hash values for those files. If the build source came in a single package such as a gzipped tarfile
-        /// (.tar.gz), the FileHash will be for the single path to that file.</summary>
+        /// <summary>
+        /// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained
+        /// in the build. The keys to this map are file paths used as build source and the values contain the hash
+        /// values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz),
+        /// the FileHash will be for the single path to that file.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
         public virtual System.Collections.Generic.IDictionary<string, FileHashes> FileHashes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A SourceContext is a reference to a tree of files. A SourceContext together with a path point to a
-    /// unique revision of a single file or directory.</summary>
+    /// <summary>
+    /// A SourceContext is a reference to a tree of files. A SourceContext together with a path point to a unique
+    /// revision of a single file or directory.
+    /// </summary>
     public class SourceContext : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A SourceContext referring to a revision in a Google Cloud Source Repo.</summary>
@@ -3642,45 +3846,51 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>The `Status` type defines a logical error model that is suitable for different programming
-    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
-    /// this error model and how to work with it in the [API Design
-    /// Guide](https://cloud.google.com/apis/design/errors).</summary>
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; }
 
-        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
-        /// use.</summary>
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
-        /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
-        /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for `TestIamPermissions` method.</summary>
     public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or
-        /// 'storage.*') are not allowed. For more information see [IAM
-        /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
+        /// <summary>
+        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or 'storage.*')
+        /// are not allowed. For more information see [IAM
+        /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for `TestIamPermissions` method.</summary>
     public class TestIamPermissionsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -3691,7 +3901,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Version contains structured information about the version of a package.</summary>
     public class Version : Google.Apis.Requests.IDirectResponseSchema
@@ -3714,7 +3924,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Vulnerability provides metadata about a security vulnerability in a Note.</summary>
     public class Vulnerability : Google.Apis.Requests.IDirectResponseSchema
@@ -3727,8 +3937,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cvssV3")]
         public virtual CVSSv3 CvssV3 { get; set; }
 
-        /// <summary>All information about the package to specifically identify this vulnerability. One entry per
-        /// (version range and cpe_uri) the package vulnerability has manifested in.</summary>
+        /// <summary>
+        /// All information about the package to specifically identify this vulnerability. One entry per (version range
+        /// and cpe_uri) the package vulnerability has manifested in.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<Detail> Details { get; set; }
 
@@ -3736,26 +3948,32 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }
 
-        /// <summary>The time this information was last changed at the source. This is an upstream timestamp from the
-        /// underlying information source - e.g. Ubuntu security tracker.</summary>
+        /// <summary>
+        /// The time this information was last changed at the source. This is an upstream timestamp from the underlying
+        /// information source - e.g. Ubuntu security tracker.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceUpdateTime")]
         public virtual object SourceUpdateTime { get; set; }
 
-        /// <summary>Windows details get their own format because the information format and model don't match a normal
-        /// detail. Specifically Windows updates are done as patches, thus Windows vulnerabilities really are a missing
-        /// package, rather than a package being at an incorrect version.</summary>
+        /// <summary>
+        /// Windows details get their own format because the information format and model don't match a normal detail.
+        /// Specifically Windows updates are done as patches, thus Windows vulnerabilities really are a missing package,
+        /// rather than a package being at an incorrect version.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowsDetails")]
         public virtual System.Collections.Generic.IList<WindowsDetail> WindowsDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The location of the vulnerability.</summary>
     public class VulnerabilityLocation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples
-        /// include distro or storage location for vulnerable jar.</summary>
+        /// <summary>
+        /// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples include distro
+        /// or storage location for vulnerable jar.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpeUri")]
         public virtual string CpeUri { get; set; }
 
@@ -3769,7 +3987,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A summary of how many vulnerability occurrences there are per resource and severity type.</summary>
     public class VulnerabilityOccurrencesSummary : Google.Apis.Requests.IDirectResponseSchema
@@ -3780,12 +3998,14 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class WindowsDetail : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the
-        /// vulnerability manifests. Examples include distro or storage location for vulnerable jar.</summary>
+        /// <summary>
+        /// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability
+        /// manifests. Examples include distro or storage location for vulnerable jar.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpeUri")]
         public virtual string CpeUri { get; set; }
 
@@ -3793,9 +4013,11 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Required. The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there
-        /// may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed
-        /// kb's presence is considered a fix.</summary>
+        /// <summary>
+        /// Required. The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be
+        /// multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's
+        /// presence is considered a fix.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixingKbs")]
         public virtual System.Collections.Generic.IList<KnowledgeBase> FixingKbs { get; set; }
 

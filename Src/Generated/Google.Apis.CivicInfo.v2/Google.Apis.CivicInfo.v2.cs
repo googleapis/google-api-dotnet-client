@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -59,10 +64,6 @@ namespace Google.Apis.CivicInfo.v2
         public override string BatchPath => "batch";
         #endif
 
-
-
-
-
         /// <summary>Gets the Divisions resource.</summary>
         public virtual DivisionsResource Divisions { get; }
 
@@ -91,6 +92,7 @@ namespace Google.Apis.CivicInfo.v2
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -110,9 +112,11 @@ namespace Google.Apis.CivicInfo.v2
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -126,8 +130,10 @@ namespace Google.Apis.CivicInfo.v2
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -139,8 +145,10 @@ namespace Google.Apis.CivicInfo.v2
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -156,7 +164,6 @@ namespace Google.Apis.CivicInfo.v2
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -260,9 +267,7 @@ namespace Google.Apis.CivicInfo.v2
         public DivisionsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Searches for political divisions by their natural name or OCD ID.</summary>
         public virtual SearchRequest Search()
@@ -279,14 +284,13 @@ namespace Google.Apis.CivicInfo.v2
                 InitParameters();
             }
 
-
-            /// <summary>The search query. Queries can cover any parts of a OCD ID or a human readable division name.
-            /// All words given in the query are treated as required patterns. In addition to that, most query operators
-            /// of the Apache Lucene library are supported. See
-            /// http://lucene.apache.org/core/2_9_4/queryparsersyntax.html</summary>
+            /// <summary>
+            /// The search query. Queries can cover any parts of a OCD ID or a human readable division name. All words
+            /// given in the query are treated as required patterns. In addition to that, most query operators of the
+            /// Apache Lucene library are supported. See http://lucene.apache.org/core/2_9_4/queryparsersyntax.html
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "search";
@@ -301,7 +305,6 @@ namespace Google.Apis.CivicInfo.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("query", new Google.Apis.Discovery.Parameter
                 {
                     Name = "query",
@@ -311,7 +314,6 @@ namespace Google.Apis.CivicInfo.v2
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -327,9 +329,7 @@ namespace Google.Apis.CivicInfo.v2
         public ElectionsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>List of available elections to query.</summary>
         public virtual ElectionQueryRequest ElectionQuery()
@@ -346,8 +346,6 @@ namespace Google.Apis.CivicInfo.v2
                 InitParameters();
             }
 
-
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "electionQuery";
 
@@ -361,9 +359,7 @@ namespace Google.Apis.CivicInfo.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
         /// <summary>Looks up information relevant to a voter based on the voter's registered address.</summary>
@@ -383,15 +379,16 @@ namespace Google.Apis.CivicInfo.v2
                 InitParameters();
             }
 
-
             /// <summary>The registered address of the voter to look up.</summary>
             [Google.Apis.Util.RequestParameterAttribute("address", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Address { get; private set; }
 
-            /// <summary>The unique ID of the election to look up. A list of election IDs can be obtained at
+            /// <summary>
+            /// The unique ID of the election to look up. A list of election IDs can be obtained at
             /// https://www.googleapis.com/civicinfo/{version}/elections. If no election ID is specified in the query
             /// and there is more than one election with data for the given voter, the additional elections are provided
-            /// in the otherElections response field.</summary>
+            /// in the otherElections response field.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("electionId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> ElectionId { get; set; }
 
@@ -399,12 +396,12 @@ namespace Google.Apis.CivicInfo.v2
             [Google.Apis.Util.RequestParameterAttribute("officialOnly", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> OfficialOnly { get; set; }
 
-            /// <summary>If set to true, the query will return the success code and include any partial information when
-            /// it is unable to determine a matching address or unable to determine the election for electionId=0
-            /// queries.</summary>
+            /// <summary>
+            /// If set to true, the query will return the success code and include any partial information when it is
+            /// unable to determine a matching address or unable to determine the election for electionId=0 queries.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("returnAllAvailableData", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ReturnAllAvailableData { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "voterInfoQuery";
@@ -419,7 +416,6 @@ namespace Google.Apis.CivicInfo.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("address", new Google.Apis.Discovery.Parameter
                 {
                     Name = "address",
@@ -453,7 +449,6 @@ namespace Google.Apis.CivicInfo.v2
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -469,9 +464,7 @@ namespace Google.Apis.CivicInfo.v2
         public RepresentativesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Looks up political geography and representative information for a single address.</summary>
         public virtual RepresentativeInfoByAddressRequest RepresentativeInfoByAddress()
@@ -488,79 +481,126 @@ namespace Google.Apis.CivicInfo.v2
                 InitParameters();
             }
 
-
-            /// <summary>The address to look up. May only be specified if the field ocdId is not given in the
-            /// URL</summary>
+            /// <summary>
+            /// The address to look up. May only be specified if the field ocdId is not given in the URL
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("address", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Address { get; set; }
 
-            /// <summary>Whether to return information about offices and officials. If false, only the top-level
-            /// district information will be returned.</summary>
+            /// <summary>
+            /// Whether to return information about offices and officials. If false, only the top-level district
+            /// information will be returned.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("includeOffices", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeOffices { get; set; }
 
-            /// <summary>A list of office levels to filter by. Only offices that serve at least one of these levels will
-            /// be returned. Divisions that don't contain a matching office will not be returned.</summary>
+            /// <summary>
+            /// A list of office levels to filter by. Only offices that serve at least one of these levels will be
+            /// returned. Divisions that don't contain a matching office will not be returned.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("levels", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<LevelsEnum> Levels { get; set; }
 
-            /// <summary>A list of office levels to filter by. Only offices that serve at least one of these levels will
-            /// be returned. Divisions that don't contain a matching office will not be returned.</summary>
+            /// <summary>
+            /// A list of office levels to filter by. Only offices that serve at least one of these levels will be
+            /// returned. Divisions that don't contain a matching office will not be returned.
+            /// </summary>
             public enum LevelsEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("international")]
                 International,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("country")]
                 Country,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("administrativeArea1")]
                 AdministrativeArea1,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("regional")]
                 Regional,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("administrativeArea2")]
                 AdministrativeArea2,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("locality")]
                 Locality,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("subLocality1")]
                 SubLocality1,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("subLocality2")]
                 SubLocality2,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("special")]
                 Special,
             }
 
-            /// <summary>A list of office roles to filter by. Only offices fulfilling one of these roles will be
-            /// returned. Divisions that don't contain a matching office will not be returned.</summary>
+            /// <summary>
+            /// A list of office roles to filter by. Only offices fulfilling one of these roles will be returned.
+            /// Divisions that don't contain a matching office will not be returned.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("roles", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<RolesEnum> Roles { get; set; }
 
-            /// <summary>A list of office roles to filter by. Only offices fulfilling one of these roles will be
-            /// returned. Divisions that don't contain a matching office will not be returned.</summary>
+            /// <summary>
+            /// A list of office roles to filter by. Only offices fulfilling one of these roles will be returned.
+            /// Divisions that don't contain a matching office will not be returned.
+            /// </summary>
             public enum RolesEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("headOfState")]
                 HeadOfState,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("headOfGovernment")]
                 HeadOfGovernment,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("deputyHeadOfGovernment")]
                 DeputyHeadOfGovernment,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("governmentOfficer")]
                 GovernmentOfficer,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("executiveCouncil")]
                 ExecutiveCouncil,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("legislatorUpperBody")]
                 LegislatorUpperBody,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("legislatorLowerBody")]
                 LegislatorLowerBody,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("highestCourtJudge")]
                 HighestCourtJudge,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("judge")]
                 Judge,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("schoolBoard")]
                 SchoolBoard,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("specialPurposeOfficer")]
                 SpecialPurposeOfficer,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "representativeInfoByAddress";
@@ -575,7 +615,6 @@ namespace Google.Apis.CivicInfo.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("address", new Google.Apis.Discovery.Parameter
                 {
                     Name = "address",
@@ -609,7 +648,6 @@ namespace Google.Apis.CivicInfo.v2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Looks up representative information for a single geographic division.</summary>
@@ -629,79 +667,125 @@ namespace Google.Apis.CivicInfo.v2
                 InitParameters();
             }
 
-
             /// <summary>The Open Civic Data division identifier of the division to look up.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ocdId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string OcdId { get; private set; }
 
-            /// <summary>A list of office levels to filter by. Only offices that serve at least one of these levels will
-            /// be returned. Divisions that don't contain a matching office will not be returned.</summary>
+            /// <summary>
+            /// A list of office levels to filter by. Only offices that serve at least one of these levels will be
+            /// returned. Divisions that don't contain a matching office will not be returned.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("levels", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<LevelsEnum> Levels { get; set; }
 
-            /// <summary>A list of office levels to filter by. Only offices that serve at least one of these levels will
-            /// be returned. Divisions that don't contain a matching office will not be returned.</summary>
+            /// <summary>
+            /// A list of office levels to filter by. Only offices that serve at least one of these levels will be
+            /// returned. Divisions that don't contain a matching office will not be returned.
+            /// </summary>
             public enum LevelsEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("international")]
                 International,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("country")]
                 Country,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("administrativeArea1")]
                 AdministrativeArea1,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("regional")]
                 Regional,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("administrativeArea2")]
                 AdministrativeArea2,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("locality")]
                 Locality,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("subLocality1")]
                 SubLocality1,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("subLocality2")]
                 SubLocality2,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("special")]
                 Special,
             }
 
-            /// <summary>If true, information about all divisions contained in the division requested will be included
-            /// as well. For example, if querying ocd-division/country:us/district:dc, this would also return all DC's
-            /// wards and ANCs.</summary>
+            /// <summary>
+            /// If true, information about all divisions contained in the division requested will be included as well.
+            /// For example, if querying ocd-division/country:us/district:dc, this would also return all DC's wards and
+            /// ANCs.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("recursive", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Recursive { get; set; }
 
-            /// <summary>A list of office roles to filter by. Only offices fulfilling one of these roles will be
-            /// returned. Divisions that don't contain a matching office will not be returned.</summary>
+            /// <summary>
+            /// A list of office roles to filter by. Only offices fulfilling one of these roles will be returned.
+            /// Divisions that don't contain a matching office will not be returned.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("roles", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<RolesEnum> Roles { get; set; }
 
-            /// <summary>A list of office roles to filter by. Only offices fulfilling one of these roles will be
-            /// returned. Divisions that don't contain a matching office will not be returned.</summary>
+            /// <summary>
+            /// A list of office roles to filter by. Only offices fulfilling one of these roles will be returned.
+            /// Divisions that don't contain a matching office will not be returned.
+            /// </summary>
             public enum RolesEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("headOfState")]
                 HeadOfState,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("headOfGovernment")]
                 HeadOfGovernment,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("deputyHeadOfGovernment")]
                 DeputyHeadOfGovernment,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("governmentOfficer")]
                 GovernmentOfficer,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("executiveCouncil")]
                 ExecutiveCouncil,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("legislatorUpperBody")]
                 LegislatorUpperBody,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("legislatorLowerBody")]
                 LegislatorLowerBody,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("highestCourtJudge")]
                 HighestCourtJudge,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("judge")]
                 Judge,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("schoolBoard")]
                 SchoolBoard,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("specialPurposeOfficer")]
                 SpecialPurposeOfficer,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "representativeInfoByDivision";
@@ -716,7 +800,6 @@ namespace Google.Apis.CivicInfo.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("ocdId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "ocdId",
@@ -750,14 +833,11 @@ namespace Google.Apis.CivicInfo.v2
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.CivicInfo.v2.Data
-{    
-
+{
     /// <summary>Describes information about a regional election administrative area.</summary>
     public class AdministrationRegion : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -765,8 +845,10 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("electionAdministrationBody")]
         public virtual AdministrativeBody ElectionAdministrationBody { get; set; }
 
-        /// <summary>The city or county that provides election information for this voter. This object can have the same
-        /// elements as state.</summary>
+        /// <summary>
+        /// The city or county that provides election information for this voter. This object can have the same elements
+        /// as state.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("local_jurisdiction")]
         public virtual AdministrationRegion LocalJurisdiction { get; set; }
 
@@ -774,14 +856,16 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>A list of sources for this area. If multiple sources are listed the data has been aggregated from
-        /// those sources.</summary>
+        /// <summary>
+        /// A list of sources for this area. If multiple sources are listed the data has been aggregated from those
+        /// sources.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
         public virtual System.Collections.Generic.IList<Source> Sources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about an election administrative body (e.g. County Board of Elections).</summary>
     public class AdministrativeBody : Google.Apis.Requests.IDirectResponseSchema
@@ -806,8 +890,10 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("electionNoticeText")]
         public virtual string ElectionNoticeText { get; set; }
 
-        /// <summary>A URL provided by this administrative body for additional information related to the last minute or
-        /// emergency notification.</summary>
+        /// <summary>
+        /// A URL provided by this administrative body for additional information related to the last minute or
+        /// emergency notification.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("electionNoticeUrl")]
         public virtual string ElectionNoticeUrl { get; set; }
 
@@ -815,8 +901,9 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("electionOfficials")]
         public virtual System.Collections.Generic.IList<ElectionOfficial> ElectionOfficials { get; set; }
 
-        /// <summary>A URL provided by this administrative body for confirming that the voter is registered to
-        /// vote.</summary>
+        /// <summary>
+        /// A URL provided by this administrative body for confirming that the voter is registered to vote.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("electionRegistrationConfirmationUrl")]
         public virtual string ElectionRegistrationConfirmationUrl { get; set; }
 
@@ -850,7 +937,7 @@ namespace Google.Apis.CivicInfo.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about a candidate running for elected office.</summary>
     public class Candidate : Google.Apis.Requests.IDirectResponseSchema
@@ -867,9 +954,11 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
 
-        /// <summary>The candidate's name. If this is a joint ticket it will indicate the name of the candidate at the
-        /// top of a ticket followed by a / and that name of candidate at the bottom of the ticket. e.g. "Mitt Romney /
-        /// Paul Ryan"</summary>
+        /// <summary>
+        /// The candidate's name. If this is a joint ticket it will indicate the name of the candidate at the top of a
+        /// ticket followed by a / and that name of candidate at the bottom of the ticket. e.g. "Mitt Romney / Paul
+        /// Ryan"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -891,7 +980,7 @@ namespace Google.Apis.CivicInfo.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A social media or web channel for a candidate.</summary>
     public class Channel : Google.Apis.Requests.IDirectResponseSchema
@@ -900,14 +989,16 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>The type of channel. The following is a list of types of channels, but is not exhaustive. More
-        /// channel types may be added at a later time. One of: GooglePlus, YouTube, Facebook, Twitter</summary>
+        /// <summary>
+        /// The type of channel. The following is a list of types of channels, but is not exhaustive. More channel types
+        /// may be added at a later time. One of: GooglePlus, YouTube, Facebook, Twitter
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about a contest that appears on a voter's ballot.</summary>
     public class Contest : Google.Apis.Requests.IDirectResponseSchema
@@ -932,10 +1023,12 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("electorateSpecifications")]
         public virtual string ElectorateSpecifications { get; set; }
 
-        /// <summary>The levels of government of the office for this contest. There may be more than one in cases where
-        /// a jurisdiction effectively acts at two different levels of government; for example, the mayor of the
-        /// District of Columbia acts at "locality" level, but also effectively at both "administrative-area-2" and
-        /// "administrative-area-1".</summary>
+        /// <summary>
+        /// The levels of government of the office for this contest. There may be more than one in cases where a
+        /// jurisdiction effectively acts at two different levels of government; for example, the mayor of the District
+        /// of Columbia acts at "locality" level, but also effectively at both "administrative-area-2" and
+        /// "administrative-area-1".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("level")]
         public virtual System.Collections.Generic.IList<string> Level { get; set; }
 
@@ -955,54 +1048,72 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("primaryParties")]
         public virtual System.Collections.Generic.IList<string> PrimaryParties { get; set; }
 
-        /// <summary>[DEPRECATED] If this is a partisan election, the name of the party it is for. This field as
-        /// deprecated in favor of the array "primaryParties", as contests may contain more than one party.</summary>
+        /// <summary>
+        /// [DEPRECATED] If this is a partisan election, the name of the party it is for. This field as deprecated in
+        /// favor of the array "primaryParties", as contests may contain more than one party.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryParty")]
         public virtual string PrimaryParty { get; set; }
 
-        /// <summary>The set of ballot responses for the referendum. A ballot response represents a line on the ballot.
-        /// Common examples might include "yes" or "no" for referenda. This field is only populated for contests of type
-        /// 'Referendum'.</summary>
+        /// <summary>
+        /// The set of ballot responses for the referendum. A ballot response represents a line on the ballot. Common
+        /// examples might include "yes" or "no" for referenda. This field is only populated for contests of type
+        /// 'Referendum'.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referendumBallotResponses")]
         public virtual System.Collections.Generic.IList<string> ReferendumBallotResponses { get; set; }
 
-        /// <summary>Specifies a short summary of the referendum that is typically on the ballot below the title but
-        /// above the text. This field is only populated for contests of type 'Referendum'.</summary>
+        /// <summary>
+        /// Specifies a short summary of the referendum that is typically on the ballot below the title but above the
+        /// text. This field is only populated for contests of type 'Referendum'.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referendumBrief")]
         public virtual string ReferendumBrief { get; set; }
 
-        /// <summary>A statement in opposition to the referendum. It does not necessarily appear on the ballot. This
-        /// field is only populated for contests of type 'Referendum'.</summary>
+        /// <summary>
+        /// A statement in opposition to the referendum. It does not necessarily appear on the ballot. This field is
+        /// only populated for contests of type 'Referendum'.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referendumConStatement")]
         public virtual string ReferendumConStatement { get; set; }
 
-        /// <summary>Specifies what effect abstaining (not voting) on the proposition will have (i.e. whether abstaining
-        /// is considered a vote against it). This field is only populated for contests of type 'Referendum'.</summary>
+        /// <summary>
+        /// Specifies what effect abstaining (not voting) on the proposition will have (i.e. whether abstaining is
+        /// considered a vote against it). This field is only populated for contests of type 'Referendum'.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referendumEffectOfAbstain")]
         public virtual string ReferendumEffectOfAbstain { get; set; }
 
-        /// <summary>The threshold of votes that the referendum needs in order to pass, e.g. "two-thirds". This field is
-        /// only populated for contests of type 'Referendum'.</summary>
+        /// <summary>
+        /// The threshold of votes that the referendum needs in order to pass, e.g. "two-thirds". This field is only
+        /// populated for contests of type 'Referendum'.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referendumPassageThreshold")]
         public virtual string ReferendumPassageThreshold { get; set; }
 
-        /// <summary>A statement in favor of the referendum. It does not necessarily appear on the ballot. This field is
-        /// only populated for contests of type 'Referendum'.</summary>
+        /// <summary>
+        /// A statement in favor of the referendum. It does not necessarily appear on the ballot. This field is only
+        /// populated for contests of type 'Referendum'.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referendumProStatement")]
         public virtual string ReferendumProStatement { get; set; }
 
-        /// <summary>A brief description of the referendum. This field is only populated for contests of type
-        /// 'Referendum'.</summary>
+        /// <summary>
+        /// A brief description of the referendum. This field is only populated for contests of type 'Referendum'.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referendumSubtitle")]
         public virtual string ReferendumSubtitle { get; set; }
 
-        /// <summary>The full text of the referendum. This field is only populated for contests of type
-        /// 'Referendum'.</summary>
+        /// <summary>
+        /// The full text of the referendum. This field is only populated for contests of type 'Referendum'.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referendumText")]
         public virtual string ReferendumText { get; set; }
 
-        /// <summary>The title of the referendum (e.g. 'Proposition 42'). This field is only populated for contests of
-        /// type 'Referendum'.</summary>
+        /// <summary>
+        /// The title of the referendum (e.g. 'Proposition 42'). This field is only populated for contests of type
+        /// 'Referendum'.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referendumTitle")]
         public virtual string ReferendumTitle { get; set; }
 
@@ -1014,31 +1125,36 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("roles")]
         public virtual System.Collections.Generic.IList<string> Roles { get; set; }
 
-        /// <summary>A list of sources for this contest. If multiple sources are listed, the data has been aggregated
-        /// from those sources.</summary>
+        /// <summary>
+        /// A list of sources for this contest. If multiple sources are listed, the data has been aggregated from those
+        /// sources.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
         public virtual System.Collections.Generic.IList<Source> Sources { get; set; }
 
-        /// <summary>"Yes" or "No" depending on whether this a contest being held outside the normal election
-        /// cycle.</summary>
+        /// <summary>
+        /// "Yes" or "No" depending on whether this a contest being held outside the normal election cycle.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("special")]
         public virtual string Special { get; set; }
 
-        /// <summary>The type of contest. Usually this will be 'General', 'Primary', or 'Run-off' for contests with
-        /// candidates. For referenda this will be 'Referendum'. For Retention contests this will typically be
-        /// 'Retention'.</summary>
+        /// <summary>
+        /// The type of contest. Usually this will be 'General', 'Primary', or 'Run-off' for contests with candidates.
+        /// For referenda this will be 'Referendum'. For Retention contests this will typically be 'Retention'.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The result of a division search query.</summary>
     public class DivisionSearchResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "civicinfo#divisionSearchResponse".</summary>
+        /// <summary>
+        /// Identifies what kind of resource this is. Value: the fixed string "civicinfo#divisionSearchResponse".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -1047,15 +1163,17 @@ namespace Google.Apis.CivicInfo.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a political geographic division that matches the requested query.</summary>
     public class DivisionSearchResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Other Open Civic Data identifiers that refer to the same division -- for example, those that refer
-        /// to other political divisions whose boundaries are defined to be coterminous with this one. For example, ocd-
-        /// division/country:us/state:wy will include an alias of ocd-division/country:us/state:wy/cd:1, since Wyoming
-        /// has only one Congressional district.</summary>
+        /// <summary>
+        /// Other Open Civic Data identifiers that refer to the same division -- for example, those that refer to other
+        /// political divisions whose boundaries are defined to be coterminous with this one. For example,
+        /// ocd-division/country:us/state:wy will include an alias of ocd-division/country:us/state:wy/cd:1, since
+        /// Wyoming has only one Congressional district.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aliases")]
         public virtual System.Collections.Generic.IList<string> Aliases { get; set; }
 
@@ -1069,7 +1187,7 @@ namespace Google.Apis.CivicInfo.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about the election that was queried.</summary>
     public class Election : Google.Apis.Requests.IDirectResponseSchema
@@ -1086,16 +1204,18 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The political division of the election. Represented as an OCD Division ID. Voters within these
-        /// political jurisdictions are covered by this election. This is typically a state such as ocd-
-        /// division/country:us/state:ca or for the midterms or general election the entire US (i.e. ocd-
-        /// division/country:us).</summary>
+        /// <summary>
+        /// The political division of the election. Represented as an OCD Division ID. Voters within these political
+        /// jurisdictions are covered by this election. This is typically a state such as
+        /// ocd-division/country:us/state:ca or for the midterms or general election the entire US (i.e.
+        /// ocd-division/country:us).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ocdDivisionId")]
         public virtual string OcdDivisionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about individual election officials.</summary>
     public class ElectionOfficial : Google.Apis.Requests.IDirectResponseSchema
@@ -1122,7 +1242,7 @@ namespace Google.Apis.CivicInfo.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The list of elections available for this version of the API.</summary>
     public class ElectionsQueryResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1131,20 +1251,23 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("elections")]
         public virtual System.Collections.Generic.IList<Election> Elections { get; set; }
 
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "civicinfo#electionsQueryResponse".</summary>
+        /// <summary>
+        /// Identifies what kind of resource this is. Value: the fixed string "civicinfo#electionsQueryResponse".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Describes the geographic scope of a contest.</summary>
     public class ElectoralDistrict : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An identifier for this district, relative to its scope. For example, the 34th State Senate district
-        /// would have id "34" and a scope of stateUpper.</summary>
+        /// <summary>
+        /// An identifier for this district, relative to its scope. For example, the 34th State Senate district would
+        /// have id "34" and a scope of stateUpper.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -1152,25 +1275,29 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The geographic scope of this district. If unspecified the district's geography is not known. One
-        /// of: national, statewide, congressional, stateUpper, stateLower, countywide, judicial, schoolBoard, cityWide,
-        /// township, countyCouncil, cityCouncil, ward, special</summary>
+        /// <summary>
+        /// The geographic scope of this district. If unspecified the district's geography is not known. One of:
+        /// national, statewide, congressional, stateUpper, stateLower, countywide, judicial, schoolBoard, cityWide,
+        /// township, countyCouncil, cityCouncil, ward, special
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual string Scope { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Describes a political geography.</summary>
     public class GeographicDivision : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Any other valid OCD IDs that refer to the same division.\n\nBecause OCD IDs are meant to be human-
-        /// readable and at least somewhat predictable, there are occasionally several identifiers for a single
-        /// division. These identifiers are defined to be equivalent to one another, and one is always indicated as the
-        /// primary identifier. The primary identifier will be returned in ocd_id above, and any other equivalent valid
-        /// identifiers will be returned in this list.\n\nFor example, if this division's OCD ID is ocd-
-        /// division/country:us/district:dc, this will contain ocd-division/country:us/state:dc.</summary>
+        /// <summary>
+        /// Any other valid OCD IDs that refer to the same division.\n\nBecause OCD IDs are meant to be human-readable
+        /// and at least somewhat predictable, there are occasionally several identifiers for a single division. These
+        /// identifiers are defined to be equivalent to one another, and one is always indicated as the primary
+        /// identifier. The primary identifier will be returned in ocd_id above, and any other equivalent valid
+        /// identifiers will be returned in this list.\n\nFor example, if this division's OCD ID is
+        /// ocd-division/country:us/district:dc, this will contain ocd-division/country:us/state:dc.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alsoKnownAs")]
         public virtual System.Collections.Generic.IList<string> AlsoKnownAs { get; set; }
 
@@ -1178,14 +1305,16 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>List of indices in the offices array, one for each office elected from this division. Will only be
-        /// present if includeOffices was true (or absent) in the request.</summary>
+        /// <summary>
+        /// List of indices in the offices array, one for each office elected from this division. Will only be present
+        /// if includeOffices was true (or absent) in the request.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("officeIndices")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> OfficeIndices { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about an Office held by one or more Officials.</summary>
     public class Office : Google.Apis.Requests.IDirectResponseSchema
@@ -1194,10 +1323,12 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("divisionId")]
         public virtual string DivisionId { get; set; }
 
-        /// <summary>The levels of government of which this office is part. There may be more than one in cases where a
+        /// <summary>
+        /// The levels of government of which this office is part. There may be more than one in cases where a
         /// jurisdiction effectively acts at two different levels of government; for example, the mayor of the District
         /// of Columbia acts at "locality" level, but also effectively at both "administrative-area-2" and
-        /// "administrative-area-1".</summary>
+        /// "administrative-area-1".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("levels")]
         public virtual System.Collections.Generic.IList<string> Levels { get; set; }
 
@@ -1209,20 +1340,24 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("officialIndices")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> OfficialIndices { get; set; }
 
-        /// <summary>The roles which this office fulfills. Roles are not meant to be exhaustive, or to exactly specify
-        /// the entire set of responsibilities of a given office, but are meant to be rough categories that are useful
-        /// for general selection from or sorting of a list of offices.</summary>
+        /// <summary>
+        /// The roles which this office fulfills. Roles are not meant to be exhaustive, or to exactly specify the entire
+        /// set of responsibilities of a given office, but are meant to be rough categories that are useful for general
+        /// selection from or sorting of a list of offices.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roles")]
         public virtual System.Collections.Generic.IList<string> Roles { get; set; }
 
-        /// <summary>A list of sources for this office. If multiple sources are listed, the data has been aggregated
-        /// from those sources.</summary>
+        /// <summary>
+        /// A list of sources for this office. If multiple sources are listed, the data has been aggregated from those
+        /// sources.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
         public virtual System.Collections.Generic.IList<Source> Sources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about a person holding an elected office.</summary>
     public class Official : Google.Apis.Requests.IDirectResponseSchema
@@ -1261,33 +1396,42 @@ namespace Google.Apis.CivicInfo.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A location where a voter can vote. This may be an early vote site, an election day voting location, or
-    /// a drop off location for a completed ballot.</summary>
+    /// <summary>
+    /// A location where a voter can vote. This may be an early vote site, an election day voting location, or a drop
+    /// off location for a completed ballot.
+    /// </summary>
     public class PollingLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The address of the location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual SimpleAddressType Address { get; set; }
 
-        /// <summary>The last date that this early vote site or drop off location may be used. This field is not
-        /// populated for polling locations.</summary>
+        /// <summary>
+        /// The last date that this early vote site or drop off location may be used. This field is not populated for
+        /// polling locations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
         public virtual string EndDate { get; set; }
 
-        /// <summary>Latitude of the location, in degrees north of the equator. Note this field may not be available for
-        /// some locations.</summary>
+        /// <summary>
+        /// Latitude of the location, in degrees north of the equator. Note this field may not be available for some
+        /// locations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latitude")]
         public virtual System.Nullable<double> Latitude { get; set; }
 
-        /// <summary>Longitude of the location, in degrees east of the Prime Meridian. Note this field may not be
-        /// available for some locations.</summary>
+        /// <summary>
+        /// Longitude of the location, in degrees east of the Prime Meridian. Note this field may not be available for
+        /// some locations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
         public virtual System.Nullable<double> Longitude { get; set; }
 
-        /// <summary>The name of the early vote site or drop off location. This field is not populated for polling
-        /// locations.</summary>
+        /// <summary>
+        /// The name of the early vote site or drop off location. This field is not populated for polling locations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1299,56 +1443,70 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pollingHours")]
         public virtual string PollingHours { get; set; }
 
-        /// <summary>A list of sources for this location. If multiple sources are listed the data has been aggregated
-        /// from those sources.</summary>
+        /// <summary>
+        /// A list of sources for this location. If multiple sources are listed the data has been aggregated from those
+        /// sources.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
         public virtual System.Collections.Generic.IList<Source> Sources { get; set; }
 
-        /// <summary>The first date that this early vote site or drop off location may be used. This field is not
-        /// populated for polling locations.</summary>
+        /// <summary>
+        /// The first date that this early vote site or drop off location may be used. This field is not populated for
+        /// polling locations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual string StartDate { get; set; }
 
-        /// <summary>The services provided by this early vote site or drop off location. This field is not populated for
-        /// polling locations.</summary>
+        /// <summary>
+        /// The services provided by this early vote site or drop off location. This field is not populated for polling
+        /// locations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voterServices")]
         public virtual string VoterServices { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class RepresentativeInfoData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A map of political geographic divisions that contain the requested address, keyed by the unique
-        /// Open Civic Data identifier for this division.</summary>
+        /// <summary>
+        /// A map of political geographic divisions that contain the requested address, keyed by the unique Open Civic
+        /// Data identifier for this division.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("divisions")]
         public virtual System.Collections.Generic.IDictionary<string, GeographicDivision> Divisions { get; set; }
 
-        /// <summary>Elected offices referenced by the divisions listed above. Will only be present if includeOffices
-        /// was true in the request.</summary>
+        /// <summary>
+        /// Elected offices referenced by the divisions listed above. Will only be present if includeOffices was true in
+        /// the request.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offices")]
         public virtual System.Collections.Generic.IList<Office> Offices { get; set; }
 
-        /// <summary>Officials holding the offices listed above. Will only be present if includeOffices was true in the
-        /// request.</summary>
+        /// <summary>
+        /// Officials holding the offices listed above. Will only be present if includeOffices was true in the request.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("officials")]
         public virtual System.Collections.Generic.IList<Official> Officials { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The result of a representative info lookup query.</summary>
     public class RepresentativeInfoResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A map of political geographic divisions that contain the requested address, keyed by the unique
-        /// Open Civic Data identifier for this division.</summary>
+        /// <summary>
+        /// A map of political geographic divisions that contain the requested address, keyed by the unique Open Civic
+        /// Data identifier for this division.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("divisions")]
         public virtual System.Collections.Generic.IDictionary<string, GeographicDivision> Divisions { get; set; }
 
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "civicinfo#representativeInfoResponse".</summary>
+        /// <summary>
+        /// Identifies what kind of resource this is. Value: the fixed string "civicinfo#representativeInfoResponse".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -1356,19 +1514,22 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("normalizedInput")]
         public virtual SimpleAddressType NormalizedInput { get; set; }
 
-        /// <summary>Elected offices referenced by the divisions listed above. Will only be present if includeOffices
-        /// was true in the request.</summary>
+        /// <summary>
+        /// Elected offices referenced by the divisions listed above. Will only be present if includeOffices was true in
+        /// the request.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offices")]
         public virtual System.Collections.Generic.IList<Office> Offices { get; set; }
 
-        /// <summary>Officials holding the offices listed above. Will only be present if includeOffices was true in the
-        /// request.</summary>
+        /// <summary>
+        /// Officials holding the offices listed above. Will only be present if includeOffices was true in the request.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("officials")]
         public virtual System.Collections.Generic.IList<Official> Officials { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A simple representation of an address.</summary>
     public class SimpleAddressType : Google.Apis.Requests.IDirectResponseSchema
@@ -1403,7 +1564,7 @@ namespace Google.Apis.CivicInfo.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Contains information about the data source for the element containing it.</summary>
     public class Source : Google.Apis.Requests.IDirectResponseSchema
@@ -1418,7 +1579,7 @@ namespace Google.Apis.CivicInfo.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The result of a voter info lookup query.</summary>
     public class VoterInfoResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1427,10 +1588,11 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contests")]
         public virtual System.Collections.Generic.IList<Contest> Contests { get; set; }
 
-        /// <summary>Locations where a voter is eligible to drop off a completed ballot. The voter must have received
-        /// and completed a ballot prior to arriving at the location. The location may not have ballots available on the
-        /// premises. These locations could be open on or before election day as indicated in the pollingHours
-        /// field.</summary>
+        /// <summary>
+        /// Locations where a voter is eligible to drop off a completed ballot. The voter must have received and
+        /// completed a ballot prior to arriving at the location. The location may not have ballots available on the
+        /// premises. These locations could be open on or before election day as indicated in the pollingHours field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dropOffLocations")]
         public virtual System.Collections.Generic.IList<PollingLocation> DropOffLocations { get; set; }
 
@@ -1442,13 +1604,16 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("election")]
         public virtual Election Election { get; set; }
 
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "civicinfo#voterInfoResponse".</summary>
+        /// <summary>
+        /// Identifies what kind of resource this is. Value: the fixed string "civicinfo#voterInfoResponse".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Specifies whether voters in the precinct vote only by mailing their ballots (with the possible
-        /// option of dropping off their ballots as well).</summary>
+        /// <summary>
+        /// Specifies whether voters in the precinct vote only by mailing their ballots (with the possible option of
+        /// dropping off their ballots as well).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mailOnly")]
         public virtual System.Nullable<bool> MailOnly { get; set; }
 
@@ -1456,13 +1621,15 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("normalizedInput")]
         public virtual SimpleAddressType NormalizedInput { get; set; }
 
-        /// <summary>When there are multiple elections for a voter address, the otherElections field is populated in the
-        /// API response and there are two possibilities: 1. If the earliest election is not the intended election,
-        /// specify the election ID of the desired election in a second API request using the electionId field. 2. If
-        /// these elections occur on the same day, the API doesn?t return any polling location, contest, or election
-        /// official information to ensure that an additional query is made. For user-facing applications, we recommend
+        /// <summary>
+        /// When there are multiple elections for a voter address, the otherElections field is populated in the API
+        /// response and there are two possibilities: 1. If the earliest election is not the intended election, specify
+        /// the election ID of the desired election in a second API request using the electionId field. 2. If these
+        /// elections occur on the same day, the API doesn?t return any polling location, contest, or election official
+        /// information to ensure that an additional query is made. For user-facing applications, we recommend
         /// displaying these elections to the user to disambiguate. A second API request using the electionId field
-        /// should be made for the election that is relevant to the user.</summary>
+        /// should be made for the election that is relevant to the user.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("otherElections")]
         public virtual System.Collections.Generic.IList<Election> OtherElections { get; set; }
 
@@ -1473,8 +1640,10 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("precinctId")]
         public virtual string PrecinctId { get; set; }
 
-        /// <summary>Local Election Information for the state that the voter votes in. For the US, there will only be
-        /// one element in this array.</summary>
+        /// <summary>
+        /// Local Election Information for the state that the voter votes in. For the US, there will only be one element
+        /// in this array.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual System.Collections.Generic.IList<AdministrationRegion> State { get; set; }
 

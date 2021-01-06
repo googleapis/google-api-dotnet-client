@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -74,7 +79,6 @@ namespace Google.Apis.AdSense.v1_4
 
             /// <summary>View your AdSense data</summary>
             public static string AdsenseReadonly = "https://www.googleapis.com/auth/adsense.readonly";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the AdSense Management API.</summary>
@@ -85,10 +89,7 @@ namespace Google.Apis.AdSense.v1_4
 
             /// <summary>View your AdSense data</summary>
             public const string AdsenseReadonly = "https://www.googleapis.com/auth/adsense.readonly";
-
         }
-
-
 
         /// <summary>Gets the Accounts resource.</summary>
         public virtual AccountsResource Accounts { get; }
@@ -139,6 +140,7 @@ namespace Google.Apis.AdSense.v1_4
             /// <summary>Responses with Content-Type of text/csv</summary>
             [Google.Apis.Util.StringValueAttribute("csv")]
             Csv,
+
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
@@ -148,8 +150,10 @@ namespace Google.Apis.AdSense.v1_4
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -161,8 +165,9 @@ namespace Google.Apis.AdSense.v1_4
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-        /// characters.</summary>
+        /// <summary>
+        /// An opaque string that represents a user for quota purposes. Must not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -174,7 +179,6 @@ namespace Google.Apis.AdSense.v1_4
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
             {
                 Name = "alt",
@@ -254,7 +258,6 @@ namespace Google.Apis.AdSense.v1_4
             Reports = new ReportsResource(service);
             Savedadstyles = new SavedadstylesResource(service);
             Urlchannels = new UrlchannelsResource(service);
-
         }
 
         /// <summary>Gets the Adclients resource.</summary>
@@ -272,14 +275,11 @@ namespace Google.Apis.AdSense.v1_4
             public AdclientsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Get Auto ad code for a given ad client.</summary>
             /// <param name="accountId">Account which contains the ad client.</param>
-            /// <param name="adClientId">Ad client to
-            /// get the code for.</param>
+            /// <param name="adClientId">Ad client to get the code for.</param>
             public virtual GetAdCodeRequest GetAdCode(string accountId, string adClientId)
             {
                 return new GetAdCodeRequest(service, accountId, adClientId);
@@ -296,7 +296,6 @@ namespace Google.Apis.AdSense.v1_4
                     InitParameters();
                 }
 
-
                 /// <summary>Account which contains the ad client.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
@@ -308,7 +307,6 @@ namespace Google.Apis.AdSense.v1_4
                 /// <summary>Tag partner to include in the ad code snippet.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("tagPartner", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string TagPartner { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getAdCode";
@@ -323,7 +321,6 @@ namespace Google.Apis.AdSense.v1_4
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "accountId",
@@ -349,7 +346,6 @@ namespace Google.Apis.AdSense.v1_4
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>List all ad clients in the specified account.</summary>
@@ -369,7 +365,6 @@ namespace Google.Apis.AdSense.v1_4
                     InitParameters();
                 }
 
-
                 /// <summary>Account for which to list ad clients.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
@@ -378,11 +373,12 @@ namespace Google.Apis.AdSense.v1_4
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> MaxResults { get; set; }
 
-                /// <summary>A continuation token, used to page through ad clients. To retrieve the next page, set this
-                /// parameter to the value of "nextPageToken" from the previous response.</summary>
+                /// <summary>
+                /// A continuation token, used to page through ad clients. To retrieve the next page, set this parameter
+                /// to the value of "nextPageToken" from the previous response.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -397,7 +393,6 @@ namespace Google.Apis.AdSense.v1_4
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "accountId",
@@ -423,9 +418,9 @@ namespace Google.Apis.AdSense.v1_4
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Adunits resource.</summary>
         public virtual AdunitsResource Adunits { get; }
 
@@ -442,7 +437,6 @@ namespace Google.Apis.AdSense.v1_4
             {
                 this.service = service;
                 Customchannels = new CustomchannelsResource(service);
-
             }
 
             /// <summary>Gets the Customchannels resource.</summary>
@@ -460,16 +454,12 @@ namespace Google.Apis.AdSense.v1_4
                 public CustomchannelsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
-
 
                 /// <summary>List all custom channels which the specified ad unit belongs to.</summary>
                 /// <param name="accountId">Account to which the ad client belongs.</param>
-                /// <param name="adClientId">Ad client
-                /// which contains the ad unit.</param>
-                /// <param name="adUnitId">Ad unit for which to list custom
-                /// channels.</param>
+                /// <param name="adClientId">Ad client which contains the ad unit.</param>
+                /// <param name="adUnitId">Ad unit for which to list custom channels.</param>
                 public virtual ListRequest List(string accountId, string adClientId, string adUnitId)
                 {
                     return new ListRequest(service, accountId, adClientId, adUnitId);
@@ -487,7 +477,6 @@ namespace Google.Apis.AdSense.v1_4
                         InitParameters();
                     }
 
-
                     /// <summary>Account to which the ad client belongs.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -500,16 +489,18 @@ namespace Google.Apis.AdSense.v1_4
                     [Google.Apis.Util.RequestParameterAttribute("adUnitId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AdUnitId { get; private set; }
 
-                    /// <summary>The maximum number of custom channels to include in the response, used for
-                    /// paging.</summary>
+                    /// <summary>
+                    /// The maximum number of custom channels to include in the response, used for paging.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> MaxResults { get; set; }
 
-                    /// <summary>A continuation token, used to page through custom channels. To retrieve the next page,
-                    /// set this parameter to the value of "nextPageToken" from the previous response.</summary>
+                    /// <summary>
+                    /// A continuation token, used to page through custom channels. To retrieve the next page, set this
+                    /// parameter to the value of "nextPageToken" from the previous response.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -524,7 +515,6 @@ namespace Google.Apis.AdSense.v1_4
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -566,14 +556,12 @@ namespace Google.Apis.AdSense.v1_4
                             Pattern = null,
                         });
                     }
-
                 }
             }
 
             /// <summary>Gets the specified ad unit in the specified ad client for the specified account.</summary>
             /// <param name="accountId">Account to which the ad client belongs.</param>
-            /// <param name="adClientId">Ad client
-            /// for which to get the ad unit.</param>
+            /// <param name="adClientId">Ad client for which to get the ad unit.</param>
             /// <param name="adUnitId">Ad unit to retrieve.</param>
             public virtual GetRequest Get(string accountId, string adClientId, string adUnitId)
             {
@@ -592,7 +580,6 @@ namespace Google.Apis.AdSense.v1_4
                     InitParameters();
                 }
 
-
                 /// <summary>Account to which the ad client belongs.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
@@ -604,7 +591,6 @@ namespace Google.Apis.AdSense.v1_4
                 /// <summary>Ad unit to retrieve.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("adUnitId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AdUnitId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -619,7 +605,6 @@ namespace Google.Apis.AdSense.v1_4
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "accountId",
@@ -645,13 +630,11 @@ namespace Google.Apis.AdSense.v1_4
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Get ad code for the specified ad unit.</summary>
             /// <param name="accountId">Account which contains the ad client.</param>
-            /// <param name="adClientId">Ad client
-            /// with contains the ad unit.</param>
+            /// <param name="adClientId">Ad client with contains the ad unit.</param>
             /// <param name="adUnitId">Ad unit to get the code for.</param>
             public virtual GetAdCodeRequest GetAdCode(string accountId, string adClientId, string adUnitId)
             {
@@ -670,7 +653,6 @@ namespace Google.Apis.AdSense.v1_4
                     InitParameters();
                 }
 
-
                 /// <summary>Account which contains the ad client.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
@@ -682,7 +664,6 @@ namespace Google.Apis.AdSense.v1_4
                 /// <summary>Ad unit to get the code for.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("adUnitId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AdUnitId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getAdCode";
@@ -697,7 +678,6 @@ namespace Google.Apis.AdSense.v1_4
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "accountId",
@@ -723,13 +703,11 @@ namespace Google.Apis.AdSense.v1_4
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>List all ad units in the specified ad client for the specified account.</summary>
             /// <param name="accountId">Account to which the ad client belongs.</param>
-            /// <param name="adClientId">Ad client
-            /// for which to list ad units.</param>
+            /// <param name="adClientId">Ad client for which to list ad units.</param>
             public virtual ListRequest List(string accountId, string adClientId)
             {
                 return new ListRequest(service, accountId, adClientId);
@@ -745,7 +723,6 @@ namespace Google.Apis.AdSense.v1_4
                     AdClientId = adClientId;
                     InitParameters();
                 }
-
 
                 /// <summary>Account to which the ad client belongs.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
@@ -763,11 +740,12 @@ namespace Google.Apis.AdSense.v1_4
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> MaxResults { get; set; }
 
-                /// <summary>A continuation token, used to page through ad units. To retrieve the next page, set this
-                /// parameter to the value of "nextPageToken" from the previous response.</summary>
+                /// <summary>
+                /// A continuation token, used to page through ad units. To retrieve the next page, set this parameter
+                /// to the value of "nextPageToken" from the previous response.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -782,7 +760,6 @@ namespace Google.Apis.AdSense.v1_4
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "accountId",
@@ -824,9 +801,9 @@ namespace Google.Apis.AdSense.v1_4
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Alerts resource.</summary>
         public virtual AlertsResource Alerts { get; }
 
@@ -842,14 +819,11 @@ namespace Google.Apis.AdSense.v1_4
             public AlertsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Dismiss (delete) the specified alert from the specified publisher AdSense account.</summary>
             /// <param name="accountId">Account which contains the ad unit.</param>
-            /// <param name="alertId">Alert to
-            /// delete.</param>
+            /// <param name="alertId">Alert to delete.</param>
             public virtual DeleteRequest Delete(string accountId, string alertId)
             {
                 return new DeleteRequest(service, accountId, alertId);
@@ -866,7 +840,6 @@ namespace Google.Apis.AdSense.v1_4
                     InitParameters();
                 }
 
-
                 /// <summary>Account which contains the ad unit.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
@@ -874,7 +847,6 @@ namespace Google.Apis.AdSense.v1_4
                 /// <summary>Alert to delete.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("alertId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AlertId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -889,7 +861,6 @@ namespace Google.Apis.AdSense.v1_4
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "accountId",
@@ -907,7 +878,6 @@ namespace Google.Apis.AdSense.v1_4
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>List the alerts for the specified AdSense account.</summary>
@@ -927,17 +897,17 @@ namespace Google.Apis.AdSense.v1_4
                     InitParameters();
                 }
 
-
                 /// <summary>Account for which to retrieve the alerts.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
 
-                /// <summary>The locale to use for translating alert messages. The account locale will be used if this
-                /// is not supplied. The AdSense default (English) will be used if the supplied locale is invalid or
-                /// unsupported.</summary>
+                /// <summary>
+                /// The locale to use for translating alert messages. The account locale will be used if this is not
+                /// supplied. The AdSense default (English) will be used if the supplied locale is invalid or
+                /// unsupported.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("locale", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Locale { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -952,7 +922,6 @@ namespace Google.Apis.AdSense.v1_4
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "accountId",
@@ -970,9 +939,9 @@ namespace Google.Apis.AdSense.v1_4
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Customchannels resource.</summary>
         public virtual CustomchannelsResource Customchannels { get; }
 
@@ -989,7 +958,6 @@ namespace Google.Apis.AdSense.v1_4
             {
                 this.service = service;
                 Adunits = new AdunitsResource(service);
-
             }
 
             /// <summary>Gets the Adunits resource.</summary>
@@ -1007,16 +975,12 @@ namespace Google.Apis.AdSense.v1_4
                 public AdunitsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
-
 
                 /// <summary>List all ad units in the specified custom channel.</summary>
                 /// <param name="accountId">Account to which the ad client belongs.</param>
-                /// <param name="adClientId">Ad client
-                /// which contains the custom channel.</param>
-                /// <param name="customChannelId">Custom channel for which to list ad
-                /// units.</param>
+                /// <param name="adClientId">Ad client which contains the custom channel.</param>
+                /// <param name="customChannelId">Custom channel for which to list ad units.</param>
                 public virtual ListRequest List(string accountId, string adClientId, string customChannelId)
                 {
                     return new ListRequest(service, accountId, adClientId, customChannelId);
@@ -1033,7 +997,6 @@ namespace Google.Apis.AdSense.v1_4
                         CustomChannelId = customChannelId;
                         InitParameters();
                     }
-
 
                     /// <summary>Account to which the ad client belongs.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
@@ -1055,11 +1018,12 @@ namespace Google.Apis.AdSense.v1_4
                     [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> MaxResults { get; set; }
 
-                    /// <summary>A continuation token, used to page through ad units. To retrieve the next page, set
-                    /// this parameter to the value of "nextPageToken" from the previous response.</summary>
+                    /// <summary>
+                    /// A continuation token, used to page through ad units. To retrieve the next page, set this
+                    /// parameter to the value of "nextPageToken" from the previous response.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -1074,7 +1038,6 @@ namespace Google.Apis.AdSense.v1_4
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -1124,24 +1087,23 @@ namespace Google.Apis.AdSense.v1_4
                             Pattern = null,
                         });
                     }
-
                 }
             }
 
-            /// <summary>Get the specified custom channel from the specified ad client for the specified
-            /// account.</summary>
+            /// <summary>
+            /// Get the specified custom channel from the specified ad client for the specified account.
+            /// </summary>
             /// <param name="accountId">Account to which the ad client belongs.</param>
-            /// <param name="adClientId">Ad client
-            /// which contains the custom channel.</param>
-            /// <param name="customChannelId">Custom channel to
-            /// retrieve.</param>
+            /// <param name="adClientId">Ad client which contains the custom channel.</param>
+            /// <param name="customChannelId">Custom channel to retrieve.</param>
             public virtual GetRequest Get(string accountId, string adClientId, string customChannelId)
             {
                 return new GetRequest(service, accountId, adClientId, customChannelId);
             }
 
-            /// <summary>Get the specified custom channel from the specified ad client for the specified
-            /// account.</summary>
+            /// <summary>
+            /// Get the specified custom channel from the specified ad client for the specified account.
+            /// </summary>
             public class GetRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.CustomChannel>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -1152,7 +1114,6 @@ namespace Google.Apis.AdSense.v1_4
                     CustomChannelId = customChannelId;
                     InitParameters();
                 }
-
 
                 /// <summary>Account to which the ad client belongs.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
@@ -1165,7 +1126,6 @@ namespace Google.Apis.AdSense.v1_4
                 /// <summary>Custom channel to retrieve.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("customChannelId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string CustomChannelId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -1180,7 +1140,6 @@ namespace Google.Apis.AdSense.v1_4
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "accountId",
@@ -1206,13 +1165,11 @@ namespace Google.Apis.AdSense.v1_4
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>List all custom channels in the specified ad client for the specified account.</summary>
             /// <param name="accountId">Account to which the ad client belongs.</param>
-            /// <param name="adClientId">Ad client
-            /// for which to list custom channels.</param>
+            /// <param name="adClientId">Ad client for which to list custom channels.</param>
             public virtual ListRequest List(string accountId, string adClientId)
             {
                 return new ListRequest(service, accountId, adClientId);
@@ -1229,7 +1186,6 @@ namespace Google.Apis.AdSense.v1_4
                     InitParameters();
                 }
 
-
                 /// <summary>Account to which the ad client belongs.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
@@ -1238,16 +1194,18 @@ namespace Google.Apis.AdSense.v1_4
                 [Google.Apis.Util.RequestParameterAttribute("adClientId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AdClientId { get; private set; }
 
-                /// <summary>The maximum number of custom channels to include in the response, used for
-                /// paging.</summary>
+                /// <summary>
+                /// The maximum number of custom channels to include in the response, used for paging.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> MaxResults { get; set; }
 
-                /// <summary>A continuation token, used to page through custom channels. To retrieve the next page, set
-                /// this parameter to the value of "nextPageToken" from the previous response.</summary>
+                /// <summary>
+                /// A continuation token, used to page through custom channels. To retrieve the next page, set this
+                /// parameter to the value of "nextPageToken" from the previous response.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -1262,7 +1220,6 @@ namespace Google.Apis.AdSense.v1_4
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "accountId",
@@ -1296,9 +1253,9 @@ namespace Google.Apis.AdSense.v1_4
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Payments resource.</summary>
         public virtual PaymentsResource Payments { get; }
 
@@ -1314,9 +1271,7 @@ namespace Google.Apis.AdSense.v1_4
             public PaymentsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>List the payments for the specified AdSense account.</summary>
             /// <param name="accountId">Account for which to retrieve the payments.</param>
@@ -1335,11 +1290,9 @@ namespace Google.Apis.AdSense.v1_4
                     InitParameters();
                 }
 
-
                 /// <summary>Account for which to retrieve the payments.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -1354,7 +1307,6 @@ namespace Google.Apis.AdSense.v1_4
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "accountId",
@@ -1364,9 +1316,9 @@ namespace Google.Apis.AdSense.v1_4
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Reports resource.</summary>
         public virtual ReportsResource Reports { get; }
 
@@ -1383,7 +1335,6 @@ namespace Google.Apis.AdSense.v1_4
             {
                 this.service = service;
                 Saved = new SavedResource(service);
-
             }
 
             /// <summary>Gets the Saved resource.</summary>
@@ -1401,22 +1352,21 @@ namespace Google.Apis.AdSense.v1_4
                 public SavedResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
 
-
-                /// <summary>Generate an AdSense report based on the saved report ID sent in the query
-                /// parameters.</summary>
+                /// <summary>
+                /// Generate an AdSense report based on the saved report ID sent in the query parameters.
+                /// </summary>
                 /// <param name="accountId">Account to which the saved reports belong.</param>
-                /// <param name="savedReportId">The
-                /// saved report to retrieve.</param>
+                /// <param name="savedReportId">The saved report to retrieve.</param>
                 public virtual GenerateRequest Generate(string accountId, string savedReportId)
                 {
                     return new GenerateRequest(service, accountId, savedReportId);
                 }
 
-                /// <summary>Generate an AdSense report based on the saved report ID sent in the query
-                /// parameters.</summary>
+                /// <summary>
+                /// Generate an AdSense report based on the saved report ID sent in the query parameters.
+                /// </summary>
                 public class GenerateRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.AdsenseReportsGenerateResponse>
                 {
                     /// <summary>Constructs a new Generate request.</summary>
@@ -1427,7 +1377,6 @@ namespace Google.Apis.AdSense.v1_4
                         InitParameters();
                     }
 
-
                     /// <summary>Account to which the saved reports belong.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -1436,8 +1385,10 @@ namespace Google.Apis.AdSense.v1_4
                     [Google.Apis.Util.RequestParameterAttribute("savedReportId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string SavedReportId { get; private set; }
 
-                    /// <summary>Optional locale to use for translating report output to a local language. Defaults to
-                    /// "en_US" if not specified.</summary>
+                    /// <summary>
+                    /// Optional locale to use for translating report output to a local language. Defaults to "en_US" if
+                    /// not specified.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("locale", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Locale { get; set; }
 
@@ -1448,7 +1399,6 @@ namespace Google.Apis.AdSense.v1_4
                     /// <summary>Index of the first row of report data to return.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> StartIndex { get; set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "generate";
@@ -1463,7 +1413,6 @@ namespace Google.Apis.AdSense.v1_4
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -1505,7 +1454,6 @@ namespace Google.Apis.AdSense.v1_4
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>List all saved reports in the specified AdSense account.</summary>
@@ -1525,21 +1473,22 @@ namespace Google.Apis.AdSense.v1_4
                         InitParameters();
                     }
 
-
                     /// <summary>Account to which the saved reports belong.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
 
-                    /// <summary>The maximum number of saved reports to include in the response, used for
-                    /// paging.</summary>
+                    /// <summary>
+                    /// The maximum number of saved reports to include in the response, used for paging.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> MaxResults { get; set; }
 
-                    /// <summary>A continuation token, used to page through saved reports. To retrieve the next page,
-                    /// set this parameter to the value of "nextPageToken" from the previous response.</summary>
+                    /// <summary>
+                    /// A continuation token, used to page through saved reports. To retrieve the next page, set this
+                    /// parameter to the value of "nextPageToken" from the previous response.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -1554,7 +1503,6 @@ namespace Google.Apis.AdSense.v1_4
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -1580,24 +1528,25 @@ namespace Google.Apis.AdSense.v1_4
                             Pattern = null,
                         });
                     }
-
                 }
             }
 
-            /// <summary>Generate an AdSense report based on the report request sent in the query parameters. Returns
-            /// the result as JSON; to retrieve output in CSV format specify "alt=csv" as a query parameter.</summary>
+            /// <summary>
+            /// Generate an AdSense report based on the report request sent in the query parameters. Returns the result
+            /// as JSON; to retrieve output in CSV format specify "alt=csv" as a query parameter.
+            /// </summary>
             /// <param name="accountId">Account upon which to report.</param>
-            /// <param name="startDate">Start of the date
-            /// range to report on in "YYYY-MM-DD" format, inclusive.</param>
-            /// <param name="endDate">End of the date range to
-            /// report on in "YYYY-MM-DD" format, inclusive.</param>
+            /// <param name="startDate">Start of the date range to report on in "YYYY-MM-DD" format, inclusive.</param>
+            /// <param name="endDate">End of the date range to report on in "YYYY-MM-DD" format, inclusive.</param>
             public virtual GenerateRequest Generate(string accountId, string startDate, string endDate)
             {
                 return new GenerateRequest(service, accountId, startDate, endDate);
             }
 
-            /// <summary>Generate an AdSense report based on the report request sent in the query parameters. Returns
-            /// the result as JSON; to retrieve output in CSV format specify "alt=csv" as a query parameter.</summary>
+            /// <summary>
+            /// Generate an AdSense report based on the report request sent in the query parameters. Returns the result
+            /// as JSON; to retrieve output in CSV format specify "alt=csv" as a query parameter.
+            /// </summary>
             public class GenerateRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.AdsenseReportsGenerateResponse>
             {
                 /// <summary>Constructs a new Generate request.</summary>
@@ -1609,7 +1558,6 @@ namespace Google.Apis.AdSense.v1_4
                     MediaDownloader = new Google.Apis.Download.MediaDownloader(service);
                     InitParameters();
                 }
-
 
                 /// <summary>Account upon which to report.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
@@ -1623,8 +1571,10 @@ namespace Google.Apis.AdSense.v1_4
                 [Google.Apis.Util.RequestParameterAttribute("endDate", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string EndDate { get; private set; }
 
-                /// <summary>Optional currency to use when reporting on monetary metrics. Defaults to the account's
-                /// currency if not set.</summary>
+                /// <summary>
+                /// Optional currency to use when reporting on monetary metrics. Defaults to the account's currency if
+                /// not set.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("currency", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Currency { get; set; }
 
@@ -1636,8 +1586,10 @@ namespace Google.Apis.AdSense.v1_4
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> Filter { get; set; }
 
-                /// <summary>Optional locale to use for translating report output to a local language. Defaults to
-                /// "en_US" if not specified.</summary>
+                /// <summary>
+                /// Optional locale to use for translating report output to a local language. Defaults to "en_US" if not
+                /// specified.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("locale", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Locale { get; set; }
 
@@ -1649,9 +1601,10 @@ namespace Google.Apis.AdSense.v1_4
                 [Google.Apis.Util.RequestParameterAttribute("metric", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> Metric { get; set; }
 
-                /// <summary>The name of a dimension or metric to sort the resulting report on, optionally prefixed with
-                /// "+" to sort ascending or "-" to sort descending. If no prefix is specified, the column is sorted
-                /// ascending.</summary>
+                /// <summary>
+                /// The name of a dimension or metric to sort the resulting report on, optionally prefixed with "+" to
+                /// sort ascending or "-" to sort descending. If no prefix is specified, the column is sorted ascending.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("sort", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> Sort { get; set; }
 
@@ -1659,11 +1612,12 @@ namespace Google.Apis.AdSense.v1_4
                 [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartIndex { get; set; }
 
-                /// <summary>Whether the report should be generated in the AdSense account's local timezone. If false
-                /// default PST/PDT timezone will be used.</summary>
+                /// <summary>
+                /// Whether the report should be generated in the AdSense account's local timezone. If false default
+                /// PST/PDT timezone will be used.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("useTimezoneReporting", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> UseTimezoneReporting { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "generate";
@@ -1678,7 +1632,6 @@ namespace Google.Apis.AdSense.v1_4
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "accountId",
@@ -1782,7 +1735,10 @@ namespace Google.Apis.AdSense.v1_4
 
                 /// <summary>
                 /// <para>Synchronously download the media into the given stream.</para>
-                /// <para>Warning: This method hides download errors; use <see cref="DownloadWithStatus"/> instead.</para>
+                /// <para>
+                /// Warning: This method hides download errors; use <see cref="DownloadWithStatus(System.IO.Stream)"/>
+                /// instead.
+                /// </para>
                 /// </summary>
                 public virtual void Download(System.IO.Stream stream)
                 {
@@ -1790,7 +1746,9 @@ namespace Google.Apis.AdSense.v1_4
                 }
 
                 /// <summary>Synchronously download the media into the given stream.</summary>
-                /// <returns>The final status of the download; including whether the download succeeded or failed.</returns>
+                /// <returns>
+                /// The final status of the download; including whether the download succeeded or failed.
+                /// </returns>
                 public virtual Google.Apis.Download.IDownloadProgress DownloadWithStatus(System.IO.Stream stream)
                 {
                     return MediaDownloader.Download(this.GenerateRequestUri(), stream);
@@ -1828,9 +1786,9 @@ namespace Google.Apis.AdSense.v1_4
                     return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
                 }
                 #endif
-
             }
         }
+
         /// <summary>Gets the Savedadstyles resource.</summary>
         public virtual SavedadstylesResource Savedadstyles { get; }
 
@@ -1846,14 +1804,11 @@ namespace Google.Apis.AdSense.v1_4
             public SavedadstylesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>List a specific saved ad style for the specified account.</summary>
             /// <param name="accountId">Account for which to get the saved ad style.</param>
-            /// <param
-            /// name="savedAdStyleId">Saved ad style to retrieve.</param>
+            /// <param name="savedAdStyleId">Saved ad style to retrieve.</param>
             public virtual GetRequest Get(string accountId, string savedAdStyleId)
             {
                 return new GetRequest(service, accountId, savedAdStyleId);
@@ -1870,7 +1825,6 @@ namespace Google.Apis.AdSense.v1_4
                     InitParameters();
                 }
 
-
                 /// <summary>Account for which to get the saved ad style.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
@@ -1878,7 +1832,6 @@ namespace Google.Apis.AdSense.v1_4
                 /// <summary>Saved ad style to retrieve.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("savedAdStyleId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SavedAdStyleId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -1893,7 +1846,6 @@ namespace Google.Apis.AdSense.v1_4
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "accountId",
@@ -1911,7 +1863,6 @@ namespace Google.Apis.AdSense.v1_4
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>List all saved ad styles in the specified account.</summary>
@@ -1931,21 +1882,22 @@ namespace Google.Apis.AdSense.v1_4
                     InitParameters();
                 }
 
-
                 /// <summary>Account for which to list saved ad styles.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
 
-                /// <summary>The maximum number of saved ad styles to include in the response, used for
-                /// paging.</summary>
+                /// <summary>
+                /// The maximum number of saved ad styles to include in the response, used for paging.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> MaxResults { get; set; }
 
-                /// <summary>A continuation token, used to page through saved ad styles. To retrieve the next page, set
-                /// this parameter to the value of "nextPageToken" from the previous response.</summary>
+                /// <summary>
+                /// A continuation token, used to page through saved ad styles. To retrieve the next page, set this
+                /// parameter to the value of "nextPageToken" from the previous response.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -1960,7 +1912,6 @@ namespace Google.Apis.AdSense.v1_4
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "accountId",
@@ -1986,9 +1937,9 @@ namespace Google.Apis.AdSense.v1_4
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Urlchannels resource.</summary>
         public virtual UrlchannelsResource Urlchannels { get; }
 
@@ -2004,14 +1955,11 @@ namespace Google.Apis.AdSense.v1_4
             public UrlchannelsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>List all URL channels in the specified ad client for the specified account.</summary>
             /// <param name="accountId">Account to which the ad client belongs.</param>
-            /// <param name="adClientId">Ad client
-            /// for which to list URL channels.</param>
+            /// <param name="adClientId">Ad client for which to list URL channels.</param>
             public virtual ListRequest List(string accountId, string adClientId)
             {
                 return new ListRequest(service, accountId, adClientId);
@@ -2028,7 +1976,6 @@ namespace Google.Apis.AdSense.v1_4
                     InitParameters();
                 }
 
-
                 /// <summary>Account to which the ad client belongs.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
@@ -2041,11 +1988,12 @@ namespace Google.Apis.AdSense.v1_4
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> MaxResults { get; set; }
 
-                /// <summary>A continuation token, used to page through URL channels. To retrieve the next page, set
-                /// this parameter to the value of "nextPageToken" from the previous response.</summary>
+                /// <summary>
+                /// A continuation token, used to page through URL channels. To retrieve the next page, set this
+                /// parameter to the value of "nextPageToken" from the previous response.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -2060,7 +2008,6 @@ namespace Google.Apis.AdSense.v1_4
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "accountId",
@@ -2094,7 +2041,6 @@ namespace Google.Apis.AdSense.v1_4
                         Pattern = null,
                     });
                 }
-
             }
         }
 
@@ -2115,7 +2061,6 @@ namespace Google.Apis.AdSense.v1_4
                 InitParameters();
             }
 
-
             /// <summary>Account to get information about.</summary>
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AccountId { get; private set; }
@@ -2123,7 +2068,6 @@ namespace Google.Apis.AdSense.v1_4
             /// <summary>Whether the tree of sub accounts should be returned.</summary>
             [Google.Apis.Util.RequestParameterAttribute("tree", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Tree { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -2138,7 +2082,6 @@ namespace Google.Apis.AdSense.v1_4
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "accountId",
@@ -2156,7 +2099,6 @@ namespace Google.Apis.AdSense.v1_4
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>List all accounts available to this AdSense account.</summary>
@@ -2174,16 +2116,16 @@ namespace Google.Apis.AdSense.v1_4
                 InitParameters();
             }
 
-
             /// <summary>The maximum number of accounts to include in the response, used for paging.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
-            /// <summary>A continuation token, used to page through accounts. To retrieve the next page, set this
-            /// parameter to the value of "nextPageToken" from the previous response.</summary>
+            /// <summary>
+            /// A continuation token, used to page through accounts. To retrieve the next page, set this parameter to
+            /// the value of "nextPageToken" from the previous response.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -2198,7 +2140,6 @@ namespace Google.Apis.AdSense.v1_4
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
                 {
                     Name = "maxResults",
@@ -2216,7 +2157,6 @@ namespace Google.Apis.AdSense.v1_4
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -2232,9 +2172,7 @@ namespace Google.Apis.AdSense.v1_4
         public AdclientsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>List all ad clients in this AdSense account.</summary>
         public virtual ListRequest List()
@@ -2251,16 +2189,16 @@ namespace Google.Apis.AdSense.v1_4
                 InitParameters();
             }
 
-
             /// <summary>The maximum number of ad clients to include in the response, used for paging.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
-            /// <summary>A continuation token, used to page through ad clients. To retrieve the next page, set this
-            /// parameter to the value of "nextPageToken" from the previous response.</summary>
+            /// <summary>
+            /// A continuation token, used to page through ad clients. To retrieve the next page, set this parameter to
+            /// the value of "nextPageToken" from the previous response.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -2275,7 +2213,6 @@ namespace Google.Apis.AdSense.v1_4
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
                 {
                     Name = "maxResults",
@@ -2293,7 +2230,6 @@ namespace Google.Apis.AdSense.v1_4
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -2310,7 +2246,6 @@ namespace Google.Apis.AdSense.v1_4
         {
             this.service = service;
             Customchannels = new CustomchannelsResource(service);
-
         }
 
         /// <summary>Gets the Customchannels resource.</summary>
@@ -2328,14 +2263,11 @@ namespace Google.Apis.AdSense.v1_4
             public CustomchannelsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>List all custom channels which the specified ad unit belongs to.</summary>
             /// <param name="adClientId">Ad client which contains the ad unit.</param>
-            /// <param name="adUnitId">Ad unit for
-            /// which to list custom channels.</param>
+            /// <param name="adUnitId">Ad unit for which to list custom channels.</param>
             public virtual ListRequest List(string adClientId, string adUnitId)
             {
                 return new ListRequest(service, adClientId, adUnitId);
@@ -2352,7 +2284,6 @@ namespace Google.Apis.AdSense.v1_4
                     InitParameters();
                 }
 
-
                 /// <summary>Ad client which contains the ad unit.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("adClientId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AdClientId { get; private set; }
@@ -2361,16 +2292,18 @@ namespace Google.Apis.AdSense.v1_4
                 [Google.Apis.Util.RequestParameterAttribute("adUnitId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AdUnitId { get; private set; }
 
-                /// <summary>The maximum number of custom channels to include in the response, used for
-                /// paging.</summary>
+                /// <summary>
+                /// The maximum number of custom channels to include in the response, used for paging.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> MaxResults { get; set; }
 
-                /// <summary>A continuation token, used to page through custom channels. To retrieve the next page, set
-                /// this parameter to the value of "nextPageToken" from the previous response.</summary>
+                /// <summary>
+                /// A continuation token, used to page through custom channels. To retrieve the next page, set this
+                /// parameter to the value of "nextPageToken" from the previous response.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -2385,7 +2318,6 @@ namespace Google.Apis.AdSense.v1_4
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("adClientId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "adClientId",
@@ -2419,14 +2351,12 @@ namespace Google.Apis.AdSense.v1_4
                         Pattern = null,
                     });
                 }
-
             }
         }
 
         /// <summary>Gets the specified ad unit in the specified ad client.</summary>
         /// <param name="adClientId">Ad client for which to get the ad unit.</param>
-        /// <param name="adUnitId">Ad unit to
-        /// retrieve.</param>
+        /// <param name="adUnitId">Ad unit to retrieve.</param>
         public virtual GetRequest Get(string adClientId, string adUnitId)
         {
             return new GetRequest(service, adClientId, adUnitId);
@@ -2443,7 +2373,6 @@ namespace Google.Apis.AdSense.v1_4
                 InitParameters();
             }
 
-
             /// <summary>Ad client for which to get the ad unit.</summary>
             [Google.Apis.Util.RequestParameterAttribute("adClientId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AdClientId { get; private set; }
@@ -2451,7 +2380,6 @@ namespace Google.Apis.AdSense.v1_4
             /// <summary>Ad unit to retrieve.</summary>
             [Google.Apis.Util.RequestParameterAttribute("adUnitId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AdUnitId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -2466,7 +2394,6 @@ namespace Google.Apis.AdSense.v1_4
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("adClientId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "adClientId",
@@ -2484,13 +2411,11 @@ namespace Google.Apis.AdSense.v1_4
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Get ad code for the specified ad unit.</summary>
         /// <param name="adClientId">Ad client with contains the ad unit.</param>
-        /// <param name="adUnitId">Ad unit to get
-        /// the code for.</param>
+        /// <param name="adUnitId">Ad unit to get the code for.</param>
         public virtual GetAdCodeRequest GetAdCode(string adClientId, string adUnitId)
         {
             return new GetAdCodeRequest(service, adClientId, adUnitId);
@@ -2507,7 +2432,6 @@ namespace Google.Apis.AdSense.v1_4
                 InitParameters();
             }
 
-
             /// <summary>Ad client with contains the ad unit.</summary>
             [Google.Apis.Util.RequestParameterAttribute("adClientId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AdClientId { get; private set; }
@@ -2515,7 +2439,6 @@ namespace Google.Apis.AdSense.v1_4
             /// <summary>Ad unit to get the code for.</summary>
             [Google.Apis.Util.RequestParameterAttribute("adUnitId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AdUnitId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getAdCode";
@@ -2530,7 +2453,6 @@ namespace Google.Apis.AdSense.v1_4
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("adClientId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "adClientId",
@@ -2548,7 +2470,6 @@ namespace Google.Apis.AdSense.v1_4
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>List all ad units in the specified ad client for this AdSense account.</summary>
@@ -2568,7 +2489,6 @@ namespace Google.Apis.AdSense.v1_4
                 InitParameters();
             }
 
-
             /// <summary>Ad client for which to list ad units.</summary>
             [Google.Apis.Util.RequestParameterAttribute("adClientId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AdClientId { get; private set; }
@@ -2581,11 +2501,12 @@ namespace Google.Apis.AdSense.v1_4
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
-            /// <summary>A continuation token, used to page through ad units. To retrieve the next page, set this
-            /// parameter to the value of "nextPageToken" from the previous response.</summary>
+            /// <summary>
+            /// A continuation token, used to page through ad units. To retrieve the next page, set this parameter to
+            /// the value of "nextPageToken" from the previous response.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -2600,7 +2521,6 @@ namespace Google.Apis.AdSense.v1_4
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("adClientId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "adClientId",
@@ -2634,7 +2554,6 @@ namespace Google.Apis.AdSense.v1_4
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -2650,9 +2569,7 @@ namespace Google.Apis.AdSense.v1_4
         public AlertsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Dismiss (delete) the specified alert from the publisher's AdSense account.</summary>
         /// <param name="alertId">Alert to delete.</param>
@@ -2671,11 +2588,9 @@ namespace Google.Apis.AdSense.v1_4
                 InitParameters();
             }
 
-
             /// <summary>Alert to delete.</summary>
             [Google.Apis.Util.RequestParameterAttribute("alertId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AlertId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
@@ -2690,7 +2605,6 @@ namespace Google.Apis.AdSense.v1_4
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("alertId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "alertId",
@@ -2700,7 +2614,6 @@ namespace Google.Apis.AdSense.v1_4
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>List the alerts for this AdSense account.</summary>
@@ -2718,13 +2631,12 @@ namespace Google.Apis.AdSense.v1_4
                 InitParameters();
             }
 
-
-            /// <summary>The locale to use for translating alert messages. The account locale will be used if this is
-            /// not supplied. The AdSense default (English) will be used if the supplied locale is invalid or
-            /// unsupported.</summary>
+            /// <summary>
+            /// The locale to use for translating alert messages. The account locale will be used if this is not
+            /// supplied. The AdSense default (English) will be used if the supplied locale is invalid or unsupported.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("locale", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Locale { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -2739,7 +2651,6 @@ namespace Google.Apis.AdSense.v1_4
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("locale", new Google.Apis.Discovery.Parameter
                 {
                     Name = "locale",
@@ -2749,7 +2660,6 @@ namespace Google.Apis.AdSense.v1_4
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -2766,7 +2676,6 @@ namespace Google.Apis.AdSense.v1_4
         {
             this.service = service;
             Adunits = new AdunitsResource(service);
-
         }
 
         /// <summary>Gets the Adunits resource.</summary>
@@ -2784,14 +2693,11 @@ namespace Google.Apis.AdSense.v1_4
             public AdunitsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>List all ad units in the specified custom channel.</summary>
             /// <param name="adClientId">Ad client which contains the custom channel.</param>
-            /// <param
-            /// name="customChannelId">Custom channel for which to list ad units.</param>
+            /// <param name="customChannelId">Custom channel for which to list ad units.</param>
             public virtual ListRequest List(string adClientId, string customChannelId)
             {
                 return new ListRequest(service, adClientId, customChannelId);
@@ -2807,7 +2713,6 @@ namespace Google.Apis.AdSense.v1_4
                     CustomChannelId = customChannelId;
                     InitParameters();
                 }
-
 
                 /// <summary>Ad client which contains the custom channel.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("adClientId", Google.Apis.Util.RequestParameterType.Path)]
@@ -2825,11 +2730,12 @@ namespace Google.Apis.AdSense.v1_4
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> MaxResults { get; set; }
 
-                /// <summary>A continuation token, used to page through ad units. To retrieve the next page, set this
-                /// parameter to the value of "nextPageToken" from the previous response.</summary>
+                /// <summary>
+                /// A continuation token, used to page through ad units. To retrieve the next page, set this parameter
+                /// to the value of "nextPageToken" from the previous response.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -2844,7 +2750,6 @@ namespace Google.Apis.AdSense.v1_4
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("adClientId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "adClientId",
@@ -2886,14 +2791,12 @@ namespace Google.Apis.AdSense.v1_4
                         Pattern = null,
                     });
                 }
-
             }
         }
 
         /// <summary>Get the specified custom channel from the specified ad client.</summary>
         /// <param name="adClientId">Ad client which contains the custom channel.</param>
-        /// <param
-        /// name="customChannelId">Custom channel to retrieve.</param>
+        /// <param name="customChannelId">Custom channel to retrieve.</param>
         public virtual GetRequest Get(string adClientId, string customChannelId)
         {
             return new GetRequest(service, adClientId, customChannelId);
@@ -2910,7 +2813,6 @@ namespace Google.Apis.AdSense.v1_4
                 InitParameters();
             }
 
-
             /// <summary>Ad client which contains the custom channel.</summary>
             [Google.Apis.Util.RequestParameterAttribute("adClientId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AdClientId { get; private set; }
@@ -2918,7 +2820,6 @@ namespace Google.Apis.AdSense.v1_4
             /// <summary>Custom channel to retrieve.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customChannelId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomChannelId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -2933,7 +2834,6 @@ namespace Google.Apis.AdSense.v1_4
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("adClientId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "adClientId",
@@ -2951,7 +2851,6 @@ namespace Google.Apis.AdSense.v1_4
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>List all custom channels in the specified ad client for this AdSense account.</summary>
@@ -2971,7 +2870,6 @@ namespace Google.Apis.AdSense.v1_4
                 InitParameters();
             }
 
-
             /// <summary>Ad client for which to list custom channels.</summary>
             [Google.Apis.Util.RequestParameterAttribute("adClientId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AdClientId { get; private set; }
@@ -2980,11 +2878,12 @@ namespace Google.Apis.AdSense.v1_4
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
-            /// <summary>A continuation token, used to page through custom channels. To retrieve the next page, set this
-            /// parameter to the value of "nextPageToken" from the previous response.</summary>
+            /// <summary>
+            /// A continuation token, used to page through custom channels. To retrieve the next page, set this
+            /// parameter to the value of "nextPageToken" from the previous response.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -2999,7 +2898,6 @@ namespace Google.Apis.AdSense.v1_4
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("adClientId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "adClientId",
@@ -3025,7 +2923,6 @@ namespace Google.Apis.AdSense.v1_4
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -3043,7 +2940,6 @@ namespace Google.Apis.AdSense.v1_4
             this.service = service;
             Dimensions = new DimensionsResource(service);
             Metrics = new MetricsResource(service);
-
         }
 
         /// <summary>Gets the Dimensions resource.</summary>
@@ -3061,9 +2957,7 @@ namespace Google.Apis.AdSense.v1_4
             public DimensionsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>List the metadata for the dimensions available to this AdSense account.</summary>
             public virtual ListRequest List()
@@ -3080,8 +2974,6 @@ namespace Google.Apis.AdSense.v1_4
                     InitParameters();
                 }
 
-
-
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
@@ -3095,11 +2987,10 @@ namespace Google.Apis.AdSense.v1_4
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                 }
-
             }
         }
+
         /// <summary>Gets the Metrics resource.</summary>
         public virtual MetricsResource Metrics { get; }
 
@@ -3115,9 +3006,7 @@ namespace Google.Apis.AdSense.v1_4
             public MetricsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>List the metadata for the metrics available to this AdSense account.</summary>
             public virtual ListRequest List()
@@ -3134,8 +3023,6 @@ namespace Google.Apis.AdSense.v1_4
                     InitParameters();
                 }
 
-
-
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
@@ -3149,9 +3036,7 @@ namespace Google.Apis.AdSense.v1_4
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                 }
-
             }
         }
     }
@@ -3168,9 +3053,7 @@ namespace Google.Apis.AdSense.v1_4
         public PaymentsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>List the payments for this AdSense account.</summary>
         public virtual ListRequest List()
@@ -3187,8 +3070,6 @@ namespace Google.Apis.AdSense.v1_4
                 InitParameters();
             }
 
-
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -3202,9 +3083,7 @@ namespace Google.Apis.AdSense.v1_4
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
     }
 
@@ -3221,7 +3100,6 @@ namespace Google.Apis.AdSense.v1_4
         {
             this.service = service;
             Saved = new SavedResource(service);
-
         }
 
         /// <summary>Gets the Saved resource.</summary>
@@ -3239,9 +3117,7 @@ namespace Google.Apis.AdSense.v1_4
             public SavedResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Generate an AdSense report based on the saved report ID sent in the query parameters.</summary>
             /// <param name="savedReportId">The saved report to retrieve.</param>
@@ -3260,13 +3136,14 @@ namespace Google.Apis.AdSense.v1_4
                     InitParameters();
                 }
 
-
                 /// <summary>The saved report to retrieve.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("savedReportId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SavedReportId { get; private set; }
 
-                /// <summary>Optional locale to use for translating report output to a local language. Defaults to
-                /// "en_US" if not specified.</summary>
+                /// <summary>
+                /// Optional locale to use for translating report output to a local language. Defaults to "en_US" if not
+                /// specified.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("locale", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Locale { get; set; }
 
@@ -3277,7 +3154,6 @@ namespace Google.Apis.AdSense.v1_4
                 /// <summary>Index of the first row of report data to return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartIndex { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "generate";
@@ -3292,7 +3168,6 @@ namespace Google.Apis.AdSense.v1_4
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("savedReportId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "savedReportId",
@@ -3326,7 +3201,6 @@ namespace Google.Apis.AdSense.v1_4
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>List all saved reports in this AdSense account.</summary>
@@ -3344,16 +3218,16 @@ namespace Google.Apis.AdSense.v1_4
                     InitParameters();
                 }
 
-
                 /// <summary>The maximum number of saved reports to include in the response, used for paging.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> MaxResults { get; set; }
 
-                /// <summary>A continuation token, used to page through saved reports. To retrieve the next page, set
-                /// this parameter to the value of "nextPageToken" from the previous response.</summary>
+                /// <summary>
+                /// A continuation token, used to page through saved reports. To retrieve the next page, set this
+                /// parameter to the value of "nextPageToken" from the previous response.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -3368,7 +3242,6 @@ namespace Google.Apis.AdSense.v1_4
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
                     {
                         Name = "maxResults",
@@ -3386,22 +3259,24 @@ namespace Google.Apis.AdSense.v1_4
                         Pattern = null,
                     });
                 }
-
             }
         }
 
-        /// <summary>Generate an AdSense report based on the report request sent in the query parameters. Returns the
-        /// result as JSON; to retrieve output in CSV format specify "alt=csv" as a query parameter.</summary>
+        /// <summary>
+        /// Generate an AdSense report based on the report request sent in the query parameters. Returns the result as
+        /// JSON; to retrieve output in CSV format specify "alt=csv" as a query parameter.
+        /// </summary>
         /// <param name="startDate">Start of the date range to report on in "YYYY-MM-DD" format, inclusive.</param>
-        ///
         /// <param name="endDate">End of the date range to report on in "YYYY-MM-DD" format, inclusive.</param>
         public virtual GenerateRequest Generate(string startDate, string endDate)
         {
             return new GenerateRequest(service, startDate, endDate);
         }
 
-        /// <summary>Generate an AdSense report based on the report request sent in the query parameters. Returns the
-        /// result as JSON; to retrieve output in CSV format specify "alt=csv" as a query parameter.</summary>
+        /// <summary>
+        /// Generate an AdSense report based on the report request sent in the query parameters. Returns the result as
+        /// JSON; to retrieve output in CSV format specify "alt=csv" as a query parameter.
+        /// </summary>
         public class GenerateRequest : AdSenseBaseServiceRequest<Google.Apis.AdSense.v1_4.Data.AdsenseReportsGenerateResponse>
         {
             /// <summary>Constructs a new Generate request.</summary>
@@ -3412,7 +3287,6 @@ namespace Google.Apis.AdSense.v1_4
                 MediaDownloader = new Google.Apis.Download.MediaDownloader(service);
                 InitParameters();
             }
-
 
             /// <summary>Start of the date range to report on in "YYYY-MM-DD" format, inclusive.</summary>
             [Google.Apis.Util.RequestParameterAttribute("startDate", Google.Apis.Util.RequestParameterType.Query)]
@@ -3426,8 +3300,10 @@ namespace Google.Apis.AdSense.v1_4
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> AccountId { get; set; }
 
-            /// <summary>Optional currency to use when reporting on monetary metrics. Defaults to the account's currency
-            /// if not set.</summary>
+            /// <summary>
+            /// Optional currency to use when reporting on monetary metrics. Defaults to the account's currency if not
+            /// set.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("currency", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Currency { get; set; }
 
@@ -3439,8 +3315,10 @@ namespace Google.Apis.AdSense.v1_4
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Filter { get; set; }
 
-            /// <summary>Optional locale to use for translating report output to a local language. Defaults to "en_US"
-            /// if not specified.</summary>
+            /// <summary>
+            /// Optional locale to use for translating report output to a local language. Defaults to "en_US" if not
+            /// specified.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("locale", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Locale { get; set; }
 
@@ -3452,9 +3330,10 @@ namespace Google.Apis.AdSense.v1_4
             [Google.Apis.Util.RequestParameterAttribute("metric", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Metric { get; set; }
 
-            /// <summary>The name of a dimension or metric to sort the resulting report on, optionally prefixed with "+"
-            /// to sort ascending or "-" to sort descending. If no prefix is specified, the column is sorted
-            /// ascending.</summary>
+            /// <summary>
+            /// The name of a dimension or metric to sort the resulting report on, optionally prefixed with "+" to sort
+            /// ascending or "-" to sort descending. If no prefix is specified, the column is sorted ascending.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("sort", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Sort { get; set; }
 
@@ -3462,11 +3341,12 @@ namespace Google.Apis.AdSense.v1_4
             [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> StartIndex { get; set; }
 
-            /// <summary>Whether the report should be generated in the AdSense account's local timezone. If false
-            /// default PST/PDT timezone will be used.</summary>
+            /// <summary>
+            /// Whether the report should be generated in the AdSense account's local timezone. If false default PST/PDT
+            /// timezone will be used.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("useTimezoneReporting", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UseTimezoneReporting { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "generate";
@@ -3481,7 +3361,6 @@ namespace Google.Apis.AdSense.v1_4
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("startDate", new Google.Apis.Discovery.Parameter
                 {
                     Name = "startDate",
@@ -3585,7 +3464,10 @@ namespace Google.Apis.AdSense.v1_4
 
             /// <summary>
             /// <para>Synchronously download the media into the given stream.</para>
-            /// <para>Warning: This method hides download errors; use <see cref="DownloadWithStatus"/> instead.</para>
+            /// <para>
+            /// Warning: This method hides download errors; use <see cref="DownloadWithStatus(System.IO.Stream)"/>
+            /// instead.
+            /// </para>
             /// </summary>
             public virtual void Download(System.IO.Stream stream)
             {
@@ -3631,7 +3513,6 @@ namespace Google.Apis.AdSense.v1_4
                 return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
             }
             #endif
-
         }
     }
 
@@ -3647,9 +3528,7 @@ namespace Google.Apis.AdSense.v1_4
         public SavedadstylesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Get a specific saved ad style from the user's account.</summary>
         /// <param name="savedAdStyleId">Saved ad style to retrieve.</param>
@@ -3668,11 +3547,9 @@ namespace Google.Apis.AdSense.v1_4
                 InitParameters();
             }
 
-
             /// <summary>Saved ad style to retrieve.</summary>
             [Google.Apis.Util.RequestParameterAttribute("savedAdStyleId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SavedAdStyleId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -3687,7 +3564,6 @@ namespace Google.Apis.AdSense.v1_4
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("savedAdStyleId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "savedAdStyleId",
@@ -3697,7 +3573,6 @@ namespace Google.Apis.AdSense.v1_4
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>List all saved ad styles in the user's account.</summary>
@@ -3715,16 +3590,16 @@ namespace Google.Apis.AdSense.v1_4
                 InitParameters();
             }
 
-
             /// <summary>The maximum number of saved ad styles to include in the response, used for paging.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
-            /// <summary>A continuation token, used to page through saved ad styles. To retrieve the next page, set this
-            /// parameter to the value of "nextPageToken" from the previous response.</summary>
+            /// <summary>
+            /// A continuation token, used to page through saved ad styles. To retrieve the next page, set this
+            /// parameter to the value of "nextPageToken" from the previous response.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -3739,7 +3614,6 @@ namespace Google.Apis.AdSense.v1_4
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
                 {
                     Name = "maxResults",
@@ -3757,7 +3631,6 @@ namespace Google.Apis.AdSense.v1_4
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -3773,9 +3646,7 @@ namespace Google.Apis.AdSense.v1_4
         public UrlchannelsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>List all URL channels in the specified ad client for this AdSense account.</summary>
         /// <param name="adClientId">Ad client for which to list URL channels.</param>
@@ -3794,7 +3665,6 @@ namespace Google.Apis.AdSense.v1_4
                 InitParameters();
             }
 
-
             /// <summary>Ad client for which to list URL channels.</summary>
             [Google.Apis.Util.RequestParameterAttribute("adClientId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AdClientId { get; private set; }
@@ -3803,11 +3673,12 @@ namespace Google.Apis.AdSense.v1_4
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
-            /// <summary>A continuation token, used to page through URL channels. To retrieve the next page, set this
-            /// parameter to the value of "nextPageToken" from the previous response.</summary>
+            /// <summary>
+            /// A continuation token, used to page through URL channels. To retrieve the next page, set this parameter
+            /// to the value of "nextPageToken" from the previous response.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -3822,7 +3693,6 @@ namespace Google.Apis.AdSense.v1_4
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("adClientId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "adClientId",
@@ -3848,14 +3718,11 @@ namespace Google.Apis.AdSense.v1_4
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.AdSense.v1_4.Data
-{    
-
+{
     public class Account : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("creation_time")]
@@ -3887,7 +3754,7 @@ namespace Google.Apis.AdSense.v1_4.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class Accounts : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3903,12 +3770,13 @@ namespace Google.Apis.AdSense.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Continuation token used to page through accounts. To retrieve the next page of results, set the
-        /// next request's "pageToken" value to this.</summary>
+        /// <summary>
+        /// Continuation token used to page through accounts. To retrieve the next page of results, set the next
+        /// request's "pageToken" value to this.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
-
-    }    
+    }
 
     public class AdClient : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3934,7 +3802,7 @@ namespace Google.Apis.AdSense.v1_4.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class AdClients : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3950,12 +3818,13 @@ namespace Google.Apis.AdSense.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Continuation token used to page through ad clients. To retrieve the next page of results, set the
-        /// next request's "pageToken" value to this.</summary>
+        /// <summary>
+        /// Continuation token used to page through ad clients. To retrieve the next page of results, set the next
+        /// request's "pageToken" value to this.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
-
-    }    
+    }
 
     public class AdCode : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3977,12 +3846,14 @@ namespace Google.Apis.AdSense.v1_4.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class AdStyle : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The colors which are included in the style. These are represented as six hexadecimal characters,
-        /// similar to HTML color codes, but without the leading hash.</summary>
+        /// <summary>
+        /// The colors which are included in the style. These are represented as six hexadecimal characters, similar to
+        /// HTML color codes, but without the leading hash.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colors")]
         public virtual ColorsData Colors { get; set; }
 
@@ -4000,10 +3871,11 @@ namespace Google.Apis.AdSense.v1_4.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
-        /// <summary>The colors which are included in the style. These are represented as six hexadecimal characters,
-        /// similar to HTML color codes, but without the leading hash.</summary>
+        /// <summary>
+        /// The colors which are included in the style. These are represented as six hexadecimal characters, similar to
+        /// HTML color codes, but without the leading hash.
+        /// </summary>
         public class ColorsData
         {
             /// <summary>The color of the ad background.</summary>
@@ -4025,8 +3897,7 @@ namespace Google.Apis.AdSense.v1_4.Data
             /// <summary>The color of the ad url.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("url")]
             public virtual string Url { get; set; }
-
-        }    
+        }
 
         /// <summary>The font which is included in the style.</summary>
         public class FontData
@@ -4038,9 +3909,8 @@ namespace Google.Apis.AdSense.v1_4.Data
             /// <summary>The size of the font.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("size")]
             public virtual string Size { get; set; }
-
         }
-    }    
+    }
 
     public class AdUnit : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4048,8 +3918,9 @@ namespace Google.Apis.AdSense.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
 
-        /// <summary>Settings specific to content ads (AFC) and highend mobile content ads (AFMC -
-        /// deprecated).</summary>
+        /// <summary>
+        /// Settings specific to content ads (AFC) and highend mobile content ads (AFMC - deprecated).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentAdsSettings")]
         public virtual ContentAdsSettingsData ContentAdsSettings { get; set; }
 
@@ -4061,8 +3932,10 @@ namespace Google.Apis.AdSense.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("feedAdsSettings")]
         public virtual FeedAdsSettingsData FeedAdsSettings { get; set; }
 
-        /// <summary>Unique identifier of this ad unit. This should be considered an opaque identifier; it is not safe
-        /// to rely on it being in any particular format.</summary>
+        /// <summary>
+        /// Unique identifier of this ad unit. This should be considered an opaque identifier; it is not safe to rely on
+        /// it being in any particular format.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -4082,21 +3955,21 @@ namespace Google.Apis.AdSense.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("savedStyleId")]
         public virtual string SavedStyleId { get; set; }
 
-        /// <summary>Status of this ad unit. Possible values are: NEW: Indicates that the ad unit was created within the
-        /// last seven days and does not yet have any activity associated with it.
-        ///
-        /// ACTIVE: Indicates that there has been activity on this ad unit in the last seven days.
-        ///
-        /// INACTIVE: Indicates that there has been no activity on this ad unit in the last seven days.</summary>
+        /// <summary>
+        /// Status of this ad unit. Possible values are: NEW: Indicates that the ad unit was created within the last
+        /// seven days and does not yet have any activity associated with it.  ACTIVE: Indicates that there has been
+        /// activity on this ad unit in the last seven days.  INACTIVE: Indicates that there has been no activity on
+        /// this ad unit in the last seven days.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
-        /// <summary>Settings specific to content ads (AFC) and highend mobile content ads (AFMC -
-        /// deprecated).</summary>
+        /// <summary>
+        /// Settings specific to content ads (AFC) and highend mobile content ads (AFMC - deprecated).
+        /// </summary>
         public class ContentAdsSettingsData
         {
             /// <summary>The backup option to be used in instances where no ad is available.</summary>
@@ -4110,8 +3983,6 @@ namespace Google.Apis.AdSense.v1_4.Data
             /// <summary>Type of this ad unit.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
             public virtual string Type { get; set; }
-
-            
 
             /// <summary>The backup option to be used in instances where no ad is available.</summary>
             public class BackupOptionData
@@ -4127,9 +3998,8 @@ namespace Google.Apis.AdSense.v1_4.Data
                 /// <summary>URL to use when type is set to URL.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("url")]
                 public virtual string Url { get; set; }
-
             }
-        }    
+        }
 
         /// <summary>Settings specific to feed ads (AFF) - deprecated.</summary>
         public class FeedAdsSettingsData
@@ -4149,8 +4019,7 @@ namespace Google.Apis.AdSense.v1_4.Data
             /// <summary>The type of ads which should appear.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
             public virtual string Type { get; set; }
-
-        }    
+        }
 
         /// <summary>Settings specific to WAP mobile content ads (AFMC) - deprecated.</summary>
         public class MobileContentAdsSettingsData
@@ -4170,9 +4039,8 @@ namespace Google.Apis.AdSense.v1_4.Data
             /// <summary>Type of this ad unit.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
             public virtual string Type { get; set; }
-
         }
-    }    
+    }
 
     public class AdUnits : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4188,17 +4056,20 @@ namespace Google.Apis.AdSense.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Continuation token used to page through ad units. To retrieve the next page of results, set the
-        /// next request's "pageToken" value to this.</summary>
+        /// <summary>
+        /// Continuation token used to page through ad units. To retrieve the next page of results, set the next
+        /// request's "pageToken" value to this.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
-
-    }    
+    }
 
     public class AdsenseReportsGenerateResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The averages of the report. This is the same length as any other row in the report; cells
-        /// corresponding to dimension columns are empty.</summary>
+        /// <summary>
+        /// The averages of the report. This is the same length as any other row in the report; cells corresponding to
+        /// dimension columns are empty.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averages")]
         public virtual System.Collections.Generic.IList<string> Averages { get; set; }
 
@@ -4206,8 +4077,10 @@ namespace Google.Apis.AdSense.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
         public virtual string EndDate { get; set; }
 
-        /// <summary>The header information of the columns requested in the report. This is a list of headers; one for
-        /// each dimension in the request, followed by one for each metric in the request.</summary>
+        /// <summary>
+        /// The header information of the columns requested in the report. This is a list of headers; one for each
+        /// dimension in the request, followed by one for each metric in the request.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IList<HeadersData> Headers { get; set; }
 
@@ -4215,9 +4088,11 @@ namespace Google.Apis.AdSense.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The output rows of the report. Each row is a list of cells; one for each dimension in the request,
-        /// followed by one for each metric in the request. The dimension cells contain strings, and the metric cells
-        /// contain numbers.</summary>
+        /// <summary>
+        /// The output rows of the report. Each row is a list of cells; one for each dimension in the request, followed
+        /// by one for each metric in the request. The dimension cells contain strings, and the metric cells contain
+        /// numbers.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IList<string>> Rows { get; set; }
 
@@ -4225,13 +4100,17 @@ namespace Google.Apis.AdSense.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual string StartDate { get; set; }
 
-        /// <summary>The total number of rows matched by the report request. Fewer rows may be returned in the response
-        /// due to being limited by the row count requested or the report row limit.</summary>
+        /// <summary>
+        /// The total number of rows matched by the report request. Fewer rows may be returned in the response due to
+        /// being limited by the row count requested or the report row limit.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalMatchedRows")]
         public virtual System.Nullable<long> TotalMatchedRows { get; set; }
 
-        /// <summary>The totals of the report. This is the same length as any other row in the report; cells
-        /// corresponding to dimension columns are empty.</summary>
+        /// <summary>
+        /// The totals of the report. This is the same length as any other row in the report; cells corresponding to
+        /// dimension columns are empty.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totals")]
         public virtual System.Collections.Generic.IList<string> Totals { get; set; }
 
@@ -4241,8 +4120,11 @@ namespace Google.Apis.AdSense.v1_4.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
+        /// <summary>
+        /// The header information of the columns requested in the report. This is a list of headers; one for each
+        /// dimension in the request, followed by one for each metric in the request.
+        /// </summary>
         public class HeadersData
         {
             /// <summary>The currency of this column. Only present if the header type is METRIC_CURRENCY.</summary>
@@ -4253,18 +4135,20 @@ namespace Google.Apis.AdSense.v1_4.Data
             [Newtonsoft.Json.JsonPropertyAttribute("name")]
             public virtual string Name { get; set; }
 
-            /// <summary>The type of the header; one of DIMENSION, METRIC_TALLY, METRIC_RATIO, or
-            /// METRIC_CURRENCY.</summary>
+            /// <summary>
+            /// The type of the header; one of DIMENSION, METRIC_TALLY, METRIC_RATIO, or METRIC_CURRENCY.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
             public virtual string Type { get; set; }
-
         }
-    }    
+    }
 
     public class Alert : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Unique identifier of this alert. This should be considered an opaque identifier; it is not safe to
-        /// rely on it being in any particular format.</summary>
+        /// <summary>
+        /// Unique identifier of this alert. This should be considered an opaque identifier; it is not safe to rely on
+        /// it being in any particular format.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -4284,14 +4168,16 @@ namespace Google.Apis.AdSense.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }
 
-        /// <summary>Type of this alert. Possible values: SELF_HOLD, MIGRATED_TO_BILLING3, ADDRESS_PIN_VERIFICATION,
-        /// PHONE_PIN_VERIFICATION, CORPORATE_ENTITY, GRAYLISTED_PUBLISHER, API_HOLD.</summary>
+        /// <summary>
+        /// Type of this alert. Possible values: SELF_HOLD, MIGRATED_TO_BILLING3, ADDRESS_PIN_VERIFICATION,
+        /// PHONE_PIN_VERIFICATION, CORPORATE_ENTITY, GRAYLISTED_PUBLISHER, API_HOLD.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class Alerts : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4305,7 +4191,7 @@ namespace Google.Apis.AdSense.v1_4.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class CustomChannel : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4313,8 +4199,10 @@ namespace Google.Apis.AdSense.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
 
-        /// <summary>Unique identifier of this custom channel. This should be considered an opaque identifier; it is not
-        /// safe to rely on it being in any particular format.</summary>
+        /// <summary>
+        /// Unique identifier of this custom channel. This should be considered an opaque identifier; it is not safe to
+        /// rely on it being in any particular format.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -4332,7 +4220,6 @@ namespace Google.Apis.AdSense.v1_4.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
         /// <summary>The targeting information of this custom channel, if activated.</summary>
         public class TargetingInfoData
@@ -4345,19 +4232,20 @@ namespace Google.Apis.AdSense.v1_4.Data
             [Newtonsoft.Json.JsonPropertyAttribute("description")]
             public virtual string Description { get; set; }
 
-            /// <summary>The locations in which ads appear. (Only valid for content and mobile content ads
-            /// (deprecated)). Acceptable values for content ads are: TOP_LEFT, TOP_CENTER, TOP_RIGHT, MIDDLE_LEFT,
-            /// MIDDLE_CENTER, MIDDLE_RIGHT, BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT, MULTIPLE_LOCATIONS. Acceptable
-            /// values for mobile content ads (deprecated) are: TOP, MIDDLE, BOTTOM, MULTIPLE_LOCATIONS.</summary>
+            /// <summary>
+            /// The locations in which ads appear. (Only valid for content and mobile content ads (deprecated)).
+            /// Acceptable values for content ads are: TOP_LEFT, TOP_CENTER, TOP_RIGHT, MIDDLE_LEFT, MIDDLE_CENTER,
+            /// MIDDLE_RIGHT, BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT, MULTIPLE_LOCATIONS. Acceptable values for mobile
+            /// content ads (deprecated) are: TOP, MIDDLE, BOTTOM, MULTIPLE_LOCATIONS.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("location")]
             public virtual string Location { get; set; }
 
             /// <summary>The language of the sites ads will be displayed on.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("siteLanguage")]
             public virtual string SiteLanguage { get; set; }
-
         }
-    }    
+    }
 
     public class CustomChannels : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4373,12 +4261,13 @@ namespace Google.Apis.AdSense.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Continuation token used to page through custom channels. To retrieve the next page of results, set
-        /// the next request's "pageToken" value to this.</summary>
+        /// <summary>
+        /// Continuation token used to page through custom channels. To retrieve the next page of results, set the next
+        /// request's "pageToken" value to this.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
-
-    }    
+    }
 
     public class Metadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4391,7 +4280,7 @@ namespace Google.Apis.AdSense.v1_4.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class Payment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4411,19 +4300,22 @@ namespace Google.Apis.AdSense.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("paymentAmountCurrencyCode")]
         public virtual string PaymentAmountCurrencyCode { get; set; }
 
-        /// <summary>The date this payment was/will be credited to the user, or none if the payment threshold has not
-        /// been met.</summary>
+        /// <summary>
+        /// The date this payment was/will be credited to the user, or none if the payment threshold has not been met.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paymentDate")]
         public virtual string PaymentDate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class Payments : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of Payments for the account. One or both of a) the account's most recent payment; and b)
-        /// the account's upcoming payment.</summary>
+        /// <summary>
+        /// The list of Payments for the account. One or both of a) the account's most recent payment; and b) the
+        /// account's upcoming payment.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Payment> Items { get; set; }
 
@@ -4433,22 +4325,27 @@ namespace Google.Apis.AdSense.v1_4.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ReportingMetadataEntry : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>For metrics this is a list of dimension IDs which the metric is compatible with, for dimensions it
-        /// is a list of compatibility groups the dimension belongs to.</summary>
+        /// <summary>
+        /// For metrics this is a list of dimension IDs which the metric is compatible with, for dimensions it is a list
+        /// of compatibility groups the dimension belongs to.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compatibleDimensions")]
         public virtual System.Collections.Generic.IList<string> CompatibleDimensions { get; set; }
 
-        /// <summary>The names of the metrics the dimension or metric this reporting metadata entry describes is
-        /// compatible with.</summary>
+        /// <summary>
+        /// The names of the metrics the dimension or metric this reporting metadata entry describes is compatible with.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compatibleMetrics")]
         public virtual System.Collections.Generic.IList<string> CompatibleMetrics { get; set; }
 
-        /// <summary>Unique identifier of this reporting metadata entry, corresponding to the name of the appropriate
-        /// dimension or metric.</summary>
+        /// <summary>
+        /// Unique identifier of this reporting metadata entry, corresponding to the name of the appropriate dimension
+        /// or metric.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -4456,26 +4353,31 @@ namespace Google.Apis.AdSense.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The names of the dimensions which the dimension or metric this reporting metadata entry describes
-        /// requires to also be present in order for the report to be valid. Omitting these will not cause an error or
-        /// warning, but may result in data which cannot be correctly interpreted.</summary>
+        /// <summary>
+        /// The names of the dimensions which the dimension or metric this reporting metadata entry describes requires
+        /// to also be present in order for the report to be valid. Omitting these will not cause an error or warning,
+        /// but may result in data which cannot be correctly interpreted.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredDimensions")]
         public virtual System.Collections.Generic.IList<string> RequiredDimensions { get; set; }
 
-        /// <summary>The names of the metrics which the dimension or metric this reporting metadata entry describes
-        /// requires to also be present in order for the report to be valid. Omitting these will not cause an error or
-        /// warning, but may result in data which cannot be correctly interpreted.</summary>
+        /// <summary>
+        /// The names of the metrics which the dimension or metric this reporting metadata entry describes requires to
+        /// also be present in order for the report to be valid. Omitting these will not cause an error or warning, but
+        /// may result in data which cannot be correctly interpreted.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredMetrics")]
         public virtual System.Collections.Generic.IList<string> RequiredMetrics { get; set; }
 
-        /// <summary>The codes of the projects supported by the dimension or metric this reporting metadata entry
-        /// describes.</summary>
+        /// <summary>
+        /// The codes of the projects supported by the dimension or metric this reporting metadata entry describes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedProducts")]
         public virtual System.Collections.Generic.IList<string> SupportedProducts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class SavedAdStyle : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4483,8 +4385,10 @@ namespace Google.Apis.AdSense.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adStyle")]
         public virtual AdStyle AdStyle { get; set; }
 
-        /// <summary>Unique identifier of this saved ad style. This should be considered an opaque identifier; it is not
-        /// safe to rely on it being in any particular format.</summary>
+        /// <summary>
+        /// Unique identifier of this saved ad style. This should be considered an opaque identifier; it is not safe to
+        /// rely on it being in any particular format.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -4498,7 +4402,7 @@ namespace Google.Apis.AdSense.v1_4.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class SavedAdStyles : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4514,12 +4418,13 @@ namespace Google.Apis.AdSense.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Continuation token used to page through ad units. To retrieve the next page of results, set the
-        /// next request's "pageToken" value to this.</summary>
+        /// <summary>
+        /// Continuation token used to page through ad units. To retrieve the next page of results, set the next
+        /// request's "pageToken" value to this.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
-
-    }    
+    }
 
     public class SavedReport : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4537,7 +4442,7 @@ namespace Google.Apis.AdSense.v1_4.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class SavedReports : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4553,17 +4458,20 @@ namespace Google.Apis.AdSense.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Continuation token used to page through saved reports. To retrieve the next page of results, set
-        /// the next request's "pageToken" value to this.</summary>
+        /// <summary>
+        /// Continuation token used to page through saved reports. To retrieve the next page of results, set the next
+        /// request's "pageToken" value to this.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
-
-    }    
+    }
 
     public class UrlChannel : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Unique identifier of this URL channel. This should be considered an opaque identifier; it is not
-        /// safe to rely on it being in any particular format.</summary>
+        /// <summary>
+        /// Unique identifier of this URL channel. This should be considered an opaque identifier; it is not safe to
+        /// rely on it being in any particular format.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -4571,14 +4479,15 @@ namespace Google.Apis.AdSense.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>URL Pattern of this URL channel. Does not include "http://" or "https://". Example:
-        /// www.example.com/home</summary>
+        /// <summary>
+        /// URL Pattern of this URL channel. Does not include "http://" or "https://". Example: www.example.com/home
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlPattern")]
         public virtual string UrlPattern { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class UrlChannels : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4594,10 +4503,11 @@ namespace Google.Apis.AdSense.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Continuation token used to page through URL channels. To retrieve the next page of results, set the
-        /// next request's "pageToken" value to this.</summary>
+        /// <summary>
+        /// Continuation token used to page through URL channels. To retrieve the next page of results, set the next
+        /// request's "pageToken" value to this.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
-
     }
 }

@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -62,7 +67,6 @@ namespace Google.Apis.Libraryagent.v1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Library Agent API.</summary>
@@ -70,10 +74,7 @@ namespace Google.Apis.Libraryagent.v1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
-
-
 
         /// <summary>Gets the Shelves resource.</summary>
         public virtual ShelvesResource Shelves { get; }
@@ -97,6 +98,7 @@ namespace Google.Apis.Libraryagent.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -116,9 +118,11 @@ namespace Google.Apis.Libraryagent.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -132,8 +136,10 @@ namespace Google.Apis.Libraryagent.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -145,8 +151,10 @@ namespace Google.Apis.Libraryagent.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -162,7 +170,6 @@ namespace Google.Apis.Libraryagent.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -267,7 +274,6 @@ namespace Google.Apis.Libraryagent.v1
         {
             this.service = service;
             Books = new BooksResource(service);
-
         }
 
         /// <summary>Gets the Books resource.</summary>
@@ -285,22 +291,24 @@ namespace Google.Apis.Libraryagent.v1
             public BooksResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Borrow a book from the library. Returns the book if it is borrowed successfully. Returns
-            /// NOT_FOUND if the book does not exist in the library. Returns quota exceeded error if the amount of books
-            /// borrowed exceeds allocation quota in any dimensions.</summary>
+            /// <summary>
+            /// Borrow a book from the library. Returns the book if it is borrowed successfully. Returns NOT_FOUND if
+            /// the book does not exist in the library. Returns quota exceeded error if the amount of books borrowed
+            /// exceeds allocation quota in any dimensions.
+            /// </summary>
             /// <param name="name">Required. The name of the book to borrow.</param>
             public virtual BorrowRequest Borrow(string name)
             {
                 return new BorrowRequest(service, name);
             }
 
-            /// <summary>Borrow a book from the library. Returns the book if it is borrowed successfully. Returns
-            /// NOT_FOUND if the book does not exist in the library. Returns quota exceeded error if the amount of books
-            /// borrowed exceeds allocation quota in any dimensions.</summary>
+            /// <summary>
+            /// Borrow a book from the library. Returns the book if it is borrowed successfully. Returns NOT_FOUND if
+            /// the book does not exist in the library. Returns quota exceeded error if the amount of books borrowed
+            /// exceeds allocation quota in any dimensions.
+            /// </summary>
             public class BorrowRequest : LibraryagentBaseServiceRequest<Google.Apis.Libraryagent.v1.Data.GoogleExampleLibraryagentV1Book>
             {
                 /// <summary>Constructs a new Borrow request.</summary>
@@ -310,11 +318,9 @@ namespace Google.Apis.Libraryagent.v1
                     InitParameters();
                 }
 
-
                 /// <summary>Required. The name of the book to borrow.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "borrow";
@@ -329,7 +335,6 @@ namespace Google.Apis.Libraryagent.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -339,7 +344,6 @@ namespace Google.Apis.Libraryagent.v1
                         Pattern = @"^shelves/[^/]+/books/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Gets a book. Returns NOT_FOUND if the book does not exist.</summary>
@@ -359,11 +363,9 @@ namespace Google.Apis.Libraryagent.v1
                     InitParameters();
                 }
 
-
                 /// <summary>Required. The name of the book to retrieve.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -378,7 +380,6 @@ namespace Google.Apis.Libraryagent.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -388,21 +389,22 @@ namespace Google.Apis.Libraryagent.v1
                         Pattern = @"^shelves/[^/]+/books/[^/]+$",
                     });
                 }
-
             }
 
-            /// <summary>Lists books in a shelf. The order is unspecified but deterministic. Newly created books will
-            /// not necessarily be added to the end of this list. Returns NOT_FOUND if the shelf does not
-            /// exist.</summary>
+            /// <summary>
+            /// Lists books in a shelf. The order is unspecified but deterministic. Newly created books will not
+            /// necessarily be added to the end of this list. Returns NOT_FOUND if the shelf does not exist.
+            /// </summary>
             /// <param name="parent">Required. The name of the shelf whose books we'd like to list.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists books in a shelf. The order is unspecified but deterministic. Newly created books will
-            /// not necessarily be added to the end of this list. Returns NOT_FOUND if the shelf does not
-            /// exist.</summary>
+            /// <summary>
+            /// Lists books in a shelf. The order is unspecified but deterministic. Newly created books will not
+            /// necessarily be added to the end of this list. Returns NOT_FOUND if the shelf does not exist.
+            /// </summary>
             public class ListRequest : LibraryagentBaseServiceRequest<Google.Apis.Libraryagent.v1.Data.GoogleExampleLibraryagentV1ListBooksResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -412,22 +414,23 @@ namespace Google.Apis.Libraryagent.v1
                     InitParameters();
                 }
 
-
                 /// <summary>Required. The name of the shelf whose books we'd like to list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Requested page size. Server may return fewer books than requested. If unspecified, server
-                /// will pick an appropriate default.</summary>
+                /// <summary>
+                /// Requested page size. Server may return fewer books than requested. If unspecified, server will pick
+                /// an appropriate default.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>A token identifying a page of results the server should return. Typically, this is the
-                /// value of ListBooksResponse.next_page_token. returned from the previous call to `ListBooks`
-                /// method.</summary>
+                /// <summary>
+                /// A token identifying a page of results the server should return. Typically, this is the value of
+                /// ListBooksResponse.next_page_token. returned from the previous call to `ListBooks` method.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -442,7 +445,6 @@ namespace Google.Apis.Libraryagent.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -468,19 +470,22 @@ namespace Google.Apis.Libraryagent.v1
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Return a book to the library. Returns the book if it is returned to the library successfully.
-            /// Returns error if the book does not belong to the library or the users didn't borrow before.</summary>
+            /// <summary>
+            /// Return a book to the library. Returns the book if it is returned to the library successfully. Returns
+            /// error if the book does not belong to the library or the users didn't borrow before.
+            /// </summary>
             /// <param name="name">Required. The name of the book to return.</param>
             public virtual LibraryagentReturnRequest LibraryagentReturn(string name)
             {
                 return new LibraryagentReturnRequest(service, name);
             }
 
-            /// <summary>Return a book to the library. Returns the book if it is returned to the library successfully.
-            /// Returns error if the book does not belong to the library or the users didn't borrow before.</summary>
+            /// <summary>
+            /// Return a book to the library. Returns the book if it is returned to the library successfully. Returns
+            /// error if the book does not belong to the library or the users didn't borrow before.
+            /// </summary>
             public class LibraryagentReturnRequest : LibraryagentBaseServiceRequest<Google.Apis.Libraryagent.v1.Data.GoogleExampleLibraryagentV1Book>
             {
                 /// <summary>Constructs a new LibraryagentReturn request.</summary>
@@ -490,11 +495,9 @@ namespace Google.Apis.Libraryagent.v1
                     InitParameters();
                 }
 
-
                 /// <summary>Required. The name of the book to return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "return";
@@ -509,7 +512,6 @@ namespace Google.Apis.Libraryagent.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -519,7 +521,6 @@ namespace Google.Apis.Libraryagent.v1
                         Pattern = @"^shelves/[^/]+/books/[^/]+$",
                     });
                 }
-
             }
         }
 
@@ -540,11 +541,9 @@ namespace Google.Apis.Libraryagent.v1
                 InitParameters();
             }
 
-
             /// <summary>Required. The name of the shelf to retrieve.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -559,7 +558,6 @@ namespace Google.Apis.Libraryagent.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -569,18 +567,21 @@ namespace Google.Apis.Libraryagent.v1
                     Pattern = @"^shelves/[^/]+$",
                 });
             }
-
         }
 
-        /// <summary>Lists shelves. The order is unspecified but deterministic. Newly created shelves will not
-        /// necessarily be added to the end of this list.</summary>
+        /// <summary>
+        /// Lists shelves. The order is unspecified but deterministic. Newly created shelves will not necessarily be
+        /// added to the end of this list.
+        /// </summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists shelves. The order is unspecified but deterministic. Newly created shelves will not
-        /// necessarily be added to the end of this list.</summary>
+        /// <summary>
+        /// Lists shelves. The order is unspecified but deterministic. Newly created shelves will not necessarily be
+        /// added to the end of this list.
+        /// </summary>
         public class ListRequest : LibraryagentBaseServiceRequest<Google.Apis.Libraryagent.v1.Data.GoogleExampleLibraryagentV1ListShelvesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -589,17 +590,19 @@ namespace Google.Apis.Libraryagent.v1
                 InitParameters();
             }
 
-
-            /// <summary>Requested page size. Server may return fewer shelves than requested. If unspecified, server
-            /// will pick an appropriate default.</summary>
+            /// <summary>
+            /// Requested page size. Server may return fewer shelves than requested. If unspecified, server will pick an
+            /// appropriate default.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>A token identifying a page of results the server should return. Typically, this is the value of
-            /// ListShelvesResponse.next_page_token returned from the previous call to `ListShelves` method.</summary>
+            /// <summary>
+            /// A token identifying a page of results the server should return. Typically, this is the value of
+            /// ListShelvesResponse.next_page_token returned from the previous call to `ListShelves` method.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -614,7 +617,6 @@ namespace Google.Apis.Libraryagent.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageSize",
@@ -632,14 +634,11 @@ namespace Google.Apis.Libraryagent.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.Libraryagent.v1.Data
-{    
-
+{
     /// <summary>A single book in the library.</summary>
     public class GoogleExampleLibraryagentV1Book : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -647,8 +646,10 @@ namespace Google.Apis.Libraryagent.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("author")]
         public virtual string Author { get; set; }
 
-        /// <summary>The resource name of the book. Book names have the form `shelves/{shelf_id}/books/{book_id}`. The
-        /// name is ignored when creating a book.</summary>
+        /// <summary>
+        /// The resource name of the book. Book names have the form `shelves/{shelf_id}/books/{book_id}`. The name is
+        /// ignored when creating a book.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -662,7 +663,7 @@ namespace Google.Apis.Libraryagent.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for LibraryAgent.ListBooks.</summary>
     public class GoogleExampleLibraryagentV1ListBooksResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -671,20 +672,24 @@ namespace Google.Apis.Libraryagent.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("books")]
         public virtual System.Collections.Generic.IList<GoogleExampleLibraryagentV1Book> Books { get; set; }
 
-        /// <summary>A token to retrieve next page of results. Pass this value in the ListBooksRequest.page_token field
-        /// in the subsequent call to `ListBooks` method to retrieve the next page of results.</summary>
+        /// <summary>
+        /// A token to retrieve next page of results. Pass this value in the ListBooksRequest.page_token field in the
+        /// subsequent call to `ListBooks` method to retrieve the next page of results.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for LibraryAgent.ListShelves.</summary>
     public class GoogleExampleLibraryagentV1ListShelvesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A token to retrieve next page of results. Pass this value in the ListShelvesRequest.page_token
-        /// field in the subsequent call to `ListShelves` method to retrieve the next page of results.</summary>
+        /// <summary>
+        /// A token to retrieve next page of results. Pass this value in the ListShelvesRequest.page_token field in the
+        /// subsequent call to `ListShelves` method to retrieve the next page of results.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -694,13 +699,15 @@ namespace Google.Apis.Libraryagent.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A Shelf contains a collection of books with a theme.</summary>
     public class GoogleExampleLibraryagentV1Shelf : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The resource name of the shelf. Shelf names have the form `shelves/{shelf_id}`. The
-        /// name is ignored when creating a shelf.</summary>
+        /// <summary>
+        /// Output only. The resource name of the shelf. Shelf names have the form `shelves/{shelf_id}`. The name is
+        /// ignored when creating a shelf.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

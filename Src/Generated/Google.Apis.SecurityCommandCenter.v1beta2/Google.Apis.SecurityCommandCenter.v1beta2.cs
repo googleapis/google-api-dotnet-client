@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -64,7 +69,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Security Command Center API.</summary>
@@ -72,10 +76,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
-
-
 
         /// <summary>Gets the Folders resource.</summary>
         public virtual FoldersResource Folders { get; }
@@ -105,6 +106,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -124,9 +126,11 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -140,8 +144,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -153,8 +159,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -170,7 +178,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -278,7 +285,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             EventThreatDetectionSettings = new EventThreatDetectionSettingsResource(service);
             SecurityHealthAnalyticsSettings = new SecurityHealthAnalyticsSettingsResource(service);
             WebSecurityScannerSettings = new WebSecurityScannerSettingsResource(service);
-
         }
 
         /// <summary>Gets the ContainerThreatDetectionSettings resource.</summary>
@@ -296,23 +302,27 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             public ContainerThreatDetectionSettingsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Calculates the effective ContainerThreatDetectionSettings based on its level in the resource
-            /// hierarchy and its settings.</summary>
-            /// <param name="name">Required. The name of the ContainerThreatDetectionSettings to calculate. Formats: *
-            /// organizations/{organization}/containerThreatDetectionSettings * folders/{folder}/containerThreatDetectionSettings *
-            /// projects/{project}/containerThreatDetectionSettings *
-            /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings</param>
+            /// <summary>
+            /// Calculates the effective ContainerThreatDetectionSettings based on its level in the resource hierarchy
+            /// and its settings.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the ContainerThreatDetectionSettings to calculate. Formats: *
+            /// organizations/{organization}/containerThreatDetectionSettings *
+            /// folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings
+            /// * projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
+            /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
                 return new CalculateRequest(service, name);
             }
 
-            /// <summary>Calculates the effective ContainerThreatDetectionSettings based on its level in the resource
-            /// hierarchy and its settings.</summary>
+            /// <summary>
+            /// Calculates the effective ContainerThreatDetectionSettings based on its level in the resource hierarchy
+            /// and its settings.
+            /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.ContainerThreatDetectionSettings>
             {
                 /// <summary>Constructs a new Calculate request.</summary>
@@ -322,15 +332,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the ContainerThreatDetectionSettings to calculate. Formats: *
+                /// <summary>
+                /// Required. The name of the ContainerThreatDetectionSettings to calculate. Formats: *
                 /// organizations/{organization}/containerThreatDetectionSettings *
                 /// folders/{folder}/containerThreatDetectionSettings *
-                /// projects/{project}/containerThreatDetectionSettings * projects/{project}/locations/{location}/cluste
-                /// rs/{cluster}/containerThreatDetectionSettings</summary>
+                /// projects/{project}/containerThreatDetectionSettings *
+                /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
@@ -345,7 +355,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -355,9 +364,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         Pattern = @"^folders/[^/]+/containerThreatDetectionSettings$",
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the EventThreatDetectionSettings resource.</summary>
         public virtual EventThreatDetectionSettingsResource EventThreatDetectionSettings { get; }
 
@@ -373,22 +382,26 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             public EventThreatDetectionSettingsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Calculates the effective EventThreatDetectionSettings based on its level in the resource
-            /// hierarchy and its settings.</summary>
-            /// <param name="name">Required. The name of the EventThreatDetectionSettings to calculate. Formats: *
-            /// organizations/{organization}/eventThreatDetectionSettings * folders/{folder}/eventThreatDetectionSettings *
-            /// projects/{project}/eventThreatDetectionSettings</param>
+            /// <summary>
+            /// Calculates the effective EventThreatDetectionSettings based on its level in the resource hierarchy and
+            /// its settings.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the EventThreatDetectionSettings to calculate. Formats: *
+            /// organizations/{organization}/eventThreatDetectionSettings *
+            /// folders/{folder}/eventThreatDetectionSettings * projects/{project}/eventThreatDetectionSettings
+            /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
                 return new CalculateRequest(service, name);
             }
 
-            /// <summary>Calculates the effective EventThreatDetectionSettings based on its level in the resource
-            /// hierarchy and its settings.</summary>
+            /// <summary>
+            /// Calculates the effective EventThreatDetectionSettings based on its level in the resource hierarchy and
+            /// its settings.
+            /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.EventThreatDetectionSettings>
             {
                 /// <summary>Constructs a new Calculate request.</summary>
@@ -398,14 +411,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the EventThreatDetectionSettings to calculate. Formats: *
+                /// <summary>
+                /// Required. The name of the EventThreatDetectionSettings to calculate. Formats: *
                 /// organizations/{organization}/eventThreatDetectionSettings *
-                /// folders/{folder}/eventThreatDetectionSettings *
-                /// projects/{project}/eventThreatDetectionSettings</summary>
+                /// folders/{folder}/eventThreatDetectionSettings * projects/{project}/eventThreatDetectionSettings
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
@@ -420,7 +432,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -430,9 +441,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         Pattern = @"^folders/[^/]+/eventThreatDetectionSettings$",
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the SecurityHealthAnalyticsSettings resource.</summary>
         public virtual SecurityHealthAnalyticsSettingsResource SecurityHealthAnalyticsSettings { get; }
 
@@ -448,22 +459,26 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             public SecurityHealthAnalyticsSettingsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Calculates the effective SecurityHealthAnalyticsSettings based on its level in the resource
-            /// hierarchy and its settings.</summary>
-            /// <param name="name">Required. The name of the SecurityHealthAnalyticsSettings to calculate. Formats: *
-            /// organizations/{organization}/securityHealthAnalyticsSettings * folders/{folder}/securityHealthAnalyticsSettings *
-            /// projects/{project}/securityHealthAnalyticsSettings</param>
+            /// <summary>
+            /// Calculates the effective SecurityHealthAnalyticsSettings based on its level in the resource hierarchy
+            /// and its settings.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the SecurityHealthAnalyticsSettings to calculate. Formats: *
+            /// organizations/{organization}/securityHealthAnalyticsSettings *
+            /// folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings
+            /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
                 return new CalculateRequest(service, name);
             }
 
-            /// <summary>Calculates the effective SecurityHealthAnalyticsSettings based on its level in the resource
-            /// hierarchy and its settings.</summary>
+            /// <summary>
+            /// Calculates the effective SecurityHealthAnalyticsSettings based on its level in the resource hierarchy
+            /// and its settings.
+            /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.SecurityHealthAnalyticsSettings>
             {
                 /// <summary>Constructs a new Calculate request.</summary>
@@ -473,14 +488,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the SecurityHealthAnalyticsSettings to calculate. Formats: *
+                /// <summary>
+                /// Required. The name of the SecurityHealthAnalyticsSettings to calculate. Formats: *
                 /// organizations/{organization}/securityHealthAnalyticsSettings *
                 /// folders/{folder}/securityHealthAnalyticsSettings *
-                /// projects/{project}/securityHealthAnalyticsSettings</summary>
+                /// projects/{project}/securityHealthAnalyticsSettings
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
@@ -495,7 +510,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -505,9 +519,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         Pattern = @"^folders/[^/]+/securityHealthAnalyticsSettings$",
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the WebSecurityScannerSettings resource.</summary>
         public virtual WebSecurityScannerSettingsResource WebSecurityScannerSettings { get; }
 
@@ -523,22 +537,26 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             public WebSecurityScannerSettingsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Calculates the effective WebSecurityScannerSettings based on its level in the resource
-            /// hierarchy and its settings.</summary>
-            /// <param name="name">Required. The name of the WebSecurityScannerSettings to calculate. Formats: *
+            /// <summary>
+            /// Calculates the effective WebSecurityScannerSettings based on its level in the resource hierarchy and its
+            /// settings.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the WebSecurityScannerSettings to calculate. Formats: *
             /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
-            /// projects/{project}/webSecurityScannerSettings</param>
+            /// projects/{project}/webSecurityScannerSettings
+            /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
                 return new CalculateRequest(service, name);
             }
 
-            /// <summary>Calculates the effective WebSecurityScannerSettings based on its level in the resource
-            /// hierarchy and its settings.</summary>
+            /// <summary>
+            /// Calculates the effective WebSecurityScannerSettings based on its level in the resource hierarchy and its
+            /// settings.
+            /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.WebSecurityScannerSettings>
             {
                 /// <summary>Constructs a new Calculate request.</summary>
@@ -548,14 +566,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the WebSecurityScannerSettings to calculate. Formats: *
+                /// <summary>
+                /// Required. The name of the WebSecurityScannerSettings to calculate. Formats: *
                 /// organizations/{organization}/webSecurityScannerSettings *
-                /// folders/{folder}/webSecurityScannerSettings *
-                /// projects/{project}/webSecurityScannerSettings</summary>
+                /// folders/{folder}/webSecurityScannerSettings * projects/{project}/webSecurityScannerSettings
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
@@ -570,7 +587,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -580,15 +596,16 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         Pattern = @"^folders/[^/]+/webSecurityScannerSettings$",
                     });
                 }
-
             }
         }
 
         /// <summary>Get the ContainerThreatDetectionSettings resource.</summary>
-        /// <param name="name">Required. The name of the ContainerThreatDetectionSettings to retrieve. Formats: *
-        /// organizations/{organization}/containerThreatDetectionSettings * folders/{folder}/containerThreatDetectionSettings *
-        /// projects/{project}/containerThreatDetectionSettings *
-        /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings</param>
+        /// <param name="name">
+        /// Required. The name of the ContainerThreatDetectionSettings to retrieve. Formats: *
+        /// organizations/{organization}/containerThreatDetectionSettings *
+        /// folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings *
+        /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
+        /// </param>
         public virtual GetContainerThreatDetectionSettingsRequest GetContainerThreatDetectionSettings(string name)
         {
             return new GetContainerThreatDetectionSettingsRequest(service, name);
@@ -604,14 +621,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>Required. The name of the ContainerThreatDetectionSettings to retrieve. Formats: *
+            /// <summary>
+            /// Required. The name of the ContainerThreatDetectionSettings to retrieve. Formats: *
             /// organizations/{organization}/containerThreatDetectionSettings *
             /// folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings
-            /// * projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings</summary>
+            /// * projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getContainerThreatDetectionSettings";
@@ -626,7 +643,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -636,13 +652,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = @"^folders/[^/]+/containerThreatDetectionSettings$",
                 });
             }
-
         }
 
         /// <summary>Get the EventThreatDetectionSettings resource.</summary>
-        /// <param name="name">Required. The name of the EventThreatDetectionSettings to retrieve. Formats: *
+        /// <param name="name">
+        /// Required. The name of the EventThreatDetectionSettings to retrieve. Formats: *
         /// organizations/{organization}/eventThreatDetectionSettings * folders/{folder}/eventThreatDetectionSettings *
-        /// projects/{project}/eventThreatDetectionSettings</param>
+        /// projects/{project}/eventThreatDetectionSettings
+        /// </param>
         public virtual GetEventThreatDetectionSettingsRequest GetEventThreatDetectionSettings(string name)
         {
             return new GetEventThreatDetectionSettingsRequest(service, name);
@@ -658,14 +675,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>Required. The name of the EventThreatDetectionSettings to retrieve. Formats: *
+            /// <summary>
+            /// Required. The name of the EventThreatDetectionSettings to retrieve. Formats: *
             /// organizations/{organization}/eventThreatDetectionSettings *
-            /// folders/{folder}/eventThreatDetectionSettings *
-            /// projects/{project}/eventThreatDetectionSettings</summary>
+            /// folders/{folder}/eventThreatDetectionSettings * projects/{project}/eventThreatDetectionSettings
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getEventThreatDetectionSettings";
@@ -680,7 +696,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -690,13 +705,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = @"^folders/[^/]+/eventThreatDetectionSettings$",
                 });
             }
-
         }
 
         /// <summary>Get the SecurityHealthAnalyticsSettings resource.</summary>
-        /// <param name="name">Required. The name of the SecurityHealthAnalyticsSettings to retrieve. Formats: *
-        /// organizations/{organization}/securityHealthAnalyticsSettings * folders/{folder}/securityHealthAnalyticsSettings *
-        /// projects/{project}/securityHealthAnalyticsSettings</param>
+        /// <param name="name">
+        /// Required. The name of the SecurityHealthAnalyticsSettings to retrieve. Formats: *
+        /// organizations/{organization}/securityHealthAnalyticsSettings *
+        /// folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings
+        /// </param>
         public virtual GetSecurityHealthAnalyticsSettingsRequest GetSecurityHealthAnalyticsSettings(string name)
         {
             return new GetSecurityHealthAnalyticsSettingsRequest(service, name);
@@ -712,14 +728,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>Required. The name of the SecurityHealthAnalyticsSettings to retrieve. Formats: *
+            /// <summary>
+            /// Required. The name of the SecurityHealthAnalyticsSettings to retrieve. Formats: *
             /// organizations/{organization}/securityHealthAnalyticsSettings *
-            /// folders/{folder}/securityHealthAnalyticsSettings *
-            /// projects/{project}/securityHealthAnalyticsSettings</summary>
+            /// folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getSecurityHealthAnalyticsSettings";
@@ -734,7 +749,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -744,13 +758,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = @"^folders/[^/]+/securityHealthAnalyticsSettings$",
                 });
             }
-
         }
 
         /// <summary>Get the WebSecurityScannerSettings resource.</summary>
-        /// <param name="name">Required. The name of the WebSecurityScannerSettings to retrieve. Formats: *
+        /// <param name="name">
+        /// Required. The name of the WebSecurityScannerSettings to retrieve. Formats: *
         /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
-        /// projects/{project}/webSecurityScannerSettings</param>
+        /// projects/{project}/webSecurityScannerSettings
+        /// </param>
         public virtual GetWebSecurityScannerSettingsRequest GetWebSecurityScannerSettings(string name)
         {
             return new GetWebSecurityScannerSettingsRequest(service, name);
@@ -766,13 +781,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>Required. The name of the WebSecurityScannerSettings to retrieve. Formats: *
+            /// <summary>
+            /// Required. The name of the WebSecurityScannerSettings to retrieve. Formats: *
             /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
-            /// projects/{project}/webSecurityScannerSettings</summary>
+            /// projects/{project}/webSecurityScannerSettings
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getWebSecurityScannerSettings";
@@ -787,7 +802,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -797,15 +811,16 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = @"^folders/[^/]+/webSecurityScannerSettings$",
                 });
             }
-
         }
 
         /// <summary>Update the ContainerThreatDetectionSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The resource name of the ContainerThreatDetectionSettings. Formats: *
-        /// organizations/{organization}/containerThreatDetectionSettings * folders/{folder}/containerThreatDetectionSettings *
-        /// projects/{project}/containerThreatDetectionSettings *
-        /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings</param>
+        /// <param name="name">
+        /// The resource name of the ContainerThreatDetectionSettings. Formats: *
+        /// organizations/{organization}/containerThreatDetectionSettings *
+        /// folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings *
+        /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
+        /// </param>
         public virtual UpdateContainerThreatDetectionSettingsRequest UpdateContainerThreatDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.ContainerThreatDetectionSettings body, string name)
         {
             return new UpdateContainerThreatDetectionSettingsRequest(service, body, name);
@@ -822,18 +837,18 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>The resource name of the ContainerThreatDetectionSettings. Formats: *
+            /// <summary>
+            /// The resource name of the ContainerThreatDetectionSettings. Formats: *
             /// organizations/{organization}/containerThreatDetectionSettings *
             /// folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings
-            /// * projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings</summary>
+            /// * projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
             /// <summary>The list of fields to be updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SecurityCommandCenter.v1beta2.Data.ContainerThreatDetectionSettings Body { get; set; }
@@ -854,7 +869,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -872,14 +886,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Update the EventThreatDetectionSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The resource name of the EventThreatDetectionSettings. Formats: *
+        /// <param name="name">
+        /// The resource name of the EventThreatDetectionSettings. Formats: *
         /// organizations/{organization}/eventThreatDetectionSettings * folders/{folder}/eventThreatDetectionSettings *
-        /// projects/{project}/eventThreatDetectionSettings</param>
+        /// projects/{project}/eventThreatDetectionSettings
+        /// </param>
         public virtual UpdateEventThreatDetectionSettingsRequest UpdateEventThreatDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.EventThreatDetectionSettings body, string name)
         {
             return new UpdateEventThreatDetectionSettingsRequest(service, body, name);
@@ -896,18 +911,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>The resource name of the EventThreatDetectionSettings. Formats: *
+            /// <summary>
+            /// The resource name of the EventThreatDetectionSettings. Formats: *
             /// organizations/{organization}/eventThreatDetectionSettings *
-            /// folders/{folder}/eventThreatDetectionSettings *
-            /// projects/{project}/eventThreatDetectionSettings</summary>
+            /// folders/{folder}/eventThreatDetectionSettings * projects/{project}/eventThreatDetectionSettings
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
             /// <summary>The list of fields to be updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SecurityCommandCenter.v1beta2.Data.EventThreatDetectionSettings Body { get; set; }
@@ -928,7 +942,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -946,14 +959,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Update the SecurityHealthAnalyticsSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The resource name of the SecurityHealthAnalyticsSettings. Formats: *
-        /// organizations/{organization}/securityHealthAnalyticsSettings * folders/{folder}/securityHealthAnalyticsSettings *
-        /// projects/{project}/securityHealthAnalyticsSettings</param>
+        /// <param name="name">
+        /// The resource name of the SecurityHealthAnalyticsSettings. Formats: *
+        /// organizations/{organization}/securityHealthAnalyticsSettings *
+        /// folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings
+        /// </param>
         public virtual UpdateSecurityHealthAnalyticsSettingsRequest UpdateSecurityHealthAnalyticsSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.SecurityHealthAnalyticsSettings body, string name)
         {
             return new UpdateSecurityHealthAnalyticsSettingsRequest(service, body, name);
@@ -970,18 +984,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>The resource name of the SecurityHealthAnalyticsSettings. Formats: *
+            /// <summary>
+            /// The resource name of the SecurityHealthAnalyticsSettings. Formats: *
             /// organizations/{organization}/securityHealthAnalyticsSettings *
-            /// folders/{folder}/securityHealthAnalyticsSettings *
-            /// projects/{project}/securityHealthAnalyticsSettings</summary>
+            /// folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
             /// <summary>The list of fields to be updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SecurityCommandCenter.v1beta2.Data.SecurityHealthAnalyticsSettings Body { get; set; }
@@ -1002,7 +1015,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -1020,14 +1032,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Update the WebSecurityScannerSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The resource name of the WebSecurityScannerSettings. Formats: *
+        /// <param name="name">
+        /// The resource name of the WebSecurityScannerSettings. Formats: *
         /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
-        /// projects/{project}/webSecurityScannerSettings</param>
+        /// projects/{project}/webSecurityScannerSettings
+        /// </param>
         public virtual UpdateWebSecurityScannerSettingsRequest UpdateWebSecurityScannerSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.WebSecurityScannerSettings body, string name)
         {
             return new UpdateWebSecurityScannerSettingsRequest(service, body, name);
@@ -1044,17 +1057,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>The resource name of the WebSecurityScannerSettings. Formats: *
+            /// <summary>
+            /// The resource name of the WebSecurityScannerSettings. Formats: *
             /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
-            /// projects/{project}/webSecurityScannerSettings</summary>
+            /// projects/{project}/webSecurityScannerSettings
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
             /// <summary>The list of fields to be updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SecurityCommandCenter.v1beta2.Data.WebSecurityScannerSettings Body { get; set; }
@@ -1075,7 +1088,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -1093,7 +1105,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -1113,7 +1124,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             EventThreatDetectionSettings = new EventThreatDetectionSettingsResource(service);
             SecurityHealthAnalyticsSettings = new SecurityHealthAnalyticsSettingsResource(service);
             WebSecurityScannerSettings = new WebSecurityScannerSettingsResource(service);
-
         }
 
         /// <summary>Gets the ContainerThreatDetectionSettings resource.</summary>
@@ -1131,23 +1141,27 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             public ContainerThreatDetectionSettingsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Calculates the effective ContainerThreatDetectionSettings based on its level in the resource
-            /// hierarchy and its settings.</summary>
-            /// <param name="name">Required. The name of the ContainerThreatDetectionSettings to calculate. Formats: *
-            /// organizations/{organization}/containerThreatDetectionSettings * folders/{folder}/containerThreatDetectionSettings *
-            /// projects/{project}/containerThreatDetectionSettings *
-            /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings</param>
+            /// <summary>
+            /// Calculates the effective ContainerThreatDetectionSettings based on its level in the resource hierarchy
+            /// and its settings.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the ContainerThreatDetectionSettings to calculate. Formats: *
+            /// organizations/{organization}/containerThreatDetectionSettings *
+            /// folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings
+            /// * projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
+            /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
                 return new CalculateRequest(service, name);
             }
 
-            /// <summary>Calculates the effective ContainerThreatDetectionSettings based on its level in the resource
-            /// hierarchy and its settings.</summary>
+            /// <summary>
+            /// Calculates the effective ContainerThreatDetectionSettings based on its level in the resource hierarchy
+            /// and its settings.
+            /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.ContainerThreatDetectionSettings>
             {
                 /// <summary>Constructs a new Calculate request.</summary>
@@ -1157,15 +1171,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the ContainerThreatDetectionSettings to calculate. Formats: *
+                /// <summary>
+                /// Required. The name of the ContainerThreatDetectionSettings to calculate. Formats: *
                 /// organizations/{organization}/containerThreatDetectionSettings *
                 /// folders/{folder}/containerThreatDetectionSettings *
-                /// projects/{project}/containerThreatDetectionSettings * projects/{project}/locations/{location}/cluste
-                /// rs/{cluster}/containerThreatDetectionSettings</summary>
+                /// projects/{project}/containerThreatDetectionSettings *
+                /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
@@ -1180,7 +1194,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -1190,9 +1203,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         Pattern = @"^organizations/[^/]+/containerThreatDetectionSettings$",
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the EventThreatDetectionSettings resource.</summary>
         public virtual EventThreatDetectionSettingsResource EventThreatDetectionSettings { get; }
 
@@ -1208,22 +1221,26 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             public EventThreatDetectionSettingsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Calculates the effective EventThreatDetectionSettings based on its level in the resource
-            /// hierarchy and its settings.</summary>
-            /// <param name="name">Required. The name of the EventThreatDetectionSettings to calculate. Formats: *
-            /// organizations/{organization}/eventThreatDetectionSettings * folders/{folder}/eventThreatDetectionSettings *
-            /// projects/{project}/eventThreatDetectionSettings</param>
+            /// <summary>
+            /// Calculates the effective EventThreatDetectionSettings based on its level in the resource hierarchy and
+            /// its settings.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the EventThreatDetectionSettings to calculate. Formats: *
+            /// organizations/{organization}/eventThreatDetectionSettings *
+            /// folders/{folder}/eventThreatDetectionSettings * projects/{project}/eventThreatDetectionSettings
+            /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
                 return new CalculateRequest(service, name);
             }
 
-            /// <summary>Calculates the effective EventThreatDetectionSettings based on its level in the resource
-            /// hierarchy and its settings.</summary>
+            /// <summary>
+            /// Calculates the effective EventThreatDetectionSettings based on its level in the resource hierarchy and
+            /// its settings.
+            /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.EventThreatDetectionSettings>
             {
                 /// <summary>Constructs a new Calculate request.</summary>
@@ -1233,14 +1250,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the EventThreatDetectionSettings to calculate. Formats: *
+                /// <summary>
+                /// Required. The name of the EventThreatDetectionSettings to calculate. Formats: *
                 /// organizations/{organization}/eventThreatDetectionSettings *
-                /// folders/{folder}/eventThreatDetectionSettings *
-                /// projects/{project}/eventThreatDetectionSettings</summary>
+                /// folders/{folder}/eventThreatDetectionSettings * projects/{project}/eventThreatDetectionSettings
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
@@ -1255,7 +1271,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -1265,9 +1280,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         Pattern = @"^organizations/[^/]+/eventThreatDetectionSettings$",
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the SecurityHealthAnalyticsSettings resource.</summary>
         public virtual SecurityHealthAnalyticsSettingsResource SecurityHealthAnalyticsSettings { get; }
 
@@ -1283,22 +1298,26 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             public SecurityHealthAnalyticsSettingsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Calculates the effective SecurityHealthAnalyticsSettings based on its level in the resource
-            /// hierarchy and its settings.</summary>
-            /// <param name="name">Required. The name of the SecurityHealthAnalyticsSettings to calculate. Formats: *
-            /// organizations/{organization}/securityHealthAnalyticsSettings * folders/{folder}/securityHealthAnalyticsSettings *
-            /// projects/{project}/securityHealthAnalyticsSettings</param>
+            /// <summary>
+            /// Calculates the effective SecurityHealthAnalyticsSettings based on its level in the resource hierarchy
+            /// and its settings.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the SecurityHealthAnalyticsSettings to calculate. Formats: *
+            /// organizations/{organization}/securityHealthAnalyticsSettings *
+            /// folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings
+            /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
                 return new CalculateRequest(service, name);
             }
 
-            /// <summary>Calculates the effective SecurityHealthAnalyticsSettings based on its level in the resource
-            /// hierarchy and its settings.</summary>
+            /// <summary>
+            /// Calculates the effective SecurityHealthAnalyticsSettings based on its level in the resource hierarchy
+            /// and its settings.
+            /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.SecurityHealthAnalyticsSettings>
             {
                 /// <summary>Constructs a new Calculate request.</summary>
@@ -1308,14 +1327,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the SecurityHealthAnalyticsSettings to calculate. Formats: *
+                /// <summary>
+                /// Required. The name of the SecurityHealthAnalyticsSettings to calculate. Formats: *
                 /// organizations/{organization}/securityHealthAnalyticsSettings *
                 /// folders/{folder}/securityHealthAnalyticsSettings *
-                /// projects/{project}/securityHealthAnalyticsSettings</summary>
+                /// projects/{project}/securityHealthAnalyticsSettings
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
@@ -1330,7 +1349,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -1340,9 +1358,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         Pattern = @"^organizations/[^/]+/securityHealthAnalyticsSettings$",
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the WebSecurityScannerSettings resource.</summary>
         public virtual WebSecurityScannerSettingsResource WebSecurityScannerSettings { get; }
 
@@ -1358,22 +1376,26 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             public WebSecurityScannerSettingsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Calculates the effective WebSecurityScannerSettings based on its level in the resource
-            /// hierarchy and its settings.</summary>
-            /// <param name="name">Required. The name of the WebSecurityScannerSettings to calculate. Formats: *
+            /// <summary>
+            /// Calculates the effective WebSecurityScannerSettings based on its level in the resource hierarchy and its
+            /// settings.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the WebSecurityScannerSettings to calculate. Formats: *
             /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
-            /// projects/{project}/webSecurityScannerSettings</param>
+            /// projects/{project}/webSecurityScannerSettings
+            /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
                 return new CalculateRequest(service, name);
             }
 
-            /// <summary>Calculates the effective WebSecurityScannerSettings based on its level in the resource
-            /// hierarchy and its settings.</summary>
+            /// <summary>
+            /// Calculates the effective WebSecurityScannerSettings based on its level in the resource hierarchy and its
+            /// settings.
+            /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.WebSecurityScannerSettings>
             {
                 /// <summary>Constructs a new Calculate request.</summary>
@@ -1383,14 +1405,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the WebSecurityScannerSettings to calculate. Formats: *
+                /// <summary>
+                /// Required. The name of the WebSecurityScannerSettings to calculate. Formats: *
                 /// organizations/{organization}/webSecurityScannerSettings *
-                /// folders/{folder}/webSecurityScannerSettings *
-                /// projects/{project}/webSecurityScannerSettings</summary>
+                /// folders/{folder}/webSecurityScannerSettings * projects/{project}/webSecurityScannerSettings
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
@@ -1405,7 +1426,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -1415,15 +1435,16 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         Pattern = @"^organizations/[^/]+/webSecurityScannerSettings$",
                     });
                 }
-
             }
         }
 
         /// <summary>Get the ContainerThreatDetectionSettings resource.</summary>
-        /// <param name="name">Required. The name of the ContainerThreatDetectionSettings to retrieve. Formats: *
-        /// organizations/{organization}/containerThreatDetectionSettings * folders/{folder}/containerThreatDetectionSettings *
-        /// projects/{project}/containerThreatDetectionSettings *
-        /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings</param>
+        /// <param name="name">
+        /// Required. The name of the ContainerThreatDetectionSettings to retrieve. Formats: *
+        /// organizations/{organization}/containerThreatDetectionSettings *
+        /// folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings *
+        /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
+        /// </param>
         public virtual GetContainerThreatDetectionSettingsRequest GetContainerThreatDetectionSettings(string name)
         {
             return new GetContainerThreatDetectionSettingsRequest(service, name);
@@ -1439,14 +1460,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>Required. The name of the ContainerThreatDetectionSettings to retrieve. Formats: *
+            /// <summary>
+            /// Required. The name of the ContainerThreatDetectionSettings to retrieve. Formats: *
             /// organizations/{organization}/containerThreatDetectionSettings *
             /// folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings
-            /// * projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings</summary>
+            /// * projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getContainerThreatDetectionSettings";
@@ -1461,7 +1482,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -1471,13 +1491,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = @"^organizations/[^/]+/containerThreatDetectionSettings$",
                 });
             }
-
         }
 
         /// <summary>Get the EventThreatDetectionSettings resource.</summary>
-        /// <param name="name">Required. The name of the EventThreatDetectionSettings to retrieve. Formats: *
+        /// <param name="name">
+        /// Required. The name of the EventThreatDetectionSettings to retrieve. Formats: *
         /// organizations/{organization}/eventThreatDetectionSettings * folders/{folder}/eventThreatDetectionSettings *
-        /// projects/{project}/eventThreatDetectionSettings</param>
+        /// projects/{project}/eventThreatDetectionSettings
+        /// </param>
         public virtual GetEventThreatDetectionSettingsRequest GetEventThreatDetectionSettings(string name)
         {
             return new GetEventThreatDetectionSettingsRequest(service, name);
@@ -1493,14 +1514,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>Required. The name of the EventThreatDetectionSettings to retrieve. Formats: *
+            /// <summary>
+            /// Required. The name of the EventThreatDetectionSettings to retrieve. Formats: *
             /// organizations/{organization}/eventThreatDetectionSettings *
-            /// folders/{folder}/eventThreatDetectionSettings *
-            /// projects/{project}/eventThreatDetectionSettings</summary>
+            /// folders/{folder}/eventThreatDetectionSettings * projects/{project}/eventThreatDetectionSettings
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getEventThreatDetectionSettings";
@@ -1515,7 +1535,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -1525,12 +1544,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = @"^organizations/[^/]+/eventThreatDetectionSettings$",
                 });
             }
-
         }
 
         /// <summary>Get the SecurityCenterSettings resource.</summary>
-        /// <param name="name">Required. The name of the SecurityCenterSettings to retrieve. Format:
-        /// organizations/{organization}/securityCenterSettings</param>
+        /// <param name="name">
+        /// Required. The name of the SecurityCenterSettings to retrieve. Format:
+        /// organizations/{organization}/securityCenterSettings
+        /// </param>
         public virtual GetSecurityCenterSettingsRequest GetSecurityCenterSettings(string name)
         {
             return new GetSecurityCenterSettingsRequest(service, name);
@@ -1546,12 +1566,12 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>Required. The name of the SecurityCenterSettings to retrieve. Format:
-            /// organizations/{organization}/securityCenterSettings</summary>
+            /// <summary>
+            /// Required. The name of the SecurityCenterSettings to retrieve. Format:
+            /// organizations/{organization}/securityCenterSettings
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getSecurityCenterSettings";
@@ -1566,7 +1586,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -1576,13 +1595,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = @"^organizations/[^/]+/securityCenterSettings$",
                 });
             }
-
         }
 
         /// <summary>Get the SecurityHealthAnalyticsSettings resource.</summary>
-        /// <param name="name">Required. The name of the SecurityHealthAnalyticsSettings to retrieve. Formats: *
-        /// organizations/{organization}/securityHealthAnalyticsSettings * folders/{folder}/securityHealthAnalyticsSettings *
-        /// projects/{project}/securityHealthAnalyticsSettings</param>
+        /// <param name="name">
+        /// Required. The name of the SecurityHealthAnalyticsSettings to retrieve. Formats: *
+        /// organizations/{organization}/securityHealthAnalyticsSettings *
+        /// folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings
+        /// </param>
         public virtual GetSecurityHealthAnalyticsSettingsRequest GetSecurityHealthAnalyticsSettings(string name)
         {
             return new GetSecurityHealthAnalyticsSettingsRequest(service, name);
@@ -1598,14 +1618,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>Required. The name of the SecurityHealthAnalyticsSettings to retrieve. Formats: *
+            /// <summary>
+            /// Required. The name of the SecurityHealthAnalyticsSettings to retrieve. Formats: *
             /// organizations/{organization}/securityHealthAnalyticsSettings *
-            /// folders/{folder}/securityHealthAnalyticsSettings *
-            /// projects/{project}/securityHealthAnalyticsSettings</summary>
+            /// folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getSecurityHealthAnalyticsSettings";
@@ -1620,7 +1639,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -1630,12 +1648,12 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = @"^organizations/[^/]+/securityHealthAnalyticsSettings$",
                 });
             }
-
         }
 
         /// <summary>Get the Subscription resource.</summary>
-        /// <param name="name">Required. The name of the subscription to retrieve. Format:
-        /// organizations/{organization}/subscription</param>
+        /// <param name="name">
+        /// Required. The name of the subscription to retrieve. Format: organizations/{organization}/subscription
+        /// </param>
         public virtual GetSubscriptionRequest GetSubscription(string name)
         {
             return new GetSubscriptionRequest(service, name);
@@ -1651,12 +1669,11 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>Required. The name of the subscription to retrieve. Format:
-            /// organizations/{organization}/subscription</summary>
+            /// <summary>
+            /// Required. The name of the subscription to retrieve. Format: organizations/{organization}/subscription
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getSubscription";
@@ -1671,7 +1688,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -1681,13 +1697,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = @"^organizations/[^/]+/subscription$",
                 });
             }
-
         }
 
         /// <summary>Get the WebSecurityScannerSettings resource.</summary>
-        /// <param name="name">Required. The name of the WebSecurityScannerSettings to retrieve. Formats: *
+        /// <param name="name">
+        /// Required. The name of the WebSecurityScannerSettings to retrieve. Formats: *
         /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
-        /// projects/{project}/webSecurityScannerSettings</param>
+        /// projects/{project}/webSecurityScannerSettings
+        /// </param>
         public virtual GetWebSecurityScannerSettingsRequest GetWebSecurityScannerSettings(string name)
         {
             return new GetWebSecurityScannerSettingsRequest(service, name);
@@ -1703,13 +1720,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>Required. The name of the WebSecurityScannerSettings to retrieve. Formats: *
+            /// <summary>
+            /// Required. The name of the WebSecurityScannerSettings to retrieve. Formats: *
             /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
-            /// projects/{project}/webSecurityScannerSettings</summary>
+            /// projects/{project}/webSecurityScannerSettings
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getWebSecurityScannerSettings";
@@ -1724,7 +1741,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -1734,15 +1750,16 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = @"^organizations/[^/]+/webSecurityScannerSettings$",
                 });
             }
-
         }
 
         /// <summary>Update the ContainerThreatDetectionSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The resource name of the ContainerThreatDetectionSettings. Formats: *
-        /// organizations/{organization}/containerThreatDetectionSettings * folders/{folder}/containerThreatDetectionSettings *
-        /// projects/{project}/containerThreatDetectionSettings *
-        /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings</param>
+        /// <param name="name">
+        /// The resource name of the ContainerThreatDetectionSettings. Formats: *
+        /// organizations/{organization}/containerThreatDetectionSettings *
+        /// folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings *
+        /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
+        /// </param>
         public virtual UpdateContainerThreatDetectionSettingsRequest UpdateContainerThreatDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.ContainerThreatDetectionSettings body, string name)
         {
             return new UpdateContainerThreatDetectionSettingsRequest(service, body, name);
@@ -1759,18 +1776,18 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>The resource name of the ContainerThreatDetectionSettings. Formats: *
+            /// <summary>
+            /// The resource name of the ContainerThreatDetectionSettings. Formats: *
             /// organizations/{organization}/containerThreatDetectionSettings *
             /// folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings
-            /// * projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings</summary>
+            /// * projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
             /// <summary>The list of fields to be updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SecurityCommandCenter.v1beta2.Data.ContainerThreatDetectionSettings Body { get; set; }
@@ -1791,7 +1808,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -1809,14 +1825,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Update the EventThreatDetectionSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The resource name of the EventThreatDetectionSettings. Formats: *
+        /// <param name="name">
+        /// The resource name of the EventThreatDetectionSettings. Formats: *
         /// organizations/{organization}/eventThreatDetectionSettings * folders/{folder}/eventThreatDetectionSettings *
-        /// projects/{project}/eventThreatDetectionSettings</param>
+        /// projects/{project}/eventThreatDetectionSettings
+        /// </param>
         public virtual UpdateEventThreatDetectionSettingsRequest UpdateEventThreatDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.EventThreatDetectionSettings body, string name)
         {
             return new UpdateEventThreatDetectionSettingsRequest(service, body, name);
@@ -1833,18 +1850,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>The resource name of the EventThreatDetectionSettings. Formats: *
+            /// <summary>
+            /// The resource name of the EventThreatDetectionSettings. Formats: *
             /// organizations/{organization}/eventThreatDetectionSettings *
-            /// folders/{folder}/eventThreatDetectionSettings *
-            /// projects/{project}/eventThreatDetectionSettings</summary>
+            /// folders/{folder}/eventThreatDetectionSettings * projects/{project}/eventThreatDetectionSettings
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
             /// <summary>The list of fields to be updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SecurityCommandCenter.v1beta2.Data.EventThreatDetectionSettings Body { get; set; }
@@ -1865,7 +1881,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -1883,14 +1898,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Update the SecurityHealthAnalyticsSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The resource name of the SecurityHealthAnalyticsSettings. Formats: *
-        /// organizations/{organization}/securityHealthAnalyticsSettings * folders/{folder}/securityHealthAnalyticsSettings *
-        /// projects/{project}/securityHealthAnalyticsSettings</param>
+        /// <param name="name">
+        /// The resource name of the SecurityHealthAnalyticsSettings. Formats: *
+        /// organizations/{organization}/securityHealthAnalyticsSettings *
+        /// folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings
+        /// </param>
         public virtual UpdateSecurityHealthAnalyticsSettingsRequest UpdateSecurityHealthAnalyticsSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.SecurityHealthAnalyticsSettings body, string name)
         {
             return new UpdateSecurityHealthAnalyticsSettingsRequest(service, body, name);
@@ -1907,18 +1923,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>The resource name of the SecurityHealthAnalyticsSettings. Formats: *
+            /// <summary>
+            /// The resource name of the SecurityHealthAnalyticsSettings. Formats: *
             /// organizations/{organization}/securityHealthAnalyticsSettings *
-            /// folders/{folder}/securityHealthAnalyticsSettings *
-            /// projects/{project}/securityHealthAnalyticsSettings</summary>
+            /// folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
             /// <summary>The list of fields to be updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SecurityCommandCenter.v1beta2.Data.SecurityHealthAnalyticsSettings Body { get; set; }
@@ -1939,7 +1954,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -1957,14 +1971,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Update the WebSecurityScannerSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The resource name of the WebSecurityScannerSettings. Formats: *
+        /// <param name="name">
+        /// The resource name of the WebSecurityScannerSettings. Formats: *
         /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
-        /// projects/{project}/webSecurityScannerSettings</param>
+        /// projects/{project}/webSecurityScannerSettings
+        /// </param>
         public virtual UpdateWebSecurityScannerSettingsRequest UpdateWebSecurityScannerSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.WebSecurityScannerSettings body, string name)
         {
             return new UpdateWebSecurityScannerSettingsRequest(service, body, name);
@@ -1981,17 +1996,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>The resource name of the WebSecurityScannerSettings. Formats: *
+            /// <summary>
+            /// The resource name of the WebSecurityScannerSettings. Formats: *
             /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
-            /// projects/{project}/webSecurityScannerSettings</summary>
+            /// projects/{project}/webSecurityScannerSettings
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
             /// <summary>The list of fields to be updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SecurityCommandCenter.v1beta2.Data.WebSecurityScannerSettings Body { get; set; }
@@ -2012,7 +2027,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -2030,7 +2044,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -2051,7 +2064,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             Locations = new LocationsResource(service);
             SecurityHealthAnalyticsSettings = new SecurityHealthAnalyticsSettingsResource(service);
             WebSecurityScannerSettings = new WebSecurityScannerSettingsResource(service);
-
         }
 
         /// <summary>Gets the ContainerThreatDetectionSettings resource.</summary>
@@ -2069,23 +2081,27 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             public ContainerThreatDetectionSettingsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Calculates the effective ContainerThreatDetectionSettings based on its level in the resource
-            /// hierarchy and its settings.</summary>
-            /// <param name="name">Required. The name of the ContainerThreatDetectionSettings to calculate. Formats: *
-            /// organizations/{organization}/containerThreatDetectionSettings * folders/{folder}/containerThreatDetectionSettings *
-            /// projects/{project}/containerThreatDetectionSettings *
-            /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings</param>
+            /// <summary>
+            /// Calculates the effective ContainerThreatDetectionSettings based on its level in the resource hierarchy
+            /// and its settings.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the ContainerThreatDetectionSettings to calculate. Formats: *
+            /// organizations/{organization}/containerThreatDetectionSettings *
+            /// folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings
+            /// * projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
+            /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
                 return new CalculateRequest(service, name);
             }
 
-            /// <summary>Calculates the effective ContainerThreatDetectionSettings based on its level in the resource
-            /// hierarchy and its settings.</summary>
+            /// <summary>
+            /// Calculates the effective ContainerThreatDetectionSettings based on its level in the resource hierarchy
+            /// and its settings.
+            /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.ContainerThreatDetectionSettings>
             {
                 /// <summary>Constructs a new Calculate request.</summary>
@@ -2095,15 +2111,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the ContainerThreatDetectionSettings to calculate. Formats: *
+                /// <summary>
+                /// Required. The name of the ContainerThreatDetectionSettings to calculate. Formats: *
                 /// organizations/{organization}/containerThreatDetectionSettings *
                 /// folders/{folder}/containerThreatDetectionSettings *
-                /// projects/{project}/containerThreatDetectionSettings * projects/{project}/locations/{location}/cluste
-                /// rs/{cluster}/containerThreatDetectionSettings</summary>
+                /// projects/{project}/containerThreatDetectionSettings *
+                /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
@@ -2118,7 +2134,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -2128,9 +2143,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         Pattern = @"^projects/[^/]+/containerThreatDetectionSettings$",
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the EventThreatDetectionSettings resource.</summary>
         public virtual EventThreatDetectionSettingsResource EventThreatDetectionSettings { get; }
 
@@ -2146,22 +2161,26 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             public EventThreatDetectionSettingsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Calculates the effective EventThreatDetectionSettings based on its level in the resource
-            /// hierarchy and its settings.</summary>
-            /// <param name="name">Required. The name of the EventThreatDetectionSettings to calculate. Formats: *
-            /// organizations/{organization}/eventThreatDetectionSettings * folders/{folder}/eventThreatDetectionSettings *
-            /// projects/{project}/eventThreatDetectionSettings</param>
+            /// <summary>
+            /// Calculates the effective EventThreatDetectionSettings based on its level in the resource hierarchy and
+            /// its settings.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the EventThreatDetectionSettings to calculate. Formats: *
+            /// organizations/{organization}/eventThreatDetectionSettings *
+            /// folders/{folder}/eventThreatDetectionSettings * projects/{project}/eventThreatDetectionSettings
+            /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
                 return new CalculateRequest(service, name);
             }
 
-            /// <summary>Calculates the effective EventThreatDetectionSettings based on its level in the resource
-            /// hierarchy and its settings.</summary>
+            /// <summary>
+            /// Calculates the effective EventThreatDetectionSettings based on its level in the resource hierarchy and
+            /// its settings.
+            /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.EventThreatDetectionSettings>
             {
                 /// <summary>Constructs a new Calculate request.</summary>
@@ -2171,14 +2190,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the EventThreatDetectionSettings to calculate. Formats: *
+                /// <summary>
+                /// Required. The name of the EventThreatDetectionSettings to calculate. Formats: *
                 /// organizations/{organization}/eventThreatDetectionSettings *
-                /// folders/{folder}/eventThreatDetectionSettings *
-                /// projects/{project}/eventThreatDetectionSettings</summary>
+                /// folders/{folder}/eventThreatDetectionSettings * projects/{project}/eventThreatDetectionSettings
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
@@ -2193,7 +2211,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -2203,9 +2220,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         Pattern = @"^projects/[^/]+/eventThreatDetectionSettings$",
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Locations resource.</summary>
         public virtual LocationsResource Locations { get; }
 
@@ -2222,7 +2239,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             {
                 this.service = service;
                 Clusters = new ClustersResource(service);
-
             }
 
             /// <summary>Gets the Clusters resource.</summary>
@@ -2241,7 +2257,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 {
                     this.service = service;
                     ContainerThreatDetectionSettings = new ContainerThreatDetectionSettingsResource(service);
-
                 }
 
                 /// <summary>Gets the ContainerThreatDetectionSettings resource.</summary>
@@ -2259,23 +2274,28 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     public ContainerThreatDetectionSettingsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
-
                     }
 
-
-                    /// <summary>Calculates the effective ContainerThreatDetectionSettings based on its level in the
-                    /// resource hierarchy and its settings.</summary>
-                    /// <param name="name">Required. The name of the ContainerThreatDetectionSettings to calculate. Formats: *
-                    /// organizations/{organization}/containerThreatDetectionSettings * folders/{folder}/containerThreatDetectionSettings *
+                    /// <summary>
+                    /// Calculates the effective ContainerThreatDetectionSettings based on its level in the resource
+                    /// hierarchy and its settings.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The name of the ContainerThreatDetectionSettings to calculate. Formats: *
+                    /// organizations/{organization}/containerThreatDetectionSettings *
+                    /// folders/{folder}/containerThreatDetectionSettings *
                     /// projects/{project}/containerThreatDetectionSettings *
-                    /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings</param>
+                    /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
+                    /// </param>
                     public virtual CalculateRequest Calculate(string name)
                     {
                         return new CalculateRequest(service, name);
                     }
 
-                    /// <summary>Calculates the effective ContainerThreatDetectionSettings based on its level in the
-                    /// resource hierarchy and its settings.</summary>
+                    /// <summary>
+                    /// Calculates the effective ContainerThreatDetectionSettings based on its level in the resource
+                    /// hierarchy and its settings.
+                    /// </summary>
                     public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.ContainerThreatDetectionSettings>
                     {
                         /// <summary>Constructs a new Calculate request.</summary>
@@ -2285,15 +2305,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                             InitParameters();
                         }
 
-
-                        /// <summary>Required. The name of the ContainerThreatDetectionSettings to calculate. Formats: *
+                        /// <summary>
+                        /// Required. The name of the ContainerThreatDetectionSettings to calculate. Formats: *
                         /// organizations/{organization}/containerThreatDetectionSettings *
                         /// folders/{folder}/containerThreatDetectionSettings *
-                        /// projects/{project}/containerThreatDetectionSettings * projects/{project}/locations/{location
-                        /// }/clusters/{cluster}/containerThreatDetectionSettings</summary>
+                        /// projects/{project}/containerThreatDetectionSettings *
+                        /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
-
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "calculate";
@@ -2308,7 +2328,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "name",
@@ -2318,15 +2337,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/containerThreatDetectionSettings$",
                             });
                         }
-
                     }
                 }
 
                 /// <summary>Get the ContainerThreatDetectionSettings resource.</summary>
-                /// <param name="name">Required. The name of the ContainerThreatDetectionSettings to retrieve. Formats: *
-                /// organizations/{organization}/containerThreatDetectionSettings * folders/{folder}/containerThreatDetectionSettings *
+                /// <param name="name">
+                /// Required. The name of the ContainerThreatDetectionSettings to retrieve. Formats: *
+                /// organizations/{organization}/containerThreatDetectionSettings *
+                /// folders/{folder}/containerThreatDetectionSettings *
                 /// projects/{project}/containerThreatDetectionSettings *
-                /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings</param>
+                /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
+                /// </param>
                 public virtual GetContainerThreatDetectionSettingsRequest GetContainerThreatDetectionSettings(string name)
                 {
                     return new GetContainerThreatDetectionSettingsRequest(service, name);
@@ -2342,15 +2363,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         InitParameters();
                     }
 
-
-                    /// <summary>Required. The name of the ContainerThreatDetectionSettings to retrieve. Formats: *
+                    /// <summary>
+                    /// Required. The name of the ContainerThreatDetectionSettings to retrieve. Formats: *
                     /// organizations/{organization}/containerThreatDetectionSettings *
                     /// folders/{folder}/containerThreatDetectionSettings *
-                    /// projects/{project}/containerThreatDetectionSettings * projects/{project}/locations/{location}/cl
-                    /// usters/{cluster}/containerThreatDetectionSettings</summary>
+                    /// projects/{project}/containerThreatDetectionSettings *
+                    /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "getContainerThreatDetectionSettings";
@@ -2365,7 +2386,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -2375,15 +2395,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                             Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/containerThreatDetectionSettings$",
                         });
                     }
-
                 }
 
                 /// <summary>Update the ContainerThreatDetectionSettings resource.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The resource name of the ContainerThreatDetectionSettings. Formats: *
-                /// organizations/{organization}/containerThreatDetectionSettings * folders/{folder}/containerThreatDetectionSettings *
+                /// <param name="name">
+                /// The resource name of the ContainerThreatDetectionSettings. Formats: *
+                /// organizations/{organization}/containerThreatDetectionSettings *
+                /// folders/{folder}/containerThreatDetectionSettings *
                 /// projects/{project}/containerThreatDetectionSettings *
-                /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings</param>
+                /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
+                /// </param>
                 public virtual UpdateContainerThreatDetectionSettingsRequest UpdateContainerThreatDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.ContainerThreatDetectionSettings body, string name)
                 {
                     return new UpdateContainerThreatDetectionSettingsRequest(service, body, name);
@@ -2400,19 +2422,19 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         InitParameters();
                     }
 
-
-                    /// <summary>The resource name of the ContainerThreatDetectionSettings. Formats: *
+                    /// <summary>
+                    /// The resource name of the ContainerThreatDetectionSettings. Formats: *
                     /// organizations/{organization}/containerThreatDetectionSettings *
                     /// folders/{folder}/containerThreatDetectionSettings *
-                    /// projects/{project}/containerThreatDetectionSettings * projects/{project}/locations/{location}/cl
-                    /// usters/{cluster}/containerThreatDetectionSettings</summary>
+                    /// projects/{project}/containerThreatDetectionSettings *
+                    /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>The list of fields to be updated.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.SecurityCommandCenter.v1beta2.Data.ContainerThreatDetectionSettings Body { get; set; }
@@ -2433,7 +2455,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -2451,10 +2472,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                             Pattern = null,
                         });
                     }
-
                 }
             }
         }
+
         /// <summary>Gets the SecurityHealthAnalyticsSettings resource.</summary>
         public virtual SecurityHealthAnalyticsSettingsResource SecurityHealthAnalyticsSettings { get; }
 
@@ -2470,22 +2491,26 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             public SecurityHealthAnalyticsSettingsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Calculates the effective SecurityHealthAnalyticsSettings based on its level in the resource
-            /// hierarchy and its settings.</summary>
-            /// <param name="name">Required. The name of the SecurityHealthAnalyticsSettings to calculate. Formats: *
-            /// organizations/{organization}/securityHealthAnalyticsSettings * folders/{folder}/securityHealthAnalyticsSettings *
-            /// projects/{project}/securityHealthAnalyticsSettings</param>
+            /// <summary>
+            /// Calculates the effective SecurityHealthAnalyticsSettings based on its level in the resource hierarchy
+            /// and its settings.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the SecurityHealthAnalyticsSettings to calculate. Formats: *
+            /// organizations/{organization}/securityHealthAnalyticsSettings *
+            /// folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings
+            /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
                 return new CalculateRequest(service, name);
             }
 
-            /// <summary>Calculates the effective SecurityHealthAnalyticsSettings based on its level in the resource
-            /// hierarchy and its settings.</summary>
+            /// <summary>
+            /// Calculates the effective SecurityHealthAnalyticsSettings based on its level in the resource hierarchy
+            /// and its settings.
+            /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.SecurityHealthAnalyticsSettings>
             {
                 /// <summary>Constructs a new Calculate request.</summary>
@@ -2495,14 +2520,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the SecurityHealthAnalyticsSettings to calculate. Formats: *
+                /// <summary>
+                /// Required. The name of the SecurityHealthAnalyticsSettings to calculate. Formats: *
                 /// organizations/{organization}/securityHealthAnalyticsSettings *
                 /// folders/{folder}/securityHealthAnalyticsSettings *
-                /// projects/{project}/securityHealthAnalyticsSettings</summary>
+                /// projects/{project}/securityHealthAnalyticsSettings
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
@@ -2517,7 +2542,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -2527,9 +2551,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         Pattern = @"^projects/[^/]+/securityHealthAnalyticsSettings$",
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the WebSecurityScannerSettings resource.</summary>
         public virtual WebSecurityScannerSettingsResource WebSecurityScannerSettings { get; }
 
@@ -2545,22 +2569,26 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             public WebSecurityScannerSettingsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Calculates the effective WebSecurityScannerSettings based on its level in the resource
-            /// hierarchy and its settings.</summary>
-            /// <param name="name">Required. The name of the WebSecurityScannerSettings to calculate. Formats: *
+            /// <summary>
+            /// Calculates the effective WebSecurityScannerSettings based on its level in the resource hierarchy and its
+            /// settings.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the WebSecurityScannerSettings to calculate. Formats: *
             /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
-            /// projects/{project}/webSecurityScannerSettings</param>
+            /// projects/{project}/webSecurityScannerSettings
+            /// </param>
             public virtual CalculateRequest Calculate(string name)
             {
                 return new CalculateRequest(service, name);
             }
 
-            /// <summary>Calculates the effective WebSecurityScannerSettings based on its level in the resource
-            /// hierarchy and its settings.</summary>
+            /// <summary>
+            /// Calculates the effective WebSecurityScannerSettings based on its level in the resource hierarchy and its
+            /// settings.
+            /// </summary>
             public class CalculateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.WebSecurityScannerSettings>
             {
                 /// <summary>Constructs a new Calculate request.</summary>
@@ -2570,14 +2598,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the WebSecurityScannerSettings to calculate. Formats: *
+                /// <summary>
+                /// Required. The name of the WebSecurityScannerSettings to calculate. Formats: *
                 /// organizations/{organization}/webSecurityScannerSettings *
-                /// folders/{folder}/webSecurityScannerSettings *
-                /// projects/{project}/webSecurityScannerSettings</summary>
+                /// folders/{folder}/webSecurityScannerSettings * projects/{project}/webSecurityScannerSettings
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "calculate";
@@ -2592,7 +2619,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -2602,15 +2628,16 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                         Pattern = @"^projects/[^/]+/webSecurityScannerSettings$",
                     });
                 }
-
             }
         }
 
         /// <summary>Get the ContainerThreatDetectionSettings resource.</summary>
-        /// <param name="name">Required. The name of the ContainerThreatDetectionSettings to retrieve. Formats: *
-        /// organizations/{organization}/containerThreatDetectionSettings * folders/{folder}/containerThreatDetectionSettings *
-        /// projects/{project}/containerThreatDetectionSettings *
-        /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings</param>
+        /// <param name="name">
+        /// Required. The name of the ContainerThreatDetectionSettings to retrieve. Formats: *
+        /// organizations/{organization}/containerThreatDetectionSettings *
+        /// folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings *
+        /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
+        /// </param>
         public virtual GetContainerThreatDetectionSettingsRequest GetContainerThreatDetectionSettings(string name)
         {
             return new GetContainerThreatDetectionSettingsRequest(service, name);
@@ -2626,14 +2653,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>Required. The name of the ContainerThreatDetectionSettings to retrieve. Formats: *
+            /// <summary>
+            /// Required. The name of the ContainerThreatDetectionSettings to retrieve. Formats: *
             /// organizations/{organization}/containerThreatDetectionSettings *
             /// folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings
-            /// * projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings</summary>
+            /// * projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getContainerThreatDetectionSettings";
@@ -2648,7 +2675,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -2658,13 +2684,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = @"^projects/[^/]+/containerThreatDetectionSettings$",
                 });
             }
-
         }
 
         /// <summary>Get the EventThreatDetectionSettings resource.</summary>
-        /// <param name="name">Required. The name of the EventThreatDetectionSettings to retrieve. Formats: *
+        /// <param name="name">
+        /// Required. The name of the EventThreatDetectionSettings to retrieve. Formats: *
         /// organizations/{organization}/eventThreatDetectionSettings * folders/{folder}/eventThreatDetectionSettings *
-        /// projects/{project}/eventThreatDetectionSettings</param>
+        /// projects/{project}/eventThreatDetectionSettings
+        /// </param>
         public virtual GetEventThreatDetectionSettingsRequest GetEventThreatDetectionSettings(string name)
         {
             return new GetEventThreatDetectionSettingsRequest(service, name);
@@ -2680,14 +2707,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>Required. The name of the EventThreatDetectionSettings to retrieve. Formats: *
+            /// <summary>
+            /// Required. The name of the EventThreatDetectionSettings to retrieve. Formats: *
             /// organizations/{organization}/eventThreatDetectionSettings *
-            /// folders/{folder}/eventThreatDetectionSettings *
-            /// projects/{project}/eventThreatDetectionSettings</summary>
+            /// folders/{folder}/eventThreatDetectionSettings * projects/{project}/eventThreatDetectionSettings
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getEventThreatDetectionSettings";
@@ -2702,7 +2728,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -2712,13 +2737,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = @"^projects/[^/]+/eventThreatDetectionSettings$",
                 });
             }
-
         }
 
         /// <summary>Get the SecurityHealthAnalyticsSettings resource.</summary>
-        /// <param name="name">Required. The name of the SecurityHealthAnalyticsSettings to retrieve. Formats: *
-        /// organizations/{organization}/securityHealthAnalyticsSettings * folders/{folder}/securityHealthAnalyticsSettings *
-        /// projects/{project}/securityHealthAnalyticsSettings</param>
+        /// <param name="name">
+        /// Required. The name of the SecurityHealthAnalyticsSettings to retrieve. Formats: *
+        /// organizations/{organization}/securityHealthAnalyticsSettings *
+        /// folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings
+        /// </param>
         public virtual GetSecurityHealthAnalyticsSettingsRequest GetSecurityHealthAnalyticsSettings(string name)
         {
             return new GetSecurityHealthAnalyticsSettingsRequest(service, name);
@@ -2734,14 +2760,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>Required. The name of the SecurityHealthAnalyticsSettings to retrieve. Formats: *
+            /// <summary>
+            /// Required. The name of the SecurityHealthAnalyticsSettings to retrieve. Formats: *
             /// organizations/{organization}/securityHealthAnalyticsSettings *
-            /// folders/{folder}/securityHealthAnalyticsSettings *
-            /// projects/{project}/securityHealthAnalyticsSettings</summary>
+            /// folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getSecurityHealthAnalyticsSettings";
@@ -2756,7 +2781,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -2766,13 +2790,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = @"^projects/[^/]+/securityHealthAnalyticsSettings$",
                 });
             }
-
         }
 
         /// <summary>Get the WebSecurityScannerSettings resource.</summary>
-        /// <param name="name">Required. The name of the WebSecurityScannerSettings to retrieve. Formats: *
+        /// <param name="name">
+        /// Required. The name of the WebSecurityScannerSettings to retrieve. Formats: *
         /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
-        /// projects/{project}/webSecurityScannerSettings</param>
+        /// projects/{project}/webSecurityScannerSettings
+        /// </param>
         public virtual GetWebSecurityScannerSettingsRequest GetWebSecurityScannerSettings(string name)
         {
             return new GetWebSecurityScannerSettingsRequest(service, name);
@@ -2788,13 +2813,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>Required. The name of the WebSecurityScannerSettings to retrieve. Formats: *
+            /// <summary>
+            /// Required. The name of the WebSecurityScannerSettings to retrieve. Formats: *
             /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
-            /// projects/{project}/webSecurityScannerSettings</summary>
+            /// projects/{project}/webSecurityScannerSettings
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getWebSecurityScannerSettings";
@@ -2809,7 +2834,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -2819,15 +2843,16 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = @"^projects/[^/]+/webSecurityScannerSettings$",
                 });
             }
-
         }
 
         /// <summary>Update the ContainerThreatDetectionSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The resource name of the ContainerThreatDetectionSettings. Formats: *
-        /// organizations/{organization}/containerThreatDetectionSettings * folders/{folder}/containerThreatDetectionSettings *
-        /// projects/{project}/containerThreatDetectionSettings *
-        /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings</param>
+        /// <param name="name">
+        /// The resource name of the ContainerThreatDetectionSettings. Formats: *
+        /// organizations/{organization}/containerThreatDetectionSettings *
+        /// folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings *
+        /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
+        /// </param>
         public virtual UpdateContainerThreatDetectionSettingsRequest UpdateContainerThreatDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.ContainerThreatDetectionSettings body, string name)
         {
             return new UpdateContainerThreatDetectionSettingsRequest(service, body, name);
@@ -2844,18 +2869,18 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>The resource name of the ContainerThreatDetectionSettings. Formats: *
+            /// <summary>
+            /// The resource name of the ContainerThreatDetectionSettings. Formats: *
             /// organizations/{organization}/containerThreatDetectionSettings *
             /// folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings
-            /// * projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings</summary>
+            /// * projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
             /// <summary>The list of fields to be updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SecurityCommandCenter.v1beta2.Data.ContainerThreatDetectionSettings Body { get; set; }
@@ -2876,7 +2901,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -2894,14 +2918,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Update the EventThreatDetectionSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The resource name of the EventThreatDetectionSettings. Formats: *
+        /// <param name="name">
+        /// The resource name of the EventThreatDetectionSettings. Formats: *
         /// organizations/{organization}/eventThreatDetectionSettings * folders/{folder}/eventThreatDetectionSettings *
-        /// projects/{project}/eventThreatDetectionSettings</param>
+        /// projects/{project}/eventThreatDetectionSettings
+        /// </param>
         public virtual UpdateEventThreatDetectionSettingsRequest UpdateEventThreatDetectionSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.EventThreatDetectionSettings body, string name)
         {
             return new UpdateEventThreatDetectionSettingsRequest(service, body, name);
@@ -2918,18 +2943,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>The resource name of the EventThreatDetectionSettings. Formats: *
+            /// <summary>
+            /// The resource name of the EventThreatDetectionSettings. Formats: *
             /// organizations/{organization}/eventThreatDetectionSettings *
-            /// folders/{folder}/eventThreatDetectionSettings *
-            /// projects/{project}/eventThreatDetectionSettings</summary>
+            /// folders/{folder}/eventThreatDetectionSettings * projects/{project}/eventThreatDetectionSettings
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
             /// <summary>The list of fields to be updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SecurityCommandCenter.v1beta2.Data.EventThreatDetectionSettings Body { get; set; }
@@ -2950,7 +2974,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -2968,14 +2991,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Update the SecurityHealthAnalyticsSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The resource name of the SecurityHealthAnalyticsSettings. Formats: *
-        /// organizations/{organization}/securityHealthAnalyticsSettings * folders/{folder}/securityHealthAnalyticsSettings *
-        /// projects/{project}/securityHealthAnalyticsSettings</param>
+        /// <param name="name">
+        /// The resource name of the SecurityHealthAnalyticsSettings. Formats: *
+        /// organizations/{organization}/securityHealthAnalyticsSettings *
+        /// folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings
+        /// </param>
         public virtual UpdateSecurityHealthAnalyticsSettingsRequest UpdateSecurityHealthAnalyticsSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.SecurityHealthAnalyticsSettings body, string name)
         {
             return new UpdateSecurityHealthAnalyticsSettingsRequest(service, body, name);
@@ -2992,18 +3016,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>The resource name of the SecurityHealthAnalyticsSettings. Formats: *
+            /// <summary>
+            /// The resource name of the SecurityHealthAnalyticsSettings. Formats: *
             /// organizations/{organization}/securityHealthAnalyticsSettings *
-            /// folders/{folder}/securityHealthAnalyticsSettings *
-            /// projects/{project}/securityHealthAnalyticsSettings</summary>
+            /// folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
             /// <summary>The list of fields to be updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SecurityCommandCenter.v1beta2.Data.SecurityHealthAnalyticsSettings Body { get; set; }
@@ -3024,7 +3047,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -3042,14 +3064,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Update the WebSecurityScannerSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The resource name of the WebSecurityScannerSettings. Formats: *
+        /// <param name="name">
+        /// The resource name of the WebSecurityScannerSettings. Formats: *
         /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
-        /// projects/{project}/webSecurityScannerSettings</param>
+        /// projects/{project}/webSecurityScannerSettings
+        /// </param>
         public virtual UpdateWebSecurityScannerSettingsRequest UpdateWebSecurityScannerSettings(Google.Apis.SecurityCommandCenter.v1beta2.Data.WebSecurityScannerSettings body, string name)
         {
             return new UpdateWebSecurityScannerSettingsRequest(service, body, name);
@@ -3066,17 +3089,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 InitParameters();
             }
 
-
-            /// <summary>The resource name of the WebSecurityScannerSettings. Formats: *
+            /// <summary>
+            /// The resource name of the WebSecurityScannerSettings. Formats: *
             /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
-            /// projects/{project}/webSecurityScannerSettings</summary>
+            /// projects/{project}/webSecurityScannerSettings
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
             /// <summary>The list of fields to be updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SecurityCommandCenter.v1beta2.Data.WebSecurityScannerSettings Body { get; set; }
@@ -3097,7 +3120,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -3115,14 +3137,11 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
-{    
-
+{
     /// <summary>Configuration of a module.</summary>
     public class Config : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3130,37 +3149,46 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("moduleEnablementState")]
         public virtual string ModuleEnablementState { get; set; }
 
-        /// <summary>The configuration value for the module. The absence of this field implies its inheritance from the
-        /// parent.</summary>
+        /// <summary>
+        /// The configuration value for the module. The absence of this field implies its inheritance from the parent.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Collections.Generic.IDictionary<string, object> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Resource capturing the settings for the Container Threat Detection service.</summary>
     public class ContainerThreatDetectionSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The configurations including the state of enablement for the service's different modules. The
-        /// absence of a module in the map implies its configuration is inherited from its parent's.</summary>
+        /// <summary>
+        /// The configurations including the state of enablement for the service's different modules. The absence of a
+        /// module in the map implies its configuration is inherited from its parent's.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modules")]
         public virtual System.Collections.Generic.IDictionary<string, Config> Modules { get; set; }
 
-        /// <summary>The resource name of the ContainerThreatDetectionSettings. Formats: *
+        /// <summary>
+        /// The resource name of the ContainerThreatDetectionSettings. Formats: *
         /// organizations/{organization}/containerThreatDetectionSettings *
         /// folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings *
-        /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings</summary>
+        /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. The service account used by Container Threat Detection for scanning. Service accounts
-        /// are scoped at the project level meaning this field will be empty at any level above a project.</summary>
+        /// <summary>
+        /// Output only. The service account used by Container Threat Detection for scanning. Service accounts are
+        /// scoped at the project level meaning this field will be empty at any level above a project.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
-        /// <summary>The state of enablement for the service at its level of the resource hierarchy. A DISABLED state
-        /// will override all module enablement_states to DISABLED.</summary>
+        /// <summary>
+        /// The state of enablement for the service at its level of the resource hierarchy. A DISABLED state will
+        /// override all module enablement_states to DISABLED.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceEnablementState")]
         public virtual string ServiceEnablementState { get; set; }
 
@@ -3170,7 +3198,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Details of a subscription.</summary>
     public class Details : Google.Apis.Requests.IDirectResponseSchema
@@ -3189,24 +3217,30 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Resource capturing the settings for the Event Threat Detection service.</summary>
     public class EventThreatDetectionSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The configurations including the state of enablement for the service's different modules. The
-        /// absence of a module in the map implies its configuration is inherited from its parent's.</summary>
+        /// <summary>
+        /// The configurations including the state of enablement for the service's different modules. The absence of a
+        /// module in the map implies its configuration is inherited from its parent's.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modules")]
         public virtual System.Collections.Generic.IDictionary<string, Config> Modules { get; set; }
 
-        /// <summary>The resource name of the EventThreatDetectionSettings. Formats: *
+        /// <summary>
+        /// The resource name of the EventThreatDetectionSettings. Formats: *
         /// organizations/{organization}/eventThreatDetectionSettings * folders/{folder}/eventThreatDetectionSettings *
-        /// projects/{project}/eventThreatDetectionSettings</summary>
+        /// projects/{project}/eventThreatDetectionSettings
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The state of enablement for the service at its level of the resource hierarchy. A DISABLED state
-        /// will override all module enablement_states to DISABLED.</summary>
+        /// <summary>
+        /// The state of enablement for the service at its level of the resource hierarchy. A DISABLED state will
+        /// override all module enablement_states to DISABLED.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceEnablementState")]
         public virtual string ServiceEnablementState { get; set; }
 
@@ -3216,16 +3250,20 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Security Command Center finding. A finding is a record of assessment data like security, risk, health,
-    /// or privacy, that is ingested into Security Command Center for presentation, notification, analysis, policy
-    /// testing, and enforcement. For example, a cross-site scripting (XSS) vulnerability in an App Engine application
-    /// is a finding.</summary>
+    /// <summary>
+    /// Security Command Center finding. A finding is a record of assessment data like security, risk, health, or
+    /// privacy, that is ingested into Security Command Center for presentation, notification, analysis, policy testing,
+    /// and enforcement. For example, a cross-site scripting (XSS) vulnerability in an App Engine application is a
+    /// finding.
+    /// </summary>
     public class Finding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The additional taxonomy group within findings from a given source. This field is immutable after
-        /// creation time. Example: "XSS_FLASH_INJECTION"</summary>
+        /// <summary>
+        /// The additional taxonomy group within findings from a given source. This field is immutable after creation
+        /// time. Example: "XSS_FLASH_INJECTION"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
 
@@ -3233,40 +3271,52 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>The time at which the event took place, or when an update to the finding occurred. For example, if
-        /// the finding represents an open firewall it would capture the time the detector believes the firewall became
+        /// <summary>
+        /// The time at which the event took place, or when an update to the finding occurred. For example, if the
+        /// finding represents an open firewall it would capture the time the detector believes the firewall became
         /// open. The accuracy is determined by the detector. If the finding were to be resolved afterward, this time
-        /// would reflect when the finding was resolved.</summary>
+        /// would reflect when the finding was resolved.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual object EventTime { get; set; }
 
-        /// <summary>The URI that, if available, points to a web page outside of Security Command Center where
-        /// additional information about the finding can be found. This field is guaranteed to be either empty or a well
-        /// formed URL.</summary>
+        /// <summary>
+        /// The URI that, if available, points to a web page outside of Security Command Center where additional
+        /// information about the finding can be found. This field is guaranteed to be either empty or a well formed
+        /// URL.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalUri")]
         public virtual string ExternalUri { get; set; }
 
-        /// <summary>The relative resource name of this finding. See:
+        /// <summary>
+        /// The relative resource name of this finding. See:
         /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-        /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"</summary>
+        /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The relative resource name of the source the finding belongs to. See:
+        /// <summary>
+        /// The relative resource name of the source the finding belongs to. See:
         /// https://cloud.google.com/apis/design/resource_names#relative_resource_name This field is immutable after
-        /// creation time. For example: "organizations/{organization_id}/sources/{source_id}"</summary>
+        /// creation time. For example: "organizations/{organization_id}/sources/{source_id}"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
-        /// <summary>For findings on Google Cloud resources, the full resource name of the Google Cloud resource this
-        /// finding is for. See: https://cloud.google.com/apis/design/resource_names#full_resource_name When the finding
-        /// is for a non-Google Cloud resource, the resourceName can be a customer or partner defined string. This field
-        /// is immutable after creation time.</summary>
+        /// <summary>
+        /// For findings on Google Cloud resources, the full resource name of the Google Cloud resource this finding is
+        /// for. See: https://cloud.google.com/apis/design/resource_names#full_resource_name When the finding is for a
+        /// non-Google Cloud resource, the resourceName can be a customer or partner defined string. This field is
+        /// immutable after creation time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
 
-        /// <summary>Output only. User specified security marks. These marks are entirely managed by the user and come
-        /// from the SecurityMarks resource that belongs to the finding.</summary>
+        /// <summary>
+        /// Output only. User specified security marks. These marks are entirely managed by the user and come from the
+        /// SecurityMarks resource that belongs to the finding.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityMarks")]
         public virtual SecurityMarks SecurityMarks { get; set; }
 
@@ -3274,9 +3324,11 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }
 
-        /// <summary>Source specific properties. These properties are managed by the source that writes the finding. The
-        /// key names in the source_properties map must be between 1 and 255 characters, and must start with a letter
-        /// and contain alphanumeric characters or underscores only.</summary>
+        /// <summary>
+        /// Source specific properties. These properties are managed by the source that writes the finding. The key
+        /// names in the source_properties map must be between 1 and 255 characters, and must start with a letter and
+        /// contain alphanumeric characters or underscores only.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceProperties")]
         public virtual System.Collections.Generic.IDictionary<string, object> SourceProperties { get; set; }
 
@@ -3286,13 +3338,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Message that contains the resource name and display name of a folder resource.</summary>
     public class Folder : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Full resource name of this folder. See:
-        /// https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
+        /// <summary>
+        /// Full resource name of this folder. See:
+        /// https://cloud.google.com/apis/design/resource_names#full_resource_name
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceFolder")]
         public virtual string ResourceFolder { get; set; }
 
@@ -3302,7 +3356,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Cloud SCC's Notification</summary>
     public class GoogleCloudSecuritycenterV1NotificationMessage : Google.Apis.Requests.IDirectResponseSchema
@@ -3321,18 +3375,22 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information related to the Google Cloud resource.</summary>
     public class GoogleCloudSecuritycenterV1Resource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Contains a Folder message for each folder in the assets ancestry. The first folder is
-        /// the deepest nested folder, and the last folder is the folder directly under the Organization.</summary>
+        /// <summary>
+        /// Output only. Contains a Folder message for each folder in the assets ancestry. The first folder is the
+        /// deepest nested folder, and the last folder is the folder directly under the Organization.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("folders")]
         public virtual System.Collections.Generic.IList<Folder> Folders { get; set; }
 
-        /// <summary>The full resource name of the resource. See:
-        /// https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
+        /// <summary>
+        /// The full resource name of the resource. See:
+        /// https://cloud.google.com/apis/design/resource_names#full_resource_name
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3354,7 +3412,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response of asset discovery run</summary>
     public class GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -3369,7 +3427,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response of asset discovery run</summary>
     public class GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -3384,15 +3442,19 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Security Command Center finding. A finding is a record of assessment data (security, risk, health or
-    /// privacy) ingested into Security Command Center for presentation, notification, analysis, policy testing, and
-    /// enforcement. For example, an XSS vulnerability in an App Engine application is a finding.</summary>
+    /// <summary>
+    /// Security Command Center finding. A finding is a record of assessment data (security, risk, health or privacy)
+    /// ingested into Security Command Center for presentation, notification, analysis, policy testing, and enforcement.
+    /// For example, an XSS vulnerability in an App Engine application is a finding.
+    /// </summary>
     public class GoogleCloudSecuritycenterV1p1beta1Finding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The additional taxonomy group within findings from a given source. This field is immutable after
-        /// creation time. Example: "XSS_FLASH_INJECTION"</summary>
+        /// <summary>
+        /// The additional taxonomy group within findings from a given source. This field is immutable after creation
+        /// time. Example: "XSS_FLASH_INJECTION"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
 
@@ -3400,40 +3462,52 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>The time at which the event took place, or when an update to the finding occurred. For example, if
-        /// the finding represents an open firewall it would capture the time the detector believes the firewall became
+        /// <summary>
+        /// The time at which the event took place, or when an update to the finding occurred. For example, if the
+        /// finding represents an open firewall it would capture the time the detector believes the firewall became
         /// open. The accuracy is determined by the detector. If the finding were to be resolved afterward, this time
-        /// would reflect when the finding was resolved.</summary>
+        /// would reflect when the finding was resolved.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual object EventTime { get; set; }
 
-        /// <summary>The URI that, if available, points to a web page outside of Security Command Center where
-        /// additional information about the finding can be found. This field is guaranteed to be either empty or a well
-        /// formed URL.</summary>
+        /// <summary>
+        /// The URI that, if available, points to a web page outside of Security Command Center where additional
+        /// information about the finding can be found. This field is guaranteed to be either empty or a well formed
+        /// URL.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalUri")]
         public virtual string ExternalUri { get; set; }
 
-        /// <summary>The relative resource name of this finding. See:
+        /// <summary>
+        /// The relative resource name of this finding. See:
         /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
-        /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"</summary>
+        /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The relative resource name of the source the finding belongs to. See:
+        /// <summary>
+        /// The relative resource name of the source the finding belongs to. See:
         /// https://cloud.google.com/apis/design/resource_names#relative_resource_name This field is immutable after
-        /// creation time. For example: "organizations/{organization_id}/sources/{source_id}"</summary>
+        /// creation time. For example: "organizations/{organization_id}/sources/{source_id}"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
-        /// <summary>For findings on Google Cloud resources, the full resource name of the Google Cloud resource this
-        /// finding is for. See: https://cloud.google.com/apis/design/resource_names#full_resource_name When the finding
-        /// is for a non-Google Cloud resource, the resourceName can be a customer or partner defined string. This field
-        /// is immutable after creation time.</summary>
+        /// <summary>
+        /// For findings on Google Cloud resources, the full resource name of the Google Cloud resource this finding is
+        /// for. See: https://cloud.google.com/apis/design/resource_names#full_resource_name When the finding is for a
+        /// non-Google Cloud resource, the resourceName can be a customer or partner defined string. This field is
+        /// immutable after creation time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
 
-        /// <summary>Output only. User specified security marks. These marks are entirely managed by the user and come
-        /// from the SecurityMarks resource that belongs to the finding.</summary>
+        /// <summary>
+        /// Output only. User specified security marks. These marks are entirely managed by the user and come from the
+        /// SecurityMarks resource that belongs to the finding.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityMarks")]
         public virtual GoogleCloudSecuritycenterV1p1beta1SecurityMarks SecurityMarks { get; set; }
 
@@ -3441,9 +3515,11 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }
 
-        /// <summary>Source specific properties. These properties are managed by the source that writes the finding. The
-        /// key names in the source_properties map must be between 1 and 255 characters, and must start with a letter
-        /// and contain alphanumeric characters or underscores only.</summary>
+        /// <summary>
+        /// Source specific properties. These properties are managed by the source that writes the finding. The key
+        /// names in the source_properties map must be between 1 and 255 characters, and must start with a letter and
+        /// contain alphanumeric characters or underscores only.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceProperties")]
         public virtual System.Collections.Generic.IDictionary<string, object> SourceProperties { get; set; }
 
@@ -3453,13 +3529,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Message that contains the resource name and display name of a folder resource.</summary>
     public class GoogleCloudSecuritycenterV1p1beta1Folder : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Full resource name of this folder. See:
-        /// https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
+        /// <summary>
+        /// Full resource name of this folder. See:
+        /// https://cloud.google.com/apis/design/resource_names#full_resource_name
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceFolder")]
         public virtual string ResourceFolder { get; set; }
 
@@ -3469,7 +3547,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Security Command Center's Notification</summary>
     public class GoogleCloudSecuritycenterV1p1beta1NotificationMessage : Google.Apis.Requests.IDirectResponseSchema
@@ -3488,18 +3566,22 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information related to the Google Cloud resource.</summary>
     public class GoogleCloudSecuritycenterV1p1beta1Resource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Contains a Folder message for each folder in the assets ancestry. The first folder is
-        /// the deepest nested folder, and the last folder is the folder directly under the Organization.</summary>
+        /// <summary>
+        /// Output only. Contains a Folder message for each folder in the assets ancestry. The first folder is the
+        /// deepest nested folder, and the last folder is the folder directly under the Organization.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("folders")]
         public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV1p1beta1Folder> Folders { get; set; }
 
-        /// <summary>The full resource name of the resource. See:
-        /// https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
+        /// <summary>
+        /// The full resource name of the resource. See:
+        /// https://cloud.google.com/apis/design/resource_names#full_resource_name
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3521,7 +3603,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response of asset discovery run</summary>
     public class GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -3536,43 +3618,52 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>User specified security marks that are attached to the parent Security Command Center resource.
-    /// Security marks are scoped within a Security Command Center organization -- they can be modified and viewed by
-    /// all users who have proper permissions on the organization.</summary>
+    /// <summary>
+    /// User specified security marks that are attached to the parent Security Command Center resource. Security marks
+    /// are scoped within a Security Command Center organization -- they can be modified and viewed by all users who
+    /// have proper permissions on the organization.
+    /// </summary>
     public class GoogleCloudSecuritycenterV1p1beta1SecurityMarks : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Mutable user specified security marks belonging to the parent resource. Constraints are as follows:
-        /// * Keys and values are treated as case insensitive * Keys must be between 1 - 256 characters (inclusive) *
-        /// Keys must be letters, numbers, underscores, or dashes * Values have leading and trailing whitespace trimmed,
-        /// remaining characters must be between 1 - 4096 characters (inclusive)</summary>
+        /// <summary>
+        /// Mutable user specified security marks belonging to the parent resource. Constraints are as follows: * Keys
+        /// and values are treated as case insensitive * Keys must be between 1 - 256 characters (inclusive) * Keys must
+        /// be letters, numbers, underscores, or dashes * Values have leading and trailing whitespace trimmed, remaining
+        /// characters must be between 1 - 4096 characters (inclusive)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marks")]
         public virtual System.Collections.Generic.IDictionary<string, string> Marks { get; set; }
 
-        /// <summary>The relative resource name of the SecurityMarks. See:
+        /// <summary>
+        /// The relative resource name of the SecurityMarks. See:
         /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples:
         /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
-        /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".</summary>
+        /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Resource capturing the settings for Security Center.</summary>
     public class SecurityCenterSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The resource name of the project to send logs to. This project must be part of the organization
-        /// this resource resides in. The format is `projects/{project_id}`. An empty value disables logging. This value
-        /// is only referenced by services that support log sink. Please refer to the documentation for an updated list
-        /// of compatible services.</summary>
+        /// <summary>
+        /// The resource name of the project to send logs to. This project must be part of the organization this
+        /// resource resides in. The format is `projects/{project_id}`. An empty value disables logging. This value is
+        /// only referenced by services that support log sink. Please refer to the documentation for an updated list of
+        /// compatible services.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logSinkProject")]
         public virtual string LogSinkProject { get; set; }
 
-        /// <summary>The resource name of the SecurityCenterSettings. Format:
-        /// organizations/{organization}/securityCenterSettings</summary>
+        /// <summary>
+        /// The resource name of the SecurityCenterSettings. Format: organizations/{organization}/securityCenterSettings
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3582,20 +3673,23 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Resource capturing the settings for the Security Health Analytics service.</summary>
     public class SecurityHealthAnalyticsSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The configurations including the state of enablement for the service's different modules. The
-        /// absence of a module in the map implies its configuration is inherited from its parent's.</summary>
+        /// <summary>
+        /// The configurations including the state of enablement for the service's different modules. The absence of a
+        /// module in the map implies its configuration is inherited from its parent's.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modules")]
         public virtual System.Collections.Generic.IDictionary<string, Config> Modules { get; set; }
 
-        /// <summary>The resource name of the SecurityHealthAnalyticsSettings. Formats: *
+        /// <summary>
+        /// The resource name of the SecurityHealthAnalyticsSettings. Formats: *
         /// organizations/{organization}/securityHealthAnalyticsSettings *
-        /// folders/{folder}/securityHealthAnalyticsSettings *
-        /// projects/{project}/securityHealthAnalyticsSettings</summary>
+        /// folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3603,8 +3697,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
-        /// <summary>The state of enablement for the service at its level of the resource hierarchy. A DISABLED state
-        /// will override all module enablement_states to DISABLED.</summary>
+        /// <summary>
+        /// The state of enablement for the service at its level of the resource hierarchy. A DISABLED state will
+        /// override all module enablement_states to DISABLED.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceEnablementState")]
         public virtual string ServiceEnablementState { get; set; }
 
@@ -3614,36 +3710,44 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>User specified security marks that are attached to the parent Security Command Center resource.
-    /// Security marks are scoped within a Security Command Center organization -- they can be modified and viewed by
-    /// all users who have proper permissions on the organization.</summary>
+    /// <summary>
+    /// User specified security marks that are attached to the parent Security Command Center resource. Security marks
+    /// are scoped within a Security Command Center organization -- they can be modified and viewed by all users who
+    /// have proper permissions on the organization.
+    /// </summary>
     public class SecurityMarks : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Mutable user specified security marks belonging to the parent resource. Constraints are as follows:
-        /// * Keys and values are treated as case insensitive * Keys must be between 1 - 256 characters (inclusive) *
-        /// Keys must be letters, numbers, underscores, or dashes * Values have leading and trailing whitespace trimmed,
-        /// remaining characters must be between 1 - 4096 characters (inclusive)</summary>
+        /// <summary>
+        /// Mutable user specified security marks belonging to the parent resource. Constraints are as follows: * Keys
+        /// and values are treated as case insensitive * Keys must be between 1 - 256 characters (inclusive) * Keys must
+        /// be letters, numbers, underscores, or dashes * Values have leading and trailing whitespace trimmed, remaining
+        /// characters must be between 1 - 4096 characters (inclusive)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marks")]
         public virtual System.Collections.Generic.IDictionary<string, string> Marks { get; set; }
 
-        /// <summary>The relative resource name of the SecurityMarks. See:
+        /// <summary>
+        /// The relative resource name of the SecurityMarks. See:
         /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples:
         /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
-        /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".</summary>
+        /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Resource capturing the state of an organization's subscription.</summary>
     public class Subscription : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The details of the most recent active subscription. If there has never been a subscription this
-        /// will be empty.</summary>
+        /// <summary>
+        /// The details of the most recent active subscription. If there has never been a subscription this will be
+        /// empty.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual Details Details { get; set; }
 
@@ -3657,24 +3761,30 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Resource capturing the settings for the Web Security Scanner service.</summary>
     public class WebSecurityScannerSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The configurations including the state of enablement for the service's different modules. The
-        /// absence of a module in the map implies its configuration is inherited from its parent's.</summary>
+        /// <summary>
+        /// The configurations including the state of enablement for the service's different modules. The absence of a
+        /// module in the map implies its configuration is inherited from its parent's.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modules")]
         public virtual System.Collections.Generic.IDictionary<string, Config> Modules { get; set; }
 
-        /// <summary>The resource name of the WebSecurityScannerSettings. Formats: *
+        /// <summary>
+        /// The resource name of the WebSecurityScannerSettings. Formats: *
         /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
-        /// projects/{project}/webSecurityScannerSettings</summary>
+        /// projects/{project}/webSecurityScannerSettings
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The state of enablement for the service at its level of the resource hierarchy. A DISABLED state
-        /// will override all module enablement_states to DISABLED.</summary>
+        /// <summary>
+        /// The state of enablement for the service at its level of the resource hierarchy. A DISABLED state will
+        /// override all module enablement_states to DISABLED.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceEnablementState")]
         public virtual string ServiceEnablementState { get; set; }
 

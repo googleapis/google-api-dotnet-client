@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -68,7 +73,6 @@ namespace Google.Apis.AndroidPublisher.v3
         {
             /// <summary>View and manage your Google Play Developer account</summary>
             public static string Androidpublisher = "https://www.googleapis.com/auth/androidpublisher";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Google Play Android Developer API.</summary>
@@ -76,10 +80,7 @@ namespace Google.Apis.AndroidPublisher.v3
         {
             /// <summary>View and manage your Google Play Developer account</summary>
             public const string Androidpublisher = "https://www.googleapis.com/auth/androidpublisher";
-
         }
-
-
 
         /// <summary>Gets the Edits resource.</summary>
         public virtual EditsResource Edits { get; }
@@ -121,6 +122,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -140,9 +142,11 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -156,8 +160,10 @@ namespace Google.Apis.AndroidPublisher.v3
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -169,8 +175,10 @@ namespace Google.Apis.AndroidPublisher.v3
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -186,7 +194,6 @@ namespace Google.Apis.AndroidPublisher.v3
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -299,7 +306,6 @@ namespace Google.Apis.AndroidPublisher.v3
             Listings = new ListingsResource(service);
             Testers = new TestersResource(service);
             Tracks = new TracksResource(service);
-
         }
 
         /// <summary>Gets the Apks resource.</summary>
@@ -317,25 +323,26 @@ namespace Google.Apis.AndroidPublisher.v3
             public ApksResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Creates a new APK without uploading the APK itself to Google Play, instead hosting the APK at a
+            /// <summary>
+            /// Creates a new APK without uploading the APK itself to Google Play, instead hosting the APK at a
             /// specified URL. This function is only available to organizations using Managed Play whose application is
-            /// configured to restrict distribution to the organizations.</summary>
+            /// configured to restrict distribution to the organizations.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
+            /// <param name="editId">Identifier of the edit.</param>
             public virtual AddexternallyhostedRequest Addexternallyhosted(Google.Apis.AndroidPublisher.v3.Data.ApksAddExternallyHostedRequest body, string packageName, string editId)
             {
                 return new AddexternallyhostedRequest(service, body, packageName, editId);
             }
 
-            /// <summary>Creates a new APK without uploading the APK itself to Google Play, instead hosting the APK at a
+            /// <summary>
+            /// Creates a new APK without uploading the APK itself to Google Play, instead hosting the APK at a
             /// specified URL. This function is only available to organizations using Managed Play whose application is
-            /// configured to restrict distribution to the organizations.</summary>
+            /// configured to restrict distribution to the organizations.
+            /// </summary>
             public class AddexternallyhostedRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ApksAddExternallyHostedResponse>
             {
                 /// <summary>Constructs a new Addexternallyhosted request.</summary>
@@ -347,7 +354,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -355,7 +361,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Identifier of the edit.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.ApksAddExternallyHostedRequest Body { get; set; }
@@ -376,7 +381,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -394,13 +398,11 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Lists all current APKs of the app and edit.</summary>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
+            /// <param name="editId">Identifier of the edit.</param>
             public virtual ListRequest List(string packageName, string editId)
             {
                 return new ListRequest(service, packageName, editId);
@@ -417,7 +419,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -425,7 +426,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Identifier of the edit.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -440,7 +440,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -458,13 +457,11 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Uploads an APK and adds to the current edit.</summary>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
+            /// <param name="editId">Identifier of the edit.</param>
             public virtual UploadRequest Upload(string packageName, string editId)
             {
                 return new UploadRequest(service, packageName, editId);
@@ -481,7 +478,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -489,7 +485,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Identifier of the edit.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "upload";
@@ -504,7 +499,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -522,31 +516,29 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Uploads an APK and adds to the current edit.</summary>
             /// <remarks>
             /// Considerations regarding <paramref name="stream"/>:
             /// <list type="bullet">
-            /// <item><description>
-            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
-            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
-            /// seekable, then it will be read from its current position.
-            /// </description></item>
-            /// <item><description>
-            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
-            /// upload is completed.
-            /// </description></item>
-            /// <item><description>
-            /// Caller is responsible for closing the <paramref name="stream"/>.
-            /// </description></item>
+            /// <item>
+            /// <description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+            /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its current
+            /// position
+            /// </description>
+            /// </item>
+            /// <item>
+            /// <description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+            /// </description>
+            /// </item>
+            /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
             /// </list>
             /// </remarks>
-
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
+            /// <param name="editId">Identifier of the edit.</param>
             /// <param name="stream">The stream to upload. See remarks for further information.</param>
             /// <param name="contentType">The content type of the stream to upload.</param>
             public virtual UploadMediaUpload Upload(string packageName, string editId, System.IO.Stream stream, string contentType)
@@ -557,7 +549,6 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <summary>Upload media upload which supports resumable upload.</summary>
             public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<string, Google.Apis.AndroidPublisher.v3.Data.Apk>
             {
-
                 /// <summary>V1 error format.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
@@ -568,6 +559,7 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>v1 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("1")]
                     Value1,
+
                     /// <summary>v2 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("2")]
                     Value2,
@@ -587,9 +579,11 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>Responses with Content-Type of application/json</summary>
                     [Google.Apis.Util.StringValueAttribute("json")]
                     Json,
+
                     /// <summary>Media download with context-dependent Content-Type</summary>
                     [Google.Apis.Util.StringValueAttribute("media")]
                     Media,
+
                     /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                     [Google.Apis.Util.StringValueAttribute("proto")]
                     Proto,
@@ -603,8 +597,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Fields { get; set; }
 
-                /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and
-                /// reports. Required unless you provide an OAuth 2.0 token.</summary>
+                /// <summary>
+                /// API key. Your API key identifies your project and provides you with API access, quota, and reports.
+                /// Required unless you provide an OAuth 2.0 token.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Key { get; set; }
 
@@ -616,8 +612,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-                /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary
-                /// string assigned to a user, but should not exceed 40 characters.</summary>
+                /// <summary>
+                /// Available to use for quota purposes for server-side applications. Can be any arbitrary string
+                /// assigned to a user, but should not exceed 40 characters.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string QuotaUser { get; set; }
 
@@ -628,7 +626,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
                 [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string UploadProtocol { get; set; }
-
 
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
@@ -642,18 +639,22 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <remarks>
                 /// Considerations regarding <paramref name="stream"/>:
                 /// <list type="bullet">
-                /// <item><description>
-                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
-                /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
-                /// seekable, then it will be read from its current position.
-                /// </description></item>
-                /// <item><description>
-                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
-                /// upload is completed.
-                /// </description></item>
-                /// <item><description>
-                /// Caller is responsible for closing the <paramref name="stream"/>.
-                /// </description></item>
+                /// <item>
+                /// <description>
+                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+                /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its
+                /// current position
+                /// </description>
+                /// </item>
+                /// <item>
+                /// <description>
+                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is
+                /// completed
+                /// </description>
+                /// </item>
+                /// <item>
+                /// <description>Caller is responsible for closing the <paramref name="stream"/></description>
+                /// </item>
                 /// </list>
                 /// </remarks>
                 public UploadMediaUpload(Google.Apis.Services.IClientService service, string packageName, string editId, System.IO.Stream stream, string contentType)
@@ -664,6 +665,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
             }
         }
+
         /// <summary>Gets the Bundles resource.</summary>
         public virtual BundlesResource Bundles { get; }
 
@@ -679,14 +681,11 @@ namespace Google.Apis.AndroidPublisher.v3
             public BundlesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Lists all current Android App Bundles of the app and edit.</summary>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
+            /// <param name="editId">Identifier of the edit.</param>
             public virtual ListRequest List(string packageName, string editId)
             {
                 return new ListRequest(service, packageName, editId);
@@ -703,7 +702,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -711,7 +709,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Identifier of the edit.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -726,7 +723,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -744,25 +740,29 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Uploads a new Android App Bundle to this edit. If you are using the Google API client
-            /// libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2
-            /// minutes is recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java
-            /// /google-api-java-client/errors) for an example in java.</summary>
+            /// <summary>
+            /// Uploads a new Android App Bundle to this edit. If you are using the Google API client libraries, please
+            /// increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
+            /// recommended). See [Timeouts and
+            /// Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an
+            /// example in java.
+            /// </summary>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
+            /// <param name="editId">Identifier of the edit.</param>
             public virtual UploadRequest Upload(string packageName, string editId)
             {
                 return new UploadRequest(service, packageName, editId);
             }
 
-            /// <summary>Uploads a new Android App Bundle to this edit. If you are using the Google API client
-            /// libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2
-            /// minutes is recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java
-            /// /google-api-java-client/errors) for an example in java.</summary>
+            /// <summary>
+            /// Uploads a new Android App Bundle to this edit. If you are using the Google API client libraries, please
+            /// increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
+            /// recommended). See [Timeouts and
+            /// Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an
+            /// example in java.
+            /// </summary>
             public class UploadRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Bundle>
             {
                 /// <summary>Constructs a new Upload request.</summary>
@@ -773,7 +773,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -782,11 +781,12 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>Must be set to true if the bundle installation may trigger a warning on user devices (for
-                /// example, if installation size may be over a threshold, typically 100 MB).</summary>
+                /// <summary>
+                /// Must be set to true if the bundle installation may trigger a warning on user devices (for example,
+                /// if installation size may be over a threshold, typically 100 MB).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("ackBundleInstallationWarning", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> AckBundleInstallationWarning { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "upload";
@@ -801,7 +801,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -827,34 +826,35 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Uploads a new Android App Bundle to this edit. If you are using the Google API client
-            /// libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2
-            /// minutes is recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java
-            /// /google-api-java-client/errors) for an example in java.</summary>
+            /// <summary>
+            /// Uploads a new Android App Bundle to this edit. If you are using the Google API client libraries, please
+            /// increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
+            /// recommended). See [Timeouts and
+            /// Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an
+            /// example in java.
+            /// </summary>
             /// <remarks>
             /// Considerations regarding <paramref name="stream"/>:
             /// <list type="bullet">
-            /// <item><description>
-            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
-            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
-            /// seekable, then it will be read from its current position.
-            /// </description></item>
-            /// <item><description>
-            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
-            /// upload is completed.
-            /// </description></item>
-            /// <item><description>
-            /// Caller is responsible for closing the <paramref name="stream"/>.
-            /// </description></item>
+            /// <item>
+            /// <description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+            /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its current
+            /// position
+            /// </description>
+            /// </item>
+            /// <item>
+            /// <description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+            /// </description>
+            /// </item>
+            /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
             /// </list>
             /// </remarks>
-
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
+            /// <param name="editId">Identifier of the edit.</param>
             /// <param name="stream">The stream to upload. See remarks for further information.</param>
             /// <param name="contentType">The content type of the stream to upload.</param>
             public virtual UploadMediaUpload Upload(string packageName, string editId, System.IO.Stream stream, string contentType)
@@ -865,7 +865,6 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <summary>Upload media upload which supports resumable upload.</summary>
             public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<string, Google.Apis.AndroidPublisher.v3.Data.Bundle>
             {
-
                 /// <summary>V1 error format.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
@@ -876,6 +875,7 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>v1 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("1")]
                     Value1,
+
                     /// <summary>v2 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("2")]
                     Value2,
@@ -895,9 +895,11 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>Responses with Content-Type of application/json</summary>
                     [Google.Apis.Util.StringValueAttribute("json")]
                     Json,
+
                     /// <summary>Media download with context-dependent Content-Type</summary>
                     [Google.Apis.Util.StringValueAttribute("media")]
                     Media,
+
                     /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                     [Google.Apis.Util.StringValueAttribute("proto")]
                     Proto,
@@ -911,8 +913,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Fields { get; set; }
 
-                /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and
-                /// reports. Required unless you provide an OAuth 2.0 token.</summary>
+                /// <summary>
+                /// API key. Your API key identifies your project and provides you with API access, quota, and reports.
+                /// Required unless you provide an OAuth 2.0 token.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Key { get; set; }
 
@@ -924,8 +928,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-                /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary
-                /// string assigned to a user, but should not exceed 40 characters.</summary>
+                /// <summary>
+                /// Available to use for quota purposes for server-side applications. Can be any arbitrary string
+                /// assigned to a user, but should not exceed 40 characters.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string QuotaUser { get; set; }
 
@@ -937,7 +943,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string UploadProtocol { get; set; }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -946,8 +951,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>Must be set to true if the bundle installation may trigger a warning on user devices (for
-                /// example, if installation size may be over a threshold, typically 100 MB).</summary>
+                /// <summary>
+                /// Must be set to true if the bundle installation may trigger a warning on user devices (for example,
+                /// if installation size may be over a threshold, typically 100 MB).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("ackBundleInstallationWarning", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> AckBundleInstallationWarning { get; set; }
 
@@ -955,18 +962,22 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <remarks>
                 /// Considerations regarding <paramref name="stream"/>:
                 /// <list type="bullet">
-                /// <item><description>
-                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
-                /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
-                /// seekable, then it will be read from its current position.
-                /// </description></item>
-                /// <item><description>
-                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
-                /// upload is completed.
-                /// </description></item>
-                /// <item><description>
-                /// Caller is responsible for closing the <paramref name="stream"/>.
-                /// </description></item>
+                /// <item>
+                /// <description>
+                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+                /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its
+                /// current position
+                /// </description>
+                /// </item>
+                /// <item>
+                /// <description>
+                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is
+                /// completed
+                /// </description>
+                /// </item>
+                /// <item>
+                /// <description>Caller is responsible for closing the <paramref name="stream"/></description>
+                /// </item>
                 /// </list>
                 /// </remarks>
                 public UploadMediaUpload(Google.Apis.Services.IClientService service, string packageName, string editId, System.IO.Stream stream, string contentType)
@@ -977,6 +988,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
             }
         }
+
         /// <summary>Gets the Deobfuscationfiles resource.</summary>
         public virtual DeobfuscationfilesResource Deobfuscationfiles { get; }
 
@@ -992,18 +1004,15 @@ namespace Google.Apis.AndroidPublisher.v3
             public DeobfuscationfilesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Uploads a new deobfuscation file and attaches to the specified APK.</summary>
             /// <param name="packageName">Unique identifier for the Android app.</param>
-            /// <param name="editId">Unique
-            /// identifier for this edit.</param>
-            /// <param name="apkVersionCode">The version code of the APK whose
-            /// Deobfuscation File is being uploaded.</param>
-            /// <param name="deobfuscationFileType">The type of the
-            /// deobfuscation file.</param>
+            /// <param name="editId">Unique identifier for this edit.</param>
+            /// <param name="apkVersionCode">
+            /// The version code of the APK whose Deobfuscation File is being uploaded.
+            /// </param>
+            /// <param name="deobfuscationFileType">The type of the deobfuscation file.</param>
             public virtual UploadRequest Upload(string packageName, string editId, int apkVersionCode, UploadRequest.DeobfuscationFileTypeEnum deobfuscationFileType)
             {
                 return new UploadRequest(service, packageName, editId, apkVersionCode, deobfuscationFileType);
@@ -1021,7 +1030,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     DeobfuscationFileType = deobfuscationFileType;
                     InitParameters();
                 }
-
 
                 /// <summary>Unique identifier for the Android app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
@@ -1045,14 +1053,15 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>Unspecified deobfuscation file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("deobfuscationFileTypeUnspecified")]
                     DeobfuscationFileTypeUnspecified,
+
                     /// <summary>Proguard deobfuscation file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("proguard")]
                     Proguard,
+
                     /// <summary>Native debugging symbols file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("nativeCode")]
                     NativeCode,
                 }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "upload";
@@ -1067,7 +1076,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -1101,35 +1109,33 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Uploads a new deobfuscation file and attaches to the specified APK.</summary>
             /// <remarks>
             /// Considerations regarding <paramref name="stream"/>:
             /// <list type="bullet">
-            /// <item><description>
-            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
-            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
-            /// seekable, then it will be read from its current position.
-            /// </description></item>
-            /// <item><description>
-            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
-            /// upload is completed.
-            /// </description></item>
-            /// <item><description>
-            /// Caller is responsible for closing the <paramref name="stream"/>.
-            /// </description></item>
+            /// <item>
+            /// <description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+            /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its current
+            /// position
+            /// </description>
+            /// </item>
+            /// <item>
+            /// <description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+            /// </description>
+            /// </item>
+            /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
             /// </list>
             /// </remarks>
-
             /// <param name="packageName">Unique identifier for the Android app.</param>
-            /// <param name="editId">Unique
-            /// identifier for this edit.</param>
-            /// <param name="apkVersionCode">The version code of the APK whose
-            /// Deobfuscation File is being uploaded.</param>
-            /// <param name="deobfuscationFileType">The type of the
-            /// deobfuscation file.</param>
+            /// <param name="editId">Unique identifier for this edit.</param>
+            /// <param name="apkVersionCode">
+            /// The version code of the APK whose Deobfuscation File is being uploaded.
+            /// </param>
+            /// <param name="deobfuscationFileType">The type of the deobfuscation file.</param>
             /// <param name="stream">The stream to upload. See remarks for further information.</param>
             /// <param name="contentType">The content type of the stream to upload.</param>
             public virtual UploadMediaUpload Upload(string packageName, string editId, int apkVersionCode, UploadMediaUpload.DeobfuscationFileTypeEnum deobfuscationFileType, System.IO.Stream stream, string contentType)
@@ -1140,7 +1146,6 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <summary>Upload media upload which supports resumable upload.</summary>
             public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<string, Google.Apis.AndroidPublisher.v3.Data.DeobfuscationFilesUploadResponse>
             {
-
                 /// <summary>V1 error format.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
@@ -1151,6 +1156,7 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>v1 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("1")]
                     Value1,
+
                     /// <summary>v2 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("2")]
                     Value2,
@@ -1170,9 +1176,11 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>Responses with Content-Type of application/json</summary>
                     [Google.Apis.Util.StringValueAttribute("json")]
                     Json,
+
                     /// <summary>Media download with context-dependent Content-Type</summary>
                     [Google.Apis.Util.StringValueAttribute("media")]
                     Media,
+
                     /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                     [Google.Apis.Util.StringValueAttribute("proto")]
                     Proto,
@@ -1186,8 +1194,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Fields { get; set; }
 
-                /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and
-                /// reports. Required unless you provide an OAuth 2.0 token.</summary>
+                /// <summary>
+                /// API key. Your API key identifies your project and provides you with API access, quota, and reports.
+                /// Required unless you provide an OAuth 2.0 token.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Key { get; set; }
 
@@ -1199,8 +1209,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-                /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary
-                /// string assigned to a user, but should not exceed 40 characters.</summary>
+                /// <summary>
+                /// Available to use for quota purposes for server-side applications. Can be any arbitrary string
+                /// assigned to a user, but should not exceed 40 characters.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string QuotaUser { get; set; }
 
@@ -1211,7 +1223,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
                 [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string UploadProtocol { get; set; }
-
 
                 /// <summary>Unique identifier for the Android app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
@@ -1235,9 +1246,11 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>Unspecified deobfuscation file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("deobfuscationFileTypeUnspecified")]
                     DeobfuscationFileTypeUnspecified,
+
                     /// <summary>Proguard deobfuscation file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("proguard")]
                     Proguard,
+
                     /// <summary>Native debugging symbols file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("nativeCode")]
                     NativeCode,
@@ -1247,18 +1260,22 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <remarks>
                 /// Considerations regarding <paramref name="stream"/>:
                 /// <list type="bullet">
-                /// <item><description>
-                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
-                /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
-                /// seekable, then it will be read from its current position.
-                /// </description></item>
-                /// <item><description>
-                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
-                /// upload is completed.
-                /// </description></item>
-                /// <item><description>
-                /// Caller is responsible for closing the <paramref name="stream"/>.
-                /// </description></item>
+                /// <item>
+                /// <description>
+                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+                /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its
+                /// current position
+                /// </description>
+                /// </item>
+                /// <item>
+                /// <description>
+                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is
+                /// completed
+                /// </description>
+                /// </item>
+                /// <item>
+                /// <description>Caller is responsible for closing the <paramref name="stream"/></description>
+                /// </item>
                 /// </list>
                 /// </remarks>
                 public UploadMediaUpload(Google.Apis.Services.IClientService service, string packageName, string editId, int apkVersionCode, UploadMediaUpload.DeobfuscationFileTypeEnum deobfuscationFileType, System.IO.Stream stream, string contentType)
@@ -1271,6 +1288,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
             }
         }
+
         /// <summary>Gets the Details resource.</summary>
         public virtual DetailsResource Details { get; }
 
@@ -1286,14 +1304,11 @@ namespace Google.Apis.AndroidPublisher.v3
             public DetailsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Gets details of an app.</summary>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
+            /// <param name="editId">Identifier of the edit.</param>
             public virtual GetRequest Get(string packageName, string editId)
             {
                 return new GetRequest(service, packageName, editId);
@@ -1310,7 +1325,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -1318,7 +1332,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Identifier of the edit.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -1333,7 +1346,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -1351,14 +1363,12 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Patches details of an app.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
+            /// <param name="editId">Identifier of the edit.</param>
             public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v3.Data.AppDetails body, string packageName, string editId)
             {
                 return new PatchRequest(service, body, packageName, editId);
@@ -1376,7 +1386,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -1384,7 +1393,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Identifier of the edit.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.AppDetails Body { get; set; }
@@ -1405,7 +1413,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -1423,14 +1430,12 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Updates details of an app.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
+            /// <param name="editId">Identifier of the edit.</param>
             public virtual UpdateRequest Update(Google.Apis.AndroidPublisher.v3.Data.AppDetails body, string packageName, string editId)
             {
                 return new UpdateRequest(service, body, packageName, editId);
@@ -1448,7 +1453,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -1456,7 +1460,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Identifier of the edit.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.AppDetails Body { get; set; }
@@ -1477,7 +1480,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -1495,9 +1497,9 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Expansionfiles resource.</summary>
         public virtual ExpansionfilesResource Expansionfiles { get; }
 
@@ -1513,18 +1515,17 @@ namespace Google.Apis.AndroidPublisher.v3
             public ExpansionfilesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Fetches the expansion file configuration for the specified APK.</summary>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
-            /// <param name="apkVersionCode">The version code of the APK whose expansion file configuration is
-            /// being read or modified.</param>
-            /// <param name="expansionFileType">The file type of the file configuration
-            /// which is being read or modified.</param>
+            /// <param name="editId">Identifier of the edit.</param>
+            /// <param name="apkVersionCode">
+            /// The version code of the APK whose expansion file configuration is being read or modified.
+            /// </param>
+            /// <param name="expansionFileType">
+            /// The file type of the file configuration which is being read or modified.
+            /// </param>
             public virtual GetRequest Get(string packageName, string editId, int apkVersionCode, GetRequest.ExpansionFileTypeEnum expansionFileType)
             {
                 return new GetRequest(service, packageName, editId, apkVersionCode, expansionFileType);
@@ -1543,7 +1544,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -1552,8 +1552,9 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>The version code of the APK whose expansion file configuration is being read or
-                /// modified.</summary>
+                /// <summary>
+                /// The version code of the APK whose expansion file configuration is being read or modified.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("apkVersionCode", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual int ApkVersionCode { get; private set; }
 
@@ -1567,14 +1568,15 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>Unspecified expansion file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("expansionFileTypeUnspecified")]
                     ExpansionFileTypeUnspecified,
+
                     /// <summary>Main expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("main")]
                     Main,
+
                     /// <summary>Patch expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("patch")]
                     Patch,
                 }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -1589,7 +1591,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -1623,26 +1624,30 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Patches the APK's expansion file configuration to reference another APK's expansion file. To
-            /// add a new expansion file use the Upload method.</summary>
+            /// <summary>
+            /// Patches the APK's expansion file configuration to reference another APK's expansion file. To add a new
+            /// expansion file use the Upload method.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
-            /// <param name="apkVersionCode">The version code of the APK whose expansion file configuration is
-            /// being read or modified.</param>
-            /// <param name="expansionFileType">The file type of the expansion file
-            /// configuration which is being updated.</param>
+            /// <param name="editId">Identifier of the edit.</param>
+            /// <param name="apkVersionCode">
+            /// The version code of the APK whose expansion file configuration is being read or modified.
+            /// </param>
+            /// <param name="expansionFileType">
+            /// The file type of the expansion file configuration which is being updated.
+            /// </param>
             public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v3.Data.ExpansionFile body, string packageName, string editId, int apkVersionCode, PatchRequest.ExpansionFileTypeEnum expansionFileType)
             {
                 return new PatchRequest(service, body, packageName, editId, apkVersionCode, expansionFileType);
             }
 
-            /// <summary>Patches the APK's expansion file configuration to reference another APK's expansion file. To
-            /// add a new expansion file use the Upload method.</summary>
+            /// <summary>
+            /// Patches the APK's expansion file configuration to reference another APK's expansion file. To add a new
+            /// expansion file use the Upload method.
+            /// </summary>
             public class PatchRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ExpansionFile>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -1656,7 +1661,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -1665,8 +1669,9 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>The version code of the APK whose expansion file configuration is being read or
-                /// modified.</summary>
+                /// <summary>
+                /// The version code of the APK whose expansion file configuration is being read or modified.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("apkVersionCode", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual int ApkVersionCode { get; private set; }
 
@@ -1680,14 +1685,15 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>Unspecified expansion file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("expansionFileTypeUnspecified")]
                     ExpansionFileTypeUnspecified,
+
                     /// <summary>Main expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("main")]
                     Main,
+
                     /// <summary>Patch expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("patch")]
                     Patch,
                 }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.ExpansionFile Body { get; set; }
@@ -1708,7 +1714,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -1742,26 +1747,30 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Updates the APK's expansion file configuration to reference another APK's expansion file. To
-            /// add a new expansion file use the Upload method.</summary>
+            /// <summary>
+            /// Updates the APK's expansion file configuration to reference another APK's expansion file. To add a new
+            /// expansion file use the Upload method.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
-            /// <param name="apkVersionCode">The version code of the APK whose expansion file configuration is
-            /// being read or modified.</param>
-            /// <param name="expansionFileType">The file type of the file configuration
-            /// which is being read or modified.</param>
+            /// <param name="editId">Identifier of the edit.</param>
+            /// <param name="apkVersionCode">
+            /// The version code of the APK whose expansion file configuration is being read or modified.
+            /// </param>
+            /// <param name="expansionFileType">
+            /// The file type of the file configuration which is being read or modified.
+            /// </param>
             public virtual UpdateRequest Update(Google.Apis.AndroidPublisher.v3.Data.ExpansionFile body, string packageName, string editId, int apkVersionCode, UpdateRequest.ExpansionFileTypeEnum expansionFileType)
             {
                 return new UpdateRequest(service, body, packageName, editId, apkVersionCode, expansionFileType);
             }
 
-            /// <summary>Updates the APK's expansion file configuration to reference another APK's expansion file. To
-            /// add a new expansion file use the Upload method.</summary>
+            /// <summary>
+            /// Updates the APK's expansion file configuration to reference another APK's expansion file. To add a new
+            /// expansion file use the Upload method.
+            /// </summary>
             public class UpdateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ExpansionFile>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -1775,7 +1784,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -1784,8 +1792,9 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>The version code of the APK whose expansion file configuration is being read or
-                /// modified.</summary>
+                /// <summary>
+                /// The version code of the APK whose expansion file configuration is being read or modified.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("apkVersionCode", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual int ApkVersionCode { get; private set; }
 
@@ -1799,14 +1808,15 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>Unspecified expansion file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("expansionFileTypeUnspecified")]
                     ExpansionFileTypeUnspecified,
+
                     /// <summary>Main expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("main")]
                     Main,
+
                     /// <summary>Patch expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("patch")]
                     Patch,
                 }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.ExpansionFile Body { get; set; }
@@ -1827,7 +1837,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -1861,17 +1870,17 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Uploads a new expansion file and attaches to the specified APK.</summary>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
-            /// <param name="apkVersionCode">The version code of the APK whose expansion file configuration is
-            /// being read or modified.</param>
-            /// <param name="expansionFileType">The file type of the expansion file
-            /// configuration which is being updated.</param>
+            /// <param name="editId">Identifier of the edit.</param>
+            /// <param name="apkVersionCode">
+            /// The version code of the APK whose expansion file configuration is being read or modified.
+            /// </param>
+            /// <param name="expansionFileType">
+            /// The file type of the expansion file configuration which is being updated.
+            /// </param>
             public virtual UploadRequest Upload(string packageName, string editId, int apkVersionCode, UploadRequest.ExpansionFileTypeEnum expansionFileType)
             {
                 return new UploadRequest(service, packageName, editId, apkVersionCode, expansionFileType);
@@ -1890,7 +1899,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -1899,8 +1907,9 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>The version code of the APK whose expansion file configuration is being read or
-                /// modified.</summary>
+                /// <summary>
+                /// The version code of the APK whose expansion file configuration is being read or modified.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("apkVersionCode", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual int ApkVersionCode { get; private set; }
 
@@ -1914,14 +1923,15 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>Unspecified expansion file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("expansionFileTypeUnspecified")]
                     ExpansionFileTypeUnspecified,
+
                     /// <summary>Main expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("main")]
                     Main,
+
                     /// <summary>Patch expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("patch")]
                     Patch,
                 }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "upload";
@@ -1936,7 +1946,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -1970,35 +1979,35 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Uploads a new expansion file and attaches to the specified APK.</summary>
             /// <remarks>
             /// Considerations regarding <paramref name="stream"/>:
             /// <list type="bullet">
-            /// <item><description>
-            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
-            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
-            /// seekable, then it will be read from its current position.
-            /// </description></item>
-            /// <item><description>
-            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
-            /// upload is completed.
-            /// </description></item>
-            /// <item><description>
-            /// Caller is responsible for closing the <paramref name="stream"/>.
-            /// </description></item>
+            /// <item>
+            /// <description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+            /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its current
+            /// position
+            /// </description>
+            /// </item>
+            /// <item>
+            /// <description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+            /// </description>
+            /// </item>
+            /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
             /// </list>
             /// </remarks>
-
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
-            /// <param name="apkVersionCode">The version code of the APK whose expansion file configuration is
-            /// being read or modified.</param>
-            /// <param name="expansionFileType">The file type of the expansion file
-            /// configuration which is being updated.</param>
+            /// <param name="editId">Identifier of the edit.</param>
+            /// <param name="apkVersionCode">
+            /// The version code of the APK whose expansion file configuration is being read or modified.
+            /// </param>
+            /// <param name="expansionFileType">
+            /// The file type of the expansion file configuration which is being updated.
+            /// </param>
             /// <param name="stream">The stream to upload. See remarks for further information.</param>
             /// <param name="contentType">The content type of the stream to upload.</param>
             public virtual UploadMediaUpload Upload(string packageName, string editId, int apkVersionCode, UploadMediaUpload.ExpansionFileTypeEnum expansionFileType, System.IO.Stream stream, string contentType)
@@ -2009,7 +2018,6 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <summary>Upload media upload which supports resumable upload.</summary>
             public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<string, Google.Apis.AndroidPublisher.v3.Data.ExpansionFilesUploadResponse>
             {
-
                 /// <summary>V1 error format.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
@@ -2020,6 +2028,7 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>v1 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("1")]
                     Value1,
+
                     /// <summary>v2 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("2")]
                     Value2,
@@ -2039,9 +2048,11 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>Responses with Content-Type of application/json</summary>
                     [Google.Apis.Util.StringValueAttribute("json")]
                     Json,
+
                     /// <summary>Media download with context-dependent Content-Type</summary>
                     [Google.Apis.Util.StringValueAttribute("media")]
                     Media,
+
                     /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                     [Google.Apis.Util.StringValueAttribute("proto")]
                     Proto,
@@ -2055,8 +2066,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Fields { get; set; }
 
-                /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and
-                /// reports. Required unless you provide an OAuth 2.0 token.</summary>
+                /// <summary>
+                /// API key. Your API key identifies your project and provides you with API access, quota, and reports.
+                /// Required unless you provide an OAuth 2.0 token.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Key { get; set; }
 
@@ -2068,8 +2081,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-                /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary
-                /// string assigned to a user, but should not exceed 40 characters.</summary>
+                /// <summary>
+                /// Available to use for quota purposes for server-side applications. Can be any arbitrary string
+                /// assigned to a user, but should not exceed 40 characters.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string QuotaUser { get; set; }
 
@@ -2081,7 +2096,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string UploadProtocol { get; set; }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -2090,8 +2104,9 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>The version code of the APK whose expansion file configuration is being read or
-                /// modified.</summary>
+                /// <summary>
+                /// The version code of the APK whose expansion file configuration is being read or modified.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("apkVersionCode", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual int ApkVersionCode { get; private set; }
 
@@ -2105,9 +2120,11 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>Unspecified expansion file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("expansionFileTypeUnspecified")]
                     ExpansionFileTypeUnspecified,
+
                     /// <summary>Main expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("main")]
                     Main,
+
                     /// <summary>Patch expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("patch")]
                     Patch,
@@ -2117,18 +2134,22 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <remarks>
                 /// Considerations regarding <paramref name="stream"/>:
                 /// <list type="bullet">
-                /// <item><description>
-                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
-                /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
-                /// seekable, then it will be read from its current position.
-                /// </description></item>
-                /// <item><description>
-                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
-                /// upload is completed.
-                /// </description></item>
-                /// <item><description>
-                /// Caller is responsible for closing the <paramref name="stream"/>.
-                /// </description></item>
+                /// <item>
+                /// <description>
+                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+                /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its
+                /// current position
+                /// </description>
+                /// </item>
+                /// <item>
+                /// <description>
+                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is
+                /// completed
+                /// </description>
+                /// </item>
+                /// <item>
+                /// <description>Caller is responsible for closing the <paramref name="stream"/></description>
+                /// </item>
                 /// </list>
                 /// </remarks>
                 public UploadMediaUpload(Google.Apis.Services.IClientService service, string packageName, string editId, int apkVersionCode, UploadMediaUpload.ExpansionFileTypeEnum expansionFileType, System.IO.Stream stream, string contentType)
@@ -2141,6 +2162,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
             }
         }
+
         /// <summary>Gets the Images resource.</summary>
         public virtual ImagesResource Images { get; }
 
@@ -2156,19 +2178,16 @@ namespace Google.Apis.AndroidPublisher.v3
             public ImagesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Deletes the image (specified by id) from the edit.</summary>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
-            /// <param name="language">Language localization code (a BCP-47 language tag; for example, "de-AT"
-            /// for Austrian German).</param>
+            /// <param name="editId">Identifier of the edit.</param>
+            /// <param name="language">
+            /// Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German).
+            /// </param>
             /// <param name="imageType">Type of the Image.</param>
-            /// <param
-            /// name="imageId">Unique identifier an image within the set of images attached to this edit.</param>
+            /// <param name="imageId">Unique identifier an image within the set of images attached to this edit.</param>
             public virtual DeleteRequest Delete(string packageName, string editId, string language, DeleteRequest.ImageTypeEnum imageType, string imageId)
             {
                 return new DeleteRequest(service, packageName, editId, language, imageType, imageId);
@@ -2188,7 +2207,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -2197,8 +2215,9 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian
-                /// German).</summary>
+                /// <summary>
+                /// Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Language { get; private set; }
 
@@ -2212,27 +2231,35 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>Unspecified type. Do not use.</summary>
                     [Google.Apis.Util.StringValueAttribute("appImageTypeUnspecified")]
                     AppImageTypeUnspecified,
+
                     /// <summary>Phone screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("phoneScreenshots")]
                     PhoneScreenshots,
+
                     /// <summary>Seven inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("sevenInchScreenshots")]
                     SevenInchScreenshots,
+
                     /// <summary>Ten inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tenInchScreenshots")]
                     TenInchScreenshots,
+
                     /// <summary>TV screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvScreenshots")]
                     TvScreenshots,
+
                     /// <summary>Wear screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("wearScreenshots")]
                     WearScreenshots,
+
                     /// <summary>Icon.</summary>
                     [Google.Apis.Util.StringValueAttribute("icon")]
                     Icon,
+
                     /// <summary>Feature graphic.</summary>
                     [Google.Apis.Util.StringValueAttribute("featureGraphic")]
                     FeatureGraphic,
+
                     /// <summary>TV banner.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvBanner")]
                     TvBanner,
@@ -2241,7 +2268,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Unique identifier an image within the set of images attached to this edit.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("imageId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ImageId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -2256,7 +2282,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -2298,25 +2323,30 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Deletes all images for the specified language and image type. Returns an empty response if no
-            /// images are found.</summary>
+            /// <summary>
+            /// Deletes all images for the specified language and image type. Returns an empty response if no images are
+            /// found.
+            /// </summary>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
-            /// <param name="language">Language localization code (a BCP-47 language tag; for example, "de-AT"
-            /// for Austrian German). Providing a language that is not supported by the App is a no-op.</param>
-            /// <param
-            /// name="imageType">Type of the Image. Providing an image type that refers to no images is a no-op.</param>
+            /// <param name="editId">Identifier of the edit.</param>
+            /// <param name="language">
+            /// Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). Providing
+            /// a language that is not supported by the App is a no-op.
+            /// </param>
+            /// <param name="imageType">
+            /// Type of the Image. Providing an image type that refers to no images is a no-op.
+            /// </param>
             public virtual DeleteallRequest Deleteall(string packageName, string editId, string language, DeleteallRequest.ImageTypeEnum imageType)
             {
                 return new DeleteallRequest(service, packageName, editId, language, imageType);
             }
 
-            /// <summary>Deletes all images for the specified language and image type. Returns an empty response if no
-            /// images are found.</summary>
+            /// <summary>
+            /// Deletes all images for the specified language and image type. Returns an empty response if no images are
+            /// found.
+            /// </summary>
             public class DeleteallRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ImagesDeleteAllResponse>
             {
                 /// <summary>Constructs a new Deleteall request.</summary>
@@ -2329,7 +2359,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -2338,8 +2367,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian
-                /// German). Providing a language that is not supported by the App is a no-op.</summary>
+                /// <summary>
+                /// Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German).
+                /// Providing a language that is not supported by the App is a no-op.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Language { get; private set; }
 
@@ -2353,32 +2384,39 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>Unspecified type. Do not use.</summary>
                     [Google.Apis.Util.StringValueAttribute("appImageTypeUnspecified")]
                     AppImageTypeUnspecified,
+
                     /// <summary>Phone screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("phoneScreenshots")]
                     PhoneScreenshots,
+
                     /// <summary>Seven inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("sevenInchScreenshots")]
                     SevenInchScreenshots,
+
                     /// <summary>Ten inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tenInchScreenshots")]
                     TenInchScreenshots,
+
                     /// <summary>TV screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvScreenshots")]
                     TvScreenshots,
+
                     /// <summary>Wear screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("wearScreenshots")]
                     WearScreenshots,
+
                     /// <summary>Icon.</summary>
                     [Google.Apis.Util.StringValueAttribute("icon")]
                     Icon,
+
                     /// <summary>Feature graphic.</summary>
                     [Google.Apis.Util.StringValueAttribute("featureGraphic")]
                     FeatureGraphic,
+
                     /// <summary>TV banner.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvBanner")]
                     TvBanner,
                 }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "deleteall";
@@ -2393,7 +2431,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -2427,18 +2464,18 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Lists all images. The response may be empty.</summary>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
-            /// <param name="language">Language localization code (a BCP-47 language tag; for example, "de-AT"
-            /// for Austrian German). There must be a store listing for the specified language.</param>
-            /// <param
-            /// name="imageType">Type of the Image. Providing an image type that refers to no images will return an empty
-            /// response.</param>
+            /// <param name="editId">Identifier of the edit.</param>
+            /// <param name="language">
+            /// Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). There must
+            /// be a store listing for the specified language.
+            /// </param>
+            /// <param name="imageType">
+            /// Type of the Image. Providing an image type that refers to no images will return an empty response.
+            /// </param>
             public virtual ListRequest List(string packageName, string editId, string language, ListRequest.ImageTypeEnum imageType)
             {
                 return new ListRequest(service, packageName, editId, language, imageType);
@@ -2457,7 +2494,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -2466,49 +2502,60 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian
-                /// German). There must be a store listing for the specified language.</summary>
+                /// <summary>
+                /// Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). There
+                /// must be a store listing for the specified language.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Language { get; private set; }
 
-                /// <summary>Type of the Image. Providing an image type that refers to no images will return an empty
-                /// response.</summary>
+                /// <summary>
+                /// Type of the Image. Providing an image type that refers to no images will return an empty response.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("imageType", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual ImageTypeEnum ImageType { get; private set; }
 
-                /// <summary>Type of the Image. Providing an image type that refers to no images will return an empty
-                /// response.</summary>
+                /// <summary>
+                /// Type of the Image. Providing an image type that refers to no images will return an empty response.
+                /// </summary>
                 public enum ImageTypeEnum
                 {
                     /// <summary>Unspecified type. Do not use.</summary>
                     [Google.Apis.Util.StringValueAttribute("appImageTypeUnspecified")]
                     AppImageTypeUnspecified,
+
                     /// <summary>Phone screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("phoneScreenshots")]
                     PhoneScreenshots,
+
                     /// <summary>Seven inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("sevenInchScreenshots")]
                     SevenInchScreenshots,
+
                     /// <summary>Ten inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tenInchScreenshots")]
                     TenInchScreenshots,
+
                     /// <summary>TV screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvScreenshots")]
                     TvScreenshots,
+
                     /// <summary>Wear screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("wearScreenshots")]
                     WearScreenshots,
+
                     /// <summary>Icon.</summary>
                     [Google.Apis.Util.StringValueAttribute("icon")]
                     Icon,
+
                     /// <summary>Feature graphic.</summary>
                     [Google.Apis.Util.StringValueAttribute("featureGraphic")]
                     FeatureGraphic,
+
                     /// <summary>TV banner.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvBanner")]
                     TvBanner,
                 }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -2523,7 +2570,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -2557,17 +2603,16 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Uploads an image of the specified language and image type, and adds to the edit.</summary>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
-            /// <param name="language">Language localization code (a BCP-47 language tag; for example, "de-AT"
-            /// for Austrian German). Providing a language that is not supported by the App is a no-op.</param>
-            /// <param
-            /// name="imageType">Type of the Image.</param>
+            /// <param name="editId">Identifier of the edit.</param>
+            /// <param name="language">
+            /// Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). Providing
+            /// a language that is not supported by the App is a no-op.
+            /// </param>
+            /// <param name="imageType">Type of the Image.</param>
             public virtual UploadRequest Upload(string packageName, string editId, string language, UploadRequest.ImageTypeEnum imageType)
             {
                 return new UploadRequest(service, packageName, editId, language, imageType);
@@ -2586,7 +2631,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -2595,8 +2639,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian
-                /// German). Providing a language that is not supported by the App is a no-op.</summary>
+                /// <summary>
+                /// Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German).
+                /// Providing a language that is not supported by the App is a no-op.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Language { get; private set; }
 
@@ -2610,32 +2656,39 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>Unspecified type. Do not use.</summary>
                     [Google.Apis.Util.StringValueAttribute("appImageTypeUnspecified")]
                     AppImageTypeUnspecified,
+
                     /// <summary>Phone screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("phoneScreenshots")]
                     PhoneScreenshots,
+
                     /// <summary>Seven inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("sevenInchScreenshots")]
                     SevenInchScreenshots,
+
                     /// <summary>Ten inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tenInchScreenshots")]
                     TenInchScreenshots,
+
                     /// <summary>TV screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvScreenshots")]
                     TvScreenshots,
+
                     /// <summary>Wear screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("wearScreenshots")]
                     WearScreenshots,
+
                     /// <summary>Icon.</summary>
                     [Google.Apis.Util.StringValueAttribute("icon")]
                     Icon,
+
                     /// <summary>Feature graphic.</summary>
                     [Google.Apis.Util.StringValueAttribute("featureGraphic")]
                     FeatureGraphic,
+
                     /// <summary>TV banner.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvBanner")]
                     TvBanner,
                 }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "upload";
@@ -2650,7 +2703,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -2684,35 +2736,34 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Uploads an image of the specified language and image type, and adds to the edit.</summary>
             /// <remarks>
             /// Considerations regarding <paramref name="stream"/>:
             /// <list type="bullet">
-            /// <item><description>
-            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
-            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
-            /// seekable, then it will be read from its current position.
-            /// </description></item>
-            /// <item><description>
-            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
-            /// upload is completed.
-            /// </description></item>
-            /// <item><description>
-            /// Caller is responsible for closing the <paramref name="stream"/>.
-            /// </description></item>
+            /// <item>
+            /// <description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+            /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its current
+            /// position
+            /// </description>
+            /// </item>
+            /// <item>
+            /// <description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+            /// </description>
+            /// </item>
+            /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
             /// </list>
             /// </remarks>
-
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
-            /// <param name="language">Language localization code (a BCP-47 language tag; for example, "de-AT"
-            /// for Austrian German). Providing a language that is not supported by the App is a no-op.</param>
-            /// <param
-            /// name="imageType">Type of the Image.</param>
+            /// <param name="editId">Identifier of the edit.</param>
+            /// <param name="language">
+            /// Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). Providing
+            /// a language that is not supported by the App is a no-op.
+            /// </param>
+            /// <param name="imageType">Type of the Image.</param>
             /// <param name="stream">The stream to upload. See remarks for further information.</param>
             /// <param name="contentType">The content type of the stream to upload.</param>
             public virtual UploadMediaUpload Upload(string packageName, string editId, string language, UploadMediaUpload.ImageTypeEnum imageType, System.IO.Stream stream, string contentType)
@@ -2723,7 +2774,6 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <summary>Upload media upload which supports resumable upload.</summary>
             public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<string, Google.Apis.AndroidPublisher.v3.Data.ImagesUploadResponse>
             {
-
                 /// <summary>V1 error format.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
@@ -2734,6 +2784,7 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>v1 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("1")]
                     Value1,
+
                     /// <summary>v2 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("2")]
                     Value2,
@@ -2753,9 +2804,11 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>Responses with Content-Type of application/json</summary>
                     [Google.Apis.Util.StringValueAttribute("json")]
                     Json,
+
                     /// <summary>Media download with context-dependent Content-Type</summary>
                     [Google.Apis.Util.StringValueAttribute("media")]
                     Media,
+
                     /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                     [Google.Apis.Util.StringValueAttribute("proto")]
                     Proto,
@@ -2769,8 +2822,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Fields { get; set; }
 
-                /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and
-                /// reports. Required unless you provide an OAuth 2.0 token.</summary>
+                /// <summary>
+                /// API key. Your API key identifies your project and provides you with API access, quota, and reports.
+                /// Required unless you provide an OAuth 2.0 token.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Key { get; set; }
 
@@ -2782,8 +2837,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-                /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary
-                /// string assigned to a user, but should not exceed 40 characters.</summary>
+                /// <summary>
+                /// Available to use for quota purposes for server-side applications. Can be any arbitrary string
+                /// assigned to a user, but should not exceed 40 characters.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string QuotaUser { get; set; }
 
@@ -2795,7 +2852,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string UploadProtocol { get; set; }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -2804,8 +2860,10 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian
-                /// German). Providing a language that is not supported by the App is a no-op.</summary>
+                /// <summary>
+                /// Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German).
+                /// Providing a language that is not supported by the App is a no-op.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Language { get; private set; }
 
@@ -2819,27 +2877,35 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>Unspecified type. Do not use.</summary>
                     [Google.Apis.Util.StringValueAttribute("appImageTypeUnspecified")]
                     AppImageTypeUnspecified,
+
                     /// <summary>Phone screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("phoneScreenshots")]
                     PhoneScreenshots,
+
                     /// <summary>Seven inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("sevenInchScreenshots")]
                     SevenInchScreenshots,
+
                     /// <summary>Ten inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tenInchScreenshots")]
                     TenInchScreenshots,
+
                     /// <summary>TV screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvScreenshots")]
                     TvScreenshots,
+
                     /// <summary>Wear screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("wearScreenshots")]
                     WearScreenshots,
+
                     /// <summary>Icon.</summary>
                     [Google.Apis.Util.StringValueAttribute("icon")]
                     Icon,
+
                     /// <summary>Feature graphic.</summary>
                     [Google.Apis.Util.StringValueAttribute("featureGraphic")]
                     FeatureGraphic,
+
                     /// <summary>TV banner.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvBanner")]
                     TvBanner,
@@ -2849,18 +2915,22 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <remarks>
                 /// Considerations regarding <paramref name="stream"/>:
                 /// <list type="bullet">
-                /// <item><description>
-                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
-                /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
-                /// seekable, then it will be read from its current position.
-                /// </description></item>
-                /// <item><description>
-                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
-                /// upload is completed.
-                /// </description></item>
-                /// <item><description>
-                /// Caller is responsible for closing the <paramref name="stream"/>.
-                /// </description></item>
+                /// <item>
+                /// <description>
+                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+                /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its
+                /// current position
+                /// </description>
+                /// </item>
+                /// <item>
+                /// <description>
+                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is
+                /// completed
+                /// </description>
+                /// </item>
+                /// <item>
+                /// <description>Caller is responsible for closing the <paramref name="stream"/></description>
+                /// </item>
                 /// </list>
                 /// </remarks>
                 public UploadMediaUpload(Google.Apis.Services.IClientService service, string packageName, string editId, string language, UploadMediaUpload.ImageTypeEnum imageType, System.IO.Stream stream, string contentType)
@@ -2873,6 +2943,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
             }
         }
+
         /// <summary>Gets the Listings resource.</summary>
         public virtual ListingsResource Listings { get; }
 
@@ -2888,16 +2959,14 @@ namespace Google.Apis.AndroidPublisher.v3
             public ListingsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Deletes a localized store listing.</summary>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
-            /// <param name="language">Language localization code (a BCP-47 language tag; for example, "de-AT"
-            /// for Austrian German).</param>
+            /// <param name="editId">Identifier of the edit.</param>
+            /// <param name="language">
+            /// Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German).
+            /// </param>
             public virtual DeleteRequest Delete(string packageName, string editId, string language)
             {
                 return new DeleteRequest(service, packageName, editId, language);
@@ -2915,7 +2984,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -2924,11 +2992,11 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian
-                /// German).</summary>
+                /// <summary>
+                /// Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Language { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -2943,7 +3011,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -2969,13 +3036,11 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Deletes all store listings.</summary>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
+            /// <param name="editId">Identifier of the edit.</param>
             public virtual DeleteallRequest Deleteall(string packageName, string editId)
             {
                 return new DeleteallRequest(service, packageName, editId);
@@ -2992,7 +3057,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -3000,7 +3064,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Identifier of the edit.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "deleteall";
@@ -3015,7 +3078,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -3033,15 +3095,14 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Gets a localized store listing.</summary>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
-            /// <param name="language">Language localization code (a BCP-47 language tag; for example, "de-AT"
-            /// for Austrian German).</param>
+            /// <param name="editId">Identifier of the edit.</param>
+            /// <param name="language">
+            /// Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German).
+            /// </param>
             public virtual GetRequest Get(string packageName, string editId, string language)
             {
                 return new GetRequest(service, packageName, editId, language);
@@ -3059,7 +3120,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -3068,11 +3128,11 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian
-                /// German).</summary>
+                /// <summary>
+                /// Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Language { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -3087,7 +3147,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -3113,13 +3172,11 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Lists all localized store listings.</summary>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
+            /// <param name="editId">Identifier of the edit.</param>
             public virtual ListRequest List(string packageName, string editId)
             {
                 return new ListRequest(service, packageName, editId);
@@ -3136,7 +3193,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -3144,7 +3200,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Identifier of the edit.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -3159,7 +3214,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -3177,16 +3231,15 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Patches a localized store listing.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
-            /// <param name="language">Language localization code (a BCP-47 language tag; for example, "de-AT"
-            /// for Austrian German).</param>
+            /// <param name="editId">Identifier of the edit.</param>
+            /// <param name="language">
+            /// Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German).
+            /// </param>
             public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v3.Data.Listing body, string packageName, string editId, string language)
             {
                 return new PatchRequest(service, body, packageName, editId, language);
@@ -3205,7 +3258,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -3214,11 +3266,11 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian
-                /// German).</summary>
+                /// <summary>
+                /// Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Language { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.Listing Body { get; set; }
@@ -3239,7 +3291,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -3265,16 +3316,15 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Creates or updates a localized store listing.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
-            /// <param name="language">Language localization code (a BCP-47 language tag; for example, "de-AT"
-            /// for Austrian German).</param>
+            /// <param name="editId">Identifier of the edit.</param>
+            /// <param name="language">
+            /// Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German).
+            /// </param>
             public virtual UpdateRequest Update(Google.Apis.AndroidPublisher.v3.Data.Listing body, string packageName, string editId, string language)
             {
                 return new UpdateRequest(service, body, packageName, editId, language);
@@ -3293,7 +3343,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -3302,11 +3351,11 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian
-                /// German).</summary>
+                /// <summary>
+                /// Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Language { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.Listing Body { get; set; }
@@ -3327,7 +3376,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -3353,9 +3401,9 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Testers resource.</summary>
         public virtual TestersResource Testers { get; }
 
@@ -3371,14 +3419,11 @@ namespace Google.Apis.AndroidPublisher.v3
             public TestersResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Gets testers.</summary>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
+            /// <param name="editId">Identifier of the edit.</param>
             /// <param name="track">The track to read from.</param>
             public virtual GetRequest Get(string packageName, string editId, string track)
             {
@@ -3397,7 +3442,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -3409,7 +3453,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>The track to read from.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("track", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Track { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -3424,7 +3467,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -3450,14 +3492,12 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Patches testers.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
+            /// <param name="editId">Identifier of the edit.</param>
             /// <param name="track">The track to update.</param>
             public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v3.Data.Testers body, string packageName, string editId, string track)
             {
@@ -3477,7 +3517,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -3489,7 +3528,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>The track to update.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("track", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Track { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.Testers Body { get; set; }
@@ -3510,7 +3548,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -3536,14 +3573,12 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Updates testers.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
+            /// <param name="editId">Identifier of the edit.</param>
             /// <param name="track">The track to update.</param>
             public virtual UpdateRequest Update(Google.Apis.AndroidPublisher.v3.Data.Testers body, string packageName, string editId, string track)
             {
@@ -3563,7 +3598,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -3575,7 +3609,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>The track to update.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("track", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Track { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.Testers Body { get; set; }
@@ -3596,7 +3629,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -3622,9 +3654,9 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Tracks resource.</summary>
         public virtual TracksResource Tracks { get; }
 
@@ -3640,14 +3672,11 @@ namespace Google.Apis.AndroidPublisher.v3
             public TracksResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Gets a track.</summary>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
+            /// <param name="editId">Identifier of the edit.</param>
             /// <param name="track">Identifier of the track.</param>
             public virtual GetRequest Get(string packageName, string editId, string track)
             {
@@ -3666,7 +3695,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -3678,7 +3706,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Identifier of the track.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("track", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Track { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -3693,7 +3720,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -3719,13 +3745,11 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Lists all tracks.</summary>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
+            /// <param name="editId">Identifier of the edit.</param>
             public virtual ListRequest List(string packageName, string editId)
             {
                 return new ListRequest(service, packageName, editId);
@@ -3742,7 +3766,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -3750,7 +3773,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Identifier of the edit.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -3765,7 +3787,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -3783,14 +3804,12 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Patches a track.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
+            /// <param name="editId">Identifier of the edit.</param>
             /// <param name="track">Identifier of the track.</param>
             public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v3.Data.Track body, string packageName, string editId, string track)
             {
@@ -3810,7 +3829,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -3822,7 +3840,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Identifier of the track.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("track", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Track { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.Track Body { get; set; }
@@ -3843,7 +3860,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -3869,14 +3885,12 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Updates a track.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="editId">Identifier of the
-            /// edit.</param>
+            /// <param name="editId">Identifier of the edit.</param>
             /// <param name="track">Identifier of the track.</param>
             public virtual UpdateRequest Update(Google.Apis.AndroidPublisher.v3.Data.Track body, string packageName, string editId, string track)
             {
@@ -3896,7 +3910,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -3908,7 +3921,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Identifier of the track.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("track", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Track { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.Track Body { get; set; }
@@ -3929,7 +3941,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -3955,14 +3966,12 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
         }
 
         /// <summary>Commits an app edit.</summary>
         /// <param name="packageName">Package name of the app.</param>
-        /// <param name="editId">Identifier of the
-        /// edit.</param>
+        /// <param name="editId">Identifier of the edit.</param>
         public virtual CommitRequest Commit(string packageName, string editId)
         {
             return new CommitRequest(service, packageName, editId);
@@ -3979,7 +3988,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 InitParameters();
             }
 
-
             /// <summary>Package name of the app.</summary>
             [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PackageName { get; private set; }
@@ -3987,7 +3995,6 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <summary>Identifier of the edit.</summary>
             [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string EditId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "commit";
@@ -4002,7 +4009,6 @@ namespace Google.Apis.AndroidPublisher.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                 {
                     Name = "packageName",
@@ -4020,13 +4026,11 @@ namespace Google.Apis.AndroidPublisher.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Deletes an app edit.</summary>
         /// <param name="packageName">Package name of the app.</param>
-        /// <param name="editId">Identifier of the
-        /// edit.</param>
+        /// <param name="editId">Identifier of the edit.</param>
         public virtual DeleteRequest Delete(string packageName, string editId)
         {
             return new DeleteRequest(service, packageName, editId);
@@ -4043,7 +4047,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 InitParameters();
             }
 
-
             /// <summary>Package name of the app.</summary>
             [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PackageName { get; private set; }
@@ -4051,7 +4054,6 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <summary>Identifier of the edit.</summary>
             [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string EditId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
@@ -4066,7 +4068,6 @@ namespace Google.Apis.AndroidPublisher.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                 {
                     Name = "packageName",
@@ -4084,13 +4085,11 @@ namespace Google.Apis.AndroidPublisher.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Gets an app edit.</summary>
         /// <param name="packageName">Package name of the app.</param>
-        /// <param name="editId">Identifier of the
-        /// edit.</param>
+        /// <param name="editId">Identifier of the edit.</param>
         public virtual GetRequest Get(string packageName, string editId)
         {
             return new GetRequest(service, packageName, editId);
@@ -4107,7 +4106,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 InitParameters();
             }
 
-
             /// <summary>Package name of the app.</summary>
             [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PackageName { get; private set; }
@@ -4115,7 +4113,6 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <summary>Identifier of the edit.</summary>
             [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string EditId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -4130,7 +4127,6 @@ namespace Google.Apis.AndroidPublisher.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                 {
                     Name = "packageName",
@@ -4148,7 +4144,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Creates a new edit for an app.</summary>
@@ -4170,11 +4165,9 @@ namespace Google.Apis.AndroidPublisher.v3
                 InitParameters();
             }
 
-
             /// <summary>Package name of the app.</summary>
             [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PackageName { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidPublisher.v3.Data.AppEdit Body { get; set; }
@@ -4195,7 +4188,6 @@ namespace Google.Apis.AndroidPublisher.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                 {
                     Name = "packageName",
@@ -4205,13 +4197,11 @@ namespace Google.Apis.AndroidPublisher.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Validates an app edit.</summary>
         /// <param name="packageName">Package name of the app.</param>
-        /// <param name="editId">Identifier of the
-        /// edit.</param>
+        /// <param name="editId">Identifier of the edit.</param>
         public virtual ValidateRequest Validate(string packageName, string editId)
         {
             return new ValidateRequest(service, packageName, editId);
@@ -4228,7 +4218,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 InitParameters();
             }
 
-
             /// <summary>Package name of the app.</summary>
             [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PackageName { get; private set; }
@@ -4236,7 +4225,6 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <summary>Identifier of the edit.</summary>
             [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string EditId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "validate";
@@ -4251,7 +4239,6 @@ namespace Google.Apis.AndroidPublisher.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                 {
                     Name = "packageName",
@@ -4269,7 +4256,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -4285,14 +4271,11 @@ namespace Google.Apis.AndroidPublisher.v3
         public InappproductsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Deletes an in-app product (i.e. a managed product or a subscriptions).</summary>
         /// <param name="packageName">Package name of the app.</param>
-        /// <param name="sku">Unique identifier for the in-
-        /// app product.</param>
+        /// <param name="sku">Unique identifier for the in-app product.</param>
         public virtual DeleteRequest Delete(string packageName, string sku)
         {
             return new DeleteRequest(service, packageName, sku);
@@ -4309,7 +4292,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 InitParameters();
             }
 
-
             /// <summary>Package name of the app.</summary>
             [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PackageName { get; private set; }
@@ -4317,7 +4299,6 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <summary>Unique identifier for the in-app product.</summary>
             [Google.Apis.Util.RequestParameterAttribute("sku", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Sku { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
@@ -4332,7 +4313,6 @@ namespace Google.Apis.AndroidPublisher.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                 {
                     Name = "packageName",
@@ -4350,13 +4330,11 @@ namespace Google.Apis.AndroidPublisher.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Gets an in-app product, which can be a managed product or a subscription.</summary>
         /// <param name="packageName">Package name of the app.</param>
-        /// <param name="sku">Unique identifier for the in-
-        /// app product.</param>
+        /// <param name="sku">Unique identifier for the in-app product.</param>
         public virtual GetRequest Get(string packageName, string sku)
         {
             return new GetRequest(service, packageName, sku);
@@ -4373,7 +4351,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 InitParameters();
             }
 
-
             /// <summary>Package name of the app.</summary>
             [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PackageName { get; private set; }
@@ -4381,7 +4358,6 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <summary>Unique identifier for the in-app product.</summary>
             [Google.Apis.Util.RequestParameterAttribute("sku", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Sku { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -4396,7 +4372,6 @@ namespace Google.Apis.AndroidPublisher.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                 {
                     Name = "packageName",
@@ -4414,7 +4389,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Creates an in-app product (i.e. a managed product or a subscriptions).</summary>
@@ -4436,17 +4410,17 @@ namespace Google.Apis.AndroidPublisher.v3
                 InitParameters();
             }
 
-
             /// <summary>Package name of the app.</summary>
             [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PackageName { get; private set; }
 
-            /// <summary>If true the prices for all regions targeted by the parent app that don't have a price specified
-            /// for this in-app product will be auto converted to the target currency based on the default price.
-            /// Defaults to false.</summary>
+            /// <summary>
+            /// If true the prices for all regions targeted by the parent app that don't have a price specified for this
+            /// in-app product will be auto converted to the target currency based on the default price. Defaults to
+            /// false.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("autoConvertMissingPrices", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AutoConvertMissingPrices { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidPublisher.v3.Data.InAppProduct Body { get; set; }
@@ -4467,7 +4441,6 @@ namespace Google.Apis.AndroidPublisher.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                 {
                     Name = "packageName",
@@ -4485,7 +4458,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Lists all in-app products - both managed products and subscriptions.</summary>
@@ -4505,7 +4477,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 InitParameters();
             }
 
-
             /// <summary>Package name of the app.</summary>
             [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PackageName { get; private set; }
@@ -4522,7 +4493,6 @@ namespace Google.Apis.AndroidPublisher.v3
             [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Token { get; set; }
 
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -4536,7 +4506,6 @@ namespace Google.Apis.AndroidPublisher.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                 {
                     Name = "packageName",
@@ -4570,14 +4539,12 @@ namespace Google.Apis.AndroidPublisher.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Patches an in-app product (i.e. a managed product or a subscriptions).</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="packageName">Package name of the app.</param>
-        /// <param name="sku">Unique identifier for the in-
-        /// app product.</param>
+        /// <param name="sku">Unique identifier for the in-app product.</param>
         public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v3.Data.InAppProduct body, string packageName, string sku)
         {
             return new PatchRequest(service, body, packageName, sku);
@@ -4595,7 +4562,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 InitParameters();
             }
 
-
             /// <summary>Package name of the app.</summary>
             [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PackageName { get; private set; }
@@ -4604,12 +4570,13 @@ namespace Google.Apis.AndroidPublisher.v3
             [Google.Apis.Util.RequestParameterAttribute("sku", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Sku { get; private set; }
 
-            /// <summary>If true the prices for all regions targeted by the parent app that don't have a price specified
-            /// for this in-app product will be auto converted to the target currency based on the default price.
-            /// Defaults to false.</summary>
+            /// <summary>
+            /// If true the prices for all regions targeted by the parent app that don't have a price specified for this
+            /// in-app product will be auto converted to the target currency based on the default price. Defaults to
+            /// false.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("autoConvertMissingPrices", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AutoConvertMissingPrices { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidPublisher.v3.Data.InAppProduct Body { get; set; }
@@ -4630,7 +4597,6 @@ namespace Google.Apis.AndroidPublisher.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                 {
                     Name = "packageName",
@@ -4656,14 +4622,12 @@ namespace Google.Apis.AndroidPublisher.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Updates an in-app product (i.e. a managed product or a subscriptions).</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="packageName">Package name of the app.</param>
-        /// <param name="sku">Unique identifier for the in-
-        /// app product.</param>
+        /// <param name="sku">Unique identifier for the in-app product.</param>
         public virtual UpdateRequest Update(Google.Apis.AndroidPublisher.v3.Data.InAppProduct body, string packageName, string sku)
         {
             return new UpdateRequest(service, body, packageName, sku);
@@ -4681,7 +4645,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 InitParameters();
             }
 
-
             /// <summary>Package name of the app.</summary>
             [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PackageName { get; private set; }
@@ -4690,12 +4653,13 @@ namespace Google.Apis.AndroidPublisher.v3
             [Google.Apis.Util.RequestParameterAttribute("sku", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Sku { get; private set; }
 
-            /// <summary>If true the prices for all regions targeted by the parent app that don't have a price specified
-            /// for this in-app product will be auto converted to the target currency based on the default price.
-            /// Defaults to false.</summary>
+            /// <summary>
+            /// If true the prices for all regions targeted by the parent app that don't have a price specified for this
+            /// in-app product will be auto converted to the target currency based on the default price. Defaults to
+            /// false.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("autoConvertMissingPrices", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AutoConvertMissingPrices { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidPublisher.v3.Data.InAppProduct Body { get; set; }
@@ -4716,7 +4680,6 @@ namespace Google.Apis.AndroidPublisher.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                 {
                     Name = "packageName",
@@ -4742,7 +4705,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -4758,24 +4720,26 @@ namespace Google.Apis.AndroidPublisher.v3
         public InternalappsharingartifactsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Uploads an APK to internal app sharing. If you are using the Google API client libraries, please
-        /// increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
-        /// recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-
-        /// java-client/errors) for an example in java.</summary>
+        /// <summary>
+        /// Uploads an APK to internal app sharing. If you are using the Google API client libraries, please increase
+        /// the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See
+        /// [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors)
+        /// for an example in java.
+        /// </summary>
         /// <param name="packageName">Package name of the app.</param>
         public virtual UploadapkRequest Uploadapk(string packageName)
         {
             return new UploadapkRequest(service, packageName);
         }
 
-        /// <summary>Uploads an APK to internal app sharing. If you are using the Google API client libraries, please
-        /// increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
-        /// recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-
-        /// java-client/errors) for an example in java.</summary>
+        /// <summary>
+        /// Uploads an APK to internal app sharing. If you are using the Google API client libraries, please increase
+        /// the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See
+        /// [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors)
+        /// for an example in java.
+        /// </summary>
         public class UploadapkRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.InternalAppSharingArtifact>
         {
             /// <summary>Constructs a new Uploadapk request.</summary>
@@ -4785,11 +4749,9 @@ namespace Google.Apis.AndroidPublisher.v3
                 InitParameters();
             }
 
-
             /// <summary>Package name of the app.</summary>
             [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PackageName { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "uploadapk";
@@ -4804,7 +4766,6 @@ namespace Google.Apis.AndroidPublisher.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                 {
                     Name = "packageName",
@@ -4814,31 +4775,31 @@ namespace Google.Apis.AndroidPublisher.v3
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Uploads an APK to internal app sharing. If you are using the Google API client libraries, please
-        /// increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
-        /// recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-
-        /// java-client/errors) for an example in java.</summary>
+        /// <summary>
+        /// Uploads an APK to internal app sharing. If you are using the Google API client libraries, please increase
+        /// the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See
+        /// [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors)
+        /// for an example in java.
+        /// </summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
         /// <list type="bullet">
-        /// <item><description>
-        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
-        /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
-        /// seekable, then it will be read from its current position.
-        /// </description></item>
-        /// <item><description>
-        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
-        /// upload is completed.
-        /// </description></item>
-        /// <item><description>
-        /// Caller is responsible for closing the <paramref name="stream"/>.
-        /// </description></item>
+        /// <item>
+        /// <description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before reading
+        /// commences. If <paramref name="stream"/> is not seekable, then it will be read from its current position
+        /// </description>
+        /// </item>
+        /// <item>
+        /// <description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+        /// </description>
+        /// </item>
+        /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
         /// </list>
         /// </remarks>
-
         /// <param name="packageName">Package name of the app.</param>
         /// <param name="stream">The stream to upload. See remarks for further information.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
@@ -4850,7 +4811,6 @@ namespace Google.Apis.AndroidPublisher.v3
         /// <summary>Uploadapk media upload which supports resumable upload.</summary>
         public class UploadapkMediaUpload : Google.Apis.Upload.ResumableUpload<string, Google.Apis.AndroidPublisher.v3.Data.InternalAppSharingArtifact>
         {
-
             /// <summary>V1 error format.</summary>
             [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
@@ -4861,6 +4821,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>v1 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("1")]
                 Value1,
+
                 /// <summary>v2 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("2")]
                 Value2,
@@ -4880,9 +4841,11 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Responses with Content-Type of application/json</summary>
                 [Google.Apis.Util.StringValueAttribute("json")]
                 Json,
+
                 /// <summary>Media download with context-dependent Content-Type</summary>
                 [Google.Apis.Util.StringValueAttribute("media")]
                 Media,
+
                 /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                 [Google.Apis.Util.StringValueAttribute("proto")]
                 Proto,
@@ -4896,8 +4859,10 @@ namespace Google.Apis.AndroidPublisher.v3
             [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Fields { get; set; }
 
-            /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and
-            /// reports. Required unless you provide an OAuth 2.0 token.</summary>
+            /// <summary>
+            /// API key. Your API key identifies your project and provides you with API access, quota, and reports.
+            /// Required unless you provide an OAuth 2.0 token.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Key { get; set; }
 
@@ -4909,8 +4874,10 @@ namespace Google.Apis.AndroidPublisher.v3
             [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-            /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-            /// assigned to a user, but should not exceed 40 characters.</summary>
+            /// <summary>
+            /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned
+            /// to a user, but should not exceed 40 characters.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string QuotaUser { get; set; }
 
@@ -4922,7 +4889,6 @@ namespace Google.Apis.AndroidPublisher.v3
             [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UploadProtocol { get; set; }
 
-
             /// <summary>Package name of the app.</summary>
             [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PackageName { get; private set; }
@@ -4931,18 +4897,19 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <remarks>
             /// Considerations regarding <paramref name="stream"/>:
             /// <list type="bullet">
-            /// <item><description>
-            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
-            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
-            /// seekable, then it will be read from its current position.
-            /// </description></item>
-            /// <item><description>
-            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
-            /// upload is completed.
-            /// </description></item>
-            /// <item><description>
-            /// Caller is responsible for closing the <paramref name="stream"/>.
-            /// </description></item>
+            /// <item>
+            /// <description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+            /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its current
+            /// position
+            /// </description>
+            /// </item>
+            /// <item>
+            /// <description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+            /// </description>
+            /// </item>
+            /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
             /// </list>
             /// </remarks>
             public UploadapkMediaUpload(Google.Apis.Services.IClientService service, string packageName, System.IO.Stream stream, string contentType)
@@ -4952,20 +4919,26 @@ namespace Google.Apis.AndroidPublisher.v3
             }
         }
 
-        /// <summary>Uploads an app bundle to internal app sharing. If you are using the Google API client libraries,
-        /// please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
-        /// recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-
-        /// java-client/errors) for an example in java.</summary>
+        /// <summary>
+        /// Uploads an app bundle to internal app sharing. If you are using the Google API client libraries, please
+        /// increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
+        /// recommended). See [Timeouts and
+        /// Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an example
+        /// in java.
+        /// </summary>
         /// <param name="packageName">Package name of the app.</param>
         public virtual UploadbundleRequest Uploadbundle(string packageName)
         {
             return new UploadbundleRequest(service, packageName);
         }
 
-        /// <summary>Uploads an app bundle to internal app sharing. If you are using the Google API client libraries,
-        /// please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
-        /// recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-
-        /// java-client/errors) for an example in java.</summary>
+        /// <summary>
+        /// Uploads an app bundle to internal app sharing. If you are using the Google API client libraries, please
+        /// increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
+        /// recommended). See [Timeouts and
+        /// Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an example
+        /// in java.
+        /// </summary>
         public class UploadbundleRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.InternalAppSharingArtifact>
         {
             /// <summary>Constructs a new Uploadbundle request.</summary>
@@ -4975,11 +4948,9 @@ namespace Google.Apis.AndroidPublisher.v3
                 InitParameters();
             }
 
-
             /// <summary>Package name of the app.</summary>
             [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PackageName { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "uploadbundle";
@@ -4994,7 +4965,6 @@ namespace Google.Apis.AndroidPublisher.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                 {
                     Name = "packageName",
@@ -5004,31 +4974,32 @@ namespace Google.Apis.AndroidPublisher.v3
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Uploads an app bundle to internal app sharing. If you are using the Google API client libraries,
-        /// please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
-        /// recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-
-        /// java-client/errors) for an example in java.</summary>
+        /// <summary>
+        /// Uploads an app bundle to internal app sharing. If you are using the Google API client libraries, please
+        /// increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is
+        /// recommended). See [Timeouts and
+        /// Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an example
+        /// in java.
+        /// </summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
         /// <list type="bullet">
-        /// <item><description>
-        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
-        /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
-        /// seekable, then it will be read from its current position.
-        /// </description></item>
-        /// <item><description>
-        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
-        /// upload is completed.
-        /// </description></item>
-        /// <item><description>
-        /// Caller is responsible for closing the <paramref name="stream"/>.
-        /// </description></item>
+        /// <item>
+        /// <description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before reading
+        /// commences. If <paramref name="stream"/> is not seekable, then it will be read from its current position
+        /// </description>
+        /// </item>
+        /// <item>
+        /// <description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+        /// </description>
+        /// </item>
+        /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
         /// </list>
         /// </remarks>
-
         /// <param name="packageName">Package name of the app.</param>
         /// <param name="stream">The stream to upload. See remarks for further information.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
@@ -5040,7 +5011,6 @@ namespace Google.Apis.AndroidPublisher.v3
         /// <summary>Uploadbundle media upload which supports resumable upload.</summary>
         public class UploadbundleMediaUpload : Google.Apis.Upload.ResumableUpload<string, Google.Apis.AndroidPublisher.v3.Data.InternalAppSharingArtifact>
         {
-
             /// <summary>V1 error format.</summary>
             [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
@@ -5051,6 +5021,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>v1 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("1")]
                 Value1,
+
                 /// <summary>v2 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("2")]
                 Value2,
@@ -5070,9 +5041,11 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>Responses with Content-Type of application/json</summary>
                 [Google.Apis.Util.StringValueAttribute("json")]
                 Json,
+
                 /// <summary>Media download with context-dependent Content-Type</summary>
                 [Google.Apis.Util.StringValueAttribute("media")]
                 Media,
+
                 /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                 [Google.Apis.Util.StringValueAttribute("proto")]
                 Proto,
@@ -5086,8 +5059,10 @@ namespace Google.Apis.AndroidPublisher.v3
             [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Fields { get; set; }
 
-            /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and
-            /// reports. Required unless you provide an OAuth 2.0 token.</summary>
+            /// <summary>
+            /// API key. Your API key identifies your project and provides you with API access, quota, and reports.
+            /// Required unless you provide an OAuth 2.0 token.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Key { get; set; }
 
@@ -5099,8 +5074,10 @@ namespace Google.Apis.AndroidPublisher.v3
             [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-            /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-            /// assigned to a user, but should not exceed 40 characters.</summary>
+            /// <summary>
+            /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned
+            /// to a user, but should not exceed 40 characters.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string QuotaUser { get; set; }
 
@@ -5112,7 +5089,6 @@ namespace Google.Apis.AndroidPublisher.v3
             [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UploadProtocol { get; set; }
 
-
             /// <summary>Package name of the app.</summary>
             [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PackageName { get; private set; }
@@ -5121,18 +5097,19 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <remarks>
             /// Considerations regarding <paramref name="stream"/>:
             /// <list type="bullet">
-            /// <item><description>
-            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
-            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
-            /// seekable, then it will be read from its current position.
-            /// </description></item>
-            /// <item><description>
-            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
-            /// upload is completed.
-            /// </description></item>
-            /// <item><description>
-            /// Caller is responsible for closing the <paramref name="stream"/>.
-            /// </description></item>
+            /// <item>
+            /// <description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+            /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its current
+            /// position
+            /// </description>
+            /// </item>
+            /// <item>
+            /// <description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+            /// </description>
+            /// </item>
+            /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
             /// </list>
             /// </remarks>
             public UploadbundleMediaUpload(Google.Apis.Services.IClientService service, string packageName, System.IO.Stream stream, string contentType)
@@ -5155,15 +5132,16 @@ namespace Google.Apis.AndroidPublisher.v3
         public OrdersResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
         /// <summary>Refund a user's subscription or in-app purchase order.</summary>
-        /// <param name="packageName">The package name of the application for which this subscription or in-app item was
-        /// purchased (for example, 'com.some.thing').</param>
-        /// <param name="orderId">The order ID provided to the user
-        /// when the subscription or in-app order was purchased.</param>
+        /// <param name="packageName">
+        /// The package name of the application for which this subscription or in-app item was purchased (for example,
+        /// 'com.some.thing').
+        /// </param>
+        /// <param name="orderId">
+        /// The order ID provided to the user when the subscription or in-app order was purchased.
+        /// </param>
         public virtual RefundRequest Refund(string packageName, string orderId)
         {
             return new RefundRequest(service, packageName, orderId);
@@ -5180,23 +5158,26 @@ namespace Google.Apis.AndroidPublisher.v3
                 InitParameters();
             }
 
-
-            /// <summary>The package name of the application for which this subscription or in-app item was purchased
-            /// (for example, 'com.some.thing').</summary>
+            /// <summary>
+            /// The package name of the application for which this subscription or in-app item was purchased (for
+            /// example, 'com.some.thing').
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PackageName { get; private set; }
 
-            /// <summary>The order ID provided to the user when the subscription or in-app order was
-            /// purchased.</summary>
+            /// <summary>
+            /// The order ID provided to the user when the subscription or in-app order was purchased.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string OrderId { get; private set; }
 
-            /// <summary>Whether to revoke the purchased item. If set to true, access to the subscription or in-app item
-            /// will be terminated immediately. If the item is a recurring subscription, all future payments will also
-            /// be terminated. Consumed in-app items need to be handled by developer's app. (optional).</summary>
+            /// <summary>
+            /// Whether to revoke the purchased item. If set to true, access to the subscription or in-app item will be
+            /// terminated immediately. If the item is a recurring subscription, all future payments will also be
+            /// terminated. Consumed in-app items need to be handled by developer's app. (optional).
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("revoke", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Revoke { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "refund";
@@ -5211,7 +5192,6 @@ namespace Google.Apis.AndroidPublisher.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                 {
                     Name = "packageName",
@@ -5237,7 +5217,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -5256,7 +5235,6 @@ namespace Google.Apis.AndroidPublisher.v3
             Products = new ProductsResource(service);
             Subscriptions = new SubscriptionsResource(service);
             Voidedpurchases = new VoidedpurchasesResource(service);
-
         }
 
         /// <summary>Gets the Products resource.</summary>
@@ -5274,18 +5252,17 @@ namespace Google.Apis.AndroidPublisher.v3
             public ProductsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Acknowledges a purchase of an inapp item.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="packageName">The package name of the application the inapp product was sold in (for example,
-            /// 'com.some.thing').</param>
-            /// <param name="productId">The inapp product SKU (for example,
-            /// 'com.some.thing.inapp1').</param>
-            /// <param name="token">The token provided to the user's device when the inapp
-            /// product was purchased.</param>
+            /// <param name="packageName">
+            /// The package name of the application the inapp product was sold in (for example, 'com.some.thing').
+            /// </param>
+            /// <param name="productId">The inapp product SKU (for example, 'com.some.thing.inapp1').</param>
+            /// <param name="token">
+            /// The token provided to the user's device when the inapp product was purchased.
+            /// </param>
             public virtual AcknowledgeRequest Acknowledge(Google.Apis.AndroidPublisher.v3.Data.ProductPurchasesAcknowledgeRequest body, string packageName, string productId, string token)
             {
                 return new AcknowledgeRequest(service, body, packageName, productId, token);
@@ -5304,9 +5281,9 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
-                /// <summary>The package name of the application the inapp product was sold in (for example,
-                /// 'com.some.thing').</summary>
+                /// <summary>
+                /// The package name of the application the inapp product was sold in (for example, 'com.some.thing').
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
 
@@ -5317,7 +5294,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>The token provided to the user's device when the inapp product was purchased.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Token { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.ProductPurchasesAcknowledgeRequest Body { get; set; }
@@ -5338,7 +5314,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -5364,16 +5339,16 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Checks the purchase and consumption status of an inapp item.</summary>
-            /// <param name="packageName">The package name of the application the inapp product was sold in (for example,
-            /// 'com.some.thing').</param>
-            /// <param name="productId">The inapp product SKU (for example,
-            /// 'com.some.thing.inapp1').</param>
-            /// <param name="token">The token provided to the user's device when the inapp
-            /// product was purchased.</param>
+            /// <param name="packageName">
+            /// The package name of the application the inapp product was sold in (for example, 'com.some.thing').
+            /// </param>
+            /// <param name="productId">The inapp product SKU (for example, 'com.some.thing.inapp1').</param>
+            /// <param name="token">
+            /// The token provided to the user's device when the inapp product was purchased.
+            /// </param>
             public virtual GetRequest Get(string packageName, string productId, string token)
             {
                 return new GetRequest(service, packageName, productId, token);
@@ -5391,9 +5366,9 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
-                /// <summary>The package name of the application the inapp product was sold in (for example,
-                /// 'com.some.thing').</summary>
+                /// <summary>
+                /// The package name of the application the inapp product was sold in (for example, 'com.some.thing').
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
 
@@ -5404,7 +5379,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>The token provided to the user's device when the inapp product was purchased.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Token { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -5419,7 +5393,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -5445,9 +5418,9 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Subscriptions resource.</summary>
         public virtual SubscriptionsResource Subscriptions { get; }
 
@@ -5463,18 +5436,16 @@ namespace Google.Apis.AndroidPublisher.v3
             public SubscriptionsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Acknowledges a subscription purchase.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="packageName">The package name of the application for which this subscription was purchased (for
-            /// example, 'com.some.thing').</param>
-            /// <param name="subscriptionId">The purchased subscription ID (for example,
-            /// 'monthly001').</param>
-            /// <param name="token">The token provided to the user's device when the subscription was
-            /// purchased.</param>
+            /// <param name="packageName">
+            /// The package name of the application for which this subscription was purchased (for example,
+            /// 'com.some.thing').
+            /// </param>
+            /// <param name="subscriptionId">The purchased subscription ID (for example, 'monthly001').</param>
+            /// <param name="token">The token provided to the user's device when the subscription was purchased.</param>
             public virtual AcknowledgeRequest Acknowledge(Google.Apis.AndroidPublisher.v3.Data.SubscriptionPurchasesAcknowledgeRequest body, string packageName, string subscriptionId, string token)
             {
                 return new AcknowledgeRequest(service, body, packageName, subscriptionId, token);
@@ -5493,9 +5464,10 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
-                /// <summary>The package name of the application for which this subscription was purchased (for example,
-                /// 'com.some.thing').</summary>
+                /// <summary>
+                /// The package name of the application for which this subscription was purchased (for example,
+                /// 'com.some.thing').
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
 
@@ -5506,7 +5478,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>The token provided to the user's device when the subscription was purchased.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Token { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.SubscriptionPurchasesAcknowledgeRequest Body { get; set; }
@@ -5527,7 +5498,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -5553,24 +5523,25 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Cancels a user's subscription purchase. The subscription remains valid until its expiration
-            /// time.</summary>
-            /// <param name="packageName">The package name of the application for which this subscription was purchased (for
-            /// example, 'com.some.thing').</param>
-            /// <param name="subscriptionId">The purchased subscription ID (for example,
-            /// 'monthly001').</param>
-            /// <param name="token">The token provided to the user's device when the subscription was
-            /// purchased.</param>
+            /// <summary>
+            /// Cancels a user's subscription purchase. The subscription remains valid until its expiration time.
+            /// </summary>
+            /// <param name="packageName">
+            /// The package name of the application for which this subscription was purchased (for example,
+            /// 'com.some.thing').
+            /// </param>
+            /// <param name="subscriptionId">The purchased subscription ID (for example, 'monthly001').</param>
+            /// <param name="token">The token provided to the user's device when the subscription was purchased.</param>
             public virtual CancelRequest Cancel(string packageName, string subscriptionId, string token)
             {
                 return new CancelRequest(service, packageName, subscriptionId, token);
             }
 
-            /// <summary>Cancels a user's subscription purchase. The subscription remains valid until its expiration
-            /// time.</summary>
+            /// <summary>
+            /// Cancels a user's subscription purchase. The subscription remains valid until its expiration time.
+            /// </summary>
             public class CancelRequest : AndroidPublisherBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Cancel request.</summary>
@@ -5582,9 +5553,10 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
-                /// <summary>The package name of the application for which this subscription was purchased (for example,
-                /// 'com.some.thing').</summary>
+                /// <summary>
+                /// The package name of the application for which this subscription was purchased (for example,
+                /// 'com.some.thing').
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
 
@@ -5595,7 +5567,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>The token provided to the user's device when the subscription was purchased.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Token { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "cancel";
@@ -5610,7 +5581,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -5636,17 +5606,16 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Defers a user's subscription purchase until a specified future expiration time.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="packageName">The package name of the application for which this subscription was purchased (for
-            /// example, 'com.some.thing').</param>
-            /// <param name="subscriptionId">The purchased subscription ID (for example,
-            /// 'monthly001').</param>
-            /// <param name="token">The token provided to the user's device when the subscription was
-            /// purchased.</param>
+            /// <param name="packageName">
+            /// The package name of the application for which this subscription was purchased (for example,
+            /// 'com.some.thing').
+            /// </param>
+            /// <param name="subscriptionId">The purchased subscription ID (for example, 'monthly001').</param>
+            /// <param name="token">The token provided to the user's device when the subscription was purchased.</param>
             public virtual DeferRequest Defer(Google.Apis.AndroidPublisher.v3.Data.SubscriptionPurchasesDeferRequest body, string packageName, string subscriptionId, string token)
             {
                 return new DeferRequest(service, body, packageName, subscriptionId, token);
@@ -5665,9 +5634,10 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
-                /// <summary>The package name of the application for which this subscription was purchased (for example,
-                /// 'com.some.thing').</summary>
+                /// <summary>
+                /// The package name of the application for which this subscription was purchased (for example,
+                /// 'com.some.thing').
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
 
@@ -5678,7 +5648,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>The token provided to the user's device when the subscription was purchased.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Token { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.SubscriptionPurchasesDeferRequest Body { get; set; }
@@ -5699,7 +5668,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -5725,16 +5693,15 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Checks whether a user's subscription purchase is valid and returns its expiry time.</summary>
-            /// <param name="packageName">The package name of the application for which this subscription was purchased (for
-            /// example, 'com.some.thing').</param>
-            /// <param name="subscriptionId">The purchased subscription ID (for example,
-            /// 'monthly001').</param>
-            /// <param name="token">The token provided to the user's device when the subscription was
-            /// purchased.</param>
+            /// <param name="packageName">
+            /// The package name of the application for which this subscription was purchased (for example,
+            /// 'com.some.thing').
+            /// </param>
+            /// <param name="subscriptionId">The purchased subscription ID (for example, 'monthly001').</param>
+            /// <param name="token">The token provided to the user's device when the subscription was purchased.</param>
             public virtual GetRequest Get(string packageName, string subscriptionId, string token)
             {
                 return new GetRequest(service, packageName, subscriptionId, token);
@@ -5752,9 +5719,10 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
-                /// <summary>The package name of the application for which this subscription was purchased (for example,
-                /// 'com.some.thing').</summary>
+                /// <summary>
+                /// The package name of the application for which this subscription was purchased (for example,
+                /// 'com.some.thing').
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
 
@@ -5765,7 +5733,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>The token provided to the user's device when the subscription was purchased.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Token { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -5780,7 +5747,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -5806,24 +5772,27 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Refunds a user's subscription purchase, but the subscription remains valid until its expiration
-            /// time and it will continue to recur.</summary>
-            /// <param name="packageName">The package name of the application for which this subscription was purchased (for
-            /// example, 'com.some.thing').</param>
-            /// <param name="subscriptionId">"The purchased subscription ID (for
-            /// example, 'monthly001').</param>
-            /// <param name="token">The token provided to the user's device when the
-            /// subscription was purchased.</param>
+            /// <summary>
+            /// Refunds a user's subscription purchase, but the subscription remains valid until its expiration time and
+            /// it will continue to recur.
+            /// </summary>
+            /// <param name="packageName">
+            /// The package name of the application for which this subscription was purchased (for example,
+            /// 'com.some.thing').
+            /// </param>
+            /// <param name="subscriptionId">"The purchased subscription ID (for example, 'monthly001').</param>
+            /// <param name="token">The token provided to the user's device when the subscription was purchased.</param>
             public virtual RefundRequest Refund(string packageName, string subscriptionId, string token)
             {
                 return new RefundRequest(service, packageName, subscriptionId, token);
             }
 
-            /// <summary>Refunds a user's subscription purchase, but the subscription remains valid until its expiration
-            /// time and it will continue to recur.</summary>
+            /// <summary>
+            /// Refunds a user's subscription purchase, but the subscription remains valid until its expiration time and
+            /// it will continue to recur.
+            /// </summary>
             public class RefundRequest : AndroidPublisherBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Refund request.</summary>
@@ -5835,9 +5804,10 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
-                /// <summary>The package name of the application for which this subscription was purchased (for example,
-                /// 'com.some.thing').</summary>
+                /// <summary>
+                /// The package name of the application for which this subscription was purchased (for example,
+                /// 'com.some.thing').
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
 
@@ -5848,7 +5818,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>The token provided to the user's device when the subscription was purchased.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Token { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "refund";
@@ -5863,7 +5832,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -5889,24 +5857,27 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Refunds and immediately revokes a user's subscription purchase. Access to the subscription will
-            /// be terminated immediately and it will stop recurring.</summary>
-            /// <param name="packageName">The package name of the application for which this subscription was purchased (for
-            /// example, 'com.some.thing').</param>
-            /// <param name="subscriptionId">The purchased subscription ID (for example,
-            /// 'monthly001').</param>
-            /// <param name="token">The token provided to the user's device when the subscription was
-            /// purchased.</param>
+            /// <summary>
+            /// Refunds and immediately revokes a user's subscription purchase. Access to the subscription will be
+            /// terminated immediately and it will stop recurring.
+            /// </summary>
+            /// <param name="packageName">
+            /// The package name of the application for which this subscription was purchased (for example,
+            /// 'com.some.thing').
+            /// </param>
+            /// <param name="subscriptionId">The purchased subscription ID (for example, 'monthly001').</param>
+            /// <param name="token">The token provided to the user's device when the subscription was purchased.</param>
             public virtual RevokeRequest Revoke(string packageName, string subscriptionId, string token)
             {
                 return new RevokeRequest(service, packageName, subscriptionId, token);
             }
 
-            /// <summary>Refunds and immediately revokes a user's subscription purchase. Access to the subscription will
-            /// be terminated immediately and it will stop recurring.</summary>
+            /// <summary>
+            /// Refunds and immediately revokes a user's subscription purchase. Access to the subscription will be
+            /// terminated immediately and it will stop recurring.
+            /// </summary>
             public class RevokeRequest : AndroidPublisherBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Revoke request.</summary>
@@ -5918,9 +5889,10 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
-                /// <summary>The package name of the application for which this subscription was purchased (for example,
-                /// 'com.some.thing').</summary>
+                /// <summary>
+                /// The package name of the application for which this subscription was purchased (for example,
+                /// 'com.some.thing').
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
 
@@ -5931,7 +5903,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>The token provided to the user's device when the subscription was purchased.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Token { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "revoke";
@@ -5946,7 +5917,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -5972,9 +5942,9 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Voidedpurchases resource.</summary>
         public virtual VoidedpurchasesResource Voidedpurchases { get; }
 
@@ -5990,13 +5960,13 @@ namespace Google.Apis.AndroidPublisher.v3
             public VoidedpurchasesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
             /// <summary>Lists the purchases that were canceled, refunded or charged-back.</summary>
-            /// <param name="packageName">The package name of the application for which voided purchases need to be returned (for
-            /// example, 'com.some.thing').</param>
+            /// <param name="packageName">
+            /// The package name of the application for which voided purchases need to be returned (for example,
+            /// 'com.some.thing').
+            /// </param>
             public virtual ListRequest List(string packageName)
             {
                 return new ListRequest(service, packageName);
@@ -6012,53 +5982,65 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
-                /// <summary>The package name of the application for which voided purchases need to be returned (for
-                /// example, 'com.some.thing').</summary>
+                /// <summary>
+                /// The package name of the application for which voided purchases need to be returned (for example,
+                /// 'com.some.thing').
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
 
-                /// <summary>The time, in milliseconds since the Epoch, of the newest voided purchase that you want to
-                /// see in the response. The value of this parameter cannot be greater than the current time and is
-                /// ignored if a pagination token is set. Default value is current time. Note: This filter is applied on
-                /// the time at which the record is seen as voided by our systems and not the actual voided time
-                /// returned in the response.</summary>
+                /// <summary>
+                /// The time, in milliseconds since the Epoch, of the newest voided purchase that you want to see in the
+                /// response. The value of this parameter cannot be greater than the current time and is ignored if a
+                /// pagination token is set. Default value is current time. Note: This filter is applied on the time at
+                /// which the record is seen as voided by our systems and not the actual voided time returned in the
+                /// response.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> EndTime { get; set; }
 
-                /// <summary>Defines how many results the list operation should return. The default number depends on
-                /// the resource collection.</summary>
+                /// <summary>
+                /// Defines how many results the list operation should return. The default number depends on the
+                /// resource collection.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> MaxResults { get; set; }
 
-                /// <summary>Defines the index of the first element to return. This can only be used if indexed paging
-                /// is enabled.</summary>
+                /// <summary>
+                /// Defines the index of the first element to return. This can only be used if indexed paging is
+                /// enabled.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> StartIndex { get; set; }
 
-                /// <summary>The time, in milliseconds since the Epoch, of the oldest voided purchase that you want to
-                /// see in the response. The value of this parameter cannot be older than 30 days and is ignored if a
-                /// pagination token is set. Default value is current time minus 30 days. Note: This filter is applied
-                /// on the time at which the record is seen as voided by our systems and not the actual voided time
-                /// returned in the response.</summary>
+                /// <summary>
+                /// The time, in milliseconds since the Epoch, of the oldest voided purchase that you want to see in the
+                /// response. The value of this parameter cannot be older than 30 days and is ignored if a pagination
+                /// token is set. Default value is current time minus 30 days. Note: This filter is applied on the time
+                /// at which the record is seen as voided by our systems and not the actual voided time returned in the
+                /// response.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> StartTime { get; set; }
 
-                /// <summary>Defines the token of the page to return, usually taken from TokenPagination. This can only
-                /// be used if token paging is enabled.</summary>
+                /// <summary>
+                /// Defines the token of the page to return, usually taken from TokenPagination. This can only be used
+                /// if token paging is enabled.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Token { get; set; }
 
-                /// <summary>The type of voided purchases that you want to see in the response. Possible values are: 0.
-                /// Only voided in-app product purchases will be returned in the response. This is the default value. 1.
-                /// Both voided in-app purchases and voided subscription purchases will be returned in the response.
-                /// Note: Before requesting to receive voided subscription purchases, you must switch to use orderId in
-                /// the response which uniquely identifies one-time purchases and subscriptions. Otherwise, you will
-                /// receive multiple subscription orders with the same PurchaseToken, because subscription renewal
-                /// orders share the same PurchaseToken.</summary>
+                /// <summary>
+                /// The type of voided purchases that you want to see in the response. Possible values are: 0. Only
+                /// voided in-app product purchases will be returned in the response. This is the default value. 1. Both
+                /// voided in-app purchases and voided subscription purchases will be returned in the response. Note:
+                /// Before requesting to receive voided subscription purchases, you must switch to use orderId in the
+                /// response which uniquely identifies one-time purchases and subscriptions. Otherwise, you will receive
+                /// multiple subscription orders with the same PurchaseToken, because subscription renewal orders share
+                /// the same PurchaseToken.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> Type { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -6073,7 +6055,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -6131,7 +6112,6 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
         }
     }
@@ -6148,14 +6128,11 @@ namespace Google.Apis.AndroidPublisher.v3
         public ReviewsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Gets a single review.</summary>
         /// <param name="packageName">Package name of the app.</param>
-        /// <param name="reviewId">Unique identifier for a
-        /// review.</param>
+        /// <param name="reviewId">Unique identifier for a review.</param>
         public virtual GetRequest Get(string packageName, string reviewId)
         {
             return new GetRequest(service, packageName, reviewId);
@@ -6172,7 +6149,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 InitParameters();
             }
 
-
             /// <summary>Package name of the app.</summary>
             [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PackageName { get; private set; }
@@ -6184,7 +6160,6 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <summary>Language localization code.</summary>
             [Google.Apis.Util.RequestParameterAttribute("translationLanguage", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string TranslationLanguage { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -6199,7 +6174,6 @@ namespace Google.Apis.AndroidPublisher.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                 {
                     Name = "packageName",
@@ -6225,7 +6199,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Lists all reviews.</summary>
@@ -6244,7 +6217,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 PackageName = packageName;
                 InitParameters();
             }
-
 
             /// <summary>Package name of the app.</summary>
             [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
@@ -6266,7 +6238,6 @@ namespace Google.Apis.AndroidPublisher.v3
             [Google.Apis.Util.RequestParameterAttribute("translationLanguage", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string TranslationLanguage { get; set; }
 
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -6280,7 +6251,6 @@ namespace Google.Apis.AndroidPublisher.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                 {
                     Name = "packageName",
@@ -6322,14 +6292,12 @@ namespace Google.Apis.AndroidPublisher.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Replies to a single review, or updates an existing reply.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="packageName">Package name of the app.</param>
-        /// <param name="reviewId">Unique identifier for a
-        /// review.</param>
+        /// <param name="reviewId">Unique identifier for a review.</param>
         public virtual ReplyRequest Reply(Google.Apis.AndroidPublisher.v3.Data.ReviewsReplyRequest body, string packageName, string reviewId)
         {
             return new ReplyRequest(service, body, packageName, reviewId);
@@ -6347,7 +6315,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 InitParameters();
             }
 
-
             /// <summary>Package name of the app.</summary>
             [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PackageName { get; private set; }
@@ -6355,7 +6322,6 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <summary>Unique identifier for a review.</summary>
             [Google.Apis.Util.RequestParameterAttribute("reviewId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ReviewId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AndroidPublisher.v3.Data.ReviewsReplyRequest Body { get; set; }
@@ -6376,7 +6342,6 @@ namespace Google.Apis.AndroidPublisher.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                 {
                     Name = "packageName",
@@ -6394,7 +6359,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -6411,7 +6375,6 @@ namespace Google.Apis.AndroidPublisher.v3
         {
             this.service = service;
             Variants = new VariantsResource(service);
-
         }
 
         /// <summary>Gets the Variants resource.</summary>
@@ -6429,23 +6392,24 @@ namespace Google.Apis.AndroidPublisher.v3
             public VariantsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Creates an APK which is suitable for inclusion in a system image from an already uploaded
-            /// Android App Bundle.</summary>
+            /// <summary>
+            /// Creates an APK which is suitable for inclusion in a system image from an already uploaded Android App
+            /// Bundle.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="versionCode">The version code of the
-            /// App Bundle.</param>
+            /// <param name="versionCode">The version code of the App Bundle.</param>
             public virtual CreateRequest Create(Google.Apis.AndroidPublisher.v3.Data.Variant body, string packageName, long versionCode)
             {
                 return new CreateRequest(service, body, packageName, versionCode);
             }
 
-            /// <summary>Creates an APK which is suitable for inclusion in a system image from an already uploaded
-            /// Android App Bundle.</summary>
+            /// <summary>
+            /// Creates an APK which is suitable for inclusion in a system image from an already uploaded Android App
+            /// Bundle.
+            /// </summary>
             public class CreateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Variant>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -6457,7 +6421,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -6465,7 +6428,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>The version code of the App Bundle.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("versionCode", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long VersionCode { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AndroidPublisher.v3.Data.Variant Body { get; set; }
@@ -6486,7 +6448,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -6504,22 +6465,22 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Downloads a previously created system APK which is suitable for inclusion in a system
-            /// image.</summary>
+            /// <summary>
+            /// Downloads a previously created system APK which is suitable for inclusion in a system image.
+            /// </summary>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="versionCode">The version code of the
-            /// App Bundle.</param>
+            /// <param name="versionCode">The version code of the App Bundle.</param>
             /// <param name="variantId">The ID of a previously created system APK variant.</param>
             public virtual DownloadRequest Download(string packageName, long versionCode, long variantId)
             {
                 return new DownloadRequest(service, packageName, versionCode, variantId);
             }
 
-            /// <summary>Downloads a previously created system APK which is suitable for inclusion in a system
-            /// image.</summary>
+            /// <summary>
+            /// Downloads a previously created system APK which is suitable for inclusion in a system image.
+            /// </summary>
             public class DownloadRequest : AndroidPublisherBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new Download request.</summary>
@@ -6532,7 +6493,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -6544,7 +6504,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>The ID of a previously created system APK variant.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("variantId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long VariantId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "download";
@@ -6559,7 +6518,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -6591,7 +6549,10 @@ namespace Google.Apis.AndroidPublisher.v3
 
                 /// <summary>
                 /// <para>Synchronously download the media into the given stream.</para>
-                /// <para>Warning: This method hides download errors; use <see cref="DownloadWithStatus"/> instead.</para>
+                /// <para>
+                /// Warning: This method hides download errors; use <see cref="DownloadWithStatus(System.IO.Stream)"/>
+                /// instead.
+                /// </para>
                 /// </summary>
                 public virtual void Download(System.IO.Stream stream)
                 {
@@ -6599,7 +6560,9 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
 
                 /// <summary>Synchronously download the media into the given stream.</summary>
-                /// <returns>The final status of the download; including whether the download succeeded or failed.</returns>
+                /// <returns>
+                /// The final status of the download; including whether the download succeeded or failed.
+                /// </returns>
                 public virtual Google.Apis.Download.IDownloadProgress DownloadWithStatus(System.IO.Stream stream)
                 {
                     return MediaDownloader.Download(this.GenerateRequestUri(), stream);
@@ -6637,13 +6600,11 @@ namespace Google.Apis.AndroidPublisher.v3
                     return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
                 }
                 #endif
-
             }
 
             /// <summary>Returns a previously created system APK variant.</summary>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="versionCode">The version code of the
-            /// App Bundle.</param>
+            /// <param name="versionCode">The version code of the App Bundle.</param>
             /// <param name="variantId">The ID of a previously created system APK variant.</param>
             public virtual GetRequest Get(string packageName, long versionCode, long variantId)
             {
@@ -6662,7 +6623,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -6674,7 +6634,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>The ID of a previously created system APK variant.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("variantId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long VariantId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -6689,7 +6648,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -6715,13 +6673,11 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Returns the list of previously created system APK variants.</summary>
             /// <param name="packageName">Package name of the app.</param>
-            /// <param name="versionCode">The version code of the
-            /// App Bundle.</param>
+            /// <param name="versionCode">The version code of the App Bundle.</param>
             public virtual ListRequest List(string packageName, long versionCode)
             {
                 return new ListRequest(service, packageName, versionCode);
@@ -6738,7 +6694,6 @@ namespace Google.Apis.AndroidPublisher.v3
                     InitParameters();
                 }
 
-
                 /// <summary>Package name of the app.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -6746,7 +6701,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 /// <summary>The version code of the App Bundle.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("versionCode", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long VersionCode { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -6761,7 +6715,6 @@ namespace Google.Apis.AndroidPublisher.v3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "packageName",
@@ -6779,15 +6732,12 @@ namespace Google.Apis.AndroidPublisher.v3
                         Pattern = null,
                     });
                 }
-
             }
         }
     }
 }
-
 namespace Google.Apis.AndroidPublisher.v3.Data
-{    
-
+{
     /// <summary>Information about an APK. The resource for ApksService.</summary>
     public class Apk : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6801,24 +6751,26 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents the binary payload of an APK.</summary>
     public class ApkBinary : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A sha1 hash of the APK payload, encoded as a hex string and matching the output of the sha1sum
-        /// command.</summary>
+        /// <summary>
+        /// A sha1 hash of the APK payload, encoded as a hex string and matching the output of the sha1sum command.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha1")]
         public virtual string Sha1 { get; set; }
 
-        /// <summary>A sha256 hash of the APK payload, encoded as a hex string and matching the output of the sha256sum
-        /// command.</summary>
+        /// <summary>
+        /// A sha256 hash of the APK payload, encoded as a hex string and matching the output of the sha256sum command.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha256")]
         public virtual string Sha256 { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request to create a new externally hosted APK.</summary>
     public class ApksAddExternallyHostedRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -6829,7 +6781,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for creating a new externally hosted APK.</summary>
     public class ApksAddExternallyHostedResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -6840,7 +6792,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response listing all APKs.</summary>
     public class ApksListResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -6855,7 +6807,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The app details. The resource for DetailsService.</summary>
     public class AppDetails : Google.Apis.Requests.IDirectResponseSchema
@@ -6878,13 +6830,15 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An app edit. The resource for EditsService.</summary>
     public class AppEdit : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The time (as seconds since Epoch) at which the edit will expire and will be no longer
-        /// valid for use.</summary>
+        /// <summary>
+        /// Output only. The time (as seconds since Epoch) at which the edit will expire and will be no longer valid for
+        /// use.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expiryTimeSeconds")]
         public virtual string ExpiryTimeSeconds { get; set; }
 
@@ -6894,29 +6848,34 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about a bundle. The resource for BundlesService.</summary>
     public class Bundle : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A sha1 hash of the upload payload, encoded as a hex string and matching the output of the sha1sum
-        /// command.</summary>
+        /// <summary>
+        /// A sha1 hash of the upload payload, encoded as a hex string and matching the output of the sha1sum command.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha1")]
         public virtual string Sha1 { get; set; }
 
-        /// <summary>A sha256 hash of the upload payload, encoded as a hex string and matching the output of the
-        /// sha256sum command.</summary>
+        /// <summary>
+        /// A sha256 hash of the upload payload, encoded as a hex string and matching the output of the sha256sum
+        /// command.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha256")]
         public virtual string Sha256 { get; set; }
 
-        /// <summary>The version code of the Android App Bundle, as specified in the Android App Bundle's base module
-        /// APK manifest file.</summary>
+        /// <summary>
+        /// The version code of the Android App Bundle, as specified in the Android App Bundle's base module APK
+        /// manifest file.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
         public virtual System.Nullable<int> VersionCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response listing all bundles.</summary>
     public class BundlesListResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -6931,7 +6890,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An entry of conversation between user and developer.</summary>
     public class Comment : Google.Apis.Requests.IDirectResponseSchema
@@ -6946,13 +6905,15 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Country targeting specification.</summary>
     public class CountryTargeting : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Countries to target, specified as two letter [CLDR
-        /// codes](https://unicode.org/cldr/charts/latest/supplemental/territory_containment_un_m_49.html).</summary>
+        /// <summary>
+        /// Countries to target, specified as two letter [CLDR
+        /// codes](https://unicode.org/cldr/charts/latest/supplemental/territory_containment_un_m_49.html).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countries")]
         public virtual System.Collections.Generic.IList<string> Countries { get; set; }
 
@@ -6962,7 +6923,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a deobfuscation file.</summary>
     public class DeobfuscationFile : Google.Apis.Requests.IDirectResponseSchema
@@ -6973,7 +6934,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Responses for the upload.</summary>
     public class DeobfuscationFilesUploadResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -6984,7 +6945,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Developer entry from conversation between user and developer.</summary>
     public class DeveloperComment : Google.Apis.Requests.IDirectResponseSchema
@@ -6999,7 +6960,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Characteristics of the user's device.</summary>
     public class DeviceMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -7050,7 +7011,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The device spec used to generate a system APK.</summary>
     public class DeviceSpec : Google.Apis.Requests.IDirectResponseSchema
@@ -7059,8 +7020,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("screenDensity")]
         public virtual System.Nullable<long> ScreenDensity { get; set; }
 
-        /// <summary>Supported ABI architectures in the order of preference. The values should be the string as reported
-        /// by the platform, e.g. "armeabi-v7a", "x86_64".</summary>
+        /// <summary>
+        /// Supported ABI architectures in the order of preference. The values should be the string as reported by the
+        /// platform, e.g. "armeabi-v7a", "x86_64".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedAbis")]
         public virtual System.Collections.Generic.IList<string> SupportedAbis { get; set; }
 
@@ -7070,25 +7033,28 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An expansion file. The resource for ExpansionFilesService.</summary>
     public class ExpansionFile : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If set, this field indicates that this APK has an expansion file uploaded to it: this APK does not
-        /// reference another APK's expansion file. The field's value is the size of the uploaded expansion file in
-        /// bytes.</summary>
+        /// <summary>
+        /// If set, this field indicates that this APK has an expansion file uploaded to it: this APK does not reference
+        /// another APK's expansion file. The field's value is the size of the uploaded expansion file in bytes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileSize")]
         public virtual System.Nullable<long> FileSize { get; set; }
 
-        /// <summary>If set, this APK's expansion file references another APK's expansion file. The file_size field will
-        /// not be set.</summary>
+        /// <summary>
+        /// If set, this APK's expansion file references another APK's expansion file. The file_size field will not be
+        /// set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referencesVersion")]
         public virtual System.Nullable<int> ReferencesVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for uploading an expansion file.</summary>
     public class ExpansionFilesUploadResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -7099,19 +7065,23 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Defines an APK available for this application that is hosted externally and not uploaded to Google
-    /// Play. This function is only available to organizations using Managed Play whose application is configured to
-    /// restrict distribution to the organizations.</summary>
+    /// <summary>
+    /// Defines an APK available for this application that is hosted externally and not uploaded to Google Play. This
+    /// function is only available to organizations using Managed Play whose application is configured to restrict
+    /// distribution to the organizations.
+    /// </summary>
     public class ExternallyHostedApk : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The application label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicationLabel")]
         public virtual string ApplicationLabel { get; set; }
 
-        /// <summary>A certificate (or array of certificates if a certificate-chain is used) used to sign this APK,
-        /// represented as a base64 encoded byte array.</summary>
+        /// <summary>
+        /// A certificate (or array of certificates if a certificate-chain is used) used to sign this APK, represented
+        /// as a base64 encoded byte array.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificateBase64s")]
         public virtual System.Collections.Generic.IList<string> CertificateBase64s { get; set; }
 
@@ -7169,7 +7139,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An uploaded image. The resource for ImagesService.</summary>
     public class Image : Google.Apis.Requests.IDirectResponseSchema
@@ -7192,7 +7162,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for deleting all images.</summary>
     public class ImagesDeleteAllResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -7203,7 +7173,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response listing all images.</summary>
     public class ImagesListResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -7214,7 +7184,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for uploading an image.</summary>
     public class ImagesUploadResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -7225,7 +7195,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An in-app product. The resource for InappproductsService.</summary>
     public class InAppProduct : Google.Apis.Requests.IDirectResponseSchema
@@ -7234,19 +7204,25 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultLanguage")]
         public virtual string DefaultLanguage { get; set; }
 
-        /// <summary>Default price. Cannot be zero, as in-app products are never free. Always in the developer's
-        /// Checkout merchant currency.</summary>
+        /// <summary>
+        /// Default price. Cannot be zero, as in-app products are never free. Always in the developer's Checkout
+        /// merchant currency.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultPrice")]
         public virtual Price DefaultPrice { get; set; }
 
-        /// <summary>Grace period of the subscription, specified in ISO 8601 format. Allows developers to give their
-        /// subscribers a grace period when the payment for the new recurrence period is declined. Acceptable values are
-        /// P0D (zero days), P3D (three days), P7D (seven days), P14D (14 days), and P30D (30 days).</summary>
+        /// <summary>
+        /// Grace period of the subscription, specified in ISO 8601 format. Allows developers to give their subscribers
+        /// a grace period when the payment for the new recurrence period is declined. Acceptable values are P0D (zero
+        /// days), P3D (three days), P7D (seven days), P14D (14 days), and P30D (30 days).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gracePeriod")]
         public virtual string GracePeriod { get; set; }
 
-        /// <summary>List of localized title and description data. Map key is the language of the localized data, as
-        /// defined by BCP-47, e.g. "en-US".</summary>
+        /// <summary>
+        /// List of localized title and description data. Map key is the language of the localized data, as defined by
+        /// BCP-47, e.g. "en-US".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listings")]
         public virtual System.Collections.Generic.IDictionary<string, InAppProductListing> Listings { get; set; }
 
@@ -7254,8 +7230,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
         public virtual string PackageName { get; set; }
 
-        /// <summary>Prices per buyer region. None of these can be zero, as in-app products are never free. Map key is
-        /// region code, as defined by ISO 3166-2.</summary>
+        /// <summary>
+        /// Prices per buyer region. None of these can be zero, as in-app products are never free. Map key is region
+        /// code, as defined by ISO 3166-2.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prices")]
         public virtual System.Collections.Generic.IDictionary<string, Price> Prices { get; set; }
 
@@ -7271,19 +7249,23 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
-        /// <summary>Subscription period, specified in ISO 8601 format. Acceptable values are P1W (one week), P1M (one
-        /// month), P3M (three months), P6M (six months), and P1Y (one year).</summary>
+        /// <summary>
+        /// Subscription period, specified in ISO 8601 format. Acceptable values are P1W (one week), P1M (one month),
+        /// P3M (three months), P6M (six months), and P1Y (one year).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptionPeriod")]
         public virtual string SubscriptionPeriod { get; set; }
 
-        /// <summary>Trial period, specified in ISO 8601 format. Acceptable values are anything between P7D (seven days)
-        /// and P999D (999 days).</summary>
+        /// <summary>
+        /// Trial period, specified in ISO 8601 format. Acceptable values are anything between P7D (seven days) and
+        /// P999D (999 days).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trialPeriod")]
         public virtual string TrialPeriod { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Store listing of a single in-app product.</summary>
     public class InAppProductListing : Google.Apis.Requests.IDirectResponseSchema
@@ -7302,7 +7284,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response listing all in-app products.</summary>
     public class InappproductsListResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -7325,41 +7307,51 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>An artifact resource which gets created when uploading an APK or Android App Bundle through internal
-    /// app sharing.</summary>
+    /// <summary>
+    /// An artifact resource which gets created when uploading an APK or Android App Bundle through internal app
+    /// sharing.
+    /// </summary>
     public class InternalAppSharingArtifact : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The sha256 fingerprint of the certificate used to sign the generated artifact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificateFingerprint")]
         public virtual string CertificateFingerprint { get; set; }
 
-        /// <summary>The download URL generated for the uploaded artifact. Users that are authorized to download can
-        /// follow the link to the Play Store app to install it.</summary>
+        /// <summary>
+        /// The download URL generated for the uploaded artifact. Users that are authorized to download can follow the
+        /// link to the Play Store app to install it.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadUrl")]
         public virtual string DownloadUrl { get; set; }
 
-        /// <summary>The sha256 hash of the artifact represented as a lowercase hexadecimal number, matching the output
-        /// of the sha256sum command.</summary>
+        /// <summary>
+        /// The sha256 hash of the artifact represented as a lowercase hexadecimal number, matching the output of the
+        /// sha256sum command.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha256")]
         public virtual string Sha256 { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Contains the introductory price information for a subscription.</summary>
     public class IntroductoryPriceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Introductory price of the subscription, not including tax. The currency is the same as
-        /// price_currency_code. Price is expressed in micro-units, where 1,000,000 micro-units represents one unit of
-        /// the currency. For example, if the subscription price is €1.99, price_amount_micros is 1990000.</summary>
+        /// <summary>
+        /// Introductory price of the subscription, not including tax. The currency is the same as price_currency_code.
+        /// Price is expressed in micro-units, where 1,000,000 micro-units represents one unit of the currency. For
+        /// example, if the subscription price is €1.99, price_amount_micros is 1990000.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("introductoryPriceAmountMicros")]
         public virtual System.Nullable<long> IntroductoryPriceAmountMicros { get; set; }
 
-        /// <summary>ISO 4217 currency code for the introductory subscription price. For example, if the price is
-        /// specified in British pounds sterling, price_currency_code is "GBP".</summary>
+        /// <summary>
+        /// ISO 4217 currency code for the introductory subscription price. For example, if the price is specified in
+        /// British pounds sterling, price_currency_code is "GBP".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("introductoryPriceCurrencyCode")]
         public virtual string IntroductoryPriceCurrencyCode { get; set; }
 
@@ -7367,15 +7359,16 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("introductoryPriceCycles")]
         public virtual System.Nullable<int> IntroductoryPriceCycles { get; set; }
 
-        /// <summary>Introductory price period, specified in ISO 8601 format. Common values are (but not limited to)
-        /// "P1W" (one week), "P1M" (one month), "P3M" (three months), "P6M" (six months), and "P1Y" (one
-        /// year).</summary>
+        /// <summary>
+        /// Introductory price period, specified in ISO 8601 format. Common values are (but not limited to) "P1W" (one
+        /// week), "P1M" (one month), "P3M" (three months), "P6M" (six months), and "P1Y" (one year).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("introductoryPricePeriod")]
         public virtual string IntroductoryPricePeriod { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A localized store listing. The resource for ListingsService.</summary>
     public class Listing : Google.Apis.Requests.IDirectResponseSchema
@@ -7384,8 +7377,9 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fullDescription")]
         public virtual string FullDescription { get; set; }
 
-        /// <summary>Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian
-        /// German).</summary>
+        /// <summary>
+        /// Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; }
 
@@ -7403,7 +7397,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response listing all localized listings.</summary>
     public class ListingsListResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -7418,13 +7412,14 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Release notes specification, i.e. language and text.</summary>
     public class LocalizedText : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian
-        /// German).</summary>
+        /// <summary>
+        /// Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; }
 
@@ -7434,14 +7429,17 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Information about the current page. List operations that supports paging return only one "page" of
-    /// results. This protocol buffer message describes the page that has been returned.</summary>
+    /// <summary>
+    /// Information about the current page. List operations that supports paging return only one "page" of results. This
+    /// protocol buffer message describes the page that has been returned.
+    /// </summary>
     public class PageInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Maximum number of results returned in one page. ! The number of results included in the API
-        /// response.</summary>
+        /// <summary>
+        /// Maximum number of results returned in one page. ! The number of results included in the API response.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultPerPage")]
         public virtual System.Nullable<int> ResultPerPage { get; set; }
 
@@ -7449,20 +7447,22 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
         public virtual System.Nullable<int> StartIndex { get; set; }
 
-        /// <summary>Total number of results available on the backend ! The total number of results in the result
-        /// set.</summary>
+        /// <summary>
+        /// Total number of results available on the backend ! The total number of results in the result set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
         public virtual System.Nullable<int> TotalResults { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Definition of a price, i.e. currency and units.</summary>
     public class Price : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>3 letter Currency code, as defined by ISO 4217. See
-        /// java/com/google/common/money/CurrencyCode.java</summary>
+        /// <summary>
+        /// 3 letter Currency code, as defined by ISO 4217. See java/com/google/common/money/CurrencyCode.java
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currency")]
         public virtual string Currency { get; set; }
 
@@ -7472,18 +7472,21 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A ProductPurchase resource indicates the status of a user's inapp product purchase.</summary>
     public class ProductPurchase : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The acknowledgement state of the inapp product. Possible values are: 0. Yet to be acknowledged 1.
-        /// Acknowledged</summary>
+        /// <summary>
+        /// The acknowledgement state of the inapp product. Possible values are: 0. Yet to be acknowledged 1.
+        /// Acknowledged
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acknowledgementState")]
         public virtual System.Nullable<int> AcknowledgementState { get; set; }
 
-        /// <summary>The consumption state of the inapp product. Possible values are: 0. Yet to be consumed 1.
-        /// Consumed</summary>
+        /// <summary>
+        /// The consumption state of the inapp product. Possible values are: 0. Yet to be consumed 1. Consumed
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumptionState")]
         public virtual System.Nullable<int> ConsumptionState { get; set; }
 
@@ -7495,15 +7498,21 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>An obfuscated version of the id that is uniquely associated with the user's account in your app.
-        /// Only present if specified using https://developer.android.com/reference/com/android/billingclient/api/Billin
-        /// gFlowParams.Builder#setobfuscatedaccountid when the purchase was made.</summary>
+        /// <summary>
+        /// An obfuscated version of the id that is uniquely associated with the user's account in your app. Only
+        /// present if specified using
+        /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid
+        /// when the purchase was made.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedExternalAccountId")]
         public virtual string ObfuscatedExternalAccountId { get; set; }
 
-        /// <summary>An obfuscated version of the id that is uniquely associated with the user's profile in your app.
-        /// Only present if specified using https://developer.android.com/reference/com/android/billingclient/api/Billin
-        /// gFlowParams.Builder#setobfuscatedprofileid when the purchase was made.</summary>
+        /// <summary>
+        /// An obfuscated version of the id that is uniquely associated with the user's profile in your app. Only
+        /// present if specified using
+        /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid
+        /// when the purchase was made.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedExternalProfileId")]
         public virtual string ObfuscatedExternalProfileId { get; set; }
 
@@ -7527,10 +7536,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseToken")]
         public virtual string PurchaseToken { get; set; }
 
-        /// <summary>The type of purchase of the inapp product. This field is only set if this purchase was not made
-        /// using the standard in-app billing flow. Possible values are: 0. Test (i.e. purchased from a license testing
-        /// account) 1. Promo (i.e. purchased using a promo code) 2. Rewarded (i.e. from watching a video ad instead of
-        /// paying)</summary>
+        /// <summary>
+        /// The type of purchase of the inapp product. This field is only set if this purchase was not made using the
+        /// standard in-app billing flow. Possible values are: 0. Test (i.e. purchased from a license testing account)
+        /// 1. Promo (i.e. purchased using a promo code) 2. Rewarded (i.e. from watching a video ad instead of paying)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseType")]
         public virtual System.Nullable<int> PurchaseType { get; set; }
 
@@ -7544,7 +7554,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request for the product.purchases.acknowledge API.</summary>
     public class ProductPurchasesAcknowledgeRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -7555,7 +7565,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An Android app review.</summary>
     public class Review : Google.Apis.Requests.IDirectResponseSchema
@@ -7574,7 +7584,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The result of replying/updating a reply to review.</summary>
     public class ReviewReplyResult : Google.Apis.Requests.IDirectResponseSchema
@@ -7589,7 +7599,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response listing reviews.</summary>
     public class ReviewsListResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -7608,19 +7618,21 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request to reply to review or update existing reply.</summary>
     public class ReviewsReplyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The text to set as the reply. Replies of more than approximately 350 characters will be rejected.
-        /// HTML tags will be stripped.</summary>
+        /// <summary>
+        /// The text to set as the reply. Replies of more than approximately 350 characters will be rejected. HTML tags
+        /// will be stripped.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replyText")]
         public virtual string ReplyText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response on status of replying to a review.</summary>
     public class ReviewsReplyResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -7631,14 +7643,18 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Information provided by the user when they complete the subscription cancellation flow (cancellation
-    /// reason survey).</summary>
+    /// <summary>
+    /// Information provided by the user when they complete the subscription cancellation flow (cancellation reason
+    /// survey).
+    /// </summary>
     public class SubscriptionCancelSurveyResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The cancellation reason the user chose in the survey. Possible values are: 0. Other 1. I don't use
-        /// this service enough 2. Technical issues 3. Cost-related reasons 4. I found a better app</summary>
+        /// <summary>
+        /// The cancellation reason the user chose in the survey. Possible values are: 0. Other 1. I don't use this
+        /// service enough 2. Technical issues 3. Cost-related reasons 4. I found a better app
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelSurveyReason")]
         public virtual System.Nullable<int> CancelSurveyReason { get; set; }
 
@@ -7648,80 +7664,99 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A SubscriptionDeferralInfo contains the data needed to defer a subscription purchase to a future expiry
-    /// time.</summary>
+    /// <summary>
+    /// A SubscriptionDeferralInfo contains the data needed to defer a subscription purchase to a future expiry time.
+    /// </summary>
     public class SubscriptionDeferralInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The desired next expiry time to assign to the subscription, in milliseconds since the Epoch. The
-        /// given time must be later/greater than the current expiry time for the subscription.</summary>
+        /// <summary>
+        /// The desired next expiry time to assign to the subscription, in milliseconds since the Epoch. The given time
+        /// must be later/greater than the current expiry time for the subscription.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredExpiryTimeMillis")]
         public virtual System.Nullable<long> DesiredExpiryTimeMillis { get; set; }
 
-        /// <summary>The expected expiry time for the subscription. If the current expiry time for the subscription is
-        /// not the value specified here, the deferral will not occur.</summary>
+        /// <summary>
+        /// The expected expiry time for the subscription. If the current expiry time for the subscription is not the
+        /// value specified here, the deferral will not occur.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expectedExpiryTimeMillis")]
         public virtual System.Nullable<long> ExpectedExpiryTimeMillis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Contains the price change information for a subscription that can be used to control the user journey
-    /// for the price change in the app. This can be in the form of seeking confirmation from the user or tailoring the
-    /// experience for a successful conversion.</summary>
+    /// <summary>
+    /// Contains the price change information for a subscription that can be used to control the user journey for the
+    /// price change in the app. This can be in the form of seeking confirmation from the user or tailoring the
+    /// experience for a successful conversion.
+    /// </summary>
     public class SubscriptionPriceChange : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The new price the subscription will renew with if the price change is accepted by the
-        /// user.</summary>
+        /// <summary>
+        /// The new price the subscription will renew with if the price change is accepted by the user.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newPrice")]
         public virtual Price NewPrice { get; set; }
 
-        /// <summary>The current state of the price change. Possible values are: 0. Outstanding: State for a pending
-        /// price change waiting for the user to agree. In this state, you can optionally seek confirmation from the
-        /// user using the In-App API. 1. Accepted: State for an accepted price change that the subscription will renew
-        /// with unless it's canceled. The price change takes effect on a future date when the subscription renews. Note
-        /// that the change might not occur when the subscription is renewed next.</summary>
+        /// <summary>
+        /// The current state of the price change. Possible values are: 0. Outstanding: State for a pending price change
+        /// waiting for the user to agree. In this state, you can optionally seek confirmation from the user using the
+        /// In-App API. 1. Accepted: State for an accepted price change that the subscription will renew with unless
+        /// it's canceled. The price change takes effect on a future date when the subscription renews. Note that the
+        /// change might not occur when the subscription is renewed next.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual System.Nullable<int> State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A SubscriptionPurchase resource indicates the status of a user's subscription purchase.</summary>
     public class SubscriptionPurchase : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The acknowledgement state of the subscription product. Possible values are: 0. Yet to be
-        /// acknowledged 1. Acknowledged</summary>
+        /// <summary>
+        /// The acknowledgement state of the subscription product. Possible values are: 0. Yet to be acknowledged 1.
+        /// Acknowledged
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acknowledgementState")]
         public virtual System.Nullable<int> AcknowledgementState { get; set; }
 
-        /// <summary>Whether the subscription will automatically be renewed when it reaches its current expiry
-        /// time.</summary>
+        /// <summary>
+        /// Whether the subscription will automatically be renewed when it reaches its current expiry time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoRenewing")]
         public virtual System.Nullable<bool> AutoRenewing { get; set; }
 
-        /// <summary>Time at which the subscription will be automatically resumed, in milliseconds since the Epoch. Only
-        /// present if the user has requested to pause the subscription.</summary>
+        /// <summary>
+        /// Time at which the subscription will be automatically resumed, in milliseconds since the Epoch. Only present
+        /// if the user has requested to pause the subscription.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoResumeTimeMillis")]
         public virtual System.Nullable<long> AutoResumeTimeMillis { get; set; }
 
-        /// <summary>The reason why a subscription was canceled or is not auto-renewing. Possible values are: 0. User
-        /// canceled the subscription 1. Subscription was canceled by the system, for example because of a billing
-        /// problem 2. Subscription was replaced with a new subscription 3. Subscription was canceled by the
-        /// developer</summary>
+        /// <summary>
+        /// The reason why a subscription was canceled or is not auto-renewing. Possible values are: 0. User canceled
+        /// the subscription 1. Subscription was canceled by the system, for example because of a billing problem 2.
+        /// Subscription was replaced with a new subscription 3. Subscription was canceled by the developer
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelReason")]
         public virtual System.Nullable<int> CancelReason { get; set; }
 
-        /// <summary>Information provided by the user when they complete the subscription cancellation flow
-        /// (cancellation reason survey).</summary>
+        /// <summary>
+        /// Information provided by the user when they complete the subscription cancellation flow (cancellation reason
+        /// survey).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelSurveyResult")]
         public virtual SubscriptionCancelSurveyResult CancelSurveyResult { get; set; }
 
-        /// <summary>ISO 3166-1 alpha-2 billing country/region code of the user at the time the subscription was
-        /// granted.</summary>
+        /// <summary>
+        /// ISO 3166-1 alpha-2 billing country/region code of the user at the time the subscription was granted.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
         public virtual string CountryCode { get; set; }
 
@@ -7729,8 +7764,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("developerPayload")]
         public virtual string DeveloperPayload { get; set; }
 
-        /// <summary>The email address of the user when the subscription was purchased. Only present for purchases made
-        /// with 'Subscribe with Google'.</summary>
+        /// <summary>
+        /// The email address of the user when the subscription was purchased. Only present for purchases made with
+        /// 'Subscribe with Google'.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
         public virtual string EmailAddress { get; set; }
 
@@ -7738,24 +7775,32 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expiryTimeMillis")]
         public virtual System.Nullable<long> ExpiryTimeMillis { get; set; }
 
-        /// <summary>User account identifier in the third-party service. Only present if account linking happened as
-        /// part of the subscription purchase flow.</summary>
+        /// <summary>
+        /// User account identifier in the third-party service. Only present if account linking happened as part of the
+        /// subscription purchase flow.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalAccountId")]
         public virtual string ExternalAccountId { get; set; }
 
-        /// <summary>The family name of the user when the subscription was purchased. Only present for purchases made
-        /// with 'Subscribe with Google'.</summary>
+        /// <summary>
+        /// The family name of the user when the subscription was purchased. Only present for purchases made with
+        /// 'Subscribe with Google'.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("familyName")]
         public virtual string FamilyName { get; set; }
 
-        /// <summary>The given name of the user when the subscription was purchased. Only present for purchases made
-        /// with 'Subscribe with Google'.</summary>
+        /// <summary>
+        /// The given name of the user when the subscription was purchased. Only present for purchases made with
+        /// 'Subscribe with Google'.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("givenName")]
         public virtual string GivenName { get; set; }
 
-        /// <summary>Introductory price information of the subscription. This is only present when the subscription was
-        /// purchased with an introductory price. This field does not indicate the subscription is currently in
-        /// introductory price period.</summary>
+        /// <summary>
+        /// Introductory price information of the subscription. This is only present when the subscription was purchased
+        /// with an introductory price. This field does not indicate the subscription is currently in introductory price
+        /// period.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("introductoryPriceInfo")]
         public virtual IntroductoryPriceInfo IntroductoryPriceInfo { get; set; }
 
@@ -7763,80 +7808,106 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The purchase token of the originating purchase if this subscription is one of the following: 0. Re-
-        /// signup of a canceled but non-lapsed subscription 1. Upgrade/downgrade from a previous subscription For
-        /// example, suppose a user originally signs up and you receive purchase token X, then the user cancels and goes
-        /// through the resignup flow (before their subscription lapses) and you receive purchase token Y, and finally
-        /// the user upgrades their subscription and you receive purchase token Z. If you call this API with purchase
-        /// token Z, this field will be set to Y. If you call this API with purchase token Y, this field will be set to
-        /// X. If you call this API with purchase token X, this field will not be set.</summary>
+        /// <summary>
+        /// The purchase token of the originating purchase if this subscription is one of the following: 0. Re-signup of
+        /// a canceled but non-lapsed subscription 1. Upgrade/downgrade from a previous subscription For example,
+        /// suppose a user originally signs up and you receive purchase token X, then the user cancels and goes through
+        /// the resignup flow (before their subscription lapses) and you receive purchase token Y, and finally the user
+        /// upgrades their subscription and you receive purchase token Z. If you call this API with purchase token Z,
+        /// this field will be set to Y. If you call this API with purchase token Y, this field will be set to X. If you
+        /// call this API with purchase token X, this field will not be set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedPurchaseToken")]
         public virtual string LinkedPurchaseToken { get; set; }
 
-        /// <summary>An obfuscated version of the id that is uniquely associated with the user's account in your app.
-        /// Present for the following purchases: * If account linking happened as part of the subscription purchase
-        /// flow. * It was specified using https://developer.android.com/reference/com/android/billingclient/api/Billing
-        /// FlowParams.Builder#setobfuscatedaccountid when the purchase was made.</summary>
+        /// <summary>
+        /// An obfuscated version of the id that is uniquely associated with the user's account in your app. Present for
+        /// the following purchases: * If account linking happened as part of the subscription purchase flow. * It was
+        /// specified using
+        /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid
+        /// when the purchase was made.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedExternalAccountId")]
         public virtual string ObfuscatedExternalAccountId { get; set; }
 
-        /// <summary>An obfuscated version of the id that is uniquely associated with the user's profile in your app.
-        /// Only present if specified using https://developer.android.com/reference/com/android/billingclient/api/Billin
-        /// gFlowParams.Builder#setobfuscatedprofileid when the purchase was made.</summary>
+        /// <summary>
+        /// An obfuscated version of the id that is uniquely associated with the user's profile in your app. Only
+        /// present if specified using
+        /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid
+        /// when the purchase was made.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedExternalProfileId")]
         public virtual string ObfuscatedExternalProfileId { get; set; }
 
-        /// <summary>The order id of the latest recurring order associated with the purchase of the
-        /// subscription.</summary>
+        /// <summary>
+        /// The order id of the latest recurring order associated with the purchase of the subscription.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
         public virtual string OrderId { get; set; }
 
-        /// <summary>The payment state of the subscription. Possible values are: 0. Payment pending 1. Payment received
-        /// 2. Free trial 3. Pending deferred upgrade/downgrade Not present for canceled, expired
-        /// subscriptions.</summary>
+        /// <summary>
+        /// The payment state of the subscription. Possible values are: 0. Payment pending 1. Payment received 2. Free
+        /// trial 3. Pending deferred upgrade/downgrade Not present for canceled, expired subscriptions.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paymentState")]
         public virtual System.Nullable<int> PaymentState { get; set; }
 
-        /// <summary>Price of the subscription, not including tax. Price is expressed in micro-units, where 1,000,000
-        /// micro-units represents one unit of the currency. For example, if the subscription price is €1.99,
-        /// price_amount_micros is 1990000.</summary>
+        /// <summary>
+        /// Price of the subscription, not including tax. Price is expressed in micro-units, where 1,000,000 micro-units
+        /// represents one unit of the currency. For example, if the subscription price is €1.99, price_amount_micros is
+        /// 1990000.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceAmountMicros")]
         public virtual System.Nullable<long> PriceAmountMicros { get; set; }
 
-        /// <summary>The latest price change information available. This is present only when there is an upcoming price
-        /// change for the subscription yet to be applied. Once the subscription renews with the new price or the
-        /// subscription is canceled, no price change information will be returned.</summary>
+        /// <summary>
+        /// The latest price change information available. This is present only when there is an upcoming price change
+        /// for the subscription yet to be applied. Once the subscription renews with the new price or the subscription
+        /// is canceled, no price change information will be returned.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceChange")]
         public virtual SubscriptionPriceChange PriceChange { get; set; }
 
-        /// <summary>ISO 4217 currency code for the subscription price. For example, if the price is specified in
-        /// British pounds sterling, price_currency_code is "GBP".</summary>
+        /// <summary>
+        /// ISO 4217 currency code for the subscription price. For example, if the price is specified in British pounds
+        /// sterling, price_currency_code is "GBP".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceCurrencyCode")]
         public virtual string PriceCurrencyCode { get; set; }
 
-        /// <summary>The Google profile id of the user when the subscription was purchased. Only present for purchases
-        /// made with 'Subscribe with Google'.</summary>
+        /// <summary>
+        /// The Google profile id of the user when the subscription was purchased. Only present for purchases made with
+        /// 'Subscribe with Google'.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileId")]
         public virtual string ProfileId { get; set; }
 
-        /// <summary>The profile name of the user when the subscription was purchased. Only present for purchases made
-        /// with 'Subscribe with Google'.</summary>
+        /// <summary>
+        /// The profile name of the user when the subscription was purchased. Only present for purchases made with
+        /// 'Subscribe with Google'.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileName")]
         public virtual string ProfileName { get; set; }
 
-        /// <summary>The promotion code applied on this purchase. This field is only set if a vanity code promotion is
-        /// applied when the subscription was purchased.</summary>
+        /// <summary>
+        /// The promotion code applied on this purchase. This field is only set if a vanity code promotion is applied
+        /// when the subscription was purchased.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionCode")]
         public virtual string PromotionCode { get; set; }
 
-        /// <summary>The type of promotion applied on this purchase. This field is only set if a promotion is applied
-        /// when the subscription was purchased. Possible values are: 0. One time code 1. Vanity code</summary>
+        /// <summary>
+        /// The type of promotion applied on this purchase. This field is only set if a promotion is applied when the
+        /// subscription was purchased. Possible values are: 0. One time code 1. Vanity code
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionType")]
         public virtual System.Nullable<int> PromotionType { get; set; }
 
-        /// <summary>The type of purchase of the subscription. This field is only set if this purchase was not made
-        /// using the standard in-app billing flow. Possible values are: 0. Test (i.e. purchased from a license testing
-        /// account) 1. Promo (i.e. purchased using a promo code)</summary>
+        /// <summary>
+        /// The type of purchase of the subscription. This field is only set if this purchase was not made using the
+        /// standard in-app billing flow. Possible values are: 0. Test (i.e. purchased from a license testing account)
+        /// 1. Promo (i.e. purchased using a promo code)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseType")]
         public virtual System.Nullable<int> PurchaseType { get; set; }
 
@@ -7844,14 +7915,16 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startTimeMillis")]
         public virtual System.Nullable<long> StartTimeMillis { get; set; }
 
-        /// <summary>The time at which the subscription was canceled by the user, in milliseconds since the epoch. Only
-        /// present if cancelReason is 0.</summary>
+        /// <summary>
+        /// The time at which the subscription was canceled by the user, in milliseconds since the epoch. Only present
+        /// if cancelReason is 0.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userCancellationTimeMillis")]
         public virtual System.Nullable<long> UserCancellationTimeMillis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request for the purchases.subscriptions.acknowledge API.</summary>
     public class SubscriptionPurchasesAcknowledgeRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -7862,7 +7935,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request for the purchases.subscriptions.defer API.</summary>
     public class SubscriptionPurchasesDeferRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -7873,7 +7946,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for the purchases.subscriptions.defer API.</summary>
     public class SubscriptionPurchasesDeferResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -7884,7 +7957,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response to list previously created system APK variants.</summary>
     public class SystemApksListResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -7895,7 +7968,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The testers of an app. The resource for TestersService.</summary>
     public class Testers : Google.Apis.Requests.IDirectResponseSchema
@@ -7906,15 +7979,18 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A Timestamp represents a point in time independent of any time zone or local calendar, encoded as a
-    /// count of seconds and fractions of seconds at nanosecond resolution. The count is relative to an epoch at UTC
-    /// midnight on January 1, 1970.</summary>
+    /// <summary>
+    /// A Timestamp represents a point in time independent of any time zone or local calendar, encoded as a count of
+    /// seconds and fractions of seconds at nanosecond resolution. The count is relative to an epoch at UTC midnight on
+    /// January 1, 1970.
+    /// </summary>
     public class Timestamp : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Non-negative fractions of a second at nanosecond resolution. Must be from 0 to 999,999,999
-        /// inclusive.</summary>
+        /// <summary>
+        /// Non-negative fractions of a second at nanosecond resolution. Must be from 0 to 999,999,999 inclusive.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
         public virtual System.Nullable<int> Nanos { get; set; }
 
@@ -7924,18 +8000,22 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Pagination information returned by a List operation when token pagination is enabled. List operations
-    /// that supports paging return only one "page" of results. This protocol buffer message describes the page that has
-    /// been returned. When using token pagination, clients should use the next/previous token to get another page of
-    /// the result. The presence or absence of next/previous token indicates whether a next/previous page is available
-    /// and provides a mean of accessing this page. ListRequest.page_token should be set to either next_page_token or
-    /// previous_page_token to access another page.</summary>
+    /// <summary>
+    /// Pagination information returned by a List operation when token pagination is enabled. List operations that
+    /// supports paging return only one "page" of results. This protocol buffer message describes the page that has been
+    /// returned. When using token pagination, clients should use the next/previous token to get another page of the
+    /// result. The presence or absence of next/previous token indicates whether a next/previous page is available and
+    /// provides a mean of accessing this page. ListRequest.page_token should be set to either next_page_token or
+    /// previous_page_token to access another page.
+    /// </summary>
     public class TokenPagination : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Tokens to pass to the standard list field 'page_token'. Whenever available, tokens are preferred
-        /// over manipulating start_index.</summary>
+        /// <summary>
+        /// Tokens to pass to the standard list field 'page_token'. Whenever available, tokens are preferred over
+        /// manipulating start_index.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -7944,13 +8024,15 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A track configuration. The resource for TracksService.</summary>
     public class Track : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>In a read request, represents all active releases in the track. In an update request, represents
-        /// desired changes.</summary>
+        /// <summary>
+        /// In a read request, represents all active releases in the track. In an update request, represents desired
+        /// changes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releases")]
         public virtual System.Collections.Generic.IList<TrackRelease> Releases { get; set; }
 
@@ -7960,7 +8042,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A release within a track.</summary>
     public class TrackRelease : Google.Apis.Requests.IDirectResponseSchema
@@ -7969,15 +8051,19 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("countryTargeting")]
         public virtual CountryTargeting CountryTargeting { get; set; }
 
-        /// <summary>In-app update priority of the release. All newly added APKs in the release will be considered at
-        /// this priority. Can take values in the range [0, 5], with 5 the highest priority. Defaults to 0.
+        /// <summary>
+        /// In-app update priority of the release. All newly added APKs in the release will be considered at this
+        /// priority. Can take values in the range [0, 5], with 5 the highest priority. Defaults to 0.
         /// in_app_update_priority can not be updated once the release is rolled out. See
-        /// https://developer.android.com/guide/playcore/in-app-updates.</summary>
+        /// https://developer.android.com/guide/playcore/in-app-updates.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inAppUpdatePriority")]
         public virtual System.Nullable<int> InAppUpdatePriority { get; set; }
 
-        /// <summary>The release name. Not required to be unique. If not set, the name is generated from the APK's
-        /// version_name. If the release contains multiple APKs, the name is generated from the date.</summary>
+        /// <summary>
+        /// The release name. Not required to be unique. If not set, the name is generated from the APK's version_name.
+        /// If the release contains multiple APKs, the name is generated from the date.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -7989,19 +8075,22 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
-        /// <summary>Fraction of users who are eligible for a staged release. 0 < fraction < 1. Can only be set when
-        /// status is "inProgress" or "halted".</summary>
+        /// <summary>
+        /// Fraction of users who are eligible for a staged release. 0 &amp;lt; fraction &amp;lt; 1. Can only be set
+        /// when status is "inProgress" or "halted".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userFraction")]
         public virtual System.Nullable<double> UserFraction { get; set; }
 
-        /// <summary>Version codes of all APKs in the release. Must include version codes to retain from previous
-        /// releases.</summary>
+        /// <summary>
+        /// Version codes of all APKs in the release. Must include version codes to retain from previous releases.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionCodes")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> VersionCodes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response listing all tracks.</summary>
     public class TracksListResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -8016,23 +8105,27 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>User entry from conversation between user and developer.</summary>
     public class UserComment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Integer Android SDK version of the user's device at the time the review was written, e.g. 23 is
-        /// Marshmallow. May be absent.</summary>
+        /// <summary>
+        /// Integer Android SDK version of the user's device at the time the review was written, e.g. 23 is Marshmallow.
+        /// May be absent.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidOsVersion")]
         public virtual System.Nullable<int> AndroidOsVersion { get; set; }
 
-        /// <summary>Integer version code of the app as installed at the time the review was written. May be
-        /// absent.</summary>
+        /// <summary>
+        /// Integer version code of the app as installed at the time the review was written. May be absent.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appVersionCode")]
         public virtual System.Nullable<int> AppVersionCode { get; set; }
 
-        /// <summary>String version name of the app as installed at the time the review was written. May be
-        /// absent.</summary>
+        /// <summary>
+        /// String version name of the app as installed at the time the review was written. May be absent.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appVersionName")]
         public virtual string AppVersionName { get; set; }
 
@@ -8048,13 +8141,17 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastModified")]
         public virtual Timestamp LastModified { get; set; }
 
-        /// <summary>Untranslated text of the review, where the review was translated. If the review was not translated
-        /// this is left blank.</summary>
+        /// <summary>
+        /// Untranslated text of the review, where the review was translated. If the review was not translated this is
+        /// left blank.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalText")]
         public virtual string OriginalText { get; set; }
 
-        /// <summary>Language code for the reviewer. This is taken from the device settings so is not guaranteed to
-        /// match the language the review is written in. May be absent.</summary>
+        /// <summary>
+        /// Language code for the reviewer. This is taken from the device settings so is not guaranteed to match the
+        /// language the review is written in. May be absent.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewerLanguage")]
         public virtual string ReviewerLanguage { get; set; }
 
@@ -8062,9 +8159,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("starRating")]
         public virtual System.Nullable<int> StarRating { get; set; }
 
-        /// <summary>The content of the comment, i.e. review body. In some cases users have been able to write a review
-        /// with separate title and body; in those cases the title and body are concatenated and separated by a tab
-        /// character.</summary>
+        /// <summary>
+        /// The content of the comment, i.e. review body. In some cases users have been able to write a review with
+        /// separate title and body; in those cases the title and body are concatenated and separated by a tab
+        /// character.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
 
@@ -8078,7 +8177,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A permission used by this APK.</summary>
     public class UsesPermission : Google.Apis.Requests.IDirectResponseSchema
@@ -8093,7 +8192,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>APK that is suitable for inclusion in a system image. The resource of SystemApksService.</summary>
     public class Variant : Google.Apis.Requests.IDirectResponseSchema
@@ -8108,18 +8207,20 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A VoidedPurchase resource indicates a purchase that was either canceled/refunded/charged-
-    /// back.</summary>
+    /// <summary>
+    /// A VoidedPurchase resource indicates a purchase that was either canceled/refunded/charged-back.
+    /// </summary>
     public class VoidedPurchase : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>This kind represents a voided purchase object in the androidpublisher service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The order id which uniquely identifies a one-time purchase, subscription purchase, or subscription
-        /// renewal.</summary>
+        /// <summary>
+        /// The order id which uniquely identifies a one-time purchase, subscription purchase, or subscription renewal.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
         public virtual string OrderId { get; set; }
 
@@ -8127,13 +8228,17 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseTimeMillis")]
         public virtual System.Nullable<long> PurchaseTimeMillis { get; set; }
 
-        /// <summary>The token which uniquely identifies a one-time purchase or subscription. To uniquely identify
-        /// subscription renewals use order_id (available starting from version 3 of the API).</summary>
+        /// <summary>
+        /// The token which uniquely identifies a one-time purchase or subscription. To uniquely identify subscription
+        /// renewals use order_id (available starting from version 3 of the API).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseToken")]
         public virtual string PurchaseToken { get; set; }
 
-        /// <summary>The reason why the purchase was voided, possible values are: 0. Other 1. Remorse 2. Not_received 3.
-        /// Defective 4. Accidental_purchase 5. Fraud 6. Friendly_fraud 7. Chargeback</summary>
+        /// <summary>
+        /// The reason why the purchase was voided, possible values are: 0. Other 1. Remorse 2. Not_received 3.
+        /// Defective 4. Accidental_purchase 5. Fraud 6. Friendly_fraud 7. Chargeback
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voidedReason")]
         public virtual System.Nullable<int> VoidedReason { get; set; }
 
@@ -8141,14 +8246,16 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("voidedSource")]
         public virtual System.Nullable<int> VoidedSource { get; set; }
 
-        /// <summary>The time at which the purchase was canceled/refunded/charged-back, in milliseconds since the epoch
-        /// (Jan 1, 1970).</summary>
+        /// <summary>
+        /// The time at which the purchase was canceled/refunded/charged-back, in milliseconds since the epoch (Jan 1,
+        /// 1970).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voidedTimeMillis")]
         public virtual System.Nullable<long> VoidedTimeMillis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for the voidedpurchases.list API.</summary>
     public class VoidedPurchasesListResponse : Google.Apis.Requests.IDirectResponseSchema

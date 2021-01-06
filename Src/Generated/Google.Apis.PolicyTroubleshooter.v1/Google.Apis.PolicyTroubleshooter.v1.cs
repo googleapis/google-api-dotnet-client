@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -62,7 +67,6 @@ namespace Google.Apis.PolicyTroubleshooter.v1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Policy Troubleshooter API.</summary>
@@ -70,10 +74,7 @@ namespace Google.Apis.PolicyTroubleshooter.v1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
-
-
 
         /// <summary>Gets the Iam resource.</summary>
         public virtual IamResource Iam { get; }
@@ -97,6 +98,7 @@ namespace Google.Apis.PolicyTroubleshooter.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -116,9 +118,11 @@ namespace Google.Apis.PolicyTroubleshooter.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -132,8 +136,10 @@ namespace Google.Apis.PolicyTroubleshooter.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -145,8 +151,10 @@ namespace Google.Apis.PolicyTroubleshooter.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -162,7 +170,6 @@ namespace Google.Apis.PolicyTroubleshooter.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -266,20 +273,22 @@ namespace Google.Apis.PolicyTroubleshooter.v1
         public IamResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Checks whether a member has a specific permission for a specific resource, and explains why the
-        /// member does or does not have that permission.</summary>
+        /// <summary>
+        /// Checks whether a member has a specific permission for a specific resource, and explains why the member does
+        /// or does not have that permission.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual TroubleshootRequest Troubleshoot(Google.Apis.PolicyTroubleshooter.v1.Data.GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest body)
         {
             return new TroubleshootRequest(service, body);
         }
 
-        /// <summary>Checks whether a member has a specific permission for a specific resource, and explains why the
-        /// member does or does not have that permission.</summary>
+        /// <summary>
+        /// Checks whether a member has a specific permission for a specific resource, and explains why the member does
+        /// or does not have that permission.
+        /// </summary>
         public class TroubleshootRequest : PolicyTroubleshooterBaseServiceRequest<Google.Apis.PolicyTroubleshooter.v1.Data.GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse>
         {
             /// <summary>Constructs a new Troubleshoot request.</summary>
@@ -288,8 +297,6 @@ namespace Google.Apis.PolicyTroubleshooter.v1
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.PolicyTroubleshooter.v1.Data.GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest Body { get; set; }
@@ -310,68 +317,74 @@ namespace Google.Apis.PolicyTroubleshooter.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
     }
 }
-
 namespace Google.Apis.PolicyTroubleshooter.v1.Data
-{    
-
+{
     /// <summary>Information about the member, resource, and permission to check.</summary>
     public class GoogleCloudPolicytroubleshooterV1AccessTuple : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The full resource name that identifies the resource. For example,
+        /// <summary>
+        /// Required. The full resource name that identifies the resource. For example,
         /// `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`. For examples of
-        /// full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-
-        /// resource-names.</summary>
+        /// full resource names for Google Cloud services, see
+        /// https://cloud.google.com/iam/help/troubleshooter/full-resource-names.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
         public virtual string FullResourceName { get; set; }
 
-        /// <summary>Required. The IAM permission to check for the specified member and resource. For a complete list of
-        /// IAM permissions, see https://cloud.google.com/iam/help/permissions/reference. For a complete list of
-        /// predefined IAM roles and the permissions in each role, see
-        /// https://cloud.google.com/iam/help/roles/reference.</summary>
+        /// <summary>
+        /// Required. The IAM permission to check for the specified member and resource. For a complete list of IAM
+        /// permissions, see https://cloud.google.com/iam/help/permissions/reference. For a complete list of predefined
+        /// IAM roles and the permissions in each role, see https://cloud.google.com/iam/help/roles/reference.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permission")]
         public virtual string Permission { get; set; }
 
-        /// <summary>Required. The member, or principal, whose access you want to check, in the form of the email
-        /// address that represents that member. For example, `alice@example.com` or `my-service-account@my-
-        /// project.iam.gserviceaccount.com`. The member must be a Google Account or a service account. Other types of
-        /// members are not supported.</summary>
+        /// <summary>
+        /// Required. The member, or principal, whose access you want to check, in the form of the email address that
+        /// represents that member. For example, `alice@example.com` or
+        /// `my-service-account@my-project.iam.gserviceaccount.com`. The member must be a Google Account or a service
+        /// account. Other types of members are not supported.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principal")]
         public virtual string Principal { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Details about how a binding in a policy affects a member's ability to use a permission.</summary>
     public class GoogleCloudPolicytroubleshooterV1BindingExplanation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Indicates whether _this binding_ provides the specified permission to the specified
-        /// member for the specified resource. This field does _not_ indicate whether the member actually has the
-        /// permission for the resource. There might be another binding that overrides this binding. To determine
-        /// whether the member actually has the permission, use the `access` field in the
-        /// TroubleshootIamPolicyResponse.</summary>
+        /// <summary>
+        /// Required. Indicates whether _this binding_ provides the specified permission to the specified member for the
+        /// specified resource. This field does _not_ indicate whether the member actually has the permission for the
+        /// resource. There might be another binding that overrides this binding. To determine whether the member
+        /// actually has the permission, use the `access` field in the TroubleshootIamPolicyResponse.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access")]
         public virtual string Access { get; set; }
 
-        /// <summary>A condition expression that prevents access unless the expression evaluates to `true`. To learn
-        /// about IAM Conditions, see http://cloud.google.com/iam/help/conditions/overview.</summary>
+        /// <summary>
+        /// A condition expression that prevents access unless the expression evaluates to `true`. To learn about IAM
+        /// Conditions, see http://cloud.google.com/iam/help/conditions/overview.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual GoogleTypeExpr Condition { get; set; }
 
-        /// <summary>Indicates whether each member in the binding includes the member specified in the request, either
-        /// directly or indirectly. Each key identifies a member in the binding, and each value indicates whether the
-        /// member in the binding includes the member in the request. For example, suppose that a binding includes the
-        /// following members: * `user:alice@example.com` * `group:product-eng@example.com` You want to troubleshoot
-        /// access for `user:bob@example.com`. This user is a member of the group `group:product-eng@example.com`. For
-        /// the first member in the binding, the key is `user:alice@example.com`, and the `membership` field in the
-        /// value is set to `MEMBERSHIP_NOT_INCLUDED`. For the second member in the binding, the key is `group:product-
-        /// eng@example.com`, and the `membership` field in the value is set to `MEMBERSHIP_INCLUDED`.</summary>
+        /// <summary>
+        /// Indicates whether each member in the binding includes the member specified in the request, either directly
+        /// or indirectly. Each key identifies a member in the binding, and each value indicates whether the member in
+        /// the binding includes the member in the request. For example, suppose that a binding includes the following
+        /// members: * `user:alice@example.com` * `group:product-eng@example.com` You want to troubleshoot access for
+        /// `user:bob@example.com`. This user is a member of the group `group:product-eng@example.com`. For the first
+        /// member in the binding, the key is `user:alice@example.com`, and the `membership` field in the value is set
+        /// to `MEMBERSHIP_NOT_INCLUDED`. For the second member in the binding, the key is
+        /// `group:product-eng@example.com`, and the `membership` field in the value is set to `MEMBERSHIP_INCLUDED`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberships")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership> Memberships { get; set; }
 
@@ -379,9 +392,11 @@ namespace Google.Apis.PolicyTroubleshooter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("relevance")]
         public virtual string Relevance { get; set; }
 
-        /// <summary>The role that this binding grants. For example, `roles/compute.serviceAgent`. For a complete list
-        /// of predefined IAM roles, as well as the permissions in each role, see
-        /// https://cloud.google.com/iam/help/roles/reference.</summary>
+        /// <summary>
+        /// The role that this binding grants. For example, `roles/compute.serviceAgent`. For a complete list of
+        /// predefined IAM roles, as well as the permissions in each role, see
+        /// https://cloud.google.com/iam/help/roles/reference.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
 
@@ -389,14 +404,16 @@ namespace Google.Apis.PolicyTroubleshooter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rolePermission")]
         public virtual string RolePermission { get; set; }
 
-        /// <summary>The relevance of the permission's existence, or nonexistence, in the role to the overall
-        /// determination for the entire policy.</summary>
+        /// <summary>
+        /// The relevance of the permission's existence, or nonexistence, in the role to the overall determination for
+        /// the entire policy.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rolePermissionRelevance")]
         public virtual string RolePermissionRelevance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Details about whether the binding includes the member.</summary>
     public class GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership : Google.Apis.Requests.IDirectResponseSchema
@@ -411,45 +428,54 @@ namespace Google.Apis.PolicyTroubleshooter.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Details about how a specific IAM Policy contributed to the access check.</summary>
     public class GoogleCloudPolicytroubleshooterV1ExplainedPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Indicates whether _this policy_ provides the specified permission to the specified member for the
-        /// specified resource. This field does _not_ indicate whether the member actually has the permission for the
-        /// resource. There might be another policy that overrides this policy. To determine whether the member actually
-        /// has the permission, use the `access` field in the TroubleshootIamPolicyResponse.</summary>
+        /// <summary>
+        /// Indicates whether _this policy_ provides the specified permission to the specified member for the specified
+        /// resource. This field does _not_ indicate whether the member actually has the permission for the resource.
+        /// There might be another policy that overrides this policy. To determine whether the member actually has the
+        /// permission, use the `access` field in the TroubleshootIamPolicyResponse.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access")]
         public virtual string Access { get; set; }
 
-        /// <summary>Details about how each binding in the policy affects the member's ability, or inability, to use the
+        /// <summary>
+        /// Details about how each binding in the policy affects the member's ability, or inability, to use the
         /// permission for the resource. If the sender of the request does not have access to the policy, this field is
-        /// omitted.</summary>
+        /// omitted.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingExplanations")]
         public virtual System.Collections.Generic.IList<GoogleCloudPolicytroubleshooterV1BindingExplanation> BindingExplanations { get; set; }
 
-        /// <summary>The full resource name that identifies the resource. For example,
+        /// <summary>
+        /// The full resource name that identifies the resource. For example,
         /// `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`. If the sender of
         /// the request does not have access to the policy, this field is omitted. For examples of full resource names
-        /// for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-
-        /// names.</summary>
+        /// for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
         public virtual string FullResourceName { get; set; }
 
-        /// <summary>The IAM policy attached to the resource. If the sender of the request does not have access to the
-        /// policy, this field is empty.</summary>
+        /// <summary>
+        /// The IAM policy attached to the resource. If the sender of the request does not have access to the policy,
+        /// this field is empty.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual GoogleIamV1Policy Policy { get; set; }
 
-        /// <summary>The relevance of this policy to the overall determination in the TroubleshootIamPolicyResponse. If
-        /// the sender of the request does not have access to the policy, this field is omitted.</summary>
+        /// <summary>
+        /// The relevance of this policy to the overall determination in the TroubleshootIamPolicyResponse. If the
+        /// sender of the request does not have access to the policy, this field is omitted.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relevance")]
         public virtual string Relevance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request for TroubleshootIamPolicy.</summary>
     public class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -460,62 +486,72 @@ namespace Google.Apis.PolicyTroubleshooter.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for TroubleshootIamPolicy.</summary>
     public class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Indicates whether the member has the specified permission for the specified resource, based on
-        /// evaluating all of the applicable IAM policies.</summary>
+        /// <summary>
+        /// Indicates whether the member has the specified permission for the specified resource, based on evaluating
+        /// all of the applicable IAM policies.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access")]
         public virtual string Access { get; set; }
 
-        /// <summary>List of IAM policies that were evaluated to check the member's permissions, with annotations to
-        /// indicate how each policy contributed to the final result. The list of policies can include the policy for
-        /// the resource itself. It can also include policies that are inherited from higher levels of the resource
-        /// hierarchy, including the organization, the folder, and the project. To learn more about the resource
-        /// hierarchy, see https://cloud.google.com/iam/help/resource-hierarchy.</summary>
+        /// <summary>
+        /// List of IAM policies that were evaluated to check the member's permissions, with annotations to indicate how
+        /// each policy contributed to the final result. The list of policies can include the policy for the resource
+        /// itself. It can also include policies that are inherited from higher levels of the resource hierarchy,
+        /// including the organization, the folder, and the project. To learn more about the resource hierarchy, see
+        /// https://cloud.google.com/iam/help/resource-hierarchy.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explainedPolicies")]
         public virtual System.Collections.Generic.IList<GoogleCloudPolicytroubleshooterV1ExplainedPolicy> ExplainedPolicies { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
-    /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
-    /// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two
-    /// AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the
-    /// exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: {
-    /// "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
-    /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ]
-    /// }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, {
-    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this
-    /// policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ
-    /// logging, and aliya@example.com from DATA_WRITE logging.</summary>
+    /// <summary>
+    /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
+    /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
+    /// there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used
+    /// for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
+    /// AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service":
+    /// "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ]
+    /// }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
+    /// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [
+    /// "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+    /// logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+    /// </summary>
     public class GoogleIamV1AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
         public virtual System.Collections.Generic.IList<GoogleIamV1AuditLogConfig> AuditLogConfigs { get; set; }
 
-        /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
-        /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
+        /// <summary>
+        /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
+        /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ {
-    /// "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] }
-    /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
-    /// logging.</summary>
+    /// <summary>
+    /// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type":
+    /// "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
+    /// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+    /// </summary>
     public class GoogleIamV1AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
-        /// format of Binding.members.</summary>
+        /// <summary>
+        /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of
+        /// Binding.members.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
         public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
 
@@ -525,123 +561,138 @@ namespace Google.Apis.PolicyTroubleshooter.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Associates `members` with a `role`.</summary>
     public class GoogleIamV1Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
-        /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
-        /// apply to the current request. However, a different role binding might grant the same role to one or more of
-        /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
-        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
+        /// <summary>
+        /// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding
+        /// applies to the current request. If the condition evaluates to `false`, then this binding does not apply to
+        /// the current request. However, a different role binding might grant the same role to one or more of the
+        /// members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual GoogleTypeExpr Condition { get; set; }
 
-        /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
-        /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
-        /// without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is
-        /// authenticated with a Google account or a service account. * `user:{emailid}`: An email address that
-        /// represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An
-        /// email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
-        /// `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. *
+        /// <summary>
+        /// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following
+        /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
+        /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
+        /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
+        /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+        /// represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`:
+        /// An email address that represents a Google group. For example, `admins@example.com`. *
         /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
         /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
         /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
-        /// service account that has been recently deleted. For example, `my-other-
-        /// app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value
-        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. *
-        /// `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
-        /// group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the
-        /// group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the
-        /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
-        /// example, `google.com` or `example.com`. </summary>
+        /// service account that has been recently deleted. For example,
+        /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
+        /// this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the
+        /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
+        /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
+        /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
+        /// in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that
+        /// domain. For example, `google.com` or `example.com`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
-        /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
-        /// `roles/owner`.</summary>
+        /// <summary>
+        /// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud
-    /// resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`.
-    /// Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a
-    /// named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some
-    /// types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that
-    /// allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on
-    /// attributes of the request, the resource, or both. To learn which resources support conditions in their IAM
-    /// policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON
-    /// example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [
-    /// "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-
-    /// id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [
-    /// "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access
-    /// after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
-    /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com -
-    /// group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-    /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role:
-    /// roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access
-    /// after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version:
-    /// 3 For a description of IAM and its features, see the [IAM
-    /// documentation](https://cloud.google.com/iam/docs/).</summary>
+    /// <summary>
+    /// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A
+    /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can
+    /// be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of
+    /// permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google
+    /// Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to
+    /// a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of
+    /// the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the
+    /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** {
+    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
+    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:**
+    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
+    /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
+    /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
+    /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
+    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its
+    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// </summary>
     public class GoogleIamV1Policy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
         public virtual System.Collections.Generic.IList<GoogleIamV1AuditConfig> AuditConfigs { get; set; }
 
-        /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
-        /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
+        /// <summary>
+        /// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and
+        /// when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<GoogleIamV1Binding> Bindings { get; set; }
 
-        /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
-        /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
+        /// <summary>
+        /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy
+        /// from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
         /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:**
         /// If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
-        /// conditions in the version `3` policy are lost.</summary>
+        /// conditions in the version `3` policy are lost.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
-        /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
-        /// This requirement applies to the following operations: * Getting a policy that includes a conditional role
-        /// binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy *
-        /// Removing any role binding, with or without a condition, from a policy that includes conditions
-        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
-        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any
-        /// conditions, operations on that policy may specify any valid version or leave the field unset. To learn which
-        /// resources support conditions in their IAM policies, see the [IAM
-        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
+        /// <summary>
+        /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid
+        /// value are rejected. Any operation that affects conditional role bindings must specify version `3`. This
+        /// requirement applies to the following operations: * Getting a policy that includes a conditional role binding
+        /// * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing
+        /// any role binding, with or without a condition, from a policy that includes conditions **Important:** If you
+        /// use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this
+        /// field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on
+        /// that policy may specify any valid version or leave the field unset. To learn which resources support
+        /// conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
 
-    }    
-
-    /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
-    /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
-    /// Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
-    /// expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description:
+    /// <summary>
+    /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
+    /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
+    /// (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() &amp;lt; 100" Example (Equality): title: "Requestor is owner" description:
     /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
     /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
-    /// visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation):
-    /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
-    /// message received at ' + string(document.create_time)" The exact variables and functions that may be referenced
-    /// within an expression are determined by the service that evaluates it. See the service documentation for
-    /// additional information.</summary>
+    /// visible" expression: "document.type != 'private' &amp;amp;&amp;amp; document.type != 'internal'" Example (Data
+    /// Manipulation): title: "Notification string" description: "Create a notification string with a timestamp."
+    /// expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that
+    /// may be referenced within an expression are determined by the service that evaluates it. See the service
+    /// documentation for additional information.
+    /// </summary>
     public class GoogleTypeExpr : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
-        /// when hovered over it in a UI.</summary>
+        /// <summary>
+        /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when
+        /// hovered over it in a UI.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -649,13 +700,17 @@ namespace Google.Apis.PolicyTroubleshooter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
         public virtual string Expression { get; set; }
 
-        /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
-        /// and a position in the file.</summary>
+        /// <summary>
+        /// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a
+        /// position in the file.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
-        /// e.g. in UIs which allow to enter the expression.</summary>
+        /// <summary>
+        /// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs
+        /// which allow to enter the expression.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 

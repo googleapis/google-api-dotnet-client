@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -57,10 +62,6 @@ namespace Google.Apis.CloudSecurityToken.v1beta
         public override string BatchPath => "batch";
         #endif
 
-
-
-
-
         /// <summary>Gets the V1beta resource.</summary>
         public virtual V1betaResource V1beta { get; }
     }
@@ -83,6 +84,7 @@ namespace Google.Apis.CloudSecurityToken.v1beta
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -102,9 +104,11 @@ namespace Google.Apis.CloudSecurityToken.v1beta
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -118,8 +122,10 @@ namespace Google.Apis.CloudSecurityToken.v1beta
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -131,8 +137,10 @@ namespace Google.Apis.CloudSecurityToken.v1beta
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -148,7 +156,6 @@ namespace Google.Apis.CloudSecurityToken.v1beta
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -252,22 +259,22 @@ namespace Google.Apis.CloudSecurityToken.v1beta
         public V1betaResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Exchanges a credential for a Google OAuth 2.0 access token. The token asserts an external identity
-        /// within a workload identity pool, or it applies a Credential Access Boundary to a Google access
-        /// token.</summary>
+        /// <summary>
+        /// Exchanges a credential for a Google OAuth 2.0 access token. The token asserts an external identity within a
+        /// workload identity pool, or it applies a Credential Access Boundary to a Google access token.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual TokenRequest Token(Google.Apis.CloudSecurityToken.v1beta.Data.GoogleIdentityStsV1betaExchangeTokenRequest body)
         {
             return new TokenRequest(service, body);
         }
 
-        /// <summary>Exchanges a credential for a Google OAuth 2.0 access token. The token asserts an external identity
-        /// within a workload identity pool, or it applies a Credential Access Boundary to a Google access
-        /// token.</summary>
+        /// <summary>
+        /// Exchanges a credential for a Google OAuth 2.0 access token. The token asserts an external identity within a
+        /// workload identity pool, or it applies a Credential Access Boundary to a Google access token.
+        /// </summary>
         public class TokenRequest : CloudSecurityTokenBaseServiceRequest<Google.Apis.CloudSecurityToken.v1beta.Data.GoogleIdentityStsV1betaExchangeTokenResponse>
         {
             /// <summary>Constructs a new Token request.</summary>
@@ -276,8 +283,6 @@ namespace Google.Apis.CloudSecurityToken.v1beta
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudSecurityToken.v1beta.Data.GoogleIdentityStsV1betaExchangeTokenRequest Body { get; set; }
@@ -298,52 +303,58 @@ namespace Google.Apis.CloudSecurityToken.v1beta
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
     }
 }
-
 namespace Google.Apis.CloudSecurityToken.v1beta.Data
-{    
-
+{
     /// <summary>Request message for ExchangeToken.</summary>
     public class GoogleIdentityStsV1betaExchangeTokenRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The full resource name of the identity provider. For example,
+        /// <summary>
+        /// The full resource name of the identity provider. For example,
         /// `//iam.googleapis.com/projects//workloadIdentityPools//providers/`. Required when exchanging an external
-        /// credential for a Google access token.</summary>
+        /// credential for a Google access token.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audience")]
         public virtual string Audience { get; set; }
 
-        /// <summary>Required. The grant type. Must be `urn:ietf:params:oauth:grant-type:token-exchange`, which
-        /// indicates a token exchange.</summary>
+        /// <summary>
+        /// Required. The grant type. Must be `urn:ietf:params:oauth:grant-type:token-exchange`, which indicates a token
+        /// exchange.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("grantType")]
         public virtual string GrantType { get; set; }
 
-        /// <summary>A set of features that Security Token Service supports, in addition to the standard OAuth 2.0 token
-        /// exchange, formatted as a serialized JSON object of Options.</summary>
+        /// <summary>
+        /// A set of features that Security Token Service supports, in addition to the standard OAuth 2.0 token
+        /// exchange, formatted as a serialized JSON object of Options.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual string Options { get; set; }
 
-        /// <summary>Required. The type of security token. Must be `urn:ietf:params:oauth:token-type:access_token`,
-        /// which indicates an OAuth 2.0 access token.</summary>
+        /// <summary>
+        /// Required. The type of security token. Must be `urn:ietf:params:oauth:token-type:access_token`, which
+        /// indicates an OAuth 2.0 access token.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedTokenType")]
         public virtual string RequestedTokenType { get; set; }
 
-        /// <summary>The OAuth 2.0 scopes to include on the resulting access token, formatted as a list of space-
-        /// delimited, case-sensitive strings. Required when exchanging an external credential for a Google access
-        /// token.</summary>
+        /// <summary>
+        /// The OAuth 2.0 scopes to include on the resulting access token, formatted as a list of space-delimited,
+        /// case-sensitive strings. Required when exchanging an external credential for a Google access token.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual string Scope { get; set; }
 
-        /// <summary>Required. The input token. This token is a either an external credential issued by a workload
-        /// identity pool provider, or a short-lived access token issued by Google. If the token is an OIDC JWT, it must
-        /// use the JWT format defined in [RFC 7523](https://tools.ietf.org/html/rfc7523), and the `subject_token_type`
-        /// must be `urn:ietf:params:oauth:token-type:jwt`. The following headers are required: - `kid`: The identifier
-        /// of the signing key securing the JWT. - `alg`: The cryptographic algorithm securing the JWT. Must be `RS256`.
-        /// The following payload fields are required. For more information, see [RFC 7523, Section
+        /// <summary>
+        /// Required. The input token. This token is a either an external credential issued by a workload identity pool
+        /// provider, or a short-lived access token issued by Google. If the token is an OIDC JWT, it must use the JWT
+        /// format defined in [RFC 7523](https://tools.ietf.org/html/rfc7523), and the `subject_token_type` must be
+        /// `urn:ietf:params:oauth:token-type:jwt`. The following headers are required: - `kid`: The identifier of the
+        /// signing key securing the JWT. - `alg`: The cryptographic algorithm securing the JWT. Must be `RS256`. The
+        /// following payload fields are required. For more information, see [RFC 7523, Section
         /// 3](https://tools.ietf.org/html/rfc7523#section-3): - `iss`: The issuer of the token. The issuer must provide
         /// a discovery document at the URL `/.well-known/openid-configuration`, where `` is the value of this field.
         /// The document must be formatted according to section 4.2 of the [OIDC 1.0 Discovery
@@ -358,12 +369,13 @@ namespace Google.Apis.CloudSecurityToken.v1beta.Data
         /// token, it must be a serialized,
         /// [signed](https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html) request to the AWS
         /// [`GetCallerIdentity()`](https://docs.aws.amazon.com/STS/latest/APIReference/API_GetCallerIdentity) method.
-        /// Format the request as URL-encoded JSON, and set the `subject_token_type` parameter to `urn:ietf:params:aws
-        /// :token-type:aws4_request`. The following parameters are required: - `url`: The URL of the AWS STS endpoint
-        /// for `GetCallerIdentity()`, such as `https://sts.amazonaws.com?Action=GetCallerIdentity=2011-06-15`. Regional
-        /// endpoints are also supported. - `method`: The HTTP request method: `POST`. - `headers`: The HTTP request
-        /// headers, which must include: - `Authorization`: The request signature. - `x-amz-date`: The time you will
-        /// send the request, formatted as an [ISO8601
+        /// Format the request as URL-encoded JSON, and set the `subject_token_type` parameter to
+        /// `urn:ietf:params:aws:token-type:aws4_request`. The following parameters are required: - `url`: The URL of
+        /// the AWS STS endpoint for `GetCallerIdentity()`, such as
+        /// `https://sts.amazonaws.com?Action=GetCallerIdentity&amp;amp;Version=2011-06-15`. Regional endpoints are also
+        /// supported. - `method`: The HTTP request method: `POST`. - `headers`: The HTTP request headers, which must
+        /// include: - `Authorization`: The request signature. - `x-amz-date`: The time you will send the request,
+        /// formatted as an [ISO8601
         /// Basic](https://docs.aws.amazon.com/general/latest/gr/sigv4_elements.html#sigv4_elements_date) string. This
         /// is typically set to the current time and used to prevent replay attacks. - `host`: The hostname of the `url`
         /// field; for example, `sts.amazonaws.com`. - `x-goog-cloud-target-resource`: The full, canonical resource name
@@ -373,16 +385,17 @@ namespace Google.Apis.CloudSecurityToken.v1beta.Data
         /// https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ If you are using temporary
         /// security credentials provided by AWS, you must also include the header `x-amz-security-token`, with the
         /// value ``. The following example shows a signed, serialized request: ``` { "headers":[ {"key": "x-amz-date",
-        /// "value": "20200815T015049Z"}, {"key": "Authorization", "value": "AWS4-HMAC-
-        /// SHA256+Credential=$credential,+SignedHeaders=host;x-amz-date;x-goog-cloud-target-
-        /// resource,+Signature=$signature"}, {"key": "x-goog-cloud-target-resource", "value":
+        /// "value": "20200815T015049Z"}, {"key": "Authorization", "value":
+        /// "AWS4-HMAC-SHA256+Credential=$credential,+SignedHeaders=host;x-amz-date;x-goog-cloud-target-resource,+Signature=$signature"},
+        /// {"key": "x-goog-cloud-target-resource", "value":
         /// "//iam.googleapis.com/projects//locations//workloadIdentityPools//providers/"}, {"key": "host", "value":
         /// "sts.amazonaws.com"} . ], "method":"POST",
-        /// "url":"https://sts.amazonaws.com?Action=GetCallerIdentity=2011-06-15" } ``` You can also use a Google-issued
-        /// OAuth 2.0 access token with this field to obtain an access token with new security attributes applied, such
-        /// as a Credential Access Boundary. In this case, set `subject_token_type` to `urn:ietf:params:oauth:token-
-        /// type:access_token`. If an access token already contains security attributes, you cannot apply additional
-        /// security attributes.</summary>
+        /// "url":"https://sts.amazonaws.com?Action=GetCallerIdentity&amp;amp;Version=2011-06-15" } ``` You can also use
+        /// a Google-issued OAuth 2.0 access token with this field to obtain an access token with new security
+        /// attributes applied, such as a Credential Access Boundary. In this case, set `subject_token_type` to
+        /// `urn:ietf:params:oauth:token-type:access_token`. If an access token already contains security attributes,
+        /// you cannot apply additional security attributes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subjectToken")]
         public virtual string SubjectToken { get; set; }
 
@@ -392,21 +405,25 @@ namespace Google.Apis.CloudSecurityToken.v1beta.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for ExchangeToken.</summary>
     public class GoogleIdentityStsV1betaExchangeTokenResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An OAuth 2.0 security token, issued by Google, in response to the token exchange request. Tokens
-        /// can vary in size, depending in part on the size of mapped claims, up to a maximum of 12288 bytes (12 KB).
-        /// Google reserves the right to change the token size and the maximum length at any time.</summary>
+        /// <summary>
+        /// An OAuth 2.0 security token, issued by Google, in response to the token exchange request. Tokens can vary in
+        /// size, depending in part on the size of mapped claims, up to a maximum of 12288 bytes (12 KB). Google
+        /// reserves the right to change the token size and the maximum length at any time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access_token")]
         public virtual string AccessToken { get; set; }
 
-        /// <summary>The amount of time, in seconds, between the time when the `access_token` was issued and the time
-        /// when the `access_token` will expire. This field is absent when the `subject_token` in the request is a
-        /// Google-issued, short-lived access token. In this case, the `access_token` has the same expiration time as
-        /// the `subject_token`.</summary>
+        /// <summary>
+        /// The amount of time, in seconds, between the time when the `access_token` was issued and the time when the
+        /// `access_token` will expire. This field is absent when the `subject_token` in the request is a Google-issued,
+        /// short-lived access token. In this case, the `access_token` has the same expiration time as the
+        /// `subject_token`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expires_in")]
         public virtual System.Nullable<int> ExpiresIn { get; set; }
 

@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -66,7 +71,6 @@ namespace Google.Apis.Vault.v1
 
             /// <summary>View your eDiscovery data</summary>
             public static string EdiscoveryReadonly = "https://www.googleapis.com/auth/ediscovery.readonly";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the G Suite Vault API.</summary>
@@ -77,10 +81,7 @@ namespace Google.Apis.Vault.v1
 
             /// <summary>View your eDiscovery data</summary>
             public const string EdiscoveryReadonly = "https://www.googleapis.com/auth/ediscovery.readonly";
-
         }
-
-
 
         /// <summary>Gets the Matters resource.</summary>
         public virtual MattersResource Matters { get; }
@@ -107,6 +108,7 @@ namespace Google.Apis.Vault.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -126,9 +128,11 @@ namespace Google.Apis.Vault.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -142,8 +146,10 @@ namespace Google.Apis.Vault.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -155,8 +161,10 @@ namespace Google.Apis.Vault.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -172,7 +180,6 @@ namespace Google.Apis.Vault.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -279,7 +286,6 @@ namespace Google.Apis.Vault.v1
             Exports = new ExportsResource(service);
             Holds = new HoldsResource(service);
             SavedQueries = new SavedQueriesResource(service);
-
         }
 
         /// <summary>Gets the Exports resource.</summary>
@@ -297,9 +303,7 @@ namespace Google.Apis.Vault.v1
             public ExportsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Creates an Export.</summary>
             /// <param name="body">The body of the request.</param>
@@ -320,11 +324,9 @@ namespace Google.Apis.Vault.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The matter ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Vault.v1.Data.Export Body { get; set; }
@@ -345,7 +347,6 @@ namespace Google.Apis.Vault.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "matterId",
@@ -355,7 +356,6 @@ namespace Google.Apis.Vault.v1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Deletes an Export.</summary>
@@ -377,7 +377,6 @@ namespace Google.Apis.Vault.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The matter ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
@@ -385,7 +384,6 @@ namespace Google.Apis.Vault.v1
                 /// <summary>The export ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("exportId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ExportId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -400,7 +398,6 @@ namespace Google.Apis.Vault.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "matterId",
@@ -418,7 +415,6 @@ namespace Google.Apis.Vault.v1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Gets an Export.</summary>
@@ -440,7 +436,6 @@ namespace Google.Apis.Vault.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The matter ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
@@ -448,7 +443,6 @@ namespace Google.Apis.Vault.v1
                 /// <summary>The export ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("exportId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ExportId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -463,7 +457,6 @@ namespace Google.Apis.Vault.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "matterId",
@@ -481,7 +474,6 @@ namespace Google.Apis.Vault.v1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Lists Exports.</summary>
@@ -501,7 +493,6 @@ namespace Google.Apis.Vault.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The matter ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
@@ -513,7 +504,6 @@ namespace Google.Apis.Vault.v1
                 /// <summary>The pagination token as returned in the response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -528,7 +518,6 @@ namespace Google.Apis.Vault.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "matterId",
@@ -554,9 +543,9 @@ namespace Google.Apis.Vault.v1
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Holds resource.</summary>
         public virtual HoldsResource Holds { get; }
 
@@ -573,7 +562,6 @@ namespace Google.Apis.Vault.v1
             {
                 this.service = service;
                 Accounts = new AccountsResource(service);
-
             }
 
             /// <summary>Gets the Accounts resource.</summary>
@@ -591,13 +579,12 @@ namespace Google.Apis.Vault.v1
                 public AccountsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
 
-
-                /// <summary>Adds a HeldAccount to a hold. Accounts can only be added to a hold that has no
-                /// held_org_unit set. Attempting to add an account to an OU-based hold will result in an
-                /// error.</summary>
+                /// <summary>
+                /// Adds a HeldAccount to a hold. Accounts can only be added to a hold that has no held_org_unit set.
+                /// Attempting to add an account to an OU-based hold will result in an error.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="matterId">The matter ID.</param>
                 /// <param name="holdId">The hold ID.</param>
@@ -606,9 +593,10 @@ namespace Google.Apis.Vault.v1
                     return new CreateRequest(service, body, matterId, holdId);
                 }
 
-                /// <summary>Adds a HeldAccount to a hold. Accounts can only be added to a hold that has no
-                /// held_org_unit set. Attempting to add an account to an OU-based hold will result in an
-                /// error.</summary>
+                /// <summary>
+                /// Adds a HeldAccount to a hold. Accounts can only be added to a hold that has no held_org_unit set.
+                /// Attempting to add an account to an OU-based hold will result in an error.
+                /// </summary>
                 public class CreateRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.HeldAccount>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -620,7 +608,6 @@ namespace Google.Apis.Vault.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The matter ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string MatterId { get; private set; }
@@ -628,7 +615,6 @@ namespace Google.Apis.Vault.v1
                     /// <summary>The hold ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("holdId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string HoldId { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Vault.v1.Data.HeldAccount Body { get; set; }
@@ -649,7 +635,6 @@ namespace Google.Apis.Vault.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "matterId",
@@ -667,22 +652,24 @@ namespace Google.Apis.Vault.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
-                /// <summary>Removes a HeldAccount from a hold. If this request leaves the hold with no held accounts,
-                /// the hold will not apply to any accounts.</summary>
+                /// <summary>
+                /// Removes a HeldAccount from a hold. If this request leaves the hold with no held accounts, the hold
+                /// will not apply to any accounts.
+                /// </summary>
                 /// <param name="matterId">The matter ID.</param>
                 /// <param name="holdId">The hold ID.</param>
-                /// <param
-                /// name="accountId">The ID of the account to remove from the hold.</param>
+                /// <param name="accountId">The ID of the account to remove from the hold.</param>
                 public virtual DeleteRequest Delete(string matterId, string holdId, string accountId)
                 {
                     return new DeleteRequest(service, matterId, holdId, accountId);
                 }
 
-                /// <summary>Removes a HeldAccount from a hold. If this request leaves the hold with no held accounts,
-                /// the hold will not apply to any accounts.</summary>
+                /// <summary>
+                /// Removes a HeldAccount from a hold. If this request leaves the hold with no held accounts, the hold
+                /// will not apply to any accounts.
+                /// </summary>
                 public class DeleteRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -693,7 +680,6 @@ namespace Google.Apis.Vault.v1
                         AccountId = accountId;
                         InitParameters();
                     }
-
 
                     /// <summary>The matter ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
@@ -706,7 +692,6 @@ namespace Google.Apis.Vault.v1
                     /// <summary>The ID of the account to remove from the hold.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
@@ -721,7 +706,6 @@ namespace Google.Apis.Vault.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "matterId",
@@ -747,11 +731,12 @@ namespace Google.Apis.Vault.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
-                /// <summary>Lists HeldAccounts for a hold. This will only list individually specified held accounts. If
-                /// the hold is on an OU, then use Admin SDK to enumerate its members.</summary>
+                /// <summary>
+                /// Lists HeldAccounts for a hold. This will only list individually specified held accounts. If the hold
+                /// is on an OU, then use Admin SDK to enumerate its members.
+                /// </summary>
                 /// <param name="matterId">The matter ID.</param>
                 /// <param name="holdId">The hold ID.</param>
                 public virtual ListRequest List(string matterId, string holdId)
@@ -759,8 +744,10 @@ namespace Google.Apis.Vault.v1
                     return new ListRequest(service, matterId, holdId);
                 }
 
-                /// <summary>Lists HeldAccounts for a hold. This will only list individually specified held accounts. If
-                /// the hold is on an OU, then use Admin SDK to enumerate its members.</summary>
+                /// <summary>
+                /// Lists HeldAccounts for a hold. This will only list individually specified held accounts. If the hold
+                /// is on an OU, then use Admin SDK to enumerate its members.
+                /// </summary>
                 public class ListRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.ListHeldAccountsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -771,7 +758,6 @@ namespace Google.Apis.Vault.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The matter ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string MatterId { get; private set; }
@@ -779,7 +765,6 @@ namespace Google.Apis.Vault.v1
                     /// <summary>The hold ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("holdId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string HoldId { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -794,7 +779,6 @@ namespace Google.Apis.Vault.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "matterId",
@@ -812,12 +796,13 @@ namespace Google.Apis.Vault.v1
                             Pattern = null,
                         });
                     }
-
                 }
             }
 
-            /// <summary>Adds HeldAccounts to a hold. Returns a list of accounts that have been successfully added.
-            /// Accounts can only be added to an existing account-based hold.</summary>
+            /// <summary>
+            /// Adds HeldAccounts to a hold. Returns a list of accounts that have been successfully added. Accounts can
+            /// only be added to an existing account-based hold.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="matterId">The matter ID.</param>
             /// <param name="holdId">The hold ID.</param>
@@ -826,8 +811,10 @@ namespace Google.Apis.Vault.v1
                 return new AddHeldAccountsRequest(service, body, matterId, holdId);
             }
 
-            /// <summary>Adds HeldAccounts to a hold. Returns a list of accounts that have been successfully added.
-            /// Accounts can only be added to an existing account-based hold.</summary>
+            /// <summary>
+            /// Adds HeldAccounts to a hold. Returns a list of accounts that have been successfully added. Accounts can
+            /// only be added to an existing account-based hold.
+            /// </summary>
             public class AddHeldAccountsRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.AddHeldAccountsResponse>
             {
                 /// <summary>Constructs a new AddHeldAccounts request.</summary>
@@ -839,7 +826,6 @@ namespace Google.Apis.Vault.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The matter ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
@@ -847,7 +833,6 @@ namespace Google.Apis.Vault.v1
                 /// <summary>The hold ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("holdId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string HoldId { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Vault.v1.Data.AddHeldAccountsRequest Body { get; set; }
@@ -868,7 +853,6 @@ namespace Google.Apis.Vault.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "matterId",
@@ -886,7 +870,6 @@ namespace Google.Apis.Vault.v1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Creates a hold in the given matter.</summary>
@@ -908,11 +891,9 @@ namespace Google.Apis.Vault.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The matter ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Vault.v1.Data.Hold Body { get; set; }
@@ -933,7 +914,6 @@ namespace Google.Apis.Vault.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "matterId",
@@ -943,7 +923,6 @@ namespace Google.Apis.Vault.v1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Removes a hold by ID. This will release any HeldAccounts on this Hold.</summary>
@@ -965,7 +944,6 @@ namespace Google.Apis.Vault.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The matter ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
@@ -973,7 +951,6 @@ namespace Google.Apis.Vault.v1
                 /// <summary>The hold ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("holdId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string HoldId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -988,7 +965,6 @@ namespace Google.Apis.Vault.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "matterId",
@@ -1006,7 +982,6 @@ namespace Google.Apis.Vault.v1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Gets a hold by ID.</summary>
@@ -1028,7 +1003,6 @@ namespace Google.Apis.Vault.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The matter ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
@@ -1047,15 +1021,18 @@ namespace Google.Apis.Vault.v1
                     /// <summary>There is no specified view. Defaults to FULL_HOLD.</summary>
                     [Google.Apis.Util.StringValueAttribute("HOLD_VIEW_UNSPECIFIED")]
                     HOLDVIEWUNSPECIFIED,
+
                     /// <summary>Response includes the id, name, update time, corpus, and query.</summary>
                     [Google.Apis.Util.StringValueAttribute("BASIC_HOLD")]
                     BASICHOLD,
-                    /// <summary>Full representation of a Hold. Response includes all fields of 'BASIC' and the entities
-                    /// the Hold applies to, such as accounts, or OU.</summary>
+
+                    /// <summary>
+                    /// Full representation of a Hold. Response includes all fields of 'BASIC' and the entities the Hold
+                    /// applies to, such as accounts, or OU.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FULL_HOLD")]
                     FULLHOLD,
                 }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -1070,7 +1047,6 @@ namespace Google.Apis.Vault.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "matterId",
@@ -1096,19 +1072,20 @@ namespace Google.Apis.Vault.v1
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Lists holds within a matter. An empty page token in ListHoldsResponse denotes no more holds to
-            /// list.</summary>
+            /// <summary>
+            /// Lists holds within a matter. An empty page token in ListHoldsResponse denotes no more holds to list.
+            /// </summary>
             /// <param name="matterId">The matter ID.</param>
             public virtual ListRequest List(string matterId)
             {
                 return new ListRequest(service, matterId);
             }
 
-            /// <summary>Lists holds within a matter. An empty page token in ListHoldsResponse denotes no more holds to
-            /// list.</summary>
+            /// <summary>
+            /// Lists holds within a matter. An empty page token in ListHoldsResponse denotes no more holds to list.
+            /// </summary>
             public class ListRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.ListHoldsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1118,18 +1095,20 @@ namespace Google.Apis.Vault.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The matter ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
 
-                /// <summary>The number of holds to return in the response, between 0 and 100 inclusive. Leaving this
-                /// empty, or as 0, is the same as page_size = 100.</summary>
+                /// <summary>
+                /// The number of holds to return in the response, between 0 and 100 inclusive. Leaving this empty, or
+                /// as 0, is the same as page_size = 100.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>The pagination token as returned in the response. An empty token means start from the
-                /// beginning.</summary>
+                /// <summary>
+                /// The pagination token as returned in the response. An empty token means start from the beginning.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -1143,15 +1122,18 @@ namespace Google.Apis.Vault.v1
                     /// <summary>There is no specified view. Defaults to FULL_HOLD.</summary>
                     [Google.Apis.Util.StringValueAttribute("HOLD_VIEW_UNSPECIFIED")]
                     HOLDVIEWUNSPECIFIED,
+
                     /// <summary>Response includes the id, name, update time, corpus, and query.</summary>
                     [Google.Apis.Util.StringValueAttribute("BASIC_HOLD")]
                     BASICHOLD,
-                    /// <summary>Full representation of a Hold. Response includes all fields of 'BASIC' and the entities
-                    /// the Hold applies to, such as accounts, or OU.</summary>
+
+                    /// <summary>
+                    /// Full representation of a Hold. Response includes all fields of 'BASIC' and the entities the Hold
+                    /// applies to, such as accounts, or OU.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FULL_HOLD")]
                     FULLHOLD,
                 }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -1166,7 +1148,6 @@ namespace Google.Apis.Vault.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "matterId",
@@ -1200,12 +1181,12 @@ namespace Google.Apis.Vault.v1
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Removes HeldAccounts from a hold. Returns a list of statuses in the same order as the request.
-            /// If this request leaves the hold with no held accounts, the hold will not apply to any
-            /// accounts.</summary>
+            /// <summary>
+            /// Removes HeldAccounts from a hold. Returns a list of statuses in the same order as the request. If this
+            /// request leaves the hold with no held accounts, the hold will not apply to any accounts.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="matterId">The matter ID.</param>
             /// <param name="holdId">The hold ID.</param>
@@ -1214,9 +1195,10 @@ namespace Google.Apis.Vault.v1
                 return new RemoveHeldAccountsRequest(service, body, matterId, holdId);
             }
 
-            /// <summary>Removes HeldAccounts from a hold. Returns a list of statuses in the same order as the request.
-            /// If this request leaves the hold with no held accounts, the hold will not apply to any
-            /// accounts.</summary>
+            /// <summary>
+            /// Removes HeldAccounts from a hold. Returns a list of statuses in the same order as the request. If this
+            /// request leaves the hold with no held accounts, the hold will not apply to any accounts.
+            /// </summary>
             public class RemoveHeldAccountsRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.RemoveHeldAccountsResponse>
             {
                 /// <summary>Constructs a new RemoveHeldAccounts request.</summary>
@@ -1228,7 +1210,6 @@ namespace Google.Apis.Vault.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The matter ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
@@ -1236,7 +1217,6 @@ namespace Google.Apis.Vault.v1
                 /// <summary>The hold ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("holdId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string HoldId { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Vault.v1.Data.RemoveHeldAccountsRequest Body { get; set; }
@@ -1257,7 +1237,6 @@ namespace Google.Apis.Vault.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "matterId",
@@ -1275,12 +1254,13 @@ namespace Google.Apis.Vault.v1
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Updates the OU and/or query parameters of a hold. You cannot add accounts to a hold that covers
-            /// an OU, nor can you add OUs to a hold that covers individual accounts. Accounts listed in the hold will
-            /// be ignored.</summary>
+            /// <summary>
+            /// Updates the OU and/or query parameters of a hold. You cannot add accounts to a hold that covers an OU,
+            /// nor can you add OUs to a hold that covers individual accounts. Accounts listed in the hold will be
+            /// ignored.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="matterId">The matter ID.</param>
             /// <param name="holdId">The ID of the hold.</param>
@@ -1289,9 +1269,11 @@ namespace Google.Apis.Vault.v1
                 return new UpdateRequest(service, body, matterId, holdId);
             }
 
-            /// <summary>Updates the OU and/or query parameters of a hold. You cannot add accounts to a hold that covers
-            /// an OU, nor can you add OUs to a hold that covers individual accounts. Accounts listed in the hold will
-            /// be ignored.</summary>
+            /// <summary>
+            /// Updates the OU and/or query parameters of a hold. You cannot add accounts to a hold that covers an OU,
+            /// nor can you add OUs to a hold that covers individual accounts. Accounts listed in the hold will be
+            /// ignored.
+            /// </summary>
             public class UpdateRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Hold>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -1303,7 +1285,6 @@ namespace Google.Apis.Vault.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The matter ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
@@ -1311,7 +1292,6 @@ namespace Google.Apis.Vault.v1
                 /// <summary>The ID of the hold.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("holdId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string HoldId { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Vault.v1.Data.Hold Body { get; set; }
@@ -1332,7 +1312,6 @@ namespace Google.Apis.Vault.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "matterId",
@@ -1350,9 +1329,9 @@ namespace Google.Apis.Vault.v1
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the SavedQueries resource.</summary>
         public virtual SavedQueriesResource SavedQueries { get; }
 
@@ -1368,13 +1347,13 @@ namespace Google.Apis.Vault.v1
             public SavedQueriesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Creates a saved query.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="matterId">The matter ID of the parent matter for which the saved query is to be created.</param>
+            /// <param name="matterId">
+            /// The matter ID of the parent matter for which the saved query is to be created.
+            /// </param>
             public virtual CreateRequest Create(Google.Apis.Vault.v1.Data.SavedQuery body, string matterId)
             {
                 return new CreateRequest(service, body, matterId);
@@ -1391,11 +1370,9 @@ namespace Google.Apis.Vault.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The matter ID of the parent matter for which the saved query is to be created.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Vault.v1.Data.SavedQuery Body { get; set; }
@@ -1416,7 +1393,6 @@ namespace Google.Apis.Vault.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "matterId",
@@ -1426,12 +1402,12 @@ namespace Google.Apis.Vault.v1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Deletes a saved query by Id.</summary>
-            /// <param name="matterId">The matter ID of the parent matter for which the saved query is to be
-            /// deleted.</param>
+            /// <param name="matterId">
+            /// The matter ID of the parent matter for which the saved query is to be deleted.
+            /// </param>
             /// <param name="savedQueryId">ID of the saved query to be deleted.</param>
             public virtual DeleteRequest Delete(string matterId, string savedQueryId)
             {
@@ -1449,7 +1425,6 @@ namespace Google.Apis.Vault.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The matter ID of the parent matter for which the saved query is to be deleted.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
@@ -1457,7 +1432,6 @@ namespace Google.Apis.Vault.v1
                 /// <summary>ID of the saved query to be deleted.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("savedQueryId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SavedQueryId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -1472,7 +1446,6 @@ namespace Google.Apis.Vault.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "matterId",
@@ -1490,12 +1463,12 @@ namespace Google.Apis.Vault.v1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Retrieves a saved query by Id.</summary>
-            /// <param name="matterId">The matter ID of the parent matter for which the saved query is to be
-            /// retrieved.</param>
+            /// <param name="matterId">
+            /// The matter ID of the parent matter for which the saved query is to be retrieved.
+            /// </param>
             /// <param name="savedQueryId">ID of the saved query to be retrieved.</param>
             public virtual GetRequest Get(string matterId, string savedQueryId)
             {
@@ -1513,7 +1486,6 @@ namespace Google.Apis.Vault.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The matter ID of the parent matter for which the saved query is to be retrieved.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
@@ -1521,7 +1493,6 @@ namespace Google.Apis.Vault.v1
                 /// <summary>ID of the saved query to be retrieved.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("savedQueryId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SavedQueryId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -1536,7 +1507,6 @@ namespace Google.Apis.Vault.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "matterId",
@@ -1554,20 +1524,24 @@ namespace Google.Apis.Vault.v1
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Lists saved queries within a matter. An empty page token in ListSavedQueriesResponse denotes no
-            /// more saved queries to list.</summary>
-            /// <param name="matterId">The matter ID of the parent matter for which the saved queries are to be
-            /// retrieved.</param>
+            /// <summary>
+            /// Lists saved queries within a matter. An empty page token in ListSavedQueriesResponse denotes no more
+            /// saved queries to list.
+            /// </summary>
+            /// <param name="matterId">
+            /// The matter ID of the parent matter for which the saved queries are to be retrieved.
+            /// </param>
             public virtual ListRequest List(string matterId)
             {
                 return new ListRequest(service, matterId);
             }
 
-            /// <summary>Lists saved queries within a matter. An empty page token in ListSavedQueriesResponse denotes no
-            /// more saved queries to list.</summary>
+            /// <summary>
+            /// Lists saved queries within a matter. An empty page token in ListSavedQueriesResponse denotes no more
+            /// saved queries to list.
+            /// </summary>
             public class ListRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.ListSavedQueriesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1577,9 +1551,9 @@ namespace Google.Apis.Vault.v1
                     InitParameters();
                 }
 
-
-                /// <summary>The matter ID of the parent matter for which the saved queries are to be
-                /// retrieved.</summary>
+                /// <summary>
+                /// The matter ID of the parent matter for which the saved queries are to be retrieved.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
 
@@ -1587,11 +1561,12 @@ namespace Google.Apis.Vault.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>The pagination token as returned in the previous response. An empty token means start from
-                /// the beginning.</summary>
+                /// <summary>
+                /// The pagination token as returned in the previous response. An empty token means start from the
+                /// beginning.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -1606,7 +1581,6 @@ namespace Google.Apis.Vault.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "matterId",
@@ -1632,7 +1606,6 @@ namespace Google.Apis.Vault.v1
                         Pattern = null,
                     });
                 }
-
             }
         }
 
@@ -1655,11 +1628,9 @@ namespace Google.Apis.Vault.v1
                 InitParameters();
             }
 
-
             /// <summary>The matter ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MatterId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Vault.v1.Data.AddMatterPermissionsRequest Body { get; set; }
@@ -1680,7 +1651,6 @@ namespace Google.Apis.Vault.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "matterId",
@@ -1690,7 +1660,6 @@ namespace Google.Apis.Vault.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Closes the specified matter. Returns matter with updated state.</summary>
@@ -1712,11 +1681,9 @@ namespace Google.Apis.Vault.v1
                 InitParameters();
             }
 
-
             /// <summary>The matter ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MatterId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Vault.v1.Data.CloseMatterRequest Body { get; set; }
@@ -1737,7 +1704,6 @@ namespace Google.Apis.Vault.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "matterId",
@@ -1747,11 +1713,11 @@ namespace Google.Apis.Vault.v1
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Counts the artifacts within the context of a matter and returns a detailed breakdown of
-        /// metrics.</summary>
+        /// <summary>
+        /// Counts the artifacts within the context of a matter and returns a detailed breakdown of metrics.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="matterId">The matter ID.</param>
         public virtual CountRequest Count(Google.Apis.Vault.v1.Data.CountArtifactsRequest body, string matterId)
@@ -1759,8 +1725,9 @@ namespace Google.Apis.Vault.v1
             return new CountRequest(service, body, matterId);
         }
 
-        /// <summary>Counts the artifacts within the context of a matter and returns a detailed breakdown of
-        /// metrics.</summary>
+        /// <summary>
+        /// Counts the artifacts within the context of a matter and returns a detailed breakdown of metrics.
+        /// </summary>
         public class CountRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Operation>
         {
             /// <summary>Constructs a new Count request.</summary>
@@ -1771,11 +1738,9 @@ namespace Google.Apis.Vault.v1
                 InitParameters();
             }
 
-
             /// <summary>The matter ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MatterId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Vault.v1.Data.CountArtifactsRequest Body { get; set; }
@@ -1796,7 +1761,6 @@ namespace Google.Apis.Vault.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "matterId",
@@ -1806,19 +1770,22 @@ namespace Google.Apis.Vault.v1
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Creates a new matter with the given name and description. The initial state is open, and the owner
-        /// is the method caller. Returns the created matter with default view.</summary>
+        /// <summary>
+        /// Creates a new matter with the given name and description. The initial state is open, and the owner is the
+        /// method caller. Returns the created matter with default view.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Vault.v1.Data.Matter body)
         {
             return new CreateRequest(service, body);
         }
 
-        /// <summary>Creates a new matter with the given name and description. The initial state is open, and the owner
-        /// is the method caller. Returns the created matter with default view.</summary>
+        /// <summary>
+        /// Creates a new matter with the given name and description. The initial state is open, and the owner is the
+        /// method caller. Returns the created matter with default view.
+        /// </summary>
         public class CreateRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Matter>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -1827,8 +1794,6 @@ namespace Google.Apis.Vault.v1
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Vault.v1.Data.Matter Body { get; set; }
@@ -1849,9 +1814,7 @@ namespace Google.Apis.Vault.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
         /// <summary>Deletes the specified matter. Returns matter with updated state.</summary>
@@ -1871,11 +1834,9 @@ namespace Google.Apis.Vault.v1
                 InitParameters();
             }
 
-
             /// <summary>The matter ID</summary>
             [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MatterId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
@@ -1890,7 +1851,6 @@ namespace Google.Apis.Vault.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "matterId",
@@ -1900,7 +1860,6 @@ namespace Google.Apis.Vault.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Gets the specified matter.</summary>
@@ -1920,7 +1879,6 @@ namespace Google.Apis.Vault.v1
                 InitParameters();
             }
 
-
             /// <summary>The matter ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MatterId { get; private set; }
@@ -1935,15 +1893,17 @@ namespace Google.Apis.Vault.v1
                 /// <summary>There is no specified view.</summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
                 VIEWUNSPECIFIED,
+
                 /// <summary>Response includes the matter_id, name, description, and state. Default choice.</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
                 BASIC,
-                /// <summary>Full representation of matter is returned. Everything above and including MatterPermissions
-                /// list.</summary>
+
+                /// <summary>
+                /// Full representation of matter is returned. Everything above and including MatterPermissions list.
+                /// </summary>
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -1958,7 +1918,6 @@ namespace Google.Apis.Vault.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "matterId",
@@ -1976,7 +1935,6 @@ namespace Google.Apis.Vault.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Lists matters the user has access to.</summary>
@@ -1994,7 +1952,6 @@ namespace Google.Apis.Vault.v1
                 InitParameters();
             }
 
-
             /// <summary>The number of matters to return in the response. Default and maximum are 100.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -2003,24 +1960,29 @@ namespace Google.Apis.Vault.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>If set, list only matters with that specific state. The default is listing matters of all
-            /// states.</summary>
+            /// <summary>
+            /// If set, list only matters with that specific state. The default is listing matters of all states.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("state", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<StateEnum> State { get; set; }
 
-            /// <summary>If set, list only matters with that specific state. The default is listing matters of all
-            /// states.</summary>
+            /// <summary>
+            /// If set, list only matters with that specific state. The default is listing matters of all states.
+            /// </summary>
             public enum StateEnum
             {
                 /// <summary>The matter has no specified state.</summary>
                 [Google.Apis.Util.StringValueAttribute("STATE_UNSPECIFIED")]
                 STATEUNSPECIFIED,
+
                 /// <summary>This matter is open.</summary>
                 [Google.Apis.Util.StringValueAttribute("OPEN")]
                 OPEN,
+
                 /// <summary>This matter is closed.</summary>
                 [Google.Apis.Util.StringValueAttribute("CLOSED")]
                 CLOSED,
+
                 /// <summary>This matter is deleted.</summary>
                 [Google.Apis.Util.StringValueAttribute("DELETED")]
                 DELETED,
@@ -2036,15 +1998,17 @@ namespace Google.Apis.Vault.v1
                 /// <summary>There is no specified view.</summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
                 VIEWUNSPECIFIED,
+
                 /// <summary>Response includes the matter_id, name, description, and state. Default choice.</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
                 BASIC,
-                /// <summary>Full representation of matter is returned. Everything above and including MatterPermissions
-                /// list.</summary>
+
+                /// <summary>
+                /// Full representation of matter is returned. Everything above and including MatterPermissions list.
+                /// </summary>
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -2059,7 +2023,6 @@ namespace Google.Apis.Vault.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageSize",
@@ -2093,7 +2056,6 @@ namespace Google.Apis.Vault.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Removes an account as a matter collaborator.</summary>
@@ -2115,11 +2077,9 @@ namespace Google.Apis.Vault.v1
                 InitParameters();
             }
 
-
             /// <summary>The matter ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MatterId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Vault.v1.Data.RemoveMatterPermissionsRequest Body { get; set; }
@@ -2140,7 +2100,6 @@ namespace Google.Apis.Vault.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "matterId",
@@ -2150,7 +2109,6 @@ namespace Google.Apis.Vault.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Reopens the specified matter. Returns matter with updated state.</summary>
@@ -2172,11 +2130,9 @@ namespace Google.Apis.Vault.v1
                 InitParameters();
             }
 
-
             /// <summary>The matter ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MatterId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Vault.v1.Data.ReopenMatterRequest Body { get; set; }
@@ -2197,7 +2153,6 @@ namespace Google.Apis.Vault.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "matterId",
@@ -2207,7 +2162,6 @@ namespace Google.Apis.Vault.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Undeletes the specified matter. Returns matter with updated state.</summary>
@@ -2229,11 +2183,9 @@ namespace Google.Apis.Vault.v1
                 InitParameters();
             }
 
-
             /// <summary>The matter ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MatterId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Vault.v1.Data.UndeleteMatterRequest Body { get; set; }
@@ -2254,7 +2206,6 @@ namespace Google.Apis.Vault.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "matterId",
@@ -2264,11 +2215,12 @@ namespace Google.Apis.Vault.v1
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Updates the specified matter. This updates only the name and description of the matter, identified
-        /// by matter ID. Changes to any other fields are ignored. Returns the default view of the matter.</summary>
+        /// <summary>
+        /// Updates the specified matter. This updates only the name and description of the matter, identified by matter
+        /// ID. Changes to any other fields are ignored. Returns the default view of the matter.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="matterId">The matter ID.</param>
         public virtual UpdateRequest Update(Google.Apis.Vault.v1.Data.Matter body, string matterId)
@@ -2276,8 +2228,10 @@ namespace Google.Apis.Vault.v1
             return new UpdateRequest(service, body, matterId);
         }
 
-        /// <summary>Updates the specified matter. This updates only the name and description of the matter, identified
-        /// by matter ID. Changes to any other fields are ignored. Returns the default view of the matter.</summary>
+        /// <summary>
+        /// Updates the specified matter. This updates only the name and description of the matter, identified by matter
+        /// ID. Changes to any other fields are ignored. Returns the default view of the matter.
+        /// </summary>
         public class UpdateRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Matter>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -2288,11 +2242,9 @@ namespace Google.Apis.Vault.v1
                 InitParameters();
             }
 
-
             /// <summary>The matter ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MatterId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Vault.v1.Data.Matter Body { get; set; }
@@ -2313,7 +2265,6 @@ namespace Google.Apis.Vault.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("matterId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "matterId",
@@ -2323,7 +2274,6 @@ namespace Google.Apis.Vault.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -2339,16 +2289,16 @@ namespace Google.Apis.Vault.v1
         public OperationsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
-        /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns
+        /// <summary>
+        /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the
+        /// operation, but success is not guaranteed. If the server doesn't support this method, it returns
         /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
         /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
         /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
-        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
+        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">The name of the operation resource to be cancelled.</param>
         public virtual CancelRequest Cancel(Google.Apis.Vault.v1.Data.CancelOperationRequest body, string name)
@@ -2356,12 +2306,14 @@ namespace Google.Apis.Vault.v1
             return new CancelRequest(service, body, name);
         }
 
-        /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
-        /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns
+        /// <summary>
+        /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the
+        /// operation, but success is not guaranteed. If the server doesn't support this method, it returns
         /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
         /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
         /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
-        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
+        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        /// </summary>
         public class CancelRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Empty>
         {
             /// <summary>Constructs a new Cancel request.</summary>
@@ -2372,11 +2324,9 @@ namespace Google.Apis.Vault.v1
                 InitParameters();
             }
 
-
             /// <summary>The name of the operation resource to be cancelled.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Vault.v1.Data.CancelOperationRequest Body { get; set; }
@@ -2397,7 +2347,6 @@ namespace Google.Apis.Vault.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -2407,21 +2356,24 @@ namespace Google.Apis.Vault.v1
                     Pattern = @"^operations/.*$",
                 });
             }
-
         }
 
-        /// <summary>Deletes a long-running operation. This method indicates that the client is no longer interested in
-        /// the operation result. It does not cancel the operation. If the server doesn't support this method, it
-        /// returns `google.rpc.Code.UNIMPLEMENTED`.</summary>
+        /// <summary>
+        /// Deletes a long-running operation. This method indicates that the client is no longer interested in the
+        /// operation result. It does not cancel the operation. If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`.
+        /// </summary>
         /// <param name="name">The name of the operation resource to be deleted.</param>
         public virtual DeleteRequest Delete(string name)
         {
             return new DeleteRequest(service, name);
         }
 
-        /// <summary>Deletes a long-running operation. This method indicates that the client is no longer interested in
-        /// the operation result. It does not cancel the operation. If the server doesn't support this method, it
-        /// returns `google.rpc.Code.UNIMPLEMENTED`.</summary>
+        /// <summary>
+        /// Deletes a long-running operation. This method indicates that the client is no longer interested in the
+        /// operation result. It does not cancel the operation. If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`.
+        /// </summary>
         public class DeleteRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -2431,11 +2383,9 @@ namespace Google.Apis.Vault.v1
                 InitParameters();
             }
 
-
             /// <summary>The name of the operation resource to be deleted.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
@@ -2450,7 +2400,6 @@ namespace Google.Apis.Vault.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -2460,19 +2409,22 @@ namespace Google.Apis.Vault.v1
                     Pattern = @"^operations/.*$",
                 });
             }
-
         }
 
-        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
-        /// operation result at intervals as recommended by the API service.</summary>
+        /// <summary>
+        /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation result
+        /// at intervals as recommended by the API service.
+        /// </summary>
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
         }
 
-        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
-        /// operation result at intervals as recommended by the API service.</summary>
+        /// <summary>
+        /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation result
+        /// at intervals as recommended by the API service.
+        /// </summary>
         public class GetRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Operation>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -2482,11 +2434,9 @@ namespace Google.Apis.Vault.v1
                 InitParameters();
             }
 
-
             /// <summary>The name of the operation resource.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -2501,7 +2451,6 @@ namespace Google.Apis.Vault.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -2511,27 +2460,30 @@ namespace Google.Apis.Vault.v1
                     Pattern = @"^operations/.*$",
                 });
             }
-
         }
 
-        /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support this
-        /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to
-        /// use different resource name schemes, such as `users/operations`. To override the binding, API services can
-        /// add a binding such as `"/v1/{name=users}/operations"` to their service configuration. For backwards
+        /// <summary>
+        /// Lists operations that match the specified filter in the request. If the server doesn't support this method,
+        /// it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use
+        /// different resource name schemes, such as `users/*/operations`. To override the binding, API services can add
+        /// a binding such as `"/v1/{name=users/*}/operations"` to their service configuration. For backwards
         /// compatibility, the default name includes the operations collection id, however overriding users must ensure
-        /// the name binding is the parent resource, without the operations collection id.</summary>
+        /// the name binding is the parent resource, without the operations collection id.
+        /// </summary>
         /// <param name="name">The name of the operation's parent resource.</param>
         public virtual ListRequest List(string name)
         {
             return new ListRequest(service, name);
         }
 
-        /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support this
-        /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to
-        /// use different resource name schemes, such as `users/operations`. To override the binding, API services can
-        /// add a binding such as `"/v1/{name=users}/operations"` to their service configuration. For backwards
+        /// <summary>
+        /// Lists operations that match the specified filter in the request. If the server doesn't support this method,
+        /// it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use
+        /// different resource name schemes, such as `users/*/operations`. To override the binding, API services can add
+        /// a binding such as `"/v1/{name=users/*}/operations"` to their service configuration. For backwards
         /// compatibility, the default name includes the operations collection id, however overriding users must ensure
-        /// the name binding is the parent resource, without the operations collection id.</summary>
+        /// the name binding is the parent resource, without the operations collection id.
+        /// </summary>
         public class ListRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.ListOperationsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2540,7 +2492,6 @@ namespace Google.Apis.Vault.v1
                 Name = name;
                 InitParameters();
             }
-
 
             /// <summary>The name of the operation's parent resource.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2558,7 +2509,6 @@ namespace Google.Apis.Vault.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -2572,7 +2522,6 @@ namespace Google.Apis.Vault.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -2606,14 +2555,11 @@ namespace Google.Apis.Vault.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.Vault.v1.Data
-{    
-
+{
     /// <summary>Count number for each account.</summary>
     public class AccountCount : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2627,7 +2573,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An error that occurred when querying a specific account</summary>
     public class AccountCountError : Google.Apis.Requests.IDirectResponseSchema
@@ -2642,7 +2588,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Accounts to search</summary>
     public class AccountInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -2653,7 +2599,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A status detailing the status of each account creation, and the HeldAccount, if successful.</summary>
     public class AddHeldAccountResult : Google.Apis.Requests.IDirectResponseSchema
@@ -2668,24 +2614,27 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Add a list of accounts to a hold.</summary>
     public class AddHeldAccountsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Account IDs to identify which accounts to add. Only account_ids or only emails should be specified,
-        /// but not both.</summary>
+        /// <summary>
+        /// Account IDs to identify which accounts to add. Only account_ids or only emails should be specified, but not
+        /// both.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountIds")]
         public virtual System.Collections.Generic.IList<string> AccountIds { get; set; }
 
-        /// <summary>Emails to identify which accounts to add. Only emails or only account_ids should be specified, but
-        /// not both.</summary>
+        /// <summary>
+        /// Emails to identify which accounts to add. Only emails or only account_ids should be specified, but not both.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emails")]
         public virtual System.Collections.Generic.IList<string> Emails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for batch create held accounts.</summary>
     public class AddHeldAccountsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -2696,14 +2645,17 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Add an account with the permission specified. The role cannot be owner. If an account already has a
-    /// role in the matter, it will be overwritten.</summary>
+    /// <summary>
+    /// Add an account with the permission specified. The role cannot be owner. If an account already has a role in the
+    /// matter, it will be overwritten.
+    /// </summary>
     public class AddMatterPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Only relevant if send_emails is true. True to CC requestor in the email message. False to not CC
-        /// requestor.</summary>
+        /// <summary>
+        /// Only relevant if send_emails is true. True to CC requestor in the email message. False to not CC requestor.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ccMe")]
         public virtual System.Nullable<bool> CcMe { get; set; }
 
@@ -2711,28 +2663,29 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("matterPermission")]
         public virtual MatterPermission MatterPermission { get; set; }
 
-        /// <summary>True to send notification email to the added account. False to not send notification
-        /// email.</summary>
+        /// <summary>
+        /// True to send notification email to the added account. False to not send notification email.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sendEmails")]
         public virtual System.Nullable<bool> SendEmails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Close a matter by ID.</summary>
     public class CloseMatterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response to a CloseMatterRequest.</summary>
     public class CloseMatterResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -2743,13 +2696,15 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An export file on cloud storage</summary>
     public class CloudStorageFile : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The cloud storage bucket name of this export file. Can be used in cloud storage JSON/XML API, but
-        /// not to list the bucket contents. Instead, you can get individual export files by object name.</summary>
+        /// <summary>
+        /// The cloud storage bucket name of this export file. Can be used in cloud storage JSON/XML API, but not to
+        /// list the bucket contents. Instead, you can get individual export files by object name.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
         public virtual string BucketName { get; set; }
 
@@ -2757,8 +2712,9 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("md5Hash")]
         public virtual string Md5Hash { get; set; }
 
-        /// <summary>The cloud storage object name of this export file. Can be used in cloud storage JSON/XML
-        /// API.</summary>
+        /// <summary>
+        /// The cloud storage object name of this export file. Can be used in cloud storage JSON/XML API.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectName")]
         public virtual string ObjectName { get; set; }
 
@@ -2768,7 +2724,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Export sink for cloud storage files.</summary>
     public class CloudStorageSink : Google.Apis.Requests.IDirectResponseSchema
@@ -2779,7 +2735,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Corpus specific queries.</summary>
     public class CorpusQuery : Google.Apis.Requests.IDirectResponseSchema
@@ -2806,7 +2762,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Long running operation metadata for CountArtifacts.</summary>
     public class CountArtifactsMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -2829,7 +2785,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Count artifacts request.</summary>
     public class CountArtifactsRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -2844,7 +2800,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Definition of the response for method CountArtifacts.</summary>
     public class CountArtifactsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -2863,7 +2819,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The options for Drive export.</summary>
     public class DriveExportOptions : Google.Apis.Requests.IDirectResponseSchema
@@ -2874,7 +2830,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Drive search advanced options</summary>
     public class DriveOptions : Google.Apis.Requests.IDirectResponseSchema
@@ -2887,24 +2843,28 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includeTeamDrives")]
         public virtual System.Nullable<bool> IncludeTeamDrives { get; set; }
 
-        /// <summary>Search the versions of the Drive file as of the reference date. These timestamps are in GMT and
-        /// rounded down to the given date.</summary>
+        /// <summary>
+        /// Search the versions of the Drive file as of the reference date. These timestamps are in GMT and rounded down
+        /// to the given date.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionDate")]
         public virtual object VersionDate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+    /// object `{}`.
+    /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An export</summary>
     public class Export : Google.Apis.Requests.IDirectResponseSchema
@@ -2951,7 +2911,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Export advanced options</summary>
     public class ExportOptions : Google.Apis.Requests.IDirectResponseSchema
@@ -2982,7 +2942,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Stats of an export.</summary>
     public class ExportStats : Google.Apis.Requests.IDirectResponseSchema
@@ -3001,7 +2961,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Groups specific count metrics.</summary>
     public class GroupsCountResult : Google.Apis.Requests.IDirectResponseSchema
@@ -3018,8 +2978,10 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("matchingAccountsCount")]
         public virtual System.Nullable<long> MatchingAccountsCount { get; set; }
 
-        /// <summary>When data scope is HELD_DATA in the request Query, these accounts in the request are not queried
-        /// because they are not on hold. For other data scope, this field is not set.</summary>
+        /// <summary>
+        /// When data scope is HELD_DATA in the request Query, these accounts in the request are not queried because
+        /// they are not on hold. For other data scope, this field is not set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonQueryableAccounts")]
         public virtual System.Collections.Generic.IList<string> NonQueryableAccounts { get; set; }
 
@@ -3029,7 +2991,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The options for groups export.</summary>
     public class GroupsExportOptions : Google.Apis.Requests.IDirectResponseSchema
@@ -3040,7 +3002,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The options for hangouts chat export.</summary>
     public class HangoutsChatExportOptions : Google.Apis.Requests.IDirectResponseSchema
@@ -3051,7 +3013,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Accounts to search</summary>
     public class HangoutsChatInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -3062,7 +3024,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Hangouts chat search advanced options</summary>
     public class HangoutsChatOptions : Google.Apis.Requests.IDirectResponseSchema
@@ -3073,18 +3035,21 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>An account being held in a particular hold. This structure is immutable. This can be either a single
-    /// user or a google group, depending on the corpus.</summary>
+    /// <summary>
+    /// An account being held in a particular hold. This structure is immutable. This can be either a single user or a
+    /// google group, depending on the corpus.
+    /// </summary>
     public class HeldAccount : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The account's ID as provided by the Admin SDK.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; }
 
-        /// <summary>The primary email address of the account. If used as an input, this takes precedence over account
-        /// ID.</summary>
+        /// <summary>
+        /// The primary email address of the account. If used as an input, this takes precedence over account ID.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
 
@@ -3102,7 +3067,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Query options for Drive holds.</summary>
     public class HeldDriveQuery : Google.Apis.Requests.IDirectResponseSchema
@@ -3117,18 +3082,22 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Query options for group holds.</summary>
     public class HeldGroupsQuery : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The end time range for the search query. These timestamps are in GMT and rounded down to the start
-        /// of the given date.</summary>
+        /// <summary>
+        /// The end time range for the search query. These timestamps are in GMT and rounded down to the start of the
+        /// given date.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
-        /// <summary>The start time range for the search query. These timestamps are in GMT and rounded down to the
-        /// start of the given date.</summary>
+        /// <summary>
+        /// The start time range for the search query. These timestamps are in GMT and rounded down to the start of the
+        /// given date.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
 
@@ -3138,7 +3107,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Query options for hangouts chat holds.</summary>
     public class HeldHangoutsChatQuery : Google.Apis.Requests.IDirectResponseSchema
@@ -3149,18 +3118,22 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Query options for mail holds.</summary>
     public class HeldMailQuery : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The end time range for the search query. These timestamps are in GMT and rounded down to the start
-        /// of the given date.</summary>
+        /// <summary>
+        /// The end time range for the search query. These timestamps are in GMT and rounded down to the start of the
+        /// given date.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
-        /// <summary>The start time range for the search query. These timestamps are in GMT and rounded down to the
-        /// start of the given date.</summary>
+        /// <summary>
+        /// The start time range for the search query. These timestamps are in GMT and rounded down to the start of the
+        /// given date.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
 
@@ -3170,7 +3143,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A organizational unit being held in a particular hold. This structure is immutable.</summary>
     public class HeldOrgUnit : Google.Apis.Requests.IDirectResponseSchema
@@ -3185,23 +3158,26 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Query options for Voice holds.</summary>
     public class HeldVoiceQuery : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Data covered by this rule. Should be non-empty. Order does not matter and duplicates will be
-        /// ignored.</summary>
+        /// <summary>
+        /// Data covered by this rule. Should be non-empty. Order does not matter and duplicates will be ignored.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coveredData")]
         public virtual System.Collections.Generic.IList<string> CoveredData { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Represents a hold within Vault. A hold restricts purging of artifacts based on the combination of the
-    /// query and accounts restrictions. A hold can be configured to either apply to an explicitly configured set of
-    /// accounts, or can be applied to all members of an organizational unit.</summary>
+    /// <summary>
+    /// Represents a hold within Vault. A hold restricts purging of artifacts based on the combination of the query and
+    /// accounts restrictions. A hold can be configured to either apply to an explicitly configured set of accounts, or
+    /// can be applied to all members of an organizational unit.
+    /// </summary>
     public class Hold : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If set, the hold applies to the enumerated accounts and org_unit must be empty.</summary>
@@ -3220,8 +3196,10 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>If set, the hold applies to all members of the organizational unit and accounts must be empty. This
-        /// property is mutable. For groups holds, set the accounts field.</summary>
+        /// <summary>
+        /// If set, the hold applies to all members of the organizational unit and accounts must be empty. This property
+        /// is mutable. For groups holds, set the accounts field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgUnit")]
         public virtual HeldOrgUnit OrgUnit { get; set; }
 
@@ -3235,7 +3213,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The holds for a matter.</summary>
     public class ListExportsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -3250,7 +3228,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Returns a list of held accounts for a hold.</summary>
     public class ListHeldAccountsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -3261,7 +3239,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The holds for a matter.</summary>
     public class ListHoldsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -3270,14 +3248,16 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("holds")]
         public virtual System.Collections.Generic.IList<Hold> Holds { get; set; }
 
-        /// <summary>Page token to retrieve the next page of results in the list. If this is empty, then there are no
-        /// more holds to list.</summary>
+        /// <summary>
+        /// Page token to retrieve the next page of results in the list. If this is empty, then there are no more holds
+        /// to list.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Provides the list of matters.</summary>
     public class ListMattersResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -3292,7 +3272,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The response message for Operations.ListOperations.</summary>
     public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -3307,13 +3287,15 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Definition of the response for method ListSaveQuery.</summary>
     public class ListSavedQueriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Page token to retrieve the next page of results in the list. If this is empty, then there are no
-        /// more saved queries to list.</summary>
+        /// <summary>
+        /// Page token to retrieve the next page of results in the list. If this is empty, then there are no more saved
+        /// queries to list.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -3323,7 +3305,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Mail specific count metrics.</summary>
     public class MailCountResult : Google.Apis.Requests.IDirectResponseSchema
@@ -3340,8 +3322,10 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("matchingAccountsCount")]
         public virtual System.Nullable<long> MatchingAccountsCount { get; set; }
 
-        /// <summary>When data scope is HELD_DATA in the request Query, these accounts in the request are not queried
-        /// because they are not on hold. For other data scope, this field is not set.</summary>
+        /// <summary>
+        /// When data scope is HELD_DATA in the request Query, these accounts in the request are not queried because
+        /// they are not on hold. For other data scope, this field is not set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonQueryableAccounts")]
         public virtual System.Collections.Generic.IList<string> NonQueryableAccounts { get; set; }
 
@@ -3351,7 +3335,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The options for mail export.</summary>
     public class MailExportOptions : Google.Apis.Requests.IDirectResponseSchema
@@ -3366,7 +3350,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Mail search advanced options</summary>
     public class MailOptions : Google.Apis.Requests.IDirectResponseSchema
@@ -3377,7 +3361,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a matter.</summary>
     public class Matter : Google.Apis.Requests.IDirectResponseSchema
@@ -3386,13 +3370,16 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>The matter ID which is generated by the server. Should be blank when creating a new
-        /// matter.</summary>
+        /// <summary>
+        /// The matter ID which is generated by the server. Should be blank when creating a new matter.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matterId")]
         public virtual string MatterId { get; set; }
 
-        /// <summary>List of users and access to the matter. Currently there is no programmer defined limit on the
-        /// number of permissions a matter can have.</summary>
+        /// <summary>
+        /// List of users and access to the matter. Currently there is no programmer defined limit on the number of
+        /// permissions a matter can have.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matterPermissions")]
         public virtual System.Collections.Generic.IList<MatterPermission> MatterPermissions { get; set; }
 
@@ -3406,10 +3393,12 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Currently each matter only has one owner, and all others are collaborators. When an account is purged,
-    /// its corresponding MatterPermission resources cease to exist.</summary>
+    /// <summary>
+    /// Currently each matter only has one owner, and all others are collaborators. When an account is purged, its
+    /// corresponding MatterPermission resources cease to exist.
+    /// </summary>
     public class MatterPermission : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The account ID, as provided by Admin SDK.</summary>
@@ -3422,13 +3411,15 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
-        /// completed, and either `error` or `response` is available.</summary>
+        /// <summary>
+        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed,
+        /// and either `error` or `response` is available.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; }
 
@@ -3436,29 +3427,34 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; }
 
-        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
-        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
-        /// returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and
+        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
+        /// a long-running operation should document the metadata type, if any.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
-        /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// If you use the default HTTP mapping, the `name` should be a resource name ending with
-        /// `operations/{unique_id}`.</summary>
+        /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
+        /// use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// <summary>
+        /// The normal response of the operation in case of success. If the original method returns no data on success,
+        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
-        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Org Unit to search</summary>
     public class OrgUnitInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -3469,9 +3465,9 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A query definition relevant for search & export.</summary>
+    /// <summary>A query definition relevant for search &amp; export.</summary>
     public class Query : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>When 'ACCOUNT' is chosen as search method, account_info needs to be specified.</summary>
@@ -3490,13 +3486,16 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("driveOptions")]
         public virtual DriveOptions DriveOptions { get; set; }
 
-        /// <summary>The end time range for the search query. These timestamps are in GMT and rounded down to the start
-        /// of the given date.</summary>
+        /// <summary>
+        /// The end time range for the search query. These timestamps are in GMT and rounded down to the start of the
+        /// given date.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
-        /// <summary>When 'ROOM' is chosen as search method, hangout_chats_info needs to be specified. (read-
-        /// only)</summary>
+        /// <summary>
+        /// When 'ROOM' is chosen as search method, hangout_chats_info needs to be specified. (read-only)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hangoutsChatInfo")]
         public virtual HangoutsChatInfo HangoutsChatInfo { get; set; }
 
@@ -3508,9 +3507,11 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mailOptions")]
         public virtual MailOptions MailOptions { get; set; }
 
-        /// <summary>The search method to use. This field is similar to the search_method field but is introduced to
-        /// support shared drives. It supports all search method types. In case the search_method is TEAM_DRIVE the
-        /// response of this field will be SHARED_DRIVE only.</summary>
+        /// <summary>
+        /// The search method to use. This field is similar to the search_method field but is introduced to support
+        /// shared drives. It supports all search method types. In case the search_method is TEAM_DRIVE the response of
+        /// this field will be SHARED_DRIVE only.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; }
 
@@ -3526,8 +3527,10 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sharedDriveInfo")]
         public virtual SharedDriveInfo SharedDriveInfo { get; set; }
 
-        /// <summary>The start time range for the search query. These timestamps are in GMT and rounded down to the
-        /// start of the given date.</summary>
+        /// <summary>
+        /// The start time range for the search query. These timestamps are in GMT and rounded down to the start of the
+        /// given date.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
 
@@ -3539,8 +3542,10 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("terms")]
         public virtual string Terms { get; set; }
 
-        /// <summary>The time zone name. It should be an IANA TZ name, such as "America/Los_Angeles". For more
-        /// information, see Time Zone.</summary>
+        /// <summary>
+        /// The time zone name. It should be an IANA TZ name, such as "America/Los_Angeles". For more information, see
+        /// Time Zone.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
 
@@ -3550,7 +3555,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Remove a list of accounts from a hold.</summary>
     public class RemoveHeldAccountsRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -3561,7 +3566,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for batch delete held accounts.</summary>
     public class RemoveHeldAccountsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -3572,7 +3577,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Remove an account as a matter collaborator.</summary>
     public class RemoveMatterPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -3583,14 +3588,14 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Reopen a matter by ID.</summary>
     public class ReopenMatterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response to a ReopenMatterRequest.</summary>
     public class ReopenMatterResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -3601,7 +3606,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Definition of the saved query.</summary>
     public class SavedQuery : Google.Apis.Requests.IDirectResponseSchema
@@ -3614,8 +3619,10 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Output only. The matter ID of the associated matter. The server does not look at this field during
-        /// create and always uses matter id in the URL.</summary>
+        /// <summary>
+        /// Output only. The matter ID of the associated matter. The server does not look at this field during create
+        /// and always uses matter id in the URL.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matterId")]
         public virtual string MatterId { get; set; }
 
@@ -3629,7 +3636,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Shared drives to search</summary>
     public class SharedDriveInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -3640,32 +3647,36 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>The `Status` type defines a logical error model that is suitable for different programming
-    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
-    /// this error model and how to work with it in the [API Design
-    /// Guide](https://cloud.google.com/apis/design/errors).</summary>
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; }
 
-        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
-        /// use.</summary>
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
-        /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
-        /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Team Drives to search</summary>
     public class TeamDriveInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -3676,14 +3687,14 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Undelete a matter by ID.</summary>
     public class UndeleteMatterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>User's information.</summary>
     public class UserInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -3698,7 +3709,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The options for voice export.</summary>
     public class VoiceExportOptions : Google.Apis.Requests.IDirectResponseSchema
@@ -3709,7 +3720,7 @@ namespace Google.Apis.Vault.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Voice search options</summary>
     public class VoiceOptions : Google.Apis.Requests.IDirectResponseSchema

@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -64,7 +69,6 @@ namespace Google.Apis.PubsubLite.v1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Pub/Sub Lite API.</summary>
@@ -72,10 +76,7 @@ namespace Google.Apis.PubsubLite.v1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
-
-
 
         /// <summary>Gets the Admin resource.</summary>
         public virtual AdminResource Admin { get; }
@@ -105,6 +106,7 @@ namespace Google.Apis.PubsubLite.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -124,9 +126,11 @@ namespace Google.Apis.PubsubLite.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -140,8 +144,10 @@ namespace Google.Apis.PubsubLite.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -153,8 +159,10 @@ namespace Google.Apis.PubsubLite.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -170,7 +178,6 @@ namespace Google.Apis.PubsubLite.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -275,7 +282,6 @@ namespace Google.Apis.PubsubLite.v1
         {
             this.service = service;
             Projects = new ProjectsResource(service);
-
         }
 
         /// <summary>Gets the Projects resource.</summary>
@@ -294,7 +300,6 @@ namespace Google.Apis.PubsubLite.v1
             {
                 this.service = service;
                 Locations = new LocationsResource(service);
-
             }
 
             /// <summary>Gets the Locations resource.</summary>
@@ -314,7 +319,6 @@ namespace Google.Apis.PubsubLite.v1
                     this.service = service;
                     Subscriptions = new SubscriptionsResource(service);
                     Topics = new TopicsResource(service);
-
                 }
 
                 /// <summary>Gets the Subscriptions resource.</summary>
@@ -332,14 +336,14 @@ namespace Google.Apis.PubsubLite.v1
                     public SubscriptionsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
-
                     }
-
 
                     /// <summary>Creates a new subscription.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">Required. The parent location in which to create the subscription. Structured like
-                    /// `projects/{project_number}/locations/{location}`.</param>
+                    /// <param name="parent">
+                    /// Required. The parent location in which to create the subscription. Structured like
+                    /// `projects/{project_number}/locations/{location}`.
+                    /// </param>
                     public virtual CreateRequest Create(Google.Apis.PubsubLite.v1.Data.Subscription body, string parent)
                     {
                         return new CreateRequest(service, body, parent);
@@ -356,17 +360,19 @@ namespace Google.Apis.PubsubLite.v1
                             InitParameters();
                         }
 
-
-                        /// <summary>Required. The parent location in which to create the subscription. Structured like
-                        /// `projects/{project_number}/locations/{location}`.</summary>
+                        /// <summary>
+                        /// Required. The parent location in which to create the subscription. Structured like
+                        /// `projects/{project_number}/locations/{location}`.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Required. The ID to use for the subscription, which will become the final component
-                        /// of the subscription's name. This value is structured like: `my-sub-name`.</summary>
+                        /// <summary>
+                        /// Required. The ID to use for the subscription, which will become the final component of the
+                        /// subscription's name. This value is structured like: `my-sub-name`.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("subscriptionId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string SubscriptionId { get; set; }
-
 
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.PubsubLite.v1.Data.Subscription Body { get; set; }
@@ -387,7 +393,6 @@ namespace Google.Apis.PubsubLite.v1
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "parent",
@@ -405,7 +410,6 @@ namespace Google.Apis.PubsubLite.v1
                                 Pattern = null,
                             });
                         }
-
                     }
 
                     /// <summary>Deletes the specified subscription.</summary>
@@ -425,11 +429,9 @@ namespace Google.Apis.PubsubLite.v1
                             InitParameters();
                         }
 
-
                         /// <summary>Required. The name of the subscription to delete.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
-
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "delete";
@@ -444,7 +446,6 @@ namespace Google.Apis.PubsubLite.v1
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "name",
@@ -454,7 +455,6 @@ namespace Google.Apis.PubsubLite.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$",
                             });
                         }
-
                     }
 
                     /// <summary>Returns the subscription configuration.</summary>
@@ -474,11 +474,9 @@ namespace Google.Apis.PubsubLite.v1
                             InitParameters();
                         }
 
-
                         /// <summary>Required. The name of the subscription whose configuration to return.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
-
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
@@ -493,7 +491,6 @@ namespace Google.Apis.PubsubLite.v1
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "name",
@@ -503,12 +500,13 @@ namespace Google.Apis.PubsubLite.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$",
                             });
                         }
-
                     }
 
                     /// <summary>Returns the list of subscriptions for the given project.</summary>
-                    /// <param name="parent">Required. The parent whose subscriptions are to be listed. Structured like
-                    /// `projects/{project_number}/locations/{location}`.</param>
+                    /// <param name="parent">
+                    /// Required. The parent whose subscriptions are to be listed. Structured like
+                    /// `projects/{project_number}/locations/{location}`.
+                    /// </param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
@@ -524,23 +522,27 @@ namespace Google.Apis.PubsubLite.v1
                             InitParameters();
                         }
 
-
-                        /// <summary>Required. The parent whose subscriptions are to be listed. Structured like
-                        /// `projects/{project_number}/locations/{location}`.</summary>
+                        /// <summary>
+                        /// Required. The parent whose subscriptions are to be listed. Structured like
+                        /// `projects/{project_number}/locations/{location}`.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>The maximum number of subscriptions to return. The service may return fewer than
-                        /// this value. If unset or zero, all subscriptions for the parent will be returned.</summary>
+                        /// <summary>
+                        /// The maximum number of subscriptions to return. The service may return fewer than this value.
+                        /// If unset or zero, all subscriptions for the parent will be returned.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
-                        /// <summary>A page token, received from a previous `ListSubscriptions` call. Provide this to
-                        /// retrieve the subsequent page. When paginating, all other parameters provided to
-                        /// `ListSubscriptions` must match the call that provided the page token.</summary>
+                        /// <summary>
+                        /// A page token, received from a previous `ListSubscriptions` call. Provide this to retrieve
+                        /// the subsequent page. When paginating, all other parameters provided to `ListSubscriptions`
+                        /// must match the call that provided the page token.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
-
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
@@ -555,7 +557,6 @@ namespace Google.Apis.PubsubLite.v1
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "parent",
@@ -581,13 +582,14 @@ namespace Google.Apis.PubsubLite.v1
                                 Pattern = null,
                             });
                         }
-
                     }
 
                     /// <summary>Updates properties of the specified subscription.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">The name of the subscription. Structured like:
-                    /// projects/{project_number}/locations/{location}/subscriptions/{subscription_id}</param>
+                    /// <param name="name">
+                    /// The name of the subscription. Structured like:
+                    /// projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
+                    /// </param>
                     public virtual PatchRequest Patch(Google.Apis.PubsubLite.v1.Data.Subscription body, string name)
                     {
                         return new PatchRequest(service, body, name);
@@ -604,16 +606,16 @@ namespace Google.Apis.PubsubLite.v1
                             InitParameters();
                         }
 
-
-                        /// <summary>The name of the subscription. Structured like:
-                        /// projects/{project_number}/locations/{location}/subscriptions/{subscription_id}</summary>
+                        /// <summary>
+                        /// The name of the subscription. Structured like:
+                        /// projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
                         /// <summary>Required. A mask specifying the subscription fields to change.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
-
 
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.PubsubLite.v1.Data.Subscription Body { get; set; }
@@ -634,7 +636,6 @@ namespace Google.Apis.PubsubLite.v1
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "name",
@@ -652,9 +653,9 @@ namespace Google.Apis.PubsubLite.v1
                                 Pattern = null,
                             });
                         }
-
                     }
                 }
+
                 /// <summary>Gets the Topics resource.</summary>
                 public virtual TopicsResource Topics { get; }
 
@@ -671,7 +672,6 @@ namespace Google.Apis.PubsubLite.v1
                     {
                         this.service = service;
                         Subscriptions = new SubscriptionsResource(service);
-
                     }
 
                     /// <summary>Gets the Subscriptions resource.</summary>
@@ -689,9 +689,7 @@ namespace Google.Apis.PubsubLite.v1
                         public SubscriptionsResource(Google.Apis.Services.IClientService service)
                         {
                             this.service = service;
-
                         }
-
 
                         /// <summary>Lists the subscriptions attached to the specified topic.</summary>
                         /// <param name="name">Required. The name of the topic whose subscriptions to list.</param>
@@ -710,23 +708,24 @@ namespace Google.Apis.PubsubLite.v1
                                 InitParameters();
                             }
 
-
                             /// <summary>Required. The name of the topic whose subscriptions to list.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
-                            /// <summary>The maximum number of subscriptions to return. The service may return fewer
-                            /// than this value. If unset or zero, all subscriptions for the given topic will be
-                            /// returned.</summary>
+                            /// <summary>
+                            /// The maximum number of subscriptions to return. The service may return fewer than this
+                            /// value. If unset or zero, all subscriptions for the given topic will be returned.
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
-                            /// <summary>A page token, received from a previous `ListTopicSubscriptions` call. Provide
-                            /// this to retrieve the subsequent page. When paginating, all other parameters provided to
-                            /// `ListTopicSubscriptions` must match the call that provided the page token.</summary>
+                            /// <summary>
+                            /// A page token, received from a previous `ListTopicSubscriptions` call. Provide this to
+                            /// retrieve the subsequent page. When paginating, all other parameters provided to
+                            /// `ListTopicSubscriptions` must match the call that provided the page token.
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
-
 
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "list";
@@ -741,7 +740,6 @@ namespace Google.Apis.PubsubLite.v1
                             protected override void InitParameters()
                             {
                                 base.InitParameters();
-
                                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "name",
@@ -767,14 +765,15 @@ namespace Google.Apis.PubsubLite.v1
                                     Pattern = null,
                                 });
                             }
-
                         }
                     }
 
                     /// <summary>Creates a new topic.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">Required. The parent location in which to create the topic. Structured like
-                    /// `projects/{project_number}/locations/{location}`.</param>
+                    /// <param name="parent">
+                    /// Required. The parent location in which to create the topic. Structured like
+                    /// `projects/{project_number}/locations/{location}`.
+                    /// </param>
                     public virtual CreateRequest Create(Google.Apis.PubsubLite.v1.Data.Topic body, string parent)
                     {
                         return new CreateRequest(service, body, parent);
@@ -791,17 +790,19 @@ namespace Google.Apis.PubsubLite.v1
                             InitParameters();
                         }
 
-
-                        /// <summary>Required. The parent location in which to create the topic. Structured like
-                        /// `projects/{project_number}/locations/{location}`.</summary>
+                        /// <summary>
+                        /// Required. The parent location in which to create the topic. Structured like
+                        /// `projects/{project_number}/locations/{location}`.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Required. The ID to use for the topic, which will become the final component of the
-                        /// topic's name. This value is structured like: `my-topic-name`.</summary>
+                        /// <summary>
+                        /// Required. The ID to use for the topic, which will become the final component of the topic's
+                        /// name. This value is structured like: `my-topic-name`.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("topicId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string TopicId { get; set; }
-
 
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.PubsubLite.v1.Data.Topic Body { get; set; }
@@ -822,7 +823,6 @@ namespace Google.Apis.PubsubLite.v1
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "parent",
@@ -840,7 +840,6 @@ namespace Google.Apis.PubsubLite.v1
                                 Pattern = null,
                             });
                         }
-
                     }
 
                     /// <summary>Deletes the specified topic.</summary>
@@ -860,11 +859,9 @@ namespace Google.Apis.PubsubLite.v1
                             InitParameters();
                         }
 
-
                         /// <summary>Required. The name of the topic to delete.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
-
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "delete";
@@ -879,7 +876,6 @@ namespace Google.Apis.PubsubLite.v1
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "name",
@@ -889,7 +885,6 @@ namespace Google.Apis.PubsubLite.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/topics/[^/]+$",
                             });
                         }
-
                     }
 
                     /// <summary>Returns the topic configuration.</summary>
@@ -909,11 +904,9 @@ namespace Google.Apis.PubsubLite.v1
                             InitParameters();
                         }
 
-
                         /// <summary>Required. The name of the topic whose configuration to return.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
-
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
@@ -928,7 +921,6 @@ namespace Google.Apis.PubsubLite.v1
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "name",
@@ -938,7 +930,6 @@ namespace Google.Apis.PubsubLite.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/topics/[^/]+$",
                             });
                         }
-
                     }
 
                     /// <summary>Returns the partition information for the requested topic.</summary>
@@ -958,11 +949,9 @@ namespace Google.Apis.PubsubLite.v1
                             InitParameters();
                         }
 
-
                         /// <summary>Required. The topic whose partition information to return.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
-
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "getPartitions";
@@ -977,7 +966,6 @@ namespace Google.Apis.PubsubLite.v1
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "name",
@@ -987,12 +975,13 @@ namespace Google.Apis.PubsubLite.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/topics/[^/]+$",
                             });
                         }
-
                     }
 
                     /// <summary>Returns the list of topics for the given project.</summary>
-                    /// <param name="parent">Required. The parent whose topics are to be listed. Structured like
-                    /// `projects/{project_number}/locations/{location}`.</param>
+                    /// <param name="parent">
+                    /// Required. The parent whose topics are to be listed. Structured like
+                    /// `projects/{project_number}/locations/{location}`.
+                    /// </param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
@@ -1008,23 +997,27 @@ namespace Google.Apis.PubsubLite.v1
                             InitParameters();
                         }
 
-
-                        /// <summary>Required. The parent whose topics are to be listed. Structured like
-                        /// `projects/{project_number}/locations/{location}`.</summary>
+                        /// <summary>
+                        /// Required. The parent whose topics are to be listed. Structured like
+                        /// `projects/{project_number}/locations/{location}`.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>The maximum number of topics to return. The service may return fewer than this
-                        /// value. If unset or zero, all topics for the parent will be returned.</summary>
+                        /// <summary>
+                        /// The maximum number of topics to return. The service may return fewer than this value. If
+                        /// unset or zero, all topics for the parent will be returned.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
-                        /// <summary>A page token, received from a previous `ListTopics` call. Provide this to retrieve
-                        /// the subsequent page. When paginating, all other parameters provided to `ListTopics` must
-                        /// match the call that provided the page token.</summary>
+                        /// <summary>
+                        /// A page token, received from a previous `ListTopics` call. Provide this to retrieve the
+                        /// subsequent page. When paginating, all other parameters provided to `ListTopics` must match
+                        /// the call that provided the page token.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
-
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
@@ -1039,7 +1032,6 @@ namespace Google.Apis.PubsubLite.v1
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "parent",
@@ -1065,13 +1057,14 @@ namespace Google.Apis.PubsubLite.v1
                                 Pattern = null,
                             });
                         }
-
                     }
 
                     /// <summary>Updates properties of the specified topic.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">The name of the topic. Structured like:
-                    /// projects/{project_number}/locations/{location}/topics/{topic_id}</param>
+                    /// <param name="name">
+                    /// The name of the topic. Structured like:
+                    /// projects/{project_number}/locations/{location}/topics/{topic_id}
+                    /// </param>
                     public virtual PatchRequest Patch(Google.Apis.PubsubLite.v1.Data.Topic body, string name)
                     {
                         return new PatchRequest(service, body, name);
@@ -1088,16 +1081,16 @@ namespace Google.Apis.PubsubLite.v1
                             InitParameters();
                         }
 
-
-                        /// <summary>The name of the topic. Structured like:
-                        /// projects/{project_number}/locations/{location}/topics/{topic_id}</summary>
+                        /// <summary>
+                        /// The name of the topic. Structured like:
+                        /// projects/{project_number}/locations/{location}/topics/{topic_id}
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
                         /// <summary>Required. A mask specifying the topic fields to change.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
-
 
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.PubsubLite.v1.Data.Topic Body { get; set; }
@@ -1118,7 +1111,6 @@ namespace Google.Apis.PubsubLite.v1
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "name",
@@ -1136,7 +1128,6 @@ namespace Google.Apis.PubsubLite.v1
                                 Pattern = null,
                             });
                         }
-
                     }
                 }
             }
@@ -1156,7 +1147,6 @@ namespace Google.Apis.PubsubLite.v1
         {
             this.service = service;
             Projects = new ProjectsResource(service);
-
         }
 
         /// <summary>Gets the Projects resource.</summary>
@@ -1175,7 +1165,6 @@ namespace Google.Apis.PubsubLite.v1
             {
                 this.service = service;
                 Locations = new LocationsResource(service);
-
             }
 
             /// <summary>Gets the Locations resource.</summary>
@@ -1194,7 +1183,6 @@ namespace Google.Apis.PubsubLite.v1
                 {
                     this.service = service;
                     Subscriptions = new SubscriptionsResource(service);
-
                 }
 
                 /// <summary>Gets the Subscriptions resource.</summary>
@@ -1213,7 +1201,6 @@ namespace Google.Apis.PubsubLite.v1
                     {
                         this.service = service;
                         Cursors = new CursorsResource(service);
-
                     }
 
                     /// <summary>Gets the Cursors resource.</summary>
@@ -1231,13 +1218,13 @@ namespace Google.Apis.PubsubLite.v1
                         public CursorsResource(Google.Apis.Services.IClientService service)
                         {
                             this.service = service;
-
                         }
 
-
                         /// <summary>Returns all committed cursor information for a subscription.</summary>
-                        /// <param name="parent">Required. The subscription for which to retrieve cursors. Structured like
-                        /// `projects/{project_number}/locations/{location}/subscriptions/{subscription_id}`.</param>
+                        /// <param name="parent">
+                        /// Required. The subscription for which to retrieve cursors. Structured like
+                        /// `projects/{project_number}/locations/{location}/subscriptions/{subscription_id}`.
+                        /// </param>
                         public virtual ListRequest List(string parent)
                         {
                             return new ListRequest(service, parent);
@@ -1253,23 +1240,27 @@ namespace Google.Apis.PubsubLite.v1
                                 InitParameters();
                             }
 
-
-                            /// <summary>Required. The subscription for which to retrieve cursors. Structured like `proj
-                            /// ects/{project_number}/locations/{location}/subscriptions/{subscription_id}`.</summary>
+                            /// <summary>
+                            /// Required. The subscription for which to retrieve cursors. Structured like
+                            /// `projects/{project_number}/locations/{location}/subscriptions/{subscription_id}`.
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
-                            /// <summary>The maximum number of cursors to return. The service may return fewer than this
-                            /// value. If unset or zero, all cursors for the parent will be returned.</summary>
+                            /// <summary>
+                            /// The maximum number of cursors to return. The service may return fewer than this value.
+                            /// If unset or zero, all cursors for the parent will be returned.
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
-                            /// <summary>A page token, received from a previous `ListPartitionCursors` call. Provide
-                            /// this to retrieve the subsequent page. When paginating, all other parameters provided to
-                            /// `ListPartitionCursors` must match the call that provided the page token.</summary>
+                            /// <summary>
+                            /// A page token, received from a previous `ListPartitionCursors` call. Provide this to
+                            /// retrieve the subsequent page. When paginating, all other parameters provided to
+                            /// `ListPartitionCursors` must match the call that provided the page token.
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
-
 
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "list";
@@ -1284,7 +1275,6 @@ namespace Google.Apis.PubsubLite.v1
                             protected override void InitParameters()
                             {
                                 base.InitParameters();
-
                                 RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "parent",
@@ -1310,7 +1300,6 @@ namespace Google.Apis.PubsubLite.v1
                                     Pattern = null,
                                 });
                             }
-
                         }
                     }
                 }
@@ -1331,7 +1320,6 @@ namespace Google.Apis.PubsubLite.v1
         {
             this.service = service;
             Projects = new ProjectsResource(service);
-
         }
 
         /// <summary>Gets the Projects resource.</summary>
@@ -1350,7 +1338,6 @@ namespace Google.Apis.PubsubLite.v1
             {
                 this.service = service;
                 Locations = new LocationsResource(service);
-
             }
 
             /// <summary>Gets the Locations resource.</summary>
@@ -1369,7 +1356,6 @@ namespace Google.Apis.PubsubLite.v1
                 {
                     this.service = service;
                     Topics = new TopicsResource(service);
-
                 }
 
                 /// <summary>Gets the Topics resource.</summary>
@@ -1387,9 +1373,7 @@ namespace Google.Apis.PubsubLite.v1
                     public TopicsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
-
                     }
-
 
                     /// <summary>Compute statistics about a range of messages in a given topic and partition.</summary>
                     /// <param name="body">The body of the request.</param>
@@ -1410,11 +1394,9 @@ namespace Google.Apis.PubsubLite.v1
                             InitParameters();
                         }
 
-
                         /// <summary>Required. The topic for which we should compute message stats.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("topic", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Topic { get; private set; }
-
 
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.PubsubLite.v1.Data.ComputeMessageStatsRequest Body { get; set; }
@@ -1435,7 +1417,6 @@ namespace Google.Apis.PubsubLite.v1
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("topic", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "topic",
@@ -1445,38 +1426,36 @@ namespace Google.Apis.PubsubLite.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/topics/[^/]+$",
                             });
                         }
-
                     }
                 }
             }
         }
     }
 }
-
 namespace Google.Apis.PubsubLite.v1.Data
-{    
-
+{
     /// <summary>The throughput capacity configuration for each partition.</summary>
     public class Capacity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.</summary>
+        /// <summary>Publish throughput capacity per partition in MiB/s. Must be &gt;= 4 and &lt;= 16.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishMibPerSec")]
         public virtual System.Nullable<int> PublishMibPerSec { get; set; }
 
-        /// <summary>Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 32.</summary>
+        /// <summary>Subscribe throughput capacity per partition in MiB/s. Must be &gt;= 4 and &lt;= 32.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscribeMibPerSec")]
         public virtual System.Nullable<int> SubscribeMibPerSec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Compute statistics about a range of messages in a given topic and partition.</summary>
     public class ComputeMessageStatsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The exclusive end of the range. The range is empty if end_cursor <= start_cursor. Specifying a
-        /// start_cursor before the first message and an end_cursor after the last message will retrieve all
-        /// messages.</summary>
+        /// <summary>
+        /// The exclusive end of the range. The range is empty if end_cursor &amp;lt;= start_cursor. Specifying a
+        /// start_cursor before the first message and an end_cursor after the last message will retrieve all messages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endCursor")]
         public virtual Cursor EndCursor { get; set; }
 
@@ -1490,7 +1469,7 @@ namespace Google.Apis.PubsubLite.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response containing stats for messages in the requested topic and partition.</summary>
     public class ComputeMessageStatsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1503,21 +1482,23 @@ namespace Google.Apis.PubsubLite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("messageCount")]
         public virtual System.Nullable<long> MessageCount { get; set; }
 
-        /// <summary>The minimum event timestamp across these messages. For the purposes of this computation, if a
-        /// message does not have an event time, we use the publish time. The timestamp will be unset if there are no
-        /// messages.</summary>
+        /// <summary>
+        /// The minimum event timestamp across these messages. For the purposes of this computation, if a message does
+        /// not have an event time, we use the publish time. The timestamp will be unset if there are no messages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumEventTime")]
         public virtual object MinimumEventTime { get; set; }
 
-        /// <summary>The minimum publish timestamp across these messages. Note that publish timestamps within a
-        /// partition are not guaranteed to be non-decreasing. The timestamp will be unset if there are no
-        /// messages.</summary>
+        /// <summary>
+        /// The minimum publish timestamp across these messages. Note that publish timestamps within a partition are not
+        /// guaranteed to be non-decreasing. The timestamp will be unset if there are no messages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumPublishTime")]
         public virtual object MinimumPublishTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A cursor that describes the position of a message within a topic partition.</summary>
     public class Cursor : Google.Apis.Requests.IDirectResponseSchema
@@ -1528,7 +1509,7 @@ namespace Google.Apis.PubsubLite.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The settings for a subscription's message delivery.</summary>
     public class DeliveryConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -1539,23 +1520,27 @@ namespace Google.Apis.PubsubLite.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+    /// object `{}`.
+    /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for ListPartitionCursors</summary>
     public class ListPartitionCursorsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
-        /// there are no subsequent pages.</summary>
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -1565,47 +1550,55 @@ namespace Google.Apis.PubsubLite.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for ListSubscriptions.</summary>
     public class ListSubscriptionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A token that can be sent as `page_token` to retrieve the next page of results. If this field is
-        /// omitted, there are no more results.</summary>
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted,
+        /// there are no more results.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The list of subscriptions in the requested parent. The order of the subscriptions is
-        /// unspecified.</summary>
+        /// <summary>
+        /// The list of subscriptions in the requested parent. The order of the subscriptions is unspecified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptions")]
         public virtual System.Collections.Generic.IList<Subscription> Subscriptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for ListTopicSubscriptions.</summary>
     public class ListTopicSubscriptionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A token that can be sent as `page_token` to retrieve the next page of results. If this field is
-        /// omitted, there are no more results.</summary>
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted,
+        /// there are no more results.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The names of subscriptions attached to the topic. The order of the subscriptions is
-        /// unspecified.</summary>
+        /// <summary>
+        /// The names of subscriptions attached to the topic. The order of the subscriptions is unspecified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptions")]
         public virtual System.Collections.Generic.IList<string> Subscriptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for ListTopics.</summary>
     public class ListTopicsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A token that can be sent as `page_token` to retrieve the next page of results. If this field is
-        /// omitted, there are no more results.</summary>
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted,
+        /// there are no more results.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -1615,7 +1608,7 @@ namespace Google.Apis.PubsubLite.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The settings for a topic's partitions.</summary>
     public class PartitionConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -1628,16 +1621,18 @@ namespace Google.Apis.PubsubLite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<long> Count { get; set; }
 
-        /// <summary>DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in
-        /// the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s).
-        /// This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for
-        /// 20 partitions. This value must be in the range [1,4].</summary>
+        /// <summary>
+        /// DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the
+        /// topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This
+        /// is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20
+        /// partitions. This value must be in the range [1,4].
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scale")]
         public virtual System.Nullable<int> Scale { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A pair of a Cursor and the partition it is for.</summary>
     public class PartitionCursor : Google.Apis.Requests.IDirectResponseSchema
@@ -1652,25 +1647,29 @@ namespace Google.Apis.PubsubLite.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The settings for a topic's message retention.</summary>
     public class RetentionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The provisioned storage, in bytes, per partition. If the number of bytes stored in any of the
-        /// topic's partitions grows beyond this value, older messages will be dropped to make room for newer ones,
-        /// regardless of the value of `period`.</summary>
+        /// <summary>
+        /// The provisioned storage, in bytes, per partition. If the number of bytes stored in any of the topic's
+        /// partitions grows beyond this value, older messages will be dropped to make room for newer ones, regardless
+        /// of the value of `period`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("perPartitionBytes")]
         public virtual System.Nullable<long> PerPartitionBytes { get; set; }
 
-        /// <summary>How long a published message is retained. If unset, messages will be retained as long as the bytes
-        /// retained for each partition is below `per_partition_bytes`.</summary>
+        /// <summary>
+        /// How long a published message is retained. If unset, messages will be retained as long as the bytes retained
+        /// for each partition is below `per_partition_bytes`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("period")]
         public virtual object Period { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Metadata about a subscription resource.</summary>
     public class Subscription : Google.Apis.Requests.IDirectResponseSchema
@@ -1679,25 +1678,30 @@ namespace Google.Apis.PubsubLite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryConfig")]
         public virtual DeliveryConfig DeliveryConfig { get; set; }
 
-        /// <summary>The name of the subscription. Structured like:
-        /// projects/{project_number}/locations/{location}/subscriptions/{subscription_id}</summary>
+        /// <summary>
+        /// The name of the subscription. Structured like:
+        /// projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The name of the topic this subscription is attached to. Structured like:
-        /// projects/{project_number}/locations/{location}/topics/{topic_id}</summary>
+        /// <summary>
+        /// The name of the topic this subscription is attached to. Structured like:
+        /// projects/{project_number}/locations/{location}/topics/{topic_id}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topic")]
         public virtual string Topic { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Metadata about a topic resource.</summary>
     public class Topic : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The name of the topic. Structured like:
-        /// projects/{project_number}/locations/{location}/topics/{topic_id}</summary>
+        /// <summary>
+        /// The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1711,7 +1715,7 @@ namespace Google.Apis.PubsubLite.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for GetTopicPartitions.</summary>
     public class TopicPartitions : Google.Apis.Requests.IDirectResponseSchema

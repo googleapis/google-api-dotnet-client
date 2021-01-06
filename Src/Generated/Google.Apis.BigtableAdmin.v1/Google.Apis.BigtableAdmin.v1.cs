@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -29,7 +34,6 @@ namespace Google.Apis.BigtableAdmin.v1
         /// <param name="initializer">The service initializer.</param>
         public BigtableAdminService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
-
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -56,10 +60,6 @@ namespace Google.Apis.BigtableAdmin.v1
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
         #endif
-
-
-
-
     }
 
     /// <summary>A base abstract class for BigtableAdmin requests.</summary>
@@ -80,6 +80,7 @@ namespace Google.Apis.BigtableAdmin.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -99,9 +100,11 @@ namespace Google.Apis.BigtableAdmin.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -115,8 +118,10 @@ namespace Google.Apis.BigtableAdmin.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -128,8 +133,10 @@ namespace Google.Apis.BigtableAdmin.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -145,7 +152,6 @@ namespace Google.Apis.BigtableAdmin.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -237,29 +243,32 @@ namespace Google.Apis.BigtableAdmin.v1
         }
     }
 }
-
 namespace Google.Apis.BigtableAdmin.v1.Data
-{    
-
+{
     /// <summary>A backup of a Cloud Bigtable table.</summary>
     public class Backup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. `end_time` is the time that the backup was finished. The row data in the backup will
-        /// be no newer than this timestamp.</summary>
+        /// <summary>
+        /// Output only. `end_time` is the time that the backup was finished. The row data in the backup will be no
+        /// newer than this timestamp.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
-        /// <summary>Required. The expiration time of the backup, with microseconds granularity that must be at least 6
-        /// hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud
-        /// Bigtable will delete the backup and free the resources used by the backup.</summary>
+        /// <summary>
+        /// Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and
+        /// at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable
+        /// will delete the backup and free the resources used by the backup.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual object ExpireTime { get; set; }
 
-        /// <summary>A globally unique identifier for the backup which cannot be changed. Values are of the form
+        /// <summary>
+        /// A globally unique identifier for the backup which cannot be changed. Values are of the form
         /// `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the
         /// name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the
-        /// prefix of the backup name of the form
-        /// `projects/{project}/instances/{instance}/clusters/{cluster}`.</summary>
+        /// prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -267,15 +276,18 @@ namespace Google.Apis.BigtableAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
         public virtual System.Nullable<long> SizeBytes { get; set; }
 
-        /// <summary>Required. Immutable. Name of the table from which this backup was created. This needs to be in the
-        /// same instance as the backup. Values are of the form
-        /// `projects/{project}/instances/{instance}/tables/{source_table}`.</summary>
+        /// <summary>
+        /// Required. Immutable. Name of the table from which this backup was created. This needs to be in the same
+        /// instance as the backup. Values are of the form
+        /// `projects/{project}/instances/{instance}/tables/{source_table}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceTable")]
         public virtual string SourceTable { get; set; }
 
-        /// <summary>Output only. `start_time` is the time that the backup was started (i.e. approximately the time the
-        /// CreateBackup request is received). The row data in this backup will be no older than this
-        /// timestamp.</summary>
+        /// <summary>
+        /// Output only. `start_time` is the time that the backup was started (i.e. approximately the time the
+        /// CreateBackup request is received). The row data in this backup will be no older than this timestamp.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
 
@@ -285,7 +297,7 @@ namespace Google.Apis.BigtableAdmin.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about a backup.</summary>
     public class BackupInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -294,8 +306,10 @@ namespace Google.Apis.BigtableAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backup")]
         public virtual string Backup { get; set; }
 
-        /// <summary>Output only. This time that the backup was finished. Row data in the backup will be no newer than
-        /// this timestamp.</summary>
+        /// <summary>
+        /// Output only. This time that the backup was finished. Row data in the backup will be no newer than this
+        /// timestamp.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
@@ -303,37 +317,48 @@ namespace Google.Apis.BigtableAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceTable")]
         public virtual string SourceTable { get; set; }
 
-        /// <summary>Output only. The time that the backup was started. Row data in the backup will be no older than
-        /// this timestamp.</summary>
+        /// <summary>
+        /// Output only. The time that the backup was started. Row data in the backup will be no older than this
+        /// timestamp.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A resizable group of nodes in a particular cloud location, capable of serving all Tables in the parent
-    /// Instance.</summary>
+    /// <summary>
+    /// A resizable group of nodes in a particular cloud location, capable of serving all Tables in the parent Instance.
+    /// </summary>
     public class Cluster : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless
-        /// explicitly overridden.</summary>
+        /// <summary>
+        /// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly
+        /// overridden.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultStorageType")]
         public virtual string DefaultStorageType { get; set; }
 
-        /// <summary>Immutable. The location where this cluster's nodes and storage reside. For best performance,
-        /// clients should be located as close as possible to this cluster. Currently only zones are supported, so
-        /// values should be of the form `projects/{project}/locations/{zone}`.</summary>
+        /// <summary>
+        /// Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should
+        /// be located as close as possible to this cluster. Currently only zones are supported, so values should be of
+        /// the form `projects/{project}/locations/{zone}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>The unique name of the cluster. Values are of the form
-        /// `projects/{project}/instances/{instance}/clusters/a-z*`.</summary>
+        /// <summary>
+        /// The unique name of the cluster. Values are of the form
+        /// `projects/{project}/instances/{instance}/clusters/a-z*`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and
-        /// more consistent performance.</summary>
+        /// <summary>
+        /// Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more
+        /// consistent performance.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serveNodes")]
         public virtual System.Nullable<int> ServeNodes { get; set; }
 
@@ -343,7 +368,7 @@ namespace Google.Apis.BigtableAdmin.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Metadata type for the operation returned by CreateBackup.</summary>
     public class CreateBackupMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -366,7 +391,7 @@ namespace Google.Apis.BigtableAdmin.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The metadata for the Operation returned by CreateCluster.</summary>
     public class CreateClusterMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -383,16 +408,18 @@ namespace Google.Apis.BigtableAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestTime")]
         public virtual object RequestTime { get; set; }
 
-        /// <summary>Keys: the full `name` of each table that existed in the instance when CreateCluster was first
-        /// called, i.e. `projects//instances//tables/`. Any table added to the instance by a later API call will be
-        /// created in the new cluster by that API call, not this one. Values: information on how much of a table's data
-        /// has been copied to the newly-created cluster so far.</summary>
+        /// <summary>
+        /// Keys: the full `name` of each table that existed in the instance when CreateCluster was first called, i.e.
+        /// `projects//instances//tables/`. Any table added to the instance by a later API call will be created in the
+        /// new cluster by that API call, not this one. Values: information on how much of a table's data has been
+        /// copied to the newly-created cluster so far.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tables")]
         public virtual System.Collections.Generic.IDictionary<string, TableProgress> Tables { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for BigtableInstanceAdmin.CreateCluster.</summary>
     public class CreateClusterRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -401,19 +428,23 @@ namespace Google.Apis.BigtableAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual Cluster Cluster { get; set; }
 
-        /// <summary>Required. The ID to be used when referring to the new cluster within its instance, e.g., just
-        /// `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`.</summary>
+        /// <summary>
+        /// Required. The ID to be used when referring to the new cluster within its instance, e.g., just `mycluster`
+        /// rather than `projects/myproject/instances/myinstance/clusters/mycluster`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; }
 
-        /// <summary>Required. The unique name of the instance in which to create the new cluster. Values are of the
-        /// form `projects/{project}/instances/{instance}`.</summary>
+        /// <summary>
+        /// Required. The unique name of the instance in which to create the new cluster. Values are of the form
+        /// `projects/{project}/instances/{instance}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The metadata for the Operation returned by CreateInstance.</summary>
     public class CreateInstanceMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -432,14 +463,16 @@ namespace Google.Apis.BigtableAdmin.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for BigtableInstanceAdmin.CreateInstance.</summary>
     public class CreateInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The clusters to be created within the instance, mapped by desired cluster ID, e.g., just
+        /// <summary>
+        /// Required. The clusters to be created within the instance, mapped by desired cluster ID, e.g., just
         /// `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked
-        /// `OutputOnly` must be left blank. Currently, at most four clusters can be specified.</summary>
+        /// `OutputOnly` must be left blank. Currently, at most four clusters can be specified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusters")]
         public virtual System.Collections.Generic.IDictionary<string, Cluster> Clusters { get; set; }
 
@@ -447,19 +480,23 @@ namespace Google.Apis.BigtableAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual Instance Instance { get; set; }
 
-        /// <summary>Required. The ID to be used when referring to the new instance within its project, e.g., just
-        /// `myinstance` rather than `projects/myproject/instances/myinstance`.</summary>
+        /// <summary>
+        /// Required. The ID to be used when referring to the new instance within its project, e.g., just `myinstance`
+        /// rather than `projects/myproject/instances/myinstance`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
         public virtual string InstanceId { get; set; }
 
-        /// <summary>Required. The unique name of the project in which to create the new instance. Values are of the
-        /// form `projects/{project}`.</summary>
+        /// <summary>
+        /// Required. The unique name of the project in which to create the new instance. Values are of the form
+        /// `projects/{project}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Added to the error payload.</summary>
     public class FailureTrace : Google.Apis.Requests.IDirectResponseSchema
@@ -469,7 +506,7 @@ namespace Google.Apis.BigtableAdmin.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class Frame : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -484,28 +521,35 @@ namespace Google.Apis.BigtableAdmin.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A collection of Bigtable Tables and the resources that serve them. All tables in an instance are served
-    /// from all Clusters in the instance.</summary>
+    /// <summary>
+    /// A collection of Bigtable Tables and the resources that serve them. All tables in an instance are served from all
+    /// Clusters in the instance.
+    /// </summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time,
-        /// but should be kept globally unique to avoid confusion.</summary>
+        /// <summary>
+        /// Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time, but
+        /// should be kept globally unique to avoid confusion.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Required. Labels are a flexible and lightweight mechanism for organizing cloud resources into
-        /// groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter
-        /// resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to
-        /// the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and
-        /// must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be
-        /// associated with a given resource. * Keys and values must both be under 128 bytes.</summary>
+        /// <summary>
+        /// Required. Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that
+        /// reflect a customer's organizational needs and deployment strategies. They can be used to filter resources
+        /// and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular
+        /// expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform
+        /// to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a
+        /// given resource. * Keys and values must both be under 128 bytes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>The unique name of the instance. Values are of the form
-        /// `projects/{project}/instances/a-z+[a-z0-9]`.</summary>
+        /// <summary>
+        /// The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -519,7 +563,7 @@ namespace Google.Apis.BigtableAdmin.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Encapsulates progress related information for a Cloud Bigtable long running operation.</summary>
     public class OperationProgress : Google.Apis.Requests.IDirectResponseSchema
@@ -538,11 +582,13 @@ namespace Google.Apis.BigtableAdmin.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Metadata type for the long-running operation used to track the progress of optimizations performed on a
-    /// newly restored table. This long-running operation is automatically created by the system after the successful
-    /// completion of a table restore, and cannot be cancelled.</summary>
+    /// <summary>
+    /// Metadata type for the long-running operation used to track the progress of optimizations performed on a newly
+    /// restored table. This long-running operation is automatically created by the system after the successful
+    /// completion of a table restore, and cannot be cancelled.
+    /// </summary>
     public class OptimizeRestoredTableMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Name of the restored table being optimized.</summary>
@@ -555,7 +601,7 @@ namespace Google.Apis.BigtableAdmin.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for BigtableInstanceAdmin.PartialUpdateInstance.</summary>
     public class PartialUpdateInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -570,7 +616,7 @@ namespace Google.Apis.BigtableAdmin.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Metadata type for the long-running operation returned by RestoreTable.</summary>
     public class RestoreTableMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -582,12 +628,14 @@ namespace Google.Apis.BigtableAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>If exists, the name of the long-running operation that will be used to track the post-restore
-        /// optimization process to optimize the performance of the restored table. The metadata type of the long-
-        /// running operation is OptimizeRestoreTableMetadata. The response type is Empty. This long-running operation
-        /// may be automatically created by the system if applicable after the RestoreTable long-running operation
-        /// completes successfully. This operation may not be created if the table is already optimized or the restore
-        /// was not successful.</summary>
+        /// <summary>
+        /// If exists, the name of the long-running operation that will be used to track the post-restore optimization
+        /// process to optimize the performance of the restored table. The metadata type of the long-running operation
+        /// is OptimizeRestoreTableMetadata. The response type is Empty. This long-running operation may be
+        /// automatically created by the system if applicable after the RestoreTable long-running operation completes
+        /// successfully. This operation may not be created if the table is already optimized or the restore was not
+        /// successful.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optimizeTableOperationName")]
         public virtual string OptimizeTableOperationName { get; set; }
 
@@ -601,13 +649,15 @@ namespace Google.Apis.BigtableAdmin.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Progress info for copying a table's data to the new cluster.</summary>
     public class TableProgress : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Estimate of the number of bytes copied so far for this table. This will eventually reach
-        /// 'estimated_size_bytes' unless the table copy is CANCELLED.</summary>
+        /// <summary>
+        /// Estimate of the number of bytes copied so far for this table. This will eventually reach
+        /// 'estimated_size_bytes' unless the table copy is CANCELLED.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedCopiedBytes")]
         public virtual System.Nullable<long> EstimatedCopiedBytes { get; set; }
 
@@ -620,14 +670,14 @@ namespace Google.Apis.BigtableAdmin.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The metadata for the Operation returned by UpdateAppProfile.</summary>
     public class UpdateAppProfileMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The metadata for the Operation returned by UpdateCluster.</summary>
     public class UpdateClusterMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -646,7 +696,7 @@ namespace Google.Apis.BigtableAdmin.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The metadata for the Operation returned by UpdateInstance.</summary>
     public class UpdateInstanceMetadata : Google.Apis.Requests.IDirectResponseSchema

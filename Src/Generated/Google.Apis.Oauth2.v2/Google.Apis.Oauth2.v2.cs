@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -68,7 +73,6 @@ namespace Google.Apis.Oauth2.v2
 
             /// <summary>Associate you with your personal info on Google</summary>
             public static string Openid = "openid";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Google OAuth2 API.</summary>
@@ -82,14 +86,12 @@ namespace Google.Apis.Oauth2.v2
 
             /// <summary>Associate you with your personal info on Google</summary>
             public const string Openid = "openid";
-
         }
 
         public virtual TokeninfoRequest Tokeninfo()
         {
             return new TokeninfoRequest(this);
         }
-
 
         public class TokeninfoRequest : Oauth2BaseServiceRequest<Google.Apis.Oauth2.v2.Data.Tokeninfo>
         {
@@ -99,15 +101,11 @@ namespace Google.Apis.Oauth2.v2
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string AccessToken { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("id_token", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string IdToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "tokeninfo";
@@ -122,7 +120,6 @@ namespace Google.Apis.Oauth2.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
                 {
                     Name = "access_token",
@@ -140,9 +137,7 @@ namespace Google.Apis.Oauth2.v2
                     Pattern = null,
                 });
             }
-
         }
-
 
         /// <summary>Gets the Userinfo resource.</summary>
         public virtual UserinfoResource Userinfo { get; }
@@ -172,8 +167,10 @@ namespace Google.Apis.Oauth2.v2
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -185,8 +182,9 @@ namespace Google.Apis.Oauth2.v2
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-        /// characters.</summary>
+        /// <summary>
+        /// An opaque string that represents a user for quota purposes. Must not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -198,7 +196,6 @@ namespace Google.Apis.Oauth2.v2
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
             {
                 Name = "alt",
@@ -271,7 +268,6 @@ namespace Google.Apis.Oauth2.v2
         {
             this.service = service;
             V2 = new V2Resource(service);
-
         }
 
         /// <summary>Gets the V2 resource.</summary>
@@ -290,7 +286,6 @@ namespace Google.Apis.Oauth2.v2
             {
                 this.service = service;
                 Me = new MeResource(service);
-
             }
 
             /// <summary>Gets the Me resource.</summary>
@@ -308,16 +303,12 @@ namespace Google.Apis.Oauth2.v2
                 public MeResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
-
-
 
                 public virtual GetRequest Get()
                 {
                     return new GetRequest(service);
                 }
-
 
                 public class GetRequest : Oauth2BaseServiceRequest<Google.Apis.Oauth2.v2.Data.Userinfo>
                 {
@@ -326,8 +317,6 @@ namespace Google.Apis.Oauth2.v2
                     {
                         InitParameters();
                     }
-
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
@@ -342,19 +331,15 @@ namespace Google.Apis.Oauth2.v2
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                     }
-
                 }
             }
         }
-
 
         public virtual GetRequest Get()
         {
             return new GetRequest(service);
         }
-
 
         public class GetRequest : Oauth2BaseServiceRequest<Google.Apis.Oauth2.v2.Data.Userinfo>
         {
@@ -363,8 +348,6 @@ namespace Google.Apis.Oauth2.v2
             {
                 InitParameters();
             }
-
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -379,16 +362,12 @@ namespace Google.Apis.Oauth2.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
     }
 }
-
 namespace Google.Apis.Oauth2.v2.Data
-{    
-
+{
     public class Tokeninfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Who is the intended audience for this token. In general the same as issued_to.</summary>
@@ -415,14 +394,16 @@ namespace Google.Apis.Oauth2.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("user_id")]
         public virtual string UserId { get; set; }
 
-        /// <summary>Boolean flag which is true if the email address is verified. Present only if the email scope is
-        /// present in the request.</summary>
+        /// <summary>
+        /// Boolean flag which is true if the email address is verified. Present only if the email scope is present in
+        /// the request.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verified_email")]
         public virtual System.Nullable<bool> VerifiedEmail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class Userinfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -466,8 +447,10 @@ namespace Google.Apis.Oauth2.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("picture")]
         public virtual string Picture { get; set; }
 
-        /// <summary>Boolean flag which is true if the email address is verified. Always verified because we only return
-        /// the user's primary email address.</summary>
+        /// <summary>
+        /// Boolean flag which is true if the email address is verified. Always verified because we only return the
+        /// user's primary email address.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verified_email")]
         public virtual System.Nullable<bool> VerifiedEmail { get; set; }
 

@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -62,7 +67,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Error Reporting API.</summary>
@@ -70,10 +74,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
-
-
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -97,6 +98,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -116,9 +118,11 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -132,8 +136,10 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -145,8 +151,10 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -162,7 +170,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -269,7 +276,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             Events = new EventsResource(service);
             GroupStats = new GroupStatsResource(service);
             Groups = new GroupsResource(service);
-
         }
 
         /// <summary>Gets the Events resource.</summary>
@@ -287,14 +293,14 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             public EventsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
             /// <summary>Lists the specified events.</summary>
-            /// <param name="projectName">Required. The resource name of the Google Cloud Platform project. Written as
-            /// `projects/{projectID}`, where `{projectID}` is the [Google Cloud Platform project
-            /// ID](https://support.google.com/cloud/answer/6158840). Example: `projects/my-project-123`.</param>
+            /// <param name="projectName">
+            /// Required. The resource name of the Google Cloud Platform project. Written as `projects/{projectID}`,
+            /// where `{projectID}` is the [Google Cloud Platform project
+            /// ID](https://support.google.com/cloud/answer/6158840). Example: `projects/my-project-123`.
+            /// </param>
             public virtual ListRequest List(string projectName)
             {
                 return new ListRequest(service, projectName);
@@ -310,10 +316,11 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The resource name of the Google Cloud Platform project. Written as
-                /// `projects/{projectID}`, where `{projectID}` is the [Google Cloud Platform project
-                /// ID](https://support.google.com/cloud/answer/6158840). Example: `projects/my-project-123`.</summary>
+                /// <summary>
+                /// Required. The resource name of the Google Cloud Platform project. Written as `projects/{projectID}`,
+                /// where `{projectID}` is the [Google Cloud Platform project
+                /// ID](https://support.google.com/cloud/answer/6158840). Example: `projects/my-project-123`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectName { get; private set; }
 
@@ -329,18 +336,24 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Optional. The exact value to match against [`ServiceContext.resource_type`](/error-
-                /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).</summary>
+                /// <summary>
+                /// Optional. The exact value to match against
+                /// [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceFilter.resourceType", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ServiceFilterResourceType { get; set; }
 
-                /// <summary>Optional. The exact value to match against [`ServiceContext.service`](/error-
-                /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).</summary>
+                /// <summary>
+                /// Optional. The exact value to match against
+                /// [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceFilter.service", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ServiceFilterService { get; set; }
 
-                /// <summary>Optional. The exact value to match against [`ServiceContext.version`](/error-
-                /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).</summary>
+                /// <summary>
+                /// Optional. The exact value to match against
+                /// [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceFilter.version", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ServiceFilterVersion { get; set; }
 
@@ -354,28 +367,37 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                     /// <summary>Do not use.</summary>
                     [Google.Apis.Util.StringValueAttribute("PERIOD_UNSPECIFIED")]
                     PERIODUNSPECIFIED,
-                    /// <summary>Retrieve data for the last hour. Recommended minimum timed count duration: 1
-                    /// min.</summary>
+
+                    /// <summary>
+                    /// Retrieve data for the last hour. Recommended minimum timed count duration: 1 min.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PERIOD_1_HOUR")]
                     PERIOD1HOUR,
-                    /// <summary>Retrieve data for the last 6 hours. Recommended minimum timed count duration: 10
-                    /// min.</summary>
+
+                    /// <summary>
+                    /// Retrieve data for the last 6 hours. Recommended minimum timed count duration: 10 min.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PERIOD_6_HOURS")]
                     PERIOD6HOURS,
-                    /// <summary>Retrieve data for the last day. Recommended minimum timed count duration: 1
-                    /// hour.</summary>
+
+                    /// <summary>
+                    /// Retrieve data for the last day. Recommended minimum timed count duration: 1 hour.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PERIOD_1_DAY")]
                     PERIOD1DAY,
-                    /// <summary>Retrieve data for the last week. Recommended minimum timed count duration: 6
-                    /// hours.</summary>
+
+                    /// <summary>
+                    /// Retrieve data for the last week. Recommended minimum timed count duration: 6 hours.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PERIOD_1_WEEK")]
                     PERIOD1WEEK,
-                    /// <summary>Retrieve data for the last 30 days. Recommended minimum timed count duration: 1
-                    /// day.</summary>
+
+                    /// <summary>
+                    /// Retrieve data for the last 30 days. Recommended minimum timed count duration: 1 day.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PERIOD_30_DAYS")]
                     PERIOD30DAYS,
                 }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -390,7 +412,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("projectName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectName",
@@ -456,26 +477,31 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Report an individual error event. This endpoint accepts **either** an OAuth token, **or** an
-            /// [API key](https://support.google.com/cloud/answer/6158862) for authentication. To use an API key, append
-            /// it to the URL as the value of a `key` parameter. For example: `POST
-            /// https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456`</summary>
+            /// <summary>
+            /// Report an individual error event. This endpoint accepts **either** an OAuth token, **or** an [API
+            /// key](https://support.google.com/cloud/answer/6158862) for authentication. To use an API key, append it
+            /// to the URL as the value of a `key` parameter. For example: `POST
+            /// https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456`
+            /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="projectName">Required. The resource name of the Google Cloud Platform project. Written as
-            /// `projects/{projectId}`, where `{projectId}` is the [Google Cloud Platform project
-            /// ID](https://support.google.com/cloud/answer/6158840). Example: // `projects/my-project-123`.</param>
+            /// <param name="projectName">
+            /// Required. The resource name of the Google Cloud Platform project. Written as `projects/{projectId}`,
+            /// where `{projectId}` is the [Google Cloud Platform project
+            /// ID](https://support.google.com/cloud/answer/6158840). Example: // `projects/my-project-123`.
+            /// </param>
             public virtual ReportRequest Report(Google.Apis.Clouderrorreporting.v1beta1.Data.ReportedErrorEvent body, string projectName)
             {
                 return new ReportRequest(service, body, projectName);
             }
 
-            /// <summary>Report an individual error event. This endpoint accepts **either** an OAuth token, **or** an
-            /// [API key](https://support.google.com/cloud/answer/6158862) for authentication. To use an API key, append
-            /// it to the URL as the value of a `key` parameter. For example: `POST
-            /// https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456`</summary>
+            /// <summary>
+            /// Report an individual error event. This endpoint accepts **either** an OAuth token, **or** an [API
+            /// key](https://support.google.com/cloud/answer/6158862) for authentication. To use an API key, append it
+            /// to the URL as the value of a `key` parameter. For example: `POST
+            /// https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456`
+            /// </summary>
             public class ReportRequest : ClouderrorreportingBaseServiceRequest<Google.Apis.Clouderrorreporting.v1beta1.Data.ReportErrorEventResponse>
             {
                 /// <summary>Constructs a new Report request.</summary>
@@ -486,14 +512,13 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The resource name of the Google Cloud Platform project. Written as
-                /// `projects/{projectId}`, where `{projectId}` is the [Google Cloud Platform project
-                /// ID](https://support.google.com/cloud/answer/6158840). Example: // `projects/my-
-                /// project-123`.</summary>
+                /// <summary>
+                /// Required. The resource name of the Google Cloud Platform project. Written as `projects/{projectId}`,
+                /// where `{projectId}` is the [Google Cloud Platform project
+                /// ID](https://support.google.com/cloud/answer/6158840). Example: // `projects/my-project-123`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectName { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Clouderrorreporting.v1beta1.Data.ReportedErrorEvent Body { get; set; }
@@ -514,7 +539,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("projectName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectName",
@@ -524,9 +548,9 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                         Pattern = @"^projects/[^/]+$",
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the GroupStats resource.</summary>
         public virtual GroupStatsResource GroupStats { get; }
 
@@ -542,14 +566,14 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             public GroupStatsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
             /// <summary>Lists the specified groups.</summary>
-            /// <param name="projectName">Required. The resource name of the Google Cloud Platform project. Written as
-            /// `projects/{projectID}`, where `{projectID}` is the [Google Cloud Platform project
-            /// ID](https://support.google.com/cloud/answer/6158840). Example: `projects/my-project-123`.</param>
+            /// <param name="projectName">
+            /// Required. The resource name of the Google Cloud Platform project. Written as `projects/{projectID}`,
+            /// where `{projectID}` is the [Google Cloud Platform project
+            /// ID](https://support.google.com/cloud/answer/6158840). Example: `projects/my-project-123`.
+            /// </param>
             public virtual ListRequest List(string projectName)
             {
                 return new ListRequest(service, projectName);
@@ -565,41 +589,52 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The resource name of the Google Cloud Platform project. Written as
-                /// `projects/{projectID}`, where `{projectID}` is the [Google Cloud Platform project
-                /// ID](https://support.google.com/cloud/answer/6158840). Example: `projects/my-project-123`.</summary>
+                /// <summary>
+                /// Required. The resource name of the Google Cloud Platform project. Written as `projects/{projectID}`,
+                /// where `{projectID}` is the [Google Cloud Platform project
+                /// ID](https://support.google.com/cloud/answer/6158840). Example: `projects/my-project-123`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectName { get; private set; }
 
-                /// <summary>Optional. The alignment of the timed counts to be returned. Default is
-                /// `ALIGNMENT_EQUAL_AT_END`.</summary>
+                /// <summary>
+                /// Optional. The alignment of the timed counts to be returned. Default is `ALIGNMENT_EQUAL_AT_END`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("alignment", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<AlignmentEnum> Alignment { get; set; }
 
-                /// <summary>Optional. The alignment of the timed counts to be returned. Default is
-                /// `ALIGNMENT_EQUAL_AT_END`.</summary>
+                /// <summary>
+                /// Optional. The alignment of the timed counts to be returned. Default is `ALIGNMENT_EQUAL_AT_END`.
+                /// </summary>
                 public enum AlignmentEnum
                 {
                     /// <summary>No alignment specified.</summary>
                     [Google.Apis.Util.StringValueAttribute("ERROR_COUNT_ALIGNMENT_UNSPECIFIED")]
                     ERRORCOUNTALIGNMENTUNSPECIFIED,
-                    /// <summary>The time periods shall be consecutive, have width equal to the requested duration, and
-                    /// be aligned at the `alignment_time` provided in the request. The `alignment_time` does not have
-                    /// to be inside the query period but even if it is outside, only time periods are returned which
+
+                    /// <summary>
+                    /// The time periods shall be consecutive, have width equal to the requested duration, and be
+                    /// aligned at the `alignment_time` provided in the request. The `alignment_time` does not have to
+                    /// be inside the query period but even if it is outside, only time periods are returned which
                     /// overlap with the query period. A rounded alignment will typically result in a different size of
-                    /// the first or the last time period.</summary>
+                    /// the first or the last time period.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGNMENT_EQUAL_ROUNDED")]
                     ALIGNMENTEQUALROUNDED,
-                    /// <summary>The time periods shall be consecutive, have width equal to the requested duration, and
-                    /// be aligned at the end of the requested time period. This can result in a different size of the
-                    /// first time period.</summary>
+
+                    /// <summary>
+                    /// The time periods shall be consecutive, have width equal to the requested duration, and be
+                    /// aligned at the end of the requested time period. This can result in a different size of the
+                    /// first time period.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGNMENT_EQUAL_AT_END")]
                     ALIGNMENTEQUALATEND,
                 }
 
-                /// <summary>Optional. Time where the timed counts shall be aligned if rounded alignment is chosen.
-                /// Default is 00:00 UTC.</summary>
+                /// <summary>
+                /// Optional. Time where the timed counts shall be aligned if rounded alignment is chosen. Default is
+                /// 00:00 UTC.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("alignmentTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object AlignmentTime { get; set; }
 
@@ -607,28 +642,35 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("groupId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> GroupId { get; set; }
 
-                /// <summary>Optional. The sort order in which the results are returned. Default is
-                /// `COUNT_DESC`.</summary>
+                /// <summary>
+                /// Optional. The sort order in which the results are returned. Default is `COUNT_DESC`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("order", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<OrderEnum> Order { get; set; }
 
-                /// <summary>Optional. The sort order in which the results are returned. Default is
-                /// `COUNT_DESC`.</summary>
+                /// <summary>
+                /// Optional. The sort order in which the results are returned. Default is `COUNT_DESC`.
+                /// </summary>
                 public enum OrderEnum
                 {
                     /// <summary>No group order specified.</summary>
                     [Google.Apis.Util.StringValueAttribute("GROUP_ORDER_UNSPECIFIED")]
                     GROUPORDERUNSPECIFIED,
+
                     /// <summary>Total count of errors in the given time window in descending order.</summary>
                     [Google.Apis.Util.StringValueAttribute("COUNT_DESC")]
                     COUNTDESC,
-                    /// <summary>Timestamp when the group was last seen in the given time window in descending
-                    /// order.</summary>
+
+                    /// <summary>
+                    /// Timestamp when the group was last seen in the given time window in descending order.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("LAST_SEEN_DESC")]
                     LASTSEENDESC,
+
                     /// <summary>Timestamp when the group was created in descending order.</summary>
                     [Google.Apis.Util.StringValueAttribute("CREATED_DESC")]
                     CREATEDDESC,
+
                     /// <summary>Number of affected users in the given time window in descending order.</summary>
                     [Google.Apis.Util.StringValueAttribute("AFFECTED_USERS_DESC")]
                     AFFECTEDUSERSDESC,
@@ -638,23 +680,31 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>Optional. A `next_page_token` provided by a previous response. To view additional results,
-                /// pass this token along with the identical query parameters as the first request.</summary>
+                /// <summary>
+                /// Optional. A `next_page_token` provided by a previous response. To view additional results, pass this
+                /// token along with the identical query parameters as the first request.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Optional. The exact value to match against [`ServiceContext.resource_type`](/error-
-                /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).</summary>
+                /// <summary>
+                /// Optional. The exact value to match against
+                /// [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceFilter.resourceType", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ServiceFilterResourceType { get; set; }
 
-                /// <summary>Optional. The exact value to match against [`ServiceContext.service`](/error-
-                /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).</summary>
+                /// <summary>
+                /// Optional. The exact value to match against
+                /// [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceFilter.service", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ServiceFilterService { get; set; }
 
-                /// <summary>Optional. The exact value to match against [`ServiceContext.version`](/error-
-                /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).</summary>
+                /// <summary>
+                /// Optional. The exact value to match against
+                /// [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceFilter.version", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ServiceFilterVersion { get; set; }
 
@@ -668,33 +718,44 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                     /// <summary>Do not use.</summary>
                     [Google.Apis.Util.StringValueAttribute("PERIOD_UNSPECIFIED")]
                     PERIODUNSPECIFIED,
-                    /// <summary>Retrieve data for the last hour. Recommended minimum timed count duration: 1
-                    /// min.</summary>
+
+                    /// <summary>
+                    /// Retrieve data for the last hour. Recommended minimum timed count duration: 1 min.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PERIOD_1_HOUR")]
                     PERIOD1HOUR,
-                    /// <summary>Retrieve data for the last 6 hours. Recommended minimum timed count duration: 10
-                    /// min.</summary>
+
+                    /// <summary>
+                    /// Retrieve data for the last 6 hours. Recommended minimum timed count duration: 10 min.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PERIOD_6_HOURS")]
                     PERIOD6HOURS,
-                    /// <summary>Retrieve data for the last day. Recommended minimum timed count duration: 1
-                    /// hour.</summary>
+
+                    /// <summary>
+                    /// Retrieve data for the last day. Recommended minimum timed count duration: 1 hour.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PERIOD_1_DAY")]
                     PERIOD1DAY,
-                    /// <summary>Retrieve data for the last week. Recommended minimum timed count duration: 6
-                    /// hours.</summary>
+
+                    /// <summary>
+                    /// Retrieve data for the last week. Recommended minimum timed count duration: 6 hours.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PERIOD_1_WEEK")]
                     PERIOD1WEEK,
-                    /// <summary>Retrieve data for the last 30 days. Recommended minimum timed count duration: 1
-                    /// day.</summary>
+
+                    /// <summary>
+                    /// Retrieve data for the last 30 days. Recommended minimum timed count duration: 1 day.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PERIOD_30_DAYS")]
                     PERIOD30DAYS,
                 }
 
-                /// <summary>Optional. The preferred duration for a single returned `TimedCount`. If not set, no timed
-                /// counts are returned.</summary>
+                /// <summary>
+                /// Optional. The preferred duration for a single returned `TimedCount`. If not set, no timed counts are
+                /// returned.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("timedCountDuration", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object TimedCountDuration { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -709,7 +770,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("projectName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectName",
@@ -807,9 +867,9 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Groups resource.</summary>
         public virtual GroupsResource Groups { get; }
 
@@ -825,15 +885,14 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             public GroupsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
             /// <summary>Get the specified group.</summary>
-            /// <param name="groupName">Required. The group resource name. Written as `projects/{projectID}/groups/{group_name}`.
-            /// Call [`groupStats.list`](https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.groupStats/list)
-            /// to return a list of groups belonging to this project. Example: `projects/my-project-123/groups/my-
-            /// group`</param>
+            /// <param name="groupName">
+            /// Required. The group resource name. Written as `projects/{projectID}/groups/{group_name}`. Call
+            /// [`groupStats.list`](https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.groupStats/list)
+            /// to return a list of groups belonging to this project. Example: `projects/my-project-123/groups/my-group`
+            /// </param>
             public virtual GetRequest Get(string groupName)
             {
                 return new GetRequest(service, groupName);
@@ -849,14 +908,14 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The group resource name. Written as `projects/{projectID}/groups/{group_name}`.
-                /// Call [`groupStats.list`](https://cloud.google.com/error-
-                /// reporting/reference/rest/v1beta1/projects.groupStats/list) to return a list of groups belonging to
-                /// this project. Example: `projects/my-project-123/groups/my-group`</summary>
+                /// <summary>
+                /// Required. The group resource name. Written as `projects/{projectID}/groups/{group_name}`. Call
+                /// [`groupStats.list`](https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.groupStats/list)
+                /// to return a list of groups belonging to this project. Example:
+                /// `projects/my-project-123/groups/my-group`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("groupName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string GroupName { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -871,7 +930,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("groupName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "groupName",
@@ -881,12 +939,13 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                         Pattern = @"^projects/[^/]+/groups/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Replace the data for the specified group. Fails if the group does not exist.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The group resource name. Example: projects/my-project-123/groups/CNSgkpnppqKCUw</param>
+            /// <param name="name">
+            /// The group resource name. Example: projects/my-project-123/groups/CNSgkpnppqKCUw
+            /// </param>
             public virtual UpdateRequest Update(Google.Apis.Clouderrorreporting.v1beta1.Data.ErrorGroup body, string name)
             {
                 return new UpdateRequest(service, body, name);
@@ -903,11 +962,9 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                     InitParameters();
                 }
 
-
                 /// <summary>The group resource name. Example: projects/my-project-123/groups/CNSgkpnppqKCUw</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Clouderrorreporting.v1beta1.Data.ErrorGroup Body { get; set; }
@@ -928,7 +985,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -938,14 +994,15 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                         Pattern = @"^projects/[^/]+/groups/[^/]+$",
                     });
                 }
-
             }
         }
 
         /// <summary>Deletes all error events of a given project.</summary>
-        /// <param name="projectName">Required. The resource name of the Google Cloud Platform project. Written as
-        /// `projects/{projectID}`, where `{projectID}` is the [Google Cloud Platform project
-        /// ID](https://support.google.com/cloud/answer/6158840). Example: `projects/my-project-123`.</param>
+        /// <param name="projectName">
+        /// Required. The resource name of the Google Cloud Platform project. Written as `projects/{projectID}`, where
+        /// `{projectID}` is the [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840).
+        /// Example: `projects/my-project-123`.
+        /// </param>
         public virtual DeleteEventsRequest DeleteEvents(string projectName)
         {
             return new DeleteEventsRequest(service, projectName);
@@ -961,13 +1018,13 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 InitParameters();
             }
 
-
-            /// <summary>Required. The resource name of the Google Cloud Platform project. Written as
-            /// `projects/{projectID}`, where `{projectID}` is the [Google Cloud Platform project
-            /// ID](https://support.google.com/cloud/answer/6158840). Example: `projects/my-project-123`.</summary>
+            /// <summary>
+            /// Required. The resource name of the Google Cloud Platform project. Written as `projects/{projectID}`,
+            /// where `{projectID}` is the [Google Cloud Platform project
+            /// ID](https://support.google.com/cloud/answer/6158840). Example: `projects/my-project-123`.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectName { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "deleteEvents";
@@ -982,7 +1039,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectName", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectName",
@@ -992,51 +1048,54 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                     Pattern = @"^projects/[^/]+$",
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.Clouderrorreporting.v1beta1.Data
-{    
-
+{
     /// <summary>Response message for deleting error events.</summary>
     public class DeleteEventsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A description of the context in which an error occurred. This data should be provided by the
-    /// application when reporting an error, unless the error report has been generated automatically from Google App
-    /// Engine logs.</summary>
+    /// <summary>
+    /// A description of the context in which an error occurred. This data should be provided by the application when
+    /// reporting an error, unless the error report has been generated automatically from Google App Engine logs.
+    /// </summary>
     public class ErrorContext : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The HTTP request which was processed when the error was triggered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpRequest")]
         public virtual HttpRequestContext HttpRequest { get; set; }
 
-        /// <summary>The location in the source code where the decision was made to report the error, usually the place
-        /// where it was logged. For a logged exception this would be the source line where the exception is logged,
-        /// usually close to the place where it was caught.</summary>
+        /// <summary>
+        /// The location in the source code where the decision was made to report the error, usually the place where it
+        /// was logged. For a logged exception this would be the source line where the exception is logged, usually
+        /// close to the place where it was caught.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportLocation")]
         public virtual SourceLocation ReportLocation { get; set; }
 
-        /// <summary>Source code that was used to build the executable which has caused the given error
-        /// message.</summary>
+        /// <summary>
+        /// Source code that was used to build the executable which has caused the given error message.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceReferences")]
         public virtual System.Collections.Generic.IList<SourceReference> SourceReferences { get; set; }
 
-        /// <summary>The user who caused or was affected by the crash. This can be a user ID, an email address, or an
-        /// arbitrary token that uniquely identifies the user. When sending an error report, leave this field empty if
-        /// the user was not logged in. In this case the Error Reporting system will use other data, such as remote IP
-        /// address, to distinguish affected users. See `affected_users_count` in `ErrorGroupStats`.</summary>
+        /// <summary>
+        /// The user who caused or was affected by the crash. This can be a user ID, an email address, or an arbitrary
+        /// token that uniquely identifies the user. When sending an error report, leave this field empty if the user
+        /// was not logged in. In this case the Error Reporting system will use other data, such as remote IP address,
+        /// to distinguish affected users. See `affected_users_count` in `ErrorGroupStats`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
         public virtual string User { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An error event which is returned by the Error Reporting system.</summary>
     public class ErrorEvent : Google.Apis.Requests.IDirectResponseSchema
@@ -1045,8 +1104,10 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
         public virtual ErrorContext Context { get; set; }
 
-        /// <summary>Time when the event occurred as provided in the error report. If the report did not contain a
-        /// timestamp, the time the error was received by the Error Reporting system is used.</summary>
+        /// <summary>
+        /// Time when the event occurred as provided in the error report. If the report did not contain a timestamp, the
+        /// time the error was received by the Error Reporting system is used.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual object EventTime { get; set; }
 
@@ -1060,13 +1121,15 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Description of a group of similar error events.</summary>
     public class ErrorGroup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Group IDs are unique for a given project. If the same kind of error occurs in different service
-        /// contexts, it will receive the same group ID.</summary>
+        /// <summary>
+        /// Group IDs are unique for a given project. If the same kind of error occurs in different service contexts, it
+        /// will receive the same group ID.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
         public virtual string GroupId { get; set; }
 
@@ -1074,8 +1137,9 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Error group's resolution status. An unspecified resolution status will be interpreted as
-        /// OPEN</summary>
+        /// <summary>
+        /// Error group's resolution status. An unspecified resolution status will be interpreted as OPEN
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolutionStatus")]
         public virtual string ResolutionStatus { get; set; }
 
@@ -1085,23 +1149,29 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Data extracted for a specific group based on certain filter criteria, such as a given time period
-    /// and/or service filter.</summary>
+    /// <summary>
+    /// Data extracted for a specific group based on certain filter criteria, such as a given time period and/or service
+    /// filter.
+    /// </summary>
     public class ErrorGroupStats : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Service contexts with a non-zero error count for the given filter criteria. This list can be
-        /// truncated if multiple services are affected. Refer to `num_affected_services` for the total count.</summary>
+        /// <summary>
+        /// Service contexts with a non-zero error count for the given filter criteria. This list can be truncated if
+        /// multiple services are affected. Refer to `num_affected_services` for the total count.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("affectedServices")]
         public virtual System.Collections.Generic.IList<ServiceContext> AffectedServices { get; set; }
 
-        /// <summary>Approximate number of affected users in the given group that match the filter criteria. Users are
+        /// <summary>
+        /// Approximate number of affected users in the given group that match the filter criteria. Users are
         /// distinguished by data in the `ErrorContext` of the individual error events, such as their login name or
         /// their remote IP address in case of HTTP requests. The number of affected users can be zero even if the
         /// number of errors is non-zero if no data was provided from which the affected user could be deduced. Users
         /// are counted based on data in the request context that was provided in the error report. If more users are
-        /// implicitly affected, such as due to a crash of the whole service, this is not reflected here.</summary>
+        /// implicitly affected, such as due to a crash of the whole service, this is not reflected here.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("affectedUsersCount")]
         public virtual System.Nullable<long> AffectedUsersCount { get; set; }
 
@@ -1109,8 +1179,10 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<long> Count { get; set; }
 
-        /// <summary>Approximate first occurrence that was ever seen for this group and which matches the given filter
-        /// criteria, ignoring the time_range that was specified in the request.</summary>
+        /// <summary>
+        /// Approximate first occurrence that was ever seen for this group and which matches the given filter criteria,
+        /// ignoring the time_range that was specified in the request.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstSeenTime")]
         public virtual object FirstSeenTime { get; set; }
 
@@ -1118,8 +1190,10 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
         public virtual ErrorGroup Group { get; set; }
 
-        /// <summary>Approximate last occurrence that was ever seen for this group and which matches the given filter
-        /// criteria, ignoring the time_range that was specified in the request.</summary>
+        /// <summary>
+        /// Approximate last occurrence that was ever seen for this group and which matches the given filter criteria,
+        /// ignoring the time_range that was specified in the request.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastSeenTime")]
         public virtual object LastSeenTime { get; set; }
 
@@ -1127,25 +1201,30 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("numAffectedServices")]
         public virtual System.Nullable<int> NumAffectedServices { get; set; }
 
-        /// <summary>An arbitrary event that is chosen as representative for the whole group. The representative event
-        /// is intended to be used as a quick preview for the whole group. Events in the group are usually sufficiently
+        /// <summary>
+        /// An arbitrary event that is chosen as representative for the whole group. The representative event is
+        /// intended to be used as a quick preview for the whole group. Events in the group are usually sufficiently
         /// similar to each other such that showing an arbitrary representative provides insight into the
-        /// characteristics of the group as a whole.</summary>
+        /// characteristics of the group as a whole.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("representative")]
         public virtual ErrorEvent Representative { get; set; }
 
-        /// <summary>Approximate number of occurrences over time. Timed counts returned by ListGroups are guaranteed to
-        /// be: - Inside the requested time interval - Non-overlapping, and - Ordered by ascending time.</summary>
+        /// <summary>
+        /// Approximate number of occurrences over time. Timed counts returned by ListGroups are guaranteed to be: -
+        /// Inside the requested time interval - Non-overlapping, and - Ordered by ascending time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timedCounts")]
         public virtual System.Collections.Generic.IList<TimedCount> TimedCounts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>HTTP request data that is related to a reported error. This data should be provided by the application
-    /// when reporting an error, unless the error report has been generated automatically from Google App Engine
-    /// logs.</summary>
+    /// <summary>
+    /// HTTP request data that is related to a reported error. This data should be provided by the application when
+    /// reporting an error, unless the error report has been generated automatically from Google App Engine logs.
+    /// </summary>
     public class HttpRequestContext : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The type of HTTP request, such as `GET`, `POST`, etc.</summary>
@@ -1156,8 +1235,10 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("referrer")]
         public virtual string Referrer { get; set; }
 
-        /// <summary>The IP address from which the request originated. This can be IPv4, IPv6, or a token which is
-        /// derived from the IP address, depending on the data that has been provided in the error report.</summary>
+        /// <summary>
+        /// The IP address from which the request originated. This can be IPv4, IPv6, or a token which is derived from
+        /// the IP address, depending on the data that has been provided in the error report.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remoteIp")]
         public virtual string RemoteIp { get; set; }
 
@@ -1175,7 +1256,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Contains a set of requested error events.</summary>
     public class ListEventsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1184,8 +1265,10 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorEvents")]
         public virtual System.Collections.Generic.IList<ErrorEvent> ErrorEvents { get; set; }
 
-        /// <summary>If non-empty, more results are available. Pass this token, along with the same query parameters as
-        /// the first request, to view the next page of results.</summary>
+        /// <summary>
+        /// If non-empty, more results are available. Pass this token, along with the same query parameters as the first
+        /// request, to view the next page of results.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -1195,7 +1278,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Contains a set of requested error group stats.</summary>
     public class ListGroupStatsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1204,28 +1287,33 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorGroupStats")]
         public virtual System.Collections.Generic.IList<ErrorGroupStats> ErrorGroupStats { get; set; }
 
-        /// <summary>If non-empty, more results are available. Pass this token, along with the same query parameters as
-        /// the first request, to view the next page of results.</summary>
+        /// <summary>
+        /// If non-empty, more results are available. Pass this token, along with the same query parameters as the first
+        /// request, to view the next page of results.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The timestamp specifies the start time to which the request was restricted. The start time is set
-        /// based on the requested time range. It may be adjusted to a later time if a project has exceeded the storage
-        /// quota and older data has been deleted.</summary>
+        /// <summary>
+        /// The timestamp specifies the start time to which the request was restricted. The start time is set based on
+        /// the requested time range. It may be adjusted to a later time if a project has exceeded the storage quota and
+        /// older data has been deleted.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeRangeBegin")]
         public virtual object TimeRangeBegin { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Response for reporting an individual error event. Data may be added to this message in the
-    /// future.</summary>
+    /// <summary>
+    /// Response for reporting an individual error event. Data may be added to this message in the future.
+    /// </summary>
     public class ReportErrorEventResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An error event which is reported to the Error Reporting system.</summary>
     public class ReportedErrorEvent : Google.Apis.Requests.IDirectResponseSchema
@@ -1234,25 +1322,30 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
         public virtual ErrorContext Context { get; set; }
 
-        /// <summary>Optional. Time when the event occurred. If not provided, the time when the event was received by
-        /// the Error Reporting system will be used.</summary>
+        /// <summary>
+        /// Optional. Time when the event occurred. If not provided, the time when the event was received by the Error
+        /// Reporting system will be used.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual object EventTime { get; set; }
 
-        /// <summary>Required. The error message. If no `context.reportLocation` is provided, the message must contain a
-        /// header (typically consisting of the exception type name and an error message) and an exception stack trace
-        /// in one of the supported programming languages and formats. Supported languages are Java, Python, JavaScript,
-        /// Ruby, C#, PHP, and Go. Supported stack trace formats are: * **Java**: Must be the return value of [`Throwabl
-        /// e.printStackTrace()`](https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html#printStackTrace%28%
-        /// 29). * **Python**: Must be the return value of
+        /// <summary>
+        /// Required. The error message. If no `context.reportLocation` is provided, the message must contain a header
+        /// (typically consisting of the exception type name and an error message) and an exception stack trace in one
+        /// of the supported programming languages and formats. Supported languages are Java, Python, JavaScript, Ruby,
+        /// C#, PHP, and Go. Supported stack trace formats are: * **Java**: Must be the return value of
+        /// [`Throwable.printStackTrace()`](https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html#printStackTrace%28%29).
+        /// * **Python**: Must be the return value of
         /// [`traceback.format_exc()`](https://docs.python.org/2/library/traceback.html#traceback.format_exc). *
         /// **JavaScript**: Must be the value of [`error.stack`](https://github.com/v8/v8/wiki/Stack-Trace-API) as
-        /// returned by V8. * **Ruby**: Must contain frames returned by [`Exception.backtrace`](https://ruby-
-        /// doc.org/core-2.2.0/Exception.html#method-i-backtrace). * **C#**: Must be the return value of
+        /// returned by V8. * **Ruby**: Must contain frames returned by
+        /// [`Exception.backtrace`](https://ruby-doc.org/core-2.2.0/Exception.html#method-i-backtrace). * **C#**: Must
+        /// be the return value of
         /// [`Exception.ToString()`](https://msdn.microsoft.com/en-us/library/system.exception.tostring.aspx). *
         /// **PHP**: Must start with `PHP (Notice|Parse error|Fatal error|Warning)` and contain the result of
         /// [`(string)$exception`](http://php.net/manual/en/exception.tostring.php). * **Go**: Must be the return value
-        /// of [`runtime.Stack()`](https://golang.org/pkg/runtime/debug/#Stack).</summary>
+        /// of [`runtime.Stack()`](https://golang.org/pkg/runtime/debug/#Stack).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
@@ -1262,48 +1355,60 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Describes a running service that sends errors. Its version changes over time and multiple versions can
-    /// run in parallel.</summary>
+    /// <summary>
+    /// Describes a running service that sends errors. Its version changes over time and multiple versions can run in
+    /// parallel.
+    /// </summary>
     public class ServiceContext : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Type of the MonitoredResource. List of possible values:
-        /// https://cloud.google.com/monitoring/api/resources Value is set automatically for incoming errors and must
-        /// not be set when reporting errors.</summary>
+        /// <summary>
+        /// Type of the MonitoredResource. List of possible values: https://cloud.google.com/monitoring/api/resources
+        /// Value is set automatically for incoming errors and must not be set when reporting errors.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
 
-        /// <summary>An identifier of the service, such as the name of the executable, job, or Google App Engine service
-        /// name. This field is expected to have a low number of values that are relatively stable over time, as opposed
-        /// to `version`, which can be changed whenever new code is deployed. Contains the service name for error
-        /// reports extracted from Google App Engine logs or `default` if the App Engine default service is
-        /// used.</summary>
+        /// <summary>
+        /// An identifier of the service, such as the name of the executable, job, or Google App Engine service name.
+        /// This field is expected to have a low number of values that are relatively stable over time, as opposed to
+        /// `version`, which can be changed whenever new code is deployed. Contains the service name for error reports
+        /// extracted from Google App Engine logs or `default` if the App Engine default service is used.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
 
-        /// <summary>Represents the source code version that the developer provided, which could represent a version
-        /// label or a Git SHA-1 hash, for example. For App Engine standard environment, the version is set to the
-        /// version of the app.</summary>
+        /// <summary>
+        /// Represents the source code version that the developer provided, which could represent a version label or a
+        /// Git SHA-1 hash, for example. For App Engine standard environment, the version is set to the version of the
+        /// app.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Indicates a location in the source code of the service for which errors are reported. `functionName`
-    /// must be provided by the application when reporting an error, unless the error report contains a `message` with a
-    /// supported exception stack trace. All fields are optional for the later case.</summary>
+    /// <summary>
+    /// Indicates a location in the source code of the service for which errors are reported. `functionName` must be
+    /// provided by the application when reporting an error, unless the error report contains a `message` with a
+    /// supported exception stack trace. All fields are optional for the later case.
+    /// </summary>
     public class SourceLocation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The source code filename, which can include a truncated relative path, or a full path from a
-        /// production machine.</summary>
+        /// <summary>
+        /// The source code filename, which can include a truncated relative path, or a full path from a production
+        /// machine.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
         public virtual string FilePath { get; set; }
 
-        /// <summary>Human-readable name of a function or method. The value can include optional context like the class
-        /// or package name. For example, `my.package.MyClass.method` in case of Java.</summary>
+        /// <summary>
+        /// Human-readable name of a function or method. The value can include optional context like the class or
+        /// package name. For example, `my.package.MyClass.method` in case of Java.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionName")]
         public virtual string FunctionName { get; set; }
 
@@ -1313,28 +1418,35 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A reference to a particular snapshot of the source tree used to build and deploy an
-    /// application.</summary>
+    /// <summary>
+    /// A reference to a particular snapshot of the source tree used to build and deploy an application.
+    /// </summary>
     public class SourceReference : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. A URI string identifying the repository. Example:
-        /// "https://github.com/GoogleCloudPlatform/kubernetes.git"</summary>
+        /// <summary>
+        /// Optional. A URI string identifying the repository. Example:
+        /// "https://github.com/GoogleCloudPlatform/kubernetes.git"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repository")]
         public virtual string Repository { get; set; }
 
-        /// <summary>The canonical and persistent identifier of the deployed revision. Example (git):
-        /// "0035781c50ec7aa23385dc841529ce8a4b70db1b"</summary>
+        /// <summary>
+        /// The canonical and persistent identifier of the deployed revision. Example (git):
+        /// "0035781c50ec7aa23385dc841529ce8a4b70db1b"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
         public virtual string RevisionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>The number of errors in a given time period. All numbers are approximate since the error events are
-    /// sampled before counting them.</summary>
+    /// <summary>
+    /// The number of errors in a given time period. All numbers are approximate since the error events are sampled
+    /// before counting them.
+    /// </summary>
     public class TimedCount : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Approximate number of occurrences in the given time period.</summary>
@@ -1351,13 +1463,15 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information related to tracking the progress on resolving the error.</summary>
     public class TrackingIssue : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A URL pointing to a related entry in an issue tracking system. Example:
-        /// `https://github.com/user/project/issues/4`</summary>
+        /// <summary>
+        /// A URL pointing to a related entry in an issue tracking system. Example:
+        /// `https://github.com/user/project/issues/4`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
 

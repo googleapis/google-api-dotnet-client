@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -57,10 +62,6 @@ namespace Google.Apis.Discovery.v1
         public override string BatchPath => "batch/discovery/v1";
         #endif
 
-
-
-
-
         /// <summary>Gets the Apis resource.</summary>
         public virtual ApisResource Apis { get; }
     }
@@ -89,8 +90,10 @@ namespace Google.Apis.Discovery.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -102,8 +105,9 @@ namespace Google.Apis.Discovery.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-        /// characters.</summary>
+        /// <summary>
+        /// An opaque string that represents a user for quota purposes. Must not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -115,7 +119,6 @@ namespace Google.Apis.Discovery.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
             {
                 Name = "alt",
@@ -187,9 +190,7 @@ namespace Google.Apis.Discovery.v1
         public ApisResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Retrieve the description of a particular version of an api.</summary>
         /// <param name="api">The name of the API.</param>
@@ -210,7 +211,6 @@ namespace Google.Apis.Discovery.v1
                 InitParameters();
             }
 
-
             /// <summary>The name of the API.</summary>
             [Google.Apis.Util.RequestParameterAttribute("api", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Api { get; private set; }
@@ -218,7 +218,6 @@ namespace Google.Apis.Discovery.v1
             /// <summary>The version of the API.</summary>
             [Google.Apis.Util.RequestParameterAttribute("version", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Version { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getRest";
@@ -233,7 +232,6 @@ namespace Google.Apis.Discovery.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("api", new Google.Apis.Discovery.Parameter
                 {
                     Name = "api",
@@ -251,7 +249,6 @@ namespace Google.Apis.Discovery.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Retrieve the list of APIs supported at this endpoint.</summary>
@@ -269,7 +266,6 @@ namespace Google.Apis.Discovery.v1
                 InitParameters();
             }
 
-
             /// <summary>Only include APIs with the given name.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
@@ -277,7 +273,6 @@ namespace Google.Apis.Discovery.v1
             /// <summary>Return only the preferred version of an API.</summary>
             [Google.Apis.Util.RequestParameterAttribute("preferred", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Preferred { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -292,7 +287,6 @@ namespace Google.Apis.Discovery.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -310,14 +304,11 @@ namespace Google.Apis.Discovery.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.Discovery.v1.Data
-{    
-
+{
     public class DirectoryList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Indicate the version of the Discovery API used to generate this doc.</summary>
@@ -334,8 +325,8 @@ namespace Google.Apis.Discovery.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
+        /// <summary>The individual directory entries. One entry per api/version pair.</summary>
         public class ItemsData
         {
             /// <summary>The description of this API.</summary>
@@ -386,8 +377,6 @@ namespace Google.Apis.Discovery.v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("version")]
             public virtual string Version { get; set; }
 
-            
-
             /// <summary>Links to 16x16 and 32x32 icons representing the API.</summary>
             public class IconsData
             {
@@ -398,10 +387,9 @@ namespace Google.Apis.Discovery.v1.Data
                 /// <summary>The URL of the 32x32 icon.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("x32")]
                 public virtual string X32 { get; set; }
-
             }
         }
-    }    
+    }
 
     public class JsonSchema : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -409,8 +397,10 @@ namespace Google.Apis.Discovery.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("$ref")]
         public virtual string Ref__ { get; set; }
 
-        /// <summary>If this is a schema for an object, this property is the schema for any additional properties with
-        /// dynamic keys on this object.</summary>
+        /// <summary>
+        /// If this is a schema for an object, this property is the schema for any additional properties with dynamic
+        /// keys on this object.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalProperties")]
         public virtual JsonSchema AdditionalProperties { get; set; }
 
@@ -430,13 +420,16 @@ namespace Google.Apis.Discovery.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enum")]
         public virtual System.Collections.Generic.IList<string> Enum__ { get; set; }
 
-        /// <summary>The descriptions for the enums. Each position maps to the corresponding value in the "enum"
-        /// array.</summary>
+        /// <summary>
+        /// The descriptions for the enums. Each position maps to the corresponding value in the "enum" array.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enumDescriptions")]
         public virtual System.Collections.Generic.IList<string> EnumDescriptions { get; set; }
 
-        /// <summary>An additional regular expression or key that helps constrain the value. For more details see:
-        /// http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.23</summary>
+        /// <summary>
+        /// An additional regular expression or key that helps constrain the value. For more details see:
+        /// http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.23
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
         public virtual string Format { get; set; }
 
@@ -444,8 +437,9 @@ namespace Google.Apis.Discovery.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>If this is a schema for an array, this property is the schema for each element in the
-        /// array.</summary>
+        /// <summary>
+        /// If this is a schema for an array, this property is the schema for each element in the array.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual JsonSchema Items { get; set; }
 
@@ -461,8 +455,10 @@ namespace Google.Apis.Discovery.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minimum")]
         public virtual string Minimum { get; set; }
 
-        /// <summary>The regular expression this parameter must conform to. Uses Java 6 regex format:
-        /// http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html</summary>
+        /// <summary>
+        /// The regular expression this parameter must conform to. Uses Java 6 regex format:
+        /// http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
         public virtual string Pattern { get; set; }
 
@@ -470,8 +466,10 @@ namespace Google.Apis.Discovery.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string, JsonSchema> Properties { get; set; }
 
-        /// <summary>The value is read-only, generated by the service. The value cannot be modified by the client. If
-        /// the value is included in a POST, PUT, or PATCH request, it is ignored by the service.</summary>
+        /// <summary>
+        /// The value is read-only, generated by the service. The value cannot be modified by the client. If the value
+        /// is included in a POST, PUT, or PATCH request, it is ignored by the service.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
         public virtual System.Nullable<bool> ReadOnly__ { get; set; }
 
@@ -483,19 +481,22 @@ namespace Google.Apis.Discovery.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("required")]
         public virtual System.Nullable<bool> Required { get; set; }
 
-        /// <summary>The value type for this schema. A list of values can be found here: http://tools.ietf.org/html
-        /// /draft-zyp-json-schema-03#section-5.1</summary>
+        /// <summary>
+        /// The value type for this schema. A list of values can be found here:
+        /// http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.1
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
-        /// <summary>In a variant data type, the value of one property is used to determine how to interpret the entire
-        /// entity. Its value must exist in a map of descriminant values to schema names.</summary>
+        /// <summary>
+        /// In a variant data type, the value of one property is used to determine how to interpret the entire entity.
+        /// Its value must exist in a map of descriminant values to schema names.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variant")]
         public virtual VariantData Variant { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
         /// <summary>Additional information about this property.</summary>
         public class AnnotationsData
@@ -503,11 +504,12 @@ namespace Google.Apis.Discovery.v1.Data
             /// <summary>A list of methods for which this property is required on requests.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("required")]
             public virtual System.Collections.Generic.IList<string> Required { get; set; }
+        }
 
-        }    
-
-        /// <summary>In a variant data type, the value of one property is used to determine how to interpret the entire
-        /// entity. Its value must exist in a map of descriminant values to schema names.</summary>
+        /// <summary>
+        /// In a variant data type, the value of one property is used to determine how to interpret the entire entity.
+        /// Its value must exist in a map of descriminant values to schema names.
+        /// </summary>
         public class VariantData
         {
             /// <summary>The name of the type discriminant property.</summary>
@@ -518,8 +520,7 @@ namespace Google.Apis.Discovery.v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("map")]
             public virtual System.Collections.Generic.IList<MapData> Map { get; set; }
 
-            
-
+            /// <summary>The map of discriminant value to schema to use for parsing..</summary>
             public class MapData
             {
                 [Newtonsoft.Json.JsonPropertyAttribute("$ref")]
@@ -527,10 +528,9 @@ namespace Google.Apis.Discovery.v1.Data
 
                 [Newtonsoft.Json.JsonPropertyAttribute("type_value")]
                 public virtual string TypeValue { get; set; }
-
             }
         }
-    }    
+    }
 
     public class RestDescription : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -550,8 +550,10 @@ namespace Google.Apis.Discovery.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("batchPath")]
         public virtual string BatchPath { get; set; }
 
-        /// <summary>Indicates how the API name should be capitalized and split into various parts. Useful for
-        /// generating pretty class names.</summary>
+        /// <summary>
+        /// Indicates how the API name should be capitalized and split into various parts. Useful for generating pretty
+        /// class names.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalName")]
         public virtual string CanonicalName { get; set; }
 
@@ -603,8 +605,10 @@ namespace Google.Apis.Discovery.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The domain of the owner of this API. Together with the ownerName and a packagePath values, this can
-        /// be used to generate a library for this API which would have a unique fully qualified name.</summary>
+        /// <summary>
+        /// The domain of the owner of this API. Together with the ownerName and a packagePath values, this can be used
+        /// to generate a library for this API which would have a unique fully qualified name.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerDomain")]
         public virtual string OwnerDomain { get; set; }
 
@@ -655,16 +659,12 @@ namespace Google.Apis.Discovery.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("version_module")]
         public virtual System.Nullable<bool> VersionModule { get; set; }
 
-        
-
         /// <summary>Authentication information.</summary>
         public class AuthData
         {
             /// <summary>OAuth 2.0 authentication information.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("oauth2")]
             public virtual Oauth2Data Oauth2 { get; set; }
-
-            
 
             /// <summary>OAuth 2.0 authentication information.</summary>
             public class Oauth2Data
@@ -673,18 +673,15 @@ namespace Google.Apis.Discovery.v1.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
                 public virtual System.Collections.Generic.IDictionary<string, ScopesDataElement> Scopes { get; set; }
 
-                
-
                 /// <summary>The scope value.</summary>
                 public class ScopesDataElement
                 {
                     /// <summary>Description of scope.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("description")]
                     public virtual string Description { get; set; }
-
                 }
             }
-        }    
+        }
 
         /// <summary>Links to 16x16 and 32x32 icons representing the API.</summary>
         public class IconsData
@@ -696,9 +693,8 @@ namespace Google.Apis.Discovery.v1.Data
             /// <summary>The URL of the 32x32 icon.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("x32")]
             public virtual string X32 { get; set; }
-
         }
-    }    
+    }
 
     public class RestMethod : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -706,8 +702,10 @@ namespace Google.Apis.Discovery.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Whether this method requires an ETag to be specified. The ETag is sent as an HTTP If-Match or If-
-        /// None-Match header.</summary>
+        /// <summary>
+        /// Whether this method requires an ETag to be specified. The ETag is sent as an HTTP If-Match or If-None-Match
+        /// header.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etagRequired")]
         public virtual System.Nullable<bool> EtagRequired { get; set; }
 
@@ -715,8 +713,10 @@ namespace Google.Apis.Discovery.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
         public virtual string HttpMethod { get; set; }
 
-        /// <summary>A unique ID for this method. This property can be used to match methods between different versions
-        /// of Discovery.</summary>
+        /// <summary>
+        /// A unique ID for this method. This property can be used to match methods between different versions of
+        /// Discovery.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -724,8 +724,10 @@ namespace Google.Apis.Discovery.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mediaUpload")]
         public virtual MediaUploadData MediaUpload { get; set; }
 
-        /// <summary>Ordered list of required parameters, serves as a hint to clients on how to structure their method
-        /// signatures. The array is ordered such that the "most-significant" parameter appears first.</summary>
+        /// <summary>
+        /// Ordered list of required parameters, serves as a hint to clients on how to structure their method
+        /// signatures. The array is ordered such that the "most-significant" parameter appears first.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterOrder")]
         public virtual System.Collections.Generic.IList<string> ParameterOrder { get; set; }
 
@@ -733,8 +735,9 @@ namespace Google.Apis.Discovery.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, JsonSchema> Parameters { get; set; }
 
-        /// <summary>The URI path of this REST method. Should be used in conjunction with the basePath property at the
-        /// api-level.</summary>
+        /// <summary>
+        /// The URI path of this REST method. Should be used in conjunction with the basePath property at the api-level.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
@@ -762,14 +765,15 @@ namespace Google.Apis.Discovery.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("supportsSubscription")]
         public virtual System.Nullable<bool> SupportsSubscription { get; set; }
 
-        /// <summary>Indicates that downloads from this method should use the download service URL (i.e. "/download").
-        /// Only applies if the method supports media download.</summary>
+        /// <summary>
+        /// Indicates that downloads from this method should use the download service URL (i.e. "/download"). Only
+        /// applies if the method supports media download.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useMediaDownloadService")]
         public virtual System.Nullable<bool> UseMediaDownloadService { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
         /// <summary>Media upload parameters.</summary>
         public class MediaUploadData
@@ -786,8 +790,6 @@ namespace Google.Apis.Discovery.v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("protocols")]
             public virtual ProtocolsData Protocols { get; set; }
 
-            
-
             /// <summary>Supported upload protocols.</summary>
             public class ProtocolsData
             {
@@ -799,8 +801,6 @@ namespace Google.Apis.Discovery.v1.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("simple")]
                 public virtual SimpleData Simple { get; set; }
 
-                
-
                 /// <summary>Supports the Resumable Media Upload protocol.</summary>
                 public class ResumableData
                 {
@@ -808,12 +808,13 @@ namespace Google.Apis.Discovery.v1.Data
                     [Newtonsoft.Json.JsonPropertyAttribute("multipart")]
                     public virtual System.Nullable<bool> Multipart { get; set; }
 
-                    /// <summary>The URI path to be used for upload. Should be used in conjunction with the basePath
-                    /// property at the api-level.</summary>
+                    /// <summary>
+                    /// The URI path to be used for upload. Should be used in conjunction with the basePath property at
+                    /// the api-level.
+                    /// </summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("path")]
                     public virtual string Path { get; set; }
-
-                }    
+                }
 
                 /// <summary>Supports uploading as a single HTTP request.</summary>
                 public class SimpleData
@@ -822,14 +823,15 @@ namespace Google.Apis.Discovery.v1.Data
                     [Newtonsoft.Json.JsonPropertyAttribute("multipart")]
                     public virtual System.Nullable<bool> Multipart { get; set; }
 
-                    /// <summary>The URI path to be used for upload. Should be used in conjunction with the basePath
-                    /// property at the api-level.</summary>
+                    /// <summary>
+                    /// The URI path to be used for upload. Should be used in conjunction with the basePath property at
+                    /// the api-level.
+                    /// </summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("path")]
                     public virtual string Path { get; set; }
-
                 }
             }
-        }    
+        }
 
         /// <summary>The schema for the request.</summary>
         public class RequestData
@@ -841,8 +843,7 @@ namespace Google.Apis.Discovery.v1.Data
             /// <summary>parameter name.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("parameterName")]
             public virtual string ParameterName { get; set; }
-
-        }    
+        }
 
         /// <summary>The schema for the response.</summary>
         public class ResponseData
@@ -850,9 +851,8 @@ namespace Google.Apis.Discovery.v1.Data
             /// <summary>Schema ID for the response schema.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("$ref")]
             public virtual string Ref__ { get; set; }
-
         }
-    }    
+    }
 
     public class RestResource : Google.Apis.Requests.IDirectResponseSchema
     {

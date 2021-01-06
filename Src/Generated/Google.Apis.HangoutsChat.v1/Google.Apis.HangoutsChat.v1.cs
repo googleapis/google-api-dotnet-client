@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -60,10 +65,6 @@ namespace Google.Apis.HangoutsChat.v1
         public override string BatchPath => "batch";
         #endif
 
-
-
-
-
         /// <summary>Gets the Dms resource.</summary>
         public virtual DmsResource Dms { get; }
 
@@ -95,6 +96,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -114,9 +116,11 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -130,8 +134,10 @@ namespace Google.Apis.HangoutsChat.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -143,8 +149,10 @@ namespace Google.Apis.HangoutsChat.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -160,7 +168,6 @@ namespace Google.Apis.HangoutsChat.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -265,7 +272,6 @@ namespace Google.Apis.HangoutsChat.v1
         {
             this.service = service;
             Conversations = new ConversationsResource(service);
-
         }
 
         /// <summary>Gets the Conversations resource.</summary>
@@ -283,13 +289,13 @@ namespace Google.Apis.HangoutsChat.v1
             public ConversationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. Space resource name, in the form "spaces". Example: spaces/AAAAMpdlehY</param>
+            /// <param name="parent">
+            /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+            /// </param>
             public virtual MessagesRequest Messages(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
             {
                 return new MessagesRequest(service, body, parent);
@@ -306,20 +312,22 @@ namespace Google.Apis.HangoutsChat.v1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. Space resource name, in the form "spaces". Example: spaces/AAAAMpdlehY</summary>
+                /// <summary>
+                /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Opaque thread identifier string that can be specified to group messages into a single
-                /// thread. If this is the first message with a given thread identifier, a new thread is created.
-                /// Subsequent messages with the same thread identifier will be posted into the same thread. This
-                /// relieves bots and webhooks from having to store the Hangouts Chat thread ID of a thread (created
-                /// earlier by them) to post further updates to it. Has no effect if thread field, corresponding to an
-                /// existing thread, is set in message.</summary>
+                /// <summary>
+                /// Opaque thread identifier string that can be specified to group messages into a single thread. If
+                /// this is the first message with a given thread identifier, a new thread is created. Subsequent
+                /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
+                /// webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to
+                /// post further updates to it. Has no effect if thread field, corresponding to an existing thread, is
+                /// set in message.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ThreadKey { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.HangoutsChat.v1.Data.Message Body { get; set; }
@@ -340,7 +348,6 @@ namespace Google.Apis.HangoutsChat.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -358,13 +365,14 @@ namespace Google.Apis.HangoutsChat.v1
                         Pattern = null,
                     });
                 }
-
             }
         }
 
         /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="parent">Required. Space resource name, in the form "spaces". Example: spaces/AAAAMpdlehY</param>
+        /// <param name="parent">
+        /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+        /// </param>
         public virtual MessagesRequest Messages(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
         {
             return new MessagesRequest(service, body, parent);
@@ -381,20 +389,19 @@ namespace Google.Apis.HangoutsChat.v1
                 InitParameters();
             }
 
-
-            /// <summary>Required. Space resource name, in the form "spaces". Example: spaces/AAAAMpdlehY</summary>
+            /// <summary>Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
-            /// <summary>Opaque thread identifier string that can be specified to group messages into a single thread.
-            /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
-            /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
-            /// webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to post
-            /// further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in
-            /// message.</summary>
+            /// <summary>
+            /// Opaque thread identifier string that can be specified to group messages into a single thread. If this is
+            /// the first message with a given thread identifier, a new thread is created. Subsequent messages with the
+            /// same thread identifier will be posted into the same thread. This relieves bots and webhooks from having
+            /// to store the Hangouts Chat thread ID of a thread (created earlier by them) to post further updates to
+            /// it. Has no effect if thread field, corresponding to an existing thread, is set in message.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ThreadKey { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.HangoutsChat.v1.Data.Message Body { get; set; }
@@ -415,7 +422,6 @@ namespace Google.Apis.HangoutsChat.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                 {
                     Name = "parent",
@@ -433,12 +439,13 @@ namespace Google.Apis.HangoutsChat.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="parent">Required. Space resource name, in the form "spaces". Example: spaces/AAAAMpdlehY</param>
+        /// <param name="parent">
+        /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+        /// </param>
         public virtual WebhooksRequest Webhooks(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
         {
             return new WebhooksRequest(service, body, parent);
@@ -455,20 +462,19 @@ namespace Google.Apis.HangoutsChat.v1
                 InitParameters();
             }
 
-
-            /// <summary>Required. Space resource name, in the form "spaces". Example: spaces/AAAAMpdlehY</summary>
+            /// <summary>Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
-            /// <summary>Opaque thread identifier string that can be specified to group messages into a single thread.
-            /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
-            /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
-            /// webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to post
-            /// further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in
-            /// message.</summary>
+            /// <summary>
+            /// Opaque thread identifier string that can be specified to group messages into a single thread. If this is
+            /// the first message with a given thread identifier, a new thread is created. Subsequent messages with the
+            /// same thread identifier will be posted into the same thread. This relieves bots and webhooks from having
+            /// to store the Hangouts Chat thread ID of a thread (created earlier by them) to post further updates to
+            /// it. Has no effect if thread field, corresponding to an existing thread, is set in message.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ThreadKey { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.HangoutsChat.v1.Data.Message Body { get; set; }
@@ -489,7 +495,6 @@ namespace Google.Apis.HangoutsChat.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                 {
                     Name = "parent",
@@ -507,7 +512,6 @@ namespace Google.Apis.HangoutsChat.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -523,12 +527,12 @@ namespace Google.Apis.HangoutsChat.v1
         public MediaResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
         /// <summary>Downloads media. Download is supported on the URI `/v1/media/{+name}?alt=media`.</summary>
-        /// <param name="resourceName">Name of the media that is being downloaded. See ReadRequest.resource_name.</param>
+        /// <param name="resourceName">
+        /// Name of the media that is being downloaded. See ReadRequest.resource_name.
+        /// </param>
         public virtual DownloadRequest Download(string resourceName)
         {
             return new DownloadRequest(service, resourceName);
@@ -545,11 +549,9 @@ namespace Google.Apis.HangoutsChat.v1
                 InitParameters();
             }
 
-
             /// <summary>Name of the media that is being downloaded. See ReadRequest.resource_name.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceName { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "download";
@@ -564,7 +566,6 @@ namespace Google.Apis.HangoutsChat.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("resourceName", new Google.Apis.Discovery.Parameter
                 {
                     Name = "resourceName",
@@ -580,7 +581,10 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>
             /// <para>Synchronously download the media into the given stream.</para>
-            /// <para>Warning: This method hides download errors; use <see cref="DownloadWithStatus"/> instead.</para>
+            /// <para>
+            /// Warning: This method hides download errors; use <see cref="DownloadWithStatus(System.IO.Stream)"/>
+            /// instead.
+            /// </para>
             /// </summary>
             public virtual void Download(System.IO.Stream stream)
             {
@@ -626,7 +630,6 @@ namespace Google.Apis.HangoutsChat.v1
                 return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
             }
             #endif
-
         }
     }
 
@@ -643,7 +646,6 @@ namespace Google.Apis.HangoutsChat.v1
         {
             this.service = service;
             Conversations = new ConversationsResource(service);
-
         }
 
         /// <summary>Gets the Conversations resource.</summary>
@@ -661,13 +663,13 @@ namespace Google.Apis.HangoutsChat.v1
             public ConversationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. Space resource name, in the form "spaces". Example: spaces/AAAAMpdlehY</param>
+            /// <param name="parent">
+            /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+            /// </param>
             public virtual MessagesRequest Messages(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
             {
                 return new MessagesRequest(service, body, parent);
@@ -684,20 +686,22 @@ namespace Google.Apis.HangoutsChat.v1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. Space resource name, in the form "spaces". Example: spaces/AAAAMpdlehY</summary>
+                /// <summary>
+                /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Opaque thread identifier string that can be specified to group messages into a single
-                /// thread. If this is the first message with a given thread identifier, a new thread is created.
-                /// Subsequent messages with the same thread identifier will be posted into the same thread. This
-                /// relieves bots and webhooks from having to store the Hangouts Chat thread ID of a thread (created
-                /// earlier by them) to post further updates to it. Has no effect if thread field, corresponding to an
-                /// existing thread, is set in message.</summary>
+                /// <summary>
+                /// Opaque thread identifier string that can be specified to group messages into a single thread. If
+                /// this is the first message with a given thread identifier, a new thread is created. Subsequent
+                /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
+                /// webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to
+                /// post further updates to it. Has no effect if thread field, corresponding to an existing thread, is
+                /// set in message.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ThreadKey { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.HangoutsChat.v1.Data.Message Body { get; set; }
@@ -718,7 +722,6 @@ namespace Google.Apis.HangoutsChat.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -736,13 +739,14 @@ namespace Google.Apis.HangoutsChat.v1
                         Pattern = null,
                     });
                 }
-
             }
         }
 
         /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="parent">Required. Space resource name, in the form "spaces". Example: spaces/AAAAMpdlehY</param>
+        /// <param name="parent">
+        /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+        /// </param>
         public virtual MessagesRequest Messages(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
         {
             return new MessagesRequest(service, body, parent);
@@ -759,20 +763,19 @@ namespace Google.Apis.HangoutsChat.v1
                 InitParameters();
             }
 
-
-            /// <summary>Required. Space resource name, in the form "spaces". Example: spaces/AAAAMpdlehY</summary>
+            /// <summary>Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
-            /// <summary>Opaque thread identifier string that can be specified to group messages into a single thread.
-            /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
-            /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
-            /// webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to post
-            /// further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in
-            /// message.</summary>
+            /// <summary>
+            /// Opaque thread identifier string that can be specified to group messages into a single thread. If this is
+            /// the first message with a given thread identifier, a new thread is created. Subsequent messages with the
+            /// same thread identifier will be posted into the same thread. This relieves bots and webhooks from having
+            /// to store the Hangouts Chat thread ID of a thread (created earlier by them) to post further updates to
+            /// it. Has no effect if thread field, corresponding to an existing thread, is set in message.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ThreadKey { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.HangoutsChat.v1.Data.Message Body { get; set; }
@@ -793,7 +796,6 @@ namespace Google.Apis.HangoutsChat.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                 {
                     Name = "parent",
@@ -811,12 +813,13 @@ namespace Google.Apis.HangoutsChat.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="parent">Required. Space resource name, in the form "spaces". Example: spaces/AAAAMpdlehY</param>
+        /// <param name="parent">
+        /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+        /// </param>
         public virtual WebhooksRequest Webhooks(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
         {
             return new WebhooksRequest(service, body, parent);
@@ -833,20 +836,19 @@ namespace Google.Apis.HangoutsChat.v1
                 InitParameters();
             }
 
-
-            /// <summary>Required. Space resource name, in the form "spaces". Example: spaces/AAAAMpdlehY</summary>
+            /// <summary>Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
-            /// <summary>Opaque thread identifier string that can be specified to group messages into a single thread.
-            /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
-            /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
-            /// webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to post
-            /// further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in
-            /// message.</summary>
+            /// <summary>
+            /// Opaque thread identifier string that can be specified to group messages into a single thread. If this is
+            /// the first message with a given thread identifier, a new thread is created. Subsequent messages with the
+            /// same thread identifier will be posted into the same thread. This relieves bots and webhooks from having
+            /// to store the Hangouts Chat thread ID of a thread (created earlier by them) to post further updates to
+            /// it. Has no effect if thread field, corresponding to an existing thread, is set in message.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ThreadKey { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.HangoutsChat.v1.Data.Message Body { get; set; }
@@ -867,7 +869,6 @@ namespace Google.Apis.HangoutsChat.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                 {
                     Name = "parent",
@@ -885,7 +886,6 @@ namespace Google.Apis.HangoutsChat.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -903,7 +903,6 @@ namespace Google.Apis.HangoutsChat.v1
             this.service = service;
             Members = new MembersResource(service);
             Messages = new MessagesResource(service);
-
         }
 
         /// <summary>Gets the Members resource.</summary>
@@ -921,13 +920,13 @@ namespace Google.Apis.HangoutsChat.v1
             public MembersResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
             /// <summary>Returns a membership.</summary>
-            /// <param name="name">Required. Resource name of the membership to be retrieved, in the form "spaces/members". Example:
-            /// spaces/AAAAMpdlehY/members/105115627578887013105</param>
+            /// <param name="name">
+            /// Required. Resource name of the membership to be retrieved, in the form "spaces/*/members/*". Example:
+            /// spaces/AAAAMpdlehY/members/105115627578887013105
+            /// </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -943,12 +942,12 @@ namespace Google.Apis.HangoutsChat.v1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. Resource name of the membership to be retrieved, in the form "spaces/members".
-                /// Example: spaces/AAAAMpdlehY/members/105115627578887013105</summary>
+                /// <summary>
+                /// Required. Resource name of the membership to be retrieved, in the form "spaces/*/members/*".
+                /// Example: spaces/AAAAMpdlehY/members/105115627578887013105
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -963,7 +962,6 @@ namespace Google.Apis.HangoutsChat.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -973,12 +971,13 @@ namespace Google.Apis.HangoutsChat.v1
                         Pattern = @"^spaces/[^/]+/members/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Lists human memberships in a space.</summary>
-            /// <param name="parent">Required. The resource name of the space for which membership list is to be fetched, in the
-            /// form "spaces". Example: spaces/AAAAMpdlehY</param>
+            /// <param name="parent">
+            /// Required. The resource name of the space for which membership list is to be fetched, in the form
+            /// "spaces/*". Example: spaces/AAAAMpdlehY
+            /// </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -994,21 +993,23 @@ namespace Google.Apis.HangoutsChat.v1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The resource name of the space for which membership list is to be fetched, in the
-                /// form "spaces". Example: spaces/AAAAMpdlehY</summary>
+                /// <summary>
+                /// Required. The resource name of the space for which membership list is to be fetched, in the form
+                /// "spaces/*". Example: spaces/AAAAMpdlehY
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Requested page size. The value is capped at 1000. Server may return fewer results than
-                /// requested. If unspecified, server will default to 100.</summary>
+                /// <summary>
+                /// Requested page size. The value is capped at 1000. Server may return fewer results than requested. If
+                /// unspecified, server will default to 100.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>A token identifying a page of results the server should return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -1023,7 +1024,6 @@ namespace Google.Apis.HangoutsChat.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -1049,9 +1049,9 @@ namespace Google.Apis.HangoutsChat.v1
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Messages resource.</summary>
         public virtual MessagesResource Messages { get; }
 
@@ -1068,7 +1068,6 @@ namespace Google.Apis.HangoutsChat.v1
             {
                 this.service = service;
                 Attachments = new AttachmentsResource(service);
-
             }
 
             /// <summary>Gets the Attachments resource.</summary>
@@ -1086,20 +1085,22 @@ namespace Google.Apis.HangoutsChat.v1
                 public AttachmentsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
 
-
-                /// <summary>Gets the metadata of a message attachment. The attachment data is fetched using the media
-                /// API.</summary>
-                /// <param name="name">Resource name of the attachment, in the form "spaces/messages/attachments".</param>
+                /// <summary>
+                /// Gets the metadata of a message attachment. The attachment data is fetched using the media API.
+                /// </summary>
+                /// <param name="name">
+                /// Resource name of the attachment, in the form "spaces/*/messages/*/attachments/*".
+                /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets the metadata of a message attachment. The attachment data is fetched using the media
-                /// API.</summary>
+                /// <summary>
+                /// Gets the metadata of a message attachment. The attachment data is fetched using the media API.
+                /// </summary>
                 public class GetRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Attachment>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -1109,11 +1110,11 @@ namespace Google.Apis.HangoutsChat.v1
                         InitParameters();
                     }
 
-
-                    /// <summary>Resource name of the attachment, in the form "spaces/messages/attachments".</summary>
+                    /// <summary>
+                    /// Resource name of the attachment, in the form "spaces/*/messages/*/attachments/*".
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
@@ -1128,7 +1129,6 @@ namespace Google.Apis.HangoutsChat.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -1138,13 +1138,14 @@ namespace Google.Apis.HangoutsChat.v1
                             Pattern = @"^spaces/[^/]+/messages/[^/]+/attachments/[^/]+$",
                         });
                     }
-
                 }
             }
 
             /// <summary>Creates a message.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. Space resource name, in the form "spaces". Example: spaces/AAAAMpdlehY</param>
+            /// <param name="parent">
+            /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+            /// </param>
             public virtual CreateRequest Create(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -1161,20 +1162,22 @@ namespace Google.Apis.HangoutsChat.v1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. Space resource name, in the form "spaces". Example: spaces/AAAAMpdlehY</summary>
+                /// <summary>
+                /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Opaque thread identifier string that can be specified to group messages into a single
-                /// thread. If this is the first message with a given thread identifier, a new thread is created.
-                /// Subsequent messages with the same thread identifier will be posted into the same thread. This
-                /// relieves bots and webhooks from having to store the Hangouts Chat thread ID of a thread (created
-                /// earlier by them) to post further updates to it. Has no effect if thread field, corresponding to an
-                /// existing thread, is set in message.</summary>
+                /// <summary>
+                /// Opaque thread identifier string that can be specified to group messages into a single thread. If
+                /// this is the first message with a given thread identifier, a new thread is created. Subsequent
+                /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
+                /// webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to
+                /// post further updates to it. Has no effect if thread field, corresponding to an existing thread, is
+                /// set in message.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ThreadKey { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.HangoutsChat.v1.Data.Message Body { get; set; }
@@ -1195,7 +1198,6 @@ namespace Google.Apis.HangoutsChat.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -1213,12 +1215,13 @@ namespace Google.Apis.HangoutsChat.v1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Deletes a message.</summary>
-            /// <param name="name">Required. Resource name of the message to be deleted, in the form "spaces/messages" Example:
-            /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4</param>
+            /// <param name="name">
+            /// Required. Resource name of the message to be deleted, in the form "spaces/*/messages/*" Example:
+            /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
+            /// </param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -1234,12 +1237,12 @@ namespace Google.Apis.HangoutsChat.v1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. Resource name of the message to be deleted, in the form "spaces/messages"
-                /// Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4</summary>
+                /// <summary>
+                /// Required. Resource name of the message to be deleted, in the form "spaces/*/messages/*" Example:
+                /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -1254,7 +1257,6 @@ namespace Google.Apis.HangoutsChat.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -1264,12 +1266,13 @@ namespace Google.Apis.HangoutsChat.v1
                         Pattern = @"^spaces/[^/]+/messages/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Returns a message.</summary>
-            /// <param name="name">Required. Resource name of the message to be retrieved, in the form "spaces/messages". Example:
-            /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4</param>
+            /// <param name="name">
+            /// Required. Resource name of the message to be retrieved, in the form "spaces/*/messages/*". Example:
+            /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
+            /// </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -1285,12 +1288,12 @@ namespace Google.Apis.HangoutsChat.v1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. Resource name of the message to be retrieved, in the form "spaces/messages".
-                /// Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4</summary>
+                /// <summary>
+                /// Required. Resource name of the message to be retrieved, in the form "spaces/*/messages/*". Example:
+                /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -1305,7 +1308,6 @@ namespace Google.Apis.HangoutsChat.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -1315,13 +1317,14 @@ namespace Google.Apis.HangoutsChat.v1
                         Pattern = @"^spaces/[^/]+/messages/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Updates a message.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Resource name, in the form "spaces/messages". Example:
-            /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4</param>
+            /// <param name="name">
+            /// Resource name, in the form "spaces/*/messages/*". Example:
+            /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
+            /// </param>
             public virtual UpdateRequest Update(Google.Apis.HangoutsChat.v1.Data.Message body, string name)
             {
                 return new UpdateRequest(service, body, name);
@@ -1338,17 +1341,19 @@ namespace Google.Apis.HangoutsChat.v1
                     InitParameters();
                 }
 
-
-                /// <summary>Resource name, in the form "spaces/messages". Example:
-                /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4</summary>
+                /// <summary>
+                /// Resource name, in the form "spaces/*/messages/*". Example:
+                /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Required. The field paths to be updated, comma separated if there are multiple. Currently
-                /// supported field paths: * text * cards</summary>
+                /// <summary>
+                /// Required. The field paths to be updated, comma separated if there are multiple. Currently supported
+                /// field paths: * text * cards
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.HangoutsChat.v1.Data.Message Body { get; set; }
@@ -1369,7 +1374,6 @@ namespace Google.Apis.HangoutsChat.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -1387,13 +1391,13 @@ namespace Google.Apis.HangoutsChat.v1
                         Pattern = null,
                     });
                 }
-
             }
         }
 
         /// <summary>Returns a space.</summary>
-        /// <param name="name">Required. Resource name of the space, in the form "spaces". Example:
-        /// spaces/AAAAMpdlehY</param>
+        /// <param name="name">
+        /// Required. Resource name of the space, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+        /// </param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
@@ -1409,12 +1413,11 @@ namespace Google.Apis.HangoutsChat.v1
                 InitParameters();
             }
 
-
-            /// <summary>Required. Resource name of the space, in the form "spaces". Example:
-            /// spaces/AAAAMpdlehY</summary>
+            /// <summary>
+            /// Required. Resource name of the space, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -1429,7 +1432,6 @@ namespace Google.Apis.HangoutsChat.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -1439,7 +1441,6 @@ namespace Google.Apis.HangoutsChat.v1
                     Pattern = @"^spaces/[^/]+$",
                 });
             }
-
         }
 
         /// <summary>Lists spaces the caller is a member of.</summary>
@@ -1457,16 +1458,16 @@ namespace Google.Apis.HangoutsChat.v1
                 InitParameters();
             }
 
-
-            /// <summary>Requested page size. The value is capped at 1000. Server may return fewer results than
-            /// requested. If unspecified, server will default to 100.</summary>
+            /// <summary>
+            /// Requested page size. The value is capped at 1000. Server may return fewer results than requested. If
+            /// unspecified, server will default to 100.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>A token identifying a page of results the server should return.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -1481,7 +1482,6 @@ namespace Google.Apis.HangoutsChat.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageSize",
@@ -1499,12 +1499,13 @@ namespace Google.Apis.HangoutsChat.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Legacy path for creating message. Calling these will result in a BadRequest response.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="parent">Required. Space resource name, in the form "spaces". Example: spaces/AAAAMpdlehY</param>
+        /// <param name="parent">
+        /// Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+        /// </param>
         public virtual WebhooksRequest Webhooks(Google.Apis.HangoutsChat.v1.Data.Message body, string parent)
         {
             return new WebhooksRequest(service, body, parent);
@@ -1521,20 +1522,19 @@ namespace Google.Apis.HangoutsChat.v1
                 InitParameters();
             }
 
-
-            /// <summary>Required. Space resource name, in the form "spaces". Example: spaces/AAAAMpdlehY</summary>
+            /// <summary>Required. Space resource name, in the form "spaces/*". Example: spaces/AAAAMpdlehY</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
-            /// <summary>Opaque thread identifier string that can be specified to group messages into a single thread.
-            /// If this is the first message with a given thread identifier, a new thread is created. Subsequent
-            /// messages with the same thread identifier will be posted into the same thread. This relieves bots and
-            /// webhooks from having to store the Hangouts Chat thread ID of a thread (created earlier by them) to post
-            /// further updates to it. Has no effect if thread field, corresponding to an existing thread, is set in
-            /// message.</summary>
+            /// <summary>
+            /// Opaque thread identifier string that can be specified to group messages into a single thread. If this is
+            /// the first message with a given thread identifier, a new thread is created. Subsequent messages with the
+            /// same thread identifier will be posted into the same thread. This relieves bots and webhooks from having
+            /// to store the Hangouts Chat thread ID of a thread (created earlier by them) to post further updates to
+            /// it. Has no effect if thread field, corresponding to an existing thread, is set in message.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ThreadKey { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.HangoutsChat.v1.Data.Message Body { get; set; }
@@ -1555,7 +1555,6 @@ namespace Google.Apis.HangoutsChat.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                 {
                     Name = "parent",
@@ -1573,17 +1572,16 @@ namespace Google.Apis.HangoutsChat.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.HangoutsChat.v1.Data
-{    
-
-    /// <summary>List of string parameters to supply when the action method is invoked. For example, consider three
-    /// snooze buttons: snooze now, snooze 1 day, snooze next week. You might use action method = snooze(), passing the
-    /// snooze type and snooze time in the list of string parameters.</summary>
+{
+    /// <summary>
+    /// List of string parameters to supply when the action method is invoked. For example, consider three snooze
+    /// buttons: snooze now, snooze 1 day, snooze next week. You might use action method = snooze(), passing the snooze
+    /// type and snooze time in the list of string parameters.
+    /// </summary>
     public class ActionParameter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The name of the parameter for the action script.</summary>
@@ -1596,7 +1594,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Parameters that a bot can use to configure how it's response is posted.</summary>
     public class ActionResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1611,13 +1609,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Annotations associated with the plain-text body of the message. Example plain-text message body: ```
-    /// Hello @FooBot how are you!" ``` The corresponding annotations metadata: ``` "annotations":[{
-    /// "type":"USER_MENTION", "startIndex":6, "length":7, "userMention": { "user": {
-    /// "name":"users/107946847022116401880", "displayName":"FooBot", "avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT"
-    /// }, "type":"MENTION" } }] ```</summary>
+    /// <summary>
+    /// Annotations associated with the plain-text body of the message. Example plain-text message body: ``` Hello
+    /// @FooBot how are you!" ``` The corresponding annotations metadata: ``` "annotations":[{ "type":"USER_MENTION",
+    /// "startIndex":6, "length":7, "userMention": { "user": { "name":"users/107946847022116401880",
+    /// "displayName":"FooBot", "avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT" }, "type":"MENTION" } }] ```
+    /// </summary>
     public class Annotation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Length of the substring in the plain-text message body this annotation corresponds to.</summary>
@@ -1628,8 +1627,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("slashCommand")]
         public virtual SlashCommandMetadata SlashCommand { get; set; }
 
-        /// <summary>Start index (0-based, inclusive) in the plain-text message body this annotation corresponds
-        /// to.</summary>
+        /// <summary>
+        /// Start index (0-based, inclusive) in the plain-text message body this annotation corresponds to.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
         public virtual System.Nullable<int> StartIndex { get; set; }
 
@@ -1643,13 +1643,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An attachment in Hangouts Chat.</summary>
     public class Attachment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A reference to the attachment data. This is used with the media API to download the attachment
-        /// data.</summary>
+        /// <summary>
+        /// A reference to the attachment data. This is used with the media API to download the attachment data.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachmentDataRef")]
         public virtual AttachmentDataRef AttachmentDataRef { get; set; }
 
@@ -1661,8 +1662,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
         public virtual string ContentType { get; set; }
 
-        /// <summary>Output only. The download URL which should be used to allow a human user to download the
-        /// attachment. Bots should not use this URL to download attachment content.</summary>
+        /// <summary>
+        /// Output only. The download URL which should be used to allow a human user to download the attachment. Bots
+        /// should not use this URL to download attachment content.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadUri")]
         public virtual string DownloadUri { get; set; }
 
@@ -1670,7 +1673,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("driveDataRef")]
         public virtual DriveDataRef DriveDataRef { get; set; }
 
-        /// <summary>Resource name of the attachment, in the form "spaces/messages/attachments".</summary>
+        /// <summary>Resource name of the attachment, in the form "spaces/*/messages/*/attachments/*".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1678,26 +1681,29 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; }
 
-        /// <summary>Output only. The thumbnail URL which should be used to preview the attachment to a human user. Bots
-        /// should not use this URL to download attachment content.</summary>
+        /// <summary>
+        /// Output only. The thumbnail URL which should be used to preview the attachment to a human user. Bots should
+        /// not use this URL to download attachment content.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUri")]
         public virtual string ThumbnailUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A reference to the data of an attachment.</summary>
     public class AttachmentDataRef : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The resource name of the attachment data. This is used with the media API to download the
-        /// attachment data.</summary>
+        /// <summary>
+        /// The resource name of the attachment data. This is used with the media API to download the attachment data.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A button. Can be a text button or an image button.</summary>
     public class Button : Google.Apis.Requests.IDirectResponseSchema
@@ -1712,7 +1718,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A card is a UI element that can contain UI widgets such as texts, images.</summary>
     public class Card : Google.Apis.Requests.IDirectResponseSchema
@@ -1735,10 +1741,12 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A card action is the action associated with the card. For an invoice card, a typical action would be:
-    /// delete invoice, email invoice or open the invoice in browser.</summary>
+    /// <summary>
+    /// A card action is the action associated with the card. For an invoice card, a typical action would be: delete
+    /// invoice, email invoice or open the invoice in browser.
+    /// </summary>
     public class CardAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The label used to be displayed in the action menu item.</summary>
@@ -1751,7 +1759,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class CardHeader : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1767,27 +1775,32 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
         public virtual string Subtitle { get; set; }
 
-        /// <summary>The title must be specified. The header has a fixed height: if both a title and subtitle is
-        /// specified, each will take up 1 line. If only the title is specified, it will take up both lines.</summary>
+        /// <summary>
+        /// The title must be specified. The header has a fixed height: if both a title and subtitle is specified, each
+        /// will take up 1 line. If only the title is specified, it will take up both lines.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Google Chat events.</summary>
     public class DeprecatedEvent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The form action data associated with an interactive card that was clicked. Only populated for
-        /// CARD_CLICKED events. See the [Interactive Cards guide](/hangouts/chat/how-tos/cards-onclick) for more
-        /// information.</summary>
+        /// <summary>
+        /// The form action data associated with an interactive card that was clicked. Only populated for CARD_CLICKED
+        /// events. See the [Interactive Cards guide](/hangouts/chat/how-tos/cards-onclick) for more information.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual FormAction Action { get; set; }
 
-        /// <summary>The URL the bot should redirect the user to after they have completed an authorization or
-        /// configuration flow outside of Google Chat. See the [Authorizing access to 3p services guide](/hangouts/chat
-        /// /how-tos/auth-3p) for more information.</summary>
+        /// <summary>
+        /// The URL the bot should redirect the user to after they have completed an authorization or configuration flow
+        /// outside of Google Chat. See the [Authorizing access to 3p services guide](/hangouts/chat/how-tos/auth-3p)
+        /// for more information.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configCompleteRedirectUrl")]
         public virtual string ConfigCompleteRedirectUrl { get; set; }
 
@@ -1803,14 +1816,18 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("space")]
         public virtual Space Space { get; set; }
 
-        /// <summary>The bot-defined key for the thread related to the event. See the thread_key field of the
-        /// `spaces.message.create` request for more information.</summary>
+        /// <summary>
+        /// The bot-defined key for the thread related to the event. See the thread_key field of the
+        /// `spaces.message.create` request for more information.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threadKey")]
         public virtual string ThreadKey { get; set; }
 
-        /// <summary>A secret value that bots can use to verify if a request is from Google. The token is randomly
-        /// generated by Google, remains static, and can be obtained from the Google Chat API configuration page in the
-        /// Cloud Console. Developers can revoke/regenerate it if needed from the same page.</summary>
+        /// <summary>
+        /// A secret value that bots can use to verify if a request is from Google. The token is randomly generated by
+        /// Google, remains static, and can be obtained from the Google Chat API configuration page in the Cloud
+        /// Console. Developers can revoke/regenerate it if needed from the same page.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; }
 
@@ -1824,7 +1841,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A reference to the data of a drive attachment.</summary>
     public class DriveDataRef : Google.Apis.Requests.IDirectResponseSchema
@@ -1835,25 +1852,31 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+    /// object `{}`.
+    /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A form action describes the behavior when the form is submitted. For example, an Apps Script can be
-    /// invoked to handle the form.</summary>
+    /// <summary>
+    /// A form action describes the behavior when the form is submitted. For example, an Apps Script can be invoked to
+    /// handle the form.
+    /// </summary>
     public class FormAction : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The method name is used to identify which part of the form triggered the form submission. This
-        /// information is echoed back to the bot as part of the card click event. The same method name can be used for
-        /// several elements that trigger a common behavior if desired.</summary>
+        /// <summary>
+        /// The method name is used to identify which part of the form triggered the form submission. This information
+        /// is echoed back to the bot as part of the card click event. The same method name can be used for several
+        /// elements that trigger a common behavior if desired.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionMethodName")]
         public virtual string ActionMethodName { get; set; }
 
@@ -1863,14 +1886,16 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An image that is specified by a URL and can have an onclick action.</summary>
     public class Image : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The aspect ratio of this image (width/height). This field allows clients to reserve the right
-        /// height for the image while waiting for it to load. It's not meant to override the native aspect ratio of the
-        /// image. If unset, the server fills it by prefetching the image.</summary>
+        /// <summary>
+        /// The aspect ratio of this image (width/height). This field allows clients to reserve the right height for the
+        /// image while waiting for it to load. It's not meant to override the native aspect ratio of the image. If
+        /// unset, the server fills it by prefetching the image.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aspectRatio")]
         public virtual System.Nullable<double> AspectRatio { get; set; }
 
@@ -1884,7 +1909,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An image button with an onclick action.</summary>
     public class ImageButton : Google.Apis.Requests.IDirectResponseSchema
@@ -1897,8 +1922,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
         public virtual string IconUrl { get; set; }
 
-        /// <summary>The name of this image_button which will be used for accessibility. Default value will be provided
-        /// if developers don't specify.</summary>
+        /// <summary>
+        /// The name of this image_button which will be used for accessibility. Default value will be provided if
+        /// developers don't specify.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1908,10 +1935,12 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A UI element contains a key (label) and a value (content). And this element may also contain some
-    /// actions such as onclick button.</summary>
+    /// <summary>
+    /// A UI element contains a key (label) and a value (content). And this element may also contain some actions such
+    /// as onclick button.
+    /// </summary>
     public class KeyValue : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The text of the bottom label. Formatted text supported.</summary>
@@ -1948,7 +1977,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ListMembershipsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1956,19 +1985,22 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("memberships")]
         public virtual System.Collections.Generic.IList<Membership> Memberships { get; set; }
 
-        /// <summary>Continuation token to retrieve the next page of results. It will be empty for the last page of
-        /// results.</summary>
+        /// <summary>
+        /// Continuation token to retrieve the next page of results. It will be empty for the last page of results.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ListSpacesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Continuation token to retrieve the next page of results. It will be empty for the last page of
-        /// results. Tokens expire in an hour. An error is thrown if an expired token is passed.</summary>
+        /// <summary>
+        /// Continuation token to retrieve the next page of results. It will be empty for the last page of results.
+        /// Tokens expire in an hour. An error is thrown if an expired token is passed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -1978,7 +2010,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Media resource.</summary>
     public class Media : Google.Apis.Requests.IDirectResponseSchema
@@ -1989,13 +2021,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a membership relation in Hangouts Chat.</summary>
     public class Membership : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The creation time of the membership a.k.a the time at which the member joined the space, if
-        /// applicable.</summary>
+        /// <summary>
+        /// The creation time of the membership a.k.a the time at which the member joined the space, if applicable.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
@@ -2012,7 +2045,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A message in Hangouts Chat.</summary>
     public class Message : Google.Apis.Requests.IDirectResponseSchema
@@ -2033,9 +2066,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attachment")]
         public virtual System.Collections.Generic.IList<Attachment> Attachment { get; set; }
 
-        /// <summary>Rich, formatted and interactive cards that can be used to display UI elements such as: formatted
-        /// texts, buttons, clickable images. Cards are normally displayed below the plain-text body of the
-        /// message.</summary>
+        /// <summary>
+        /// Rich, formatted and interactive cards that can be used to display UI elements such as: formatted texts,
+        /// buttons, clickable images. Cards are normally displayed below the plain-text body of the message.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cards")]
         public virtual System.Collections.Generic.IList<Card> Cards { get; set; }
 
@@ -2043,18 +2077,24 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>A plain-text description of the message's cards, used when the actual cards cannot be displayed
-        /// (e.g. mobile notifications).</summary>
+        /// <summary>
+        /// A plain-text description of the message's cards, used when the actual cards cannot be displayed (e.g. mobile
+        /// notifications).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fallbackText")]
         public virtual string FallbackText { get; set; }
 
-        /// <summary>Resource name, in the form "spaces/messages". Example:
-        /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4</summary>
+        /// <summary>
+        /// Resource name, in the form "spaces/*/messages/*". Example:
+        /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Text for generating preview chips. This text will not be displayed to the user, but any links to
-        /// images, web pages, videos, etc. included here will generate preview chips.</summary>
+        /// <summary>
+        /// Text for generating preview chips. This text will not be displayed to the user, but any links to images, web
+        /// pages, videos, etc. included here will generate preview chips.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previewText")]
         public virtual string PreviewText { get; set; }
 
@@ -2080,7 +2120,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An onclick action (e.g. open a link).</summary>
     public class OnClick : Google.Apis.Requests.IDirectResponseSchema
@@ -2095,7 +2135,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A link that opens a new window.</summary>
     public class OpenLink : Google.Apis.Requests.IDirectResponseSchema
@@ -2106,11 +2146,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A section contains a collection of widgets that are rendered (vertically) in the order that they are
-    /// specified. Across all platforms, cards have a narrow fixed width, so there is currently no need for layout
-    /// properties (e.g. float).</summary>
+    /// <summary>
+    /// A section contains a collection of widgets that are rendered (vertically) in the order that they are specified.
+    /// Across all platforms, cards have a narrow fixed width, so there is currently no need for layout properties (e.g.
+    /// float).
+    /// </summary>
     public class Section : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The header of the section, text formatted supported.</summary>
@@ -2123,7 +2165,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A Slash Command in Hangouts Chat.</summary>
     public class SlashCommand : Google.Apis.Requests.IDirectResponseSchema
@@ -2134,7 +2176,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Annotation metadata for slash commands (/).</summary>
     public class SlashCommandMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -2161,17 +2203,19 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A room or DM in Hangouts Chat.</summary>
     public class Space : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The display name (only if the space is a room). Please note that this field might not
-        /// be populated in direct messages between humans.</summary>
+        /// <summary>
+        /// Output only. The display name (only if the space is a room). Please note that this field might not be
+        /// populated in direct messages between humans.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Resource name of the space, in the form "spaces". Example: spaces/AAAAMpdlehYs</summary>
+        /// <summary>Resource name of the space, in the form "spaces/*". Example: spaces/AAAAMpdlehYs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2189,7 +2233,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A button with text and onclick action.</summary>
     public class TextButton : Google.Apis.Requests.IDirectResponseSchema
@@ -2204,7 +2248,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A paragraph of text. Formatted text supported.</summary>
     public class TextParagraph : Google.Apis.Requests.IDirectResponseSchema
@@ -2214,19 +2258,20 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A thread in Hangouts Chat.</summary>
     public class Thread : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Resource name, in the form "spaces/threads". Example:
-        /// spaces/AAAAMpdlehY/threads/UMxbHmzDlr4</summary>
+        /// <summary>
+        /// Resource name, in the form "spaces/*/threads/*". Example: spaces/AAAAMpdlehY/threads/UMxbHmzDlr4
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A user in Hangouts Chat.</summary>
     public class User : Google.Apis.Requests.IDirectResponseSchema
@@ -2243,7 +2288,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isAnonymous")]
         public virtual System.Nullable<bool> IsAnonymous { get; set; }
 
-        /// <summary>Resource name, in the format "users".</summary>
+        /// <summary>Resource name, in the format "users/*".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2253,7 +2298,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Annotation metadata for user mentions (@).</summary>
     public class UserMentionMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -2268,7 +2313,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A widget is a UI element that presents texts, images, etc.</summary>
     public class WidgetMarkup : Google.Apis.Requests.IDirectResponseSchema

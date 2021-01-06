@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -67,7 +72,6 @@ namespace Google.Apis.Translate.v2
 
             /// <summary>Translate text from one language to another using Google Translate</summary>
             public static string CloudTranslation = "https://www.googleapis.com/auth/cloud-translation";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Google Cloud Translation API.</summary>
@@ -78,10 +82,7 @@ namespace Google.Apis.Translate.v2
 
             /// <summary>Translate text from one language to another using Google Translate</summary>
             public const string CloudTranslation = "https://www.googleapis.com/auth/cloud-translation";
-
         }
-
-
 
         /// <summary>Gets the Detections resource.</summary>
         public virtual DetectionsResource Detections { get; }
@@ -111,6 +112,7 @@ namespace Google.Apis.Translate.v2
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -130,9 +132,11 @@ namespace Google.Apis.Translate.v2
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -150,8 +154,10 @@ namespace Google.Apis.Translate.v2
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -167,8 +173,10 @@ namespace Google.Apis.Translate.v2
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters. Overrides userIp if both are provided.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -184,7 +192,6 @@ namespace Google.Apis.Translate.v2
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -304,9 +311,7 @@ namespace Google.Apis.Translate.v2
         public DetectionsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Detects the language of text within a request.</summary>
         /// <param name="body">The body of the request.</param>
@@ -324,8 +329,6 @@ namespace Google.Apis.Translate.v2
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Translate.v2.Data.DetectLanguageRequest Body { get; set; }
@@ -346,14 +349,14 @@ namespace Google.Apis.Translate.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
         /// <summary>Detects the language of text within a request.</summary>
-        /// <param name="q">The input text upon which to perform language detection. Repeat this parameter to perform language
-        /// detection on multiple text inputs.</param>
+        /// <param name="q">
+        /// The input text upon which to perform language detection. Repeat this parameter to perform language detection
+        /// on multiple text inputs.
+        /// </param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> q)
         {
             return new ListRequest(service, q);
@@ -369,12 +372,12 @@ namespace Google.Apis.Translate.v2
                 InitParameters();
             }
 
-
-            /// <summary>The input text upon which to perform language detection. Repeat this parameter to perform
-            /// language detection on multiple text inputs.</summary>
+            /// <summary>
+            /// The input text upon which to perform language detection. Repeat this parameter to perform language
+            /// detection on multiple text inputs.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Q { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -389,7 +392,6 @@ namespace Google.Apis.Translate.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("q", new Google.Apis.Discovery.Parameter
                 {
                     Name = "q",
@@ -399,7 +401,6 @@ namespace Google.Apis.Translate.v2
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -415,9 +416,7 @@ namespace Google.Apis.Translate.v2
         public LanguagesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Returns a list of supported languages for translation.</summary>
         public virtual ListRequest List()
@@ -434,7 +433,6 @@ namespace Google.Apis.Translate.v2
                 InitParameters();
             }
 
-
             /// <summary>The model type for which supported languages should be returned.</summary>
             [Google.Apis.Util.RequestParameterAttribute("model", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Model { get; set; }
@@ -442,7 +440,6 @@ namespace Google.Apis.Translate.v2
             /// <summary>The language to use to return localized, human readable names of supported languages.</summary>
             [Google.Apis.Util.RequestParameterAttribute("target", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Target { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -457,7 +454,6 @@ namespace Google.Apis.Translate.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("model", new Google.Apis.Discovery.Parameter
                 {
                     Name = "model",
@@ -475,7 +471,6 @@ namespace Google.Apis.Translate.v2
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -491,15 +486,17 @@ namespace Google.Apis.Translate.v2
         public TranslationsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
         /// <summary>Translates input text, returning translated text.</summary>
-        /// <param name="q">The input text to translate. Repeat this parameter to perform translation operations on multiple
-        /// text inputs.</param>
-        /// <param name="target">The language to use for translation of the input text, set to one
-        /// of the language codes listed in Language Support.</param>
+        /// <param name="q">
+        /// The input text to translate. Repeat this parameter to perform translation operations on multiple text
+        /// inputs.
+        /// </param>
+        /// <param name="target">
+        /// The language to use for translation of the input text, set to one of the language codes listed in Language
+        /// Support.
+        /// </param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> q, string target)
         {
             return new ListRequest(service, q, target);
@@ -516,14 +513,17 @@ namespace Google.Apis.Translate.v2
                 InitParameters();
             }
 
-
-            /// <summary>The input text to translate. Repeat this parameter to perform translation operations on
-            /// multiple text inputs.</summary>
+            /// <summary>
+            /// The input text to translate. Repeat this parameter to perform translation operations on multiple text
+            /// inputs.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Q { get; private set; }
 
-            /// <summary>The language to use for translation of the input text, set to one of the language codes listed
-            /// in Language Support.</summary>
+            /// <summary>
+            /// The language to use for translation of the input text, set to one of the language codes listed in
+            /// Language Support.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("target", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Target { get; private set; }
 
@@ -531,34 +531,41 @@ namespace Google.Apis.Translate.v2
             [Google.Apis.Util.RequestParameterAttribute("cid", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Cid { get; set; }
 
-            /// <summary>The format of the source text, in either HTML (default) or plain-text. A value of "html"
-            /// indicates HTML and a value of "text" indicates plain-text.</summary>
+            /// <summary>
+            /// The format of the source text, in either HTML (default) or plain-text. A value of "html" indicates HTML
+            /// and a value of "text" indicates plain-text.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("format", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<FormatEnum> Format { get; set; }
 
-            /// <summary>The format of the source text, in either HTML (default) or plain-text. A value of "html"
-            /// indicates HTML and a value of "text" indicates plain-text.</summary>
+            /// <summary>
+            /// The format of the source text, in either HTML (default) or plain-text. A value of "html" indicates HTML
+            /// and a value of "text" indicates plain-text.
+            /// </summary>
             public enum FormatEnum
             {
                 /// <summary>Specifies the input is in HTML</summary>
                 [Google.Apis.Util.StringValueAttribute("html")]
                 Html,
+
                 /// <summary>Specifies the input is in plain textual format</summary>
                 [Google.Apis.Util.StringValueAttribute("text")]
                 Text,
             }
 
-            /// <summary>The `model` type requested for this translation. Valid values are listed in public
-            /// documentation.</summary>
+            /// <summary>
+            /// The `model` type requested for this translation. Valid values are listed in public documentation.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("model", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Model { get; set; }
 
-            /// <summary>The language of the source text, set to one of the language codes listed in Language Support.
-            /// If the source language is not specified, the API will attempt to identify the source language
-            /// automatically and return it within the response.</summary>
+            /// <summary>
+            /// The language of the source text, set to one of the language codes listed in Language Support. If the
+            /// source language is not specified, the API will attempt to identify the source language automatically and
+            /// return it within the response.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Source { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -573,7 +580,6 @@ namespace Google.Apis.Translate.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("q", new Google.Apis.Discovery.Parameter
                 {
                     Name = "q",
@@ -623,7 +629,6 @@ namespace Google.Apis.Translate.v2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Translates input text, returning translated text.</summary>
@@ -642,8 +647,6 @@ namespace Google.Apis.Translate.v2
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Translate.v2.Data.TranslateTextRequest Body { get; set; }
@@ -664,27 +667,25 @@ namespace Google.Apis.Translate.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
     }
 }
-
 namespace Google.Apis.Translate.v2.Data
-{    
-
+{
     /// <summary>The request message for language detection.</summary>
     public class DetectLanguageRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The input text upon which to perform language detection. Repeat this parameter to perform language
-        /// detection on multiple text inputs.</summary>
+        /// <summary>
+        /// The input text upon which to perform language detection. Repeat this parameter to perform language detection
+        /// on multiple text inputs.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("q")]
         public virtual System.Collections.Generic.IList<string> Q { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class DetectionsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -694,8 +695,9 @@ namespace Google.Apis.Translate.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
+    /// <summary>An array of languages which we detect for the given text The most likely language list first.</summary>
     public class DetectionsResourceItems : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The confidence of the detection result of this language.</summary>
@@ -712,7 +714,7 @@ namespace Google.Apis.Translate.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The request message for discovering supported languages.</summary>
     public class GetSupportedLanguagesRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -723,25 +725,28 @@ namespace Google.Apis.Translate.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class LanguagesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of source/target languages supported by the translation API. If target parameter is
-        /// unspecified, the list is sorted by the ASCII code point order of the language code. If target parameter is
-        /// specified, the list is sorted by the collation order of the language name in the target language.</summary>
+        /// <summary>
+        /// List of source/target languages supported by the translation API. If target parameter is unspecified, the
+        /// list is sorted by the ASCII code point order of the language code. If target parameter is specified, the
+        /// list is sorted by the collation order of the language name in the target language.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languages")]
         public virtual System.Collections.Generic.IList<LanguagesResource> Languages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class LanguagesResource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Supported language code, generally consisting of its ISO 639-1 identifier. (E.g. 'en', 'ja'). In
-        /// certain cases, BCP-47 codes including language + region identifiers are returned (e.g. 'zh-TW' and 'zh-
-        /// CH')</summary>
+        /// <summary>
+        /// Supported language code, generally consisting of its ISO 639-1 identifier. (E.g. 'en', 'ja'). In certain
+        /// cases, BCP-47 codes including language + region identifiers are returned (e.g. 'zh-TW' and 'zh-CH')
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; }
 
@@ -751,40 +756,49 @@ namespace Google.Apis.Translate.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The main translation request message for the Cloud Translation API.</summary>
     public class TranslateTextRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The format of the source text, in either HTML (default) or plain-text. A value of "html" indicates
-        /// HTML and a value of "text" indicates plain-text.</summary>
+        /// <summary>
+        /// The format of the source text, in either HTML (default) or plain-text. A value of "html" indicates HTML and
+        /// a value of "text" indicates plain-text.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
         public virtual string Format { get; set; }
 
-        /// <summary>The `model` type requested for this translation. Valid values are listed in public
-        /// documentation.</summary>
+        /// <summary>
+        /// The `model` type requested for this translation. Valid values are listed in public documentation.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
 
-        /// <summary>The input text to translate. Repeat this parameter to perform translation operations on multiple
-        /// text inputs.</summary>
+        /// <summary>
+        /// The input text to translate. Repeat this parameter to perform translation operations on multiple text
+        /// inputs.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("q")]
         public virtual System.Collections.Generic.IList<string> Q { get; set; }
 
-        /// <summary>The language of the source text, set to one of the language codes listed in Language Support. If
-        /// the source language is not specified, the API will attempt to identify the source language automatically and
-        /// return it within the response.</summary>
+        /// <summary>
+        /// The language of the source text, set to one of the language codes listed in Language Support. If the source
+        /// language is not specified, the API will attempt to identify the source language automatically and return it
+        /// within the response.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; }
 
-        /// <summary>The language to use for translation of the input text, set to one of the language codes listed in
-        /// Language Support.</summary>
+        /// <summary>
+        /// The language to use for translation of the input text, set to one of the language codes listed in Language
+        /// Support.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The main language translation response message.</summary>
     public class TranslationsListResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -795,18 +809,22 @@ namespace Google.Apis.Translate.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class TranslationsResource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The source language of the initial request, detected automatically, if no source language was
-        /// passed within the initial request. If the source language was passed, auto-detection of the language will
-        /// not occur and this field will be empty.</summary>
+        /// <summary>
+        /// The source language of the initial request, detected automatically, if no source language was passed within
+        /// the initial request. If the source language was passed, auto-detection of the language will not occur and
+        /// this field will be empty.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedSourceLanguage")]
         public virtual string DetectedSourceLanguage { get; set; }
 
-        /// <summary>The `model` type used for this translation. Valid values are listed in public documentation. Can be
-        /// different from requested `model`. Present only if specific model type was explicitly requested.</summary>
+        /// <summary>
+        /// The `model` type used for this translation. Valid values are listed in public documentation. Can be
+        /// different from requested `model`. Present only if specific model type was explicitly requested.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
 

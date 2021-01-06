@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -62,7 +67,6 @@ namespace Google.Apis.FirebaseML.v1beta2
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Firebase ML API.</summary>
@@ -70,10 +74,7 @@ namespace Google.Apis.FirebaseML.v1beta2
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
-
-
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -97,6 +98,7 @@ namespace Google.Apis.FirebaseML.v1beta2
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -116,9 +118,11 @@ namespace Google.Apis.FirebaseML.v1beta2
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -132,8 +136,10 @@ namespace Google.Apis.FirebaseML.v1beta2
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -145,8 +151,10 @@ namespace Google.Apis.FirebaseML.v1beta2
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -162,7 +170,6 @@ namespace Google.Apis.FirebaseML.v1beta2
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -268,7 +275,6 @@ namespace Google.Apis.FirebaseML.v1beta2
             this.service = service;
             Models = new ModelsResource(service);
             Operations = new OperationsResource(service);
-
         }
 
         /// <summary>Gets the Models resource.</summary>
@@ -286,22 +292,24 @@ namespace Google.Apis.FirebaseML.v1beta2
             public ModelsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Creates a model in Firebase ML. The longrunning operation will eventually return a
-            /// Model</summary>
+            /// <summary>
+            /// Creates a model in Firebase ML. The longrunning operation will eventually return a Model
+            /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The parent project resource where the model is to be created. The parent must have
-            /// the form `projects/{project_id}`</param>
+            /// <param name="parent">
+            /// Required. The parent project resource where the model is to be created. The parent must have the form
+            /// `projects/{project_id}`
+            /// </param>
             public virtual CreateRequest Create(Google.Apis.FirebaseML.v1beta2.Data.Model body, string parent)
             {
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates a model in Firebase ML. The longrunning operation will eventually return a
-            /// Model</summary>
+            /// <summary>
+            /// Creates a model in Firebase ML. The longrunning operation will eventually return a Model
+            /// </summary>
             public class CreateRequest : FirebaseMLBaseServiceRequest<Google.Apis.FirebaseML.v1beta2.Data.Operation>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -312,12 +320,12 @@ namespace Google.Apis.FirebaseML.v1beta2
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The parent project resource where the model is to be created. The parent must
-                /// have the form `projects/{project_id}`</summary>
+                /// <summary>
+                /// Required. The parent project resource where the model is to be created. The parent must have the
+                /// form `projects/{project_id}`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.FirebaseML.v1beta2.Data.Model Body { get; set; }
@@ -338,7 +346,6 @@ namespace Google.Apis.FirebaseML.v1beta2
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -348,12 +355,13 @@ namespace Google.Apis.FirebaseML.v1beta2
                         Pattern = @"^projects/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Deletes a model</summary>
-            /// <param name="name">Required. The name of the model to delete. The name must have the form
-            /// `projects/{project_id}/models/{model_id}`</param>
+            /// <param name="name">
+            /// Required. The name of the model to delete. The name must have the form
+            /// `projects/{project_id}/models/{model_id}`
+            /// </param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -369,12 +377,12 @@ namespace Google.Apis.FirebaseML.v1beta2
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the model to delete. The name must have the form
-                /// `projects/{project_id}/models/{model_id}`</summary>
+                /// <summary>
+                /// Required. The name of the model to delete. The name must have the form
+                /// `projects/{project_id}/models/{model_id}`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -389,7 +397,6 @@ namespace Google.Apis.FirebaseML.v1beta2
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -399,12 +406,13 @@ namespace Google.Apis.FirebaseML.v1beta2
                         Pattern = @"^projects/[^/]+/models/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Gets a model resource.</summary>
-            /// <param name="name">Required. The name of the model to get. The name must have the form
-            /// `projects/{project_id}/models/{model_id}`</param>
+            /// <param name="name">
+            /// Required. The name of the model to get. The name must have the form
+            /// `projects/{project_id}/models/{model_id}`
+            /// </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -420,12 +428,12 @@ namespace Google.Apis.FirebaseML.v1beta2
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the model to get. The name must have the form
-                /// `projects/{project_id}/models/{model_id}`</summary>
+                /// <summary>
+                /// Required. The name of the model to get. The name must have the form
+                /// `projects/{project_id}/models/{model_id}`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -440,7 +448,6 @@ namespace Google.Apis.FirebaseML.v1beta2
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -450,12 +457,13 @@ namespace Google.Apis.FirebaseML.v1beta2
                         Pattern = @"^projects/[^/]+/models/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Lists the models</summary>
-            /// <param name="parent">Required. The name of the parent to list models for. The parent must have the form
-            /// `projects/{project_id}'</param>
+            /// <param name="parent">
+            /// Required. The name of the parent to list models for. The parent must have the form
+            /// `projects/{project_id}'
+            /// </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -471,9 +479,10 @@ namespace Google.Apis.FirebaseML.v1beta2
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the parent to list models for. The parent must have the form
-                /// `projects/{project_id}'</summary>
+                /// <summary>
+                /// Required. The name of the parent to list models for. The parent must have the form
+                /// `projects/{project_id}'
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -489,7 +498,6 @@ namespace Google.Apis.FirebaseML.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
@@ -503,7 +511,6 @@ namespace Google.Apis.FirebaseML.v1beta2
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -537,13 +544,14 @@ namespace Google.Apis.FirebaseML.v1beta2
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Updates a model. The longrunning operation will eventually return a Model.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The resource name of the Model. Model names have the form
-            /// `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.</param>
+            /// <param name="name">
+            /// The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The
+            /// name is ignored when creating a model.
+            /// </param>
             public virtual PatchRequest Patch(Google.Apis.FirebaseML.v1beta2.Data.Model body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -560,16 +568,16 @@ namespace Google.Apis.FirebaseML.v1beta2
                     InitParameters();
                 }
 
-
-                /// <summary>The resource name of the Model. Model names have the form
-                /// `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.</summary>
+                /// <summary>
+                /// The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}`
+                /// The name is ignored when creating a model.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
                 /// <summary>The update mask</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.FirebaseML.v1beta2.Data.Model Body { get; set; }
@@ -590,7 +598,6 @@ namespace Google.Apis.FirebaseML.v1beta2
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -608,9 +615,9 @@ namespace Google.Apis.FirebaseML.v1beta2
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Operations resource.</summary>
         public virtual OperationsResource Operations { get; }
 
@@ -626,20 +633,22 @@ namespace Google.Apis.FirebaseML.v1beta2
             public OperationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
-            /// operation result at intervals as recommended by the API service.</summary>
+            /// <summary>
+            /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+            /// result at intervals as recommended by the API service.
+            /// </summary>
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
-            /// operation result at intervals as recommended by the API service.</summary>
+            /// <summary>
+            /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+            /// result at intervals as recommended by the API service.
+            /// </summary>
             public class GetRequest : FirebaseMLBaseServiceRequest<Google.Apis.FirebaseML.v1beta2.Data.Operation>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -649,11 +658,9 @@ namespace Google.Apis.FirebaseML.v1beta2
                     InitParameters();
                 }
 
-
                 /// <summary>The name of the operation resource.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -668,7 +675,6 @@ namespace Google.Apis.FirebaseML.v1beta2
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -678,24 +684,23 @@ namespace Google.Apis.FirebaseML.v1beta2
                         Pattern = @"^projects/[^/]+/operations/[^/]+$",
                     });
                 }
-
             }
         }
     }
 }
-
 namespace Google.Apis.FirebaseML.v1beta2.Data
-{    
-
-    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+{
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+    /// object `{}`.
+    /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The response for list models</summary>
     public class ListModelsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -704,14 +709,15 @@ namespace Google.Apis.FirebaseML.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("models")]
         public virtual System.Collections.Generic.IList<Model> Models { get; set; }
 
-        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
-        /// list.</summary>
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An ML model hosted in Firebase ML</summary>
     public class Model : Google.Apis.Requests.IDirectResponseSchema
@@ -724,9 +730,10 @@ namespace Google.Apis.FirebaseML.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Required. The name of the model to create. The name can be up to 32 characters long and can consist
-        /// only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a
-        /// letter.</summary>
+        /// <summary>
+        /// Required. The name of the model to create. The name can be up to 32 characters long and can consist only of
+        /// ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -738,8 +745,10 @@ namespace Google.Apis.FirebaseML.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("modelHash")]
         public virtual string ModelHash { get; set; }
 
-        /// <summary>The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}`
-        /// The name is ignored when creating a model.</summary>
+        /// <summary>
+        /// The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name
+        /// is ignored when creating a model.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -758,8 +767,7 @@ namespace Google.Apis.FirebaseML.v1beta2.Data
         /// <summary>Output only. Timestamp when this model was updated in Firebase ML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
-
-    }    
+    }
 
     /// <summary>This is returned in the longrunning operations for create/update.</summary>
     public class ModelOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -767,14 +775,16 @@ namespace Google.Apis.FirebaseML.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("basicOperationStatus")]
         public virtual string BasicOperationStatus { get; set; }
 
-        /// <summary>The name of the model we are creating/updating The name must have the form
-        /// `projects/{project_id}/models/{model_id}`</summary>
+        /// <summary>
+        /// The name of the model we are creating/updating The name must have the form
+        /// `projects/{project_id}/models/{model_id}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>State common to all model types. Includes publishing and validation information.</summary>
     public class ModelState : Google.Apis.Requests.IDirectResponseSchema
@@ -783,21 +793,25 @@ namespace Google.Apis.FirebaseML.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("published")]
         public virtual System.Nullable<bool> Published { get; set; }
 
-        /// <summary>Output only. Indicates the latest validation error on the model if any. A model may have validation
-        /// errors if there were problems during the model creation/update. e.g. in the case of a TfLiteModel, if a
-        /// tflite model file was missing or in the wrong format. This field will be empty for valid models.</summary>
+        /// <summary>
+        /// Output only. Indicates the latest validation error on the model if any. A model may have validation errors
+        /// if there were problems during the model creation/update. e.g. in the case of a TfLiteModel, if a tflite
+        /// model file was missing or in the wrong format. This field will be empty for valid models.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validationError")]
         public virtual Status ValidationError { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
-        /// completed, and either `error` or `response` is available.</summary>
+        /// <summary>
+        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed,
+        /// and either `error` or `response` is available.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; }
 
@@ -805,67 +819,79 @@ namespace Google.Apis.FirebaseML.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; }
 
-        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
-        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
-        /// returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and
+        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
+        /// a long-running operation should document the metadata type, if any.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
-        /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// If you use the default HTTP mapping, the `name` should be a resource name ending with
-        /// `operations/{unique_id}`.</summary>
+        /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
+        /// use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// <summary>
+        /// The normal response of the operation in case of success. If the original method returns no data on success,
+        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
-        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>The `Status` type defines a logical error model that is suitable for different programming
-    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
-    /// this error model and how to work with it in the [API Design
-    /// Guide](https://cloud.google.com/apis/design/errors).</summary>
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; }
 
-        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
-        /// use.</summary>
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
-        /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
-        /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information that is specific to TfLite models.</summary>
     public class TfLiteModel : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The AutoML model id referencing a model you created with the AutoML API. The name should have
-        /// format 'projects//locations//models/' (This is the model resource name returned from the AutoML
-        /// API)</summary>
+        /// <summary>
+        /// The AutoML model id referencing a model you created with the AutoML API. The name should have format
+        /// 'projects//locations//models/' (This is the model resource name returned from the AutoML API)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("automlModel")]
         public virtual string AutomlModel { get; set; }
 
-        /// <summary>The TfLite file containing the model. (Stored in Google Cloud). The gcs_tflite_uri should have
-        /// form: gs://some-bucket/some-model.tflite Note: If you update the file in the original location, it is
-        /// necessary to call UpdateModel for ML to pick up and validate the updated file.</summary>
+        /// <summary>
+        /// The TfLite file containing the model. (Stored in Google Cloud). The gcs_tflite_uri should have form:
+        /// gs://some-bucket/some-model.tflite Note: If you update the file in the original location, it is necessary to
+        /// call UpdateModel for ML to pick up and validate the updated file.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsTfliteUri")]
         public virtual string GcsTfliteUri { get; set; }
 

@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -62,7 +67,6 @@ namespace Google.Apis.PagespeedInsights.v5
         {
             /// <summary>Associate you with your personal info on Google</summary>
             public static string Openid = "openid";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the PageSpeed Insights API.</summary>
@@ -70,10 +74,7 @@ namespace Google.Apis.PagespeedInsights.v5
         {
             /// <summary>Associate you with your personal info on Google</summary>
             public const string Openid = "openid";
-
         }
-
-
 
         /// <summary>Gets the Pagespeedapi resource.</summary>
         public virtual PagespeedapiResource Pagespeedapi { get; }
@@ -97,6 +98,7 @@ namespace Google.Apis.PagespeedInsights.v5
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -116,9 +118,11 @@ namespace Google.Apis.PagespeedInsights.v5
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -132,8 +136,10 @@ namespace Google.Apis.PagespeedInsights.v5
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -145,8 +151,10 @@ namespace Google.Apis.PagespeedInsights.v5
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -162,7 +170,6 @@ namespace Google.Apis.PagespeedInsights.v5
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -266,20 +273,22 @@ namespace Google.Apis.PagespeedInsights.v5
         public PagespeedapiResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Runs PageSpeed analysis on the page at the specified URL, and returns PageSpeed scores, a list of
-        /// suggestions to make that page faster, and other information.</summary>
+        /// <summary>
+        /// Runs PageSpeed analysis on the page at the specified URL, and returns PageSpeed scores, a list of
+        /// suggestions to make that page faster, and other information.
+        /// </summary>
         /// <param name="url">Required. The URL to fetch and analyze</param>
         public virtual RunpagespeedRequest Runpagespeed(string url)
         {
             return new RunpagespeedRequest(service, url);
         }
 
-        /// <summary>Runs PageSpeed analysis on the page at the specified URL, and returns PageSpeed scores, a list of
-        /// suggestions to make that page faster, and other information.</summary>
+        /// <summary>
+        /// Runs PageSpeed analysis on the page at the specified URL, and returns PageSpeed scores, a list of
+        /// suggestions to make that page faster, and other information.
+        /// </summary>
         public class RunpagespeedRequest : PagespeedInsightsBaseServiceRequest<Google.Apis.PagespeedInsights.v5.Data.PagespeedApiPagespeedResponseV5>
         {
             /// <summary>Constructs a new Runpagespeed request.</summary>
@@ -289,7 +298,6 @@ namespace Google.Apis.PagespeedInsights.v5
                 InitParameters();
             }
 
-
             /// <summary>Required. The URL to fetch and analyze</summary>
             [Google.Apis.Util.RequestParameterAttribute("url", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Url { get; private set; }
@@ -298,35 +306,47 @@ namespace Google.Apis.PagespeedInsights.v5
             [Google.Apis.Util.RequestParameterAttribute("captchaToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CaptchaToken { get; set; }
 
-            /// <summary>A Lighthouse category to run; if none are given, only Performance category will be
-            /// run</summary>
+            /// <summary>
+            /// A Lighthouse category to run; if none are given, only Performance category will be run
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("category", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<CategoryEnum> Category { get; set; }
 
-            /// <summary>A Lighthouse category to run; if none are given, only Performance category will be
-            /// run</summary>
+            /// <summary>
+            /// A Lighthouse category to run; if none are given, only Performance category will be run
+            /// </summary>
             public enum CategoryEnum
             {
                 /// <summary>Default UNDEFINED category.</summary>
                 [Google.Apis.Util.StringValueAttribute("CATEGORY_UNSPECIFIED")]
                 CATEGORYUNSPECIFIED,
-                /// <summary>Accessibility (a11y), category pertaining to a website's capacity to be accessible to all
-                /// users.</summary>
+
+                /// <summary>
+                /// Accessibility (a11y), category pertaining to a website's capacity to be accessible to all users.
+                /// </summary>
                 [Google.Apis.Util.StringValueAttribute("ACCESSIBILITY")]
                 ACCESSIBILITY,
-                /// <summary>Best Practices, category pertaining to a website's conformance to web best
-                /// practice.</summary>
+
+                /// <summary>
+                /// Best Practices, category pertaining to a website's conformance to web best practice.
+                /// </summary>
                 [Google.Apis.Util.StringValueAttribute("BEST_PRACTICES")]
                 BESTPRACTICES,
+
                 /// <summary>Performance, category pertaining to a website's performance.</summary>
                 [Google.Apis.Util.StringValueAttribute("PERFORMANCE")]
                 PERFORMANCE,
-                /// <summary>Progressive Web App (PWA), category pertaining to a website's ability to be run as a
-                /// PWA.</summary>
+
+                /// <summary>
+                /// Progressive Web App (PWA), category pertaining to a website's ability to be run as a PWA.
+                /// </summary>
                 [Google.Apis.Util.StringValueAttribute("PWA")]
                 PWA,
-                /// <summary>Search Engine Optimization (SEO), category pertaining to a website's ability to be indexed
-                /// by search engines.</summary>
+
+                /// <summary>
+                /// Search Engine Optimization (SEO), category pertaining to a website's ability to be indexed by search
+                /// engines.
+                /// </summary>
                 [Google.Apis.Util.StringValueAttribute("SEO")]
                 SEO,
             }
@@ -345,9 +365,11 @@ namespace Google.Apis.PagespeedInsights.v5
                 /// <summary>UNDEFINED.</summary>
                 [Google.Apis.Util.StringValueAttribute("STRATEGY_UNSPECIFIED")]
                 STRATEGYUNSPECIFIED,
+
                 /// <summary>Fetch and analyze the URL for desktop browsers.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESKTOP")]
                 DESKTOP,
+
                 /// <summary>Fetch and analyze the URL for mobile devices.</summary>
                 [Google.Apis.Util.StringValueAttribute("MOBILE")]
                 MOBILE,
@@ -360,7 +382,6 @@ namespace Google.Apis.PagespeedInsights.v5
             /// <summary>Campaign source for analytics.</summary>
             [Google.Apis.Util.RequestParameterAttribute("utm_source", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UtmSource { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "runpagespeed";
@@ -375,7 +396,6 @@ namespace Google.Apis.PagespeedInsights.v5
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("url", new Google.Apis.Discovery.Parameter
                 {
                     Name = "url",
@@ -433,14 +453,11 @@ namespace Google.Apis.PagespeedInsights.v5
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.PagespeedInsights.v5.Data
-{    
-
+{
     /// <summary>A light reference to an audit by id, used to group and weight audits in a given category.</summary>
     public class AuditRefs : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -458,10 +475,12 @@ namespace Google.Apis.PagespeedInsights.v5.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A proportion of data in the total distribution, bucketed by a min/max percentage. Each bucket's range
-    /// is bounded by min <= x < max, In millisecond.</summary>
+    /// <summary>
+    /// A proportion of data in the total distribution, bucketed by a min/max percentage. Each bucket's range is bounded
+    /// by min &amp;lt;= x &amp;lt; max, In millisecond.
+    /// </summary>
     public class Bucket : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Upper bound for a bucket's range.</summary>
@@ -478,7 +497,7 @@ namespace Google.Apis.PagespeedInsights.v5.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The categories in a Lighthouse run.</summary>
     public class Categories : Google.Apis.Requests.IDirectResponseSchema
@@ -505,7 +524,7 @@ namespace Google.Apis.PagespeedInsights.v5.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Message containing a category</summary>
     public class CategoryGroupV5 : Google.Apis.Requests.IDirectResponseSchema
@@ -520,7 +539,7 @@ namespace Google.Apis.PagespeedInsights.v5.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Message containing the configuration settings for the Lighthouse run.</summary>
     public class ConfigSettings : Google.Apis.Requests.IDirectResponseSchema
@@ -543,7 +562,7 @@ namespace Google.Apis.PagespeedInsights.v5.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Message containing environment configuration for a Lighthouse run.</summary>
     public class Environment : Google.Apis.Requests.IDirectResponseSchema
@@ -562,7 +581,7 @@ namespace Google.Apis.PagespeedInsights.v5.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Message containing the i18n data for the LHR - Version 1.</summary>
     public class I18n : Google.Apis.Requests.IDirectResponseSchema
@@ -573,7 +592,7 @@ namespace Google.Apis.PagespeedInsights.v5.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An audit's result object in a Lighthouse result.</summary>
     public class LighthouseAuditResultV5 : Google.Apis.Requests.IDirectResponseSchema
@@ -602,9 +621,10 @@ namespace Google.Apis.PagespeedInsights.v5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>A numeric value that has a meaning specific to the audit, e.g. the number of nodes in the DOM or
-        /// the timestamp of a specific load event. More information can be found in the audit details, if
-        /// present.</summary>
+        /// <summary>
+        /// A numeric value that has a meaning specific to the audit, e.g. the number of nodes in the DOM or the
+        /// timestamp of a specific load event. More information can be found in the audit details, if present.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numericValue")]
         public virtual System.Nullable<double> NumericValue { get; set; }
 
@@ -626,7 +646,7 @@ namespace Google.Apis.PagespeedInsights.v5.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A Lighthouse category.</summary>
     public class LighthouseCategoryV5 : Google.Apis.Requests.IDirectResponseSchema
@@ -647,8 +667,10 @@ namespace Google.Apis.PagespeedInsights.v5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("manualDescription")]
         public virtual string ManualDescription { get; set; }
 
-        /// <summary>The overall score of the category, the weighted average of all its audits. (The category's score,
-        /// can be null.)</summary>
+        /// <summary>
+        /// The overall score of the category, the weighted average of all its audits. (The category's score, can be
+        /// null.)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
         public virtual object Score { get; set; }
 
@@ -658,7 +680,7 @@ namespace Google.Apis.PagespeedInsights.v5.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The Lighthouse result object.</summary>
     public class LighthouseResultV5 : Google.Apis.Requests.IDirectResponseSchema
@@ -707,8 +729,10 @@ namespace Google.Apis.PagespeedInsights.v5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("runWarnings")]
         public virtual System.Collections.Generic.IList<object> RunWarnings { get; set; }
 
-        /// <summary>A top-level error message that, if present, indicates a serious enough problem that this Lighthouse
-        /// result may need to be discarded.</summary>
+        /// <summary>
+        /// A top-level error message that, if present, indicates a serious enough problem that this Lighthouse result
+        /// may need to be discarded.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeError")]
         public virtual RuntimeError RuntimeError { get; set; }
 
@@ -726,7 +750,7 @@ namespace Google.Apis.PagespeedInsights.v5.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The CrUX loading experience object that contains CrUX data breakdowns.</summary>
     public class PagespeedApiLoadingExperienceV5 : Google.Apis.Requests.IDirectResponseSchema
@@ -753,7 +777,7 @@ namespace Google.Apis.PagespeedInsights.v5.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The Pagespeed API response object.</summary>
     public class PagespeedApiPagespeedResponseV5 : Google.Apis.Requests.IDirectResponseSchema
@@ -792,7 +816,7 @@ namespace Google.Apis.PagespeedInsights.v5.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The Pagespeed Version object.</summary>
     public class PagespeedVersion : Google.Apis.Requests.IDirectResponseSchema
@@ -807,7 +831,7 @@ namespace Google.Apis.PagespeedInsights.v5.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Message holding the formatted strings used in the renderer.</summary>
     public class RendererFormattedStrings : Google.Apis.Requests.IDirectResponseSchema
@@ -878,7 +902,7 @@ namespace Google.Apis.PagespeedInsights.v5.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Message containing a runtime error config.</summary>
     public class RuntimeError : Google.Apis.Requests.IDirectResponseSchema
@@ -893,7 +917,7 @@ namespace Google.Apis.PagespeedInsights.v5.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Message containing Stack Pack information.</summary>
     public class StackPack : Google.Apis.Requests.IDirectResponseSchema
@@ -916,7 +940,7 @@ namespace Google.Apis.PagespeedInsights.v5.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Message containing the performance timing data for the Lighthouse run.</summary>
     public class Timing : Google.Apis.Requests.IDirectResponseSchema
@@ -927,7 +951,7 @@ namespace Google.Apis.PagespeedInsights.v5.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A CrUX metric object for a single metric and form factor.</summary>
     public class UserPageLoadMetricV5 : Google.Apis.Requests.IDirectResponseSchema
@@ -952,8 +976,10 @@ namespace Google.Apis.PagespeedInsights.v5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metricId")]
         public virtual string MetricId { get; set; }
 
-        /// <summary>We use this field to store certain percentile value for this metric. For v4, this field contains
-        /// pc50. For v5, this field contains pc90.</summary>
+        /// <summary>
+        /// We use this field to store certain percentile value for this metric. For v4, this field contains pc50. For
+        /// v5, this field contains pc90.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percentile")]
         public virtual System.Nullable<int> Percentile { get; set; }
 

@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -65,7 +70,6 @@ namespace Google.Apis.SiteVerification.v1
 
             /// <summary>Manage your new site verifications with Google</summary>
             public static string SiteverificationVerifyOnly = "https://www.googleapis.com/auth/siteverification.verify_only";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Google Site Verification API.</summary>
@@ -76,10 +80,7 @@ namespace Google.Apis.SiteVerification.v1
 
             /// <summary>Manage your new site verifications with Google</summary>
             public const string SiteverificationVerifyOnly = "https://www.googleapis.com/auth/siteverification.verify_only";
-
         }
-
-
 
         /// <summary>Gets the WebResource resource.</summary>
         public virtual WebResourceResource WebResource { get; }
@@ -109,8 +110,10 @@ namespace Google.Apis.SiteVerification.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -122,8 +125,9 @@ namespace Google.Apis.SiteVerification.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-        /// characters.</summary>
+        /// <summary>
+        /// An opaque string that represents a user for quota purposes. Must not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -135,7 +139,6 @@ namespace Google.Apis.SiteVerification.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
             {
                 Name = "alt",
@@ -207,9 +210,7 @@ namespace Google.Apis.SiteVerification.v1
         public WebResourceResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Relinquish ownership of a website or domain.</summary>
         /// <param name="id">The id of a verified site or domain.</param>
@@ -228,11 +229,9 @@ namespace Google.Apis.SiteVerification.v1
                 InitParameters();
             }
 
-
             /// <summary>The id of a verified site or domain.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Id { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
@@ -247,7 +246,6 @@ namespace Google.Apis.SiteVerification.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
@@ -257,7 +255,6 @@ namespace Google.Apis.SiteVerification.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Get the most current data for a website or domain.</summary>
@@ -277,11 +274,9 @@ namespace Google.Apis.SiteVerification.v1
                 InitParameters();
             }
 
-
             /// <summary>The id of a verified site or domain.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Id { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -296,7 +291,6 @@ namespace Google.Apis.SiteVerification.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
@@ -306,7 +300,6 @@ namespace Google.Apis.SiteVerification.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Get a verification token for placing on a website or domain.</summary>
@@ -325,8 +318,6 @@ namespace Google.Apis.SiteVerification.v1
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SiteVerification.v1.Data.SiteVerificationWebResourceGettokenRequest Body { get; set; }
@@ -347,9 +338,7 @@ namespace Google.Apis.SiteVerification.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
         /// <summary>Attempt verification of a website or domain.</summary>
@@ -371,11 +360,9 @@ namespace Google.Apis.SiteVerification.v1
                 InitParameters();
             }
 
-
             /// <summary>The method to use for verifying a site or domain.</summary>
             [Google.Apis.Util.RequestParameterAttribute("verificationMethod", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string VerificationMethod { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SiteVerification.v1.Data.SiteVerificationWebResourceResource Body { get; set; }
@@ -396,7 +383,6 @@ namespace Google.Apis.SiteVerification.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("verificationMethod", new Google.Apis.Discovery.Parameter
                 {
                     Name = "verificationMethod",
@@ -406,7 +392,6 @@ namespace Google.Apis.SiteVerification.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Get the list of your verified websites and domains.</summary>
@@ -424,8 +409,6 @@ namespace Google.Apis.SiteVerification.v1
                 InitParameters();
             }
 
-
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -439,13 +422,12 @@ namespace Google.Apis.SiteVerification.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
-        /// <summary>Modify the list of owners for your website or domain. This method supports patch
-        /// semantics.</summary>
+        /// <summary>
+        /// Modify the list of owners for your website or domain. This method supports patch semantics.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="id">The id of a verified site or domain.</param>
         public virtual PatchRequest Patch(Google.Apis.SiteVerification.v1.Data.SiteVerificationWebResourceResource body, string id)
@@ -453,8 +435,9 @@ namespace Google.Apis.SiteVerification.v1
             return new PatchRequest(service, body, id);
         }
 
-        /// <summary>Modify the list of owners for your website or domain. This method supports patch
-        /// semantics.</summary>
+        /// <summary>
+        /// Modify the list of owners for your website or domain. This method supports patch semantics.
+        /// </summary>
         public class PatchRequest : SiteVerificationBaseServiceRequest<Google.Apis.SiteVerification.v1.Data.SiteVerificationWebResourceResource>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -465,11 +448,9 @@ namespace Google.Apis.SiteVerification.v1
                 InitParameters();
             }
 
-
             /// <summary>The id of a verified site or domain.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Id { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SiteVerification.v1.Data.SiteVerificationWebResourceResource Body { get; set; }
@@ -490,7 +471,6 @@ namespace Google.Apis.SiteVerification.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
@@ -500,7 +480,6 @@ namespace Google.Apis.SiteVerification.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Modify the list of owners for your website or domain.</summary>
@@ -522,11 +501,9 @@ namespace Google.Apis.SiteVerification.v1
                 InitParameters();
             }
 
-
             /// <summary>The id of a verified site or domain.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Id { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SiteVerification.v1.Data.SiteVerificationWebResourceResource Body { get; set; }
@@ -547,7 +524,6 @@ namespace Google.Apis.SiteVerification.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
@@ -557,61 +533,63 @@ namespace Google.Apis.SiteVerification.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.SiteVerification.v1.Data
-{    
-
+{
     public class SiteVerificationWebResourceGettokenRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The site for which a verification token will be generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("site")]
         public virtual SiteData Site { get; set; }
 
-        /// <summary>The verification method that will be used to verify this site. For sites, 'FILE' or 'META' methods
-        /// may be used. For domains, only 'DNS' may be used.</summary>
+        /// <summary>
+        /// The verification method that will be used to verify this site. For sites, 'FILE' or 'META' methods may be
+        /// used. For domains, only 'DNS' may be used.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verificationMethod")]
         public virtual string VerificationMethod { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
         /// <summary>The site for which a verification token will be generated.</summary>
         public class SiteData
         {
-            /// <summary>The site identifier. If the type is set to SITE, the identifier is a URL. If the type is set to
-            /// INET_DOMAIN, the site identifier is a domain name.</summary>
+            /// <summary>
+            /// The site identifier. If the type is set to SITE, the identifier is a URL. If the type is set to
+            /// INET_DOMAIN, the site identifier is a domain name.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("identifier")]
             public virtual string Identifier { get; set; }
 
             /// <summary>The type of resource to be verified. Can be SITE or INET_DOMAIN (domain name).</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
             public virtual string Type { get; set; }
-
         }
-    }    
+    }
 
     public class SiteVerificationWebResourceGettokenResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The verification method to use in conjunction with this token. For FILE, the token should be placed
-        /// in the top-level directory of the site, stored inside a file of the same name. For META, the token should be
-        /// placed in the HEAD tag of the default page that is loaded for the site. For DNS, the token should be placed
-        /// in a TXT record of the domain.</summary>
+        /// <summary>
+        /// The verification method to use in conjunction with this token. For FILE, the token should be placed in the
+        /// top-level directory of the site, stored inside a file of the same name. For META, the token should be placed
+        /// in the HEAD tag of the default page that is loaded for the site. For DNS, the token should be placed in a
+        /// TXT record of the domain.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; }
 
-        /// <summary>The verification token. The token must be placed appropriately in order for verification to
-        /// succeed.</summary>
+        /// <summary>
+        /// The verification token. The token must be placed appropriately in order for verification to succeed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class SiteVerificationWebResourceListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -621,12 +599,14 @@ namespace Google.Apis.SiteVerification.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class SiteVerificationWebResourceResource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The string used to identify this site. This value should be used in the "id" portion of the REST
-        /// URL for the Get, Update, and Delete operations.</summary>
+        /// <summary>
+        /// The string used to identify this site. This value should be used in the "id" portion of the REST URL for the
+        /// Get, Update, and Delete operations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -640,20 +620,20 @@ namespace Google.Apis.SiteVerification.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
         /// <summary>The address and type of a site that is verified or will be verified.</summary>
         public class SiteData
         {
-            /// <summary>The site identifier. If the type is set to SITE, the identifier is a URL. If the type is set to
-            /// INET_DOMAIN, the site identifier is a domain name.</summary>
+            /// <summary>
+            /// The site identifier. If the type is set to SITE, the identifier is a URL. If the type is set to
+            /// INET_DOMAIN, the site identifier is a domain name.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("identifier")]
             public virtual string Identifier { get; set; }
 
             /// <summary>The site type. Can be SITE or INET_DOMAIN (domain name).</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
             public virtual string Type { get; set; }
-
         }
     }
 }

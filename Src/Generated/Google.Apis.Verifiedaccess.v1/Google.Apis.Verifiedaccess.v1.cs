@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -62,7 +67,6 @@ namespace Google.Apis.Verifiedaccess.v1
         {
             /// <summary>Verify your enterprise credentials</summary>
             public static string Verifiedaccess = "https://www.googleapis.com/auth/verifiedaccess";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Chrome Verified Access API.</summary>
@@ -70,10 +74,7 @@ namespace Google.Apis.Verifiedaccess.v1
         {
             /// <summary>Verify your enterprise credentials</summary>
             public const string Verifiedaccess = "https://www.googleapis.com/auth/verifiedaccess";
-
         }
-
-
 
         /// <summary>Gets the Challenge resource.</summary>
         public virtual ChallengeResource Challenge { get; }
@@ -97,6 +98,7 @@ namespace Google.Apis.Verifiedaccess.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -116,9 +118,11 @@ namespace Google.Apis.Verifiedaccess.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -132,8 +136,10 @@ namespace Google.Apis.Verifiedaccess.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -145,8 +151,10 @@ namespace Google.Apis.Verifiedaccess.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -162,7 +170,6 @@ namespace Google.Apis.Verifiedaccess.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -266,9 +273,7 @@ namespace Google.Apis.Verifiedaccess.v1
         public ChallengeResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>CreateChallenge API</summary>
         /// <param name="body">The body of the request.</param>
@@ -286,8 +291,6 @@ namespace Google.Apis.Verifiedaccess.v1
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Verifiedaccess.v1.Data.Empty Body { get; set; }
@@ -308,9 +311,7 @@ namespace Google.Apis.Verifiedaccess.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
         /// <summary>VerifyChallengeResponse API</summary>
@@ -329,8 +330,6 @@ namespace Google.Apis.Verifiedaccess.v1
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Verifiedaccess.v1.Data.VerifyChallengeResponseRequest Body { get; set; }
@@ -351,21 +350,18 @@ namespace Google.Apis.Verifiedaccess.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
     }
 }
-
 namespace Google.Apis.Verifiedaccess.v1.Data
-{    
-
+{
     /// <summary>Result message for VerifiedAccess.CreateChallenge.</summary>
     public class Challenge : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Challenge generated with the old signing key (this will only be present during key
-        /// rotation)</summary>
+        /// <summary>
+        /// Challenge generated with the old signing key (this will only be present during key rotation)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternativeChallenge")]
         public virtual SignedData AlternativeChallenge { get; set; }
 
@@ -375,17 +371,19 @@ namespace Google.Apis.Verifiedaccess.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+    /// object `{}`.
+    /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The wrapper message of any data and its signature.</summary>
     public class SignedData : Google.Apis.Requests.IDirectResponseSchema
@@ -400,7 +398,7 @@ namespace Google.Apis.Verifiedaccess.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>signed ChallengeResponse</summary>
     public class VerifyChallengeResponseRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -409,16 +407,17 @@ namespace Google.Apis.Verifiedaccess.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("challengeResponse")]
         public virtual SignedData ChallengeResponse { get; set; }
 
-        /// <summary>Service can optionally provide identity information about the device or user associated with the
-        /// key. For an EMK, this value is the enrolled domain. For an EUK, this value is the user's email address. If
-        /// present, this value will be checked against contents of the response, and verification will fail if there is
-        /// no match.</summary>
+        /// <summary>
+        /// Service can optionally provide identity information about the device or user associated with the key. For an
+        /// EMK, this value is the enrolled domain. For an EUK, this value is the user's email address. If present, this
+        /// value will be checked against contents of the response, and verification will fail if there is no match.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expectedIdentity")]
         public virtual string ExpectedIdentity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Result message for VerifiedAccess.VerifyChallengeResponse.</summary>
     public class VerifyChallengeResponseResult : Google.Apis.Requests.IDirectResponseSchema
@@ -431,16 +430,19 @@ namespace Google.Apis.Verifiedaccess.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("devicePermanentId")]
         public virtual string DevicePermanentId { get; set; }
 
-        /// <summary>Certificate Signing Request (in the SPKAC format, base64 encoded) is returned in this field. This
-        /// field will be set only if device has included CSR in its challenge response. (the option to include CSR is
-        /// now available for both user and machine responses)</summary>
+        /// <summary>
+        /// Certificate Signing Request (in the SPKAC format, base64 encoded) is returned in this field. This field will
+        /// be set only if device has included CSR in its challenge response. (the option to include CSR is now
+        /// available for both user and machine responses)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signedPublicKeyAndChallenge")]
         public virtual string SignedPublicKeyAndChallenge { get; set; }
 
-        /// <summary>For EMCert check, device permanent id is returned here. For EUCert check,
-        /// signed_public_key_and_challenge [base64 encoded] is returned if present, otherwise empty string is returned.
-        /// This field is deprecated, please use device_permanent_id or signed_public_key_and_challenge
-        /// fields.</summary>
+        /// <summary>
+        /// For EMCert check, device permanent id is returned here. For EUCert check, signed_public_key_and_challenge
+        /// [base64 encoded] is returned if present, otherwise empty string is returned. This field is deprecated,
+        /// please use device_permanent_id or signed_public_key_and_challenge fields.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verificationOutput")]
         public virtual string VerificationOutput { get; set; }
 

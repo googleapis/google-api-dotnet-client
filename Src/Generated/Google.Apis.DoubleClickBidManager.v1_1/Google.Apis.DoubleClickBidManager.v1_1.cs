@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -65,7 +70,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
         {
             /// <summary>View and manage your reports in DoubleClick Bid Manager</summary>
             public static string Doubleclickbidmanager = "https://www.googleapis.com/auth/doubleclickbidmanager";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the DoubleClick Bid Manager API.</summary>
@@ -73,10 +77,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
         {
             /// <summary>View and manage your reports in DoubleClick Bid Manager</summary>
             public const string Doubleclickbidmanager = "https://www.googleapis.com/auth/doubleclickbidmanager";
-
         }
-
-
 
         /// <summary>Gets the Lineitems resource.</summary>
         public virtual LineitemsResource Lineitems { get; }
@@ -109,6 +110,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -128,9 +130,11 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -144,8 +148,10 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -157,8 +163,10 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -174,7 +182,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -278,18 +285,16 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
         public LineitemsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Retrieves line items in CSV format. YouTube & partners line items are not supported.</summary>
+        /// <summary>Retrieves line items in CSV format. YouTube &amp; partners line items are not supported.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual DownloadlineitemsRequest Downloadlineitems(Google.Apis.DoubleClickBidManager.v1_1.Data.DownloadLineItemsRequest body)
         {
             return new DownloadlineitemsRequest(service, body);
         }
 
-        /// <summary>Retrieves line items in CSV format. YouTube & partners line items are not supported.</summary>
+        /// <summary>Retrieves line items in CSV format. YouTube &amp; partners line items are not supported.</summary>
         public class DownloadlineitemsRequest : DoubleClickBidManagerBaseServiceRequest<Google.Apis.DoubleClickBidManager.v1_1.Data.DownloadLineItemsResponse>
         {
             /// <summary>Constructs a new Downloadlineitems request.</summary>
@@ -298,8 +303,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DoubleClickBidManager.v1_1.Data.DownloadLineItemsRequest Body { get; set; }
@@ -320,19 +323,17 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
-        /// <summary>Uploads line items in CSV format. YouTube & partners line items are not supported.</summary>
+        /// <summary>Uploads line items in CSV format. YouTube &amp; partners line items are not supported.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual UploadlineitemsRequest Uploadlineitems(Google.Apis.DoubleClickBidManager.v1_1.Data.UploadLineItemsRequest body)
         {
             return new UploadlineitemsRequest(service, body);
         }
 
-        /// <summary>Uploads line items in CSV format. YouTube & partners line items are not supported.</summary>
+        /// <summary>Uploads line items in CSV format. YouTube &amp; partners line items are not supported.</summary>
         public class UploadlineitemsRequest : DoubleClickBidManagerBaseServiceRequest<Google.Apis.DoubleClickBidManager.v1_1.Data.UploadLineItemsResponse>
         {
             /// <summary>Constructs a new Uploadlineitems request.</summary>
@@ -341,8 +342,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DoubleClickBidManager.v1_1.Data.UploadLineItemsRequest Body { get; set; }
@@ -363,9 +362,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
     }
 
@@ -381,9 +378,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
         public QueriesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Creates a query.</summary>
         /// <param name="body">The body of the request.</param>
@@ -402,12 +397,11 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
                 InitParameters();
             }
 
-
-            /// <summary>If true, tries to run the query asynchronously. Only applicable when the frequency is
-            /// ONE_TIME.</summary>
+            /// <summary>
+            /// If true, tries to run the query asynchronously. Only applicable when the frequency is ONE_TIME.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("asynchronous", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Asynchronous { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DoubleClickBidManager.v1_1.Data.Query Body { get; set; }
@@ -428,7 +422,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("asynchronous", new Google.Apis.Discovery.Parameter
                 {
                     Name = "asynchronous",
@@ -438,7 +431,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Deletes a stored query as well as the associated stored reports.</summary>
@@ -458,11 +450,9 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
                 InitParameters();
             }
 
-
             /// <summary>Query ID to delete.</summary>
             [Google.Apis.Util.RequestParameterAttribute("queryId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long QueryId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "deletequery";
@@ -477,7 +467,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("queryId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "queryId",
@@ -487,7 +476,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Retrieves a stored query.</summary>
@@ -507,11 +495,9 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
                 InitParameters();
             }
 
-
             /// <summary>Query ID to retrieve.</summary>
             [Google.Apis.Util.RequestParameterAttribute("queryId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long QueryId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getquery";
@@ -526,7 +512,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("queryId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "queryId",
@@ -536,7 +521,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Retrieves stored queries.</summary>
@@ -554,16 +538,15 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
                 InitParameters();
             }
 
-
-            /// <summary>Maximum number of results per page. Must be between 1 and 100. Defaults to 100 if
-            /// unspecified.</summary>
+            /// <summary>
+            /// Maximum number of results per page. Must be between 1 and 100. Defaults to 100 if unspecified.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>Optional pagination token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listqueries";
@@ -578,7 +561,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageSize",
@@ -596,7 +578,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Runs a stored query to generate a report.</summary>
@@ -618,7 +599,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
                 InitParameters();
             }
 
-
             /// <summary>Query ID to run.</summary>
             [Google.Apis.Util.RequestParameterAttribute("queryId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long QueryId { get; private set; }
@@ -626,7 +606,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
             /// <summary>If true, tries to run the query asynchronously.</summary>
             [Google.Apis.Util.RequestParameterAttribute("asynchronous", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Asynchronous { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DoubleClickBidManager.v1_1.Data.RunQueryRequest Body { get; set; }
@@ -647,7 +626,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("queryId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "queryId",
@@ -665,7 +643,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -681,9 +658,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
         public ReportsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Retrieves stored reports.</summary>
         /// <param name="queryId">Query ID with which the reports are associated.</param>
@@ -702,20 +677,19 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
                 InitParameters();
             }
 
-
             /// <summary>Query ID with which the reports are associated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("queryId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long QueryId { get; private set; }
 
-            /// <summary>Maximum number of results per page. Must be between 1 and 100. Defaults to 100 if
-            /// unspecified.</summary>
+            /// <summary>
+            /// Maximum number of results per page. Must be between 1 and 100. Defaults to 100 if unspecified.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>Optional pagination token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listreports";
@@ -730,7 +704,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("queryId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "queryId",
@@ -756,7 +729,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -772,9 +744,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
         public SdfResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Retrieves entities in SDF format.</summary>
         /// <param name="body">The body of the request.</param>
@@ -792,8 +762,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DoubleClickBidManager.v1_1.Data.DownloadRequest Body { get; set; }
@@ -814,22 +782,20 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
     }
 }
-
 namespace Google.Apis.DoubleClickBidManager.v1_1.Data
-{    
-
-    /// <summary>A channel grouping defines a set of rules that can be used to categorize events in a path
-    /// report.</summary>
+{
+    /// <summary>
+    /// A channel grouping defines a set of rules that can be used to categorize events in a path report.
+    /// </summary>
     public class ChannelGrouping : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The name to apply to an event that does not match any of the rules in the channel
-        /// grouping.</summary>
+        /// <summary>
+        /// The name to apply to an event that does not match any of the rules in the channel grouping.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fallbackName")]
         public virtual string FallbackName { get; set; }
 
@@ -837,14 +803,15 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Rules within Channel Grouping. There is a limit of 100 rules that can be set per channel
-        /// grouping.</summary>
+        /// <summary>
+        /// Rules within Channel Grouping. There is a limit of 100 rules that can be set per channel grouping.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
         public virtual System.Collections.Generic.IList<Rule> Rules { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>DisjunctiveMatchStatement that OR's all contained filters.</summary>
     public class DisjunctiveMatchStatement : Google.Apis.Requests.IDirectResponseSchema
@@ -855,18 +822,21 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request to fetch stored line items.</summary>
     public class DownloadLineItemsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>File specification (column names, types, order) in which the line items will be returned. Default
-        /// to EWF.</summary>
+        /// <summary>
+        /// File specification (column names, types, order) in which the line items will be returned. Default to EWF.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileSpec")]
         public virtual string FileSpec { get; set; }
 
-        /// <summary>Ids of the specified filter type used to filter line items to fetch. If omitted, all the line items
-        /// will be returned.</summary>
+        /// <summary>
+        /// Ids of the specified filter type used to filter line items to fetch. If omitted, all the line items will be
+        /// returned.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> FilterIds { get; set; }
 
@@ -880,48 +850,57 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Download line items response.</summary>
     public class DownloadLineItemsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Retrieved line items in CSV format. For more information about file formats, see Entity Write File
-        /// Format.</summary>
+        /// <summary>
+        /// Retrieved line items in CSV format. For more information about file formats, see Entity Write File Format.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
         public virtual string LineItems { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Request to fetch stored inventory sources, campaigns, insertion orders, line items, YouTube ad groups
-    /// and ads.</summary>
+    /// <summary>
+    /// Request to fetch stored inventory sources, campaigns, insertion orders, line items, YouTube ad groups and ads.
+    /// </summary>
     public class DownloadRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>File types that will be returned. If INVENTORY_SOURCE is requested, no other file types may be
-        /// requested. Acceptable values are: - "AD" - "AD_GROUP" - "CAMPAIGN" - "INSERTION_ORDER" - "INVENTORY_SOURCE"
-        /// - "LINE_ITEM" </summary>
+        /// <summary>
+        /// File types that will be returned. If INVENTORY_SOURCE is requested, no other file types may be requested.
+        /// Acceptable values are: - "AD" - "AD_GROUP" - "CAMPAIGN" - "INSERTION_ORDER" - "INVENTORY_SOURCE" -
+        /// "LINE_ITEM"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileTypes")]
         public virtual System.Collections.Generic.IList<string> FileTypes { get; set; }
 
-        /// <summary>The IDs of the specified filter type. This is used to filter entities to fetch. At least one ID
-        /// must be specified.</summary>
+        /// <summary>
+        /// The IDs of the specified filter type. This is used to filter entities to fetch. At least one ID must be
+        /// specified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> FilterIds { get; set; }
 
-        /// <summary>Filter type used to filter entities to fetch. PARTNER_ID and INVENTORY_SOURCE_ID may only be used
-        /// when downloading inventory sources.</summary>
+        /// <summary>
+        /// Filter type used to filter entities to fetch. PARTNER_ID and INVENTORY_SOURCE_ID may only be used when
+        /// downloading inventory sources.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterType")]
         public virtual string FilterType { get; set; }
 
-        /// <summary>SDF Version (column names, types, order) in which the entities will be returned. Default to
-        /// 5.</summary>
+        /// <summary>
+        /// SDF Version (column names, types, order) in which the entities will be returned. Default to 5.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Download response.</summary>
     public class DownloadResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -951,7 +930,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Defines the type of filter to be applied to the path, a DV360 event dimension filter.</summary>
     public class EventFilter : Google.Apis.Requests.IDirectResponseSchema
@@ -962,7 +941,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Filter used to match traffic data in your report.</summary>
     public class FilterPair : Google.Apis.Requests.IDirectResponseSchema
@@ -977,13 +956,15 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>List queries response.</summary>
     public class ListQueriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "doubleclickbidmanager#listQueriesResponse".</summary>
+        /// <summary>
+        /// Identifies what kind of resource this is. Value: the fixed string
+        /// "doubleclickbidmanager#listQueriesResponse".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -997,13 +978,15 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>List reports response.</summary>
     public class ListReportsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "doubleclickbidmanager#listReportsResponse".</summary>
+        /// <summary>
+        /// Identifies what kind of resource this is. Value: the fixed string
+        /// "doubleclickbidmanager#listReportsResponse".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -1017,13 +1000,15 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Additional query options.</summary>
     public class Options : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Set to true and filter your report by `FILTER_INSERTION_ORDER` or `FILTER_LINE_ITEM` to include
-        /// data for audience lists specifically targeted by those items.</summary>
+        /// <summary>
+        /// Set to true and filter your report by `FILTER_INSERTION_ORDER` or `FILTER_LINE_ITEM` to include data for
+        /// audience lists specifically targeted by those items.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeOnlyTargetedUserLists")]
         public virtual System.Nullable<bool> IncludeOnlyTargetedUserLists { get; set; }
 
@@ -1033,7 +1018,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Parameters of a query or report.</summary>
     public class Parameters : Google.Apis.Requests.IDirectResponseSchema
@@ -1064,26 +1049,28 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Path filters specify which paths to include in a report. A path is the result of combining DV360 events
-    /// based on User ID to create a workflow of users' actions. When a path filter is set, the resulting report will
-    /// only include paths that match the specified event at the specified position. All other paths will be
-    /// excluded.</summary>
+    /// <summary>
+    /// Path filters specify which paths to include in a report. A path is the result of combining DV360 events based on
+    /// User ID to create a workflow of users' actions. When a path filter is set, the resulting report will only
+    /// include paths that match the specified event at the specified position. All other paths will be excluded.
+    /// </summary>
     public class PathFilter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Filter on an event to be applied to some part of the path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventFilters")]
         public virtual System.Collections.Generic.IList<EventFilter> EventFilters { get; set; }
 
-        /// <summary>Indicates the position of the path the filter should match to (first, last, or any event in
-        /// path).</summary>
+        /// <summary>
+        /// Indicates the position of the path the filter should match to (first, last, or any event in path).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathMatchPosition")]
         public virtual string PathMatchPosition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Path Query Options for Report Options.</summary>
     public class PathQueryOptions : Google.Apis.Requests.IDirectResponseSchema
@@ -1098,7 +1085,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Dimension Filter on path events.</summary>
     public class PathQueryOptionsFilter : Google.Apis.Requests.IDirectResponseSchema
@@ -1117,13 +1104,14 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a query.</summary>
     public class Query : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "doubleclickbidmanager#query".</summary>
+        /// <summary>
+        /// Identifies what kind of resource this is. Value: the fixed string "doubleclickbidmanager#query".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -1139,13 +1127,17 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("queryId")]
         public virtual System.Nullable<long> QueryId { get; set; }
 
-        /// <summary>The ending time for the data that is shown in the report. Note, reportDataEndTimeMs is required if
-        /// metadata.dataRange is CUSTOM_DATES and ignored otherwise.</summary>
+        /// <summary>
+        /// The ending time for the data that is shown in the report. Note, reportDataEndTimeMs is required if
+        /// metadata.dataRange is CUSTOM_DATES and ignored otherwise.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportDataEndTimeMs")]
         public virtual System.Nullable<long> ReportDataEndTimeMs { get; set; }
 
-        /// <summary>The starting time for the data that is shown in the report. Note, reportDataStartTimeMs is required
-        /// if metadata.dataRange is CUSTOM_DATES and ignored otherwise.</summary>
+        /// <summary>
+        /// The starting time for the data that is shown in the report. Note, reportDataStartTimeMs is required if
+        /// metadata.dataRange is CUSTOM_DATES and ignored otherwise.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportDataStartTimeMs")]
         public virtual System.Nullable<long> ReportDataStartTimeMs { get; set; }
 
@@ -1159,7 +1151,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Query metadata.</summary>
     public class QueryMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -1184,10 +1176,11 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("latestReportRunTimeMs")]
         public virtual System.Nullable<long> LatestReportRunTimeMs { get; set; }
 
-        /// <summary>Locale of the generated reports. Valid values are cs CZECH de GERMAN en ENGLISH es SPANISH fr
-        /// FRENCH it ITALIAN ja JAPANESE ko KOREAN pl POLISH pt-BR BRAZILIAN_PORTUGUESE ru RUSSIAN tr TURKISH uk
-        /// UKRAINIAN zh-CN CHINA_CHINESE zh-TW TAIWAN_CHINESE An locale string not in the list above will generate
-        /// reports in English.</summary>
+        /// <summary>
+        /// Locale of the generated reports. Valid values are cs CZECH de GERMAN en ENGLISH es SPANISH fr FRENCH it
+        /// ITALIAN ja JAPANESE ko KOREAN pl POLISH pt-BR BRAZILIAN_PORTUGUESE ru RUSSIAN tr TURKISH uk UKRAINIAN zh-CN
+        /// CHINA_CHINESE zh-TW TAIWAN_CHINESE An locale string not in the list above will generate reports in English.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
         public virtual string Locale { get; set; }
 
@@ -1203,8 +1196,10 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sendNotification")]
         public virtual System.Nullable<bool> SendNotification { get; set; }
 
-        /// <summary>List of email addresses which are sent email notifications when the report is finished. Separate
-        /// from sendNotification.</summary>
+        /// <summary>
+        /// List of email addresses which are sent email notifications when the report is finished. Separate from
+        /// sendNotification.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shareEmailAddress")]
         public virtual System.Collections.Generic.IList<string> ShareEmailAddress { get; set; }
 
@@ -1214,7 +1209,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information on how frequently and when to run a query.</summary>
     public class QuerySchedule : Google.Apis.Requests.IDirectResponseSchema
@@ -1227,8 +1222,10 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("frequency")]
         public virtual string Frequency { get; set; }
 
-        /// <summary>Time of day at which a new report will be generated, represented as minutes past midnight. Range is
-        /// 0 to 1439. Only applies to scheduled reports.</summary>
+        /// <summary>
+        /// Time of day at which a new report will be generated, represented as minutes past midnight. Range is 0 to
+        /// 1439. Only applies to scheduled reports.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextRunMinuteOfDay")]
         public virtual System.Nullable<int> NextRunMinuteOfDay { get; set; }
 
@@ -1242,7 +1239,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a report.</summary>
     public class Report : Google.Apis.Requests.IDirectResponseSchema
@@ -1261,7 +1258,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An explanation of a report failure.</summary>
     public class ReportFailure : Google.Apis.Requests.IDirectResponseSchema
@@ -1272,7 +1269,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Key used to identify a report.</summary>
     public class ReportKey : Google.Apis.Requests.IDirectResponseSchema
@@ -1287,7 +1284,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Report metadata.</summary>
     public class ReportMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -1310,7 +1307,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Report status.</summary>
     public class ReportStatus : Google.Apis.Requests.IDirectResponseSchema
@@ -1333,7 +1330,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents the upload status of a row in the request.</summary>
     public class RowStatus : Google.Apis.Requests.IDirectResponseSchema
@@ -1364,11 +1361,13 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A Rule defines a name, and a boolean expression in [conjunctive normal form](http:
+    /// <summary>
+    /// A Rule defines a name, and a boolean expression in [conjunctive normal form](http:
     /// //mathworld.wolfram.com/ConjunctiveNormalForm.html){.external} that can be // applied to a path event to
-    /// determine if that name should be applied.</summary>
+    /// determine if that name should be applied.
+    /// </summary>
     public class Rule : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("disjunctiveMatchStatements")]
@@ -1380,7 +1379,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request to run a stored query to generate a report.</summary>
     public class RunQueryRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -1389,13 +1388,17 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataRange")]
         public virtual string DataRange { get; set; }
 
-        /// <summary>The ending time for the data that is shown in the report. Note, reportDataEndTimeMs is required if
-        /// dataRange is CUSTOM_DATES and ignored otherwise.</summary>
+        /// <summary>
+        /// The ending time for the data that is shown in the report. Note, reportDataEndTimeMs is required if dataRange
+        /// is CUSTOM_DATES and ignored otherwise.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportDataEndTimeMs")]
         public virtual System.Nullable<long> ReportDataEndTimeMs { get; set; }
 
-        /// <summary>The starting time for the data that is shown in the report. Note, reportDataStartTimeMs is required
-        /// if dataRange is CUSTOM_DATES and ignored otherwise.</summary>
+        /// <summary>
+        /// The starting time for the data that is shown in the report. Note, reportDataStartTimeMs is required if
+        /// dataRange is CUSTOM_DATES and ignored otherwise.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportDataStartTimeMs")]
         public virtual System.Nullable<long> ReportDataStartTimeMs { get; set; }
 
@@ -1405,7 +1408,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request to upload line items.</summary>
     public class UploadLineItemsRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -1418,14 +1421,15 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
         public virtual string Format { get; set; }
 
-        /// <summary>Line items in CSV to upload. Refer to Entity Write File Format for more information on file
-        /// format.</summary>
+        /// <summary>
+        /// Line items in CSV to upload. Refer to Entity Write File Format for more information on file format.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
         public virtual string LineItems { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Upload line items response.</summary>
     public class UploadLineItemsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1436,7 +1440,7 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents the status of upload.</summary>
     public class UploadStatus : Google.Apis.Requests.IDirectResponseSchema

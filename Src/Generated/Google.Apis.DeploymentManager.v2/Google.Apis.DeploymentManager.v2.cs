@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -70,14 +75,15 @@ namespace Google.Apis.DeploymentManager.v2
             /// <summary>View your data across Google Cloud Platform services</summary>
             public static string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
 
-            /// <summary>View and manage your Google Cloud Platform management resources and deployment status
-            /// information</summary>
+            /// <summary>
+            /// View and manage your Google Cloud Platform management resources and deployment status information
+            /// </summary>
             public static string NdevCloudman = "https://www.googleapis.com/auth/ndev.cloudman";
 
-            /// <summary>View your Google Cloud Platform management resources and deployment status
-            /// information</summary>
+            /// <summary>
+            /// View your Google Cloud Platform management resources and deployment status information
+            /// </summary>
             public static string NdevCloudmanReadonly = "https://www.googleapis.com/auth/ndev.cloudman.readonly";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Deployment Manager V2 API.</summary>
@@ -89,17 +95,16 @@ namespace Google.Apis.DeploymentManager.v2
             /// <summary>View your data across Google Cloud Platform services</summary>
             public const string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
 
-            /// <summary>View and manage your Google Cloud Platform management resources and deployment status
-            /// information</summary>
+            /// <summary>
+            /// View and manage your Google Cloud Platform management resources and deployment status information
+            /// </summary>
             public const string NdevCloudman = "https://www.googleapis.com/auth/ndev.cloudman";
 
-            /// <summary>View your Google Cloud Platform management resources and deployment status
-            /// information</summary>
+            /// <summary>
+            /// View your Google Cloud Platform management resources and deployment status information
+            /// </summary>
             public const string NdevCloudmanReadonly = "https://www.googleapis.com/auth/ndev.cloudman.readonly";
-
         }
-
-
 
         /// <summary>Gets the Deployments resource.</summary>
         public virtual DeploymentsResource Deployments { get; }
@@ -135,6 +140,7 @@ namespace Google.Apis.DeploymentManager.v2
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -154,9 +160,11 @@ namespace Google.Apis.DeploymentManager.v2
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -170,8 +178,10 @@ namespace Google.Apis.DeploymentManager.v2
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -183,8 +193,10 @@ namespace Google.Apis.DeploymentManager.v2
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -200,7 +212,6 @@ namespace Google.Apis.DeploymentManager.v2
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -304,15 +315,12 @@ namespace Google.Apis.DeploymentManager.v2
         public DeploymentsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Cancels and removes the preview currently associated with the deployment.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">The project ID for this request.</param>
-        /// <param name="deployment">The name of the
-        /// deployment for this request.</param>
+        /// <param name="deployment">The name of the deployment for this request.</param>
         public virtual CancelPreviewRequest CancelPreview(Google.Apis.DeploymentManager.v2.Data.DeploymentsCancelPreviewRequest body, string project, string deployment)
         {
             return new CancelPreviewRequest(service, body, project, deployment);
@@ -330,7 +338,6 @@ namespace Google.Apis.DeploymentManager.v2
                 InitParameters();
             }
 
-
             /// <summary>The project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
@@ -338,7 +345,6 @@ namespace Google.Apis.DeploymentManager.v2
             /// <summary>The name of the deployment for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("deployment", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Deployment { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManager.v2.Data.DeploymentsCancelPreviewRequest Body { get; set; }
@@ -359,7 +365,6 @@ namespace Google.Apis.DeploymentManager.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -377,13 +382,11 @@ namespace Google.Apis.DeploymentManager.v2
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                 });
             }
-
         }
 
         /// <summary>Deletes a deployment and all of the resources in the deployment.</summary>
         /// <param name="project">The project ID for this request.</param>
-        /// <param name="deployment">The name of the
-        /// deployment for this request.</param>
+        /// <param name="deployment">The name of the deployment for this request.</param>
         public virtual DeleteRequest Delete(string project, string deployment)
         {
             return new DeleteRequest(service, project, deployment);
@@ -400,7 +403,6 @@ namespace Google.Apis.DeploymentManager.v2
                 InitParameters();
             }
 
-
             /// <summary>The project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
@@ -416,12 +418,14 @@ namespace Google.Apis.DeploymentManager.v2
             /// <summary>Sets the policy to use for deleting resources.</summary>
             public enum DeletePolicyEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DELETE")]
                 DELETE,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ABANDON")]
                 ABANDON,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
@@ -436,7 +440,6 @@ namespace Google.Apis.DeploymentManager.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -462,13 +465,11 @@ namespace Google.Apis.DeploymentManager.v2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Gets information about a specific deployment.</summary>
         /// <param name="project">The project ID for this request.</param>
-        /// <param name="deployment">The name of the
-        /// deployment for this request.</param>
+        /// <param name="deployment">The name of the deployment for this request.</param>
         public virtual GetRequest Get(string project, string deployment)
         {
             return new GetRequest(service, project, deployment);
@@ -485,7 +486,6 @@ namespace Google.Apis.DeploymentManager.v2
                 InitParameters();
             }
 
-
             /// <summary>The project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
@@ -493,7 +493,6 @@ namespace Google.Apis.DeploymentManager.v2
             /// <summary>The name of the deployment for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("deployment", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Deployment { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -508,7 +507,6 @@ namespace Google.Apis.DeploymentManager.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -526,21 +524,21 @@ namespace Google.Apis.DeploymentManager.v2
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                 });
             }
-
         }
 
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
+        /// <summary>
+        /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// </summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name or id of the resource
-        /// for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual GetIamPolicyRequest GetIamPolicy(string project, string resource)
         {
             return new GetIamPolicyRequest(service, project, resource);
         }
 
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
+        /// <summary>
+        /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// </summary>
         public class GetIamPolicyRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -550,7 +548,6 @@ namespace Google.Apis.DeploymentManager.v2
                 Resource = resource;
                 InitParameters();
             }
-
 
             /// <summary>Project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
@@ -563,7 +560,6 @@ namespace Google.Apis.DeploymentManager.v2
             /// <summary>Requested IAM Policy version.</summary>
             [Google.Apis.Util.RequestParameterAttribute("optionsRequestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getIamPolicy";
@@ -578,7 +574,6 @@ namespace Google.Apis.DeploymentManager.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -604,7 +599,6 @@ namespace Google.Apis.DeploymentManager.v2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Creates a deployment and all of the resources described by the deployment manifest.</summary>
@@ -626,7 +620,6 @@ namespace Google.Apis.DeploymentManager.v2
                 InitParameters();
             }
 
-
             /// <summary>The project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
@@ -638,21 +631,24 @@ namespace Google.Apis.DeploymentManager.v2
             /// <summary>Sets the policy to use for creating new resources.</summary>
             public enum CreatePolicyEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("CREATE_OR_ACQUIRE")]
                 CREATEORACQUIRE,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ACQUIRE")]
                 ACQUIRE,
             }
 
-            /// <summary>If set to true, creates a deployment and creates "shell" resources but does not actually
-            /// instantiate these resources. This allows you to preview what your deployment looks like. After
-            /// previewing a deployment, you can deploy your resources by making a request with the `update()` method or
-            /// you can use the `cancelPreview()` method to cancel the preview altogether. Note that the deployment will
-            /// still exist after you cancel the preview and you must separately delete this deployment if you want to
-            /// remove it.</summary>
+            /// <summary>
+            /// If set to true, creates a deployment and creates "shell" resources but does not actually instantiate
+            /// these resources. This allows you to preview what your deployment looks like. After previewing a
+            /// deployment, you can deploy your resources by making a request with the `update()` method or you can use
+            /// the `cancelPreview()` method to cancel the preview altogether. Note that the deployment will still exist
+            /// after you cancel the preview and you must separately delete this deployment if you want to remove it.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("preview", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Preview { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManager.v2.Data.Deployment Body { get; set; }
@@ -673,7 +669,6 @@ namespace Google.Apis.DeploymentManager.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -699,7 +694,6 @@ namespace Google.Apis.DeploymentManager.v2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Lists all deployments for a given project.</summary>
@@ -719,47 +713,51 @@ namespace Google.Apis.DeploymentManager.v2
                 InitParameters();
             }
 
-
             /// <summary>The project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
-            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
-            /// example, if you are filtering Compute Engine instances, you can exclude instances named `example-
-            /// instance` by specifying `name != example-instance`. You can also filter nested fields. For example, you
-            /// could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled
-            /// for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To
-            /// filter on multiple expressions, provide each separate expression within parentheses. For example: ```
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
-            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
-            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true) ```</summary>
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. The expression must specify the field
+            /// name, a comparison operator, and the value that you want to use for filtering. The value must be a
+            /// string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `&amp;gt;`, or
+            /// `&amp;lt;`. For example, if you are filtering Compute Engine instances, you can exclude instances named
+            /// `example-instance` by specifying `name != example-instance`. You can also filter nested fields. For
+            /// example, you could specify `scheduling.automaticRestart = false` to include instances only if they are
+            /// not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource
+            /// labels. To filter on multiple expressions, provide each separate expression within parentheses. For
+            /// example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each
+            /// expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For
+            /// example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true) ```
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
-            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
-            /// (Default: `500`)</summary>
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
-            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
-            /// based on the resource name. You can also sort results in descending order based on the creation
-            /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
-            /// field in reverse chronological order (newest result first). Use this to sort resources like operations
-            /// so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp
-            /// desc` is supported.</summary>
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name. You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
-            /// list request to get the next page of results.</summary>
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -774,7 +772,6 @@ namespace Google.Apis.DeploymentManager.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -816,14 +813,12 @@ namespace Google.Apis.DeploymentManager.v2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Patches a deployment and all of the resources described by the deployment manifest.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">The project ID for this request.</param>
-        /// <param name="deployment">The name of the
-        /// deployment for this request.</param>
+        /// <param name="deployment">The name of the deployment for this request.</param>
         public virtual PatchRequest Patch(Google.Apis.DeploymentManager.v2.Data.Deployment body, string project, string deployment)
         {
             return new PatchRequest(service, body, project, deployment);
@@ -841,7 +836,6 @@ namespace Google.Apis.DeploymentManager.v2
                 InitParameters();
             }
 
-
             /// <summary>The project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
@@ -857,8 +851,11 @@ namespace Google.Apis.DeploymentManager.v2
             /// <summary>Sets the policy to use for creating new resources.</summary>
             public enum CreatePolicyEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("CREATE_OR_ACQUIRE")]
                 CREATEORACQUIRE,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ACQUIRE")]
                 ACQUIRE,
             }
@@ -870,22 +867,26 @@ namespace Google.Apis.DeploymentManager.v2
             /// <summary>Sets the policy to use for deleting resources.</summary>
             public enum DeletePolicyEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DELETE")]
                 DELETE,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ABANDON")]
                 ABANDON,
             }
 
-            /// <summary>If set to true, updates the deployment and creates and updates the "shell" resources but does
-            /// not actually alter or instantiate these resources. This allows you to preview what your deployment will
-            /// look like. You can use this intent to preview how an update would affect your deployment. You must
-            /// provide a `target.config` with a configuration if this is set to true. After previewing a deployment,
-            /// you can deploy your resources by making a request with the `update()` or you can `cancelPreview()` to
-            /// remove the preview altogether. Note that the deployment will still exist after you cancel the preview
-            /// and you must separately delete this deployment if you want to remove it.</summary>
+            /// <summary>
+            /// If set to true, updates the deployment and creates and updates the "shell" resources but does not
+            /// actually alter or instantiate these resources. This allows you to preview what your deployment will look
+            /// like. You can use this intent to preview how an update would affect your deployment. You must provide a
+            /// `target.config` with a configuration if this is set to true. After previewing a deployment, you can
+            /// deploy your resources by making a request with the `update()` or you can `cancelPreview()` to remove the
+            /// preview altogether. Note that the deployment will still exist after you cancel the preview and you must
+            /// separately delete this deployment if you want to remove it.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("preview", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Preview { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManager.v2.Data.Deployment Body { get; set; }
@@ -906,7 +907,6 @@ namespace Google.Apis.DeploymentManager.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -948,14 +948,12 @@ namespace Google.Apis.DeploymentManager.v2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name or id of the resource
-        /// for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DeploymentManager.v2.Data.GlobalSetPolicyRequest body, string project, string resource)
         {
             return new SetIamPolicyRequest(service, body, project, resource);
@@ -973,7 +971,6 @@ namespace Google.Apis.DeploymentManager.v2
                 InitParameters();
             }
 
-
             /// <summary>Project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
@@ -981,7 +978,6 @@ namespace Google.Apis.DeploymentManager.v2
             /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManager.v2.Data.GlobalSetPolicyRequest Body { get; set; }
@@ -1002,7 +998,6 @@ namespace Google.Apis.DeploymentManager.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -1020,22 +1015,24 @@ namespace Google.Apis.DeploymentManager.v2
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
-
         }
 
-        /// <summary>Stops an ongoing operation. This does not roll back any work that has already been completed, but
-        /// prevents any new work from being started.</summary>
+        /// <summary>
+        /// Stops an ongoing operation. This does not roll back any work that has already been completed, but prevents
+        /// any new work from being started.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">The project ID for this request.</param>
-        /// <param name="deployment">The name of the
-        /// deployment for this request.</param>
+        /// <param name="deployment">The name of the deployment for this request.</param>
         public virtual StopRequest Stop(Google.Apis.DeploymentManager.v2.Data.DeploymentsStopRequest body, string project, string deployment)
         {
             return new StopRequest(service, body, project, deployment);
         }
 
-        /// <summary>Stops an ongoing operation. This does not roll back any work that has already been completed, but
-        /// prevents any new work from being started.</summary>
+        /// <summary>
+        /// Stops an ongoing operation. This does not roll back any work that has already been completed, but prevents
+        /// any new work from being started.
+        /// </summary>
         public class StopRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2.Data.Operation>
         {
             /// <summary>Constructs a new Stop request.</summary>
@@ -1047,7 +1044,6 @@ namespace Google.Apis.DeploymentManager.v2
                 InitParameters();
             }
 
-
             /// <summary>The project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
@@ -1055,7 +1051,6 @@ namespace Google.Apis.DeploymentManager.v2
             /// <summary>The name of the deployment for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("deployment", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Deployment { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManager.v2.Data.DeploymentsStopRequest Body { get; set; }
@@ -1076,7 +1071,6 @@ namespace Google.Apis.DeploymentManager.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -1094,14 +1088,12 @@ namespace Google.Apis.DeploymentManager.v2
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                 });
             }
-
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="resource">Name or id of the resource
-        /// for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.DeploymentManager.v2.Data.TestPermissionsRequest body, string project, string resource)
         {
             return new TestIamPermissionsRequest(service, body, project, resource);
@@ -1119,7 +1111,6 @@ namespace Google.Apis.DeploymentManager.v2
                 InitParameters();
             }
 
-
             /// <summary>Project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
@@ -1127,7 +1118,6 @@ namespace Google.Apis.DeploymentManager.v2
             /// <summary>Name or id of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManager.v2.Data.TestPermissionsRequest Body { get; set; }
@@ -1148,7 +1138,6 @@ namespace Google.Apis.DeploymentManager.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -1166,14 +1155,12 @@ namespace Google.Apis.DeploymentManager.v2
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
-
         }
 
         /// <summary>Updates a deployment and all of the resources described by the deployment manifest.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">The project ID for this request.</param>
-        /// <param name="deployment">The name of the
-        /// deployment for this request.</param>
+        /// <param name="deployment">The name of the deployment for this request.</param>
         public virtual UpdateRequest Update(Google.Apis.DeploymentManager.v2.Data.Deployment body, string project, string deployment)
         {
             return new UpdateRequest(service, body, project, deployment);
@@ -1191,7 +1178,6 @@ namespace Google.Apis.DeploymentManager.v2
                 InitParameters();
             }
 
-
             /// <summary>The project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
@@ -1207,8 +1193,11 @@ namespace Google.Apis.DeploymentManager.v2
             /// <summary>Sets the policy to use for creating new resources.</summary>
             public enum CreatePolicyEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("CREATE_OR_ACQUIRE")]
                 CREATEORACQUIRE,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ACQUIRE")]
                 ACQUIRE,
             }
@@ -1220,22 +1209,26 @@ namespace Google.Apis.DeploymentManager.v2
             /// <summary>Sets the policy to use for deleting resources.</summary>
             public enum DeletePolicyEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DELETE")]
                 DELETE,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ABANDON")]
                 ABANDON,
             }
 
-            /// <summary>If set to true, updates the deployment and creates and updates the "shell" resources but does
-            /// not actually alter or instantiate these resources. This allows you to preview what your deployment will
-            /// look like. You can use this intent to preview how an update would affect your deployment. You must
-            /// provide a `target.config` with a configuration if this is set to true. After previewing a deployment,
-            /// you can deploy your resources by making a request with the `update()` or you can `cancelPreview()` to
-            /// remove the preview altogether. Note that the deployment will still exist after you cancel the preview
-            /// and you must separately delete this deployment if you want to remove it.</summary>
+            /// <summary>
+            /// If set to true, updates the deployment and creates and updates the "shell" resources but does not
+            /// actually alter or instantiate these resources. This allows you to preview what your deployment will look
+            /// like. You can use this intent to preview how an update would affect your deployment. You must provide a
+            /// `target.config` with a configuration if this is set to true. After previewing a deployment, you can
+            /// deploy your resources by making a request with the `update()` or you can `cancelPreview()` to remove the
+            /// preview altogether. Note that the deployment will still exist after you cancel the preview and you must
+            /// separately delete this deployment if you want to remove it.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("preview", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Preview { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DeploymentManager.v2.Data.Deployment Body { get; set; }
@@ -1256,7 +1249,6 @@ namespace Google.Apis.DeploymentManager.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -1298,7 +1290,6 @@ namespace Google.Apis.DeploymentManager.v2
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -1314,16 +1305,12 @@ namespace Google.Apis.DeploymentManager.v2
         public ManifestsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Gets information about a specific manifest.</summary>
         /// <param name="project">The project ID for this request.</param>
-        /// <param name="deployment">The name of the
-        /// deployment for this request.</param>
-        /// <param name="manifest">The name of the manifest for this
-        /// request.</param>
+        /// <param name="deployment">The name of the deployment for this request.</param>
+        /// <param name="manifest">The name of the manifest for this request.</param>
         public virtual GetRequest Get(string project, string deployment, string manifest)
         {
             return new GetRequest(service, project, deployment, manifest);
@@ -1341,7 +1328,6 @@ namespace Google.Apis.DeploymentManager.v2
                 InitParameters();
             }
 
-
             /// <summary>The project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
@@ -1353,7 +1339,6 @@ namespace Google.Apis.DeploymentManager.v2
             /// <summary>The name of the manifest for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("manifest", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Manifest { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -1368,7 +1353,6 @@ namespace Google.Apis.DeploymentManager.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -1394,13 +1378,11 @@ namespace Google.Apis.DeploymentManager.v2
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                 });
             }
-
         }
 
         /// <summary>Lists all manifests for a given deployment.</summary>
         /// <param name="project">The project ID for this request.</param>
-        /// <param name="deployment">The name of the
-        /// deployment for this request.</param>
+        /// <param name="deployment">The name of the deployment for this request.</param>
         public virtual ListRequest List(string project, string deployment)
         {
             return new ListRequest(service, project, deployment);
@@ -1417,7 +1399,6 @@ namespace Google.Apis.DeploymentManager.v2
                 InitParameters();
             }
 
-
             /// <summary>The project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
@@ -1426,42 +1407,47 @@ namespace Google.Apis.DeploymentManager.v2
             [Google.Apis.Util.RequestParameterAttribute("deployment", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Deployment { get; private set; }
 
-            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
-            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
-            /// example, if you are filtering Compute Engine instances, you can exclude instances named `example-
-            /// instance` by specifying `name != example-instance`. You can also filter nested fields. For example, you
-            /// could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled
-            /// for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To
-            /// filter on multiple expressions, provide each separate expression within parentheses. For example: ```
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
-            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
-            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true) ```</summary>
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. The expression must specify the field
+            /// name, a comparison operator, and the value that you want to use for filtering. The value must be a
+            /// string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `&amp;gt;`, or
+            /// `&amp;lt;`. For example, if you are filtering Compute Engine instances, you can exclude instances named
+            /// `example-instance` by specifying `name != example-instance`. You can also filter nested fields. For
+            /// example, you could specify `scheduling.automaticRestart = false` to include instances only if they are
+            /// not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource
+            /// labels. To filter on multiple expressions, provide each separate expression within parentheses. For
+            /// example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each
+            /// expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For
+            /// example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true) ```
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
-            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
-            /// (Default: `500`)</summary>
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
-            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
-            /// based on the resource name. You can also sort results in descending order based on the creation
-            /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
-            /// field in reverse chronological order (newest result first). Use this to sort resources like operations
-            /// so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp
-            /// desc` is supported.</summary>
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name. You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
-            /// list request to get the next page of results.</summary>
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -1476,7 +1462,6 @@ namespace Google.Apis.DeploymentManager.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -1526,7 +1511,6 @@ namespace Google.Apis.DeploymentManager.v2
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -1542,14 +1526,11 @@ namespace Google.Apis.DeploymentManager.v2
         public OperationsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Gets information about a specific operation.</summary>
         /// <param name="project">The project ID for this request.</param>
-        /// <param name="operation">The name of the
-        /// operation for this request.</param>
+        /// <param name="operation">The name of the operation for this request.</param>
         public virtual GetRequest Get(string project, string operation)
         {
             return new GetRequest(service, project, operation);
@@ -1566,7 +1547,6 @@ namespace Google.Apis.DeploymentManager.v2
                 InitParameters();
             }
 
-
             /// <summary>The project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
@@ -1574,7 +1554,6 @@ namespace Google.Apis.DeploymentManager.v2
             /// <summary>The name of the operation for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("operation", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Operation { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -1589,7 +1568,6 @@ namespace Google.Apis.DeploymentManager.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -1607,7 +1585,6 @@ namespace Google.Apis.DeploymentManager.v2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Lists all operations for a project.</summary>
@@ -1627,47 +1604,51 @@ namespace Google.Apis.DeploymentManager.v2
                 InitParameters();
             }
 
-
             /// <summary>The project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
-            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
-            /// example, if you are filtering Compute Engine instances, you can exclude instances named `example-
-            /// instance` by specifying `name != example-instance`. You can also filter nested fields. For example, you
-            /// could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled
-            /// for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To
-            /// filter on multiple expressions, provide each separate expression within parentheses. For example: ```
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
-            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
-            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true) ```</summary>
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. The expression must specify the field
+            /// name, a comparison operator, and the value that you want to use for filtering. The value must be a
+            /// string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `&amp;gt;`, or
+            /// `&amp;lt;`. For example, if you are filtering Compute Engine instances, you can exclude instances named
+            /// `example-instance` by specifying `name != example-instance`. You can also filter nested fields. For
+            /// example, you could specify `scheduling.automaticRestart = false` to include instances only if they are
+            /// not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource
+            /// labels. To filter on multiple expressions, provide each separate expression within parentheses. For
+            /// example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each
+            /// expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For
+            /// example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true) ```
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
-            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
-            /// (Default: `500`)</summary>
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
-            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
-            /// based on the resource name. You can also sort results in descending order based on the creation
-            /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
-            /// field in reverse chronological order (newest result first). Use this to sort resources like operations
-            /// so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp
-            /// desc` is supported.</summary>
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name. You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
-            /// list request to get the next page of results.</summary>
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -1682,7 +1663,6 @@ namespace Google.Apis.DeploymentManager.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -1724,7 +1704,6 @@ namespace Google.Apis.DeploymentManager.v2
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -1740,16 +1719,12 @@ namespace Google.Apis.DeploymentManager.v2
         public ResourcesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Gets information about a single resource.</summary>
         /// <param name="project">The project ID for this request.</param>
-        /// <param name="deployment">The name of the
-        /// deployment for this request.</param>
-        /// <param name="resource">The name of the resource for this
-        /// request.</param>
+        /// <param name="deployment">The name of the deployment for this request.</param>
+        /// <param name="resource">The name of the resource for this request.</param>
         public virtual GetRequest Get(string project, string deployment, string resource)
         {
             return new GetRequest(service, project, deployment, resource);
@@ -1767,7 +1742,6 @@ namespace Google.Apis.DeploymentManager.v2
                 InitParameters();
             }
 
-
             /// <summary>The project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
@@ -1779,7 +1753,6 @@ namespace Google.Apis.DeploymentManager.v2
             /// <summary>The name of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -1794,7 +1767,6 @@ namespace Google.Apis.DeploymentManager.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -1820,13 +1792,11 @@ namespace Google.Apis.DeploymentManager.v2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Lists all resources in a given deployment.</summary>
         /// <param name="project">The project ID for this request.</param>
-        /// <param name="deployment">The name of the
-        /// deployment for this request.</param>
+        /// <param name="deployment">The name of the deployment for this request.</param>
         public virtual ListRequest List(string project, string deployment)
         {
             return new ListRequest(service, project, deployment);
@@ -1843,7 +1813,6 @@ namespace Google.Apis.DeploymentManager.v2
                 InitParameters();
             }
 
-
             /// <summary>The project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
@@ -1852,42 +1821,47 @@ namespace Google.Apis.DeploymentManager.v2
             [Google.Apis.Util.RequestParameterAttribute("deployment", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Deployment { get; private set; }
 
-            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
-            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
-            /// example, if you are filtering Compute Engine instances, you can exclude instances named `example-
-            /// instance` by specifying `name != example-instance`. You can also filter nested fields. For example, you
-            /// could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled
-            /// for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To
-            /// filter on multiple expressions, provide each separate expression within parentheses. For example: ```
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
-            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
-            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true) ```</summary>
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. The expression must specify the field
+            /// name, a comparison operator, and the value that you want to use for filtering. The value must be a
+            /// string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `&amp;gt;`, or
+            /// `&amp;lt;`. For example, if you are filtering Compute Engine instances, you can exclude instances named
+            /// `example-instance` by specifying `name != example-instance`. You can also filter nested fields. For
+            /// example, you could specify `scheduling.automaticRestart = false` to include instances only if they are
+            /// not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource
+            /// labels. To filter on multiple expressions, provide each separate expression within parentheses. For
+            /// example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each
+            /// expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For
+            /// example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true) ```
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
-            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
-            /// (Default: `500`)</summary>
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
-            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
-            /// based on the resource name. You can also sort results in descending order based on the creation
-            /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
-            /// field in reverse chronological order (newest result first). Use this to sort resources like operations
-            /// so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp
-            /// desc` is supported.</summary>
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name. You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
-            /// list request to get the next page of results.</summary>
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -1902,7 +1876,6 @@ namespace Google.Apis.DeploymentManager.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -1952,7 +1925,6 @@ namespace Google.Apis.DeploymentManager.v2
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -1968,9 +1940,7 @@ namespace Google.Apis.DeploymentManager.v2
         public TypesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Lists all resource types for Deployment Manager.</summary>
         /// <param name="project">The project ID for this request.</param>
@@ -1989,47 +1959,51 @@ namespace Google.Apis.DeploymentManager.v2
                 InitParameters();
             }
 
-
             /// <summary>The project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
-            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
-            /// be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
-            /// example, if you are filtering Compute Engine instances, you can exclude instances named `example-
-            /// instance` by specifying `name != example-instance`. You can also filter nested fields. For example, you
-            /// could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled
-            /// for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To
-            /// filter on multiple expressions, provide each separate expression within parentheses. For example: ```
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
-            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
-            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true) ```</summary>
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. The expression must specify the field
+            /// name, a comparison operator, and the value that you want to use for filtering. The value must be a
+            /// string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `&amp;gt;`, or
+            /// `&amp;lt;`. For example, if you are filtering Compute Engine instances, you can exclude instances named
+            /// `example-instance` by specifying `name != example-instance`. You can also filter nested fields. For
+            /// example, you could specify `scheduling.automaticRestart = false` to include instances only if they are
+            /// not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource
+            /// labels. To filter on multiple expressions, provide each separate expression within parentheses. For
+            /// example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each
+            /// expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For
+            /// example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true) ```
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get
-            /// the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive.
-            /// (Default: `500`)</summary>
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
-            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
-            /// based on the resource name. You can also sort results in descending order based on the creation
-            /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
-            /// field in reverse chronological order (newest result first). Use this to sort resources like operations
-            /// so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp
-            /// desc` is supported.</summary>
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name. You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous
-            /// list request to get the next page of results.</summary>
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -2044,7 +2018,6 @@ namespace Google.Apis.DeploymentManager.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -2086,48 +2059,51 @@ namespace Google.Apis.DeploymentManager.v2
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.DeploymentManager.v2.Data
-{    
-
-    /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
-    /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
-    /// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two
-    /// AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the
-    /// exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: {
-    /// "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
-    /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ]
-    /// }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, {
-    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this
-    /// policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ
-    /// logging, and aliya@example.com from DATA_WRITE logging.</summary>
+{
+    /// <summary>
+    /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
+    /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
+    /// there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used
+    /// for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
+    /// AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service":
+    /// "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ]
+    /// }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
+    /// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [
+    /// "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+    /// logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+    /// </summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
         public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; }
 
-        /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
-        /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
+        /// <summary>
+        /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
+        /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ {
-    /// "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] }
-    /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
-    /// logging.</summary>
+    /// <summary>
+    /// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type":
+    /// "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
+    /// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+    /// </summary>
     public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
-        /// format of Binding.members.</summary>
+        /// <summary>
+        /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of
+        /// Binding.members.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
         public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
 
@@ -2137,49 +2113,54 @@ namespace Google.Apis.DeploymentManager.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
-        /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
-        /// apply to the current request. However, a different role binding might grant the same role to one or more of
-        /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
-        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
+        /// <summary>
+        /// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding
+        /// applies to the current request. If the condition evaluates to `false`, then this binding does not apply to
+        /// the current request. However, a different role binding might grant the same role to one or more of the
+        /// members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; }
 
-        /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
-        /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
-        /// without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is
-        /// authenticated with a Google account or a service account. * `user:{emailid}`: An email address that
-        /// represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An
-        /// email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
-        /// `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. *
+        /// <summary>
+        /// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following
+        /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
+        /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
+        /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
+        /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+        /// represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`:
+        /// An email address that represents a Google group. For example, `admins@example.com`. *
         /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
         /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
         /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
-        /// service account that has been recently deleted. For example, `my-other-
-        /// app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value
-        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. *
-        /// `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
-        /// group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the
-        /// group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the
-        /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
-        /// example, `google.com` or `example.com`. </summary>
+        /// service account that has been recently deleted. For example,
+        /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
+        /// this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the
+        /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
+        /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
+        /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
+        /// in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that
+        /// domain. For example, `google.com` or `example.com`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
-        /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
-        /// `roles/owner`.</summary>
+        /// <summary>
+        /// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ConfigFile : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2189,7 +2170,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class Deployment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2197,12 +2178,14 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Provides a fingerprint to use in requests to modify a deployment, such as `update()`, `stop()`, and
+        /// <summary>
+        /// Provides a fingerprint to use in requests to modify a deployment, such as `update()`, `stop()`, and
         /// `cancelPreview()` requests. A fingerprint is a randomly generated value that must be provided with
         /// `update()`, `stop()`, and `cancelPreview()` requests to perform optimistic locking. This ensures optimistic
         /// concurrency so that only one request happens at a time. The fingerprint is initially generated by Deployment
         /// Manager and changes after every request to modify data. To get the latest fingerprint value, perform a
-        /// `get()` request to a deployment.</summary>
+        /// `get()` request to a deployment.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
@@ -2213,28 +2196,35 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; }
 
-        /// <summary>Map of One Platform labels; provided by the client when the resource is created or updated.
-        /// Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular
-        /// expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must
-        /// conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.</summary>
+        /// <summary>
+        /// Map of One Platform labels; provided by the client when the resource is created or updated. Specifically:
+        /// Label keys must be between 1 and 63 characters long and must conform to the following regular expression:
+        /// `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the
+        /// regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<DeploymentLabelEntry> Labels { get; set; }
 
-        /// <summary>Output only. URL of the manifest representing the last manifest that was successfully deployed. If
-        /// no manifest has been successfully deployed, this field will be absent.</summary>
+        /// <summary>
+        /// Output only. URL of the manifest representing the last manifest that was successfully deployed. If no
+        /// manifest has been successfully deployed, this field will be absent.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manifest")]
         public virtual string Manifest { get; set; }
 
-        /// <summary>Name of the resource; provided by the client when the resource is created. The name must be 1-63
-        /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
-        /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
-        /// cannot be a dash.</summary>
+        /// <summary>
+        /// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters
+        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
+        /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
+        /// a dash.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. The Operation that most recently ran, or is currently running, on this
-        /// deployment.</summary>
+        /// <summary>
+        /// Output only. The Operation that most recently ran, or is currently running, on this deployment.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
         public virtual Operation Operation { get; set; }
 
@@ -2242,13 +2232,17 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
 
-        /// <summary>[Input Only] The parameters that define your deployment, including the deployment configuration and
-        /// relevant templates.</summary>
+        /// <summary>
+        /// [Input Only] The parameters that define your deployment, including the deployment configuration and relevant
+        /// templates.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual TargetConfiguration Target { get; set; }
 
-        /// <summary>Output only. If Deployment Manager is currently updating or previewing an update to this
-        /// deployment, the updated configuration appears here.</summary>
+        /// <summary>
+        /// Output only. If Deployment Manager is currently updating or previewing an update to this deployment, the
+        /// updated configuration appears here.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("update")]
         public virtual DeploymentUpdate Update { get; set; }
 
@@ -2258,7 +2252,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Label object for Deployments</summary>
     public class DeploymentLabelEntry : Google.Apis.Requests.IDirectResponseSchema
@@ -2273,30 +2267,35 @@ namespace Google.Apis.DeploymentManager.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class DeploymentUpdate : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. An optional user-provided description of the deployment after the current update has
-        /// been applied.</summary>
+        /// <summary>
+        /// Output only. An optional user-provided description of the deployment after the current update has been
+        /// applied.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Map of One Platform labels; provided by the client when the resource is created or updated.
-        /// Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular
-        /// expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must
-        /// conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.</summary>
+        /// <summary>
+        /// Map of One Platform labels; provided by the client when the resource is created or updated. Specifically:
+        /// Label keys must be between 1 and 63 characters long and must conform to the following regular expression:
+        /// `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the
+        /// regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<DeploymentUpdateLabelEntry> Labels { get; set; }
 
-        /// <summary>Output only. URL of the manifest representing the update configuration of this
-        /// deployment.</summary>
+        /// <summary>
+        /// Output only. URL of the manifest representing the update configuration of this deployment.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manifest")]
         public virtual string Manifest { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Label object for DeploymentUpdate</summary>
     public class DeploymentUpdateLabelEntry : Google.Apis.Requests.IDirectResponseSchema
@@ -2311,25 +2310,29 @@ namespace Google.Apis.DeploymentManager.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class DeploymentsCancelPreviewRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies a fingerprint for `cancelPreview()` requests. A fingerprint is a randomly generated value
-        /// that must be provided in `cancelPreview()` requests to perform optimistic locking. This ensures optimistic
+        /// <summary>
+        /// Specifies a fingerprint for `cancelPreview()` requests. A fingerprint is a randomly generated value that
+        /// must be provided in `cancelPreview()` requests to perform optimistic locking. This ensures optimistic
         /// concurrency so that the deployment does not have conflicting requests (e.g. if someone attempts to make a
         /// new update request while another user attempts to cancel a preview, this would prevent one of the requests).
         /// The fingerprint is initially generated by Deployment Manager and changes after every request to modify a
-        /// deployment. To get the latest fingerprint value, perform a `get()` request on the deployment.</summary>
+        /// deployment. To get the latest fingerprint value, perform a `get()` request on the deployment.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A response containing a partial list of deployments and a page token used to build the next request if
-    /// the request has been truncated.</summary>
+    /// <summary>
+    /// A response containing a partial list of deployments and a page token used to build the next request if the
+    /// request has been truncated.
+    /// </summary>
     public class DeploymentsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The deployments contained in this response.</summary>
@@ -2342,38 +2345,44 @@ namespace Google.Apis.DeploymentManager.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class DeploymentsStopRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies a fingerprint for `stop()` requests. A fingerprint is a randomly generated value that
-        /// must be provided in `stop()` requests to perform optimistic locking. This ensures optimistic concurrency so
-        /// that the deployment does not have conflicting requests (e.g. if someone attempts to make a new update
-        /// request while another user attempts to stop an ongoing update request, this would prevent a collision). The
-        /// fingerprint is initially generated by Deployment Manager and changes after every request to modify a
-        /// deployment. To get the latest fingerprint value, perform a `get()` request on the deployment.</summary>
+        /// <summary>
+        /// Specifies a fingerprint for `stop()` requests. A fingerprint is a randomly generated value that must be
+        /// provided in `stop()` requests to perform optimistic locking. This ensures optimistic concurrency so that the
+        /// deployment does not have conflicting requests (e.g. if someone attempts to make a new update request while
+        /// another user attempts to stop an ongoing update request, this would prevent a collision). The fingerprint is
+        /// initially generated by Deployment Manager and changes after every request to modify a deployment. To get the
+        /// latest fingerprint value, perform a `get()` request on the deployment.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
-    /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
-    /// Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
-    /// expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description:
+    /// <summary>
+    /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
+    /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
+    /// (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() &amp;lt; 100" Example (Equality): title: "Requestor is owner" description:
     /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
     /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
-    /// visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation):
-    /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
-    /// message received at ' + string(document.create_time)" The exact variables and functions that may be referenced
-    /// within an expression are determined by the service that evaluates it. See the service documentation for
-    /// additional information.</summary>
+    /// visible" expression: "document.type != 'private' &amp;amp;&amp;amp; document.type != 'internal'" Example (Data
+    /// Manipulation): title: "Notification string" description: "Create a notification string with a timestamp."
+    /// expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that
+    /// may be referenced within an expression are determined by the service that evaluates it. See the service
+    /// documentation for additional information.
+    /// </summary>
     public class Expr : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
-        /// when hovered over it in a UI.</summary>
+        /// <summary>
+        /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when
+        /// hovered over it in a UI.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -2381,39 +2390,46 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
         public virtual string Expression { get; set; }
 
-        /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
-        /// and a position in the file.</summary>
+        /// <summary>
+        /// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a
+        /// position in the file.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
-        /// e.g. in UIs which allow to enter the expression.</summary>
+        /// <summary>
+        /// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs
+        /// which allow to enter the expression.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class GlobalSetPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify
-        /// bindings.</summary>
+        /// <summary>
+        /// Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify bindings.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
-        /// <summary>Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify the
-        /// etag.</summary>
+        /// <summary>
+        /// Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify the etag.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to
-        /// a few 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might
-        /// reject them.</summary>
+        /// <summary>
+        /// REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to a few
+        /// 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might reject
+        /// them.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual Policy Policy { get; set; }
-
-    }    
+    }
 
     public class ImportFile : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2427,7 +2443,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class Manifest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2435,8 +2451,9 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual ConfigFile Config { get; set; }
 
-        /// <summary>Output only. The fully-expanded configuration file, including any templates and
-        /// references.</summary>
+        /// <summary>
+        /// Output only. The fully-expanded configuration file, including any templates and references.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expandedConfig")]
         public virtual string ExpandedConfig { get; set; }
 
@@ -2465,10 +2482,12 @@ namespace Google.Apis.DeploymentManager.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A response containing a partial list of manifests and a page token used to build the next request if
-    /// the request has been truncated.</summary>
+    /// <summary>
+    /// A response containing a partial list of manifests and a page token used to build the next request if the request
+    /// has been truncated.
+    /// </summary>
     public class ManifestsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Manifests contained in this list response.</summary>
@@ -2481,20 +2500,23 @@ namespace Google.Apis.DeploymentManager.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Represents an Operation resource. Google Compute Engine has three Operation resources: *
+    /// <summary>
+    /// Represents an Operation resource. Google Compute Engine has three Operation resources: *
     /// [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) *
     /// [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) *
     /// [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage
     /// asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional
     /// or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the
     /// `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information,
-    /// read Global, Regional, and Zonal Resources.</summary>
+    /// read Global, Regional, and Zonal Resources.
+    /// </summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The value of `requestId` if you provided it in the request. Not present
-        /// otherwise.</summary>
+        /// <summary>
+        /// [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientOperationId")]
         public virtual string ClientOperationId { get; set; }
 
@@ -2502,38 +2524,47 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; }
 
-        /// <summary>[Output Only] A textual description of the operation, which is set when the operation is
-        /// created.</summary>
+        /// <summary>
+        /// [Output Only] A textual description of the operation, which is set when the operation is created.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>[Output Only] The time that this operation was completed. This value is in RFC3339 text
-        /// format.</summary>
+        /// <summary>
+        /// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual string EndTime { get; set; }
 
-        /// <summary>[Output Only] If errors are generated during processing of the operation, this field will be
-        /// populated.</summary>
+        /// <summary>
+        /// [Output Only] If errors are generated during processing of the operation, this field will be populated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual ErrorData Error { get; set; }
 
-        /// <summary>[Output Only] If the operation fails, this field contains the HTTP error message that was returned,
-        /// such as `NOT FOUND`.</summary>
+        /// <summary>
+        /// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as
+        /// `NOT FOUND`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpErrorMessage")]
         public virtual string HttpErrorMessage { get; set; }
 
-        /// <summary>[Output Only] If the operation fails, this field contains the HTTP error status code that was
-        /// returned. For example, a `404` means the resource was not found.</summary>
+        /// <summary>
+        /// [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For
+        /// example, a `404` means the resource was not found.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpErrorStatusCode")]
         public virtual System.Nullable<int> HttpErrorStatusCode { get; set; }
 
-        /// <summary>[Output Only] The unique identifier for the operation. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>
+        /// [Output Only] The unique identifier for the operation. This identifier is defined by the server.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; }
 
-        /// <summary>[Output Only] The time that this operation was requested. This value is in RFC3339 text
-        /// format.</summary>
+        /// <summary>
+        /// [Output Only] The time that this operation was requested. This value is in RFC3339 text format.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; }
 
@@ -2549,14 +2580,18 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
         public virtual string OperationType { get; set; }
 
-        /// <summary>[Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement
-        /// that this be linear or support any granularity of operations. This should not be used to guess when the
-        /// operation will be complete. This number should monotonically increase as the operation progresses.</summary>
+        /// <summary>
+        /// [Output Only] An optional progress indicator that ranges from 0 to 100. There is no requirement that this be
+        /// linear or support any granularity of operations. This should not be used to guess when the operation will be
+        /// complete. This number should monotonically increase as the operation progresses.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
         public virtual System.Nullable<int> Progress { get; set; }
 
-        /// <summary>[Output Only] The URL of the region where the operation resides. Only applicable when performing
-        /// regional operations.</summary>
+        /// <summary>
+        /// [Output Only] The URL of the region where the operation resides. Only applicable when performing regional
+        /// operations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
 
@@ -2564,13 +2599,16 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
 
-        /// <summary>[Output Only] The time that this operation was started by the server. This value is in RFC3339 text
-        /// format.</summary>
+        /// <summary>
+        /// [Output Only] The time that this operation was started by the server. This value is in RFC3339 text format.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTime { get; set; }
 
-        /// <summary>[Output Only] The status of the operation, which can be one of the following: `PENDING`, `RUNNING`,
-        /// or `DONE`.</summary>
+        /// <summary>
+        /// [Output Only] The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or
+        /// `DONE`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
@@ -2578,13 +2616,16 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
         public virtual string StatusMessage { get; set; }
 
-        /// <summary>[Output Only] The unique target ID, which identifies a specific incarnation of the target
-        /// resource.</summary>
+        /// <summary>
+        /// [Output Only] The unique target ID, which identifies a specific incarnation of the target resource.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
         public virtual System.Nullable<ulong> TargetId { get; set; }
 
-        /// <summary>[Output Only] The URL of the resource that the operation modifies. For operations related to
-        /// creating a snapshot, this points to the persistent disk that the snapshot was created from.</summary>
+        /// <summary>
+        /// [Output Only] The URL of the resource that the operation modifies. For operations related to creating a
+        /// snapshot, this points to the persistent disk that the snapshot was created from.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetLink")]
         public virtual string TargetLink { get; set; }
 
@@ -2592,57 +2633,68 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
         public virtual string User { get; set; }
 
-        /// <summary>[Output Only] If warning messages are generated during processing of the operation, this field will
-        /// be populated.</summary>
+        /// <summary>
+        /// [Output Only] If warning messages are generated during processing of the operation, this field will be
+        /// populated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<WarningsData> Warnings { get; set; }
 
-        /// <summary>[Output Only] The URL of the zone where the operation resides. Only applicable when performing per-
-        /// zone operations.</summary>
+        /// <summary>
+        /// [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone
+        /// operations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
-        /// <summary>[Output Only] If errors are generated during processing of the operation, this field will be
-        /// populated.</summary>
+        /// <summary>
+        /// [Output Only] If errors are generated during processing of the operation, this field will be populated.
+        /// </summary>
         public class ErrorData
         {
             /// <summary>[Output Only] The array of errors encountered while processing this operation.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("errors")]
             public virtual System.Collections.Generic.IList<ErrorsData> Errors { get; set; }
 
-            
-
+            /// <summary>[Output Only] The array of errors encountered while processing this operation.</summary>
             public class ErrorsData
             {
                 /// <summary>[Output Only] The error type identifier for this error.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("code")]
                 public virtual string Code { get; set; }
 
-                /// <summary>[Output Only] Indicates the field in the request that caused the error. This property is
-                /// optional.</summary>
+                /// <summary>
+                /// [Output Only] Indicates the field in the request that caused the error. This property is optional.
+                /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("location")]
                 public virtual string Location { get; set; }
 
                 /// <summary>[Output Only] An optional, human-readable error message.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("message")]
                 public virtual string Message { get; set; }
-
             }
-        }    
+        }
 
+        /// <summary>
+        /// [Output Only] If warning messages are generated during processing of the operation, this field will be
+        /// populated.
+        /// </summary>
         public class WarningsData
         {
-            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
-            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
+            /// <summary>
+            /// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if
+            /// there are no results in the response.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("code")]
             public virtual string Code { get; set; }
 
-            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
-            /// "scope", "value": "zones/us-east1-d" } </summary>
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope",
+            /// "value": "zones/us-east1-d" }
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
             public virtual System.Collections.Generic.IList<DataData> Data { get; set; }
 
@@ -2650,29 +2702,33 @@ namespace Google.Apis.DeploymentManager.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
             public virtual string Message { get; set; }
 
-            
-
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope",
+            /// "value": "zones/us-east1-d" }
+            /// </summary>
             public class DataData
             {
-                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
-                /// for warnings where there are no results in a list request for a particular zone, this key might be
-                /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
-                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
-                /// forwarding).</summary>
+                /// <summary>
+                /// [Output Only] A key that provides more detail on the warning being returned. For example, for
+                /// warnings where there are no results in a list request for a particular zone, this key might be scope
+                /// and the key value might be the zone name. Other examples might be a key indicating a deprecated
+                /// resource and a suggested replacement, or a warning about invalid network settings (for example, if
+                /// an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+                /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]
                 public virtual string Key { get; set; }
 
                 /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("value")]
                 public virtual string Value { get; set; }
-
             }
         }
-    }    
+    }
 
-    /// <summary>A response containing a partial list of operations and a page token used to build the next request if
-    /// the request has been truncated.</summary>
+    /// <summary>
+    /// A response containing a partial list of operations and a page token used to build the next request if the
+    /// request has been truncated.
+    /// </summary>
     public class OperationsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. A token used to continue a truncated list request.</summary>
@@ -2685,65 +2741,71 @@ namespace Google.Apis.DeploymentManager.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud
-    /// resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`.
-    /// Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a
-    /// named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some
-    /// types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that
-    /// allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on
-    /// attributes of the request, the resource, or both. To learn which resources support conditions in their IAM
-    /// policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON
-    /// example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [
-    /// "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-
-    /// id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [
-    /// "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access
-    /// after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
-    /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com -
-    /// group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-    /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role:
-    /// roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access
-    /// after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version:
-    /// 3 For a description of IAM and its features, see the [IAM
-    /// documentation](https://cloud.google.com/iam/docs/).</summary>
+    /// <summary>
+    /// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A
+    /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can
+    /// be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of
+    /// permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google
+    /// Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to
+    /// a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of
+    /// the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the
+    /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** {
+    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
+    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:**
+    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
+    /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
+    /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
+    /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
+    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its
+    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
         public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; }
 
-        /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
-        /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
+        /// <summary>
+        /// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and
+        /// when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
-        /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
-        /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
+        /// <summary>
+        /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy
+        /// from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
         /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:**
         /// If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
-        /// conditions in the version `3` policy are lost.</summary>
+        /// conditions in the version `3` policy are lost.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
-        /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
-        /// This requirement applies to the following operations: * Getting a policy that includes a conditional role
-        /// binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy *
-        /// Removing any role binding, with or without a condition, from a policy that includes conditions
-        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
-        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any
-        /// conditions, operations on that policy may specify any valid version or leave the field unset. To learn which
-        /// resources support conditions in their IAM policies, see the [IAM
-        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
+        /// <summary>
+        /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid
+        /// value are rejected. Any operation that affects conditional role bindings must specify version `3`. This
+        /// requirement applies to the following operations: * Getting a policy that includes a conditional role binding
+        /// * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing
+        /// any role binding, with or without a condition, from a policy that includes conditions **Important:** If you
+        /// use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this
+        /// field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on
+        /// that policy may specify any valid version or leave the field unset. To learn which resources support
+        /// conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
-
-    }    
+    }
 
     public class Resource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2751,8 +2813,9 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessControl")]
         public virtual ResourceAccessControl AccessControl { get; set; }
 
-        /// <summary>Output only. The evaluated properties of the resource with references expanded. Returned as
-        /// serialized YAML.</summary>
+        /// <summary>
+        /// Output only. The evaluated properties of the resource with references expanded. Returned as serialized YAML.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalProperties")]
         public virtual string FinalProperties { get; set; }
 
@@ -2771,18 +2834,24 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. The current properties of the resource before any references have been filled in.
-        /// Returned as serialized YAML.</summary>
+        /// <summary>
+        /// Output only. The current properties of the resource before any references have been filled in. Returned as
+        /// serialized YAML.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual string Properties { get; set; }
 
-        /// <summary>Output only. The type of the resource, for example `compute.v1.instance`, or
-        /// `cloudfunctions.v1beta1.function`.</summary>
+        /// <summary>
+        /// Output only. The type of the resource, for example `compute.v1.instance`, or
+        /// `cloudfunctions.v1beta1.function`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
-        /// <summary>Output only. If Deployment Manager is currently updating or previewing an update to this resource,
-        /// the updated configuration appears here.</summary>
+        /// <summary>
+        /// Output only. If Deployment Manager is currently updating or previewing an update to this resource, the
+        /// updated configuration appears here.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("update")]
         public virtual ResourceUpdate Update { get; set; }
 
@@ -2794,24 +2863,33 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
 
-        /// <summary>Output only. If warning messages are generated during processing of this resource, this field will
-        /// be populated.</summary>
+        /// <summary>
+        /// Output only. If warning messages are generated during processing of this resource, this field will be
+        /// populated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<WarningsData> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
+        /// <summary>
+        /// Output only. If warning messages are generated during processing of this resource, this field will be
+        /// populated.
+        /// </summary>
         public class WarningsData
         {
-            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
-            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
+            /// <summary>
+            /// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if
+            /// there are no results in the response.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("code")]
             public virtual string Code { get; set; }
 
-            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
-            /// "scope", "value": "zones/us-east1-d" } </summary>
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope",
+            /// "value": "zones/us-east1-d" }
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
             public virtual System.Collections.Generic.IList<DataData> Data { get; set; }
 
@@ -2819,26 +2897,28 @@ namespace Google.Apis.DeploymentManager.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
             public virtual string Message { get; set; }
 
-            
-
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope",
+            /// "value": "zones/us-east1-d" }
+            /// </summary>
             public class DataData
             {
-                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
-                /// for warnings where there are no results in a list request for a particular zone, this key might be
-                /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
-                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
-                /// forwarding).</summary>
+                /// <summary>
+                /// [Output Only] A key that provides more detail on the warning being returned. For example, for
+                /// warnings where there are no results in a list request for a particular zone, this key might be scope
+                /// and the key value might be the zone name. Other examples might be a key indicating a deprecated
+                /// resource and a suggested replacement, or a warning about invalid network settings (for example, if
+                /// an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+                /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]
                 public virtual string Key { get; set; }
 
                 /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("value")]
                 public virtual string Value { get; set; }
-
             }
         }
-    }    
+    }
 
     /// <summary>The access controls set on the resource.</summary>
     public class ResourceAccessControl : Google.Apis.Requests.IDirectResponseSchema
@@ -2849,7 +2929,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ResourceUpdate : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2857,13 +2937,16 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessControl")]
         public virtual ResourceAccessControl AccessControl { get; set; }
 
-        /// <summary>Output only. If errors are generated during update of the resource, this field will be
-        /// populated.</summary>
+        /// <summary>
+        /// Output only. If errors are generated during update of the resource, this field will be populated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual ErrorData Error { get; set; }
 
-        /// <summary>Output only. The expanded properties of the resource with reference values expanded. Returned as
-        /// serialized YAML.</summary>
+        /// <summary>
+        /// Output only. The expanded properties of the resource with reference values expanded. Returned as serialized
+        /// YAML.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalProperties")]
         public virtual string FinalProperties { get; set; }
 
@@ -2875,8 +2958,10 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("manifest")]
         public virtual string Manifest { get; set; }
 
-        /// <summary>Output only. The set of updated properties for this resource, before references are expanded.
-        /// Returned as serialized YAML.</summary>
+        /// <summary>
+        /// Output only. The set of updated properties for this resource, before references are expanded. Returned as
+        /// serialized YAML.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual string Properties { get; set; }
 
@@ -2884,52 +2969,61 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>Output only. If warning messages are generated during processing of this resource, this field will
-        /// be populated.</summary>
+        /// <summary>
+        /// Output only. If warning messages are generated during processing of this resource, this field will be
+        /// populated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<WarningsData> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
-        /// <summary>Output only. If errors are generated during update of the resource, this field will be
-        /// populated.</summary>
+        /// <summary>
+        /// Output only. If errors are generated during update of the resource, this field will be populated.
+        /// </summary>
         public class ErrorData
         {
             /// <summary>[Output Only] The array of errors encountered while processing this operation.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("errors")]
             public virtual System.Collections.Generic.IList<ErrorsData> Errors { get; set; }
 
-            
-
+            /// <summary>[Output Only] The array of errors encountered while processing this operation.</summary>
             public class ErrorsData
             {
                 /// <summary>[Output Only] The error type identifier for this error.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("code")]
                 public virtual string Code { get; set; }
 
-                /// <summary>[Output Only] Indicates the field in the request that caused the error. This property is
-                /// optional.</summary>
+                /// <summary>
+                /// [Output Only] Indicates the field in the request that caused the error. This property is optional.
+                /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("location")]
                 public virtual string Location { get; set; }
 
                 /// <summary>[Output Only] An optional, human-readable error message.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("message")]
                 public virtual string Message { get; set; }
-
             }
-        }    
+        }
 
+        /// <summary>
+        /// Output only. If warning messages are generated during processing of this resource, this field will be
+        /// populated.
+        /// </summary>
         public class WarningsData
         {
-            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
-            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
+            /// <summary>
+            /// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if
+            /// there are no results in the response.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("code")]
             public virtual string Code { get; set; }
 
-            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
-            /// "scope", "value": "zones/us-east1-d" } </summary>
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope",
+            /// "value": "zones/us-east1-d" }
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
             public virtual System.Collections.Generic.IList<DataData> Data { get; set; }
 
@@ -2937,29 +3031,33 @@ namespace Google.Apis.DeploymentManager.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("message")]
             public virtual string Message { get; set; }
 
-            
-
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope",
+            /// "value": "zones/us-east1-d" }
+            /// </summary>
             public class DataData
             {
-                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
-                /// for warnings where there are no results in a list request for a particular zone, this key might be
-                /// scope and the key value might be the zone name. Other examples might be a key indicating a
-                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
-                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
-                /// forwarding).</summary>
+                /// <summary>
+                /// [Output Only] A key that provides more detail on the warning being returned. For example, for
+                /// warnings where there are no results in a list request for a particular zone, this key might be scope
+                /// and the key value might be the zone name. Other examples might be a key indicating a deprecated
+                /// resource and a suggested replacement, or a warning about invalid network settings (for example, if
+                /// an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+                /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("key")]
                 public virtual string Key { get; set; }
 
                 /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("value")]
                 public virtual string Value { get; set; }
-
             }
         }
-    }    
+    }
 
-    /// <summary>A response containing a partial list of resources and a page token used to build the next request if
-    /// the request has been truncated.</summary>
+    /// <summary>
+    /// A response containing a partial list of resources and a page token used to build the next request if the request
+    /// has been truncated.
+    /// </summary>
     public class ResourcesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A token used to continue a truncated list request.</summary>
@@ -2972,7 +3070,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class TargetConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2980,25 +3078,29 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual ConfigFile Config { get; set; }
 
-        /// <summary>Specifies any files to import for this configuration. This can be used to import templates or other
-        /// files. For example, you might import a text file in order to use the file in a template.</summary>
+        /// <summary>
+        /// Specifies any files to import for this configuration. This can be used to import templates or other files.
+        /// For example, you might import a text file in order to use the file in a template.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imports")]
         public virtual System.Collections.Generic.IList<ImportFile> Imports { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class TestPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The set of permissions to check for the 'resource'. Permissions with wildcards (such as '*' or
-        /// 'storage.*') are not allowed.</summary>
+        /// <summary>
+        /// The set of permissions to check for the 'resource'. Permissions with wildcards (such as '*' or 'storage.*')
+        /// are not allowed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class TestPermissionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3008,7 +3110,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A resource type supported by Deployment Manager.</summary>
     public class Type : Google.Apis.Requests.IDirectResponseSchema
@@ -3034,7 +3136,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A response that returns all Types supported by Deployment Manager</summary>
     public class TypesListResponse : Google.Apis.Requests.IDirectResponseSchema

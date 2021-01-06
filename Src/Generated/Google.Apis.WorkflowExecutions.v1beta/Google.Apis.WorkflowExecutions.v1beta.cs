@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -62,7 +67,6 @@ namespace Google.Apis.WorkflowExecutions.v1beta
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Workflow Executions API.</summary>
@@ -70,10 +74,7 @@ namespace Google.Apis.WorkflowExecutions.v1beta
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
-
-
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -97,6 +98,7 @@ namespace Google.Apis.WorkflowExecutions.v1beta
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -116,9 +118,11 @@ namespace Google.Apis.WorkflowExecutions.v1beta
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -132,8 +136,10 @@ namespace Google.Apis.WorkflowExecutions.v1beta
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -145,8 +151,10 @@ namespace Google.Apis.WorkflowExecutions.v1beta
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -162,7 +170,6 @@ namespace Google.Apis.WorkflowExecutions.v1beta
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -267,7 +274,6 @@ namespace Google.Apis.WorkflowExecutions.v1beta
         {
             this.service = service;
             Locations = new LocationsResource(service);
-
         }
 
         /// <summary>Gets the Locations resource.</summary>
@@ -286,7 +292,6 @@ namespace Google.Apis.WorkflowExecutions.v1beta
             {
                 this.service = service;
                 Workflows = new WorkflowsResource(service);
-
             }
 
             /// <summary>Gets the Workflows resource.</summary>
@@ -305,7 +310,6 @@ namespace Google.Apis.WorkflowExecutions.v1beta
                 {
                     this.service = service;
                     Executions = new ExecutionsResource(service);
-
                 }
 
                 /// <summary>Gets the Executions resource.</summary>
@@ -323,14 +327,14 @@ namespace Google.Apis.WorkflowExecutions.v1beta
                     public ExecutionsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
-
                     }
-
 
                     /// <summary>Cancels an execution of the given name.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Required. Name of the execution to be cancelled. Format:
-                    /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}</param>
+                    /// <param name="name">
+                    /// Required. Name of the execution to be cancelled. Format:
+                    /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
+                    /// </param>
                     public virtual CancelRequest Cancel(Google.Apis.WorkflowExecutions.v1beta.Data.CancelExecutionRequest body, string name)
                     {
                         return new CancelRequest(service, body, name);
@@ -347,12 +351,12 @@ namespace Google.Apis.WorkflowExecutions.v1beta
                             InitParameters();
                         }
 
-
-                        /// <summary>Required. Name of the execution to be cancelled. Format: projects/{project}/locatio
-                        /// ns/{location}/workflows/{workflow}/executions/{execution}</summary>
+                        /// <summary>
+                        /// Required. Name of the execution to be cancelled. Format:
+                        /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
-
 
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.WorkflowExecutions.v1beta.Data.CancelExecutionRequest Body { get; set; }
@@ -373,7 +377,6 @@ namespace Google.Apis.WorkflowExecutions.v1beta
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "name",
@@ -383,14 +386,15 @@ namespace Google.Apis.WorkflowExecutions.v1beta
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/workflows/[^/]+/executions/[^/]+$",
                             });
                         }
-
                     }
 
                     /// <summary>Creates a new execution using the latest revision of the given workflow.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">Required. Name of the workflow for which an execution should be created. Format:
-                    /// projects/{project}/locations/{location}/workflows/{workflow} The latest revision of the workflow will be
-                    /// used.</param>
+                    /// <param name="parent">
+                    /// Required. Name of the workflow for which an execution should be created. Format:
+                    /// projects/{project}/locations/{location}/workflows/{workflow} The latest revision of the workflow
+                    /// will be used.
+                    /// </param>
                     public virtual CreateRequest Create(Google.Apis.WorkflowExecutions.v1beta.Data.Execution body, string parent)
                     {
                         return new CreateRequest(service, body, parent);
@@ -407,13 +411,13 @@ namespace Google.Apis.WorkflowExecutions.v1beta
                             InitParameters();
                         }
 
-
-                        /// <summary>Required. Name of the workflow for which an execution should be created. Format:
+                        /// <summary>
+                        /// Required. Name of the workflow for which an execution should be created. Format:
                         /// projects/{project}/locations/{location}/workflows/{workflow} The latest revision of the
-                        /// workflow will be used.</summary>
+                        /// workflow will be used.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
-
 
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.WorkflowExecutions.v1beta.Data.Execution Body { get; set; }
@@ -434,7 +438,6 @@ namespace Google.Apis.WorkflowExecutions.v1beta
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "parent",
@@ -444,12 +447,13 @@ namespace Google.Apis.WorkflowExecutions.v1beta
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/workflows/[^/]+$",
                             });
                         }
-
                     }
 
                     /// <summary>Returns an execution of the given name.</summary>
-                    /// <param name="name">Required. Name of the execution to be retrieved. Format:
-                    /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}</param>
+                    /// <param name="name">
+                    /// Required. Name of the execution to be retrieved. Format:
+                    /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
+                    /// </param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(service, name);
@@ -465,33 +469,41 @@ namespace Google.Apis.WorkflowExecutions.v1beta
                             InitParameters();
                         }
 
-
-                        /// <summary>Required. Name of the execution to be retrieved. Format: projects/{project}/locatio
-                        /// ns/{location}/workflows/{workflow}/executions/{execution}</summary>
+                        /// <summary>
+                        /// Required. Name of the execution to be retrieved. Format:
+                        /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
-                        /// <summary>Optional. A view defining which fields should be filled in the returned execution.
-                        /// The API will default to the FULL view.</summary>
+                        /// <summary>
+                        /// Optional. A view defining which fields should be filled in the returned execution. The API
+                        /// will default to the FULL view.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<ViewEnum> View { get; set; }
 
-                        /// <summary>Optional. A view defining which fields should be filled in the returned execution.
-                        /// The API will default to the FULL view.</summary>
+                        /// <summary>
+                        /// Optional. A view defining which fields should be filled in the returned execution. The API
+                        /// will default to the FULL view.
+                        /// </summary>
                         public enum ViewEnum
                         {
                             /// <summary>The default / unset value.</summary>
                             [Google.Apis.Util.StringValueAttribute("EXECUTION_VIEW_UNSPECIFIED")]
                             EXECUTIONVIEWUNSPECIFIED,
-                            /// <summary>Includes only basic metadata about the execution. Following fields are
-                            /// returned: name, start_time, end_time, state and workflow_revision_id.</summary>
+
+                            /// <summary>
+                            /// Includes only basic metadata about the execution. Following fields are returned: name,
+                            /// start_time, end_time, state and workflow_revision_id.
+                            /// </summary>
                             [Google.Apis.Util.StringValueAttribute("BASIC")]
                             BASIC,
+
                             /// <summary>Includes all data.</summary>
                             [Google.Apis.Util.StringValueAttribute("FULL")]
                             FULL,
                         }
-
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
@@ -506,7 +518,6 @@ namespace Google.Apis.WorkflowExecutions.v1beta
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "name",
@@ -524,22 +535,27 @@ namespace Google.Apis.WorkflowExecutions.v1beta
                                 Pattern = null,
                             });
                         }
-
                     }
 
-                    /// <summary>Returns a list of executions which belong to the workflow with the given name. The
-                    /// method returns executions of all workflow revisions. Returned executions are ordered by their
-                    /// start time (newest first).</summary>
-                    /// <param name="parent">Required. Name of the workflow for which the executions should be listed. Format:
-                    /// projects/{project}/locations/{location}/workflows/{workflow}</param>
+                    /// <summary>
+                    /// Returns a list of executions which belong to the workflow with the given name. The method
+                    /// returns executions of all workflow revisions. Returned executions are ordered by their start
+                    /// time (newest first).
+                    /// </summary>
+                    /// <param name="parent">
+                    /// Required. Name of the workflow for which the executions should be listed. Format:
+                    /// projects/{project}/locations/{location}/workflows/{workflow}
+                    /// </param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Returns a list of executions which belong to the workflow with the given name. The
-                    /// method returns executions of all workflow revisions. Returned executions are ordered by their
-                    /// start time (newest first).</summary>
+                    /// <summary>
+                    /// Returns a list of executions which belong to the workflow with the given name. The method
+                    /// returns executions of all workflow revisions. Returned executions are ordered by their start
+                    /// time (newest first).
+                    /// </summary>
                     public class ListRequest : WorkflowExecutionsBaseServiceRequest<Google.Apis.WorkflowExecutions.v1beta.Data.ListExecutionsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -549,46 +565,58 @@ namespace Google.Apis.WorkflowExecutions.v1beta
                             InitParameters();
                         }
 
-
-                        /// <summary>Required. Name of the workflow for which the executions should be listed. Format:
-                        /// projects/{project}/locations/{location}/workflows/{workflow}</summary>
+                        /// <summary>
+                        /// Required. Name of the workflow for which the executions should be listed. Format:
+                        /// projects/{project}/locations/{location}/workflows/{workflow}
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Maximum number of executions to return per call. Max supported value depends on the
-                        /// selected Execution view: it's 10000 for BASIC and 100 for FULL. The default value used if
-                        /// the field is not specified is 100, regardless of the selected view. Values greater than the
-                        /// max value will be coerced down to it.</summary>
+                        /// <summary>
+                        /// Maximum number of executions to return per call. Max supported value depends on the selected
+                        /// Execution view: it's 10000 for BASIC and 100 for FULL. The default value used if the field
+                        /// is not specified is 100, regardless of the selected view. Values greater than the max value
+                        /// will be coerced down to it.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
-                        /// <summary>A page token, received from a previous `ListExecutions` call. Provide this to
-                        /// retrieve the subsequent page. When paginating, all other parameters provided to
-                        /// `ListExecutions` must match the call that provided the page token.</summary>
+                        /// <summary>
+                        /// A page token, received from a previous `ListExecutions` call. Provide this to retrieve the
+                        /// subsequent page. When paginating, all other parameters provided to `ListExecutions` must
+                        /// match the call that provided the page token.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
-                        /// <summary>Optional. A view defining which fields should be filled in the returned executions.
-                        /// The API will default to the BASIC view.</summary>
+                        /// <summary>
+                        /// Optional. A view defining which fields should be filled in the returned executions. The API
+                        /// will default to the BASIC view.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<ViewEnum> View { get; set; }
 
-                        /// <summary>Optional. A view defining which fields should be filled in the returned executions.
-                        /// The API will default to the BASIC view.</summary>
+                        /// <summary>
+                        /// Optional. A view defining which fields should be filled in the returned executions. The API
+                        /// will default to the BASIC view.
+                        /// </summary>
                         public enum ViewEnum
                         {
                             /// <summary>The default / unset value.</summary>
                             [Google.Apis.Util.StringValueAttribute("EXECUTION_VIEW_UNSPECIFIED")]
                             EXECUTIONVIEWUNSPECIFIED,
-                            /// <summary>Includes only basic metadata about the execution. Following fields are
-                            /// returned: name, start_time, end_time, state and workflow_revision_id.</summary>
+
+                            /// <summary>
+                            /// Includes only basic metadata about the execution. Following fields are returned: name,
+                            /// start_time, end_time, state and workflow_revision_id.
+                            /// </summary>
                             [Google.Apis.Util.StringValueAttribute("BASIC")]
                             BASIC,
+
                             /// <summary>Includes all data.</summary>
                             [Google.Apis.Util.StringValueAttribute("FULL")]
                             FULL,
                         }
-
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
@@ -603,7 +631,6 @@ namespace Google.Apis.WorkflowExecutions.v1beta
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "parent",
@@ -637,23 +664,20 @@ namespace Google.Apis.WorkflowExecutions.v1beta
                                 Pattern = null,
                             });
                         }
-
                     }
                 }
             }
         }
     }
 }
-
 namespace Google.Apis.WorkflowExecutions.v1beta.Data
-{    
-
+{
     /// <summary>Request for the CancelExecution method.</summary>
     public class CancelExecutionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Error describes why the execution was abnormally terminated.</summary>
     public class Error : Google.Apis.Requests.IDirectResponseSchema
@@ -668,10 +692,11 @@ namespace Google.Apis.WorkflowExecutions.v1beta.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A running instance of a
-    /// [Workflow](/workflows/docs/reference/rest/v1beta/projects.locations.workflows).</summary>
+    /// <summary>
+    /// A running instance of a [Workflow](/workflows/docs/reference/rest/v1beta/projects.locations.workflows).
+    /// </summary>
     public class Execution : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Input parameters of the execution represented as a JSON string. The size limit is 32KB.</summary>
@@ -682,18 +707,24 @@ namespace Google.Apis.WorkflowExecutions.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
-        /// <summary>Output only. The error which caused the execution to finish prematurely. The value is only present
-        /// if the execution's state is `FAILED` or `CANCELLED`.</summary>
+        /// <summary>
+        /// Output only. The error which caused the execution to finish prematurely. The value is only present if the
+        /// execution's state is `FAILED` or `CANCELLED`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Error Error { get; set; }
 
-        /// <summary>Output only. The resource name of the execution. Format:
-        /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}</summary>
+        /// <summary>
+        /// Output only. The resource name of the execution. Format:
+        /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. Output of the execution represented as a JSON string. The value can only be present if
-        /// the execution's state is `SUCCEEDED`.</summary>
+        /// <summary>
+        /// Output only. Output of the execution represented as a JSON string. The value can only be present if the
+        /// execution's state is `SUCCEEDED`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
         public virtual string Result { get; set; }
 
@@ -711,7 +742,7 @@ namespace Google.Apis.WorkflowExecutions.v1beta.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for the ListExecutions method.</summary>
     public class ListExecutionsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -720,8 +751,10 @@ namespace Google.Apis.WorkflowExecutions.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("executions")]
         public virtual System.Collections.Generic.IList<Execution> Executions { get; set; }
 
-        /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
-        /// there are no subsequent pages.</summary>
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 

@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -63,8 +68,9 @@ namespace Google.Apis.TagManager.v1
             /// <summary>Delete your Google Tag Manager containers</summary>
             public static string TagmanagerDeleteContainers = "https://www.googleapis.com/auth/tagmanager.delete.containers";
 
-            /// <summary>Manage your Google Tag Manager container and its subcomponents, excluding versioning and
-            /// publishing</summary>
+            /// <summary>
+            /// Manage your Google Tag Manager container and its subcomponents, excluding versioning and publishing
+            /// </summary>
             public static string TagmanagerEditContainers = "https://www.googleapis.com/auth/tagmanager.edit.containers";
 
             /// <summary>Manage your Google Tag Manager container versions</summary>
@@ -81,7 +87,6 @@ namespace Google.Apis.TagManager.v1
 
             /// <summary>View your Google Tag Manager container and its subcomponents</summary>
             public static string TagmanagerReadonly = "https://www.googleapis.com/auth/tagmanager.readonly";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Tag Manager API.</summary>
@@ -90,8 +95,9 @@ namespace Google.Apis.TagManager.v1
             /// <summary>Delete your Google Tag Manager containers</summary>
             public const string TagmanagerDeleteContainers = "https://www.googleapis.com/auth/tagmanager.delete.containers";
 
-            /// <summary>Manage your Google Tag Manager container and its subcomponents, excluding versioning and
-            /// publishing</summary>
+            /// <summary>
+            /// Manage your Google Tag Manager container and its subcomponents, excluding versioning and publishing
+            /// </summary>
             public const string TagmanagerEditContainers = "https://www.googleapis.com/auth/tagmanager.edit.containers";
 
             /// <summary>Manage your Google Tag Manager container versions</summary>
@@ -108,10 +114,7 @@ namespace Google.Apis.TagManager.v1
 
             /// <summary>View your Google Tag Manager container and its subcomponents</summary>
             public const string TagmanagerReadonly = "https://www.googleapis.com/auth/tagmanager.readonly";
-
         }
-
-
 
         /// <summary>Gets the Accounts resource.</summary>
         public virtual AccountsResource Accounts { get; }
@@ -135,6 +138,7 @@ namespace Google.Apis.TagManager.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -154,9 +158,11 @@ namespace Google.Apis.TagManager.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -170,8 +176,10 @@ namespace Google.Apis.TagManager.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -183,8 +191,10 @@ namespace Google.Apis.TagManager.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -200,7 +210,6 @@ namespace Google.Apis.TagManager.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -306,7 +315,6 @@ namespace Google.Apis.TagManager.v1
             this.service = service;
             Containers = new ContainersResource(service);
             Permissions = new PermissionsResource(service);
-
         }
 
         /// <summary>Gets the Containers resource.</summary>
@@ -332,7 +340,6 @@ namespace Google.Apis.TagManager.v1
                 Triggers = new TriggersResource(service);
                 Variables = new VariablesResource(service);
                 Versions = new VersionsResource(service);
-
             }
 
             /// <summary>Gets the Environments resource.</summary>
@@ -350,15 +357,12 @@ namespace Google.Apis.TagManager.v1
                 public EnvironmentsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
-
 
                 /// <summary>Creates a GTM Environment.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 public virtual CreateRequest Create(Google.Apis.TagManager.v1.Data.Environment body, string accountId, string containerId)
                 {
                     return new CreateRequest(service, body, accountId, containerId);
@@ -376,7 +380,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -384,7 +387,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The GTM Container ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("containerId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ContainerId { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.Environment Body { get; set; }
@@ -405,7 +407,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -423,13 +424,11 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Deletes a GTM Environment.</summary>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 /// <param name="environmentId">The GTM Environment ID.</param>
                 public virtual DeleteRequest Delete(string accountId, string containerId, string environmentId)
                 {
@@ -448,7 +447,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -460,7 +458,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The GTM Environment ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("environmentId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string EnvironmentId { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
@@ -475,7 +472,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -501,13 +497,11 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Gets a GTM Environment.</summary>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 /// <param name="environmentId">The GTM Environment ID.</param>
                 public virtual GetRequest Get(string accountId, string containerId, string environmentId)
                 {
@@ -526,7 +520,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -538,7 +531,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The GTM Environment ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("environmentId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string EnvironmentId { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
@@ -553,7 +545,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -579,13 +570,11 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Lists all GTM Environments of a GTM Container.</summary>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 public virtual ListRequest List(string accountId, string containerId)
                 {
                     return new ListRequest(service, accountId, containerId);
@@ -602,7 +591,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -610,7 +598,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The GTM Container ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("containerId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ContainerId { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -625,7 +612,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -643,14 +629,12 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Updates a GTM Environment.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 /// <param name="environmentId">The GTM Environment ID.</param>
                 public virtual UpdateRequest Update(Google.Apis.TagManager.v1.Data.Environment body, string accountId, string containerId, string environmentId)
                 {
@@ -670,7 +654,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -683,11 +666,11 @@ namespace Google.Apis.TagManager.v1
                     [Google.Apis.Util.RequestParameterAttribute("environmentId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string EnvironmentId { get; private set; }
 
-                    /// <summary>When provided, this fingerprint must match the fingerprint of the environment in
-                    /// storage.</summary>
+                    /// <summary>
+                    /// When provided, this fingerprint must match the fingerprint of the environment in storage.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("fingerprint", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Fingerprint { get; set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.Environment Body { get; set; }
@@ -708,7 +691,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -742,9 +724,9 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
             }
+
             /// <summary>Gets the Folders resource.</summary>
             public virtual FoldersResource Folders { get; }
 
@@ -761,7 +743,6 @@ namespace Google.Apis.TagManager.v1
                 {
                     this.service = service;
                     Entities = new EntitiesResource(service);
-
                 }
 
                 /// <summary>Gets the Entities resource.</summary>
@@ -779,14 +760,11 @@ namespace Google.Apis.TagManager.v1
                     public EntitiesResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
-
                     }
-
 
                     /// <summary>List all entities in a GTM Folder.</summary>
                     /// <param name="accountId">The GTM Account ID.</param>
-                    /// <param name="containerId">The GTM Container
-                    /// ID.</param>
+                    /// <param name="containerId">The GTM Container ID.</param>
                     /// <param name="folderId">The GTM Folder ID.</param>
                     public virtual ListRequest List(string accountId, string containerId, string folderId)
                     {
@@ -805,7 +783,6 @@ namespace Google.Apis.TagManager.v1
                             InitParameters();
                         }
 
-
                         /// <summary>The GTM Account ID.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string AccountId { get; private set; }
@@ -817,7 +794,6 @@ namespace Google.Apis.TagManager.v1
                         /// <summary>The GTM Folder ID.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("folderId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string FolderId { get; private set; }
-
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
@@ -832,7 +808,6 @@ namespace Google.Apis.TagManager.v1
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "accountId",
@@ -858,15 +833,13 @@ namespace Google.Apis.TagManager.v1
                                 Pattern = null,
                             });
                         }
-
                     }
                 }
 
                 /// <summary>Creates a GTM Folder.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 public virtual CreateRequest Create(Google.Apis.TagManager.v1.Data.Folder body, string accountId, string containerId)
                 {
                     return new CreateRequest(service, body, accountId, containerId);
@@ -884,7 +857,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -892,7 +864,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The GTM Container ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("containerId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ContainerId { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.Folder Body { get; set; }
@@ -913,7 +884,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -931,13 +901,11 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Deletes a GTM Folder.</summary>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 /// <param name="folderId">The GTM Folder ID.</param>
                 public virtual DeleteRequest Delete(string accountId, string containerId, string folderId)
                 {
@@ -956,7 +924,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -968,7 +935,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The GTM Folder ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("folderId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string FolderId { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
@@ -983,7 +949,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -1009,13 +974,11 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Gets a GTM Folder.</summary>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 /// <param name="folderId">The GTM Folder ID.</param>
                 public virtual GetRequest Get(string accountId, string containerId, string folderId)
                 {
@@ -1034,7 +997,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -1046,7 +1008,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The GTM Folder ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("folderId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string FolderId { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
@@ -1061,7 +1022,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -1087,13 +1047,11 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Lists all GTM Folders of a Container.</summary>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 public virtual ListRequest List(string accountId, string containerId)
                 {
                     return new ListRequest(service, accountId, containerId);
@@ -1110,7 +1068,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -1118,7 +1075,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The GTM Container ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("containerId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ContainerId { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -1133,7 +1089,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -1151,14 +1106,12 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Updates a GTM Folder.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 /// <param name="folderId">The GTM Folder ID.</param>
                 public virtual UpdateRequest Update(Google.Apis.TagManager.v1.Data.Folder body, string accountId, string containerId, string folderId)
                 {
@@ -1178,7 +1131,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -1191,11 +1143,11 @@ namespace Google.Apis.TagManager.v1
                     [Google.Apis.Util.RequestParameterAttribute("folderId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string FolderId { get; private set; }
 
-                    /// <summary>When provided, this fingerprint must match the fingerprint of the folder in
-                    /// storage.</summary>
+                    /// <summary>
+                    /// When provided, this fingerprint must match the fingerprint of the folder in storage.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("fingerprint", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Fingerprint { get; set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.Folder Body { get; set; }
@@ -1216,7 +1168,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -1250,9 +1201,9 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
             }
+
             /// <summary>Gets the MoveFolders resource.</summary>
             public virtual MoveFoldersResource MoveFolders { get; }
 
@@ -1268,15 +1219,12 @@ namespace Google.Apis.TagManager.v1
                 public MoveFoldersResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
-
 
                 /// <summary>Moves entities to a GTM Folder.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 /// <param name="folderId">The GTM Folder ID.</param>
                 public virtual UpdateRequest Update(Google.Apis.TagManager.v1.Data.Folder body, string accountId, string containerId, string folderId)
                 {
@@ -1295,7 +1243,6 @@ namespace Google.Apis.TagManager.v1
                         Body = body;
                         InitParameters();
                     }
-
 
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
@@ -1321,7 +1268,6 @@ namespace Google.Apis.TagManager.v1
                     [Google.Apis.Util.RequestParameterAttribute("variableId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> VariableId { get; set; }
 
-
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.Folder Body { get; set; }
 
@@ -1341,7 +1287,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -1391,9 +1336,9 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
             }
+
             /// <summary>Gets the ReauthorizeEnvironments resource.</summary>
             public virtual ReauthorizeEnvironmentsResource ReauthorizeEnvironments { get; }
 
@@ -1409,15 +1354,12 @@ namespace Google.Apis.TagManager.v1
                 public ReauthorizeEnvironmentsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
-
 
                 /// <summary>Re-generates the authorization code for a GTM Environment.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 /// <param name="environmentId">The GTM Environment ID.</param>
                 public virtual UpdateRequest Update(Google.Apis.TagManager.v1.Data.Environment body, string accountId, string containerId, string environmentId)
                 {
@@ -1437,7 +1379,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -1449,7 +1390,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The GTM Environment ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("environmentId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string EnvironmentId { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.Environment Body { get; set; }
@@ -1470,7 +1410,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -1496,9 +1435,9 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
             }
+
             /// <summary>Gets the Tags resource.</summary>
             public virtual TagsResource Tags { get; }
 
@@ -1514,15 +1453,12 @@ namespace Google.Apis.TagManager.v1
                 public TagsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
-
 
                 /// <summary>Creates a GTM Tag.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 public virtual CreateRequest Create(Google.Apis.TagManager.v1.Data.Tag body, string accountId, string containerId)
                 {
                     return new CreateRequest(service, body, accountId, containerId);
@@ -1540,7 +1476,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -1548,7 +1483,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The GTM Container ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("containerId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ContainerId { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.Tag Body { get; set; }
@@ -1569,7 +1503,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -1587,13 +1520,11 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Deletes a GTM Tag.</summary>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 /// <param name="tagId">The GTM Tag ID.</param>
                 public virtual DeleteRequest Delete(string accountId, string containerId, string tagId)
                 {
@@ -1612,7 +1543,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -1624,7 +1554,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The GTM Tag ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("tagId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string TagId { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
@@ -1639,7 +1568,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -1665,13 +1593,11 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Gets a GTM Tag.</summary>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 /// <param name="tagId">The GTM Tag ID.</param>
                 public virtual GetRequest Get(string accountId, string containerId, string tagId)
                 {
@@ -1690,7 +1616,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -1702,7 +1627,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The GTM Tag ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("tagId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string TagId { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
@@ -1717,7 +1641,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -1743,13 +1666,11 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Lists all GTM Tags of a Container.</summary>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 public virtual ListRequest List(string accountId, string containerId)
                 {
                     return new ListRequest(service, accountId, containerId);
@@ -1766,7 +1687,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -1774,7 +1694,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The GTM Container ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("containerId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ContainerId { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -1789,7 +1708,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -1807,14 +1725,12 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Updates a GTM Tag.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 /// <param name="tagId">The GTM Tag ID.</param>
                 public virtual UpdateRequest Update(Google.Apis.TagManager.v1.Data.Tag body, string accountId, string containerId, string tagId)
                 {
@@ -1834,7 +1750,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -1847,11 +1762,11 @@ namespace Google.Apis.TagManager.v1
                     [Google.Apis.Util.RequestParameterAttribute("tagId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string TagId { get; private set; }
 
-                    /// <summary>When provided, this fingerprint must match the fingerprint of the tag in
-                    /// storage.</summary>
+                    /// <summary>
+                    /// When provided, this fingerprint must match the fingerprint of the tag in storage.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("fingerprint", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Fingerprint { get; set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.Tag Body { get; set; }
@@ -1872,7 +1787,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -1906,9 +1820,9 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
             }
+
             /// <summary>Gets the Triggers resource.</summary>
             public virtual TriggersResource Triggers { get; }
 
@@ -1924,15 +1838,12 @@ namespace Google.Apis.TagManager.v1
                 public TriggersResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
-
 
                 /// <summary>Creates a GTM Trigger.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 public virtual CreateRequest Create(Google.Apis.TagManager.v1.Data.Trigger body, string accountId, string containerId)
                 {
                     return new CreateRequest(service, body, accountId, containerId);
@@ -1950,7 +1861,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -1958,7 +1868,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The GTM Container ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("containerId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ContainerId { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.Trigger Body { get; set; }
@@ -1979,7 +1888,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -1997,13 +1905,11 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Deletes a GTM Trigger.</summary>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 /// <param name="triggerId">The GTM Trigger ID.</param>
                 public virtual DeleteRequest Delete(string accountId, string containerId, string triggerId)
                 {
@@ -2022,7 +1928,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -2034,7 +1939,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The GTM Trigger ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("triggerId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string TriggerId { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
@@ -2049,7 +1953,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -2075,13 +1978,11 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Gets a GTM Trigger.</summary>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 /// <param name="triggerId">The GTM Trigger ID.</param>
                 public virtual GetRequest Get(string accountId, string containerId, string triggerId)
                 {
@@ -2100,7 +2001,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -2112,7 +2012,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The GTM Trigger ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("triggerId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string TriggerId { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
@@ -2127,7 +2026,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -2153,13 +2051,11 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Lists all GTM Triggers of a Container.</summary>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 public virtual ListRequest List(string accountId, string containerId)
                 {
                     return new ListRequest(service, accountId, containerId);
@@ -2176,7 +2072,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -2184,7 +2079,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The GTM Container ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("containerId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ContainerId { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -2199,7 +2093,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -2217,14 +2110,12 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Updates a GTM Trigger.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 /// <param name="triggerId">The GTM Trigger ID.</param>
                 public virtual UpdateRequest Update(Google.Apis.TagManager.v1.Data.Trigger body, string accountId, string containerId, string triggerId)
                 {
@@ -2244,7 +2135,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -2257,11 +2147,11 @@ namespace Google.Apis.TagManager.v1
                     [Google.Apis.Util.RequestParameterAttribute("triggerId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string TriggerId { get; private set; }
 
-                    /// <summary>When provided, this fingerprint must match the fingerprint of the trigger in
-                    /// storage.</summary>
+                    /// <summary>
+                    /// When provided, this fingerprint must match the fingerprint of the trigger in storage.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("fingerprint", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Fingerprint { get; set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.Trigger Body { get; set; }
@@ -2282,7 +2172,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -2316,9 +2205,9 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
             }
+
             /// <summary>Gets the Variables resource.</summary>
             public virtual VariablesResource Variables { get; }
 
@@ -2334,15 +2223,12 @@ namespace Google.Apis.TagManager.v1
                 public VariablesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
-
 
                 /// <summary>Creates a GTM Variable.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 public virtual CreateRequest Create(Google.Apis.TagManager.v1.Data.Variable body, string accountId, string containerId)
                 {
                     return new CreateRequest(service, body, accountId, containerId);
@@ -2360,7 +2246,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -2368,7 +2253,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The GTM Container ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("containerId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ContainerId { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.Variable Body { get; set; }
@@ -2389,7 +2273,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -2407,13 +2290,11 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Deletes a GTM Variable.</summary>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 /// <param name="variableId">The GTM Variable ID.</param>
                 public virtual DeleteRequest Delete(string accountId, string containerId, string variableId)
                 {
@@ -2432,7 +2313,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -2444,7 +2324,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The GTM Variable ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("variableId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string VariableId { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
@@ -2459,7 +2338,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -2485,13 +2363,11 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Gets a GTM Variable.</summary>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 /// <param name="variableId">The GTM Variable ID.</param>
                 public virtual GetRequest Get(string accountId, string containerId, string variableId)
                 {
@@ -2510,7 +2386,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -2522,7 +2397,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The GTM Variable ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("variableId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string VariableId { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
@@ -2537,7 +2411,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -2563,13 +2436,11 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Lists all GTM Variables of a Container.</summary>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 public virtual ListRequest List(string accountId, string containerId)
                 {
                     return new ListRequest(service, accountId, containerId);
@@ -2586,7 +2457,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -2594,7 +2464,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The GTM Container ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("containerId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ContainerId { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -2609,7 +2478,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -2627,14 +2495,12 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Updates a GTM Variable.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 /// <param name="variableId">The GTM Variable ID.</param>
                 public virtual UpdateRequest Update(Google.Apis.TagManager.v1.Data.Variable body, string accountId, string containerId, string variableId)
                 {
@@ -2654,7 +2520,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -2667,11 +2532,11 @@ namespace Google.Apis.TagManager.v1
                     [Google.Apis.Util.RequestParameterAttribute("variableId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string VariableId { get; private set; }
 
-                    /// <summary>When provided, this fingerprint must match the fingerprint of the variable in
-                    /// storage.</summary>
+                    /// <summary>
+                    /// When provided, this fingerprint must match the fingerprint of the variable in storage.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("fingerprint", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Fingerprint { get; set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.Variable Body { get; set; }
@@ -2692,7 +2557,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -2726,9 +2590,9 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
             }
+
             /// <summary>Gets the Versions resource.</summary>
             public virtual VersionsResource Versions { get; }
 
@@ -2744,15 +2608,12 @@ namespace Google.Apis.TagManager.v1
                 public VersionsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
-
 
                 /// <summary>Creates a Container Version.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 public virtual CreateRequest Create(Google.Apis.TagManager.v1.Data.CreateContainerVersionRequestVersionOptions body, string accountId, string containerId)
                 {
                     return new CreateRequest(service, body, accountId, containerId);
@@ -2770,7 +2631,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -2778,7 +2638,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The GTM Container ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("containerId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ContainerId { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.CreateContainerVersionRequestVersionOptions Body { get; set; }
@@ -2799,7 +2658,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -2817,13 +2675,11 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Deletes a Container Version.</summary>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 /// <param name="containerVersionId">The GTM Container Version ID.</param>
                 public virtual DeleteRequest Delete(string accountId, string containerId, string containerVersionId)
                 {
@@ -2842,7 +2698,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -2854,7 +2709,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The GTM Container Version ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("containerVersionId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ContainerVersionId { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
@@ -2869,7 +2723,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -2895,15 +2748,14 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Gets a Container Version.</summary>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
-                /// <param name="containerVersionId">The GTM Container Version ID. Specify published to retrieve the
-                /// currently published version.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
+                /// <param name="containerVersionId">
+                /// The GTM Container Version ID. Specify published to retrieve the currently published version.
+                /// </param>
                 public virtual GetRequest Get(string accountId, string containerId, string containerVersionId)
                 {
                     return new GetRequest(service, accountId, containerId, containerVersionId);
@@ -2921,7 +2773,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -2930,11 +2781,11 @@ namespace Google.Apis.TagManager.v1
                     [Google.Apis.Util.RequestParameterAttribute("containerId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ContainerId { get; private set; }
 
-                    /// <summary>The GTM Container Version ID. Specify published to retrieve the currently published
-                    /// version.</summary>
+                    /// <summary>
+                    /// The GTM Container Version ID. Specify published to retrieve the currently published version.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("containerVersionId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ContainerVersionId { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
@@ -2949,7 +2800,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -2975,13 +2825,11 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Lists all Container Versions of a GTM Container.</summary>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 public virtual ListRequest List(string accountId, string containerId)
                 {
                     return new ListRequest(service, accountId, containerId);
@@ -2997,7 +2845,6 @@ namespace Google.Apis.TagManager.v1
                         ContainerId = containerId;
                         InitParameters();
                     }
-
 
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
@@ -3015,7 +2862,6 @@ namespace Google.Apis.TagManager.v1
                     [Google.Apis.Util.RequestParameterAttribute("includeDeleted", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> IncludeDeleted { get; set; }
 
-
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -3029,7 +2875,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -3063,13 +2908,11 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Publishes a Container Version.</summary>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 /// <param name="containerVersionId">The GTM Container Version ID.</param>
                 public virtual PublishRequest Publish(string accountId, string containerId, string containerVersionId)
                 {
@@ -3088,7 +2931,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -3101,11 +2943,11 @@ namespace Google.Apis.TagManager.v1
                     [Google.Apis.Util.RequestParameterAttribute("containerVersionId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ContainerVersionId { get; private set; }
 
-                    /// <summary>When provided, this fingerprint must match the fingerprint of the container version in
-                    /// storage.</summary>
+                    /// <summary>
+                    /// When provided, this fingerprint must match the fingerprint of the container version in storage.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("fingerprint", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Fingerprint { get; set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "publish";
@@ -3120,7 +2962,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -3154,24 +2995,26 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
-                /// <summary>Restores a Container Version. This will overwrite the container's current configuration
-                /// (including its variables, triggers and tags). The operation will not have any effect on the version
-                /// that is being served (i.e. the published version).</summary>
+                /// <summary>
+                /// Restores a Container Version. This will overwrite the container's current configuration (including
+                /// its variables, triggers and tags). The operation will not have any effect on the version that is
+                /// being served (i.e. the published version).
+                /// </summary>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 /// <param name="containerVersionId">The GTM Container Version ID.</param>
                 public virtual RestoreRequest Restore(string accountId, string containerId, string containerVersionId)
                 {
                     return new RestoreRequest(service, accountId, containerId, containerVersionId);
                 }
 
-                /// <summary>Restores a Container Version. This will overwrite the container's current configuration
-                /// (including its variables, triggers and tags). The operation will not have any effect on the version
-                /// that is being served (i.e. the published version).</summary>
+                /// <summary>
+                /// Restores a Container Version. This will overwrite the container's current configuration (including
+                /// its variables, triggers and tags). The operation will not have any effect on the version that is
+                /// being served (i.e. the published version).
+                /// </summary>
                 public class RestoreRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.ContainerVersion>
                 {
                     /// <summary>Constructs a new Restore request.</summary>
@@ -3182,7 +3025,6 @@ namespace Google.Apis.TagManager.v1
                         ContainerVersionId = containerVersionId;
                         InitParameters();
                     }
-
 
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
@@ -3195,7 +3037,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The GTM Container Version ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("containerVersionId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ContainerVersionId { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "restore";
@@ -3210,7 +3051,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -3236,13 +3076,11 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Undeletes a Container Version.</summary>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 /// <param name="containerVersionId">The GTM Container Version ID.</param>
                 public virtual UndeleteRequest Undelete(string accountId, string containerId, string containerVersionId)
                 {
@@ -3261,7 +3099,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -3273,7 +3110,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The GTM Container Version ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("containerVersionId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ContainerVersionId { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "undelete";
@@ -3288,7 +3124,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -3314,14 +3149,12 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Updates a Container Version.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="accountId">The GTM Account ID.</param>
-                /// <param name="containerId">The GTM Container
-                /// ID.</param>
+                /// <param name="containerId">The GTM Container ID.</param>
                 /// <param name="containerVersionId">The GTM Container Version ID.</param>
                 public virtual UpdateRequest Update(Google.Apis.TagManager.v1.Data.ContainerVersion body, string accountId, string containerId, string containerVersionId)
                 {
@@ -3341,7 +3174,6 @@ namespace Google.Apis.TagManager.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The GTM Account ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AccountId { get; private set; }
@@ -3354,11 +3186,11 @@ namespace Google.Apis.TagManager.v1
                     [Google.Apis.Util.RequestParameterAttribute("containerVersionId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ContainerVersionId { get; private set; }
 
-                    /// <summary>When provided, this fingerprint must match the fingerprint of the container version in
-                    /// storage.</summary>
+                    /// <summary>
+                    /// When provided, this fingerprint must match the fingerprint of the container version in storage.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("fingerprint", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Fingerprint { get; set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.TagManager.v1.Data.ContainerVersion Body { get; set; }
@@ -3379,7 +3211,6 @@ namespace Google.Apis.TagManager.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "accountId",
@@ -3413,7 +3244,6 @@ namespace Google.Apis.TagManager.v1
                             Pattern = null,
                         });
                     }
-
                 }
             }
 
@@ -3436,11 +3266,9 @@ namespace Google.Apis.TagManager.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The GTM Account ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.TagManager.v1.Data.Container Body { get; set; }
@@ -3461,7 +3289,6 @@ namespace Google.Apis.TagManager.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "accountId",
@@ -3471,13 +3298,11 @@ namespace Google.Apis.TagManager.v1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Deletes a Container.</summary>
             /// <param name="accountId">The GTM Account ID.</param>
-            /// <param name="containerId">The GTM Container
-            /// ID.</param>
+            /// <param name="containerId">The GTM Container ID.</param>
             public virtual DeleteRequest Delete(string accountId, string containerId)
             {
                 return new DeleteRequest(service, accountId, containerId);
@@ -3494,7 +3319,6 @@ namespace Google.Apis.TagManager.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The GTM Account ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
@@ -3502,7 +3326,6 @@ namespace Google.Apis.TagManager.v1
                 /// <summary>The GTM Container ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("containerId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ContainerId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -3517,7 +3340,6 @@ namespace Google.Apis.TagManager.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "accountId",
@@ -3535,13 +3357,11 @@ namespace Google.Apis.TagManager.v1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Gets a Container.</summary>
             /// <param name="accountId">The GTM Account ID.</param>
-            /// <param name="containerId">The GTM Container
-            /// ID.</param>
+            /// <param name="containerId">The GTM Container ID.</param>
             public virtual GetRequest Get(string accountId, string containerId)
             {
                 return new GetRequest(service, accountId, containerId);
@@ -3558,7 +3378,6 @@ namespace Google.Apis.TagManager.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The GTM Account ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
@@ -3566,7 +3385,6 @@ namespace Google.Apis.TagManager.v1
                 /// <summary>The GTM Container ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("containerId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ContainerId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -3581,7 +3399,6 @@ namespace Google.Apis.TagManager.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "accountId",
@@ -3599,7 +3416,6 @@ namespace Google.Apis.TagManager.v1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Lists all Containers that belongs to a GTM Account.</summary>
@@ -3619,11 +3435,9 @@ namespace Google.Apis.TagManager.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The GTM Account ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -3638,7 +3452,6 @@ namespace Google.Apis.TagManager.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "accountId",
@@ -3648,14 +3461,12 @@ namespace Google.Apis.TagManager.v1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Updates a Container.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="accountId">The GTM Account ID.</param>
-            /// <param name="containerId">The GTM Container
-            /// ID.</param>
+            /// <param name="containerId">The GTM Container ID.</param>
             public virtual UpdateRequest Update(Google.Apis.TagManager.v1.Data.Container body, string accountId, string containerId)
             {
                 return new UpdateRequest(service, body, accountId, containerId);
@@ -3673,7 +3484,6 @@ namespace Google.Apis.TagManager.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The GTM Account ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
@@ -3682,11 +3492,11 @@ namespace Google.Apis.TagManager.v1
                 [Google.Apis.Util.RequestParameterAttribute("containerId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ContainerId { get; private set; }
 
-                /// <summary>When provided, this fingerprint must match the fingerprint of the container in
-                /// storage.</summary>
+                /// <summary>
+                /// When provided, this fingerprint must match the fingerprint of the container in storage.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("fingerprint", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Fingerprint { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.TagManager.v1.Data.Container Body { get; set; }
@@ -3707,7 +3517,6 @@ namespace Google.Apis.TagManager.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "accountId",
@@ -3733,9 +3542,9 @@ namespace Google.Apis.TagManager.v1
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Permissions resource.</summary>
         public virtual PermissionsResource Permissions { get; }
 
@@ -3751,11 +3560,9 @@ namespace Google.Apis.TagManager.v1
             public PermissionsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Creates a user's Account & Container Permissions.</summary>
+            /// <summary>Creates a user's Account &amp; Container Permissions.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="accountId">The GTM Account ID.</param>
             public virtual CreateRequest Create(Google.Apis.TagManager.v1.Data.UserAccess body, string accountId)
@@ -3763,7 +3570,7 @@ namespace Google.Apis.TagManager.v1
                 return new CreateRequest(service, body, accountId);
             }
 
-            /// <summary>Creates a user's Account & Container Permissions.</summary>
+            /// <summary>Creates a user's Account &amp; Container Permissions.</summary>
             public class CreateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.UserAccess>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -3774,11 +3581,9 @@ namespace Google.Apis.TagManager.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The GTM Account ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.TagManager.v1.Data.UserAccess Body { get; set; }
@@ -3799,7 +3604,6 @@ namespace Google.Apis.TagManager.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "accountId",
@@ -3809,7 +3613,6 @@ namespace Google.Apis.TagManager.v1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Removes a user from the account, revoking access to it and all of its containers.</summary>
@@ -3831,7 +3634,6 @@ namespace Google.Apis.TagManager.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The GTM Account ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
@@ -3839,7 +3641,6 @@ namespace Google.Apis.TagManager.v1
                 /// <summary>The GTM User ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("permissionId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PermissionId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -3854,7 +3655,6 @@ namespace Google.Apis.TagManager.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "accountId",
@@ -3872,10 +3672,9 @@ namespace Google.Apis.TagManager.v1
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Gets a user's Account & Container Permissions.</summary>
+            /// <summary>Gets a user's Account &amp; Container Permissions.</summary>
             /// <param name="accountId">The GTM Account ID.</param>
             /// <param name="permissionId">The GTM User ID.</param>
             public virtual GetRequest Get(string accountId, string permissionId)
@@ -3883,7 +3682,7 @@ namespace Google.Apis.TagManager.v1
                 return new GetRequest(service, accountId, permissionId);
             }
 
-            /// <summary>Gets a user's Account & Container Permissions.</summary>
+            /// <summary>Gets a user's Account &amp; Container Permissions.</summary>
             public class GetRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.UserAccess>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -3894,7 +3693,6 @@ namespace Google.Apis.TagManager.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The GTM Account ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
@@ -3902,7 +3700,6 @@ namespace Google.Apis.TagManager.v1
                 /// <summary>The GTM User ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("permissionId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PermissionId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -3917,7 +3714,6 @@ namespace Google.Apis.TagManager.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "accountId",
@@ -3935,19 +3731,22 @@ namespace Google.Apis.TagManager.v1
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>List all users that have access to the account along with Account and Container Permissions
-            /// granted to each of them.</summary>
+            /// <summary>
+            /// List all users that have access to the account along with Account and Container Permissions granted to
+            /// each of them.
+            /// </summary>
             /// <param name="accountId">The GTM Account ID.</param>
             public virtual ListRequest List(string accountId)
             {
                 return new ListRequest(service, accountId);
             }
 
-            /// <summary>List all users that have access to the account along with Account and Container Permissions
-            /// granted to each of them.</summary>
+            /// <summary>
+            /// List all users that have access to the account along with Account and Container Permissions granted to
+            /// each of them.
+            /// </summary>
             public class ListRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.ListAccountUsersResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -3957,11 +3756,9 @@ namespace Google.Apis.TagManager.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The GTM Account ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -3976,7 +3773,6 @@ namespace Google.Apis.TagManager.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "accountId",
@@ -3986,10 +3782,9 @@ namespace Google.Apis.TagManager.v1
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Updates a user's Account & Container Permissions.</summary>
+            /// <summary>Updates a user's Account &amp; Container Permissions.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="accountId">The GTM Account ID.</param>
             /// <param name="permissionId">The GTM User ID.</param>
@@ -3998,7 +3793,7 @@ namespace Google.Apis.TagManager.v1
                 return new UpdateRequest(service, body, accountId, permissionId);
             }
 
-            /// <summary>Updates a user's Account & Container Permissions.</summary>
+            /// <summary>Updates a user's Account &amp; Container Permissions.</summary>
             public class UpdateRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v1.Data.UserAccess>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -4010,7 +3805,6 @@ namespace Google.Apis.TagManager.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The GTM Account ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
@@ -4018,7 +3812,6 @@ namespace Google.Apis.TagManager.v1
                 /// <summary>The GTM User ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("permissionId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PermissionId { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.TagManager.v1.Data.UserAccess Body { get; set; }
@@ -4039,7 +3832,6 @@ namespace Google.Apis.TagManager.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "accountId",
@@ -4057,7 +3849,6 @@ namespace Google.Apis.TagManager.v1
                         Pattern = null,
                     });
                 }
-
             }
         }
 
@@ -4078,11 +3869,9 @@ namespace Google.Apis.TagManager.v1
                 InitParameters();
             }
 
-
             /// <summary>The GTM Account ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AccountId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -4097,7 +3886,6 @@ namespace Google.Apis.TagManager.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "accountId",
@@ -4107,7 +3895,6 @@ namespace Google.Apis.TagManager.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Lists all GTM Accounts that a user has access to.</summary>
@@ -4125,8 +3912,6 @@ namespace Google.Apis.TagManager.v1
                 InitParameters();
             }
 
-
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -4140,9 +3925,7 @@ namespace Google.Apis.TagManager.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
         /// <summary>Updates a GTM Account.</summary>
@@ -4164,7 +3947,6 @@ namespace Google.Apis.TagManager.v1
                 InitParameters();
             }
 
-
             /// <summary>The GTM Account ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AccountId { get; private set; }
@@ -4172,7 +3954,6 @@ namespace Google.Apis.TagManager.v1
             /// <summary>When provided, this fingerprint must match the fingerprint of the account in storage.</summary>
             [Google.Apis.Util.RequestParameterAttribute("fingerprint", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Fingerprint { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.TagManager.v1.Data.Account Body { get; set; }
@@ -4193,7 +3974,6 @@ namespace Google.Apis.TagManager.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "accountId",
@@ -4211,14 +3991,11 @@ namespace Google.Apis.TagManager.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.TagManager.v1.Data
-{    
-
+{
     /// <summary>Represents a Google Tag Manager Account.</summary>
     public class Account : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4226,58 +4003,69 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; }
 
-        /// <summary>The fingerprint of the GTM Account as computed at storage time. This value is recomputed whenever
-        /// the account is modified.</summary>
+        /// <summary>
+        /// The fingerprint of the GTM Account as computed at storage time. This value is recomputed whenever the
+        /// account is modified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
-        /// <summary>Account display name. @mutable tagmanager.accounts.create @mutable
-        /// tagmanager.accounts.update</summary>
+        /// <summary>
+        /// Account display name. @mutable tagmanager.accounts.create @mutable tagmanager.accounts.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Whether the account shares data anonymously with Google and others. @mutable
-        /// tagmanager.accounts.create @mutable tagmanager.accounts.update</summary>
+        /// <summary>
+        /// Whether the account shares data anonymously with Google and others. @mutable tagmanager.accounts.create
+        /// @mutable tagmanager.accounts.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shareData")]
         public virtual System.Nullable<bool> ShareData { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Defines the Google Tag Manager Account access permissions.</summary>
     public class AccountAccess : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of Account permissions. Valid account permissions are read and manage. @mutable
-        /// tagmanager.accounts.permissions.create @mutable tagmanager.accounts.permissions.update</summary>
+        /// <summary>
+        /// List of Account permissions. Valid account permissions are read and manage. @mutable
+        /// tagmanager.accounts.permissions.create @mutable tagmanager.accounts.permissions.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permission")]
         public virtual System.Collections.Generic.IList<string> Permission { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a predicate.</summary>
     public class Condition : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of named parameters (key/value), depending on the condition's type. Notes: - For binary
-        /// operators, include parameters named arg0 and arg1 for specifying the left and right operands, respectively.
-        /// - At this time, the left operand (arg0) must be a reference to a variable. - For case-insensitive Regex
-        /// matching, include a boolean parameter named ignore_case that is set to true. If not specified or set to any
-        /// other value, the matching will be case sensitive. - To negate an operator, include a boolean parameter named
+        /// <summary>
+        /// A list of named parameters (key/value), depending on the condition's type. Notes: - For binary operators,
+        /// include parameters named arg0 and arg1 for specifying the left and right operands, respectively. - At this
+        /// time, the left operand (arg0) must be a reference to a variable. - For case-insensitive Regex matching,
+        /// include a boolean parameter named ignore_case that is set to true. If not specified or set to any other
+        /// value, the matching will be case sensitive. - To negate an operator, include a boolean parameter named
         /// negate boolean parameter that is set to true. @mutable tagmanager.accounts.containers.triggers.create
-        /// @mutable tagmanager.accounts.containers.triggers.update</summary>
+        /// @mutable tagmanager.accounts.containers.triggers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; }
 
-        /// <summary>The type of operator for this condition. @mutable tagmanager.accounts.containers.triggers.create
-        /// @mutable tagmanager.accounts.containers.triggers.update</summary>
+        /// <summary>
+        /// The type of operator for this condition. @mutable tagmanager.accounts.containers.triggers.create @mutable
+        /// tagmanager.accounts.containers.triggers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a Google Tag Manager Container.</summary>
     public class Container : Google.Apis.Requests.IDirectResponseSchema
@@ -4290,32 +4078,41 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
         public virtual string ContainerId { get; set; }
 
-        /// <summary>Optional list of domain names associated with the Container. @mutable
-        /// tagmanager.accounts.containers.create @mutable tagmanager.accounts.containers.update</summary>
+        /// <summary>
+        /// Optional list of domain names associated with the Container. @mutable tagmanager.accounts.containers.create
+        /// @mutable tagmanager.accounts.containers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainName")]
         public virtual System.Collections.Generic.IList<string> DomainName { get; set; }
 
-        /// <summary>List of enabled built-in variables. Valid values include: pageUrl, pageHostname, pagePath,
-        /// referrer, event, clickElement, clickClasses, clickId, clickTarget, clickUrl, clickText, formElement,
-        /// formClasses, formId, formTarget, formUrl, formText, errorMessage, errorUrl, errorLine, newHistoryFragment,
-        /// oldHistoryFragment, newHistoryState, oldHistoryState, historySource, containerVersion, debugMode,
-        /// randomNumber, containerId. @mutable tagmanager.accounts.containers.create @mutable
-        /// tagmanager.accounts.containers.update</summary>
+        /// <summary>
+        /// List of enabled built-in variables. Valid values include: pageUrl, pageHostname, pagePath, referrer, event,
+        /// clickElement, clickClasses, clickId, clickTarget, clickUrl, clickText, formElement, formClasses, formId,
+        /// formTarget, formUrl, formText, errorMessage, errorUrl, errorLine, newHistoryFragment, oldHistoryFragment,
+        /// newHistoryState, oldHistoryState, historySource, containerVersion, debugMode, randomNumber, containerId.
+        /// @mutable tagmanager.accounts.containers.create @mutable tagmanager.accounts.containers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledBuiltInVariable")]
         public virtual System.Collections.Generic.IList<string> EnabledBuiltInVariable { get; set; }
 
-        /// <summary>The fingerprint of the GTM Container as computed at storage time. This value is recomputed whenever
-        /// the account is modified.</summary>
+        /// <summary>
+        /// The fingerprint of the GTM Container as computed at storage time. This value is recomputed whenever the
+        /// account is modified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
-        /// <summary>Container display name. @mutable tagmanager.accounts.containers.create @mutable
-        /// tagmanager.accounts.containers.update</summary>
+        /// <summary>
+        /// Container display name. @mutable tagmanager.accounts.containers.create @mutable
+        /// tagmanager.accounts.containers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Container Notes. @mutable tagmanager.accounts.containers.create @mutable
-        /// tagmanager.accounts.containers.update</summary>
+        /// <summary>
+        /// Container Notes. @mutable tagmanager.accounts.containers.create @mutable
+        /// tagmanager.accounts.containers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
 
@@ -4323,41 +4120,51 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publicId")]
         public virtual string PublicId { get; set; }
 
-        /// <summary>Container Country ID. @mutable tagmanager.accounts.containers.create @mutable
-        /// tagmanager.accounts.containers.update</summary>
+        /// <summary>
+        /// Container Country ID. @mutable tagmanager.accounts.containers.create @mutable
+        /// tagmanager.accounts.containers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZoneCountryId")]
         public virtual string TimeZoneCountryId { get; set; }
 
-        /// <summary>Container Time Zone ID. @mutable tagmanager.accounts.containers.create @mutable
-        /// tagmanager.accounts.containers.update</summary>
+        /// <summary>
+        /// Container Time Zone ID. @mutable tagmanager.accounts.containers.create @mutable
+        /// tagmanager.accounts.containers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZoneId")]
         public virtual string TimeZoneId { get; set; }
 
-        /// <summary>List of Usage Contexts for the Container. Valid values include: web, android, ios. @mutable
-        /// tagmanager.accounts.containers.create @mutable tagmanager.accounts.containers.update</summary>
+        /// <summary>
+        /// List of Usage Contexts for the Container. Valid values include: web, android, ios. @mutable
+        /// tagmanager.accounts.containers.create @mutable tagmanager.accounts.containers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usageContext")]
         public virtual System.Collections.Generic.IList<string> UsageContext { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Defines the Google Tag Manager Container access permissions.</summary>
     public class ContainerAccess : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>GTM Container ID. @mutable tagmanager.accounts.permissions.create @mutable
-        /// tagmanager.accounts.permissions.update</summary>
+        /// <summary>
+        /// GTM Container ID. @mutable tagmanager.accounts.permissions.create @mutable
+        /// tagmanager.accounts.permissions.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
         public virtual string ContainerId { get; set; }
 
-        /// <summary>List of Container permissions. Valid container permissions are: read, edit, delete, publish.
-        /// @mutable tagmanager.accounts.permissions.create @mutable tagmanager.accounts.permissions.update</summary>
+        /// <summary>
+        /// List of Container permissions. Valid container permissions are: read, edit, delete, publish. @mutable
+        /// tagmanager.accounts.permissions.create @mutable tagmanager.accounts.permissions.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permission")]
         public virtual System.Collections.Generic.IList<string> Permission { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a Google Tag Manager Container Version.</summary>
     public class ContainerVersion : Google.Apis.Requests.IDirectResponseSchema
@@ -4382,8 +4189,10 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
         public virtual System.Nullable<bool> Deleted { get; set; }
 
-        /// <summary>The fingerprint of the GTM Container Version as computed at storage time. This value is recomputed
-        /// whenever the container version is modified.</summary>
+        /// <summary>
+        /// The fingerprint of the GTM Container Version as computed at storage time. This value is recomputed whenever
+        /// the container version is modified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
@@ -4399,8 +4208,10 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>User notes on how to apply this container version in the container. @mutable
-        /// tagmanager.accounts.containers.versions.update</summary>
+        /// <summary>
+        /// User notes on how to apply this container version in the container. @mutable
+        /// tagmanager.accounts.containers.versions.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
 
@@ -4422,7 +4233,7 @@ namespace Google.Apis.TagManager.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a Google Tag Manager Container Version Header.</summary>
     public class ContainerVersionHeader : Google.Apis.Requests.IDirectResponseSchema
@@ -4469,7 +4280,7 @@ namespace Google.Apis.TagManager.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Options for new container versions.</summary>
     public class CreateContainerVersionRequestVersionOptions : Google.Apis.Requests.IDirectResponseSchema
@@ -4488,7 +4299,7 @@ namespace Google.Apis.TagManager.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Create container versions response.</summary>
     public class CreateContainerVersionResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4503,11 +4314,12 @@ namespace Google.Apis.TagManager.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Represents a Google Tag Manager Environment. Note that a user can create, delete and update
-    /// environments of type USER, but can only update the enable_debug and url fields of environments of other
-    /// types.</summary>
+    /// <summary>
+    /// Represents a Google Tag Manager Environment. Note that a user can create, delete and update environments of type
+    /// USER, but can only update the enable_debug and url fields of environments of other types.
+    /// </summary>
     public class Environment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>GTM Account ID.</summary>
@@ -4529,15 +4341,19 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containerVersionId")]
         public virtual string ContainerVersionId { get; set; }
 
-        /// <summary>The environment description. Can be set or changed only on USER type environments. @mutable
+        /// <summary>
+        /// The environment description. Can be set or changed only on USER type environments. @mutable
         /// tagmanager.accounts.containers.environments.create @mutable
-        /// tagmanager.accounts.containers.environments.update</summary>
+        /// tagmanager.accounts.containers.environments.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Whether or not to enable debug by default on for the environment. @mutable
+        /// <summary>
+        /// Whether or not to enable debug by default on for the environment. @mutable
         /// tagmanager.accounts.containers.environments.create @mutable
-        /// tagmanager.accounts.containers.environments.update</summary>
+        /// tagmanager.accounts.containers.environments.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableDebug")]
         public virtual System.Nullable<bool> EnableDebug { get; set; }
 
@@ -4545,14 +4361,18 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("environmentId")]
         public virtual string EnvironmentId { get; set; }
 
-        /// <summary>The fingerprint of the GTM environment as computed at storage time. This value is recomputed
-        /// whenever the environment is modified.</summary>
+        /// <summary>
+        /// The fingerprint of the GTM environment as computed at storage time. This value is recomputed whenever the
+        /// environment is modified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
-        /// <summary>The environment display name. Can be set or changed only on USER type environments. @mutable
+        /// <summary>
+        /// The environment display name. Can be set or changed only on USER type environments. @mutable
         /// tagmanager.accounts.containers.environments.create @mutable
-        /// tagmanager.accounts.containers.environments.update</summary>
+        /// tagmanager.accounts.containers.environments.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4560,15 +4380,16 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
-        /// <summary>Default preview page url for the environment. @mutable
-        /// tagmanager.accounts.containers.environments.create @mutable
-        /// tagmanager.accounts.containers.environments.update</summary>
+        /// <summary>
+        /// Default preview page url for the environment. @mutable tagmanager.accounts.containers.environments.create
+        /// @mutable tagmanager.accounts.containers.environments.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a Google Tag Manager Folder.</summary>
     public class Folder : Google.Apis.Requests.IDirectResponseSchema
@@ -4581,8 +4402,10 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
         public virtual string ContainerId { get; set; }
 
-        /// <summary>The fingerprint of the GTM Folder as computed at storage time. This value is recomputed whenever
-        /// the folder is modified.</summary>
+        /// <summary>
+        /// The fingerprint of the GTM Folder as computed at storage time. This value is recomputed whenever the folder
+        /// is modified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
@@ -4590,14 +4413,16 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("folderId")]
         public virtual string FolderId { get; set; }
 
-        /// <summary>Folder display name. @mutable tagmanager.accounts.containers.folders.create @mutable
-        /// tagmanager.accounts.containers.folders.update</summary>
+        /// <summary>
+        /// Folder display name. @mutable tagmanager.accounts.containers.folders.create @mutable
+        /// tagmanager.accounts.containers.folders.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a Google Tag Manager Folder's contents.</summary>
     public class FolderEntities : Google.Apis.Requests.IDirectResponseSchema
@@ -4616,7 +4441,7 @@ namespace Google.Apis.TagManager.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>List AccountUsers Response.</summary>
     public class ListAccountUsersResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4627,7 +4452,7 @@ namespace Google.Apis.TagManager.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>List Accounts Response.</summary>
     public class ListAccountsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4638,7 +4463,7 @@ namespace Google.Apis.TagManager.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>List container versions response.</summary>
     public class ListContainerVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4653,7 +4478,7 @@ namespace Google.Apis.TagManager.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>List Containers Response.</summary>
     public class ListContainersResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4664,7 +4489,7 @@ namespace Google.Apis.TagManager.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>List Environments Response.</summary>
     public class ListEnvironmentsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4675,7 +4500,7 @@ namespace Google.Apis.TagManager.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>List Folders Response.</summary>
     public class ListFoldersResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4686,7 +4511,7 @@ namespace Google.Apis.TagManager.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>List Tags Response.</summary>
     public class ListTagsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4697,7 +4522,7 @@ namespace Google.Apis.TagManager.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>List triggers response.</summary>
     public class ListTriggersResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4708,7 +4533,7 @@ namespace Google.Apis.TagManager.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>List Variables Response.</summary>
     public class ListVariablesResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4719,7 +4544,7 @@ namespace Google.Apis.TagManager.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a Google Tag Manager Macro.</summary>
     public class Macro : Google.Apis.Requests.IDirectResponseSchema
@@ -4732,22 +4557,26 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
         public virtual string ContainerId { get; set; }
 
-        /// <summary>For mobile containers only: A list of rule IDs for disabling conditional macros; the macro is
-        /// enabled if one of the enabling rules is true while all the disabling rules are false. Treated as an
-        /// unordered set. @mutable tagmanager.accounts.containers.macros.create @mutable
-        /// tagmanager.accounts.containers.macros.update</summary>
+        /// <summary>
+        /// For mobile containers only: A list of rule IDs for disabling conditional macros; the macro is enabled if one
+        /// of the enabling rules is true while all the disabling rules are false. Treated as an unordered set. @mutable
+        /// tagmanager.accounts.containers.macros.create @mutable tagmanager.accounts.containers.macros.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disablingRuleId")]
         public virtual System.Collections.Generic.IList<string> DisablingRuleId { get; set; }
 
-        /// <summary>For mobile containers only: A list of rule IDs for enabling conditional macros; the macro is
-        /// enabled if one of the enabling rules is true while all the disabling rules are false. Treated as an
-        /// unordered set. @mutable tagmanager.accounts.containers.macros.create @mutable
-        /// tagmanager.accounts.containers.macros.update</summary>
+        /// <summary>
+        /// For mobile containers only: A list of rule IDs for enabling conditional macros; the macro is enabled if one
+        /// of the enabling rules is true while all the disabling rules are false. Treated as an unordered set. @mutable
+        /// tagmanager.accounts.containers.macros.create @mutable tagmanager.accounts.containers.macros.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablingRuleId")]
         public virtual System.Collections.Generic.IList<string> EnablingRuleId { get; set; }
 
-        /// <summary>The fingerprint of the GTM Macro as computed at storage time. This value is recomputed whenever the
-        /// macro is modified.</summary>
+        /// <summary>
+        /// The fingerprint of the GTM Macro as computed at storage time. This value is recomputed whenever the macro is
+        /// modified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
@@ -4755,18 +4584,24 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("macroId")]
         public virtual string MacroId { get; set; }
 
-        /// <summary>Macro display name. @mutable tagmanager.accounts.containers.macros.create @mutable
-        /// tagmanager.accounts.containers.macros.update</summary>
+        /// <summary>
+        /// Macro display name. @mutable tagmanager.accounts.containers.macros.create @mutable
+        /// tagmanager.accounts.containers.macros.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>User notes on how to apply this macro in the container. @mutable
-        /// tagmanager.accounts.containers.macros.create @mutable tagmanager.accounts.containers.macros.update</summary>
+        /// <summary>
+        /// User notes on how to apply this macro in the container. @mutable
+        /// tagmanager.accounts.containers.macros.create @mutable tagmanager.accounts.containers.macros.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
 
-        /// <summary>The macro's parameters. @mutable tagmanager.accounts.containers.macros.create @mutable
-        /// tagmanager.accounts.containers.macros.update</summary>
+        /// <summary>
+        /// The macro's parameters. @mutable tagmanager.accounts.containers.macros.create @mutable
+        /// tagmanager.accounts.containers.macros.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; }
 
@@ -4774,76 +4609,92 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parentFolderId")]
         public virtual string ParentFolderId { get; set; }
 
-        /// <summary>The end timestamp in milliseconds to schedule a macro. @mutable
-        /// tagmanager.accounts.containers.macros.create @mutable tagmanager.accounts.containers.macros.update</summary>
+        /// <summary>
+        /// The end timestamp in milliseconds to schedule a macro. @mutable tagmanager.accounts.containers.macros.create
+        /// @mutable tagmanager.accounts.containers.macros.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleEndMs")]
         public virtual System.Nullable<long> ScheduleEndMs { get; set; }
 
-        /// <summary>The start timestamp in milliseconds to schedule a macro. @mutable
-        /// tagmanager.accounts.containers.macros.create @mutable tagmanager.accounts.containers.macros.update</summary>
+        /// <summary>
+        /// The start timestamp in milliseconds to schedule a macro. @mutable
+        /// tagmanager.accounts.containers.macros.create @mutable tagmanager.accounts.containers.macros.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleStartMs")]
         public virtual System.Nullable<long> ScheduleStartMs { get; set; }
 
-        /// <summary>GTM Macro Type. @mutable tagmanager.accounts.containers.macros.create @mutable
-        /// tagmanager.accounts.containers.macros.update</summary>
+        /// <summary>
+        /// GTM Macro Type. @mutable tagmanager.accounts.containers.macros.create @mutable
+        /// tagmanager.accounts.containers.macros.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a Google Tag Manager Parameter.</summary>
     public class Parameter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The named key that uniquely identifies a parameter. Required for top-level parameters, as well as
-        /// map values. Ignored for list values. @mutable tagmanager.accounts.containers.variables.create @mutable
+        /// <summary>
+        /// The named key that uniquely identifies a parameter. Required for top-level parameters, as well as map
+        /// values. Ignored for list values. @mutable tagmanager.accounts.containers.variables.create @mutable
         /// tagmanager.accounts.containers.variables.update @mutable tagmanager.accounts.containers.triggers.create
         /// @mutable tagmanager.accounts.containers.triggers.update @mutable tagmanager.accounts.containers.tags.create
-        /// @mutable tagmanager.accounts.containers.tags.update</summary>
+        /// @mutable tagmanager.accounts.containers.tags.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
-        /// <summary>This list parameter's parameters (keys will be ignored). @mutable
+        /// <summary>
+        /// This list parameter's parameters (keys will be ignored). @mutable
         /// tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update
         /// @mutable tagmanager.accounts.containers.triggers.create @mutable
         /// tagmanager.accounts.containers.triggers.update @mutable tagmanager.accounts.containers.tags.create @mutable
-        /// tagmanager.accounts.containers.tags.update</summary>
+        /// tagmanager.accounts.containers.tags.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("list")]
         public virtual System.Collections.Generic.IList<Parameter> List { get; set; }
 
-        /// <summary>This map parameter's parameters (must have keys; keys must be unique). @mutable
+        /// <summary>
+        /// This map parameter's parameters (must have keys; keys must be unique). @mutable
         /// tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update
         /// @mutable tagmanager.accounts.containers.triggers.create @mutable
         /// tagmanager.accounts.containers.triggers.update @mutable tagmanager.accounts.containers.tags.create @mutable
-        /// tagmanager.accounts.containers.tags.update</summary>
+        /// tagmanager.accounts.containers.tags.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("map")]
         public virtual System.Collections.Generic.IList<Parameter> Map { get; set; }
 
-        /// <summary>The parameter type. Valid values are: - boolean: The value represents a boolean, represented as
-        /// 'true' or 'false' - integer: The value represents a 64-bit signed integer value, in base 10 - list: A list
-        /// of parameters should be specified - map: A map of parameters should be specified - template: The value
-        /// represents any text; this can include variable references (even variable references that might return non-
-        /// string types) - trigger_reference: The value represents a trigger, represented as the trigger id -
+        /// <summary>
+        /// The parameter type. Valid values are: - boolean: The value represents a boolean, represented as 'true' or
+        /// 'false' - integer: The value represents a 64-bit signed integer value, in base 10 - list: A list of
+        /// parameters should be specified - map: A map of parameters should be specified - template: The value
+        /// represents any text; this can include variable references (even variable references that might return
+        /// non-string types) - trigger_reference: The value represents a trigger, represented as the trigger id -
         /// tag_reference: The value represents a tag, represented as the tag name @mutable
         /// tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update
         /// @mutable tagmanager.accounts.containers.triggers.create @mutable
         /// tagmanager.accounts.containers.triggers.update @mutable tagmanager.accounts.containers.tags.create @mutable
-        /// tagmanager.accounts.containers.tags.update</summary>
+        /// tagmanager.accounts.containers.tags.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
-        /// <summary>A parameter's value (may contain variable references such as "{{myVariable}}") as appropriate to
-        /// the specified type. @mutable tagmanager.accounts.containers.variables.create @mutable
+        /// <summary>
+        /// A parameter's value (may contain variable references such as "{{myVariable}}") as appropriate to the
+        /// specified type. @mutable tagmanager.accounts.containers.variables.create @mutable
         /// tagmanager.accounts.containers.variables.update @mutable tagmanager.accounts.containers.triggers.create
         /// @mutable tagmanager.accounts.containers.triggers.update @mutable tagmanager.accounts.containers.tags.create
-        /// @mutable tagmanager.accounts.containers.tags.update</summary>
+        /// @mutable tagmanager.accounts.containers.tags.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Publish container version response.</summary>
     public class PublishContainerVersionResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4858,7 +4709,7 @@ namespace Google.Apis.TagManager.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a Google Tag Manager Rule.</summary>
     public class Rule : Google.Apis.Requests.IDirectResponseSchema
@@ -4867,8 +4718,10 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; }
 
-        /// <summary>The list of conditions that make up this rule (implicit AND between them). @mutable
-        /// tagmanager.accounts.containers.rules.create @mutable tagmanager.accounts.containers.rules.update</summary>
+        /// <summary>
+        /// The list of conditions that make up this rule (implicit AND between them). @mutable
+        /// tagmanager.accounts.containers.rules.create @mutable tagmanager.accounts.containers.rules.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual System.Collections.Generic.IList<Condition> Condition { get; set; }
 
@@ -4876,18 +4729,24 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
         public virtual string ContainerId { get; set; }
 
-        /// <summary>The fingerprint of the GTM Rule as computed at storage time. This value is recomputed whenever the
-        /// rule is modified.</summary>
+        /// <summary>
+        /// The fingerprint of the GTM Rule as computed at storage time. This value is recomputed whenever the rule is
+        /// modified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
-        /// <summary>Rule display name. @mutable tagmanager.accounts.containers.rules.create @mutable
-        /// tagmanager.accounts.containers.rules.update</summary>
+        /// <summary>
+        /// Rule display name. @mutable tagmanager.accounts.containers.rules.create @mutable
+        /// tagmanager.accounts.containers.rules.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>User notes on how to apply this rule in the container. @mutable
-        /// tagmanager.accounts.containers.rules.create @mutable tagmanager.accounts.containers.rules.update</summary>
+        /// <summary>
+        /// User notes on how to apply this rule in the container. @mutable tagmanager.accounts.containers.rules.create
+        /// @mutable tagmanager.accounts.containers.rules.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
 
@@ -4897,12 +4756,14 @@ namespace Google.Apis.TagManager.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class SetupTag : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If true, fire the main tag if and only if the setup tag fires successfully. If false, fire the main
-        /// tag regardless of setup tag firing status.</summary>
+        /// <summary>
+        /// If true, fire the main tag if and only if the setup tag fires successfully. If false, fire the main tag
+        /// regardless of setup tag firing status.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stopOnSetupFailure")]
         public virtual System.Nullable<bool> StopOnSetupFailure { get; set; }
 
@@ -4912,7 +4773,7 @@ namespace Google.Apis.TagManager.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a Google Tag Manager Tag.</summary>
     public class Tag : Google.Apis.Requests.IDirectResponseSchema
@@ -4921,14 +4782,17 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; }
 
-        /// <summary>Blocking rule IDs. If any of the listed rules evaluate to true, the tag will not fire. @mutable
-        /// tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update</summary>
+        /// <summary>
+        /// Blocking rule IDs. If any of the listed rules evaluate to true, the tag will not fire. @mutable
+        /// tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blockingRuleId")]
         public virtual System.Collections.Generic.IList<string> BlockingRuleId { get; set; }
 
-        /// <summary>Blocking trigger IDs. If any of the listed triggers evaluate to true, the tag will not fire.
-        /// @mutable tagmanager.accounts.containers.tags.create @mutable
-        /// tagmanager.accounts.containers.tags.update</summary>
+        /// <summary>
+        /// Blocking trigger IDs. If any of the listed triggers evaluate to true, the tag will not fire. @mutable
+        /// tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blockingTriggerId")]
         public virtual System.Collections.Generic.IList<string> BlockingTriggerId { get; set; }
 
@@ -4936,41 +4800,54 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
         public virtual string ContainerId { get; set; }
 
-        /// <summary>The fingerprint of the GTM Tag as computed at storage time. This value is recomputed whenever the
-        /// tag is modified.</summary>
+        /// <summary>
+        /// The fingerprint of the GTM Tag as computed at storage time. This value is recomputed whenever the tag is
+        /// modified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
-        /// <summary>Firing rule IDs. A tag will fire when any of the listed rules are true and all of its
-        /// blockingRuleIds (if any specified) are false. @mutable tagmanager.accounts.containers.tags.create @mutable
-        /// tagmanager.accounts.containers.tags.update</summary>
+        /// <summary>
+        /// Firing rule IDs. A tag will fire when any of the listed rules are true and all of its blockingRuleIds (if
+        /// any specified) are false. @mutable tagmanager.accounts.containers.tags.create @mutable
+        /// tagmanager.accounts.containers.tags.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firingRuleId")]
         public virtual System.Collections.Generic.IList<string> FiringRuleId { get; set; }
 
-        /// <summary>Firing trigger IDs. A tag will fire when any of the listed triggers are true and all of its
+        /// <summary>
+        /// Firing trigger IDs. A tag will fire when any of the listed triggers are true and all of its
         /// blockingTriggerIds (if any specified) are false. @mutable tagmanager.accounts.containers.tags.create
-        /// @mutable tagmanager.accounts.containers.tags.update</summary>
+        /// @mutable tagmanager.accounts.containers.tags.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firingTriggerId")]
         public virtual System.Collections.Generic.IList<string> FiringTriggerId { get; set; }
 
-        /// <summary>If set to true, this tag will only fire in the live environment (e.g. not in preview or debug
-        /// mode). @mutable tagmanager.accounts.containers.tags.create @mutable
-        /// tagmanager.accounts.containers.tags.update</summary>
+        /// <summary>
+        /// If set to true, this tag will only fire in the live environment (e.g. not in preview or debug mode).
+        /// @mutable tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("liveOnly")]
         public virtual System.Nullable<bool> LiveOnly { get; set; }
 
-        /// <summary>Tag display name. @mutable tagmanager.accounts.containers.tags.create @mutable
-        /// tagmanager.accounts.containers.tags.update</summary>
+        /// <summary>
+        /// Tag display name. @mutable tagmanager.accounts.containers.tags.create @mutable
+        /// tagmanager.accounts.containers.tags.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>User notes on how to apply this tag in the container. @mutable
-        /// tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update</summary>
+        /// <summary>
+        /// User notes on how to apply this tag in the container. @mutable tagmanager.accounts.containers.tags.create
+        /// @mutable tagmanager.accounts.containers.tags.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
 
-        /// <summary>The tag's parameters. @mutable tagmanager.accounts.containers.tags.create @mutable
-        /// tagmanager.accounts.containers.tags.update</summary>
+        /// <summary>
+        /// The tag's parameters. @mutable tagmanager.accounts.containers.tags.create @mutable
+        /// tagmanager.accounts.containers.tags.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; }
 
@@ -4978,25 +4855,32 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parentFolderId")]
         public virtual string ParentFolderId { get; set; }
 
-        /// <summary>True if the tag is paused. @mutable tagmanager.accounts.containers.tags.create @mutable
-        /// tagmanager.accounts.containers.tags.update</summary>
+        /// <summary>
+        /// True if the tag is paused. @mutable tagmanager.accounts.containers.tags.create @mutable
+        /// tagmanager.accounts.containers.tags.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paused")]
         public virtual System.Nullable<bool> Paused { get; set; }
 
-        /// <summary>User defined numeric priority of the tag. Tags are fired asynchronously in order of priority. Tags
-        /// with higher numeric value fire first. A tag's priority can be a positive or negative value. The default
-        /// value is 0. @mutable tagmanager.accounts.containers.tags.create @mutable
-        /// tagmanager.accounts.containers.tags.update</summary>
+        /// <summary>
+        /// User defined numeric priority of the tag. Tags are fired asynchronously in order of priority. Tags with
+        /// higher numeric value fire first. A tag's priority can be a positive or negative value. The default value is
+        /// 0. @mutable tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual Parameter Priority { get; set; }
 
-        /// <summary>The end timestamp in milliseconds to schedule a tag. @mutable
-        /// tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update</summary>
+        /// <summary>
+        /// The end timestamp in milliseconds to schedule a tag. @mutable tagmanager.accounts.containers.tags.create
+        /// @mutable tagmanager.accounts.containers.tags.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleEndMs")]
         public virtual System.Nullable<long> ScheduleEndMs { get; set; }
 
-        /// <summary>The start timestamp in milliseconds to schedule a tag. @mutable
-        /// tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update</summary>
+        /// <summary>
+        /// The start timestamp in milliseconds to schedule a tag. @mutable tagmanager.accounts.containers.tags.create
+        /// @mutable tagmanager.accounts.containers.tags.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleStartMs")]
         public virtual System.Nullable<long> ScheduleStartMs { get; set; }
 
@@ -5016,19 +4900,23 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("teardownTag")]
         public virtual System.Collections.Generic.IList<TeardownTag> TeardownTag { get; set; }
 
-        /// <summary>GTM Tag Type. @mutable tagmanager.accounts.containers.tags.create @mutable
-        /// tagmanager.accounts.containers.tags.update</summary>
+        /// <summary>
+        /// GTM Tag Type. @mutable tagmanager.accounts.containers.tags.create @mutable
+        /// tagmanager.accounts.containers.tags.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class TeardownTag : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If true, fire the teardown tag if and only if the main tag fires successfully. If false, fire the
-        /// teardown tag regardless of main tag firing status.</summary>
+        /// <summary>
+        /// If true, fire the teardown tag if and only if the main tag fires successfully. If false, fire the teardown
+        /// tag regardless of main tag firing status.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stopTeardownOnFailure")]
         public virtual System.Nullable<bool> StopTeardownOnFailure { get; set; }
 
@@ -5038,7 +4926,7 @@ namespace Google.Apis.TagManager.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a Google Tag Manager Trigger</summary>
     public class Trigger : Google.Apis.Requests.IDirectResponseSchema
@@ -5047,15 +4935,19 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; }
 
-        /// <summary>Used in the case of auto event tracking. @mutable tagmanager.accounts.containers.triggers.create
-        /// @mutable tagmanager.accounts.containers.triggers.update</summary>
+        /// <summary>
+        /// Used in the case of auto event tracking. @mutable tagmanager.accounts.containers.triggers.create @mutable
+        /// tagmanager.accounts.containers.triggers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoEventFilter")]
         public virtual System.Collections.Generic.IList<Condition> AutoEventFilter { get; set; }
 
-        /// <summary>Whether or not we should only fire tags if the form submit or link click event is not cancelled by
-        /// some other event handler (e.g. because of validation). Only valid for Form Submission and Link Click
-        /// triggers. @mutable tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update</summary>
+        /// <summary>
+        /// Whether or not we should only fire tags if the form submit or link click event is not cancelled by some
+        /// other event handler (e.g. because of validation). Only valid for Form Submission and Link Click triggers.
+        /// @mutable tagmanager.accounts.containers.triggers.create @mutable
+        /// tagmanager.accounts.containers.triggers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("checkValidation")]
         public virtual Parameter CheckValidation { get; set; }
 
@@ -5063,74 +4955,90 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
         public virtual string ContainerId { get; set; }
 
-        /// <summary>A visibility trigger minimum continuous visible time (in milliseconds). Only valid for AMP
-        /// Visibility trigger. @mutable tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update</summary>
+        /// <summary>
+        /// A visibility trigger minimum continuous visible time (in milliseconds). Only valid for AMP Visibility
+        /// trigger. @mutable tagmanager.accounts.containers.triggers.create @mutable
+        /// tagmanager.accounts.containers.triggers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("continuousTimeMinMilliseconds")]
         public virtual Parameter ContinuousTimeMinMilliseconds { get; set; }
 
-        /// <summary>Used in the case of custom event, which is fired iff all Conditions are true. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update</summary>
+        /// <summary>
+        /// Used in the case of custom event, which is fired iff all Conditions are true. @mutable
+        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customEventFilter")]
         public virtual System.Collections.Generic.IList<Condition> CustomEventFilter { get; set; }
 
-        /// <summary>Name of the GTM event that is fired. Only valid for Timer triggers. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update</summary>
+        /// <summary>
+        /// Name of the GTM event that is fired. Only valid for Timer triggers. @mutable
+        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventName")]
         public virtual Parameter EventName { get; set; }
 
-        /// <summary>The trigger will only fire iff all Conditions are true. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update</summary>
+        /// <summary>
+        /// The trigger will only fire iff all Conditions are true. @mutable
+        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual System.Collections.Generic.IList<Condition> Filter { get; set; }
 
-        /// <summary>The fingerprint of the GTM Trigger as computed at storage time. This value is recomputed whenever
-        /// the trigger is modified.</summary>
+        /// <summary>
+        /// The fingerprint of the GTM Trigger as computed at storage time. This value is recomputed whenever the
+        /// trigger is modified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
-        /// <summary>List of integer percentage values for scroll triggers. The trigger will fire when each percentage
-        /// is reached when the view is scrolled horizontally. Only valid for AMP scroll triggers. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update</summary>
+        /// <summary>
+        /// List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached
+        /// when the view is scrolled horizontally. Only valid for AMP scroll triggers. @mutable
+        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("horizontalScrollPercentageList")]
         public virtual Parameter HorizontalScrollPercentageList { get; set; }
 
-        /// <summary>Time between triggering recurring Timer Events (in milliseconds). Only valid for Timer triggers.
-        /// @mutable tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update</summary>
+        /// <summary>
+        /// Time between triggering recurring Timer Events (in milliseconds). Only valid for Timer triggers. @mutable
+        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interval")]
         public virtual Parameter Interval { get; set; }
 
-        /// <summary>Time between Timer Events to fire (in seconds). Only valid for AMP Timer trigger. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update</summary>
+        /// <summary>
+        /// Time between Timer Events to fire (in seconds). Only valid for AMP Timer trigger. @mutable
+        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intervalSeconds")]
         public virtual Parameter IntervalSeconds { get; set; }
 
-        /// <summary>Limit of the number of GTM events this Timer Trigger will fire. If no limit is set, we will
-        /// continue to fire GTM events until the user leaves the page. Only valid for Timer triggers. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update</summary>
+        /// <summary>
+        /// Limit of the number of GTM events this Timer Trigger will fire. If no limit is set, we will continue to fire
+        /// GTM events until the user leaves the page. Only valid for Timer triggers. @mutable
+        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual Parameter Limit { get; set; }
 
-        /// <summary>Max time to fire Timer Events (in seconds). Only valid for AMP Timer trigger. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update</summary>
+        /// <summary>
+        /// Max time to fire Timer Events (in seconds). Only valid for AMP Timer trigger. @mutable
+        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTimerLengthSeconds")]
         public virtual Parameter MaxTimerLengthSeconds { get; set; }
 
-        /// <summary>Trigger display name. @mutable tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update</summary>
+        /// <summary>
+        /// Trigger display name. @mutable tagmanager.accounts.containers.triggers.create @mutable
+        /// tagmanager.accounts.containers.triggers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Additional parameters. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable
-        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
+        /// <summary>
+        /// Additional parameters. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; }
 
@@ -5138,15 +5046,18 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parentFolderId")]
         public virtual string ParentFolderId { get; set; }
 
-        /// <summary>A click trigger CSS selector (i.e. "a", "button" etc.). Only valid for AMP Click trigger. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update</summary>
+        /// <summary>
+        /// A click trigger CSS selector (i.e. "a", "button" etc.). Only valid for AMP Click trigger. @mutable
+        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selector")]
         public virtual Parameter Selector { get; set; }
 
-        /// <summary>A visibility trigger minimum total visible time (in milliseconds). Only valid for AMP Visibility
-        /// trigger. @mutable tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update</summary>
+        /// <summary>
+        /// A visibility trigger minimum total visible time (in milliseconds). Only valid for AMP Visibility trigger.
+        /// @mutable tagmanager.accounts.containers.triggers.create @mutable
+        /// tagmanager.accounts.containers.triggers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalTimeMinMilliseconds")]
         public virtual Parameter TotalTimeMinMilliseconds { get; set; }
 
@@ -5154,69 +5065,80 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("triggerId")]
         public virtual string TriggerId { get; set; }
 
-        /// <summary>Defines the data layer event that causes this trigger. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update</summary>
+        /// <summary>
+        /// Defines the data layer event that causes this trigger. @mutable
+        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
-        /// <summary>Globally unique id of the trigger that auto-generates this (a Form Submit, Link Click or Timer
-        /// listener) if any. Used to make incompatible auto-events work together with trigger filtering based on
-        /// trigger ids. This value is populated during output generation since the tags implied by triggers don't exist
-        /// until then. Only valid for Form Submit, Link Click and Timer triggers. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update</summary>
+        /// <summary>
+        /// Globally unique id of the trigger that auto-generates this (a Form Submit, Link Click or Timer listener) if
+        /// any. Used to make incompatible auto-events work together with trigger filtering based on trigger ids. This
+        /// value is populated during output generation since the tags implied by triggers don't exist until then. Only
+        /// valid for Form Submit, Link Click and Timer triggers. @mutable
+        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uniqueTriggerId")]
         public virtual Parameter UniqueTriggerId { get; set; }
 
-        /// <summary>List of integer percentage values for scroll triggers. The trigger will fire when each percentage
-        /// is reached when the view is scrolled vertically. Only valid for AMP scroll triggers. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update</summary>
+        /// <summary>
+        /// List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached
+        /// when the view is scrolled vertically. Only valid for AMP scroll triggers. @mutable
+        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verticalScrollPercentageList")]
         public virtual Parameter VerticalScrollPercentageList { get; set; }
 
-        /// <summary>A visibility trigger CSS selector (i.e. "#id"). Only valid for AMP Visibility trigger. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update</summary>
+        /// <summary>
+        /// A visibility trigger CSS selector (i.e. "#id"). Only valid for AMP Visibility trigger. @mutable
+        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibilitySelector")]
         public virtual Parameter VisibilitySelector { get; set; }
 
-        /// <summary>A visibility trigger maximum percent visibility. Only valid for AMP Visibility trigger. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update</summary>
+        /// <summary>
+        /// A visibility trigger maximum percent visibility. Only valid for AMP Visibility trigger. @mutable
+        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visiblePercentageMax")]
         public virtual Parameter VisiblePercentageMax { get; set; }
 
-        /// <summary>A visibility trigger minimum percent visibility. Only valid for AMP Visibility trigger. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update</summary>
+        /// <summary>
+        /// A visibility trigger minimum percent visibility. Only valid for AMP Visibility trigger. @mutable
+        /// tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visiblePercentageMin")]
         public virtual Parameter VisiblePercentageMin { get; set; }
 
-        /// <summary>Whether or not we should delay the form submissions or link opening until all of the tags have
-        /// fired (by preventing the default action and later simulating the default action). Only valid for Form
-        /// Submission and Link Click triggers. @mutable tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update</summary>
+        /// <summary>
+        /// Whether or not we should delay the form submissions or link opening until all of the tags have fired (by
+        /// preventing the default action and later simulating the default action). Only valid for Form Submission and
+        /// Link Click triggers. @mutable tagmanager.accounts.containers.triggers.create @mutable
+        /// tagmanager.accounts.containers.triggers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waitForTags")]
         public virtual Parameter WaitForTags { get; set; }
 
-        /// <summary>How long to wait (in milliseconds) for tags to fire when 'waits_for_tags' above evaluates to true.
-        /// Only valid for Form Submission and Link Click triggers. @mutable
-        /// tagmanager.accounts.containers.triggers.create @mutable
-        /// tagmanager.accounts.containers.triggers.update</summary>
+        /// <summary>
+        /// How long to wait (in milliseconds) for tags to fire when 'waits_for_tags' above evaluates to true. Only
+        /// valid for Form Submission and Link Click triggers. @mutable tagmanager.accounts.containers.triggers.create
+        /// @mutable tagmanager.accounts.containers.triggers.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waitForTagsTimeout")]
         public virtual Parameter WaitForTagsTimeout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a user's permissions to an account and its container.</summary>
     public class UserAccess : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>GTM Account access permissions. @mutable tagmanager.accounts.permissions.create @mutable
-        /// tagmanager.accounts.permissions.update</summary>
+        /// <summary>
+        /// GTM Account access permissions. @mutable tagmanager.accounts.permissions.create @mutable
+        /// tagmanager.accounts.permissions.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountAccess")]
         public virtual AccountAccess AccountAccess { get; set; }
 
@@ -5224,8 +5146,10 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; }
 
-        /// <summary>GTM Container access permissions. @mutable tagmanager.accounts.permissions.create @mutable
-        /// tagmanager.accounts.permissions.update</summary>
+        /// <summary>
+        /// GTM Container access permissions. @mutable tagmanager.accounts.permissions.create @mutable
+        /// tagmanager.accounts.permissions.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerAccess")]
         public virtual System.Collections.Generic.IList<ContainerAccess> ContainerAccess { get; set; }
 
@@ -5239,7 +5163,7 @@ namespace Google.Apis.TagManager.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a Google Tag Manager Variable.</summary>
     public class Variable : Google.Apis.Requests.IDirectResponseSchema
@@ -5252,38 +5176,49 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
         public virtual string ContainerId { get; set; }
 
-        /// <summary>For mobile containers only: A list of trigger IDs for disabling conditional variables; the variable
-        /// is enabled if one of the enabling trigger is true while all the disabling trigger are false. Treated as an
+        /// <summary>
+        /// For mobile containers only: A list of trigger IDs for disabling conditional variables; the variable is
+        /// enabled if one of the enabling trigger is true while all the disabling trigger are false. Treated as an
         /// unordered set. @mutable tagmanager.accounts.containers.variables.create @mutable
-        /// tagmanager.accounts.containers.variables.update</summary>
+        /// tagmanager.accounts.containers.variables.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disablingTriggerId")]
         public virtual System.Collections.Generic.IList<string> DisablingTriggerId { get; set; }
 
-        /// <summary>For mobile containers only: A list of trigger IDs for enabling conditional variables; the variable
-        /// is enabled if one of the enabling triggers is true while all the disabling triggers are false. Treated as an
+        /// <summary>
+        /// For mobile containers only: A list of trigger IDs for enabling conditional variables; the variable is
+        /// enabled if one of the enabling triggers is true while all the disabling triggers are false. Treated as an
         /// unordered set. @mutable tagmanager.accounts.containers.variables.create @mutable
-        /// tagmanager.accounts.containers.variables.update</summary>
+        /// tagmanager.accounts.containers.variables.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablingTriggerId")]
         public virtual System.Collections.Generic.IList<string> EnablingTriggerId { get; set; }
 
-        /// <summary>The fingerprint of the GTM Variable as computed at storage time. This value is recomputed whenever
-        /// the variable is modified.</summary>
+        /// <summary>
+        /// The fingerprint of the GTM Variable as computed at storage time. This value is recomputed whenever the
+        /// variable is modified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
-        /// <summary>Variable display name. @mutable tagmanager.accounts.containers.variables.create @mutable
-        /// tagmanager.accounts.containers.variables.update</summary>
+        /// <summary>
+        /// Variable display name. @mutable tagmanager.accounts.containers.variables.create @mutable
+        /// tagmanager.accounts.containers.variables.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>User notes on how to apply this variable in the container. @mutable
-        /// tagmanager.accounts.containers.variables.create @mutable
-        /// tagmanager.accounts.containers.variables.update</summary>
+        /// <summary>
+        /// User notes on how to apply this variable in the container. @mutable
+        /// tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
 
-        /// <summary>The variable's parameters. @mutable tagmanager.accounts.containers.variables.create @mutable
-        /// tagmanager.accounts.containers.variables.update</summary>
+        /// <summary>
+        /// The variable's parameters. @mutable tagmanager.accounts.containers.variables.create @mutable
+        /// tagmanager.accounts.containers.variables.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; }
 
@@ -5291,20 +5226,24 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parentFolderId")]
         public virtual string ParentFolderId { get; set; }
 
-        /// <summary>The end timestamp in milliseconds to schedule a variable. @mutable
-        /// tagmanager.accounts.containers.variables.create @mutable
-        /// tagmanager.accounts.containers.variables.update</summary>
+        /// <summary>
+        /// The end timestamp in milliseconds to schedule a variable. @mutable
+        /// tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleEndMs")]
         public virtual System.Nullable<long> ScheduleEndMs { get; set; }
 
-        /// <summary>The start timestamp in milliseconds to schedule a variable. @mutable
-        /// tagmanager.accounts.containers.variables.create @mutable
-        /// tagmanager.accounts.containers.variables.update</summary>
+        /// <summary>
+        /// The start timestamp in milliseconds to schedule a variable. @mutable
+        /// tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleStartMs")]
         public virtual System.Nullable<long> ScheduleStartMs { get; set; }
 
-        /// <summary>GTM Variable Type. @mutable tagmanager.accounts.containers.variables.create @mutable
-        /// tagmanager.accounts.containers.variables.update</summary>
+        /// <summary>
+        /// GTM Variable Type. @mutable tagmanager.accounts.containers.variables.create @mutable
+        /// tagmanager.accounts.containers.variables.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 

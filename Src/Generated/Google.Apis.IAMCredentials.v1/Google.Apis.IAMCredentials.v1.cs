@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -62,7 +67,6 @@ namespace Google.Apis.IAMCredentials.v1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the IAM Service Account Credentials API.</summary>
@@ -70,10 +74,7 @@ namespace Google.Apis.IAMCredentials.v1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
-
-
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -97,6 +98,7 @@ namespace Google.Apis.IAMCredentials.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -116,9 +118,11 @@ namespace Google.Apis.IAMCredentials.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -132,8 +136,10 @@ namespace Google.Apis.IAMCredentials.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -145,8 +151,10 @@ namespace Google.Apis.IAMCredentials.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -162,7 +170,6 @@ namespace Google.Apis.IAMCredentials.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -267,7 +274,6 @@ namespace Google.Apis.IAMCredentials.v1
         {
             this.service = service;
             ServiceAccounts = new ServiceAccountsResource(service);
-
         }
 
         /// <summary>Gets the ServiceAccounts resource.</summary>
@@ -285,15 +291,15 @@ namespace Google.Apis.IAMCredentials.v1
             public ServiceAccountsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Generates an OAuth 2.0 access token for a service account.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. The resource name of the service account for which the credentials are requested, in
-            /// the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is
-            /// required; replacing it with a project ID is invalid.</param>
+            /// <param name="name">
+            /// Required. The resource name of the service account for which the credentials are requested, in the
+            /// following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character
+            /// is required; replacing it with a project ID is invalid.
+            /// </param>
             public virtual GenerateAccessTokenRequest GenerateAccessToken(Google.Apis.IAMCredentials.v1.Data.GenerateAccessTokenRequest body, string name)
             {
                 return new GenerateAccessTokenRequest(service, body, name);
@@ -310,13 +316,13 @@ namespace Google.Apis.IAMCredentials.v1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The resource name of the service account for which the credentials are requested,
-                /// in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
-                /// character is required; replacing it with a project ID is invalid.</summary>
+                /// <summary>
+                /// Required. The resource name of the service account for which the credentials are requested, in the
+                /// following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
+                /// character is required; replacing it with a project ID is invalid.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.IAMCredentials.v1.Data.GenerateAccessTokenRequest Body { get; set; }
@@ -337,7 +343,6 @@ namespace Google.Apis.IAMCredentials.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -347,14 +352,15 @@ namespace Google.Apis.IAMCredentials.v1
                         Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Generates an OpenID Connect ID token for a service account.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. The resource name of the service account for which the credentials are requested, in
-            /// the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is
-            /// required; replacing it with a project ID is invalid.</param>
+            /// <param name="name">
+            /// Required. The resource name of the service account for which the credentials are requested, in the
+            /// following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character
+            /// is required; replacing it with a project ID is invalid.
+            /// </param>
             public virtual GenerateIdTokenRequest GenerateIdToken(Google.Apis.IAMCredentials.v1.Data.GenerateIdTokenRequest body, string name)
             {
                 return new GenerateIdTokenRequest(service, body, name);
@@ -371,13 +377,13 @@ namespace Google.Apis.IAMCredentials.v1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The resource name of the service account for which the credentials are requested,
-                /// in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
-                /// character is required; replacing it with a project ID is invalid.</summary>
+                /// <summary>
+                /// Required. The resource name of the service account for which the credentials are requested, in the
+                /// following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
+                /// character is required; replacing it with a project ID is invalid.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.IAMCredentials.v1.Data.GenerateIdTokenRequest Body { get; set; }
@@ -398,7 +404,6 @@ namespace Google.Apis.IAMCredentials.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -408,14 +413,15 @@ namespace Google.Apis.IAMCredentials.v1
                         Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Signs a blob using a service account's system-managed private key.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. The resource name of the service account for which the credentials are requested, in
-            /// the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is
-            /// required; replacing it with a project ID is invalid.</param>
+            /// <param name="name">
+            /// Required. The resource name of the service account for which the credentials are requested, in the
+            /// following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character
+            /// is required; replacing it with a project ID is invalid.
+            /// </param>
             public virtual SignBlobRequest SignBlob(Google.Apis.IAMCredentials.v1.Data.SignBlobRequest body, string name)
             {
                 return new SignBlobRequest(service, body, name);
@@ -432,13 +438,13 @@ namespace Google.Apis.IAMCredentials.v1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The resource name of the service account for which the credentials are requested,
-                /// in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
-                /// character is required; replacing it with a project ID is invalid.</summary>
+                /// <summary>
+                /// Required. The resource name of the service account for which the credentials are requested, in the
+                /// following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
+                /// character is required; replacing it with a project ID is invalid.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.IAMCredentials.v1.Data.SignBlobRequest Body { get; set; }
@@ -459,7 +465,6 @@ namespace Google.Apis.IAMCredentials.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -469,14 +474,15 @@ namespace Google.Apis.IAMCredentials.v1
                         Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Signs a JWT using a service account's system-managed private key.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. The resource name of the service account for which the credentials are requested, in
-            /// the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is
-            /// required; replacing it with a project ID is invalid.</param>
+            /// <param name="name">
+            /// Required. The resource name of the service account for which the credentials are requested, in the
+            /// following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character
+            /// is required; replacing it with a project ID is invalid.
+            /// </param>
             public virtual SignJwtRequest SignJwt(Google.Apis.IAMCredentials.v1.Data.SignJwtRequest body, string name)
             {
                 return new SignJwtRequest(service, body, name);
@@ -493,13 +499,13 @@ namespace Google.Apis.IAMCredentials.v1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The resource name of the service account for which the credentials are requested,
-                /// in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
-                /// character is required; replacing it with a project ID is invalid.</summary>
+                /// <summary>
+                /// Required. The resource name of the service account for which the credentials are requested, in the
+                /// following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
+                /// character is required; replacing it with a project ID is invalid.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.IAMCredentials.v1.Data.SignJwtRequest Body { get; set; }
@@ -520,7 +526,6 @@ namespace Google.Apis.IAMCredentials.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -530,43 +535,46 @@ namespace Google.Apis.IAMCredentials.v1
                         Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
                     });
                 }
-
             }
         }
     }
 }
-
 namespace Google.Apis.IAMCredentials.v1.Data
-{    
-
+{
     public class GenerateAccessTokenRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The sequence of service accounts in a delegation chain. Each service account must be granted the
+        /// <summary>
+        /// The sequence of service accounts in a delegation chain. Each service account must be granted the
         /// `roles/iam.serviceAccountTokenCreator` role on its next service account in the chain. The last service
         /// account in the chain must be granted the `roles/iam.serviceAccountTokenCreator` role on the service account
         /// that is specified in the `name` field of the request. The delegates must have the following format:
         /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing
-        /// it with a project ID is invalid.</summary>
+        /// it with a project ID is invalid.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delegates")]
         public virtual System.Collections.Generic.IList<string> Delegates { get; set; }
 
-        /// <summary>The desired lifetime duration of the access token in seconds. By default, the maximum allowed value
-        /// is 1 hour. To set a lifetime of up to 12 hours, you can add the service account as an allowed value in an
+        /// <summary>
+        /// The desired lifetime duration of the access token in seconds. By default, the maximum allowed value is 1
+        /// hour. To set a lifetime of up to 12 hours, you can add the service account as an allowed value in an
         /// Organization Policy that enforces the `constraints/iam.allowServiceAccountCredentialLifetimeExtension`
         /// constraint. See detailed instructions at https://cloud.google.com/iam/help/credentials/lifetime If a value
-        /// is not specified, the token's lifetime will be set to a default value of 1 hour.</summary>
+        /// is not specified, the token's lifetime will be set to a default value of 1 hour.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifetime")]
         public virtual object Lifetime { get; set; }
 
-        /// <summary>Required. Code to identify the scopes to be included in the OAuth 2.0 access token. See
+        /// <summary>
+        /// Required. Code to identify the scopes to be included in the OAuth 2.0 access token. See
         /// https://developers.google.com/identity/protocols/googlescopes for more information. At least one value
-        /// required.</summary>
+        /// required.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual System.Collections.Generic.IList<string> Scope { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class GenerateAccessTokenResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -580,32 +588,37 @@ namespace Google.Apis.IAMCredentials.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class GenerateIdTokenRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The audience for the token, such as the API or account that this token grants access
-        /// to.</summary>
+        /// <summary>
+        /// Required. The audience for the token, such as the API or account that this token grants access to.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audience")]
         public virtual string Audience { get; set; }
 
-        /// <summary>The sequence of service accounts in a delegation chain. Each service account must be granted the
+        /// <summary>
+        /// The sequence of service accounts in a delegation chain. Each service account must be granted the
         /// `roles/iam.serviceAccountTokenCreator` role on its next service account in the chain. The last service
         /// account in the chain must be granted the `roles/iam.serviceAccountTokenCreator` role on the service account
         /// that is specified in the `name` field of the request. The delegates must have the following format:
         /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing
-        /// it with a project ID is invalid.</summary>
+        /// it with a project ID is invalid.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delegates")]
         public virtual System.Collections.Generic.IList<string> Delegates { get; set; }
 
-        /// <summary>Include the service account email in the token. If set to `true`, the token will contain `email`
-        /// and `email_verified` claims.</summary>
+        /// <summary>
+        /// Include the service account email in the token. If set to `true`, the token will contain `email` and
+        /// `email_verified` claims.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeEmail")]
         public virtual System.Nullable<bool> IncludeEmail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class GenerateIdTokenResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -615,16 +628,18 @@ namespace Google.Apis.IAMCredentials.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class SignBlobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The sequence of service accounts in a delegation chain. Each service account must be granted the
+        /// <summary>
+        /// The sequence of service accounts in a delegation chain. Each service account must be granted the
         /// `roles/iam.serviceAccountTokenCreator` role on its next service account in the chain. The last service
         /// account in the chain must be granted the `roles/iam.serviceAccountTokenCreator` role on the service account
         /// that is specified in the `name` field of the request. The delegates must have the following format:
         /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing
-        /// it with a project ID is invalid.</summary>
+        /// it with a project ID is invalid.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delegates")]
         public virtual System.Collections.Generic.IList<string> Delegates { get; set; }
 
@@ -634,66 +649,78 @@ namespace Google.Apis.IAMCredentials.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class SignBlobResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the key used to sign the blob. The key used for signing will remain valid for at least 12
-        /// hours after the blob is signed. To verify the signature, you can retrieve the public key in several formats
-        /// from the following endpoints: - RSA public key wrapped in an X.509 v3 certificate:
+        /// <summary>
+        /// The ID of the key used to sign the blob. The key used for signing will remain valid for at least 12 hours
+        /// after the blob is signed. To verify the signature, you can retrieve the public key in several formats from
+        /// the following endpoints: - RSA public key wrapped in an X.509 v3 certificate:
         /// `https://www.googleapis.com/service_accounts/v1/metadata/x509/{ACCOUNT_EMAIL}` - Raw key in JSON format:
         /// `https://www.googleapis.com/service_accounts/v1/metadata/raw/{ACCOUNT_EMAIL}` - JSON Web Key (JWK):
-        /// `https://www.googleapis.com/service_accounts/v1/metadata/jwk/{ACCOUNT_EMAIL}`</summary>
+        /// `https://www.googleapis.com/service_accounts/v1/metadata/jwk/{ACCOUNT_EMAIL}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyId")]
         public virtual string KeyId { get; set; }
 
-        /// <summary>The signature for the blob. Does not include the original blob. After the key pair referenced by
-        /// the `key_id` response field expires, Google no longer exposes the public key that can be used to verify the
-        /// blob. As a result, the receiver can no longer verify the signature.</summary>
+        /// <summary>
+        /// The signature for the blob. Does not include the original blob. After the key pair referenced by the
+        /// `key_id` response field expires, Google no longer exposes the public key that can be used to verify the
+        /// blob. As a result, the receiver can no longer verify the signature.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signedBlob")]
         public virtual string SignedBlob { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class SignJwtRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The sequence of service accounts in a delegation chain. Each service account must be granted the
+        /// <summary>
+        /// The sequence of service accounts in a delegation chain. Each service account must be granted the
         /// `roles/iam.serviceAccountTokenCreator` role on its next service account in the chain. The last service
         /// account in the chain must be granted the `roles/iam.serviceAccountTokenCreator` role on the service account
         /// that is specified in the `name` field of the request. The delegates must have the following format:
         /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing
-        /// it with a project ID is invalid.</summary>
+        /// it with a project ID is invalid.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delegates")]
         public virtual System.Collections.Generic.IList<string> Delegates { get; set; }
 
-        /// <summary>Required. The JWT payload to sign. Must be a serialized JSON object that contains a JWT Claims Set.
-        /// For example: `{"sub": "user@example.com", "iat": 313435}` If the JWT Claims Set contains an expiration time
+        /// <summary>
+        /// Required. The JWT payload to sign. Must be a serialized JSON object that contains a JWT Claims Set. For
+        /// example: `{"sub": "user@example.com", "iat": 313435}` If the JWT Claims Set contains an expiration time
         /// (`exp`) claim, it must be an integer timestamp that is not in the past and no more than 12 hours in the
-        /// future.</summary>
+        /// future.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual string Payload { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class SignJwtResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the key used to sign the JWT. The key used for signing will remain valid for at least 12
-        /// hours after the JWT is signed. To verify the signature, you can retrieve the public key in several formats
-        /// from the following endpoints: - RSA public key wrapped in an X.509 v3 certificate:
+        /// <summary>
+        /// The ID of the key used to sign the JWT. The key used for signing will remain valid for at least 12 hours
+        /// after the JWT is signed. To verify the signature, you can retrieve the public key in several formats from
+        /// the following endpoints: - RSA public key wrapped in an X.509 v3 certificate:
         /// `https://www.googleapis.com/service_accounts/v1/metadata/x509/{ACCOUNT_EMAIL}` - Raw key in JSON format:
         /// `https://www.googleapis.com/service_accounts/v1/metadata/raw/{ACCOUNT_EMAIL}` - JSON Web Key (JWK):
-        /// `https://www.googleapis.com/service_accounts/v1/metadata/jwk/{ACCOUNT_EMAIL}`</summary>
+        /// `https://www.googleapis.com/service_accounts/v1/metadata/jwk/{ACCOUNT_EMAIL}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyId")]
         public virtual string KeyId { get; set; }
 
-        /// <summary>The signed JWT. Contains the automatically generated header; the client-supplied payload; and the
-        /// signature, which is generated using the key referenced by the `kid` field in the header. After the key pair
-        /// referenced by the `key_id` response field expires, Google no longer exposes the public key that can be used
-        /// to verify the JWT. As a result, the receiver can no longer verify the signature.</summary>
+        /// <summary>
+        /// The signed JWT. Contains the automatically generated header; the client-supplied payload; and the signature,
+        /// which is generated using the key referenced by the `kid` field in the header. After the key pair referenced
+        /// by the `key_id` response field expires, Google no longer exposes the public key that can be used to verify
+        /// the JWT. As a result, the receiver can no longer verify the signature.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signedJwt")]
         public virtual string SignedJwt { get; set; }
 

@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -67,7 +72,6 @@ namespace Google.Apis.Testing.v1
 
             /// <summary>View your data across Google Cloud Platform services</summary>
             public static string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Testing API.</summary>
@@ -78,10 +82,7 @@ namespace Google.Apis.Testing.v1
 
             /// <summary>View your data across Google Cloud Platform services</summary>
             public const string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
-
         }
-
-
 
         /// <summary>Gets the ApplicationDetailService resource.</summary>
         public virtual ApplicationDetailServiceResource ApplicationDetailService { get; }
@@ -111,6 +112,7 @@ namespace Google.Apis.Testing.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -130,9 +132,11 @@ namespace Google.Apis.Testing.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -146,8 +150,10 @@ namespace Google.Apis.Testing.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -159,8 +165,10 @@ namespace Google.Apis.Testing.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -176,7 +184,6 @@ namespace Google.Apis.Testing.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -280,9 +287,7 @@ namespace Google.Apis.Testing.v1
         public ApplicationDetailServiceResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Gets the details of an Android application APK.</summary>
         /// <param name="body">The body of the request.</param>
@@ -300,8 +305,6 @@ namespace Google.Apis.Testing.v1
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Testing.v1.Data.FileReference Body { get; set; }
@@ -322,9 +325,7 @@ namespace Google.Apis.Testing.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
     }
 
@@ -341,7 +342,6 @@ namespace Google.Apis.Testing.v1
         {
             this.service = service;
             TestMatrices = new TestMatricesResource(service);
-
         }
 
         /// <summary>Gets the TestMatrices resource.</summary>
@@ -359,28 +359,27 @@ namespace Google.Apis.Testing.v1
             public TestMatricesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Cancels unfinished test executions in a test matrix. This call returns immediately and
-            /// cancellation proceeds asynchronously. If the matrix is already final, this operation will have no
-            /// effect. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not
-            /// authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test
-            /// Matrix does not exist</summary>
+            /// <summary>
+            /// Cancels unfinished test executions in a test matrix. This call returns immediately and cancellation
+            /// proceeds asynchronously. If the matrix is already final, this operation will have no effect. May return
+            /// any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read
+            /// project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test Matrix does not exist
+            /// </summary>
             /// <param name="projectId">Cloud project that owns the test.</param>
-            /// <param name="testMatrixId">Test matrix
-            /// that will be canceled.</param>
+            /// <param name="testMatrixId">Test matrix that will be canceled.</param>
             public virtual CancelRequest Cancel(string projectId, string testMatrixId)
             {
                 return new CancelRequest(service, projectId, testMatrixId);
             }
 
-            /// <summary>Cancels unfinished test executions in a test matrix. This call returns immediately and
-            /// cancellation proceeds asynchronously. If the matrix is already final, this operation will have no
-            /// effect. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not
-            /// authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test
-            /// Matrix does not exist</summary>
+            /// <summary>
+            /// Cancels unfinished test executions in a test matrix. This call returns immediately and cancellation
+            /// proceeds asynchronously. If the matrix is already final, this operation will have no effect. May return
+            /// any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read
+            /// project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test Matrix does not exist
+            /// </summary>
             public class CancelRequest : TestingBaseServiceRequest<Google.Apis.Testing.v1.Data.CancelTestMatrixResponse>
             {
                 /// <summary>Constructs a new Cancel request.</summary>
@@ -391,7 +390,6 @@ namespace Google.Apis.Testing.v1
                     InitParameters();
                 }
 
-
                 /// <summary>Cloud project that owns the test.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
@@ -399,7 +397,6 @@ namespace Google.Apis.Testing.v1
                 /// <summary>Test matrix that will be canceled.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("testMatrixId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string TestMatrixId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "cancel";
@@ -414,7 +411,6 @@ namespace Google.Apis.Testing.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
@@ -432,14 +428,15 @@ namespace Google.Apis.Testing.v1
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Creates and runs a matrix of tests according to the given specifications. Unsupported
-            /// environments will be returned in the state UNSUPPORTED. A test matrix is limited to use at most 2000
-            /// devices in parallel. May return any of the following canonical error codes: - PERMISSION_DENIED - if the
-            /// user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed or if the
-            /// matrix tries to use too many simultaneous devices.</summary>
+            /// <summary>
+            /// Creates and runs a matrix of tests according to the given specifications. Unsupported environments will
+            /// be returned in the state UNSUPPORTED. A test matrix is limited to use at most 2000 devices in parallel.
+            /// May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not
+            /// authorized to write to project - INVALID_ARGUMENT - if the request is malformed or if the matrix tries
+            /// to use too many simultaneous devices.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">The GCE project under which this job will run.</param>
             public virtual CreateRequest Create(Google.Apis.Testing.v1.Data.TestMatrix body, string projectId)
@@ -447,11 +444,13 @@ namespace Google.Apis.Testing.v1
                 return new CreateRequest(service, body, projectId);
             }
 
-            /// <summary>Creates and runs a matrix of tests according to the given specifications. Unsupported
-            /// environments will be returned in the state UNSUPPORTED. A test matrix is limited to use at most 2000
-            /// devices in parallel. May return any of the following canonical error codes: - PERMISSION_DENIED - if the
-            /// user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed or if the
-            /// matrix tries to use too many simultaneous devices.</summary>
+            /// <summary>
+            /// Creates and runs a matrix of tests according to the given specifications. Unsupported environments will
+            /// be returned in the state UNSUPPORTED. A test matrix is limited to use at most 2000 devices in parallel.
+            /// May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not
+            /// authorized to write to project - INVALID_ARGUMENT - if the request is malformed or if the matrix tries
+            /// to use too many simultaneous devices.
+            /// </summary>
             public class CreateRequest : TestingBaseServiceRequest<Google.Apis.Testing.v1.Data.TestMatrix>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -462,17 +461,17 @@ namespace Google.Apis.Testing.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The GCE project under which this job will run.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>A string id used to detect duplicated requests. Ids are automatically scoped to a project,
-                /// so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly
-                /// recommended.</summary>
+                /// <summary>
+                /// A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users
+                /// should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly
+                /// recommended.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RequestId { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Testing.v1.Data.TestMatrix Body { get; set; }
@@ -493,7 +492,6 @@ namespace Google.Apis.Testing.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
@@ -511,23 +509,25 @@ namespace Google.Apis.Testing.v1
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Checks the status of a test matrix. May return any of the following canonical error codes: -
+            /// <summary>
+            /// Checks the status of a test matrix. May return any of the following canonical error codes: -
             /// PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is
-            /// malformed - NOT_FOUND - if the Test Matrix does not exist</summary>
+            /// malformed - NOT_FOUND - if the Test Matrix does not exist
+            /// </summary>
             /// <param name="projectId">Cloud project that owns the test matrix.</param>
-            /// <param name="testMatrixId">Unique
-            /// test matrix id which was assigned by the service.</param>
+            /// <param name="testMatrixId">Unique test matrix id which was assigned by the service.</param>
             public virtual GetRequest Get(string projectId, string testMatrixId)
             {
                 return new GetRequest(service, projectId, testMatrixId);
             }
 
-            /// <summary>Checks the status of a test matrix. May return any of the following canonical error codes: -
+            /// <summary>
+            /// Checks the status of a test matrix. May return any of the following canonical error codes: -
             /// PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is
-            /// malformed - NOT_FOUND - if the Test Matrix does not exist</summary>
+            /// malformed - NOT_FOUND - if the Test Matrix does not exist
+            /// </summary>
             public class GetRequest : TestingBaseServiceRequest<Google.Apis.Testing.v1.Data.TestMatrix>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -538,7 +538,6 @@ namespace Google.Apis.Testing.v1
                     InitParameters();
                 }
 
-
                 /// <summary>Cloud project that owns the test matrix.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
@@ -546,7 +545,6 @@ namespace Google.Apis.Testing.v1
                 /// <summary>Unique test matrix id which was assigned by the service.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("testMatrixId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string TestMatrixId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -561,7 +559,6 @@ namespace Google.Apis.Testing.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
@@ -579,7 +576,6 @@ namespace Google.Apis.Testing.v1
                         Pattern = null,
                     });
                 }
-
             }
         }
     }
@@ -596,22 +592,24 @@ namespace Google.Apis.Testing.v1
         public TestEnvironmentCatalogResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Gets the catalog of supported test environments. May return any of the following canonical error
-        /// codes: - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the environment type does not exist
-        /// - INTERNAL - if an internal error occurred</summary>
+        /// <summary>
+        /// Gets the catalog of supported test environments. May return any of the following canonical error codes: -
+        /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the environment type does not exist -
+        /// INTERNAL - if an internal error occurred
+        /// </summary>
         /// <param name="environmentType">Required. The type of environment that should be listed.</param>
         public virtual GetRequest Get(GetRequest.EnvironmentTypeEnum environmentType)
         {
             return new GetRequest(service, environmentType);
         }
 
-        /// <summary>Gets the catalog of supported test environments. May return any of the following canonical error
-        /// codes: - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the environment type does not exist
-        /// - INTERNAL - if an internal error occurred</summary>
+        /// <summary>
+        /// Gets the catalog of supported test environments. May return any of the following canonical error codes: -
+        /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the environment type does not exist -
+        /// INTERNAL - if an internal error occurred
+        /// </summary>
         public class GetRequest : TestingBaseServiceRequest<Google.Apis.Testing.v1.Data.TestEnvironmentCatalog>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -620,7 +618,6 @@ namespace Google.Apis.Testing.v1
                 EnvironmentType = environmentType;
                 InitParameters();
             }
-
 
             /// <summary>Required. The type of environment that should be listed.</summary>
             [Google.Apis.Util.RequestParameterAttribute("environmentType", Google.Apis.Util.RequestParameterType.Path)]
@@ -632,18 +629,23 @@ namespace Google.Apis.Testing.v1
                 /// <summary>Do not use. For proto versioning only.</summary>
                 [Google.Apis.Util.StringValueAttribute("ENVIRONMENT_TYPE_UNSPECIFIED")]
                 ENVIRONMENTTYPEUNSPECIFIED,
+
                 /// <summary>A device running a version of the Android OS.</summary>
                 [Google.Apis.Util.StringValueAttribute("ANDROID")]
                 ANDROID,
+
                 /// <summary>A device running a version of iOS.</summary>
                 [Google.Apis.Util.StringValueAttribute("IOS")]
                 IOS,
+
                 /// <summary>A network configuration to use when running a test.</summary>
                 [Google.Apis.Util.StringValueAttribute("NETWORK_CONFIGURATION")]
                 NETWORKCONFIGURATION,
+
                 /// <summary>The software environment provided by TestExecutionService.</summary>
                 [Google.Apis.Util.StringValueAttribute("PROVIDED_SOFTWARE")]
                 PROVIDEDSOFTWARE,
+
                 /// <summary>The IP blocks used by devices in the test environment.</summary>
                 [Google.Apis.Util.StringValueAttribute("DEVICE_IP_BLOCKS")]
                 DEVICEIPBLOCKS,
@@ -652,7 +654,6 @@ namespace Google.Apis.Testing.v1
             /// <summary>For authorization, the cloud project requesting the TestEnvironmentCatalog.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProjectId { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -667,7 +668,6 @@ namespace Google.Apis.Testing.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("environmentType", new Google.Apis.Discovery.Parameter
                 {
                     Name = "environmentType",
@@ -685,14 +685,11 @@ namespace Google.Apis.Testing.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.Testing.v1.Data
-{    
-
+{
     /// <summary>Identifies an account and how to log into it.</summary>
     public class Account : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -702,34 +699,42 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A single Android device.</summary>
     public class AndroidDevice : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get
-        /// supported options.</summary>
+        /// <summary>
+        /// Required. The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported
+        /// options.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidModelId")]
         public virtual string AndroidModelId { get; set; }
 
-        /// <summary>Required. The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to
-        /// get supported options.</summary>
+        /// <summary>
+        /// Required. The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get
+        /// supported options.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidVersionId")]
         public virtual string AndroidVersionId { get; set; }
 
-        /// <summary>Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to
-        /// get supported options.</summary>
+        /// <summary>
+        /// Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get
+        /// supported options.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
         public virtual string Locale { get; set; }
 
-        /// <summary>Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to
-        /// get supported options.</summary>
+        /// <summary>
+        /// Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get
+        /// supported options.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orientation")]
         public virtual string Orientation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The currently supported Android devices.</summary>
     public class AndroidDeviceCatalog : Google.Apis.Requests.IDirectResponseSchema
@@ -748,7 +753,7 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A list of Android device configurations in which the test is to be executed.</summary>
     public class AndroidDeviceList : Google.Apis.Requests.IDirectResponseSchema
@@ -759,13 +764,14 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A test of an Android application that can control an Android component independently of its normal
-    /// lifecycle. Android instrumentation tests run an application APK and test APK inside the same process on a
-    /// virtual or physical AndroidDevice. They also specify a test runner class, such as com.google.GoogleTestRunner,
-    /// which can vary on the specific instrumentation framework chosen. See for more information on types of Android
-    /// tests.</summary>
+    /// <summary>
+    /// A test of an Android application that can control an Android component independently of its normal lifecycle.
+    /// Android instrumentation tests run an application APK and test APK inside the same process on a virtual or
+    /// physical AndroidDevice. They also specify a test runner class, such as com.google.GoogleTestRunner, which can
+    /// vary on the specific instrumentation framework chosen. See for more information on types of Android tests.
+    /// </summary>
     public class AndroidInstrumentationTest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The APK for the application under test.</summary>
@@ -776,16 +782,20 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appBundle")]
         public virtual AppBundle AppBundle { get; set; }
 
-        /// <summary>The java package for the application under test. The default value is determined by examining the
-        /// application's manifest.</summary>
+        /// <summary>
+        /// The java package for the application under test. The default value is determined by examining the
+        /// application's manifest.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appPackageId")]
         public virtual string AppPackageId { get; set; }
 
-        /// <summary>The option of whether running each test within its own invocation of instrumentation with Android
-        /// Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher!
-        /// ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped
-        /// per test See for more information about Android Test Orchestrator. If not set, the test will be run without
-        /// the orchestrator.</summary>
+        /// <summary>
+        /// The option of whether running each test within its own invocation of instrumentation with Android Test
+        /// Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! **
+        /// Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per
+        /// test See for more information about Android Test Orchestrator. If not set, the test will be run without the
+        /// orchestrator.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orchestratorOption")]
         public virtual string OrchestratorOption { get; set; }
 
@@ -797,55 +807,70 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("testApk")]
         public virtual FileReference TestApk { get; set; }
 
-        /// <summary>The java package for the test to be executed. The default value is determined by examining the
-        /// application's manifest.</summary>
+        /// <summary>
+        /// The java package for the test to be executed. The default value is determined by examining the application's
+        /// manifest.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testPackageId")]
         public virtual string TestPackageId { get; set; }
 
-        /// <summary>The InstrumentationTestRunner class. The default value is determined by examining the application's
-        /// manifest.</summary>
+        /// <summary>
+        /// The InstrumentationTestRunner class. The default value is determined by examining the application's
+        /// manifest.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testRunnerClass")]
         public virtual string TestRunnerClass { get; set; }
 
-        /// <summary>Each target must be fully qualified with the package name or class name, in one of these formats: -
-        /// "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name" If
-        /// empty, all targets in the module will be run.</summary>
+        /// <summary>
+        /// Each target must be fully qualified with the package name or class name, in one of these formats: - "package
+        /// package_name" - "class package_name.class_name" - "class package_name.class_name#method_name" If empty, all
+        /// targets in the module will be run.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTargets")]
         public virtual System.Collections.Generic.IList<string> TestTargets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A set of Android device configuration permutations is defined by the the cross-product of the given
-    /// axes. Internally, the given AndroidMatrix will be expanded into a set of AndroidDevices. Only supported
-    /// permutations will be instantiated. Invalid permutations (e.g., incompatible models/versions) are
-    /// ignored.</summary>
+    /// <summary>
+    /// A set of Android device configuration permutations is defined by the the cross-product of the given axes.
+    /// Internally, the given AndroidMatrix will be expanded into a set of AndroidDevices. Only supported permutations
+    /// will be instantiated. Invalid permutations (e.g., incompatible models/versions) are ignored.
+    /// </summary>
     public class AndroidMatrix : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService
-        /// to get supported options.</summary>
+        /// <summary>
+        /// Required. The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get
+        /// supported options.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidModelIds")]
         public virtual System.Collections.Generic.IList<string> AndroidModelIds { get; set; }
 
-        /// <summary>Required. The ids of the set of Android OS version to be used. Use the
-        /// TestEnvironmentDiscoveryService to get supported options.</summary>
+        /// <summary>
+        /// Required. The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to
+        /// get supported options.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidVersionIds")]
         public virtual System.Collections.Generic.IList<string> AndroidVersionIds { get; set; }
 
-        /// <summary>Required. The set of locales the test device will enable for testing. Use the
-        /// TestEnvironmentDiscoveryService to get supported options.</summary>
+        /// <summary>
+        /// Required. The set of locales the test device will enable for testing. Use the
+        /// TestEnvironmentDiscoveryService to get supported options.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locales")]
         public virtual System.Collections.Generic.IList<string> Locales { get; set; }
 
-        /// <summary>Required. The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get
-        /// supported options.</summary>
+        /// <summary>
+        /// Required. The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported
+        /// options.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orientations")]
         public virtual System.Collections.Generic.IList<string> Orientations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A description of an Android device tests may be run on.</summary>
     public class AndroidModel : Google.Apis.Requests.IDirectResponseSchema
@@ -870,8 +895,10 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>True if and only if tests with this model are recorded by stitching together screenshots. See
-        /// use_low_spec_video_recording in device config.</summary>
+        /// <summary>
+        /// True if and only if tests with this model are recorded by stitching together screenshots. See
+        /// use_low_spec_video_recording in device config.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lowFpsVideoRecording")]
         public virtual System.Nullable<bool> LowFpsVideoRecording { get; set; }
 
@@ -879,8 +906,9 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("manufacturer")]
         public virtual string Manufacturer { get; set; }
 
-        /// <summary>The human-readable marketing name for this device model. Examples: "Nexus 5", "Galaxy
-        /// S5".</summary>
+        /// <summary>
+        /// The human-readable marketing name for this device model. Examples: "Nexus 5", "Galaxy S5".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -896,11 +924,12 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("screenY")]
         public virtual System.Nullable<int> ScreenY { get; set; }
 
-        /// <summary>The list of supported ABIs for this device. This corresponds to either
-        /// android.os.Build.SUPPORTED_ABIS (for API level 21 and above) or android.os.Build.CPU_ABI/CPU_ABI2. The most
-        /// preferred ABI is the first element in the list. Elements are optionally prefixed by "version_id:" (where
-        /// version_id is the id of an AndroidVersion), denoting an ABI that is supported only on a particular
-        /// version.</summary>
+        /// <summary>
+        /// The list of supported ABIs for this device. This corresponds to either android.os.Build.SUPPORTED_ABIS (for
+        /// API level 21 and above) or android.os.Build.CPU_ABI/CPU_ABI2. The most preferred ABI is the first element in
+        /// the list. Elements are optionally prefixed by "version_id:" (where version_id is the id of an
+        /// AndroidVersion), denoting an ABI that is supported only on a particular version.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedAbis")]
         public virtual System.Collections.Generic.IList<string> SupportedAbis { get; set; }
 
@@ -912,17 +941,21 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
-        /// <summary>URL of a thumbnail image (photo) of the device. e.g.
-        /// https://lh3.googleusercontent.com/90WcauuJiCYABEl8U0lcZeuS5STUbf2yW...</summary>
+        /// <summary>
+        /// URL of a thumbnail image (photo) of the device. e.g.
+        /// https://lh3.googleusercontent.com/90WcauuJiCYABEl8U0lcZeuS5STUbf2yW...
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
         public virtual string ThumbnailUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A test of an android application that explores the application on a virtual or physical Android Device,
-    /// finding culprits and crashes as it goes. Next tag: 30</summary>
+    /// <summary>
+    /// A test of an android application that explores the application on a virtual or physical Android Device, finding
+    /// culprits and crashes as it goes. Next tag: 30
+    /// </summary>
     public class AndroidRoboTest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The APK for the application under test.</summary>
@@ -937,13 +970,17 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appInitialActivity")]
         public virtual string AppInitialActivity { get; set; }
 
-        /// <summary>The java package for the application under test. The default value is determined by examining the
-        /// application's manifest.</summary>
+        /// <summary>
+        /// The java package for the application under test. The default value is determined by examining the
+        /// application's manifest.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appPackageId")]
         public virtual string AppPackageId { get; set; }
 
-        /// <summary>The max depth of the traversal stack Robo can explore. Needs to be at least 2 to make Robo explore
-        /// the app beyond the first activity. Default is 50.</summary>
+        /// <summary>
+        /// The max depth of the traversal stack Robo can explore. Needs to be at least 2 to make Robo explore the app
+        /// beyond the first activity. Default is 50.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDepth")]
         public virtual System.Nullable<int> MaxDepth { get; set; }
 
@@ -951,8 +988,10 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxSteps")]
         public virtual System.Nullable<int> MaxSteps { get; set; }
 
-        /// <summary>A set of directives Robo should apply during the crawl. This allows users to customize the crawl.
-        /// For example, the username and password for a test account can be provided.</summary>
+        /// <summary>
+        /// A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For
+        /// example, the username and password for a test account can be provided.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roboDirectives")]
         public virtual System.Collections.Generic.IList<RoboDirective> RoboDirectives { get; set; }
 
@@ -960,15 +999,17 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("roboScript")]
         public virtual FileReference RoboScript { get; set; }
 
-        /// <summary>The intents used to launch the app for the crawl. If none are provided, then the main launcher
-        /// activity is launched. If some are provided, then only those provided are launched (the main launcher
-        /// activity must be provided explicitly).</summary>
+        /// <summary>
+        /// The intents used to launch the app for the crawl. If none are provided, then the main launcher activity is
+        /// launched. If some are provided, then only those provided are launched (the main launcher activity must be
+        /// provided explicitly).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startingIntents")]
         public virtual System.Collections.Generic.IList<RoboStartingIntent> StartingIntents { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Android configuration that can be selected at the time a test is run.</summary>
     public class AndroidRuntimeConfiguration : Google.Apis.Requests.IDirectResponseSchema
@@ -983,10 +1024,12 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A test of an Android Application with a Test Loop. The intent \ will be implicitly added, since Games
-    /// is the only user of this api, for the time being.</summary>
+    /// <summary>
+    /// A test of an Android Application with a Test Loop. The intent \ will be implicitly added, since Games is the
+    /// only user of this api, for the time being.
+    /// </summary>
     public class AndroidTestLoop : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The APK for the application under test.</summary>
@@ -997,27 +1040,33 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appBundle")]
         public virtual AppBundle AppBundle { get; set; }
 
-        /// <summary>The java package for the application under test. The default is determined by examining the
-        /// application's manifest.</summary>
+        /// <summary>
+        /// The java package for the application under test. The default is determined by examining the application's
+        /// manifest.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appPackageId")]
         public virtual string AppPackageId { get; set; }
 
-        /// <summary>The list of scenario labels that should be run during the test. The scenario labels should map to
-        /// labels defined in the application's manifest. For example, player_experience and
+        /// <summary>
+        /// The list of scenario labels that should be run during the test. The scenario labels should map to labels
+        /// defined in the application's manifest. For example, player_experience and
         /// com.google.test.loops.player_experience add all of the loops labeled in the manifest with the
         /// com.google.test.loops.player_experience name to the execution. Scenarios can also be specified in the
-        /// scenarios field.</summary>
+        /// scenarios field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scenarioLabels")]
         public virtual System.Collections.Generic.IList<string> ScenarioLabels { get; set; }
 
-        /// <summary>The list of scenarios that should be run during the test. The default is all test loops, derived
-        /// from the application's manifest.</summary>
+        /// <summary>
+        /// The list of scenarios that should be run during the test. The default is all test loops, derived from the
+        /// application's manifest.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scenarios")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> Scenarios { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A version of the Android OS.</summary>
     public class AndroidVersion : Google.Apis.Requests.IDirectResponseSchema
@@ -1052,7 +1101,7 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An Android package file to install.</summary>
     public class Apk : Google.Apis.Requests.IDirectResponseSchema
@@ -1061,14 +1110,15 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual FileReference Location { get; set; }
 
-        /// <summary>The java package for the APK to be installed. Value is determined by examining the application's
-        /// manifest.</summary>
+        /// <summary>
+        /// The java package for the APK to be installed. Value is determined by examining the application's manifest.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
         public virtual string PackageName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Android application details based on application manifest and apk archive contents.</summary>
     public class ApkDetail : Google.Apis.Requests.IDirectResponseSchema
@@ -1078,10 +1128,11 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>An Android app manifest. See http://developer.android.com/guide/topics/manifest/manifest-
-    /// intro.html</summary>
+    /// <summary>
+    /// An Android app manifest. See http://developer.android.com/guide/topics/manifest/manifest-intro.html
+    /// </summary>
     public class ApkManifest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>User-readable name for the application.</summary>
@@ -1109,11 +1160,13 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>An Android App Bundle file format, containing a BundleConfig.pb file, a base module directory, zero or
-    /// more dynamic feature module directories. See https://developer.android.com/guide/app-bundle/build for guidance
-    /// on building App Bundles.</summary>
+    /// <summary>
+    /// An Android App Bundle file format, containing a BundleConfig.pb file, a base module directory, zero or more
+    /// dynamic feature module directories. See https://developer.android.com/guide/app-bundle/build for guidance on
+    /// building App Bundles.
+    /// </summary>
     public class AppBundle : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>.aab file representing the app bundle under test.</summary>
@@ -1122,19 +1175,21 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response containing the current state of the specified test matrix.</summary>
     public class CancelTestMatrixResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The current rolled-up state of the test matrix. If this state is already final, then the
-        /// cancelation request will have no effect.</summary>
+        /// <summary>
+        /// The current rolled-up state of the test matrix. If this state is already final, then the cancelation request
+        /// will have no effect.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testState")]
         public virtual string TestState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about the client which invoked the test.</summary>
     public class ClientInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -1149,10 +1204,12 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Key-value pair of detailed information about the client which invoked the test. Examples: {'Version',
-    /// '1.0'}, {'Release Track', 'BETA'}.</summary>
+    /// <summary>
+    /// Key-value pair of detailed information about the client which invoked the test. Examples: {'Version', '1.0'},
+    /// {'Release Track', 'BETA'}.
+    /// </summary>
     public class ClientInfoDetail : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The key of detailed client information.</summary>
@@ -1165,18 +1222,22 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are
-    /// either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can
-    /// represent one of the following: * A full date, with non-zero year, month, and day values * A month and day
-    /// value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and
-    /// month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and
-    /// `google.protobuf.Timestamp`.</summary>
+    /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero
+    /// year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with
+    /// a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and
+    /// `google.protobuf.Timestamp`.
+    /// </summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by
-        /// itself or a year and month where the day isn't significant.</summary>
+        /// <summary>
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
+        /// year and month where the day isn't significant.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
         public virtual System.Nullable<int> Day { get; set; }
 
@@ -1190,7 +1251,7 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A single device file description.</summary>
     public class DeviceFile : Google.Apis.Requests.IDirectResponseSchema
@@ -1205,7 +1266,7 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A single device IP block</summary>
     public class DeviceIpBlock : Google.Apis.Requests.IDirectResponseSchema
@@ -1224,7 +1285,7 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>List of IP blocks used by the Firebase Test Lab</summary>
     public class DeviceIpBlockCatalog : Google.Apis.Requests.IDirectResponseSchema
@@ -1235,10 +1296,11 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Data about the relative number of devices running a given configuration of the Android
-    /// platform.</summary>
+    /// <summary>
+    /// Data about the relative number of devices running a given configuration of the Android platform.
+    /// </summary>
     public class Distribution : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The estimated fraction (0-1) of the total market with this configuration.</summary>
@@ -1251,7 +1313,7 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The environment in which the test is run.</summary>
     public class Environment : Google.Apis.Requests.IDirectResponseSchema
@@ -1266,7 +1328,7 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The matrix of environments in which the test is to be executed.</summary>
     public class EnvironmentMatrix : Google.Apis.Requests.IDirectResponseSchema
@@ -1285,7 +1347,7 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A key-value pair passed as an environment variable to the test.</summary>
     public class EnvironmentVariable : Google.Apis.Requests.IDirectResponseSchema
@@ -1300,19 +1362,21 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A reference to a file, used for user inputs.</summary>
     public class FileReference : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A path to a file in Google Cloud Storage. Example: gs://build-app-1414623860166/app%40debug-
-        /// unaligned.apk These paths are expected to be url encoded (percent encoding)</summary>
+        /// <summary>
+        /// A path to a file in Google Cloud Storage. Example: gs://build-app-1414623860166/app%40debug-unaligned.apk
+        /// These paths are expected to be url encoded (percent encoding)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPath")]
         public virtual string GcsPath { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response containing the details of the specified Android application APK.</summary>
     public class GetApkDetailsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1323,32 +1387,37 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Enables automatic Google account login. If set, the service automatically generates a Google test
-    /// account and adds it to the device, before executing the test. Note that test accounts might be reused. Many
-    /// applications show their full set of functionalities when an account is present on the device. Logging into the
-    /// device with these generated accounts allows testing more functionalities.</summary>
+    /// <summary>
+    /// Enables automatic Google account login. If set, the service automatically generates a Google test account and
+    /// adds it to the device, before executing the test. Note that test accounts might be reused. Many applications
+    /// show their full set of functionalities when an account is present on the device. Logging into the device with
+    /// these generated accounts allows testing more functionalities.
+    /// </summary>
     public class GoogleAuto : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A storage location within Google cloud storage (GCS).</summary>
     public class GoogleCloudStorage : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The path to a directory in GCS that will eventually contain the results for this test.
-        /// The requesting user must have write access on the bucket in the supplied path.</summary>
+        /// <summary>
+        /// Required. The path to a directory in GCS that will eventually contain the results for this test. The
+        /// requesting user must have write access on the bucket in the supplied path.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPath")]
         public virtual string GcsPath { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>The section of an tag. https://developer.android.com/guide/topics/manifest/intent-filter-
-    /// element.html</summary>
+    /// <summary>
+    /// The section of an tag. https://developer.android.com/guide/topics/manifest/intent-filter-element.html
+    /// </summary>
     public class IntentFilter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The android:name value of the tag.</summary>
@@ -1365,34 +1434,42 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A single iOS device.</summary>
     public class IosDevice : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get
-        /// supported options.</summary>
+        /// <summary>
+        /// Required. The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported
+        /// options.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosModelId")]
         public virtual string IosModelId { get; set; }
 
-        /// <summary>Required. The id of the iOS major software version to be used. Use the
-        /// TestEnvironmentDiscoveryService to get supported options.</summary>
+        /// <summary>
+        /// Required. The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to
+        /// get supported options.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosVersionId")]
         public virtual string IosVersionId { get; set; }
 
-        /// <summary>Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to
-        /// get supported options.</summary>
+        /// <summary>
+        /// Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get
+        /// supported options.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
         public virtual string Locale { get; set; }
 
-        /// <summary>Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to
-        /// get supported options.</summary>
+        /// <summary>
+        /// Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get
+        /// supported options.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orientation")]
         public virtual string Orientation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The currently supported iOS devices.</summary>
     public class IosDeviceCatalog : Google.Apis.Requests.IDirectResponseSchema
@@ -1415,13 +1492,15 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A file or directory to install on the device before the test starts.</summary>
     public class IosDeviceFile : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The bundle id of the app where this file lives. iOS apps sandbox their own filesystem, so app files
-        /// must specify which app installed on the device.</summary>
+        /// <summary>
+        /// The bundle id of the app where this file lives. iOS apps sandbox their own filesystem, so app files must
+        /// specify which app installed on the device.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bundleId")]
         public virtual string BundleId { get; set; }
 
@@ -1435,7 +1514,7 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A list of iOS device configurations in which the test is to be executed.</summary>
     public class IosDeviceList : Google.Apis.Requests.IDirectResponseSchema
@@ -1446,14 +1525,15 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A description of an iOS device tests may be run on.</summary>
     public class IosModel : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Device capabilities. Copied from https://developer.apple.com/library/archive/documentation/DeviceIn
-        /// formation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html</summary
-        /// >
+        /// <summary>
+        /// Device capabilities. Copied from
+        /// https://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceCapabilities")]
         public virtual System.Collections.Generic.IList<string> DeviceCapabilities { get; set; }
 
@@ -1491,7 +1571,7 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>iOS configuration that can be selected at the time a test is run.</summary>
     public class IosRuntimeConfiguration : Google.Apis.Requests.IDirectResponseSchema
@@ -1506,11 +1586,12 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A test of an iOS application that implements one or more game loop scenarios. This test type accepts an
-    /// archived application (.ipa file) and a list of integer scenarios that will be executed on the app
-    /// sequentially.</summary>
+    /// <summary>
+    /// A test of an iOS application that implements one or more game loop scenarios. This test type accepts an archived
+    /// application (.ipa file) and a list of integer scenarios that will be executed on the app sequentially.
+    /// </summary>
     public class IosTestLoop : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The bundle id for the application under test.</summary>
@@ -1521,14 +1602,15 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appIpa")]
         public virtual FileReference AppIpa { get; set; }
 
-        /// <summary>The list of scenarios that should be run during the test. Defaults to the single scenario 0 if
-        /// unspecified.</summary>
+        /// <summary>
+        /// The list of scenarios that should be run during the test. Defaults to the single scenario 0 if unspecified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scenarios")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> Scenarios { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A description of how to set up an iOS device prior to running the test.</summary>
     public class IosTestSetup : Google.Apis.Requests.IDirectResponseSchema
@@ -1537,15 +1619,19 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalIpas")]
         public virtual System.Collections.Generic.IList<FileReference> AdditionalIpas { get; set; }
 
-        /// <summary>The network traffic profile used for running the test. Available network profiles can be queried by
-        /// using the NETWORK_CONFIGURATION environment type when calling
-        /// TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.</summary>
+        /// <summary>
+        /// The network traffic profile used for running the test. Available network profiles can be queried by using
+        /// the NETWORK_CONFIGURATION environment type when calling
+        /// TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkProfile")]
         public virtual string NetworkProfile { get; set; }
 
-        /// <summary>List of directories on the device to upload to Cloud Storage at the end of the test. Directories
-        /// should either be in a shared directory (e.g. /private/var/mobile/Media) or within an accessible directory
-        /// inside the app's filesystem (e.g. /Documents) by specifying the bundle id.</summary>
+        /// <summary>
+        /// List of directories on the device to upload to Cloud Storage at the end of the test. Directories should
+        /// either be in a shared directory (e.g. /private/var/mobile/Media) or within an accessible directory inside
+        /// the app's filesystem (e.g. /Documents) by specifying the bundle id.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pullDirectories")]
         public virtual System.Collections.Generic.IList<IosDeviceFile> PullDirectories { get; set; }
 
@@ -1555,7 +1641,7 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An iOS version.</summary>
     public class IosVersion : Google.Apis.Requests.IDirectResponseSchema
@@ -1582,51 +1668,59 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A test of an iOS application that uses the XCTest framework. Xcode supports the option to "build for
-    /// testing", which generates an .xctestrun file that contains a test specification (arguments, test methods, etc).
-    /// This test type accepts a zip file containing the .xctestrun file and the corresponding contents of the
-    /// Build/Products directory that contains all the binaries needed to run the tests.</summary>
+    /// <summary>
+    /// A test of an iOS application that uses the XCTest framework. Xcode supports the option to "build for testing",
+    /// which generates an .xctestrun file that contains a test specification (arguments, test methods, etc). This test
+    /// type accepts a zip file containing the .xctestrun file and the corresponding contents of the Build/Products
+    /// directory that contains all the binaries needed to run the tests.
+    /// </summary>
     public class IosXcTest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The bundle id for the application under test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appBundleId")]
         public virtual string AppBundleId { get; set; }
 
-        /// <summary>The option to test special app entitlements. Setting this would re-sign the app having special
-        /// entitlements with an explicit application-identifier. Currently supports testing aps-environment
-        /// entitlement.</summary>
+        /// <summary>
+        /// The option to test special app entitlements. Setting this would re-sign the app having special entitlements
+        /// with an explicit application-identifier. Currently supports testing aps-environment entitlement.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testSpecialEntitlements")]
         public virtual System.Nullable<bool> TestSpecialEntitlements { get; set; }
 
-        /// <summary>Required. The .zip containing the .xctestrun file and the contents of the
-        /// DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is
-        /// specified.</summary>
+        /// <summary>
+        /// Required. The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products
+        /// directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testsZip")]
         public virtual FileReference TestsZip { get; set; }
 
-        /// <summary>The Xcode version that should be used for the test. Use the TestEnvironmentDiscoveryService to get
-        /// supported options. Defaults to the latest Xcode version Firebase Test Lab supports.</summary>
+        /// <summary>
+        /// The Xcode version that should be used for the test. Use the TestEnvironmentDiscoveryService to get supported
+        /// options. Defaults to the latest Xcode version Firebase Test Lab supports.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xcodeVersion")]
         public virtual string XcodeVersion { get; set; }
 
-        /// <summary>An .xctestrun file that will override the .xctestrun file in the tests zip. Because the .xctestrun
-        /// file contains environment variables along with test methods to run and/or ignore, this can be useful for
-        /// sharding tests. Default is taken from the tests zip.</summary>
+        /// <summary>
+        /// An .xctestrun file that will override the .xctestrun file in the tests zip. Because the .xctestrun file
+        /// contains environment variables along with test methods to run and/or ignore, this can be useful for sharding
+        /// tests. Default is taken from the tests zip.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xctestrun")]
         public virtual FileReference Xctestrun { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Specifies an intent that starts the main launcher activity.</summary>
     public class LauncherActivityIntent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A location/region designation for language.</summary>
     public class Locale : Google.Apis.Requests.IDirectResponseSchema
@@ -1639,8 +1733,10 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>A human-friendly string representing the region for this locale. Example: "United States". Not
-        /// present for every locale.</summary>
+        /// <summary>
+        /// A human-friendly string representing the region for this locale. Example: "United States". Not present for
+        /// every locale.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
 
@@ -1650,21 +1746,25 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Shards test cases into the specified groups of packages, classes, and/or methods. With manual sharding
-    /// enabled, specifying test targets via environment_variables or in InstrumentationTest is invalid.</summary>
+    /// <summary>
+    /// Shards test cases into the specified groups of packages, classes, and/or methods. With manual sharding enabled,
+    /// specifying test targets via environment_variables or in InstrumentationTest is invalid.
+    /// </summary>
     public class ManualSharding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Group of packages, classes, and/or test methods to be run for each shard. When any
-        /// physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical
-        /// devices are selected, the number must be >= 1 and <= 500.</summary>
+        /// <summary>
+        /// Required. Group of packages, classes, and/or test methods to be run for each shard. When any physical
+        /// devices are selected, the number of test_targets_for_shard must be &amp;gt;= 1 and &amp;lt;= 50. When no
+        /// physical devices are selected, the number must be &amp;gt;= 1 and &amp;lt;= 500.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTargetsForShard")]
         public virtual System.Collections.Generic.IList<TestTargetsForShard> TestTargetsForShard { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class NetworkConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1682,7 +1782,7 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class NetworkConfigurationCatalog : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1691,7 +1791,7 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An opaque binary blob file to install on the device before the test starts.</summary>
     public class ObbFile : Google.Apis.Requests.IDirectResponseSchema
@@ -1700,15 +1800,16 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("obb")]
         public virtual FileReference Obb { get; set; }
 
-        /// <summary>Required. OBB file name which must conform to the format as specified by Android e.g.
-        /// [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the
-        /// device.</summary>
+        /// <summary>
+        /// Required. OBB file name which must conform to the format as specified by Android e.g.
+        /// [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("obbFileName")]
         public virtual string ObbFileName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Screen orientation of the device.</summary>
     public class Orientation : Google.Apis.Requests.IDirectResponseSchema
@@ -1727,19 +1828,21 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The currently provided software environment on the devices under test.</summary>
     public class ProvidedSoftwareCatalog : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A string representing the current version of Android Test Orchestrator that is provided by
-        /// TestExecutionService. Example: "1.0.2 beta".</summary>
+        /// <summary>
+        /// A string representing the current version of Android Test Orchestrator that is provided by
+        /// TestExecutionService. Example: "1.0.2 beta".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orchestratorVersion")]
         public virtual string OrchestratorVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A file or directory to install on the device before the test starts.</summary>
     public class RegularFile : Google.Apis.Requests.IDirectResponseSchema
@@ -1748,20 +1851,22 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual FileReference Content { get; set; }
 
-        /// <summary>Required. Where to put the content on the device. Must be an absolute, allowlisted path. If the
-        /// file exists, it will be replaced. The following device-side directories and any of their subdirectories are
-        /// allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp
-        /// Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made
-        /// available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to
-        /// external storage, the system will replace it with the external storage path prefix for that device and copy
-        /// the file there. It is strongly advised to use the Environment API in app and test code to access files on
-        /// the device in a portable way.</summary>
+        /// <summary>
+        /// Required. Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists,
+        /// it will be replaced. The following device-side directories and any of their subdirectories are allowlisted:
+        /// ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path
+        /// outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated
+        /// as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the
+        /// system will replace it with the external storage path prefix for that device and copy the file there. It is
+        /// strongly advised to use the Environment API in app and test code to access files on the device in a portable
+        /// way.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("devicePath")]
         public virtual string DevicePath { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Locations where the results of running the test are stored.</summary>
     public class ResultStorage : Google.Apis.Requests.IDirectResponseSchema
@@ -1778,37 +1883,45 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("toolResultsExecution")]
         public virtual ToolResultsExecution ToolResultsExecution { get; set; }
 
-        /// <summary>The tool results history that contains the tool results execution that results are written to. If
-        /// not provided, the service will choose an appropriate value.</summary>
+        /// <summary>
+        /// The tool results history that contains the tool results execution that results are written to. If not
+        /// provided, the service will choose an appropriate value.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolResultsHistory")]
         public virtual ToolResultsHistory ToolResultsHistory { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Directs Robo to interact with a specific UI element if it is encountered during the crawl. Currently,
-    /// Robo can perform text entry or element click.</summary>
+    /// <summary>
+    /// Directs Robo to interact with a specific UI element if it is encountered during the crawl. Currently, Robo can
+    /// perform text entry or element click.
+    /// </summary>
     public class RoboDirective : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The type of action that Robo should perform on the specified element.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionType")]
         public virtual string ActionType { get; set; }
 
-        /// <summary>The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on
-        /// the element matching the resource_name.</summary>
+        /// <summary>
+        /// The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on the
+        /// element matching the resource_name.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputText")]
         public virtual string InputText { get; set; }
 
-        /// <summary>Required. The android resource name of the target UI element. For example, in Java: R.string.foo in
-        /// xml: @string/foo Only the "foo" part is needed. Reference doc:
-        /// https://developer.android.com/guide/topics/resources/accessing-resources.html</summary>
+        /// <summary>
+        /// Required. The android resource name of the target UI element. For example, in Java: R.string.foo in xml:
+        /// @string/foo Only the "foo" part is needed. Reference doc:
+        /// https://developer.android.com/guide/topics/resources/accessing-resources.html
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Message for specifying the start activities to crawl.</summary>
     public class RoboStartingIntent : Google.Apis.Requests.IDirectResponseSchema
@@ -1827,7 +1940,7 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Output only. Details about the shard.</summary>
     public class Shard : Google.Apis.Requests.IDirectResponseSchema
@@ -1846,7 +1959,7 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Options for enabling sharding.</summary>
     public class ShardingOption : Google.Apis.Requests.IDirectResponseSchema
@@ -1861,7 +1974,7 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A starting intent specified by an action, uri, and categories.</summary>
     public class StartActivityIntent : Google.Apis.Requests.IDirectResponseSchema
@@ -1880,7 +1993,7 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class SystraceSetup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1890,25 +2003,29 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Additional details about the progress of the running test.</summary>
     public class TestDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. If the TestState is ERROR, then this string will contain human-readable details about
-        /// the error.</summary>
+        /// <summary>
+        /// Output only. If the TestState is ERROR, then this string will contain human-readable details about the
+        /// error.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
         public virtual string ErrorMessage { get; set; }
 
-        /// <summary>Output only. Human-readable, detailed descriptions of the test's progress. For example:
-        /// "Provisioning a device", "Starting Test". During the course of execution new data may be appended to the end
-        /// of progress_messages.</summary>
+        /// <summary>
+        /// Output only. Human-readable, detailed descriptions of the test's progress. For example: "Provisioning a
+        /// device", "Starting Test". During the course of execution new data may be appended to the end of
+        /// progress_messages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressMessages")]
         public virtual System.Collections.Generic.IList<string> ProgressMessages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A description of a test environment.</summary>
     public class TestEnvironmentCatalog : Google.Apis.Requests.IDirectResponseSchema
@@ -1935,7 +2052,7 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A single test executed in a single environment.</summary>
     public class TestExecution : Google.Apis.Requests.IDirectResponseSchema
@@ -1982,10 +2099,12 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>TestMatrix captures all details about a test. It contains the environment configuration, test
-    /// specification, test executions and overall state and outcome.</summary>
+    /// <summary>
+    /// TestMatrix captures all details about a test. It contains the environment configuration, test specification,
+    /// test executions and overall state and outcome.
+    /// </summary>
     public class TestMatrix : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Information about the client which invoked the test.</summary>
@@ -1996,26 +2115,31 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("environmentMatrix")]
         public virtual EnvironmentMatrix EnvironmentMatrix { get; set; }
 
-        /// <summary>If true, only a single attempt at most will be made to run each execution/shard in the matrix.
-        /// Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure
-        /// issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may
-        /// be significantly greater for fail-fast matrices and support is more limited because of that
-        /// expectation.</summary>
+        /// <summary>
+        /// If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test
+        /// attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is
+        /// detected. This feature is for latency sensitive workloads. The incidence of execution failures may be
+        /// significantly greater for fail-fast matrices and support is more limited because of that expectation.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failFast")]
         public virtual System.Nullable<bool> FailFast { get; set; }
 
-        /// <summary>The number of times a TestExecution should be re-attempted if one or more of its test cases fail
-        /// for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.</summary>
+        /// <summary>
+        /// The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any
+        /// reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flakyTestAttempts")]
         public virtual System.Nullable<int> FlakyTestAttempts { get; set; }
 
-        /// <summary>Output only. Describes why the matrix is considered invalid. Only useful for matrices in the
-        /// INVALID state.</summary>
+        /// <summary>
+        /// Output only. Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invalidMatrixDetails")]
         public virtual string InvalidMatrixDetails { get; set; }
 
-        /// <summary>Output Only. The overall outcome of the test. Only set when the test matrix state is
-        /// FINISHED.</summary>
+        /// <summary>
+        /// Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outcomeSummary")]
         public virtual string OutcomeSummary { get; set; }
 
@@ -2049,7 +2173,7 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A description of how to set up the Android device prior to running the test.</summary>
     public class TestSetup : Google.Apis.Requests.IDirectResponseSchema
@@ -2062,11 +2186,13 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalApks")]
         public virtual System.Collections.Generic.IList<Apk> AdditionalApks { get; set; }
 
-        /// <summary>List of directories on the device to upload to GCS at the end of the test; they must be absolute
-        /// paths under /sdcard, /storage or /data/local/tmp. Path names are restricted to characters a-z A-Z 0-9 _ - .
-        /// + and / Note: The paths /sdcard and /data will be made available and treated as implicit path substitutions.
-        /// E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the
-        /// external storage path prefix for that device.</summary>
+        /// <summary>
+        /// List of directories on the device to upload to GCS at the end of the test; they must be absolute paths under
+        /// /sdcard, /storage or /data/local/tmp. Path names are restricted to characters a-z A-Z 0-9 _ - . + and /
+        /// Note: The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if
+        /// /sdcard on a particular device does not map to external storage, the system will replace it with the
+        /// external storage path prefix for that device.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directoriesToPull")]
         public virtual System.Collections.Generic.IList<string> DirectoriesToPull { get; set; }
 
@@ -2082,21 +2208,25 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filesToPush")]
         public virtual System.Collections.Generic.IList<DeviceFile> FilesToPush { get; set; }
 
-        /// <summary>The network traffic profile used for running the test. Available network profiles can be queried by
-        /// using the NETWORK_CONFIGURATION environment type when calling
-        /// TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.</summary>
+        /// <summary>
+        /// The network traffic profile used for running the test. Available network profiles can be queried by using
+        /// the NETWORK_CONFIGURATION environment type when calling
+        /// TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkProfile")]
         public virtual string NetworkProfile { get; set; }
 
-        /// <summary>Systrace configuration for the run. If set a systrace will be taken, starting on test start and
-        /// lasting for the configured duration. The systrace file thus obtained is put in the results bucket together
-        /// with the other artifacts from the run.</summary>
+        /// <summary>
+        /// Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for
+        /// the configured duration. The systrace file thus obtained is put in the results bucket together with the
+        /// other artifacts from the run.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("systrace")]
         public virtual SystraceSetup Systrace { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A description of how to run the test.</summary>
     public class TestSpecification : Google.Apis.Requests.IDirectResponseSchema
@@ -2137,27 +2267,31 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("testSetup")]
         public virtual TestSetup TestSetup { get; set; }
 
-        /// <summary>Max time a test execution is allowed to run before it is automatically cancelled. The default value
-        /// is 5 min.</summary>
+        /// <summary>
+        /// Max time a test execution is allowed to run before it is automatically cancelled. The default value is 5
+        /// min.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTimeout")]
         public virtual object TestTimeout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Test targets for a shard.</summary>
     public class TestTargetsForShard : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Group of packages, classes, and/or test methods to be run for each shard. The targets need to be
-        /// specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class
-        /// com.my.package.MyClass". The number of shard_test_targets must be greater than 0.</summary>
+        /// <summary>
+        /// Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified
+        /// in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class
+        /// com.my.package.MyClass". The number of shard_test_targets must be greater than 0.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTargets")]
         public virtual System.Collections.Generic.IList<string> TestTargets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a tool results execution resource. This has the results of a TestMatrix.</summary>
     public class ToolResultsExecution : Google.Apis.Requests.IDirectResponseSchema
@@ -2176,7 +2310,7 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a tool results history resource.</summary>
     public class ToolResultsHistory : Google.Apis.Requests.IDirectResponseSchema
@@ -2191,7 +2325,7 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a tool results step resource. This has the results of a TestExecution.</summary>
     public class ToolResultsStep : Google.Apis.Requests.IDirectResponseSchema
@@ -2214,7 +2348,7 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Network emulation parameters.</summary>
     public class TrafficRule : Google.Apis.Requests.IDirectResponseSchema
@@ -2227,7 +2361,7 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("burst")]
         public virtual System.Nullable<float> Burst { get; set; }
 
-        /// <summary>Packet delay, must be >= 0.</summary>
+        /// <summary>Packet delay, must be &gt;= 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delay")]
         public virtual object Delay { get; set; }
 
@@ -2241,21 +2375,25 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Uniformly shards test cases given a total number of shards. For Instrumentation test, it will be
-    /// translated to "-e numShard" "-e shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled,
-    /// specifying these sharding arguments via environment_variables is invalid.</summary>
+    /// <summary>
+    /// Uniformly shards test cases given a total number of shards. For Instrumentation test, it will be translated to
+    /// "-e numShard" "-e shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled, specifying these
+    /// sharding arguments via environment_variables is invalid.
+    /// </summary>
     public class UniformSharding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Total number of shards. When any physical devices are selected, the number must be >= 1
-        /// and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.</summary>
+        /// <summary>
+        /// Required. Total number of shards. When any physical devices are selected, the number must be &amp;gt;= 1 and
+        /// &amp;lt;= 50. When no physical devices are selected, the number must be &amp;gt;= 1 and &amp;lt;= 500.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numShards")]
         public virtual System.Nullable<int> NumShards { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An Xcode version that an iOS version is compatible with.</summary>
     public class XcodeVersion : Google.Apis.Requests.IDirectResponseSchema

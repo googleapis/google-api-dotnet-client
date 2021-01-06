@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -71,7 +76,6 @@ namespace Google.Apis.Dataflow.v1b3
 
             /// <summary>View your email address</summary>
             public static string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Dataflow API.</summary>
@@ -88,10 +92,7 @@ namespace Google.Apis.Dataflow.v1b3
 
             /// <summary>View your email address</summary>
             public const string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
-
         }
-
-
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -115,6 +116,7 @@ namespace Google.Apis.Dataflow.v1b3
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -134,9 +136,11 @@ namespace Google.Apis.Dataflow.v1b3
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -150,8 +154,10 @@ namespace Google.Apis.Dataflow.v1b3
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -163,8 +169,10 @@ namespace Google.Apis.Dataflow.v1b3
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -180,7 +188,6 @@ namespace Google.Apis.Dataflow.v1b3
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -290,7 +297,6 @@ namespace Google.Apis.Dataflow.v1b3
             Snapshots = new SnapshotsResource(service);
             TemplateVersions = new TemplateVersionsResource(service);
             Templates = new TemplatesResource(service);
-
         }
 
         /// <summary>Gets the CatalogTemplates resource.</summary>
@@ -309,7 +315,6 @@ namespace Google.Apis.Dataflow.v1b3
             {
                 this.service = service;
                 TemplateVersions = new TemplateVersionsResource(service);
-
             }
 
             /// <summary>Gets the TemplateVersions resource.</summary>
@@ -327,22 +332,26 @@ namespace Google.Apis.Dataflow.v1b3
                 public TemplateVersionsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
 
-
-                /// <summary>Creates a new Template with TemplateVersion. Requires project_id(projects) and template
-                /// display_name(catalogTemplates). The template display_name is set by the user.</summary>
+                /// <summary>
+                /// Creates a new Template with TemplateVersion. Requires project_id(projects) and template
+                /// display_name(catalogTemplates). The template display_name is set by the user.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">The parent project and template that the TemplateVersion will be created under. Create using
-                /// project_id(pid1) and display_name(tid1). Format: projects/{pid1}/catalogTemplates/{tid1}</param>
+                /// <param name="parent">
+                /// The parent project and template that the TemplateVersion will be created under. Create using
+                /// project_id(pid1) and display_name(tid1). Format: projects/{pid1}/catalogTemplates/{tid1}
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.Dataflow.v1b3.Data.CreateTemplateVersionRequest body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Creates a new Template with TemplateVersion. Requires project_id(projects) and template
-                /// display_name(catalogTemplates). The template display_name is set by the user.</summary>
+                /// <summary>
+                /// Creates a new Template with TemplateVersion. Requires project_id(projects) and template
+                /// display_name(catalogTemplates). The template display_name is set by the user.
+                /// </summary>
                 public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.TemplateVersion>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -353,13 +362,12 @@ namespace Google.Apis.Dataflow.v1b3
                         InitParameters();
                     }
 
-
-                    /// <summary>The parent project and template that the TemplateVersion will be created under. Create
-                    /// using project_id(pid1) and display_name(tid1). Format:
-                    /// projects/{pid1}/catalogTemplates/{tid1}</summary>
+                    /// <summary>
+                    /// The parent project and template that the TemplateVersion will be created under. Create using
+                    /// project_id(pid1) and display_name(tid1). Format: projects/{pid1}/catalogTemplates/{tid1}
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataflow.v1b3.Data.CreateTemplateVersionRequest Body { get; set; }
@@ -380,7 +388,6 @@ namespace Google.Apis.Dataflow.v1b3
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -390,22 +397,27 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = @"^projects/[^/]+/catalogTemplates/[^/]+$",
                         });
                     }
-
                 }
             }
 
-            /// <summary>Creates a new TemplateVersion (Important: not new Template) entry in the spanner table.
-            /// Requires project_id and display_name (template).</summary>
+            /// <summary>
+            /// Creates a new TemplateVersion (Important: not new Template) entry in the spanner table. Requires
+            /// project_id and display_name (template).
+            /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The location of the template, name includes project_id and display_name. Commit using
-            /// project_id(pid1) and display_name(tid1). Format: projects/{pid1}/catalogTemplates/{tid1}</param>
+            /// <param name="name">
+            /// The location of the template, name includes project_id and display_name. Commit using project_id(pid1)
+            /// and display_name(tid1). Format: projects/{pid1}/catalogTemplates/{tid1}
+            /// </param>
             public virtual CommitRequest Commit(Google.Apis.Dataflow.v1b3.Data.CommitTemplateVersionRequest body, string name)
             {
                 return new CommitRequest(service, body, name);
             }
 
-            /// <summary>Creates a new TemplateVersion (Important: not new Template) entry in the spanner table.
-            /// Requires project_id and display_name (template).</summary>
+            /// <summary>
+            /// Creates a new TemplateVersion (Important: not new Template) entry in the spanner table. Requires
+            /// project_id and display_name (template).
+            /// </summary>
             public class CommitRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.TemplateVersion>
             {
                 /// <summary>Constructs a new Commit request.</summary>
@@ -416,12 +428,12 @@ namespace Google.Apis.Dataflow.v1b3
                     InitParameters();
                 }
 
-
-                /// <summary>The location of the template, name includes project_id and display_name. Commit using
-                /// project_id(pid1) and display_name(tid1). Format: projects/{pid1}/catalogTemplates/{tid1}</summary>
+                /// <summary>
+                /// The location of the template, name includes project_id and display_name. Commit using
+                /// project_id(pid1) and display_name(tid1). Format: projects/{pid1}/catalogTemplates/{tid1}
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Dataflow.v1b3.Data.CommitTemplateVersionRequest Body { get; set; }
@@ -442,7 +454,6 @@ namespace Google.Apis.Dataflow.v1b3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -452,12 +463,13 @@ namespace Google.Apis.Dataflow.v1b3
                         Pattern = @"^projects/[^/]+/catalogTemplates/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Deletes an existing Template. Do nothing if Template does not exist.</summary>
-            /// <param name="name">name includes project_id and display_name. Delete by project_id(pid1) and display_name(tid1).
-            /// Format: projects/{pid1}/catalogTemplates/{tid1}</param>
+            /// <param name="name">
+            /// name includes project_id and display_name. Delete by project_id(pid1) and display_name(tid1). Format:
+            /// projects/{pid1}/catalogTemplates/{tid1}
+            /// </param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -473,12 +485,12 @@ namespace Google.Apis.Dataflow.v1b3
                     InitParameters();
                 }
 
-
-                /// <summary>name includes project_id and display_name. Delete by project_id(pid1) and
-                /// display_name(tid1). Format: projects/{pid1}/catalogTemplates/{tid1}</summary>
+                /// <summary>
+                /// name includes project_id and display_name. Delete by project_id(pid1) and display_name(tid1).
+                /// Format: projects/{pid1}/catalogTemplates/{tid1}
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -493,7 +505,6 @@ namespace Google.Apis.Dataflow.v1b3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -503,22 +514,27 @@ namespace Google.Apis.Dataflow.v1b3
                         Pattern = @"^projects/[^/]+/catalogTemplates/[^/]+$",
                     });
                 }
-
             }
 
-            /// <summary>Get TemplateVersion using project_id and display_name with an optional version_id field. Get
-            /// latest (has tag "latest") TemplateVersion if version_id not set.</summary>
-            /// <param name="name">Resource name includes project_id and display_name. version_id is optional. Get the latest
+            /// <summary>
+            /// Get TemplateVersion using project_id and display_name with an optional version_id field. Get latest (has
+            /// tag "latest") TemplateVersion if version_id not set.
+            /// </summary>
+            /// <param name="name">
+            /// Resource name includes project_id and display_name. version_id is optional. Get the latest
             /// TemplateVersion if version_id not set. Get by project_id(pid1) and display_name(tid1): Format:
-            /// projects/{pid1}/catalogTemplates/{tid1} Get by project_id(pid1), display_name(tid1), and version_id(vid1): Format:
-            /// projects/{pid1}/catalogTemplates/{tid1@vid}</param>
+            /// projects/{pid1}/catalogTemplates/{tid1} Get by project_id(pid1), display_name(tid1), and
+            /// version_id(vid1): Format: projects/{pid1}/catalogTemplates/{tid1@vid}
+            /// </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Get TemplateVersion using project_id and display_name with an optional version_id field. Get
-            /// latest (has tag "latest") TemplateVersion if version_id not set.</summary>
+            /// <summary>
+            /// Get TemplateVersion using project_id and display_name with an optional version_id field. Get latest (has
+            /// tag "latest") TemplateVersion if version_id not set.
+            /// </summary>
             public class GetRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.TemplateVersion>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -528,14 +544,14 @@ namespace Google.Apis.Dataflow.v1b3
                     InitParameters();
                 }
 
-
-                /// <summary>Resource name includes project_id and display_name. version_id is optional. Get the latest
+                /// <summary>
+                /// Resource name includes project_id and display_name. version_id is optional. Get the latest
                 /// TemplateVersion if version_id not set. Get by project_id(pid1) and display_name(tid1): Format:
                 /// projects/{pid1}/catalogTemplates/{tid1} Get by project_id(pid1), display_name(tid1), and
-                /// version_id(vid1): Format: projects/{pid1}/catalogTemplates/{tid1@vid}</summary>
+                /// version_id(vid1): Format: projects/{pid1}/catalogTemplates/{tid1@vid}
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -550,7 +566,6 @@ namespace Google.Apis.Dataflow.v1b3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -560,21 +575,26 @@ namespace Google.Apis.Dataflow.v1b3
                         Pattern = @"^projects/[^/]+/catalogTemplates/[^/]+$",
                     });
                 }
-
             }
 
-            /// <summary>Updates the label of the TemplateVersion. Label can be duplicated in Template, so either add or
-            /// remove the label in the TemplateVersion.</summary>
+            /// <summary>
+            /// Updates the label of the TemplateVersion. Label can be duplicated in Template, so either add or remove
+            /// the label in the TemplateVersion.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Resource name includes project_id, display_name, and version_id. Updates by project_id(pid1),
-            /// display_name(tid1), and version_id(vid1): Format: projects/{pid1}/catalogTemplates/{tid1@vid}</param>
+            /// <param name="name">
+            /// Resource name includes project_id, display_name, and version_id. Updates by project_id(pid1),
+            /// display_name(tid1), and version_id(vid1): Format: projects/{pid1}/catalogTemplates/{tid1@vid}
+            /// </param>
             public virtual LabelRequest Label(Google.Apis.Dataflow.v1b3.Data.ModifyTemplateVersionLabelRequest body, string name)
             {
                 return new LabelRequest(service, body, name);
             }
 
-            /// <summary>Updates the label of the TemplateVersion. Label can be duplicated in Template, so either add or
-            /// remove the label in the TemplateVersion.</summary>
+            /// <summary>
+            /// Updates the label of the TemplateVersion. Label can be duplicated in Template, so either add or remove
+            /// the label in the TemplateVersion.
+            /// </summary>
             public class LabelRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ModifyTemplateVersionLabelResponse>
             {
                 /// <summary>Constructs a new Label request.</summary>
@@ -585,13 +605,12 @@ namespace Google.Apis.Dataflow.v1b3
                     InitParameters();
                 }
 
-
-                /// <summary>Resource name includes project_id, display_name, and version_id. Updates by
-                /// project_id(pid1), display_name(tid1), and version_id(vid1): Format:
-                /// projects/{pid1}/catalogTemplates/{tid1@vid}</summary>
+                /// <summary>
+                /// Resource name includes project_id, display_name, and version_id. Updates by project_id(pid1),
+                /// display_name(tid1), and version_id(vid1): Format: projects/{pid1}/catalogTemplates/{tid1@vid}
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Dataflow.v1b3.Data.ModifyTemplateVersionLabelRequest Body { get; set; }
@@ -612,7 +631,6 @@ namespace Google.Apis.Dataflow.v1b3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -622,25 +640,30 @@ namespace Google.Apis.Dataflow.v1b3
                         Pattern = @"^projects/[^/]+/catalogTemplates/[^/]+$",
                     });
                 }
-
             }
 
-            /// <summary>Updates the tag of the TemplateVersion, and tag is unique in Template. If tag exists in another
+            /// <summary>
+            /// Updates the tag of the TemplateVersion, and tag is unique in Template. If tag exists in another
             /// TemplateVersion in the Template, updates the tag to this TemplateVersion will remove it from the old
             /// TemplateVersion and add it to this TemplateVersion. If request is remove_only (remove_only = true),
-            /// remove the tag from this TemplateVersion.</summary>
+            /// remove the tag from this TemplateVersion.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Resource name includes project_id, display_name, and version_id. Updates by project_id(pid1),
-            /// display_name(tid1), and version_id(vid1): Format: projects/{pid1}/catalogTemplates/{tid1@vid}</param>
+            /// <param name="name">
+            /// Resource name includes project_id, display_name, and version_id. Updates by project_id(pid1),
+            /// display_name(tid1), and version_id(vid1): Format: projects/{pid1}/catalogTemplates/{tid1@vid}
+            /// </param>
             public virtual TagRequest Tag(Google.Apis.Dataflow.v1b3.Data.ModifyTemplateVersionTagRequest body, string name)
             {
                 return new TagRequest(service, body, name);
             }
 
-            /// <summary>Updates the tag of the TemplateVersion, and tag is unique in Template. If tag exists in another
+            /// <summary>
+            /// Updates the tag of the TemplateVersion, and tag is unique in Template. If tag exists in another
             /// TemplateVersion in the Template, updates the tag to this TemplateVersion will remove it from the old
             /// TemplateVersion and add it to this TemplateVersion. If request is remove_only (remove_only = true),
-            /// remove the tag from this TemplateVersion.</summary>
+            /// remove the tag from this TemplateVersion.
+            /// </summary>
             public class TagRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ModifyTemplateVersionTagResponse>
             {
                 /// <summary>Constructs a new Tag request.</summary>
@@ -651,13 +674,12 @@ namespace Google.Apis.Dataflow.v1b3
                     InitParameters();
                 }
 
-
-                /// <summary>Resource name includes project_id, display_name, and version_id. Updates by
-                /// project_id(pid1), display_name(tid1), and version_id(vid1): Format:
-                /// projects/{pid1}/catalogTemplates/{tid1@vid}</summary>
+                /// <summary>
+                /// Resource name includes project_id, display_name, and version_id. Updates by project_id(pid1),
+                /// display_name(tid1), and version_id(vid1): Format: projects/{pid1}/catalogTemplates/{tid1@vid}
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Dataflow.v1b3.Data.ModifyTemplateVersionTagRequest Body { get; set; }
@@ -678,7 +700,6 @@ namespace Google.Apis.Dataflow.v1b3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -688,9 +709,9 @@ namespace Google.Apis.Dataflow.v1b3
                         Pattern = @"^projects/[^/]+/catalogTemplates/[^/]+$",
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Jobs resource.</summary>
         public virtual JobsResource Jobs { get; }
 
@@ -709,7 +730,6 @@ namespace Google.Apis.Dataflow.v1b3
                 Debug = new DebugResource(service);
                 Messages = new MessagesResource(service);
                 WorkItems = new WorkItemsResource(service);
-
             }
 
             /// <summary>Gets the Debug resource.</summary>
@@ -727,9 +747,7 @@ namespace Google.Apis.Dataflow.v1b3
                 public DebugResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
-
 
                 /// <summary>Get encoded debug configuration for component. Not cacheable.</summary>
                 /// <param name="body">The body of the request.</param>
@@ -752,7 +770,6 @@ namespace Google.Apis.Dataflow.v1b3
                         InitParameters();
                     }
 
-
                     /// <summary>The project id.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -760,7 +777,6 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>The job id.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string JobId { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataflow.v1b3.Data.GetDebugConfigRequest Body { get; set; }
@@ -781,7 +797,6 @@ namespace Google.Apis.Dataflow.v1b3
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "projectId",
@@ -799,7 +814,6 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Send encoded debug capture data for component.</summary>
@@ -823,7 +837,6 @@ namespace Google.Apis.Dataflow.v1b3
                         InitParameters();
                     }
 
-
                     /// <summary>The project id.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -831,7 +844,6 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>The job id.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string JobId { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataflow.v1b3.Data.SendDebugCaptureRequest Body { get; set; }
@@ -852,7 +864,6 @@ namespace Google.Apis.Dataflow.v1b3
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "projectId",
@@ -870,9 +881,9 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     }
-
                 }
             }
+
             /// <summary>Gets the Messages resource.</summary>
             public virtual MessagesResource Messages { get; }
 
@@ -888,28 +899,29 @@ namespace Google.Apis.Dataflow.v1b3
                 public MessagesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
 
-
-                /// <summary>Request the job status. To request the status of a job, we recommend using
+                /// <summary>
+                /// Request the job status. To request the status of a job, we recommend using
                 /// `projects.locations.jobs.messages.list` with a [regional endpoint]
                 /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
                 /// `projects.jobs.messages.list` is not recommended, as you can only request the status of jobs that
-                /// are running in `us-central1`.</summary>
+                /// are running in `us-central1`.
+                /// </summary>
                 /// <param name="projectId">A project id.</param>
-                /// <param name="jobId">The job to get messages
-                /// about.</param>
+                /// <param name="jobId">The job to get messages about.</param>
                 public virtual ListRequest List(string projectId, string jobId)
                 {
                     return new ListRequest(service, projectId, jobId);
                 }
 
-                /// <summary>Request the job status. To request the status of a job, we recommend using
+                /// <summary>
+                /// Request the job status. To request the status of a job, we recommend using
                 /// `projects.locations.jobs.messages.list` with a [regional endpoint]
                 /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
                 /// `projects.jobs.messages.list` is not recommended, as you can only request the status of jobs that
-                /// are running in `us-central1`.</summary>
+                /// are running in `us-central1`.
+                /// </summary>
                 public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListJobMessagesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -920,7 +932,6 @@ namespace Google.Apis.Dataflow.v1b3
                         InitParameters();
                     }
 
-
                     /// <summary>A project id.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -929,72 +940,93 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string JobId { get; private set; }
 
-                    /// <summary>Return only messages with timestamps < end_time. The default is now (i.e. return up to
-                    /// the latest messages available).</summary>
+                    /// <summary>
+                    /// Return only messages with timestamps &amp;lt; end_time. The default is now (i.e. return up to
+                    /// the latest messages available).
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object EndTime { get; set; }
 
-                    /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                    /// endpoints) that contains the job specified by job_id.</summary>
+                    /// <summary>
+                    /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+                    /// that contains the job specified by job_id.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Location { get; set; }
 
-                    /// <summary>Filter to only get messages with importance >= level</summary>
+                    /// <summary>Filter to only get messages with importance &gt;= level</summary>
                     [Google.Apis.Util.RequestParameterAttribute("minimumImportance", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<MinimumImportanceEnum> MinimumImportance { get; set; }
 
-                    /// <summary>Filter to only get messages with importance >= level</summary>
+                    /// <summary>Filter to only get messages with importance &gt;= level</summary>
                     public enum MinimumImportanceEnum
                     {
                         /// <summary>The message importance isn't specified, or is unknown.</summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_IMPORTANCE_UNKNOWN")]
                         JOBMESSAGEIMPORTANCEUNKNOWN,
-                        /// <summary>The message is at the 'debug' level: typically only useful for software engineers
-                        /// working on the code the job is running. Typically, Dataflow pipeline runners do not display
-                        /// log messages at this level by default.</summary>
+
+                        /// <summary>
+                        /// The message is at the 'debug' level: typically only useful for software engineers working on
+                        /// the code the job is running. Typically, Dataflow pipeline runners do not display log
+                        /// messages at this level by default.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_DEBUG")]
                         JOBMESSAGEDEBUG,
-                        /// <summary>The message is at the 'detailed' level: somewhat verbose, but potentially useful to
-                        /// users. Typically, Dataflow pipeline runners do not display log messages at this level by
-                        /// default. These messages are displayed by default in the Dataflow monitoring UI.</summary>
+
+                        /// <summary>
+                        /// The message is at the 'detailed' level: somewhat verbose, but potentially useful to users.
+                        /// Typically, Dataflow pipeline runners do not display log messages at this level by default.
+                        /// These messages are displayed by default in the Dataflow monitoring UI.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_DETAILED")]
                         JOBMESSAGEDETAILED,
-                        /// <summary>The message is at the 'basic' level: useful for keeping track of the execution of a
-                        /// Dataflow pipeline. Typically, Dataflow pipeline runners display log messages at this level
-                        /// by default, and these messages are displayed by default in the Dataflow monitoring
-                        /// UI.</summary>
+
+                        /// <summary>
+                        /// The message is at the 'basic' level: useful for keeping track of the execution of a Dataflow
+                        /// pipeline. Typically, Dataflow pipeline runners display log messages at this level by
+                        /// default, and these messages are displayed by default in the Dataflow monitoring UI.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_BASIC")]
                         JOBMESSAGEBASIC,
-                        /// <summary>The message is at the 'warning' level: indicating a condition pertaining to a job
-                        /// which may require human intervention. Typically, Dataflow pipeline runners display log
-                        /// messages at this level by default, and these messages are displayed by default in the
-                        /// Dataflow monitoring UI.</summary>
+
+                        /// <summary>
+                        /// The message is at the 'warning' level: indicating a condition pertaining to a job which may
+                        /// require human intervention. Typically, Dataflow pipeline runners display log messages at
+                        /// this level by default, and these messages are displayed by default in the Dataflow
+                        /// monitoring UI.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_WARNING")]
                         JOBMESSAGEWARNING,
-                        /// <summary>The message is at the 'error' level: indicating a condition preventing a job from
+
+                        /// <summary>
+                        /// The message is at the 'error' level: indicating a condition preventing a job from
                         /// succeeding. Typically, Dataflow pipeline runners display log messages at this level by
-                        /// default, and these messages are displayed by default in the Dataflow monitoring
-                        /// UI.</summary>
+                        /// default, and these messages are displayed by default in the Dataflow monitoring UI.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_ERROR")]
                         JOBMESSAGEERROR,
                     }
 
-                    /// <summary>If specified, determines the maximum number of messages to return. If unspecified, the
-                    /// service may choose an appropriate default, or may return an arbitrarily large number of
-                    /// results.</summary>
+                    /// <summary>
+                    /// If specified, determines the maximum number of messages to return. If unspecified, the service
+                    /// may choose an appropriate default, or may return an arbitrarily large number of results.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>If supplied, this should be the value of next_page_token returned by an earlier call.
-                    /// This will cause the next page of results to be returned.</summary>
+                    /// <summary>
+                    /// If supplied, this should be the value of next_page_token returned by an earlier call. This will
+                    /// cause the next page of results to be returned.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>If specified, return only messages with timestamps >= start_time. The default is the
-                    /// job creation time (i.e. beginning of messages).</summary>
+                    /// <summary>
+                    /// If specified, return only messages with timestamps &amp;gt;= start_time. The default is the job
+                    /// creation time (i.e. beginning of messages).
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object StartTime { get; set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -1009,7 +1041,6 @@ namespace Google.Apis.Dataflow.v1b3
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "projectId",
@@ -1075,9 +1106,9 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     }
-
                 }
             }
+
             /// <summary>Gets the WorkItems resource.</summary>
             public virtual WorkItemsResource WorkItems { get; }
 
@@ -1093,15 +1124,12 @@ namespace Google.Apis.Dataflow.v1b3
                 public WorkItemsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
-
 
                 /// <summary>Leases a dataflow WorkItem to run.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">Identifies the project this worker belongs to.</param>
-                /// <param
-                /// name="jobId">Identifies the workflow job this worker belongs to.</param>
+                /// <param name="jobId">Identifies the workflow job this worker belongs to.</param>
                 public virtual LeaseRequest Lease(Google.Apis.Dataflow.v1b3.Data.LeaseWorkItemRequest body, string projectId, string jobId)
                 {
                     return new LeaseRequest(service, body, projectId, jobId);
@@ -1119,7 +1147,6 @@ namespace Google.Apis.Dataflow.v1b3
                         InitParameters();
                     }
 
-
                     /// <summary>Identifies the project this worker belongs to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -1127,7 +1154,6 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>Identifies the workflow job this worker belongs to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string JobId { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataflow.v1b3.Data.LeaseWorkItemRequest Body { get; set; }
@@ -1148,7 +1174,6 @@ namespace Google.Apis.Dataflow.v1b3
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "projectId",
@@ -1166,14 +1191,12 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Reports the status of dataflow WorkItems leased by a worker.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">The project which owns the WorkItem's job.</param>
-                /// <param name="jobId">The job which
-                /// the WorkItem is part of.</param>
+                /// <param name="jobId">The job which the WorkItem is part of.</param>
                 public virtual ReportStatusRequest ReportStatus(Google.Apis.Dataflow.v1b3.Data.ReportWorkItemStatusRequest body, string projectId, string jobId)
                 {
                     return new ReportStatusRequest(service, body, projectId, jobId);
@@ -1191,7 +1214,6 @@ namespace Google.Apis.Dataflow.v1b3
                         InitParameters();
                     }
 
-
                     /// <summary>The project which owns the WorkItem's job.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -1199,7 +1221,6 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>The job which the WorkItem is part of.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string JobId { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataflow.v1b3.Data.ReportWorkItemStatusRequest Body { get; set; }
@@ -1220,7 +1241,6 @@ namespace Google.Apis.Dataflow.v1b3
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "projectId",
@@ -1238,7 +1258,6 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     }
-
                 }
             }
 
@@ -1259,7 +1278,6 @@ namespace Google.Apis.Dataflow.v1b3
                     InitParameters();
                 }
 
-
                 /// <summary>The project which owns the jobs.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
@@ -1271,36 +1289,50 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <summary>The kind of filter to use.</summary>
                 public enum FilterEnum
                 {
-                    /// <summary>The filter isn't specified, or is unknown. This returns all jobs ordered on descending
-                    /// `JobUuid`.</summary>
+                    /// <summary>
+                    /// The filter isn't specified, or is unknown. This returns all jobs ordered on descending
+                    /// `JobUuid`.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
                     UNKNOWN,
-                    /// <summary>Returns all running jobs first ordered on creation timestamp, then returns all
-                    /// terminated jobs ordered on the termination timestamp.</summary>
+
+                    /// <summary>
+                    /// Returns all running jobs first ordered on creation timestamp, then returns all terminated jobs
+                    /// ordered on the termination timestamp.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALL")]
                     ALL,
-                    /// <summary>Filters the jobs that have a terminated state, ordered on the termination timestamp.
-                    /// Example terminated states: `JOB_STATE_STOPPED`, `JOB_STATE_UPDATED`, `JOB_STATE_DRAINED`,
-                    /// etc.</summary>
+
+                    /// <summary>
+                    /// Filters the jobs that have a terminated state, ordered on the termination timestamp. Example
+                    /// terminated states: `JOB_STATE_STOPPED`, `JOB_STATE_UPDATED`, `JOB_STATE_DRAINED`, etc.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TERMINATED")]
                     TERMINATED,
+
                     /// <summary>Filters the jobs that are running ordered on the creation timestamp.</summary>
                     [Google.Apis.Util.StringValueAttribute("ACTIVE")]
                     ACTIVE,
                 }
 
-                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                /// endpoints) that contains this job.</summary>
+                /// <summary>
+                /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+                /// contains this job.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Location { get; set; }
 
-                /// <summary>If there are many jobs, limit response to at most this many. The actual number of jobs
-                /// returned will be the lesser of max_responses and an unspecified server-defined limit.</summary>
+                /// <summary>
+                /// If there are many jobs, limit response to at most this many. The actual number of jobs returned will
+                /// be the lesser of max_responses and an unspecified server-defined limit.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>Set this to the 'next_page_token' field of a previous response to request additional
-                /// results in a long list.</summary>
+                /// <summary>
+                /// Set this to the 'next_page_token' field of a previous response to request additional results in a
+                /// long list.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -1311,23 +1343,30 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <summary>Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.</summary>
                 public enum ViewEnum
                 {
-                    /// <summary>The job view to return isn't specified, or is unknown. Responses will contain at least
-                    /// the `JOB_VIEW_SUMMARY` information, and may contain additional information.</summary>
+                    /// <summary>
+                    /// The job view to return isn't specified, or is unknown. Responses will contain at least the
+                    /// `JOB_VIEW_SUMMARY` information, and may contain additional information.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_UNKNOWN")]
                     JOBVIEWUNKNOWN,
-                    /// <summary>Request summary information only: Project ID, Job ID, job name, job type, job status,
-                    /// start/end time, and Cloud SDK version details.</summary>
+
+                    /// <summary>
+                    /// Request summary information only: Project ID, Job ID, job name, job type, job status, start/end
+                    /// time, and Cloud SDK version details.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SUMMARY")]
                     JOBVIEWSUMMARY,
+
                     /// <summary>Request all information available for this job.</summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ALL")]
                     JOBVIEWALL,
-                    /// <summary>Request summary info and limited job description data for steps, labels and
-                    /// environment.</summary>
+
+                    /// <summary>
+                    /// Request summary info and limited job description data for steps, labels and environment.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
                     JOBVIEWDESCRIPTION,
                 }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "aggregated";
@@ -1342,7 +1381,6 @@ namespace Google.Apis.Dataflow.v1b3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
@@ -1392,13 +1430,13 @@ namespace Google.Apis.Dataflow.v1b3
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Creates a Cloud Dataflow job. To create a job, we recommend using
-            /// `projects.locations.jobs.create` with a [regional endpoint]
-            /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is
-            /// not recommended, as your job will always start in `us-central1`.</summary>
+            /// <summary>
+            /// Creates a Cloud Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with
+            /// a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+            /// `projects.jobs.create` is not recommended, as your job will always start in `us-central1`.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">The ID of the Cloud Platform project that the job belongs to.</param>
             public virtual CreateRequest Create(Google.Apis.Dataflow.v1b3.Data.Job body, string projectId)
@@ -1406,10 +1444,11 @@ namespace Google.Apis.Dataflow.v1b3
                 return new CreateRequest(service, body, projectId);
             }
 
-            /// <summary>Creates a Cloud Dataflow job. To create a job, we recommend using
-            /// `projects.locations.jobs.create` with a [regional endpoint]
-            /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is
-            /// not recommended, as your job will always start in `us-central1`.</summary>
+            /// <summary>
+            /// Creates a Cloud Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with
+            /// a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
+            /// `projects.jobs.create` is not recommended, as your job will always start in `us-central1`.
+            /// </summary>
             public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -1420,13 +1459,14 @@ namespace Google.Apis.Dataflow.v1b3
                     InitParameters();
                 }
 
-
                 /// <summary>The ID of the Cloud Platform project that the job belongs to.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                /// endpoints) that contains this job.</summary>
+                /// <summary>
+                /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+                /// contains this job.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Location { get; set; }
 
@@ -1441,23 +1481,30 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <summary>The level of information requested in response.</summary>
                 public enum ViewEnum
                 {
-                    /// <summary>The job view to return isn't specified, or is unknown. Responses will contain at least
-                    /// the `JOB_VIEW_SUMMARY` information, and may contain additional information.</summary>
+                    /// <summary>
+                    /// The job view to return isn't specified, or is unknown. Responses will contain at least the
+                    /// `JOB_VIEW_SUMMARY` information, and may contain additional information.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_UNKNOWN")]
                     JOBVIEWUNKNOWN,
-                    /// <summary>Request summary information only: Project ID, Job ID, job name, job type, job status,
-                    /// start/end time, and Cloud SDK version details.</summary>
+
+                    /// <summary>
+                    /// Request summary information only: Project ID, Job ID, job name, job type, job status, start/end
+                    /// time, and Cloud SDK version details.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SUMMARY")]
                     JOBVIEWSUMMARY,
+
                     /// <summary>Request all information available for this job.</summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ALL")]
                     JOBVIEWALL,
-                    /// <summary>Request summary info and limited job description data for steps, labels and
-                    /// environment.</summary>
+
+                    /// <summary>
+                    /// Request summary info and limited job description data for steps, labels and environment.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
                     JOBVIEWDESCRIPTION,
                 }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Dataflow.v1b3.Data.Job Body { get; set; }
@@ -1478,7 +1525,6 @@ namespace Google.Apis.Dataflow.v1b3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
@@ -1512,25 +1558,27 @@ namespace Google.Apis.Dataflow.v1b3
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Gets the state of the specified Cloud Dataflow job. To get the state of a job, we recommend
-            /// using `projects.locations.jobs.get` with a [regional endpoint]
+            /// <summary>
+            /// Gets the state of the specified Cloud Dataflow job. To get the state of a job, we recommend using
+            /// `projects.locations.jobs.get` with a [regional endpoint]
             /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.get` is not
-            /// recommended, as you can only get the state of jobs that are running in `us-central1`.</summary>
+            /// recommended, as you can only get the state of jobs that are running in `us-central1`.
+            /// </summary>
             /// <param name="projectId">The ID of the Cloud Platform project that the job belongs to.</param>
-            /// <param
-            /// name="jobId">The job ID.</param>
+            /// <param name="jobId">The job ID.</param>
             public virtual GetRequest Get(string projectId, string jobId)
             {
                 return new GetRequest(service, projectId, jobId);
             }
 
-            /// <summary>Gets the state of the specified Cloud Dataflow job. To get the state of a job, we recommend
-            /// using `projects.locations.jobs.get` with a [regional endpoint]
+            /// <summary>
+            /// Gets the state of the specified Cloud Dataflow job. To get the state of a job, we recommend using
+            /// `projects.locations.jobs.get` with a [regional endpoint]
             /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.get` is not
-            /// recommended, as you can only get the state of jobs that are running in `us-central1`.</summary>
+            /// recommended, as you can only get the state of jobs that are running in `us-central1`.
+            /// </summary>
             public class GetRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -1541,7 +1589,6 @@ namespace Google.Apis.Dataflow.v1b3
                     InitParameters();
                 }
 
-
                 /// <summary>The ID of the Cloud Platform project that the job belongs to.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
@@ -1550,8 +1597,10 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string JobId { get; private set; }
 
-                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                /// endpoints) that contains this job.</summary>
+                /// <summary>
+                /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+                /// contains this job.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Location { get; set; }
 
@@ -1562,23 +1611,30 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <summary>The level of information requested in response.</summary>
                 public enum ViewEnum
                 {
-                    /// <summary>The job view to return isn't specified, or is unknown. Responses will contain at least
-                    /// the `JOB_VIEW_SUMMARY` information, and may contain additional information.</summary>
+                    /// <summary>
+                    /// The job view to return isn't specified, or is unknown. Responses will contain at least the
+                    /// `JOB_VIEW_SUMMARY` information, and may contain additional information.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_UNKNOWN")]
                     JOBVIEWUNKNOWN,
-                    /// <summary>Request summary information only: Project ID, Job ID, job name, job type, job status,
-                    /// start/end time, and Cloud SDK version details.</summary>
+
+                    /// <summary>
+                    /// Request summary information only: Project ID, Job ID, job name, job type, job status, start/end
+                    /// time, and Cloud SDK version details.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SUMMARY")]
                     JOBVIEWSUMMARY,
+
                     /// <summary>Request all information available for this job.</summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ALL")]
                     JOBVIEWALL,
-                    /// <summary>Request summary info and limited job description data for steps, labels and
-                    /// environment.</summary>
+
+                    /// <summary>
+                    /// Request summary info and limited job description data for steps, labels and environment.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
                     JOBVIEWDESCRIPTION,
                 }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -1593,7 +1649,6 @@ namespace Google.Apis.Dataflow.v1b3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
@@ -1627,14 +1682,14 @@ namespace Google.Apis.Dataflow.v1b3
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Request the job status. To request the status of a job, we recommend using
+            /// <summary>
+            /// Request the job status. To request the status of a job, we recommend using
             /// `projects.locations.jobs.getMetrics` with a [regional endpoint]
             /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.getMetrics`
-            /// is not recommended, as you can only request the status of jobs that are running in `us-
-            /// central1`.</summary>
+            /// is not recommended, as you can only request the status of jobs that are running in `us-central1`.
+            /// </summary>
             /// <param name="projectId">A project id.</param>
             /// <param name="jobId">The job to get metrics for.</param>
             public virtual GetMetricsRequest GetMetrics(string projectId, string jobId)
@@ -1642,11 +1697,12 @@ namespace Google.Apis.Dataflow.v1b3
                 return new GetMetricsRequest(service, projectId, jobId);
             }
 
-            /// <summary>Request the job status. To request the status of a job, we recommend using
+            /// <summary>
+            /// Request the job status. To request the status of a job, we recommend using
             /// `projects.locations.jobs.getMetrics` with a [regional endpoint]
             /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.getMetrics`
-            /// is not recommended, as you can only request the status of jobs that are running in `us-
-            /// central1`.</summary>
+            /// is not recommended, as you can only request the status of jobs that are running in `us-central1`.
+            /// </summary>
             public class GetMetricsRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.JobMetrics>
             {
                 /// <summary>Constructs a new GetMetrics request.</summary>
@@ -1657,7 +1713,6 @@ namespace Google.Apis.Dataflow.v1b3
                     InitParameters();
                 }
 
-
                 /// <summary>A project id.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
@@ -1666,16 +1721,19 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string JobId { get; private set; }
 
-                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                /// endpoints) that contains the job specified by job_id.</summary>
+                /// <summary>
+                /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+                /// contains the job specified by job_id.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Location { get; set; }
 
-                /// <summary>Return only metric data that has changed since this time. Default is to return all
-                /// information about all metrics for the job.</summary>
+                /// <summary>
+                /// Return only metric data that has changed since this time. Default is to return all information about
+                /// all metrics for the job.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object StartTime { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getMetrics";
@@ -1690,7 +1748,6 @@ namespace Google.Apis.Dataflow.v1b3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
@@ -1724,25 +1781,28 @@ namespace Google.Apis.Dataflow.v1b3
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>List the jobs of a project. To list the jobs of a project in a region, we recommend using
+            /// <summary>
+            /// List the jobs of a project. To list the jobs of a project in a region, we recommend using
             /// `projects.locations.jobs.list` with a [regional endpoint]
             /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To list the all jobs across all
             /// regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not recommended, as you can only
-            /// get the list of jobs that are running in `us-central1`.</summary>
+            /// get the list of jobs that are running in `us-central1`.
+            /// </summary>
             /// <param name="projectId">The project which owns the jobs.</param>
             public virtual ListRequest List(string projectId)
             {
                 return new ListRequest(service, projectId);
             }
 
-            /// <summary>List the jobs of a project. To list the jobs of a project in a region, we recommend using
+            /// <summary>
+            /// List the jobs of a project. To list the jobs of a project in a region, we recommend using
             /// `projects.locations.jobs.list` with a [regional endpoint]
             /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To list the all jobs across all
             /// regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not recommended, as you can only
-            /// get the list of jobs that are running in `us-central1`.</summary>
+            /// get the list of jobs that are running in `us-central1`.
+            /// </summary>
             public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListJobsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1751,7 +1811,6 @@ namespace Google.Apis.Dataflow.v1b3
                     ProjectId = projectId;
                     InitParameters();
                 }
-
 
                 /// <summary>The project which owns the jobs.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
@@ -1764,36 +1823,50 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <summary>The kind of filter to use.</summary>
                 public enum FilterEnum
                 {
-                    /// <summary>The filter isn't specified, or is unknown. This returns all jobs ordered on descending
-                    /// `JobUuid`.</summary>
+                    /// <summary>
+                    /// The filter isn't specified, or is unknown. This returns all jobs ordered on descending
+                    /// `JobUuid`.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
                     UNKNOWN,
-                    /// <summary>Returns all running jobs first ordered on creation timestamp, then returns all
-                    /// terminated jobs ordered on the termination timestamp.</summary>
+
+                    /// <summary>
+                    /// Returns all running jobs first ordered on creation timestamp, then returns all terminated jobs
+                    /// ordered on the termination timestamp.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALL")]
                     ALL,
-                    /// <summary>Filters the jobs that have a terminated state, ordered on the termination timestamp.
-                    /// Example terminated states: `JOB_STATE_STOPPED`, `JOB_STATE_UPDATED`, `JOB_STATE_DRAINED`,
-                    /// etc.</summary>
+
+                    /// <summary>
+                    /// Filters the jobs that have a terminated state, ordered on the termination timestamp. Example
+                    /// terminated states: `JOB_STATE_STOPPED`, `JOB_STATE_UPDATED`, `JOB_STATE_DRAINED`, etc.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TERMINATED")]
                     TERMINATED,
+
                     /// <summary>Filters the jobs that are running ordered on the creation timestamp.</summary>
                     [Google.Apis.Util.StringValueAttribute("ACTIVE")]
                     ACTIVE,
                 }
 
-                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                /// endpoints) that contains this job.</summary>
+                /// <summary>
+                /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+                /// contains this job.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Location { get; set; }
 
-                /// <summary>If there are many jobs, limit response to at most this many. The actual number of jobs
-                /// returned will be the lesser of max_responses and an unspecified server-defined limit.</summary>
+                /// <summary>
+                /// If there are many jobs, limit response to at most this many. The actual number of jobs returned will
+                /// be the lesser of max_responses and an unspecified server-defined limit.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>Set this to the 'next_page_token' field of a previous response to request additional
-                /// results in a long list.</summary>
+                /// <summary>
+                /// Set this to the 'next_page_token' field of a previous response to request additional results in a
+                /// long list.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -1804,23 +1877,30 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <summary>Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.</summary>
                 public enum ViewEnum
                 {
-                    /// <summary>The job view to return isn't specified, or is unknown. Responses will contain at least
-                    /// the `JOB_VIEW_SUMMARY` information, and may contain additional information.</summary>
+                    /// <summary>
+                    /// The job view to return isn't specified, or is unknown. Responses will contain at least the
+                    /// `JOB_VIEW_SUMMARY` information, and may contain additional information.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_UNKNOWN")]
                     JOBVIEWUNKNOWN,
-                    /// <summary>Request summary information only: Project ID, Job ID, job name, job type, job status,
-                    /// start/end time, and Cloud SDK version details.</summary>
+
+                    /// <summary>
+                    /// Request summary information only: Project ID, Job ID, job name, job type, job status, start/end
+                    /// time, and Cloud SDK version details.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SUMMARY")]
                     JOBVIEWSUMMARY,
+
                     /// <summary>Request all information available for this job.</summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ALL")]
                     JOBVIEWALL,
-                    /// <summary>Request summary info and limited job description data for steps, labels and
-                    /// environment.</summary>
+
+                    /// <summary>
+                    /// Request summary info and limited job description data for steps, labels and environment.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
                     JOBVIEWDESCRIPTION,
                 }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -1835,7 +1915,6 @@ namespace Google.Apis.Dataflow.v1b3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
@@ -1885,14 +1964,12 @@ namespace Google.Apis.Dataflow.v1b3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Snapshot the state of a streaming job.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">The project which owns the job to be snapshotted.</param>
-            /// <param name="jobId">The
-            /// job to be snapshotted.</param>
+            /// <param name="jobId">The job to be snapshotted.</param>
             public virtual SnapshotRequest Snapshot(Google.Apis.Dataflow.v1b3.Data.SnapshotJobRequest body, string projectId, string jobId)
             {
                 return new SnapshotRequest(service, body, projectId, jobId);
@@ -1910,7 +1987,6 @@ namespace Google.Apis.Dataflow.v1b3
                     InitParameters();
                 }
 
-
                 /// <summary>The project which owns the job to be snapshotted.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
@@ -1918,7 +1994,6 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <summary>The job to be snapshotted.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string JobId { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Dataflow.v1b3.Data.SnapshotJobRequest Body { get; set; }
@@ -1939,7 +2014,6 @@ namespace Google.Apis.Dataflow.v1b3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
@@ -1957,26 +2031,28 @@ namespace Google.Apis.Dataflow.v1b3
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Updates the state of an existing Cloud Dataflow job. To update the state of an existing job, we
+            /// <summary>
+            /// Updates the state of an existing Cloud Dataflow job. To update the state of an existing job, we
             /// recommend using `projects.locations.jobs.update` with a [regional endpoint]
             /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.update` is
-            /// not recommended, as you can only update the state of jobs that are running in `us-central1`.</summary>
+            /// not recommended, as you can only update the state of jobs that are running in `us-central1`.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">The ID of the Cloud Platform project that the job belongs to.</param>
-            /// <param
-            /// name="jobId">The job ID.</param>
+            /// <param name="jobId">The job ID.</param>
             public virtual UpdateRequest Update(Google.Apis.Dataflow.v1b3.Data.Job body, string projectId, string jobId)
             {
                 return new UpdateRequest(service, body, projectId, jobId);
             }
 
-            /// <summary>Updates the state of an existing Cloud Dataflow job. To update the state of an existing job, we
+            /// <summary>
+            /// Updates the state of an existing Cloud Dataflow job. To update the state of an existing job, we
             /// recommend using `projects.locations.jobs.update` with a [regional endpoint]
             /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.update` is
-            /// not recommended, as you can only update the state of jobs that are running in `us-central1`.</summary>
+            /// not recommended, as you can only update the state of jobs that are running in `us-central1`.
+            /// </summary>
             public class UpdateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -1988,7 +2064,6 @@ namespace Google.Apis.Dataflow.v1b3
                     InitParameters();
                 }
 
-
                 /// <summary>The ID of the Cloud Platform project that the job belongs to.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
@@ -1997,11 +2072,12 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string JobId { get; private set; }
 
-                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                /// endpoints) that contains this job.</summary>
+                /// <summary>
+                /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+                /// contains this job.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Location { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Dataflow.v1b3.Data.Job Body { get; set; }
@@ -2022,7 +2098,6 @@ namespace Google.Apis.Dataflow.v1b3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
@@ -2048,9 +2123,9 @@ namespace Google.Apis.Dataflow.v1b3
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Locations resource.</summary>
         public virtual LocationsResource Locations { get; }
 
@@ -2071,7 +2146,6 @@ namespace Google.Apis.Dataflow.v1b3
                 Snapshots = new SnapshotsResource(service);
                 Sql = new SqlResource(service);
                 Templates = new TemplatesResource(service);
-
             }
 
             /// <summary>Gets the FlexTemplates resource.</summary>
@@ -2089,16 +2163,18 @@ namespace Google.Apis.Dataflow.v1b3
                 public FlexTemplatesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
-
 
                 /// <summary>Launch a job with a FlexTemplate.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">Required. The ID of the Cloud Platform project that the job belongs to.</param>
-                ///
-                /// <param name="location">Required. The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                /// endpoints) to which to direct the request. E.g., us-central1, us-west1.</param>
+                /// <param name="projectId">
+                /// Required. The ID of the Cloud Platform project that the job belongs to.
+                /// </param>
+                /// <param name="location">
+                /// Required. The [regional endpoint]
+                /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
+                /// E.g., us-central1, us-west1.
+                /// </param>
                 public virtual LaunchRequest Launch(Google.Apis.Dataflow.v1b3.Data.LaunchFlexTemplateRequest body, string projectId, string location)
                 {
                     return new LaunchRequest(service, body, projectId, location);
@@ -2116,16 +2192,17 @@ namespace Google.Apis.Dataflow.v1b3
                         InitParameters();
                     }
 
-
                     /// <summary>Required. The ID of the Cloud Platform project that the job belongs to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Required. The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts
-                    /// /regional-endpoints) to which to direct the request. E.g., us-central1, us-west1.</summary>
+                    /// <summary>
+                    /// Required. The [regional endpoint]
+                    /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the
+                    /// request. E.g., us-central1, us-west1.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Location { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataflow.v1b3.Data.LaunchFlexTemplateRequest Body { get; set; }
@@ -2146,7 +2223,6 @@ namespace Google.Apis.Dataflow.v1b3
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "projectId",
@@ -2164,9 +2240,9 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     }
-
                 }
             }
+
             /// <summary>Gets the Jobs resource.</summary>
             public virtual JobsResource Jobs { get; }
 
@@ -2187,7 +2263,6 @@ namespace Google.Apis.Dataflow.v1b3
                     Snapshots = new SnapshotsResource(service);
                     Stages = new StagesResource(service);
                     WorkItems = new WorkItemsResource(service);
-
                 }
 
                 /// <summary>Gets the Debug resource.</summary>
@@ -2205,16 +2280,15 @@ namespace Google.Apis.Dataflow.v1b3
                     public DebugResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
-
                     }
-
 
                     /// <summary>Get encoded debug configuration for component. Not cacheable.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="projectId">The project id.</param>
-                    /// <param name="location">The [regional endpoint]
-                    /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by
-                    /// job_id.</param>
+                    /// <param name="location">
+                    /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+                    /// that contains the job specified by job_id.
+                    /// </param>
                     /// <param name="jobId">The job id.</param>
                     public virtual GetConfigRequest GetConfig(Google.Apis.Dataflow.v1b3.Data.GetDebugConfigRequest body, string projectId, string location, string jobId)
                     {
@@ -2234,20 +2308,20 @@ namespace Google.Apis.Dataflow.v1b3
                             InitParameters();
                         }
 
-
                         /// <summary>The project id.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                        /// endpoints) that contains the job specified by job_id.</summary>
+                        /// <summary>
+                        /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+                        /// that contains the job specified by job_id.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Location { get; private set; }
 
                         /// <summary>The job id.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string JobId { get; private set; }
-
 
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Dataflow.v1b3.Data.GetDebugConfigRequest Body { get; set; }
@@ -2268,7 +2342,6 @@ namespace Google.Apis.Dataflow.v1b3
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "projectId",
@@ -2294,15 +2367,15 @@ namespace Google.Apis.Dataflow.v1b3
                                 Pattern = null,
                             });
                         }
-
                     }
 
                     /// <summary>Send encoded debug capture data for component.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="projectId">The project id.</param>
-                    /// <param name="location">The [regional endpoint]
-                    /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by
-                    /// job_id.</param>
+                    /// <param name="location">
+                    /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+                    /// that contains the job specified by job_id.
+                    /// </param>
                     /// <param name="jobId">The job id.</param>
                     public virtual SendCaptureRequest SendCapture(Google.Apis.Dataflow.v1b3.Data.SendDebugCaptureRequest body, string projectId, string location, string jobId)
                     {
@@ -2322,20 +2395,20 @@ namespace Google.Apis.Dataflow.v1b3
                             InitParameters();
                         }
 
-
                         /// <summary>The project id.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                        /// endpoints) that contains the job specified by job_id.</summary>
+                        /// <summary>
+                        /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+                        /// that contains the job specified by job_id.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Location { get; private set; }
 
                         /// <summary>The job id.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string JobId { get; private set; }
-
 
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Dataflow.v1b3.Data.SendDebugCaptureRequest Body { get; set; }
@@ -2356,7 +2429,6 @@ namespace Google.Apis.Dataflow.v1b3
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "projectId",
@@ -2382,9 +2454,9 @@ namespace Google.Apis.Dataflow.v1b3
                                 Pattern = null,
                             });
                         }
-
                     }
                 }
+
                 /// <summary>Gets the Messages resource.</summary>
                 public virtual MessagesResource Messages { get; }
 
@@ -2400,30 +2472,33 @@ namespace Google.Apis.Dataflow.v1b3
                     public MessagesResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
-
                     }
 
-
-                    /// <summary>Request the job status. To request the status of a job, we recommend using
+                    /// <summary>
+                    /// Request the job status. To request the status of a job, we recommend using
                     /// `projects.locations.jobs.messages.list` with a [regional endpoint]
                     /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
                     /// `projects.jobs.messages.list` is not recommended, as you can only request the status of jobs
-                    /// that are running in `us-central1`.</summary>
+                    /// that are running in `us-central1`.
+                    /// </summary>
                     /// <param name="projectId">A project id.</param>
-                    /// <param name="location">The [regional endpoint]
-                    /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by
-                    /// job_id.</param>
+                    /// <param name="location">
+                    /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+                    /// that contains the job specified by job_id.
+                    /// </param>
                     /// <param name="jobId">The job to get messages about.</param>
                     public virtual ListRequest List(string projectId, string location, string jobId)
                     {
                         return new ListRequest(service, projectId, location, jobId);
                     }
 
-                    /// <summary>Request the job status. To request the status of a job, we recommend using
+                    /// <summary>
+                    /// Request the job status. To request the status of a job, we recommend using
                     /// `projects.locations.jobs.messages.list` with a [regional endpoint]
                     /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
                     /// `projects.jobs.messages.list` is not recommended, as you can only request the status of jobs
-                    /// that are running in `us-central1`.</summary>
+                    /// that are running in `us-central1`.
+                    /// </summary>
                     public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListJobMessagesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -2435,13 +2510,14 @@ namespace Google.Apis.Dataflow.v1b3
                             InitParameters();
                         }
 
-
                         /// <summary>A project id.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                        /// endpoints) that contains the job specified by job_id.</summary>
+                        /// <summary>
+                        /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+                        /// that contains the job specified by job_id.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Location { get; private set; }
 
@@ -2449,68 +2525,88 @@ namespace Google.Apis.Dataflow.v1b3
                         [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string JobId { get; private set; }
 
-                        /// <summary>Return only messages with timestamps < end_time. The default is now (i.e. return up
-                        /// to the latest messages available).</summary>
+                        /// <summary>
+                        /// Return only messages with timestamps &amp;lt; end_time. The default is now (i.e. return up
+                        /// to the latest messages available).
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object EndTime { get; set; }
 
-                        /// <summary>Filter to only get messages with importance >= level</summary>
+                        /// <summary>Filter to only get messages with importance &gt;= level</summary>
                         [Google.Apis.Util.RequestParameterAttribute("minimumImportance", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<MinimumImportanceEnum> MinimumImportance { get; set; }
 
-                        /// <summary>Filter to only get messages with importance >= level</summary>
+                        /// <summary>Filter to only get messages with importance &gt;= level</summary>
                         public enum MinimumImportanceEnum
                         {
                             /// <summary>The message importance isn't specified, or is unknown.</summary>
                             [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_IMPORTANCE_UNKNOWN")]
                             JOBMESSAGEIMPORTANCEUNKNOWN,
-                            /// <summary>The message is at the 'debug' level: typically only useful for software
-                            /// engineers working on the code the job is running. Typically, Dataflow pipeline runners
-                            /// do not display log messages at this level by default.</summary>
+
+                            /// <summary>
+                            /// The message is at the 'debug' level: typically only useful for software engineers
+                            /// working on the code the job is running. Typically, Dataflow pipeline runners do not
+                            /// display log messages at this level by default.
+                            /// </summary>
                             [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_DEBUG")]
                             JOBMESSAGEDEBUG,
-                            /// <summary>The message is at the 'detailed' level: somewhat verbose, but potentially
-                            /// useful to users. Typically, Dataflow pipeline runners do not display log messages at
-                            /// this level by default. These messages are displayed by default in the Dataflow
-                            /// monitoring UI.</summary>
+
+                            /// <summary>
+                            /// The message is at the 'detailed' level: somewhat verbose, but potentially useful to
+                            /// users. Typically, Dataflow pipeline runners do not display log messages at this level by
+                            /// default. These messages are displayed by default in the Dataflow monitoring UI.
+                            /// </summary>
                             [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_DETAILED")]
                             JOBMESSAGEDETAILED,
-                            /// <summary>The message is at the 'basic' level: useful for keeping track of the execution
-                            /// of a Dataflow pipeline. Typically, Dataflow pipeline runners display log messages at
-                            /// this level by default, and these messages are displayed by default in the Dataflow
-                            /// monitoring UI.</summary>
+
+                            /// <summary>
+                            /// The message is at the 'basic' level: useful for keeping track of the execution of a
+                            /// Dataflow pipeline. Typically, Dataflow pipeline runners display log messages at this
+                            /// level by default, and these messages are displayed by default in the Dataflow monitoring
+                            /// UI.
+                            /// </summary>
                             [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_BASIC")]
                             JOBMESSAGEBASIC,
-                            /// <summary>The message is at the 'warning' level: indicating a condition pertaining to a
-                            /// job which may require human intervention. Typically, Dataflow pipeline runners display
-                            /// log messages at this level by default, and these messages are displayed by default in
-                            /// the Dataflow monitoring UI.</summary>
+
+                            /// <summary>
+                            /// The message is at the 'warning' level: indicating a condition pertaining to a job which
+                            /// may require human intervention. Typically, Dataflow pipeline runners display log
+                            /// messages at this level by default, and these messages are displayed by default in the
+                            /// Dataflow monitoring UI.
+                            /// </summary>
                             [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_WARNING")]
                             JOBMESSAGEWARNING,
-                            /// <summary>The message is at the 'error' level: indicating a condition preventing a job
-                            /// from succeeding. Typically, Dataflow pipeline runners display log messages at this level
-                            /// by default, and these messages are displayed by default in the Dataflow monitoring
-                            /// UI.</summary>
+
+                            /// <summary>
+                            /// The message is at the 'error' level: indicating a condition preventing a job from
+                            /// succeeding. Typically, Dataflow pipeline runners display log messages at this level by
+                            /// default, and these messages are displayed by default in the Dataflow monitoring UI.
+                            /// </summary>
                             [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_ERROR")]
                             JOBMESSAGEERROR,
                         }
 
-                        /// <summary>If specified, determines the maximum number of messages to return. If unspecified,
-                        /// the service may choose an appropriate default, or may return an arbitrarily large number of
-                        /// results.</summary>
+                        /// <summary>
+                        /// If specified, determines the maximum number of messages to return. If unspecified, the
+                        /// service may choose an appropriate default, or may return an arbitrarily large number of
+                        /// results.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
-                        /// <summary>If supplied, this should be the value of next_page_token returned by an earlier
-                        /// call. This will cause the next page of results to be returned.</summary>
+                        /// <summary>
+                        /// If supplied, this should be the value of next_page_token returned by an earlier call. This
+                        /// will cause the next page of results to be returned.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
-                        /// <summary>If specified, return only messages with timestamps >= start_time. The default is
-                        /// the job creation time (i.e. beginning of messages).</summary>
+                        /// <summary>
+                        /// If specified, return only messages with timestamps &amp;gt;= start_time. The default is the
+                        /// job creation time (i.e. beginning of messages).
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object StartTime { get; set; }
-
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
@@ -2525,7 +2621,6 @@ namespace Google.Apis.Dataflow.v1b3
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "projectId",
@@ -2591,9 +2686,9 @@ namespace Google.Apis.Dataflow.v1b3
                                 Pattern = null,
                             });
                         }
-
                     }
                 }
+
                 /// <summary>Gets the Snapshots resource.</summary>
                 public virtual SnapshotsResource Snapshots { get; }
 
@@ -2609,16 +2704,12 @@ namespace Google.Apis.Dataflow.v1b3
                     public SnapshotsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
-
                     }
-
 
                     /// <summary>Lists snapshots.</summary>
                     /// <param name="projectId">The project ID to list snapshots for.</param>
-                    /// <param name="location">The location to
-                    /// list snapshots in.</param>
-                    /// <param name="jobId">If specified, list snapshots created from this
-                    /// job.</param>
+                    /// <param name="location">The location to list snapshots in.</param>
+                    /// <param name="jobId">If specified, list snapshots created from this job.</param>
                     public virtual ListRequest List(string projectId, string location, string jobId)
                     {
                         return new ListRequest(service, projectId, location, jobId);
@@ -2636,7 +2727,6 @@ namespace Google.Apis.Dataflow.v1b3
                             InitParameters();
                         }
 
-
                         /// <summary>The project ID to list snapshots for.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
@@ -2648,7 +2738,6 @@ namespace Google.Apis.Dataflow.v1b3
                         /// <summary>If specified, list snapshots created from this job.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string JobId { get; private set; }
-
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
@@ -2663,7 +2752,6 @@ namespace Google.Apis.Dataflow.v1b3
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "projectId",
@@ -2689,9 +2777,9 @@ namespace Google.Apis.Dataflow.v1b3
                                 Pattern = null,
                             });
                         }
-
                     }
                 }
+
                 /// <summary>Gets the Stages resource.</summary>
                 public virtual StagesResource Stages { get; }
 
@@ -2707,26 +2795,28 @@ namespace Google.Apis.Dataflow.v1b3
                     public StagesResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
-
                     }
 
-
-                    /// <summary>Request detailed information about the execution status of a stage of the job.
-                    /// EXPERIMENTAL. This API is subject to change or removal without notice.</summary>
+                    /// <summary>
+                    /// Request detailed information about the execution status of a stage of the job. EXPERIMENTAL.
+                    /// This API is subject to change or removal without notice.
+                    /// </summary>
                     /// <param name="projectId">A project id.</param>
-                    /// <param name="location">The [regional endpoint]
-                    /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by
-                    /// job_id.</param>
+                    /// <param name="location">
+                    /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+                    /// that contains the job specified by job_id.
+                    /// </param>
                     /// <param name="jobId">The job to get execution details for.</param>
-                    /// <param
-                    /// name="stageId">The stage for which to fetch information.</param>
+                    /// <param name="stageId">The stage for which to fetch information.</param>
                     public virtual GetExecutionDetailsRequest GetExecutionDetails(string projectId, string location, string jobId, string stageId)
                     {
                         return new GetExecutionDetailsRequest(service, projectId, location, jobId, stageId);
                     }
 
-                    /// <summary>Request detailed information about the execution status of a stage of the job.
-                    /// EXPERIMENTAL. This API is subject to change or removal without notice.</summary>
+                    /// <summary>
+                    /// Request detailed information about the execution status of a stage of the job. EXPERIMENTAL.
+                    /// This API is subject to change or removal without notice.
+                    /// </summary>
                     public class GetExecutionDetailsRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.StageExecutionDetails>
                     {
                         /// <summary>Constructs a new GetExecutionDetails request.</summary>
@@ -2739,13 +2829,14 @@ namespace Google.Apis.Dataflow.v1b3
                             InitParameters();
                         }
 
-
                         /// <summary>A project id.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                        /// endpoints) that contains the job specified by job_id.</summary>
+                        /// <summary>
+                        /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+                        /// that contains the job specified by job_id.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Location { get; private set; }
 
@@ -2761,21 +2852,24 @@ namespace Google.Apis.Dataflow.v1b3
                         [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object EndTime { get; set; }
 
-                        /// <summary>If specified, determines the maximum number of work items to return. If
-                        /// unspecified, the service may choose an appropriate default, or may return an arbitrarily
-                        /// large number of results.</summary>
+                        /// <summary>
+                        /// If specified, determines the maximum number of work items to return. If unspecified, the
+                        /// service may choose an appropriate default, or may return an arbitrarily large number of
+                        /// results.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
-                        /// <summary>If supplied, this should be the value of next_page_token returned by an earlier
-                        /// call. This will cause the next page of results to be returned.</summary>
+                        /// <summary>
+                        /// If supplied, this should be the value of next_page_token returned by an earlier call. This
+                        /// will cause the next page of results to be returned.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
                         /// <summary>Lower time bound of work items to include, by start time.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object StartTime { get; set; }
-
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "getExecutionDetails";
@@ -2790,7 +2884,6 @@ namespace Google.Apis.Dataflow.v1b3
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "projectId",
@@ -2856,9 +2949,9 @@ namespace Google.Apis.Dataflow.v1b3
                                 Pattern = null,
                             });
                         }
-
                     }
                 }
+
                 /// <summary>Gets the WorkItems resource.</summary>
                 public virtual WorkItemsResource WorkItems { get; }
 
@@ -2874,16 +2967,15 @@ namespace Google.Apis.Dataflow.v1b3
                     public WorkItemsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
-
                     }
-
 
                     /// <summary>Leases a dataflow WorkItem to run.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="projectId">Identifies the project this worker belongs to.</param>
-                    /// <param name="location">The
-                    /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the
-                    /// WorkItem's job.</param>
+                    /// <param name="location">
+                    /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+                    /// that contains the WorkItem's job.
+                    /// </param>
                     /// <param name="jobId">Identifies the workflow job this worker belongs to.</param>
                     public virtual LeaseRequest Lease(Google.Apis.Dataflow.v1b3.Data.LeaseWorkItemRequest body, string projectId, string location, string jobId)
                     {
@@ -2903,20 +2995,20 @@ namespace Google.Apis.Dataflow.v1b3
                             InitParameters();
                         }
 
-
                         /// <summary>Identifies the project this worker belongs to.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                        /// endpoints) that contains the WorkItem's job.</summary>
+                        /// <summary>
+                        /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+                        /// that contains the WorkItem's job.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Location { get; private set; }
 
                         /// <summary>Identifies the workflow job this worker belongs to.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string JobId { get; private set; }
-
 
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Dataflow.v1b3.Data.LeaseWorkItemRequest Body { get; set; }
@@ -2937,7 +3029,6 @@ namespace Google.Apis.Dataflow.v1b3
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "projectId",
@@ -2963,15 +3054,15 @@ namespace Google.Apis.Dataflow.v1b3
                                 Pattern = null,
                             });
                         }
-
                     }
 
                     /// <summary>Reports the status of dataflow WorkItems leased by a worker.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="projectId">The project which owns the WorkItem's job.</param>
-                    /// <param name="location">The
-                    /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the
-                    /// WorkItem's job.</param>
+                    /// <param name="location">
+                    /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+                    /// that contains the WorkItem's job.
+                    /// </param>
                     /// <param name="jobId">The job which the WorkItem is part of.</param>
                     public virtual ReportStatusRequest ReportStatus(Google.Apis.Dataflow.v1b3.Data.ReportWorkItemStatusRequest body, string projectId, string location, string jobId)
                     {
@@ -2991,20 +3082,20 @@ namespace Google.Apis.Dataflow.v1b3
                             InitParameters();
                         }
 
-
                         /// <summary>The project which owns the WorkItem's job.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                        /// endpoints) that contains the WorkItem's job.</summary>
+                        /// <summary>
+                        /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+                        /// that contains the WorkItem's job.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Location { get; private set; }
 
                         /// <summary>The job which the WorkItem is part of.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string JobId { get; private set; }
-
 
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Dataflow.v1b3.Data.ReportWorkItemStatusRequest Body { get; set; }
@@ -3025,7 +3116,6 @@ namespace Google.Apis.Dataflow.v1b3
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "projectId",
@@ -3051,28 +3141,30 @@ namespace Google.Apis.Dataflow.v1b3
                                 Pattern = null,
                             });
                         }
-
                     }
                 }
 
-                /// <summary>Creates a Cloud Dataflow job. To create a job, we recommend using
-                /// `projects.locations.jobs.create` with a [regional endpoint]
-                /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create`
-                /// is not recommended, as your job will always start in `us-central1`.</summary>
+                /// <summary>
+                /// Creates a Cloud Dataflow job. To create a job, we recommend using `projects.locations.jobs.create`
+                /// with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+                /// Using `projects.jobs.create` is not recommended, as your job will always start in `us-central1`.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">The ID of the Cloud Platform project that the job belongs to.</param>
-                /// <param
-                /// name="location">The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
-                /// contains this job.</param>
+                /// <param name="location">
+                /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+                /// contains this job.
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.Dataflow.v1b3.Data.Job body, string projectId, string location)
                 {
                     return new CreateRequest(service, body, projectId, location);
                 }
 
-                /// <summary>Creates a Cloud Dataflow job. To create a job, we recommend using
-                /// `projects.locations.jobs.create` with a [regional endpoint]
-                /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create`
-                /// is not recommended, as your job will always start in `us-central1`.</summary>
+                /// <summary>
+                /// Creates a Cloud Dataflow job. To create a job, we recommend using `projects.locations.jobs.create`
+                /// with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+                /// Using `projects.jobs.create` is not recommended, as your job will always start in `us-central1`.
+                /// </summary>
                 public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -3084,13 +3176,14 @@ namespace Google.Apis.Dataflow.v1b3
                         InitParameters();
                     }
 
-
                     /// <summary>The ID of the Cloud Platform project that the job belongs to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                    /// endpoints) that contains this job.</summary>
+                    /// <summary>
+                    /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+                    /// that contains this job.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Location { get; private set; }
 
@@ -3105,23 +3198,30 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>The level of information requested in response.</summary>
                     public enum ViewEnum
                     {
-                        /// <summary>The job view to return isn't specified, or is unknown. Responses will contain at
-                        /// least the `JOB_VIEW_SUMMARY` information, and may contain additional information.</summary>
+                        /// <summary>
+                        /// The job view to return isn't specified, or is unknown. Responses will contain at least the
+                        /// `JOB_VIEW_SUMMARY` information, and may contain additional information.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_UNKNOWN")]
                         JOBVIEWUNKNOWN,
-                        /// <summary>Request summary information only: Project ID, Job ID, job name, job type, job
-                        /// status, start/end time, and Cloud SDK version details.</summary>
+
+                        /// <summary>
+                        /// Request summary information only: Project ID, Job ID, job name, job type, job status,
+                        /// start/end time, and Cloud SDK version details.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SUMMARY")]
                         JOBVIEWSUMMARY,
+
                         /// <summary>Request all information available for this job.</summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ALL")]
                         JOBVIEWALL,
-                        /// <summary>Request summary info and limited job description data for steps, labels and
-                        /// environment.</summary>
+
+                        /// <summary>
+                        /// Request summary info and limited job description data for steps, labels and environment.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
                         JOBVIEWDESCRIPTION,
                     }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataflow.v1b3.Data.Job Body { get; set; }
@@ -3142,7 +3242,6 @@ namespace Google.Apis.Dataflow.v1b3
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "projectId",
@@ -3176,27 +3275,31 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     }
-
                 }
 
-                /// <summary>Gets the state of the specified Cloud Dataflow job. To get the state of a job, we recommend
-                /// using `projects.locations.jobs.get` with a [regional endpoint]
+                /// <summary>
+                /// Gets the state of the specified Cloud Dataflow job. To get the state of a job, we recommend using
+                /// `projects.locations.jobs.get` with a [regional endpoint]
                 /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.get` is
-                /// not recommended, as you can only get the state of jobs that are running in `us-central1`.</summary>
+                /// not recommended, as you can only get the state of jobs that are running in `us-central1`.
+                /// </summary>
                 /// <param name="projectId">The ID of the Cloud Platform project that the job belongs to.</param>
-                /// <param
-                /// name="location">The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
-                /// contains this job.</param>
+                /// <param name="location">
+                /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+                /// contains this job.
+                /// </param>
                 /// <param name="jobId">The job ID.</param>
                 public virtual GetRequest Get(string projectId, string location, string jobId)
                 {
                     return new GetRequest(service, projectId, location, jobId);
                 }
 
-                /// <summary>Gets the state of the specified Cloud Dataflow job. To get the state of a job, we recommend
-                /// using `projects.locations.jobs.get` with a [regional endpoint]
+                /// <summary>
+                /// Gets the state of the specified Cloud Dataflow job. To get the state of a job, we recommend using
+                /// `projects.locations.jobs.get` with a [regional endpoint]
                 /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.get` is
-                /// not recommended, as you can only get the state of jobs that are running in `us-central1`.</summary>
+                /// not recommended, as you can only get the state of jobs that are running in `us-central1`.
+                /// </summary>
                 public class GetRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -3208,13 +3311,14 @@ namespace Google.Apis.Dataflow.v1b3
                         InitParameters();
                     }
 
-
                     /// <summary>The ID of the Cloud Platform project that the job belongs to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                    /// endpoints) that contains this job.</summary>
+                    /// <summary>
+                    /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+                    /// that contains this job.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Location { get; private set; }
 
@@ -3229,23 +3333,30 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>The level of information requested in response.</summary>
                     public enum ViewEnum
                     {
-                        /// <summary>The job view to return isn't specified, or is unknown. Responses will contain at
-                        /// least the `JOB_VIEW_SUMMARY` information, and may contain additional information.</summary>
+                        /// <summary>
+                        /// The job view to return isn't specified, or is unknown. Responses will contain at least the
+                        /// `JOB_VIEW_SUMMARY` information, and may contain additional information.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_UNKNOWN")]
                         JOBVIEWUNKNOWN,
-                        /// <summary>Request summary information only: Project ID, Job ID, job name, job type, job
-                        /// status, start/end time, and Cloud SDK version details.</summary>
+
+                        /// <summary>
+                        /// Request summary information only: Project ID, Job ID, job name, job type, job status,
+                        /// start/end time, and Cloud SDK version details.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SUMMARY")]
                         JOBVIEWSUMMARY,
+
                         /// <summary>Request all information available for this job.</summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ALL")]
                         JOBVIEWALL,
-                        /// <summary>Request summary info and limited job description data for steps, labels and
-                        /// environment.</summary>
+
+                        /// <summary>
+                        /// Request summary info and limited job description data for steps, labels and environment.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
                         JOBVIEWDESCRIPTION,
                     }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
@@ -3260,7 +3371,6 @@ namespace Google.Apis.Dataflow.v1b3
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "projectId",
@@ -3294,23 +3404,27 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     }
-
                 }
 
-                /// <summary>Request detailed information about the execution status of the job. EXPERIMENTAL. This API
-                /// is subject to change or removal without notice.</summary>
+                /// <summary>
+                /// Request detailed information about the execution status of the job. EXPERIMENTAL. This API is
+                /// subject to change or removal without notice.
+                /// </summary>
                 /// <param name="projectId">A project id.</param>
-                /// <param name="location">The [regional endpoint]
-                /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by
-                /// job_id.</param>
+                /// <param name="location">
+                /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+                /// contains the job specified by job_id.
+                /// </param>
                 /// <param name="jobId">The job to get execution details for.</param>
                 public virtual GetExecutionDetailsRequest GetExecutionDetails(string projectId, string location, string jobId)
                 {
                     return new GetExecutionDetailsRequest(service, projectId, location, jobId);
                 }
 
-                /// <summary>Request detailed information about the execution status of the job. EXPERIMENTAL. This API
-                /// is subject to change or removal without notice.</summary>
+                /// <summary>
+                /// Request detailed information about the execution status of the job. EXPERIMENTAL. This API is
+                /// subject to change or removal without notice.
+                /// </summary>
                 public class GetExecutionDetailsRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.JobExecutionDetails>
                 {
                     /// <summary>Constructs a new GetExecutionDetails request.</summary>
@@ -3322,13 +3436,14 @@ namespace Google.Apis.Dataflow.v1b3
                         InitParameters();
                     }
 
-
                     /// <summary>A project id.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                    /// endpoints) that contains the job specified by job_id.</summary>
+                    /// <summary>
+                    /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+                    /// that contains the job specified by job_id.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Location { get; private set; }
 
@@ -3336,17 +3451,19 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string JobId { get; private set; }
 
-                    /// <summary>If specified, determines the maximum number of stages to return. If unspecified, the
-                    /// service may choose an appropriate default, or may return an arbitrarily large number of
-                    /// results.</summary>
+                    /// <summary>
+                    /// If specified, determines the maximum number of stages to return. If unspecified, the service may
+                    /// choose an appropriate default, or may return an arbitrarily large number of results.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>If supplied, this should be the value of next_page_token returned by an earlier call.
-                    /// This will cause the next page of results to be returned.</summary>
+                    /// <summary>
+                    /// If supplied, this should be the value of next_page_token returned by an earlier call. This will
+                    /// cause the next page of results to be returned.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "getExecutionDetails";
@@ -3361,7 +3478,6 @@ namespace Google.Apis.Dataflow.v1b3
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "projectId",
@@ -3403,29 +3519,33 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     }
-
                 }
 
-                /// <summary>Request the job status. To request the status of a job, we recommend using
+                /// <summary>
+                /// Request the job status. To request the status of a job, we recommend using
                 /// `projects.locations.jobs.getMetrics` with a [regional endpoint]
                 /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
                 /// `projects.jobs.getMetrics` is not recommended, as you can only request the status of jobs that are
-                /// running in `us-central1`.</summary>
+                /// running in `us-central1`.
+                /// </summary>
                 /// <param name="projectId">A project id.</param>
-                /// <param name="location">The [regional endpoint]
-                /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by
-                /// job_id.</param>
+                /// <param name="location">
+                /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+                /// contains the job specified by job_id.
+                /// </param>
                 /// <param name="jobId">The job to get metrics for.</param>
                 public virtual GetMetricsRequest GetMetrics(string projectId, string location, string jobId)
                 {
                     return new GetMetricsRequest(service, projectId, location, jobId);
                 }
 
-                /// <summary>Request the job status. To request the status of a job, we recommend using
+                /// <summary>
+                /// Request the job status. To request the status of a job, we recommend using
                 /// `projects.locations.jobs.getMetrics` with a [regional endpoint]
                 /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
                 /// `projects.jobs.getMetrics` is not recommended, as you can only request the status of jobs that are
-                /// running in `us-central1`.</summary>
+                /// running in `us-central1`.
+                /// </summary>
                 public class GetMetricsRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.JobMetrics>
                 {
                     /// <summary>Constructs a new GetMetrics request.</summary>
@@ -3437,13 +3557,14 @@ namespace Google.Apis.Dataflow.v1b3
                         InitParameters();
                     }
 
-
                     /// <summary>A project id.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                    /// endpoints) that contains the job specified by job_id.</summary>
+                    /// <summary>
+                    /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+                    /// that contains the job specified by job_id.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Location { get; private set; }
 
@@ -3451,11 +3572,12 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string JobId { get; private set; }
 
-                    /// <summary>Return only metric data that has changed since this time. Default is to return all
-                    /// information about all metrics for the job.</summary>
+                    /// <summary>
+                    /// Return only metric data that has changed since this time. Default is to return all information
+                    /// about all metrics for the job.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object StartTime { get; set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "getMetrics";
@@ -3470,7 +3592,6 @@ namespace Google.Apis.Dataflow.v1b3
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "projectId",
@@ -3504,27 +3625,32 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     }
-
                 }
 
-                /// <summary>List the jobs of a project. To list the jobs of a project in a region, we recommend using
+                /// <summary>
+                /// List the jobs of a project. To list the jobs of a project in a region, we recommend using
                 /// `projects.locations.jobs.list` with a [regional endpoint]
                 /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To list the all jobs across
                 /// all regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not recommended, as you
-                /// can only get the list of jobs that are running in `us-central1`.</summary>
+                /// can only get the list of jobs that are running in `us-central1`.
+                /// </summary>
                 /// <param name="projectId">The project which owns the jobs.</param>
-                /// <param name="location">The [regional
-                /// endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.</param>
+                /// <param name="location">
+                /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+                /// contains this job.
+                /// </param>
                 public virtual ListRequest List(string projectId, string location)
                 {
                     return new ListRequest(service, projectId, location);
                 }
 
-                /// <summary>List the jobs of a project. To list the jobs of a project in a region, we recommend using
+                /// <summary>
+                /// List the jobs of a project. To list the jobs of a project in a region, we recommend using
                 /// `projects.locations.jobs.list` with a [regional endpoint]
                 /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To list the all jobs across
                 /// all regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not recommended, as you
-                /// can only get the list of jobs that are running in `us-central1`.</summary>
+                /// can only get the list of jobs that are running in `us-central1`.
+                /// </summary>
                 public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListJobsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -3535,13 +3661,14 @@ namespace Google.Apis.Dataflow.v1b3
                         InitParameters();
                     }
 
-
                     /// <summary>The project which owns the jobs.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                    /// endpoints) that contains this job.</summary>
+                    /// <summary>
+                    /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+                    /// that contains this job.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Location { get; private set; }
 
@@ -3552,31 +3679,43 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>The kind of filter to use.</summary>
                     public enum FilterEnum
                     {
-                        /// <summary>The filter isn't specified, or is unknown. This returns all jobs ordered on
-                        /// descending `JobUuid`.</summary>
+                        /// <summary>
+                        /// The filter isn't specified, or is unknown. This returns all jobs ordered on descending
+                        /// `JobUuid`.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
                         UNKNOWN,
-                        /// <summary>Returns all running jobs first ordered on creation timestamp, then returns all
-                        /// terminated jobs ordered on the termination timestamp.</summary>
+
+                        /// <summary>
+                        /// Returns all running jobs first ordered on creation timestamp, then returns all terminated
+                        /// jobs ordered on the termination timestamp.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("ALL")]
                         ALL,
-                        /// <summary>Filters the jobs that have a terminated state, ordered on the termination
-                        /// timestamp. Example terminated states: `JOB_STATE_STOPPED`, `JOB_STATE_UPDATED`,
-                        /// `JOB_STATE_DRAINED`, etc.</summary>
+
+                        /// <summary>
+                        /// Filters the jobs that have a terminated state, ordered on the termination timestamp. Example
+                        /// terminated states: `JOB_STATE_STOPPED`, `JOB_STATE_UPDATED`, `JOB_STATE_DRAINED`, etc.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TERMINATED")]
                         TERMINATED,
+
                         /// <summary>Filters the jobs that are running ordered on the creation timestamp.</summary>
                         [Google.Apis.Util.StringValueAttribute("ACTIVE")]
                         ACTIVE,
                     }
 
-                    /// <summary>If there are many jobs, limit response to at most this many. The actual number of jobs
-                    /// returned will be the lesser of max_responses and an unspecified server-defined limit.</summary>
+                    /// <summary>
+                    /// If there are many jobs, limit response to at most this many. The actual number of jobs returned
+                    /// will be the lesser of max_responses and an unspecified server-defined limit.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>Set this to the 'next_page_token' field of a previous response to request additional
-                    /// results in a long list.</summary>
+                    /// <summary>
+                    /// Set this to the 'next_page_token' field of a previous response to request additional results in
+                    /// a long list.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -3587,23 +3726,30 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.</summary>
                     public enum ViewEnum
                     {
-                        /// <summary>The job view to return isn't specified, or is unknown. Responses will contain at
-                        /// least the `JOB_VIEW_SUMMARY` information, and may contain additional information.</summary>
+                        /// <summary>
+                        /// The job view to return isn't specified, or is unknown. Responses will contain at least the
+                        /// `JOB_VIEW_SUMMARY` information, and may contain additional information.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_UNKNOWN")]
                         JOBVIEWUNKNOWN,
-                        /// <summary>Request summary information only: Project ID, Job ID, job name, job type, job
-                        /// status, start/end time, and Cloud SDK version details.</summary>
+
+                        /// <summary>
+                        /// Request summary information only: Project ID, Job ID, job name, job type, job status,
+                        /// start/end time, and Cloud SDK version details.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SUMMARY")]
                         JOBVIEWSUMMARY,
+
                         /// <summary>Request all information available for this job.</summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ALL")]
                         JOBVIEWALL,
-                        /// <summary>Request summary info and limited job description data for steps, labels and
-                        /// environment.</summary>
+
+                        /// <summary>
+                        /// Request summary info and limited job description data for steps, labels and environment.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
                         JOBVIEWDESCRIPTION,
                     }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -3618,7 +3764,6 @@ namespace Google.Apis.Dataflow.v1b3
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "projectId",
@@ -3668,14 +3813,12 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Snapshot the state of a streaming job.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">The project which owns the job to be snapshotted.</param>
-                /// <param name="location">The
-                /// location that contains this job.</param>
+                /// <param name="location">The location that contains this job.</param>
                 /// <param name="jobId">The job to be snapshotted.</param>
                 public virtual SnapshotRequest Snapshot(Google.Apis.Dataflow.v1b3.Data.SnapshotJobRequest body, string projectId, string location, string jobId)
                 {
@@ -3695,7 +3838,6 @@ namespace Google.Apis.Dataflow.v1b3
                         InitParameters();
                     }
 
-
                     /// <summary>The project which owns the job to be snapshotted.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -3707,7 +3849,6 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>The job to be snapshotted.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string JobId { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataflow.v1b3.Data.SnapshotJobRequest Body { get; set; }
@@ -3728,7 +3869,6 @@ namespace Google.Apis.Dataflow.v1b3
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "projectId",
@@ -3754,30 +3894,32 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     }
-
                 }
 
-                /// <summary>Updates the state of an existing Cloud Dataflow job. To update the state of an existing
-                /// job, we recommend using `projects.locations.jobs.update` with a [regional endpoint]
+                /// <summary>
+                /// Updates the state of an existing Cloud Dataflow job. To update the state of an existing job, we
+                /// recommend using `projects.locations.jobs.update` with a [regional endpoint]
                 /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.update`
-                /// is not recommended, as you can only update the state of jobs that are running in `us-
-                /// central1`.</summary>
+                /// is not recommended, as you can only update the state of jobs that are running in `us-central1`.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">The ID of the Cloud Platform project that the job belongs to.</param>
-                /// <param
-                /// name="location">The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
-                /// contains this job.</param>
+                /// <param name="location">
+                /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+                /// contains this job.
+                /// </param>
                 /// <param name="jobId">The job ID.</param>
                 public virtual UpdateRequest Update(Google.Apis.Dataflow.v1b3.Data.Job body, string projectId, string location, string jobId)
                 {
                     return new UpdateRequest(service, body, projectId, location, jobId);
                 }
 
-                /// <summary>Updates the state of an existing Cloud Dataflow job. To update the state of an existing
-                /// job, we recommend using `projects.locations.jobs.update` with a [regional endpoint]
+                /// <summary>
+                /// Updates the state of an existing Cloud Dataflow job. To update the state of an existing job, we
+                /// recommend using `projects.locations.jobs.update` with a [regional endpoint]
                 /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.update`
-                /// is not recommended, as you can only update the state of jobs that are running in `us-
-                /// central1`.</summary>
+                /// is not recommended, as you can only update the state of jobs that are running in `us-central1`.
+                /// </summary>
                 public class UpdateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
                 {
                     /// <summary>Constructs a new Update request.</summary>
@@ -3790,20 +3932,20 @@ namespace Google.Apis.Dataflow.v1b3
                         InitParameters();
                     }
 
-
                     /// <summary>The ID of the Cloud Platform project that the job belongs to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                    /// endpoints) that contains this job.</summary>
+                    /// <summary>
+                    /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+                    /// that contains this job.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Location { get; private set; }
 
                     /// <summary>The job ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string JobId { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataflow.v1b3.Data.Job Body { get; set; }
@@ -3824,7 +3966,6 @@ namespace Google.Apis.Dataflow.v1b3
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "projectId",
@@ -3850,9 +3991,9 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     }
-
                 }
             }
+
             /// <summary>Gets the Snapshots resource.</summary>
             public virtual SnapshotsResource Snapshots { get; }
 
@@ -3868,16 +4009,12 @@ namespace Google.Apis.Dataflow.v1b3
                 public SnapshotsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
-
 
                 /// <summary>Deletes a snapshot.</summary>
                 /// <param name="projectId">The ID of the Cloud Platform project that the snapshot belongs to.</param>
-                /// <param
-                /// name="location">The location that contains this snapshot.</param>
-                /// <param name="snapshotId">The ID of the
-                /// snapshot.</param>
+                /// <param name="location">The location that contains this snapshot.</param>
+                /// <param name="snapshotId">The ID of the snapshot.</param>
                 public virtual DeleteRequest Delete(string projectId, string location, string snapshotId)
                 {
                     return new DeleteRequest(service, projectId, location, snapshotId);
@@ -3895,7 +4032,6 @@ namespace Google.Apis.Dataflow.v1b3
                         InitParameters();
                     }
 
-
                     /// <summary>The ID of the Cloud Platform project that the snapshot belongs to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -3907,7 +4043,6 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>The ID of the snapshot.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("snapshotId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string SnapshotId { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
@@ -3922,7 +4057,6 @@ namespace Google.Apis.Dataflow.v1b3
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "projectId",
@@ -3948,15 +4082,12 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Gets information about a snapshot.</summary>
                 /// <param name="projectId">The ID of the Cloud Platform project that the snapshot belongs to.</param>
-                /// <param
-                /// name="location">The location that contains this snapshot.</param>
-                /// <param name="snapshotId">The ID of the
-                /// snapshot.</param>
+                /// <param name="location">The location that contains this snapshot.</param>
+                /// <param name="snapshotId">The ID of the snapshot.</param>
                 public virtual GetRequest Get(string projectId, string location, string snapshotId)
                 {
                     return new GetRequest(service, projectId, location, snapshotId);
@@ -3974,7 +4105,6 @@ namespace Google.Apis.Dataflow.v1b3
                         InitParameters();
                     }
 
-
                     /// <summary>The ID of the Cloud Platform project that the snapshot belongs to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -3986,7 +4116,6 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>The ID of the snapshot.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("snapshotId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string SnapshotId { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
@@ -4001,7 +4130,6 @@ namespace Google.Apis.Dataflow.v1b3
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "projectId",
@@ -4027,13 +4155,11 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Lists snapshots.</summary>
                 /// <param name="projectId">The project ID to list snapshots for.</param>
-                /// <param name="location">The location to
-                /// list snapshots in.</param>
+                /// <param name="location">The location to list snapshots in.</param>
                 public virtual ListRequest List(string projectId, string location)
                 {
                     return new ListRequest(service, projectId, location);
@@ -4050,7 +4176,6 @@ namespace Google.Apis.Dataflow.v1b3
                         InitParameters();
                     }
 
-
                     /// <summary>The project ID to list snapshots for.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
@@ -4062,7 +4187,6 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>If specified, list snapshots created from this job.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string JobId { get; set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -4077,7 +4201,6 @@ namespace Google.Apis.Dataflow.v1b3
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "projectId",
@@ -4103,9 +4226,9 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     }
-
                 }
             }
+
             /// <summary>Gets the Sql resource.</summary>
             public virtual SqlResource Sql { get; }
 
@@ -4121,25 +4244,30 @@ namespace Google.Apis.Dataflow.v1b3
                 public SqlResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
 
-
-                /// <summary>Validates a GoogleSQL query for Cloud Dataflow syntax. Will always confirm the given query
-                /// parses correctly, and if able to look up schema information from DataCatalog, will validate that the
-                /// query analyzes properly as well.</summary>
-                /// <param name="projectId">Required. The ID of the Cloud Platform project that the job belongs to.</param>
-                ///
-                /// <param name="location">The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
-                /// to which to direct the request.</param>
+                /// <summary>
+                /// Validates a GoogleSQL query for Cloud Dataflow syntax. Will always confirm the given query parses
+                /// correctly, and if able to look up schema information from DataCatalog, will validate that the query
+                /// analyzes properly as well.
+                /// </summary>
+                /// <param name="projectId">
+                /// Required. The ID of the Cloud Platform project that the job belongs to.
+                /// </param>
+                /// <param name="location">
+                /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+                /// which to direct the request.
+                /// </param>
                 public virtual ValidateRequest Validate(string projectId, string location)
                 {
                     return new ValidateRequest(service, projectId, location);
                 }
 
-                /// <summary>Validates a GoogleSQL query for Cloud Dataflow syntax. Will always confirm the given query
-                /// parses correctly, and if able to look up schema information from DataCatalog, will validate that the
-                /// query analyzes properly as well.</summary>
+                /// <summary>
+                /// Validates a GoogleSQL query for Cloud Dataflow syntax. Will always confirm the given query parses
+                /// correctly, and if able to look up schema information from DataCatalog, will validate that the query
+                /// analyzes properly as well.
+                /// </summary>
                 public class ValidateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ValidateResponse>
                 {
                     /// <summary>Constructs a new Validate request.</summary>
@@ -4150,20 +4278,20 @@ namespace Google.Apis.Dataflow.v1b3
                         InitParameters();
                     }
 
-
                     /// <summary>Required. The ID of the Cloud Platform project that the job belongs to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                    /// endpoints) to which to direct the request.</summary>
+                    /// <summary>
+                    /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+                    /// which to direct the request.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Location { get; private set; }
 
                     /// <summary>The sql query to validate.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Query { get; set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "validate";
@@ -4178,7 +4306,6 @@ namespace Google.Apis.Dataflow.v1b3
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "projectId",
@@ -4204,9 +4331,9 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     }
-
                 }
             }
+
             /// <summary>Gets the Templates resource.</summary>
             public virtual TemplatesResource Templates { get; }
 
@@ -4222,16 +4349,17 @@ namespace Google.Apis.Dataflow.v1b3
                 public TemplatesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
-
 
                 /// <summary>Creates a Cloud Dataflow job from a template.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">Required. The ID of the Cloud Platform project that the job belongs to.</param>
-                ///
-                /// <param name="location">The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
-                /// to which to direct the request.</param>
+                /// <param name="projectId">
+                /// Required. The ID of the Cloud Platform project that the job belongs to.
+                /// </param>
+                /// <param name="location">
+                /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+                /// which to direct the request.
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.Dataflow.v1b3.Data.CreateJobFromTemplateRequest body, string projectId, string location)
                 {
                     return new CreateRequest(service, body, projectId, location);
@@ -4249,16 +4377,16 @@ namespace Google.Apis.Dataflow.v1b3
                         InitParameters();
                     }
 
-
                     /// <summary>Required. The ID of the Cloud Platform project that the job belongs to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                    /// endpoints) to which to direct the request.</summary>
+                    /// <summary>
+                    /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+                    /// which to direct the request.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Location { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataflow.v1b3.Data.CreateJobFromTemplateRequest Body { get; set; }
@@ -4279,7 +4407,6 @@ namespace Google.Apis.Dataflow.v1b3
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "projectId",
@@ -4297,14 +4424,16 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Get the template associated with a template.</summary>
-                /// <param name="projectId">Required. The ID of the Cloud Platform project that the job belongs to.</param>
-                ///
-                /// <param name="location">The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
-                /// to which to direct the request.</param>
+                /// <param name="projectId">
+                /// Required. The ID of the Cloud Platform project that the job belongs to.
+                /// </param>
+                /// <param name="location">
+                /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+                /// which to direct the request.
+                /// </param>
                 public virtual GetRequest Get(string projectId, string location)
                 {
                     return new GetRequest(service, projectId, location);
@@ -4321,18 +4450,21 @@ namespace Google.Apis.Dataflow.v1b3
                         InitParameters();
                     }
 
-
                     /// <summary>Required. The ID of the Cloud Platform project that the job belongs to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                    /// endpoints) to which to direct the request.</summary>
+                    /// <summary>
+                    /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+                    /// which to direct the request.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Location { get; private set; }
 
-                    /// <summary>Required. A Cloud Storage path to the template from which to create the job. Must be
-                    /// valid Cloud Storage URL, beginning with 'gs://'.</summary>
+                    /// <summary>
+                    /// Required. A Cloud Storage path to the template from which to create the job. Must be valid Cloud
+                    /// Storage URL, beginning with 'gs://'.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("gcsPath", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string GcsPath { get; set; }
 
@@ -4343,12 +4475,12 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>The view to retrieve. Defaults to METADATA_ONLY.</summary>
                     public enum ViewEnum
                     {
-                        /// <summary>Template view that retrieves only the metadata associated with the
-                        /// template.</summary>
+                        /// <summary>
+                        /// Template view that retrieves only the metadata associated with the template.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("METADATA_ONLY")]
                         METADATAONLY,
                     }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
@@ -4363,7 +4495,6 @@ namespace Google.Apis.Dataflow.v1b3
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "projectId",
@@ -4397,15 +4528,17 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Launch a template.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">Required. The ID of the Cloud Platform project that the job belongs to.</param>
-                ///
-                /// <param name="location">The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
-                /// to which to direct the request.</param>
+                /// <param name="projectId">
+                /// Required. The ID of the Cloud Platform project that the job belongs to.
+                /// </param>
+                /// <param name="location">
+                /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+                /// which to direct the request.
+                /// </param>
                 public virtual LaunchRequest Launch(Google.Apis.Dataflow.v1b3.Data.LaunchTemplateParameters body, string projectId, string location)
                 {
                     return new LaunchRequest(service, body, projectId, location);
@@ -4423,36 +4556,43 @@ namespace Google.Apis.Dataflow.v1b3
                         InitParameters();
                     }
 
-
                     /// <summary>Required. The ID of the Cloud Platform project that the job belongs to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                    /// endpoints) to which to direct the request.</summary>
+                    /// <summary>
+                    /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+                    /// which to direct the request.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Location { get; private set; }
 
-                    /// <summary>Path to dynamic template spec file on GCS. The file must be a Json serialized
-                    /// DynamicTemplateFieSpec object.</summary>
+                    /// <summary>
+                    /// Path to dynamic template spec file on GCS. The file must be a Json serialized
+                    /// DynamicTemplateFieSpec object.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dynamicTemplate.gcsPath", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DynamicTemplateGcsPath { get; set; }
 
-                    /// <summary>Cloud Storage path for staging dependencies. Must be a valid Cloud Storage URL,
-                    /// beginning with `gs://`.</summary>
+                    /// <summary>
+                    /// Cloud Storage path for staging dependencies. Must be a valid Cloud Storage URL, beginning with
+                    /// `gs://`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dynamicTemplate.stagingLocation", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DynamicTemplateStagingLocation { get; set; }
 
-                    /// <summary>A Cloud Storage path to the template from which to create the job. Must be valid Cloud
-                    /// Storage URL, beginning with 'gs://'.</summary>
+                    /// <summary>
+                    /// A Cloud Storage path to the template from which to create the job. Must be valid Cloud Storage
+                    /// URL, beginning with 'gs://'.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("gcsPath", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string GcsPath { get; set; }
 
-                    /// <summary>If true, the request is validated but not actually executed. Defaults to
-                    /// false.</summary>
+                    /// <summary>
+                    /// If true, the request is validated but not actually executed. Defaults to false.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataflow.v1b3.Data.LaunchTemplateParameters Body { get; set; }
@@ -4473,7 +4613,6 @@ namespace Google.Apis.Dataflow.v1b3
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "projectId",
@@ -4523,16 +4662,16 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     }
-
                 }
             }
 
             /// <summary>Send a worker_message to the service.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">The project to send the WorkerMessages to.</param>
-            /// <param name="location">The
-            /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the
-            /// job.</param>
+            /// <param name="location">
+            /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+            /// contains the job.
+            /// </param>
             public virtual WorkerMessagesRequest WorkerMessages(Google.Apis.Dataflow.v1b3.Data.SendWorkerMessagesRequest body, string projectId, string location)
             {
                 return new WorkerMessagesRequest(service, body, projectId, location);
@@ -4550,16 +4689,16 @@ namespace Google.Apis.Dataflow.v1b3
                     InitParameters();
                 }
 
-
                 /// <summary>The project to send the WorkerMessages to.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                /// endpoints) that contains the job.</summary>
+                /// <summary>
+                /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+                /// contains the job.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Location { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Dataflow.v1b3.Data.SendWorkerMessagesRequest Body { get; set; }
@@ -4580,7 +4719,6 @@ namespace Google.Apis.Dataflow.v1b3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
@@ -4598,9 +4736,9 @@ namespace Google.Apis.Dataflow.v1b3
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Snapshots resource.</summary>
         public virtual SnapshotsResource Snapshots { get; }
 
@@ -4616,14 +4754,11 @@ namespace Google.Apis.Dataflow.v1b3
             public SnapshotsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Gets information about a snapshot.</summary>
             /// <param name="projectId">The ID of the Cloud Platform project that the snapshot belongs to.</param>
-            /// <param
-            /// name="snapshotId">The ID of the snapshot.</param>
+            /// <param name="snapshotId">The ID of the snapshot.</param>
             public virtual GetRequest Get(string projectId, string snapshotId)
             {
                 return new GetRequest(service, projectId, snapshotId);
@@ -4640,7 +4775,6 @@ namespace Google.Apis.Dataflow.v1b3
                     InitParameters();
                 }
 
-
                 /// <summary>The ID of the Cloud Platform project that the snapshot belongs to.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
@@ -4652,7 +4786,6 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <summary>The location that contains this snapshot.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Location { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -4667,7 +4800,6 @@ namespace Google.Apis.Dataflow.v1b3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
@@ -4693,7 +4825,6 @@ namespace Google.Apis.Dataflow.v1b3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Lists snapshots.</summary>
@@ -4713,7 +4844,6 @@ namespace Google.Apis.Dataflow.v1b3
                     InitParameters();
                 }
 
-
                 /// <summary>The project ID to list snapshots for.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
@@ -4725,7 +4855,6 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <summary>The location to list snapshots in.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Location { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -4740,7 +4869,6 @@ namespace Google.Apis.Dataflow.v1b3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
@@ -4766,9 +4894,9 @@ namespace Google.Apis.Dataflow.v1b3
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the TemplateVersions resource.</summary>
         public virtual TemplateVersionsResource TemplateVersions { get; }
 
@@ -4784,24 +4912,26 @@ namespace Google.Apis.Dataflow.v1b3
             public TemplateVersionsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>List TemplateVersions using project_id and an optional display_name field. List all the
-            /// TemplateVersions in the Template if display set. List all the TemplateVersions in the Project if
-            /// display_name not set.</summary>
-            /// <param name="parent">parent includes project_id, and display_name is optional. List by project_id(pid1) and
+            /// <summary>
+            /// List TemplateVersions using project_id and an optional display_name field. List all the TemplateVersions
+            /// in the Template if display set. List all the TemplateVersions in the Project if display_name not set.
+            /// </summary>
+            /// <param name="parent">
+            /// parent includes project_id, and display_name is optional. List by project_id(pid1) and
             /// display_name(tid1). Format: projects/{pid1}/catalogTemplates/{tid1} List by project_id(pid1). Format:
-            /// projects/{pid1}</param>
+            /// projects/{pid1}
+            /// </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>List TemplateVersions using project_id and an optional display_name field. List all the
-            /// TemplateVersions in the Template if display set. List all the TemplateVersions in the Project if
-            /// display_name not set.</summary>
+            /// <summary>
+            /// List TemplateVersions using project_id and an optional display_name field. List all the TemplateVersions
+            /// in the Template if display set. List all the TemplateVersions in the Project if display_name not set.
+            /// </summary>
             public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListTemplateVersionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -4811,10 +4941,11 @@ namespace Google.Apis.Dataflow.v1b3
                     InitParameters();
                 }
 
-
-                /// <summary>parent includes project_id, and display_name is optional. List by project_id(pid1) and
+                /// <summary>
+                /// parent includes project_id, and display_name is optional. List by project_id(pid1) and
                 /// display_name(tid1). Format: projects/{pid1}/catalogTemplates/{tid1} List by project_id(pid1).
-                /// Format: projects/{pid1}</summary>
+                /// Format: projects/{pid1}
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -4822,11 +4953,12 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>The page token, received from a previous ListTemplateVersions call. Provide this to
-                /// retrieve the subsequent page.</summary>
+                /// <summary>
+                /// The page token, received from a previous ListTemplateVersions call. Provide this to retrieve the
+                /// subsequent page.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -4841,7 +4973,6 @@ namespace Google.Apis.Dataflow.v1b3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -4867,9 +4998,9 @@ namespace Google.Apis.Dataflow.v1b3
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Templates resource.</summary>
         public virtual TemplatesResource Templates { get; }
 
@@ -4885,9 +5016,7 @@ namespace Google.Apis.Dataflow.v1b3
             public TemplatesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Creates a Cloud Dataflow job from a template.</summary>
             /// <param name="body">The body of the request.</param>
@@ -4908,11 +5037,9 @@ namespace Google.Apis.Dataflow.v1b3
                     InitParameters();
                 }
 
-
                 /// <summary>Required. The ID of the Cloud Platform project that the job belongs to.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Dataflow.v1b3.Data.CreateJobFromTemplateRequest Body { get; set; }
@@ -4933,7 +5060,6 @@ namespace Google.Apis.Dataflow.v1b3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
@@ -4943,7 +5069,6 @@ namespace Google.Apis.Dataflow.v1b3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Get the template associated with a template.</summary>
@@ -4963,18 +5088,21 @@ namespace Google.Apis.Dataflow.v1b3
                     InitParameters();
                 }
 
-
                 /// <summary>Required. The ID of the Cloud Platform project that the job belongs to.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>Required. A Cloud Storage path to the template from which to create the job. Must be valid
-                /// Cloud Storage URL, beginning with 'gs://'.</summary>
+                /// <summary>
+                /// Required. A Cloud Storage path to the template from which to create the job. Must be valid Cloud
+                /// Storage URL, beginning with 'gs://'.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("gcsPath", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string GcsPath { get; set; }
 
-                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                /// endpoints) to which to direct the request.</summary>
+                /// <summary>
+                /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+                /// which to direct the request.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Location { get; set; }
 
@@ -4990,7 +5118,6 @@ namespace Google.Apis.Dataflow.v1b3
                     METADATAONLY,
                 }
 
-
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
@@ -5004,7 +5131,6 @@ namespace Google.Apis.Dataflow.v1b3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
@@ -5038,7 +5164,6 @@ namespace Google.Apis.Dataflow.v1b3
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Launch a template.</summary>
@@ -5060,35 +5185,41 @@ namespace Google.Apis.Dataflow.v1b3
                     InitParameters();
                 }
 
-
                 /// <summary>Required. The ID of the Cloud Platform project that the job belongs to.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>Path to dynamic template spec file on GCS. The file must be a Json serialized
-                /// DynamicTemplateFieSpec object.</summary>
+                /// <summary>
+                /// Path to dynamic template spec file on GCS. The file must be a Json serialized DynamicTemplateFieSpec
+                /// object.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("dynamicTemplate.gcsPath", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DynamicTemplateGcsPath { get; set; }
 
-                /// <summary>Cloud Storage path for staging dependencies. Must be a valid Cloud Storage URL, beginning
-                /// with `gs://`.</summary>
+                /// <summary>
+                /// Cloud Storage path for staging dependencies. Must be a valid Cloud Storage URL, beginning with
+                /// `gs://`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("dynamicTemplate.stagingLocation", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DynamicTemplateStagingLocation { get; set; }
 
-                /// <summary>A Cloud Storage path to the template from which to create the job. Must be valid Cloud
-                /// Storage URL, beginning with 'gs://'.</summary>
+                /// <summary>
+                /// A Cloud Storage path to the template from which to create the job. Must be valid Cloud Storage URL,
+                /// beginning with 'gs://'.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("gcsPath", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string GcsPath { get; set; }
 
-                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                /// endpoints) to which to direct the request.</summary>
+                /// <summary>
+                /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+                /// which to direct the request.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Location { get; set; }
 
                 /// <summary>If true, the request is validated but not actually executed. Defaults to false.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Dataflow.v1b3.Data.LaunchTemplateParameters Body { get; set; }
@@ -5109,7 +5240,6 @@ namespace Google.Apis.Dataflow.v1b3
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
@@ -5159,7 +5289,6 @@ namespace Google.Apis.Dataflow.v1b3
                         Pattern = null,
                     });
                 }
-
             }
         }
 
@@ -5180,7 +5309,6 @@ namespace Google.Apis.Dataflow.v1b3
                 InitParameters();
             }
 
-
             /// <summary>The ID of the Cloud Platform project that the snapshot belongs to.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
@@ -5192,7 +5320,6 @@ namespace Google.Apis.Dataflow.v1b3
             /// <summary>The ID of the snapshot.</summary>
             [Google.Apis.Util.RequestParameterAttribute("snapshotId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SnapshotId { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "deleteSnapshots";
@@ -5207,7 +5334,6 @@ namespace Google.Apis.Dataflow.v1b3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -5233,7 +5359,6 @@ namespace Google.Apis.Dataflow.v1b3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Send a worker_message to the service.</summary>
@@ -5255,11 +5380,9 @@ namespace Google.Apis.Dataflow.v1b3
                 InitParameters();
             }
 
-
             /// <summary>The project to send the WorkerMessages to.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dataflow.v1b3.Data.SendWorkerMessagesRequest Body { get; set; }
@@ -5280,7 +5403,6 @@ namespace Google.Apis.Dataflow.v1b3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -5290,14 +5412,11 @@ namespace Google.Apis.Dataflow.v1b3
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.Dataflow.v1b3.Data
-{    
-
+{
     /// <summary>Obsolete in favor of ApproximateReportedProgress and ApproximateSplitRequest.</summary>
     public class ApproximateProgress : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5315,20 +5434,24 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A progress measurement of a WorkItem by a worker.</summary>
     public class ApproximateReportedProgress : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Total amount of parallelism in the portion of input of this task that has already been consumed and
-        /// is no longer active. In the first two examples above (see remaining_parallelism), the value should be 29 or
-        /// 2 respectively. The sum of remaining_parallelism and consumed_parallelism should equal the total amount of
-        /// parallelism in this work item. If specified, must be finite.</summary>
+        /// <summary>
+        /// Total amount of parallelism in the portion of input of this task that has already been consumed and is no
+        /// longer active. In the first two examples above (see remaining_parallelism), the value should be 29 or 2
+        /// respectively. The sum of remaining_parallelism and consumed_parallelism should equal the total amount of
+        /// parallelism in this work item. If specified, must be finite.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumedParallelism")]
         public virtual ReportedParallelism ConsumedParallelism { get; set; }
 
-        /// <summary>Completion as fraction of the input consumed, from 0.0 (beginning, nothing consumed), to 1.0 (end
-        /// of the input, entire input consumed).</summary>
+        /// <summary>
+        /// Completion as fraction of the input consumed, from 0.0 (beginning, nothing consumed), to 1.0 (end of the
+        /// input, entire input consumed).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fractionConsumed")]
         public virtual System.Nullable<double> FractionConsumed { get; set; }
 
@@ -5336,11 +5459,12 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("position")]
         public virtual Position Position { get; set; }
 
-        /// <summary>Total amount of parallelism in the input of this task that remains, (i.e. can be delegated to this
-        /// task and any new tasks via dynamic splitting). Always at least 1 for non-finished work items and 0 for
-        /// finished. "Amount of parallelism" refers to how many non-empty parts of the input can be read in parallel.
-        /// This does not necessarily equal number of records. An input that can be read in parallel down to the
-        /// individual records is called "perfectly splittable". An example of non-perfectly parallelizable input is a
+        /// <summary>
+        /// Total amount of parallelism in the input of this task that remains, (i.e. can be delegated to this task and
+        /// any new tasks via dynamic splitting). Always at least 1 for non-finished work items and 0 for finished.
+        /// "Amount of parallelism" refers to how many non-empty parts of the input can be read in parallel. This does
+        /// not necessarily equal number of records. An input that can be read in parallel down to the individual
+        /// records is called "perfectly splittable". An example of non-perfectly parallelizable input is a
         /// block-compressed file format where a block of records has to be read as a whole, but different blocks can be
         /// read in parallel. Examples: * If we are processing record #30 (starting at 1) out of 50 in a perfectly
         /// splittable 50-record input, this value should be 21 (20 remaining + 1 current). * If we are reading through
@@ -5348,24 +5472,28 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// be processed in parallel by new tasks via dynamic splitting and the current task remains processing block
         /// 3). * If we are reading through the last block in a block-compressed file, or reading or processing the last
         /// record in a perfectly splittable input, this value should be 1, because apart from the current task, no
-        /// additional remainder can be split off.</summary>
+        /// additional remainder can be split off.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remainingParallelism")]
         public virtual ReportedParallelism RemainingParallelism { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A suggestion by the service to the worker to dynamically split the WorkItem.</summary>
     public class ApproximateSplitRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A fraction at which to split the work item, from 0.0 (beginning of the input) to 1.0 (end of the
-        /// input).</summary>
+        /// <summary>
+        /// A fraction at which to split the work item, from 0.0 (beginning of the input) to 1.0 (end of the input).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fractionConsumed")]
         public virtual System.Nullable<double> FractionConsumed { get; set; }
 
-        /// <summary>The fraction of the remainder of work to split the work item at, from 0.0 (split at the current
-        /// position) to 1.0 (end of the input).</summary>
+        /// <summary>
+        /// The fraction of the remainder of work to split the work item at, from 0.0 (split at the current position) to
+        /// 1.0 (end of the input).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fractionOfRemainder")]
         public virtual System.Nullable<double> FractionOfRemainder { get; set; }
 
@@ -5375,7 +5503,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Job information for templates.</summary>
     public class Artifact : Google.Apis.Requests.IDirectResponseSchema
@@ -5394,7 +5522,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A structured message reporting an autoscaling decision made by the Dataflow service.</summary>
     public class AutoscalingEvent : Google.Apis.Requests.IDirectResponseSchema
@@ -5403,8 +5531,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentNumWorkers")]
         public virtual System.Nullable<long> CurrentNumWorkers { get; set; }
 
-        /// <summary>A message describing why the system decided to adjust the current number of workers, why it failed,
-        /// or why the system decided to not make any changes to the number of workers.</summary>
+        /// <summary>
+        /// A message describing why the system decided to adjust the current number of workers, why it failed, or why
+        /// the system decided to not make any changes to the number of workers.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual StructuredMessage Description { get; set; }
 
@@ -5420,14 +5550,16 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
         public virtual object Time { get; set; }
 
-        /// <summary>A short and friendly name for the worker pool this event refers to, populated from the value of
-        /// PoolStageRelation::user_pool_name.</summary>
+        /// <summary>
+        /// A short and friendly name for the worker pool this event refers to, populated from the value of
+        /// PoolStageRelation::user_pool_name.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
         public virtual string WorkerPool { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Settings for WorkerPool autoscaling.</summary>
     public class AutoscalingSettings : Google.Apis.Requests.IDirectResponseSchema
@@ -5442,7 +5574,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Metadata for a BigQuery connector used by the job.</summary>
     public class BigQueryIODetails : Google.Apis.Requests.IDirectResponseSchema
@@ -5465,7 +5597,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Metadata for a BigTable connector used by the job.</summary>
     public class BigTableIODetails : Google.Apis.Requests.IDirectResponseSchema
@@ -5484,7 +5616,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Modeled after information exposed by /proc/stat.</summary>
     public class CPUTime : Google.Apis.Requests.IDirectResponseSchema
@@ -5503,7 +5635,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Commit will add a new TemplateVersion to an existing template.</summary>
     public class CommitTemplateVersionRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -5514,7 +5646,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Description of an interstitial value between transforms in an execution stage.</summary>
     public class ComponentSource : Google.Apis.Requests.IDirectResponseSchema
@@ -5523,8 +5655,9 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>User name for the original user transform or collection with which this source is most closely
-        /// associated.</summary>
+        /// <summary>
+        /// User name for the original user transform or collection with which this source is most closely associated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalTransformOrCollection")]
         public virtual string OriginalTransformOrCollection { get; set; }
 
@@ -5534,7 +5667,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Description of a transform executed as part of an execution stage.</summary>
     public class ComponentTransform : Google.Apis.Requests.IDirectResponseSchema
@@ -5543,8 +5676,9 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>User name for the original user transform with which this transform is most closely
-        /// associated.</summary>
+        /// <summary>
+        /// User name for the original user transform with which this transform is most closely associated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalTransform")]
         public virtual string OriginalTransform { get; set; }
 
@@ -5554,7 +5688,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>All configuration data for a particular Computation.</summary>
     public class ComputationTopology : Google.Apis.Requests.IDirectResponseSchema
@@ -5585,10 +5719,12 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A position that encapsulates an inner position and an index for the inner position. A ConcatPosition
-    /// can be used by a reader of a source that encapsulates a set of other sources.</summary>
+    /// <summary>
+    /// A position that encapsulates an inner position and an index for the inner position. A ConcatPosition can be used
+    /// by a reader of a source that encapsulates a set of other sources.
+    /// </summary>
     public class ConcatPosition : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Index of the inner source.</summary>
@@ -5601,7 +5737,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Container Spec.</summary>
     public class ContainerSpec : Google.Apis.Requests.IDirectResponseSchema
@@ -5624,7 +5760,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>CounterMetadata includes all static non-name non-value counter attributes.</summary>
     public class CounterMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -5647,10 +5783,12 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Identifies a counter within a per-job namespace. Counters whose structured names are the same get
-    /// merged into a single value for the job.</summary>
+    /// <summary>
+    /// Identifies a counter within a per-job namespace. Counters whose structured names are the same get merged into a
+    /// single value for the job.
+    /// </summary>
     public class CounterStructuredName : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Name of the optimized step being executed by the workers.</summary>
@@ -5661,15 +5799,18 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("executionStepName")]
         public virtual string ExecutionStepName { get; set; }
 
-        /// <summary>Index of an input collection that's being read from/written to as a side input. The index
-        /// identifies a step's side inputs starting by 1 (e.g. the first side input has input_index 1, the third has
-        /// input_index 3). Side inputs are identified by a pair of (original_step_name, input_index). This field helps
-        /// uniquely identify them.</summary>
+        /// <summary>
+        /// Index of an input collection that's being read from/written to as a side input. The index identifies a
+        /// step's side inputs starting by 1 (e.g. the first side input has input_index 1, the third has input_index 3).
+        /// Side inputs are identified by a pair of (original_step_name, input_index). This field helps uniquely
+        /// identify them.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputIndex")]
         public virtual System.Nullable<int> InputIndex { get; set; }
 
-        /// <summary>Counter name. Not necessarily globally-unique, but unique within the context of the other fields.
-        /// Required.</summary>
+        /// <summary>
+        /// Counter name. Not necessarily globally-unique, but unique within the context of the other fields. Required.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -5681,8 +5822,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("originNamespace")]
         public virtual string OriginNamespace { get; set; }
 
-        /// <summary>The step name requesting an operation, such as GBK. I.e. the ParDo causing a read/write from
-        /// shuffle to occur, or a read from side inputs.</summary>
+        /// <summary>
+        /// The step name requesting an operation, such as GBK. I.e. the ParDo causing a read/write from shuffle to
+        /// occur, or a read from side inputs.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalRequestingStepName")]
         public virtual string OriginalRequestingStepName { get; set; }
 
@@ -5700,7 +5843,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A single message which encapsulates structured name and metadata for a given counter.</summary>
     public class CounterStructuredNameAndMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -5715,7 +5858,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An update to a Counter sent from a worker.</summary>
     public class CounterUpdate : Google.Apis.Requests.IDirectResponseSchema
@@ -5724,9 +5867,11 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boolean")]
         public virtual System.Nullable<bool> Boolean { get; set; }
 
-        /// <summary>True if this counter is reported as the total cumulative aggregate value accumulated since the
-        /// worker started working on this WorkItem. By default this is false, indicating that this counter is reported
-        /// as a delta.</summary>
+        /// <summary>
+        /// True if this counter is reported as the total cumulative aggregate value accumulated since the worker
+        /// started working on this WorkItem. By default this is false, indicating that this counter is reported as a
+        /// delta.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cumulative")]
         public virtual System.Nullable<bool> Cumulative { get; set; }
 
@@ -5770,8 +5915,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nameAndKind")]
         public virtual NameAndKind NameAndKind { get; set; }
 
-        /// <summary>The service-generated short identifier for this counter. The short_id -> (name, metadata) mapping
-        /// is constant for the lifetime of a job.</summary>
+        /// <summary>
+        /// The service-generated short identifier for this counter. The short_id -&amp;gt; (name, metadata) mapping is
+        /// constant for the lifetime of a job.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortId")]
         public virtual System.Nullable<long> ShortId { get; set; }
 
@@ -5785,7 +5932,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A request to create a Cloud Dataflow job from a template.</summary>
     public class CreateJobFromTemplateRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -5794,8 +5941,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual RuntimeEnvironment Environment { get; set; }
 
-        /// <summary>Required. A Cloud Storage path to the template from which to create the job. Must be a valid Cloud
-        /// Storage URL, beginning with `gs://`.</summary>
+        /// <summary>
+        /// Required. A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage
+        /// URL, beginning with `gs://`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPath")]
         public virtual string GcsPath { get; set; }
 
@@ -5803,8 +5952,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jobName")]
         public virtual string JobName { get; set; }
 
-        /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
-        /// which to direct the request.</summary>
+        /// <summary>
+        /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to
+        /// direct the request.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
@@ -5814,7 +5965,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Creates a new Template with TemplateVersions.</summary>
     public class CreateTemplateVersionRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -5825,7 +5976,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Identifies the location of a custom souce.</summary>
     public class CustomSourceLocation : Google.Apis.Requests.IDirectResponseSchema
@@ -5836,25 +5987,28 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Data disk assignment for a given VM instance.</summary>
     public class DataDiskAssignment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Mounted data disks. The order is important a data disk's 0-based index in this list defines which
-        /// persistent directory the disk is mounted to, for example the list of {
-        /// "myproject-1014-104817-4c2-harness-0-disk-0" }, { "myproject-1014-104817-4c2-harness-0-disk-1" }.</summary>
+        /// <summary>
+        /// Mounted data disks. The order is important a data disk's 0-based index in this list defines which persistent
+        /// directory the disk is mounted to, for example the list of { "myproject-1014-104817-4c2-harness-0-disk-0" },
+        /// { "myproject-1014-104817-4c2-harness-0-disk-1" }.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataDisks")]
         public virtual System.Collections.Generic.IList<string> DataDisks { get; set; }
 
-        /// <summary>VM instance name the data disks mounted to, for example
-        /// "myproject-1014-104817-4c2-harness-0".</summary>
+        /// <summary>
+        /// VM instance name the data disks mounted to, for example "myproject-1014-104817-4c2-harness-0".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmInstance")]
         public virtual string VmInstance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Metadata for a Datastore connector used by the job.</summary>
     public class DatastoreIODetails : Google.Apis.Requests.IDirectResponseSchema
@@ -5869,18 +6023,20 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response from deleting a snapshot.</summary>
     public class DeleteSnapshotResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Specification of one of the bundles produced as a result of splitting a Source (e.g. when executing a
+    /// <summary>
+    /// Specification of one of the bundles produced as a result of splitting a Source (e.g. when executing a
     /// SourceSplitRequest, or when splitting an active task using WorkItemStatus.dynamic_source_split), relative to the
-    /// source being split.</summary>
+    /// source being split.
+    /// </summary>
     public class DerivedSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>What source to base the produced source on (if any).</summary>
@@ -5893,20 +6049,22 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Describes the data disk used by a workflow job.</summary>
     public class Disk : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Disk storage type, as defined by Google Compute Engine. This must be a disk type appropriate to the
-        /// project and zone in which the workers will run. If unknown or unspecified, the service will attempt to
-        /// choose a reasonable default. For example, the standard persistent disk type is a resource name typically
-        /// ending in "pd-standard". If SSD persistent disks are available, the resource name typically ends with "pd-
-        /// ssd". The actual valid values are defined the Google Compute Engine API, not by the Cloud Dataflow API;
-        /// consult the Google Compute Engine documentation for more information about determining the set of available
-        /// disk types for a particular project and zone. Google Compute Engine Disk types are local to a particular
-        /// project in a particular zone, and so the resource name will typically look something like this:
-        /// compute.googleapis.com/projects/project-id/zones/zone/diskTypes/pd-standard</summary>
+        /// <summary>
+        /// Disk storage type, as defined by Google Compute Engine. This must be a disk type appropriate to the project
+        /// and zone in which the workers will run. If unknown or unspecified, the service will attempt to choose a
+        /// reasonable default. For example, the standard persistent disk type is a resource name typically ending in
+        /// "pd-standard". If SSD persistent disks are available, the resource name typically ends with "pd-ssd". The
+        /// actual valid values are defined the Google Compute Engine API, not by the Cloud Dataflow API; consult the
+        /// Google Compute Engine documentation for more information about determining the set of available disk types
+        /// for a particular project and zone. Google Compute Engine Disk types are local to a particular project in a
+        /// particular zone, and so the resource name will typically look something like this:
+        /// compute.googleapis.com/projects/project-id/zones/zone/diskTypes/pd-standard
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
 
@@ -5914,14 +6072,15 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mountPoint")]
         public virtual string MountPoint { get; set; }
 
-        /// <summary>Size of disk in GB. If zero or unspecified, the service will attempt to choose a reasonable
-        /// default.</summary>
+        /// <summary>
+        /// Size of disk in GB. If zero or unspecified, the service will attempt to choose a reasonable default.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
         public virtual System.Nullable<int> SizeGb { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Data provided with a pipeline or transform to provide descriptive info.</summary>
     public class DisplayData : Google.Apis.Requests.IDirectResponseSchema
@@ -5946,8 +6105,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("javaClassValue")]
         public virtual string JavaClassValue { get; set; }
 
-        /// <summary>The key identifying the display data. This is intended to be used as a label for the display data
-        /// when viewed in a dax monitoring system.</summary>
+        /// <summary>
+        /// The key identifying the display data. This is intended to be used as a label for the display data when
+        /// viewed in a dax monitoring system.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
@@ -5955,16 +6116,19 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
         public virtual string Label { get; set; }
 
-        /// <summary>The namespace for the key. This is usually a class name or programming language namespace (i.e.
-        /// python module) which defines the display data. This allows a dax monitoring system to specially handle the
-        /// data and perform custom rendering.</summary>
+        /// <summary>
+        /// The namespace for the key. This is usually a class name or programming language namespace (i.e. python
+        /// module) which defines the display data. This allows a dax monitoring system to specially handle the data and
+        /// perform custom rendering.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
         public virtual string Namespace__ { get; set; }
 
-        /// <summary>A possible additional shorter value to display. For example a java_class_name_value of
-        /// com.mypackage.MyDoFn will be stored with MyDoFn as the short_str_value and com.mypackage.MyDoFn as the
-        /// java_class_name value. short_str_value can be displayed and java_class_name_value will be displayed as a
-        /// tooltip.</summary>
+        /// <summary>
+        /// A possible additional shorter value to display. For example a java_class_name_value of com.mypackage.MyDoFn
+        /// will be stored with MyDoFn as the short_str_value and com.mypackage.MyDoFn as the java_class_name value.
+        /// short_str_value can be displayed and java_class_name_value will be displayed as a tooltip.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortStrValue")]
         public virtual string ShortStrValue { get; set; }
 
@@ -5982,7 +6146,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A metric value representing a distribution.</summary>
     public class DistributionUpdate : Google.Apis.Requests.IDirectResponseSchema
@@ -6003,8 +6167,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("min")]
         public virtual SplitInt64 Min { get; set; }
 
-        /// <summary>Use an int64 since we'd prefer the added precision. If overflow is a common problem we can detect
-        /// it and use an additional int64 or a double.</summary>
+        /// <summary>
+        /// Use an int64 since we'd prefer the added precision. If overflow is a common problem we can detect it and use
+        /// an additional int64 or a double.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sum")]
         public virtual SplitInt64 Sum { get; set; }
 
@@ -6014,47 +6180,57 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>When a task splits using WorkItemStatus.dynamic_source_split, this message describes the two parts of
-    /// the split relative to the description of the current task's input.</summary>
+    /// <summary>
+    /// When a task splits using WorkItemStatus.dynamic_source_split, this message describes the two parts of the split
+    /// relative to the description of the current task's input.
+    /// </summary>
     public class DynamicSourceSplit : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Primary part (continued to be processed by worker). Specified relative to the previously-current
-        /// source. Becomes current.</summary>
+        /// <summary>
+        /// Primary part (continued to be processed by worker). Specified relative to the previously-current source.
+        /// Becomes current.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primary")]
         public virtual DerivedSource Primary { get; set; }
 
-        /// <summary>Residual part (returned to the pool of work). Specified relative to the previously-current
-        /// source.</summary>
+        /// <summary>
+        /// Residual part (returned to the pool of work). Specified relative to the previously-current source.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("residual")]
         public virtual DerivedSource Residual { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+    /// object `{}`.
+    /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Describes the environment in which a Dataflow Job runs.</summary>
     public class Environment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The type of cluster manager API to use. If unknown or unspecified, the service will attempt to
-        /// choose a reasonable default. This should be in the form of the API service name, e.g.
-        /// "compute.googleapis.com".</summary>
+        /// <summary>
+        /// The type of cluster manager API to use. If unknown or unspecified, the service will attempt to choose a
+        /// reasonable default. This should be in the form of the API service name, e.g. "compute.googleapis.com".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterManagerApiService")]
         public virtual string ClusterManagerApiService { get; set; }
 
-        /// <summary>The dataset for the current project where various workflow related tables are stored. The supported
-        /// resource type is: Google BigQuery: bigquery.googleapis.com/{dataset}</summary>
+        /// <summary>
+        /// The dataset for the current project where various workflow related tables are stored. The supported resource
+        /// type is: Google BigQuery: bigquery.googleapis.com/{dataset}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
         public virtual string Dataset { get; set; }
 
@@ -6070,9 +6246,11 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("internalExperiments")]
         public virtual System.Collections.Generic.IDictionary<string, object> InternalExperiments { get; set; }
 
-        /// <summary>The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the
-        /// service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform
-        /// independent way.</summary>
+        /// <summary>
+        /// The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service
+        /// and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform
+        /// independent way.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sdkPipelineOptions")]
         public virtual System.Collections.Generic.IDictionary<string, object> SdkPipelineOptions { get; set; }
 
@@ -6080,18 +6258,20 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
         public virtual string ServiceAccountEmail { get; set; }
 
-        /// <summary>If set, contains the Cloud KMS key identifier used to encrypt data at rest, AKA a Customer Managed
-        /// Encryption Key (CMEK). Format:
-        /// projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY</summary>
+        /// <summary>
+        /// If set, contains the Cloud KMS key identifier used to encrypt data at rest, AKA a Customer Managed
+        /// Encryption Key (CMEK). Format: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceKmsKeyName")]
         public virtual string ServiceKmsKeyName { get; set; }
 
-        /// <summary>The prefix of the resources the system should use for temporary storage. The system will append the
-        /// suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The
-        /// resulting bucket and object prefix is used as the prefix of the resources used to store temporary data
-        /// needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported
-        /// resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object}
-        /// bucket.storage.googleapis.com/{object}</summary>
+        /// <summary>
+        /// The prefix of the resources the system should use for temporary storage. The system will append the suffix
+        /// "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting
+        /// bucket and object prefix is used as the prefix of the resources used to store temporary data needed during
+        /// the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type
+        /// is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tempStoragePrefix")]
         public virtual string TempStoragePrefix { get; set; }
 
@@ -6099,32 +6279,38 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
         public virtual System.Collections.Generic.IDictionary<string, object> UserAgent { get; set; }
 
-        /// <summary>A structure describing which components and their versions of the service are required in order to
-        /// run the job.</summary>
+        /// <summary>
+        /// A structure describing which components and their versions of the service are required in order to run the
+        /// job.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Collections.Generic.IDictionary<string, object> Version { get; set; }
 
-        /// <summary>The worker pools. At least one "harness" worker pool must be specified in order for the job to have
-        /// workers.</summary>
+        /// <summary>
+        /// The worker pools. At least one "harness" worker pool must be specified in order for the job to have workers.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerPools")]
         public virtual System.Collections.Generic.IList<WorkerPool> WorkerPools { get; set; }
 
-        /// <summary>The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
-        /// which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither
-        /// worker_region nor worker_zone is specified, default to the control plane's region.</summary>
+        /// <summary>
+        /// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which
+        /// worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither
+        /// worker_region nor worker_zone is specified, default to the control plane's region.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerRegion")]
         public virtual string WorkerRegion { get; set; }
 
-        /// <summary>The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
-        /// which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither
-        /// worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on
-        /// available capacity.</summary>
+        /// <summary>
+        /// The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker
+        /// processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region
+        /// nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerZone")]
         public virtual string WorkerZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A message describing the state of a particular execution stage.</summary>
     public class ExecutionStageState : Google.Apis.Requests.IDirectResponseSchema
@@ -6143,11 +6329,12 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Description of the composing transforms, names/ids, and input/outputs of a stage of execution. Some
-    /// composing transforms and sources may have been generated by the Dataflow service during execution
-    /// planning.</summary>
+    /// <summary>
+    /// Description of the composing transforms, names/ids, and input/outputs of a stage of execution. Some composing
+    /// transforms and sources may have been generated by the Dataflow service during execution planning.
+    /// </summary>
     public class ExecutionStageSummary : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Collections produced and consumed by component transforms of this stage.</summary>
@@ -6184,20 +6371,24 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Indicates which [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-    /// endpoints) failed to respond to a request for data.</summary>
+    /// <summary>
+    /// Indicates which [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) failed
+    /// to respond to a request for data.
+    /// </summary>
     public class FailedLocation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The name of the [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-        /// endpoints) that failed to respond.</summary>
+        /// <summary>
+        /// The name of the [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+        /// that failed to respond.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Metadata for a File connector used by the job.</summary>
     public class FileIODetails : Google.Apis.Requests.IDirectResponseSchema
@@ -6208,7 +6399,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An instruction that copies its inputs (zero or more) to its (single) output.</summary>
     public class FlattenInstruction : Google.Apis.Requests.IDirectResponseSchema
@@ -6219,7 +6410,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The environment values to be set at runtime for flex template.</summary>
     public class FlexTemplateRuntimeEnvironment : Google.Apis.Requests.IDirectResponseSchema
@@ -6228,10 +6419,12 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalExperiments")]
         public virtual System.Collections.Generic.IList<string> AdditionalExperiments { get; set; }
 
-        /// <summary>Additional user labels to be specified for the job. Keys and values must follow the restrictions
-        /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-
-        /// resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name":
-        /// "wrench", "mass": "1kg", "count": "3" }.</summary>
+        /// <summary>
+        /// Additional user labels to be specified for the job. Keys and values must follow the restrictions specified
+        /// in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+        /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3"
+        /// }.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalUserLabels")]
         public virtual System.Collections.Generic.IDictionary<string, string> AdditionalUserLabels { get; set; }
 
@@ -6243,23 +6436,28 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipConfiguration")]
         public virtual string IpConfiguration { get; set; }
 
-        /// <summary>Name for the Cloud KMS key for the job. Key format is:
-        /// projects//locations//keyRings//cryptoKeys/</summary>
+        /// <summary>
+        /// Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; }
 
-        /// <summary>The machine type to use for the job. Defaults to the value from the template if not
-        /// specified.</summary>
+        /// <summary>
+        /// The machine type to use for the job. Defaults to the value from the template if not specified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
 
-        /// <summary>The maximum number of Google Compute Engine instances to be made available to your pipeline during
-        /// execution, from 1 to 1000.</summary>
+        /// <summary>
+        /// The maximum number of Google Compute Engine instances to be made available to your pipeline during
+        /// execution, from 1 to 1000.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxWorkers")]
         public virtual System.Nullable<int> MaxWorkers { get; set; }
 
-        /// <summary>Network to which VMs will be assigned. If empty or unspecified, the service will use the network
-        /// "default".</summary>
+        /// <summary>
+        /// Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
@@ -6271,41 +6469,50 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
         public virtual string ServiceAccountEmail { get; set; }
 
-        /// <summary>Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a
-        /// complete URL or an abbreviated path. Expected to be of the form
+        /// <summary>
+        /// Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete
+        /// URL or an abbreviated path. Expected to be of the form
         /// "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or
         /// "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use
-        /// the complete URL.</summary>
+        /// the complete URL.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; }
 
-        /// <summary>The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning
-        /// with `gs://`.</summary>
+        /// <summary>
+        /// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with
+        /// `gs://`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tempLocation")]
         public virtual string TempLocation { get; set; }
 
-        /// <summary>The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
-        /// which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither
-        /// worker_region nor worker_zone is specified, default to the control plane's region.</summary>
+        /// <summary>
+        /// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which
+        /// worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither
+        /// worker_region nor worker_zone is specified, default to the control plane's region.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerRegion")]
         public virtual string WorkerRegion { get; set; }
 
-        /// <summary>The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
-        /// which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither
-        /// worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on
-        /// available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.</summary>
+        /// <summary>
+        /// The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker
+        /// processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region
+        /// nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If
+        /// both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerZone")]
         public virtual string WorkerZone { get; set; }
 
-        /// <summary>The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-
-        /// zones) for launching worker instances to run your pipeline. In the future, worker_zone will take
-        /// precedence.</summary>
+        /// <summary>
+        /// The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones)
+        /// for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A metric value representing a list of floating point numbers.</summary>
     public class FloatingPointList : Google.Apis.Requests.IDirectResponseSchema
@@ -6316,7 +6523,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A representation of a floating point mean metric contribution.</summary>
     public class FloatingPointMean : Google.Apis.Requests.IDirectResponseSchema
@@ -6331,7 +6538,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request to get updated debug configuration for component.</summary>
     public class GetDebugConfigRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -6340,8 +6547,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("componentId")]
         public virtual string ComponentId { get; set; }
 
-        /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
-        /// contains the job specified by job_id.</summary>
+        /// <summary>
+        /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains
+        /// the job specified by job_id.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
@@ -6351,7 +6560,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response to a get debug configuration request.</summary>
     public class GetDebugConfigResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -6362,7 +6571,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The response to a GetTemplate request.</summary>
     public class GetTemplateResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -6375,8 +6584,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeMetadata")]
         public virtual RuntimeMetadata RuntimeMetadata { get; set; }
 
-        /// <summary>The status of the get template request. Any problems with the request will be indicated in the
-        /// error_details.</summary>
+        /// <summary>
+        /// The status of the get template request. Any problems with the request will be indicated in the
+        /// error_details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual Status Status { get; set; }
 
@@ -6386,28 +6597,34 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Histogram of value counts for a distribution. Buckets have an inclusive lower bound and exclusive upper
-    /// bound and use "1,2,5 bucketing": The first bucket range is from [0,1) and all subsequent bucket boundaries are
-    /// powers of ten multiplied by 1, 2, or 5. Thus, bucket boundaries are 0, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000,
-    /// ... Negative values are not supported.</summary>
+    /// <summary>
+    /// Histogram of value counts for a distribution. Buckets have an inclusive lower bound and exclusive upper bound
+    /// and use "1,2,5 bucketing": The first bucket range is from [0,1) and all subsequent bucket boundaries are powers
+    /// of ten multiplied by 1, 2, or 5. Thus, bucket boundaries are 0, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, ...
+    /// Negative values are not supported.
+    /// </summary>
     public class Histogram : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Counts of values in each bucket. For efficiency, prefix and trailing buckets with count = 0 are
-        /// elided. Buckets can store the full range of values of an unsigned long, with ULLONG_MAX falling into the
-        /// 59th bucket with range [1e19, 2e19).</summary>
+        /// <summary>
+        /// Counts of values in each bucket. For efficiency, prefix and trailing buckets with count = 0 are elided.
+        /// Buckets can store the full range of values of an unsigned long, with ULLONG_MAX falling into the 59th bucket
+        /// with range [1e19, 2e19).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketCounts")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> BucketCounts { get; set; }
 
-        /// <summary>Starting index of first stored bucket. The non-inclusive upper-bound of the ith bucket is given by:
-        /// pow(10,(i-first_bucket_offset)/3) * (1,2,5)[(i-first_bucket_offset)%3]</summary>
+        /// <summary>
+        /// Starting index of first stored bucket. The non-inclusive upper-bound of the ith bucket is given by:
+        /// pow(10,(i-first_bucket_offset)/3) * (1,2,5)[(i-first_bucket_offset)%3]
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstBucketOffset")]
         public virtual System.Nullable<int> FirstBucketOffset { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Proto describing a hot key detected on a given WorkItem.</summary>
     public class HotKeyDetection : Google.Apis.Requests.IDirectResponseSchema
@@ -6426,7 +6643,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An input of an instruction, as a reference to an output of a producer instruction.</summary>
     public class InstructionInput : Google.Apis.Requests.IDirectResponseSchema
@@ -6435,15 +6652,16 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputNum")]
         public virtual System.Nullable<int> OutputNum { get; set; }
 
-        /// <summary>The index (origin zero) of the parallel instruction that produces the output to be consumed by this
-        /// input. This index is relative to the list of instructions in this input's instruction's containing
-        /// MapTask.</summary>
+        /// <summary>
+        /// The index (origin zero) of the parallel instruction that produces the output to be consumed by this input.
+        /// This index is relative to the list of instructions in this input's instruction's containing MapTask.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producerInstructionIndex")]
         public virtual System.Nullable<int> ProducerInstructionIndex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An output of an instruction.</summary>
     public class InstructionOutput : Google.Apis.Requests.IDirectResponseSchema
@@ -6456,18 +6674,22 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>For system-generated byte and mean byte metrics, certain instructions should only report the key
-        /// size.</summary>
+        /// <summary>
+        /// For system-generated byte and mean byte metrics, certain instructions should only report the key size.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onlyCountKeyBytes")]
         public virtual System.Nullable<bool> OnlyCountKeyBytes { get; set; }
 
-        /// <summary>For system-generated byte and mean byte metrics, certain instructions should only report the value
-        /// size.</summary>
+        /// <summary>
+        /// For system-generated byte and mean byte metrics, certain instructions should only report the value size.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onlyCountValueBytes")]
         public virtual System.Nullable<bool> OnlyCountValueBytes { get; set; }
 
-        /// <summary>System-defined name for this output in the original workflow graph. Outputs that do not contribute
-        /// to an original instruction do not set this.</summary>
+        /// <summary>
+        /// System-defined name for this output in the original workflow graph. Outputs that do not contribute to an
+        /// original instruction do not set this.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalName")]
         public virtual string OriginalName { get; set; }
 
@@ -6477,7 +6699,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A metric value representing temporal values of a variable.</summary>
     public class IntegerGauge : Google.Apis.Requests.IDirectResponseSchema
@@ -6492,7 +6714,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A metric value representing a list of integers.</summary>
     public class IntegerList : Google.Apis.Requests.IDirectResponseSchema
@@ -6503,7 +6725,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A representation of an integer mean metric contribution.</summary>
     public class IntegerMean : Google.Apis.Requests.IDirectResponseSchema
@@ -6518,21 +6740,24 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Defines a job to be run by the Cloud Dataflow service.</summary>
     public class Job : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The client's unique identifier of the job, re-used across retried attempts. If this field is set,
-        /// the service will ensure its uniqueness. The request to create a job will fail if the service has knowledge
-        /// of a previously submitted job with the same client's ID and job name. The caller may use this field to
-        /// ensure idempotence of job creation across retried attempts to create a job. By default, the field is empty
-        /// and, in that case, the service ignores it.</summary>
+        /// <summary>
+        /// The client's unique identifier of the job, re-used across retried attempts. If this field is set, the
+        /// service will ensure its uniqueness. The request to create a job will fail if the service has knowledge of a
+        /// previously submitted job with the same client's ID and job name. The caller may use this field to ensure
+        /// idempotence of job creation across retried attempts to create a job. By default, the field is empty and, in
+        /// that case, the service ignores it.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientRequestId")]
         public virtual string ClientRequestId { get; set; }
 
-        /// <summary>The timestamp when the job was initially created. Immutable and set by the Cloud Dataflow
-        /// service.</summary>
+        /// <summary>
+        /// The timestamp when the job was initially created. Immutable and set by the Cloud Dataflow service.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
@@ -6540,10 +6765,12 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createdFromSnapshotId")]
         public virtual string CreatedFromSnapshotId { get; set; }
 
-        /// <summary>The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise
-        /// specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has
-        /// reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud
-        /// Dataflow service; callers cannot mutate it.</summary>
+        /// <summary>
+        /// The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified.
+        /// A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a
+        /// terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow
+        /// service; callers cannot mutate it.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentState")]
         public virtual string CurrentState { get; set; }
 
@@ -6559,38 +6786,49 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("executionInfo")]
         public virtual JobExecutionInfo ExecutionInfo { get; set; }
 
-        /// <summary>The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created,
-        /// and is immutable for the life of the job.</summary>
+        /// <summary>
+        /// The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is
+        /// immutable for the life of the job.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>This field is populated by the Dataflow service to support filtering jobs by the metadata values
-        /// provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.</summary>
+        /// <summary>
+        /// This field is populated by the Dataflow service to support filtering jobs by the metadata values provided
+        /// here. Populated for ListJobs and all GetJob views SUMMARY and higher.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobMetadata")]
         public virtual JobMetadata JobMetadata { get; set; }
 
-        /// <summary>User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of
-        /// the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp:
+        /// <summary>
+        /// User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels
+        /// map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp:
         /// \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are
-        /// additionally constrained to be <= 128 bytes in size.</summary>
+        /// additionally constrained to be &amp;lt;= 128 bytes in size.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
-        /// contains this job.</summary>
+        /// <summary>
+        /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains
+        /// this job.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>The user-specified Cloud Dataflow job name. Only one Job with a given name may exist in a project
-        /// at any given time. If a caller attempts to create a Job with the same name as an already-existing Job, the
-        /// attempt returns the existing Job. The name must match the regular expression
-        /// `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`</summary>
+        /// <summary>
+        /// The user-specified Cloud Dataflow job name. Only one Job with a given name may exist in a project at any
+        /// given time. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt
+        /// returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Preliminary field: The format of this data may change at any time. A description of the user
-        /// pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with
-        /// JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.</summary>
+        /// <summary>
+        /// Preliminary field: The format of this data may change at any time. A description of the user pipeline and
+        /// stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with
+        /// JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pipelineDescription")]
         public virtual PipelineDescription PipelineDescription { get; set; }
 
@@ -6598,21 +6836,27 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
-        /// <summary>If this job is an update of an existing job, this field is the job ID of the job it replaced. When
-        /// sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and
-        /// its intermediate state is transferred to this job.</summary>
+        /// <summary>
+        /// If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a
+        /// `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its
+        /// intermediate state is transferred to this job.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceJobId")]
         public virtual string ReplaceJobId { get; set; }
 
-        /// <summary>If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field
-        /// contains the ID of that job.</summary>
+        /// <summary>
+        /// If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field contains
+        /// the ID of that job.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replacedByJobId")]
         public virtual string ReplacedByJobId { get; set; }
 
-        /// <summary>The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and
+        /// <summary>
+        /// The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and
         /// `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's
         /// requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not
-        /// already reached a terminal state.</summary>
+        /// already reached a terminal state.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedState")]
         public virtual string RequestedState { get; set; }
 
@@ -6620,15 +6864,19 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stageStates")]
         public virtual System.Collections.Generic.IList<ExecutionStageState> StageStates { get; set; }
 
-        /// <summary>The timestamp when the job was started (transitioned to JOB_STATE_PENDING). Flexible resource
-        /// scheduling jobs are started with some delay after job creation, so start_time is unset before start and is
-        /// updated when the job is started by the Cloud Dataflow service. For other jobs, start_time always equals to
-        /// create_time and is immutable and set by the Cloud Dataflow service.</summary>
+        /// <summary>
+        /// The timestamp when the job was started (transitioned to JOB_STATE_PENDING). Flexible resource scheduling
+        /// jobs are started with some delay after job creation, so start_time is unset before start and is updated when
+        /// the job is started by the Cloud Dataflow service. For other jobs, start_time always equals to create_time
+        /// and is immutable and set by the Cloud Dataflow service.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
 
-        /// <summary>Exactly one of step or steps_location should be specified. The top-level steps that constitute the
-        /// entire job. Only retrieved with JOB_VIEW_ALL.</summary>
+        /// <summary>
+        /// Exactly one of step or steps_location should be specified. The top-level steps that constitute the entire
+        /// job. Only retrieved with JOB_VIEW_ALL.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
         public virtual System.Collections.Generic.IList<Step> Steps { get; set; }
 
@@ -6636,15 +6884,18 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stepsLocation")]
         public virtual string StepsLocation { get; set; }
 
-        /// <summary>A set of files the system should be aware of that are used for temporary storage. These temporary
-        /// files will be removed on job completion. No duplicates are allowed. No file patterns are supported. The
-        /// supported files are: Google Cloud Storage: storage.googleapis.com/{bucket}/{object}
-        /// bucket.storage.googleapis.com/{object}</summary>
+        /// <summary>
+        /// A set of files the system should be aware of that are used for temporary storage. These temporary files will
+        /// be removed on job completion. No duplicates are allowed. No file patterns are supported. The supported files
+        /// are: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tempFiles")]
         public virtual System.Collections.Generic.IList<string> TempFiles { get; set; }
 
-        /// <summary>The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of
-        /// the new job.</summary>
+        /// <summary>
+        /// The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new
+        /// job.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transformNameMapping")]
         public virtual System.Collections.Generic.IDictionary<string, string> TransformNameMapping { get; set; }
 
@@ -6654,13 +6905,15 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about the execution of a job.</summary>
     public class JobExecutionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If present, this response does not contain all requested tasks. To obtain the next page of results,
-        /// repeat the request with page_token set to this value.</summary>
+        /// <summary>
+        /// If present, this response does not contain all requested tasks. To obtain the next page of results, repeat
+        /// the request with page_token set to this value.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -6670,10 +6923,12 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Additional information about how a Cloud Dataflow job will be executed that isn't contained in the
-    /// submitted job.</summary>
+    /// <summary>
+    /// Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted
+    /// job.
+    /// </summary>
     public class JobExecutionInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A mapping from each stage to the information about that stage.</summary>
@@ -6682,19 +6937,21 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Contains information about how a particular google.dataflow.v1beta3.Step will be executed.</summary>
     public class JobExecutionStageInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The steps associated with the execution stage. Note that stages may have several steps, and that a
-        /// given step might be run by more than one stage.</summary>
+        /// <summary>
+        /// The steps associated with the execution stage. Note that stages may have several steps, and that a given
+        /// step might be run by more than one stage.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stepName")]
         public virtual System.Collections.Generic.IList<string> StepName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A particular message pertaining to a Dataflow job.</summary>
     public class JobMessage : Google.Apis.Requests.IDirectResponseSchema
@@ -6717,10 +6974,11 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job
-    /// SUMMARY view.</summary>
+    /// <summary>
+    /// Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
+    /// </summary>
     public class JobMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Identification of a BigTable source used in the Dataflow job.</summary>
@@ -6753,12 +7011,14 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>JobMetrics contains a collection of metrics describing the detailed progress of a Dataflow job. Metrics
+    /// <summary>
+    /// JobMetrics contains a collection of metrics describing the detailed progress of a Dataflow job. Metrics
     /// correspond to user-defined and system-defined metrics in the job. This resource captures only the most recent
     /// values of each metric; time-series data can be queried for them (under the same metric names) from Cloud
-    /// Monitoring.</summary>
+    /// Monitoring.
+    /// </summary>
     public class JobMetrics : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Timestamp as of which metric values are current.</summary>
@@ -6771,15 +7031,19 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Data disk assignment information for a specific key-range of a sharded computation. Currently we only
-    /// support UTF-8 character splits to simplify encoding into JSON.</summary>
+    /// <summary>
+    /// Data disk assignment information for a specific key-range of a sharded computation. Currently we only support
+    /// UTF-8 character splits to simplify encoding into JSON.
+    /// </summary>
     public class KeyRangeDataDiskAssignment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The name of the data disk where data for this range is stored. This name is local to the Google
-        /// Cloud Platform project and uniquely identifies the disk within that project, for example
-        /// "myproject-1014-104817-4c2-harness-0-disk-1".</summary>
+        /// <summary>
+        /// The name of the data disk where data for this range is stored. This name is local to the Google Cloud
+        /// Platform project and uniquely identifies the disk within that project, for example
+        /// "myproject-1014-104817-4c2-harness-0-disk-1".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataDisk")]
         public virtual string DataDisk { get; set; }
 
@@ -6793,25 +7057,33 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Location information for a specific key-range of a sharded computation. Currently we only support UTF-8
-    /// character splits to simplify encoding into JSON.</summary>
+    /// <summary>
+    /// Location information for a specific key-range of a sharded computation. Currently we only support UTF-8
+    /// character splits to simplify encoding into JSON.
+    /// </summary>
     public class KeyRangeLocation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The name of the data disk where data for this range is stored. This name is local to the Google
-        /// Cloud Platform project and uniquely identifies the disk within that project, for example
-        /// "myproject-1014-104817-4c2-harness-0-disk-1".</summary>
+        /// <summary>
+        /// The name of the data disk where data for this range is stored. This name is local to the Google Cloud
+        /// Platform project and uniquely identifies the disk within that project, for example
+        /// "myproject-1014-104817-4c2-harness-0-disk-1".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataDisk")]
         public virtual string DataDisk { get; set; }
 
-        /// <summary>The physical location of this range assignment to be used for streaming computation cross-worker
-        /// message delivery.</summary>
+        /// <summary>
+        /// The physical location of this range assignment to be used for streaming computation cross-worker message
+        /// delivery.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryEndpoint")]
         public virtual string DeliveryEndpoint { get; set; }
 
-        /// <summary>DEPRECATED. The location of the persistent state for this range, as a persistent directory in the
-        /// worker local filesystem.</summary>
+        /// <summary>
+        /// DEPRECATED. The location of the persistent state for this range, as a persistent directory in the worker
+        /// local filesystem.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deprecatedPersistentDirectory")]
         public virtual string DeprecatedPersistentDirectory { get; set; }
 
@@ -6825,7 +7097,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Launch FlexTemplate Parameter.</summary>
     public class LaunchFlexTemplateParameter : Google.Apis.Requests.IDirectResponseSchema
@@ -6842,13 +7114,17 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual FlexTemplateRuntimeEnvironment Environment { get; set; }
 
-        /// <summary>Required. The job name to use for the created job. For update job request, job name should be same
-        /// as the existing running job.</summary>
+        /// <summary>
+        /// Required. The job name to use for the created job. For update job request, job name should be same as the
+        /// existing running job.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobName")]
         public virtual string JobName { get; set; }
 
-        /// <summary>Launch options for this flex template job. This is a common set of options across languages and
-        /// templates. This should not be used to pass job parameters.</summary>
+        /// <summary>
+        /// Launch options for this flex template job. This is a common set of options across languages and templates.
+        /// This should not be used to pass job parameters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launchOptions")]
         public virtual System.Collections.Generic.IDictionary<string, string> LaunchOptions { get; set; }
 
@@ -6860,14 +7136,16 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transformNameMappings")]
         public virtual System.Collections.Generic.IDictionary<string, string> TransformNameMappings { get; set; }
 
-        /// <summary>Set this to true if you are sending a request to update a running streaming job. When set, the job
-        /// name should be the same as the running job.</summary>
+        /// <summary>
+        /// Set this to true if you are sending a request to update a running streaming job. When set, the job name
+        /// should be the same as the running job.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("update")]
         public virtual System.Nullable<bool> Update { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A request to launch a Cloud Dataflow job from a FlexTemplate.</summary>
     public class LaunchFlexTemplateRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -6882,19 +7160,20 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response to the request to launch a job from Flex Template.</summary>
     public class LaunchFlexTemplateResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The job that was launched, if the request was not a dry run and the job was successfully
-        /// launched.</summary>
+        /// <summary>
+        /// The job that was launched, if the request was not a dry run and the job was successfully launched.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("job")]
         public virtual Job Job { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Parameters to provide to the template being launched.</summary>
     public class LaunchTemplateParameters : Google.Apis.Requests.IDirectResponseSchema
@@ -6911,31 +7190,36 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, string> Parameters { get; set; }
 
-        /// <summary>Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced
-        /// to the corresponding name prefixes of the new job.</summary>
+        /// <summary>
+        /// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced to the
+        /// corresponding name prefixes of the new job.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transformNameMapping")]
         public virtual System.Collections.Generic.IDictionary<string, string> TransformNameMapping { get; set; }
 
-        /// <summary>If set, replace the existing pipeline with the name specified by jobName with this pipeline,
-        /// preserving state.</summary>
+        /// <summary>
+        /// If set, replace the existing pipeline with the name specified by jobName with this pipeline, preserving
+        /// state.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("update")]
         public virtual System.Nullable<bool> Update { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response to the request to launch a template.</summary>
     public class LaunchTemplateResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The job that was launched, if the request was not a dry run and the job was successfully
-        /// launched.</summary>
+        /// <summary>
+        /// The job that was launched, if the request was not a dry run and the job was successfully launched.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("job")]
         public virtual Job Job { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request to lease WorkItems.</summary>
     public class LeaseWorkItemRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -6944,8 +7228,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentWorkerTime")]
         public virtual object CurrentWorkerTime { get; set; }
 
-        /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
-        /// contains the WorkItem's job.</summary>
+        /// <summary>
+        /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains
+        /// the WorkItem's job.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
@@ -6965,14 +7251,15 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("workerCapabilities")]
         public virtual System.Collections.Generic.IList<string> WorkerCapabilities { get; set; }
 
-        /// <summary>Identifies the worker leasing work -- typically the ID of the virtual machine running the
-        /// worker.</summary>
+        /// <summary>
+        /// Identifies the worker leasing work -- typically the ID of the virtual machine running the worker.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerId")]
         public virtual string WorkerId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response to a request to lease WorkItems.</summary>
     public class LeaseWorkItemResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -6987,7 +7274,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response to a request to list job messages.</summary>
     public class ListJobMessagesResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -7006,15 +7293,19 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Response to a request to list Cloud Dataflow jobs in a project. This might be a partial response,
-    /// depending on the page size in the ListJobsRequest. However, if the project does not have any jobs, an instance
-    /// of ListJobsResponse is not returned and the requests's response body is empty {}.</summary>
+    /// <summary>
+    /// Response to a request to list Cloud Dataflow jobs in a project. This might be a partial response, depending on
+    /// the page size in the ListJobsRequest. However, if the project does not have any jobs, an instance of
+    /// ListJobsResponse is not returned and the requests's response body is empty {}.
+    /// </summary>
     public class ListJobsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Zero or more messages describing the [regional endpoints]
-        /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that failed to respond.</summary>
+        /// <summary>
+        /// Zero or more messages describing the [regional endpoints]
+        /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that failed to respond.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failedLocation")]
         public virtual System.Collections.Generic.IList<FailedLocation> FailedLocation { get; set; }
 
@@ -7028,7 +7319,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>List of snapshots.</summary>
     public class ListSnapshotsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -7039,13 +7330,15 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Respond a list of TemplateVersions.</summary>
     public class ListTemplateVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there
-        /// are no subsequent pages.</summary>
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -7055,11 +7348,13 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>MapTask consists of an ordered set of instructions, each of which describes one particular low-level
-    /// operation for the worker to perform in order to accomplish the MapTask's WorkItem. Each instruction must appear
-    /// in the list before any instructions which depends on its output.</summary>
+    /// <summary>
+    /// MapTask consists of an ordered set of instructions, each of which describes one particular low-level operation
+    /// for the worker to perform in order to accomplish the MapTask's WorkItem. Each instruction must appear in the
+    /// list before any instructions which depends on its output.
+    /// </summary>
     public class MapTask : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Counter prefix that can be used to prefix counters. Not currently used in Dataflow.</summary>
@@ -7080,7 +7375,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about the memory usage of a worker or a container within a worker.</summary>
     public class MemInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -7103,10 +7398,11 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>The metric short id is returned to the user alongside an offset into
-    /// ReportWorkItemStatusRequest</summary>
+    /// <summary>
+    /// The metric short id is returned to the user alongside an offset into ReportWorkItemStatusRequest
+    /// </summary>
     public class MetricShortId : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The index of the corresponding metric in the ReportWorkItemStatusRequest. Required.</summary>
@@ -7119,15 +7415,16 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Identifies a metric, by describing the source which generated the metric.</summary>
     public class MetricStructuredName : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Zero or more labeled fields which identify the part of the job this metric is associated with, such
-        /// as the name of a step or collection. For example, built-in counters associated with steps will have
-        /// context['step'] = . Counters associated with PCollections in the SDK will have context['pcollection'] =
-        /// .</summary>
+        /// <summary>
+        /// Zero or more labeled fields which identify the part of the job this metric is associated with, such as the
+        /// name of a step or collection. For example, built-in counters associated with steps will have context['step']
+        /// = . Counters associated with PCollections in the SDK will have context['pcollection'] = .
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
         public virtual System.Collections.Generic.IDictionary<string, string> Context { get; set; }
 
@@ -7135,21 +7432,25 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Origin (namespace) of metric name. May be blank for user-define metrics; will be "dataflow" for
-        /// metrics defined by the Dataflow service or SDK.</summary>
+        /// <summary>
+        /// Origin (namespace) of metric name. May be blank for user-define metrics; will be "dataflow" for metrics
+        /// defined by the Dataflow service or SDK.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("origin")]
         public virtual string Origin { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Describes the state of a metric.</summary>
     public class MetricUpdate : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>True if this metric is reported as the total cumulative aggregate value accumulated since the
-        /// worker started working on this WorkItem. By default this is false, indicating that this metric is reported
-        /// as a delta that is not associated with any WorkItem.</summary>
+        /// <summary>
+        /// True if this metric is reported as the total cumulative aggregate value accumulated since the worker started
+        /// working on this WorkItem. By default this is false, indicating that this metric is reported as a delta that
+        /// is not associated with any WorkItem.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cumulative")]
         public virtual System.Nullable<bool> Cumulative { get; set; }
 
@@ -7157,8 +7458,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("distribution")]
         public virtual object Distribution { get; set; }
 
-        /// <summary>A struct value describing properties of a Gauge. Metrics of gauge type show the value of a metric
-        /// across time, and is aggregated based on the newest value.</summary>
+        /// <summary>
+        /// A struct value describing properties of a Gauge. Metrics of gauge type show the value of a metric across
+        /// time, and is aggregated based on the newest value.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gauge")]
         public virtual object Gauge { get; set; }
 
@@ -7166,21 +7469,27 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("internal")]
         public virtual object Internal__ { get; set; }
 
-        /// <summary>Metric aggregation kind. The possible metric aggregation kinds are "Sum", "Max", "Min", "Mean",
-        /// "Set", "And", "Or", and "Distribution". The specified aggregation kind is case-insensitive. If omitted, this
-        /// is not an aggregated value but instead a single metric sample value.</summary>
+        /// <summary>
+        /// Metric aggregation kind. The possible metric aggregation kinds are "Sum", "Max", "Min", "Mean", "Set",
+        /// "And", "Or", and "Distribution". The specified aggregation kind is case-insensitive. If omitted, this is not
+        /// an aggregated value but instead a single metric sample value.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Worker-computed aggregate value for the "Mean" aggregation kind. This holds the count of the
-        /// aggregated values and is used in combination with mean_sum above to obtain the actual mean aggregate value.
-        /// The only possible value type is Long.</summary>
+        /// <summary>
+        /// Worker-computed aggregate value for the "Mean" aggregation kind. This holds the count of the aggregated
+        /// values and is used in combination with mean_sum above to obtain the actual mean aggregate value. The only
+        /// possible value type is Long.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meanCount")]
         public virtual object MeanCount { get; set; }
 
-        /// <summary>Worker-computed aggregate value for the "Mean" aggregation kind. This holds the sum of the
-        /// aggregated values and is used in combination with mean_count below to obtain the actual mean aggregate
-        /// value. The only possible value types are Long and Double.</summary>
+        /// <summary>
+        /// Worker-computed aggregate value for the "Mean" aggregation kind. This holds the sum of the aggregated values
+        /// and is used in combination with mean_count below to obtain the actual mean aggregate value. The only
+        /// possible value types are Long and Double.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meanSum")]
         public virtual object MeanSum { get; set; }
 
@@ -7188,25 +7497,31 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual MetricStructuredName Name { get; set; }
 
-        /// <summary>Worker-computed aggregate value for aggregation kinds "Sum", "Max", "Min", "And", and "Or". The
-        /// possible value types are Long, Double, and Boolean.</summary>
+        /// <summary>
+        /// Worker-computed aggregate value for aggregation kinds "Sum", "Max", "Min", "And", and "Or". The possible
+        /// value types are Long, Double, and Boolean.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scalar")]
         public virtual object Scalar { get; set; }
 
-        /// <summary>Worker-computed aggregate value for the "Set" aggregation kind. The only possible value type is a
-        /// list of Values whose type can be Long, Double, or String, according to the metric's type. All Values in the
-        /// list must be of the same type.</summary>
+        /// <summary>
+        /// Worker-computed aggregate value for the "Set" aggregation kind. The only possible value type is a list of
+        /// Values whose type can be Long, Double, or String, according to the metric's type. All Values in the list
+        /// must be of the same type.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("set")]
         public virtual object Set { get; set; }
 
-        /// <summary>Timestamp associated with the metric value. Optional when workers are reporting work progress; it
-        /// will be filled in responses from the metrics API.</summary>
+        /// <summary>
+        /// Timestamp associated with the metric value. Optional when workers are reporting work progress; it will be
+        /// filled in responses from the metrics API.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Either add the label to TemplateVersion or remove it from the TemplateVersion.</summary>
     public class ModifyTemplateVersionLabelRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -7225,7 +7540,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Respond the labels in the TemplateVersion.</summary>
     public class ModifyTemplateVersionLabelResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -7236,11 +7551,13 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Add a tag to the current TemplateVersion. If tag exist in another TemplateVersion in the Template,
-    /// remove the tag before add it to the current TemplateVersion. If remove_only set, remove the tag from the current
-    /// TemplateVersion.</summary>
+    /// <summary>
+    /// Add a tag to the current TemplateVersion. If tag exist in another TemplateVersion in the Template, remove the
+    /// tag before add it to the current TemplateVersion. If remove_only set, remove the tag from the current
+    /// TemplateVersion.
+    /// </summary>
     public class ModifyTemplateVersionTagRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The flag that indicates if the request is only for remove tag from TemplateVersion.</summary>
@@ -7253,7 +7570,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Respond the current tags in the TemplateVersion.</summary>
     public class ModifyTemplateVersionTagResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -7264,31 +7581,35 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Describes mounted data disk.</summary>
     public class MountedDataDisk : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The name of the data disk. This name is local to the Google Cloud Platform project and uniquely
-        /// identifies the disk within that project, for example "myproject-1014-104817-4c2-harness-0-disk-1".</summary>
+        /// <summary>
+        /// The name of the data disk. This name is local to the Google Cloud Platform project and uniquely identifies
+        /// the disk within that project, for example "myproject-1014-104817-4c2-harness-0-disk-1".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataDisk")]
         public virtual string DataDisk { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about an output of a multi-output DoFn.</summary>
     public class MultiOutputInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The id of the tag the user code will emit to this output by; this should correspond to the tag of
-        /// some SideInputInfo.</summary>
+        /// <summary>
+        /// The id of the tag the user code will emit to this output by; this should correspond to the tag of some
+        /// SideInputInfo.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
         public virtual string Tag { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Basic metadata about a counter.</summary>
     public class NameAndKind : Google.Apis.Requests.IDirectResponseSchema
@@ -7303,17 +7624,20 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>The packages that must be installed in order for a worker to run the steps of the Cloud Dataflow job
-    /// that will be assigned to its worker pool. This is the mechanism by which the Cloud Dataflow SDK causes code to
-    /// be loaded onto the workers. For example, the Cloud Dataflow Java SDK might use this to install jars containing
-    /// the user's code and all of the various dependencies (libraries, data files, etc.) required in order for that
-    /// code to run.</summary>
+    /// <summary>
+    /// The packages that must be installed in order for a worker to run the steps of the Cloud Dataflow job that will
+    /// be assigned to its worker pool. This is the mechanism by which the Cloud Dataflow SDK causes code to be loaded
+    /// onto the workers. For example, the Cloud Dataflow Java SDK might use this to install jars containing the user's
+    /// code and all of the various dependencies (libraries, data files, etc.) required in order for that code to run.
+    /// </summary>
     public class Package : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The resource to read the package from. The supported resource type is: Google Cloud Storage:
-        /// storage.googleapis.com/{bucket} bucket.storage.googleapis.com/</summary>
+        /// <summary>
+        /// The resource to read the package from. The supported resource type is: Google Cloud Storage:
+        /// storage.googleapis.com/{bucket} bucket.storage.googleapis.com/
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
@@ -7323,10 +7647,12 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>An instruction that does a ParDo operation. Takes one main input and zero or more side inputs, and
-    /// produces zero or more outputs. Runs user code.</summary>
+    /// <summary>
+    /// An instruction that does a ParDo operation. Takes one main input and zero or more side inputs, and produces zero
+    /// or more outputs. Runs user code.
+    /// </summary>
     public class ParDoInstruction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The input.</summary>
@@ -7351,7 +7677,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Describes a particular operation comprising a MapTask.</summary>
     public class ParallelInstruction : Google.Apis.Requests.IDirectResponseSchema
@@ -7394,7 +7720,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Structured data associated with this message.</summary>
     public class Parameter : Google.Apis.Requests.IDirectResponseSchema
@@ -7409,7 +7735,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Metadata for a specific parameter.</summary>
     public class ParameterMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -7440,7 +7766,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An instruction that does a partial group-by-key. One input and one output.</summary>
     public class PartialGroupByKeyInstruction : Google.Apis.Requests.IDirectResponseSchema
@@ -7453,13 +7779,17 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inputElementCodec")]
         public virtual System.Collections.Generic.IDictionary<string, object> InputElementCodec { get; set; }
 
-        /// <summary>If this instruction includes a combining function this is the name of the intermediate store
-        /// between the GBK and the CombineValues.</summary>
+        /// <summary>
+        /// If this instruction includes a combining function this is the name of the intermediate store between the GBK
+        /// and the CombineValues.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalCombineValuesInputStoreName")]
         public virtual string OriginalCombineValuesInputStoreName { get; set; }
 
-        /// <summary>If this instruction includes a combining function, this is the name of the CombineValues
-        /// instruction lifted into this instruction.</summary>
+        /// <summary>
+        /// If this instruction includes a combining function, this is the name of the CombineValues instruction lifted
+        /// into this instruction.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalCombineValuesStepName")]
         public virtual string OriginalCombineValuesStepName { get; set; }
 
@@ -7473,11 +7803,12 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A descriptive representation of submitted pipeline as well as the executed form. This data is provided
-    /// by the Dataflow service for ease of visualizing the pipeline and interpreting Dataflow provided
-    /// metrics.</summary>
+    /// <summary>
+    /// A descriptive representation of submitted pipeline as well as the executed form. This data is provided by the
+    /// Dataflow service for ease of visualizing the pipeline and interpreting Dataflow provided metrics.
+    /// </summary>
     public class PipelineDescription : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Pipeline level display data.</summary>
@@ -7494,7 +7825,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A point in the timeseries.</summary>
     public class Point : Google.Apis.Requests.IDirectResponseSchema
@@ -7509,10 +7840,12 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Position defines a position within a collection of data. The value can be either the end position, a
-    /// key (used with ordered collections), a byte offset, or a record index.</summary>
+    /// <summary>
+    /// Position defines a position within a collection of data. The value can be either the end position, a key (used
+    /// with ordered collections), a byte offset, or a record index.
+    /// </summary>
     public class Position : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Position is a byte offset.</summary>
@@ -7523,8 +7856,9 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("concatPosition")]
         public virtual ConcatPosition ConcatPosition { get; set; }
 
-        /// <summary>Position is past all other positions. Also useful for the end position of an unbounded
-        /// range.</summary>
+        /// <summary>
+        /// Position is past all other positions. Also useful for the end position of an unbounded range.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("end")]
         public virtual System.Nullable<bool> End { get; set; }
 
@@ -7542,7 +7876,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about the progress of some component of job execution.</summary>
     public class ProgressTimeseries : Google.Apis.Requests.IDirectResponseSchema
@@ -7557,7 +7891,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Metadata for a PubSub connector used by the job.</summary>
     public class PubSubIODetails : Google.Apis.Requests.IDirectResponseSchema
@@ -7572,18 +7906,21 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Identifies a pubsub location to use for transferring data into or out of a streaming Dataflow
-    /// job.</summary>
+    /// <summary>
+    /// Identifies a pubsub location to use for transferring data into or out of a streaming Dataflow job.
+    /// </summary>
     public class PubsubLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Indicates whether the pipeline allows late-arriving data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dropLateData")]
         public virtual System.Nullable<bool> DropLateData { get; set; }
 
-        /// <summary>If set, contains a pubsub label from which to extract record ids. If left empty, record
-        /// deduplication will be strictly best effort.</summary>
+        /// <summary>
+        /// If set, contains a pubsub label from which to extract record ids. If left empty, record deduplication will
+        /// be strictly best effort.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idLabel")]
         public virtual string IdLabel { get; set; }
 
@@ -7591,8 +7928,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
         public virtual string Subscription { get; set; }
 
-        /// <summary>If set, contains a pubsub label from which to extract record timestamps. If left empty, record
-        /// timestamps will be generated upon arrival.</summary>
+        /// <summary>
+        /// If set, contains a pubsub label from which to extract record timestamps. If left empty, record timestamps
+        /// will be generated upon arrival.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestampLabel")]
         public virtual string TimestampLabel { get; set; }
 
@@ -7600,8 +7939,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("topic")]
         public virtual string Topic { get; set; }
 
-        /// <summary>If set, specifies the pubsub subscription that will be used for tracking custom time timestamps for
-        /// watermark estimation.</summary>
+        /// <summary>
+        /// If set, specifies the pubsub subscription that will be used for tracking custom time timestamps for
+        /// watermark estimation.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingSubscription")]
         public virtual string TrackingSubscription { get; set; }
 
@@ -7611,7 +7952,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a Pubsub snapshot.</summary>
     public class PubsubSnapshotMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -7630,7 +7971,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about a validated query.</summary>
     public class QueryInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -7641,7 +7982,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An instruction that reads records. Takes no inputs, produces one output.</summary>
     public class ReadInstruction : Google.Apis.Requests.IDirectResponseSchema
@@ -7652,7 +7993,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request to report the status of WorkItems.</summary>
     public class ReportWorkItemStatusRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -7661,8 +8002,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentWorkerTime")]
         public virtual object CurrentWorkerTime { get; set; }
 
-        /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
-        /// contains the WorkItem's job.</summary>
+        /// <summary>
+        /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains
+        /// the WorkItem's job.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
@@ -7670,20 +8013,24 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("unifiedWorkerRequest")]
         public virtual System.Collections.Generic.IDictionary<string, object> UnifiedWorkerRequest { get; set; }
 
-        /// <summary>The order is unimportant, except that the order of the WorkItemServiceState messages in the
-        /// ReportWorkItemStatusResponse corresponds to the order of WorkItemStatus messages here.</summary>
+        /// <summary>
+        /// The order is unimportant, except that the order of the WorkItemServiceState messages in the
+        /// ReportWorkItemStatusResponse corresponds to the order of WorkItemStatus messages here.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workItemStatuses")]
         public virtual System.Collections.Generic.IList<WorkItemStatus> WorkItemStatuses { get; set; }
 
-        /// <summary>The ID of the worker reporting the WorkItem status. If this does not match the ID of the worker
-        /// which the Dataflow service believes currently has the lease on the WorkItem, the report will be dropped
-        /// (with an error response).</summary>
+        /// <summary>
+        /// The ID of the worker reporting the WorkItem status. If this does not match the ID of the worker which the
+        /// Dataflow service believes currently has the lease on the WorkItem, the report will be dropped (with an error
+        /// response).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerId")]
         public virtual string WorkerId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response from a request to report the status of WorkItems.</summary>
     public class ReportWorkItemStatusResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -7692,23 +8039,25 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("unifiedWorkerResponse")]
         public virtual System.Collections.Generic.IDictionary<string, object> UnifiedWorkerResponse { get; set; }
 
-        /// <summary>A set of messages indicating the service-side state for each WorkItem whose status was reported, in
-        /// the same order as the WorkItemStatus messages in the ReportWorkItemStatusRequest which resulting in this
-        /// response.</summary>
+        /// <summary>
+        /// A set of messages indicating the service-side state for each WorkItem whose status was reported, in the same
+        /// order as the WorkItemStatus messages in the ReportWorkItemStatusRequest which resulting in this response.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workItemServiceStates")]
         public virtual System.Collections.Generic.IList<WorkItemServiceState> WorkItemServiceStates { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents the level of parallelism in a WorkItem's input, reported by the worker.</summary>
     public class ReportedParallelism : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies whether the parallelism is infinite. If true, "value" is ignored. Infinite parallelism
-        /// means the service will assume that the work item can always be split into more non-empty work items by
-        /// dynamic splitting. This is a work-around for lack of support for infinity by the current JSON-based Java RPC
-        /// stack.</summary>
+        /// <summary>
+        /// Specifies whether the parallelism is infinite. If true, "value" is ignored. Infinite parallelism means the
+        /// service will assume that the work item can always be split into more non-empty work items by dynamic
+        /// splitting. This is a work-around for lack of support for infinity by the current JSON-based Java RPC stack.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isInfinite")]
         public virtual System.Nullable<bool> IsInfinite { get; set; }
 
@@ -7718,10 +8067,12 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Worker metrics exported from workers. This contains resource utilization metrics accumulated from a
-    /// variety of sources. For more information, see go/df-resource-signals.</summary>
+    /// <summary>
+    /// Worker metrics exported from workers. This contains resource utilization metrics accumulated from a variety of
+    /// sources. For more information, see go/df-resource-signals.
+    /// </summary>
     public class ResourceUtilizationReport : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Per container information. Key: container name.</summary>
@@ -7738,14 +8089,14 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Service-side response to WorkerMessage reporting resource utilization.</summary>
     public class ResourceUtilizationReportResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The environment values to set at runtime.</summary>
     public class RuntimeEnvironment : Google.Apis.Requests.IDirectResponseSchema
@@ -7754,10 +8105,12 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalExperiments")]
         public virtual System.Collections.Generic.IList<string> AdditionalExperiments { get; set; }
 
-        /// <summary>Additional user labels to be specified for the job. Keys and values should follow the restrictions
-        /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-
-        /// resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name":
-        /// "wrench", "mass": "1kg", "count": "3" }.</summary>
+        /// <summary>
+        /// Additional user labels to be specified for the job. Keys and values should follow the restrictions specified
+        /// in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+        /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3"
+        /// }.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalUserLabels")]
         public virtual System.Collections.Generic.IDictionary<string, string> AdditionalUserLabels { get; set; }
 
@@ -7773,23 +8126,28 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipConfiguration")]
         public virtual string IpConfiguration { get; set; }
 
-        /// <summary>Name for the Cloud KMS key for the job. Key format is:
-        /// projects//locations//keyRings//cryptoKeys/</summary>
+        /// <summary>
+        /// Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; }
 
-        /// <summary>The machine type to use for the job. Defaults to the value from the template if not
-        /// specified.</summary>
+        /// <summary>
+        /// The machine type to use for the job. Defaults to the value from the template if not specified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
 
-        /// <summary>The maximum number of Google Compute Engine instances to be made available to your pipeline during
-        /// execution, from 1 to 1000.</summary>
+        /// <summary>
+        /// The maximum number of Google Compute Engine instances to be made available to your pipeline during
+        /// execution, from 1 to 1000.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxWorkers")]
         public virtual System.Nullable<int> MaxWorkers { get; set; }
 
-        /// <summary>Network to which VMs will be assigned. If empty or unspecified, the service will use the network
-        /// "default".</summary>
+        /// <summary>
+        /// Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
@@ -7801,41 +8159,50 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
         public virtual string ServiceAccountEmail { get; set; }
 
-        /// <summary>Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a
-        /// complete URL or an abbreviated path. Expected to be of the form
+        /// <summary>
+        /// Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete
+        /// URL or an abbreviated path. Expected to be of the form
         /// "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or
         /// "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use
-        /// the complete URL.</summary>
+        /// the complete URL.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; }
 
-        /// <summary>The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning
-        /// with `gs://`.</summary>
+        /// <summary>
+        /// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with
+        /// `gs://`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tempLocation")]
         public virtual string TempLocation { get; set; }
 
-        /// <summary>The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
-        /// which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither
-        /// worker_region nor worker_zone is specified, default to the control plane's region.</summary>
+        /// <summary>
+        /// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which
+        /// worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither
+        /// worker_region nor worker_zone is specified, default to the control plane's region.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerRegion")]
         public virtual string WorkerRegion { get; set; }
 
-        /// <summary>The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
-        /// which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither
-        /// worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on
-        /// available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.</summary>
+        /// <summary>
+        /// The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker
+        /// processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region
+        /// nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If
+        /// both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerZone")]
         public virtual string WorkerZone { get; set; }
 
-        /// <summary>The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-
-        /// zones) for launching worker instances to run your pipeline. In the future, worker_zone will take
-        /// precedence.</summary>
+        /// <summary>
+        /// The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones)
+        /// for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>RuntimeMetadata describing a runtime environment.</summary>
     public class RuntimeMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -7850,7 +8217,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>SDK Information.</summary>
     public class SDKInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -7865,7 +8232,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Defines a SDK harness container for executing Dataflow pipelines.</summary>
     public class SdkHarnessContainerImage : Google.Apis.Requests.IDirectResponseSchema
@@ -7874,15 +8241,17 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containerImage")]
         public virtual string ContainerImage { get; set; }
 
-        /// <summary>If true, recommends the Dataflow service to use only one core per SDK container instance with this
-        /// image. If false (or unset) recommends using more than one core per SDK container instance with this image
-        /// for efficiency. Note that Dataflow service may choose to override this property if needed.</summary>
+        /// <summary>
+        /// If true, recommends the Dataflow service to use only one core per SDK container instance with this image. If
+        /// false (or unset) recommends using more than one core per SDK container instance with this image for
+        /// efficiency. Note that Dataflow service may choose to override this property if needed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useSingleCorePerContainer")]
         public virtual System.Nullable<bool> UseSingleCorePerContainer { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The version of the SDK used to run the job.</summary>
     public class SdkVersion : Google.Apis.Requests.IDirectResponseSchema
@@ -7901,7 +8270,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request to send encoded debug information.</summary>
     public class SendDebugCaptureRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -7914,8 +8283,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; }
 
-        /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
-        /// contains the job specified by job_id.</summary>
+        /// <summary>
+        /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains
+        /// the job specified by job_id.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
@@ -7925,20 +8296,22 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response to a send capture request. nothing</summary>
     public class SendDebugCaptureResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A request for sending worker messages to the service.</summary>
     public class SendWorkerMessagesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
-        /// contains the job.</summary>
+        /// <summary>
+        /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains
+        /// the job.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
@@ -7948,7 +8321,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The response to the worker messages.</summary>
     public class SendWorkerMessagesResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -7959,7 +8332,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Describes a particular function to invoke.</summary>
     public class SeqMapTask : Google.Apis.Requests.IDirectResponseSchema
@@ -7976,8 +8349,9 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputInfos")]
         public virtual System.Collections.Generic.IList<SeqMapTaskOutputInfo> OutputInfos { get; set; }
 
-        /// <summary>System-defined name of the stage containing the SeqDo operation. Unique across the
-        /// workflow.</summary>
+        /// <summary>
+        /// System-defined name of the stage containing the SeqDo operation. Unique across the workflow.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stageName")]
         public virtual string StageName { get; set; }
 
@@ -7991,7 +8365,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about an output of a SeqMapTask.</summary>
     public class SeqMapTaskOutputInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -8006,7 +8380,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A task which consists of a shell command for the worker to execute.</summary>
     public class ShellTask : Google.Apis.Requests.IDirectResponseSchema
@@ -8021,7 +8395,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about a side input of a DoFn or an input of a SeqDoFn.</summary>
     public class SideInputInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -8030,20 +8404,24 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual System.Collections.Generic.IDictionary<string, object> Kind { get; set; }
 
-        /// <summary>The source(s) to read element(s) from to get the value of this side input. If more than one source,
-        /// then the elements are taken from the sources, in the specified order if order matters. At least one source
-        /// is required.</summary>
+        /// <summary>
+        /// The source(s) to read element(s) from to get the value of this side input. If more than one source, then the
+        /// elements are taken from the sources, in the specified order if order matters. At least one source is
+        /// required.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
         public virtual System.Collections.Generic.IList<Source> Sources { get; set; }
 
-        /// <summary>The id of the tag the user code will access this side input by; this should correspond to the tag
-        /// of some MultiOutputInfo.</summary>
+        /// <summary>
+        /// The id of the tag the user code will access this side input by; this should correspond to the tag of some
+        /// MultiOutputInfo.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
         public virtual string Tag { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A sink that records can be encoded and written to.</summary>
     public class Sink : Google.Apis.Requests.IDirectResponseSchema
@@ -8058,7 +8436,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a snapshot of a job.</summary>
     public class Snapshot : Google.Apis.Requests.IDirectResponseSchema
@@ -8101,7 +8479,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request to create a snapshot of a job.</summary>
     public class SnapshotJobRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -8124,16 +8502,18 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A source that records can be read and decoded from.</summary>
     public class Source : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>While splitting, sources may specify the produced bundles as differences against another source, in
-        /// order to save backend-side memory and allow bigger jobs. For details, see SourceSplitRequest. To support
-        /// this use case, the full set of parameters of the source is logically obtained by taking the latest
-        /// explicitly specified value of each parameter in the order: base_specs (later items win), spec (overrides
-        /// anything in base_specs).</summary>
+        /// <summary>
+        /// While splitting, sources may specify the produced bundles as differences against another source, in order to
+        /// save backend-side memory and allow bigger jobs. For details, see SourceSplitRequest. To support this use
+        /// case, the full set of parameters of the source is logically obtained by taking the latest explicitly
+        /// specified value of each parameter in the order: base_specs (later items win), spec (overrides anything in
+        /// base_specs).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseSpecs")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> BaseSpecs { get; set; }
 
@@ -8141,21 +8521,25 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("codec")]
         public virtual System.Collections.Generic.IDictionary<string, object> Codec { get; set; }
 
-        /// <summary>Setting this value to true hints to the framework that the source doesn't need splitting, and using
+        /// <summary>
+        /// Setting this value to true hints to the framework that the source doesn't need splitting, and using
         /// SourceSplitRequest on it would yield SOURCE_SPLIT_OUTCOME_USE_CURRENT. E.g. a file splitter may set this to
         /// true when splitting a single file into a set of byte ranges of appropriate size, and set this to false when
         /// splitting a filepattern into individual files. However, for efficiency, a file splitter may decide to
         /// produce file subranges directly from the filepattern to avoid a splitting round-trip. See SourceSplitRequest
         /// for an overview of the splitting process. This field is meaningful only in the Source objects populated by
         /// the user (e.g. when filling in a DerivedSource). Source objects supplied by the framework to the user don't
-        /// have this field populated.</summary>
+        /// have this field populated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("doesNotNeedSplitting")]
         public virtual System.Nullable<bool> DoesNotNeedSplitting { get; set; }
 
-        /// <summary>Optionally, metadata for this source can be supplied right away, avoiding a
-        /// SourceGetMetadataOperation roundtrip (see SourceOperationRequest). This field is meaningful only in the
-        /// Source objects populated by the user (e.g. when filling in a DerivedSource). Source objects supplied by the
-        /// framework to the user don't have this field populated.</summary>
+        /// <summary>
+        /// Optionally, metadata for this source can be supplied right away, avoiding a SourceGetMetadataOperation
+        /// roundtrip (see SourceOperationRequest). This field is meaningful only in the Source objects populated by the
+        /// user (e.g. when filling in a DerivedSource). Source objects supplied by the framework to the user don't have
+        /// this field populated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual SourceMetadata Metadata { get; set; }
 
@@ -8165,7 +8549,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>DEPRECATED in favor of DynamicSourceSplit.</summary>
     public class SourceFork : Google.Apis.Requests.IDirectResponseSchema
@@ -8188,7 +8572,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A request to compute the SourceMetadata of a Source.</summary>
     public class SourceGetMetadataRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -8199,7 +8583,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The result of a SourceGetMetadataOperation.</summary>
     public class SourceGetMetadataResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -8210,33 +8594,39 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Metadata about a Source useful for automatically optimizing and tuning the pipeline, etc.</summary>
     public class SourceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An estimate of the total size (in bytes) of the data that would be read from this source. This
-        /// estimate is in terms of external storage size, before any decompression or other processing done by the
-        /// reader.</summary>
+        /// <summary>
+        /// An estimate of the total size (in bytes) of the data that would be read from this source. This estimate is
+        /// in terms of external storage size, before any decompression or other processing done by the reader.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedSizeBytes")]
         public virtual System.Nullable<long> EstimatedSizeBytes { get; set; }
 
-        /// <summary>Specifies that the size of this source is known to be infinite (this is a streaming
-        /// source).</summary>
+        /// <summary>
+        /// Specifies that the size of this source is known to be infinite (this is a streaming source).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infinite")]
         public virtual System.Nullable<bool> Infinite { get; set; }
 
-        /// <summary>Whether this source is known to produce key/value pairs with the (encoded) keys in
-        /// lexicographically sorted order.</summary>
+        /// <summary>
+        /// Whether this source is known to produce key/value pairs with the (encoded) keys in lexicographically sorted
+        /// order.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producesSortedKeys")]
         public virtual System.Nullable<bool> ProducesSortedKeys { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A work item that represents the different operations that can be performed on a user-defined Source
-    /// specification.</summary>
+    /// <summary>
+    /// A work item that represents the different operations that can be performed on a user-defined Source
+    /// specification.
+    /// </summary>
     public class SourceOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Information about a request to get metadata about a source.</summary>
@@ -8247,8 +8637,9 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>System-defined name for the Read instruction for this source in the original workflow
-        /// graph.</summary>
+        /// <summary>
+        /// System-defined name for the Read instruction for this source in the original workflow graph.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalName")]
         public virtual string OriginalName { get; set; }
 
@@ -8256,8 +8647,9 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("split")]
         public virtual SourceSplitRequest Split { get; set; }
 
-        /// <summary>System-defined name of the stage containing the source operation. Unique across the
-        /// workflow.</summary>
+        /// <summary>
+        /// System-defined name of the stage containing the source operation. Unique across the workflow.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stageName")]
         public virtual string StageName { get; set; }
 
@@ -8267,10 +8659,12 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>The result of a SourceOperationRequest, specified in ReportWorkItemStatusRequest.source_operation when
-    /// the work item is completed.</summary>
+    /// <summary>
+    /// The result of a SourceOperationRequest, specified in ReportWorkItemStatusRequest.source_operation when the work
+    /// item is completed.
+    /// </summary>
     public class SourceOperationResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A response to a request to get metadata about a source.</summary>
@@ -8283,14 +8677,17 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Hints for splitting a Source into bundles (parts for parallel processing) using
-    /// SourceSplitRequest.</summary>
+    /// <summary>
+    /// Hints for splitting a Source into bundles (parts for parallel processing) using SourceSplitRequest.
+    /// </summary>
     public class SourceSplitOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The source should be split into a set of bundles where the estimated size of each is approximately
-        /// this many bytes.</summary>
+        /// <summary>
+        /// The source should be split into a set of bundles where the estimated size of each is approximately this many
+        /// bytes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredBundleSizeBytes")]
         public virtual System.Nullable<long> DesiredBundleSizeBytes { get; set; }
 
@@ -8300,15 +8697,17 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Represents the operation to split a high-level Source specification into bundles (parts for parallel
+    /// <summary>
+    /// Represents the operation to split a high-level Source specification into bundles (parts for parallel
     /// processing). At a high level, splitting of a source into bundles happens as follows: SourceSplitRequest is
     /// applied to the source. If it returns SOURCE_SPLIT_OUTCOME_USE_CURRENT, no further splitting happens and the
     /// source is used "as is". Otherwise, splitting is applied recursively to each produced DerivedSource. As an
     /// optimization, for any Source, if its does_not_need_splitting is true, the framework assumes that splitting this
     /// source would return SOURCE_SPLIT_OUTCOME_USE_CURRENT, and doesn't initiate a SourceSplitRequest. This applies
-    /// both to the initial source being split and to bundles produced from it.</summary>
+    /// both to the initial source being split and to bundles produced from it.
+    /// </summary>
     public class SourceSplitRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Hints for tuning the splitting process.</summary>
@@ -8321,21 +8720,23 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The response to a SourceSplitRequest.</summary>
     public class SourceSplitResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If outcome is SPLITTING_HAPPENED, then this is a list of bundles into which the source was split.
-        /// Otherwise this field is ignored. This list can be empty, which means the source represents an empty
-        /// input.</summary>
+        /// <summary>
+        /// If outcome is SPLITTING_HAPPENED, then this is a list of bundles into which the source was split. Otherwise
+        /// this field is ignored. This list can be empty, which means the source represents an empty input.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bundles")]
         public virtual System.Collections.Generic.IList<DerivedSource> Bundles { get; set; }
 
-        /// <summary>Indicates whether splitting happened and produced a list of bundles. If this is
-        /// USE_CURRENT_SOURCE_AS_IS, the current source should be processed "as is" without splitting. "bundles" is
-        /// ignored in this case. If this is SPLITTING_HAPPENED, then "bundles" contains a list of bundles into which
-        /// the source was split.</summary>
+        /// <summary>
+        /// Indicates whether splitting happened and produced a list of bundles. If this is USE_CURRENT_SOURCE_AS_IS,
+        /// the current source should be processed "as is" without splitting. "bundles" is ignored in this case. If this
+        /// is SPLITTING_HAPPENED, then "bundles" contains a list of bundles into which the source was split.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outcome")]
         public virtual string Outcome { get; set; }
 
@@ -8345,7 +8746,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>DEPRECATED in favor of DerivedSource.</summary>
     public class SourceSplitShard : Google.Apis.Requests.IDirectResponseSchema
@@ -8360,7 +8761,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Metadata for a Spanner connector used by the job.</summary>
     public class SpannerIODetails : Google.Apis.Requests.IDirectResponseSchema
@@ -8379,28 +8780,30 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A representation of an int64, n, that is immune to precision loss when encoded in JSON.</summary>
     public class SplitInt64 : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The high order bits, including the sign: n >> 32.</summary>
+        /// <summary>The high order bits, including the sign: n &gt;&gt; 32.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("highBits")]
         public virtual System.Nullable<int> HighBits { get; set; }
 
-        /// <summary>The low order bits: n & 0xffffffff.</summary>
+        /// <summary>The low order bits: n &amp; 0xffffffff.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lowBits")]
         public virtual System.Nullable<long> LowBits { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about the workers and work items within a stage.</summary>
     public class StageExecutionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If present, this response does not contain all requested tasks. To obtain the next page of results,
-        /// repeat the request with page_token set to this value.</summary>
+        /// <summary>
+        /// If present, this response does not contain all requested tasks. To obtain the next page of results, repeat
+        /// the request with page_token set to this value.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -8410,7 +8813,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Description of an input or output of an execution stage.</summary>
     public class StageSource : Google.Apis.Requests.IDirectResponseSchema
@@ -8419,8 +8822,9 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>User name for the original user transform or collection with which this source is most closely
-        /// associated.</summary>
+        /// <summary>
+        /// User name for the original user transform or collection with which this source is most closely associated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalTransformOrCollection")]
         public virtual string OriginalTransformOrCollection { get; set; }
 
@@ -8434,13 +8838,15 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about a particular execution stage of a job.</summary>
     public class StageSummary : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>End time of this stage. If the work item is completed, this is the actual end time of the stage.
-        /// Otherwise, it is the predicted end time.</summary>
+        /// <summary>
+        /// End time of this stage. If the work item is completed, this is the actual end time of the stage. Otherwise,
+        /// it is the predicted end time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
@@ -8466,7 +8872,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>State family configuration.</summary>
     public class StateFamilyConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -8481,63 +8887,74 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>The `Status` type defines a logical error model that is suitable for different programming
-    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
-    /// this error model and how to work with it in the [API Design
-    /// Guide](https://cloud.google.com/apis/design/errors).</summary>
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; }
 
-        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
-        /// use.</summary>
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
-        /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
-        /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Defines a particular step within a Cloud Dataflow job. A job consists of multiple steps, each of which
-    /// performs some specific operation as part of the overall job. Data is typically passed from one step to another
-    /// as part of the job. Here's an example of a sequence of steps which together implement a Map-Reduce job: * Read a
-    /// collection of data from some source, parsing the collection's elements. * Validate the elements. * Apply a user-
-    /// defined function to map each element to some value and extract an element-specific key value. * Group elements
-    /// with the same key into a single element with that key, transforming a multiply-keyed collection into a uniquely-
-    /// keyed collection. * Write the elements out to some data sink. Note that the Cloud Dataflow service may be used
-    /// to run many different types of jobs, not just Map-Reduce.</summary>
+    /// <summary>
+    /// Defines a particular step within a Cloud Dataflow job. A job consists of multiple steps, each of which performs
+    /// some specific operation as part of the overall job. Data is typically passed from one step to another as part of
+    /// the job. Here's an example of a sequence of steps which together implement a Map-Reduce job: * Read a collection
+    /// of data from some source, parsing the collection's elements. * Validate the elements. * Apply a user-defined
+    /// function to map each element to some value and extract an element-specific key value. * Group elements with the
+    /// same key into a single element with that key, transforming a multiply-keyed collection into a uniquely-keyed
+    /// collection. * Write the elements out to some data sink. Note that the Cloud Dataflow service may be used to run
+    /// many different types of jobs, not just Map-Reduce.
+    /// </summary>
     public class Step : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The kind of step in the Cloud Dataflow job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The name that identifies the step. This must be unique for each step with respect to all other
-        /// steps in the Cloud Dataflow job.</summary>
+        /// <summary>
+        /// The name that identifies the step. This must be unique for each step with respect to all other steps in the
+        /// Cloud Dataflow job.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Named properties associated with the step. Each kind of predefined step has its own required set of
-        /// properties. Must be provided on Create. Only retrieved with JOB_VIEW_ALL.</summary>
+        /// <summary>
+        /// Named properties associated with the step. Each kind of predefined step has its own required set of
+        /// properties. Must be provided on Create. Only retrieved with JOB_VIEW_ALL.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string, object> Properties { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Describes a stream of data, either as input to be processed or as output of a streaming Dataflow
-    /// job.</summary>
+    /// <summary>
+    /// Describes a stream of data, either as input to be processed or as output of a streaming Dataflow job.
+    /// </summary>
     public class StreamLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The stream is a custom source.</summary>
@@ -8558,7 +8975,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Streaming appliance snapshot configuration.</summary>
     public class StreamingApplianceSnapshotConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -8573,7 +8990,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Configuration information for a single streaming computation.</summary>
     public class StreamingComputationConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -8600,7 +9017,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Describes full or partial data disk assignment information of the computation ranges.</summary>
     public class StreamingComputationRanges : Google.Apis.Requests.IDirectResponseSchema
@@ -8615,10 +9032,11 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A task which describes what action should be performed for the specified streaming computation
-    /// ranges.</summary>
+    /// <summary>
+    /// A task which describes what action should be performed for the specified streaming computation ranges.
+    /// </summary>
     public class StreamingComputationTask : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Contains ranges of a streaming computation this task should apply to.</summary>
@@ -8635,7 +9053,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A task that carries configuration information for streaming computations.</summary>
     public class StreamingConfigTask : Google.Apis.Requests.IDirectResponseSchema
@@ -8660,19 +9078,23 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("userStepToStateFamilyNameMap")]
         public virtual System.Collections.Generic.IDictionary<string, string> UserStepToStateFamilyNameMap { get; set; }
 
-        /// <summary>If present, the worker must use this endpoint to communicate with Windmill Service dispatchers,
-        /// otherwise the worker must continue to use whatever endpoint it had been using.</summary>
+        /// <summary>
+        /// If present, the worker must use this endpoint to communicate with Windmill Service dispatchers, otherwise
+        /// the worker must continue to use whatever endpoint it had been using.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windmillServiceEndpoint")]
         public virtual string WindmillServiceEndpoint { get; set; }
 
-        /// <summary>If present, the worker must use this port to communicate with Windmill Service dispatchers. Only
-        /// applicable when windmill_service_endpoint is specified.</summary>
+        /// <summary>
+        /// If present, the worker must use this port to communicate with Windmill Service dispatchers. Only applicable
+        /// when windmill_service_endpoint is specified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windmillServicePort")]
         public virtual System.Nullable<long> WindmillServicePort { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A task which initializes part of a streaming Dataflow job.</summary>
     public class StreamingSetupTask : Google.Apis.Requests.IDirectResponseSchema
@@ -8681,8 +9103,9 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("drain")]
         public virtual System.Nullable<bool> Drain { get; set; }
 
-        /// <summary>The TCP port on which the worker should listen for messages from other streaming computation
-        /// workers.</summary>
+        /// <summary>
+        /// The TCP port on which the worker should listen for messages from other streaming computation workers.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("receiveWorkPort")]
         public virtual System.Nullable<int> ReceiveWorkPort { get; set; }
 
@@ -8700,7 +9123,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Identifies the location of a streaming side input.</summary>
     public class StreamingSideInputLocation : Google.Apis.Requests.IDirectResponseSchema
@@ -8715,7 +9138,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Identifies the location of a streaming computation stage, for stage-to-stage communication.</summary>
     public class StreamingStageLocation : Google.Apis.Requests.IDirectResponseSchema
@@ -8726,7 +9149,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A metric value representing a list of strings.</summary>
     public class StringList : Google.Apis.Requests.IDirectResponseSchema
@@ -8737,14 +9160,17 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A rich message format, including a human readable string, a key for identifying the message, and
-    /// structured data associated with the message for programmatic consumption.</summary>
+    /// <summary>
+    /// A rich message format, including a human readable string, a key for identifying the message, and structured data
+    /// associated with the message for programmatic consumption.
+    /// </summary>
     public class StructuredMessage : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifier for this message type. Used by external systems to internationalize or personalize
-        /// message.</summary>
+        /// <summary>
+        /// Identifier for this message type. Used by external systems to internationalize or personalize message.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageKey")]
         public virtual string MessageKey { get; set; }
 
@@ -8758,7 +9184,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Taskrunner configuration settings.</summary>
     public class TaskRunnerSettings : Google.Apis.Requests.IDirectResponseSchema
@@ -8771,10 +9197,12 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("baseTaskDir")]
         public virtual string BaseTaskDir { get; set; }
 
-        /// <summary>The base URL for the taskrunner to use when accessing Google Cloud APIs. When workers access Google
-        /// Cloud APIs, they logically do so via relative URLs. If this field is specified, it supplies the base URL to
-        /// use for resolving these relative URLs. The normative algorithm used is defined by RFC 1808, "Relative
-        /// Uniform Resource Locators". If not specified, the default value is "http://www.googleapis.com/"</summary>
+        /// <summary>
+        /// The base URL for the taskrunner to use when accessing Google Cloud APIs. When workers access Google Cloud
+        /// APIs, they logically do so via relative URLs. If this field is specified, it supplies the base URL to use
+        /// for resolving these relative URLs. The normative algorithm used is defined by RFC 1808, "Relative Uniform
+        /// Resource Locators". If not specified, the default value is "http://www.googleapis.com/"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseUrl")]
         public virtual string BaseUrl { get; set; }
 
@@ -8806,14 +9234,17 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("logToSerialconsole")]
         public virtual System.Nullable<bool> LogToSerialconsole { get; set; }
 
-        /// <summary>Indicates where to put logs. If this is not specified, the logs will not be uploaded. The supported
-        /// resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object}
-        /// bucket.storage.googleapis.com/{object}</summary>
+        /// <summary>
+        /// Indicates where to put logs. If this is not specified, the logs will not be uploaded. The supported resource
+        /// type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object}
+        /// bucket.storage.googleapis.com/{object}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logUploadLocation")]
         public virtual string LogUploadLocation { get; set; }
 
-        /// <summary>The OAuth2 scopes to be requested by the taskrunner in order to access the Cloud Dataflow
-        /// API.</summary>
+        /// <summary>
+        /// The OAuth2 scopes to be requested by the taskrunner in order to access the Cloud Dataflow API.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauthScopes")]
         public virtual System.Collections.Generic.IList<string> OauthScopes { get; set; }
 
@@ -8833,9 +9264,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("taskUser")]
         public virtual string TaskUser { get; set; }
 
-        /// <summary>The prefix of the resources the taskrunner should use for temporary storage. The supported resource
-        /// type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object}
-        /// bucket.storage.googleapis.com/{object}</summary>
+        /// <summary>
+        /// The prefix of the resources the taskrunner should use for temporary storage. The supported resource type is:
+        /// Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tempStoragePrefix")]
         public virtual string TempStoragePrefix { get; set; }
 
@@ -8849,7 +9281,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Metadata describing a template.</summary>
     public class TemplateMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -8868,17 +9300,21 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>// / Template Catalog is used to organize user TemplateVersions. / TemplateVersions that have the same
-    /// project_id and display_name are / belong to the same Template. / Templates with the same project_id belong to
-    /// the same Project. / TemplateVersion may have labels and multiple labels are allowed. / Duplicated labels in the
-    /// same `TemplateVersion` are not allowed. / TemplateVersion may have tags and multiple tags are allowed.
-    /// Duplicated / tags in the same `Template` are not allowed!</summary>
+    /// <summary>
+    /// ///////////////////////////////////////////////////////////////////////////// //// Template Catalog is used to
+    /// organize user TemplateVersions. //// TemplateVersions that have the same project_id and display_name are ////
+    /// belong to the same Template. //// Templates with the same project_id belong to the same Project. ////
+    /// TemplateVersion may have labels and multiple labels are allowed. //// Duplicated labels in the same
+    /// `TemplateVersion` are not allowed. //// TemplateVersion may have tags and multiple tags are allowed. Duplicated
+    /// //// tags in the same `Template` are not allowed!
+    /// </summary>
     public class TemplateVersion : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Job graph and metadata if it is a legacy Template. Container image path and metadata if it is flex
-        /// Template.</summary>
+        /// <summary>
+        /// Job graph and metadata if it is a legacy Template. Container image path and metadata if it is flex Template.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("artifact")]
         public virtual Artifact Artifact { get; set; }
 
@@ -8916,10 +9352,11 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Global topology of the streaming Dataflow job, including all computations and their sharded
-    /// locations.</summary>
+    /// <summary>
+    /// Global topology of the streaming Dataflow job, including all computations and their sharded locations.
+    /// </summary>
     public class TopologyConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The computations associated with a streaming Dataflow job.</summary>
@@ -8944,7 +9381,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Description of the type, names/ids, and input/outputs for a transform.</summary>
     public class TransformSummary : Google.Apis.Requests.IDirectResponseSchema
@@ -8975,7 +9412,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response to the validation request.</summary>
     public class ValidateResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -8990,7 +9427,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>WorkItem represents basic information about a WorkItem to be executed in the cloud.</summary>
     public class WorkItem : Google.Apis.Requests.IDirectResponseSchema
@@ -9057,7 +9494,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about an individual work item execution.</summary>
     public class WorkItemDetails : Google.Apis.Requests.IDirectResponseSchema
@@ -9066,8 +9503,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attemptId")]
         public virtual string AttemptId { get; set; }
 
-        /// <summary>End time of this work item attempt. If the work item is completed, this is the actual end time of
-        /// the work item. Otherwise, it is the predicted end time.</summary>
+        /// <summary>
+        /// End time of this work item attempt. If the work item is completed, this is the actual end time of the work
+        /// item. Otherwise, it is the predicted end time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
@@ -9093,14 +9532,16 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The Dataflow service's idea of the current state of a WorkItem being processed by a worker.</summary>
     public class WorkItemServiceState : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If set, a request to complete the work item with the given status. This will not be set to OK,
-        /// unless supported by the specific kind of WorkItem. It can be used for the backend to indicate a WorkItem
-        /// must terminate, e.g., for aborting work.</summary>
+        /// <summary>
+        /// If set, a request to complete the work item with the given status. This will not be set to OK, unless
+        /// supported by the specific kind of WorkItem. It can be used for the backend to indicate a WorkItem must
+        /// terminate, e.g., for aborting work.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completeWorkStatus")]
         public virtual Status CompleteWorkStatus { get; set; }
 
@@ -9108,9 +9549,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("harnessData")]
         public virtual System.Collections.Generic.IDictionary<string, object> HarnessData { get; set; }
 
-        /// <summary>A hot key is a symptom of poor data distribution in which there are enough elements mapped to a
-        /// single key to impact pipeline performance. When present, this field includes metadata associated with any
-        /// hot key.</summary>
+        /// <summary>
+        /// A hot key is a symptom of poor data distribution in which there are enough elements mapped to a single key
+        /// to impact pipeline performance. When present, this field includes metadata associated with any hot key.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hotKeyDetection")]
         public virtual HotKeyDetection HotKeyDetection { get; set; }
 
@@ -9118,15 +9560,19 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("leaseExpireTime")]
         public virtual object LeaseExpireTime { get; set; }
 
-        /// <summary>The short ids that workers should use in subsequent metric updates. Workers should strive to use
-        /// short ids whenever possible, but it is ok to request the short_id again if a worker lost track of it (e.g.
-        /// if the worker is recovering from a crash). NOTE: it is possible that the response may have short ids for a
-        /// subset of the metrics.</summary>
+        /// <summary>
+        /// The short ids that workers should use in subsequent metric updates. Workers should strive to use short ids
+        /// whenever possible, but it is ok to request the short_id again if a worker lost track of it (e.g. if the
+        /// worker is recovering from a crash). NOTE: it is possible that the response may have short ids for a subset
+        /// of the metrics.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricShortId")]
         public virtual System.Collections.Generic.IList<MetricShortId> MetricShortId { get; set; }
 
-        /// <summary>The index value to use for the next report sent by the worker. Note: If the report call fails for
-        /// whatever reason, the worker should reuse this index for subsequent report attempts.</summary>
+        /// <summary>
+        /// The index value to use for the next report sent by the worker. Note: If the report call fails for whatever
+        /// reason, the worker should reuse this index for subsequent report attempts.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextReportIndex")]
         public virtual System.Nullable<long> NextReportIndex { get; set; }
 
@@ -9134,8 +9580,9 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reportStatusInterval")]
         public virtual object ReportStatusInterval { get; set; }
 
-        /// <summary>The progress point in the WorkItem where the Dataflow service suggests that the worker truncate the
-        /// task.</summary>
+        /// <summary>
+        /// The progress point in the WorkItem where the Dataflow service suggests that the worker truncate the task.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("splitRequest")]
         public virtual ApproximateSplitRequest SplitRequest { get; set; }
 
@@ -9149,7 +9596,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Conveys a worker's progress through the work described by a WorkItem.</summary>
     public class WorkItemStatus : Google.Apis.Requests.IDirectResponseSchema
@@ -9166,8 +9613,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicSourceSplit")]
         public virtual DynamicSourceSplit DynamicSourceSplit { get; set; }
 
-        /// <summary>Specifies errors which occurred during processing. If errors are provided, and completed = true,
-        /// then the WorkItem is considered to have failed.</summary>
+        /// <summary>
+        /// Specifies errors which occurred during processing. If errors are provided, and completed = true, then the
+        /// WorkItem is considered to have failed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<Status> Errors { get; set; }
 
@@ -9179,13 +9628,15 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
         public virtual ApproximateProgress Progress { get; set; }
 
-        /// <summary>The report index. When a WorkItem is leased, the lease will contain an initial report index. When a
+        /// <summary>
+        /// The report index. When a WorkItem is leased, the lease will contain an initial report index. When a
         /// WorkItem's status is reported to the system, the report should be sent with that report index, and the
         /// response will contain the index the worker should use for the next report. Reports received with unexpected
         /// index values will be rejected by the service. In order to preserve idempotency, the worker should not alter
         /// the contents of a report, even if the worker must submit the same report multiple times before getting back
         /// a response. The worker should not submit a subsequent report until the response for the previous report had
-        /// been received from the service.</summary>
+        /// been received from the service.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportIndex")]
         public virtual System.Nullable<long> ReportIndex { get; set; }
 
@@ -9201,13 +9652,16 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceFork")]
         public virtual SourceFork SourceFork { get; set; }
 
-        /// <summary>If the work item represented a SourceOperationRequest, and the work is completed, contains the
-        /// result of the operation.</summary>
+        /// <summary>
+        /// If the work item represented a SourceOperationRequest, and the work is completed, contains the result of the
+        /// operation.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceOperationResponse")]
         public virtual SourceOperationResponse SourceOperationResponse { get; set; }
 
-        /// <summary>A worker may split an active map task in two parts, "primary" and "residual", continuing to process
-        /// the primary part and returning the residual part into the pool of available work. This event is called a
+        /// <summary>
+        /// A worker may split an active map task in two parts, "primary" and "residual", continuing to process the
+        /// primary part and returning the residual part into the pool of available work. This event is called a
         /// "dynamic split" and is critical to the dynamic work rebalancing feature. The two obtained sub-tasks are
         /// called "parts" of the split. The parts, if concatenated, must represent the same input as would be read by
         /// the current task if the split did not happen. The exact way in which the original task is decomposed into
@@ -9221,7 +9675,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// dynamic_source_split has similar semantics: e.g., if a task with source S splits using dynamic_source_split
         /// into {P, R} (where P and R must be together equivalent to S), then subsequent progress and
         /// proposed_stop_position should be interpreted relative to P, and in a potential subsequent
-        /// dynamic_source_split into {P', R'}, P' and R' must be together equivalent to P, etc.</summary>
+        /// dynamic_source_split into {P', R'}, P' and R' must be together equivalent to P, etc.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stopPosition")]
         public virtual Position StopPosition { get; set; }
 
@@ -9235,7 +9690,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about a worker</summary>
     public class WorkerDetails : Google.Apis.Requests.IDirectResponseSchema
@@ -9250,29 +9705,37 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>WorkerHealthReport contains information about the health of a worker. The VM should be identified by
-    /// the labels attached to the WorkerMessage that this health ping belongs to.</summary>
+    /// <summary>
+    /// WorkerHealthReport contains information about the health of a worker. The VM should be identified by the labels
+    /// attached to the WorkerMessage that this health ping belongs to.
+    /// </summary>
     public class WorkerHealthReport : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A message describing any unusual health reports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("msg")]
         public virtual string Msg { get; set; }
 
-        /// <summary>The pods running on the worker. See: http://kubernetes.io/v1.1/docs/api-
-        /// reference/v1/definitions.html#_v1_pod This field is used by the worker to send the status of the indvidual
-        /// containers running on each worker.</summary>
+        /// <summary>
+        /// The pods running on the worker. See:
+        /// http://kubernetes.io/v1.1/docs/api-reference/v1/definitions.html#_v1_pod This field is used by the worker to
+        /// send the status of the indvidual containers running on each worker.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pods")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Pods { get; set; }
 
-        /// <summary>The interval at which the worker is sending health reports. The default value of 0 should be
-        /// interpreted as the field is not being explicitly set by the worker.</summary>
+        /// <summary>
+        /// The interval at which the worker is sending health reports. The default value of 0 should be interpreted as
+        /// the field is not being explicitly set by the worker.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportInterval")]
         public virtual object ReportInterval { get; set; }
 
-        /// <summary>Whether the VM is in a permanently broken state. Broken VMs should be abandoned or deleted ASAP to
-        /// avoid assigning or completing any work.</summary>
+        /// <summary>
+        /// Whether the VM is in a permanently broken state. Broken VMs should be abandoned or deleted ASAP to avoid
+        /// assigning or completing any work.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmIsBroken")]
         public virtual System.Nullable<bool> VmIsBroken { get; set; }
 
@@ -9286,29 +9749,36 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>WorkerHealthReportResponse contains information returned to the worker in response to a health
-    /// ping.</summary>
+    /// <summary>
+    /// WorkerHealthReportResponse contains information returned to the worker in response to a health ping.
+    /// </summary>
     public class WorkerHealthReportResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A positive value indicates the worker should change its reporting interval to the specified value.
-        /// The default value of zero means no change in report rate is requested by the server.</summary>
+        /// <summary>
+        /// A positive value indicates the worker should change its reporting interval to the specified value. The
+        /// default value of zero means no change in report rate is requested by the server.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportInterval")]
         public virtual object ReportInterval { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A report of an event in a worker's lifecycle. The proto contains one event, because the worker is
-    /// expected to asynchronously send each message immediately after the event. Due to this asynchrony, messages may
-    /// arrive out of order (or missing), and it is up to the consumer to interpret. The timestamp of the event is in
-    /// the enclosing WorkerMessage proto.</summary>
+    /// <summary>
+    /// A report of an event in a worker's lifecycle. The proto contains one event, because the worker is expected to
+    /// asynchronously send each message immediately after the event. Due to this asynchrony, messages may arrive out of
+    /// order (or missing), and it is up to the consumer to interpret. The timestamp of the event is in the enclosing
+    /// WorkerMessage proto.
+    /// </summary>
     public class WorkerLifecycleEvent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The start time of this container. All events will report this so that events can be grouped
-        /// together across container/VM restarts.</summary>
+        /// <summary>
+        /// The start time of this container. All events will report this so that events can be grouped together across
+        /// container/VM restarts.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerStartTime")]
         public virtual object ContainerStartTime { get; set; }
 
@@ -9322,15 +9792,17 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>WorkerMessage provides information to the backend about a worker.</summary>
     public class WorkerMessage : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Labels are used to group WorkerMessages. For example, a worker_message about a particular container
-        /// might have the labels: { "JOB_ID": "2015-04-22", "WORKER_ID": "wordcount-vm-2015…" "CONTAINER_TYPE":
-        /// "worker", "CONTAINER_ID": "ac1234def"} Label tags typically correspond to Label enum values. However, for
-        /// ease of development other strings can be used as tags. LABEL_UNSPECIFIED should not be used here.</summary>
+        /// <summary>
+        /// Labels are used to group WorkerMessages. For example, a worker_message about a particular container might
+        /// have the labels: { "JOB_ID": "2015-04-22", "WORKER_ID": "wordcount-vm-2015…" "CONTAINER_TYPE": "worker",
+        /// "CONTAINER_ID": "ac1234def"} Label tags typically correspond to Label enum values. However, for ease of
+        /// development other strings can be used as tags. LABEL_UNSPECIFIED should not be used here.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -9360,37 +9832,42 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A message code is used to report status and error messages to the service. The message codes are
-    /// intended to be machine readable. The service will take care of translating these into user understandable
-    /// messages if necessary. Example use cases: 1. Worker processes reporting successful startup. 2. Worker processes
-    /// reporting specific errors (e.g. package staging failure).</summary>
+    /// <summary>
+    /// A message code is used to report status and error messages to the service. The message codes are intended to be
+    /// machine readable. The service will take care of translating these into user understandable messages if
+    /// necessary. Example use cases: 1. Worker processes reporting successful startup. 2. Worker processes reporting
+    /// specific errors (e.g. package staging failure).
+    /// </summary>
     public class WorkerMessageCode : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The code is a string intended for consumption by a machine that identifies the type of message
-        /// being sent. Examples: 1. "HARNESS_STARTED" might be used to indicate the worker harness has started. 2.
+        /// <summary>
+        /// The code is a string intended for consumption by a machine that identifies the type of message being sent.
+        /// Examples: 1. "HARNESS_STARTED" might be used to indicate the worker harness has started. 2.
         /// "GCS_DOWNLOAD_ERROR" might be used to indicate an error downloading a GCS file as part of the boot process
         /// of one of the worker containers. This is a string and not an enum to make it easy to add new codes without
-        /// waiting for an API change.</summary>
+        /// waiting for an API change.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
 
-        /// <summary>Parameters contains specific information about the code. This is a struct to allow parameters of
-        /// different types. Examples: 1. For a "HARNESS_STARTED" message parameters might provide the name of the
-        /// worker and additional data like timing information. 2. For a "GCS_DOWNLOAD_ERROR" parameters might contain
-        /// fields listing the GCS objects being downloaded and fields containing errors. In general complex data
-        /// structures should be avoided. If a worker needs to send a specific and complicated data structure then
-        /// please consider defining a new proto and adding it to the data oneof in WorkerMessageResponse. Conventions:
-        /// Parameters should only be used for information that isn't typically passed as a label. hostname and other
-        /// worker identifiers should almost always be passed as labels since they will be included on most
-        /// messages.</summary>
+        /// <summary>
+        /// Parameters contains specific information about the code. This is a struct to allow parameters of different
+        /// types. Examples: 1. For a "HARNESS_STARTED" message parameters might provide the name of the worker and
+        /// additional data like timing information. 2. For a "GCS_DOWNLOAD_ERROR" parameters might contain fields
+        /// listing the GCS objects being downloaded and fields containing errors. In general complex data structures
+        /// should be avoided. If a worker needs to send a specific and complicated data structure then please consider
+        /// defining a new proto and adding it to the data oneof in WorkerMessageResponse. Conventions: Parameters
+        /// should only be used for information that isn't typically passed as a label. hostname and other worker
+        /// identifiers should almost always be passed as labels since they will be included on most messages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A worker_message response allows the server to pass information to the sender.</summary>
     public class WorkerMessageResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -9409,11 +9886,13 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Describes one particular pool of Cloud Dataflow workers to be instantiated by the Cloud Dataflow
-    /// service in order to perform the computations required by a job. Note that a workflow job may use multiple pools,
-    /// in order to match the various computational requirements of the various stages of the job.</summary>
+    /// <summary>
+    /// Describes one particular pool of Cloud Dataflow workers to be instantiated by the Cloud Dataflow service in
+    /// order to perform the computations required by a job. Note that a workflow job may use multiple pools, in order
+    /// to match the various computational requirements of the various stages of the job.
+    /// </summary>
     public class WorkerPool : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Settings for autoscaling of this WorkerPool.</summary>
@@ -9424,13 +9903,17 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataDisks")]
         public virtual System.Collections.Generic.IList<Disk> DataDisks { get; set; }
 
-        /// <summary>The default package set to install. This allows the service to select a default set of packages
-        /// which are useful to worker harnesses written in a particular language.</summary>
+        /// <summary>
+        /// The default package set to install. This allows the service to select a default set of packages which are
+        /// useful to worker harnesses written in a particular language.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultPackageSet")]
         public virtual string DefaultPackageSet { get; set; }
 
-        /// <summary>Size of root disk for VMs, in GB. If zero or unspecified, the service will attempt to choose a
-        /// reasonable default.</summary>
+        /// <summary>
+        /// Size of root disk for VMs, in GB. If zero or unspecified, the service will attempt to choose a reasonable
+        /// default.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<int> DiskSizeGb { get; set; }
 
@@ -9438,8 +9921,9 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskSourceImage")]
         public virtual string DiskSourceImage { get; set; }
 
-        /// <summary>Type of root disk for VMs. If empty or unspecified, the service will attempt to choose a reasonable
-        /// default.</summary>
+        /// <summary>
+        /// Type of root disk for VMs. If empty or unspecified, the service will attempt to choose a reasonable default.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
 
@@ -9451,8 +9935,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Machine type (e.g. "n1-standard-1"). If empty or unspecified, the service will attempt to choose a
-        /// reasonable default.</summary>
+        /// <summary>
+        /// Machine type (e.g. "n1-standard-1"). If empty or unspecified, the service will attempt to choose a
+        /// reasonable default.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
 
@@ -9460,19 +9946,24 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
-        /// <summary>Network to which VMs will be assigned. If empty or unspecified, the service will use the network
-        /// "default".</summary>
+        /// <summary>
+        /// Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
-        /// <summary>The number of threads per worker harness. If empty or unspecified, the service will choose a number
-        /// of threads (according to the number of cores on the selected machine type for batch, or 1 by convention for
-        /// streaming).</summary>
+        /// <summary>
+        /// The number of threads per worker harness. If empty or unspecified, the service will choose a number of
+        /// threads (according to the number of cores on the selected machine type for batch, or 1 by convention for
+        /// streaming).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numThreadsPerWorker")]
         public virtual System.Nullable<int> NumThreadsPerWorker { get; set; }
 
-        /// <summary>Number of Google Compute Engine workers in this pool needed to execute the job. If zero or
-        /// unspecified, the service will attempt to choose a reasonable default.</summary>
+        /// <summary>
+        /// Number of Google Compute Engine workers in this pool needed to execute the job. If zero or unspecified, the
+        /// service will attempt to choose a reasonable default.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numWorkers")]
         public virtual System.Nullable<int> NumWorkers { get; set; }
 
@@ -9488,55 +9979,68 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("poolArgs")]
         public virtual System.Collections.Generic.IDictionary<string, object> PoolArgs { get; set; }
 
-        /// <summary>Set of SDK harness containers needed to execute this pipeline. This will only be set in the Fn API
-        /// path. For non-cross-language pipelines this should have only one entry. Cross-language pipelines will have
-        /// two or more entries.</summary>
+        /// <summary>
+        /// Set of SDK harness containers needed to execute this pipeline. This will only be set in the Fn API path. For
+        /// non-cross-language pipelines this should have only one entry. Cross-language pipelines will have two or more
+        /// entries.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sdkHarnessContainerImages")]
         public virtual System.Collections.Generic.IList<SdkHarnessContainerImage> SdkHarnessContainerImages { get; set; }
 
-        /// <summary>Subnetwork to which VMs will be assigned, if desired. Expected to be of the form
-        /// "regions/REGION/subnetworks/SUBNETWORK".</summary>
+        /// <summary>
+        /// Subnetwork to which VMs will be assigned, if desired. Expected to be of the form
+        /// "regions/REGION/subnetworks/SUBNETWORK".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; }
 
-        /// <summary>Settings passed through to Google Compute Engine workers when using the standard Dataflow task
-        /// runner. Users should ignore this field.</summary>
+        /// <summary>
+        /// Settings passed through to Google Compute Engine workers when using the standard Dataflow task runner. Users
+        /// should ignore this field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskrunnerSettings")]
         public virtual TaskRunnerSettings TaskrunnerSettings { get; set; }
 
-        /// <summary>Sets the policy for determining when to turndown worker pool. Allowed values are:
-        /// `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always
-        /// torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the
-        /// job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by
-        /// the service, they will continue to run and use Google Compute Engine VM resources in the user's project
-        /// until they are explicitly terminated by the user. Because of this, Google recommends using the
-        /// `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the
-        /// service will attempt to choose a reasonable default.</summary>
+        /// <summary>
+        /// Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`,
+        /// `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless
+        /// of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds.
+        /// `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service,
+        /// they will continue to run and use Google Compute Engine VM resources in the user's project until they are
+        /// explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy
+        /// except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to
+        /// choose a reasonable default.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teardownPolicy")]
         public virtual string TeardownPolicy { get; set; }
 
-        /// <summary>Required. Docker container image that executes the Cloud Dataflow worker harness, residing in
-        /// Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images
-        /// instead.</summary>
+        /// <summary>
+        /// Required. Docker container image that executes the Cloud Dataflow worker harness, residing in Google
+        /// Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerHarnessContainerImage")]
         public virtual string WorkerHarnessContainerImage { get; set; }
 
-        /// <summary>Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a
-        /// reasonable default.</summary>
+        /// <summary>
+        /// Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable
+        /// default.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Provides data to pass through to the worker harness.</summary>
     public class WorkerSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The base URL for accessing Google Cloud APIs. When workers access Google Cloud APIs, they logically
-        /// do so via relative URLs. If this field is specified, it supplies the base URL to use for resolving these
-        /// relative URLs. The normative algorithm used is defined by RFC 1808, "Relative Uniform Resource Locators". If
-        /// not specified, the default value is "http://www.googleapis.com/"</summary>
+        /// <summary>
+        /// The base URL for accessing Google Cloud APIs. When workers access Google Cloud APIs, they logically do so
+        /// via relative URLs. If this field is specified, it supplies the base URL to use for resolving these relative
+        /// URLs. The normative algorithm used is defined by RFC 1808, "Relative Uniform Resource Locators". If not
+        /// specified, the default value is "http://www.googleapis.com/"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseUrl")]
         public virtual string BaseUrl { get; set; }
 
@@ -9544,8 +10048,9 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reportingEnabled")]
         public virtual System.Nullable<bool> ReportingEnabled { get; set; }
 
-        /// <summary>The Cloud Dataflow service path relative to the root URL, for example,
-        /// "dataflow/v1b3/projects".</summary>
+        /// <summary>
+        /// The Cloud Dataflow service path relative to the root URL, for example, "dataflow/v1b3/projects".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicePath")]
         public virtual string ServicePath { get; set; }
 
@@ -9553,9 +10058,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shuffleServicePath")]
         public virtual string ShuffleServicePath { get; set; }
 
-        /// <summary>The prefix of the resources the system should use for temporary storage. The supported resource
-        /// type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object}
-        /// bucket.storage.googleapis.com/{object}</summary>
+        /// <summary>
+        /// The prefix of the resources the system should use for temporary storage. The supported resource type is:
+        /// Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tempStoragePrefix")]
         public virtual string TempStoragePrefix { get; set; }
 
@@ -9565,28 +10071,31 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Shutdown notification from workers. This is to be sent by the shutdown script of the worker VM so that
-    /// the backend knows that the VM is being shut down.</summary>
+    /// <summary>
+    /// Shutdown notification from workers. This is to be sent by the shutdown script of the worker VM so that the
+    /// backend knows that the VM is being shut down.
+    /// </summary>
     public class WorkerShutdownNotice : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The reason for the worker shutdown. Current possible values are: "UNKNOWN": shutdown reason is
-        /// unknown. "PREEMPTION": shutdown reason is preemption. Other possible reasons may be added in the
-        /// future.</summary>
+        /// <summary>
+        /// The reason for the worker shutdown. Current possible values are: "UNKNOWN": shutdown reason is unknown.
+        /// "PREEMPTION": shutdown reason is preemption. Other possible reasons may be added in the future.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Service-side response to WorkerMessage issuing shutdown notice.</summary>
     public class WorkerShutdownNoticeResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An instruction that writes records. Takes one input, produces no outputs.</summary>
     public class WriteInstruction : Google.Apis.Requests.IDirectResponseSchema

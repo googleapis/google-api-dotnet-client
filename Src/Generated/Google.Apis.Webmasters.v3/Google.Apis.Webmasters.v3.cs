@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -67,7 +72,6 @@ namespace Google.Apis.Webmasters.v3
 
             /// <summary>View Search Console data for your verified sites</summary>
             public static string WebmastersReadonly = "https://www.googleapis.com/auth/webmasters.readonly";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Search Console API.</summary>
@@ -78,10 +82,7 @@ namespace Google.Apis.Webmasters.v3
 
             /// <summary>View Search Console data for your verified sites</summary>
             public const string WebmastersReadonly = "https://www.googleapis.com/auth/webmasters.readonly";
-
         }
-
-
 
         /// <summary>Gets the Searchanalytics resource.</summary>
         public virtual SearchanalyticsResource Searchanalytics { get; }
@@ -117,8 +118,10 @@ namespace Google.Apis.Webmasters.v3
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -130,8 +133,9 @@ namespace Google.Apis.Webmasters.v3
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-        /// characters.</summary>
+        /// <summary>
+        /// An opaque string that represents a user for quota purposes. Must not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -143,7 +147,6 @@ namespace Google.Apis.Webmasters.v3
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
             {
                 Name = "alt",
@@ -215,16 +218,14 @@ namespace Google.Apis.Webmasters.v3
         public SearchanalyticsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Query your data with filters and parameters that you define. Returns zero or more rows grouped by
-        /// the row keys that you define. You must define a date range of one or more days.
-        ///
-        /// When date is one of the group by values, any days without data are omitted from the result list. If you need
-        /// to know which days have data, issue a broad date range query grouped by date for any metric, and see which
-        /// day rows are returned.</summary>
+        /// <summary>
+        /// Query your data with filters and parameters that you define. Returns zero or more rows grouped by the row
+        /// keys that you define. You must define a date range of one or more days.  When date is one of the group by
+        /// values, any days without data are omitted from the result list. If you need to know which days have data,
+        /// issue a broad date range query grouped by date for any metric, and see which day rows are returned.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="siteUrl">The site's URL, including protocol. For example: http://www.example.com/</param>
         public virtual QueryRequest Query(Google.Apis.Webmasters.v3.Data.SearchAnalyticsQueryRequest body, string siteUrl)
@@ -232,12 +233,12 @@ namespace Google.Apis.Webmasters.v3
             return new QueryRequest(service, body, siteUrl);
         }
 
-        /// <summary>Query your data with filters and parameters that you define. Returns zero or more rows grouped by
-        /// the row keys that you define. You must define a date range of one or more days.
-        ///
-        /// When date is one of the group by values, any days without data are omitted from the result list. If you need
-        /// to know which days have data, issue a broad date range query grouped by date for any metric, and see which
-        /// day rows are returned.</summary>
+        /// <summary>
+        /// Query your data with filters and parameters that you define. Returns zero or more rows grouped by the row
+        /// keys that you define. You must define a date range of one or more days.  When date is one of the group by
+        /// values, any days without data are omitted from the result list. If you need to know which days have data,
+        /// issue a broad date range query grouped by date for any metric, and see which day rows are returned.
+        /// </summary>
         public class QueryRequest : WebmastersBaseServiceRequest<Google.Apis.Webmasters.v3.Data.SearchAnalyticsQueryResponse>
         {
             /// <summary>Constructs a new Query request.</summary>
@@ -248,11 +249,9 @@ namespace Google.Apis.Webmasters.v3
                 InitParameters();
             }
 
-
             /// <summary>The site's URL, including protocol. For example: http://www.example.com/</summary>
             [Google.Apis.Util.RequestParameterAttribute("siteUrl", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SiteUrl { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Webmasters.v3.Data.SearchAnalyticsQueryRequest Body { get; set; }
@@ -273,7 +272,6 @@ namespace Google.Apis.Webmasters.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("siteUrl", new Google.Apis.Discovery.Parameter
                 {
                     Name = "siteUrl",
@@ -283,7 +281,6 @@ namespace Google.Apis.Webmasters.v3
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -299,14 +296,13 @@ namespace Google.Apis.Webmasters.v3
         public SitemapsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Deletes a sitemap from this site.</summary>
         /// <param name="siteUrl">The site's URL, including protocol. For example: http://www.example.com/</param>
-        ///
-        /// <param name="feedpath">The URL of the actual sitemap. For example: http://www.example.com/sitemap.xml</param>
+        /// <param name="feedpath">
+        /// The URL of the actual sitemap. For example: http://www.example.com/sitemap.xml
+        /// </param>
         public virtual DeleteRequest Delete(string siteUrl, string feedpath)
         {
             return new DeleteRequest(service, siteUrl, feedpath);
@@ -323,7 +319,6 @@ namespace Google.Apis.Webmasters.v3
                 InitParameters();
             }
 
-
             /// <summary>The site's URL, including protocol. For example: http://www.example.com/</summary>
             [Google.Apis.Util.RequestParameterAttribute("siteUrl", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SiteUrl { get; private set; }
@@ -331,7 +326,6 @@ namespace Google.Apis.Webmasters.v3
             /// <summary>The URL of the actual sitemap. For example: http://www.example.com/sitemap.xml</summary>
             [Google.Apis.Util.RequestParameterAttribute("feedpath", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Feedpath { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
@@ -346,7 +340,6 @@ namespace Google.Apis.Webmasters.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("siteUrl", new Google.Apis.Discovery.Parameter
                 {
                     Name = "siteUrl",
@@ -364,13 +357,13 @@ namespace Google.Apis.Webmasters.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Retrieves information about a specific sitemap.</summary>
         /// <param name="siteUrl">The site's URL, including protocol. For example: http://www.example.com/</param>
-        ///
-        /// <param name="feedpath">The URL of the actual sitemap. For example: http://www.example.com/sitemap.xml</param>
+        /// <param name="feedpath">
+        /// The URL of the actual sitemap. For example: http://www.example.com/sitemap.xml
+        /// </param>
         public virtual GetRequest Get(string siteUrl, string feedpath)
         {
             return new GetRequest(service, siteUrl, feedpath);
@@ -387,7 +380,6 @@ namespace Google.Apis.Webmasters.v3
                 InitParameters();
             }
 
-
             /// <summary>The site's URL, including protocol. For example: http://www.example.com/</summary>
             [Google.Apis.Util.RequestParameterAttribute("siteUrl", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SiteUrl { get; private set; }
@@ -395,7 +387,6 @@ namespace Google.Apis.Webmasters.v3
             /// <summary>The URL of the actual sitemap. For example: http://www.example.com/sitemap.xml</summary>
             [Google.Apis.Util.RequestParameterAttribute("feedpath", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Feedpath { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -410,7 +401,6 @@ namespace Google.Apis.Webmasters.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("siteUrl", new Google.Apis.Discovery.Parameter
                 {
                     Name = "siteUrl",
@@ -428,19 +418,22 @@ namespace Google.Apis.Webmasters.v3
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Lists the sitemaps-entries submitted for this site, or included in the sitemap index file (if
-        /// sitemapIndex is specified in the request).</summary>
+        /// <summary>
+        /// Lists the sitemaps-entries submitted for this site, or included in the sitemap index file (if sitemapIndex
+        /// is specified in the request).
+        /// </summary>
         /// <param name="siteUrl">The site's URL, including protocol. For example: http://www.example.com/</param>
         public virtual ListRequest List(string siteUrl)
         {
             return new ListRequest(service, siteUrl);
         }
 
-        /// <summary>Lists the sitemaps-entries submitted for this site, or included in the sitemap index file (if
-        /// sitemapIndex is specified in the request).</summary>
+        /// <summary>
+        /// Lists the sitemaps-entries submitted for this site, or included in the sitemap index file (if sitemapIndex
+        /// is specified in the request).
+        /// </summary>
         public class ListRequest : WebmastersBaseServiceRequest<Google.Apis.Webmasters.v3.Data.SitemapsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -450,7 +443,6 @@ namespace Google.Apis.Webmasters.v3
                 InitParameters();
             }
 
-
             /// <summary>The site's URL, including protocol. For example: http://www.example.com/</summary>
             [Google.Apis.Util.RequestParameterAttribute("siteUrl", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SiteUrl { get; private set; }
@@ -458,7 +450,6 @@ namespace Google.Apis.Webmasters.v3
             /// <summary>A URL of a site's sitemap index. For example: http://www.example.com/sitemapindex.xml</summary>
             [Google.Apis.Util.RequestParameterAttribute("sitemapIndex", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SitemapIndex { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -473,7 +464,6 @@ namespace Google.Apis.Webmasters.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("siteUrl", new Google.Apis.Discovery.Parameter
                 {
                     Name = "siteUrl",
@@ -491,13 +481,13 @@ namespace Google.Apis.Webmasters.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Submits a sitemap for a site.</summary>
         /// <param name="siteUrl">The site's URL, including protocol. For example: http://www.example.com/</param>
-        ///
-        /// <param name="feedpath">The URL of the sitemap to add. For example: http://www.example.com/sitemap.xml</param>
+        /// <param name="feedpath">
+        /// The URL of the sitemap to add. For example: http://www.example.com/sitemap.xml
+        /// </param>
         public virtual SubmitRequest Submit(string siteUrl, string feedpath)
         {
             return new SubmitRequest(service, siteUrl, feedpath);
@@ -514,7 +504,6 @@ namespace Google.Apis.Webmasters.v3
                 InitParameters();
             }
 
-
             /// <summary>The site's URL, including protocol. For example: http://www.example.com/</summary>
             [Google.Apis.Util.RequestParameterAttribute("siteUrl", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SiteUrl { get; private set; }
@@ -522,7 +511,6 @@ namespace Google.Apis.Webmasters.v3
             /// <summary>The URL of the sitemap to add. For example: http://www.example.com/sitemap.xml</summary>
             [Google.Apis.Util.RequestParameterAttribute("feedpath", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Feedpath { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "submit";
@@ -537,7 +525,6 @@ namespace Google.Apis.Webmasters.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("siteUrl", new Google.Apis.Discovery.Parameter
                 {
                     Name = "siteUrl",
@@ -555,7 +542,6 @@ namespace Google.Apis.Webmasters.v3
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -571,9 +557,7 @@ namespace Google.Apis.Webmasters.v3
         public SitesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Adds a site to the set of the user's sites in Search Console.</summary>
         /// <param name="siteUrl">The URL of the site to add.</param>
@@ -592,11 +576,9 @@ namespace Google.Apis.Webmasters.v3
                 InitParameters();
             }
 
-
             /// <summary>The URL of the site to add.</summary>
             [Google.Apis.Util.RequestParameterAttribute("siteUrl", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SiteUrl { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "add";
@@ -611,7 +593,6 @@ namespace Google.Apis.Webmasters.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("siteUrl", new Google.Apis.Discovery.Parameter
                 {
                     Name = "siteUrl",
@@ -621,13 +602,14 @@ namespace Google.Apis.Webmasters.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Removes a site from the set of the user's Search Console sites.</summary>
-        /// <param name="siteUrl">The URI of the property as defined in Search Console. Examples: http://www.example.com/ or
-        /// android-app://com.example/ Note: for property-sets, use the URI that starts with sc-set: which is used in Search
-        /// Console URLs.</param>
+        /// <param name="siteUrl">
+        /// The URI of the property as defined in Search Console. Examples: http://www.example.com/ or
+        /// android-app://com.example/ Note: for property-sets, use the URI that starts with sc-set: which is used in
+        /// Search Console URLs.
+        /// </param>
         public virtual DeleteRequest Delete(string siteUrl)
         {
             return new DeleteRequest(service, siteUrl);
@@ -643,13 +625,13 @@ namespace Google.Apis.Webmasters.v3
                 InitParameters();
             }
 
-
-            /// <summary>The URI of the property as defined in Search Console. Examples: http://www.example.com/ or
+            /// <summary>
+            /// The URI of the property as defined in Search Console. Examples: http://www.example.com/ or
             /// android-app://com.example/ Note: for property-sets, use the URI that starts with sc-set: which is used
-            /// in Search Console URLs.</summary>
+            /// in Search Console URLs.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("siteUrl", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SiteUrl { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
@@ -664,7 +646,6 @@ namespace Google.Apis.Webmasters.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("siteUrl", new Google.Apis.Discovery.Parameter
                 {
                     Name = "siteUrl",
@@ -674,13 +655,14 @@ namespace Google.Apis.Webmasters.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Retrieves information about specific site.</summary>
-        /// <param name="siteUrl">The URI of the property as defined in Search Console. Examples: http://www.example.com/ or
-        /// android-app://com.example/ Note: for property-sets, use the URI that starts with sc-set: which is used in Search
-        /// Console URLs.</param>
+        /// <param name="siteUrl">
+        /// The URI of the property as defined in Search Console. Examples: http://www.example.com/ or
+        /// android-app://com.example/ Note: for property-sets, use the URI that starts with sc-set: which is used in
+        /// Search Console URLs.
+        /// </param>
         public virtual GetRequest Get(string siteUrl)
         {
             return new GetRequest(service, siteUrl);
@@ -696,13 +678,13 @@ namespace Google.Apis.Webmasters.v3
                 InitParameters();
             }
 
-
-            /// <summary>The URI of the property as defined in Search Console. Examples: http://www.example.com/ or
+            /// <summary>
+            /// The URI of the property as defined in Search Console. Examples: http://www.example.com/ or
             /// android-app://com.example/ Note: for property-sets, use the URI that starts with sc-set: which is used
-            /// in Search Console URLs.</summary>
+            /// in Search Console URLs.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("siteUrl", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SiteUrl { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -717,7 +699,6 @@ namespace Google.Apis.Webmasters.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("siteUrl", new Google.Apis.Discovery.Parameter
                 {
                     Name = "siteUrl",
@@ -727,7 +708,6 @@ namespace Google.Apis.Webmasters.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Lists the user's Search Console sites.</summary>
@@ -745,8 +725,6 @@ namespace Google.Apis.Webmasters.v3
                 InitParameters();
             }
 
-
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -760,16 +738,12 @@ namespace Google.Apis.Webmasters.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
     }
 }
-
 namespace Google.Apis.Webmasters.v3.Data
-{    
-
+{
     public class ApiDataRow : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("clicks")]
@@ -789,7 +763,7 @@ namespace Google.Apis.Webmasters.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ApiDimensionFilter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -804,7 +778,7 @@ namespace Google.Apis.Webmasters.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ApiDimensionFilterGroup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -816,48 +790,57 @@ namespace Google.Apis.Webmasters.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class SearchAnalyticsQueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Optional; Default is "auto"] How data is aggregated. If aggregated by property, all data for the
-        /// same property is aggregated; if aggregated by page, all data is aggregated by canonical URI. If you filter
-        /// or group by page, choose AUTO; otherwise you can aggregate either by property or by page, depending on how
-        /// you want your data calculated; see  the help documentation to learn how data is calculated differently by
-        /// site versus by page.
-        ///
-        /// Note: If you group or filter by page, you cannot aggregate by property.
-        ///
-        /// If you specify any value other than AUTO, the aggregation type in the result will match the requested type,
-        /// or if you request an invalid type, you will get an error. The API will never change your aggregation type if
-        /// the requested type is invalid.</summary>
+        /// <summary>
+        /// [Optional; Default is "auto"] How data is aggregated. If aggregated by property, all data for the same
+        /// property is aggregated; if aggregated by page, all data is aggregated by canonical URI. If you filter or
+        /// group by page, choose AUTO; otherwise you can aggregate either by property or by page, depending on how you
+        /// want your data calculated; see  the help documentation to learn how data is calculated differently by site
+        /// versus by page.  Note: If you group or filter by page, you cannot aggregate by property.  If you specify any
+        /// value other than AUTO, the aggregation type in the result will match the requested type, or if you request
+        /// an invalid type, you will get an error. The API will never change your aggregation type if the requested
+        /// type is invalid.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregationType")]
         public virtual string AggregationType { get; set; }
 
-        /// <summary>[Optional] If "all" (case-insensitive), data will include fresh data. If "final" (case-insensitive)
-        /// or if this parameter is omitted, the returned data will include only finalized data.</summary>
+        /// <summary>
+        /// [Optional] If "all" (case-insensitive), data will include fresh data. If "final" (case-insensitive) or if
+        /// this parameter is omitted, the returned data will include only finalized data.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataState")]
         public virtual string DataState { get; set; }
 
-        /// <summary>[Optional] Zero or more filters to apply to the dimension grouping values; for example, 'query
-        /// contains "buy"' to see only data where the query string contains the substring "buy" (not case-sensitive).
-        /// You can filter by a dimension without grouping by it.</summary>
+        /// <summary>
+        /// [Optional] Zero or more filters to apply to the dimension grouping values; for example, 'query contains
+        /// "buy"' to see only data where the query string contains the substring "buy" (not case-sensitive). You can
+        /// filter by a dimension without grouping by it.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilterGroups")]
         public virtual System.Collections.Generic.IList<ApiDimensionFilterGroup> DimensionFilterGroups { get; set; }
 
-        /// <summary>[Optional] Zero or more dimensions to group results by. Dimensions are the group-by values in the
-        /// Search Analytics page. Dimensions are combined to create a unique row key for each row. Results are grouped
-        /// in the order that you supply these dimensions.</summary>
+        /// <summary>
+        /// [Optional] Zero or more dimensions to group results by. Dimensions are the group-by values in the Search
+        /// Analytics page. Dimensions are combined to create a unique row key for each row. Results are grouped in the
+        /// order that you supply these dimensions.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
         public virtual System.Collections.Generic.IList<string> Dimensions { get; set; }
 
-        /// <summary>[Required] End date of the requested date range, in YYYY-MM-DD format, in PST (UTC - 8:00). Must be
-        /// greater than or equal to the start date. This value is included in the range.</summary>
+        /// <summary>
+        /// [Required] End date of the requested date range, in YYYY-MM-DD format, in PST (UTC - 8:00). Must be greater
+        /// than or equal to the start date. This value is included in the range.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
         public virtual string EndDate { get; set; }
 
-        /// <summary>[Optional; Default is 1000] The maximum number of rows to return. Must be a number from 1 to 5,000
-        /// (inclusive).</summary>
+        /// <summary>
+        /// [Optional; Default is 1000] The maximum number of rows to return. Must be a number from 1 to 5,000
+        /// (inclusive).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowLimit")]
         public virtual System.Nullable<int> RowLimit { get; set; }
 
@@ -865,22 +848,27 @@ namespace Google.Apis.Webmasters.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("searchType")]
         public virtual string SearchType { get; set; }
 
-        /// <summary>[Required] Start date of the requested date range, in YYYY-MM-DD format, in PST time (UTC - 8:00).
-        /// Must be less than or equal to the end date. This value is included in the range.</summary>
+        /// <summary>
+        /// [Required] Start date of the requested date range, in YYYY-MM-DD format, in PST time (UTC - 8:00). Must be
+        /// less than or equal to the end date. This value is included in the range.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual string StartDate { get; set; }
 
-        /// <summary>[Optional; Default is 0] Zero-based index of the first row in the response. Must be a non-negative
-        /// number.</summary>
+        /// <summary>
+        /// [Optional; Default is 0] Zero-based index of the first row in the response. Must be a non-negative number.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startRow")]
         public virtual System.Nullable<int> StartRow { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A list of rows, one per result, grouped by key. Metrics in each row are aggregated for all data grouped
-    /// by that key either by page or property, as specified by the aggregation type parameter.</summary>
+    /// <summary>
+    /// A list of rows, one per result, grouped by key. Metrics in each row are aggregated for all data grouped by that
+    /// key either by page or property, as specified by the aggregation type parameter.
+    /// </summary>
     public class SearchAnalyticsQueryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>How the results were aggregated.</summary>
@@ -893,7 +881,7 @@ namespace Google.Apis.Webmasters.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>List of sitemaps.</summary>
     public class SitemapsListResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -904,22 +892,26 @@ namespace Google.Apis.Webmasters.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>List of sites with access level information.</summary>
     public class SitesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Contains permission level information about a Search Console site. For more information, see
-        /// Permissions in Search Console.</summary>
+        /// <summary>
+        /// Contains permission level information about a Search Console site. For more information, see Permissions in
+        /// Search Console.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteEntry")]
         public virtual System.Collections.Generic.IList<WmxSite> SiteEntry { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Contains permission level information about a Search Console site. For more information, see
-    /// Permissions in Search Console.</summary>
+    /// <summary>
+    /// Contains permission level information about a Search Console site. For more information, see  Permissions in
+    /// Search Console.
+    /// </summary>
     public class WmxSite : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The user's permission level for the site.</summary>
@@ -932,7 +924,7 @@ namespace Google.Apis.Webmasters.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Contains detailed information about a specific URL submitted as a sitemap.</summary>
     public class WmxSitemap : Google.Apis.Requests.IDirectResponseSchema
@@ -941,8 +933,10 @@ namespace Google.Apis.Webmasters.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contents")]
         public virtual System.Collections.Generic.IList<WmxSitemapContent> Contents { get; set; }
 
-        /// <summary>Number of errors in the sitemap. These are issues with the sitemap itself that need to be fixed
-        /// before it can be processed correctly.</summary>
+        /// <summary>
+        /// Number of errors in the sitemap. These are issues with the sitemap itself that need to be fixed before it
+        /// can be processed correctly.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Nullable<long> Errors { get; set; }
 
@@ -954,8 +948,10 @@ namespace Google.Apis.Webmasters.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isSitemapsIndex")]
         public virtual System.Nullable<bool> IsSitemapsIndex { get; set; }
 
-        /// <summary>Date & time in which this sitemap was last downloaded. Date format is in RFC 3339 format (yyyy-mm-
-        /// dd).</summary>
+        /// <summary>
+        /// Date &amp;amp; time in which this sitemap was last downloaded. Date format is in RFC 3339 format
+        /// (yyyy-mm-dd).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastDownloaded")]
         public virtual string LastDownloadedRaw { get; set; }
 
@@ -967,8 +963,9 @@ namespace Google.Apis.Webmasters.v3.Data
             set => LastDownloadedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
-        /// <summary>Date & time in which this sitemap was submitted. Date format is in RFC 3339 format (yyyy-mm-
-        /// dd).</summary>
+        /// <summary>
+        /// Date &amp;amp; time in which this sitemap was submitted. Date format is in RFC 3339 format (yyyy-mm-dd).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastSubmitted")]
         public virtual string LastSubmittedRaw { get; set; }
 
@@ -988,14 +985,15 @@ namespace Google.Apis.Webmasters.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
-        /// <summary>Number of warnings for the sitemap. These are generally non-critical issues with URLs in the
-        /// sitemaps.</summary>
+        /// <summary>
+        /// Number of warnings for the sitemap. These are generally non-critical issues with URLs in the sitemaps.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Nullable<long> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about the various content types in the sitemap.</summary>
     public class WmxSitemapContent : Google.Apis.Requests.IDirectResponseSchema
