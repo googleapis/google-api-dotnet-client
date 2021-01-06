@@ -29,3 +29,6 @@ testrunner/*
 
 # Ignore the generated Generated.sln solution file
 Generated.sln
+
+# Ignore the C# generator clone
+tmp-gapic-generator-csharp
