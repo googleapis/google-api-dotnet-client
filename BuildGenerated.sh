@@ -30,7 +30,7 @@ TOOLS_DIR=$(pwd)/Src/Tools
 # Which generator to use - "python" (in this repo) or "csharp"
 # (from https://github.com/googleapis/gapic-generator-csharp).
 # This can be forced using --use_csharp_generator or --use_python_generator
-GENERATOR_TYPE=python
+GENERATOR_TYPE=csharp
 
 # Forces sourcelink to work during the build.
 export CI=true
